@@ -1,0 +1,12 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  script:
+    - cd /var/www/dev.poetryinvoice.com
+    - pwd
+    - git pull
+    - echo Done
+  only:
+    - dev
