@@ -1,5 +1,5 @@
 <?php 
-  echo "Testing CI";
+  echo "Testing CI branch dev";
   phpinfo(); 
 ?>
 
