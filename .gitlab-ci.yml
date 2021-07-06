@@ -8,5 +8,5 @@ deploy:
     - pwd
     - git pull
     - echo Done
-  only:
+  tags:
     - dev
