@@ -1,0 +1,8 @@
+name: piv9
+recipe: drupal9
+config:
+  webroot: www/web
+
+tooling:
+  drush:
+    cmd: vendor/drush/drush/drush
