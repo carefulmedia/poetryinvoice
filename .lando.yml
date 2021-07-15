@@ -5,4 +5,6 @@ config:
 
 tooling:
   drush:
-    cmd: vendor/drush/drush/drush
+    cmd: /app/www/vendor/drush/drush/drush --root=/app/www/web
+    env:
+      DRUSH_OPTIONS_URI: "http://piv9.lndo.site"

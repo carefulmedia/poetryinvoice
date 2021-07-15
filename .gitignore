@@ -1,27 +1,5 @@
+/.editorconfig
+/.gitattributes
+
 # Environment variables
 .env
-
-#
-# Drupal
-#
-/www/web/sites/default/files
-settings.local.php
-services.local.yml
-*/themes/custom/bf/components/*
-*/themes/custom/bf/assets/css/main.css
-*/themes/custom/bf/assets/js/main.js
-development.services.yml
-
-# Composer-generated
-drush/contrib/
-vendor/
-/www/web/core/
-/www/web/libraries/
-/www/web/modules/contrib/
-/www/web/profiles/contrib/
-/www/web/themes/contrib/
-
-# SimpleTest environment
-/www/web/sites/simpletest
-
-dump
