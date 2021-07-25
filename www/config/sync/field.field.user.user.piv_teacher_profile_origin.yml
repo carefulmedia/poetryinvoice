@@ -1,0 +1,21 @@
+uuid: 36d4adc5-ac0c-47ae-a17a-c139b51f455b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.piv_teacher_profile_origin
+  module:
+    - options
+    - user
+id: user.user.piv_teacher_profile_origin
+field_name: piv_teacher_profile_origin
+entity_type: user
+bundle: user
+label: 'How did you hear from us?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

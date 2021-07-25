@@ -1,0 +1,27 @@
+uuid: 11e23739-c3f1-4a3f-ac30-55d50169ad14
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_nf_video
+    - node.type.competition_entry
+    - node.type.video
+id: node.competition_entry.field_nf_video
+field_name: field_nf_video
+entity_type: node
+bundle: competition_entry
+label: 'NF Video'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      video: video
+field_type: entity_reference

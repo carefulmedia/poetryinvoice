@@ -1,0 +1,21 @@
+uuid: 26917313-0b4d-4458-b1b5-67680f9e0792
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_submission_deadline
+    - node.type.competition
+  module:
+    - datetime
+id: node.competition.field_submission_deadline
+field_name: field_submission_deadline
+entity_type: node
+bundle: competition
+label: 'Submission deadline'
+description: 'Submission deadline for Online Contests, date to send 3rd poem for Nationals, deadline to send student info for Team Regionals (1 week before)'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

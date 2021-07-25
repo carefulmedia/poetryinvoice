@@ -1,0 +1,21 @@
+uuid: 73401298-cdaa-456e-ad49-07be688b75dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_preface
+    - node.type.writing_workshop
+  module:
+    - text
+id: node.writing_workshop.field_preface
+field_name: field_preface
+entity_type: node
+bundle: writing_workshop
+label: Preface
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

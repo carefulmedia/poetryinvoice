@@ -1,0 +1,30 @@
+uuid: 7042c39f-846b-4616-8760-0dda85ed893d
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_catherine_attending_
+field_name: field_catherine_attending_
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: person
+      label: 'In person'
+    -
+      value: skype
+      label: 'By Skype'
+    -
+      value: 'no'
+      label: 'Not attending'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

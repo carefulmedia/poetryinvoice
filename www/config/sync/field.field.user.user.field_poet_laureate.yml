@@ -1,0 +1,73 @@
+uuid: a1654e17-90a6-46bf-adb0-5e6b05628e7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_poet_laureate
+    - paragraphs.paragraphs_type.poet_laureate
+  module:
+    - entity_reference_revisions
+    - user
+id: user.user.field_poet_laureate
+field_name: field_poet_laureate
+entity_type: user
+bundle: user
+label: 'Poet Laureate'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler_settings:
+    negate: 0
+    target_bundles:
+      poet_laureate: poet_laureate
+    target_bundles_drag_drop:
+      action_item:
+        enabled: false
+        weight: 2
+      communication_log:
+        enabled: false
+        weight: 3
+      judges:
+        enabled: false
+        weight: 4
+      lead_teacher_has_yet_to_si:
+        enabled: false
+        weight: 5
+      micro_interview:
+        enabled: false
+        weight: 6
+      poet_laureate:
+        enabled: true
+        weight: 1
+      poet_questionnaire:
+        enabled: false
+        weight: 7
+      publications:
+        enabled: false
+        weight: 8
+      teacher_leads_tracking:
+        enabled: false
+        weight: 9
+      teacher_questionnaire:
+        enabled: false
+        weight: 10
+      teacher_tracking:
+        enabled: false
+        weight: 11
+      this_teacher_signed_up_for:
+        enabled: false
+        weight: 12
+      tr_student:
+        enabled: false
+        weight: 13
+      types_of_support_requested:
+        enabled: false
+        weight: 14
+      visit_date_and_times:
+        enabled: false
+        weight: 15
+  handler: 'default:paragraph'
+field_type: entity_reference_revisions

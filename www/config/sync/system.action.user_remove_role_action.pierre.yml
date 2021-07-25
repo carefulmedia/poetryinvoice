@@ -1,0 +1,14 @@
+uuid: 1e6e9c7a-2285-4f38-9613-0eeb09a6b422
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.pierre
+  module:
+    - user
+id: user_remove_role_action.pierre
+label: 'Remove the Pierre role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: pierre

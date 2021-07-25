@@ -1,0 +1,27 @@
+uuid: 76d387cc-9305-4c29-802c-633cdc700323
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_attachments
+    - node.type.lesson_plan
+  module:
+    - file
+id: node.lesson_plan.field_attachments
+field_name: field_attachments
+entity_type: node
+bundle: lesson_plan
+label: Attachments
+description: 'Upload any additional files.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  description_field: false
+  file_directory: ''
+  file_extensions: 'txt pdf doc ppt docx jpg jpeg gif png'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

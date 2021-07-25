@@ -1,0 +1,21 @@
+uuid: 5ae40f43-e521-4cac-bab3-32ea0e22335f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_assigned_to_team_member
+  module:
+    - options
+    - user
+id: user.user.field_assigned_to_team_member
+field_name: field_assigned_to_team_member
+entity_type: user
+bundle: user
+label: 'Assigned to team member'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

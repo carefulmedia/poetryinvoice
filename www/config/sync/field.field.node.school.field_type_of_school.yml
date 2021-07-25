@@ -1,0 +1,23 @@
+uuid: ce648899-dffc-498f-a550-b5045a97535f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type_of_school
+    - node.type.school
+  module:
+    - options
+id: node.school.field_type_of_school
+field_name: field_type_of_school
+entity_type: node
+bundle: school
+label: 'We are a: '
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: public
+default_value_callback: ''
+settings: {  }
+field_type: list_string

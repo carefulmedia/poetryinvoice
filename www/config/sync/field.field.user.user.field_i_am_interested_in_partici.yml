@@ -1,0 +1,24 @@
+uuid: 866b2c9f-38f7-4e0b-860b-b224f56bda9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_i_am_interested_in_partici
+  module:
+    - user
+id: user.user.field_i_am_interested_in_partici
+field_name: field_i_am_interested_in_partici
+entity_type: user
+bundle: user
+label: 'I am interested in participating in the Poet In Class program.'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

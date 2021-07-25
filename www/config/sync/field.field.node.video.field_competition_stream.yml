@@ -1,0 +1,26 @@
+uuid: 5bf03da2-758d-4bc6-a2db-8ce7cf80bbcf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_competition_stream
+    - node.type.video
+    - taxonomy.vocabulary.competition_stream
+id: node.video.field_competition_stream
+field_name: field_competition_stream
+entity_type: node
+bundle: video
+label: 'Competition stream'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler_settings:
+    sort:
+      field: _none
+    target_bundles:
+      competition_stream: competition_stream
+  handler: 'default:taxonomy_term'
+field_type: entity_reference

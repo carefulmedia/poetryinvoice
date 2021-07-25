@@ -1,0 +1,8 @@
+uuid: c22abf0c-bca7-422a-a1b6-268f0bdd8b11
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_team_regionals_en
+label: 'Team Regional Entry comment'
+target_entity_type_id: node
+description: null

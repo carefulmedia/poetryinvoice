@@ -1,0 +1,27 @@
+uuid: abccbae7-1b44-4c89-836b-a2dc8de0b0bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_writing_prompt
+    - node.type.journal_poem
+    - node.type.writing_prompt
+id: node.journal_poem.field_writing_prompt
+field_name: field_writing_prompt
+entity_type: node
+bundle: journal_poem
+label: 'Writing prompt'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      writing_prompt: writing_prompt
+field_type: entity_reference

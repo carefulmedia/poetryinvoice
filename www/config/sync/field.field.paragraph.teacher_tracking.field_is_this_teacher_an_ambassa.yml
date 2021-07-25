@@ -1,0 +1,23 @@
+uuid: a9c5f103-1209-4af2-828f-169643467620
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_is_this_teacher_an_ambassa
+    - paragraphs.paragraphs_type.teacher_tracking
+id: paragraph.teacher_tracking.field_is_this_teacher_an_ambassa
+field_name: field_is_this_teacher_an_ambassa
+entity_type: paragraph
+bundle: teacher_tracking
+label: 'Is this teacher an ambassador'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

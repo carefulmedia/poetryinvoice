@@ -1,0 +1,20 @@
+uuid: 11717b33-1d86-478a-b2cf-4fb0cf11f4bc
+langcode: und
+status: true
+dependencies:
+  module:
+    - datetime
+    - node
+id: node.field_winners_announced
+field_name: field_winners_announced
+entity_type: node
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

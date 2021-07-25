@@ -1,0 +1,19 @@
+uuid: ea33175a-e4af-474b-9a59-e875d23dade3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.piv_student_mail
+    - node.type.student
+id: node.student.piv_student_mail
+field_name: piv_student_mail
+entity_type: node
+bundle: student
+label: Email
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

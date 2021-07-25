@@ -1,0 +1,21 @@
+uuid: 10f53db6-3d12-45bb-8fd1-21e6740fbd1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_language_stream
+    - node.type.competition
+  module:
+    - options
+id: node.competition.field_language_stream
+field_name: field_language_stream
+entity_type: node
+bundle: competition
+label: 'Language Stream'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

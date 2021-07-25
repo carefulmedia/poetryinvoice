@@ -1,0 +1,39 @@
+uuid: 2e7f8282-a2b0-4d3b-9874-c168cf0404a5
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_how_did_you_hear_about_the
+field_name: field_how_did_you_hear_about_the
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'Email from organization'
+      label: 'Email from organization'
+    -
+      value: 'Email from Poetry In Voice staff'
+      label: 'Email from Poetry In Voice staff'
+    -
+      value: 'Social media'
+      label: 'Social media'
+    -
+      value: 'Poster sent to my school'
+      label: 'Poster sent to my school'
+    -
+      value: 'Word of mouth'
+      label: 'Word of mouth'
+    -
+      value: 'At a workshop or conference booth'
+      label: 'At a workshop or conference booth'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

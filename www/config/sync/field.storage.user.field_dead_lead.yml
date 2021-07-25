@@ -1,0 +1,18 @@
+uuid: 9e8e8c01-3355-4062-a821-d1d533f98b11
+langcode: und
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_dead_lead
+field_name: field_dead_lead
+entity_type: user
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

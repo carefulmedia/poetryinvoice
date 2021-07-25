@@ -1,0 +1,38 @@
+uuid: 9ad50117-5ae8-4f89-bde1-c105c749af95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_school_image
+    - node.type.school
+  module:
+    - image
+id: node.school.field_school_image
+field_name: field_school_image
+entity_type: node
+bundle: school
+label: 'School photo'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  alt_field: false
+  default_image:
+    alt: ''
+    title: ''
+    width: null
+    height: null
+    uuid: ''
+  file_directory: images/schools
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  title_field: false
+  alt_field_required: true
+  title_field_required: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

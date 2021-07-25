@@ -1,0 +1,8 @@
+uuid: 56c1c1a3-2c1b-4bb5-ba7d-80ac1def6590
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_lesson_plan
+label: 'Lesson Plan comment'
+target_entity_type_id: node
+description: null

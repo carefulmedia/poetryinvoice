@@ -1,0 +1,348 @@
+uuid: af53da4f-1fe1-418c-afa9-c1cd088e7362
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.diff
+    - field.field.user.user.field_about_me
+    - field.field.user.user.field_action_item
+    - field.field.user.user.field_additional_email
+    - field.field.user.user.field_assigned_to_team_member
+    - field.field.user.user.field_bio_completed_
+    - field.field.user.user.field_bio_not_by_author_paid_
+    - field.field.user.user.field_bio_trans
+    - field.field.user.user.field_bio_written_by
+    - field.field.user.user.field_canadian_educator_
+    - field.field.user.user.field_cheque_made_to
+    - field.field.user.user.field_communication_log
+    - field.field.user.user.field_completed
+    - field.field.user.user.field_contest_judging
+    - field.field.user.user.field_cv
+    - field.field.user.user.field_dead_lead
+    - field.field.user.user.field_deceased_poet
+    - field.field.user.user.field_dormant_
+    - field.field.user.user.field_elementary
+    - field.field.user.user.field_email_variable
+    - field.field.user.user.field_french_signature
+    - field.field.user.user.field_gg_finalist
+    - field.field.user.user.field_google_calendar_iframe_cod
+    - field.field.user.user.field_griffin_finalist
+    - field.field.user.user.field_gst_hst_
+    - field.field.user.user.field_how_did_you_hear_from_us_2
+    - field.field.user.user.field_i_am_interested_in_doing_i
+    - field.field.user.user.field_i_am_interested_in_judging
+    - field.field.user.user.field_i_am_interested_in_partici
+    - field.field.user.user.field_i_am_interested_in_writing
+    - field.field.user.user.field_i_have_completed_my_profil
+    - field.field.user.user.field_judging
+    - field.field.user.user.field_lead_teacher_has_yet_to_si
+    - field.field.user.user.field_lifespan
+    - field.field.user.user.field_micro_interview
+    - field.field.user.user.field_my_favourite_poem_and_or_p
+    - field.field.user.user.field_my_role_at_school_organiza
+    - field.field.user.user.field_non_school_organization
+    - field.field.user.user.field_not_a_teacher_
+    - field.field.user.user.field_one_line_bio
+    - field.field.user.user.field_online_semifinals_2015
+    - field.field.user.user.field_paid_
+    - field.field.user.user.field_pause_solicitation
+    - field.field.user.user.field_peer_support
+    - field.field.user.user.field_phone
+    - field.field.user.user.field_photo_credit
+    - field.field.user.user.field_poem_languages
+    - field.field.user.user.field_poet_in_class
+    - field.field.user.user.field_poet_laureate
+    - field.field.user.user.field_poet_notes
+    - field.field.user.user.field_poetry_is_
+    - field.field.user.user.field_pst_qst_
+    - field.field.user.user.field_publications
+    - field.field.user.user.field_ready_for_proofing
+    - field.field.user.user.field_school
+    - field.field.user.user.field_sign_up_date3
+    - field.field.user.user.field_signature
+    - field.field.user.user.field_teacher_confirmation
+    - field.field.user.user.field_teacher_leads_tracking
+    - field.field.user.user.field_teacher_tracking
+    - field.field.user.user.field_team_regionals_2017
+    - field.field.user.user.field_this_teacher_signed_up_for
+    - field.field.user.user.field_user_bio
+    - field.field.user.user.field_virtual_visits
+    - field.field.user.user.field_what_grades_do_you_teach
+    - field.field.user.user.field_what_subjects_do_you_teach
+    - field.field.user.user.field_writing_content
+    - field.field.user.user.field_years_in_competition
+    - field.field.user.user.piv_teacher_first_name
+    - field.field.user.user.piv_teacher_last_name
+    - field.field.user.user.piv_teacher_profile_origin
+    - field.field.user.user.user_picture
+  module:
+    - datetime
+    - file
+    - options
+    - text
+    - user
+id: user.user.diff
+targetEntityType: user
+bundle: user
+mode: diff
+content:
+  field_about_me:
+    label: above
+    weight: 62
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_additional_email:
+    label: above
+    weight: 8
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_bio_trans:
+    label: above
+    weight: 1
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_cheque_made_to:
+    label: above
+    weight: 10
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_contest_judging:
+    label: above
+    weight: 9
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_cv:
+    label: above
+    weight: 42
+    type: file_default
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    region: content
+  field_french_signature:
+    label: above
+    weight: 49
+    type: basic_string
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_google_calendar_iframe_cod:
+    label: above
+    weight: 22
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_gst_hst_:
+    label: above
+    weight: 12
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_how_did_you_hear_from_us_2:
+    label: above
+    weight: 52
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_lifespan:
+    label: above
+    weight: 2
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_my_favourite_poem_and_or_p:
+    label: above
+    weight: 57
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_my_role_at_school_organiza:
+    label: above
+    weight: 54
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_non_school_organization:
+    label: above
+    weight: 55
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_one_line_bio:
+    label: above
+    weight: 4
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_phone:
+    label: above
+    weight: 15
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_poet_notes:
+    label: above
+    weight: 26
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_poetry_is_:
+    label: above
+    weight: 56
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_pst_qst_:
+    label: above
+    weight: 13
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_school:
+    label: above
+    weight: 41
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_sign_up_date3:
+    label: above
+    weight: 60
+    type: datetime_default
+    settings:
+      format_type: long
+      timezone_override: ''
+    third_party_settings: {  }
+    region: content
+  field_signature:
+    label: above
+    weight: 48
+    type: basic_string
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_user_bio:
+    label: above
+    weight: 5
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_what_grades_do_you_teach:
+    label: above
+    weight: 61
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_what_subjects_do_you_teach:
+    label: above
+    weight: 63
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  member_for:
+    weight: 5
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  piv_teacher_first_name:
+    label: above
+    weight: 45
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  piv_teacher_last_name:
+    label: above
+    weight: 47
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_action_item: true
+  field_assigned_to_team_member: true
+  field_bio_completed_: true
+  field_bio_not_by_author_paid_: true
+  field_bio_written_by: true
+  field_canadian_educator_: true
+  field_communication_log: true
+  field_completed: true
+  field_dead_lead: true
+  field_deceased_poet: true
+  field_dormant_: true
+  field_elementary: true
+  field_email_variable: true
+  field_gg_finalist: true
+  field_griffin_finalist: true
+  field_i_am_interested_in_doing_i: true
+  field_i_am_interested_in_judging: true
+  field_i_am_interested_in_partici: true
+  field_i_am_interested_in_writing: true
+  field_i_have_completed_my_profil: true
+  field_judging: true
+  field_lead_teacher_has_yet_to_si: true
+  field_micro_interview: true
+  field_not_a_teacher_: true
+  field_online_semifinals_2015: true
+  field_paid_: true
+  field_pause_solicitation: true
+  field_peer_support: true
+  field_photo_credit: true
+  field_poem_languages: true
+  field_poet_in_class: true
+  field_poet_laureate: true
+  field_publications: true
+  field_ready_for_proofing: true
+  field_teacher_confirmation: true
+  field_teacher_leads_tracking: true
+  field_teacher_tracking: true
+  field_team_regionals_2017: true
+  field_this_teacher_signed_up_for: true
+  field_virtual_visits: true
+  field_writing_content: true
+  field_years_in_competition: true
+  langcode: true
+  piv_teacher_profile_origin: true
+  user_picture: true

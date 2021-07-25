@@ -1,0 +1,24 @@
+uuid: a077d817-1eda-4c4a-8664-e876914e0330
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_deceased_poet
+  module:
+    - user
+id: user.user.field_deceased_poet
+field_name: field_deceased_poet
+entity_type: user
+bundle: user
+label: 'Deceased?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

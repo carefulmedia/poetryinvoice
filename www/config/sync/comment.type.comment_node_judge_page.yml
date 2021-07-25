@@ -1,0 +1,8 @@
+uuid: 8f2a47af-1d78-4f79-9d1d-a9edfcd80243
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_judge_page
+label: 'Judge page comment'
+target_entity_type_id: node
+description: null

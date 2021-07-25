@@ -1,0 +1,19 @@
+uuid: 094f294e-3837-446a-b659-bb564c53e487
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_poem_title
+    - paragraphs.paragraphs_type.publications
+id: paragraph.publications.field_poem_title
+field_name: field_poem_title
+entity_type: paragraph
+bundle: publications
+label: 'Poem title(s)'
+description: 'If applicable'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

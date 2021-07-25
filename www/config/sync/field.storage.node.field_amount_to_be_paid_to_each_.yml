@@ -1,0 +1,30 @@
+uuid: 797d1f12-fc08-438f-b24b-e90cd85f264c
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_amount_to_be_paid_to_each_
+field_name: field_amount_to_be_paid_to_each_
+entity_type: node
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 200
+      label: '1 classroom session (half day) = $200'
+    -
+      value: 300
+      label: '2 classroom sessions (half day) = $300'
+    -
+      value: 400
+      label: '3+ sessions (or full day) or auditorium (150+ students) = $400'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

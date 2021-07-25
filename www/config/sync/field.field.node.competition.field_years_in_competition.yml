@@ -1,0 +1,21 @@
+uuid: 2848b513-c839-4d46-93d3-2542a3442667
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_years_in_competition
+    - node.type.competition
+  module:
+    - options
+id: node.competition.field_years_in_competition
+field_name: field_years_in_competition
+entity_type: node
+bundle: competition
+label: Year
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

@@ -1,0 +1,23 @@
+uuid: 88948061-b236-49b2-b323-14da5fb005e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_stage_name
+    - paragraphs.paragraphs_type.tr_student
+id: paragraph.tr_student.field_stage_name
+field_name: field_stage_name
+entity_type: paragraph
+bundle: tr_student
+label: 'This student would prefer to use another name for the event program, for announcing, and for their certificate.'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

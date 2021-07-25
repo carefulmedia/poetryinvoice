@@ -1,0 +1,10 @@
+uuid: 6b38f55b-ddda-4856-8258-a00f37e42932
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: yoNVreoTdTZTY7GuE8fI9Jmxqdz8vlo4ZJKixMNSosw
+name: 'Special Pages'
+vid: tags
+description: 'Use tags to group articles on similar topics into categories.'
+weight: 0

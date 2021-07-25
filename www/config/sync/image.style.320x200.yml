@@ -1,0 +1,15 @@
+uuid: 20becf40-9542-4077-bbd5-2042e6e86ebb
+langcode: en
+status: true
+dependencies: {  }
+name: 320x200
+label: 320x200
+effects:
+  83a033cd-0d7f-470f-ad47-ce9adc8cb623:
+    uuid: 83a033cd-0d7f-470f-ad47-ce9adc8cb623
+    id: image_crop
+    weight: 1
+    data:
+      width: 320
+      height: 200
+      anchor: center-center

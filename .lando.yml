@@ -6,7 +6,11 @@ config:
 # The Drupal 7 database to use as migrate source.
 services:
   d7db:
-    type: mysql
+    type: mariadb
+    creds:
+      user: drupal7db
+      password: drupal7db
+      database: drupal7db
     portforward: true
 
 tooling:

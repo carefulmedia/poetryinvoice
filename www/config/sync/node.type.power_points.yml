@@ -1,0 +1,18 @@
+uuid: 390c6c2f-2cff-456e-a5eb-3329b703e8aa
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-menu
+    parent: 'main-menu:0:'
+name: 'Power Points'
+type: power_points
+description: 'Upload all PP presentations here'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

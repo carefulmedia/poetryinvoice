@@ -1,0 +1,14 @@
+uuid: a982c265-df89-4472-8a6b-f8cfa2e97118
+langcode: en
+status: true
+dependencies: {  }
+name: 480x360
+label: 480x270
+effects:
+  bee0bcce-94d8-4fb3-a949-5c67935f73f9:
+    uuid: bee0bcce-94d8-4fb3-a949-5c67935f73f9
+    id: image_resize
+    weight: 1
+    data:
+      width: 480
+      height: 270

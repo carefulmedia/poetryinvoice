@@ -1,0 +1,18 @@
+uuid: 0e7522ae-822e-4eb6-bb4a-1a2b22579755
+langcode: und
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_dormant_
+field_name: field_dormant_
+entity_type: user
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

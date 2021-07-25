@@ -1,0 +1,33 @@
+uuid: e7260b06-a4ff-41c6-8f2a-2543cad31180
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.comment_node_writing_workshop
+    - node.type.writing_workshop
+  module:
+    - comment
+id: node.writing_workshop.comment_node_writing_workshop
+field_name: comment_node_writing_workshop
+entity_type: node
+bundle: writing_workshop
+label: Comments
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    status: 1
+    cid: 0
+    last_comment_timestamp: 0
+    last_comment_name: null
+    last_comment_uid: 0
+    comment_count: 0
+default_value_callback: ''
+settings:
+  default_mode: 1
+  per_page: 50
+  anonymous: 0
+  form_location: true
+  preview: 1
+field_type: comment

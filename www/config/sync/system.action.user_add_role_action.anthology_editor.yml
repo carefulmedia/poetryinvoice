@@ -1,0 +1,14 @@
+uuid: dd9a5a85-a018-470b-bca2-fa4eb5dce36f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.anthology_editor
+  module:
+    - user
+id: user_add_role_action.anthology_editor
+label: 'Add the Anthology editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: anthology_editor

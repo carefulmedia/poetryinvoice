@@ -1,0 +1,8 @@
+uuid: f3c33126-37e5-48e8-9b29-c99d361f8b5c
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_pal_pir_school_vi
+label: 'Poet School Visit comment'
+target_entity_type_id: node
+description: null

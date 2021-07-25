@@ -1,0 +1,86 @@
+uuid: f3c3ecbe-aee8-4a5c-a7f1-e6c4982fce26
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_school.default
+    - field.field.node.school.comment_node_school
+    - field.field.node.school.field_2016_rs
+    - field.field.node.school.field_cdb_id
+    - field.field.node.school.field_communication_log
+    - field.field.node.school.field_contact_email
+    - field.field.node.school.field_contact_first_name
+    - field.field.node.school.field_contact_last_name
+    - field.field.node.school.field_do_not_contact_again
+    - field.field.node.school.field_grades_of_school
+    - field.field.node.school.field_job_title
+    - field.field.node.school.field_language_school
+    - field.field.node.school.field_not_competing_this_year
+    - field.field.node.school.field_number_of_students
+    - field.field.node.school.field_pa
+    - field.field.node.school.field_school_board
+    - field.field.node.school.field_school_image
+    - field.field.node.school.field_special_subjects
+    - field.field.node.school.field_story_link
+    - field.field.node.school.field_talked_to
+    - field.field.node.school.field_type_of_school
+    - field.field.node.school.field_years_in_competition
+    - node.type.school
+  module:
+    - comment
+    - user
+id: node.school.default
+targetEntityType: node
+bundle: school
+mode: default
+content:
+  comment_node_school:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_pa:
+    label: hidden
+    weight: 20
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_story_link:
+    label: above
+    weight: 15
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_2016_rs: true
+  field_cdb_id: true
+  field_communication_log: true
+  field_contact_email: true
+  field_contact_first_name: true
+  field_contact_last_name: true
+  field_do_not_contact_again: true
+  field_grades_of_school: true
+  field_job_title: true
+  field_language_school: true
+  field_not_competing_this_year: true
+  field_number_of_students: true
+  field_school_board: true
+  field_school_image: true
+  field_special_subjects: true
+  field_talked_to: true
+  field_type_of_school: true
+  field_years_in_competition: true
+  langcode: true

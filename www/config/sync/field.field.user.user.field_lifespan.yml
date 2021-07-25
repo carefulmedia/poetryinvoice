@@ -1,0 +1,20 @@
+uuid: d7516837-e926-4a53-a846-136cfac23085
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_lifespan
+  module:
+    - user
+id: user.user.field_lifespan
+field_name: field_lifespan
+entity_type: user
+bundle: user
+label: 'Year of birth'
+description: Optional
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,24 @@
+uuid: 2ae7fbab-5964-4bc2-b990-bd2c61ebde6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_bio_completed_
+  module:
+    - user
+id: user.user.field_bio_completed_
+field_name: field_bio_completed_
+entity_type: user
+bundle: user
+label: 'Bio (not by author) completed?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

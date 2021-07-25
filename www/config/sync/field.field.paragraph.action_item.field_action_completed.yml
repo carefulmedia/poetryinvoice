@@ -1,0 +1,23 @@
+uuid: a3c1c86d-ca4a-433e-82d0-5391ef816dac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_action_completed
+    - paragraphs.paragraphs_type.action_item
+id: paragraph.action_item.field_action_completed
+field_name: field_action_completed
+entity_type: paragraph
+bundle: action_item
+label: 'Action completed'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

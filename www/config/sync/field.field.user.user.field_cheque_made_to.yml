@@ -1,0 +1,20 @@
+uuid: ea451141-af46-49b1-a165-430aa92641f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_cheque_made_to
+  module:
+    - user
+id: user.user.field_cheque_made_to
+field_name: field_cheque_made_to
+entity_type: user
+bundle: user
+label: 'Payment made to'
+description: 'Legal name or company name to make payment to'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

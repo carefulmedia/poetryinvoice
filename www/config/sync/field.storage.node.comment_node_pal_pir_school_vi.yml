@@ -1,0 +1,20 @@
+uuid: c84d722c-3752-4e64-a7bd-b462196939ed
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - node
+id: node.comment_node_pal_pir_school_vi
+field_name: comment_node_pal_pir_school_vi
+entity_type: node
+type: comment
+settings:
+  comment_type: comment_node_pal_pir_school_vi
+module: comment
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

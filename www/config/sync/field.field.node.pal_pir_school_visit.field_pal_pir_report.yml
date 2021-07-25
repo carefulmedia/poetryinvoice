@@ -1,0 +1,19 @@
+uuid: f8297c73-bc1e-49f4-bd02-abd449388a18
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pal_pir_report
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.field_pal_pir_report
+field_name: field_pal_pir_report
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'DEPRECATED PAL/PIR report'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

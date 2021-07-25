@@ -816,14 +816,17 @@ $databases['default']['default'] = array (
   'port' => '3306',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
-);$databases['default']['default'] = array (
-  'database' => 'drupal9',
-  'username' => 'drupal9',
-  'password' => 'drupal9',
-  'prefix' => '',
-  'host' => 'database',
+);
+
+$databases['migrate']['default'] = [
+  'database' => 'drupal7db',
+  'username' => 'drupal7db',
+  'password' => 'drupal7db',
+  'prefix' => 'dr_',
+  'host' => 'd7db',
   'port' => '3306',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
-);
-$settings['config_sync_directory'] = 'sites/default/files/config_hnmkerL-tcpbTpglehTxmnVTni-yn6sHG113f0oFgvIq-RrdZYfEQe-N6XLa7IcnSHTEn2_COQ/sync';
+];
+
+$settings['config_sync_directory'] = '../config/sync';

@@ -1,0 +1,39 @@
+uuid: 8dac91a7-ba82-48e3-b6e9-4f8b860632d7
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_poet_focus
+field_name: field_poet_focus
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'Poetry reading/analysis'
+      label: 'Poetry reading/analysis'
+    -
+      value: 'Writing poetry'
+      label: 'Writing poetry'
+    -
+      value: 'Poetry recitation/performance'
+      label: 'Poetry recitation/performance'
+    -
+      value: 'General discussion of poetry'
+      label: 'General discussion of poetry'
+    -
+      value: 'Poet Q&A'
+      label: 'Poet Q&A'
+    -
+      value: Other
+      label: Other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

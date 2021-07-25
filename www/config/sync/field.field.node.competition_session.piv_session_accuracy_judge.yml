@@ -1,0 +1,30 @@
+uuid: af656ea1-b264-4a96-9fb7-4dbdc097348e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.piv_session_accuracy_judge
+    - node.type.competition_session
+id: node.competition_session.piv_session_accuracy_judge
+field_name: piv_session_accuracy_judge
+entity_type: node
+bundle: competition_session
+label: 'Accuracy judge'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        'Accuracy judge': 'Accuracy judge'
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

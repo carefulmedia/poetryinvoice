@@ -1,0 +1,26 @@
+uuid: eb526de1-dcad-4b7b-912a-fd818c97e19e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_slideshow_type
+    - node.type.slideshow_image
+    - taxonomy.vocabulary.slide_show_type
+id: node.slideshow_image.field_slideshow_type
+field_name: field_slideshow_type
+entity_type: node
+bundle: slideshow_image
+label: 'Slideshow type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler_settings:
+    sort:
+      field: _none
+    target_bundles:
+      slide_show_type: slide_show_type
+  handler: 'default:taxonomy_term'
+field_type: entity_reference

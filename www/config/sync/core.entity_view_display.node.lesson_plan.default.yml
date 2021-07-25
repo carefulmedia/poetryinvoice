@@ -1,0 +1,130 @@
+uuid: 984d0752-1ec8-43e7-a269-63d9abc75a4e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_lesson_plan.default
+    - field.field.node.lesson_plan.body
+    - field.field.node.lesson_plan.comment_node_lesson_plan
+    - field.field.node.lesson_plan.field_activity_description_steps
+    - field.field.node.lesson_plan.field_additional_poems
+    - field.field.node.lesson_plan.field_attachments
+    - field.field.node.lesson_plan.field_commissioned_
+    - field.field.node.lesson_plan.field_completed
+    - field.field.node.lesson_plan.field_copyright
+    - field.field.node.lesson_plan.field_file_under_
+    - field.field.node.lesson_plan.field_grades
+    - field.field.node.lesson_plan.field_learning_objectives
+    - field.field.node.lesson_plan.field_lesson_objectives
+    - field.field.node.lesson_plan.field_materials_resources
+    - field.field.node.lesson_plan.field_paid_
+    - field.field.node.lesson_plan.field_periods
+    - field.field.node.lesson_plan.field_poets_plural_user
+    - field.field.node.lesson_plan.field_rwt
+    - field.field.node.lesson_plan.field_suggest_a_new_folder_to_fi
+    - field.field.node.lesson_plan.field_variations_for_older_stude
+    - field.field.node.lesson_plan.field_variations_for_younger_stu
+    - field.field.node.lesson_plan.field_video_poem
+    - node.type.lesson_plan
+  module:
+    - comment
+    - file
+    - options
+    - text
+    - user
+id: node.lesson_plan.default
+targetEntityType: node
+bundle: lesson_plan
+mode: default
+content:
+  body:
+    label: above
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_lesson_plan:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_activity_description_steps:
+    label: above
+    weight: 3
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_attachments:
+    label: above
+    weight: 6
+    type: file_default
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    region: content
+  field_completed:
+    label: above
+    weight: 21
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_lesson_objectives:
+    label: above
+    weight: 1
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_materials_resources:
+    label: above
+    weight: 2
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_paid_:
+    label: above
+    weight: 22
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_variations_for_older_stude:
+    label: above
+    weight: 4
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_variations_for_younger_stu:
+    label: above
+    weight: 5
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_additional_poems: true
+  field_commissioned_: true
+  field_copyright: true
+  field_file_under_: true
+  field_grades: true
+  field_learning_objectives: true
+  field_periods: true
+  field_poets_plural_user: true
+  field_rwt: true
+  field_suggest_a_new_folder_to_fi: true
+  field_video_poem: true
+  langcode: true

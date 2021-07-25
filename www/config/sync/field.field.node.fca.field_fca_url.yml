@@ -1,0 +1,19 @@
+uuid: 7eead683-55bf-49a0-9a26-34182443868d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fca_url
+    - node.type.fca
+id: node.fca.field_fca_url
+field_name: field_fca_url
+entity_type: node
+bundle: fca
+label: 'FCA URL'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

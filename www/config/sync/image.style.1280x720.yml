@@ -1,0 +1,14 @@
+uuid: b9eae08d-a99a-4e91-87ee-9f977be40d9a
+langcode: en
+status: true
+dependencies: {  }
+name: 1280x720
+label: 1280x720
+effects:
+  efea2f0a-d127-48a3-8ac4-f7cfa32629b2:
+    uuid: efea2f0a-d127-48a3-8ac4-f7cfa32629b2
+    id: image_resize
+    weight: 1
+    data:
+      width: 1280
+      height: 720

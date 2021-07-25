@@ -1,0 +1,59 @@
+uuid: dace74dd-1be6-471e-a842-8d0704d08578
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_bulletin_board.default
+    - field.field.node.bulletin_board.body
+    - field.field.node.bulletin_board.comment_node_bulletin_board
+    - field.field.node.bulletin_board.field_file_under
+    - field.field.node.bulletin_board.field_other_description
+    - node.type.bulletin_board
+  module:
+    - comment
+    - options
+    - text
+    - user
+id: node.bulletin_board.default
+targetEntityType: node
+bundle: bulletin_board
+mode: default
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_bulletin_board:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_file_under:
+    label: above
+    weight: 1
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_other_description:
+    label: above
+    weight: 2
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

@@ -1,0 +1,23 @@
+uuid: 5a708e61-33ee-4a38-86c6-4c983bedfe4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_acceptance_level
+    - node.type.journal_poem
+  module:
+    - options
+id: node.journal_poem.field_acceptance_level
+field_name: field_acceptance_level
+entity_type: node
+bundle: journal_poem
+label: 'Acceptance level'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 'Not read'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,8 @@
+uuid: 5c3d67aa-ca30-49ec-837b-85d2139a255d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Type of video'
+vid: type_of_video
+description: ''
+weight: 0

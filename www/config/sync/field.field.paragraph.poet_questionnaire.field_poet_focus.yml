@@ -1,0 +1,21 @@
+uuid: b376bc66-49f5-47a1-90a6-5559baac8b1b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_poet_focus
+    - paragraphs.paragraphs_type.poet_questionnaire
+  module:
+    - options
+id: paragraph.poet_questionnaire.field_poet_focus
+field_name: field_poet_focus
+entity_type: paragraph
+bundle: poet_questionnaire
+label: 'What was the focus of your visit?'
+description: '(Please check all that apply)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

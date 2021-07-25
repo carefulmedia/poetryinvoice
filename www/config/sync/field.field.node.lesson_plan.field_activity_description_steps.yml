@@ -1,0 +1,21 @@
+uuid: 357d4fc0-48c1-4e13-b83a-c480a9f4b758
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_activity_description_steps
+    - node.type.lesson_plan
+  module:
+    - text
+id: node.lesson_plan.field_activity_description_steps
+field_name: field_activity_description_steps
+entity_type: node
+bundle: lesson_plan
+label: 'Activity Description'
+description: 'Add extra activities or stages by clicking “Add another item” below. Please feel free to add as many steps as you like.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

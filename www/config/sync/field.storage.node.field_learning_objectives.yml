@@ -1,0 +1,78 @@
+uuid: 50e3d287-e1b7-4b57-a61c-9cd4e75cbedf
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_learning_objectives
+field_name: field_learning_objectives
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Analysis
+      label: Analysis
+    -
+      value: Collaboration
+      label: Collaboration
+    -
+      value: Comprehension
+      label: Comprehension
+    -
+      value: 'Critical Thinking'
+      label: 'Critical Thinking'
+    -
+      value: 'Digital Literacy'
+      label: 'Digital Literacy'
+    -
+      value: 'Inquiry / Research'
+      label: 'Inquiry / Research'
+    -
+      value: 'Interpretation of text for performance'
+      label: 'Interpretation of Text for Performance'
+    -
+      value: Listening
+      label: Listening
+    -
+      value: 'Multicultural Awareness'
+      label: 'Multicultural Awareness'
+    -
+      value: 'Oral Communication'
+      label: 'Oral Communication'
+    -
+      value: 'Poetic Forms'
+      label: 'Poetic Forms'
+    -
+      value: 'Poetic Terms'
+      label: 'Poetic Terms'
+    -
+      value: 'Public Speaking'
+      label: 'Public Speaking'
+    -
+      value: 'Reading Fluency'
+      label: 'Reading Fluency'
+    -
+      value: 'Strategies for developing a stage character'
+      label: 'Strategies for Developing a Stage Character'
+    -
+      value: Structure
+      label: Structure
+    -
+      value: 'Use of voice and body as performance instruments'
+      label: 'Use of Voice and Body as Performance Instruments'
+    -
+      value: Vocabulary
+      label: Vocabulary
+    -
+      value: 'Writing Poetry'
+      label: 'Writing Poetry'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,20 @@
+uuid: 5ca8d8b0-09f6-413e-857b-8b85e60e7026
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.piv_teacher_first_name
+  module:
+    - user
+id: user.user.piv_teacher_first_name
+field_name: piv_teacher_first_name
+entity_type: user
+bundle: user
+label: 'First name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

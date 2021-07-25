@@ -1,0 +1,30 @@
+uuid: 30efd3b5-a13f-4117-9111-504983b76b9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pal_pir
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.field_pal_pir
+field_name: field_pal_pir
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Chosen poet'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        PIC/PAL: PIC/PAL
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

@@ -1,0 +1,39 @@
+uuid: bdce6309-6b4c-4de4-a78a-67ffa6f0d2a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.school_champion.body
+    - field.field.node.school_champion.comment_node_school_champion
+    - field.field.node.school_champion.field_images_insert
+    - field.field.node.school_champion.field_source
+    - field.field.node.school_champion.field_story_link
+    - node.type.school_champion
+  module:
+    - text
+    - user
+id: node.school_champion.teaser
+targetEntityType: node
+bundle: school_champion
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_school_champion: true
+  field_images_insert: true
+  field_source: true
+  field_story_link: true
+  langcode: true

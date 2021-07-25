@@ -1,0 +1,8 @@
+uuid: d449477b-4f0e-43b6-91eb-b182a0b06560
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_writing_workshop
+label: 'Writing Workshop comment'
+target_entity_type_id: node
+description: null

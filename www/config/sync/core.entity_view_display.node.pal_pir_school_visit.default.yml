@@ -1,0 +1,259 @@
+uuid: f7e99a42-3c9a-406c-a90d-2570b062d8f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_pal_pir_school_vi.default
+    - field.field.node.pal_pir_school_visit.comment_node_pal_pir_school_vi
+    - field.field.node.pal_pir_school_visit.field_agreed_visit_date
+    - field.field.node.pal_pir_school_visit.field_amount_to_be_paid_to_each_
+    - field.field.node.pal_pir_school_visit.field_booked_
+    - field.field.node.pal_pir_school_visit.field_catherine_attending_
+    - field.field.node.pal_pir_school_visit.field_completed
+    - field.field.node.pal_pir_school_visit.field_date_and_poet_chosen
+    - field.field.node.pal_pir_school_visit.field_date_and_start_time
+    - field.field.node.pal_pir_school_visit.field_do_you_have_any_poet_prefe
+    - field.field.node.pal_pir_school_visit.field_hold
+    - field.field.node.pal_pir_school_visit.field_in_person_or_teleconferenc
+    - field.field.node.pal_pir_school_visit.field_notes
+    - field.field.node.pal_pir_school_visit.field_other_time_options
+    - field.field.node.pal_pir_school_visit.field_paid_
+    - field.field.node.pal_pir_school_visit.field_pal_pir
+    - field.field.node.pal_pir_school_visit.field_pal_pir_report
+    - field.field.node.pal_pir_school_visit.field_poet_questionnaire
+    - field.field.node.pal_pir_school_visit.field_preferred_date
+    - field.field.node.pal_pir_school_visit.field_preferred_poet_s_
+    - field.field.node.pal_pir_school_visit.field_teacher_questionnaire
+    - field.field.node.pal_pir_school_visit.field_teacher_report
+    - field.field.node.pal_pir_school_visit.field_teacher_s_involved
+    - field.field.node.pal_pir_school_visit.field_teacher_virtual_or_in_pers
+    - field.field.node.pal_pir_school_visit.field_total_students_involved
+    - field.field.node.pal_pir_school_visit.field_travel_time_supplement
+    - field.field.node.pal_pir_school_visit.field_visit_admin
+    - field.field.node.pal_pir_school_visit.field_visit_date_and_times
+    - node.type.pal_pir_school_visit
+  module:
+    - comment
+    - datetime
+    - entity_reference_revisions
+    - options
+    - user
+id: node.pal_pir_school_visit.default
+targetEntityType: node
+bundle: pal_pir_school_visit
+mode: default
+content:
+  comment_node_pal_pir_school_vi:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_agreed_visit_date:
+    label: above
+    weight: 1
+    type: datetime_default
+    settings:
+      format_type: fr
+      timezone_override: ''
+    third_party_settings: {  }
+    region: content
+  field_amount_to_be_paid_to_each_:
+    label: above
+    weight: 7
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_booked_:
+    label: above
+    weight: 23
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_catherine_attending_:
+    label: above
+    weight: 5
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_completed:
+    label: above
+    weight: 6
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_date_and_poet_chosen:
+    label: above
+    weight: 0
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_date_and_start_time:
+    label: above
+    weight: 14
+    type: datetime_default
+    settings:
+      format_type: date_and_time
+      timezone_override: ''
+    third_party_settings: {  }
+    region: content
+  field_do_you_have_any_poet_prefe:
+    label: above
+    weight: 13
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_hold:
+    label: above
+    weight: 24
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_in_person_or_teleconferenc:
+    label: above
+    weight: 11
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_notes:
+    label: above
+    weight: 17
+    type: basic_string
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_other_time_options:
+    label: above
+    weight: 16
+    type: basic_string
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_paid_:
+    label: above
+    weight: 12
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_pal_pir:
+    label: above
+    weight: 2
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_pal_pir_report:
+    label: above
+    weight: 9
+    type: basic_string
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_poet_questionnaire:
+    label: above
+    weight: 19
+    type: entity_reference_revisions_entity_view
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_preferred_date:
+    label: above
+    weight: 21
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_preferred_poet_s_:
+    label: above
+    weight: 15
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_teacher_questionnaire:
+    label: above
+    weight: 20
+    type: entity_reference_revisions_entity_view
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_teacher_report:
+    label: above
+    weight: 8
+    type: basic_string
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_teacher_s_involved:
+    label: above
+    weight: 3
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_teacher_virtual_or_in_pers:
+    label: above
+    weight: 25
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_total_students_involved:
+    label: above
+    weight: 18
+    type: number_integer
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    region: content
+  field_travel_time_supplement:
+    label: above
+    weight: 10
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_visit_admin:
+    label: above
+    weight: 22
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_visit_date_and_times:
+    label: above
+    weight: 4
+    type: entity_reference_revisions_entity_view
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

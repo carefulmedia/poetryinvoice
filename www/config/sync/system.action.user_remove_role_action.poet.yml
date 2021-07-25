@@ -1,0 +1,14 @@
+uuid: 7cdea1b1-9cbe-46f7-ae90-d03e25d1644f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.poet
+  module:
+    - user
+id: user_remove_role_action.poet
+label: 'Remove the Poet role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: poet

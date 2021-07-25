@@ -1,0 +1,27 @@
+uuid: ce576c6f-a70e-4e43-a9a9-0a8a409a96b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_video_poem
+    - node.type.lesson_plan
+    - node.type.poem
+id: node.lesson_plan.field_video_poem
+field_name: field_video_poem
+entity_type: node
+bundle: lesson_plan
+label: 'Poems Used in this Lesson Plan'
+description: 'Type a few letters of the title of the poem from our anthology and select the correct title from the list. List as many poems as apply. '
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      poem: poem
+field_type: entity_reference

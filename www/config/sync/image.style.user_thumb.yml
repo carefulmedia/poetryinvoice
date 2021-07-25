@@ -1,0 +1,15 @@
+uuid: 20b485af-3699-4915-843d-91306067471b
+langcode: en
+status: true
+dependencies: {  }
+name: user_thumb
+label: user_thumb
+effects:
+  02af850e-aaa9-4aed-a52d-a162fd3cf284:
+    uuid: 02af850e-aaa9-4aed-a52d-a162fd3cf284
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 32
+      height: 32
+      anchor: center-center

@@ -1,0 +1,15 @@
+uuid: 58e2e1f6-f0f1-4990-bf9a-49b89d8c2788
+langcode: en
+status: true
+dependencies: {  }
+name: writing_prompt_poet_sidebar_crop
+label: 'Writing prompt poet sidebar crop'
+effects:
+  c2ebf78b-0c8d-40c2-a94c-2cb77bf3c782:
+    uuid: c2ebf78b-0c8d-40c2-a94c-2cb77bf3c782
+    id: image_crop
+    weight: 1
+    data:
+      width: 700
+      height: 400
+      anchor: center-center

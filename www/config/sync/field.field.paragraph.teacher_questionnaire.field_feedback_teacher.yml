@@ -1,0 +1,19 @@
+uuid: 30f3ef1a-70a7-4b29-af97-64c90207b424
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_feedback_teacher
+    - paragraphs.paragraphs_type.teacher_questionnaire
+id: paragraph.teacher_questionnaire.field_feedback_teacher
+field_name: field_feedback_teacher
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'Do you have any feedback for us?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

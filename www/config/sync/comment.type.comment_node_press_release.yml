@@ -1,0 +1,8 @@
+uuid: 747f0d4f-d46b-43a1-9167-a907ea6b944f
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_press_release
+label: 'Press Release comment'
+target_entity_type_id: node
+description: null

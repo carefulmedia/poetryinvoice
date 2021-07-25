@@ -1,0 +1,21 @@
+uuid: 77efc707-6896-468e-be85-fb0052312e76
+langcode: und
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_what_grades_do_you_teach
+field_name: field_what_grades_do_you_teach
+entity_type: user
+type: string
+settings:
+  max_length: 60
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

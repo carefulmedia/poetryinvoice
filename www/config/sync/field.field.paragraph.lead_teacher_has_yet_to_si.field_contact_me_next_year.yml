@@ -1,0 +1,23 @@
+uuid: f430dc0e-a5a0-4f0d-a02e-75a6d5c41d42
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_me_next_year
+    - paragraphs.paragraphs_type.lead_teacher_has_yet_to_si
+id: paragraph.lead_teacher_has_yet_to_si.field_contact_me_next_year
+field_name: field_contact_me_next_year
+entity_type: paragraph
+bundle: lead_teacher_has_yet_to_si
+label: 'Pause solicitation'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

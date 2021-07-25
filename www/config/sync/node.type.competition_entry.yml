@@ -1,0 +1,18 @@
+uuid: 696372d4-b673-4046-a9f8-bfa92c2c1cc2
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main-menu
+    parent: 'main-menu:0:'
+name: 'Competition entry'
+type: competition_entry
+description: 'A node type that glues together a Teacher user, Student user, recitations and poems for one competition entry.'
+help: 'It is better to use the form on the user page to make sure all Teacher/School data is recorded.  If you want to create an entry from the node form, consider making the appropriate teacher user the author of the node.'
+new_revision: false
+preview_mode: 1
+display_submitted: true

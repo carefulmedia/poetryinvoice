@@ -1,0 +1,20 @@
+uuid: dbb12f18-4372-4938-9134-26f6345bb373
+langcode: und
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs
+id: paragraph.field_fr_info_pack_sent
+field_name: field_fr_info_pack_sent
+entity_type: paragraph
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

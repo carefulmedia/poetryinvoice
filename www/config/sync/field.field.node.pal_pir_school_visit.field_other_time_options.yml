@@ -1,0 +1,19 @@
+uuid: 1a998c09-6bdd-4298-b3bc-f666da9076aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_other_time_options
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.field_other_time_options
+field_name: field_other_time_options
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Broader time options'
+description: "Let us know what other times would work for you.\r\n<br>\r\ne.g.: Every Tuesday @ 8:30, January 20 - March 3 all day, March 15 @ 12:00\r\netc."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

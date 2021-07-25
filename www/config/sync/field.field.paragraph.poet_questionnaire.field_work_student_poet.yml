@@ -1,0 +1,21 @@
+uuid: c94c73ff-f027-4d70-8ca7-f4e5ae5ac217
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_work_student_poet
+    - paragraphs.paragraphs_type.poet_questionnaire
+  module:
+    - options
+id: paragraph.poet_questionnaire.field_work_student_poet
+field_name: field_work_student_poet
+entity_type: paragraph
+bundle: poet_questionnaire
+label: 'Your work with the students during your visit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

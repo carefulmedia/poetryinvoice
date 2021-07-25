@@ -1,0 +1,30 @@
+uuid: 6d2c749a-8fea-4dd0-9d4a-6d99c3a4bee0
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_type_of_contact
+field_name: field_type_of_contact
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Estate
+      label: Estate
+    -
+      value: 'Publishing house'
+      label: 'Publishing house'
+    -
+      value: Agency
+      label: Agency
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

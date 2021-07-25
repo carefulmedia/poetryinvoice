@@ -1,0 +1,48 @@
+uuid: b4c173e4-7fc1-458a-8c9f-1be573e869d6
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.piv_entry_level
+field_name: piv_entry_level
+entity_type: node
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 1
+      label: 'Round 1 Judge 1'
+    -
+      value: 2
+      label: 'Round 2 Judge 1'
+    -
+      value: 3
+      label: 'Round 2 Judge 2'
+    -
+      value: 4
+      label: 'Round 2 Judge 3'
+    -
+      value: 5
+      label: Tie-breaker
+    -
+      value: 6
+      label: 'National finals'
+    -
+      value: 7
+      label: 'Awards show'
+    -
+      value: 8
+      label: 'Round 1 Judge 2'
+    -
+      value: 9
+      label: 'Round 1 Judge 3'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

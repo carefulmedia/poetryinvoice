@@ -1,0 +1,28 @@
+uuid: f3f39568-215d-4056-a13f-747d9dba91ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_poem_rights_conta
+    - field.field.comment.comment_node_poem_rights_conta.comment_body
+  module:
+    - text
+id: comment.comment_node_poem_rights_conta.default
+targetEntityType: comment
+bundle: comment_node_poem_rights_conta
+mode: default
+content:
+  comment_body:
+    label: hidden
+    type: text_default
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

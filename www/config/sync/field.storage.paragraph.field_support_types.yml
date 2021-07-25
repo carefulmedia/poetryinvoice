@@ -1,0 +1,30 @@
+uuid: ab981347-0f9b-4072-9068-4bcbb2afebfd
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_support_types
+field_name: field_support_types
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'Teacher tips'
+      label: 'Teacher tips'
+    -
+      value: Ambassador/mentor
+      label: Ambassador/mentor
+    -
+      value: Flowcharts
+      label: Flowcharts
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

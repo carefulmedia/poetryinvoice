@@ -1,0 +1,23 @@
+uuid: 8d8499a3-965b-4a51-8894-06960c0f7c13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_paid_
+    - paragraphs.paragraphs_type.judges
+id: paragraph.judges.field_paid_
+field_name: field_paid_
+entity_type: paragraph
+bundle: judges
+label: 'Paid?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

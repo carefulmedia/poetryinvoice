@@ -1,0 +1,23 @@
+uuid: 164312c4-674e-4bd2-a3af-3ede70fcd712
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.slideshow_image
+  module:
+    - text
+id: node.slideshow_image.body
+field_name: body
+entity_type: node
+bundle: slideshow_image
+label: caption
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

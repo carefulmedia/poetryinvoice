@@ -1,0 +1,19 @@
+uuid: 34eb35cd-37bc-4109-8fcc-1469a597bc56
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date_publication
+    - paragraphs.paragraphs_type.publications
+id: paragraph.publications.field_date_publication
+field_name: field_date_publication
+entity_type: paragraph
+bundle: publications
+label: Date
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

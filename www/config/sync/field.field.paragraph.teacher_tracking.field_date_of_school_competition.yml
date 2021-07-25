@@ -1,0 +1,21 @@
+uuid: 37afa63c-e6bd-4ec0-8a09-f9f8f49f5e8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_date_of_school_competition
+    - paragraphs.paragraphs_type.teacher_tracking
+  module:
+    - datetime
+id: paragraph.teacher_tracking.field_date_of_school_competition
+field_name: field_date_of_school_competition
+entity_type: paragraph
+bundle: teacher_tracking
+label: 'Date of school competition'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -1,0 +1,19 @@
+uuid: 813cfb31-3b79-4f43-8752-4c292436564b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - menu-english-nav
+      - menu-french-nav
+    parent: 'menu-english-nav:5907:'
+name: 'Writing Workshop'
+type: writing_workshop
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

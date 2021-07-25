@@ -1,0 +1,21 @@
+uuid: 90eec315-fd8b-406d-abc5-ce142bd9011d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.piv_entry_language
+    - node.type.competition_entry
+  module:
+    - options
+id: node.competition_entry.piv_entry_language
+field_name: piv_entry_language
+entity_type: node
+bundle: competition_entry
+label: 'Competition entry language'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

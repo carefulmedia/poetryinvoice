@@ -1,0 +1,33 @@
+uuid: 276b4906-e8d2-4913-8ca4-7b11e3eae0fc
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_level
+field_name: field_level
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'Team Regional'
+      label: 'Team Regional'
+    -
+      value: 'Junior Online Contest'
+      label: 'Junior Online Contest'
+    -
+      value: 'Senior Online Contest'
+      label: 'Senior Online Contest'
+    -
+      value: 'National Final'
+      label: 'National Final'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

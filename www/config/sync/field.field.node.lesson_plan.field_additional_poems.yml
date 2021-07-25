@@ -1,0 +1,21 @@
+uuid: dcc447b8-a1a7-488b-833f-3dc50b17a547
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_additional_poems
+    - node.type.lesson_plan
+  module:
+    - text
+id: node.lesson_plan.field_additional_poems
+field_name: field_additional_poems
+entity_type: node
+bundle: lesson_plan
+label: 'Additional Poems'
+description: 'Are there additional poems not in our anthology (yet) that you would recommend for use with this lesson plan? Please include links to where the poem may be viewed or purchased.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

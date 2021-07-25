@@ -1,0 +1,8 @@
+uuid: 09fa6e10-5b7e-4dc6-9977-58d3adea09d5
+langcode: en
+status: true
+dependencies: {  }
+name: 'Common Poetic Terms and Forms'
+vid: poetic_terms
+description: ''
+weight: 0

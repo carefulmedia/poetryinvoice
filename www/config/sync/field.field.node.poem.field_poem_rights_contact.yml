@@ -1,0 +1,27 @@
+uuid: 382b9bfc-e666-4fcf-a139-0099f3bb52f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poem_rights_contact
+    - node.type.poem
+    - node.type.poem_rights_contact
+id: node.poem.field_poem_rights_contact
+field_name: field_poem_rights_contact
+entity_type: node
+bundle: poem
+label: 'Poem rights contact'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      poem_rights_contact: poem_rights_contact
+field_type: entity_reference

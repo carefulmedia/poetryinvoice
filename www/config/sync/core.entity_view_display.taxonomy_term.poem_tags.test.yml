@@ -1,0 +1,37 @@
+uuid: 1bb2f6a3-9a1c-461f-b131-103d83f6275e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.test
+    - field.field.taxonomy_term.poem_tags.field_roulette_image
+    - field.field.taxonomy_term.poem_tags.field_short_description
+    - image.style.medium
+    - taxonomy.vocabulary.poem_tags
+  module:
+    - image
+    - text
+id: taxonomy_term.poem_tags.test
+targetEntityType: taxonomy_term
+bundle: poem_tags
+mode: test
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_roulette_image:
+    label: hidden
+    weight: 0
+    type: image
+    settings:
+      image_link: ''
+      image_style: medium
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_short_description: true
+  langcode: true

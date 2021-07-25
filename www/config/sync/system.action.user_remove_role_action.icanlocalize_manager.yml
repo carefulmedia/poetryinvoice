@@ -1,0 +1,14 @@
+uuid: 23700dcb-e441-4336-a70a-95e13877733a
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.icanlocalize_manager
+  module:
+    - user
+id: user_remove_role_action.icanlocalize_manager
+label: 'Remove the icanlocalize manager role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: icanlocalize_manager

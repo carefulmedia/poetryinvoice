@@ -1,0 +1,10 @@
+uuid: 86cffd79-4ade-4d7a-a6a5-290b8a00dd3e
+langcode: en
+status: true
+dependencies: {  }
+id: teacher_leads_tracking
+label: 'Teacher leads tracking'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_teacher_leads_tracking'
+behavior_plugins: {  }

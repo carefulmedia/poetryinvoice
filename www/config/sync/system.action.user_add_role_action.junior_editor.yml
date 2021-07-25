@@ -1,0 +1,14 @@
+uuid: 6b610572-8d46-4535-a8c8-352b28332917
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.junior_editor
+  module:
+    - user
+id: user_add_role_action.junior_editor
+label: 'Add the Junior editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: junior_editor

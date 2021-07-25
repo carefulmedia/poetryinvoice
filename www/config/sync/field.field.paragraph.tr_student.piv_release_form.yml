@@ -1,0 +1,27 @@
+uuid: 9a10f59d-7541-475f-877d-86db4125a1df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.piv_release_form
+    - paragraphs.paragraphs_type.tr_student
+  module:
+    - file
+id: paragraph.tr_student.piv_release_form
+field_name: piv_release_form
+entity_type: paragraph
+bundle: tr_student
+label: 'Permission form'
+description: 'You can upload your <a href="https://www.poetryinvoice.com/downloads/permission-slips.pdf">signed permission forms</a> by scanning them or even taking a photo of them and then click on "Browse ..." to select them from you computer or phone. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  description_field: false
+  file_directory: ''
+  file_extensions: 'txt pdf doc docx jpg jpeg gif png'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

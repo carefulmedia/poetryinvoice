@@ -1,0 +1,39 @@
+uuid: 0049368f-8127-46fd-8d91-119f7a8418ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.event.body
+    - field.field.node.event.comment_node_event
+    - field.field.node.event.field_date
+    - field.field.node.event.field_piv_event
+    - field.field.node.event.field_story_link
+    - node.type.event
+  module:
+    - text
+    - user
+id: node.event.teaser
+targetEntityType: node
+bundle: event
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_event: true
+  field_date: true
+  field_piv_event: true
+  field_story_link: true
+  langcode: true

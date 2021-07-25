@@ -1,0 +1,19 @@
+uuid: 6c7b0bb3-d13b-4b06-a778-179851b1ac2a
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_ambassador_involvement_ide
+field_name: field_ambassador_involvement_ide
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

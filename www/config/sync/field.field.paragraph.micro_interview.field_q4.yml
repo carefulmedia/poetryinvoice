@@ -1,0 +1,21 @@
+uuid: 8aaa69ac-f118-4016-bb63-81576b823b46
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_q4
+    - paragraphs.paragraphs_type.micro_interview
+  module:
+    - text
+id: paragraph.micro_interview.field_q4
+field_name: field_q4
+entity_type: paragraph
+bundle: micro_interview
+label: 'If you have a poem in our anthology what inspired you to write it?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

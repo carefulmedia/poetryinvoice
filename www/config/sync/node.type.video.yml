@@ -1,0 +1,19 @@
+uuid: f6c8a6c3-7f52-4732-9974-4cf5d334d3a1
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - menu-english-nav
+      - menu-french-nav
+    parent: 'main-menu:0:'
+name: Video
+type: video
+description: Video
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

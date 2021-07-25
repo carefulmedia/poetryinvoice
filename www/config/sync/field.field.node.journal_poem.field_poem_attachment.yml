@@ -1,0 +1,27 @@
+uuid: c0b1f362-89c1-4cc4-ad39-510fce47091a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poem_attachment
+    - node.type.journal_poem
+  module:
+    - file
+id: node.journal_poem.field_poem_attachment
+field_name: field_poem_attachment
+entity_type: node
+bundle: journal_poem
+label: 'Poem attachment'
+description: 'Attach a copy of your poem as well in txt, doc or docx format to help us see how you would like your poem to appear on the page'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: ''
+  file_extensions: 'txt doc docx'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

@@ -1,0 +1,30 @@
+uuid: 068a9d74-809d-4029-864c-5797963d4ab5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.piv_session_judge_fr
+    - node.type.competition_session
+id: node.competition_session.piv_session_judge_fr
+field_name: piv_session_judge_fr
+entity_type: node
+bundle: competition_session
+label: 'French judge'
+description: 'Only use this field in conjunction with bilingual sessions.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        Judge: Judge
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

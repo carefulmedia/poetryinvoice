@@ -1,0 +1,33 @@
+uuid: 5eea9f7c-612a-451a-bd7f-de081d88c0b6
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_language_stream
+field_name: field_language_stream
+entity_type: node
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 0
+      label: English
+    -
+      value: 1
+      label: French
+    -
+      value: 2
+      label: Bilingual
+    -
+      value: 3
+      label: All
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

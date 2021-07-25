@@ -1,0 +1,23 @@
+uuid: 146b7b88-4c90-437b-b7e4-b3079b120357
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_preferred_date
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.field_preferred_date
+field_name: field_preferred_date
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'I have a preferred date and time'
+description: 'To avoid confusion with the final date and time, you will not be able to edit or view this preference again.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

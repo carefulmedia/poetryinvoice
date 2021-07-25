@@ -1,0 +1,10 @@
+uuid: 51ff579c-1705-4e46-9b1d-9c7cf7e00d63
+langcode: en
+status: true
+dependencies: {  }
+id: communication_log
+label: 'Communication log'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_communication_log'
+behavior_plugins: {  }

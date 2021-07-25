@@ -1,0 +1,21 @@
+uuid: fb53d466-0577-4ace-8f6e-7e20359ecabd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_completed
+    - node.type.poem
+  module:
+    - options
+id: node.poem.field_completed
+field_name: field_completed
+entity_type: node
+bundle: poem
+label: 'Dive In and One Liner Completed?'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

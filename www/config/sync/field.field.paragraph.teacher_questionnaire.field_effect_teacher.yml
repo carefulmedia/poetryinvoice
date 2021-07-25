@@ -1,0 +1,19 @@
+uuid: d7c61d54-f018-46fc-8b7e-975a524dbdb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_effect_teacher
+    - paragraphs.paragraphs_type.teacher_questionnaire
+id: paragraph.teacher_questionnaire.field_effect_teacher
+field_name: field_effect_teacher
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'Has this visit affected how you think about teaching poetry? '
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

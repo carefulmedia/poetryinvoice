@@ -1,0 +1,8 @@
+uuid: cc37d6c6-e57e-4eac-ae44-79fd5b015ca3
+langcode: en
+status: true
+dependencies: {  }
+name: 'Judging by year'
+vid: _judging_by_year
+description: 'Tagging judges by years'
+weight: 0

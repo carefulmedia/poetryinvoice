@@ -1,0 +1,21 @@
+uuid: 9497e6a9-73cf-41b5-9be4-c8aefe329937
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_pal_visit_date_and_time
+    - paragraphs.paragraphs_type.visit_date_and_times
+  module:
+    - datetime
+id: paragraph.visit_date_and_times.field_pal_visit_date_and_time
+field_name: field_pal_visit_date_and_time
+entity_type: paragraph
+bundle: visit_date_and_times
+label: 'DEPRECATED Visit date and time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

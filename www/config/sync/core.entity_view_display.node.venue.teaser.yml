@@ -1,0 +1,35 @@
+uuid: 4902ae04-60f1-4fd7-83a2-6b0ab1f546e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.venue.body
+    - field.field.node.venue.comment_node_venue
+    - field.field.node.venue.field_school_image
+    - node.type.venue
+  module:
+    - text
+    - user
+id: node.venue.teaser
+targetEntityType: node
+bundle: venue
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_venue: true
+  field_school_image: true
+  langcode: true

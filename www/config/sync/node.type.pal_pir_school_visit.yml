@@ -1,0 +1,18 @@
+uuid: f0616245-55c3-482e-aa9a-56e36d07873a
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - menu-english-nav
+    parent: 'menu-english-nav:8065:'
+name: 'Poet School Visit'
+type: pal_pir_school_visit
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

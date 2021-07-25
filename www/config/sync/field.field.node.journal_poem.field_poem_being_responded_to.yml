@@ -1,0 +1,27 @@
+uuid: 10f2da42-007b-46b5-92b5-37e3ca8eef3e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poem_being_responded_to
+    - node.type.journal_poem
+    - node.type.poem
+id: node.journal_poem.field_poem_being_responded_to
+field_name: field_poem_being_responded_to
+entity_type: node
+bundle: journal_poem
+label: 'Poem being responded to'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      poem: poem
+field_type: entity_reference

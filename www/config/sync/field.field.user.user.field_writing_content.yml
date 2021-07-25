@@ -1,0 +1,21 @@
+uuid: 0c6753b8-c6d0-4afd-ab47-4da04559564b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_writing_content
+  module:
+    - options
+    - user
+id: user.user.field_writing_content
+field_name: field_writing_content
+entity_type: user
+bundle: user
+label: 'What kind of content do you want to write?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

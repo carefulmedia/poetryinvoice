@@ -1,0 +1,14 @@
+uuid: 08e320d2-8108-48ec-8657-8f780576fb6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.poet
+  module:
+    - user
+id: user_add_role_action.poet
+label: 'Add the Poet role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: poet

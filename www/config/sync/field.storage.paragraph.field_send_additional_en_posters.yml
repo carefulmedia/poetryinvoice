@@ -1,0 +1,30 @@
+uuid: 7c53ed6a-5c72-405d-b1f8-63a200a48e13
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_send_additional_en_posters
+field_name: field_send_additional_en_posters
+entity_type: paragraph
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 3
+      label: '3'
+    -
+      value: 6
+      label: '6'
+    -
+      value: 9
+      label: '9'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

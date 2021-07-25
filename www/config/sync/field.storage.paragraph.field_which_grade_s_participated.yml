@@ -1,0 +1,60 @@
+uuid: 96c036cb-d829-4b34-b136-daa5fead011f
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_which_grade_s_participated
+field_name: field_which_grade_s_participated
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Kindergarden
+      label: Kindergarden
+    -
+      value: 'Grade 1'
+      label: 'Grade 1'
+    -
+      value: 'Grade 2'
+      label: 'Grade 2'
+    -
+      value: 'Grade 3'
+      label: 'Grade 3'
+    -
+      value: 'Grade 4'
+      label: 'Grade 4'
+    -
+      value: 'Grade 5'
+      label: 'Grade 5'
+    -
+      value: 'Grade 6'
+      label: 'Grade 6'
+    -
+      value: 'Grade 7/Secondary 1'
+      label: 'Grade 7/Secondary 1'
+    -
+      value: 'Grade 8/Secondary 2'
+      label: 'Grade 8/Secondary 2'
+    -
+      value: 'Grade 9/Secondary 3'
+      label: 'Grade 9/Secondary 3'
+    -
+      value: 'Grade 10/Secondary 4'
+      label: 'Grade 10/Secondary 4'
+    -
+      value: 'Grade 11/Secondary 5'
+      label: 'Grade 11/Secondary 5'
+    -
+      value: 'Grade 12/CEGEP 1'
+      label: 'Grade 12/CEGEP 1'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

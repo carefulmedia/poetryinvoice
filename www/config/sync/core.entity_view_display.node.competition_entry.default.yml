@@ -1,0 +1,111 @@
+uuid: da29a252-cf45-4595-bb77-54ed28604427
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_competition_entry.default
+    - field.field.node.competition_entry.comment_node_competition_entry
+    - field.field.node.competition_entry.field_contest
+    - field.field.node.competition_entry.field_contest_place
+    - field.field.node.competition_entry.field_nf_video
+    - field.field.node.competition_entry.field_recitation_order_round_1
+    - field.field.node.competition_entry.field_years_in_competition
+    - field.field.node.competition_entry.piv_entry_language
+    - field.field.node.competition_entry.piv_entry_level
+    - field.field.node.competition_entry.piv_entry_student
+    - field.field.node.competition_entry.piv_release_form
+    - node.type.competition_entry
+  module:
+    - comment
+    - file
+    - options
+    - user
+id: node.competition_entry.default
+targetEntityType: node
+bundle: competition_entry
+mode: default
+content:
+  comment_node_competition_entry:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_contest:
+    label: above
+    weight: 6
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_contest_place:
+    label: above
+    weight: 7
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_nf_video:
+    label: above
+    weight: 8
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_recitation_order_round_1:
+    label: above
+    weight: 5
+    type: number_integer
+    settings:
+      prefix_suffix: true
+      thousand_separator: ' '
+    third_party_settings: {  }
+    region: content
+  field_years_in_competition:
+    label: above
+    weight: 4
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  piv_entry_language:
+    label: above
+    weight: 0
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  piv_entry_level:
+    label: above
+    weight: 3
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  piv_entry_student:
+    label: above
+    weight: 1
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  piv_release_form:
+    label: above
+    weight: 2
+    type: file_default
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

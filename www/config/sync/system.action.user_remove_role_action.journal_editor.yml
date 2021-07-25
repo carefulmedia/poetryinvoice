@@ -1,0 +1,14 @@
+uuid: 8a347b2c-6ca4-4813-9944-df71a7510f89
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.journal_editor
+  module:
+    - user
+id: user_remove_role_action.journal_editor
+label: 'Remove the Journal editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: journal_editor

@@ -1,0 +1,21 @@
+uuid: 3269c1e0-dc6a-4624-9dc6-1a10333bbf9e
+langcode: und
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_gst_hst_
+field_name: field_gst_hst_
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

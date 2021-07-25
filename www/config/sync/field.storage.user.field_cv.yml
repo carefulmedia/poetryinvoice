@@ -1,0 +1,23 @@
+uuid: 1fd1dd4c-85a8-45ff-8cf6-44cc25cc5e36
+langcode: und
+status: true
+dependencies:
+  module:
+    - file
+    - user
+id: user.field_cv
+field_name: field_cv
+entity_type: user
+type: file
+settings:
+  display_field: false
+  display_default: false
+  uri_scheme: private
+  target_type: file
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

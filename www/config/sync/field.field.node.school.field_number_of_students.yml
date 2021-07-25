@@ -1,0 +1,23 @@
+uuid: d1852f13-1c0e-4774-ae2d-09694e9f65d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_number_of_students
+    - node.type.school
+id: node.school.field_number_of_students
+field_name: field_number_of_students
+entity_type: node
+bundle: school
+label: 'Number of students'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  max: null
+  min: null
+  prefix: ''
+  suffix: ''
+field_type: integer

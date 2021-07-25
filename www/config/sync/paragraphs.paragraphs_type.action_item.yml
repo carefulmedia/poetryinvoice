@@ -1,0 +1,10 @@
+uuid: ea69fae1-4c43-4785-ac4c-829cf2e32dbd
+langcode: en
+status: true
+dependencies: {  }
+id: action_item
+label: 'Action item'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_action_item'
+behavior_plugins: {  }

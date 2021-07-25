@@ -1,0 +1,21 @@
+uuid: f6b4df55-d24a-45a9-b483-1965156ed362
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_city
+field_name: field_city
+entity_type: paragraph
+type: string
+settings:
+  max_length: 60
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

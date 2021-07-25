@@ -1,0 +1,8 @@
+uuid: d61777f9-9c43-43ad-8a4b-7d7ef3b2f3fd
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_media_coverage
+label: 'Media Coverage comment'
+target_entity_type_id: node
+description: null

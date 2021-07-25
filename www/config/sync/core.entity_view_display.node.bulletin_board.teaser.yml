@@ -1,0 +1,37 @@
+uuid: 610a9034-dec8-4a63-ac77-3f4279aacacb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.bulletin_board.body
+    - field.field.node.bulletin_board.comment_node_bulletin_board
+    - field.field.node.bulletin_board.field_file_under
+    - field.field.node.bulletin_board.field_other_description
+    - node.type.bulletin_board
+  module:
+    - text
+    - user
+id: node.bulletin_board.teaser
+targetEntityType: node
+bundle: bulletin_board
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_bulletin_board: true
+  field_file_under: true
+  field_other_description: true
+  langcode: true

@@ -1,0 +1,27 @@
+uuid: 95a610e4-e962-4f6e-9ba2-05d663aa9d23
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.video
+  module:
+    - text
+id: node.video.body
+field_name: body
+entity_type: node
+bundle: video
+label: 'Youtube Embed Code'
+description: 'Click on "Source" above and then paste the embed code into this text box'
+required: false
+translatable: true
+default_value:
+  -
+    summary: ''
+    value: "<p>\r\n\tClick on &quot;Source&quot; above and then paste the embed code in this box</p>\r\n"
+    format: full_html
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

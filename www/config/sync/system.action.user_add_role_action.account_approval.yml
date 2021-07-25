@@ -1,0 +1,14 @@
+uuid: 39ce2b07-4e17-4f5b-9778-87d3d3540e60
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.account_approval
+  module:
+    - user
+id: user_add_role_action.account_approval
+label: 'Add the Account approval role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: account_approval

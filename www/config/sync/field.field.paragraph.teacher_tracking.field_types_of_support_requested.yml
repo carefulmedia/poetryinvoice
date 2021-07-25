@@ -1,0 +1,73 @@
+uuid: f5f2d04a-2ee8-47dd-bf11-1adba7f7accc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_types_of_support_requested
+    - paragraphs.paragraphs_type.teacher_tracking
+    - paragraphs.paragraphs_type.types_of_support_requested
+  module:
+    - entity_reference_revisions
+id: paragraph.teacher_tracking.field_types_of_support_requested
+field_name: field_types_of_support_requested
+entity_type: paragraph
+bundle: teacher_tracking
+label: 'Types of support requested'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler_settings:
+    negate: 0
+    target_bundles:
+      types_of_support_requested: types_of_support_requested
+    target_bundles_drag_drop:
+      action_item:
+        enabled: false
+        weight: 2
+      communication_log:
+        enabled: false
+        weight: 3
+      judges:
+        enabled: false
+        weight: 4
+      lead_teacher_has_yet_to_si:
+        enabled: false
+        weight: 5
+      micro_interview:
+        enabled: false
+        weight: 6
+      poet_laureate:
+        enabled: false
+        weight: 7
+      poet_questionnaire:
+        enabled: false
+        weight: 8
+      publications:
+        enabled: false
+        weight: 9
+      teacher_leads_tracking:
+        enabled: false
+        weight: 10
+      teacher_questionnaire:
+        enabled: false
+        weight: 11
+      teacher_tracking:
+        enabled: false
+        weight: 12
+      this_teacher_signed_up_for:
+        enabled: false
+        weight: 13
+      tr_student:
+        enabled: false
+        weight: 14
+      types_of_support_requested:
+        enabled: true
+        weight: 1
+      visit_date_and_times:
+        enabled: false
+        weight: 15
+  handler: 'default:paragraph'
+field_type: entity_reference_revisions

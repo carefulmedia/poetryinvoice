@@ -1,0 +1,27 @@
+uuid: 09e3b3b4-5fb1-4418-ae93-42c265583ae7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contest_association
+    - node.type.competition
+    - node.type.team_regionals_entry
+id: node.team_regionals_entry.field_contest_association
+field_name: field_contest_association
+entity_type: node
+bundle: team_regionals_entry
+label: Contest
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      competition: competition
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 579c1ce4-9c2e-4ce9-9808-d0f6f5abfaa0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lesson_objectives
+    - node.type.lesson_plan
+  module:
+    - text
+id: node.lesson_plan.field_lesson_objectives
+field_name: field_lesson_objectives
+entity_type: node
+bundle: lesson_plan
+label: 'Learning Objectives'
+description: "Summarize, in 3-5 bullet points, all of the learning objectives of this lesson plan.\r\n"
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

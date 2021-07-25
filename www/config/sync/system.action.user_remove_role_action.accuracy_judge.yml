@@ -1,0 +1,14 @@
+uuid: 0449b142-5988-42f1-89ee-5f2da88732bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.accuracy_judge
+  module:
+    - user
+id: user_remove_role_action.accuracy_judge
+label: 'Remove the Accuracy judge role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: accuracy_judge

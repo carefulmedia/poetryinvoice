@@ -1,0 +1,19 @@
+uuid: 38965484-ed1b-4fe4-bfb8-53c92603ff13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_email1
+    - node.type.poem_rights_contact
+id: node.poem_rights_contact.field_email1
+field_name: field_email1
+entity_type: node
+bundle: poem_rights_contact
+label: Email
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

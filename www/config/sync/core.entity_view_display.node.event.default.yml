@@ -1,0 +1,56 @@
+uuid: 01bea3f9-2495-4dae-8370-72949eb97a44
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_event.default
+    - field.field.node.event.body
+    - field.field.node.event.comment_node_event
+    - field.field.node.event.field_date
+    - field.field.node.event.field_piv_event
+    - field.field.node.event.field_story_link
+    - node.type.event
+  module:
+    - comment
+    - datetime
+    - text
+    - user
+id: node.event.default
+targetEntityType: node
+bundle: event
+mode: default
+content:
+  body:
+    label: hidden
+    weight: 2
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_event:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_date:
+    label: hidden
+    weight: 0
+    type: datetime_default
+    settings:
+      format_type: long
+      timezone_override: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_piv_event: true
+  field_story_link: true
+  langcode: true

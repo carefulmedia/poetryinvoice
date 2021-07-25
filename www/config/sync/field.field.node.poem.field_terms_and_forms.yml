@@ -1,0 +1,26 @@
+uuid: d61fc73a-3a4e-42ee-a5b9-b2b5dedcc2aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_terms_and_forms
+    - node.type.poem
+    - taxonomy.vocabulary.poetic_terms
+id: node.poem.field_terms_and_forms
+field_name: field_terms_and_forms
+entity_type: node
+bundle: poem
+label: 'Common Poetic Terms and Forms'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler_settings:
+    sort:
+      field: _none
+    target_bundles:
+      poetic_terms: poetic_terms
+  handler: 'default:taxonomy_term'
+field_type: entity_reference

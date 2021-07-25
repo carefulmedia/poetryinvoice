@@ -1,0 +1,21 @@
+uuid: a7ac0d08-e151-4f20-ac1b-7a2f2079ff3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_suffix
+    - node.type.writing_workshop
+  module:
+    - text
+id: node.writing_workshop.field_suffix
+field_name: field_suffix
+entity_type: node
+bundle: writing_workshop
+label: Suffix
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

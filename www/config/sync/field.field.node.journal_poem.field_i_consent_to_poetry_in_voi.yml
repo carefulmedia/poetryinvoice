@@ -1,0 +1,23 @@
+uuid: 00efe091-e3ff-467c-8316-d22242eec829
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_i_consent_to_poetry_in_voi
+    - node.type.journal_poem
+id: node.journal_poem.field_i_consent_to_poetry_in_voi
+field_name: field_i_consent_to_poetry_in_voi
+entity_type: node
+bundle: journal_poem
+label: 'I consent to Poetry In Voice/Les voix de la poésie sharing my work publicly in perpetuity'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

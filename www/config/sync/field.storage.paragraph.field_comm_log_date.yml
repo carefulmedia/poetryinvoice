@@ -1,0 +1,20 @@
+uuid: 3c69f8b6-cd99-4912-bf65-e1464fd05fdb
+langcode: und
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs
+id: paragraph.field_comm_log_date
+field_name: field_comm_log_date
+entity_type: paragraph
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

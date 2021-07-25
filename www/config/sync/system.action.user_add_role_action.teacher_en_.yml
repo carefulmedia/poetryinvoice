@@ -1,0 +1,14 @@
+uuid: 10e488d5-61f9-4cb6-a068-f3f4e0ff0e24
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.teacher_en_
+  module:
+    - user
+id: user_add_role_action.teacher_en_
+label: 'Add the Teacher (en) role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: teacher_en_

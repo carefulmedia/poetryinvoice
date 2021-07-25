@@ -1,0 +1,8 @@
+uuid: f1e5341a-16ff-4684-a604-87d8e31b46ad
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_maptest
+label: 'maptest comment'
+target_entity_type_id: node
+description: null

@@ -1,0 +1,14 @@
+uuid: 2a3e69b7-9e93-4cc7-8096-a47a97fd9a6d
+langcode: en
+status: true
+dependencies: {  }
+name: poet-sidebar
+label: poet-sidebar
+effects:
+  265b9930-edaa-41d6-9240-c7a5d555e57b:
+    uuid: 265b9930-edaa-41d6-9240-c7a5d555e57b
+    id: image_resize
+    weight: 1
+    data:
+      width: 65
+      height: 53

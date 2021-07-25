@@ -1,0 +1,15 @@
+uuid: 2b87a469-1917-48ef-9323-58cfaa48f1c9
+langcode: en
+status: true
+dependencies: {  }
+name: os_wall
+label: 'OS Wall'
+effects:
+  d1d84d38-b47e-4953-919f-9530e9aee174:
+    uuid: d1d84d38-b47e-4953-919f-9530e9aee174
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 100
+      height: 400
+      anchor: center-center

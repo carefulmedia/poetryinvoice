@@ -1,0 +1,30 @@
+uuid: 28d2d3d6-8420-49c7-bfb7-514206adc039
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_not_a_teacher_
+field_name: field_not_a_teacher_
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Librarian
+      label: librarian
+    -
+      value: Principal/vice-principal
+      label: principal
+    -
+      value: 'District contact'
+      label: district
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

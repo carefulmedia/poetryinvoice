@@ -1,0 +1,14 @@
+uuid: 52bd15c8-387d-4fa7-8ae1-b057c76e749f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.icanlocalize_translator
+  module:
+    - user
+id: user_remove_role_action.icanlocalize_translator
+label: 'Remove the icanlocalize translator role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: icanlocalize_translator

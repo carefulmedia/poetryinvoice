@@ -1,0 +1,61 @@
+uuid: 4c044495-e943-4037-9d2b-d88756a64d9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_writing_workshop.default
+    - field.field.node.writing_workshop.body
+    - field.field.node.writing_workshop.comment_node_writing_workshop
+    - field.field.node.writing_workshop.field_banner_subtitle
+    - field.field.node.writing_workshop.field_images_insert
+    - field.field.node.writing_workshop.field_preface
+    - field.field.node.writing_workshop.field_suffix
+    - node.type.writing_workshop
+  module:
+    - comment
+    - text
+    - user
+id: node.writing_workshop.default
+targetEntityType: node
+bundle: writing_workshop
+mode: default
+content:
+  body:
+    label: hidden
+    weight: 5
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_writing_workshop:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_preface:
+    label: hidden
+    weight: 4
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_suffix:
+    label: hidden
+    weight: 7
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_banner_subtitle: true
+  field_images_insert: true
+  langcode: true

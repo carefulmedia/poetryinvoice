@@ -1,0 +1,8 @@
+uuid: a7383562-ed34-4920-9f16-f1846d308756
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_bulletin_board
+label: 'Bulletin board comment'
+target_entity_type_id: node
+description: null

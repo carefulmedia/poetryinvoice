@@ -1,0 +1,33 @@
+uuid: 4096d777-df10-441d-b13c-171d22bd3ac7
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_travel_time_supplement
+field_name: field_travel_time_supplement
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '0'
+      label: '0 - 30 minutes = $0'
+    -
+      value: '25'
+      label: '30 - 60 minutes = $25'
+    -
+      value: '50'
+      label: '60 - 120 minutes = $50'
+    -
+      value: '100'
+      label: '120 minutes+ = $100'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

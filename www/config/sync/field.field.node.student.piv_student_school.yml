@@ -1,0 +1,27 @@
+uuid: 4e15322f-2940-45a8-a5cd-979dd24e56d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.piv_student_school
+    - node.type.school
+    - node.type.student
+id: node.student.piv_student_school
+field_name: piv_student_school
+entity_type: node
+bundle: student
+label: 'Student''s School'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      school: school
+field_type: entity_reference

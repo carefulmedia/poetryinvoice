@@ -1,0 +1,23 @@
+uuid: f2858279-305d-41d2-94ea-bdee526b56ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_broadsides_are_allowed
+    - node.type.poem
+id: node.poem.field_broadsides_are_allowed
+field_name: field_broadsides_are_allowed
+entity_type: node
+bundle: poem
+label: 'Broadsides are allowed'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

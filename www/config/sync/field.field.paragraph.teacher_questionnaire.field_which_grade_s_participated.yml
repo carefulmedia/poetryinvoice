@@ -1,0 +1,21 @@
+uuid: 3b5bd646-d894-4444-a5cf-8ab16acff611
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_which_grade_s_participated
+    - paragraphs.paragraphs_type.teacher_questionnaire
+  module:
+    - options
+id: paragraph.teacher_questionnaire.field_which_grade_s_participated
+field_name: field_which_grade_s_participated
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'Which grade(s) participated? (Click all that apply)'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

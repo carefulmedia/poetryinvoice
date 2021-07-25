@@ -1,0 +1,7 @@
+uuid: 60e3c473-752f-4fd5-8823-ec945693d4dd
+langcode: en
+status: true
+dependencies: {  }
+name: test
+label: test
+effects: {  }

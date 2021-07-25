@@ -1,0 +1,27 @@
+uuid: d2ac49b0-3f07-4f98-a1df-480bdf187e8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_poem
+    - node.type.poem
+    - paragraphs.paragraphs_type.tr_student
+id: paragraph.tr_student.field_poem
+field_name: field_poem
+entity_type: paragraph
+bundle: tr_student
+label: 'Poem to be recited'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      poem: poem
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: ebcaf246-18e7-4a18-947a-e4ac4d771b15
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_what_grades_do_you_teach
+  module:
+    - user
+id: user.user.field_what_grades_do_you_teach
+field_name: field_what_grades_do_you_teach
+entity_type: user
+bundle: user
+label: 'Grades I teach'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

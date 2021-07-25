@@ -1,0 +1,11 @@
+uuid: c2302a8e-3ee1-4b35-b9b3-8c7cc08607de
+langcode: en
+status: true
+dependencies: {  }
+name: 'Competition session'
+type: competition_session
+description: 'A node type that glues together some competition entries for judging.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true

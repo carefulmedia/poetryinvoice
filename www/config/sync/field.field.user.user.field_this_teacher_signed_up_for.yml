@@ -1,0 +1,73 @@
+uuid: 6aac1844-e036-465f-8500-9c11bdf579ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_this_teacher_signed_up_for
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+  module:
+    - entity_reference_revisions
+    - user
+id: user.user.field_this_teacher_signed_up_for
+field_name: field_this_teacher_signed_up_for
+entity_type: user
+bundle: user
+label: 'This teacher signed up for 2015'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler_settings:
+    negate: 0
+    target_bundles:
+      this_teacher_signed_up_for: this_teacher_signed_up_for
+    target_bundles_drag_drop:
+      action_item:
+        enabled: false
+        weight: 2
+      communication_log:
+        enabled: false
+        weight: 3
+      judges:
+        enabled: false
+        weight: 4
+      lead_teacher_has_yet_to_si:
+        enabled: false
+        weight: 5
+      micro_interview:
+        enabled: false
+        weight: 6
+      poet_laureate:
+        enabled: false
+        weight: 7
+      poet_questionnaire:
+        enabled: false
+        weight: 8
+      publications:
+        enabled: false
+        weight: 9
+      teacher_leads_tracking:
+        enabled: false
+        weight: 10
+      teacher_questionnaire:
+        enabled: false
+        weight: 11
+      teacher_tracking:
+        enabled: false
+        weight: 12
+      this_teacher_signed_up_for:
+        enabled: true
+        weight: 1
+      tr_student:
+        enabled: false
+        weight: 13
+      types_of_support_requested:
+        enabled: false
+        weight: 14
+      visit_date_and_times:
+        enabled: false
+        weight: 15
+  handler: 'default:paragraph'
+field_type: entity_reference_revisions

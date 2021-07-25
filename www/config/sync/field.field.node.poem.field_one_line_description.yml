@@ -1,0 +1,19 @@
+uuid: b786be2d-44d1-4f6c-976a-8d1e09938363
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_one_line_description
+    - node.type.poem
+id: node.poem.field_one_line_description
+field_name: field_one_line_description
+entity_type: node
+bundle: poem
+label: 'One line description'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

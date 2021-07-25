@@ -1,0 +1,19 @@
+uuid: 0209a67c-b9b4-4f31-a664-0747010dff5c
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_journal_poem_body
+field_name: field_journal_poem_body
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

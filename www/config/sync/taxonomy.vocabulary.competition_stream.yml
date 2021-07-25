@@ -1,0 +1,8 @@
+uuid: cf40b347-b1f6-4049-9ba1-a27a7ba7754a
+langcode: en
+status: true
+dependencies: {  }
+name: 'Competition stream'
+vid: competition_stream
+description: ''
+weight: 0

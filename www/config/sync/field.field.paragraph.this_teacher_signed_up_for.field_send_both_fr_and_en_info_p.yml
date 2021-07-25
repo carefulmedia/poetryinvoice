@@ -1,0 +1,23 @@
+uuid: 328efb91-9d05-4c8a-94e7-db773dffcad3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_send_both_fr_and_en_info_p
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+id: paragraph.this_teacher_signed_up_for.field_send_both_fr_and_en_info_p
+field_name: field_send_both_fr_and_en_info_p
+entity_type: paragraph
+bundle: this_teacher_signed_up_for
+label: 'Send both EN and FR info packs'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'true'
+  off_label: 'false'
+field_type: boolean

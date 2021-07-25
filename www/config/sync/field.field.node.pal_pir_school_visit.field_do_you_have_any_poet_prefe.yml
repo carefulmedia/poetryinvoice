@@ -1,0 +1,23 @@
+uuid: dc85cbbf-8b07-40eb-bdac-a9e248ebc7ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_do_you_have_any_poet_prefe
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.field_do_you_have_any_poet_prefe
+field_name: field_do_you_have_any_poet_prefe
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'I have a preferred poet'
+description: 'To avoid confusion with confirmed poet, you will not be able to edit or view this preference.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

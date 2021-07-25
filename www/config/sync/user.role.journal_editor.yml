@@ -1,0 +1,42 @@
+uuid: 11bf8dd6-778a-4b4f-91b7-4d157c091bc8
+langcode: en
+status: true
+dependencies: {  }
+id: journal_editor
+label: 'Journal editor'
+weight: 26
+is_admin: null
+permissions:
+  - 'create field_acceptance_level'
+  - 'create field_poem_attachment'
+  - 'create field_poem_being_responded_to'
+  - 'create field_submission_info_confirmed'
+  - 'create field_writing_prompt'
+  - 'create journal_poem content'
+  - 'delete any journal_poem content'
+  - 'delete own journal_poem content'
+  - 'edit any journal_poem content'
+  - 'edit field_acceptance_level'
+  - 'edit field_email1'
+  - 'edit field_poem_attachment'
+  - 'edit field_poem_being_responded_to'
+  - 'edit field_submission_info_confirmed'
+  - 'edit field_writing_prompt'
+  - 'edit own field_acceptance_level'
+  - 'edit own field_poem_attachment'
+  - 'edit own field_poem_being_responded_to'
+  - 'edit own field_submission_info_confirmed'
+  - 'edit own field_writing_prompt'
+  - 'edit own journal_poem content'
+  - 'search journal_poem content'
+  - 'view any unpublished journal_poem content'
+  - 'view field_acceptance_level'
+  - 'view field_poem_attachment'
+  - 'view field_poem_being_responded_to'
+  - 'view field_submission_info_confirmed'
+  - 'view field_writing_prompt'
+  - 'view own field_acceptance_level'
+  - 'view own field_poem_attachment'
+  - 'view own field_poem_being_responded_to'
+  - 'view own field_submission_info_confirmed'
+  - 'view own field_writing_prompt'
