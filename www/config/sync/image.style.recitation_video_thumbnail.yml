@@ -1,0 +1,15 @@
+uuid: ccd95f53-96f5-4f4b-b40a-6284d6c741fe
+langcode: en
+status: true
+dependencies: {  }
+name: recitation_video_thumbnail
+label: recitation_video_thumbnail
+effects:
+  f314b9d5-144d-4a32-8a75-f1efa2b2502f:
+    uuid: f314b9d5-144d-4a32-8a75-f1efa2b2502f
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 200
+      height: 111
+      anchor: center-center

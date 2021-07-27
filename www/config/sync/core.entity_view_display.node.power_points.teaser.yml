@@ -1,0 +1,35 @@
+uuid: ca4e1c21-0e8a-48fb-ad45-83b56793538f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.power_points.body
+    - field.field.node.power_points.comment_node_power_points
+    - field.field.node.power_points.field_pp_file
+    - node.type.power_points
+  module:
+    - text
+    - user
+id: node.power_points.teaser
+targetEntityType: node
+bundle: power_points
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_power_points: true
+  field_pp_file: true
+  langcode: true

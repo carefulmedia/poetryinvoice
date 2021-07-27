@@ -1,0 +1,28 @@
+uuid: a7258c2f-9891-4f3b-9620-75029312c1af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_school
+    - node.type.school
+  module:
+    - user
+id: user.user.field_school
+field_name: field_school
+entity_type: user
+bundle: user
+label: School
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      school: school
+field_type: entity_reference

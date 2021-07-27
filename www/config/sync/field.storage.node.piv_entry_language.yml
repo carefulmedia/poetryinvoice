@@ -1,0 +1,30 @@
+uuid: 9b2779d7-7803-46c0-ab56-38b64b1d299f
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.piv_entry_language
+field_name: piv_entry_language
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: en
+      label: 'English Stream'
+    -
+      value: fr
+      label: 'French Stream'
+    -
+      value: bi
+      label: 'Bilingual Stream'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

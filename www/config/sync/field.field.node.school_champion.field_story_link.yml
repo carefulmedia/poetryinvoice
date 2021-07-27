@@ -1,0 +1,19 @@
+uuid: 424af650-ed36-4c0a-b798-d78b959b97b5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_story_link
+    - node.type.school_champion
+id: node.school_champion.field_story_link
+field_name: field_story_link
+entity_type: node
+bundle: school_champion
+label: 'Story link'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

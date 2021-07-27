@@ -1,0 +1,27 @@
+uuid: e322527b-9e8b-4bca-971c-8ad1dc172c6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_video_poem
+    - node.type.poem
+    - node.type.video
+id: node.video.field_video_poem
+field_name: field_video_poem
+entity_type: node
+bundle: video
+label: 'Poem(s) in this video'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      poem: poem
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 5ec79a3c-f1c7-41f5-8f75-4427240a76f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teacher_virtual_or_in_pers
+    - node.type.pal_pir_school_visit
+  module:
+    - options
+id: node.pal_pir_school_visit.field_teacher_virtual_or_in_pers
+field_name: field_teacher_virtual_or_in_pers
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Would you prefer the poet visits your class in-person or virtually?'
+description: "In-person visits last up to 3 hours, and the poet will typically visit two consecutive classrooms. Each school may request up to one in-person visit per school year.<br>\r\nVirtual visits last less than one hour. Each school is eligible for two virtual visits per school year.<br>\r\nOther arrangements may be made directly with the poet. "
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

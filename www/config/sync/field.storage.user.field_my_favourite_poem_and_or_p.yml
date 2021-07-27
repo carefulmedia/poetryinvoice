@@ -1,0 +1,21 @@
+uuid: f08cb0ac-9d30-4fa3-ac2f-953997a21fbd
+langcode: und
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_my_favourite_poem_and_or_p
+field_name: field_my_favourite_poem_and_or_p
+entity_type: user
+type: string
+settings:
+  max_length: 255
+  is_ascii: false
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

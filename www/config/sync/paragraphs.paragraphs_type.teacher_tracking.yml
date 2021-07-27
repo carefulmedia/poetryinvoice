@@ -1,0 +1,10 @@
+uuid: 0063d498-78cb-4945-aba1-ef86126f86e7
+langcode: en
+status: true
+dependencies: {  }
+id: teacher_tracking
+label: 'Teacher tracking'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_teacher_tracking'
+behavior_plugins: {  }

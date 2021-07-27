@@ -1,0 +1,23 @@
+uuid: ae9297ec-33b8-439e-9621-8b9f0a68441f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lead_teacher
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+id: paragraph.this_teacher_signed_up_for.field_lead_teacher
+field_name: field_lead_teacher
+entity_type: paragraph
+bundle: this_teacher_signed_up_for
+label: 'Lead teacher'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

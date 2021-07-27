@@ -1,0 +1,23 @@
+uuid: b5ec48d2-5cf3-4f8f-b6a0-5d20002e3e8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_booked_
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.field_booked_
+field_name: field_booked_
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Booked?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

@@ -1,0 +1,28 @@
+uuid: e71e9b48-02ae-44b6-b9f5-dd2ae1c06b81
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_power_points
+    - field.field.comment.comment_node_power_points.comment_body
+  module:
+    - text
+id: comment.comment_node_power_points.default
+targetEntityType: comment
+bundle: comment_node_power_points
+mode: default
+content:
+  comment_body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

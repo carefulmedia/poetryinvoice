@@ -1,0 +1,30 @@
+uuid: 7c74eb70-cb42-4b66-a1b1-ae309399ced2
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_release_teacher
+field_name: field_release_teacher
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: name
+      label: 'Yes, and you can use my name'
+    -
+      value: anon
+      label: 'Yes, anonymously please'
+    -
+      value: 'no'
+      label: 'No, thank you'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

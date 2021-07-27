@@ -1,0 +1,21 @@
+uuid: 79cae268-4f86-4da9-896e-4ec0aa7ac6aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_level
+    - node.type.competition
+  module:
+    - options
+id: node.competition.field_level
+field_name: field_level
+entity_type: node
+bundle: competition
+label: Level
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

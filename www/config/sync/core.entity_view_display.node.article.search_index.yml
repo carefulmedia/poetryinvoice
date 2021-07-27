@@ -1,0 +1,55 @@
+uuid: 93c08e80-843a-456d-8928-e55d6ca69a21
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.search_index
+    - field.field.node.article.body
+    - field.field.node.article.comment
+    - field.field.node.article.comment_node_article
+    - field.field.node.article.field_image
+    - field.field.node.article.field_tags
+    - image.style.large
+    - node.type.article
+  module:
+    - image
+    - text
+    - user
+id: node.article.search_index
+targetEntityType: node
+bundle: article
+mode: search_index
+content:
+  body:
+    label: hidden
+    weight: 2
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_image:
+    label: hidden
+    weight: 1
+    type: image
+    settings:
+      image_link: ''
+      image_style: large
+    third_party_settings: {  }
+    region: content
+  field_tags:
+    label: above
+    weight: 3
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment: true
+  comment_node_article: true
+  langcode: true

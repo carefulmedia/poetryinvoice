@@ -1,0 +1,24 @@
+uuid: 0d9c75c0-2126-46da-9f4a-cc17a7938589
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_i_am_interested_in_judging
+  module:
+    - user
+id: user.user.field_i_am_interested_in_judging
+field_name: field_i_am_interested_in_judging
+entity_type: user
+bundle: user
+label: 'I am interested in judging recitation contests.'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

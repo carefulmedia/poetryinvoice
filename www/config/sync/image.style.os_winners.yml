@@ -1,0 +1,15 @@
+uuid: 35be56a4-298e-40eb-b5ab-2ffde49fe7ba
+langcode: en
+status: true
+dependencies: {  }
+name: os_winners
+label: os_winners
+effects:
+  e18b8745-f79c-4f88-aafd-2143c210f9f3:
+    uuid: e18b8745-f79c-4f88-aafd-2143c210f9f3
+    id: image_scale
+    weight: 1
+    data:
+      width: 203
+      height: 114
+      upscale: false

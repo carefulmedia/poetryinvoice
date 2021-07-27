@@ -1,0 +1,10 @@
+uuid: c2a5e848-be10-4c08-816b-45f3b643b37c
+langcode: en
+status: true
+dependencies: {  }
+id: teacher_questionnaire
+label: 'Teacher questionnaire'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_teacher_questionnaire'
+behavior_plugins: {  }

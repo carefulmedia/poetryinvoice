@@ -1,0 +1,19 @@
+uuid: 494a566f-5bb1-4fba-9e24-834a44dcd086
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment
+_core:
+  default_config_hash: 77Ye1kR-P6AaiGfEO8mnXNSr7nqtnP3PiiVBwJeGGMI
+id: comment.comment.default
+targetEntityType: comment
+bundle: comment
+mode: default
+content:
+  links:
+    weight: 100
+    region: content
+hidden:
+  comment_body: true
+  langcode: true

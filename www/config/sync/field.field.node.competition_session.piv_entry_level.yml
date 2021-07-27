@@ -1,0 +1,21 @@
+uuid: 4d0c53c3-fb50-408f-8b10-80e796ea6419
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.piv_entry_level
+    - node.type.competition_session
+  module:
+    - options
+id: node.competition_session.piv_entry_level
+field_name: piv_entry_level
+entity_type: node
+bundle: competition_session
+label: 'Competition level'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

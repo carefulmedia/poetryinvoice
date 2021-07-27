@@ -1,0 +1,19 @@
+uuid: 5e9a0151-6d2c-417b-8b2b-948dde0fa918
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_lesson_objectives
+field_name: field_lesson_objectives
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

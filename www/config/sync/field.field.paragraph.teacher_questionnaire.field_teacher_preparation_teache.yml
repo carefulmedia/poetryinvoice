@@ -1,0 +1,21 @@
+uuid: f4aeabff-e4d0-42a4-8c38-c653d6d3fcd9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_teacher_preparation_teache
+    - paragraphs.paragraphs_type.teacher_questionnaire
+  module:
+    - options
+id: paragraph.teacher_questionnaire.field_teacher_preparation_teache
+field_name: field_teacher_preparation_teache
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'How satisfied were you with . . .<br>Your preparation for the visit'
+description: '(1 = not at all satisfied and 5 = very satisfied) '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

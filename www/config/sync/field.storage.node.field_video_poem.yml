@@ -1,0 +1,19 @@
+uuid: e0ac1299-6ff2-478e-ad36-f23e1b13cccb
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_video_poem
+field_name: field_video_poem
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

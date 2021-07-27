@@ -1,0 +1,21 @@
+uuid: 06e4754d-0eb2-435d-aeeb-ec9aa8ca0adb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_student_engagement_poet
+    - paragraphs.paragraphs_type.poet_questionnaire
+  module:
+    - options
+id: paragraph.poet_questionnaire.field_student_engagement_poet
+field_name: field_student_engagement_poet
+entity_type: paragraph
+bundle: poet_questionnaire
+label: 'The students’ engagement during your visit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

@@ -1,0 +1,10 @@
+uuid: c71558a3-4c82-421d-90ec-8fc25916804c
+langcode: en
+status: true
+dependencies: {  }
+id: this_teacher_signed_up_for
+label: 'This teacher signed up for'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_this_teacher_signed_up_for'
+behavior_plugins: {  }

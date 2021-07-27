@@ -1,0 +1,18 @@
+uuid: 21e3d374-92a9-4339-9e0d-0c06bffa0474
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_visit_completed_teacher
+field_name: field_visit_completed_teacher
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

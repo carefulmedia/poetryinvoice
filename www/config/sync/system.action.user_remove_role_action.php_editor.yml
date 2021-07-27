@@ -1,0 +1,14 @@
+uuid: 85111ead-fcd8-4615-a263-712a215b49fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.php_editor
+  module:
+    - user
+id: user_remove_role_action.php_editor
+label: 'Remove the Php editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: php_editor

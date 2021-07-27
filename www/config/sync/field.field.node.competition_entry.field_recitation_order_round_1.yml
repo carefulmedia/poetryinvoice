@@ -1,0 +1,23 @@
+uuid: 67befa20-6041-44b3-b143-0eb274485274
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recitation_order_round_1
+    - node.type.competition_entry
+id: node.competition_entry.field_recitation_order_round_1
+field_name: field_recitation_order_round_1
+entity_type: node
+bundle: competition_entry
+label: 'Recitation order'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  max: null
+  min: null
+  prefix: ''
+  suffix: ''
+field_type: integer

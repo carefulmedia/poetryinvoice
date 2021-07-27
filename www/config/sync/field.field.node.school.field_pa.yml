@@ -1,0 +1,30 @@
+uuid: 87967eb1-a5c2-4da4-a7c5-db0d90ada5e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pa
+    - node.type.school
+id: node.school.field_pa
+field_name: field_pa
+entity_type: node
+bundle: school
+label: PAL/PIR
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        'Poet network': 'Poet network'
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

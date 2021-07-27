@@ -1,0 +1,21 @@
+uuid: bfb4e45f-d16c-4b9c-ab84-830b209539cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_send_additional_en_posters
+    - paragraphs.paragraphs_type.teacher_tracking
+  module:
+    - options
+id: paragraph.teacher_tracking.field_send_additional_en_posters
+field_name: field_send_additional_en_posters
+entity_type: paragraph
+bundle: teacher_tracking
+label: 'Send additional EN posters'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

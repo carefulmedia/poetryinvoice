@@ -1,0 +1,73 @@
+uuid: b61947d2-3d66-4f5c-8c9f-8670d6bbbb14
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_visit_date_and_times
+    - node.type.pal_pir_school_visit
+    - paragraphs.paragraphs_type.visit_date_and_times
+  module:
+    - entity_reference_revisions
+id: node.pal_pir_school_visit.field_visit_date_and_times
+field_name: field_visit_date_and_times
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'DEPRECATED: Session details'
+description: 'Note that each visit can have more than one session (eg, visiting two classrooms at a school on the same day).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler_settings:
+    negate: 0
+    target_bundles:
+      visit_date_and_times: visit_date_and_times
+    target_bundles_drag_drop:
+      action_item:
+        enabled: false
+        weight: 2
+      communication_log:
+        enabled: false
+        weight: 3
+      judges:
+        enabled: false
+        weight: 4
+      lead_teacher_has_yet_to_si:
+        enabled: false
+        weight: 5
+      micro_interview:
+        enabled: false
+        weight: 6
+      poet_laureate:
+        enabled: false
+        weight: 7
+      poet_questionnaire:
+        enabled: false
+        weight: 8
+      publications:
+        enabled: false
+        weight: 9
+      teacher_leads_tracking:
+        enabled: false
+        weight: 10
+      teacher_questionnaire:
+        enabled: false
+        weight: 11
+      teacher_tracking:
+        enabled: false
+        weight: 12
+      this_teacher_signed_up_for:
+        enabled: false
+        weight: 13
+      tr_student:
+        enabled: false
+        weight: 14
+      types_of_support_requested:
+        enabled: false
+        weight: 15
+      visit_date_and_times:
+        enabled: true
+        weight: 1
+  handler: 'default:paragraph'
+field_type: entity_reference_revisions

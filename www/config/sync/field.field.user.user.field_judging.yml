@@ -1,0 +1,21 @@
+uuid: 0e54bcc3-77ff-4a14-9bc2-e53472dd728b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_judging
+  module:
+    - options
+    - user
+id: user.user.field_judging
+field_name: field_judging
+entity_type: user
+bundle: user
+label: 'Which contests would you be interested in judging?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

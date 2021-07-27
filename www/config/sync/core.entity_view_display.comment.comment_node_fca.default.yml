@@ -1,0 +1,28 @@
+uuid: 6dc81e33-8f88-4e66-b166-4b516fce73fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_fca
+    - field.field.comment.comment_node_fca.comment_body
+  module:
+    - text
+id: comment.comment_node_fca.default
+targetEntityType: comment
+bundle: comment_node_fca
+mode: default
+content:
+  comment_body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

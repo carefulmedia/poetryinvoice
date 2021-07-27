@@ -1,0 +1,19 @@
+uuid: 311d1e0c-371e-46ea-b616-eaf7f3a0aebd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teacher
+    - node.type.journal_poem
+id: node.journal_poem.field_teacher
+field_name: field_teacher
+entity_type: node
+bundle: journal_poem
+label: Teacher
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

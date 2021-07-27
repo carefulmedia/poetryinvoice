@@ -1,0 +1,18 @@
+uuid: fe83d168-3d35-4b10-a032-607b9c8e26ae
+langcode: und
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_virtual_visits
+field_name: field_virtual_visits
+entity_type: user
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

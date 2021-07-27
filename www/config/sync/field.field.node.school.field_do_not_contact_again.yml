@@ -1,0 +1,23 @@
+uuid: c0368ed9-2e3b-43b0-9e8f-d828d132f6ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_do_not_contact_again
+    - node.type.school
+id: node.school.field_do_not_contact_again
+field_name: field_do_not_contact_again
+entity_type: node
+bundle: school
+label: 'Do not contact again'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Don''t contact again'
+  off_label: ''
+field_type: boolean

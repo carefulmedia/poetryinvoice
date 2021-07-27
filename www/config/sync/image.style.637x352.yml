@@ -1,0 +1,15 @@
+uuid: 0e00f2f4-fa12-4ecf-9c01-9ef9d86045f2
+langcode: en
+status: true
+dependencies: {  }
+name: 637x352
+label: 637x352
+effects:
+  dd9cfefe-c9b1-4d9b-829e-56fb1e1651ae:
+    uuid: dd9cfefe-c9b1-4d9b-829e-56fb1e1651ae
+    id: image_crop
+    weight: 1
+    data:
+      width: 637
+      height: 352
+      anchor: center-center

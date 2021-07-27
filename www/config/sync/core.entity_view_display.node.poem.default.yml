@@ -1,0 +1,127 @@
+uuid: ed7bf94a-cce9-46f5-ab6b-b36ff9f9fe0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_poem.default
+    - field.field.node.poem.body
+    - field.field.node.poem.comment_node_poem
+    - field.field.node.poem.field_biligraphical_info
+    - field.field.node.poem.field_broadsides_are_allowed
+    - field.field.node.poem.field_canada_restrict
+    - field.field.node.poem.field_completed
+    - field.field.node.poem.field_dive_in
+    - field.field.node.poem.field_dive_in_attribution
+    - field.field.node.poem.field_editor
+    - field.field.node.poem.field_grades
+    - field.field.node.poem.field_mobile_apps_are_allowed
+    - field.field.node.poem.field_moods
+    - field.field.node.poem.field_new_theme
+    - field.field.node.poem.field_one_line_description
+    - field.field.node.poem.field_paid_
+    - field.field.node.poem.field_password_protected
+    - field.field.node.poem.field_pdf_of_original_poem
+    - field.field.node.poem.field_poem_author_user
+    - field.field.node.poem.field_poem_retired
+    - field.field.node.poem.field_poem_rights_
+    - field.field.node.poem.field_poem_rights_contact
+    - field.field.node.poem.field_poem_thems
+    - field.field.node.poem.field_poem_title_for_sorting
+    - field.field.node.poem.field_rights_and_permissions_pdf
+    - field.field.node.poem.field_rights_expiration
+    - field.field.node.poem.field_start_here_image
+    - field.field.node.poem.field_start_here_poem
+    - field.field.node.poem.field_start_here_video
+    - field.field.node.poem.field_terms_and_forms
+    - node.type.poem
+  module:
+    - comment
+    - options
+    - text
+    - user
+id: node.poem.default
+targetEntityType: node
+bundle: poem
+mode: default
+content:
+  body:
+    label: hidden
+    weight: 3
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_poem:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_biligraphical_info:
+    label: hidden
+    weight: 4
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_completed:
+    label: above
+    weight: 43
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_dive_in:
+    label: inline
+    weight: 6
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_dive_in_attribution:
+    label: inline
+    weight: 7
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_paid_:
+    label: above
+    weight: 44
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_broadsides_are_allowed: true
+  field_canada_restrict: true
+  field_editor: true
+  field_grades: true
+  field_mobile_apps_are_allowed: true
+  field_moods: true
+  field_new_theme: true
+  field_one_line_description: true
+  field_password_protected: true
+  field_pdf_of_original_poem: true
+  field_poem_author_user: true
+  field_poem_retired: true
+  field_poem_rights_: true
+  field_poem_rights_contact: true
+  field_poem_thems: true
+  field_poem_title_for_sorting: true
+  field_rights_and_permissions_pdf: true
+  field_rights_expiration: true
+  field_start_here_image: true
+  field_start_here_poem: true
+  field_start_here_video: true
+  field_terms_and_forms: true
+  langcode: true

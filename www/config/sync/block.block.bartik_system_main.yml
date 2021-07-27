@@ -1,0 +1,27 @@
+uuid: c6218a8c-915d-40a6-a90c-214d6608f880
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bartik
+id: bartik_system_main
+theme: bartik
+region: content
+weight: -20
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: ''
+  provider: system
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: |-
+      <front>
+      /teach
+      /enseigner

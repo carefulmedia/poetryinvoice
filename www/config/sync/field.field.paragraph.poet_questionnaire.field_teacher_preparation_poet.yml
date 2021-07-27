@@ -1,0 +1,21 @@
+uuid: 4285d3d9-cfcc-4058-82b8-e4edad8c7f88
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_teacher_preparation_poet
+    - paragraphs.paragraphs_type.poet_questionnaire
+  module:
+    - options
+id: paragraph.poet_questionnaire.field_teacher_preparation_poet
+field_name: field_teacher_preparation_poet
+entity_type: paragraph
+bundle: poet_questionnaire
+label: 'The teacher’s preparation for your visit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

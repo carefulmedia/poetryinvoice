@@ -1,0 +1,14 @@
+uuid: 7dbb14b5-b1e2-4a02-94b8-6628c1d189f9
+langcode: en
+status: true
+dependencies: {  }
+name: 1200x900
+label: 1200x900
+effects:
+  f61cff29-9cbf-4ee5-8542-7d8e86c162c9:
+    uuid: f61cff29-9cbf-4ee5-8542-7d8e86c162c9
+    id: image_resize
+    weight: 1
+    data:
+      width: 1200
+      height: 900

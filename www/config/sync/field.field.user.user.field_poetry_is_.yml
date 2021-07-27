@@ -1,0 +1,20 @@
+uuid: d6839ebb-aac2-4ca7-b080-70ad99c45a7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_poetry_is_
+  module:
+    - user
+id: user.user.field_poetry_is_
+field_name: field_poetry_is_
+entity_type: user
+bundle: user
+label: 'Poetry is'
+description: "<b>Bonus question:</b> Write a metaphor or simile for what you think poetry is. \r\nExamples from our <a href=\"http://www.poetryinvoice.com/teachers/lesson-plans/what-poetry\"><em>What is poetry?</em> lesson plan</a>: \"Poetry is a DJ spinning . . . \", or \"Poetry is like riding horseback int the rain . . .\".\r\nBe poetic, if you dare! "
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

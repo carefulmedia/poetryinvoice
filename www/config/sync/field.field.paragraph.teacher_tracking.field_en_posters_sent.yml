@@ -1,0 +1,21 @@
+uuid: f3fb24b5-96ee-422f-9226-a8de9a57222f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_en_posters_sent
+    - paragraphs.paragraphs_type.teacher_tracking
+  module:
+    - datetime
+id: paragraph.teacher_tracking.field_en_posters_sent
+field_name: field_en_posters_sent
+entity_type: paragraph
+bundle: teacher_tracking
+label: 'EN posters sent'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

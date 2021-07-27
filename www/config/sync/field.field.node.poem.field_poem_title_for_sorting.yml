@@ -1,0 +1,21 @@
+uuid: b081a5c3-436b-4e21-9d5f-26e38dc9a3d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poem_title_for_sorting
+    - node.type.poem
+id: node.poem.field_poem_title_for_sorting
+field_name: field_poem_title_for_sorting
+entity_type: node
+bundle: poem
+label: 'Poem title for sorting alphabetically'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 'Set to poem title unless there are exceptions'
+default_value_callback: ''
+settings: {  }
+field_type: string

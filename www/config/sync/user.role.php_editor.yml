@@ -1,0 +1,11 @@
+uuid: 6718e008-7868-4dd6-ab84-97f93e693d69
+langcode: en
+status: true
+dependencies: {  }
+id: php_editor
+label: 'Php editor'
+weight: 16
+is_admin: null
+permissions:
+  - 'access search combine'
+  - 'use text format php_code'

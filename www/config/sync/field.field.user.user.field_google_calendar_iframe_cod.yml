@@ -1,0 +1,21 @@
+uuid: dccd57c8-db67-474f-b0b8-1086b1ee470c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_google_calendar_iframe_cod
+  module:
+    - text
+    - user
+id: user.user.field_google_calendar_iframe_cod
+field_name: field_google_calendar_iframe_cod
+entity_type: user
+bundle: user
+label: 'Poet In Class Availability'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,21 @@
+uuid: 5497639a-bcf2-474d-a580-0e01474d05d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_place_team_regional
+    - node.type.team_regionals_entry
+  module:
+    - options
+id: node.team_regionals_entry.field_place_team_regional
+field_name: field_place_team_regional
+entity_type: node
+bundle: team_regionals_entry
+label: 'Place team regional'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

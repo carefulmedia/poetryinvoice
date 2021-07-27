@@ -1,0 +1,19 @@
+uuid: 26fe8791-fcd9-43c3-9531-b9e8a3713e5b
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+id: node.piv_student_school
+field_name: piv_student_school
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

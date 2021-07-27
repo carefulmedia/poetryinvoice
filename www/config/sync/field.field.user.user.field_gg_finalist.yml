@@ -1,0 +1,21 @@
+uuid: 2f8a7b92-7a16-41e0-a58b-14a258236bda
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_gg_finalist
+  module:
+    - options
+    - user
+id: user.user.field_gg_finalist
+field_name: field_gg_finalist
+entity_type: user
+bundle: user
+label: 'GG Finalist'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

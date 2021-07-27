@@ -1,0 +1,20 @@
+uuid: b48f5ada-b63c-4be1-bed3-fb15d3cb26c4
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - node
+id: node.comment_node_journal_poem
+field_name: comment_node_journal_poem
+entity_type: node
+type: comment
+settings:
+  comment_type: comment_node_journal_poem
+module: comment
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

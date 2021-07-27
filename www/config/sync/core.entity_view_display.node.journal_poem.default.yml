@@ -1,0 +1,189 @@
+uuid: ce9b2d7c-b188-4dd8-9c39-8815fd8e07c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_journal_poem.default
+    - field.field.node.journal_poem.comment_node_journal_poem
+    - field.field.node.journal_poem.field_acceptance_level
+    - field.field.node.journal_poem.field_email1
+    - field.field.node.journal_poem.field_grade
+    - field.field.node.journal_poem.field_i_consent_to_poetry_in_voi
+    - field.field.node.journal_poem.field_journal_poem_body
+    - field.field.node.journal_poem.field_phone
+    - field.field.node.journal_poem.field_poem_attachment
+    - field.field.node.journal_poem.field_poem_being_responded_to
+    - field.field.node.journal_poem.field_poem_reason
+    - field.field.node.journal_poem.field_poem_type
+    - field.field.node.journal_poem.field_poet_who_visited_your_scho
+    - field.field.node.journal_poem.field_response_or_prompt
+    - field.field.node.journal_poem.field_school_journal
+    - field.field.node.journal_poem.field_submission_info_confirmed
+    - field.field.node.journal_poem.field_teacher
+    - field.field.node.journal_poem.field_writing_prompt
+    - field.field.node.journal_poem.piv_teacher_first_name
+    - field.field.node.journal_poem.piv_teacher_last_name
+    - node.type.journal_poem
+  module:
+    - comment
+    - file
+    - options
+    - text
+    - user
+id: node.journal_poem.default
+targetEntityType: node
+bundle: journal_poem
+mode: default
+content:
+  comment_node_journal_poem:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_acceptance_level:
+    label: above
+    weight: 13
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_email1:
+    label: above
+    weight: 4
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_grade:
+    label: above
+    weight: 11
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_i_consent_to_poetry_in_voi:
+    label: above
+    weight: 12
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_journal_poem_body:
+    label: above
+    weight: 15
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_phone:
+    label: above
+    weight: 3
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_poem_attachment:
+    label: above
+    weight: 7
+    type: file_default
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    region: content
+  field_poem_being_responded_to:
+    label: above
+    weight: 9
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_poem_reason:
+    label: above
+    weight: 18
+    type: basic_string
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_poem_type:
+    label: above
+    weight: 16
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_poet_who_visited_your_scho:
+    label: above
+    weight: 17
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_response_or_prompt:
+    label: above
+    weight: 8
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_school_journal:
+    label: above
+    weight: 6
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_submission_info_confirmed:
+    label: above
+    weight: 14
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_teacher:
+    label: above
+    weight: 5
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_writing_prompt:
+    label: above
+    weight: 10
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  piv_teacher_first_name:
+    label: above
+    weight: 1
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  piv_teacher_last_name:
+    label: above
+    weight: 2
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

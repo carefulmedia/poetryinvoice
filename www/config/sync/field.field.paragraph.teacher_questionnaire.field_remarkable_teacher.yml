@@ -1,0 +1,19 @@
+uuid: b250ec71-aa55-446c-beff-80a65d7ea11d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_remarkable_teacher
+    - paragraphs.paragraphs_type.teacher_questionnaire
+id: paragraph.teacher_questionnaire.field_remarkable_teacher
+field_name: field_remarkable_teacher
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'Did anything remarkable happen during the poet’s visit?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

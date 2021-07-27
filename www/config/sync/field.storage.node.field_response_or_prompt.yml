@@ -1,0 +1,18 @@
+uuid: 06610535-10cb-45a3-aaa3-777d9f49d9b9
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_response_or_prompt
+field_name: field_response_or_prompt
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

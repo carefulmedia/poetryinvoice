@@ -1,0 +1,20 @@
+uuid: 1f81a05e-d6cb-4c4f-b08e-92eeddbba187
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_my_role_at_school_organiza
+  module:
+    - user
+id: user.user.field_my_role_at_school_organiza
+field_name: field_my_role_at_school_organiza
+entity_type: user
+bundle: user
+label: 'My role at school/organization'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

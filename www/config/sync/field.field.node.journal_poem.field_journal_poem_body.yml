@@ -1,0 +1,21 @@
+uuid: be05d7c4-7915-4ffd-9f7e-3e7090cd7c60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_journal_poem_body
+    - node.type.journal_poem
+  module:
+    - text
+id: node.journal_poem.field_journal_poem_body
+field_name: field_journal_poem_body
+entity_type: node
+bundle: journal_poem
+label: Poem
+description: 'Copy and paste your poem here.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,24 @@
+uuid: 789c7309-c87d-458b-940c-505a14587658
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_pause_solicitation
+  module:
+    - user
+id: user.user.field_pause_solicitation
+field_name: field_pause_solicitation
+entity_type: user
+bundle: user
+label: 'Pause solicitation for 2015/16'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Pause
+  off_label: 'Don''t pause'
+field_type: boolean

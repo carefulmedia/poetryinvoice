@@ -1,0 +1,10 @@
+uuid: 2417d529-5d38-43db-870b-965b0055090c
+langcode: en
+status: true
+dependencies: {  }
+id: visit_date_and_times
+label: 'Visit date and times'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_visit_date_and_times'
+behavior_plugins: {  }

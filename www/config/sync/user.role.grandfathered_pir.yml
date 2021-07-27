@@ -1,0 +1,46 @@
+uuid: 7973c570-54be-46ec-b633-64fc6ad31bf9
+langcode: en
+status: true
+dependencies: {  }
+id: grandfathered_pir
+label: 'Grandfathered PIR'
+weight: 24
+is_admin: null
+permissions:
+  - 'access administration menu'
+  - 'access administration pages'
+  - 'access search combine'
+  - 'create field_other_focus'
+  - 'create field_pal_visit_date_and_time'
+  - 'create field_poet_incomplete_reason'
+  - 'create field_poet_preparation_poet'
+  - 'create field_student_engagement_poet'
+  - 'edit field_expectations_poet'
+  - 'edit field_other_focus'
+  - 'edit field_poet_focus'
+  - 'edit field_poet_incomplete_reason'
+  - 'edit field_poet_preparation_poet'
+  - 'edit field_student_engagement_poet'
+  - 'edit field_visit_completed_poet'
+  - 'edit own field_expectations_poet'
+  - 'edit own field_other_focus'
+  - 'edit own field_pal_visit_date_and_time'
+  - 'edit own field_poet_focus'
+  - 'edit own field_poet_incomplete_reason'
+  - 'edit own field_poet_preparation_poet'
+  - 'edit own field_student_engagement_poet'
+  - 'edit own field_visit_completed_poet'
+  - 'view field_expectations_poet'
+  - 'view field_other_focus'
+  - 'view field_poet_focus'
+  - 'view field_poet_incomplete_reason'
+  - 'view field_poet_preparation_poet'
+  - 'view field_student_engagement_poet'
+  - 'view field_visit_completed_poet'
+  - 'view own field_expectations_poet'
+  - 'view own field_other_focus'
+  - 'view own field_poet_focus'
+  - 'view own field_poet_incomplete_reason'
+  - 'view own field_poet_preparation_poet'
+  - 'view own field_student_engagement_poet'
+  - 'view own field_visit_completed_poet'

@@ -1,0 +1,20 @@
+uuid: 1f635e86-f0d4-4138-977b-62c913c7dcec
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - user
+id: node.field_poem_author_user
+field_name: field_poem_author_user
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,14 @@
+uuid: 45b08d0f-07f1-4a55-971b-6648432fb4cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.poet_network
+  module:
+    - user
+id: user_add_role_action.poet_network
+label: 'Add the Poet network role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: poet_network

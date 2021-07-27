@@ -1,0 +1,19 @@
+uuid: 1b53ac9d-8f9d-469d-934c-91540d54125f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_classroom
+    - paragraphs.paragraphs_type.visit_date_and_times
+id: paragraph.visit_date_and_times.field_classroom
+field_name: field_classroom
+entity_type: paragraph
+bundle: visit_date_and_times
+label: 'DEPRECATED Classroom'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,24 @@
+uuid: 4b4fa73d-da69-4776-ba2c-c79beb2565de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_elementary
+  module:
+    - user
+id: user.user.field_elementary
+field_name: field_elementary
+entity_type: user
+bundle: user
+label: 'Are you interested in visiting elementary schools? '
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'I am interested in doing elementary school visits'
+  off_label: ''
+field_type: boolean

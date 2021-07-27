@@ -1,0 +1,23 @@
+uuid: 03c5a4ab-133f-4f59-98cd-eb64b9449898
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_confirmed_
+    - paragraphs.paragraphs_type.judges
+id: paragraph.judges.field_confirmed_
+field_name: field_confirmed_
+entity_type: paragraph
+bundle: judges
+label: 'Confirmed?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

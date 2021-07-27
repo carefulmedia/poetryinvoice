@@ -1,0 +1,24 @@
+uuid: ed093a4e-94b6-4238-9854-19217207973d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_i_am_interested_in_writing
+  module:
+    - user
+id: user.user.field_i_am_interested_in_writing
+field_name: field_i_am_interested_in_writing
+entity_type: user
+bundle: user
+label: 'I am interested in writing content.'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

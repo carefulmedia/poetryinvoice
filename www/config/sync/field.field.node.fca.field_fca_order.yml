@@ -1,0 +1,21 @@
+uuid: 2806702e-57a5-4778-92f9-61423444cfc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fca_order
+    - node.type.fca
+  module:
+    - options
+id: node.fca.field_fca_order
+field_name: field_fca_order
+entity_type: node
+bundle: fca
+label: 'FCA order'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

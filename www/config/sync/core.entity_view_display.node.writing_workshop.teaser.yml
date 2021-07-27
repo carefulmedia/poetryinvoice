@@ -1,0 +1,41 @@
+uuid: d15d50f7-58f9-469d-81de-fa7204377587
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.writing_workshop.body
+    - field.field.node.writing_workshop.comment_node_writing_workshop
+    - field.field.node.writing_workshop.field_banner_subtitle
+    - field.field.node.writing_workshop.field_images_insert
+    - field.field.node.writing_workshop.field_preface
+    - field.field.node.writing_workshop.field_suffix
+    - node.type.writing_workshop
+  module:
+    - text
+    - user
+id: node.writing_workshop.teaser
+targetEntityType: node
+bundle: writing_workshop
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_writing_workshop: true
+  field_banner_subtitle: true
+  field_images_insert: true
+  field_preface: true
+  field_suffix: true
+  langcode: true

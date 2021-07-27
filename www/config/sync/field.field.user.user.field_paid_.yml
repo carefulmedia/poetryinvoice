@@ -1,0 +1,24 @@
+uuid: c26ed146-5554-4ad0-ba33-9a551bd11257
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_paid_
+  module:
+    - user
+id: user.user.field_paid_
+field_name: field_paid_
+entity_type: user
+bundle: user
+label: 'Paid?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

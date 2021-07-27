@@ -1,0 +1,88 @@
+uuid: 7a3038bd-a83b-47ab-8974-904729ef11e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_student.default
+    - field.field.node.student.comment_node_student
+    - field.field.node.student.field_photo
+    - field.field.node.student.piv_student_first_name
+    - field.field.node.student.piv_student_grade
+    - field.field.node.student.piv_student_last_name
+    - field.field.node.student.piv_student_mail
+    - field.field.node.student.piv_student_school
+    - node.type.student
+  module:
+    - comment
+    - image
+    - user
+id: node.student.default
+targetEntityType: node
+bundle: student
+mode: default
+content:
+  comment_node_student:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_photo:
+    label: above
+    weight: 5
+    type: image
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  piv_student_first_name:
+    label: above
+    weight: 3
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  piv_student_grade:
+    label: above
+    weight: 1
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  piv_student_last_name:
+    label: above
+    weight: 2
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  piv_student_mail:
+    label: above
+    weight: 4
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  piv_student_school:
+    label: above
+    weight: 0
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

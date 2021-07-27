@@ -1,0 +1,41 @@
+uuid: 30ba6058-45a7-4d62-ab5f-88c222e13416
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.competition_session.comment_node_competition_sessi
+    - field.field.node.competition_session.field_multi_judge_session_id
+    - field.field.node.competition_session.field_session_year
+    - field.field.node.competition_session.piv_entry_level
+    - field.field.node.competition_session.piv_session_accuracy_judge
+    - field.field.node.competition_session.piv_session_judge
+    - field.field.node.competition_session.piv_session_judge_en
+    - field.field.node.competition_session.piv_session_judge_fr
+    - field.field.node.competition_session.piv_session_language
+    - field.field.node.competition_session.piv_session_year
+    - node.type.competition_session
+  module:
+    - user
+id: node.competition_session.teaser
+targetEntityType: node
+bundle: competition_session
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_competition_sessi: true
+  field_multi_judge_session_id: true
+  field_session_year: true
+  langcode: true
+  piv_entry_level: true
+  piv_session_accuracy_judge: true
+  piv_session_judge: true
+  piv_session_judge_en: true
+  piv_session_judge_fr: true
+  piv_session_language: true
+  piv_session_year: true

@@ -1,0 +1,8 @@
+uuid: ab8761c7-f5a5-44c8-b779-b7e7c1b619d6
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_power_points
+label: 'Power Points comment'
+target_entity_type_id: node
+description: null

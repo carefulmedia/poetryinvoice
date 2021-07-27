@@ -1,0 +1,20 @@
+uuid: 0c8a6dec-e5ad-4349-8463-3484b9cf139e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_sign_up_date3
+  module:
+    - user
+id: user.user.field_sign_up_date3
+field_name: field_sign_up_date3
+entity_type: user
+bundle: user
+label: 'Account creation'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,18 @@
+uuid: a23db4ac-1404-4149-beaf-dc57ce236c9d
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_mobile_apps_are_allowed
+field_name: field_mobile_apps_are_allowed
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

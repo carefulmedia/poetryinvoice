@@ -1,0 +1,27 @@
+uuid: aebf782f-8570-44f8-93d9-2d8492dd870e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pdf_of_original_poem
+    - node.type.poem
+  module:
+    - file
+id: node.poem.field_pdf_of_original_poem
+field_name: field_pdf_of_original_poem
+entity_type: node
+bundle: poem
+label: 'Pdf of original poem'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  description_field: false
+  file_directory: ''
+  file_extensions: 'txt pdf'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

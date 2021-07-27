@@ -1,0 +1,61 @@
+uuid: a176bd7e-3852-4bf9-a431-82ac69fb03e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_slideshow_image.default
+    - field.field.node.slideshow_image.body
+    - field.field.node.slideshow_image.comment_node_slideshow_image
+    - field.field.node.slideshow_image.field_slideshow_image
+    - field.field.node.slideshow_image.field_slideshow_type
+    - node.type.slideshow_image
+  module:
+    - comment
+    - image
+    - text
+    - user
+id: node.slideshow_image.default
+targetEntityType: node
+bundle: slideshow_image
+mode: default
+content:
+  body:
+    label: above
+    weight: 2
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_slideshow_image:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_slideshow_image:
+    label: above
+    weight: 1
+    type: image
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    region: content
+  field_slideshow_type:
+    label: above
+    weight: 3
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

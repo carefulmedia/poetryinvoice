@@ -1,0 +1,21 @@
+uuid: 2e2bcb98-23b4-4400-b17c-4c3c5b3e5ddc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_in_person_or_teleconferenc
+    - node.type.pal_pir_school_visit
+  module:
+    - options
+id: node.pal_pir_school_visit.field_in_person_or_teleconferenc
+field_name: field_in_person_or_teleconferenc
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'In person or virtual?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_float

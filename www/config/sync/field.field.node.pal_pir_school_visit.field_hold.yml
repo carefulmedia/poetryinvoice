@@ -1,0 +1,23 @@
+uuid: 4f762ce1-9d6b-43f8-9e15-4944bf077148
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hold
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.field_hold
+field_name: field_hold
+entity_type: node
+bundle: pal_pir_school_visit
+label: Hold
+description: 'Put this visit on hold since we don''t currently have a poet in the region, or it is unlikely the visit will occur for some other reason.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

@@ -1,0 +1,30 @@
+uuid: 38d95fa7-7af5-4cbe-ab8d-08ad10e3fa17
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_editor
+    - node.type.poem
+id: node.poem.field_editor
+field_name: field_editor
+entity_type: node
+bundle: poem
+label: Editor
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        'Anthology editor': 'Anthology editor'
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

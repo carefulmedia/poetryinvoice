@@ -1,0 +1,19 @@
+uuid: aa0af122-80b6-4fb8-8d8a-e0a4f3cc1c9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.piv_student_mail
+    - paragraphs.paragraphs_type.tr_student
+id: paragraph.tr_student.piv_student_mail
+field_name: piv_student_mail
+entity_type: paragraph
+bundle: tr_student
+label: Email
+description: 'Can also be a parent/guardian''s email'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

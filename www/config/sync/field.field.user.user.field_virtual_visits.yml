@@ -1,0 +1,24 @@
+uuid: 29702544-8602-45fc-97b3-fb5a548cf559
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_virtual_visits
+  module:
+    - user
+id: user.user.field_virtual_visits
+field_name: field_virtual_visits
+entity_type: user
+bundle: user
+label: 'I am interested in doing virtual visits (using Skype, Zoom, etc.).'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'I can do virtual visits (using Skype, Hangouts, Zoom etc.)'
+  off_label: 'I can only do in-person visits (no Skype, Hangouts, Zoom, etc.)'
+field_type: boolean

@@ -1,0 +1,44 @@
+uuid: 477bc67c-d9fc-4932-b083-3009dbc9e178
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.quote.body
+    - field.field.node.quote.comment_node_quote
+    - field.field.node.quote.field_by_line
+    - field.field.node.quote.field_quote_photo
+    - node.type.quote
+  module:
+    - text
+    - user
+id: node.quote.teaser
+targetEntityType: node
+bundle: quote
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  field_by_line:
+    label: hidden
+    weight: 1
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_quote: true
+  field_quote_photo: true
+  langcode: true

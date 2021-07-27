@@ -1,0 +1,14 @@
+uuid: bb8ae87c-47c4-4d23-8456-80ad965cf5b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.accuracy_judge
+  module:
+    - user
+id: user_add_role_action.accuracy_judge
+label: 'Add the Accuracy judge role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: accuracy_judge

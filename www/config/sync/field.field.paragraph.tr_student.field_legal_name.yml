@@ -1,0 +1,19 @@
+uuid: e1c9e67a-3db2-468a-a4a2-6e25aa62cdc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_legal_name
+    - paragraphs.paragraphs_type.tr_student
+id: paragraph.tr_student.field_legal_name
+field_name: field_legal_name
+entity_type: paragraph
+bundle: tr_student
+label: 'Full Legal name'
+description: 'Enter the student''s full name for the event program, for announcing on stage, and for the issuance of a cheque and certificate should the student win.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

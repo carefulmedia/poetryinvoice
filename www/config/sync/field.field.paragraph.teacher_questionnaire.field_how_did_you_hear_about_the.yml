@@ -1,0 +1,21 @@
+uuid: 1cd55241-8cbe-4226-9a29-a76c2271a94b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_how_did_you_hear_about_the
+    - paragraphs.paragraphs_type.teacher_questionnaire
+  module:
+    - options
+id: paragraph.teacher_questionnaire.field_how_did_you_hear_about_the
+field_name: field_how_did_you_hear_about_the
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'How did you hear about the PIC/PAL program?'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

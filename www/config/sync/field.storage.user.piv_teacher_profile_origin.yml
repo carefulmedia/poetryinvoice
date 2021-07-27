@@ -1,0 +1,39 @@
+uuid: 74161c60-1e2c-4776-87f1-62437e080e65
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.piv_teacher_profile_origin
+field_name: piv_teacher_profile_origin
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: returning
+      label: 'Returning school'
+    -
+      value: conference
+      label: Conference/workshop
+    -
+      value: direct
+      label: 'Directly from a Poetry In Voice contact'
+    -
+      value: email-flyer
+      label: 'Email / e-flyer'
+    -
+      value: ad
+      label: Advertisement
+    -
+      value: wom
+      label: Word-of-mouth
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

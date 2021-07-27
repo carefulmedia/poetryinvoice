@@ -1,0 +1,70 @@
+uuid: bcfd78e0-8e26-4015-909f-46b103ab2a79
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_fca.default
+    - field.field.node.fca.comment_node_fca
+    - field.field.node.fca.field_fca_image
+    - field.field.node.fca.field_fca_order
+    - field.field.node.fca.field_fca_url
+    - field.field.node.fca.field_subtitle
+    - node.type.fca
+  module:
+    - comment
+    - image
+    - options
+    - user
+id: node.fca.default
+targetEntityType: node
+bundle: fca
+mode: default
+content:
+  comment_node_fca:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_fca_image:
+    label: above
+    weight: 0
+    type: image
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    region: content
+  field_fca_order:
+    label: above
+    weight: 1
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_fca_url:
+    label: above
+    weight: 2
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_subtitle:
+    label: above
+    weight: 3
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

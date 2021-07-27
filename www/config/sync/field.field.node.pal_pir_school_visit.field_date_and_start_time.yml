@@ -1,0 +1,21 @@
+uuid: aa372b8b-5fbf-4816-a1ed-f83a52415bb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date_and_start_time
+    - node.type.pal_pir_school_visit
+  module:
+    - datetime
+id: node.pal_pir_school_visit.field_date_and_start_time
+field_name: field_date_and_start_time
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Preferred date and start time'
+description: 'The preferred start time of your poet visit. This should be 15 minutes before your class starts. We pay for poets to spend a maximum of 3 consecutive hours at your school. If you would like them to stay longer you may negotiate with them directly.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

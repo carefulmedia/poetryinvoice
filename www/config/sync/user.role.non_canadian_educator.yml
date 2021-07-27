@@ -1,0 +1,15 @@
+uuid: db142973-143a-43ce-8c7c-1e7f5901ca19
+langcode: en
+status: true
+dependencies: {  }
+id: non_canadian_educator
+label: 'Non-Canadian educator'
+weight: 1
+is_admin: null
+permissions:
+  - 'access search combine'
+  - 'create field_grades'
+  - 'edit field_grades'
+  - 'edit own field_grades'
+  - 'view field_grades'
+  - 'view own field_grades'

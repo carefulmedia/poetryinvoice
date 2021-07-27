@@ -1,0 +1,23 @@
+uuid: 02f3e338-9d1c-4b87-ba12-ec92e1960fc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.power_points
+  module:
+    - text
+id: node.power_points.body
+field_name: body
+entity_type: node
+bundle: power_points
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

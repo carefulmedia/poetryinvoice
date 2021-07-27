@@ -1,0 +1,29 @@
+uuid: 919453cd-1170-4302-bb67-23e12e7a812b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.team_regionals_entry.comment_node_team_regionals_en
+    - field.field.node.team_regionals_entry.field_contest_association
+    - field.field.node.team_regionals_entry.field_place_team_regional
+    - field.field.node.team_regionals_entry.field_tr_student
+    - node.type.team_regionals_entry
+  module:
+    - user
+id: node.team_regionals_entry.teaser
+targetEntityType: node
+bundle: team_regionals_entry
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_team_regionals_en: true
+  field_contest_association: true
+  field_place_team_regional: true
+  field_tr_student: true
+  langcode: true

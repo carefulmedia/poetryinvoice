@@ -1,0 +1,21 @@
+uuid: 2c8cda1c-d62d-40e3-b61f-ab2eb92eaa42
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_teacher_involvement_poet
+    - paragraphs.paragraphs_type.poet_questionnaire
+  module:
+    - options
+id: paragraph.poet_questionnaire.field_teacher_involvement_poet
+field_name: field_teacher_involvement_poet
+entity_type: paragraph
+bundle: poet_questionnaire
+label: 'The teacher’s involvement during your visit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

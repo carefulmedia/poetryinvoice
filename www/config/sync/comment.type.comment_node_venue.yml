@@ -1,0 +1,8 @@
+uuid: 17d4544b-ff93-480d-95c1-f1c8256c188a
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_venue
+label: 'Venue comment'
+target_entity_type_id: node
+description: null

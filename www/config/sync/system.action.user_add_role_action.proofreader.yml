@@ -1,0 +1,14 @@
+uuid: a4dcd06e-5606-4e50-89b3-9470d3196ac2
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.proofreader
+  module:
+    - user
+id: user_add_role_action.proofreader
+label: 'Add the Proofreader role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: proofreader

@@ -1,0 +1,21 @@
+uuid: 421c7f55-2b90-414a-bcaa-c0a82d7091f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_canadian_educator_
+  module:
+    - options
+    - user
+id: user.user.field_canadian_educator_
+field_name: field_canadian_educator_
+entity_type: user
+bundle: user
+label: 'Canadian educator?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

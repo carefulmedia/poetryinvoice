@@ -1,0 +1,57 @@
+uuid: fe0b9181-3750-42f2-a0e4-d2b1d694a1c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.video.body
+    - field.field.node.video.comment_node_video
+    - field.field.node.video.field_canada_restrict
+    - field.field.node.video.field_competition_school
+    - field.field.node.video.field_competition_stream
+    - field.field.node.video.field_fca_image
+    - field.field.node.video.field_pod_date
+    - field.field.node.video.field_poem_retired
+    - field.field.node.video.field_poets_plural_user
+    - field.field.node.video.field_type_of_video
+    - field.field.node.video.field_video_caption
+    - field.field.node.video.field_video_image
+    - field.field.node.video.field_video_poem
+    - field.field.node.video.field_years_in_competition
+    - node.type.video
+  module:
+    - text
+    - user
+id: node.video.teaser
+targetEntityType: node
+bundle: video
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_video: true
+  field_canada_restrict: true
+  field_competition_school: true
+  field_competition_stream: true
+  field_fca_image: true
+  field_pod_date: true
+  field_poem_retired: true
+  field_poets_plural_user: true
+  field_type_of_video: true
+  field_video_caption: true
+  field_video_image: true
+  field_video_poem: true
+  field_years_in_competition: true
+  langcode: true

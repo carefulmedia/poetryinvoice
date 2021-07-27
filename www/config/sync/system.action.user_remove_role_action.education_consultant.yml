@@ -1,0 +1,14 @@
+uuid: a759c9e5-2d49-4eb8-ae1a-2965c960d3c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.education_consultant
+  module:
+    - user
+id: user_remove_role_action.education_consultant
+label: 'Remove the Education consultant role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: education_consultant

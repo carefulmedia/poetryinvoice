@@ -1,0 +1,27 @@
+uuid: 6f041f66-ecb9-460c-bab9-f0b6a8e93ee0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.piv_release_form
+    - node.type.competition_entry
+  module:
+    - file
+id: node.competition_entry.piv_release_form
+field_name: piv_release_form
+entity_type: node
+bundle: competition_entry
+label: 'Release Form'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  description_field: true
+  file_directory: sites/default/files/piv_entry_release
+  file_extensions: 'pdf jpg'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

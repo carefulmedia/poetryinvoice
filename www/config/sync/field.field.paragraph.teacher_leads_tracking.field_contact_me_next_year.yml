@@ -1,0 +1,23 @@
+uuid: 65748a18-0e00-4f2d-b514-48f6bb97aec1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_me_next_year
+    - paragraphs.paragraphs_type.teacher_leads_tracking
+id: paragraph.teacher_leads_tracking.field_contact_me_next_year
+field_name: field_contact_me_next_year
+entity_type: paragraph
+bundle: teacher_leads_tracking
+label: 'Pause solicitation'
+description: 'Contact me next year. Teacher will not receive e-blasts until the next year''s competition.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

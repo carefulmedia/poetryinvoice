@@ -1,0 +1,21 @@
+uuid: ad0d23fe-5505-4805-8a79-401cbca225e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_completed
+    - node.type.pal_pir_school_visit
+  module:
+    - options
+id: node.pal_pir_school_visit.field_completed
+field_name: field_completed
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Completed or Cancelled'
+description: '"Completed" has been deprecated. DO NOT USE IT AS IT HAS NO EFFECT!'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

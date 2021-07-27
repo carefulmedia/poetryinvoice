@@ -1,0 +1,11 @@
+uuid: 8a102c56-8f10-4bd6-abe8-50dd1edd74be
+langcode: en
+status: true
+dependencies: {  }
+id: account_approval
+label: 'Account approval'
+weight: 13
+is_admin: null
+permissions:
+  - 'access search combine'
+  - 'access user profiles'

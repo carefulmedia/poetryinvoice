@@ -1,0 +1,8 @@
+uuid: 07128c6f-f094-4414-ac2c-5fb72c79291c
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_student
+label: 'Student comment'
+target_entity_type_id: node
+description: null

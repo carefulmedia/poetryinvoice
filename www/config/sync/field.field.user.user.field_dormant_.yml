@@ -1,0 +1,24 @@
+uuid: 7e0a796e-e15f-4872-8de4-c3206a8a3a77
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_dormant_
+  module:
+    - user
+id: user.user.field_dormant_
+field_name: field_dormant_
+entity_type: user
+bundle: user
+label: 'Dormant?'
+description: 'Admin field for whether Poet is active or dormant in the Poet Network'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

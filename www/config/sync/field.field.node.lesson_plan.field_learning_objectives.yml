@@ -1,0 +1,21 @@
+uuid: 239fe185-b9e8-4f43-a431-96eeb5f15e20
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_learning_objectives
+    - node.type.lesson_plan
+  module:
+    - options
+id: node.lesson_plan.field_learning_objectives
+field_name: field_learning_objectives
+entity_type: node
+bundle: lesson_plan
+label: Skills
+description: "Check all of the elements below that students will work on using this lesson plan. <a href=\"mailto:info@poetryinvoice.com\">Contact us</a> if there are terms you think we should add to this list.\r\n"
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

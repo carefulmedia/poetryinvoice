@@ -1,0 +1,21 @@
+uuid: 5e886cf1-4066-4fe3-9ded-85fb8b600633
+langcode: und
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+    - user
+id: user.field_micro_interview
+field_name: field_micro_interview
+entity_type: user
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

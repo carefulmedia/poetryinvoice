@@ -1,0 +1,20 @@
+uuid: 22319247-07b8-4124-b7c2-cbbba1a3cff3
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+    - node
+id: node.comment_node_competition_sessi
+field_name: comment_node_competition_sessi
+entity_type: node
+type: comment
+settings:
+  comment_type: comment_node_competition_sessi
+module: comment
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,14 @@
+uuid: d5b61370-c0df-49d2-8fa7-b0188d36e223
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.lesson_plan_creator
+  module:
+    - user
+id: user_remove_role_action.lesson_plan_creator
+label: 'Remove the Lesson Plan Creator role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: lesson_plan_creator

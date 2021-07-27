@@ -1,0 +1,19 @@
+uuid: f890aefa-066e-49df-9d9d-c29a89e6c4a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_school_competition_comment
+    - paragraphs.paragraphs_type.teacher_tracking
+id: paragraph.teacher_tracking.field_school_competition_comment
+field_name: field_school_competition_comment
+entity_type: paragraph
+bundle: teacher_tracking
+label: Comments
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

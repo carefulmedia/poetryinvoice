@@ -1,0 +1,8 @@
+uuid: 01a1812b-530a-4935-ae21-c047d39240bf
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_fca
+label: 'FCA comment'
+target_entity_type_id: node
+description: null

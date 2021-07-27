@@ -1,0 +1,21 @@
+uuid: 1d82ab2d-ea7a-44f7-ba3d-996f6ffa667b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_2016_rs
+    - node.type.school
+  module:
+    - options
+id: node.school.field_2016_rs
+field_name: field_2016_rs
+entity_type: node
+bundle: school
+label: 'RS language'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

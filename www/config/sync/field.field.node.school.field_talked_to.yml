@@ -1,0 +1,23 @@
+uuid: c2c0be86-3b51-4cdd-9a32-7858f1baa981
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_talked_to
+    - node.type.school
+id: node.school.field_talked_to
+field_name: field_talked_to
+entity_type: node
+bundle: school
+label: 'Talked to'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'Not yet'
+field_type: boolean

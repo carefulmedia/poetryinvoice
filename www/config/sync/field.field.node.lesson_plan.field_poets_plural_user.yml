@@ -1,0 +1,30 @@
+uuid: ccdf3204-f5b1-4d85-9cf9-13a0b1e6bf01
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poets_plural_user
+    - node.type.lesson_plan
+id: node.lesson_plan.field_poets_plural_user
+field_name: field_poets_plural_user
+entity_type: node
+bundle: lesson_plan
+label: 'Poets in this Lesson Plan'
+description: 'Type a few letters of the poet’s name and select the correct name from the list. List as many poets from our anthology as apply. '
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        Poet: Poet
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

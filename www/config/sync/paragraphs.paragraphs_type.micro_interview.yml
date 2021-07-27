@@ -1,0 +1,10 @@
+uuid: 6f204a9e-7943-4a09-8a19-1779c12161a3
+langcode: en
+status: true
+dependencies: {  }
+id: micro_interview
+label: 'Micro interview'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_micro_interview'
+behavior_plugins: {  }

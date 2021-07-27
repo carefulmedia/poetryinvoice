@@ -1,0 +1,23 @@
+uuid: 30090ce0-a32c-4537-9f78-6918f759168e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_lead_teacher
+    - paragraphs.paragraphs_type.teacher_tracking
+id: paragraph.teacher_tracking.field_lead_teacher
+field_name: field_lead_teacher
+entity_type: paragraph
+bundle: teacher_tracking
+label: 'Lead teacher'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

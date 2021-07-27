@@ -1,0 +1,48 @@
+uuid: fb5ceb4a-5a70-49be-a4b8-4b56dc2f711c
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_grades_of_school
+field_name: field_grades_of_school
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: A
+      label: JK-6
+    -
+      value: B
+      label: JK-8
+    -
+      value: C
+      label: JK-12
+    -
+      value: D
+      label: 7-8
+    -
+      value: E
+      label: 7-12
+    -
+      value: F
+      label: 9-12
+    -
+      value: I
+      label: 'Special Education'
+    -
+      value: J
+      label: 'Adult Education'
+    -
+      value: P
+      label: Preschool
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

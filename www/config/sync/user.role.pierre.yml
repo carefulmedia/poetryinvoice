@@ -1,0 +1,25 @@
+uuid: 24a4e24d-6495-4bc5-9a26-49bd28fc4862
+langcode: en
+status: true
+dependencies: {  }
+id: pierre
+label: Pierre
+weight: 17
+is_admin: null
+permissions:
+  - 'access administration menu'
+  - 'access administration pages'
+  - 'access search combine'
+  - 'create field_moods'
+  - 'create field_new_theme'
+  - 'edit any poem content'
+  - 'edit field_moods'
+  - 'edit field_new_theme'
+  - 'edit own field_moods'
+  - 'edit own field_new_theme'
+  - 'view any unpublished poem content'
+  - 'view field_grades'
+  - 'view field_moods'
+  - 'view field_new_theme'
+  - 'view own field_moods'
+  - 'view own field_new_theme'

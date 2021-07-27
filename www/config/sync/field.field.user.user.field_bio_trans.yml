@@ -1,0 +1,21 @@
+uuid: afce985d-bda8-4dbf-a540-ebb3b27761f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_bio_trans
+  module:
+    - text
+    - user
+id: user.user.field_bio_trans
+field_name: field_bio_trans
+entity_type: user
+bundle: user
+label: 'Bio translation'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

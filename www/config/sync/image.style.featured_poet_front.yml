@@ -1,0 +1,14 @@
+uuid: 89f7da11-d6fc-4058-8ea0-66dce3c55d6d
+langcode: en
+status: true
+dependencies: {  }
+name: featured_poet_front
+label: featured_poet_front
+effects:
+  f8f27294-dd99-4e61-8610-c935de139e3f:
+    uuid: f8f27294-dd99-4e61-8610-c935de139e3f
+    id: image_resize
+    weight: 1
+    data:
+      width: 98
+      height: 80

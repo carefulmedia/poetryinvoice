@@ -1,0 +1,20 @@
+uuid: b647086f-09d7-404b-9daf-a68ade7c9cb7
+langcode: und
+status: true
+dependencies:
+  module:
+    - datetime
+    - paragraphs
+id: paragraph.field_fr_posters_sent
+field_name: field_fr_posters_sent
+entity_type: paragraph
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

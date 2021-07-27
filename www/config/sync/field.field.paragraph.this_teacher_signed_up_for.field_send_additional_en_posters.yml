@@ -1,0 +1,21 @@
+uuid: 2215296f-4543-4a1d-a083-3d8665c6eff6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_send_additional_en_posters
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+  module:
+    - options
+id: paragraph.this_teacher_signed_up_for.field_send_additional_en_posters
+field_name: field_send_additional_en_posters
+entity_type: paragraph
+bundle: this_teacher_signed_up_for
+label: 'Send additional EN posters'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

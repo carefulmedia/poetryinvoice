@@ -1,0 +1,19 @@
+uuid: d1fd9dd7-bdb7-4951-b154-d136870ae8a6
+langcode: und
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_signature
+field_name: field_signature
+entity_type: user
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

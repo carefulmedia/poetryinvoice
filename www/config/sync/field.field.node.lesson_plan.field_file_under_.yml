@@ -1,0 +1,26 @@
+uuid: 761cc3b1-3aa6-4471-8994-e85f2631d90e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_file_under_
+    - node.type.lesson_plan
+    - taxonomy.vocabulary.file_under
+id: node.lesson_plan.field_file_under_
+field_name: field_file_under_
+entity_type: node
+bundle: lesson_plan
+label: Subjects
+description: 'Please check the appropriate terms to assist teachers searching for lesson plans. Check as many boxes as apply.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler_settings:
+    sort:
+      field: _none
+    target_bundles:
+      file_under: file_under
+  handler: 'default:taxonomy_term'
+field_type: entity_reference

@@ -1,0 +1,19 @@
+uuid: fe999920-7bee-493e-b262-d91850ec2b1e
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - menu-english-nav
+      - menu-french-nav
+    parent: 'menu-english-nav:0:'
+name: 'Lesson Plan'
+type: lesson_plan
+description: 'Lesson Plans from our community of teachers and poets'
+help: 'You can copy and paste your lesson plan from a Word document into the text fields below.'
+new_revision: true
+preview_mode: 1
+display_submitted: false

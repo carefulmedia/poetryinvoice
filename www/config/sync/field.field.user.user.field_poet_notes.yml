@@ -1,0 +1,21 @@
+uuid: c9f479e9-8d30-4a35-a9b2-664baddb85b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_poet_notes
+  module:
+    - text
+    - user
+id: user.user.field_poet_notes
+field_name: field_poet_notes
+entity_type: user
+bundle: user
+label: 'Poet notes'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

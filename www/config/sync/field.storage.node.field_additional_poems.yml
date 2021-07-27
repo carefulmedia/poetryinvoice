@@ -1,0 +1,19 @@
+uuid: 87213d50-1062-4129-ad5b-63e7f71ca6a9
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_additional_poems
+field_name: field_additional_poems
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,43 @@
+uuid: 5e4108c6-18e7-4e7d-8166-931ed0f8dae1
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_school_champion
+    - field.field.comment.comment_node_school_champion.comment_body
+  module:
+    - text
+id: comment.comment_node_school_champion.default
+targetEntityType: comment
+bundle: comment_node_school_champion
+mode: default
+content:
+  author:
+    weight: -2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_body:
+    type: text_textarea
+    weight: 11
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  subject:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

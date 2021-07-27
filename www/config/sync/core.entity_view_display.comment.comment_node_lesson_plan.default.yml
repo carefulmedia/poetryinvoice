@@ -1,0 +1,28 @@
+uuid: f4deda01-a0d5-4a6d-80e6-a1f2972fd950
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_lesson_plan
+    - field.field.comment.comment_node_lesson_plan.comment_body
+  module:
+    - text
+id: comment.comment_node_lesson_plan.default
+targetEntityType: comment
+bundle: comment_node_lesson_plan
+mode: default
+content:
+  comment_body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

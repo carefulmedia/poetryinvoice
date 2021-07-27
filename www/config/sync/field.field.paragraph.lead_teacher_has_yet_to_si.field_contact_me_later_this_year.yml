@@ -1,0 +1,23 @@
+uuid: b22cb3d9-fa0c-4bdb-a770-be4830c39344
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_me_later_this_year
+    - paragraphs.paragraphs_type.lead_teacher_has_yet_to_si
+id: paragraph.lead_teacher_has_yet_to_si.field_contact_me_later_this_year
+field_name: field_contact_me_later_this_year
+entity_type: paragraph
+bundle: lead_teacher_has_yet_to_si
+label: 'Hot lead'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

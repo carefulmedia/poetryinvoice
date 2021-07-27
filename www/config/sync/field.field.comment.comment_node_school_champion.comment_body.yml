@@ -1,0 +1,21 @@
+uuid: b04a929d-76ba-4945-ba8e-aea580d1c46d
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_school_champion
+    - field.storage.comment.comment_body
+  module:
+    - text
+id: comment.comment_node_school_champion.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: comment_node_school_champion
+label: Comment
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,21 @@
+uuid: 03f74b6f-04e2-4c9e-9591-601d1a1d1530
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_catherine_attending_
+    - node.type.pal_pir_school_visit
+  module:
+    - options
+id: node.pal_pir_school_visit.field_catherine_attending_
+field_name: field_catherine_attending_
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'PIV/LVP person attending?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

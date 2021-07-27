@@ -1,0 +1,14 @@
+uuid: f29ecaca-46e0-445d-aba7-0879ede589ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.grandfathered_pir
+  module:
+    - user
+id: user_add_role_action.grandfathered_pir
+label: 'Add the Grandfathered PIR role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: grandfathered_pir

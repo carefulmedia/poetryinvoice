@@ -1,0 +1,9 @@
+uuid: 641c2023-69fb-4f98-911f-d0bd3aaed9cf
+langcode: en
+status: true
+dependencies: {  }
+id: junior_editor
+label: 'Junior editor'
+weight: 27
+is_admin: null
+permissions: {  }

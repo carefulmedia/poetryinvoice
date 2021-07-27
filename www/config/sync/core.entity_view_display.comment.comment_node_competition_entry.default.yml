@@ -1,0 +1,28 @@
+uuid: a6e901ce-212d-4f68-bf24-69bf433775ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_competition_entry
+    - field.field.comment.comment_node_competition_entry.comment_body
+  module:
+    - text
+id: comment.comment_node_competition_entry.default
+targetEntityType: comment
+bundle: comment_node_competition_entry
+mode: default
+content:
+  comment_body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

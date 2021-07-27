@@ -1,0 +1,21 @@
+uuid: f0c45948-e790-4159-8e23-f03fc1c0dbc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rights_expiration
+    - node.type.poem
+  module:
+    - datetime
+id: node.poem.field_rights_expiration
+field_name: field_rights_expiration
+entity_type: node
+bundle: poem
+label: 'Rights expiration'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

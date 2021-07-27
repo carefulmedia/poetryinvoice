@@ -1,0 +1,63 @@
+uuid: b558f7ea-f559-4c74-8aaf-746fb9f7b072
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.school.comment_node_school
+    - field.field.node.school.field_2016_rs
+    - field.field.node.school.field_cdb_id
+    - field.field.node.school.field_communication_log
+    - field.field.node.school.field_contact_email
+    - field.field.node.school.field_contact_first_name
+    - field.field.node.school.field_contact_last_name
+    - field.field.node.school.field_do_not_contact_again
+    - field.field.node.school.field_grades_of_school
+    - field.field.node.school.field_job_title
+    - field.field.node.school.field_language_school
+    - field.field.node.school.field_not_competing_this_year
+    - field.field.node.school.field_number_of_students
+    - field.field.node.school.field_pa
+    - field.field.node.school.field_school_board
+    - field.field.node.school.field_school_image
+    - field.field.node.school.field_special_subjects
+    - field.field.node.school.field_story_link
+    - field.field.node.school.field_talked_to
+    - field.field.node.school.field_type_of_school
+    - field.field.node.school.field_years_in_competition
+    - node.type.school
+  module:
+    - user
+id: node.school.teaser
+targetEntityType: node
+bundle: school
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_school: true
+  field_2016_rs: true
+  field_cdb_id: true
+  field_communication_log: true
+  field_contact_email: true
+  field_contact_first_name: true
+  field_contact_last_name: true
+  field_do_not_contact_again: true
+  field_grades_of_school: true
+  field_job_title: true
+  field_language_school: true
+  field_not_competing_this_year: true
+  field_number_of_students: true
+  field_pa: true
+  field_school_board: true
+  field_school_image: true
+  field_special_subjects: true
+  field_story_link: true
+  field_talked_to: true
+  field_type_of_school: true
+  field_years_in_competition: true
+  langcode: true

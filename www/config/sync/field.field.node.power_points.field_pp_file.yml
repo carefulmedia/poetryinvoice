@@ -1,0 +1,27 @@
+uuid: da566005-a7ab-45fc-91ce-168a48defd06
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pp_file
+    - node.type.power_points
+  module:
+    - file
+id: node.power_points.field_pp_file
+field_name: field_pp_file
+entity_type: node
+bundle: power_points
+label: 'PP file'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  description_field: false
+  file_directory: ''
+  file_extensions: 'ppt pptx'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

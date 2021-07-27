@@ -1,0 +1,33 @@
+uuid: a14b185a-2dbe-4d76-ae19-08c814448404
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.poetic_terms.field_roulette_image
+    - taxonomy.vocabulary.poetic_terms
+  module:
+    - image
+    - text
+id: taxonomy_term.poetic_terms.default
+targetEntityType: taxonomy_term
+bundle: poetic_terms
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_roulette_image:
+    label: above
+    weight: 0
+    type: image
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

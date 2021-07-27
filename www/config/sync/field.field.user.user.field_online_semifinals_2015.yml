@@ -1,0 +1,21 @@
+uuid: 7443f33c-ea67-4046-a608-373000e7578b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_online_semifinals_2015
+  module:
+    - options
+    - user
+id: user.user.field_online_semifinals_2015
+field_name: field_online_semifinals_2015
+entity_type: user
+bundle: user
+label: 'Does your school plan to compete in 2016? '
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

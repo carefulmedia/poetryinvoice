@@ -1,0 +1,21 @@
+uuid: 29bd972f-e3fc-45f7-abe5-1bc44bfdb8a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner_subtitle
+    - node.type.page
+  module:
+    - text
+id: node.page.field_banner_subtitle
+field_name: field_banner_subtitle
+entity_type: node
+bundle: page
+label: 'Banner subtitle'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

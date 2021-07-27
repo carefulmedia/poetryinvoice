@@ -1,0 +1,10 @@
+uuid: 29afdfa1-022d-40df-a32c-ff10ab7f0b78
+langcode: en
+status: true
+dependencies: {  }
+id: tr_student
+label: 'Tr student'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_tr_student'
+behavior_plugins: {  }

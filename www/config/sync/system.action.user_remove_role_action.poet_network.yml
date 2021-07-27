@@ -1,0 +1,14 @@
+uuid: 1221f3cc-cf47-4969-9964-36077dc66fc4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.poet_network
+  module:
+    - user
+id: user_remove_role_action.poet_network
+label: 'Remove the Poet network role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: poet_network

@@ -1,0 +1,19 @@
+uuid: fbb5c403-81d7-4d00-972f-fcb4bffb0fb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_teacher_incomplete_reason
+    - paragraphs.paragraphs_type.teacher_questionnaire
+id: paragraph.teacher_questionnaire.field_teacher_incomplete_reason
+field_name: field_teacher_incomplete_reason
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'Why was the visit not completed?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

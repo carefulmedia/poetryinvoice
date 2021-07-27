@@ -1,0 +1,21 @@
+uuid: 37adf81f-5267-489c-841b-4bc8658dda48
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_send_additional_fr_posters
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+  module:
+    - options
+id: paragraph.this_teacher_signed_up_for.field_send_additional_fr_posters
+field_name: field_send_additional_fr_posters
+entity_type: paragraph
+bundle: this_teacher_signed_up_for
+label: 'Send additional FR posters'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

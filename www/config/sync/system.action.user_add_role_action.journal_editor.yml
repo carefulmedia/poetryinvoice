@@ -1,0 +1,14 @@
+uuid: 943f7fea-2d86-4ddc-a941-58d33b3fbbdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.journal_editor
+  module:
+    - user
+id: user_add_role_action.journal_editor
+label: 'Add the Journal editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: journal_editor

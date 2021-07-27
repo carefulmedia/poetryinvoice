@@ -1,0 +1,21 @@
+uuid: e836d205-3657-45e3-a603-fd0e7ca0fbbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_amount_to_be_paid_to_each_
+    - node.type.pal_pir_school_visit
+  module:
+    - options
+id: node.pal_pir_school_visit.field_amount_to_be_paid_to_each_
+field_name: field_amount_to_be_paid_to_each_
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'DEPRECATED: Amount to be paid to each PAL'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

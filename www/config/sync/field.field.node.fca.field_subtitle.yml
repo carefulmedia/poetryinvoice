@@ -1,0 +1,19 @@
+uuid: 3fb7ecb7-98d0-42de-9c0a-4e3b891813cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subtitle
+    - node.type.fca
+id: node.fca.field_subtitle
+field_name: field_subtitle
+entity_type: node
+bundle: fca
+label: Subtitle
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

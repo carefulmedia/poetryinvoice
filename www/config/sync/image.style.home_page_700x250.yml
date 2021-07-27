@@ -1,0 +1,15 @@
+uuid: e1577e7b-4120-4b10-a150-ec1ffcebd38e
+langcode: en
+status: true
+dependencies: {  }
+name: home_page_700x250
+label: 'Home page 700x250'
+effects:
+  6566a03d-36aa-4dc4-b648-e78f4f35e8e7:
+    uuid: 6566a03d-36aa-4dc4-b648-e78f4f35e8e7
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 700
+      height: 250
+      anchor: center-center

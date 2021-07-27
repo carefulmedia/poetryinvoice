@@ -1,0 +1,15 @@
+uuid: f4306a89-ec2b-41f7-b97b-9998d661d137
+langcode: en
+status: true
+dependencies: {  }
+name: poet-gallery-curved
+label: poet-gallery-curved
+effects:
+  126d30f3-4fac-4ada-b5a8-4332c41e0228:
+    uuid: 126d30f3-4fac-4ada-b5a8-4332c41e0228
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 173
+      height: 110
+      anchor: center-center

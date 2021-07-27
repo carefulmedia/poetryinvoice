@@ -1,0 +1,20 @@
+uuid: 7d63bc41-623d-4e88-9421-f6ef110ebdd8
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_number_of_students
+field_name: field_number_of_students
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

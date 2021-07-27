@@ -1,0 +1,30 @@
+uuid: 931a293f-8c43-48cb-b05c-aed60903989c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_judge
+    - paragraphs.paragraphs_type.judges
+id: paragraph.judges.field_judge
+field_name: field_judge
+entity_type: paragraph
+bundle: judges
+label: Judge
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        'Poet network': 'Poet network'
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: faa0f09d-2dfc-4102-a0fe-867596894e29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner_subtitle
+    - node.type.writing_workshop
+  module:
+    - text
+id: node.writing_workshop.field_banner_subtitle
+field_name: field_banner_subtitle
+entity_type: node
+bundle: writing_workshop
+label: 'Banner subtitle'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

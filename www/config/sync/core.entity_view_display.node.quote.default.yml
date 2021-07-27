@@ -1,0 +1,62 @@
+uuid: 6d2c9792-80e3-4ec6-bdb7-57df45e06a36
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_quote.default
+    - field.field.node.quote.body
+    - field.field.node.quote.comment_node_quote
+    - field.field.node.quote.field_by_line
+    - field.field.node.quote.field_quote_photo
+    - image.style.home_page_700x250
+    - node.type.quote
+  module:
+    - comment
+    - image
+    - text
+    - user
+id: node.quote.default
+targetEntityType: node
+bundle: quote
+mode: default
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_quote:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_by_line:
+    label: hidden
+    weight: 1
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_quote_photo:
+    label: above
+    weight: 2
+    type: image
+    settings:
+      image_link: ''
+      image_style: home_page_700x250
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

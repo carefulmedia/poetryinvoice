@@ -1,0 +1,21 @@
+uuid: 08bedb19-ac1b-405e-9ddb-bff7fc7868fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.piv_session_language
+    - node.type.competition_session
+  module:
+    - options
+id: node.competition_session.piv_session_language
+field_name: piv_session_language
+entity_type: node
+bundle: competition_session
+label: 'Competition session language'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,14 @@
+uuid: 78c89f6c-c600-4868-a9c1-7ecf996a9725
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.php_editor
+  module:
+    - user
+id: user_add_role_action.php_editor
+label: 'Add the Php editor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: php_editor

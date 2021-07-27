@@ -1,0 +1,21 @@
+uuid: 2712c888-aecd-4bdf-bff4-aa15cb79ef82
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type_of_contact
+    - node.type.poem_rights_contact
+  module:
+    - options
+id: node.poem_rights_contact.field_type_of_contact
+field_name: field_type_of_contact
+entity_type: node
+bundle: poem_rights_contact
+label: 'Type of contact'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

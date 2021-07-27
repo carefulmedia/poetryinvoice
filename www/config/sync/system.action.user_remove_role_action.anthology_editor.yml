@@ -1,0 +1,14 @@
+uuid: 8392ac07-bc7f-4b41-b3f8-1ec606c3d00f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.anthology_editor
+  module:
+    - user
+id: user_remove_role_action.anthology_editor
+label: 'Remove the Anthology editor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: anthology_editor

@@ -1,0 +1,30 @@
+uuid: 502be109-ca84-4b5c-9ace-d926906822eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dive_in_attribution
+    - node.type.poem
+id: node.poem.field_dive_in_attribution
+field_name: field_dive_in_attribution
+entity_type: node
+bundle: poem
+label: 'Dive In written by'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        'Poet network': 'Poet network'
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 1693c2a0-da31-4327-8d86-6c80858385b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_file_under
+    - node.type.bulletin_board
+  module:
+    - options
+id: node.bulletin_board.field_file_under
+field_name: field_file_under
+entity_type: node
+bundle: bulletin_board
+label: 'Pin as'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
