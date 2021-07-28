@@ -1,0 +1,115 @@
+uuid: f517b35e-c70a-4b10-8e82-af3f351a25f1
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_complete_writing_workshop
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node complete (Writing Workshop)'
+source:
+  plugin: d7_node_complete
+  node_type: writing_workshop
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_writing_workshop/0/status:
+    -
+      plugin: get
+      source: comment
+  body:
+    -
+      plugin: get
+      source: body
+  field_banner_subtitle:
+    -
+      plugin: get
+      source: field_banner_subtitle
+  field_banner_title:
+    -
+      plugin: get
+      source: field_banner_title
+  field_preface:
+    -
+      plugin: get
+      source: field_preface
+  field_suffix:
+    -
+      plugin: get
+      source: field_suffix
+  field_images_insert:
+    -
+      plugin: sub_process
+      source: field_images_insert
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: writing_workshop
+migration_dependencies:
+  required:
+    - upgrade_d7_user

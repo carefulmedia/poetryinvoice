@@ -1,0 +1,408 @@
+uuid: 08830913-fb5b-46cf-8bdf-3b7d364d51fa
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_user
+class: Drupal\user\Plugin\migrate\User
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'User accounts'
+source:
+  plugin: d7_user
+process:
+  uid:
+    -
+      plugin: get
+      source: uid
+  name:
+    -
+      plugin: get
+      source: name
+    -
+      plugin: fallback_on_empty
+      fallback_key: mail
+    -
+      plugin: fallback_on_empty
+      fallback_key: uid
+    -
+      plugin: random_value_on_empty
+  pass:
+    -
+      plugin: get
+      source: pass
+  mail:
+    -
+      plugin: get
+      source: mail
+  created:
+    -
+      plugin: get
+      source: created
+  access:
+    -
+      plugin: get
+      source: access
+  login:
+    -
+      plugin: get
+      source: login
+  status:
+    -
+      plugin: get
+      source: status
+  timezone:
+    -
+      plugin: get
+      source: timezone
+  langcode:
+    -
+      plugin: user_langcode
+      source: entity_language
+      fallback_to_site_default: false
+  preferred_langcode:
+    -
+      plugin: user_langcode
+      source: language
+      fallback_to_site_default: true
+  preferred_admin_langcode:
+    -
+      plugin: user_langcode
+      source: language
+      fallback_to_site_default: true
+  init:
+    -
+      plugin: get
+      source: init
+  roles:
+    -
+      plugin: migration_lookup
+      migration: upgrade_d7_user_role
+      source: roles
+  user_picture:
+    -
+      plugin: default_value
+      source: picture
+      default_value: null
+    -
+      plugin: migration_lookup
+      migration: upgrade_d7_file
+  field_teacher_confirmation:
+    -
+      plugin: get
+      source: field_teacher_confirmation
+  field_email_variable:
+    -
+      plugin: get
+      source: field_email_variable
+  field_cv:
+    -
+      plugin: sub_process
+      source: field_cv
+      process:
+        target_id: fid
+        display: display
+        description: description
+  piv_teacher_profile_origin:
+    -
+      plugin: get
+      source: piv_teacher_profile_origin
+  piv_teacher_first_name:
+    -
+      plugin: get
+      source: piv_teacher_first_name
+  piv_teacher_last_name:
+    -
+      plugin: get
+      source: piv_teacher_last_name
+  field_years_in_competition:
+    -
+      plugin: get
+      source: field_years_in_competition
+  field_school:
+    -
+      plugin: sub_process
+      source: field_school
+      process:
+        target_id: nid
+  field_teacher_tracking:
+    -
+      plugin: get
+      source: field_teacher_tracking
+  field_teacher_leads_tracking:
+    -
+      plugin: get
+      source: field_teacher_leads_tracking
+  field_communication_log:
+    -
+      plugin: get
+      source: field_communication_log
+  field_action_item:
+    -
+      plugin: get
+      source: field_action_item
+  field_assigned_to_team_member:
+    -
+      plugin: get
+      source: field_assigned_to_team_member
+  field_dead_lead:
+    -
+      plugin: get
+      source: field_dead_lead
+  field_not_a_teacher_:
+    -
+      plugin: get
+      source: field_not_a_teacher_
+  field_signature:
+    -
+      plugin: get
+      source: field_signature
+  field_french_signature:
+    -
+      plugin: get
+      source: field_french_signature
+  field_this_teacher_signed_up_for:
+    -
+      plugin: get
+      source: field_this_teacher_signed_up_for
+  field_lead_teacher_has_yet_to_si:
+    -
+      plugin: get
+      source: field_lead_teacher_has_yet_to_si
+  field_sign_up_date3:
+    -
+      plugin: sub_process
+      source: field_sign_up_date3
+      process:
+        value:
+          plugin: format_date
+          from_format: U
+          to_format: U
+          source: value
+  field_what_grades_do_you_teach:
+    -
+      plugin: get
+      source: field_what_grades_do_you_teach
+  field_what_subjects_do_you_teach:
+    -
+      plugin: get
+      source: field_what_subjects_do_you_teach
+  field_about_me:
+    -
+      plugin: get
+      source: field_about_me
+  field_my_favourite_poem_and_or_p:
+    -
+      plugin: get
+      source: field_my_favourite_poem_and_or_p
+  field_poetry_is_:
+    -
+      plugin: get
+      source: field_poetry_is_
+  field_online_semifinals_2015:
+    -
+      plugin: get
+      source: field_online_semifinals_2015
+  field_canadian_educator_:
+    -
+      plugin: get
+      source: field_canadian_educator_
+  field_how_did_you_hear_from_us_2:
+    -
+      plugin: get
+      source: field_how_did_you_hear_from_us_2
+  field_pause_solicitation:
+    -
+      plugin: get
+      source: field_pause_solicitation
+  field_non_school_organization:
+    -
+      plugin: get
+      source: field_non_school_organization
+  field_my_role_at_school_organiza:
+    -
+      plugin: get
+      source: field_my_role_at_school_organiza
+  field_team_regionals_2017:
+    -
+      plugin: get
+      source: field_team_regionals_2017
+  field_poet_in_class:
+    -
+      plugin: get
+      source: field_poet_in_class
+  field_address:
+    -
+      plugin: get
+      source: field_address
+  field_cheque_made_to:
+    -
+      plugin: get
+      source: field_cheque_made_to
+  field_gst_hst_:
+    -
+      plugin: get
+      source: field_gst_hst_
+  field_pst_qst_:
+    -
+      plugin: get
+      source: field_pst_qst_
+  field_phone:
+    -
+      plugin: get
+      source: field_phone
+  field_deceased_poet:
+    -
+      plugin: get
+      source: field_deceased_poet
+  field_contest_judging:
+    -
+      plugin: sub_process
+      source: field_contest_judging
+      process:
+        target_id: tid
+  field_additional_email:
+    -
+      plugin: get
+      source: field_additional_email
+  field_peer_support:
+    -
+      plugin: get
+      source: field_peer_support
+  field_lifespan:
+    -
+      plugin: get
+      source: field_lifespan
+  field_poem_languages:
+    -
+      plugin: get
+      source: field_poem_languages
+  field_bio_trans:
+    -
+      plugin: get
+      source: field_bio_trans
+  field_one_line_bio:
+    -
+      plugin: get
+      source: field_one_line_bio
+  field_user_bio:
+    -
+      plugin: get
+      source: field_user_bio
+  field_gg_finalist:
+    -
+      plugin: get
+      source: field_gg_finalist
+  field_griffin_finalist:
+    -
+      plugin: get
+      source: field_griffin_finalist
+  field_publications:
+    -
+      plugin: get
+      source: field_publications
+  field_dormant_:
+    -
+      plugin: get
+      source: field_dormant_
+  field_poet_laureate:
+    -
+      plugin: get
+      source: field_poet_laureate
+  field_poet_notes:
+    -
+      plugin: get
+      source: field_poet_notes
+  field_micro_interview:
+    -
+      plugin: get
+      source: field_micro_interview
+  field_virtual_visits:
+    -
+      plugin: get
+      source: field_virtual_visits
+  field_elementary:
+    -
+      plugin: get
+      source: field_elementary
+  field_writing_content:
+    -
+      plugin: get
+      source: field_writing_content
+  field_judging:
+    -
+      plugin: get
+      source: field_judging
+  field_i_am_interested_in_partici:
+    -
+      plugin: get
+      source: field_i_am_interested_in_partici
+  field_i_am_interested_in_judging:
+    -
+      plugin: get
+      source: field_i_am_interested_in_judging
+  field_i_am_interested_in_writing:
+    -
+      plugin: get
+      source: field_i_am_interested_in_writing
+  field_paid_:
+    -
+      plugin: get
+      source: field_paid_
+  field_completed:
+    -
+      plugin: get
+      source: field_completed
+  field_i_have_completed_my_profil:
+    -
+      plugin: get
+      source: field_i_have_completed_my_profil
+  field_google_calendar_iframe_cod:
+    -
+      plugin: get
+      source: field_google_calendar_iframe_cod
+  field_ready_for_proofing:
+    -
+      plugin: get
+      source: field_ready_for_proofing
+  field_photo_credit:
+    -
+      plugin: get
+      source: field_photo_credit
+  field_bio_completed_:
+    -
+      plugin: get
+      source: field_bio_completed_
+  field_bio_not_by_author_paid_:
+    -
+      plugin: get
+      source: field_bio_not_by_author_paid_
+  field_bio_written_by:
+    -
+      plugin: sub_process
+      source: field_bio_written_by
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  field_social_links:
+    -
+      plugin: get
+      source: field_social_links
+  field_i_am_interested_in_doing_i:
+    -
+      plugin: get
+      source: field_i_am_interested_in_doing_i
+destination:
+  plugin: 'entity:user'
+migration_dependencies:
+  required:
+    - upgrade_d7_user_role
+  optional:
+    - upgrade_d7_file
+    - upgrade_d7_user_role
+    - upgrade_d7_user

@@ -1,0 +1,5 @@
+name: 'PIV Migrate'
+type: module
+description: 'Import entities from D7'
+package: Migrate
+core_version_requirement: ^9
