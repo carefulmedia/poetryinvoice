@@ -22,14 +22,6 @@ process:
     -
       plugin: get
       source: name
-    -
-      plugin: fallback_on_empty
-      fallback_key: mail
-    -
-      plugin: fallback_on_empty
-      fallback_key: uid
-    -
-      plugin: random_value_on_empty
   pass:
     -
       plugin: get
