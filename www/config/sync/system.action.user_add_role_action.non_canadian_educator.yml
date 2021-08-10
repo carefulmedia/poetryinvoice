@@ -1,0 +1,14 @@
+uuid: 8d3bc4a8-ddc4-4cfa-a68f-065b1f1f71fb
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.non_canadian_educator
+  module:
+    - user
+id: user_add_role_action.non_canadian_educator
+label: 'Add the Non-Canadian educator role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: non_canadian_educator

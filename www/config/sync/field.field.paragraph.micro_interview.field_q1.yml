@@ -1,0 +1,21 @@
+uuid: 4127eaf2-1008-4f15-9340-d157293f5072
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_q1
+    - paragraphs.paragraphs_type.micro_interview
+  module:
+    - text
+id: paragraph.micro_interview.field_q1
+field_name: field_q1
+entity_type: paragraph
+bundle: micro_interview
+label: 'Did you read poetry when you were in high school? Is there a particular poem that you loved when you were a teenager?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

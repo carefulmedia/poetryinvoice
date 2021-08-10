@@ -1,0 +1,20 @@
+uuid: 073c964c-aeb4-4121-8505-554e3343c72a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_my_favourite_poem_and_or_p
+  module:
+    - user
+id: user.user.field_my_favourite_poem_and_or_p
+field_name: field_my_favourite_poem_and_or_p
+entity_type: user
+bundle: user
+label: 'My favourite poem and/or poet '
+description: 'This could or could not be a poem or poet in our anthology. If you like, tell us why this your favourite poem or poet.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

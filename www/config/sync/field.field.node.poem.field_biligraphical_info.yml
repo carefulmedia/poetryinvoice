@@ -1,0 +1,21 @@
+uuid: f4edf880-a413-49b2-8ca2-867aebb9569f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_biligraphical_info
+    - node.type.poem
+  module:
+    - text
+id: node.poem.field_biligraphical_info
+field_name: field_biligraphical_info
+entity_type: node
+bundle: poem
+label: 'Biligraphical info'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

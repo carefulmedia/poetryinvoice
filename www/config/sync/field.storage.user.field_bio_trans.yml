@@ -1,0 +1,19 @@
+uuid: d2c3931d-40a4-48d4-8756-bb94d0341ad3
+langcode: und
+status: true
+dependencies:
+  module:
+    - text
+    - user
+id: user.field_bio_trans
+field_name: field_bio_trans
+entity_type: user
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

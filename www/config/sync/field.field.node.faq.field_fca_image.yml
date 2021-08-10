@@ -1,0 +1,38 @@
+uuid: 33db3466-a6cb-4d67-806a-cd33c02e4565
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_fca_image
+    - node.type.faq
+  module:
+    - image
+id: node.faq.field_fca_image
+field_name: field_fca_image
+entity_type: node
+bundle: faq
+label: 'FCA image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  alt_field: false
+  default_image:
+    alt: ''
+    title: ''
+    width: null
+    height: null
+    uuid: ''
+  file_directory: ''
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  title_field: false
+  alt_field_required: true
+  title_field_required: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

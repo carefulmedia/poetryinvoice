@@ -1,0 +1,21 @@
+uuid: 3d59dbdc-a0d0-4020-9dce-c33bfe17c7fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_completed
+    - paragraphs.paragraphs_type.judges
+  module:
+    - options
+id: paragraph.judges.field_completed
+field_name: field_completed
+entity_type: paragraph
+bundle: judges
+label: 'Completed?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

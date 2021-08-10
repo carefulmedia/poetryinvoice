@@ -1,0 +1,23 @@
+uuid: b8c53220-fa72-4a08-a2e8-e11efa859d12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_submission_info_confirmed
+    - node.type.journal_poem
+id: node.journal_poem.field_submission_info_confirmed
+field_name: field_submission_info_confirmed
+entity_type: node
+bundle: journal_poem
+label: 'Submission info confirmed'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

@@ -1,0 +1,20 @@
+uuid: f2d446e6-b143-4510-a484-dede667dd4f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_gst_hst_
+  module:
+    - user
+id: user.user.field_gst_hst_
+field_name: field_gst_hst_
+entity_type: user
+bundle: user
+label: 'GST/HST #'
+description: 'Please leave blank if you do not have a GST/HST #.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,21 @@
+uuid: 0e9793a0-0fa2-465d-83a5-3714cb127fef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_grade
+    - node.type.journal_poem
+  module:
+    - options
+id: node.journal_poem.field_grade
+field_name: field_grade
+entity_type: node
+bundle: journal_poem
+label: Grade
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

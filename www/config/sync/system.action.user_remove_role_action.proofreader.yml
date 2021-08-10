@@ -1,0 +1,14 @@
+uuid: 17f9ea64-187f-4f91-a1df-ac03dbf8fa39
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.proofreader
+  module:
+    - user
+id: user_remove_role_action.proofreader
+label: 'Remove the Proofreader role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: proofreader

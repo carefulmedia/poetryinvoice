@@ -1,0 +1,41 @@
+uuid: c25eab17-738a-4d43-accd-d3a36a4bc378
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_judge_page.default
+    - field.field.node.judge_page.body
+    - field.field.node.judge_page.comment_node_judge_page
+    - node.type.judge_page
+  module:
+    - comment
+    - text
+    - user
+id: node.judge_page.default
+targetEntityType: node
+bundle: judge_page
+mode: default
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_judge_page:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

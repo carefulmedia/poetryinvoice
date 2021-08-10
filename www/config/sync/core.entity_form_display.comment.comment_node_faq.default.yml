@@ -1,0 +1,43 @@
+uuid: c4bbbd6f-e92c-4193-bd11-f211cf4aa52a
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_faq
+    - field.field.comment.comment_node_faq.comment_body
+  module:
+    - text
+id: comment.comment_node_faq.default
+targetEntityType: comment
+bundle: comment_node_faq
+mode: default
+content:
+  author:
+    weight: -2
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_body:
+    type: text_textarea
+    weight: 11
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    region: content
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  subject:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

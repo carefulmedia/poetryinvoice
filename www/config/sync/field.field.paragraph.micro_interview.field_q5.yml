@@ -1,0 +1,21 @@
+uuid: efdfa085-a3dc-4868-bac7-cef40456f6b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_q5
+    - paragraphs.paragraphs_type.micro_interview
+  module:
+    - text
+id: paragraph.micro_interview.field_q5
+field_name: field_q5
+entity_type: paragraph
+bundle: micro_interview
+label: 'If you had to choose one poem to memorize from our anthology, which one would it be?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

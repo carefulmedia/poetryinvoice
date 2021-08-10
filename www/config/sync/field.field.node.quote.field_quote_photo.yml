@@ -1,0 +1,38 @@
+uuid: 1f67e1b5-b646-4748-89f2-c34bfe221533
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_quote_photo
+    - node.type.quote
+  module:
+    - image
+id: node.quote.field_quote_photo
+field_name: field_quote_photo
+entity_type: node
+bundle: quote
+label: photo
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  alt_field: true
+  default_image:
+    alt: ''
+    title: ''
+    width: null
+    height: null
+    uuid: ''
+  file_directory: ''
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: 300x300
+  min_resolution: ''
+  title_field: true
+  alt_field_required: true
+  title_field_required: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: image

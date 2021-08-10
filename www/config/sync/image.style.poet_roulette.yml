@@ -1,0 +1,23 @@
+uuid: 295bedd4-162b-40fb-91bb-c3d456160cd4
+langcode: en
+status: true
+dependencies: {  }
+name: poet_roulette
+label: poet_roulette
+effects:
+  54b90f88-dddb-4ef0-be2b-a713f67a186b:
+    uuid: 54b90f88-dddb-4ef0-be2b-a713f67a186b
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 375
+      upscale: true
+  a9c6cffe-b576-4abc-8fea-a5ef7a35d37b:
+    uuid: a9c6cffe-b576-4abc-8fea-a5ef7a35d37b
+    id: image_crop
+    weight: 2
+    data:
+      width: 375
+      height: 375
+      anchor: center-center

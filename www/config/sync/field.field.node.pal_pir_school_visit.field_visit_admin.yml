@@ -1,0 +1,30 @@
+uuid: 170117f5-e491-4028-954f-5a7dffdb7fde
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_visit_admin
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.field_visit_admin
+field_name: field_visit_admin
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Visit admin'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        administrator: administrator
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

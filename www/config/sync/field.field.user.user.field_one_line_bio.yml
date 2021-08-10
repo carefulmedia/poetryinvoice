@@ -1,0 +1,20 @@
+uuid: 15f46786-21e2-405f-a6c4-2b972245a56e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_one_line_bio
+  module:
+    - user
+id: user.user.field_one_line_bio
+field_name: field_one_line_bio
+entity_type: user
+bundle: user
+label: 'One-line bio'
+description: 'This is a line we would use to introduce you to the audience as a judge of one of our contests, for example.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

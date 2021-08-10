@@ -1,0 +1,21 @@
+uuid: 4e1d8b8a-b403-4a49-872f-15beb5c1f0d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poem_rights_
+    - node.type.poem
+  module:
+    - options
+id: node.poem.field_poem_rights_
+field_name: field_poem_rights_
+entity_type: node
+bundle: poem
+label: 'Poem rights '
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

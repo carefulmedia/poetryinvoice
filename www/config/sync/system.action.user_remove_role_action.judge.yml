@@ -1,0 +1,14 @@
+uuid: 84ab30c4-dad9-4c53-a7d5-570b2983cdff
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.judge
+  module:
+    - user
+id: user_remove_role_action.judge
+label: 'Remove the Judge role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: judge

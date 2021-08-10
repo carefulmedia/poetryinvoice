@@ -1,0 +1,27 @@
+uuid: ed35850f-fc3f-460f-b877-0a2a8db37fb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_cv
+  module:
+    - file
+    - user
+id: user.user.field_cv
+field_name: field_cv
+entity_type: user
+bundle: user
+label: CV
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  file_directory: ''
+  file_extensions: 'pdf doc docx'
+  max_filesize: ''
+  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

@@ -1,0 +1,14 @@
+uuid: c264d898-2344-4ac2-adb6-7d2ec6742fe1
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.icanlocalize_manager
+  module:
+    - user
+id: user_add_role_action.icanlocalize_manager
+label: 'Add the icanlocalize manager role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: icanlocalize_manager

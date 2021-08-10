@@ -1,0 +1,21 @@
+uuid: 1040d808-5d4c-4907-89d8-0bc81dcf4411
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_student_engaglement_teache
+    - paragraphs.paragraphs_type.teacher_questionnaire
+  module:
+    - options
+id: paragraph.teacher_questionnaire.field_student_engaglement_teache
+field_name: field_student_engaglement_teache
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'The students’ engagement during the visit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

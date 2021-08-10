@@ -1,0 +1,33 @@
+uuid: aa4d6c51-1d3d-4745-bb3c-40a5a8dc4a9c
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_place_team_regional
+field_name: field_place_team_regional
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '1'
+      label: 1st
+    -
+      value: '2'
+      label: 2nd
+    -
+      value: '3'
+      label: 3rd
+    -
+      value: '4'
+      label: 4th
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

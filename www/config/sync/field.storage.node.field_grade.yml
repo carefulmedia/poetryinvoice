@@ -1,0 +1,33 @@
+uuid: 03439239-02db-47ca-bf06-8a8c281d3aa0
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_grade
+field_name: field_grade
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '9'
+      label: '9 / Sec. III'
+    -
+      value: '10'
+      label: '10 / Sec. IV'
+    -
+      value: '11'
+      label: '11 / Sec. V'
+    -
+      value: '12'
+      label: '12 / CEGEP I'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

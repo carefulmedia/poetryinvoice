@@ -1,0 +1,36 @@
+uuid: 6d1bdcdb-df8b-4916-a698-cd9ea1df5e62
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_acceptance_level
+field_name: field_acceptance_level
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'Not read'
+      label: 'Not read'
+    -
+      value: 'No'
+      label: 'No'
+    -
+      value: Maybe
+      label: Maybe
+    -
+      value: 'Yes'
+      label: 'Yes'
+    -
+      value: Accepted
+      label: Accepted
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: 6dfb2c5d-fd24-4fb1-ae03-b5f2676000a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contest
+    - node.type.competition_entry
+  module:
+    - options
+id: node.competition_entry.field_contest
+field_name: field_contest
+entity_type: node
+bundle: competition_entry
+label: Contest
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

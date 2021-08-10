@@ -1,0 +1,19 @@
+uuid: f5ea5e5f-af90-4957-831d-3054e14df671
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_story_link
+    - node.type.school
+id: node.school.field_story_link
+field_name: field_story_link
+entity_type: node
+bundle: school
+label: 'School website'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

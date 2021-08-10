@@ -1,0 +1,21 @@
+uuid: 8e1d5897-21ff-45a6-a2c8-dbfc55c9fac5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_completed
+    - node.type.lesson_plan
+  module:
+    - options
+id: node.lesson_plan.field_completed
+field_name: field_completed
+entity_type: node
+bundle: lesson_plan
+label: 'Completed?'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,21 @@
+uuid: e8394ed1-3e74-4307-aef9-ef8e0524f03e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_work_student_teacher
+    - paragraphs.paragraphs_type.teacher_questionnaire
+  module:
+    - options
+id: paragraph.teacher_questionnaire.field_work_student_teacher
+field_name: field_work_student_teacher
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'The work the poet did with the students during the visit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

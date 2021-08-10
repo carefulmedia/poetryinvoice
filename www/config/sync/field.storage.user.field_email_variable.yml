@@ -1,0 +1,45 @@
+uuid: aa49aeca-a6c7-484e-9802-a99b8cbde1b8
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_email_variable
+field_name: field_email_variable
+entity_type: user
+type: list_integer
+settings:
+  allowed_values:
+    -
+      value: 1
+      label: '1'
+    -
+      value: 2
+      label: '2'
+    -
+      value: 3
+      label: '3'
+    -
+      value: 4
+      label: '4'
+    -
+      value: 5
+      label: '5'
+    -
+      value: 6
+      label: '6'
+    -
+      value: 7
+      label: '7'
+    -
+      value: 10
+      label: '10'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

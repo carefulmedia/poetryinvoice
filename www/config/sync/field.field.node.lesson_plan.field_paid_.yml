@@ -1,0 +1,23 @@
+uuid: 5bb9b16d-720c-4744-8cea-657ea8c0b4d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paid_
+    - node.type.lesson_plan
+id: node.lesson_plan.field_paid_
+field_name: field_paid_
+entity_type: node
+bundle: lesson_plan
+label: 'Paid?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

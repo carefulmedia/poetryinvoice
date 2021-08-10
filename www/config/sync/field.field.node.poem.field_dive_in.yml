@@ -1,0 +1,21 @@
+uuid: d66946c9-a402-4caa-b6e4-a851b82498c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dive_in
+    - node.type.poem
+  module:
+    - text
+id: node.poem.field_dive_in
+field_name: field_dive_in
+entity_type: node
+bundle: poem
+label: 'Dive in'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

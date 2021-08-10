@@ -1,0 +1,30 @@
+uuid: a7024929-03f3-48b3-b863-b288c32fe420
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.piv_session_language
+field_name: piv_session_language
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: en
+      label: English
+    -
+      value: fr
+      label: French
+    -
+      value: bi
+      label: Bilingual
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,52 @@
+uuid: 0782dfb7-d79e-4bcb-8d57-f524b044da93
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_venue.default
+    - field.field.node.venue.body
+    - field.field.node.venue.comment_node_venue
+    - field.field.node.venue.field_school_image
+    - node.type.venue
+  module:
+    - comment
+    - image
+    - text
+    - user
+id: node.venue.default
+targetEntityType: node
+bundle: venue
+mode: default
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_venue:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_school_image:
+    label: hidden
+    weight: 1
+    type: image
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

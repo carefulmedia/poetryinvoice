@@ -1,0 +1,21 @@
+uuid: bdb2b9c6-4886-45a1-a905-bb9ef5d05dbb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poem_type
+    - node.type.journal_poem
+  module:
+    - options
+id: node.journal_poem.field_poem_type
+field_name: field_poem_type
+entity_type: node
+bundle: journal_poem
+label: 'Inspiration for your poem'
+description: 'Did you write your poem in response to one of the poems in our anthology, to one of our writing prompts, or to a poet''s school visit?'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

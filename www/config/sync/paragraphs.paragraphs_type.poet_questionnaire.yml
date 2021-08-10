@@ -1,0 +1,10 @@
+uuid: c4c7b748-c932-4ea8-908a-ae12d556bf75
+langcode: en
+status: true
+dependencies: {  }
+id: poet_questionnaire
+label: 'Poet questionnaire'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_poet_questionnaire'
+behavior_plugins: {  }

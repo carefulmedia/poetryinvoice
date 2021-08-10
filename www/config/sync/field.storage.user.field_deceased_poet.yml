@@ -1,0 +1,18 @@
+uuid: 753f0462-0d42-4bcb-8904-72e76a301fd1
+langcode: und
+status: true
+dependencies:
+  module:
+    - user
+id: user.field_deceased_poet
+field_name: field_deceased_poet
+entity_type: user
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

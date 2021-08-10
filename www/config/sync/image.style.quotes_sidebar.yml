@@ -1,0 +1,14 @@
+uuid: e7968b38-9c58-42d0-83de-8aaa40a48c69
+langcode: en
+status: true
+dependencies: {  }
+name: quotes_sidebar
+label: quotes_sidebar
+effects:
+  69011766-4f2e-4e50-ae91-2f4fe2d86147:
+    uuid: 69011766-4f2e-4e50-ae91-2f4fe2d86147
+    id: image_resize
+    weight: 1
+    data:
+      width: 60
+      height: 60

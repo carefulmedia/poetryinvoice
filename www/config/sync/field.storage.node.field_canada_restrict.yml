@@ -1,0 +1,18 @@
+uuid: 8e0ad256-d708-4e50-afd2-3a09c6456ae8
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_canada_restrict
+field_name: field_canada_restrict
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,14 @@
+uuid: a9125b27-c8f1-4dd6-8c8f-773b735d4743
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.education_consultant
+  module:
+    - user
+id: user_add_role_action.education_consultant
+label: 'Add the Education consultant role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: education_consultant

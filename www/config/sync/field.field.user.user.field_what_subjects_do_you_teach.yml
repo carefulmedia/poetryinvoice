@@ -1,0 +1,20 @@
+uuid: 047b9bcf-8ffb-442b-bd51-d2bab774cc76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_what_subjects_do_you_teach
+  module:
+    - user
+id: user.user.field_what_subjects_do_you_teach
+field_name: field_what_subjects_do_you_teach
+entity_type: user
+bundle: user
+label: 'Subjects I teach'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

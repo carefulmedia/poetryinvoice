@@ -1,0 +1,21 @@
+uuid: 98612745-e5f7-4b02-87b8-537754405a25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_teacher_present
+    - paragraphs.paragraphs_type.poet_questionnaire
+id: paragraph.poet_questionnaire.field_teacher_present
+field_name: field_teacher_present
+entity_type: paragraph
+bundle: poet_questionnaire
+label: 'Was there a teacher present during the visit at all times?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

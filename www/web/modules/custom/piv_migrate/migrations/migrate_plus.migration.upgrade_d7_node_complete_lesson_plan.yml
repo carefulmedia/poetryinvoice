@@ -1,0 +1,182 @@
+uuid: ad4f790d-db5f-42b6-8aee-7d9421bd202d
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_complete_lesson_plan
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node complete (Lesson Plan)'
+source:
+  plugin: d7_node_complete
+  node_type: lesson_plan
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_lesson_plan/0/status:
+    -
+      plugin: get
+      source: comment
+  body:
+    -
+      plugin: get
+      source: body
+  field_lesson_objectives:
+    -
+      plugin: get
+      source: field_lesson_objectives
+  field_materials_resources:
+    -
+      plugin: get
+      source: field_materials_resources
+  field_activity_description_steps:
+    -
+      plugin: get
+      source: field_activity_description_steps
+  field_video_poem:
+    -
+      plugin: sub_process
+      source: field_video_poem
+      process:
+        target_id: nid
+  field_periods:
+    -
+      plugin: get
+      source: field_periods
+  field_grades:
+    -
+      plugin: get
+      source: field_grades
+  field_copyright:
+    -
+      plugin: get
+      source: field_copyright
+  field_additional_poems:
+    -
+      plugin: get
+      source: field_additional_poems
+  field_file_under_:
+    -
+      plugin: sub_process
+      source: field_file_under_
+      process:
+        target_id: tid
+  field_suggest_a_new_folder_to_fi:
+    -
+      plugin: get
+      source: field_suggest_a_new_folder_to_fi
+  field_learning_objectives:
+    -
+      plugin: get
+      source: field_learning_objectives
+  field_variations_for_older_stude:
+    -
+      plugin: get
+      source: field_variations_for_older_stude
+  field_variations_for_younger_stu:
+    -
+      plugin: get
+      source: field_variations_for_younger_stu
+  field_commissioned_:
+    -
+      plugin: get
+      source: field_commissioned_
+  field_attachments:
+    -
+      plugin: sub_process
+      source: field_attachments
+      process:
+        target_id: fid
+        display: display
+        description: description
+  field_rwt:
+    -
+      plugin: get
+      source: field_rwt
+  field_rating:
+    -
+      plugin: get
+      source: field_rating
+  field_poets_plural_user:
+    -
+      plugin: sub_process
+      source: field_poets_plural_user
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  field_completed:
+    -
+      plugin: get
+      source: field_completed
+  field_paid_:
+    -
+      plugin: get
+      source: field_paid_
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: lesson_plan
+migration_dependencies:
+  required:
+    - upgrade_d7_user

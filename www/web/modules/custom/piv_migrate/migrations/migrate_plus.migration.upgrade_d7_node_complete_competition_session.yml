@@ -1,0 +1,141 @@
+uuid: 27f19e17-0a50-4592-8d9c-ac75662339ad
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_complete_competition_session
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node complete (Competition session)'
+source:
+  plugin: d7_node_complete
+  node_type: competition_session
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_competition_session/0/status:
+    -
+      plugin: get
+      source: comment
+  piv_session_language:
+    -
+      plugin: get
+      source: piv_session_language
+  piv_session_judge:
+    -
+      plugin: sub_process
+      source: piv_session_judge
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  piv_session_year:
+    -
+      plugin: get
+      source: piv_session_year
+  piv_session_judge_en:
+    -
+      plugin: sub_process
+      source: piv_session_judge_en
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  piv_session_judge_fr:
+    -
+      plugin: sub_process
+      source: piv_session_judge_fr
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  piv_session_accuracy_judge:
+    -
+      plugin: sub_process
+      source: piv_session_accuracy_judge
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  piv_entry_level:
+    -
+      plugin: get
+      source: piv_entry_level
+  field_multi_judge_session_id:
+    -
+      plugin: get
+      source: field_multi_judge_session_id
+  field_session_year:
+    -
+      plugin: get
+      source: field_session_year
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: competition_session
+migration_dependencies:
+  required:
+    - upgrade_d7_user

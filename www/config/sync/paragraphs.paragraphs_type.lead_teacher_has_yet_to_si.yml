@@ -1,0 +1,10 @@
+uuid: c2d900a6-4232-4614-b427-001d9a818174
+langcode: en
+status: true
+dependencies: {  }
+id: lead_teacher_has_yet_to_si
+label: 'Lead teacher has yet to si'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_lead_teacher_has_yet_to_si'
+behavior_plugins: {  }

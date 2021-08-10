@@ -1,0 +1,42 @@
+uuid: 947577cf-4490-4d1a-b647-70cb155896ad
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_file_under
+field_name: field_file_under
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: resources
+      label: 'Teaching Resources'
+    -
+      value: development
+      label: 'Professional Development'
+    -
+      value: events
+      label: Events
+    -
+      value: contests
+      label: 'Other Contests'
+    -
+      value: literature
+      label: Literature
+    -
+      value: papers
+      label: 'Calls for Papers'
+    -
+      value: other
+      label: Other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: 13124e68-1415-42ab-80ff-2ef6ccf07307
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_visit_completed_poet
+    - paragraphs.paragraphs_type.poet_questionnaire
+id: paragraph.poet_questionnaire.field_visit_completed_poet
+field_name: field_visit_completed_poet
+entity_type: paragraph
+bundle: poet_questionnaire
+label: 'Did you complete this visit?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

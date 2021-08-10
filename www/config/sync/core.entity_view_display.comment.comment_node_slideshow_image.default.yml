@@ -1,0 +1,28 @@
+uuid: 1fec64f7-e29f-4d70-9ca2-346a801c2c0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_slideshow_image
+    - field.field.comment.comment_node_slideshow_image.comment_body
+  module:
+    - text
+id: comment.comment_node_slideshow_image.default
+targetEntityType: comment
+bundle: comment_node_slideshow_image
+mode: default
+content:
+  comment_body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

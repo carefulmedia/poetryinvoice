@@ -1,0 +1,14 @@
+uuid: bc4b95c2-4555-4d46-97db-427f9c29eb8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.teacher_fr_
+  module:
+    - user
+id: user_remove_role_action.teacher_fr_
+label: 'Remove the Teacher (fr) role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: teacher_fr_

@@ -1,0 +1,27 @@
+uuid: 82d86310-de61-40c1-85fb-06bb700e3198
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_completed
+field_name: field_completed
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: Completed
+      label: Completed
+    -
+      value: Cancelled
+      label: Cancelled
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

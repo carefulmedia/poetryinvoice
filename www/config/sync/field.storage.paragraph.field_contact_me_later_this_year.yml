@@ -1,0 +1,18 @@
+uuid: 7269bf2d-eb42-4d46-8464-2382552162d8
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_contact_me_later_this_year
+field_name: field_contact_me_later_this_year
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

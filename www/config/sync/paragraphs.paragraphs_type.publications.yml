@@ -1,0 +1,10 @@
+uuid: 181d5b2d-b763-41e6-bbb1-f48ce7d73d6e
+langcode: en
+status: true
+dependencies: {  }
+id: publications
+label: Publications
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_publications'
+behavior_plugins: {  }

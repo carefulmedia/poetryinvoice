@@ -1,0 +1,98 @@
+uuid: 2367cd9f-9c02-4914-8014-9dc85b8b5c9f
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_taxonomy_term_poem_tags
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Taxonomy terms (Tags)'
+source:
+  plugin: d7_taxonomy_term
+  bundle: poem_tags
+process:
+  tid:
+    -
+      plugin: get
+      source: tid
+  vid:
+    -
+      plugin: migration_lookup
+      migration: upgrade_d7_taxonomy_vocabulary
+      source: vid
+  name:
+    -
+      plugin: get
+      source: name
+  description/value:
+    -
+      plugin: get
+      source: description
+  description/format:
+    -
+      plugin: get
+      source: format
+  weight:
+    -
+      plugin: get
+      source: weight
+  parent_id:
+    -
+      plugin: skip_on_empty
+      method: process
+      source: parent
+    -
+      plugin: migration_lookup
+      migration:
+        - upgrade_d7_taxonomy_term_tags
+        - upgrade_d7_taxonomy_term_discussions
+        - upgrade_d7_taxonomy_term_themes
+        - upgrade_d7_taxonomy_term_type_of_video
+        - upgrade_d7_taxonomy_term_slide_show_type
+        - upgrade_d7_taxonomy_term_poetic_terms
+        - upgrade_d7_taxonomy_term_competition_stream
+        - upgrade_d7_taxonomy_term_poem_tags
+        - upgrade_d7_taxonomy_term_moods
+        - upgrade_d7_taxonomy_term_file_under
+        - upgrade_d7_taxonomy_term__judging_by_year
+  parent:
+    -
+      plugin: default_value
+      default_value: 0
+      source: '@parent_id'
+  forum_container:
+    -
+      plugin: get
+      source: is_container
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  langcode:
+    -
+      plugin: get
+      source: language
+  field_roulette_image:
+    -
+      plugin: sub_process
+      source: field_roulette_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_short_description:
+    -
+      plugin: get
+      source: field_short_description
+destination:
+  plugin: 'entity:taxonomy_term'
+  default_bundle: poem_tags
+migration_dependencies:
+  required:
+    - upgrade_d7_taxonomy_vocabulary

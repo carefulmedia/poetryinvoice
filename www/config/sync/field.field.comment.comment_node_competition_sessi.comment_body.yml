@@ -1,0 +1,21 @@
+uuid: 608e8ffd-d0cb-45e9-9b60-c4426487ac43
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_competition_sessi
+    - field.storage.comment.comment_body
+  module:
+    - text
+id: comment.comment_node_competition_sessi.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: comment_node_competition_sessi
+label: Comment
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

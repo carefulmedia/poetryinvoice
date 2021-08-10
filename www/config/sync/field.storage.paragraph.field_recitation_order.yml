@@ -1,0 +1,20 @@
+uuid: 20875178-95b7-4d93-b597-75d5bfe08d21
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_recitation_order
+field_name: field_recitation_order
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

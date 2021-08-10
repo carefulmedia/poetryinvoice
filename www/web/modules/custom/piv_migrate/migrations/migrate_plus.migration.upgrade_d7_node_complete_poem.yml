@@ -1,0 +1,244 @@
+uuid: 43d97e68-9f08-4bc9-9564-feb6afb2c767
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_complete_poem
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node complete (Poem)'
+source:
+  plugin: d7_node_complete
+  node_type: poem
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_poem/0/status:
+    -
+      plugin: get
+      source: comment
+  body:
+    -
+      plugin: get
+      source: body
+  field_poem_thems:
+    -
+      plugin: sub_process
+      source: field_poem_thems
+      process:
+        target_id: tid
+  field_canada_restrict:
+    -
+      plugin: get
+      source: field_canada_restrict
+  field_terms_and_forms:
+    -
+      plugin: sub_process
+      source: field_terms_and_forms
+      process:
+        target_id: tid
+  field_password_protected:
+    -
+      plugin: get
+      source: field_password_protected
+  field_rights_and_permissions_pdf:
+    -
+      plugin: sub_process
+      source: field_rights_and_permissions_pdf
+      process:
+        target_id: fid
+        display: display
+        description: description
+  field_biligraphical_info:
+    -
+      plugin: get
+      source: field_biligraphical_info
+  field_rights_expiration:
+    -
+      plugin: sub_process
+      source: field_rights_expiration
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_broadsides_are_allowed:
+    -
+      plugin: get
+      source: field_broadsides_are_allowed
+  field_mobile_apps_are_allowed:
+    -
+      plugin: get
+      source: field_mobile_apps_are_allowed
+  field_new_theme:
+    -
+      plugin: sub_process
+      source: field_new_theme
+      process:
+        target_id: tid
+  field_moods:
+    -
+      plugin: sub_process
+      source: field_moods
+      process:
+        target_id: tid
+  field_poem_retired:
+    -
+      plugin: get
+      source: field_poem_retired
+  field_dive_in:
+    -
+      plugin: get
+      source: field_dive_in
+  field_poem_title_for_sorting:
+    -
+      plugin: get
+      source: field_poem_title_for_sorting
+  field_pdf_of_original_poem:
+    -
+      plugin: sub_process
+      source: field_pdf_of_original_poem
+      process:
+        target_id: fid
+        display: display
+        description: description
+  field_grades:
+    -
+      plugin: get
+      source: field_grades
+  field_poem_rights_contact:
+    -
+      plugin: sub_process
+      source: field_poem_rights_contact
+      process:
+        target_id: nid
+  field_start_here_poem:
+    -
+      plugin: get
+      source: field_start_here_poem
+  field_one_line_description:
+    -
+      plugin: get
+      source: field_one_line_description
+  field_start_here_image:
+    -
+      plugin: sub_process
+      source: field_start_here_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_start_here_video:
+    -
+      plugin: sub_process
+      source: field_start_here_video
+      process:
+        target_id: nid
+  field_poem_rights_:
+    -
+      plugin: get
+      source: field_poem_rights_
+  field_poem_author_user:
+    -
+      plugin: sub_process
+      source: field_poem_author_user
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  field_editor:
+    -
+      plugin: sub_process
+      source: field_editor
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  field_dive_in_attribution:
+    -
+      plugin: sub_process
+      source: field_dive_in_attribution
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  field_completed:
+    -
+      plugin: get
+      source: field_completed
+  field_paid_:
+    -
+      plugin: get
+      source: field_paid_
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: poem
+migration_dependencies:
+  required:
+    - upgrade_d7_user

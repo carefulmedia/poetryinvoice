@@ -1,0 +1,19 @@
+uuid: 458b7b8c-855b-4192-ba30-c86832f177b6
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_remarkable_teacher
+field_name: field_remarkable_teacher
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

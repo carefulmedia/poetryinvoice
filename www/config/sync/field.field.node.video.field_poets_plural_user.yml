@@ -1,0 +1,30 @@
+uuid: f9ba7995-bcff-445e-8436-08b7a73dbe67
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poets_plural_user
+    - node.type.video
+id: node.video.field_poets_plural_user
+field_name: field_poets_plural_user
+entity_type: node
+bundle: video
+label: 'Poet(s) in this video'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        Poet: Poet
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

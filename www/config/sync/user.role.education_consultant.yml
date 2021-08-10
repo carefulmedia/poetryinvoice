@@ -1,0 +1,15 @@
+uuid: b3513f17-b723-4aba-94b8-0eaf7e38bdee
+langcode: en
+status: true
+dependencies: {  }
+id: education_consultant
+label: 'Education consultant'
+weight: 25
+is_admin: null
+permissions:
+  - 'access search combine'
+  - 'create field_grades'
+  - 'edit field_grades'
+  - 'edit own field_grades'
+  - 'view field_grades'
+  - 'view own field_grades'

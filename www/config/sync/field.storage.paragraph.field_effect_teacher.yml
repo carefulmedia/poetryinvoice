@@ -1,0 +1,19 @@
+uuid: e0905e61-7a58-49f3-8008-99f524ed8e5e
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_effect_teacher
+field_name: field_effect_teacher
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

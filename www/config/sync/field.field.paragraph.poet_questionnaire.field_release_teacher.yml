@@ -1,0 +1,23 @@
+uuid: a3e9e1bc-c0c9-4e05-8c3c-a093d053ddc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_release_teacher
+    - paragraphs.paragraphs_type.poet_questionnaire
+  module:
+    - options
+id: paragraph.poet_questionnaire.field_release_teacher
+field_name: field_release_teacher
+entity_type: paragraph
+bundle: poet_questionnaire
+label: 'Can we quote your answers for our promotional purposes? '
+description: 'We would only use positive comments, of course.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 'no'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,21 @@
+uuid: eab6c3c6-5bec-4837-a8ae-8518e30a7a98
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_q2
+    - paragraphs.paragraphs_type.micro_interview
+  module:
+    - text
+id: paragraph.micro_interview.field_q2
+field_name: field_q2
+entity_type: paragraph
+bundle: micro_interview
+label: 'When did you first start writing poetry? And then when did you start thinking of yourself as a poet?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

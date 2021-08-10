@@ -1,0 +1,19 @@
+uuid: 64c875e9-90d5-4a60-b04a-390b8bfb6d8c
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - menu-english-nav
+      - menu-french-nav
+    parent: 'main-menu:0:'
+name: 'Bulletin board'
+type: bulletin_board
+description: 'Help text TK'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

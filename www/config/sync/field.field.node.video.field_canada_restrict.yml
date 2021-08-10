@@ -1,0 +1,23 @@
+uuid: 9538cc95-f962-4900-b321-5f69e6c82e80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_canada_restrict
+    - node.type.video
+id: node.video.field_canada_restrict
+field_name: field_canada_restrict
+entity_type: node
+bundle: video
+label: 'Canada only'
+description: 'Check this box if this video should not be viewable outside of Canada.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

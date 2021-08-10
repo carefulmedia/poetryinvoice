@@ -1,0 +1,11 @@
+uuid: c29318b1-d84d-46ea-b219-cf4632eed225
+langcode: en
+status: true
+dependencies: {  }
+id: icanlocalize_translator
+label: 'icanlocalize translator'
+weight: 10
+is_admin: null
+permissions:
+  - 'access search combine'
+  - 'can do translation jobs'

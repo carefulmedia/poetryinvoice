@@ -1,0 +1,36 @@
+uuid: d057653d-4309-4792-b5ac-425683ee0fd2
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_team_regionals_2017
+field_name: field_team_regionals_2017
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '0'
+      label: 'Yes, we will hope to send a competitor to Nationals via the Online Semifinal'
+    -
+      value: '1'
+      label: 'Yes, we would like our school to compete in a Team Regional'
+    -
+      value: '2'
+      label: 'Yes, we would like to compete via both the Online Semifinals and the Team Regionals'
+    -
+      value: '3'
+      label: 'Maybe, we haven''t decided yet'
+    -
+      value: '4'
+      label: 'No, we won''t compete (our school isn''t eligible or we''re not ready this year)'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

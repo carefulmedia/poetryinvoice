@@ -1,0 +1,221 @@
+uuid: 53cd9a7a-38db-4abd-a857-aa451ae9aa17
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_complete_pal_pir_school_visit
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node complete (Poet School Visit)'
+source:
+  plugin: d7_node_complete
+  node_type: pal_pir_school_visit
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_pal_pir_school_visit/0/status:
+    -
+      plugin: get
+      source: comment
+  field_visit_date_and_times:
+    -
+      plugin: get
+      source: field_visit_date_and_times
+  field_pal_pir:
+    -
+      plugin: sub_process
+      source: field_pal_pir
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  field_catherine_attending_:
+    -
+      plugin: get
+      source: field_catherine_attending_
+  field_completed:
+    -
+      plugin: get
+      source: field_completed
+  field_amount_to_be_paid_to_each_:
+    -
+      plugin: get
+      source: field_amount_to_be_paid_to_each_
+  field_teacher_report:
+    -
+      plugin: get
+      source: field_teacher_report
+  field_pal_pir_report:
+    -
+      plugin: get
+      source: field_pal_pir_report
+  field_teacher_s_involved:
+    -
+      plugin: sub_process
+      source: field_teacher_s_involved
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  field_travel_time_supplement:
+    -
+      plugin: get
+      source: field_travel_time_supplement
+  field_in_person_or_teleconferenc:
+    -
+      plugin: get
+      source: field_in_person_or_teleconferenc
+  field_paid_:
+    -
+      plugin: get
+      source: field_paid_
+  field_do_you_have_any_poet_prefe:
+    -
+      plugin: get
+      source: field_do_you_have_any_poet_prefe
+  field_date_and_start_time:
+    -
+      plugin: sub_process
+      source: field_date_and_start_time
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: 'Y-m-d\TH:i:s'
+          source: value
+  field_preferred_poet_s_:
+    -
+      plugin: sub_process
+      source: field_preferred_poet_s_
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  field_other_time_options:
+    -
+      plugin: get
+      source: field_other_time_options
+  field_notes:
+    -
+      plugin: get
+      source: field_notes
+  field_total_students_involved:
+    -
+      plugin: get
+      source: field_total_students_involved
+  field_poet_questionnaire:
+    -
+      plugin: get
+      source: field_poet_questionnaire
+  field_agreed_visit_date:
+    -
+      plugin: sub_process
+      source: field_agreed_visit_date
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: 'Y-m-d\TH:i:s'
+          source: value
+  field_date_and_poet_chosen:
+    -
+      plugin: get
+      source: field_date_and_poet_chosen
+  field_preferred_date:
+    -
+      plugin: get
+      source: field_preferred_date
+  field_teacher_questionnaire:
+    -
+      plugin: get
+      source: field_teacher_questionnaire
+  field_visit_admin:
+    -
+      plugin: sub_process
+      source: field_visit_admin
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  field_booked_:
+    -
+      plugin: get
+      source: field_booked_
+  field_hold:
+    -
+      plugin: get
+      source: field_hold
+  field_teacher_virtual_or_in_pers:
+    -
+      plugin: get
+      source: field_teacher_virtual_or_in_pers
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: pal_pir_school_visit
+migration_dependencies:
+  required:
+    - upgrade_d7_user

@@ -1,0 +1,20 @@
+uuid: f7ee78da-5c98-4f4e-89e1-521a235fddce
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - user
+id: node.piv_session_judge
+field_name: piv_session_judge
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

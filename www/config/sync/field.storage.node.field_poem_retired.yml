@@ -1,0 +1,18 @@
+uuid: 26eb1755-a3fd-4d7d-afcd-22d322c1fa1a
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_poem_retired
+field_name: field_poem_retired
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

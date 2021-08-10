@@ -1,0 +1,21 @@
+uuid: 4ea2b744-9a21-4418-ad5b-0b0e6bcc2a69
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_poet_preparation_poet
+    - paragraphs.paragraphs_type.poet_questionnaire
+  module:
+    - options
+id: paragraph.poet_questionnaire.field_poet_preparation_poet
+field_name: field_poet_preparation_poet
+entity_type: paragraph
+bundle: poet_questionnaire
+label: 'How satisfied were you with . . .  <br>Your preparation for your visit'
+description: '(1 = not at all satisfied and 5 = very satisfied)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

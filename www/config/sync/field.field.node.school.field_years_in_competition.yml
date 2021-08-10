@@ -1,0 +1,21 @@
+uuid: f709c69b-58cf-4d54-bc48-88c59ada8908
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_years_in_competition
+    - node.type.school
+  module:
+    - options
+id: node.school.field_years_in_competition
+field_name: field_years_in_competition
+entity_type: node
+bundle: school
+label: 'Years in competition'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

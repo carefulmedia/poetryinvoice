@@ -1,0 +1,27 @@
+uuid: 45f334a2-def2-4bdc-9844-ae8e806cfcd1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rights_and_permissions_pdf
+    - node.type.poem
+  module:
+    - file
+id: node.poem.field_rights_and_permissions_pdf
+field_name: field_rights_and_permissions_pdf
+entity_type: node
+bundle: poem
+label: 'Rights and permissions pdf'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  description_field: false
+  file_directory: poem-rights-and-permissions
+  file_extensions: 'txt pdf'
+  max_filesize: ''
+  handler: 'default:file'
+  handler_settings: {  }
+field_type: file

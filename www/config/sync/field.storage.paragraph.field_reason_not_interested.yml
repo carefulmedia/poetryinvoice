@@ -1,0 +1,19 @@
+uuid: 9c416b11-28af-40de-8085-4638b3346faf
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_reason_not_interested
+field_name: field_reason_not_interested
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

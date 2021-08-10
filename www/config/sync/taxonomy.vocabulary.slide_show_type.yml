@@ -1,0 +1,8 @@
+uuid: adc13798-d2bb-4937-80dd-c86c83081305
+langcode: en
+status: true
+dependencies: {  }
+name: 'Slide show type'
+vid: slide_show_type
+description: ''
+weight: 0

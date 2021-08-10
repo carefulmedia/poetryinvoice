@@ -1,0 +1,21 @@
+uuid: 24b31174-4f8d-469d-b611-738681fb5ea2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_travel_time_supplement
+    - node.type.pal_pir_school_visit
+  module:
+    - options
+id: node.pal_pir_school_visit.field_travel_time_supplement
+field_name: field_travel_time_supplement
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'DEPRECATED: Travel time supplement'
+description: 'Total travel time to and from school'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

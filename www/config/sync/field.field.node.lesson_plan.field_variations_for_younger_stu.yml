@@ -1,0 +1,21 @@
+uuid: 82214196-8295-4ede-81a7-c4022e308a1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_variations_for_younger_stu
+    - node.type.lesson_plan
+  module:
+    - text
+id: node.lesson_plan.field_variations_for_younger_stu
+field_name: field_variations_for_younger_stu
+entity_type: node
+bundle: lesson_plan
+label: 'Variations for Younger Students'
+description: 'We would like our lesson plans to apply to as many grades as possible. Please add additional sections here to develop your lesson further for lower grades. Remember to tick all the appropriate grade levels above as well! '
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

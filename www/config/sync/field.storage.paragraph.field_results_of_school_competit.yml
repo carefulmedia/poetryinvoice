@@ -1,0 +1,19 @@
+uuid: 13077fba-13f1-4ec4-a01f-4e391d56f273
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_results_of_school_competit
+field_name: field_results_of_school_competit
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

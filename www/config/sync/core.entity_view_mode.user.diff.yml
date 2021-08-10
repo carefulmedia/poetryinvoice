@@ -1,0 +1,10 @@
+uuid: f45c3719-ab7d-4f3c-852d-57534bfd7863
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.diff
+label: diff
+targetEntityType: user
+cache: true

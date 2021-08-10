@@ -1,0 +1,22 @@
+uuid: ca921ea3-176c-445e-a5fb-01afe0f0f566
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_peer_support
+  module:
+    - user
+id: user.user.field_peer_support
+field_name: field_peer_support
+entity_type: user
+bundle: user
+label: 'I would like to be listed on the Peer Support webpage so other poets can contact me to ask questions and seek support'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

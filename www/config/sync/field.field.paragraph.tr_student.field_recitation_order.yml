@@ -1,0 +1,23 @@
+uuid: ab286c2e-fe5a-46a1-80f5-a680ee7e6044
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_recitation_order
+    - paragraphs.paragraphs_type.tr_student
+id: paragraph.tr_student.field_recitation_order
+field_name: field_recitation_order
+entity_type: paragraph
+bundle: tr_student
+label: 'Recitation order'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  max: null
+  min: null
+  prefix: ''
+  suffix: ''
+field_type: integer

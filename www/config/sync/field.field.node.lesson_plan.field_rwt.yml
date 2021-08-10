@@ -1,0 +1,23 @@
+uuid: 7a268d46-eb40-4b73-ad0c-629c9f2ce8c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rwt
+    - node.type.lesson_plan
+id: node.lesson_plan.field_rwt
+field_name: field_rwt
+entity_type: node
+bundle: lesson_plan
+label: 'Lesson  provided by ReadWriteThink.org, a website developed by the International Reading Association and the National Council of'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'ON'
+  off_label: ''
+field_type: boolean

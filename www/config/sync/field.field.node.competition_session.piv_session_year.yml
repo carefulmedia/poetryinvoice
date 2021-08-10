@@ -1,0 +1,23 @@
+uuid: 6b2ef1cd-ff72-4787-9eba-6d00a6c23672
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.piv_session_year
+    - node.type.competition_session
+id: node.competition_session.piv_session_year
+field_name: piv_session_year
+entity_type: node
+bundle: competition_session
+label: 'Competition year'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  max: null
+  min: null
+  prefix: ''
+  suffix: ''
+field_type: integer

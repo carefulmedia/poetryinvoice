@@ -1,0 +1,23 @@
+uuid: 40bf8e5a-a1c5-41fa-8685-669781d28bfc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_commissioned_
+    - node.type.lesson_plan
+id: node.lesson_plan.field_commissioned_
+field_name: field_commissioned_
+entity_type: node
+bundle: lesson_plan
+label: 'Commissioned?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

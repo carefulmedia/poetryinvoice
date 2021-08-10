@@ -1,0 +1,23 @@
+uuid: 28473fe4-d356-48eb-bdaf-e9bd77dcdfc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.writing_prompt
+  module:
+    - text
+id: node.writing_prompt.body
+field_name: body
+entity_type: node
+bundle: writing_prompt
+label: Prompt
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

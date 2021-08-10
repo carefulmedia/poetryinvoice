@@ -1,0 +1,19 @@
+uuid: b49e1797-5fab-4078-aa87-143841cafaf7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_student_name_1
+    - paragraphs.paragraphs_type.tr_student
+id: paragraph.tr_student.field_student_name_1
+field_name: field_student_name_1
+entity_type: paragraph
+bundle: tr_student
+label: 'Full stage name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

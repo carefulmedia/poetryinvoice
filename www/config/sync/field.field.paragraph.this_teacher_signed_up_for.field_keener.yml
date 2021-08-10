@@ -1,0 +1,23 @@
+uuid: f71a7854-e914-4e5d-8968-5bfb38276bf5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_keener
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+id: paragraph.this_teacher_signed_up_for.field_keener
+field_name: field_keener
+entity_type: paragraph
+bundle: this_teacher_signed_up_for
+label: 'Keen/likely to compete'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: Unknown
+field_type: boolean

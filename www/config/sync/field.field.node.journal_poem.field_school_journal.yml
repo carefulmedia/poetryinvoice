@@ -1,0 +1,27 @@
+uuid: fdca7586-59bc-4714-a09d-2bfd227c13ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_school_journal
+    - node.type.journal_poem
+    - node.type.school
+id: node.journal_poem.field_school_journal
+field_name: field_school_journal
+entity_type: node
+bundle: journal_poem
+label: School
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      school: school
+field_type: entity_reference

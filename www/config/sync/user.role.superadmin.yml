@@ -1,0 +1,11 @@
+uuid: 0e7fe883-277f-41a0-8cb0-169bd9c807a0
+langcode: en
+status: true
+dependencies: {  }
+id: superadmin
+label: SUPERADMIN
+weight: 19
+is_admin: null
+permissions:
+  - 'access search combine'
+  - 'view unpublished taxonomy terms'

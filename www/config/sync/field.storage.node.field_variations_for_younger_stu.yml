@@ -1,0 +1,19 @@
+uuid: 97220188-bd7f-4348-bb1c-74c961caa7a6
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - text
+id: node.field_variations_for_younger_stu
+field_name: field_variations_for_younger_stu
+entity_type: node
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

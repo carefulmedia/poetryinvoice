@@ -1,0 +1,68 @@
+uuid: 809fb2a4-ce12-4aad-8c00-7ec437e3a9d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_poem_rights_conta.default
+    - field.field.node.poem_rights_contact.body
+    - field.field.node.poem_rights_contact.comment_node_poem_rights_conta
+    - field.field.node.poem_rights_contact.field_contact_person
+    - field.field.node.poem_rights_contact.field_email1
+    - field.field.node.poem_rights_contact.field_type_of_contact
+    - node.type.poem_rights_contact
+  module:
+    - comment
+    - options
+    - text
+    - user
+id: node.poem_rights_contact.default
+targetEntityType: node
+bundle: poem_rights_contact
+mode: default
+content:
+  body:
+    label: hidden
+    weight: 1
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_poem_rights_conta:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_contact_person:
+    label: above
+    weight: 2
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_email1:
+    label: above
+    weight: 4
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  field_type_of_contact:
+    label: above
+    weight: 3
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

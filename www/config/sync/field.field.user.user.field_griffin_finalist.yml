@@ -1,0 +1,21 @@
+uuid: 2f81dedf-8c4a-419e-aba7-fdcb871940d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_griffin_finalist
+  module:
+    - options
+    - user
+id: user.user.field_griffin_finalist
+field_name: field_griffin_finalist
+entity_type: user
+bundle: user
+label: 'Griffin shortlisted'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

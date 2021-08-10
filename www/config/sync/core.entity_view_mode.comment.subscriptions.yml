@@ -1,0 +1,10 @@
+uuid: 702fa427-5338-434b-8a6c-df225a23586d
+langcode: en
+status: true
+dependencies:
+  module:
+    - comment
+id: comment.subscriptions
+label: subscriptions
+targetEntityType: comment
+cache: true

@@ -1,0 +1,14 @@
+uuid: 4ec41e57-dc3f-4c55-8f2e-de05be4aabd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.superadmin
+  module:
+    - user
+id: user_add_role_action.superadmin
+label: 'Add the SUPERADMIN role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: superadmin

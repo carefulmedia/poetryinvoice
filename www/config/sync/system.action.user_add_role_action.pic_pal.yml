@@ -1,0 +1,14 @@
+uuid: 0d8ad45e-957d-4b87-a88a-bb765103746c
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.pic_pal
+  module:
+    - user
+id: user_add_role_action.pic_pal
+label: 'Add the PIC/PAL role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: pic_pal

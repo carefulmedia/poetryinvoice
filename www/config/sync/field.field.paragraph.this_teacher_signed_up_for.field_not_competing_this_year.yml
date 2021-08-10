@@ -1,0 +1,23 @@
+uuid: a5221f46-2e06-464c-93b5-1b959caebcb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_not_competing_this_year
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+id: paragraph.this_teacher_signed_up_for.field_not_competing_this_year
+field_name: field_not_competing_this_year
+entity_type: paragraph
+bundle: this_teacher_signed_up_for
+label: 'Not competing this year'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: Unknown
+field_type: boolean

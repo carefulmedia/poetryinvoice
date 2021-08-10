@@ -1,0 +1,14 @@
+uuid: 31f51e8a-2267-49a1-b915-60f974e11c40
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.non_canadian_educator
+  module:
+    - user
+id: user_remove_role_action.non_canadian_educator
+label: 'Remove the Non-Canadian educator role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: non_canadian_educator

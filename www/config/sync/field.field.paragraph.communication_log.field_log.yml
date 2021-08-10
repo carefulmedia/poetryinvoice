@@ -1,0 +1,21 @@
+uuid: a88f2aad-6f42-4433-8be1-d403c4ae429a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_log
+    - paragraphs.paragraphs_type.communication_log
+  module:
+    - text
+id: paragraph.communication_log.field_log
+field_name: field_log
+entity_type: paragraph
+bundle: communication_log
+label: Log
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

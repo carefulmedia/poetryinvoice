@@ -1,0 +1,23 @@
+uuid: 8a5a509a-c7ba-48be-8dad-085cb3353a5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_total_students_involved
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.field_total_students_involved
+field_name: field_total_students_involved
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Total # students involved'
+description: 'Please estimate the number of students involved.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

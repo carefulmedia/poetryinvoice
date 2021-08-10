@@ -1,0 +1,41 @@
+uuid: 744d58de-7d78-402f-8efa-9583fe530d0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.competition_entry.comment_node_competition_entry
+    - field.field.node.competition_entry.field_contest
+    - field.field.node.competition_entry.field_contest_place
+    - field.field.node.competition_entry.field_nf_video
+    - field.field.node.competition_entry.field_recitation_order_round_1
+    - field.field.node.competition_entry.field_years_in_competition
+    - field.field.node.competition_entry.piv_entry_language
+    - field.field.node.competition_entry.piv_entry_level
+    - field.field.node.competition_entry.piv_entry_student
+    - field.field.node.competition_entry.piv_release_form
+    - node.type.competition_entry
+  module:
+    - user
+id: node.competition_entry.teaser
+targetEntityType: node
+bundle: competition_entry
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_competition_entry: true
+  field_contest: true
+  field_contest_place: true
+  field_nf_video: true
+  field_recitation_order_round_1: true
+  field_years_in_competition: true
+  langcode: true
+  piv_entry_language: true
+  piv_entry_level: true
+  piv_entry_student: true
+  piv_release_form: true

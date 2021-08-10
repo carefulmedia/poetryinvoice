@@ -1,0 +1,14 @@
+uuid: bc2c0396-cdb9-455c-b842-6e42c0d1aea7
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.content_creator
+  module:
+    - user
+id: user_remove_role_action.content_creator
+label: 'Remove the Content creator role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: content_creator

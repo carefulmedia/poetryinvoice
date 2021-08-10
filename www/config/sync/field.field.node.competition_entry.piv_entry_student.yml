@@ -1,0 +1,27 @@
+uuid: 3b9298a9-6329-4f21-98c7-076f0bf1d181
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.piv_entry_student
+    - node.type.competition_entry
+    - node.type.student
+id: node.competition_entry.piv_entry_student
+field_name: piv_entry_student
+entity_type: node
+bundle: competition_entry
+label: Student
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    target_bundles:
+      student: student
+field_type: entity_reference

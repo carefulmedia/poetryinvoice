@@ -1,0 +1,27 @@
+uuid: 573c4815-7476-4e13-b8e1-9bb86fb9323f
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_poem_languages
+field_name: field_poem_languages
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: English
+      label: English
+    -
+      value: French
+      label: French
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 2
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

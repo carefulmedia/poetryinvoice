@@ -1,0 +1,35 @@
+uuid: fa5df5ab-c2b3-468c-a6a0-0a5954bf869a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.student.comment_node_student
+    - field.field.node.student.field_photo
+    - field.field.node.student.piv_student_first_name
+    - field.field.node.student.piv_student_grade
+    - field.field.node.student.piv_student_last_name
+    - field.field.node.student.piv_student_mail
+    - field.field.node.student.piv_student_school
+    - node.type.student
+  module:
+    - user
+id: node.student.teaser
+targetEntityType: node
+bundle: student
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_student: true
+  field_photo: true
+  langcode: true
+  piv_student_first_name: true
+  piv_student_grade: true
+  piv_student_last_name: true
+  piv_student_mail: true
+  piv_student_school: true

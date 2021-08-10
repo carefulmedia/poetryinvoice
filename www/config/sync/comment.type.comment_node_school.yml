@@ -1,0 +1,8 @@
+uuid: 363c09e4-f654-4f15-a3bb-81b2b03b97eb
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_school
+label: 'School comment'
+target_entity_type_id: node
+description: null

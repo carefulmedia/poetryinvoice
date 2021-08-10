@@ -1,0 +1,61 @@
+uuid: faaddb28-334e-4541-b7ef-323bb3e63678
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_team_regionals_en.default
+    - field.field.node.team_regionals_entry.comment_node_team_regionals_en
+    - field.field.node.team_regionals_entry.field_contest_association
+    - field.field.node.team_regionals_entry.field_place_team_regional
+    - field.field.node.team_regionals_entry.field_tr_student
+    - node.type.team_regionals_entry
+  module:
+    - comment
+    - entity_reference_revisions
+    - options
+    - user
+id: node.team_regionals_entry.default
+targetEntityType: node
+bundle: team_regionals_entry
+mode: default
+content:
+  comment_node_team_regionals_en:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_contest_association:
+    label: above
+    weight: 3
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_place_team_regional:
+    label: above
+    weight: 4
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_tr_student:
+    label: above
+    weight: 0
+    type: entity_reference_revisions_entity_view
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

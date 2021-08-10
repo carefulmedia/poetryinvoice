@@ -1,0 +1,51 @@
+uuid: 4874b1b5-7150-4f5f-9d31-60bb71c717f0
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_how_did_you_hear_from_us_2
+field_name: field_how_did_you_hear_from_us_2
+entity_type: user
+type: list_float
+settings:
+  allowed_values:
+    -
+      value: !!float 0
+      label: 'I''ve worked with PIV before'
+    -
+      value: !!float 1
+      label: 'Email from PIV'
+    -
+      value: !!float 2
+      label: 'Phone call from PIV'
+    -
+      value: !!float 3
+      label: 'Social media'
+    -
+      value: !!float 4
+      label: 'Searching the internet'
+    -
+      value: !!float 5
+      label: 'Word of mouth'
+    -
+      value: !!float 6
+      label: 'PIV contact at workshop or conference booth'
+    -
+      value: !!float 7
+      label: 'Postcard/poster/brochure at school'
+    -
+      value: !!float 8
+      label: 'Postcard/poster/brochure at conference'
+    -
+      value: !!float 9
+      label: 'Print ad'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

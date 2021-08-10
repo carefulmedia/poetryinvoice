@@ -1,0 +1,21 @@
+uuid: e8bc3754-e2ed-4b82-be6c-7e876b96c223
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_additonal_comments
+    - paragraphs.paragraphs_type.types_of_support_requested
+  module:
+    - text
+id: paragraph.types_of_support_requested.field_additonal_comments
+field_name: field_additonal_comments
+entity_type: paragraph
+bundle: types_of_support_requested
+label: 'Additonal comments'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

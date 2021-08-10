@@ -1,0 +1,27 @@
+uuid: 71714780-60c0-42ba-8753-d388a7df00a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_contest_judging
+    - taxonomy.vocabulary._judging_by_year
+  module:
+    - user
+id: user.user.field_contest_judging
+field_name: field_contest_judging
+entity_type: user
+bundle: user
+label: 'Contest judging (DEPRECATED, DON''T USE)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler_settings:
+    sort:
+      field: _none
+    target_bundles:
+      _judging_by_year: _judging_by_year
+  handler: 'default:taxonomy_term'
+field_type: entity_reference

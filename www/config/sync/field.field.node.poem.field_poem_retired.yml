@@ -1,0 +1,23 @@
+uuid: abdc2721-d885-4410-8b17-13d7fa6b68f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poem_retired
+    - node.type.poem
+id: node.poem.field_poem_retired
+field_name: field_poem_retired
+entity_type: node
+bundle: poem
+label: 'Poem archived'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

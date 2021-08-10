@@ -1,0 +1,8 @@
+uuid: f252b612-f03c-4b96-bef9-0e298dad098b
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_poem_rights_conta
+label: 'Poem rights contact comment'
+target_entity_type_id: node
+description: null

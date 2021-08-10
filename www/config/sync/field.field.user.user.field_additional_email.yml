@@ -1,0 +1,20 @@
+uuid: 8f4a9003-cf13-42dc-a76f-07527a8386a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_additional_email
+  module:
+    - user
+id: user.user.field_additional_email
+field_name: field_additional_email
+entity_type: user
+bundle: user
+label: 'Additional email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

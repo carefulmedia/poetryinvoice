@@ -1,0 +1,24 @@
+uuid: 64cbe600-7d44-4d3b-8b29-9337e5a2852b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_poet_in_class
+  module:
+    - user
+id: user.user.field_poet_in_class
+field_name: field_poet_in_class
+entity_type: user
+bundle: user
+label: 'Poet In Class'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'I am interested in the "Poet in Your Class" initiative.'
+  off_label: ''
+field_type: boolean

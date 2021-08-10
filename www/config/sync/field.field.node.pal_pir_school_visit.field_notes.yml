@@ -1,0 +1,19 @@
+uuid: fe511d6b-6368-4b8a-b7e8-ea297065dd4b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_notes
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.field_notes
+field_name: field_notes
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Pre-visit notes for poet'
+description: "This can include the type of work you would like the poet to do with the students (writing workshop(s), a reading with a Q&A period, performance coaching, etc), information about the students (grade level(s), ESL, previous exposure to poetry, etc.)\r\n"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

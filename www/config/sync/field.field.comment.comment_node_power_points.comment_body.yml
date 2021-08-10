@@ -1,0 +1,21 @@
+uuid: d34fe801-6b04-4b4b-9283-9e8cb02bb244
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_power_points
+    - field.storage.comment.comment_body
+  module:
+    - text
+id: comment.comment_node_power_points.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: comment_node_power_points
+label: Comment
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

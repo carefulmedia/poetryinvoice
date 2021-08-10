@@ -1,0 +1,21 @@
+uuid: 91044eff-abd2-4508-ab11-8b40a02d6407
+langcode: und
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+    - user
+id: user.field_this_teacher_signed_up_for
+field_name: field_this_teacher_signed_up_for
+entity_type: user
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

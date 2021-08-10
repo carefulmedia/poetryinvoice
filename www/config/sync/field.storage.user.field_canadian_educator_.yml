@@ -1,0 +1,30 @@
+uuid: d27ffc13-3d4d-417e-9a8e-f1deab121870
+langcode: und
+status: true
+dependencies:
+  module:
+    - options
+    - user
+id: user.field_canadian_educator_
+field_name: field_canadian_educator_
+entity_type: user
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '0'
+      label: 'I work at a Canadian school'
+    -
+      value: '1'
+      label: 'I am in Canada but am not affiliated with a school'
+    -
+      value: '2'
+      label: 'I work outside of Canada'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: 173092c4-f690-4340-b0e3-d1c653c27b17
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_not_a_teacher_
+  module:
+    - options
+    - user
+id: user.user.field_not_a_teacher_
+field_name: field_not_a_teacher_
+entity_type: user
+bundle: user
+label: Librarian/Prinicpal/Admin
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

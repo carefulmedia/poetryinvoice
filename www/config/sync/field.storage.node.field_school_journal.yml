@@ -1,0 +1,19 @@
+uuid: 3e81b81a-1854-4131-a5f5-2a560e32586b
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_school_journal
+field_name: field_school_journal
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

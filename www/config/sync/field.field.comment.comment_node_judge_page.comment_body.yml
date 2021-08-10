@@ -1,0 +1,21 @@
+uuid: 5d8bc253-9dbf-4be2-872a-2900db261afd
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_judge_page
+    - field.storage.comment.comment_body
+  module:
+    - text
+id: comment.comment_node_judge_page.comment_body
+field_name: comment_body
+entity_type: comment
+bundle: comment_node_judge_page
+label: Comment
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,31 @@
+uuid: ad91f6de-65cc-497f-a4bd-7c42ac2a3890
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.fca.comment_node_fca
+    - field.field.node.fca.field_fca_image
+    - field.field.node.fca.field_fca_order
+    - field.field.node.fca.field_fca_url
+    - field.field.node.fca.field_subtitle
+    - node.type.fca
+  module:
+    - user
+id: node.fca.teaser
+targetEntityType: node
+bundle: fca
+mode: teaser
+content:
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_fca: true
+  field_fca_image: true
+  field_fca_order: true
+  field_fca_url: true
+  field_subtitle: true
+  langcode: true

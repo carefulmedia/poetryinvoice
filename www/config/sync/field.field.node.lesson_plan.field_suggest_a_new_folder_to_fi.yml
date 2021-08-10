@@ -1,0 +1,19 @@
+uuid: ac02dfaa-e0ea-42f3-9064-e7a3c9668657
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_suggest_a_new_folder_to_fi
+    - node.type.lesson_plan
+id: node.lesson_plan.field_suggest_a_new_folder_to_fi
+field_name: field_suggest_a_new_folder_to_fi
+entity_type: node
+bundle: lesson_plan
+label: 'Suggest a new folder to file your lesson plan under'
+description: 'If you feel that the folders suggested in « File Under » above do not suit your lesson, please feel free to suggest a new one. We would like to provide as wide a variety of approaches to teaching poetry as possible.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

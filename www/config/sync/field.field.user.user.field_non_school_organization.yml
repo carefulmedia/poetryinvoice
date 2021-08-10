@@ -1,0 +1,20 @@
+uuid: 68b0e13e-3822-40b6-8ac0-442bbadc1d7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_non_school_organization
+  module:
+    - user
+id: user.user.field_non_school_organization
+field_name: field_non_school_organization
+entity_type: user
+bundle: user
+label: 'Non-school organization'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

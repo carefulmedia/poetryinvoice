@@ -1,0 +1,8 @@
+uuid: bfa74861-9c7c-4fb8-b7c5-97be1e747371
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_writing_prompt
+label: 'Writing prompt comment'
+target_entity_type_id: node
+description: null

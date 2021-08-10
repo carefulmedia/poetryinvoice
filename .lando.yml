@@ -1,0 +1,20 @@
+name: piv9
+recipe: drupal9
+config:
+  webroot: www/web
+
+# The Drupal 7 database to use as migrate source.
+services:
+  d7db:
+    type: mariadb
+    creds:
+      user: drupal7db
+      password: drupal7db
+      database: drupal7db
+    portforward: true
+
+tooling:
+  drush:
+    cmd: /app/www/vendor/drush/drush/drush --root=/app/www/web
+    env:
+      DRUSH_OPTIONS_URI: "http://piv9.lndo.site"

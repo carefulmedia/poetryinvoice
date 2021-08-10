@@ -1,0 +1,19 @@
+uuid: b1445048-72d5-4661-a15e-446cc4dce7c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_source
+    - node.type.media_coverage
+id: node.media_coverage.field_source
+field_name: field_source
+entity_type: node
+bundle: media_coverage
+label: Source
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

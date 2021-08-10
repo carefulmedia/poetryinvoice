@@ -1,0 +1,21 @@
+uuid: 20a4e4eb-581c-41e8-858f-029fc5b8b7f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_variations_for_older_stude
+    - node.type.lesson_plan
+  module:
+    - text
+id: node.lesson_plan.field_variations_for_older_stude
+field_name: field_variations_for_older_stude
+entity_type: node
+bundle: lesson_plan
+label: 'Variations for Older Students'
+description: 'We would like our lesson plans to apply to as many grades as possible. Please add additional sections here to develop your lesson further for higher grades. Remember to tick all the appropriate grade levels above as well!'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

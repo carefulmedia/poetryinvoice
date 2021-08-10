@@ -1,0 +1,10 @@
+uuid: 4fdcbc24-4b57-4267-8223-df67f79be4ff
+langcode: en
+status: true
+dependencies: {  }
+id: judges
+label: Judges
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_judges'
+behavior_plugins: {  }

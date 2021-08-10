@@ -1,0 +1,39 @@
+uuid: 45adcf9a-d7fc-4d83-9871-59d8eb73db7c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.poem_rights_contact.body
+    - field.field.node.poem_rights_contact.comment_node_poem_rights_conta
+    - field.field.node.poem_rights_contact.field_contact_person
+    - field.field.node.poem_rights_contact.field_email1
+    - field.field.node.poem_rights_contact.field_type_of_contact
+    - node.type.poem_rights_contact
+  module:
+    - text
+    - user
+id: node.poem_rights_contact.teaser
+targetEntityType: node
+bundle: poem_rights_contact
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_poem_rights_conta: true
+  field_contact_person: true
+  field_email1: true
+  field_type_of_contact: true
+  langcode: true

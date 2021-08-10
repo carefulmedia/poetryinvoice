@@ -1,0 +1,21 @@
+uuid: d58c6a71-5574-4290-8477-0dde180d941f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_visit_completed_teacher
+    - paragraphs.paragraphs_type.teacher_questionnaire
+id: paragraph.teacher_questionnaire.field_visit_completed_teacher
+field_name: field_visit_completed_teacher
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'Did the scheduled poet visit take place?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

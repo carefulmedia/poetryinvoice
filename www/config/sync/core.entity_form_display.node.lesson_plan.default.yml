@@ -1,0 +1,124 @@
+uuid: 974cbaea-cc33-433d-bcf8-eb9b66b1530d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.lesson_plan.body
+    - field.field.node.lesson_plan.comment_node_lesson_plan
+    - field.field.node.lesson_plan.field_activity_description_steps
+    - field.field.node.lesson_plan.field_additional_poems
+    - field.field.node.lesson_plan.field_attachments
+    - field.field.node.lesson_plan.field_commissioned_
+    - field.field.node.lesson_plan.field_completed
+    - field.field.node.lesson_plan.field_copyright
+    - field.field.node.lesson_plan.field_file_under_
+    - field.field.node.lesson_plan.field_grades
+    - field.field.node.lesson_plan.field_learning_objectives
+    - field.field.node.lesson_plan.field_lesson_objectives
+    - field.field.node.lesson_plan.field_materials_resources
+    - field.field.node.lesson_plan.field_paid_
+    - field.field.node.lesson_plan.field_periods
+    - field.field.node.lesson_plan.field_poets_plural_user
+    - field.field.node.lesson_plan.field_rwt
+    - field.field.node.lesson_plan.field_suggest_a_new_folder_to_fi
+    - field.field.node.lesson_plan.field_variations_for_older_stude
+    - field.field.node.lesson_plan.field_variations_for_younger_stu
+    - field.field.node.lesson_plan.field_video_poem
+    - node.type.lesson_plan
+  module:
+    - path
+    - text
+id: node.lesson_plan.default
+targetEntityType: node
+bundle: lesson_plan
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 121
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+    region: content
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
+    region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 120
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
+hidden:
+  comment_node_lesson_plan: true
+  field_activity_description_steps: true
+  field_additional_poems: true
+  field_attachments: true
+  field_commissioned_: true
+  field_completed: true
+  field_copyright: true
+  field_file_under_: true
+  field_grades: true
+  field_learning_objectives: true
+  field_lesson_objectives: true
+  field_materials_resources: true
+  field_paid_: true
+  field_periods: true
+  field_poets_plural_user: true
+  field_rwt: true
+  field_suggest_a_new_folder_to_fi: true
+  field_variations_for_older_stude: true
+  field_variations_for_younger_stu: true
+  field_video_poem: true

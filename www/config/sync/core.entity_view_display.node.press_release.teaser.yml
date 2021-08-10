@@ -1,0 +1,35 @@
+uuid: 2edd6007-a998-4fe1-8a67-2fe5afbb27da
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.press_release.body
+    - field.field.node.press_release.comment_node_press_release
+    - field.field.node.press_release.field_images_insert
+    - node.type.press_release
+  module:
+    - text
+    - user
+id: node.press_release.teaser
+targetEntityType: node
+bundle: press_release
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_press_release: true
+  field_images_insert: true
+  langcode: true

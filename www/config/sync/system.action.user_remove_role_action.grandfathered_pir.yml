@@ -1,0 +1,14 @@
+uuid: 1b747e91-299c-4688-bd55-19845ef9946c
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.grandfathered_pir
+  module:
+    - user
+id: user_remove_role_action.grandfathered_pir
+label: 'Remove the Grandfathered PIR role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: grandfathered_pir

@@ -1,0 +1,19 @@
+uuid: c5691fa1-34a0-47ba-bed0-1efc89944c07
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_by_line
+    - node.type.quote
+id: node.quote.field_by_line
+field_name: field_by_line
+entity_type: node
+bundle: quote
+label: 'By line'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

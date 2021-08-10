@@ -1,0 +1,23 @@
+uuid: 2a1e1e56-cd5c-4055-bbeb-ce2334bef9f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_keener
+    - paragraphs.paragraphs_type.teacher_tracking
+id: paragraph.teacher_tracking.field_keener
+field_name: field_keener
+entity_type: paragraph
+bundle: teacher_tracking
+label: 'Keen -- likely to compete'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: Unknown
+field_type: boolean

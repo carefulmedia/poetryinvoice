@@ -1,0 +1,19 @@
+uuid: 90bac0e5-adb5-40e5-b119-97529ddf83a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - menu-english-nav
+      - menu-french-nav
+    parent: 'menu-english-nav:0:'
+name: 'Writing prompt'
+type: writing_prompt
+description: ''
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: false

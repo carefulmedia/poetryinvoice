@@ -1,0 +1,19 @@
+uuid: 53aeae73-892d-49f9-b2b7-4c02104016de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_poet_incomplete_reason
+    - paragraphs.paragraphs_type.poet_questionnaire
+id: paragraph.poet_questionnaire.field_poet_incomplete_reason
+field_name: field_poet_incomplete_reason
+entity_type: paragraph
+bundle: poet_questionnaire
+label: 'Why was the visit not completed?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

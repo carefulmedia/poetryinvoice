@@ -1,0 +1,33 @@
+uuid: 0f618eef-a929-4476-9f0d-d58fab2a86fa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.judge_page.body
+    - field.field.node.judge_page.comment_node_judge_page
+    - node.type.judge_page
+  module:
+    - text
+    - user
+id: node.judge_page.teaser
+targetEntityType: node
+bundle: judge_page
+mode: teaser
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_summary_or_trimmed
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  comment_node_judge_page: true
+  langcode: true

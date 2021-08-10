@@ -1,0 +1,18 @@
+uuid: cd97dc9d-2235-4547-9416-014d838a8715
+langcode: en
+status: true
+dependencies: {  }
+id: teacher_fr_
+label: 'Teacher (fr)'
+weight: 3
+is_admin: null
+permissions:
+  - 'access search combine'
+  - 'create field_stage_name'
+  - 'edit field_stage_name'
+  - 'edit own field_stage_name'
+  - 'view body'
+  - 'view field_address'
+  - 'view field_bio_trans'
+  - 'view field_stage_name'
+  - 'view own field_stage_name'

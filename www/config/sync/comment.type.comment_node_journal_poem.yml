@@ -1,0 +1,8 @@
+uuid: 6fb6ede7-2e80-4ff2-a9fa-973ffc694c4f
+langcode: en
+status: true
+dependencies: {  }
+id: comment_node_journal_poem
+label: 'Journal Poem comment'
+target_entity_type_id: node
+description: null

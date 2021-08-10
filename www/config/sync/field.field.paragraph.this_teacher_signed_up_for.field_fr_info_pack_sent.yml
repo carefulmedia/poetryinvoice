@@ -1,0 +1,21 @@
+uuid: 56b17338-50fc-4016-8668-3918f5ae1eb4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_fr_info_pack_sent
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+  module:
+    - datetime
+id: paragraph.this_teacher_signed_up_for.field_fr_info_pack_sent
+field_name: field_fr_info_pack_sent
+entity_type: paragraph
+bundle: this_teacher_signed_up_for
+label: 'FR info pack sent'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

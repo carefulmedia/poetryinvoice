@@ -1,0 +1,21 @@
+uuid: a36f2cc3-1031-449a-8fdd-b14c332e0e12
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_materials_resources
+    - node.type.lesson_plan
+  module:
+    - text
+id: node.lesson_plan.field_materials_resources
+field_name: field_materials_resources
+entity_type: node
+bundle: lesson_plan
+label: 'Materials and Resources'
+description: 'Please list, in point form, the materials and resources required, including printouts if available.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

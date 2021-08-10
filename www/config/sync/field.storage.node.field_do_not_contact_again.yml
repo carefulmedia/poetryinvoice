@@ -1,0 +1,18 @@
+uuid: 8447da0d-95d9-43ef-a46b-5c320817fbbb
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_do_not_contact_again
+field_name: field_do_not_contact_again
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

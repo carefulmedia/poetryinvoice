@@ -1,0 +1,61 @@
+uuid: a78b90c1-4d58-4cd7-8d61-f085ee7b2bde
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_faq.default
+    - field.field.node.faq.body
+    - field.field.node.faq.comment_node_faq
+    - field.field.node.faq.field_fca_image
+    - field.field.node.faq.field_subtitle
+    - node.type.faq
+  module:
+    - comment
+    - image
+    - text
+    - user
+id: node.faq.default
+targetEntityType: node
+bundle: faq
+mode: default
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_faq:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_fca_image:
+    label: above
+    weight: 2
+    type: image
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    region: content
+  field_subtitle:
+    label: above
+    weight: 1
+    type: string
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

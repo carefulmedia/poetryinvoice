@@ -1,0 +1,18 @@
+uuid: fd59e1d3-ad59-4ad9-9a28-8d8d9f4847b1
+langcode: und
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_paid_
+field_name: field_paid_
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

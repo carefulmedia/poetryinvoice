@@ -1,0 +1,178 @@
+uuid: 9437752a-7fe4-4600-8289-09b8c06f1f59
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_complete_school
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node complete (School)'
+source:
+  plugin: d7_node_complete
+  node_type: school
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+    -
+      plugin: random_value_on_empty
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_school/0/status:
+    -
+      plugin: get
+      source: comment
+  field_job_title:
+    -
+      plugin: get
+      source: field_job_title
+  field_contact_first_name:
+    -
+      plugin: get
+      source: field_contact_first_name
+  field_school_image:
+    -
+      plugin: sub_process
+      source: field_school_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_years_in_competition:
+    -
+      plugin: get
+      source: field_years_in_competition
+  field_story_link:
+    -
+      plugin: get
+      source: field_story_link
+  field_type_of_school:
+    -
+      plugin: get
+      source: field_type_of_school
+  field_school_board:
+    -
+      plugin: get
+      source: field_school_board
+  field_grades_of_school:
+    -
+      plugin: get
+      source: field_grades_of_school
+  field_language_school:
+    -
+      plugin: get
+      source: field_language_school
+  field_special_subjects:
+    -
+      plugin: get
+      source: field_special_subjects
+  field_number_of_students:
+    -
+      plugin: get
+      source: field_number_of_students
+  field_contact_last_name:
+    -
+      plugin: get
+      source: field_contact_last_name
+  field_contact_email:
+    -
+      plugin: get
+      source: field_contact_email
+  field_cdb_id:
+    -
+      plugin: get
+      source: field_cdb_id
+  field_communication_log:
+    -
+      plugin: get
+      source: field_communication_log
+  field_not_competing_this_year:
+    -
+      plugin: get
+      source: field_not_competing_this_year
+  field_do_not_contact_again:
+    -
+      plugin: get
+      source: field_do_not_contact_again
+  field_talked_to:
+    -
+      plugin: get
+      source: field_talked_to
+  field_2016_rs:
+    -
+      plugin: get
+      source: field_2016_rs
+  field_pa:
+    -
+      plugin: sub_process
+      source: field_pa
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: school
+migration_dependencies:
+  required:
+    - upgrade_d7_user

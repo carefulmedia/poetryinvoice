@@ -1,0 +1,14 @@
+uuid: d5e9cd6c-6de7-4138-b155-a94ed5d94c3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.pic_pal
+  module:
+    - user
+id: user_remove_role_action.pic_pal
+label: 'Remove the PIC/PAL role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: pic_pal

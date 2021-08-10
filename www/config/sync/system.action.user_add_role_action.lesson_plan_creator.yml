@@ -1,0 +1,14 @@
+uuid: 720b745e-5fb1-4598-bbe6-23dbca84288e
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.lesson_plan_creator
+  module:
+    - user
+id: user_add_role_action.lesson_plan_creator
+label: 'Add the Lesson Plan Creator role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: lesson_plan_creator

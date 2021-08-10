@@ -1,0 +1,10 @@
+uuid: bdb7b136-3251-4fd3-b893-bbf0dd17f904
+langcode: en
+status: true
+dependencies: {  }
+id: types_of_support_requested
+label: 'Types of support requested'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_types_of_support_requested'
+behavior_plugins: {  }

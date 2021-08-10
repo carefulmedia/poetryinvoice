@@ -1,0 +1,19 @@
+uuid: 1e1277a5-dc6f-41a3-8499-926f320bcd68
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_competition_school
+field_name: field_competition_school
+entity_type: node
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

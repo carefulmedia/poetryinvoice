@@ -1,0 +1,24 @@
+uuid: c8c3cd8f-5c4d-486d-8943-eaa68eef7bdc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_ready_for_proofing
+  module:
+    - user
+id: user.user.field_ready_for_proofing
+field_name: field_ready_for_proofing
+entity_type: user
+bundle: user
+label: 'Ready for proofing'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

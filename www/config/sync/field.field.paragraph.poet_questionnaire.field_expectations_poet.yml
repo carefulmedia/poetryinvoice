@@ -1,0 +1,21 @@
+uuid: fdba6e64-8ce9-48e9-9cba-2de9705a91bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_expectations_poet
+    - paragraphs.paragraphs_type.poet_questionnaire
+  module:
+    - options
+id: paragraph.poet_questionnaire.field_expectations_poet
+field_name: field_expectations_poet
+entity_type: paragraph
+bundle: poet_questionnaire
+label: 'On a scale of 1 to 5, how easy was it to negotiate expectations with the teacher prior to the visit?'
+description: '(1 = very difficult, 5 = very easy) '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

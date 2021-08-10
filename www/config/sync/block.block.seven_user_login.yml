@@ -1,0 +1,27 @@
+uuid: eb1c24fd-f2f1-4a26-873f-39cc50abdf10
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - user
+  theme:
+    - seven
+id: seven_user_login
+theme: seven
+region: content
+weight: 10
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: ''
+  provider: user
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: |-
+      /customerror/403
+      /customerror/fr/403

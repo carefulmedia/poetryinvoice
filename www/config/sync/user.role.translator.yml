@@ -1,0 +1,22 @@
+uuid: eb7df147-3b71-488a-b6d0-05baba496ee1
+langcode: en
+status: true
+dependencies: {  }
+id: translator
+label: Translator
+weight: 9
+is_admin: null
+permissions:
+  - 'access contextual links'
+  - 'access search combine'
+  - 'bypass node access'
+  - 'can do translation jobs'
+  - 'can manage translation jobs'
+  - 'create field_years_in_competition'
+  - 'edit field_years_in_competition'
+  - 'edit own field_years_in_competition'
+  - 'translate content'
+  - 'translate interface'
+  - 'use text format full_html'
+  - 'view field_years_in_competition'
+  - 'view own field_years_in_competition'

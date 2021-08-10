@@ -1,0 +1,23 @@
+uuid: a0b09824-e9cf-4b04-9915-4f1b62ef6188
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_multi_judge_session_id
+    - node.type.competition_session
+id: node.competition_session.field_multi_judge_session_id
+field_name: field_multi_judge_session_id
+entity_type: node
+bundle: competition_session
+label: 'Multi-Judge Session ID'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  max: null
+  min: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,21 @@
+uuid: 3a38c7bd-3279-4d83-ae7c-0676322c4f44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_grades_of_school
+    - node.type.school
+  module:
+    - options
+id: node.school.field_grades_of_school
+field_name: field_grades_of_school
+entity_type: node
+bundle: school
+label: 'Grades of school'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,23 @@
+uuid: 0eb8909e-25f5-46d1-a050-d891332aa683
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_contact_me_later_this_year
+    - paragraphs.paragraphs_type.teacher_leads_tracking
+id: paragraph.teacher_leads_tracking.field_contact_me_later_this_year
+field_name: field_contact_me_later_this_year
+entity_type: paragraph
+bundle: teacher_leads_tracking
+label: 'Hot lead'
+description: 'Contact me later this year. (Note that all teachers who have competed before are also considered hot leads).'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

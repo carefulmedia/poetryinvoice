@@ -1,0 +1,19 @@
+uuid: e6ec7d69-647d-4531-8f0f-310b9d25b2c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_subtitle
+    - node.type.faq
+id: node.faq.field_subtitle
+field_name: field_subtitle
+entity_type: node
+bundle: faq
+label: Subtitle
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

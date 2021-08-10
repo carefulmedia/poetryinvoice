@@ -1,0 +1,34 @@
+uuid: fd530fb8-19f7-4ffc-a9d0-c4ab67eeb524
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.moods.field_roulette_image
+    - image.style.medium
+    - taxonomy.vocabulary.moods
+  module:
+    - image
+    - text
+id: taxonomy_term.moods.default
+targetEntityType: taxonomy_term
+bundle: moods
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_roulette_image:
+    label: hidden
+    weight: 0
+    type: image
+    settings:
+      image_link: ''
+      image_style: medium
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

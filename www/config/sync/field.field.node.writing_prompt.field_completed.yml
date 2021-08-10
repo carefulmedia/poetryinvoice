@@ -1,0 +1,21 @@
+uuid: b48ea2ef-e7d5-43e9-a20c-a184d4dbd5ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_completed
+    - node.type.writing_prompt
+  module:
+    - options
+id: node.writing_prompt.field_completed
+field_name: field_completed
+entity_type: node
+bundle: writing_prompt
+label: 'Completed?'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

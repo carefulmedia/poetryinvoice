@@ -1,0 +1,28 @@
+uuid: cb9f864b-5398-4455-9cc8-7ae10107751b
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_maptest
+    - field.field.comment.comment_node_maptest.comment_body
+  module:
+    - text
+id: comment.comment_node_maptest.default
+targetEntityType: comment
+bundle: comment_node_maptest
+mode: default
+content:
+  comment_body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

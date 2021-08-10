@@ -1,0 +1,37 @@
+#
+# App
+#
+
+# Database backups
+/database/*
+!/database/.gitkeep
+
+# Private files
+/private/*
+!/private/*/
+/private/*/*
+!/private/*/.gitkeep
+
+# Environment variables
+.env
+
+#
+# Drupal
+#
+/web/sites/default/files
+settings.local.php
+services.local.yml
+development.services.yml
+
+# Composer-generated
+/vendor/
+/web/core/
+/web/libraries/
+/web/modules/contrib/
+/web/profiles/contrib/
+/web/themes/contrib/
+
+# SimpleTest environment
+/web/sites/simpletest
+
+dump

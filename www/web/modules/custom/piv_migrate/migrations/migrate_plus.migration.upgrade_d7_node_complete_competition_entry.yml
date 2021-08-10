@@ -1,0 +1,129 @@
+uuid: dec589da-3728-4fc1-9ee5-0cb33bbda333
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_complete_competition_entry
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node complete (Competition entry)'
+source:
+  plugin: d7_node_complete
+  node_type: competition_entry
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  comment_node_competition_entry/0/status:
+    -
+      plugin: get
+      source: comment
+  piv_entry_language:
+    -
+      plugin: get
+      source: piv_entry_language
+  piv_entry_student:
+    -
+      plugin: sub_process
+      source: piv_entry_student
+      process:
+        target_id: nid
+  piv_release_form:
+    -
+      plugin: sub_process
+      source: piv_release_form
+      process:
+        target_id: fid
+        display: display
+        description: description
+  piv_entry_level:
+    -
+      plugin: get
+      source: piv_entry_level
+  field_years_in_competition:
+    -
+      plugin: get
+      source: field_years_in_competition
+  field_recitation_order_round_1:
+    -
+      plugin: get
+      source: field_recitation_order_round_1
+  field_contest:
+    -
+      plugin: get
+      source: field_contest
+  field_contest_place:
+    -
+      plugin: get
+      source: field_contest_place
+  field_nf_video:
+    -
+      plugin: sub_process
+      source: field_nf_video
+      process:
+        target_id: nid
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: competition_entry
+migration_dependencies:
+  required:
+    - upgrade_d7_user

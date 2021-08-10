@@ -1,0 +1,14 @@
+uuid: 57fca79c-0d23-41aa-9bc5-b6941744a7a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.pierre
+  module:
+    - user
+id: user_add_role_action.pierre
+label: 'Add the Pierre role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: pierre

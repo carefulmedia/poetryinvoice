@@ -1,0 +1,20 @@
+uuid: aa52da2c-4f9e-4b71-9adf-92d0622324a6
+langcode: und
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+id: paragraph.field_types_of_support_requested
+field_name: field_types_of_support_requested
+entity_type: paragraph
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

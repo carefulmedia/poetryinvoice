@@ -1,0 +1,30 @@
+uuid: c71a9b06-cead-44e0-b15b-7b27df304a58
+langcode: und
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_contest_place
+field_name: field_contest_place
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '1'
+      label: First
+    -
+      value: '2'
+      label: Second
+    -
+      value: '3'
+      label: Third
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: 82864b73-fa41-419b-85ab-0147e21d6ab8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.lesson_plan
+  module:
+    - text
+id: node.lesson_plan.body
+field_name: body
+entity_type: node
+bundle: lesson_plan
+label: 'Lesson Introduction'
+description: 'Please write a brief introduction to help teachers decide if this lesson plan is for them. For sample introductions, please refer to our <a href="/teachers/piv-lesson-plans">lesson plans</a>.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: false
+  required_summary: false
+field_type: text_with_summary

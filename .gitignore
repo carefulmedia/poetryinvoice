@@ -1,0 +1,5 @@
+/.editorconfig
+/.gitattributes
+
+# Environment variables
+.env

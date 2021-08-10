@@ -1,0 +1,23 @@
+uuid: fe353ee8-cfcc-4486-8f40-593460509b5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poem_retired
+    - node.type.video
+id: node.video.field_poem_retired
+field_name: field_poem_retired
+entity_type: node
+bundle: video
+label: 'Poem archived'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: ''
+  off_label: ''
+field_type: boolean

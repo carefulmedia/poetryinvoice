@@ -1,0 +1,21 @@
+uuid: 8c59f7b5-05f3-4e5d-8edd-128498738c2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contest_place
+    - node.type.competition_entry
+  module:
+    - options
+id: node.competition_entry.field_contest_place
+field_name: field_contest_place
+entity_type: node
+bundle: competition_entry
+label: Place
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

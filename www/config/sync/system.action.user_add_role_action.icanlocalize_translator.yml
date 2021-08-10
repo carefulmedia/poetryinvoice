@@ -1,0 +1,14 @@
+uuid: ff4a84ac-059d-4613-acf7-38e7dcb81320
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.icanlocalize_translator
+  module:
+    - user
+id: user_add_role_action.icanlocalize_translator
+label: 'Add the icanlocalize translator role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: icanlocalize_translator

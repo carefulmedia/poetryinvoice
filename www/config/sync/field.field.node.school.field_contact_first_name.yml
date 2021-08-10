@@ -1,0 +1,19 @@
+uuid: 893e98d2-ccf6-4fc0-bb62-d1ffc4ec25c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_contact_first_name
+    - node.type.school
+id: node.school.field_contact_first_name
+field_name: field_contact_first_name
+entity_type: node
+bundle: school
+label: 'Contact first name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

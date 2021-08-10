@@ -1,0 +1,21 @@
+uuid: b4800263-19c3-4e0c-9cba-9d751a2e7e7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_release_teacher
+    - paragraphs.paragraphs_type.teacher_questionnaire
+  module:
+    - options
+id: paragraph.teacher_questionnaire.field_release_teacher
+field_name: field_release_teacher
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'Can we quote your answers for our promotional purposes?'
+description: ' We would only use positive comments, of course.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

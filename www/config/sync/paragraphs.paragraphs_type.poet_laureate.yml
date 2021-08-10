@@ -1,0 +1,10 @@
+uuid: 2745dccb-4cdf-43a4-92d8-04d4982e4c75
+langcode: en
+status: true
+dependencies: {  }
+id: poet_laureate
+label: 'Poet laureate'
+icon_uuid: null
+icon_default: null
+description: 'Migrated from field_collection field_poet_laureate'
+behavior_plugins: {  }

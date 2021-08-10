@@ -1,0 +1,109 @@
+uuid: 6b1ac7f6-8eeb-4b88-bb08-b4e5c4efd8f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment_node_competition.default
+    - field.field.node.competition.body
+    - field.field.node.competition.comment_node_competition
+    - field.field.node.competition.field_competition_school
+    - field.field.node.competition.field_host_teacher
+    - field.field.node.competition.field_judges
+    - field.field.node.competition.field_language_stream
+    - field.field.node.competition.field_level
+    - field.field.node.competition.field_submission_deadline
+    - field.field.node.competition.field_winners_announced
+    - field.field.node.competition.field_years_in_competition
+    - node.type.competition
+  module:
+    - comment
+    - datetime
+    - entity_reference_revisions
+    - options
+    - text
+    - user
+id: node.competition.default
+targetEntityType: node
+bundle: competition
+mode: default
+content:
+  body:
+    label: hidden
+    weight: 0
+    type: text_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment_node_competition:
+    label: hidden
+    type: comment_default
+    weight: 20
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    region: content
+  field_host_teacher:
+    label: above
+    weight: 11
+    type: entity_reference_label
+    settings:
+      link: true
+    third_party_settings: {  }
+    region: content
+  field_judges:
+    label: above
+    weight: 5
+    type: entity_reference_revisions_entity_view
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_language_stream:
+    label: above
+    weight: 8
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_level:
+    label: above
+    weight: 7
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_submission_deadline:
+    label: above
+    weight: 9
+    type: datetime_default
+    settings:
+      format_type: long
+      timezone_override: ''
+    third_party_settings: {  }
+    region: content
+  field_winners_announced:
+    label: above
+    weight: 10
+    type: datetime_default
+    settings:
+      format_type: long
+      timezone_override: ''
+    third_party_settings: {  }
+    region: content
+  field_years_in_competition:
+    label: above
+    weight: 6
+    type: list_default
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  links:
+    weight: 100
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+hidden:
+  field_competition_school: true
+  langcode: true
