@@ -799,34 +799,88 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  * Keep this code block at the end of this file to take full effect.
  */
 
+$settings['config_sync_directory'] = getenv('CONFIG_SYNC');
+$settings['test_content_definition_location'] = getenv('TEST_CONTENT');
+
+$settings['sqlite_db_location'] = getenv('DB_FILE_LOCATION');
+if ($settings['sqlite_db_location']) {
+  $databases['default']['default'] = [
+    'driver' => 'sqlite',
+    'database' => $settings['sqlite_db_location'],
+  ];
+} else {
+  $databases['default']['default'] = [
+    'database' => getenv('DB_NAME'),
+    'driver' => 'mysql',
+    'host' => getenv('DB_HOSTNAME'),
+    'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+    'password' => getenv('DB_PASSWORD'),
+    'port' => getenv('DB_PORT'),
+    'prefix' => '',
+    'username' => getenv('DB_USER'),
+  ];
+}
+
+
+# Default config variants should be turned off
+$config['config_split.config_split.blacklist']['status'] = FALSE;
+$config['config_split.config_split.development']['status'] = FALSE;
+$config['config_split.config_split.production']['status'] = FALSE;
+$config['config_split.config_split.dblog']['status'] = FALSE;
+$config['config_split.config_split.syslog']['status'] = FALSE;
+
+$environment_name = getenv('STAGE_NAME') ?: 'Undefined';
+
+switch ($environment_name) {
+  case 'Local':
+  case 'VM':
+    $environment_bg_color = '#498700';
+    $environment_fg_color = '#fefefe';
+    $config['config_split.config_split.development']['status'] = TRUE;
+    $config['config_split.config_split.dblog']['status'] = TRUE;
+    break;
+
+  case 'Local - No Cache':
+  case 'VM - No Cache':
+    # Make sure caching is disabled to ease development. page load times will be slower consequently
+    include $app_root . '/' . $site_path . '/settings.caching.overrides.php';
+
+    $environment_bg_color = '#498700';
+    $environment_fg_color = '#fefefe';
+    $config['config_split.config_split.development']['status'] = TRUE;
+    $config['config_split.config_split.dblog']['status'] = TRUE;
+    break;
+
+  case 'Development':
+    $environment_bg_color = '#1c03f3';
+    $environment_fg_color = '#ffffff';
+    $config['config_split.config_split.development']['status'] = TRUE;
+    $config['config_split.config_split.syslog']['status'] = TRUE;
+    break;
+
+  case 'Staging':
+    $environment_bg_color = '#1900a0';
+    $environment_fg_color = '#ffffff';
+    $config['config_split.config_split.production']['status'] = TRUE;
+    $config['config_split.config_split.syslog']['status'] = TRUE;
+    break;
+
+  case 'Production':
+    $environment_bg_color = '#111111';
+    $environment_fg_color = '#ffffff';
+    $config['config_split.config_split.production']['status'] = TRUE;
+    $config['config_split.config_split.syslog']['status'] = TRUE;
+    break;
+
+  default:
+    $environment_bg_color = '#c70133';
+    $environment_fg_color = '#fefefe';
+}
+
+$config['environment_indicator.indicator']['bg_color'] = $environment_bg_color;
+$config['environment_indicator.indicator']['fg_color'] = $environment_fg_color;
+$config['environment_indicator.indicator']['name'] = $environment_name;
+
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
-
-/**
- * Default lando configurations. If needed, this can be overriden in the
- * gitignored settings.local.php file.
- */
-$databases['default']['default'] = array (
-  'database' => 'drupal9',
-  'username' => 'drupal9',
-  'password' => 'drupal9',
-  'prefix' => '',
-  'host' => 'database',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
-
-$databases['migrate']['default'] = [
-  'database' => 'drupal7db',
-  'username' => 'drupal7db',
-  'password' => 'drupal7db',
-  'prefix' => 'dr_',
-  'host' => 'd7db',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-];
-
-$settings['config_sync_directory'] = '../config/sync';
