@@ -1,12 +1,13 @@
 stages:
-  - deploy
-
+ - deploy
 deploy:
-  stage: deploy
-  script:
-    - cd /var/www/dev.poetryinvoice.com
-    - pwd
-    - git pull
-    - echo Done
-  tags:
-    - dev
+ stage: deploy
+ script:
+  - /usr/bin/cd /var/www/dev.poetryinvoice.com
+  - /usr/bin/git pull
+  - /usr/bin/composer install
+  - /var/www/dev.poetryinvoice.com/vendor/drush/drush/drush -y cache-rebuild
+  - /var/www/dev.poetryinvoice.com/vendor/drush/drush/drush -y updatedb
+  - /var/www/dev.poetryinvoice.com/vendor/drush/drush/drush -y config-import
+ only:
+  - dev
