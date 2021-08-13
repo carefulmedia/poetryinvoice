@@ -8,8 +8,8 @@ deploy:
  script:
    - cd /var/www/dev.poetryinvoice.com
    - pwd
-   - /usr/bin/git checkout dev
-   - /usr/bin/git pull dev
+   - git checkout dev
+   - git pull
    - /usr/bin/composer install
    - /var/www/dev.poetryinvoice.com/vendor/drush/drush/drush -y cache-rebuild
    - /var/www/dev.poetryinvoice.com/vendor/drush/drush/drush -y updatedb
