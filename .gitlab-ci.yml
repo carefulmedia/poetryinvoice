@@ -3,6 +3,8 @@ stages:
 
 deploy:
  stage: deploy
+ tags:
+   - dev
  script:
    - /usr/bin/cd /var/www/dev.poetryinvoice.com
    - /usr/bin/git pull
