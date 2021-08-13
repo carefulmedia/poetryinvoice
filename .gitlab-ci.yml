@@ -9,6 +9,7 @@ deploy:
    - /usr/bin/cd /var/www/dev.poetryinvoice.com
    - /usr/bin/git checkout dev
    - /usr/bin/git pull
+   - /usr/bin/cd /var/www/dev.poetryinvoice.com
    - pwd
    - /usr/bin/composer install
    - /var/www/dev.poetryinvoice.com/vendor/drush/drush/drush -y cache-rebuild
