@@ -7,6 +7,7 @@ deploy:
    - dev
  script:
    - /bin/cd /var/www/dev.poetryinvoice.com
+   - pwd
    - /usr/bin/git checkout dev
    - /usr/bin/git pull
    - pwd
