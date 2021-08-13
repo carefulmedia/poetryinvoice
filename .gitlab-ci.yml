@@ -12,8 +12,8 @@ deploy:
    - git pull origin dev
    - cd /var/www/dev.poetryinvoice.com/www
    - /usr/bin/composer install
-   - /var/www/dev.poetryinvoice.com/vendor/drush/drush/drush -y cache-rebuild
-   - /var/www/dev.poetryinvoice.com/vendor/drush/drush/drush -y updatedb
-   - /var/www/dev.poetryinvoice.com/vendor/drush/drush/drush -y config-import
+   - /var/www/dev.poetryinvoice.com/www/vendor/drush/drush/drush -y cache-rebuild
+   - /var/www/dev.poetryinvoice.com/www/vendor/drush/drush/drush -y updatedb
+   - /var/www/dev.poetryinvoice.com/www/vendor/drush/drush/drush -y config-import
  only:
    - dev
