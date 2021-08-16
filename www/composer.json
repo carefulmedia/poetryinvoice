@@ -25,7 +25,8 @@
         "drupal/migrate_tools": "^5",
         "drupal/migrate_upgrade": "^3",
         "drupal/paragraphs": "^1.12",
-        "drush/drush": "^10"
+        "drush/drush": "^10",
+        "vlucas/phpdotenv": "^5.3"
     },
     "conflict": {
         "drupal/drupal": "*"
