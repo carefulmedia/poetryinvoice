@@ -36,6 +36,14 @@
     "config": {
         "sort-packages": true
     },
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ],
+        "files": [
+            "load.environment.php"
+        ]
+    },
     "extra": {
         "drupal-scaffold": {
             "locations": {
