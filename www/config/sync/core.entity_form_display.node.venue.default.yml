@@ -5,9 +5,11 @@ dependencies:
   config:
     - field.field.node.venue.body
     - field.field.node.venue.comment_node_venue
+    - field.field.node.venue.field_address
     - field.field.node.venue.field_school_image
     - node.type.venue
   module:
+    - address
     - path
     - text
 id: node.venue.default
@@ -31,6 +33,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_address:
+    weight: 122
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
   langcode:
     type: language_select
     weight: 2

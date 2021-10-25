@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.school.comment_node_school
     - field.field.node.school.field_2016_rs
+    - field.field.node.school.field_address
     - field.field.node.school.field_cdb_id
     - field.field.node.school.field_communication_log
     - field.field.node.school.field_contact_email
@@ -41,6 +42,7 @@ content:
 hidden:
   comment_node_school: true
   field_2016_rs: true
+  field_address: true
   field_cdb_id: true
   field_communication_log: true
   field_contact_email: true

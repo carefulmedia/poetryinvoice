@@ -169,6 +169,10 @@ process:
           plugin: migration_lookup
           migration: upgrade_d7_user
           source: uid
+  field_address:
+    -
+      plugin: get_address
+      source: vid
 destination:
   plugin: 'entity_complete:node'
   translations: true

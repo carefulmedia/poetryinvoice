@@ -1,9 +1,8 @@
-uuid: f3c3ecbe-aee8-4a5c-a7f1-e6c4982fce26
+uuid: f95193ce-1e1e-4fd6-8ef5-3f95138f1bdb
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_display.comment.comment_node_school.default
     - field.field.node.school.comment_node_school
     - field.field.node.school.field_2016_rs
     - field.field.node.school.field_address
@@ -29,51 +28,78 @@ dependencies:
     - node.type.school
   module:
     - address
-    - comment
-    - user
+    - path
 id: node.school.default
 targetEntityType: node
 bundle: school
 mode: default
 content:
-  comment_node_school:
-    label: hidden
-    type: comment_default
-    weight: 20
-    settings:
-      view_mode: default
-      pager_id: 0
-    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 10
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_address:
-    weight: 101
-    label: above
+    weight: 121
     settings: {  }
     third_party_settings: {  }
     type: address_default
     region: content
-  field_pa:
-    label: hidden
-    weight: 20
-    type: entity_reference_label
-    settings:
-      link: true
-    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
     region: content
-  field_story_link:
-    label: above
-    weight: 15
-    type: string
     settings:
-      link_to_entity: false
+      include_locked: true
     third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
     region: content
-  links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 15
     region: content
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 120
+    region: content
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    settings:
+      display_label: true
+    weight: 16
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+      match_limit: 10
+    region: content
+    third_party_settings: {  }
 hidden:
+  comment_node_school: true
   field_2016_rs: true
   field_cdb_id: true
   field_communication_log: true
@@ -86,10 +112,11 @@ hidden:
   field_language_school: true
   field_not_competing_this_year: true
   field_number_of_students: true
+  field_pa: true
   field_school_board: true
   field_school_image: true
   field_special_subjects: true
+  field_story_link: true
   field_talked_to: true
   field_type_of_school: true
   field_years_in_competition: true
-  langcode: true

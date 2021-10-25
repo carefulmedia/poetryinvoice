@@ -6,11 +6,13 @@ dependencies:
     - core.entity_view_display.comment.comment_node_event.default
     - field.field.node.event.body
     - field.field.node.event.comment_node_event
+    - field.field.node.event.field_address
     - field.field.node.event.field_date
     - field.field.node.event.field_piv_event
     - field.field.node.event.field_story_link
     - node.type.event
   module:
+    - address
     - comment
     - datetime
     - text
@@ -35,6 +37,13 @@ content:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    region: content
+  field_address:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
     region: content
   field_date:
     label: hidden

@@ -5,11 +5,13 @@ dependencies:
   config:
     - field.field.node.event.body
     - field.field.node.event.comment_node_event
+    - field.field.node.event.field_address
     - field.field.node.event.field_date
     - field.field.node.event.field_piv_event
     - field.field.node.event.field_story_link
     - node.type.event
   module:
+    - address
     - path
     - text
 id: node.event.default
@@ -33,6 +35,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_address:
+    weight: 122
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
   langcode:
     type: language_select
     weight: 2

@@ -5,11 +5,13 @@ dependencies:
   config:
     - field.field.node.poem_rights_contact.body
     - field.field.node.poem_rights_contact.comment_node_poem_rights_conta
+    - field.field.node.poem_rights_contact.field_address
     - field.field.node.poem_rights_contact.field_contact_person
     - field.field.node.poem_rights_contact.field_email1
     - field.field.node.poem_rights_contact.field_type_of_contact
     - node.type.poem_rights_contact
   module:
+    - address
     - path
     - text
 id: node.poem_rights_contact.default
@@ -33,6 +35,12 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_address:
+    weight: 122
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
+    region: content
   langcode:
     type: language_select
     weight: 2

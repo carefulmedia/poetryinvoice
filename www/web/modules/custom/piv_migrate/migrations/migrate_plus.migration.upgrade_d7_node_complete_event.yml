@@ -98,6 +98,10 @@ process:
     -
       plugin: get
       source: field_story_link
+  field_address:
+    -
+      plugin: get_address
+      source: vid
 destination:
   plugin: 'entity_complete:node'
   translations: true

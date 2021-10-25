@@ -6,11 +6,13 @@ dependencies:
     - core.entity_view_display.comment.comment_node_poem_rights_conta.default
     - field.field.node.poem_rights_contact.body
     - field.field.node.poem_rights_contact.comment_node_poem_rights_conta
+    - field.field.node.poem_rights_contact.field_address
     - field.field.node.poem_rights_contact.field_contact_person
     - field.field.node.poem_rights_contact.field_email1
     - field.field.node.poem_rights_contact.field_type_of_contact
     - node.type.poem_rights_contact
   module:
+    - address
     - comment
     - options
     - text
@@ -35,6 +37,13 @@ content:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    region: content
+  field_address:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
     region: content
   field_contact_person:
     label: above

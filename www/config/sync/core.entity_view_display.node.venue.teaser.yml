@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.venue.body
     - field.field.node.venue.comment_node_venue
+    - field.field.node.venue.field_address
     - field.field.node.venue.field_school_image
     - node.type.venue
   module:
@@ -31,5 +32,6 @@ content:
     region: content
 hidden:
   comment_node_venue: true
+  field_address: true
   field_school_image: true
   langcode: true

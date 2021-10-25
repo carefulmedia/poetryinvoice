@@ -6,9 +6,11 @@ dependencies:
     - core.entity_view_display.comment.comment_node_venue.default
     - field.field.node.venue.body
     - field.field.node.venue.comment_node_venue
+    - field.field.node.venue.field_address
     - field.field.node.venue.field_school_image
     - node.type.venue
   module:
+    - address
     - comment
     - image
     - text
@@ -33,6 +35,13 @@ content:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    region: content
+  field_address:
+    weight: 101
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: address_default
     region: content
   field_school_image:
     label: hidden

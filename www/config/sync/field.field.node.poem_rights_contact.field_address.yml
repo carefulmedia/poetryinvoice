@@ -1,0 +1,33 @@
+uuid: d7e0b840-7525-4ab3-91bf-fbca55635f53
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_address
+    - node.type.poem_rights_contact
+  module:
+    - address
+id: node.poem_rights_contact.field_address
+field_name: field_address
+entity_type: node
+bundle: poem_rights_contact
+label: Address
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+  fields: {  }
+field_type: address
