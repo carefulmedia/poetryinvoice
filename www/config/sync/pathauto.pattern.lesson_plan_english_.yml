@@ -1,0 +1,33 @@
+uuid: 390aabe4-81e4-4d8d-af27-dc1b0312a707
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: lesson_plan_english_
+label: 'Lesson Plan (English)'
+type: 'canonical_entities:node'
+pattern: 'teach/lesson-plans/[node:title]'
+selection_criteria:
+  7a4a1991-5826-4dde-956f-f80a0dfb1b44:
+    id: node_type
+    bundles:
+      lesson_plan: lesson_plan
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 7a4a1991-5826-4dde-956f-f80a0dfb1b44
+  8d2a9f4d-2a68-49a5-9083-45064c7113e0:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 8d2a9f4d-2a68-49a5-9083-45064c7113e0
+selection_logic: and
+weight: -2
+relationships:
+  'node:langcode:language':
+    label: Language

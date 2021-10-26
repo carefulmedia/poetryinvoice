@@ -1,0 +1,33 @@
+uuid: a51b109c-b8f3-4bce-ba03-1b1b1c8e9b4e
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: event_french_
+label: 'Event (French)'
+type: 'canonical_entities:node'
+pattern: 'actualites/evenements/[node:title]'
+selection_criteria:
+  27d3c8fb-4281-4bce-b03a-856cc0d84dac:
+    id: node_type
+    bundles:
+      event: event
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 27d3c8fb-4281-4bce-b03a-856cc0d84dac
+  dc95b14f-5100-4394-8d96-ff7d3b9d6953:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: dc95b14f-5100-4394-8d96-ff7d3b9d6953
+selection_logic: and
+weight: -5
+relationships:
+  'node:langcode:language':
+    label: Language

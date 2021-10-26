@@ -1,0 +1,33 @@
+uuid: 5b5814a2-3a9a-4bad-92f1-56d9a564b869
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: lesson_plan_french_
+label: 'Lesson Plan (French)'
+type: 'canonical_entities:node'
+pattern: 'enseigner/plans-de-cours/[node:title]'
+selection_criteria:
+  694bef2d-39cd-4053-ba94-90a7e2d90284:
+    id: node_type
+    bundles:
+      lesson_plan: lesson_plan
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 694bef2d-39cd-4053-ba94-90a7e2d90284
+  bcb1950e-9d81-4cb9-8b2d-72a90ac35153:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: bcb1950e-9d81-4cb9-8b2d-72a90ac35153
+selection_logic: and
+weight: -1
+relationships:
+  'node:langcode:language':
+    label: Language

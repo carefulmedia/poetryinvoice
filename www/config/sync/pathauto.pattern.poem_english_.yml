@@ -1,0 +1,33 @@
+uuid: c425e134-9fb0-483f-9625-e29f8621b5e7
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: poem_english_
+label: 'Poem (English)'
+type: 'canonical_entities:node'
+pattern: 'poems/[node:title]'
+selection_criteria:
+  580fc80a-9202-4d06-8d77-8a36c93c6997:
+    id: node_type
+    bundles:
+      poem: poem
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 580fc80a-9202-4d06-8d77-8a36c93c6997
+  f2777428-a879-4657-abb0-1d09c76d1b54:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: f2777428-a879-4657-abb0-1d09c76d1b54
+selection_logic: and
+weight: 2
+relationships:
+  'node:langcode:language':
+    label: Language

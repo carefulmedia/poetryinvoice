@@ -1,0 +1,33 @@
+uuid: 3a11489e-dbc9-444e-baa0-a60c2744eb56
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: video_french_
+label: 'Video (French)'
+type: 'canonical_entities:node'
+pattern: 'visionner/[node:title]'
+selection_criteria:
+  43f5d7ca-9391-4a19-bec2-689ee7536e94:
+    id: node_type
+    bundles:
+      video: video
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 43f5d7ca-9391-4a19-bec2-689ee7536e94
+  59751a8f-0ad8-4196-8c84-a697993bbba5:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 59751a8f-0ad8-4196-8c84-a697993bbba5
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

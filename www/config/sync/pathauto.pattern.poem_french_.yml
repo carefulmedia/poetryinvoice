@@ -1,0 +1,33 @@
+uuid: e251578c-19d2-4dd9-a641-d23d7b80ff5d
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: poem_french_
+label: 'Poem (French)'
+type: 'canonical_entities:node'
+pattern: 'poemes/[node:title]'
+selection_criteria:
+  2b47f66b-bb9c-4b02-86a4-e01815f91fba:
+    id: node_type
+    bundles:
+      poem: poem
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 2b47f66b-bb9c-4b02-86a4-e01815f91fba
+  b6aadb38-c682-4a61-9b71-3683fb6625dd:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: b6aadb38-c682-4a61-9b71-3683fb6625dd
+selection_logic: and
+weight: 3
+relationships:
+  'node:langcode:language':
+    label: Language

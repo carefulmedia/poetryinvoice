@@ -1,0 +1,33 @@
+uuid: 79b0a9a6-d035-495a-ba98-2fa8240d5c64
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: school_french_
+label: 'School (French)'
+type: 'canonical_entities:node'
+pattern: 'le-concours/ecoles/[node:title]'
+selection_criteria:
+  330bc0be-da70-4734-9e2d-37143d3eb4a1:
+    id: node_type
+    bundles:
+      school: school
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 330bc0be-da70-4734-9e2d-37143d3eb4a1
+  41f1b2c1-1c4a-4c8f-a9d3-c23cdb975a15:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 41f1b2c1-1c4a-4c8f-a9d3-c23cdb975a15
+selection_logic: and
+weight: 7
+relationships:
+  'node:langcode:language':
+    label: Language

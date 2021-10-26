@@ -1,0 +1,33 @@
+uuid: ad99ffd7-ffe3-4dec-85df-c19fccb9de12
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: event_english_
+label: 'Event (English)'
+type: 'canonical_entities:node'
+pattern: 'news/events/[node:title]'
+selection_criteria:
+  3d2feaa6-18e8-4859-b0e7-589e8c4b35ea:
+    id: node_type
+    bundles:
+      event: event
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 3d2feaa6-18e8-4859-b0e7-589e8c4b35ea
+  f2e44a0c-3e15-47dd-b4b4-d21f0aae44f5:
+    id: language
+    langcodes:
+      en: en
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: f2e44a0c-3e15-47dd-b4b4-d21f0aae44f5
+selection_logic: and
+weight: -6
+relationships:
+  'node:langcode:language':
+    label: Language

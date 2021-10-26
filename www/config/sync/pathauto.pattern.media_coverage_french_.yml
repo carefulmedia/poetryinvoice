@@ -1,0 +1,33 @@
+uuid: 82cfa2e0-a23b-4438-9ba3-bc7ddb834f63
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: media_coverage_french_
+label: 'Media Coverage (French)'
+type: 'canonical_entities:node'
+pattern: 'actualites/dans-les-medias/[node:title]'
+selection_criteria:
+  b0416be1-6268-4fc2-b63b-efbafc558483:
+    id: node_type
+    bundles:
+      media_coverage: media_coverage
+    negate: false
+    context_mapping:
+      node: node
+    uuid: b0416be1-6268-4fc2-b63b-efbafc558483
+  3f301bd6-dd9d-4b99-811f-daf15a6d1b18:
+    id: language
+    langcodes:
+      fr: fr
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 3f301bd6-dd9d-4b99-811f-daf15a6d1b18
+selection_logic: and
+weight: 1
+relationships:
+  'node:langcode:language':
+    label: Language
