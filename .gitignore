@@ -10,3 +10,6 @@
 # DBs
 *.sql
 *.sql.gz
+
+# Ignored configurations
+piv_canadian_content.settings.*

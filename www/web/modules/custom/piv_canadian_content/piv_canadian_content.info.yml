@@ -1,0 +1,8 @@
+name: PIV Canadian Content
+type: module
+description: Lets you decide if content can only be accessed when requested by a user in Canada.
+package: Poetry in voice
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - ip2country

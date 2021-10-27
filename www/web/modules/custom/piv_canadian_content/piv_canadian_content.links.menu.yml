@@ -1,0 +1,6 @@
+piv_canadian_content.settings_form:
+  title: PIV Canadian Content
+  description: Configure PIV Canadian Content.
+  parent: system.admin_config_system
+  route_name: piv_canadian_content.settings_form
+  weight: 10

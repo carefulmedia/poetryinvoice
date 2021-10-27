@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for PIV Canadian Content module.
+ */
+ 
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function piv_canadian_content_preprocess_node(&$variables) {
+  $node = $variables['node'];
+  if (!in_array($node->bundle(), ['poem', 'video']) || $variables['view_mode'] != 'full') {
+    return;
+  }
+
+  if (empty($node->field_canada_restrict->value)) {
+    return;
+  }
+
+  // Cache per country only if its restricted.
+  $variables['#cache']['contexts'][] = 'ip.country';
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $config = \Drupal::config('piv_canadian_content.settings');
+  $nid = $config->get("piv_canadian_content_redirect_{$langcode}");
+  if (empty($nid)) {
+    return;
+  }
+
+  $entity_type_manager = \Drupal::entityTypeManager();
+  $redirect_node = $entity_type_manager->getStorage('node')->load($nid);
+  if (!$redirect_node || $node->id() == $redirect_node->id()) {
+    return;
+  }
+
+  $response = new RedirectResponse($redirect_node->toUrl()->toString(), 302);
+  $response->send();
+}
