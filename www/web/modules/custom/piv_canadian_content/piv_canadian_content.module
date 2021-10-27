@@ -4,7 +4,7 @@
  * @file
  * Primary module hooks for PIV Canadian Content module.
  */
- 
+
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
@@ -19,9 +19,15 @@ function piv_canadian_content_preprocess_node(&$variables) {
   if (empty($node->field_canada_restrict->value)) {
     return;
   }
+  // Disable cache if its restricted.
+  $variables['#cache']['max-age'] = 0;
 
-  // Cache per country only if its restricted.
-  $variables['#cache']['contexts'][] = 'ip.country';
+  $ip = \Drupal::request()->getClientIp() ?? '127.0.0.1';
+  $country = \Drupal::service('ip2country.lookup')->getCountry($ip);
+  if ($country == 'CA') {
+    return;
+  }
+
   $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
   $config = \Drupal::config('piv_canadian_content.settings');
   $nid = $config->get("piv_canadian_content_redirect_{$langcode}");
