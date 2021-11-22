@@ -1,0 +1,27 @@
+uuid: 330477fd-6c80-4d44-bc26-0ec52c513b09
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_competition_stream_type
+field_name: field_competition_stream_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: en
+      label: English
+    -
+      value: fr
+      label: French
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,23 @@
+uuid: 409c2c58-b161-4fcb-a865-3dfe4512a120
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_active
+    - node.type.competition
+id: node.competition.field_active
+field_name: field_active
+entity_type: node
+bundle: competition
+label: Active
+description: 'When checked, the competition is active.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

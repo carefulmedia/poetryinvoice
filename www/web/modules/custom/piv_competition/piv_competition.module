@@ -1,0 +1,41 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for PIV Competition module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
+
+/**
+ * Implements hook_form_BASE_FORM_alter().
+ */
+function piv_competition_form_node_form_alter(&$form, FormStateInterface $form_state) {
+  $bundle = $form_state->getFormObject()->getEntity()->bundle();
+  if ($bundle != 'competition') {
+    return;
+  }
+
+  // It is possible to add #required with #states, however it doesn't work well
+  // for address and only 1 school is required on the invited schools field.
+  // Instead, verify in a custom validation.
+  $form['field_location']['#states'] = [
+    'visible' => [
+      ':input[name="field_online_competition[value]"]' => ['checked' => FALSE],
+    ],
+  ];
+  $form['field_invited_schools']['#states'] = [
+    'visible' => [
+      ':input[name="field_by_invitation_only[value]"]' => ['checked' => TRUE],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function piv_competition_entity_type_alter(array &$entity_types) {
+  $entity_types['paragraph']->addConstraint('stream_constraint');
+  $entity_types['node']->addConstraint('competition_constraint');
+}

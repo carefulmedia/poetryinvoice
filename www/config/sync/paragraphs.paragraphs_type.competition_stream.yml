@@ -1,0 +1,10 @@
+uuid: ca0dc1d8-a0b9-48a9-9297-a7e844fa171c
+langcode: en
+status: true
+dependencies: {  }
+id: competition_stream
+label: Stream
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

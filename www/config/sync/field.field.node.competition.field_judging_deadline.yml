@@ -1,0 +1,21 @@
+uuid: fee6f812-b8ed-4fe8-ae55-500271aaebdb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_judging_deadline
+    - node.type.competition
+  module:
+    - datetime
+id: node.competition.field_judging_deadline
+field_name: field_judging_deadline
+entity_type: node
+bundle: competition
+label: 'Judging Deadline'
+description: 'Date which all judges must have completed all judging sessions.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

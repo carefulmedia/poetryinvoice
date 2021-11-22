@@ -1,0 +1,23 @@
+uuid: 6d5fd132-f695-4120-842d-2e281f3e7ff9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_online_competition
+    - node.type.competition
+id: node.competition.field_online_competition
+field_name: field_online_competition
+entity_type: node
+bundle: competition
+label: 'Online competition'
+description: 'Indicates that this competition will be held online.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

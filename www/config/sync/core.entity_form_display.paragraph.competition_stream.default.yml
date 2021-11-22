@@ -1,0 +1,82 @@
+uuid: 0f0b263b-5825-4e8e-9a81-2fc582e924b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.competition_stream.field_competition_stream_type
+    - field.field.paragraph.competition_stream.field_description
+    - field.field.paragraph.competition_stream.field_entries_required_school
+    - field.field.paragraph.competition_stream.field_label
+    - field.field.paragraph.competition_stream.field_max_entries_school
+    - field.field.paragraph.competition_stream.field_min_recitations
+    - paragraphs.paragraphs_type.competition_stream
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_teachers_ui:
+      children:
+        - field_label
+        - field_description
+      parent_name: ''
+      weight: 4
+      format_type: fieldset
+      region: content
+      format_settings:
+        show_empty_fields: false
+        id: ''
+        classes: ''
+        description: ''
+        required_fields: true
+      label: 'Teacher''s UI'
+id: paragraph.competition_stream.default
+targetEntityType: paragraph
+bundle: competition_stream
+mode: default
+content:
+  field_competition_stream_type:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_buttons
+    region: content
+  field_description:
+    weight: 6
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_entries_required_school:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_label:
+    weight: 5
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_max_entries_school:
+    weight: 2
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_min_recitations:
+    weight: 3
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,25 @@
+uuid: ff38c71b-9039-45fd-953b-44ebb165c55b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_entries_required_school
+    - paragraphs.paragraphs_type.competition_stream
+id: paragraph.competition_stream.field_entries_required_school
+field_name: field_entries_required_school
+entity_type: paragraph
+bundle: competition_stream
+label: 'Number of entries required'
+description: 'The number of entries required in order for the school to compete in this stream. Typically this will be 1 entry.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

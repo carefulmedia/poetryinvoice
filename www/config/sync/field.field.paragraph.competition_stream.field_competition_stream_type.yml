@@ -1,0 +1,21 @@
+uuid: 28cb6ea7-b25c-4b53-acd9-daecdfbebb72
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_competition_stream_type
+    - paragraphs.paragraphs_type.competition_stream
+  module:
+    - options
+id: paragraph.competition_stream.field_competition_stream_type
+field_name: field_competition_stream_type
+entity_type: paragraph
+bundle: competition_stream
+label: Stream
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

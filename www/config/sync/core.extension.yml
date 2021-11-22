@@ -20,6 +20,7 @@ module:
   editor: 0
   entity_reference_revisions: 0
   field: 0
+  field_group: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -42,6 +43,7 @@ module:
   path: 0
   path_alias: 0
   piv_canadian_content: 0
+  piv_competition: 0
   piv_migrate: 0
   piv_pathauto: 0
   quickedit: 0

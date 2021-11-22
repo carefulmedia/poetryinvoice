@@ -1,0 +1,25 @@
+uuid: 3f6099ca-0db1-4fd8-8913-218c1676c1ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_max_entries_school
+    - paragraphs.paragraphs_type.competition_stream
+id: paragraph.competition_stream.field_max_entries_school
+field_name: field_max_entries_school
+entity_type: paragraph
+bundle: competition_stream
+label: 'Maximum number of entries'
+description: 'The maximum number of entries a given school can register to a competition. Typically this will be 1 entry, but to allow a school to submit more entries, you can make this number higher. This number should never be smaller than the number of entries required.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,20 @@
+uuid: dea1e459-a450-4bbb-b6c0-0ad871e6a7c1
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_entries_required_school
+field_name: field_entries_required_school
+entity_type: paragraph
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

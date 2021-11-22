@@ -1,0 +1,76 @@
+uuid: f933e023-d2fb-48cd-a738-5ef230335de4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_competition_streams
+    - node.type.competition
+    - paragraphs.paragraphs_type.competition_stream
+  module:
+    - entity_reference_revisions
+id: node.competition.field_competition_streams
+field_name: field_competition_streams
+entity_type: node
+bundle: competition
+label: Streams
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      competition_stream: competition_stream
+    target_bundles_drag_drop:
+      action_item:
+        weight: 17
+        enabled: false
+      communication_log:
+        weight: 18
+        enabled: false
+      competition_stream:
+        enabled: true
+        weight: 19
+      judges:
+        weight: 20
+        enabled: false
+      lead_teacher_has_yet_to_si:
+        weight: 21
+        enabled: false
+      micro_interview:
+        weight: 22
+        enabled: false
+      poet_laureate:
+        weight: 23
+        enabled: false
+      poet_questionnaire:
+        weight: 24
+        enabled: false
+      publications:
+        weight: 25
+        enabled: false
+      teacher_leads_tracking:
+        weight: 26
+        enabled: false
+      teacher_questionnaire:
+        weight: 27
+        enabled: false
+      teacher_tracking:
+        weight: 28
+        enabled: false
+      this_teacher_signed_up_for:
+        weight: 29
+        enabled: false
+      tr_student:
+        weight: 30
+        enabled: false
+      types_of_support_requested:
+        weight: 31
+        enabled: false
+      visit_date_and_times:
+        weight: 32
+        enabled: false
+field_type: entity_reference_revisions

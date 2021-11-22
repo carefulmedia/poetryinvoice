@@ -1,0 +1,25 @@
+uuid: 11350d97-1109-4675-a552-0c366b9e4130
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_min_recitations
+    - paragraphs.paragraphs_type.competition_stream
+id: paragraph.competition_stream.field_min_recitations
+field_name: field_min_recitations
+entity_type: paragraph
+bundle: competition_stream
+label: 'Required number of recitations'
+description: 'The number of recitations required for an entry to be valid. If the stream includes more than 1 language, this is the number of recitations per language.'
+required: true
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
