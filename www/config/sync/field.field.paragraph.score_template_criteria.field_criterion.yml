@@ -1,0 +1,19 @@
+uuid: 8dfab281-9134-4865-9e36-89bc67730b84
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_criterion
+    - paragraphs.paragraphs_type.score_template_criteria
+id: paragraph.score_template_criteria.field_criterion
+field_name: field_criterion
+entity_type: paragraph
+bundle: score_template_criteria
+label: Criterion
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

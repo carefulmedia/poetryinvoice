@@ -1,0 +1,11 @@
+score.type_add:
+  route_name: entity.score_type.add_form
+  title: 'Add score type'
+  appears_on:
+    - entity.score_type.collection
+
+score.add_page:
+  route_name: entity.score.add_page
+  title: 'Add score'
+  appears_on:
+    - entity.score.collection

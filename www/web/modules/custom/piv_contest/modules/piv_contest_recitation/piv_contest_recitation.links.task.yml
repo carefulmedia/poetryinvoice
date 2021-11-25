@@ -1,0 +1,26 @@
+entity.recitation.view:
+  title: View
+  route_name: entity.recitation.canonical
+  base_route: entity.recitation.canonical
+entity.recitation.edit_form:
+  title: Edit
+  route_name: entity.recitation.edit_form
+  base_route: entity.recitation.canonical
+entity.recitation.delete_form:
+  title: Delete
+  route_name: entity.recitation.delete_form
+  base_route: entity.recitation.canonical
+  weight: 10
+entity.recitation.collection:
+  title: Recitation
+  route_name: entity.recitation.collection
+  base_route: system.admin_content
+  weight: 10
+entity.recitation_type.edit_form:
+  title: Edit
+  route_name: entity.recitation_type.edit_form
+  base_route: entity.recitation_type.edit_form
+entity.recitation_type.collection:
+  title: List
+  route_name: entity.recitation_type.collection
+  base_route: entity.recitation_type.collection

@@ -43,7 +43,13 @@ module:
   path: 0
   path_alias: 0
   piv_canadian_content: 0
-  piv_competition: 0
+  piv_contest: 0
+  piv_contest_competition: 0
+  piv_contest_competition_entry: 0
+  piv_contest_judging_session: 0
+  piv_contest_recitation: 0
+  piv_contest_score: 0
+  piv_contest_score_template: 0
   piv_migrate: 0
   piv_pathauto: 0
   quickedit: 0

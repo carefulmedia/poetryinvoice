@@ -1,0 +1,14 @@
+administer recitation types:
+  title: 'Administer recitation types'
+  description: 'Maintain the types of recitation entity.'
+  restrict access: true
+access recitation overview:
+  title: 'Access recitation overview page'
+delete recitation:
+  title: Delete recitation
+create recitation:
+  title: Create recitation
+view recitation:
+  title: View recitation
+edit recitation:
+  title: Edit recitation

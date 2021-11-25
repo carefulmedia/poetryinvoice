@@ -1,0 +1,12 @@
+piv_contest_competition_entry.competition_entry_type.*:
+  type: config_entity
+  label: 'Competition Entry type config'
+  mapping:
+    id:
+      type: string
+      label: 'ID'
+    label:
+      type: label
+      label: 'Label'
+    uuid:
+      type: string

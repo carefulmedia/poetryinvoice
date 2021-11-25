@@ -1,0 +1,14 @@
+administer judging session types:
+  title: 'Administer judging session types'
+  description: 'Maintain the types of judging session entity.'
+  restrict access: true
+access judging session overview:
+  title: 'Access judging session overview page'
+delete judging session:
+  title: Delete judging session
+create judging session:
+  title: Create judging session
+view judging session:
+  title: View judging session
+edit judging session:
+  title: Edit judging session

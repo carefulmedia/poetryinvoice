@@ -1,0 +1,11 @@
+judging_session.type_add:
+  route_name: entity.judging_session_type.add_form
+  title: 'Add judging session type'
+  appears_on:
+    - entity.judging_session_type.collection
+
+judging_session.add_page:
+  route_name: entity.judging_session.add_page
+  title: 'Add judging session'
+  appears_on:
+    - entity.judging_session.collection

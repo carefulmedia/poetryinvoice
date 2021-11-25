@@ -1,0 +1,79 @@
+uuid: cbdf7336-7049-4f79-a520-bdcbe15a7e3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.score_template.field_criteria
+    - paragraphs.paragraphs_type.score_template_criteria
+    - piv_contest_score_template.score_template_type.default
+  module:
+    - entity_reference_revisions
+id: score_template.default.field_criteria
+field_name: field_criteria
+entity_type: score_template
+bundle: default
+label: Criteria
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      score_template_criteria: score_template_criteria
+    target_bundles_drag_drop:
+      action_item:
+        weight: 18
+        enabled: false
+      communication_log:
+        weight: 19
+        enabled: false
+      competition_stream:
+        weight: 20
+        enabled: false
+      judges:
+        weight: 21
+        enabled: false
+      lead_teacher_has_yet_to_si:
+        weight: 22
+        enabled: false
+      micro_interview:
+        weight: 23
+        enabled: false
+      poet_laureate:
+        weight: 24
+        enabled: false
+      poet_questionnaire:
+        weight: 25
+        enabled: false
+      publications:
+        weight: 26
+        enabled: false
+      score_template_criteria:
+        enabled: true
+        weight: 27
+      teacher_leads_tracking:
+        weight: 28
+        enabled: false
+      teacher_questionnaire:
+        weight: 29
+        enabled: false
+      teacher_tracking:
+        weight: 30
+        enabled: false
+      this_teacher_signed_up_for:
+        weight: 31
+        enabled: false
+      tr_student:
+        weight: 32
+        enabled: false
+      types_of_support_requested:
+        weight: 33
+        enabled: false
+      visit_date_and_times:
+        weight: 34
+        enabled: false
+field_type: entity_reference_revisions

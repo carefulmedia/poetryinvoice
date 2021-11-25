@@ -1,0 +1,29 @@
+uuid: 3f1ec609-21fb-416f-bbb1-23904f56579e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.score_template.field_score_option_labels
+    - piv_contest_score_template.score_template_type.default
+id: score_template.default.field_score_option_labels
+field_name: field_score_option_labels
+entity_type: score_template
+bundle: default
+label: 'Score Option Labels'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: Developing
+  -
+    value: Satisfactory
+  -
+    value: Good
+  -
+    value: Excellent
+  -
+    value: Outstanding
+default_value_callback: ''
+settings: {  }
+field_type: string

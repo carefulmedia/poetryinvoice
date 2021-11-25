@@ -1,0 +1,20 @@
+uuid: c705b5f9-0b2a-4e94-8fbd-8408a8c9a3ce
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_score
+id: score.field_scores
+field_name: field_scores
+entity_type: score
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

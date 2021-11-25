@@ -1,0 +1,11 @@
+competition_entry.type_add:
+  route_name: entity.competition_entry_type.add_form
+  title: 'Add competition entry type'
+  appears_on:
+    - entity.competition_entry_type.collection
+
+competition_entry.add_page:
+  route_name: entity.competition_entry.add_page
+  title: 'Add competition entry'
+  appears_on:
+    - entity.competition_entry.collection

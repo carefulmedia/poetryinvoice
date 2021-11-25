@@ -1,0 +1,31 @@
+uuid: cbe4d3f4-d04d-46e5-b98b-5dd39ea443c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.score_template_criteria.field_criterion
+    - field.field.paragraph.score_template_criteria.field_score_options
+    - paragraphs.paragraphs_type.score_template_criteria
+id: paragraph.score_template_criteria.default
+targetEntityType: paragraph
+bundle: score_template_criteria
+mode: default
+content:
+  field_criterion:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  field_score_options:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+hidden:
+  created: true
+  status: true

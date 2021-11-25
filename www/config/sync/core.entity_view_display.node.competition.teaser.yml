@@ -22,6 +22,7 @@ dependencies:
     - field.field.node.competition.field_location
     - field.field.node.competition.field_online_competition
     - field.field.node.competition.field_open_date
+    - field.field.node.competition.field_score_template
     - field.field.node.competition.field_submission_deadline
     - field.field.node.competition.field_team_competition
     - field.field.node.competition.field_winners_announced
@@ -66,6 +67,7 @@ hidden:
   field_location: true
   field_online_competition: true
   field_open_date: true
+  field_score_template: true
   field_submission_deadline: true
   field_team_competition: true
   field_winners_announced: true

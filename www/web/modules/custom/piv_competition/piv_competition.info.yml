@@ -1,6 +1,0 @@
-name: PIV Competition
-type: module
-description: Code related to competitions.
-package: PIV
-core: 8.x
-core_version_requirement: ^8 || ^9

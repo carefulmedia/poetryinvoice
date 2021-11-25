@@ -1,0 +1,8 @@
+services:
+  plugin.manager.score_form:
+    class: Drupal\piv_contest\ScoreFormPluginManager
+    parent: default_plugin_manager
+
+  piv_contest.score_form_builder:
+    class: Drupal\piv_contest\ScoreFormBuilder
+    arguments: ['@plugin.manager.score_form', '@entity_type.manager', '@current_user']

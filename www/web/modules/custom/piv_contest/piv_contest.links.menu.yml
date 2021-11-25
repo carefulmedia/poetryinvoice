@@ -1,0 +1,12 @@
+system.admin_contest:
+  title: Contest
+  description: 'Find and manage contest related entities and configurations.'
+  route_name: system.admin_contest
+  parent: system.admin
+  weight: -7
+system.admin_contest_config:
+  title: Configure
+  description: 'Configure contest related entities and others.'
+  route_name: system.admin_contest_config
+  parent: system.admin_contest
+  weight: 10

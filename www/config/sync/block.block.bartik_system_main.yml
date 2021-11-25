@@ -9,7 +9,7 @@ dependencies:
 id: bartik_system_main
 theme: bartik
 region: content
-weight: -20
+weight: -2
 provider: null
 plugin: system_main_block
 settings:

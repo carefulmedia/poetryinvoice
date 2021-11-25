@@ -1,0 +1,23 @@
+uuid: d3915b52-b2ee-451a-9e42-69b6bc73584d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.score.field_scores
+    - piv_contest_score.score_type.default
+id: score.default.field_scores
+field_name: field_scores
+entity_type: score
+bundle: default
+label: Scores
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

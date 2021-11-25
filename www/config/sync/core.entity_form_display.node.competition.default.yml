@@ -21,6 +21,7 @@ dependencies:
     - field.field.node.competition.field_location
     - field.field.node.competition.field_online_competition
     - field.field.node.competition.field_open_date
+    - field.field.node.competition.field_score_template
     - field.field.node.competition.field_submission_deadline
     - field.field.node.competition.field_team_competition
     - field.field.node.competition.field_winners_announced
@@ -138,6 +139,12 @@ content:
     settings: {  }
     third_party_settings: {  }
     type: datetime_default
+    region: content
+  field_score_template:
+    weight: 26
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
     region: content
   field_submission_deadline:
     type: datetime_default

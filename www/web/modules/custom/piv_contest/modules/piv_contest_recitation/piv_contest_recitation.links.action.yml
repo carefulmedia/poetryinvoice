@@ -1,0 +1,11 @@
+recitation.type_add:
+  route_name: entity.recitation_type.add_form
+  title: 'Add recitation type'
+  appears_on:
+    - entity.recitation_type.collection
+
+recitation.add_page:
+  route_name: entity.recitation.add_page
+  title: 'Add recitation'
+  appears_on:
+    - entity.recitation.collection

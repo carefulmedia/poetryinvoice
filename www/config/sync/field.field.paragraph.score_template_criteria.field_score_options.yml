@@ -1,0 +1,23 @@
+uuid: 32742068-808b-4f4a-bcfe-14ca2c6c1002
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_score_options
+    - paragraphs.paragraphs_type.score_template_criteria
+id: paragraph.score_template_criteria.field_score_options
+field_name: field_score_options
+entity_type: paragraph
+bundle: score_template_criteria
+label: 'Score Options'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,14 @@
+administer score template types:
+  title: 'Administer score template types'
+  description: 'Maintain the types of score template entity.'
+  restrict access: true
+access score template overview:
+  title: 'Access score template overview page'
+delete score template:
+  title: Delete score template
+create score template:
+  title: Create score template
+view score template:
+  title: View score template
+edit score template:
+  title: Edit score template

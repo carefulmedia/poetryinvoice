@@ -1,0 +1,25 @@
+piv_contest.add_score:
+  path: '/judge/{node}'
+  defaults:
+    _title: 'Create Score'
+    _form: 'Drupal\piv_contest\Form\ScoreForm'
+  requirements:
+    _permission: 'access content'
+
+system.admin_contest:
+  path: '/admin/contest'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    link_id: 'system.admin_contest'
+    _title: 'Contest'
+  requirements:
+    _permission: 'access administration pages'
+
+system.admin_contest_config:
+  path: '/admin/contest/config'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    link_id: 'system.admin_contest_config'
+    _title: 'Configure'
+  requirements:
+    _permission: 'access administration pages'

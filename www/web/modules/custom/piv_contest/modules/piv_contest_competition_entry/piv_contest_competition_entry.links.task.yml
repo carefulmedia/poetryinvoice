@@ -1,0 +1,26 @@
+entity.competition_entry.view:
+  title: View
+  route_name: entity.competition_entry.canonical
+  base_route: entity.competition_entry.canonical
+entity.competition_entry.edit_form:
+  title: Edit
+  route_name: entity.competition_entry.edit_form
+  base_route: entity.competition_entry.canonical
+entity.competition_entry.delete_form:
+  title: Delete
+  route_name: entity.competition_entry.delete_form
+  base_route: entity.competition_entry.canonical
+  weight: 10
+entity.competition_entry.collection:
+  title: Competition Entry
+  route_name: entity.competition_entry.collection
+  base_route: system.admin_content
+  weight: 10
+entity.competition_entry_type.edit_form:
+  title: Edit
+  route_name: entity.competition_entry_type.edit_form
+  base_route: entity.competition_entry_type.edit_form
+entity.competition_entry_type.collection:
+  title: List
+  route_name: entity.competition_entry_type.collection
+  base_route: entity.competition_entry_type.collection

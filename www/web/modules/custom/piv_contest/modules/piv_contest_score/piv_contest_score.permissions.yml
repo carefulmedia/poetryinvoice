@@ -1,0 +1,14 @@
+administer score types:
+  title: 'Administer score types'
+  description: 'Maintain the types of score entity.'
+  restrict access: true
+access score overview:
+  title: 'Access score overview page'
+delete score:
+  title: Delete score
+create score:
+  title: Create score
+view score:
+  title: View score
+edit score:
+  title: Edit score

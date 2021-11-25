@@ -1,0 +1,5 @@
+entity.score_type.collection:
+  title: 'Score types'
+  parent: system.admin_structure
+  description: 'Manage and CRUD actions on Score type.'
+  route_name: entity.score_type.collection

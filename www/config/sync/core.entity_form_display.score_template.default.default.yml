@@ -1,0 +1,53 @@
+uuid: d9538b67-d50f-4a6d-9198-b8ee944bc81c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.score_template.default.field_criteria
+    - field.field.score_template.default.field_score_option_labels
+    - piv_contest_score_template.score_template_type.default
+  module:
+    - paragraphs
+id: score_template.default.default
+targetEntityType: score_template
+bundle: default
+mode: default
+content:
+  field_criteria:
+    type: entity_reference_paragraphs
+    weight: 2
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+  field_score_option_labels:
+    weight: 4
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+  status:
+    type: boolean_checkbox
+    settings:
+      display_label: false
+    weight: 3
+    region: content
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  uid: true

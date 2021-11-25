@@ -1,0 +1,10 @@
+uuid: 49d82a68-e08e-4351-9166-e8e179a7b565
+langcode: en
+status: true
+dependencies: {  }
+id: score_template_criteria
+label: Criteria
+icon_uuid: null
+icon_default: null
+description: 'Used by the score_template entity type.'
+behavior_plugins: {  }

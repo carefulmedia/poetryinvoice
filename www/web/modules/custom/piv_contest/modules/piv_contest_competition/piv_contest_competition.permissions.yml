@@ -1,0 +1,14 @@
+administer competition types:
+  title: 'Administer competition types'
+  description: 'Maintain the types of competition entity.'
+  restrict access: true
+access competition overview:
+  title: 'Access competition overview page'
+delete competition:
+  title: Delete competition
+create competition:
+  title: Create competition
+view competition:
+  title: View competition
+edit competition:
+  title: Edit competition

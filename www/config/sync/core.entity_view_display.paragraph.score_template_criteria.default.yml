@@ -1,0 +1,31 @@
+uuid: 2137c193-e778-400a-bb54-e10fbbb989ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.score_template_criteria.field_criterion
+    - field.field.paragraph.score_template_criteria.field_score_options
+    - paragraphs.paragraphs_type.score_template_criteria
+id: paragraph.score_template_criteria.default
+targetEntityType: paragraph
+bundle: score_template_criteria
+mode: default
+content:
+  field_criterion:
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_score_options:
+    weight: 1
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+hidden: {  }

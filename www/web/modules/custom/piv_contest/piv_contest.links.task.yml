@@ -1,0 +1,4 @@
+system.admin_contest:
+  title: Contest
+  route_name: system.admin_contest
+  base_route: system.admin_contest

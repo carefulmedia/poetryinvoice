@@ -1,0 +1,5 @@
+entity.recitation_type.collection:
+  title: 'Recitation types'
+  parent: system.admin_structure
+  description: 'Manage and CRUD actions on Recitation type.'
+  route_name: entity.recitation_type.collection

@@ -1,0 +1,5 @@
+entity.competition_type.collection:
+  title: 'Competition types'
+  parent: system.admin_structure
+  description: 'Manage and CRUD actions on Competition type.'
+  route_name: entity.competition_type.collection
