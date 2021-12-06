@@ -1,0 +1,18 @@
+uuid: 0fce83f7-46cb-48fa-ba35-308ffab9e849
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school_champion
+id: node.school_champion.changed
+field_name: changed
+entity_type: node
+bundle: school_champion
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

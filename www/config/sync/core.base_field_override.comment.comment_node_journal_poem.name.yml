@@ -1,0 +1,20 @@
+uuid: a8a4f6bc-07e0-4414-96c9-ee43257929c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_journal_poem
+id: comment.comment_node_journal_poem.name
+field_name: name
+entity_type: comment
+bundle: comment_node_journal_poem
+label: Name
+description: 'The comment author''s name.'
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

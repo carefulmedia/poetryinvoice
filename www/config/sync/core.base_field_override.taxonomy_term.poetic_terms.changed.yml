@@ -1,0 +1,18 @@
+uuid: d5d1c61f-22a1-4dfb-bfbe-5f18c6b53339
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.poetic_terms
+id: taxonomy_term.poetic_terms.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: poetic_terms
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

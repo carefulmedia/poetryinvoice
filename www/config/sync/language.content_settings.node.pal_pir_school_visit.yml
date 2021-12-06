@@ -1,0 +1,18 @@
+uuid: ede6312e-f089-4f0a-8d49-c159a21a7fc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.pal_pir_school_visit
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.pal_pir_school_visit
+target_entity_type_id: node
+target_bundle: pal_pir_school_visit
+default_langcode: site_default
+language_alterable: true

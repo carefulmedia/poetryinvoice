@@ -1,0 +1,20 @@
+uuid: 0c9eb37a-d9cb-4c57-95d1-6e34115b5abe
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.poem_tags
+  module:
+    - text
+id: taxonomy_term.poem_tags.description
+field_name: description
+entity_type: taxonomy_term
+bundle: poem_tags
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

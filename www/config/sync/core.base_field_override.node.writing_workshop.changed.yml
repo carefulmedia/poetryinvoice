@@ -1,0 +1,18 @@
+uuid: 7986241a-aae4-4b43-a449-3837205d4d12
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_workshop
+id: node.writing_workshop.changed
+field_name: changed
+entity_type: node
+bundle: writing_workshop
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

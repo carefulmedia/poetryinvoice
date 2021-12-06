@@ -1,0 +1,18 @@
+uuid: 024fc5ad-ffb4-424a-b6fa-7f24d7f7463b
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_poem_rights_conta
+id: comment.comment_node_poem_rights_conta.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_poem_rights_conta
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

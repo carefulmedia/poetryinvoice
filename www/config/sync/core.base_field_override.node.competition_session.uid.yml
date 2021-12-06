@@ -1,0 +1,20 @@
+uuid: cd357ce8-3972-46d2-98bb-12816fa33d8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.competition_session
+id: node.competition_session.uid
+field_name: uid
+entity_type: node
+bundle: competition_session
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

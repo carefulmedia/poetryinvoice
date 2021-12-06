@@ -1,0 +1,20 @@
+uuid: 370c669e-649e-4120-b67b-e617e7a0dedb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.video
+id: node.video.uid
+field_name: uid
+entity_type: node
+bundle: video
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

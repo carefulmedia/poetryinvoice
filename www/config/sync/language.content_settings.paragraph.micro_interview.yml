@@ -1,0 +1,18 @@
+uuid: bf96c733-0bf6-41e2-9126-4efde4d3b3f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.micro_interview
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.micro_interview
+target_entity_type_id: paragraph
+target_bundle: micro_interview
+default_langcode: site_default
+language_alterable: false

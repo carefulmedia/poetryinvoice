@@ -1,0 +1,22 @@
+uuid: cdca42f5-aa1b-49ef-b798-0cd8c33c45f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.sticky
+field_name: sticky
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

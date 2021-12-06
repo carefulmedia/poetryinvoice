@@ -1,0 +1,22 @@
+uuid: cd245485-a55e-4551-9fda-ecb2569ce027
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_writing_prompt
+id: comment.comment_node_writing_prompt.status
+field_name: status
+entity_type: comment
+bundle: comment_node_writing_prompt
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultStatus'
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

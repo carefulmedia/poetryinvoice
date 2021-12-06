@@ -1,0 +1,20 @@
+uuid: 756e036f-57f2-4cbe-9c31-c0f83bed41cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_workshop
+  module:
+    - path
+id: node.writing_workshop.path
+field_name: path
+entity_type: node
+bundle: writing_workshop
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

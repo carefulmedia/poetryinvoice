@@ -1,0 +1,20 @@
+uuid: da72db24-2054-4adf-8c87-6efae291b9a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_poem_rights_conta
+id: comment.comment_node_poem_rights_conta.uid
+field_name: uid
+entity_type: comment
+bundle: comment_node_poem_rights_conta
+label: 'User ID'
+description: 'The user ID of the comment author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

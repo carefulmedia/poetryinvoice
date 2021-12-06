@@ -15,7 +15,7 @@ bundle: pal_pir_school_visit
 label: 'Teacher Questionnaire'
 description: 'Please fill this out after the poet has visited your class or if there was a cancellation. Thank you!'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

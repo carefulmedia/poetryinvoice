@@ -1,0 +1,22 @@
+uuid: c8f7983f-cee8-48ed-acb7-ecb59a6cc8b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.judge_page
+id: node.judge_page.status
+field_name: status
+entity_type: node
+bundle: judge_page
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

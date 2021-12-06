@@ -1,0 +1,22 @@
+uuid: 6c7c5415-434c-491f-84c8-a9e842e6c92b
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.teacher_tracking
+id: paragraph.teacher_tracking.status
+field_name: status
+entity_type: paragraph
+bundle: teacher_tracking
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

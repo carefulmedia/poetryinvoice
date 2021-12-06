@@ -1,0 +1,18 @@
+uuid: b71d86e3-c44b-4fbd-94c8-a95a213e1dcd
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem
+id: node.poem.title
+field_name: title
+entity_type: node
+bundle: poem
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

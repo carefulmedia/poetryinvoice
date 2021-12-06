@@ -1,0 +1,18 @@
+uuid: 365bcbdb-f9b6-4dd7-9023-b73a37733ccc
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_lesson_plan
+id: comment.comment_node_lesson_plan.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_lesson_plan
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

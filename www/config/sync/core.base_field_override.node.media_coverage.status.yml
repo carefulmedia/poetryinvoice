@@ -1,0 +1,22 @@
+uuid: d2f1dbf0-d2d9-43c0-8a6b-c95b74136f43
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.media_coverage
+id: node.media_coverage.status
+field_name: status
+entity_type: node
+bundle: media_coverage
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

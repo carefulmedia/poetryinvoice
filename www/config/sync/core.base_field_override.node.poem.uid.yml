@@ -1,0 +1,20 @@
+uuid: ac9ed646-c9dc-4316-b7de-555e23fd49f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem
+id: node.poem.uid
+field_name: uid
+entity_type: node
+bundle: poem
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

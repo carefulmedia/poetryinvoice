@@ -1,0 +1,20 @@
+uuid: 0bf2b8e9-e962-48bc-87d1-fff844a345b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_workshop
+id: node.writing_workshop.menu_link
+field_name: menu_link
+entity_type: node
+bundle: writing_workshop
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: 06683e52-a8e7-461d-96f3-7161faca8a96
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.type_of_video
+  module:
+    - path
+id: taxonomy_term.type_of_video.path
+field_name: path
+entity_type: taxonomy_term
+bundle: type_of_video
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

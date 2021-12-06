@@ -1,0 +1,18 @@
+uuid: 82fa55e4-09da-4873-bf7b-dcb4a7132a80
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poll
+id: node.poll.changed
+field_name: changed
+entity_type: node
+bundle: poll
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

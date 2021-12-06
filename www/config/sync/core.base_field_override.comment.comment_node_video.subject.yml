@@ -1,0 +1,18 @@
+uuid: b3bda380-d312-4d5e-8933-904ce3c5c982
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_video
+id: comment.comment_node_video.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_video
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: 6ba22885-9f1e-4d3b-a34e-02fd90f99cb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_bulletin_board
+id: comment.comment_node_bulletin_board.uid
+field_name: uid
+entity_type: comment
+bundle: comment_node_bulletin_board
+label: 'User ID'
+description: 'The user ID of the comment author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

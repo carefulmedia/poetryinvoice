@@ -1,0 +1,18 @@
+uuid: 8b8029a0-2ad3-4c38-bee7-10d7f5af60e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_writing_workshop
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: comment.comment_node_writing_workshop
+target_entity_type_id: comment
+target_bundle: comment_node_writing_workshop
+default_langcode: site_default
+language_alterable: false

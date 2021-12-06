@@ -1,0 +1,22 @@
+uuid: d091b068-2d35-4873-8555-3f36fe7b3b4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.team_regionals_entry
+id: node.team_regionals_entry.promote
+field_name: promote
+entity_type: node
+bundle: team_regionals_entry
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

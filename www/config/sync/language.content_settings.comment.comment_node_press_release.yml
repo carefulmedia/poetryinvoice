@@ -1,0 +1,18 @@
+uuid: b33248c0-7478-4d96-b94e-386f4ba6f98f
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_press_release
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: comment.comment_node_press_release
+target_entity_type_id: comment
+target_bundle: comment_node_press_release
+default_langcode: site_default
+language_alterable: false

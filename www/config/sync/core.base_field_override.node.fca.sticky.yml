@@ -1,0 +1,22 @@
+uuid: 987e459a-7bae-4463-a8aa-b881f4f2c327
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.fca
+id: node.fca.sticky
+field_name: sticky
+entity_type: node
+bundle: fca
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

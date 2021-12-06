@@ -1,0 +1,18 @@
+uuid: f23df6c1-30aa-4f41-a7e0-80cc65967918
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.team_regionals_entry
+id: node.team_regionals_entry.changed
+field_name: changed
+entity_type: node
+bundle: team_regionals_entry
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,18 @@
+uuid: 592430cc-5136-44ae-b1be-b406c86bcd2f
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_press_release
+id: comment.comment_node_press_release.mail
+field_name: mail
+entity_type: comment
+bundle: comment_node_press_release
+label: Email
+description: 'The comment author''s email address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

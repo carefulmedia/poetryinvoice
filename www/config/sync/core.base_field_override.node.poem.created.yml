@@ -1,0 +1,18 @@
+uuid: d1e2d028-f685-4059-9f96-b7f32769865a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem
+id: node.poem.created
+field_name: created
+entity_type: node
+bundle: poem
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

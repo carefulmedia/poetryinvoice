@@ -1,0 +1,18 @@
+uuid: 8c5caf77-b51f-40a2-bdee-d545baab0a15
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem_rights_contact
+id: node.poem_rights_contact.changed
+field_name: changed
+entity_type: node
+bundle: poem_rights_contact
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

@@ -1,0 +1,18 @@
+uuid: a0fe7373-4457-4a8a-b878-3558f3972547
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.visit_date_and_times
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.visit_date_and_times
+target_entity_type_id: paragraph
+target_bundle: visit_date_and_times
+default_langcode: site_default
+language_alterable: false

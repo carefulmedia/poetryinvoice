@@ -1,0 +1,18 @@
+uuid: 73f34ba3-13cc-4f60-bf2d-ff41610e51a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.lesson_plan
+id: node.lesson_plan.title
+field_name: title
+entity_type: node
+bundle: lesson_plan
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

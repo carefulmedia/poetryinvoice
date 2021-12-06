@@ -1,0 +1,20 @@
+uuid: e5e0fca9-af4d-4e3c-9025-58cd5f7c6c5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.moods
+  module:
+    - path
+id: taxonomy_term.moods.path
+field_name: path
+entity_type: taxonomy_term
+bundle: moods
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

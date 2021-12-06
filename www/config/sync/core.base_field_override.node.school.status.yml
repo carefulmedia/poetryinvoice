@@ -1,0 +1,22 @@
+uuid: 49d02c90-d68c-457f-9a2f-e56ba0965129
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school
+id: node.school.status
+field_name: status
+entity_type: node
+bundle: school
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

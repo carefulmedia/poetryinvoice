@@ -1,0 +1,18 @@
+uuid: 448f6257-c3f7-44b6-b41b-fd3f78513401
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.competition
+id: node.competition.title
+field_name: title
+entity_type: node
+bundle: competition
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

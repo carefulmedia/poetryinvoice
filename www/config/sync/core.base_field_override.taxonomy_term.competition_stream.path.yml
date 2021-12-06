@@ -1,0 +1,20 @@
+uuid: bacca195-65ac-4eba-88a8-8e8746a1b56f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.competition_stream
+  module:
+    - path
+id: taxonomy_term.competition_stream.path
+field_name: path
+entity_type: taxonomy_term
+bundle: competition_stream
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,20 @@
+uuid: 69ea673d-b2b7-4f45-89e5-b3803335b39f
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.poetic_terms
+  module:
+    - text
+id: taxonomy_term.poetic_terms.description
+field_name: description
+entity_type: taxonomy_term
+bundle: poetic_terms
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

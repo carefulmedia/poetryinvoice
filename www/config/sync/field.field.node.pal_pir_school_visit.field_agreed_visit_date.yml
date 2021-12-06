@@ -14,7 +14,7 @@ bundle: pal_pir_school_visit
 label: 'Agreed visit date and time'
 description: 'Local school time'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

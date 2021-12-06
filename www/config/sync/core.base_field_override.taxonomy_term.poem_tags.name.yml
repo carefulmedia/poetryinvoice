@@ -1,0 +1,18 @@
+uuid: 06267013-5013-4203-ba88-819897a8c7e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.poem_tags
+id: taxonomy_term.poem_tags.name
+field_name: name
+entity_type: taxonomy_term
+bundle: poem_tags
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

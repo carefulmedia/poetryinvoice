@@ -1,0 +1,18 @@
+uuid: 84e5185e-1f9b-4c6e-bb85-b3b5f3129878
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.school
+target_entity_type_id: node
+target_bundle: school
+default_langcode: site_default
+language_alterable: true

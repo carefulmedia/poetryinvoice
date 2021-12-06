@@ -14,7 +14,7 @@ bundle: competition_entry
 label: 'Competition level'
 description: 'The level of the compitition up to which this entry made it.'
 required: false
-translatable: false
+translatable: true
 default_value:
   -
     value: 1

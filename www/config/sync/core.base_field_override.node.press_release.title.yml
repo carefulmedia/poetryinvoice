@@ -1,0 +1,18 @@
+uuid: a1512acf-3d5d-478d-bdc2-8d8a80b4f8f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.press_release
+id: node.press_release.title
+field_name: title
+entity_type: node
+bundle: press_release
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

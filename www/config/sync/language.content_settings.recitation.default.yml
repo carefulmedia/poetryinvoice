@@ -1,0 +1,18 @@
+uuid: 3359bf49-100c-4f37-b0e5-5fa635d5d776
+langcode: en
+status: true
+dependencies:
+  config:
+    - piv_contest_recitation.recitation_type.default
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: recitation.default
+target_entity_type_id: recitation
+target_bundle: default
+default_langcode: site_default
+language_alterable: true

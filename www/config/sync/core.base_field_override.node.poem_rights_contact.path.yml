@@ -1,0 +1,20 @@
+uuid: 91a4e693-a8fc-40af-85d4-12d1bea985c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem_rights_contact
+  module:
+    - path
+id: node.poem_rights_contact.path
+field_name: path
+entity_type: node
+bundle: poem_rights_contact
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

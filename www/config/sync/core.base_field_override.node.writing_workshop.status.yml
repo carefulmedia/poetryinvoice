@@ -1,0 +1,22 @@
+uuid: 32f5fb2d-c4b1-47b1-9b45-8ee7dbfc4958
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_workshop
+id: node.writing_workshop.status
+field_name: status
+entity_type: node
+bundle: writing_workshop
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

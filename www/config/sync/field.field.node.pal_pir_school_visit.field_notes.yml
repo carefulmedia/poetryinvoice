@@ -12,7 +12,7 @@ bundle: pal_pir_school_visit
 label: 'Pre-visit notes for poet'
 description: "This can include the type of work you would like the poet to do with the students (writing workshop(s), a reading with a Q&A period, performance coaching, etc), information about the students (grade level(s), ESL, previous exposure to poetry, etc.)\r\n"
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

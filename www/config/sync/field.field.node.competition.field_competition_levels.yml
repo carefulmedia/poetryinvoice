@@ -12,7 +12,7 @@ bundle: competition
 label: Levels
 description: 'Labels for each level of this competition. E.g.: Level 1, Tie breaker, Semifinals, Finals, etc.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

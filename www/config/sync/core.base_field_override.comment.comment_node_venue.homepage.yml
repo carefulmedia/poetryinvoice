@@ -1,0 +1,18 @@
+uuid: 20948f01-2daa-4e18-b674-c4e6885b0c49
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_venue
+id: comment.comment_node_venue.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_venue
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

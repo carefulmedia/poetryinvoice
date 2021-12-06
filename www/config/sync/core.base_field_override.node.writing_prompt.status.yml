@@ -1,0 +1,22 @@
+uuid: ffa9e05b-d26f-42b7-ba5e-f389a1d31a80
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_prompt
+id: node.writing_prompt.status
+field_name: status
+entity_type: node
+bundle: writing_prompt
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

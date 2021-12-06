@@ -1,0 +1,20 @@
+uuid: 5e03a9c9-dc60-480c-99b7-dd35bbefd900
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary._judging_by_year
+  module:
+    - text
+id: taxonomy_term._judging_by_year.description
+field_name: description
+entity_type: taxonomy_term
+bundle: _judging_by_year
+label: Description
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,18 @@
+uuid: 6cf361c6-711d-4963-b147-822d126e4080
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.competition_stream
+id: taxonomy_term.competition_stream.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: competition_stream
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

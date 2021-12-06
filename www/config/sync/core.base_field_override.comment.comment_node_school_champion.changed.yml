@@ -1,0 +1,18 @@
+uuid: 04616f63-a9d4-4038-b70d-190c98651526
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_school_champion
+id: comment.comment_node_school_champion.changed
+field_name: changed
+entity_type: comment
+bundle: comment_node_school_champion
+label: Changed
+description: 'The time that the comment was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

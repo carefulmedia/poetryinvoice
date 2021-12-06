@@ -1,0 +1,18 @@
+uuid: 645583c2-ac12-4c69-b5df-bd0dd9845465
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_poem_rights_conta
+id: comment.comment_node_poem_rights_conta.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_poem_rights_conta
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,20 @@
+uuid: 97a974f8-e8dc-44c3-81b3-f521f37c53bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_writing_workshop
+id: comment.comment_node_writing_workshop.name
+field_name: name
+entity_type: comment
+bundle: comment_node_writing_workshop
+label: Name
+description: 'The comment author''s name.'
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

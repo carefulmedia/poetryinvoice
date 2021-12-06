@@ -1,0 +1,22 @@
+uuid: 8c28785a-4f81-4aaf-872a-fafe0fcec024
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_prompt
+id: node.writing_prompt.sticky
+field_name: sticky
+entity_type: node
+bundle: writing_prompt
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

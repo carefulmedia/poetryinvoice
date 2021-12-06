@@ -1,0 +1,22 @@
+uuid: abd24a81-558b-4c6e-bcfc-628192f1292e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bulletin_board
+id: node.bulletin_board.status
+field_name: status
+entity_type: node
+bundle: bulletin_board
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,22 @@
+uuid: d086f308-22f6-4fc6-8b38-66b9b77cce49
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_workshop
+id: node.writing_workshop.sticky
+field_name: sticky
+entity_type: node
+bundle: writing_workshop
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

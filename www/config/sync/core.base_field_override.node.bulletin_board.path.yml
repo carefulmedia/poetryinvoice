@@ -1,0 +1,20 @@
+uuid: 3fe7d9d8-a2e3-472d-a09c-06295beca253
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bulletin_board
+  module:
+    - path
+id: node.bulletin_board.path
+field_name: path
+entity_type: node
+bundle: bulletin_board
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

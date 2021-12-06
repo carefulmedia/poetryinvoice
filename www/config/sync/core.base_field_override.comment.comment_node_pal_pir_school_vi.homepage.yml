@@ -1,0 +1,18 @@
+uuid: 30111986-1a93-4340-a39c-786c1ba6f7ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_pal_pir_school_vi
+id: comment.comment_node_pal_pir_school_vi.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_pal_pir_school_vi
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

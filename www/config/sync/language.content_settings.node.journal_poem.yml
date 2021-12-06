@@ -1,0 +1,18 @@
+uuid: 167680f6-5aae-40ce-a4fe-6184ef39d8c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.journal_poem
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.journal_poem
+target_entity_type_id: node
+target_bundle: journal_poem
+default_langcode: site_default
+language_alterable: true

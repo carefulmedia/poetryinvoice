@@ -14,7 +14,7 @@ bundle: journal_poem
 label: 'Inspiration for your poem'
 description: 'Did you write your poem in response to one of the poems in our anthology, to one of our writing prompts, or to a poet''s school visit?'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

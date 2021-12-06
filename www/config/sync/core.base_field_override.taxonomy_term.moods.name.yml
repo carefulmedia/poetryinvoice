@@ -1,0 +1,18 @@
+uuid: 3770d989-c4a5-471c-a5e6-ef226eebe365
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.moods
+id: taxonomy_term.moods.name
+field_name: name
+entity_type: taxonomy_term
+bundle: moods
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

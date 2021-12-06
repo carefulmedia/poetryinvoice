@@ -1,0 +1,18 @@
+uuid: feb9a466-e4cd-4d18-8eaa-83a03b8bcff8
+langcode: en
+status: true
+dependencies:
+  config:
+    - piv_contest_judging_session.judging_session_type.default
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: judging_session.default
+target_entity_type_id: judging_session
+target_bundle: default
+default_langcode: site_default
+language_alterable: true

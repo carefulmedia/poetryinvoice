@@ -1,0 +1,18 @@
+uuid: b2f1d04d-993d-47c6-8dfd-6fd95ba5329f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school
+id: node.school.created
+field_name: created
+entity_type: node
+bundle: school
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -12,7 +12,7 @@ bundle: pal_pir_school_visit
 label: 'I have a preferred poet'
 description: 'To avoid confusion with confirmed poet, you will not be able to edit or view this preference.'
 required: false
-translatable: false
+translatable: true
 default_value:
   -
     value: 0

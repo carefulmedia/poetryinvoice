@@ -1,0 +1,18 @@
+uuid: 00b2e050-89d6-4b09-a5f8-dbf23ee65609
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_workshop
+id: node.writing_workshop.created
+field_name: created
+entity_type: node
+bundle: writing_workshop
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

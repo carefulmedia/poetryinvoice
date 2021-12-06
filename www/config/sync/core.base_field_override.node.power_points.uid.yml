@@ -1,0 +1,20 @@
+uuid: ec2835bb-0039-4d74-bc09-aa7ad88c7e41
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.power_points
+id: node.power_points.uid
+field_name: uid
+entity_type: node
+bundle: power_points
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

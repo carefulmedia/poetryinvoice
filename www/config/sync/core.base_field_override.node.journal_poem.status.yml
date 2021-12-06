@@ -1,0 +1,22 @@
+uuid: ac1dad76-e44a-4ab5-b5cf-4c303b3c3bbb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.journal_poem
+id: node.journal_poem.status
+field_name: status
+entity_type: node
+bundle: journal_poem
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

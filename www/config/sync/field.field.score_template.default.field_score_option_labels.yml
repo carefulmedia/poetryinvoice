@@ -12,7 +12,7 @@ bundle: default
 label: 'Score Option Labels'
 description: ''
 required: true
-translatable: false
+translatable: true
 default_value:
   -
     value: Developing

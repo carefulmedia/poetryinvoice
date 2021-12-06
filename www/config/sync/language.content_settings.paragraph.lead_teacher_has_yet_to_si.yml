@@ -1,0 +1,18 @@
+uuid: 3da307e7-2354-4bbb-995a-b7e21c89c537
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lead_teacher_has_yet_to_si
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.lead_teacher_has_yet_to_si
+target_entity_type_id: paragraph
+target_bundle: lead_teacher_has_yet_to_si
+default_langcode: site_default
+language_alterable: false

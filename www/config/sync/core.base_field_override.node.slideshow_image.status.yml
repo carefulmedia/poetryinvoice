@@ -1,0 +1,22 @@
+uuid: 71a5b34d-90ac-4547-a752-99858fdf5eef
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.slideshow_image
+id: node.slideshow_image.status
+field_name: status
+entity_type: node
+bundle: slideshow_image
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

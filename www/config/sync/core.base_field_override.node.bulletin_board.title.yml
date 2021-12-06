@@ -1,0 +1,18 @@
+uuid: 9ffd8457-cc7a-4bdd-9c07-ae287ef2fa95
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bulletin_board
+id: node.bulletin_board.title
+field_name: title
+entity_type: node
+bundle: bulletin_board
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

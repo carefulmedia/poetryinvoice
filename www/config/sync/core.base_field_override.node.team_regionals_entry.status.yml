@@ -1,0 +1,22 @@
+uuid: 4b74c9a1-77dd-48e2-aef7-b2f3716150e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.team_regionals_entry
+id: node.team_regionals_entry.status
+field_name: status
+entity_type: node
+bundle: team_regionals_entry
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

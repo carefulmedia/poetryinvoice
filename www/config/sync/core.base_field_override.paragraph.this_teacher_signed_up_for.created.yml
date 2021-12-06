@@ -1,0 +1,18 @@
+uuid: acd4c57a-385f-4a14-b54b-38ae91604318
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+id: paragraph.this_teacher_signed_up_for.created
+field_name: created
+entity_type: paragraph
+bundle: this_teacher_signed_up_for
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

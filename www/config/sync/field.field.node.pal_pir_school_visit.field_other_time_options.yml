@@ -12,7 +12,7 @@ bundle: pal_pir_school_visit
 label: 'Broader time options'
 description: "Let us know what other times would work for you.\r\n<br>\r\ne.g.: Every Tuesday @ 8:30, January 20 - March 3 all day, March 15 @ 12:00\r\netc."
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

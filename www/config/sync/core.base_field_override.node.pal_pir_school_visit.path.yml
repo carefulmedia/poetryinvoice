@@ -1,0 +1,20 @@
+uuid: b70bf9d5-6a3f-437d-a98a-06f4603f4eba
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.pal_pir_school_visit
+  module:
+    - path
+id: node.pal_pir_school_visit.path
+field_name: path
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

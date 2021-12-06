@@ -1,0 +1,18 @@
+uuid: dfaa3c86-f3f1-40cd-af46-1002eba88112
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_bulletin_board
+id: comment.comment_node_bulletin_board.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_bulletin_board
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,18 @@
+uuid: 484ed312-6d20-4153-aa71-dc1c0561c6c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_bulletin_board
+id: comment.comment_node_bulletin_board.changed
+field_name: changed
+entity_type: comment
+bundle: comment_node_bulletin_board
+label: Changed
+description: 'The time that the comment was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

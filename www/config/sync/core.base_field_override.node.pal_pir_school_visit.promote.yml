@@ -1,0 +1,22 @@
+uuid: 54459aad-8709-46dc-9c5f-33bb28b62416
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.promote
+field_name: promote
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

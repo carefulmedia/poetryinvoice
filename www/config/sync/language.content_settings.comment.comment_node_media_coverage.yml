@@ -1,0 +1,18 @@
+uuid: 307e7a00-75dd-4446-871d-8ce1e420cc0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_media_coverage
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: comment.comment_node_media_coverage
+target_entity_type_id: comment
+target_bundle: comment_node_media_coverage
+default_langcode: site_default
+language_alterable: false

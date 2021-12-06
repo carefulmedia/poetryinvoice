@@ -1,0 +1,20 @@
+uuid: 85155612-ff05-49ae-9f93-25bdd6ee34df
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.competition_entry
+id: node.competition_entry.menu_link
+field_name: menu_link
+entity_type: node
+bundle: competition_entry
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: c4f7609c-c3b4-4115-ad28-9345f30f12ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.fca
+  module:
+    - path
+id: node.fca.path
+field_name: path
+entity_type: node
+bundle: fca
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

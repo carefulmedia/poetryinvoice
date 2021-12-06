@@ -13,7 +13,7 @@ bundle: competition
 label: 'Score Template'
 description: 'Select or create a new score template for this competition. Score templates manages criteria and score options for judging.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

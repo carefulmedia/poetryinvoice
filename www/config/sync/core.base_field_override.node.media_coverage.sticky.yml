@@ -1,0 +1,22 @@
+uuid: 0c417ffd-0ba5-46f8-a65a-a43e8865ce90
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.media_coverage
+id: node.media_coverage.sticky
+field_name: sticky
+entity_type: node
+bundle: media_coverage
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

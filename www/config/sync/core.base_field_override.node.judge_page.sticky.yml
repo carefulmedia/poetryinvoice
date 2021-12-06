@@ -1,0 +1,22 @@
+uuid: 79aaeae7-1819-41b7-b6a0-42dad03aa7ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.judge_page
+id: node.judge_page.sticky
+field_name: sticky
+entity_type: node
+bundle: judge_page
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

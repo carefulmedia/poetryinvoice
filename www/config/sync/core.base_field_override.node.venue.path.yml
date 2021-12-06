@@ -1,0 +1,20 @@
+uuid: 8dbe8ffc-2f6d-4c03-b976-5ddc30727617
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.venue
+  module:
+    - path
+id: node.venue.path
+field_name: path
+entity_type: node
+bundle: venue
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

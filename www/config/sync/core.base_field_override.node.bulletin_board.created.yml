@@ -1,0 +1,18 @@
+uuid: da4e93ee-6ad4-4aee-97ac-3fca9662a3a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bulletin_board
+id: node.bulletin_board.created
+field_name: created
+entity_type: node
+bundle: bulletin_board
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

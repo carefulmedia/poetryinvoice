@@ -1,0 +1,18 @@
+uuid: 40b4bf75-674f-462f-aeae-4e7758a6a606
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_school
+id: comment.comment_node_school.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_school
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

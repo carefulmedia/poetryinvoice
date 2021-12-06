@@ -1,0 +1,22 @@
+uuid: 0cd42c63-84f2-4c28-aa95-de20e659f48c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.judge_page
+id: node.judge_page.promote
+field_name: promote
+entity_type: node
+bundle: judge_page
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

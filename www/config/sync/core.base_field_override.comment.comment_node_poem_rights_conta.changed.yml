@@ -1,0 +1,18 @@
+uuid: c166a66a-2a15-4261-945c-e7ed9cfb2d3c
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_poem_rights_conta
+id: comment.comment_node_poem_rights_conta.changed
+field_name: changed
+entity_type: comment
+bundle: comment_node_poem_rights_conta
+label: Changed
+description: 'The time that the comment was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

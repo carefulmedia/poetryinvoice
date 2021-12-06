@@ -1,0 +1,18 @@
+uuid: 22aa90f4-7e1b-4937-959d-9ca1f043f2de
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.poetic_terms
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.poetic_terms
+target_entity_type_id: taxonomy_term
+target_bundle: poetic_terms
+default_langcode: site_default
+language_alterable: false

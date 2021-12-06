@@ -14,7 +14,7 @@ bundle: competition
 label: 'Open Date'
 description: 'The date this competition will be public.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

@@ -1,0 +1,20 @@
+uuid: 326b5392-a8e4-40ad-84f2-3e9ed7635d76
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.student
+id: node.student.menu_link
+field_name: menu_link
+entity_type: node
+bundle: student
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

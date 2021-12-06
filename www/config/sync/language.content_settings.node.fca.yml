@@ -1,0 +1,18 @@
+uuid: fa80295a-ab02-4b21-8d84-b320b162fc91
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.fca
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.fca
+target_entity_type_id: node
+target_bundle: fca
+default_langcode: site_default
+language_alterable: true

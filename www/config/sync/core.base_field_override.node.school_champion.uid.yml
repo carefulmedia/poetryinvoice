@@ -1,0 +1,20 @@
+uuid: 7218d9c1-f36e-47e1-9ac4-ec823e4e181b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school_champion
+id: node.school_champion.uid
+field_name: uid
+entity_type: node
+bundle: school_champion
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

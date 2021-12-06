@@ -1,0 +1,22 @@
+uuid: fb92915f-e894-4dc3-a655-c4fcf46e6ffe
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.competition_session
+id: node.competition_session.status
+field_name: status
+entity_type: node
+bundle: competition_session
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

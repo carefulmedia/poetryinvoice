@@ -1,0 +1,18 @@
+uuid: 1174b8a2-d768-4791-b4bc-ca1806e2025b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.competition_stream
+id: taxonomy_term.competition_stream.name
+field_name: name
+entity_type: taxonomy_term
+bundle: competition_stream
+label: Name
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

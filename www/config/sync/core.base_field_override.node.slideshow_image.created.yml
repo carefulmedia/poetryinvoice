@@ -1,0 +1,18 @@
+uuid: b09828cc-f94d-4022-ab4d-b7e1dd500d4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.slideshow_image
+id: node.slideshow_image.created
+field_name: created
+entity_type: node
+bundle: slideshow_image
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

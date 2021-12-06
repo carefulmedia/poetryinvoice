@@ -1,0 +1,18 @@
+uuid: 0a2fd531-c04d-491d-baee-f7bb56569925
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.teacher_questionnaire
+id: paragraph.teacher_questionnaire.created
+field_name: created
+entity_type: paragraph
+bundle: teacher_questionnaire
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

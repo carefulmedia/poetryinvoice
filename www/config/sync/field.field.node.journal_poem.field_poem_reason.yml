@@ -12,7 +12,7 @@ bundle: journal_poem
 label: 'Tell us in a few sentences how the poem/prompt/visit influenced the creation of your poem. '
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

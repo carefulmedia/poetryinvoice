@@ -1,0 +1,20 @@
+uuid: d42c9b09-229c-4fc2-9572-500c78bee830
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.team_regionals_entry
+  module:
+    - path
+id: node.team_regionals_entry.path
+field_name: path
+entity_type: node
+bundle: team_regionals_entry
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

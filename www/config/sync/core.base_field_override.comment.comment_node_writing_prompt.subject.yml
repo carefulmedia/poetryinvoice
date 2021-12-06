@@ -1,0 +1,18 @@
+uuid: a29b50dc-c64c-4ee3-aabb-4a555efb11c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_writing_prompt
+id: comment.comment_node_writing_prompt.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_writing_prompt
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

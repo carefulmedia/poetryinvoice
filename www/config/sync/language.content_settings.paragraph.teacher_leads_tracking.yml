@@ -1,0 +1,18 @@
+uuid: 3b718315-11c3-40fa-8271-34a2f236c393
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.teacher_leads_tracking
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.teacher_leads_tracking
+target_entity_type_id: paragraph
+target_bundle: teacher_leads_tracking
+default_langcode: site_default
+language_alterable: false

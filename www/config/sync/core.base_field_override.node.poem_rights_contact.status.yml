@@ -1,0 +1,22 @@
+uuid: e174c232-ad93-4411-8aa9-c4c2534987c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem_rights_contact
+id: node.poem_rights_contact.status
+field_name: status
+entity_type: node
+bundle: poem_rights_contact
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

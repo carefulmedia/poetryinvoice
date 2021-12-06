@@ -1,0 +1,18 @@
+uuid: cecaf7b5-7ab7-437a-86a7-29750743a9f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.competition_entry
+id: node.competition_entry.title
+field_name: title
+entity_type: node
+bundle: competition_entry
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

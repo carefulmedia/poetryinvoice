@@ -1,0 +1,18 @@
+uuid: 9131314b-84a6-4b88-b683-9d92f7350fe5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem_rights_contact
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.poem_rights_contact
+target_entity_type_id: node
+target_bundle: poem_rights_contact
+default_langcode: site_default
+language_alterable: true

@@ -1,0 +1,20 @@
+uuid: c1fbda2e-dfca-44fe-a126-e0593877aeab
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.slideshow_image
+  module:
+    - path
+id: node.slideshow_image.path
+field_name: path
+entity_type: node
+bundle: slideshow_image
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

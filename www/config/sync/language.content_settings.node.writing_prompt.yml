@@ -1,0 +1,18 @@
+uuid: cdbdc2c8-6fbe-4c36-8c0d-0342b7afeb6e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_prompt
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.writing_prompt
+target_entity_type_id: node
+target_bundle: writing_prompt
+default_langcode: site_default
+language_alterable: true

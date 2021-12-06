@@ -1,0 +1,22 @@
+uuid: 5803eb85-4fcd-4fa4-8ce6-67cc1205f183
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_journal_poem
+id: comment.comment_node_journal_poem.status
+field_name: status
+entity_type: comment
+bundle: comment_node_journal_poem
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultStatus'
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

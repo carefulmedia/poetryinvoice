@@ -1,0 +1,18 @@
+uuid: 06f095e2-27a1-4c1b-9e7b-0519ac493a09
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school_champion
+id: node.school_champion.title
+field_name: title
+entity_type: node
+bundle: school_champion
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

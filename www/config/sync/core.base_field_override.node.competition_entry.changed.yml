@@ -1,0 +1,18 @@
+uuid: ffc88b89-1442-4aad-b15b-44207b4f8bbf
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.competition_entry
+id: node.competition_entry.changed
+field_name: changed
+entity_type: node
+bundle: competition_entry
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

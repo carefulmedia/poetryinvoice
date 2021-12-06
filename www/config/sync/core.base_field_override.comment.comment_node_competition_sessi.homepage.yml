@@ -1,0 +1,18 @@
+uuid: 9f4410e9-7f71-4ce7-a7dd-7851afcc94d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_competition_sessi
+id: comment.comment_node_competition_sessi.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_competition_sessi
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

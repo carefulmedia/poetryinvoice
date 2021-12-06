@@ -14,7 +14,7 @@ bundle: team_regionals_entry
 label: 'Place team regional'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

@@ -1,0 +1,22 @@
+uuid: 1ad6dfd0-7916-4262-9bd1-38bfe5171769
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.power_points
+id: node.power_points.sticky
+field_name: sticky
+entity_type: node
+bundle: power_points
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -12,7 +12,7 @@ bundle: pal_pir_school_visit
 label: 'Total # students involved'
 description: 'Please estimate the number of students involved.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

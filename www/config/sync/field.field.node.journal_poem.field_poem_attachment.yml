@@ -14,7 +14,7 @@ bundle: journal_poem
 label: 'Poem attachment'
 description: 'Attach a copy of your poem as well in txt, doc or docx format to help us see how you would like your poem to appear on the page'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

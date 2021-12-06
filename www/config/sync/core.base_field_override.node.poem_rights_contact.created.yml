@@ -1,0 +1,18 @@
+uuid: 1428c211-74f1-417d-963e-47176cb328a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem_rights_contact
+id: node.poem_rights_contact.created
+field_name: created
+entity_type: node
+bundle: poem_rights_contact
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

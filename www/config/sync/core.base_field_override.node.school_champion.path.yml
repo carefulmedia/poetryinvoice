@@ -1,0 +1,20 @@
+uuid: a51e5ee1-16af-4145-a25d-26352dbeec83
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school_champion
+  module:
+    - path
+id: node.school_champion.path
+field_name: path
+entity_type: node
+bundle: school_champion
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

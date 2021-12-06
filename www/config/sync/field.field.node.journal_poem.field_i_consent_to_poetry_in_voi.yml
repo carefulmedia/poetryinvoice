@@ -12,7 +12,7 @@ bundle: journal_poem
 label: 'I consent to Poetry In Voice/Les voix de la poésie sharing my work publicly in perpetuity'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value:
   -
     value: 0

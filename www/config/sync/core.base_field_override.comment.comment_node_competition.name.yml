@@ -1,0 +1,20 @@
+uuid: dbbd37fa-92d2-441d-ac87-7ca2f4eaa24b
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_competition
+id: comment.comment_node_competition.name
+field_name: name
+entity_type: comment
+bundle: comment_node_competition
+label: Name
+description: 'The comment author''s name.'
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,18 @@
+uuid: d248af5a-6e4f-46f8-aa69-f6d9ca1a9737
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school_champion
+id: node.school_champion.created
+field_name: created
+entity_type: node
+bundle: school_champion
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

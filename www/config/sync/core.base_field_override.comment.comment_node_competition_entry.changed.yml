@@ -1,0 +1,18 @@
+uuid: e63060a1-0716-4250-ba91-a949e8e26907
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_competition_entry
+id: comment.comment_node_competition_entry.changed
+field_name: changed
+entity_type: comment
+bundle: comment_node_competition_entry
+label: Changed
+description: 'The time that the comment was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

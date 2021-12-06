@@ -1,0 +1,22 @@
+uuid: c31218cb-859c-4507-8c76-6f8c4559d741
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_power_points
+id: comment.comment_node_power_points.status
+field_name: status
+entity_type: comment
+bundle: comment_node_power_points
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultStatus'
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

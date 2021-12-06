@@ -1,0 +1,18 @@
+uuid: 695b0194-eebb-4a13-aa55-3f687eb05fd4
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.competition
+id: node.competition.created
+field_name: created
+entity_type: node
+bundle: competition
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

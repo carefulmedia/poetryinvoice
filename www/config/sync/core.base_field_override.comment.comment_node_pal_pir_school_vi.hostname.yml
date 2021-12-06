@@ -1,0 +1,18 @@
+uuid: 8b102ca0-b31f-4b28-8d87-035628475960
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_pal_pir_school_vi
+id: comment.comment_node_pal_pir_school_vi.hostname
+field_name: hostname
+entity_type: comment
+bundle: comment_node_pal_pir_school_vi
+label: Hostname
+description: 'The comment author''s hostname.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultHostname'
+settings: {  }
+field_type: string

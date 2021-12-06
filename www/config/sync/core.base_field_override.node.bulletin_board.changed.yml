@@ -1,0 +1,18 @@
+uuid: 586ad1d6-8774-48c2-9fa6-43d02fde277a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bulletin_board
+id: node.bulletin_board.changed
+field_name: changed
+entity_type: node
+bundle: bulletin_board
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

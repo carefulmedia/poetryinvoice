@@ -1,0 +1,18 @@
+uuid: 18266cc7-82a1-49dc-b810-d6538f012752
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poll
+id: node.poll.title
+field_name: title
+entity_type: node
+bundle: poll
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

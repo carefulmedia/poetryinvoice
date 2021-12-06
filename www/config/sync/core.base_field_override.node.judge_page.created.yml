@@ -1,0 +1,18 @@
+uuid: f7b8456c-aeb4-4987-b08b-f977d988917c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.judge_page
+id: node.judge_page.created
+field_name: created
+entity_type: node
+bundle: judge_page
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

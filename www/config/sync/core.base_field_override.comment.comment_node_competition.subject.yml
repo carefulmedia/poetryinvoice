@@ -1,0 +1,18 @@
+uuid: de0972a9-4b91-429f-b848-512e3e2906ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_competition
+id: comment.comment_node_competition.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_competition
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

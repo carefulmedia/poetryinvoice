@@ -1,0 +1,22 @@
+uuid: 0ba39a79-bc9d-4462-919d-8293d1fa6df2
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_school_champion
+id: comment.comment_node_school_champion.status
+field_name: status
+entity_type: comment
+bundle: comment_node_school_champion
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultStatus'
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

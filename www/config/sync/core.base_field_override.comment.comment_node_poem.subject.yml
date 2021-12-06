@@ -1,0 +1,18 @@
+uuid: f790d210-3524-4cc8-9611-ef940c94bf52
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_poem
+id: comment.comment_node_poem.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_poem
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

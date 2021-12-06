@@ -1,0 +1,18 @@
+uuid: f53c8d59-b821-46e4-ae59-1307a0bab25e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.slideshow_image
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.slideshow_image
+target_entity_type_id: node
+target_bundle: slideshow_image
+default_langcode: site_default
+language_alterable: true

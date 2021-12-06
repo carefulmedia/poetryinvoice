@@ -1,0 +1,18 @@
+uuid: be53f717-df7d-4b3c-ba6f-70a92c9cc2f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_school_champion
+id: comment.comment_node_school_champion.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_school_champion
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

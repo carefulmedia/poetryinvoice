@@ -1,0 +1,18 @@
+uuid: d4625b5d-1163-4354-adda-01e1d72d5d95
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_power_points
+id: comment.comment_node_power_points.created
+field_name: created
+entity_type: comment
+bundle: comment_node_power_points
+label: Created
+description: 'The time that the comment was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

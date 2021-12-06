@@ -1,0 +1,20 @@
+uuid: 06a5d8c9-26c4-4464-8586-405c4c7a3828
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poll
+id: node.poll.uid
+field_name: uid
+entity_type: node
+bundle: poll
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

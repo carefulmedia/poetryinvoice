@@ -1,0 +1,18 @@
+uuid: 804b5a7a-6f36-4b4e-b441-baf65ab28bd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_maptest
+id: comment.comment_node_maptest.created
+field_name: created
+entity_type: comment
+bundle: comment_node_maptest
+label: Created
+description: 'The time that the comment was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

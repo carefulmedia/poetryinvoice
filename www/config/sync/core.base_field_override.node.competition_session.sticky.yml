@@ -1,0 +1,22 @@
+uuid: e06c6d5c-0d2a-4ba8-8f7f-8d45ee3cac91
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.competition_session
+id: node.competition_session.sticky
+field_name: sticky
+entity_type: node
+bundle: competition_session
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

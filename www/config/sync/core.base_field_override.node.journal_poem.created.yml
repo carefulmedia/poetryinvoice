@@ -1,0 +1,18 @@
+uuid: 232ddcf2-0fce-462f-8623-951844bf5211
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.journal_poem
+id: node.journal_poem.created
+field_name: created
+entity_type: node
+bundle: journal_poem
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

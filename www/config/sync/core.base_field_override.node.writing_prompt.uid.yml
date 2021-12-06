@@ -1,0 +1,20 @@
+uuid: fab2da74-aba1-421c-9fbb-28f92bdeaf56
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_prompt
+id: node.writing_prompt.uid
+field_name: uid
+entity_type: node
+bundle: writing_prompt
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

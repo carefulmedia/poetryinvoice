@@ -15,7 +15,7 @@ bundle: pal_pir_school_visit
 label: 'DEPRECATED: Session details'
 description: 'Note that each visit can have more than one session (eg, visiting two classrooms at a school on the same day).'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

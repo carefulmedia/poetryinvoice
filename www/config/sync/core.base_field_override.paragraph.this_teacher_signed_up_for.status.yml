@@ -1,0 +1,22 @@
+uuid: da3e7f06-6240-4f22-a39a-2fda3dd8f7ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+id: paragraph.this_teacher_signed_up_for.status
+field_name: status
+entity_type: paragraph
+bundle: this_teacher_signed_up_for
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

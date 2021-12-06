@@ -1,0 +1,18 @@
+uuid: 56ecf9d1-1935-43df-8f8e-9d4247b2a1dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_power_points
+id: comment.comment_node_power_points.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_power_points
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,22 @@
+uuid: 9d5fcf28-f503-4004-9710-c71b8c919773
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.lesson_plan
+id: node.lesson_plan.promote
+field_name: promote
+entity_type: node
+bundle: lesson_plan
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -14,7 +14,7 @@ bundle: power_points
 label: 'PP file'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

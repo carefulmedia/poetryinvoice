@@ -1,0 +1,18 @@
+uuid: 8f0b47fe-e701-4a52-ba8a-97e9dfc1b8d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.micro_interview
+id: paragraph.micro_interview.created
+field_name: created
+entity_type: paragraph
+bundle: micro_interview
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

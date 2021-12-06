@@ -1,0 +1,18 @@
+uuid: 966f7b77-36d8-45e6-bd16-33b070205d73
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.score_template_criteria
+id: paragraph.score_template_criteria.created
+field_name: created
+entity_type: paragraph
+bundle: score_template_criteria
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

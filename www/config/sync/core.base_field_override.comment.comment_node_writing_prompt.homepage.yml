@@ -1,0 +1,18 @@
+uuid: 29000beb-b076-4200-8063-018c7d27aa1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_writing_prompt
+id: comment.comment_node_writing_prompt.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_writing_prompt
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

@@ -1,0 +1,18 @@
+uuid: 781217a7-a0ee-4c2c-9d13-8d6965748c2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem_rights_contact
+id: node.poem_rights_contact.title
+field_name: title
+entity_type: node
+bundle: poem_rights_contact
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

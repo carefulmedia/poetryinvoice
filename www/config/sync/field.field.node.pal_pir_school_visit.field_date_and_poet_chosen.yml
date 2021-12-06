@@ -12,7 +12,7 @@ bundle: pal_pir_school_visit
 label: 'Date and poet chosen'
 description: ''
 required: true
-translatable: false
+translatable: true
 default_value:
   -
     value: 0

@@ -1,0 +1,18 @@
+uuid: 504b260a-6aab-4f12-a433-fbda525893b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_fca
+id: comment.comment_node_fca.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_fca
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

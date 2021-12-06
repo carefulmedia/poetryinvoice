@@ -1,0 +1,18 @@
+uuid: 95e14276-3997-463f-ac04-d6797f613b27
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_writing_workshop
+id: comment.comment_node_writing_workshop.created
+field_name: created
+entity_type: comment
+bundle: comment_node_writing_workshop
+label: Created
+description: 'The time that the comment was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

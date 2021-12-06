@@ -1,0 +1,20 @@
+uuid: 7766265f-7826-46cf-9a63-2871511553a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.journal_poem
+  module:
+    - path
+id: node.journal_poem.path
+field_name: path
+entity_type: node
+bundle: journal_poem
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

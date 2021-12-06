@@ -1,0 +1,18 @@
+uuid: 6edd6ef8-69b4-4382-9e3e-a21e9a9f7de7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.power_points
+id: node.power_points.changed
+field_name: changed
+entity_type: node
+bundle: power_points
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

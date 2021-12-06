@@ -1,0 +1,20 @@
+uuid: 53737acc-99d0-4b47-b0f1-f5f476357da5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.lesson_plan
+  module:
+    - path
+id: node.lesson_plan.path
+field_name: path
+entity_type: node
+bundle: lesson_plan
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

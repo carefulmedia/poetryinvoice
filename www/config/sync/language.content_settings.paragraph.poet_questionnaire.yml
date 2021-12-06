@@ -1,0 +1,18 @@
+uuid: 8fe43939-fb49-4c6a-b1c8-1020fbed8f0f
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.poet_questionnaire
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.poet_questionnaire
+target_entity_type_id: paragraph
+target_bundle: poet_questionnaire
+default_langcode: site_default
+language_alterable: false

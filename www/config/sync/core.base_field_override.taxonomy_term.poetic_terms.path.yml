@@ -1,0 +1,20 @@
+uuid: de594e76-f9bc-43ea-93fc-24a452ee2f0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.poetic_terms
+  module:
+    - path
+id: taxonomy_term.poetic_terms.path
+field_name: path
+entity_type: taxonomy_term
+bundle: poetic_terms
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

@@ -1,0 +1,18 @@
+uuid: 2e850765-7fca-4002-b7df-e45b0b97b9da
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.lesson_plan
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.lesson_plan
+target_entity_type_id: node
+target_bundle: lesson_plan
+default_langcode: site_default
+language_alterable: true

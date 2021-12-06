@@ -1,0 +1,22 @@
+uuid: ae60cf2c-1261-4eab-b657-f72841f55852
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bulletin_board
+id: node.bulletin_board.promote
+field_name: promote
+entity_type: node
+bundle: bulletin_board
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

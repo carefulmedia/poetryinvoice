@@ -1,0 +1,20 @@
+uuid: 8c3e9671-6986-4f9f-99ed-2284c8428579
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_school_champion
+id: comment.comment_node_school_champion.name
+field_name: name
+entity_type: comment
+bundle: comment_node_school_champion
+label: Name
+description: 'The comment author''s name.'
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,18 @@
+uuid: b6438727-5f72-4208-9c24-cd34f07d986a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.team_regionals_entry
+id: node.team_regionals_entry.title
+field_name: title
+entity_type: node
+bundle: team_regionals_entry
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

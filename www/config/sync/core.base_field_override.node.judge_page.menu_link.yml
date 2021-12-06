@@ -1,0 +1,20 @@
+uuid: 37b8640d-6412-4a27-b4fb-7ce79648376a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.judge_page
+id: node.judge_page.menu_link
+field_name: menu_link
+entity_type: node
+bundle: judge_page
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

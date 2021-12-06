@@ -1,0 +1,22 @@
+uuid: 520b638d-2db7-4a02-82e0-0a037ba09145
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school_champion
+id: node.school_champion.status
+field_name: status
+entity_type: node
+bundle: school_champion
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: 6a37e82b-c148-46f2-b201-3c25a7e5023b
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_writing_workshop
+id: comment.comment_node_writing_workshop.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_writing_workshop
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

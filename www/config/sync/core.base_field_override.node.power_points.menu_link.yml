@@ -1,0 +1,20 @@
+uuid: ebfd2be0-1dd8-4066-bb1c-df966a3c8cd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.power_points
+id: node.power_points.menu_link
+field_name: menu_link
+entity_type: node
+bundle: power_points
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

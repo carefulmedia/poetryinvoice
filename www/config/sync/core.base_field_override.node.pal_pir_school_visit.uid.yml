@@ -1,0 +1,20 @@
+uuid: 58144218-ae8a-4c68-a57a-bdf5cc04705a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.uid
+field_name: uid
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

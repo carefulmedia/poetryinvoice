@@ -1,0 +1,22 @@
+uuid: b80c12ff-cae9-4903-81f7-c10b4cf6035b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_prompt
+id: node.writing_prompt.promote
+field_name: promote
+entity_type: node
+bundle: writing_prompt
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

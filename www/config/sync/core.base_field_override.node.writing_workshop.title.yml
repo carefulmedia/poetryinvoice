@@ -1,0 +1,18 @@
+uuid: ec2b5661-c0f1-48ff-8b56-03b899b05a51
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_workshop
+id: node.writing_workshop.title
+field_name: title
+entity_type: node
+bundle: writing_workshop
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

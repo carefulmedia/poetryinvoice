@@ -12,7 +12,7 @@ bundle: pal_pir_school_visit
 label: Hold
 description: 'Put this visit on hold since we don''t currently have a poet in the region, or it is unlikely the visit will occur for some other reason.'
 required: false
-translatable: false
+translatable: true
 default_value:
   -
     value: 0

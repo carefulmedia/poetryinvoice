@@ -1,0 +1,22 @@
+uuid: 0f36d376-9415-411a-b267-2265472d9339
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.status
+field_name: status
+entity_type: node
+bundle: pal_pir_school_visit
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

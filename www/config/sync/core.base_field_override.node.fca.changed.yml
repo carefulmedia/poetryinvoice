@@ -1,0 +1,18 @@
+uuid: 9b80da11-6508-4b0b-ad8d-0aa1afb413d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.fca
+id: node.fca.changed
+field_name: changed
+entity_type: node
+bundle: fca
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

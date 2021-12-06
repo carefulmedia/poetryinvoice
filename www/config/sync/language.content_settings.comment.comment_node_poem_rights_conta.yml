@@ -1,0 +1,18 @@
+uuid: b571f428-e769-42c7-8104-ca4a462efb6f
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_poem_rights_conta
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: comment.comment_node_poem_rights_conta
+target_entity_type_id: comment
+target_bundle: comment_node_poem_rights_conta
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,18 @@
+uuid: 1bd5a5b5-eafd-492d-b163-d00ac2f9c8d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.team_regionals_entry
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.team_regionals_entry
+target_entity_type_id: node
+target_bundle: team_regionals_entry
+default_langcode: site_default
+language_alterable: true

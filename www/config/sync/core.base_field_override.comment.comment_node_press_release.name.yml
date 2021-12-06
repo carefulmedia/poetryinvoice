@@ -1,0 +1,20 @@
+uuid: 934e2ac9-c066-4384-82a4-6b5cbb914751
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_press_release
+id: comment.comment_node_press_release.name
+field_name: name
+entity_type: comment
+bundle: comment_node_press_release
+label: Name
+description: 'The comment author''s name.'
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

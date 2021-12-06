@@ -1,0 +1,22 @@
+uuid: b0235ead-d041-4c00-9be4-6f0c50a22c84
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.journal_poem
+id: node.journal_poem.promote
+field_name: promote
+entity_type: node
+bundle: journal_poem
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

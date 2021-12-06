@@ -1,0 +1,22 @@
+uuid: a274dfe8-b474-472a-b3a7-2675e2c1c4d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.types_of_support_requested
+id: paragraph.types_of_support_requested.status
+field_name: status
+entity_type: paragraph
+bundle: types_of_support_requested
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: e1918545-8c76-435a-a71e-ba865ff4c2ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_prompt
+id: node.writing_prompt.created
+field_name: created
+entity_type: node
+bundle: writing_prompt
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

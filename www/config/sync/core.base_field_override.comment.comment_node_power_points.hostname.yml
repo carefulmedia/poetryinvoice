@@ -1,0 +1,18 @@
+uuid: b7e90101-90a0-490a-9550-bafc250b8849
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_power_points
+id: comment.comment_node_power_points.hostname
+field_name: hostname
+entity_type: comment
+bundle: comment_node_power_points
+label: Hostname
+description: 'The comment author''s hostname.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultHostname'
+settings: {  }
+field_type: string

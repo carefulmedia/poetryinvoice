@@ -1,0 +1,22 @@
+uuid: 3d8727ee-5da2-4a1c-a29a-4e35fc21ba8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.lead_teacher_has_yet_to_si
+id: paragraph.lead_teacher_has_yet_to_si.status
+field_name: status
+entity_type: paragraph
+bundle: lead_teacher_has_yet_to_si
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

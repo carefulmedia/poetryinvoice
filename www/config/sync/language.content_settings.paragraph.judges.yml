@@ -1,0 +1,18 @@
+uuid: fad7ea5c-ceb6-48c9-b8f3-758e34d86ecf
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.judges
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.judges
+target_entity_type_id: paragraph
+target_bundle: judges
+default_langcode: site_default
+language_alterable: false

@@ -1,0 +1,20 @@
+uuid: a73a1e2a-bdaa-4cbc-b77f-bb1337ddd1e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.team_regionals_entry
+id: node.team_regionals_entry.menu_link
+field_name: menu_link
+entity_type: node
+bundle: team_regionals_entry
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

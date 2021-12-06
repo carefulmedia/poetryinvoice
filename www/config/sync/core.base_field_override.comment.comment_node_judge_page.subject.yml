@@ -1,0 +1,18 @@
+uuid: 04826eab-137e-4465-b296-02c48d2efa7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_judge_page
+id: comment.comment_node_judge_page.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_judge_page
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

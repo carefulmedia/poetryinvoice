@@ -14,7 +14,7 @@ bundle: pal_pir_school_visit
 label: 'Completed or Cancelled'
 description: '"Completed" has been deprecated. DO NOT USE IT AS IT HAS NO EFFECT!'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

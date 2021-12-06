@@ -1,0 +1,18 @@
+uuid: 0130e007-d087-43d4-af29-376215d5cde2
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary._judging_by_year
+id: taxonomy_term._judging_by_year.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: _judging_by_year
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

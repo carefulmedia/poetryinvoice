@@ -1,0 +1,18 @@
+uuid: 577fc0f5-9fc5-4ed7-97ac-8e223682c23e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.slideshow_image
+id: node.slideshow_image.changed
+field_name: changed
+entity_type: node
+bundle: slideshow_image
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

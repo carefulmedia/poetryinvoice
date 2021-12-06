@@ -1,0 +1,18 @@
+uuid: a1ae2339-b8d6-42d9-ae17-a885b579d4ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_competition_entry
+id: comment.comment_node_competition_entry.mail
+field_name: mail
+entity_type: comment
+bundle: comment_node_competition_entry
+label: Email
+description: 'The comment author''s email address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

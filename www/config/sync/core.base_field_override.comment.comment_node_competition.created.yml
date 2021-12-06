@@ -1,0 +1,18 @@
+uuid: 770a163f-fdc4-4b57-a420-28dabcae1fea
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_competition
+id: comment.comment_node_competition.created
+field_name: created
+entity_type: comment
+bundle: comment_node_competition
+label: Created
+description: 'The time that the comment was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

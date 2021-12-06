@@ -1,0 +1,20 @@
+uuid: f668b64a-0db9-4201-94d8-c0ed3d7acccb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.journal_poem
+id: node.journal_poem.menu_link
+field_name: menu_link
+entity_type: node
+bundle: journal_poem
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

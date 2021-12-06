@@ -1,0 +1,18 @@
+uuid: 3cc4e8f1-8b65-4e1a-9330-769dea195191
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.competition_stream
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.competition_stream
+target_entity_type_id: paragraph
+target_bundle: competition_stream
+default_langcode: site_default
+language_alterable: false

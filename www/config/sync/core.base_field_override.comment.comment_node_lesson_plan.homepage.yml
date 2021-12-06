@@ -1,0 +1,18 @@
+uuid: 417cf08d-5ab6-4814-af32-f0d36ae09406
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_lesson_plan
+id: comment.comment_node_lesson_plan.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_lesson_plan
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

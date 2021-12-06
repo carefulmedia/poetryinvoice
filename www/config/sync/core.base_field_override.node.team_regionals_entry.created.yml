@@ -1,0 +1,18 @@
+uuid: b6e9639d-8738-44b7-9d11-907a1e484633
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.team_regionals_entry
+id: node.team_regionals_entry.created
+field_name: created
+entity_type: node
+bundle: team_regionals_entry
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

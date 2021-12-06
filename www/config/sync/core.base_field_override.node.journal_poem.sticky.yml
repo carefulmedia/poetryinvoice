@@ -1,0 +1,22 @@
+uuid: 9344bbee-9f20-4470-8bee-ec9442c37255
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.journal_poem
+id: node.journal_poem.sticky
+field_name: sticky
+entity_type: node
+bundle: journal_poem
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

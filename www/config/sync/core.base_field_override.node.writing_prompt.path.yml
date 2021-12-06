@@ -1,0 +1,20 @@
+uuid: 78ed4334-1cc6-472b-a113-555524af7046
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_prompt
+  module:
+    - path
+id: node.writing_prompt.path
+field_name: path
+entity_type: node
+bundle: writing_prompt
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

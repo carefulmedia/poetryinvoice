@@ -1,0 +1,18 @@
+uuid: 5044a3bd-d63c-45d5-a0f5-76e25b3f985b
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_press_release
+id: comment.comment_node_press_release.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_press_release
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

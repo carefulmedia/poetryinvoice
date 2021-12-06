@@ -12,7 +12,7 @@ bundle: school
 label: 'Number of students'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:

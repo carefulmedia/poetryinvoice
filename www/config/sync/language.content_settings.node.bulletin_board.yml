@@ -1,0 +1,18 @@
+uuid: 1a6ada8a-2e11-4590-8610-ae9835a04b11
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.bulletin_board
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.bulletin_board
+target_entity_type_id: node
+target_bundle: bulletin_board
+default_langcode: site_default
+language_alterable: true

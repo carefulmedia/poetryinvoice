@@ -1,0 +1,22 @@
+uuid: 6c564edf-8857-47ee-bdce-afc7118d9355
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem
+id: node.poem.status
+field_name: status
+entity_type: node
+bundle: poem
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

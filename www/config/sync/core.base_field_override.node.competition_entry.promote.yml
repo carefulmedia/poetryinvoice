@@ -1,0 +1,22 @@
+uuid: 9bdac178-8245-445c-8de5-267b73202c40
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.competition_entry
+id: node.competition_entry.promote
+field_name: promote
+entity_type: node
+bundle: competition_entry
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

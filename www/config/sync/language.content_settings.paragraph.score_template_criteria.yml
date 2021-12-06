@@ -1,0 +1,18 @@
+uuid: ce150650-07a7-4fa9-81ec-8a538256fde8
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.score_template_criteria
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: paragraph.score_template_criteria
+target_entity_type_id: paragraph
+target_bundle: score_template_criteria
+default_langcode: site_default
+language_alterable: false

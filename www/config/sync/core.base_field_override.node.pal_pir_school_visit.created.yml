@@ -1,0 +1,18 @@
+uuid: a1d1a781-8f56-47bf-9125-e951f47f6827
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.created
+field_name: created
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

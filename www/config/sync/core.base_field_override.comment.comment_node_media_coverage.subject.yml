@@ -1,0 +1,18 @@
+uuid: fcf29896-c0ec-4c4a-a4af-1f7a88a3d019
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_media_coverage
+id: comment.comment_node_media_coverage.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_media_coverage
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

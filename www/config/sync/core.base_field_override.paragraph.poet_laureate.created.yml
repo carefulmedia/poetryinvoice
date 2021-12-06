@@ -1,0 +1,18 @@
+uuid: 55a27733-e1f1-4009-acba-7df3d6d4baea
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.poet_laureate
+id: paragraph.poet_laureate.created
+field_name: created
+entity_type: paragraph
+bundle: poet_laureate
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

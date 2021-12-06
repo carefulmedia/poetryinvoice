@@ -1,0 +1,18 @@
+uuid: abd9623e-9661-4e80-b116-762a4569cf43
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_quote
+id: comment.comment_node_quote.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_quote
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

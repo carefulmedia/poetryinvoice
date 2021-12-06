@@ -1,0 +1,20 @@
+uuid: 727b96a7-07ea-4734-a407-3b9cfd90be26
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school
+  module:
+    - path
+id: node.school.path
+field_name: path
+entity_type: node
+bundle: school
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

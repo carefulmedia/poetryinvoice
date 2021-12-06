@@ -1,0 +1,18 @@
+uuid: 2a98e56b-3e46-443d-8898-bca289e9a11c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.power_points
+id: node.power_points.created
+field_name: created
+entity_type: node
+bundle: power_points
+label: 'Authored on'
+description: 'The time that the node was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

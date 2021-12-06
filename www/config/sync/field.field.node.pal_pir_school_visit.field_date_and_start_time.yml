@@ -14,7 +14,7 @@ bundle: pal_pir_school_visit
 label: 'Preferred date and start time'
 description: 'The preferred start time of your poet visit. This should be 15 minutes before your class starts. We pay for poets to spend a maximum of 3 consecutive hours at your school. If you would like them to stay longer you may negotiate with them directly.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

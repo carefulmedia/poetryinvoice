@@ -1,0 +1,22 @@
+uuid: f19f1274-73a5-4c06-bb68-7c94fdf84a45
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.team_regionals_entry
+id: node.team_regionals_entry.sticky
+field_name: sticky
+entity_type: node
+bundle: team_regionals_entry
+label: 'Sticky at top of lists'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,22 @@
+uuid: b2f25ec6-f617-4995-80c3-3ff1af4a963d
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary._judging_by_year
+id: taxonomy_term._judging_by_year.status
+field_name: status
+entity_type: taxonomy_term
+bundle: _judging_by_year
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

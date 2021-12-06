@@ -1,0 +1,20 @@
+uuid: d42fdbf3-ae44-4727-abfa-ca8cf11b6cb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_writing_prompt
+id: comment.comment_node_writing_prompt.name
+field_name: name
+entity_type: comment
+bundle: comment_node_writing_prompt
+label: Name
+description: 'The comment author''s name.'
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

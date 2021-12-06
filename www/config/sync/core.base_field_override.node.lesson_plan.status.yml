@@ -1,0 +1,22 @@
+uuid: 4ae85503-948e-48de-92b0-28b0fcc4a79b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.lesson_plan
+id: node.lesson_plan.status
+field_name: status
+entity_type: node
+bundle: lesson_plan
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,18 @@
+uuid: fee35f0d-db73-42cf-a9d6-582fb6054ebf
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.competition_session
+id: node.competition_session.title
+field_name: title
+entity_type: node
+bundle: competition_session
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

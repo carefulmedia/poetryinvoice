@@ -1,0 +1,18 @@
+uuid: 225db00f-be60-4581-aa35-9b7f134be2b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.panel
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.panel
+target_entity_type_id: node
+target_bundle: panel
+default_langcode: site_default
+language_alterable: true

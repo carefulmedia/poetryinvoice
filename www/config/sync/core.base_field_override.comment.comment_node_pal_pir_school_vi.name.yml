@@ -1,0 +1,20 @@
+uuid: dd0c9cd0-4309-4e6d-a454-abd914e034ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_pal_pir_school_vi
+id: comment.comment_node_pal_pir_school_vi.name
+field_name: name
+entity_type: comment
+bundle: comment_node_pal_pir_school_vi
+label: Name
+description: 'The comment author''s name.'
+required: false
+translatable: false
+default_value:
+  -
+    value: ''
+default_value_callback: ''
+settings: {  }
+field_type: string

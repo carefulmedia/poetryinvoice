@@ -1,0 +1,18 @@
+uuid: 0f89818b-4681-46b0-af7e-8fa9d7b4358b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.slideshow_image
+id: node.slideshow_image.title
+field_name: title
+entity_type: node
+bundle: slideshow_image
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,18 @@
+uuid: ab0afb00-4dc0-4f4e-9081-45e937264e55
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_writing_workshop
+id: comment.comment_node_writing_workshop.subject
+field_name: subject
+entity_type: comment
+bundle: comment_node_writing_workshop
+label: Subject
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

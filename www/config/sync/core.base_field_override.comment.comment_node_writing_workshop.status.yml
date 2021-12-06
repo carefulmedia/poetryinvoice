@@ -1,0 +1,22 @@
+uuid: 6fa02f45-840b-414e-a5ee-30be8be3d24a
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_writing_workshop
+id: comment.comment_node_writing_workshop.status
+field_name: status
+entity_type: comment
+bundle: comment_node_writing_workshop
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultStatus'
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

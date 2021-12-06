@@ -14,7 +14,7 @@ bundle: school
 label: 'We are a: '
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value:
   -
     value: public

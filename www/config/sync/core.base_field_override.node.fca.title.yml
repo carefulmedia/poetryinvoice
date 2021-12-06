@@ -1,0 +1,18 @@
+uuid: e78cd83e-b075-4343-a51f-7b6d2711eb87
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.fca
+id: node.fca.title
+field_name: title
+entity_type: node
+bundle: fca
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

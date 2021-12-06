@@ -1,0 +1,20 @@
+uuid: bc3d36e8-e90e-4e68-a144-4b17cc1d02be
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.student
+  module:
+    - path
+id: node.student.path
+field_name: path
+entity_type: node
+bundle: student
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

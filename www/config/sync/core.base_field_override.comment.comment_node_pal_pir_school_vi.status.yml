@@ -1,0 +1,22 @@
+uuid: c01c2ee6-d480-40f9-883e-3dfe9a46b2cb
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_pal_pir_school_vi
+id: comment.comment_node_pal_pir_school_vi.status
+field_name: status
+entity_type: comment
+bundle: comment_node_pal_pir_school_vi
+label: Published
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: 'Drupal\comment\Entity\Comment::getDefaultStatus'
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

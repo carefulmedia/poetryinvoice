@@ -1,0 +1,18 @@
+uuid: 382c9cf6-ebbd-4655-bfd6-f34bf6c77b6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem
+id: node.poem.changed
+field_name: changed
+entity_type: node
+bundle: poem
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

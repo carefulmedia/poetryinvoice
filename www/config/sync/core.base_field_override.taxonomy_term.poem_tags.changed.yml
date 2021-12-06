@@ -1,0 +1,18 @@
+uuid: 734d06cd-9520-4e37-8eb1-0494f6b90207
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.poem_tags
+id: taxonomy_term.poem_tags.changed
+field_name: changed
+entity_type: taxonomy_term
+bundle: poem_tags
+label: Changed
+description: 'The time that the term was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

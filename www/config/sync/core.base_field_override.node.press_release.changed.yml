@@ -1,0 +1,18 @@
+uuid: 2d8046c4-bc7b-4d98-9702-2d66030e5af8
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.press_release
+id: node.press_release.changed
+field_name: changed
+entity_type: node
+bundle: press_release
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

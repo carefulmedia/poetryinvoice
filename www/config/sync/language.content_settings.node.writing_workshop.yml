@@ -1,0 +1,18 @@
+uuid: e62a59ce-6006-4dd4-9d88-ce630134b611
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.writing_workshop
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: node.writing_workshop
+target_entity_type_id: node
+target_bundle: writing_workshop
+default_langcode: site_default
+language_alterable: true

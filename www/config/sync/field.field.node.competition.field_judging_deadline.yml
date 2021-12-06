@@ -14,7 +14,7 @@ bundle: competition
 label: 'Judging Deadline'
 description: 'Date which all judges must have completed all judging sessions.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

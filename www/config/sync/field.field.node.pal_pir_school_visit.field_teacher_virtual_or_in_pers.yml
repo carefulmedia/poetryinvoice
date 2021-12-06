@@ -14,7 +14,7 @@ bundle: pal_pir_school_visit
 label: 'Would you prefer the poet visits your class in-person or virtually?'
 description: "In-person visits last up to 3 hours, and the poet will typically visit two consecutive classrooms. Each school may request up to one in-person visit per school year.<br>\r\nVirtual visits last less than one hour. Each school is eligible for two virtual visits per school year.<br>\r\nOther arrangements may be made directly with the poet. "
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

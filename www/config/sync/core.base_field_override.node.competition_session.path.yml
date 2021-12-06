@@ -1,0 +1,20 @@
+uuid: ed37ed2e-c5d4-42af-b5f4-589ae0b1e741
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.competition_session
+  module:
+    - path
+id: node.competition_session.path
+field_name: path
+entity_type: node
+bundle: competition_session
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

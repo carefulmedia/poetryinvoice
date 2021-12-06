@@ -12,7 +12,7 @@ bundle: competition
 label: 'By Invitation Only'
 description: 'Makes this competition visible only to teachers from the invited schools.'
 required: false
-translatable: false
+translatable: true
 default_value:
   -
     value: 0

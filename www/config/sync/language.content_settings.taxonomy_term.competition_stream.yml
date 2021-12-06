@@ -1,0 +1,18 @@
+uuid: 4dba274e-9eb0-4709-88d4-3b03d3893c38
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.competition_stream
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '0'
+id: taxonomy_term.competition_stream
+target_entity_type_id: taxonomy_term
+target_bundle: competition_stream
+default_langcode: site_default
+language_alterable: false

@@ -14,7 +14,7 @@ bundle: school
 label: Language_school
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

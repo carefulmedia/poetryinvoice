@@ -1,0 +1,18 @@
+uuid: a4791ff3-68d9-4185-bed9-16ed7d5da02b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.power_points
+id: node.power_points.title
+field_name: title
+entity_type: node
+bundle: power_points
+label: Title
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

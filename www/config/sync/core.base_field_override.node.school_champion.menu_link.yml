@@ -1,0 +1,20 @@
+uuid: 1112a7a6-cd09-4c54-9fad-25c4d4758b31
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.school_champion
+id: node.school_champion.menu_link
+field_name: menu_link
+entity_type: node
+bundle: school_champion
+label: 'Menu link'
+description: 'Computed menu link for the node (only available during node saving).'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

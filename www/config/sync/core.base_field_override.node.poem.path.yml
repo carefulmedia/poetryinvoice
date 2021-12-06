@@ -1,0 +1,20 @@
+uuid: d440c396-b57f-4dbe-abc6-aff2986e7e28
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.poem
+  module:
+    - path
+id: node.poem.path
+field_name: path
+entity_type: node
+bundle: poem
+label: 'URL alias'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

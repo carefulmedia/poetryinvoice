@@ -1,0 +1,18 @@
+uuid: eb05d785-b5c1-4e2c-8db2-d3bc5dcdc380
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_school_champion
+id: comment.comment_node_school_champion.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_school_champion
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

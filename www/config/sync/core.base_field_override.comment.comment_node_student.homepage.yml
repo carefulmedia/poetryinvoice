@@ -1,0 +1,18 @@
+uuid: 33ed2025-7b80-413f-b923-19b2831b5bc6
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_student
+id: comment.comment_node_student.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_student
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

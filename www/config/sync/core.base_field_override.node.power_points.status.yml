@@ -1,0 +1,22 @@
+uuid: 25d39423-4774-4fe7-937d-a1cf9d2608b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.power_points
+id: node.power_points.status
+field_name: status
+entity_type: node
+bundle: power_points
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

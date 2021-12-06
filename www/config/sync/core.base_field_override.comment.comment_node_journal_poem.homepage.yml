@@ -1,0 +1,18 @@
+uuid: c6427c70-71dd-4ce0-807b-6308f76fd007
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_journal_poem
+id: comment.comment_node_journal_poem.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_journal_poem
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri

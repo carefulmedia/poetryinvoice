@@ -1,0 +1,18 @@
+uuid: 58929cda-3000-47f7-8753-3aa648d26b42
+langcode: en
+status: true
+dependencies:
+  config:
+    - comment.type.comment_node_press_release
+id: comment.comment_node_press_release.homepage
+field_name: homepage
+entity_type: comment
+bundle: comment_node_press_release
+label: Homepage
+description: 'The comment author''s home page address.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: uri
