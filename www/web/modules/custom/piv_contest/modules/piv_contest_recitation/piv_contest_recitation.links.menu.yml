@@ -1,5 +1,10 @@
 entity.recitation_type.collection:
   title: 'Recitation types'
-  parent: system.admin_structure
+  parent: system.admin_contest_config
   description: 'Manage and CRUD actions on Recitation type.'
   route_name: entity.recitation_type.collection
+entity.recitation.collection:
+  title: 'Recitations'
+  parent: system.admin_contest
+  description: 'Find and manage Recitation.'
+  route_name: entity.recitation.collection

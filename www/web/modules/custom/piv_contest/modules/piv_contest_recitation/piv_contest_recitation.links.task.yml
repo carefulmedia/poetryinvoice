@@ -11,11 +11,6 @@ entity.recitation.delete_form:
   route_name: entity.recitation.delete_form
   base_route: entity.recitation.canonical
   weight: 10
-entity.recitation.collection:
-  title: Recitation
-  route_name: entity.recitation.collection
-  base_route: system.admin_content
-  weight: 10
 entity.recitation_type.edit_form:
   title: Edit
   route_name: entity.recitation_type.edit_form

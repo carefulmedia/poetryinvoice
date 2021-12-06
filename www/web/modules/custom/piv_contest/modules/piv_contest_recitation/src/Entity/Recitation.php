@@ -53,12 +53,12 @@ use Drupal\user\UserInterface;
  *     "revision_log_message" = "revision_log"
  *   },
  *   links = {
- *     "add-form" = "/admin/content/recitation/add/{recitation_type}",
- *     "add-page" = "/admin/content/recitation/add",
+ *     "add-form" = "/admin/contest/recitation/add/{recitation_type}",
+ *     "add-page" = "/admin/contest/recitation/add",
  *     "canonical" = "/recitation/{recitation}",
- *     "edit-form" = "/admin/content/recitation/{recitation}/edit",
- *     "delete-form" = "/admin/content/recitation/{recitation}/delete",
- *     "collection" = "/admin/content/recitation"
+ *     "edit-form" = "/admin/contest/recitation/{recitation}/edit",
+ *     "delete-form" = "/admin/contest/recitation/{recitation}/delete",
+ *     "collection" = "/admin/contest/recitation"
  *   },
  *   bundle_entity_type = "recitation_type",
  *   field_ui_base_route = "entity.recitation_type.edit_form"

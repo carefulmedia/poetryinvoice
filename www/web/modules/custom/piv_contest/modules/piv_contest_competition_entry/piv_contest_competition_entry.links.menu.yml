@@ -1,5 +1,10 @@
 entity.competition_entry_type.collection:
   title: 'Competition Entry types'
-  parent: system.admin_structure
+  parent: system.admin_contest_config
   description: 'Manage and CRUD actions on Competition Entry type.'
   route_name: entity.competition_entry_type.collection
+entity.competition_entry.collection:
+  title: 'Competition Entries'
+  parent: system.admin_contest
+  description: 'Find and manage Competition Entries.'
+  route_name: entity.competition_entry.collection

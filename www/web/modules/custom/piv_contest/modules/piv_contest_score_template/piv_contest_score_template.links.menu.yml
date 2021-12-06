@@ -1,5 +1,10 @@
 entity.score_template_type.collection:
   title: 'Score Template types'
-  parent: system.admin_structure
+  parent: system.admin_contest_config
   description: 'Manage and CRUD actions on Score Template type.'
   route_name: entity.score_template_type.collection
+entity.score_template.collection:
+  title: 'Score Templates'
+  parent: system.admin_contest
+  description: 'Find and manage Score Templates.'
+  route_name: entity.score_template.collection

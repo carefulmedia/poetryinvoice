@@ -30,10 +30,10 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "add-form" = "/admin/structure/judging_session_types/add",
- *     "edit-form" = "/admin/structure/judging_session_types/manage/{judging_session_type}",
- *     "delete-form" = "/admin/structure/judging_session_types/manage/{judging_session_type}/delete",
- *     "collection" = "/admin/structure/judging_session_types"
+ *     "add-form" = "/admin/contest/config/judging_session_types/add",
+ *     "edit-form" = "/admin/contest/config/judging_session_types/manage/{judging_session_type}",
+ *     "delete-form" = "/admin/contest/config/judging_session_types/manage/{judging_session_type}/delete",
+ *     "collection" = "/admin/contest/config/judging_session_types"
  *   },
  *   config_export = {
  *     "id",

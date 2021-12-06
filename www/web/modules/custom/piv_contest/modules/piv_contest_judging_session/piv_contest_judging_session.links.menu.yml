@@ -1,5 +1,10 @@
 entity.judging_session_type.collection:
   title: 'Judging Session types'
-  parent: system.admin_structure
+  parent: system.admin_contest_config
   description: 'Manage and CRUD actions on Judging Session type.'
   route_name: entity.judging_session_type.collection
+entity.judging_session.collection:
+  title: 'Judging Sessions'
+  parent: system.admin_contest
+  description: 'Find and manage Judging Sessions.'
+  route_name: entity.judging_session.collection

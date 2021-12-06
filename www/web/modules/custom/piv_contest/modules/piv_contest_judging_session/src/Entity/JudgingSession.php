@@ -53,12 +53,12 @@ use Drupal\user\UserInterface;
  *     "revision_log_message" = "revision_log"
  *   },
  *   links = {
- *     "add-form" = "/admin/content/judging-session/add/{judging_session_type}",
- *     "add-page" = "/admin/content/judging-session/add",
+ *     "add-form" = "/admin/contest/judging-session/add/{judging_session_type}",
+ *     "add-page" = "/admin/contest/judging-session/add",
  *     "canonical" = "/judging_session/{judging_session}",
- *     "edit-form" = "/admin/content/judging-session/{judging_session}/edit",
- *     "delete-form" = "/admin/content/judging-session/{judging_session}/delete",
- *     "collection" = "/admin/content/judging-session"
+ *     "edit-form" = "/admin/contest/judging-session/{judging_session}/edit",
+ *     "delete-form" = "/admin/contest/judging-session/{judging_session}/delete",
+ *     "collection" = "/admin/contest/judging-session"
  *   },
  *   bundle_entity_type = "judging_session_type",
  *   field_ui_base_route = "entity.judging_session_type.edit_form"

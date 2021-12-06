@@ -49,6 +49,38 @@ content:
     third_party_settings: {  }
     type: number_integer
     region: content
+  judge:
+    label: above
+    type: user_name
+    weight: 20
+    region: content
+    settings:
+      link_to_entity: true
+    third_party_settings: {  }
+  judging_session:
+    label: above
+    type: entity_reference_label
+    weight: 35
+    region: content
+    settings:
+      link: true
+    third_party_settings: {  }
+  recitation:
+    label: above
+    type: entity_reference_label
+    weight: 30
+    region: content
+    settings:
+      link: true
+    third_party_settings: {  }
+  score_template:
+    label: above
+    type: entity_reference_label
+    weight: 25
+    region: content
+    settings:
+      link: true
+    third_party_settings: {  }
   status:
     type: boolean
     label: above
@@ -74,4 +106,5 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-hidden: {  }
+hidden:
+  langcode: true

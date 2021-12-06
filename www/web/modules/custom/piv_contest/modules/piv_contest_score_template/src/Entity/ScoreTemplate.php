@@ -53,12 +53,12 @@ use Drupal\user\UserInterface;
  *     "revision_log_message" = "revision_log"
  *   },
  *   links = {
- *     "add-form" = "/admin/content/score-template/add/{score_template_type}",
- *     "add-page" = "/admin/content/score-template/add",
+ *     "add-form" = "/admin/contest/score-template/add/{score_template_type}",
+ *     "add-page" = "/admin/contest/score-template/add",
  *     "canonical" = "/score_template/{score_template}",
- *     "edit-form" = "/admin/content/score-template/{score_template}/edit",
- *     "delete-form" = "/admin/content/score-template/{score_template}/delete",
- *     "collection" = "/admin/content/score-template"
+ *     "edit-form" = "/admin/contest/score-template/{score_template}/edit",
+ *     "delete-form" = "/admin/contest/score-template/{score_template}/delete",
+ *     "collection" = "/admin/contest/score-template"
  *   },
  *   bundle_entity_type = "score_template_type",
  *   field_ui_base_route = "entity.score_template_type.edit_form",

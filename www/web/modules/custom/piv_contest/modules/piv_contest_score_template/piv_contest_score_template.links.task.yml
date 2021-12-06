@@ -11,11 +11,6 @@ entity.score_template.delete_form:
   route_name: entity.score_template.delete_form
   base_route: entity.score_template.canonical
   weight: 10
-entity.score_template.collection:
-  title: Score Template
-  route_name: entity.score_template.collection
-  base_route: system.admin_content
-  weight: 10
 entity.score_template_type.edit_form:
   title: Edit
   route_name: entity.score_template_type.edit_form

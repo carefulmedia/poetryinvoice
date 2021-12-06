@@ -11,11 +11,6 @@ entity.judging_session.delete_form:
   route_name: entity.judging_session.delete_form
   base_route: entity.judging_session.canonical
   weight: 10
-entity.judging_session.collection:
-  title: Judging Session
-  route_name: entity.judging_session.collection
-  base_route: system.admin_content
-  weight: 10
 entity.judging_session_type.edit_form:
   title: Edit
   route_name: entity.judging_session_type.edit_form

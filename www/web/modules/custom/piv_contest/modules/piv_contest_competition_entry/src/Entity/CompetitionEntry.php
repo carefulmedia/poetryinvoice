@@ -53,12 +53,12 @@ use Drupal\user\UserInterface;
  *     "revision_log_message" = "revision_log"
  *   },
  *   links = {
- *     "add-form" = "/admin/content/competition-entry/add/{competition_entry_type}",
- *     "add-page" = "/admin/content/competition-entry/add",
+ *     "add-form" = "/admin/contest/competition-entry/add/{competition_entry_type}",
+ *     "add-page" = "/admin/contest/competition-entry/add",
  *     "canonical" = "/competition_entry/{competition_entry}",
- *     "edit-form" = "/admin/content/competition-entry/{competition_entry}/edit",
- *     "delete-form" = "/admin/content/competition-entry/{competition_entry}/delete",
- *     "collection" = "/admin/content/competition-entry"
+ *     "edit-form" = "/admin/contest/competition-entry/{competition_entry}/edit",
+ *     "delete-form" = "/admin/contest/competition-entry/{competition_entry}/delete",
+ *     "collection" = "/admin/contest/competition-entry"
  *   },
  *   bundle_entity_type = "competition_entry_type",
  *   field_ui_base_route = "entity.competition_entry_type.edit_form"

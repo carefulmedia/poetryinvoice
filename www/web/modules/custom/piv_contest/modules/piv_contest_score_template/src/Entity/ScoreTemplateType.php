@@ -30,10 +30,10 @@ use Drupal\Core\Config\Entity\ConfigEntityBundleBase;
  *     "uuid" = "uuid"
  *   },
  *   links = {
- *     "add-form" = "/admin/structure/score_template_types/add",
- *     "edit-form" = "/admin/structure/score_template_types/manage/{score_template_type}",
- *     "delete-form" = "/admin/structure/score_template_types/manage/{score_template_type}/delete",
- *     "collection" = "/admin/structure/score_template_types"
+ *     "add-form" = "/admin/contest/config/score_template_types/add",
+ *     "edit-form" = "/admin/contest/config/score_template_types/manage/{score_template_type}",
+ *     "delete-form" = "/admin/contest/config/score_template_types/manage/{score_template_type}/delete",
+ *     "collection" = "/admin/contest/config/score_template_types"
  *   },
  *   config_export = {
  *     "id",
