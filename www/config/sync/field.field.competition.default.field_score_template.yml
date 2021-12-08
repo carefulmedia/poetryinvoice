@@ -1,17 +1,17 @@
-uuid: 956dce74-8606-472d-9330-a1649ff84ea2
+uuid: a9c0067b-5094-4ffc-907b-4fb2ced9f80b
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.score.field_score_template
-    - piv_contest_score.score_type.default
+    - field.storage.competition.field_score_template
+    - piv_contest_competition.competition_type.default
     - piv_contest_score_template.score_template_type.default
-id: score.default.field_score_template
+id: competition.default.field_score_template
 field_name: field_score_template
-entity_type: score
+entity_type: competition
 bundle: default
 label: 'Score Template'
-description: ''
+description: 'Select or create a new score template for this competition. Score templates manages criteria and score options for judging.'
 required: true
 translatable: true
 default_value: {  }
@@ -24,6 +24,6 @@ settings:
     sort:
       field: _none
       direction: ASC
-    auto_create: false
+    auto_create: true
     auto_create_bundle: ''
 field_type: entity_reference

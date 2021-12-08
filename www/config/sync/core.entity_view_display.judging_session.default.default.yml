@@ -1,0 +1,68 @@
+uuid: 87a1e4b1-594e-43f1-aa4f-0479767296c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.judging_session.default.field_competition
+    - field.field.judging_session.default.field_competition_entries
+    - piv_contest_judging_session.judging_session_type.default
+  module:
+    - user
+id: judging_session.default.default
+targetEntityType: judging_session
+bundle: default
+mode: default
+content:
+  created:
+    label: above
+    type: timestamp
+    weight: 20
+    region: content
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+  field_competition:
+    weight: 21
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_competition_entries:
+    weight: 22
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  status:
+    type: boolean
+    label: above
+    weight: 0
+    settings:
+      format: enabled-disabled
+      format_custom_false: ''
+      format_custom_true: ''
+    region: content
+    third_party_settings: {  }
+  title:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  uid:
+    label: above
+    type: author
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

@@ -1,0 +1,19 @@
+uuid: f86b9677-eb0c-4a14-a78e-956d74352f2a
+langcode: en
+status: true
+dependencies:
+  module:
+    - address
+    - piv_contest_competition
+id: competition.field_location
+field_name: field_location
+entity_type: competition
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,5 +1,5 @@
 piv_contest.add_score:
-  path: '/judge/{node}'
+  path: '/judge/{recitation}/{judging_session}'
   defaults:
     _title: 'Create Score'
     _form: 'Drupal\piv_contest\Form\ScoreForm'
@@ -23,3 +23,27 @@ system.admin_contest_config:
     _title: 'Configure'
   requirements:
     _permission: 'access administration pages'
+
+piv_content.competitions_list:
+  path: '/user/{user}/competitions'
+  defaults:
+    _title: 'Competitions'
+    _controller: '\Drupal\piv_contest\Controller\CompetitionsListController::build'
+  requirements:
+    _permission: 'access content'
+
+piv_contest.competition_entry_add:
+  path: '/user/{user}/competitions/{competition}/competition-entry/add'
+  defaults:
+    _title: 'Add competition entry'
+    _controller: '\Drupal\piv_contest\Controller\CompetitionEntryController::build'
+  requirements:
+    _custom_access: '\Drupal\piv_contest\Controller\CompetitionEntryController::access'
+    
+piv_contest.competition_entry_edit:
+  path: '/user/{user}/competitions/{competition}/competition-entry/{competition_entry}/edit'
+  defaults:
+    _title: 'Edit competition entry'
+    _controller: '\Drupal\piv_contest\Controller\CompetitionEntryController::build'
+  requirements:
+    _custom_access: '\Drupal\piv_contest\Controller\CompetitionEntryController::access'

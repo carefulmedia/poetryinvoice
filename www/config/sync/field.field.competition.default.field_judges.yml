@@ -1,0 +1,56 @@
+uuid: 0ceecbd4-7646-4746-be43-224ca7be692d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_judges
+    - piv_contest_competition.competition_type.default
+id: competition.default.field_judges
+field_name: field_judges
+entity_type: competition
+bundle: default
+label: Judges
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    include_anonymous: true
+    filter:
+      type: role
+      role:
+        judge: judge
+        accuracy_judge: accuracy_judge
+        teacher: '0'
+        non_canadian_educator: '0'
+        teacher_en_: '0'
+        teacher_fr_: '0'
+        administrator: '0'
+        proofreader: '0'
+        content_creator: '0'
+        translator: '0'
+        icanlocalize_translator: '0'
+        icanlocalize_manager: '0'
+        account_approval: '0'
+        competition_administrator: '0'
+        php_editor: '0'
+        pierre: '0'
+        lesson_plan_creator: '0'
+        superadmin: '0'
+        poet_network: '0'
+        pic_pal: '0'
+        poet: '0'
+        anthology_editor: '0'
+        grandfathered_pir: '0'
+        education_consultant: '0'
+        journal_editor: '0'
+        junior_editor: '0'
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

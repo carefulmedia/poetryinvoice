@@ -1,0 +1,23 @@
+uuid: a3c4a6fa-d005-443e-a98b-6d368d2be908
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_online_competition
+    - piv_contest_competition.competition_type.default
+id: competition.default.field_online_competition
+field_name: field_online_competition
+entity_type: competition
+bundle: default
+label: 'Online competition'
+description: 'Indicates that this competition will be held online.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

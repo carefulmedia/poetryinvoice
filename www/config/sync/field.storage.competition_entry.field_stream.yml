@@ -1,0 +1,20 @@
+uuid: e0728747-3190-4197-a9e0-44e636c02b89
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition_entry
+    - taxonomy
+id: competition_entry.field_stream
+field_name: field_stream
+entity_type: competition_entry
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

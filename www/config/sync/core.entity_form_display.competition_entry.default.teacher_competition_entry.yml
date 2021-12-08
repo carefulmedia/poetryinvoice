@@ -1,0 +1,61 @@
+uuid: 1129d42f-875f-4e2b-80e6-5735e8425cbe
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.competition_entry.teacher_competition_entry
+    - field.field.competition_entry.default.field_competition
+    - field.field.competition_entry.default.field_complete
+    - field.field.competition_entry.default.field_recitations
+    - field.field.competition_entry.default.field_release_form
+    - field.field.competition_entry.default.field_school
+    - field.field.competition_entry.default.field_stream
+    - piv_contest_competition_entry.competition_entry_type.default
+  module:
+    - file
+    - inline_entity_form
+id: competition_entry.default.teacher_competition_entry
+targetEntityType: competition_entry
+bundle: default
+mode: teacher_competition_entry
+content:
+  field_recitations:
+    weight: 0
+    settings:
+      form_mode: default
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      match_operator: CONTAINS
+      revision: false
+      override_labels: false
+      collapsible: false
+      collapsed: false
+      allow_existing: false
+      allow_duplicate: false
+    third_party_settings: {  }
+    type: inline_entity_form_complex
+    region: content
+  field_release_form:
+    weight: 3
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+    type: file_generic
+    region: content
+  field_stream:
+    weight: 2
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  field_competition: true
+  field_complete: true
+  field_school: true
+  langcode: true
+  status: true
+  title: true
+  translation: true
+  uid: true

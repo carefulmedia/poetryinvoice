@@ -1,0 +1,20 @@
+uuid: e0a7648a-6b96-4a57-877b-9712e1aca79e
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - piv_contest_competition
+id: competition.field_judging_deadline
+field_name: field_judging_deadline
+entity_type: competition
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: f0b81132-b971-4d18-9feb-eddc5b484765
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_judging_deadline
+    - piv_contest_competition.competition_type.default
+  module:
+    - datetime
+id: competition.default.field_judging_deadline
+field_name: field_judging_deadline
+entity_type: competition
+bundle: default
+label: 'Judging Deadline'
+description: 'Date which all judges must have completed all judging sessions.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

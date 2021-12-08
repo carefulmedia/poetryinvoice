@@ -1,0 +1,21 @@
+uuid: bc1c3db8-41e5-4e61-b475-afb11170fb8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_winners_announced
+    - piv_contest_competition.competition_type.default
+  module:
+    - datetime
+id: competition.default.field_winners_announced
+field_name: field_winners_announced
+entity_type: competition
+bundle: default
+label: 'Contest Date / Winners Announced'
+description: 'Announcement date for Online Contests, day and time of contest for Team Regionals and National Finals'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

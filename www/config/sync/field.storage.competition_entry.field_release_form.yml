@@ -1,0 +1,23 @@
+uuid: ebafd68a-454a-4166-8679-0653b10b8709
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - piv_contest_competition_entry
+id: competition_entry.field_release_form
+field_name: field_release_form
+entity_type: competition_entry
+type: file
+settings:
+  display_field: false
+  display_default: false
+  uri_scheme: public
+  target_type: file
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

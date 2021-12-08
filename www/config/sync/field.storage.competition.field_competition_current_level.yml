@@ -1,0 +1,20 @@
+uuid: 9049058c-5a69-400c-8c5b-e580d2d176c6
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition
+id: competition.field_competition_current_level
+field_name: field_competition_current_level
+entity_type: competition
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

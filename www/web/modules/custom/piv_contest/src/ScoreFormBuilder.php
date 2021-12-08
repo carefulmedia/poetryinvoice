@@ -5,7 +5,8 @@ namespace Drupal\piv_contest;
 use Drupal\piv_contest_score_template\ScoreTemplateInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
-use Drupal\node\NodeInterface;
+use Drupal\piv_contest_recitation\RecitationInterface;
+use Drupal\piv_contest_judging_session\JudgingSessionInterface;
  
 /**
  * ScoreFormBuilder service.
@@ -71,8 +72,9 @@ class ScoreFormBuilder {
   /**
    * Create a score when submitting the score template.
    */
-  public function createScore(NodeInterface $node, array $values) {
-    $score_template = $node->field_score_template->entity;
+  public function createScore(RecitationInterface $recitation, JudgingSessionInterface $judging_session, array $values) {
+    $competition = $judging_session->field_competition->entity;
+    $score_template = $competition->field_score_template->entity;
     if (!$score_template) {
       // This field is required.
       return FALSE;
@@ -88,7 +90,7 @@ class ScoreFormBuilder {
 
     $score_type = $score_template_type->getScoreType();
     $user_name = $this->currentUser->getAccountName();
-    $competition_label = $node->label();
+    $competition_label = $competition->label();
     $score = $this->entityTypeManager
       ->getStorage('score')
       ->create([
@@ -96,6 +98,8 @@ class ScoreFormBuilder {
         'score_template' => $score_template,
         'title' => "$user_name judging of $competition_label",
         'judge' => $this->currentUser->id(),
+        'recitation' => $recitation,
+        'judging_session' => $judging_session,
       ]);
 
     // Let the plugin populate the score.

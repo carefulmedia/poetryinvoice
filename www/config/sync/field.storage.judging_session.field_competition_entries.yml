@@ -1,0 +1,20 @@
+uuid: 7d7f2482-d136-4b4e-9b34-33b05bc65d36
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition_entry
+    - piv_contest_judging_session
+id: judging_session.field_competition_entries
+field_name: field_competition_entries
+entity_type: judging_session
+type: entity_reference
+settings:
+  target_type: competition_entry
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

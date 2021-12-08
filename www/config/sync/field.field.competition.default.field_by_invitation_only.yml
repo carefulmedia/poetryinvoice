@@ -1,0 +1,23 @@
+uuid: 025a13a8-a1e6-4b82-8f46-95073d23525c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_by_invitation_only
+    - piv_contest_competition.competition_type.default
+id: competition.default.field_by_invitation_only
+field_name: field_by_invitation_only
+entity_type: competition
+bundle: default
+label: 'By Invitation Only'
+description: 'Makes this competition visible only to teachers from the invited schools.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

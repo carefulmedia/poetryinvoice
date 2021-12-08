@@ -1,0 +1,19 @@
+uuid: 4618066f-013a-4e4e-ae2f-b37c6b4a3530
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_competition_levels
+    - piv_contest_competition.competition_type.default
+id: competition.default.field_competition_levels
+field_name: field_competition_levels
+entity_type: competition
+bundle: default
+label: Levels
+description: 'Labels for each level of this competition. E.g.: Level 1, Tie breaker, Semifinals, Finals, etc.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

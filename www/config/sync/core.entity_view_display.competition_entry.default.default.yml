@@ -1,0 +1,107 @@
+uuid: 5766ccf5-0885-464d-85df-0d52084096ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.competition_entry.default.field_competition
+    - field.field.competition_entry.default.field_complete
+    - field.field.competition_entry.default.field_recitations
+    - field.field.competition_entry.default.field_release_form
+    - field.field.competition_entry.default.field_school
+    - field.field.competition_entry.default.field_stream
+    - piv_contest_competition_entry.competition_entry_type.default
+  module:
+    - file
+    - user
+id: competition_entry.default.default
+targetEntityType: competition_entry
+bundle: default
+mode: default
+content:
+  created:
+    label: above
+    type: timestamp
+    weight: 20
+    region: content
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+    third_party_settings: {  }
+  field_competition:
+    weight: 21
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_complete:
+    weight: 26
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    type: boolean
+    region: content
+  field_recitations:
+    weight: 23
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_release_form:
+    weight: 24
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    type: file_default
+    region: content
+  field_school:
+    weight: 25
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_stream:
+    weight: 22
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  status:
+    type: boolean
+    label: above
+    weight: 0
+    settings:
+      format: enabled-disabled
+      format_custom_false: ''
+      format_custom_true: ''
+    region: content
+    third_party_settings: {  }
+  title:
+    label: hidden
+    type: string
+    weight: -5
+    region: content
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  uid:
+    label: above
+    type: author
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  langcode: true

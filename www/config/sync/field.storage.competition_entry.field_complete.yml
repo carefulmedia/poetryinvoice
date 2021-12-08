@@ -1,0 +1,18 @@
+uuid: 30634f7c-a95b-41cb-b532-c8bce8316b2f
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition_entry
+id: competition_entry.field_complete
+field_name: field_complete
+entity_type: competition_entry
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraint;
  * Provides a Score Template constraint.
  *
  * @Constraint(
- *   id = "ScoreTemplate",
+ *   id = "score_template_constraint",
  *   label = @Translation("Score Template", context = "Validation"),
  * )
  */

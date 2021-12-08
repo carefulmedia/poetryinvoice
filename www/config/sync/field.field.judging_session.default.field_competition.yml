@@ -1,0 +1,29 @@
+uuid: 8f41753e-9529-4a48-9a13-790b07697c8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.judging_session.field_competition
+    - piv_contest_competition.competition_type.default
+    - piv_contest_judging_session.judging_session_type.default
+id: judging_session.default.field_competition
+field_name: field_competition
+entity_type: judging_session
+bundle: default
+label: Competition
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:competition'
+  handler_settings:
+    target_bundles:
+      default: default
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,20 @@
+uuid: 84d3f45d-e3b5-4b00-920c-10f3ed4b57c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - piv_contest_competition
+id: competition.field_winners_announced
+field_name: field_winners_announced
+entity_type: competition
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

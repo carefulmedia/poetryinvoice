@@ -1,0 +1,12 @@
+display:
+  default:
+    display_title: 'Par défaut'
+    display_options:
+      fields:
+        operations:
+          label: Actions
+  page_unapproved:
+    display_options:
+      fields:
+        operations:
+          label: Actions

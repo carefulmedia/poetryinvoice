@@ -1,0 +1,29 @@
+uuid: cad2758d-d01c-4040-b3a7-fdb42ace9de7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition_entry.field_stream
+    - piv_contest_competition_entry.competition_entry_type.default
+    - taxonomy.vocabulary.competition_stream
+id: competition_entry.default.field_stream
+field_name: field_stream
+entity_type: competition_entry
+bundle: default
+label: Stream
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      competition_stream: competition_stream
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

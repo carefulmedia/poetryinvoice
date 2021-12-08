@@ -1,0 +1,20 @@
+uuid: 6d72b04b-e7ce-4930-8212-cdf98c565a1d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - piv_contest_competition
+id: competition.field_invited_schools
+field_name: field_invited_schools
+entity_type: competition
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

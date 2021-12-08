@@ -1,0 +1,33 @@
+uuid: 7efa08d3-153e-459c-9181-4aa7d78ecd0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_location
+    - piv_contest_competition.competition_type.default
+  module:
+    - address
+id: competition.default.field_location
+field_name: field_location
+entity_type: competition
+bundle: default
+label: Location
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries: {  }
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+  fields: {  }
+field_type: address

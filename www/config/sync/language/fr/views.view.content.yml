@@ -1,0 +1,22 @@
+display:
+  default:
+    display_options:
+      fields:
+        status:
+          label: État
+          settings:
+            format_custom_true: Publié
+            format_custom_false: 'Non publié'
+        operations:
+          label: Actions
+      filters:
+        status:
+          expose:
+            label: État
+          group_info:
+            group_items:
+              1:
+                title: Publié
+              2:
+                title: 'Non publié'
+    display_title: 'Par défaut'

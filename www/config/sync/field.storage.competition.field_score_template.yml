@@ -1,13 +1,13 @@
-uuid: c6fbd19d-0422-4d67-b0ff-615f2b147f22
+uuid: cf357888-d6e9-46b4-8299-b711704c5e74
 langcode: en
 status: true
 dependencies:
   module:
-    - piv_contest_score
+    - piv_contest_competition
     - piv_contest_score_template
-id: score.field_score_template
+id: competition.field_score_template
 field_name: field_score_template
-entity_type: score
+entity_type: competition
 type: entity_reference
 settings:
   target_type: score_template

@@ -1,0 +1,23 @@
+uuid: a31bf017-e5ed-43a6-93a1-800945969938
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition_entry.field_complete
+    - piv_contest_competition_entry.competition_entry_type.default
+id: competition_entry.default.field_complete
+field_name: field_complete
+entity_type: competition_entry
+bundle: default
+label: Complete
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

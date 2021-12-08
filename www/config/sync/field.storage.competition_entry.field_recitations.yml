@@ -1,0 +1,20 @@
+uuid: 7d406cc0-f3b9-4102-9800-0e6669ac6e07
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition_entry
+    - piv_contest_recitation
+id: competition_entry.field_recitations
+field_name: field_recitations
+entity_type: competition_entry
+type: entity_reference
+settings:
+  target_type: recitation
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,25 @@
+uuid: b68a4171-b9f7-4319-ba57-4d9cab311291
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_competition_current_level
+    - piv_contest_competition.competition_type.default
+id: competition.default.field_competition_current_level
+field_name: field_competition_current_level
+entity_type: competition
+bundle: default
+label: 'Current Level'
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

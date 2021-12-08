@@ -14,8 +14,7 @@ class CompetitionConstraintValidator extends ConstraintValidator {
    * {@inheritdoc}
    */
   public function validate($entity, Constraint $constraint) {
-    // @DCG Validate the entity here.
-    if ($entity->bundle() != 'competition') {
+    if ($entity->bundle() != 'default') {
       return;
     }
 

@@ -1,0 +1,29 @@
+uuid: 66393df9-6a67-4872-bb4f-5fd63afa5061
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_invited_schools
+    - node.type.school
+    - piv_contest_competition.competition_type.default
+id: competition.default.field_invited_schools
+field_name: field_invited_schools
+entity_type: competition
+bundle: default
+label: 'Invited schools'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      school: school
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

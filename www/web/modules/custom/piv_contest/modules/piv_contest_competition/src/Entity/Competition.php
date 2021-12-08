@@ -61,7 +61,10 @@ use Drupal\user\UserInterface;
  *     "collection" = "/admin/contest/competition"
  *   },
  *   bundle_entity_type = "competition_type",
- *   field_ui_base_route = "entity.competition_type.edit_form"
+ *   field_ui_base_route = "entity.competition_type.edit_form",
+ *   constraints = {
+ *     "competition_constraint" = {}
+ *   }
  * )
  */
 class Competition extends RevisionableContentEntityBase implements CompetitionInterface {

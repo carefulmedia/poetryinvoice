@@ -1,0 +1,18 @@
+uuid: ce636bd2-0252-484a-bfae-8cfec39974fe
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition
+id: competition.field_online_competition
+field_name: field_online_competition
+entity_type: competition
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

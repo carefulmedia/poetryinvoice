@@ -1,0 +1,29 @@
+uuid: 99dd4662-a98e-4d9d-bd3c-9289be475000
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition_entry.field_recitations
+    - piv_contest_competition_entry.competition_entry_type.default
+    - piv_contest_recitation.recitation_type.default
+id: competition_entry.default.field_recitations
+field_name: field_recitations
+entity_type: competition_entry
+bundle: default
+label: Recitations
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:recitation'
+  handler_settings:
+    target_bundles:
+      default: default
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

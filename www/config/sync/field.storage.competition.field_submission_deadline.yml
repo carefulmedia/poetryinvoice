@@ -1,0 +1,20 @@
+uuid: 42f7271b-7cec-4db3-a61f-ed32e378436b
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - piv_contest_competition
+id: competition.field_submission_deadline
+field_name: field_submission_deadline
+entity_type: competition
+type: datetime
+settings:
+  datetime_type: datetime
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

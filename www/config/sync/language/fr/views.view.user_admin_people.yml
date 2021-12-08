@@ -1,0 +1,13 @@
+display:
+  default:
+    display_title: 'Par défaut'
+    display_options:
+      fields:
+        status:
+          label: État
+        operations:
+          label: Actions
+      filters:
+        status:
+          group_info:
+            label: État

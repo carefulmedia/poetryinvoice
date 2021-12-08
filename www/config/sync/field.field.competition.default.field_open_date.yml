@@ -1,0 +1,21 @@
+uuid: 6cda1471-93ec-4d05-85aa-7f1adcd0dd78
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_open_date
+    - piv_contest_competition.competition_type.default
+  module:
+    - datetime
+id: competition.default.field_open_date
+field_name: field_open_date
+entity_type: competition
+bundle: default
+label: 'Open Date'
+description: 'The date this competition will be public.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

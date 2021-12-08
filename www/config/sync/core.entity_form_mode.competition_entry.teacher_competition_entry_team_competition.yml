@@ -1,0 +1,10 @@
+uuid: 3ce8bac7-c319-441b-92c8-726e3374a6c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition_entry
+id: competition_entry.teacher_competition_entry_team_competition
+label: 'Teacher Competition Entry (Team Competition)'
+targetEntityType: competition_entry
+cache: true

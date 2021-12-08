@@ -302,8 +302,8 @@ class Score extends RevisionableContentEntityBase implements ScoreInterface {
     $fields['judging_session'] = BaseFieldDefinition::create('entity_reference')
       ->setRevisionable(TRUE)
       ->setTranslatable(TRUE)
-      ->setLabel(t('Recitation'))
-      ->setDescription(t('The recitation ID this score is for.'))
+      ->setLabel(t('Judging Session'))
+      ->setDescription(t('The judging session ID this score is for.'))
       ->setSetting('target_type', 'judging_session')
       ->setRequired(TRUE)
       ->setDisplayOptions('form', [

@@ -1,0 +1,23 @@
+uuid: ac451317-3f99-4077-9b9c-d84601905a34
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.body
+    - piv_contest_competition.competition_type.default
+  module:
+    - text
+id: competition.default.body
+field_name: body
+entity_type: competition
+bundle: default
+label: Description
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

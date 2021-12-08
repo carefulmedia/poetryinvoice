@@ -4,7 +4,8 @@ namespace Drupal\piv_contest\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\node\NodeInterface;
+use Drupal\piv_contest_recitation\RecitationInterface;
+use Drupal\piv_contest_judging_session\JudgingSessionInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
@@ -38,21 +39,23 @@ class ScoreForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, NodeInterface $node = NULL) {
-    if (!$node || $node->bundle() != 'competition') {
+  public function buildForm(array $form, FormStateInterface $form_state, RecitationInterface $recitation = NULL, JudgingSessionInterface $judging_session = NULL) { 
+    if (!$recitation || !$judging_session) {
       throw new NotFoundHttpException();
     }
-    
-    $score_template = $node->field_score_template->entity;
+    $score_template = $judging_session->field_competition->entity->field_score_template->entity;
     if (!$score_template) {
       // This field is required.
-      return FALSE;
+      throw new NotFoundHttpException();
     }
-    
-    // Node is a competition node.
-    $form['node'] = [
+
+    $form['recitation'] = [
       '#type' => 'value',
-      '#value' => $node,
+      '#value' => $recitation,
+    ];
+    $form['judging_session'] = [
+      '#type' => 'value',
+      '#value' => $judging_session,
     ];
     $form['score_template_form'] = [
       '#type' => 'container',
@@ -77,12 +80,13 @@ class ScoreForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->messenger()->addStatus($this->t('The message has been sent.'));
+    $this->messenger()->addStatus($this->t('The score has been created.'));
     $values = $form_state->getValues();
-    $node = $values['node'];
+    $judging_session = $values['judging_session'];
+    $recitation = $values['recitation'];
     $score_template_form_values = $values['score_template_form'];
     $result = $this->scoreFormBuilder
-      ->createScore($node, $score_template_form_values);
+      ->createScore($recitation, $judging_session, $score_template_form_values);
   }
 
 }

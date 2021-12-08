@@ -63,7 +63,7 @@ use Drupal\user\UserInterface;
  *   bundle_entity_type = "score_template_type",
  *   field_ui_base_route = "entity.score_template_type.edit_form",
  *   constraints = {
- *     "ScoreTemplate" = {}
+ *     "score_template_constraint" = {}
  *   }
  * )
  */

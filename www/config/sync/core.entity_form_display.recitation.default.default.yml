@@ -1,0 +1,31 @@
+uuid: 2b95442d-8984-4cee-a70a-593ef39f73a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - piv_contest_recitation.recitation_type.default
+id: recitation.default.default
+targetEntityType: recitation
+bundle: default
+mode: default
+content:
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  translation: true
+  uid: true

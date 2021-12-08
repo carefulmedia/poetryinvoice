@@ -26,7 +26,9 @@ use Drupal\user\UserInterface;
  *     "form" = {
  *       "add" = "Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm",
  *       "edit" = "Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm",
- *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm"
+ *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm",
+ *       "teacher_competition_entry" = "Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm",
+ *       "teacher_competition_entry_team_competition" = "Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm",
  *     },
  *     "route_provider" = {
  *       "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider",

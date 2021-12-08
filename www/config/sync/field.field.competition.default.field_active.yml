@@ -1,0 +1,23 @@
+uuid: 294acd48-2f6c-4d1a-acb6-d8db36fb17e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_active
+    - piv_contest_competition.competition_type.default
+id: competition.default.field_active
+field_name: field_active
+entity_type: competition
+bundle: default
+label: Active
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
