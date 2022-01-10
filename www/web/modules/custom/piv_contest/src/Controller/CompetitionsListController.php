@@ -10,6 +10,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\user\UserInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
+use Drupal\Core\Url;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -108,7 +109,7 @@ class CompetitionsListController extends ControllerBase {
     $competitions_without_entries = array_diff_key($competitions, $competitions_with_entries);
     
     ksm($competitions_with_entries);
-    ksm($competitions_without_entries);
+    ksm($competitions_without_entries);    
 
     // Competition is active.
     $build['content'] = [
@@ -123,7 +124,7 @@ class CompetitionsListController extends ControllerBase {
       '#type' => 'fieldset',
       '#title' => 'Competitions with entries',
     ];
-    $build['competition']['withou_entries'] = [
+    $build['competition']['without_entries'] = [
       '#type' => 'fieldset',
       '#title' => 'Competitions without entries',
     ];
@@ -138,6 +139,14 @@ class CompetitionsListController extends ControllerBase {
           '#type' => 'item',
           '#markup' => "Entries " . count($competitions_entries[$id]),
         ],
+        'link' => [
+          '#type' => 'link',
+          '#title' => 'View',
+          '#url' => Url::fromRoute('piv_contest.competition', [
+            'user' => $user->id(),
+            'competition' => $id,
+          ]),
+        ]
       ];
     }
     

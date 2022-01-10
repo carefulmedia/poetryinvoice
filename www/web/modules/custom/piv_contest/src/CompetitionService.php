@@ -3,6 +3,7 @@
 namespace Drupal\piv_contest;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\piv_contest_competition_entry\CompetitionEntryInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
@@ -55,6 +56,37 @@ class CompetitionService {
     }
     
     return TRUE;
+  }
+  
+  /**
+   * Get the required min and max number of entries per stream on competition.
+   * 
+   * @todo for now lets consider the first stream only.
+   */
+  public function verifyEntryIsComplete(CompetitionEntryInterface $competition_entry, &$missing = []) {
+    $competition = $competition_entry->field_competition->entity;
+    if (!$competition) {
+      return FALSE;
+    }
+    
+    $required_recitations = [];
+    foreach ($competition->field_competition_streams->referencedEntities() as $stream) {
+      // Get the number of recitations required per stream type.
+      $stream_types = array_column($stream->field_competition_stream_type->getValue(), 'value');
+      foreach ($stream_types as $stream_type) {
+        $required_recitations[$stream_type] = $stream->field_min_recitations->value;
+      }
+      break; // @todo for now we only consider the first stream.
+    }
+    
+    //ksm($required_recitations);
+    ksm($competition_entry->field_stream);
+    ksm($competition_entry->field_recitations->count());
+    foreach ($competition_entry->field_recitations->referencedEntities() as $recitation) {
+      //ksm($recitation);
+    }
+    
+    return;
   }
 
 }

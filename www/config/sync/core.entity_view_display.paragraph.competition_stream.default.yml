@@ -10,19 +10,18 @@ dependencies:
     - field.field.paragraph.competition_stream.field_max_entries_school
     - field.field.paragraph.competition_stream.field_min_recitations
     - paragraphs.paragraphs_type.competition_stream
-  module:
-    - options
 id: paragraph.competition_stream.default
 targetEntityType: paragraph
 bundle: competition_stream
 mode: default
 content:
   field_competition_stream_type:
-    weight: 0
+    weight: 8
     label: above
-    settings: {  }
+    settings:
+      link: true
     third_party_settings: {  }
-    type: list_default
+    type: entity_reference_label
     region: content
   field_description:
     weight: 7

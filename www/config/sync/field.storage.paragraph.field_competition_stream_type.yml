@@ -1,26 +1,19 @@
-uuid: 330477fd-6c80-4d44-bc26-0ec52c513b09
+uuid: 97a30f17-4b3d-4a22-b2f2-699d21d111fe
 langcode: en
 status: true
 dependencies:
   module:
-    - options
     - paragraphs
+    - taxonomy
 id: paragraph.field_competition_stream_type
 field_name: field_competition_stream_type
 entity_type: paragraph
-type: list_string
+type: entity_reference
 settings:
-  allowed_values:
-    -
-      value: en
-      label: English
-    -
-      value: fr
-      label: French
-  allowed_values_function: ''
-module: options
+  target_type: taxonomy_term
+module: core
 locked: false
-cardinality: -1
+cardinality: 1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

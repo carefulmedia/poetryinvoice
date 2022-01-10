@@ -3,8 +3,8 @@ name: 'Poetry In Voice'
 mail: webmaster@poetryinvoice.com
 slogan: 'Canada''s best resource for teaching poetry. Lesson plans for teachers, and poems, writing workshops and more for students'
 page:
-  403: /customerror/403
-  404: /
+  403: ''
+  404: ''
   front: /node
 admin_compact_mode: false
 weight_select_max: 100

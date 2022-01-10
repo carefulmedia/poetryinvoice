@@ -2,3 +2,7 @@ system.admin_contest:
   title: Contest
   route_name: system.admin_contest
   base_route: system.admin_contest
+piv_contest.user_competitions:
+  route_name: piv_content.competitions_list
+  base_route: entity.user.canonical
+  title: Competitions

@@ -1,12 +1,11 @@
-uuid: 28cb6ea7-b25c-4b53-acd9-daecdfbebb72
+uuid: 81bf7f47-aa71-40ce-925e-34bd227fa80f
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.paragraph.field_competition_stream_type
     - paragraphs.paragraphs_type.competition_stream
-  module:
-    - options
+    - taxonomy.vocabulary.competition_stream
 id: paragraph.competition_stream.field_competition_stream_type
 field_name: field_competition_stream_type
 entity_type: paragraph
@@ -17,5 +16,14 @@ required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
-settings: {  }
-field_type: list_string
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      competition_stream: competition_stream
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
