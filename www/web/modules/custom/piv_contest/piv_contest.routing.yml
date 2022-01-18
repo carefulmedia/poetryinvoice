@@ -29,18 +29,21 @@ piv_content.competitions_list:
   defaults:
     _title: 'Competitions'
     _controller: '\Drupal\piv_contest\Controller\CompetitionsListController::build'
-  # requirements:
-    # _permission: 'access content'
   requirements:
     _custom_access: '\Drupal\piv_contest\Controller\CompetitionsListController::access'
 
 piv_contest.competition:
   path: '/user/{user}/competitions/{competition}'
   defaults:
-    _title: 'Competition'
+    _title_callback: '\Drupal\piv_contest\Controller\CompetitionController::title'
     _controller: '\Drupal\piv_contest\Controller\CompetitionController::build'
   requirements:
-    _permission: 'access content'
+    _access: 'TRUE'
+  options:
+    parameters:
+      competition:
+        type: entity:competition
+  #   _permission: 'access content'
 
 piv_contest.competition_entry_add:
   path: '/user/{user}/competitions/{competition}/competition-entry/add'

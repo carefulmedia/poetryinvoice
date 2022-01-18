@@ -85,10 +85,16 @@ class CompetitionsListController extends ControllerBase {
 
     $now = (new DrupalDatetime('now'))
       ->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
+
+    // Maybe this could move to the factory method as constructor
+    // arguments.
     $competition_storage = $this->entityTypeManager
       ->getStorage('competition');
     $competition_entry_storage = $this->entityTypeManager
       ->getStorage('competition_entry');
+    $competition_view_builder = $this->entityTypeManager
+      ->getViewBuilder('competition');
+
     $query = $competition_storage->getQuery();
     $query->condition('field_open_date', $now, '<')
       ->condition('field_submission_deadline', $now, '>')
@@ -121,57 +127,57 @@ class CompetitionsListController extends ControllerBase {
     ksm($competitions_without_entries);
 
     // Competition is active.
-    $build['content'] = [
-      '#type' => 'item',
-      '#markup' => $this->t('THIS IS A TEST FOR NOW AND WE SHOULD CHANGE THIS TO DISPLAY MODES ON COMPETITIONS.'),
-    ];
-
     $build['competition'] = [
       '#type' => 'container',
     ];
-    $build['competition']['with_entries'] = [
-      '#type' => 'fieldset',
-      '#title' => 'Competitions with entries',
-    ];
-    $build['competition']['without_entries'] = [
-      '#type' => 'fieldset',
-      '#title' => 'Competitions without entries',
-    ];
 
-    foreach ($competitions_with_entries as $id => $competition) {
-      $build['competition']['with_entries'][] = [
-        'label' => [
-          '#type' => 'item',
-          '#markup' => $competition->label(),
-        ],
-        'entries' => [
-          '#type' => 'item',
-          '#markup' => "Entries " . count($competitions_entries[$id]),
-        ],
-        'link' => [
-          '#type' => 'link',
-          '#title' => 'View',
-          '#url' => Url::fromRoute('piv_contest.competition', [
-            'user' => $user->id(),
-            'competition' => $id,
-          ]),
-        ]
+    if ($competitions_with_entries) {
+      $build['competition']['with_entries'] = [
+        '#type' => 'fieldset',
+        '#title' => t('Competitions in which your school is participating'),
       ];
+      foreach ($competitions_with_entries as $id => $competition) {
+        $build['competition']['with_entries'][] = [
+          'competition' => $competition_view_builder->view($competition, 'teaser'),
+          'entries' => [
+            '#type' => 'item',
+            '#markup' => "Entries " . count($competitions_entries[$id]),
+          ],
+          'link' => [
+            '#type' => 'link',
+            '#title' => t('Manage your competition entries'),
+            '#url' => Url::fromRoute('piv_contest.competition', [
+              'user' => $user->id(),
+              'competition' => $id,
+            ]),
+          ]
+        ];
+      }
     }
 
-    foreach ($competitions_without_entries as $id => $competition) {
-      $build['competition']['without_entries'][] = [
-        'label' => [
-          '#type' => 'item',
-          '#markup' => $competition->label(),
-        ],
-        'entries' => [
-          '#type' => 'item',
-          '#markup' => "No entries",
-        ],
+    if ($competitions_without_entries) {
+      $build['competition']['without_entries'] = [
+        '#type' => 'fieldset',
+        '#title' => t('Competitions in which your school can enroll'),
       ];
-    }
 
+      foreach ($competitions_without_entries as $id => $competition) {
+        $build['competition']['without_entries'][] = [
+          'competition' => $competition_view_builder->view($competition, 'teaser'),
+          'link' => [
+            '#type' => 'link',
+            '#title' => t('Enroll your school'),
+            '#url' => Url::fromRoute('piv_contest.competition_entry_add', [
+              'user' => $user->id(),
+              'competition' => $id,
+            ]),
+          ],
+          'separator' => [
+            '#markup' => '<div> --- </div>',
+          ]
+        ];
+      }
+    }
     return $build;
   }
 
