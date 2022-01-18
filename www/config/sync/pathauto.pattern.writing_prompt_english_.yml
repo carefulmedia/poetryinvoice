@@ -12,20 +12,20 @@ pattern: 'write/writing-prompts/[node:title]'
 selection_criteria:
   49ae8d56-e716-4f26-a639-d50bfba726de:
     id: node_type
-    bundles:
-      writing_prompt: writing_prompt
     negate: false
+    uuid: 49ae8d56-e716-4f26-a639-d50bfba726de
     context_mapping:
       node: node
-    uuid: 49ae8d56-e716-4f26-a639-d50bfba726de
+    bundles:
+      writing_prompt: writing_prompt
   52994c9f-bc29-4026-bba3-32573c2eb348:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 52994c9f-bc29-4026-bba3-32573c2eb348
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 52994c9f-bc29-4026-bba3-32573c2eb348
+    langcodes:
+      en: en
 selection_logic: and
 weight: -9
 relationships:

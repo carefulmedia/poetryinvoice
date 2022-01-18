@@ -17,8 +17,8 @@ required: false
 translatable: true
 default_value:
   -
-    summary: ''
     value: "<p>\r\n\tClick on &quot;Source&quot; above and then paste the embed code in this box</p>\r\n"
+    summary: ''
     format: full_html
 default_value_callback: ''
 settings:

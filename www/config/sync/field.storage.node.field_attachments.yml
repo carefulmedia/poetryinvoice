@@ -10,10 +10,10 @@ field_name: field_attachments
 entity_type: node
 type: file
 settings:
-  display_default: true
-  display_field: false
-  uri_scheme: public
   target_type: file
+  display_field: false
+  display_default: true
+  uri_scheme: public
 module: file
 locked: false
 cardinality: -1

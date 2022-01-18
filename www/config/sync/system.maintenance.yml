@@ -1,4 +1,4 @@
-message: "<h2 style=\"color: #fff\">We'll be right back! </h2>\r\n\r\n<p>We're updating our site and we'll be back to promoting poetry later today.</p>\r\n\r\n<p>In the meantime, if you're a teacher and you'd like to sign up for this year's contest, please send us an email:\r\n<a style=\"color: #fff\" href=\"mailto:info@poetryinvoice.com\">info@poetryinvoice.com</a></p>\r\n\r\n"
-langcode: en
 _core:
   default_config_hash: Z5MXifrF77GEAgx0GQ6iWT8wStjFuY8BD9OruofWTJ8
+langcode: en
+message: "<h2 style=\"color: #fff\">We'll be right back! </h2>\r\n\r\n<p>We're updating our site and we'll be back to promoting poetry later today.</p>\r\n\r\n<p>In the meantime, if you're a teacher and you'd like to sign up for this year's contest, please send us an email:\r\n<a style=\"color: #fff\" href=\"mailto:info@poetryinvoice.com\">info@poetryinvoice.com</a></p>\r\n\r\n"

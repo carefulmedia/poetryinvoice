@@ -12,20 +12,20 @@ pattern: 'competitions/schools/[node:title]'
 selection_criteria:
   16a86c63-6e7c-4795-a59f-c3defb7b5d3c:
     id: node_type
-    bundles:
-      school: school
     negate: false
+    uuid: 16a86c63-6e7c-4795-a59f-c3defb7b5d3c
     context_mapping:
       node: node
-    uuid: 16a86c63-6e7c-4795-a59f-c3defb7b5d3c
+    bundles:
+      school: school
   75a1fc23-117c-49a0-81ed-e53d1e56146d:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 75a1fc23-117c-49a0-81ed-e53d1e56146d
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 75a1fc23-117c-49a0-81ed-e53d1e56146d
+    langcodes:
+      en: en
 selection_logic: and
 weight: 9
 relationships:

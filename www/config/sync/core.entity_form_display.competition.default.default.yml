@@ -31,15 +31,15 @@ bundle: default
 mode: default
 content:
   body:
+    type: text_textarea_with_summary
     weight: 7
+    region: content
     settings:
       rows: 9
       summary_rows: 3
       placeholder: ''
       show_summary: false
     third_party_settings: {  }
-    type: text_textarea_with_summary
-    region: content
   created:
     type: datetime_timestamp
     weight: 5
@@ -47,37 +47,38 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_active:
+    type: boolean_checkbox
     weight: 17
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_by_invitation_only:
+    type: boolean_checkbox
     weight: 15
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_competition_current_level:
+    type: number
     weight: 19
+    region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
-    type: number
-    region: content
   field_competition_levels:
+    type: string_textfield
     weight: 18
+    region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: string_textfield
-    region: content
   field_competition_streams:
     type: entity_reference_paragraphs
     weight: 11
+    region: content
     settings:
       title: Paragraph
       title_plural: Paragraphs
@@ -86,81 +87,80 @@ content:
       form_display_mode: default
       default_paragraph_type: ''
     third_party_settings: {  }
-    region: content
   field_invited_schools:
+    type: entity_reference_autocomplete
     weight: 16
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_judges:
+    type: entity_reference_autocomplete
     weight: 20
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_judging_deadline:
-    weight: 10
-    settings: {  }
-    third_party_settings: {  }
     type: datetime_default
+    weight: 10
     region: content
-  field_location:
-    weight: 14
     settings: {  }
     third_party_settings: {  }
+  field_location:
     type: address_default
+    weight: 14
     region: content
+    settings: {  }
+    third_party_settings: {  }
   field_online_competition:
+    type: boolean_checkbox
     weight: 13
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_open_date:
+    type: datetime_default
     weight: 8
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_score_template:
+    type: entity_reference_autocomplete
     weight: 21
+    region: content
     settings:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
       placeholder: ''
     third_party_settings: {  }
-    type: entity_reference_autocomplete
-    region: content
   field_submission_deadline:
+    type: datetime_default
     weight: 9
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   field_team_competition:
+    type: boolean_checkbox
     weight: 12
+    region: content
     settings:
       display_label: true
     third_party_settings: {  }
-    type: boolean_checkbox
-    region: content
   field_winners_announced:
+    type: datetime_default
     weight: 6
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: datetime_default
-    region: content
   langcode:
     type: language_select
     weight: 2
@@ -170,10 +170,10 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    settings:
-      display_label: false
     weight: 1
     region: content
+    settings:
+      display_label: false
     third_party_settings: {  }
   title:
     type: string_textfield
@@ -190,12 +190,12 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    settings:
-      match_operator: CONTAINS
-      size: 60
-      placeholder: ''
-      match_limit: 10
     weight: 4
     region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden: {  }

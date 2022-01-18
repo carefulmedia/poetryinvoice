@@ -12,20 +12,20 @@ pattern: 'enseigner/salle/babillard/[node:title]'
 selection_criteria:
   0e799ffe-bba7-48d2-92af-36ae239b26cf:
     id: node_type
-    bundles:
-      bulletin_board: bulletin_board
     negate: false
+    uuid: 0e799ffe-bba7-48d2-92af-36ae239b26cf
     context_mapping:
       node: node
-    uuid: 0e799ffe-bba7-48d2-92af-36ae239b26cf
+    bundles:
+      bulletin_board: bulletin_board
   12faef8c-5d52-4301-bfe1-254a4896abb6:
     id: language
-    langcodes:
-      fr: fr
     negate: false
+    uuid: 12faef8c-5d52-4301-bfe1-254a4896abb6
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 12faef8c-5d52-4301-bfe1-254a4896abb6
+    langcodes:
+      fr: fr
 selection_logic: and
 weight: -6
 relationships:

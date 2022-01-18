@@ -12,20 +12,20 @@ pattern: 'actualites/evenements/[node:title]'
 selection_criteria:
   27d3c8fb-4281-4bce-b03a-856cc0d84dac:
     id: node_type
-    bundles:
-      event: event
     negate: false
+    uuid: 27d3c8fb-4281-4bce-b03a-856cc0d84dac
     context_mapping:
       node: node
-    uuid: 27d3c8fb-4281-4bce-b03a-856cc0d84dac
+    bundles:
+      event: event
   dc95b14f-5100-4394-8d96-ff7d3b9d6953:
     id: language
-    langcodes:
-      fr: fr
     negate: false
+    uuid: dc95b14f-5100-4394-8d96-ff7d3b9d6953
     context_mapping:
       language: 'node:langcode:language'
-    uuid: dc95b14f-5100-4394-8d96-ff7d3b9d6953
+    langcodes:
+      fr: fr
 selection_logic: and
 weight: -4
 relationships:

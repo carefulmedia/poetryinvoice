@@ -12,20 +12,20 @@ pattern: 'enseigner/salle/table-rondes/[node:taxonomy_forums:entity:name]/[node:
 selection_criteria:
   4f6a8bc9-855d-4085-ba91-17d46099e2c3:
     id: node_type
-    bundles:
-      forum: forum
     negate: false
+    uuid: 4f6a8bc9-855d-4085-ba91-17d46099e2c3
     context_mapping:
       node: node
-    uuid: 4f6a8bc9-855d-4085-ba91-17d46099e2c3
+    bundles:
+      forum: forum
   b8d83dc1-df7e-481c-9270-66db3d55fea9:
     id: language
-    langcodes:
-      fr: fr
     negate: false
+    uuid: b8d83dc1-df7e-481c-9270-66db3d55fea9
     context_mapping:
       language: 'node:langcode:language'
-    uuid: b8d83dc1-df7e-481c-9270-66db3d55fea9
+    langcodes:
+      fr: fr
 selection_logic: and
 weight: -2
 relationships:

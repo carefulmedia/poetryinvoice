@@ -14,20 +14,20 @@ bundle: poetic_terms
 mode: default
 content:
   description:
-    label: hidden
     type: text_default
-    weight: 0
-    region: content
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-  field_roulette_image:
-    label: above
     weight: 0
+    region: content
+  field_roulette_image:
     type: image
+    label: above
     settings:
       image_link: ''
       image_style: ''
     third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   langcode: true

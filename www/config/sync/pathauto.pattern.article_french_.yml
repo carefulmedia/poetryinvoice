@@ -12,20 +12,20 @@ pattern: 'actualites/dernieres-nouvelles/[node:title]'
 selection_criteria:
   afe34507-96cb-41fd-85d7-331677f14952:
     id: node_type
-    bundles:
-      article: article
     negate: false
+    uuid: afe34507-96cb-41fd-85d7-331677f14952
     context_mapping:
       node: node
-    uuid: afe34507-96cb-41fd-85d7-331677f14952
+    bundles:
+      article: article
   ee297fa1-4b0f-4aa2-879e-3c3cecbd073c:
     id: language
-    langcodes:
-      fr: fr
     negate: false
+    uuid: ee297fa1-4b0f-4aa2-879e-3c3cecbd073c
     context_mapping:
       language: 'node:langcode:language'
-    uuid: ee297fa1-4b0f-4aa2-879e-3c3cecbd073c
+    langcodes:
+      fr: fr
 selection_logic: and
 weight: -12
 relationships:

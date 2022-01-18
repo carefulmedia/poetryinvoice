@@ -87,218 +87,218 @@ bundle: user
 mode: diff
 content:
   field_about_me:
-    label: above
-    weight: 62
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 62
     region: content
   field_additional_email:
-    label: above
-    weight: 8
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 8
     region: content
   field_bio_trans:
-    label: above
-    weight: 1
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: content
   field_cheque_made_to:
-    label: above
-    weight: 10
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 10
     region: content
   field_contest_judging:
-    label: above
-    weight: 9
     type: entity_reference_label
+    label: above
     settings:
       link: true
     third_party_settings: {  }
+    weight: 9
     region: content
   field_cv:
-    label: above
-    weight: 42
     type: file_default
+    label: above
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
+    weight: 42
     region: content
   field_french_signature:
-    label: above
-    weight: 49
     type: basic_string
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 49
     region: content
   field_google_calendar_iframe_cod:
-    label: above
-    weight: 22
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 22
     region: content
   field_gst_hst_:
-    label: above
-    weight: 12
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 12
     region: content
   field_how_did_you_hear_from_us_2:
-    label: above
-    weight: 52
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 52
     region: content
   field_lifespan:
-    label: above
-    weight: 2
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 2
     region: content
   field_my_favourite_poem_and_or_p:
-    label: above
-    weight: 57
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 57
     region: content
   field_my_role_at_school_organiza:
-    label: above
-    weight: 54
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 54
     region: content
   field_non_school_organization:
-    label: above
-    weight: 55
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 55
     region: content
   field_one_line_bio:
-    label: above
-    weight: 4
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 4
     region: content
   field_phone:
-    label: above
-    weight: 15
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 15
     region: content
   field_poet_notes:
-    label: above
-    weight: 26
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 26
     region: content
   field_poetry_is_:
-    label: above
-    weight: 56
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 56
     region: content
   field_pst_qst_:
-    label: above
-    weight: 13
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 13
     region: content
   field_school:
-    label: above
-    weight: 41
     type: entity_reference_label
+    label: above
     settings:
       link: true
     third_party_settings: {  }
+    weight: 41
     region: content
   field_sign_up_date3:
-    label: above
-    weight: 60
     type: datetime_default
+    label: above
     settings:
-      format_type: long
       timezone_override: ''
+      format_type: long
     third_party_settings: {  }
+    weight: 60
     region: content
   field_signature:
-    label: above
-    weight: 48
     type: basic_string
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 48
     region: content
   field_user_bio:
-    label: above
-    weight: 5
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 5
     region: content
   field_what_grades_do_you_teach:
-    label: above
-    weight: 61
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 61
     region: content
   field_what_subjects_do_you_teach:
-    label: above
-    weight: 63
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 63
     region: content
   member_for:
-    weight: 5
     settings: {  }
     third_party_settings: {  }
+    weight: 5
     region: content
   piv_teacher_first_name:
-    label: above
-    weight: 45
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 45
     region: content
   piv_teacher_last_name:
-    label: above
-    weight: 47
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 47
     region: content
 hidden:
   field_action_item: true

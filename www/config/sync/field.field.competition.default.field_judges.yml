@@ -18,7 +18,11 @@ default_value_callback: ''
 settings:
   handler: 'default:user'
   handler_settings:
-    include_anonymous: true
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
     filter:
       type: role
       role:
@@ -48,9 +52,5 @@ settings:
         education_consultant: '0'
         journal_editor: '0'
         junior_editor: '0'
-    target_bundles: null
-    sort:
-      field: _none
-      direction: ASC
-    auto_create: false
+    include_anonymous: true
 field_type: entity_reference

@@ -45,61 +45,61 @@ bundle: poem
 mode: default
 content:
   body:
-    label: hidden
-    weight: 3
     type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 3
     region: content
   comment_node_poem:
-    label: hidden
     type: comment_default
-    weight: 20
+    label: hidden
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 20
     region: content
   field_biligraphical_info:
-    label: hidden
-    weight: 4
     type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 4
     region: content
   field_completed:
-    label: above
-    weight: 43
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 43
     region: content
   field_dive_in:
-    label: inline
-    weight: 6
     type: text_default
+    label: inline
     settings: {  }
     third_party_settings: {  }
+    weight: 6
     region: content
   field_dive_in_attribution:
-    label: inline
-    weight: 7
     type: entity_reference_label
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
+    weight: 7
     region: content
   field_paid_:
-    label: above
-    weight: 44
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 44
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   field_broadsides_are_allowed: true

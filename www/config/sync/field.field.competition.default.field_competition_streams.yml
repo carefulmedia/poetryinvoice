@@ -21,9 +21,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       competition_stream: competition_stream
+    negate: 0
     target_bundles_drag_drop:
       action_item:
         weight: 18
@@ -32,8 +32,8 @@ settings:
         weight: 19
         enabled: false
       competition_stream:
-        enabled: true
         weight: 20
+        enabled: true
       judges:
         weight: 21
         enabled: false

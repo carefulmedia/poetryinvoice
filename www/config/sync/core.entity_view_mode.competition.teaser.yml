@@ -1,0 +1,10 @@
+uuid: 46db1f6f-23c9-4801-a5c9-05823dadccfc
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition
+id: competition.teaser
+label: Teaser
+targetEntityType: competition
+cache: true

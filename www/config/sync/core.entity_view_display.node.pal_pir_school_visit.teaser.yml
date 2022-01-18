@@ -40,9 +40,9 @@ bundle: pal_pir_school_visit
 mode: teaser
 content:
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   comment_node_pal_pir_school_vi: true

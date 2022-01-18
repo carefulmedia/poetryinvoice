@@ -17,25 +17,25 @@ bundle: forum
 mode: teaser
 content:
   body:
-    label: hidden
-    weight: 11
     type: text_summary_or_trimmed
+    label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }
+    weight: 11
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
   taxonomy_forums:
-    label: above
-    weight: 10
     type: entity_reference_label
+    label: above
     settings:
       link: true
     third_party_settings: {  }
+    weight: 10
     region: content
 hidden:
   comment_forum: true

@@ -18,10 +18,10 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  description_field: false
+  handler: 'default:file'
+  handler_settings: {  }
   file_directory: ''
   file_extensions: 'txt pdf'
   max_filesize: ''
-  handler: 'default:file'
-  handler_settings: {  }
+  description_field: false
 field_type: file

@@ -88,190 +88,190 @@ bundle: user
 mode: default
 content:
   field_bio_completed_:
-    label: above
-    weight: 67
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 67
     region: content
   field_bio_not_by_author_paid_:
-    label: above
-    weight: 68
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 68
     region: content
   field_bio_written_by:
-    label: above
-    weight: 69
     type: entity_reference_label
+    label: above
     settings:
       link: true
     third_party_settings: {  }
+    weight: 69
     region: content
   field_canadian_educator_:
-    label: above
-    weight: 13
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 13
     region: content
   field_google_calendar_iframe_cod:
-    label: above
-    weight: 4
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 4
     region: content
   field_how_did_you_hear_from_us_2:
-    label: above
-    weight: 14
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 14
     region: content
   field_i_am_interested_in_doing_i:
-    label: above
-    weight: 72
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 72
     region: content
   field_lifespan:
-    label: hidden
-    weight: 1
     type: string
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 1
     region: content
   field_micro_interview:
-    label: above
-    weight: 6
     type: entity_reference_revisions_entity_view
+    label: above
     settings:
       view_mode: full
       link: ''
     third_party_settings: {  }
+    weight: 6
     region: content
   field_my_favourite_poem_and_or_p:
-    label: above
-    weight: 7
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 7
     region: content
   field_my_role_at_school_organiza:
-    label: above
-    weight: 17
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 17
     region: content
   field_non_school_organization:
-    label: above
-    weight: 16
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 16
     region: content
   field_online_semifinals_2015:
-    label: above
-    weight: 12
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 12
     region: content
   field_pause_solicitation:
-    label: above
-    weight: 15
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 15
     region: content
   field_peer_support:
-    label: above
-    weight: 71
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 71
     region: content
   field_photo_credit:
-    label: above
-    weight: 0
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 0
     region: content
   field_poet_in_class:
-    label: above
-    weight: 19
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 19
     region: content
   field_poetry_is_:
-    label: above
-    weight: 8
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 8
     region: content
   field_school:
-    label: above
-    weight: 11
     type: entity_reference_entity_view
+    label: above
     settings:
       view_mode: default
       link: false
     third_party_settings: {  }
+    weight: 11
     region: content
   field_team_regionals_2017:
-    label: above
-    weight: 18
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 18
     region: content
   field_user_bio:
-    label: above
-    weight: 5
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 5
     region: content
   field_what_grades_do_you_teach:
-    label: above
-    weight: 9
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 9
     region: content
   field_what_subjects_do_you_teach:
-    label: above
-    weight: 10
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 10
     region: content
   member_for:
     weight: 5
     region: content
   user_picture:
+    type: image
     label: hidden
     settings:
-      image_style: ''
       image_link: content
-    type: image
-    weight: 73
+      image_style: ''
     third_party_settings: {  }
+    weight: 73
     region: content
 hidden:
   field_about_me: true

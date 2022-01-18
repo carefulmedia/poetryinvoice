@@ -38,82 +38,82 @@ bundle: lesson_plan
 mode: default
 content:
   body:
-    label: above
-    weight: 0
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 0
     region: content
   comment_node_lesson_plan:
-    label: hidden
     type: comment_default
-    weight: 20
+    label: hidden
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 20
     region: content
   field_activity_description_steps:
-    label: above
-    weight: 3
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 3
     region: content
   field_attachments:
-    label: above
-    weight: 6
     type: file_default
+    label: above
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
+    weight: 6
     region: content
   field_completed:
-    label: above
-    weight: 21
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 21
     region: content
   field_lesson_objectives:
-    label: above
-    weight: 1
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: content
   field_materials_resources:
-    label: above
-    weight: 2
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 2
     region: content
   field_paid_:
-    label: above
-    weight: 22
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 22
     region: content
   field_variations_for_older_stude:
-    label: above
-    weight: 4
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 4
     region: content
   field_variations_for_younger_stu:
-    label: above
-    weight: 5
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 5
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   field_additional_poems: true

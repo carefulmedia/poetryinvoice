@@ -17,9 +17,9 @@ bundle: team_regionals_entry
 mode: teaser
 content:
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   comment_node_team_regionals_en: true

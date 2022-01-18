@@ -21,39 +21,39 @@ bundle: writing_workshop
 mode: default
 content:
   body:
-    label: hidden
-    weight: 5
     type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 5
     region: content
   comment_node_writing_workshop:
-    label: hidden
     type: comment_default
-    weight: 20
+    label: hidden
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 20
     region: content
   field_preface:
-    label: hidden
-    weight: 4
     type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 4
     region: content
   field_suffix:
-    label: hidden
-    weight: 7
     type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 7
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   field_banner_subtitle: true

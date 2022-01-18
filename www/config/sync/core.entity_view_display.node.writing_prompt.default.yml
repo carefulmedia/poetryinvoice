@@ -22,48 +22,48 @@ bundle: writing_prompt
 mode: default
 content:
   body:
-    label: hidden
-    weight: 1
     type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: content
   comment_node_writing_prompt:
-    label: hidden
     type: comment_default
-    weight: 20
+    label: hidden
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 20
     region: content
   field_completed:
-    label: above
-    weight: 3
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 3
     region: content
   field_paid_:
-    label: above
-    weight: 4
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 4
     region: content
   field_prompt_image:
-    label: hidden
-    weight: 0
     type: image
+    label: hidden
     settings:
       image_link: ''
       image_style: ''
     third_party_settings: {  }
+    weight: 0
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   langcode: true

@@ -36,154 +36,154 @@ bundle: journal_poem
 mode: default
 content:
   comment_node_journal_poem:
-    label: hidden
     type: comment_default
-    weight: 20
+    label: hidden
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 20
     region: content
   field_acceptance_level:
-    label: above
-    weight: 13
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 13
     region: content
   field_email1:
-    label: above
-    weight: 4
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 4
     region: content
   field_grade:
-    label: above
-    weight: 11
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 11
     region: content
   field_i_consent_to_poetry_in_voi:
-    label: above
-    weight: 12
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 12
     region: content
   field_journal_poem_body:
-    label: above
-    weight: 15
     type: text_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 15
     region: content
   field_phone:
-    label: above
-    weight: 3
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 3
     region: content
   field_poem_attachment:
-    label: above
-    weight: 7
     type: file_default
+    label: above
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
+    weight: 7
     region: content
   field_poem_being_responded_to:
-    label: above
-    weight: 9
     type: entity_reference_label
+    label: above
     settings:
       link: true
     third_party_settings: {  }
+    weight: 9
     region: content
   field_poem_reason:
-    label: above
-    weight: 18
     type: basic_string
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 18
     region: content
   field_poem_type:
-    label: above
-    weight: 16
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 16
     region: content
   field_poet_who_visited_your_scho:
-    label: above
-    weight: 17
     type: entity_reference_label
+    label: above
     settings:
       link: true
     third_party_settings: {  }
+    weight: 17
     region: content
   field_response_or_prompt:
-    label: above
-    weight: 8
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 8
     region: content
   field_school_journal:
-    label: above
-    weight: 6
     type: entity_reference_label
+    label: above
     settings:
       link: true
     third_party_settings: {  }
+    weight: 6
     region: content
   field_submission_info_confirmed:
-    label: above
-    weight: 14
     type: list_default
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 14
     region: content
   field_teacher:
-    label: above
-    weight: 5
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 5
     region: content
   field_writing_prompt:
-    label: above
-    weight: 10
     type: entity_reference_label
+    label: above
     settings:
       link: true
     third_party_settings: {  }
+    weight: 10
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
   piv_teacher_first_name:
-    label: above
-    weight: 1
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 1
     region: content
   piv_teacher_last_name:
-    label: above
-    weight: 2
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 2
     region: content
 hidden:
   langcode: true

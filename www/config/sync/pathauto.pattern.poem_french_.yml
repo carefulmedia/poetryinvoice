@@ -12,20 +12,20 @@ pattern: 'poemes/[node:title]'
 selection_criteria:
   2b47f66b-bb9c-4b02-86a4-e01815f91fba:
     id: node_type
-    bundles:
-      poem: poem
     negate: false
+    uuid: 2b47f66b-bb9c-4b02-86a4-e01815f91fba
     context_mapping:
       node: node
-    uuid: 2b47f66b-bb9c-4b02-86a4-e01815f91fba
+    bundles:
+      poem: poem
   b6aadb38-c682-4a61-9b71-3683fb6625dd:
     id: language
-    langcodes:
-      fr: fr
     negate: false
+    uuid: b6aadb38-c682-4a61-9b71-3683fb6625dd
     context_mapping:
       language: 'node:langcode:language'
-    uuid: b6aadb38-c682-4a61-9b71-3683fb6625dd
+    langcodes:
+      fr: fr
 selection_logic: and
 weight: 6
 relationships:

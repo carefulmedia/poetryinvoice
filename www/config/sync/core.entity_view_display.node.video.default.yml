@@ -30,40 +30,40 @@ bundle: video
 mode: default
 content:
   comment_node_video:
-    label: hidden
     type: comment_default
-    weight: 20
+    label: hidden
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 20
     region: content
   field_poem_retired:
-    label: hidden
-    weight: 7
     type: list_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 7
     region: content
   field_poets_plural_user:
-    label: above
-    weight: 15
     type: entity_reference_label
+    label: above
     settings:
       link: true
     third_party_settings: {  }
+    weight: 15
     region: content
   field_video_caption:
-    label: hidden
-    weight: 1
     type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 1
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   body: true

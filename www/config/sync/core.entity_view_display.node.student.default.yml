@@ -22,67 +22,67 @@ bundle: student
 mode: default
 content:
   comment_node_student:
-    label: hidden
     type: comment_default
-    weight: 20
+    label: hidden
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 20
     region: content
   field_photo:
-    label: above
-    weight: 5
     type: image
+    label: above
     settings:
       image_link: ''
       image_style: ''
     third_party_settings: {  }
+    weight: 5
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
   piv_student_first_name:
-    label: above
-    weight: 3
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 3
     region: content
   piv_student_grade:
-    label: above
-    weight: 1
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 1
     region: content
   piv_student_last_name:
-    label: above
-    weight: 2
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 2
     region: content
   piv_student_mail:
-    label: above
-    weight: 4
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 4
     region: content
   piv_student_school:
-    label: above
-    weight: 0
     type: entity_reference_label
+    label: above
     settings:
       link: true
     third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   langcode: true

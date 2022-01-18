@@ -12,20 +12,20 @@ pattern: 'teach/lounge/round-table/[node:taxonomy_forums:entity:name]/[node:titl
 selection_criteria:
   d7824d9b-74cc-416e-b846-a5d0ba2d62a1:
     id: node_type
-    bundles:
-      forum: forum
     negate: false
+    uuid: d7824d9b-74cc-416e-b846-a5d0ba2d62a1
     context_mapping:
       node: node
-    uuid: d7824d9b-74cc-416e-b846-a5d0ba2d62a1
+    bundles:
+      forum: forum
   dc46c282-945f-4f92-85d8-e940d3102919:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: dc46c282-945f-4f92-85d8-e940d3102919
     context_mapping:
       language: 'node:langcode:language'
-    uuid: dc46c282-945f-4f92-85d8-e940d3102919
+    langcodes:
+      en: en
 selection_logic: and
 weight: -3
 relationships:

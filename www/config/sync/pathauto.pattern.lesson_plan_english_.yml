@@ -12,20 +12,20 @@ pattern: 'teach/lesson-plans/[node:title]'
 selection_criteria:
   7a4a1991-5826-4dde-956f-f80a0dfb1b44:
     id: node_type
-    bundles:
-      lesson_plan: lesson_plan
     negate: false
+    uuid: 7a4a1991-5826-4dde-956f-f80a0dfb1b44
     context_mapping:
       node: node
-    uuid: 7a4a1991-5826-4dde-956f-f80a0dfb1b44
+    bundles:
+      lesson_plan: lesson_plan
   8d2a9f4d-2a68-49a5-9083-45064c7113e0:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: 8d2a9f4d-2a68-49a5-9083-45064c7113e0
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 8d2a9f4d-2a68-49a5-9083-45064c7113e0
+    langcodes:
+      en: en
 selection_logic: and
 weight: -1
 relationships:

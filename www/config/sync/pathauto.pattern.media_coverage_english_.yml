@@ -12,20 +12,20 @@ pattern: 'news/media-coverage/[node:title]'
 selection_criteria:
   2f5f7592-ef36-4b7c-a295-6a05965be3ca:
     id: node_type
-    bundles:
-      media_coverage: media_coverage
     negate: false
+    uuid: 2f5f7592-ef36-4b7c-a295-6a05965be3ca
     context_mapping:
       node: node
-    uuid: 2f5f7592-ef36-4b7c-a295-6a05965be3ca
+    bundles:
+      media_coverage: media_coverage
   bb79b35e-f79e-4d2e-b55a-f68efaf64982:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: bb79b35e-f79e-4d2e-b55a-f68efaf64982
     context_mapping:
       language: 'node:langcode:language'
-    uuid: bb79b35e-f79e-4d2e-b55a-f68efaf64982
+    langcodes:
+      en: en
 selection_logic: and
 weight: 1
 relationships:

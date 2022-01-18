@@ -12,20 +12,20 @@ pattern: 'enseigner/plans-de-cours/[node:title]'
 selection_criteria:
   694bef2d-39cd-4053-ba94-90a7e2d90284:
     id: node_type
-    bundles:
-      lesson_plan: lesson_plan
     negate: false
+    uuid: 694bef2d-39cd-4053-ba94-90a7e2d90284
     context_mapping:
       node: node
-    uuid: 694bef2d-39cd-4053-ba94-90a7e2d90284
+    bundles:
+      lesson_plan: lesson_plan
   bcb1950e-9d81-4cb9-8b2d-72a90ac35153:
     id: language
-    langcodes:
-      fr: fr
     negate: false
+    uuid: bcb1950e-9d81-4cb9-8b2d-72a90ac35153
     context_mapping:
       language: 'node:langcode:language'
-    uuid: bcb1950e-9d81-4cb9-8b2d-72a90ac35153
+    langcodes:
+      fr: fr
 selection_logic: and
 weight: 0
 relationships:

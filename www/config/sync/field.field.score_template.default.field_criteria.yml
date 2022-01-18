@@ -21,9 +21,9 @@ default_value_callback: ''
 settings:
   handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       score_template_criteria: score_template_criteria
+    negate: 0
     target_bundles_drag_drop:
       action_item:
         weight: 18
@@ -53,8 +53,8 @@ settings:
         weight: 26
         enabled: false
       score_template_criteria:
-        enabled: true
         weight: 27
+        enabled: true
       teacher_leads_tracking:
         weight: 28
         enabled: false

@@ -17,8 +17,8 @@ plugin: system_main_block
 settings:
   id: system_main_block
   label: ''
-  provider: system
   label_display: '0'
+  provider: system
 visibility:
   request_path:
     id: request_path

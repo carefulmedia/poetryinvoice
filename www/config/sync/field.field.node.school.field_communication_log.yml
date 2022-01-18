@@ -19,55 +19,55 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
+  handler: 'default:paragraph'
   handler_settings:
-    negate: 0
     target_bundles:
       communication_log: communication_log
+    negate: 0
     target_bundles_drag_drop:
       action_item:
-        enabled: false
         weight: 2
+        enabled: false
       communication_log:
-        enabled: true
         weight: 1
+        enabled: true
       judges:
-        enabled: false
         weight: 3
+        enabled: false
       lead_teacher_has_yet_to_si:
-        enabled: false
         weight: 4
+        enabled: false
       micro_interview:
-        enabled: false
         weight: 5
+        enabled: false
       poet_laureate:
-        enabled: false
         weight: 6
+        enabled: false
       poet_questionnaire:
-        enabled: false
         weight: 7
+        enabled: false
       publications:
-        enabled: false
         weight: 8
+        enabled: false
       teacher_leads_tracking:
-        enabled: false
         weight: 9
+        enabled: false
       teacher_questionnaire:
-        enabled: false
         weight: 10
+        enabled: false
       teacher_tracking:
-        enabled: false
         weight: 11
+        enabled: false
       this_teacher_signed_up_for:
-        enabled: false
         weight: 12
+        enabled: false
       tr_student:
-        enabled: false
         weight: 13
+        enabled: false
       types_of_support_requested:
-        enabled: false
         weight: 14
-      visit_date_and_times:
         enabled: false
+      visit_date_and_times:
         weight: 15
-  handler: 'default:paragraph'
+        enabled: false
 field_type: entity_reference_revisions

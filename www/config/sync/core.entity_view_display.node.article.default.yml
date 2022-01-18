@@ -24,51 +24,51 @@ bundle: article
 mode: default
 content:
   body:
-    label: hidden
-    weight: 4
     type: text_default
+    label: hidden
     settings: {  }
     third_party_settings: {  }
+    weight: 4
     region: content
   comment:
     type: comment_default
-    weight: 110
-    region: content
     label: above
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 110
+    region: content
   comment_node_article:
-    label: hidden
     type: comment_default
-    weight: 20
+    label: hidden
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 20
     region: content
   field_image:
-    label: hidden
-    weight: 2
     type: image
+    label: hidden
     settings:
       image_link: ''
       image_style: large
     third_party_settings: {  }
+    weight: 2
     region: content
   field_tags:
-    label: above
-    weight: 3
     type: entity_reference_label
+    label: above
     settings:
       link: true
     third_party_settings: {  }
+    weight: 3
     region: content
   links:
-    weight: 100
-    region: content
     settings: {  }
     third_party_settings: {  }
+    weight: 100
+    region: content
 hidden:
   langcode: true

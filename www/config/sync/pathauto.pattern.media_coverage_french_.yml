@@ -12,20 +12,20 @@ pattern: 'actualites/dans-les-medias/[node:title]'
 selection_criteria:
   b0416be1-6268-4fc2-b63b-efbafc558483:
     id: node_type
-    bundles:
-      media_coverage: media_coverage
     negate: false
+    uuid: b0416be1-6268-4fc2-b63b-efbafc558483
     context_mapping:
       node: node
-    uuid: b0416be1-6268-4fc2-b63b-efbafc558483
+    bundles:
+      media_coverage: media_coverage
   3f301bd6-dd9d-4b99-811f-daf15a6d1b18:
     id: language
-    langcodes:
-      fr: fr
     negate: false
+    uuid: 3f301bd6-dd9d-4b99-811f-daf15a6d1b18
     context_mapping:
       language: 'node:langcode:language'
-    uuid: 3f301bd6-dd9d-4b99-811f-daf15a6d1b18
+    langcodes:
+      fr: fr
 selection_logic: and
 weight: 2
 relationships:

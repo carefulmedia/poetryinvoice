@@ -20,9 +20,9 @@ default_value_callback: ''
 settings:
   handler: 'default:node'
   handler_settings:
+    target_bundles:
+      school: school
     sort:
       field: _none
       direction: ASC
-    target_bundles:
-      school: school
 field_type: entity_reference

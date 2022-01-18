@@ -11,12 +11,12 @@ pattern: 'recite/[node:title]'
 selection_criteria:
   f2990e5b-8daf-45df-9c9f-0263794ecce8:
     id: node_type
-    bundles:
-      competition: competition
     negate: false
+    uuid: f2990e5b-8daf-45df-9c9f-0263794ecce8
     context_mapping:
       node: node
-    uuid: f2990e5b-8daf-45df-9c9f-0263794ecce8
+    bundles:
+      competition: competition
 selection_logic: and
 weight: 11
 relationships: {  }

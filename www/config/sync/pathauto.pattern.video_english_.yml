@@ -12,20 +12,20 @@ pattern: 'watch/[node:title]'
 selection_criteria:
   0248db52-7616-4242-b6b2-5c5370ec15bb:
     id: node_type
-    bundles:
-      video: video
     negate: false
+    uuid: 0248db52-7616-4242-b6b2-5c5370ec15bb
     context_mapping:
       node: node
-    uuid: 0248db52-7616-4242-b6b2-5c5370ec15bb
+    bundles:
+      video: video
   e42b3de5-04a6-4eed-adbe-ab13b764c3d0:
     id: language
-    langcodes:
-      en: en
     negate: false
+    uuid: e42b3de5-04a6-4eed-adbe-ab13b764c3d0
     context_mapping:
       language: 'node:langcode:language'
-    uuid: e42b3de5-04a6-4eed-adbe-ab13b764c3d0
+    langcodes:
+      en: en
 selection_logic: and
 weight: -11
 relationships:

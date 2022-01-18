@@ -10,10 +10,10 @@ field_name: field_release_form
 entity_type: competition_entry
 type: file
 settings:
+  target_type: file
   display_field: false
   display_default: false
   uri_scheme: public
-  target_type: file
 module: file
 locked: false
 cardinality: 1

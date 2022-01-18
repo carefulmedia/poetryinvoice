@@ -1,0 +1,97 @@
+uuid: 494b6124-cec1-4d01-b1fc-883870dce1aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.competition.teaser
+    - field.field.competition.default.body
+    - field.field.competition.default.field_active
+    - field.field.competition.default.field_by_invitation_only
+    - field.field.competition.default.field_competition_current_level
+    - field.field.competition.default.field_competition_levels
+    - field.field.competition.default.field_competition_streams
+    - field.field.competition.default.field_invited_schools
+    - field.field.competition.default.field_judges
+    - field.field.competition.default.field_judging_deadline
+    - field.field.competition.default.field_location
+    - field.field.competition.default.field_online_competition
+    - field.field.competition.default.field_open_date
+    - field.field.competition.default.field_score_template
+    - field.field.competition.default.field_submission_deadline
+    - field.field.competition.default.field_team_competition
+    - field.field.competition.default.field_winners_announced
+    - piv_contest_competition.competition_type.default
+  module:
+    - address
+    - datetime
+    - text
+id: competition.default.teaser
+targetEntityType: competition
+bundle: default
+mode: teaser
+content:
+  body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_location:
+    type: address_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_open_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_submission_deadline:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_winners_announced:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_active: true
+  field_by_invitation_only: true
+  field_competition_current_level: true
+  field_competition_levels: true
+  field_competition_streams: true
+  field_invited_schools: true
+  field_judges: true
+  field_judging_deadline: true
+  field_online_competition: true
+  field_score_template: true
+  field_team_competition: true
+  langcode: true
+  status: true
+  uid: true

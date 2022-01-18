@@ -37,41 +37,41 @@ bundle: school
 mode: default
 content:
   comment_node_school:
-    label: hidden
     type: comment_default
-    weight: 20
+    label: hidden
     settings:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
+    weight: 20
     region: content
   field_address:
-    weight: 101
+    type: address_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: address_default
+    weight: 101
     region: content
   field_pa:
-    label: hidden
-    weight: 20
     type: entity_reference_label
+    label: hidden
     settings:
       link: true
     third_party_settings: {  }
+    weight: 20
     region: content
   field_story_link:
-    label: above
-    weight: 15
     type: string
+    label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
+    weight: 15
     region: content
   links:
-    weight: 100
     settings: {  }
     third_party_settings: {  }
+    weight: 100
     region: content
 hidden:
   field_2016_rs: true

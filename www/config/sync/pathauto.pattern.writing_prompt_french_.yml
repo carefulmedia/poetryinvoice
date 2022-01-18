@@ -12,20 +12,20 @@ pattern: 'ecrire/exercise-creation/[node:title]'
 selection_criteria:
   3a561bf9-3581-49f8-8af6-2bd700e35d2f:
     id: node_type
-    bundles:
-      writing_prompt: writing_prompt
     negate: false
+    uuid: 3a561bf9-3581-49f8-8af6-2bd700e35d2f
     context_mapping:
       node: node
-    uuid: 3a561bf9-3581-49f8-8af6-2bd700e35d2f
+    bundles:
+      writing_prompt: writing_prompt
   a1f0051c-165f-4391-8411-302a839987b8:
     id: language
-    langcodes:
-      fr: fr
     negate: false
+    uuid: a1f0051c-165f-4391-8411-302a839987b8
     context_mapping:
       language: 'node:langcode:language'
-    uuid: a1f0051c-165f-4391-8411-302a839987b8
+    langcodes:
+      fr: fr
 selection_logic: and
 weight: -8
 relationships:

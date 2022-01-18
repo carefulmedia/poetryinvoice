@@ -29,9 +29,11 @@ piv_content.competitions_list:
   defaults:
     _title: 'Competitions'
     _controller: '\Drupal\piv_contest\Controller\CompetitionsListController::build'
+  # requirements:
+    # _permission: 'access content'
   requirements:
-    _permission: 'access content'
-    
+    _custom_access: '\Drupal\piv_contest\Controller\CompetitionsListController::access'
+
 piv_contest.competition:
   path: '/user/{user}/competitions/{competition}'
   defaults:
@@ -47,7 +49,7 @@ piv_contest.competition_entry_add:
     _controller: '\Drupal\piv_contest\Controller\CompetitionEntryController::build'
   requirements:
     _custom_access: '\Drupal\piv_contest\Controller\CompetitionEntryController::access'
-    
+
 piv_contest.competition_entry_edit:
   path: '/user/{user}/competitions/{competition}/competition-entry/{competition_entry}/edit'
   defaults:

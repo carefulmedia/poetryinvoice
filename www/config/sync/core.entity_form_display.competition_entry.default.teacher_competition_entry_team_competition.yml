@@ -19,28 +19,28 @@ bundle: default
 mode: teacher_competition_entry_team_competition
 content:
   field_recitations:
+    type: inline_entity_form_complex
     weight: 0
+    region: content
     settings:
       form_mode: default
+      override_labels: false
       label_singular: ''
       label_plural: ''
       allow_new: true
+      allow_existing: false
       match_operator: CONTAINS
-      revision: false
-      override_labels: false
+      allow_duplicate: false
       collapsible: false
       collapsed: false
-      allow_existing: false
-      allow_duplicate: false
+      revision: false
     third_party_settings: {  }
-    type: inline_entity_form_complex
-    region: content
   field_stream:
+    type: options_select
     weight: 1
+    region: content
     settings: {  }
     third_party_settings: {  }
-    type: options_select
-    region: content
 hidden:
   created: true
   field_competition: true

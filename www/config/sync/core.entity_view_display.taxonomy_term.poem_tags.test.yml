@@ -17,20 +17,20 @@ bundle: poem_tags
 mode: test
 content:
   description:
-    label: hidden
     type: text_default
-    weight: 0
-    region: content
+    label: hidden
     settings: {  }
     third_party_settings: {  }
-  field_roulette_image:
-    label: hidden
     weight: 0
+    region: content
+  field_roulette_image:
     type: image
+    label: hidden
     settings:
       image_link: ''
       image_style: medium
     third_party_settings: {  }
+    weight: 0
     region: content
 hidden:
   field_short_description: true

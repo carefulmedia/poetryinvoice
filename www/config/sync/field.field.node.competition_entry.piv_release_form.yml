@@ -18,10 +18,10 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  description_field: true
+  handler: 'default:file'
+  handler_settings: {  }
   file_directory: sites/default/files/piv_entry_release
   file_extensions: 'pdf jpg'
   max_filesize: ''
-  handler: 'default:file'
-  handler_settings: {  }
+  description_field: true
 field_type: file

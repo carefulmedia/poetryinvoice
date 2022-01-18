@@ -32,179 +32,179 @@ bundle: default
 mode: default
 content:
   body:
-    weight: 26
+    type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: text_default
+    weight: 26
     region: content
   created:
-    label: above
     type: timestamp
-    weight: 20
-    region: content
+    label: above
     settings:
       date_format: medium
       custom_date_format: ''
       timezone: ''
     third_party_settings: {  }
+    weight: 20
+    region: content
   field_active:
-    weight: 21
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 21
     region: content
   field_by_invitation_only:
-    weight: 22
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 22
     region: content
   field_competition_current_level:
-    weight: 25
+    type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    type: number_integer
+    weight: 25
     region: content
   field_competition_levels:
-    weight: 35
+    type: string
     label: above
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    type: string
+    weight: 35
     region: content
   field_competition_streams:
     type: entity_reference_revisions_entity_view
-    weight: 30
     label: above
     settings:
       view_mode: default
       link: ''
     third_party_settings: {  }
+    weight: 30
     region: content
   field_invited_schools:
-    weight: 27
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 27
     region: content
   field_judges:
-    weight: 28
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 28
     region: content
   field_judging_deadline:
-    weight: 34
+    type: datetime_default
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
-    type: datetime_default
+    weight: 34
     region: content
   field_location:
-    weight: 31
+    type: address_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    type: address_default
+    weight: 31
     region: content
   field_online_competition:
-    weight: 29
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 29
     region: content
   field_open_date:
-    weight: 36
+    type: datetime_default
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
-    type: datetime_default
+    weight: 36
     region: content
   field_score_template:
-    weight: 32
+    type: entity_reference_label
     label: above
     settings:
       link: true
     third_party_settings: {  }
-    type: entity_reference_label
+    weight: 32
     region: content
   field_submission_deadline:
-    weight: 23
+    type: datetime_default
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
-    type: datetime_default
+    weight: 23
     region: content
   field_team_competition:
-    weight: 33
+    type: boolean
     label: above
     settings:
       format: default
       format_custom_false: ''
       format_custom_true: ''
     third_party_settings: {  }
-    type: boolean
+    weight: 33
     region: content
   field_winners_announced:
-    weight: 24
+    type: datetime_default
     label: above
     settings:
-      format_type: medium
       timezone_override: ''
+      format_type: medium
     third_party_settings: {  }
-    type: datetime_default
+    weight: 24
     region: content
   status:
     type: boolean
     label: above
-    weight: 0
     settings:
       format: enabled-disabled
       format_custom_false: ''
       format_custom_true: ''
-    region: content
     third_party_settings: {  }
-  title:
-    label: hidden
-    type: string
-    weight: -5
+    weight: 0
     region: content
+  title:
+    type: string
+    label: hidden
     settings:
       link_to_entity: false
     third_party_settings: {  }
-  uid:
-    label: above
-    type: author
-    weight: 15
+    weight: -5
     region: content
+  uid:
+    type: author
+    label: above
     settings: {  }
     third_party_settings: {  }
+    weight: 15
+    region: content
 hidden:
   langcode: true
