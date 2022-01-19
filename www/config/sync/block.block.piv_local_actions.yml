@@ -1,0 +1,20 @@
+uuid: 6a1c4261-9010-4017-baeb-1913fbe5e5e1
+langcode: en
+status: true
+dependencies:
+  theme:
+    - piv
+_core:
+  default_config_hash: 13GQpeITIJsp1kyPniXtWZfyFH87vb1xxJCHifL4UeE
+id: piv_local_actions
+theme: piv
+region: content
+weight: -3
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

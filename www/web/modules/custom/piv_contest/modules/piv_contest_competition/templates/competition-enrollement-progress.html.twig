@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ *  Displays the enrollement progress to a competition for a given school.
+ */
+#}
+<section id="enrollment">
+  <table>
+    <tr>
+      <td>{{ 'Stream' |t }}</td>
+      <td>{{ 'Name' |t }}</td>
+      <td>{{ 'Poems' |t }}</td>
+      <td>{{ 'Videos' |t }}</td>
+      <td>{{ 'Permission' |t }}</td>
+      <td></td>
+      <td></td>
+    </tr>
+    {% for stream in streams %}
+      <tr>
+        <td>{{ stream.name }}</td>
+        <td>{{ stream.student }}</td>
+        <td>{{ stream.poems }}</td>
+        <td>{{ stream.videos }}</td>
+        <td>{{ stream.permissions }}</td>
+        <td>EDIT</td>
+        <td>DELETE<td>
+      </tr>
+    {% endfor %}
+  </table>
+</section>
+

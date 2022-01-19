@@ -38,25 +38,24 @@ piv_contest.competition:
     _title_callback: '\Drupal\piv_contest\Controller\CompetitionController::title'
     _controller: '\Drupal\piv_contest\Controller\CompetitionController::build'
   requirements:
-    _access: 'TRUE'
-  options:
-    parameters:
-      competition:
-        type: entity:competition
-  #   _permission: 'access content'
+    _custom_access: '\Drupal\piv_contest\Controller\CompetitionController::access'
 
 piv_contest.competition_entry_add:
-  path: '/user/{user}/competitions/{competition}/competition-entry/add'
+  path: '/user/{user}/competitions/{competition}/{stream}/competition-entry/add'
   defaults:
     _title: 'Add competition entry'
-    _controller: '\Drupal\piv_contest\Controller\CompetitionEntryController::build'
+    _controller: '\Drupal\piv_contest\Controller\CompetitionEntryController::add'
   requirements:
     _custom_access: '\Drupal\piv_contest\Controller\CompetitionEntryController::access'
+  options:
+    parameters:
+      stream:
+        type: entity:paragraph
 
 piv_contest.competition_entry_edit:
   path: '/user/{user}/competitions/{competition}/competition-entry/{competition_entry}/edit'
   defaults:
     _title: 'Edit competition entry'
-    _controller: '\Drupal\piv_contest\Controller\CompetitionEntryController::build'
+    _controller: '\Drupal\piv_contest\Controller\CompetitionEntryController::edit'
   requirements:
     _custom_access: '\Drupal\piv_contest\Controller\CompetitionEntryController::access'

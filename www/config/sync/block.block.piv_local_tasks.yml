@@ -1,0 +1,22 @@
+uuid: 2ba72542-f57b-473b-ab52-87a0cba59aec
+langcode: en
+status: true
+dependencies:
+  theme:
+    - piv
+_core:
+  default_config_hash: X9I1OB0W3WlWtrK-CNcg6hNWwa8wficanpH8pYnDZDE
+id: piv_local_tasks
+theme: piv
+region: content
+weight: -5
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

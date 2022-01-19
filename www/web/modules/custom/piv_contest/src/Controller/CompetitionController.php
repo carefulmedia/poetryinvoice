@@ -9,6 +9,7 @@ use Drupal\user\UserInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Language\LanguageManager;
+use Drupal\Core\Access\AccessResult;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -53,6 +54,10 @@ class CompetitionController extends ControllerBase {
     );
   }
 
+  public function access(UserInterface $user, CompetitionInterface $competition) {
+    return AccessResult::allowed();
+  }
+
   public function title(CompetitionInterface $competition) {
     return $competition->label();
   }
@@ -71,15 +76,19 @@ class CompetitionController extends ControllerBase {
       'field_competition' => $competition->id(),
     ]);
 
-    $build = [
-      '#markup' => '<h2>Entries</h2>',
+    $build['enrollement'] = [
+      '#theme' => 'competition_enrollement_progress',
+      '#school' => $user->field_school->entity,
+      '#competition' => $competition,
     ];
+
     $build['new'] = [
       '#type' => 'link',
       '#title' => 'Add new entry',
       '#url' => Url::fromRoute('piv_contest.competition_entry_add', [
         'user' => $user->id(),
         'competition' => $competition->id(),
+        'stream' => 3
       ]),
     ];
     foreach ($competition_entries as $entry) {
@@ -105,5 +114,4 @@ class CompetitionController extends ControllerBase {
     return $build;
 
   }
-
 }

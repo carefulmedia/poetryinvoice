@@ -16,6 +16,14 @@ function piv_contest_competition_theme() {
     'competition' => [
       'render element' => 'elements',
     ],
+    // UI to let teachers manage their school's enrollement in a competition.
+    'competition_enrollement_progress' => [
+      'variables' => [
+        'competition' => NULL,
+        'school' => NULL,
+        'streams' => [],
+      ],
+    ],
   ];
 }
 
@@ -34,6 +42,29 @@ function template_preprocess_competition(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
+}
+
+function template_preprocess_competition_enrollement_progress(&$variables) {
+  $enrollment = Drupal::service('piv_contest.competition_enrollment');
+  $enrollment->init($variables['school'], $variables['competition']);
+  $variables['streams'] = $enrollment->getStreams();
+  // $variables['streams'] = [
+  //   [
+  //     'name' => 'English',
+  //     'student' => 'Boby',
+  //     'poems' => '2 out of 2',
+  //     'videos' => '0 out of 2',
+  //     'permission' => TRUE,
+  //   ],
+  //   [
+  //     'name' => 'French',
+  //     'student' => 'Jinni',
+  //     'poems' => '1 out of 2',
+  //     'videos' => '1 out of 2',
+  //     'permission' => FALSE,
+  //   ],
+  // ];
+  // ksm($variables);
 }
 
 /**

@@ -10,6 +10,7 @@ dependencies:
     - field.field.competition_entry.default.field_release_form
     - field.field.competition_entry.default.field_school
     - field.field.competition_entry.default.field_stream
+    - field.field.competition_entry.default.field_student_name
     - piv_contest_competition_entry.competition_entry_type.default
   module:
     - file
@@ -38,22 +39,25 @@ content:
     third_party_settings: {  }
   field_release_form:
     type: file_generic
-    weight: 3
+    weight: 1
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
-  field_stream:
-    type: options_select
+  field_student_name:
+    type: string_textfield
     weight: 2
     region: content
-    settings: {  }
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true
   field_competition: true
   field_complete: true
   field_school: true
+  field_stream: true
   langcode: true
   status: true
   title: true

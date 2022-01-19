@@ -9,6 +9,7 @@ dependencies:
     - field.field.competition_entry.default.field_release_form
     - field.field.competition_entry.default.field_school
     - field.field.competition_entry.default.field_stream
+    - field.field.competition_entry.default.field_student_name
     - piv_contest_competition_entry.competition_entry_type.default
   module:
     - file
@@ -77,6 +78,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 22
+    region: content
+  field_student_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 27
     region: content
   status:
     type: boolean

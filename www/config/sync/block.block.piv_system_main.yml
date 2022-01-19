@@ -1,0 +1,27 @@
+uuid: 73333076-3134-4d9a-af77-bd136a90da95
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - piv
+id: piv_system_main
+theme: piv
+region: content
+weight: -2
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: ''
+  label_display: '0'
+  provider: system
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: |-
+      <front>
+      /teach
+      /enseigner

@@ -6,6 +6,7 @@
 
 # Environment variables
 .env
+*node_modules*
 
 # DBs
 *.sql

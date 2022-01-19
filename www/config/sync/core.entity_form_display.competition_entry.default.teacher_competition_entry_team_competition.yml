@@ -10,6 +10,7 @@ dependencies:
     - field.field.competition_entry.default.field_release_form
     - field.field.competition_entry.default.field_school
     - field.field.competition_entry.default.field_stream
+    - field.field.competition_entry.default.field_student_name
     - piv_contest_competition_entry.competition_entry_type.default
   module:
     - inline_entity_form
@@ -47,6 +48,7 @@ hidden:
   field_complete: true
   field_release_form: true
   field_school: true
+  field_student_name: true
   langcode: true
   status: true
   title: true

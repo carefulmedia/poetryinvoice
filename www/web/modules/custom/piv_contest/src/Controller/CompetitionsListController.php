@@ -123,9 +123,6 @@ class CompetitionsListController extends ControllerBase {
     });
     $competitions_without_entries = array_diff_key($competitions, $competitions_with_entries);
 
-    ksm($competitions_with_entries);
-    ksm($competitions_without_entries);
-
     // Competition is active.
     $build['competition'] = [
       '#type' => 'container',
@@ -167,7 +164,7 @@ class CompetitionsListController extends ControllerBase {
           'link' => [
             '#type' => 'link',
             '#title' => t('Enroll your school'),
-            '#url' => Url::fromRoute('piv_contest.competition_entry_add', [
+            '#url' => Url::fromRoute('piv_contest.competition', [
               'user' => $user->id(),
               'competition' => $id,
             ]),

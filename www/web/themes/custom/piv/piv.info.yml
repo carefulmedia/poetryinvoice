@@ -1,0 +1,10 @@
+name: PIV
+type: theme
+description: 'Poetry in Voice theme'
+core: 8.x
+author: Monarq
+core_version_requirement: ^8 || ^9
+base theme: claro
+
+libraries:
+  - piv/global-styling

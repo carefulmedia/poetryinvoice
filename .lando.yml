@@ -3,8 +3,8 @@ recipe: drupal9
 config:
   webroot: www/web
 
-# The Drupal 7 database to use as migrate source.
 services:
+  # The Drupal 7 database to use as migrate source.
   d7db:
     type: mariadb
     creds:
@@ -12,9 +12,21 @@ services:
       password: drupal7db
       database: drupal7db
     portforward: true
+  node:
+    type: node
+    build:
+      - cd /app/www/web/themes/custom/piv && npm install
+    globals:
+      gulp-cli: latest
 
 tooling:
   drush:
     cmd: /app/www/vendor/drush/drush/drush --root=/app/www/web
     env:
       DRUSH_OPTIONS_URI: "http://piv9.lndo.site"
+  npm:
+    service: node
+  node:
+    service: node
+  gulp:
+    service: node

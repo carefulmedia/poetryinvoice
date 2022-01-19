@@ -11,6 +11,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\user\UserInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\piv_contest\CompetitionService;
+use Drupal\Paragraphs\ParagraphInterface;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -23,14 +24,14 @@ class CompetitionEntryController extends ControllerBase {
    * @var \Drupal\Core\Entity\EntityFormBuilderInterface
    */
   protected $entityFormBuilder;
-  
+
   /**
    * The entity type manager service.
    *
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
-  
+
   /**
    * The competition service.
    *
@@ -60,7 +61,7 @@ class CompetitionEntryController extends ControllerBase {
       $container->get('piv_contest.competition_service')
     );
   }
-  
+
   /**
    * {@inheritdoc}
    */
@@ -69,7 +70,7 @@ class CompetitionEntryController extends ControllerBase {
     if (!$school) {
       return AccessResult::forbidden();
     }
-    
+
     // When editing, we need to also verify if the competition_entry is for the
     // same school and same competition in the url. This means that different
     // teachers can manage the entries of the same school.
@@ -86,13 +87,18 @@ class CompetitionEntryController extends ControllerBase {
   /**
    * Builds the competition entry form.
    */
-  public function build(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry = NULL) {
+  public function add(
+    UserInterface $user,
+    CompetitionInterface $competition,
+    ParagraphInterface $stream
+  ) {
     if (!$competition_entry) {
       $school = $user->field_school->target_id;
       $competition_entry = $this->entityTypeManager->getStorage('competition_entry')->create([
         'field_competition' => $competition->id(),
         'field_school' => $school,
         'bundle' => 'default',
+        'field_stream' => $stream,
       ]);
     }
     // The form is different for team or individual competitions.
@@ -100,11 +106,15 @@ class CompetitionEntryController extends ControllerBase {
     $form_mode = $is_team_competition
       ? 'teacher_competition_entry_team_competition'
       : 'teacher_competition_entry';
-    
+
     $form = $this->entityFormBuilder
       ->getForm($competition_entry, $form_mode);
     $form['revision_information']['#access'] = FALSE;
     return $form;
+  }
+
+  public function edit() {
+    return;
   }
 
 }

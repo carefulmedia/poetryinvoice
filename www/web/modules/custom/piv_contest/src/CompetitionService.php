@@ -20,6 +20,8 @@ class CompetitionService {
    */
   protected $entityTypeManager;
 
+  protected $competition;
+
   /**
    * Constructs a CompetitionService object.
    *
@@ -29,10 +31,10 @@ class CompetitionService {
   public function __construct(EntityTypeManagerInterface $entity_type_manager) {
     $this->entityTypeManager = $entity_type_manager;
   }
-  
+
   /**
    * Check if a school can manage the entries for a competition.
-   * 
+   *
    * Checks if the competition is active and if the school is invited or the
    * competition is not invite only.
    */
@@ -47,20 +49,20 @@ class CompetitionService {
     if (!$open_date || !$closing_date || $open_date > $now || $closing_date < $now) {
       return FALSE;
     }
-    
+
     if ($competition->field_by_invitation_only->value) {
       $invited_schools = array_column($competition->field_invited_schools->getValue(), 'target_id');
       if (!in_array($school->id(), $invited_schools)) {
         return FALSE;
       }
     }
-    
+
     return TRUE;
   }
-  
+
   /**
    * Get the required min and max number of entries per stream on competition.
-   * 
+   *
    * @todo for now lets consider the first stream only.
    */
   public function verifyEntryIsComplete(CompetitionEntryInterface $competition_entry, &$missing = []) {
@@ -68,7 +70,7 @@ class CompetitionService {
     if (!$competition) {
       return FALSE;
     }
-    
+
     $required_recitations = [];
     foreach ($competition->field_competition_streams->referencedEntities() as $stream) {
       // Get the number of recitations required per stream type.
@@ -78,14 +80,14 @@ class CompetitionService {
       }
       break; // @todo for now we only consider the first stream.
     }
-    
+
     //ksm($required_recitations);
-    ksm($competition_entry->field_stream);
-    ksm($competition_entry->field_recitations->count());
+    // ksm($competition_entry->field_stream);
+    // ksm($competition_entry->field_recitations->count());
     foreach ($competition_entry->field_recitations->referencedEntities() as $recitation) {
       //ksm($recitation);
     }
-    
+
     return;
   }
 
