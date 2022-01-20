@@ -1,0 +1,10 @@
+uuid: bd797522-f91a-4295-b36a-3adf70df2cc9
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition
+id: competition.teacher_ui
+label: 'Teacher UI'
+targetEntityType: competition
+cache: true

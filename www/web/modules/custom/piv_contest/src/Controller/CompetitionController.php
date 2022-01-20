@@ -76,40 +76,16 @@ class CompetitionController extends ControllerBase {
       'field_competition' => $competition->id(),
     ]);
 
+    $build['competition'] = $this->entityTypeManager
+      ->getViewBuilder('competition')
+      ->view($competition, 'teacher_ui');
+
     $build['enrollement'] = [
       '#theme' => 'competition_enrollement_progress',
       '#school' => $user->field_school->entity,
       '#competition' => $competition,
+      '#teacher' => $user,
     ];
-
-    $build['new'] = [
-      '#type' => 'link',
-      '#title' => 'Add new entry',
-      '#url' => Url::fromRoute('piv_contest.competition_entry_add', [
-        'user' => $user->id(),
-        'competition' => $competition->id(),
-        'stream' => 3
-      ]),
-    ];
-    foreach ($competition_entries as $entry) {
-      \Drupal::service('piv_contest.competition_service')->verifyEntryIsComplete($entry); //@todo
-
-      $build[] = [
-        'title' => [
-          '#markup' => $entry->label(),
-          '#type' => 'item',
-        ],
-        'link' => [
-          '#type' => 'link',
-          '#title' => 'edit',
-          '#url' => Url::fromRoute('piv_contest.competition_entry_edit', [
-            'user' => $user->id(),
-            'competition' => $competition->id(),
-            'competition_entry' => $entry->id(),
-          ]),
-        ],
-      ];
-    }
 
     return $build;
 
