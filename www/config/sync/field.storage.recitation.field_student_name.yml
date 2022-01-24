@@ -1,0 +1,21 @@
+uuid: 5c93ee28-697d-4a97-90b2-9b0ad7fe0352
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_recitation
+id: recitation.field_student_name
+field_name: field_student_name
+entity_type: recitation
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

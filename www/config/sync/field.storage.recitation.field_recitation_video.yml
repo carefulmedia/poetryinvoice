@@ -1,0 +1,20 @@
+uuid: d04e6e9d-61fe-4da0-87d6-4bb0ec74398f
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+    - piv_contest_recitation
+id: recitation.field_recitation_video
+field_name: field_recitation_video
+entity_type: recitation
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

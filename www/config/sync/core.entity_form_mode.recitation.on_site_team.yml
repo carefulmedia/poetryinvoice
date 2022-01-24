@@ -1,0 +1,10 @@
+uuid: d9e6620a-316c-4afb-8648-0343c4dc137a
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_recitation
+id: recitation.on_site_team
+label: 'on site team'
+targetEntityType: recitation
+cache: true

@@ -1,7 +1,12 @@
 uuid: d84fd21f-94d8-41ff-83c3-028581423292
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.pal_pir_school_visit
+    - node.type.writing_prompt
+  module:
+    - node
 id: pic_pal
 label: PIC/PAL
 weight: 21

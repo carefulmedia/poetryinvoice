@@ -1,7 +1,14 @@
 uuid: eb7df147-3b71-488a-b6d0-05baba496ee1
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - contextual
+    - filter
+    - locale
+    - node
 id: translator
 label: Translator
 weight: 9

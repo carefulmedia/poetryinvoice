@@ -1,7 +1,12 @@
 uuid: 24a4e24d-6495-4bc5-9a26-49bd28fc4862
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.poem
+  module:
+    - node
+    - system
 id: pierre
 label: Pierre
 weight: 17

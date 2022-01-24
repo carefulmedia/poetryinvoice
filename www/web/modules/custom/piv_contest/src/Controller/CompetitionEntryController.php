@@ -65,7 +65,13 @@ class CompetitionEntryController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public function access(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry = NULL) {
+  public function access_add(
+    UserInterface $user,
+    CompetitionInterface $competition,
+    ParagraphInterface $stream
+  ) {
+    return AccessResult::allowed();
+
     $school = $user->field_school->entity;
     if (!$school) {
       return AccessResult::forbidden();
@@ -101,6 +107,8 @@ class CompetitionEntryController extends ControllerBase {
         'field_stream' => $stream,
       ]);
     }
+
+
     // The form is different for team or individual competitions.
     $is_team_competition = !empty($competition->field_team_competition->value);
     $form_mode = $is_team_competition
@@ -113,8 +121,30 @@ class CompetitionEntryController extends ControllerBase {
     return $form;
   }
 
-  public function edit() {
-    return;
+  public function access_edit(
+    UserInterface $user,
+    CompetitionInterface $competition,
+    CompetitionEntryInterface $competition_entry
+  ) {
+    return AccessResult::allowed();
+  }
+
+  public function edit(
+
+    UserInterface $user,
+    CompetitionInterface $competition,
+    CompetitionEntryInterface $competition_entry
+  ) {
+    // The form is different for team or individual competitions.
+    $is_team_competition = !empty($competition->field_team_competition->value);
+    $form_mode = $is_team_competition
+      ? 'teacher_competition_entry_team_competition'
+      : 'teacher_competition_entry';
+
+    $form = $this->entityFormBuilder
+      ->getForm($competition_entry, $form_mode);
+    $form['revision_information']['#access'] = FALSE;
+    return $form;
   }
 
 }

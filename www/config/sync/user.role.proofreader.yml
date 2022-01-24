@@ -1,7 +1,28 @@
 uuid: d1a83b16-1257-4466-b463-78be2d528626
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - node.type.bulletin_board
+    - node.type.competition
+    - node.type.event
+    - node.type.forum
+    - node.type.judge_page
+    - node.type.lesson_plan
+    - node.type.page
+    - node.type.poem
+    - node.type.press_release
+    - node.type.student
+    - node.type.venue
+    - node.type.writing_prompt
+  module:
+    - contact
+    - filter
+    - locale
+    - node
+    - search
+    - system
 id: proofreader
 label: Proofreader
 weight: 7

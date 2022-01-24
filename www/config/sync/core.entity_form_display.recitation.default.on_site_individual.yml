@@ -1,19 +1,18 @@
-uuid: 2b95442d-8984-4cee-a70a-593ef39f73a9
+uuid: 9f9d548f-8e96-415b-aca3-1b923312ae31
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.recitation.on_site_individual
     - field.field.recitation.default.field_poem
     - field.field.recitation.default.field_recitation_video
     - field.field.recitation.default.field_release_form
     - field.field.recitation.default.field_student_name
     - piv_contest_recitation.recitation_type.default
-  module:
-    - file
-id: recitation.default.default
+id: recitation.default.on_site_individual
 targetEntityType: recitation
 bundle: default
-mode: default
+mode: on_site_individual
 content:
   field_poem:
     type: entity_reference_autocomplete
@@ -25,25 +24,10 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_recitation_video:
-    type: entity_reference_autocomplete
-    weight: 26
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_release_form:
-    type: file_generic
-    weight: 27
-    region: content
-    settings:
-      progress_indicator: throbber
-    third_party_settings: {  }
 hidden:
   created: true
+  field_recitation_video: true
+  field_release_form: true
   field_student_name: true
   langcode: true
   status: true

@@ -1,0 +1,10 @@
+uuid: e2929b3a-541e-4497-b02b-db42429e5a26
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_recitation
+id: recitation.on_site_individual
+label: 'on site individual'
+targetEntityType: recitation
+cache: true

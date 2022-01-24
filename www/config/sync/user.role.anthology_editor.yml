@@ -1,7 +1,12 @@
 uuid: b15ea737-cf54-4f00-9449-bc449b00a69d
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.poem
+  module:
+    - node
+    - system
 id: anthology_editor
 label: 'Anthology editor'
 weight: 23

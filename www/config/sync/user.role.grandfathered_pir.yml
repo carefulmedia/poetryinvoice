@@ -1,7 +1,9 @@
 uuid: 7973c570-54be-46ec-b633-64fc6ad31bf9
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - system
 id: grandfathered_pir
 label: 'Grandfathered PIR'
 weight: 24

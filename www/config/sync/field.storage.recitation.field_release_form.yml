@@ -1,0 +1,23 @@
+uuid: 113eb73d-4e63-4381-a0fc-669fbc2cea55
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - piv_contest_recitation
+id: recitation.field_release_form
+field_name: field_release_form
+entity_type: recitation
+type: file
+settings:
+  target_type: file
+  display_field: false
+  display_default: false
+  uri_scheme: public
+module: file
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
