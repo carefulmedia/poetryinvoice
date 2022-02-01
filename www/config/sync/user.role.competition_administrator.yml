@@ -1,7 +1,9 @@
 uuid: 3e968a4c-2f57-4e92-9629-adf8e3eec028
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - system
 id: competition_administrator
 label: 'Competition administrator'
 weight: 14

@@ -33,9 +33,6 @@ class CompetitionEnrollment {
     $this->entityTypeManager = $entity_type_manager;
   }
 
-  /**
-   * Set the competition and school.
-   */
   public function init(
     NodeInterface $school,
     CompetitionInterface $competition,
@@ -66,38 +63,55 @@ class CompetitionEnrollment {
     $streams_header = [
       'name' => t('Stream'),
       'student' => t('Student'),
-      'poems' => t('Poems'),
-      'videos' => t('Videos'),
+      'recitations' => t('Recitations'),
       'permission' => t('Permission'),
     ];
+
+    $school_id = $this->school->id();
+    $teacher_id = $this->teacher->id();
+    $competition_id = $this->competition->id();
+
+    // Set redirection after form submit.
+    $destination = 'user/' . $teacher_id . '/competitions/' . $competition_id;
 
     $streams = [];
     foreach ($this->competition->field_competition_streams as $stream_field) {
       $stream = [];
-      $stream_entity = $this->entityTypeManager->getStorage('paragraph')->load($stream_field->target_id);
+
+      $stream_entity = $this->entityTypeManager
+        ->getStorage('paragraph')
+        ->load($stream_field->target_id);
 
       // Get the competition entry for this stream.
-      $entry = $this->entityTypeManager->getStorage('competition_entry')->loadByProperties([
-        'field_school' => $this->school->id(),
-        'field_competition' => $this->competition->id(),
+      $entry = $this->entityTypeManager
+      ->getStorage('competition_entry')
+      ->loadByProperties([
+        'field_school' => $school_id,
+        'field_competition' => $competition_id,
         'field_stream' => $stream_field->target_id,
       ]);
       $entry = array_pop($entry);
 
       if (!empty($entry)) {
+        $url = Url::fromRoute('piv_contest.competition_entry_edit', [
+            'user' => $teacher_id,
+            'competition' => $competition_id,
+            'competition_entry' => $entry->id(),
+          ], [
+            'query' => [
+              'destination' => $destination,
+            ]
+          ]
+        );
+
         $stream['student'] = $entry->field_student_name->value;
-        $stream['poems'] = "0 out of X";
-        $stream['videos'] = "0 out of Y";
+        $stream['recitations'] = "0 out of X";
         $stream['permission'] = TRUE;
         // Add link to edit existing entry.
         $stream['link'] = [
           '#type' => 'link',
           '#title' => 'edit',
-          '#url' => Url::fromRoute('piv_contest.competition_entry_edit', [
-            'user' => $this->teacher->id(),
-            'competition' => $this->competition->id(),
-            'competition_entry' => $entry->id(),
-          ]),
+          '#url' => $url ,
         ];
       }
 
@@ -115,6 +129,10 @@ class CompetitionEnrollment {
             'user' => $this->teacher->id(),
             'competition' => $this->competition->id(),
             'stream' => $stream_entity->id(),
+          ], [
+            'query' => [
+              'destination' => $destination,
+            ]
           ]),
         ];
       }
@@ -136,4 +154,13 @@ class CompetitionEnrollment {
       // student name is per recitation for team competitions, not per entry.
     }
   }
+
+  private function getNumberOfRecitations() {
+
+  }
+
+  private function getRequiredRecitationsForStream() {
+
+  }
+
 }

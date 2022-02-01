@@ -1,7 +1,15 @@
 uuid: 4d237aef-d4cf-4e94-bbfa-b1ed81a587c0
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - node.type.journal_poem
+  module:
+    - contact
+    - media
+    - node
+    - search
+    - system
 _core:
   default_config_hash: pq_mEIu_B4widZN7Ap81iCJSjShFFdcL0jEiCi8VrDk
 id: anonymous
@@ -122,6 +130,7 @@ permissions:
   - 'view field_video_poem'
   - 'view field_winners_announced'
   - 'view field_years_in_competition'
+  - 'view media'
   - 'view own field_grades'
   - 'view own field_poem_attachment'
   - 'view own field_poem_being_responded_to'

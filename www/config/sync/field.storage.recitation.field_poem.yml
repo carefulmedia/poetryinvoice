@@ -1,0 +1,20 @@
+uuid: 4387ea16-c475-4c37-b5fd-9f27582a06b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - piv_contest_recitation
+id: recitation.field_poem
+field_name: field_poem
+entity_type: recitation
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

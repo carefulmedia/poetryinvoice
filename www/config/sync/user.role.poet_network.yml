@@ -1,7 +1,16 @@
 uuid: fbd0fef4-5e5e-417c-9505-4a2a7b1a13a2
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.filtered_html
+    - filter.format.full_html
+    - node.type.school
+    - node.type.writing_prompt
+  module:
+    - contact
+    - filter
+    - node
 id: poet_network
 label: 'Poet network'
 weight: 20

@@ -1,19 +1,19 @@
-uuid: a533b485-0e35-4099-a1a2-13e30957479a
+uuid: d01122da-88c0-4f0a-97af-ae0c00e4aaa7
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.competition_entry.field_release_form
-    - piv_contest_competition_entry.competition_entry_type.default
+    - field.storage.recitation.field_release_form
+    - piv_contest_recitation.recitation_type.default
   module:
     - file
-id: competition_entry.default.field_release_form
+id: recitation.default.field_release_form
 field_name: field_release_form
-entity_type: competition_entry
+entity_type: recitation
 bundle: default
 label: 'Release form'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

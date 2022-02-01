@@ -46,7 +46,7 @@ piv_contest.competition_entry_add:
     _title: 'Add competition entry'
     _controller: '\Drupal\piv_contest\Controller\CompetitionEntryController::add'
   requirements:
-    _custom_access: '\Drupal\piv_contest\Controller\CompetitionEntryController::access'
+    _custom_access: '\Drupal\piv_contest\Controller\CompetitionEntryController::access_add'
   options:
     parameters:
       stream:
@@ -58,4 +58,4 @@ piv_contest.competition_entry_edit:
     _title: 'Edit competition entry'
     _controller: '\Drupal\piv_contest\Controller\CompetitionEntryController::edit'
   requirements:
-    _custom_access: '\Drupal\piv_contest\Controller\CompetitionEntryController::access'
+    _custom_access: '\Drupal\piv_contest\Controller\CompetitionEntryController::access_edit'
