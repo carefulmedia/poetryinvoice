@@ -16,7 +16,6 @@ dependencies:
     - field.field.competition.default.field_online_competition
     - field.field.competition.default.field_open_date
     - field.field.competition.default.field_score_template
-    - field.field.competition.default.field_student_name
     - field.field.competition.default.field_submission_deadline
     - field.field.competition.default.field_team_competition
     - field.field.competition.default.field_winners_announced
@@ -140,14 +139,6 @@ content:
     settings:
       match_operator: CONTAINS
       match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_student_name:
-    type: string_textfield
-    weight: 26
-    region: content
-    settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }

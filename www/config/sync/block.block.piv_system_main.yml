@@ -9,7 +9,7 @@ dependencies:
 id: piv_system_main
 theme: piv
 region: content
-weight: -2
+weight: -3
 provider: null
 plugin: system_main_block
 settings:

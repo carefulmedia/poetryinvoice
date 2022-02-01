@@ -11,7 +11,7 @@ _core:
 id: piv_breadcrumbs
 theme: piv
 region: header
-weight: 0
+weight: -6
 provider: null
 plugin: system_breadcrumb_block
 settings:

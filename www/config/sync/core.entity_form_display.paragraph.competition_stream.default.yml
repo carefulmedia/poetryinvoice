@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.competition_stream.field_label
     - field.field.paragraph.competition_stream.field_max_entries_school
     - field.field.paragraph.competition_stream.field_min_recitations
+    - field.field.paragraph.competition_stream.field_stream_languages
     - paragraphs.paragraphs_type.competition_stream
   module:
     - field_group
@@ -21,7 +22,7 @@ third_party_settings:
       label: 'Teacher''s UI'
       region: content
       parent_name: ''
-      weight: 4
+      weight: 1
       format_type: fieldset
       format_settings:
         classes: ''
@@ -34,12 +35,6 @@ targetEntityType: paragraph
 bundle: competition_stream
 mode: default
 content:
-  field_competition_stream_type:
-    type: options_select
-    weight: 0
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_description:
     type: string_textfield
     weight: 6
@@ -50,7 +45,7 @@ content:
     third_party_settings: {  }
   field_entries_required_school:
     type: number
-    weight: 1
+    weight: 3
     region: content
     settings:
       placeholder: ''
@@ -65,18 +60,25 @@ content:
     third_party_settings: {  }
   field_max_entries_school:
     type: number
-    weight: 2
+    weight: 4
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_min_recitations:
     type: number
-    weight: 3
+    weight: 2
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
+  field_stream_languages:
+    type: options_buttons
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
+  field_competition_stream_type: true
   status: true

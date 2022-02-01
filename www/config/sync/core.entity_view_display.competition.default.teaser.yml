@@ -17,7 +17,6 @@ dependencies:
     - field.field.competition.default.field_online_competition
     - field.field.competition.default.field_open_date
     - field.field.competition.default.field_score_template
-    - field.field.competition.default.field_student_name
     - field.field.competition.default.field_submission_deadline
     - field.field.competition.default.field_team_competition
     - field.field.competition.default.field_winners_announced
@@ -92,7 +91,6 @@ hidden:
   field_judging_deadline: true
   field_online_competition: true
   field_score_template: true
-  field_student_name: true
   field_team_competition: true
   langcode: true
   status: true

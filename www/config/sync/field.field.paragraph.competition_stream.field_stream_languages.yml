@@ -1,0 +1,23 @@
+uuid: af729e52-6d43-4be9-9e04-ee2c087c02f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_stream_languages
+    - paragraphs.paragraphs_type.competition_stream
+id: paragraph.competition_stream.field_stream_languages
+field_name: field_stream_languages
+entity_type: paragraph
+bundle: competition_stream
+label: 'Stream languages'
+description: 'Select which languages are associated with this competition stream. If more than one languages are selected, the number of required recitations for this stream is per language.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:configurable_language'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

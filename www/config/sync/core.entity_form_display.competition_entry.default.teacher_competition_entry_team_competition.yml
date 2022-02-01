@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.competition_entry.teacher_competition_entry_team_competition
-    - core.entity_form_mode.recitation.on_site_team
+    - core.entity_form_mode.recitation.online_team
     - field.field.competition_entry.default.field_competition
     - field.field.competition_entry.default.field_complete
     - field.field.competition_entry.default.field_recitations
@@ -25,7 +25,7 @@ content:
     weight: 0
     region: content
     settings:
-      form_mode: on_site_team
+      form_mode: online_team
       override_labels: false
       label_singular: ''
       label_plural: ''

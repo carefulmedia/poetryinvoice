@@ -9,6 +9,7 @@ dependencies:
     - field.field.paragraph.competition_stream.field_label
     - field.field.paragraph.competition_stream.field_max_entries_school
     - field.field.paragraph.competition_stream.field_min_recitations
+    - field.field.paragraph.competition_stream.field_stream_languages
     - paragraphs.paragraphs_type.competition_stream
 id: paragraph.competition_stream.default
 targetEntityType: paragraph
@@ -65,5 +66,13 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_stream_languages:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 9
     region: content
 hidden: {  }

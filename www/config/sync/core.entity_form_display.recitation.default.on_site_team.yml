@@ -9,6 +9,8 @@ dependencies:
     - field.field.recitation.default.field_release_form
     - field.field.recitation.default.field_student_name
     - piv_contest_recitation.recitation_type.default
+  module:
+    - file
 id: recitation.default.on_site_team
 targetEntityType: recitation
 bundle: default
@@ -24,6 +26,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_release_form:
+    type: file_generic
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
   field_student_name:
     type: string_textfield
     weight: 1
@@ -35,7 +44,6 @@ content:
 hidden:
   created: true
   field_recitation_video: true
-  field_release_form: true
   langcode: true
   status: true
   title: true
