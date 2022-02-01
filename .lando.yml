@@ -4,6 +4,8 @@ config:
   webroot: www/web
 
 services:
+  pma:
+    type: phpmyadmin
   # The Drupal 7 database to use as migrate source.
   d7db:
     type: mariadb
