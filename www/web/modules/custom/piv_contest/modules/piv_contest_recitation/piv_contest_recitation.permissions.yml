@@ -12,3 +12,5 @@ view recitation:
   title: View recitation
 edit recitation:
   title: Edit recitation
+edit own recitation:
+  title: Edit own recitation

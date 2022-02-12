@@ -22,7 +22,13 @@ class RecitationAccessControlHandler extends EntityAccessControlHandler {
         return AccessResult::allowedIfHasPermission($account, 'view recitation');
 
       case 'update':
-        return AccessResult::allowedIfHasPermissions($account, ['edit recitation', 'administer recitation'], 'OR');
+        $permissions = ['edit recitation', 'administer recitation'];
+
+        if ($entity->get('uid')->target_id === $account->id()) {
+          $permissions[] = 'edit own recitation';
+        }
+
+        return AccessResult::allowedIfHasPermissions($account, $permissions, 'OR');
 
       case 'delete':
         return AccessResult::allowedIfHasPermissions($account, ['delete recitation', 'administer recitation'], 'OR');
