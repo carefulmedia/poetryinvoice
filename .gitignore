@@ -1,6 +1,6 @@
 /.editorconfig
 /.gitattributes
-
+/.idea
 # Apple crap
 .DS_Store
 
