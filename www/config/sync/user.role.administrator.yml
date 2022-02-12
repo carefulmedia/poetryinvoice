@@ -28,7 +28,6 @@ dependencies:
     - comment
     - contact
     - contextual
-    - devel
     - filter
     - image
     - ip2country
@@ -80,7 +79,6 @@ permissions:
   - 'access content'
   - 'access content overview'
   - 'access contextual links'
-  - 'access devel information'
   - 'access icanlocalize manager profiles'
   - 'access icanlocalize translator profiles'
   - 'access mailchimp activity'
@@ -1062,7 +1060,6 @@ permissions:
   - 'view comment settings'
   - 'view date repeats'
   - 'view delete button'
-  - 'view devel_node_access information'
   - 'view disqus comments'
   - 'view faq page'
   - 'view field_2016_rs'

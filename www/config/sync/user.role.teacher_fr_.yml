@@ -1,9 +1,7 @@
 uuid: cd97dc9d-2235-4547-9416-014d838a8715
 langcode: en
 status: true
-dependencies:
-  module:
-    - piv_contest_recitation
+dependencies: {  }
 id: teacher_fr_
 label: 'Teacher (fr)'
 weight: 3
@@ -13,7 +11,6 @@ permissions:
   - 'create field_stage_name'
   - 'edit field_stage_name'
   - 'edit own field_stage_name'
-  - 'edit own recitation'
   - 'view body'
   - 'view field_address'
   - 'view field_bio_trans'

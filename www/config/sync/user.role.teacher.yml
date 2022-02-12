@@ -10,8 +10,8 @@ dependencies:
   module:
     - comment
     - contact
-    - devel
     - media
+    - piv_contest_recitation
     - node
 id: teacher
 label: Teacher
@@ -27,7 +27,6 @@ permissions:
   - 'access Teacher (fr) profiles'
   - 'access Teacher profiles'
   - 'access comments'
-  - 'access devel information'
   - 'access search combine'
   - 'access user contact forms'
   - 'access user profiles'
@@ -114,6 +113,7 @@ permissions:
   - 'edit own pal_pir_school_visit content'
   - 'edit own piv_release_form'
   - 'edit own piv_student_mail'
+  - 'edit own recitation'
   - 'edit own remote_video media'
   - 'edit own team_regionals_entry content'
   - 'edit piv_release_form'
