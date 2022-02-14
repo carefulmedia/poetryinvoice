@@ -15,14 +15,14 @@ dependencies:
     - piv_contest_competition_entry.competition_entry_type.default
   module:
     - file
-    - inline_entity_form
+    - piv_contest_competition_entry
 id: competition_entry.default.teacher_competition_entry
 targetEntityType: competition_entry
 bundle: default
 mode: teacher_competition_entry
 content:
   field_recitations:
-    type: inline_entity_form_complex
+    type: limited_recitation_entry_widget
     weight: 0
     region: content
     settings:

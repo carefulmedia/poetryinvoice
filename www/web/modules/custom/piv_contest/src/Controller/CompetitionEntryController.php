@@ -130,7 +130,6 @@ class CompetitionEntryController extends ControllerBase {
   }
 
   public function edit(
-
     UserInterface $user,
     CompetitionInterface $competition,
     CompetitionEntryInterface $competition_entry
