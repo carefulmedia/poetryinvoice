@@ -6,6 +6,8 @@ access recitation overview:
   title: 'Access recitation overview page'
 delete recitation:
   title: Delete recitation
+delete own recitation:
+  title: Delete own recitation
 create recitation:
   title: Create recitation
 view recitation:
