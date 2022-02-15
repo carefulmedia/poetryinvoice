@@ -5,7 +5,9 @@
  * Provides a recitation entity type.
  */
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Render\Element;
+use Drupal\piv_contest_recitation\Entity\Recitation;
 
 /**
  * Implements hook_theme().
@@ -32,5 +34,34 @@ function piv_contest_recitation_theme() {
 function template_preprocess_recitation(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+function piv_contest_recitation_inline_entity_form_table_fields_alter(array &$fields, array $context) {
+  if ($context['entity_type'] === 'recitation') {
+    $fields['label'] = [
+      'type' => 'callback',
+      'label' => t('Poem'),
+      'callback' => 'piv_contest_recitation_inline_entity_form_title_callback',
+    ];
+  }
+}
+
+function piv_contest_recitation_inline_entity_form_title_callback(Recitation $entity) {
+  /** @var \Drupal\node\Entity\Node $poem */
+  $poem = $entity->field_poem->entity;
+  if ($poem) {
+    return $poem->getTitle();
+  }
+
+  return "";
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function piv_contest_recitation_recitation_presave(EntityInterface $entity) {
+  if (!$entity->getTitle()) {
+    $entity->setTitle($entity->field_poem->entity->getTitle());
   }
 }
