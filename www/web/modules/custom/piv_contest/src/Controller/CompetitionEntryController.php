@@ -98,16 +98,13 @@ class CompetitionEntryController extends ControllerBase {
     CompetitionInterface $competition,
     ParagraphInterface $stream
   ) {
-    if (!$competition_entry) {
-      $school = $user->field_school->target_id;
-      $competition_entry = $this->entityTypeManager->getStorage('competition_entry')->create([
-        'field_competition' => $competition->id(),
-        'field_school' => $school,
-        'bundle' => 'default',
-        'field_stream' => $stream,
-      ]);
-    }
-
+    $school = $user->field_school->target_id;
+    $competition_entry = $this->entityTypeManager->getStorage('competition_entry')->create([
+      'field_competition' => $competition->id(),
+      'field_school' => $school,
+      'bundle' => 'default',
+      'field_stream' => $stream,
+    ]);
 
     // The form is different for team or individual competitions.
     $is_team_competition = !empty($competition->field_team_competition->value);

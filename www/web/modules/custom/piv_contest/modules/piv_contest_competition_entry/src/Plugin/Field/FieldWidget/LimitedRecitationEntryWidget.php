@@ -2,6 +2,10 @@
 
 namespace Drupal\piv_contest_competition_entry\Plugin\Field\FieldWidget;
 
+use Drupal\Component\Utility\NestedArray;
+use Drupal\Component\Utility\Tags;
+use Drupal\Core\Entity\ContentEntityInterface;
+use Drupal\Core\Entity\Element\EntityAutocomplete;
 use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
 use Drupal\Core\Entity\EntityReferenceSelection\SelectionPluginManagerInterface;
 use Drupal\Core\Entity\EntityTypeBundleInfoInterface;
@@ -13,6 +17,9 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\StringTranslation\TranslationManager;
 use Drupal\inline_entity_form\Plugin\Field\FieldWidget\InlineEntityFormComplex;
+use Drupal\inline_entity_form\TranslationHelper;
+use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\piv_contest_recitation\Entity\Recitation;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
@@ -121,7 +128,158 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     return $response;
   }
 
+  protected function prepareFormState(FormStateInterface $form_state, FieldItemListInterface $items, $translating = FALSE) {
+    parent::prepareFormState($form_state, $items, $translating);
+
+    /** @var array $entities */
+    $entities = $form_state->get(['inline_entity_form', $this->getIefId(), 'entities']);
+
+    $widget_state = $form_state->get(['inline_entity_form', $this->iefId]);
+
+    $stream = $this->getStreamParagraph();
+
+    if (!$stream) {
+      return;
+    }
+
+    $max_number_recitations = $this->getNumberOfRecitationsPerLanguage();
+    $languages = $stream->field_stream_languages->getValue();
+
+    $total_per_language = [];
+    foreach ($languages as $language) {
+      $total_per_language[$language['target_id']] = 0;
+    }
+
+    foreach ($entities as $item) {
+      $entity = $item['entity'];
+      $total_per_language[$entity->language()->getId()]++;
+    }
+
+    $startIndex = 0;
+    foreach ($total_per_language as $language => $numberItems) {
+      // Add missing items per language.
+      for ($i = $numberItems; $i < $max_number_recitations; $i++) {
+        $widget_state['entities'][] = [
+          'entity' =>  Recitation::create([
+            'bundle' => 'default',
+            'langcode' => $language,
+          ]),
+          'weight' => $startIndex+$i,
+          'form' => NULL,
+          'needs_save' => true,
+        ];
+      }
+      $startIndex++;
+    }
+
+    $form_state->set(['inline_entity_form', $this->iefId], $widget_state);
+  }
+
   private function getMaxNumberOfRecitations(): int {
+    $stream = $this->getStreamParagraph();
+    if (!$stream) {
+      return 1;
+    }
+
+    $number_languages = count($stream->field_stream_languages);
+    $number_languages = $number_languages === 0 ? 1 : $number_languages;
+
+    return $number_languages * (int) $stream->field_min_recitations->value;
+  }
+
+  public function extractFormValues(FieldItemListInterface $items, array $form, FormStateInterface $form_state) {
+    if ($this->isDefaultValueWidget($form_state)) {
+      $items->filterEmptyItems();
+      return;
+    }
+    $triggering_element = $form_state->getTriggeringElement();
+    if (empty($triggering_element['#ief_submit_trigger'])) {
+      return;
+    }
+
+    $field_name = $this->fieldDefinition->getName();
+    $parents = array_merge($form['#parents'], [$field_name, 'form']);
+    $ief_id = $this->makeIefId($parents);
+    $this->setIefId($ief_id);
+    $widget_state = &$form_state->get(['inline_entity_form', $ief_id]);
+
+    $values = $widget_state['entities'];
+    // If the inline entity form is still open, then its entity hasn't
+    // been transferred to the IEF form state yet.
+    if (empty($values) && !empty($widget_state['form'])) {
+      if ($widget_state['form'] == 'add') {
+        $element = NestedArray::getValue($form, [$field_name, 'widget', 'form']);
+        $entity = $element['inline_entity_form']['#entity'];
+        $values[] = ['entity' => $entity];
+      }
+      elseif ($widget_state['form'] == 'ief_add_existing') {
+        $parent = NestedArray::getValue($form, [$field_name, 'widget', 'form']);
+        $element = isset($parent['entity_id']) ? $parent['entity_id'] : [];
+        if (!empty($element['#value'])) {
+          $options = [
+              'target_type' => $element['#target_type'],
+              'handler' => $element['#selection_handler'],
+            ] + $element['#selection_settings'];
+          /** @var \Drupal\Core\Entity\EntityReferenceSelection\SelectionInterface $handler */
+          $handler = $this->selectionManager->getInstance($options);
+          $input_values = $element['#tags'] ? Tags::explode($element['#value']) : [$element['#value']];
+
+          foreach ($input_values as $input) {
+            $match = EntityAutocomplete::extractEntityIdFromAutocompleteInput($input);
+            if ($match === NULL) {
+              // Try to get a match from the input string when the user didn't use
+              // the autocomplete but filled in a value manually.
+              $entities_by_bundle = $handler->getReferenceableEntities($input, '=');
+              $entities = array_reduce($entities_by_bundle, function ($flattened, $bundle_entities) {
+                return $flattened + $bundle_entities;
+              }, []);
+              $params = [
+                '%value' => $input,
+                '@value' => $input,
+              ];
+              if (empty($entities)) {
+                $form_state->setError($element, $this->t('There are no entities matching "%value".', $params));
+              }
+              elseif (count($entities) > 5) {
+                $params['@id'] = key($entities);
+                // Error if there are more than 5 matching entities.
+                $form_state->setError($element, $this->t('Many entities are called %value. Specify the one you want by appending the id in parentheses, like "@value (@id)".', $params));
+              }
+              elseif (count($entities) > 1) {
+                // More helpful error if there are only a few matching entities.
+                $multiples = [];
+                foreach ($entities as $id => $name) {
+                  $multiples[] = $name . ' (' . $id . ')';
+                }
+                $params['@id'] = $id;
+                $form_state->setError($element, $this->t('Multiple entities match this reference; "%multiple". Specify the one you want by appending the id in parentheses, like "@value (@id)".', ['%multiple' => implode('", "', $multiples)] + $params));
+              }
+              else {
+                // Take the one and only matching entity.
+                $values += [
+                  'target_id' => key($entities),
+                ];
+              }
+            }
+            else {
+              $values += [
+                'target_id' => $match,
+              ];
+            }
+          }
+        }
+      }
+    }
+    // Sort values by weight.
+    uasort($values, '\Drupal\Component\Utility\SortArray::sortByWeightElement');
+    // Let the widget massage the submitted values.
+    $values = $this->massageFormValues($values, $form, $form_state);
+    // Assign the values and remove the empty ones.
+    $items->setValue($values);
+    $items->filterEmptyItems();
+  }
+
+  private function getStreamParagraph(): ?Paragraph {
     $competition = $this->routeMatch->getParameter('competition');
     $competition_entry = $this->routeMatch->getParameter('competition_entry');
     $stream = $this->routeMatch->getParameter('stream');
@@ -140,13 +298,19 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
         continue;
       }
 
-      $number_languages = count($item->field_stream_languages);
-      $number_languages = $number_languages === 0 ? 1 : $number_languages;
-
-      return $number_languages * (int) $item->field_min_recitations->value;
+      return $item;
     }
 
-    return 1;
+    return NULL;
+  }
+
+  private function getNumberOfRecitationsPerLanguage(): int {
+    $stream = $this->getStreamParagraph();
+    if (!$stream) {
+      return 1;
+    }
+
+    return $stream->field_min_recitations->value;
   }
 
   public function validateMaxNumber(array $elements, FormStateInterface $form_state, array $form) {

@@ -44,7 +44,16 @@ function piv_contest_recitation_inline_entity_form_table_fields_alter(array &$fi
       'label' => t('Poem'),
       'callback' => 'piv_contest_recitation_inline_entity_form_title_callback',
     ];
+    $fields['language'] = [
+      'type' => 'callback',
+      'label' => t('Language'),
+      'callback' => 'piv_contest_recitation_inline_entity_form_language_callback',
+    ];
   }
+}
+
+function piv_contest_recitation_inline_entity_form_language_callback(Recitation $entity) {
+  return $entity->language()->getName();
 }
 
 function piv_contest_recitation_inline_entity_form_title_callback(Recitation $entity) {
