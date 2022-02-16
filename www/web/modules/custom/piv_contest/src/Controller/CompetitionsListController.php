@@ -114,7 +114,7 @@ class CompetitionsListController extends ControllerBase {
     foreach ($competitions as $id => $competition) {
       $competitions_entries[$id] = $competition_entry_storage->loadByProperties([
         'field_competition' => $id,
-        'field_school' => $school,
+        'field_school' => $school
       ]);
     }
 
@@ -136,10 +136,10 @@ class CompetitionsListController extends ControllerBase {
       foreach ($competitions_with_entries as $id => $competition) {
         $build['competition']['with_entries'][] = [
           'competition' => $competition_view_builder->view($competition, 'teaser'),
-          'entries' => [
-            '#type' => 'item',
-            '#markup' => "Entries " . count($competitions_entries[$id]),
-          ],
+          // 'entries' => [
+          //   '#type' => 'item',
+          //   '#markup' => "Entries " . count($competitions_entries[$id]),
+          // ],
           'link' => [
             '#type' => 'link',
             '#title' => t('Manage your competition entries'),
@@ -169,9 +169,6 @@ class CompetitionsListController extends ControllerBase {
               'competition' => $id,
             ]),
           ],
-          'separator' => [
-            '#markup' => '<div> --- </div>',
-          ]
         ];
       }
     }
