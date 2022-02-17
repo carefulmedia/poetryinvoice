@@ -116,13 +116,14 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
 
     $recitationsText = $this->translationManager->formatPlural(
       $max_number_recitations,
-      '1 Recitation',
-      '@count Recitations',
+      '1 recitation',
+      '@count recitations',
     );
 
     $response['#element_validate'][] = [$this, 'validateMaxNumber'];
 
-    $response['#field_title'] = $recitationsText;
+    $title = $this->t('@recitation_text required.', ['@recitation_text' => $recitationsText]);
+    $response['#field_title'] = $title;
     $response['#description'] = t('You can add a maximum of @max', ['@max' => $recitationsText]);
 
     return $response;
