@@ -11,13 +11,14 @@ dependencies:
     - piv_contest_recitation.recitation_type.default
   module:
     - inline_entity_form
+    - piv_contest_competition_entry
 id: recitation.default.online_individual
 targetEntityType: recitation
 bundle: default
 mode: online_individual
 content:
   field_poem:
-    type: entity_reference_autocomplete
+    type: piv_contest_competition_entry_langauge_autocomplete
     weight: 0
     region: content
     settings:
