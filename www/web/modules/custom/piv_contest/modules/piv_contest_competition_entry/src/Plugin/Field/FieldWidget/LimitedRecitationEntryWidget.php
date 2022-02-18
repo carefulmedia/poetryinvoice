@@ -4,7 +4,6 @@ namespace Drupal\piv_contest_competition_entry\Plugin\Field\FieldWidget;
 
 use Drupal\Component\Utility\NestedArray;
 use Drupal\Component\Utility\Tags;
-use Drupal\Core\Entity\ContentEntityInterface;
 use Drupal\Core\Entity\Element\EntityAutocomplete;
 use Drupal\Core\Entity\EntityDisplayRepositoryInterface;
 use Drupal\Core\Entity\EntityReferenceSelection\SelectionPluginManagerInterface;
@@ -17,7 +16,6 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\StringTranslation\TranslationManager;
 use Drupal\inline_entity_form\Plugin\Field\FieldWidget\InlineEntityFormComplex;
-use Drupal\inline_entity_form\TranslationHelper;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\piv_contest_recitation\Entity\Recitation;
 use Symfony\Component\DependencyInjection\ContainerInterface;
