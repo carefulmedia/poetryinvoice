@@ -1,25 +1,36 @@
-uuid: e798597c-4682-4ba8-a0a2-a6179ee96732
+uuid: 70c06cd6-1608-43e1-94fd-fd85c8c43b68
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.judging_session.session_management_ui
     - field.field.judging_session.default.field_competition
     - field.field.judging_session.default.field_competition_entries
     - piv_contest_judging_session.judging_session_type.default
-id: judging_session.default.default
+id: judging_session.default.session_management_ui
 targetEntityType: judging_session
 bundle: default
-mode: default
+mode: session_management_ui
 content:
   created:
     type: datetime_timestamp
-    weight: 5
+    weight: 20
     region: content
     settings: {  }
     third_party_settings: {  }
   field_competition:
     type: entity_reference_autocomplete
-    weight: 6
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_competition_entries:
+    type: entity_reference_autocomplete
+    weight: 27
     region: content
     settings:
       match_operator: CONTAINS
@@ -36,27 +47,27 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 1
+    weight: 0
     region: content
     settings:
       display_label: false
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: -5
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 3
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 4
+    weight: 15
     region: content
     settings:
       match_operator: CONTAINS
@@ -64,5 +75,4 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-hidden:
-  field_competition_entries: true
+hidden: {  }
