@@ -12,3 +12,5 @@ view competition entry:
   title: View competition entry
 edit competition entry:
   title: Edit competition entry
+edit locked competition:
+  title: Edit locked competition

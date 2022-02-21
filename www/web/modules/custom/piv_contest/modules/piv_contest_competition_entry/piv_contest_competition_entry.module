@@ -5,6 +5,7 @@
  * Provides a competition entry entity type.
  */
 
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 
 /**
@@ -16,6 +17,23 @@ function piv_contest_competition_entry_theme() {
       'render element' => 'elements',
     ],
   ];
+}
+
+function piv_contest_form_alter(&$form, FormStateInterface $formState, $form_id) {
+  if ($form_id != 'competition_entry_default_teacher_competition_entry_form') {
+    return;
+  }
+
+  $competition_entry = \Drupal::routeMatch()->getParameter('competition_entry');
+  if (!$competition_entry) {
+    return;
+  }
+
+  /** @var \Drupal\piv_contest_competition_entry\Service\CompetitionLockService $lock_service */
+  $lock_service = \Drupal::service('piv_contest_competition_entry.competition_lock_service');
+  if ($lock_service->isLocked($competition_entry)) {
+    $form['#disabled'] = true;
+  }
 }
 
 /**

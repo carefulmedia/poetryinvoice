@@ -1,0 +1,5 @@
+services:
+  piv_contest_competition_entry.competition_lock_service:
+    class: Drupal\piv_contest_competition_entry\Service\CompetitionLockService
+    arguments:
+      - '@entity_type.manager'

@@ -686,6 +686,7 @@ permissions:
   - 'edit field_writing_prompt'
   - 'edit field_years_in_competition'
   - 'edit field_youtube_recitation_url'
+  - 'edit competition entry'
   - 'edit meta tags'
   - 'edit own article content'
   - 'edit own blog content'
