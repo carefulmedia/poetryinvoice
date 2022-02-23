@@ -291,6 +291,10 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
       $stream_id = $competition_entry->field_stream->target_id;
     }
 
+    if (!$competition) {
+      $competition = $competition_entry->field_competition->entity;
+    }
+
     $stream_paragraphs = $competition->field_competition_streams->referencedEntities();
     foreach ($stream_paragraphs as $item) {
       if ($item->id() !== $stream_id) {
