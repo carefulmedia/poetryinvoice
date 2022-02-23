@@ -70,7 +70,7 @@ function piv_contest_recitation_inline_entity_form_title_callback(Recitation $en
  * Implements hook_entity_presave().
  */
 function piv_contest_recitation_recitation_presave(EntityInterface $entity) {
-  if (!$entity->getTitle()) {
+  if (!$entity->getTitle() && $entity->field_poem->entity) {
     $entity->setTitle($entity->field_poem->entity->getTitle());
   }
 }
