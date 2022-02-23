@@ -7,6 +7,7 @@ use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\RevisionableContentEntityBase;
 use Drupal\Core\Field\BaseFieldDefinition;
+use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\piv_contest_competition_entry\CompetitionEntryInterface;
 use Drupal\user\UserInterface;
 
@@ -251,6 +252,18 @@ class CompetitionEntry extends RevisionableContentEntityBase implements Competit
       ->setDescription(t('The time that the competition entry was last edited.'));
 
     return $fields;
+  }
+
+  public function getStream(): ?Paragraph {
+    $competition = $this->field_competition->entity;
+
+    foreach ($competition->field_competition_streams as $stream_field) {
+      if ($stream_field->target_id === $this->field_stream->target_id) {
+        return $stream_field->entity;
+      }
+    }
+
+    return NULL;
   }
 
 }

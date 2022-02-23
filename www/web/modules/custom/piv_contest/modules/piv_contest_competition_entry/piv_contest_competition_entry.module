@@ -8,6 +8,8 @@
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
+use Drupal\user\Entity\User;
 
 /**
  * Implements hook_theme().
@@ -20,21 +22,39 @@ function piv_contest_competition_entry_theme() {
   ];
 }
 
-function piv_contest_competition_entry_competition_entry_presave(EntityInterface $entity) {
+function piv_contest_competition_entry_competition_entry_presave(CompetitionEntry $entity) {
   /** @var \Drupal\piv_contest\CompetitionEnrollment $competition_enrollment_service */
   $competition_enrollment_service = \Drupal::service('piv_contest.competition_enrollment');
 
-  $number_valid_recitations = $competition_enrollment_service->getNumberOfValidRecitationsInEntry($entity);
-
+  $current_user = \Drupal::currentUser();
+  $user = User::load($current_user->id());
   $competition = $entity->field_competition->entity;
-  foreach ($competition->field_competition_streams as $stream_field) {
-    if ($stream_field->target_id === $entity->field_stream->target_id) {
-      $required_recitations_stream = $competition_enrollment_service->getRequiredRecitationsForStream($stream_field->entity);
-      if ($number_valid_recitations >= $required_recitations_stream && $entity->field_release_form->entity != NULL) {
-        $entity->field_complete = TRUE;
-      }
+  /** @var \Drupal\node\NodeInterface $school */
+  $school = $user->field_school->entity;
+
+  $number_valid_recitations = $competition_enrollment_service->getNumberOfValidRecitationsInEntry($entity);
+  $stream = $entity->getStream();
+  if ($stream) {
+    // Set to complete when requirements are met.
+    $required_recitations_stream = $competition_enrollment_service->getRequiredRecitationsForStream($stream);
+    if ($number_valid_recitations >= $required_recitations_stream && $entity->field_release_form->entity != NULL) {
+      $entity->field_complete = TRUE;
+    }
+
+    // Set default title if title is empty.
+    // Set default title.
+    $title = $entity->getTitle();
+    if (!$title && $school) {
+      $entity->setTitle(
+        sprintf('%s - %s - %s',
+        $school->label(),
+        $competition->getTitle(),
+        $stream->field_label->value,
+      ));
     }
   }
+
+
 }
 
 function piv_contest_form_alter(&$form, FormStateInterface $formState, $form_id) {
