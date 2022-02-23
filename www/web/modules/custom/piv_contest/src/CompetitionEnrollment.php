@@ -136,7 +136,6 @@ class CompetitionEnrollment {
           ],
         ];
 
-        \Drupal::currentUser();
         if ($deleteUrl->access(\Drupal::currentUser())) {
           // Add link to delete existing entry.
           $stream['links'][] = [
