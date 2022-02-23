@@ -19,7 +19,6 @@
         <td>{{ stream.student }}</td>
         <td {{ stream.is_recitations_completed ? 'class="completed"' }}>{{ stream.recitations }}</td>
         <td {{ stream.is_permissions_completed ? 'class="completed"' }}>{{ stream.permissions }}</td>
-        <td>{{ stream.recitations }}</td>
         <td>{{ stream.permissions }}</td>
         <td>
           {% for link in stream.links %}
