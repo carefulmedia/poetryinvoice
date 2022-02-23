@@ -2,6 +2,7 @@
 
 namespace Drupal\piv_contest;
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
@@ -118,9 +119,15 @@ class CompetitionEnrollment {
         ]);
 
         $stream['student'] = $entry->field_student_name->value;
-        $stream['recitations'] = "0 out of X";
+        $stream['recitations'] = t("@current out of @required", [
+          '@current' => $this->getNumberOfValidRecitationsInEntry($entry),
+          '@required' => $this->getRequiredRecitationsForStream($stream_entity),
+        ]);
         $stream['permission'] = TRUE;
-
+        $stream['is_recitations_completed'] = $this->isRecitationsCompleted($stream_entity, $entry);
+        $stream['is_permissions_completed'] = $entry->field_release_form->entity != NULL;
+        $stream['is_completed'] = (bool) $entry->field_complete->value;
+        
         $editTitle = t('edit');
         if ($this->lockService->isLocked($entry)) {
           $editTitle = t('view');
@@ -180,6 +187,30 @@ class CompetitionEnrollment {
     return $streams;
   }
 
+  public function isRecitationsCompleted(EntityInterface $stream, EntityInterface $competitionEntry): bool {
+    if ($this->getNumberOfValidRecitationsInEntry($competitionEntry) >= $this->getRequiredRecitationsForStream($stream)) {
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+  public function getNumberOfValidRecitationsInEntry(EntityInterface $competitionEntry): int {
+    $number_of_valid_poems = 0;
+    foreach ($competitionEntry->field_recitations as $recitation) {
+      $entity = $recitation->entity;
+      if ($poem = $entity->field_poem->entity) {
+        $number_of_valid_poems++;
+      }
+    }
+
+    return $number_of_valid_poems;
+  }
+
+  public function getRequiredRecitationsForStream(EntityInterface $stream): int {
+    return count($stream->field_stream_languages) * (int) $stream->field_min_recitations->value;
+  }
+
   /**
    * Team competition.
    */
@@ -190,10 +221,6 @@ class CompetitionEnrollment {
   }
 
   private function getNumberOfRecitations() {
-
-  }
-
-  private function getRequiredRecitationsForStream() {
 
   }
 

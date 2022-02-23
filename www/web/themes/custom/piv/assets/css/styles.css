@@ -5,3 +5,11 @@
 body {
   color: black;
 }
+
+.completed {
+  background-color: #0e8106;
+}
+
+.completed > td {
+  background-color: #0e8106;
+}

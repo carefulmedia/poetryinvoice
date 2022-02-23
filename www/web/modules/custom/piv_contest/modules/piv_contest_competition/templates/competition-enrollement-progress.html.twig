@@ -14,9 +14,11 @@
       <td></td>
     </tr>
     {% for stream in streams %}
-      <tr>
+      <tr {{ stream.is_completed ? 'class="completed"' }}>
         <td>{{ stream.name }}</td>
         <td>{{ stream.student }}</td>
+        <td {{ stream.is_recitations_completed ? 'class="completed"' }}>{{ stream.recitations }}</td>
+        <td {{ stream.is_permissions_completed ? 'class="completed"' }}>{{ stream.permissions }}</td>
         <td>{{ stream.recitations }}</td>
         <td>{{ stream.permissions }}</td>
         <td>
