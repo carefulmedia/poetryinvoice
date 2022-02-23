@@ -127,7 +127,7 @@ class CompetitionEnrollment {
         $stream['is_recitations_completed'] = $this->isRecitationsCompleted($stream_entity, $entry);
         $stream['is_permissions_completed'] = $entry->field_release_form->entity != NULL;
         $stream['is_completed'] = (bool) $entry->field_complete->value;
-        
+
         $editTitle = t('edit');
         if ($this->lockService->isLocked($entry)) {
           $editTitle = t('view');
