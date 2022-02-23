@@ -9,8 +9,11 @@ services:
 
   piv_contest.competition_service:
     class: Drupal\piv_contest\CompetitionService
-    arguments: ['@entity_type.manager']
+    arguments:
+      - '@entity_type.manager'
 
   piv_contest.competition_enrollment:
     class: Drupal\piv_contest\CompetitionEnrollment
-    arguments: ['@entity_type.manager']
+    arguments:
+      - '@entity_type.manager'
+      - '@piv_contest_competition_entry.competition_lock_service'

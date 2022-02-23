@@ -14,3 +14,5 @@ edit competition entry:
   title: Edit competition entry
 edit locked competition:
   title: Edit locked competition
+delete own competition entry:
+  title: Delete own competition entry

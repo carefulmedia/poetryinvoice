@@ -65,8 +65,13 @@ class CompetitionEntryAccessControlHandler extends EntityAccessControlHandler im
           }
           return $is_allowed_result;
         }
-        return AccessResult::allowedIfHasPermissions($account, ['delete competition entry', 'administer competition entry'], 'OR');
 
+        $permissions = ['delete competition entry', 'administer competition entry'];
+        if ($account->id() === $entity->getOwnerId()) {
+          $permissions[] = 'delete own competition entry';
+        }
+
+        return AccessResult::allowedIfHasPermissions($account, $permissions, 'OR');
       default:
         // No opinion.
         return AccessResult::neutral();

@@ -68,6 +68,7 @@ permissions:
   - 'create remote_video media'
   - 'create team_regionals_entry content'
   - 'delete own bulletin_board content'
+  - 'delete own competition entry'
   - 'delete own recitation'
   - 'delete own remote_video media'
   - 'edit field_grades'

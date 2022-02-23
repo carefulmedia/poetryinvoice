@@ -12,7 +12,6 @@
       <td>{{ 'Recitations' |t }}</td>
       <td>{{ 'Permission' |t }}</td>
       <td></td>
-      <td></td>
     </tr>
     {% for stream in streams %}
       <tr>
@@ -20,7 +19,11 @@
         <td>{{ stream.student }}</td>
         <td>{{ stream.recitations }}</td>
         <td>{{ stream.permissions }}</td>
-        <td>{{ stream.link }}</td>
+        <td>
+          {% for link in stream.links %}
+            {{ link }}
+          {% endfor %}
+        </td>
       </tr>
     {% endfor %}
   </table>

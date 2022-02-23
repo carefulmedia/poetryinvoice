@@ -6,6 +6,7 @@ use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\piv_contest_competition_entry\Service\CompetitionLockService;
 use Drupal\user\UserInterface;
 
 /**
@@ -29,8 +30,12 @@ class CompetitionEnrollment {
   // User object.
   private $teacher;
 
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+  /** @var \Drupal\piv_contest_competition_entry\Service\CompetitionLockService $lockService */
+  private $lockService;
+
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, CompetitionLockService $lockService) {
     $this->entityTypeManager = $entity_type_manager;
+    $this->lockService = $lockService;
   }
 
   public function init(
@@ -93,7 +98,7 @@ class CompetitionEnrollment {
       $entry = array_pop($entry);
 
       if (!empty($entry)) {
-        $url = Url::fromRoute('piv_contest.competition_entry_edit', [
+        $editUrl = Url::fromRoute('piv_contest.competition_entry_edit', [
             'user' => $teacher_id,
             'competition' => $competition_id,
             'competition_entry' => $entry->id(),
@@ -104,15 +109,45 @@ class CompetitionEnrollment {
           ]
         );
 
+        $deleteUrl = Url::fromRoute('entity.competition_entry.delete_form', [
+          'competition_entry' => $entry->id(),
+        ], [
+          'query' => [
+            'destination' => $destination,
+          ]
+        ]);
+
         $stream['student'] = $entry->field_student_name->value;
         $stream['recitations'] = "0 out of X";
         $stream['permission'] = TRUE;
+
+        $editTitle = t('edit');
+        if ($this->lockService->isLocked($entry)) {
+          $editTitle = t('view');
+        }
+
         // Add link to edit existing entry.
-        $stream['link'] = [
+        $stream['links'][] = [
           '#type' => 'link',
-          '#title' => 'edit',
-          '#url' => $url ,
+          '#title' => $editTitle,
+          '#url' => $editUrl ,
+          '#cache' => [
+            'tags' => $entry->getCacheTags(),
+          ],
         ];
+
+        \Drupal::currentUser();
+        if ($deleteUrl->access(\Drupal::currentUser())) {
+          // Add link to delete existing entry.
+          $stream['links'][] = [
+            '#type' => 'link',
+            '#title' => t('delete'),
+            '#url' => $deleteUrl,
+            '#cache' => [
+              'tags' => $entry->getCacheTags(),
+            ],
+          ];
+        }
       }
 
       // No competition entry for this stream.
@@ -122,7 +157,7 @@ class CompetitionEnrollment {
           $stream[$k] = NULL;
         }
         // Add link to create new entry.
-        $stream['link'] = [
+        $stream['links'][] = [
           '#type' => 'link',
           '#title' => t('Add new entry'),
           '#url' => Url::fromRoute('piv_contest.competition_entry_add', [
