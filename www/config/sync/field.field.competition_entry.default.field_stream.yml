@@ -1,29 +1,79 @@
-uuid: cad2758d-d01c-4040-b3a7-fdb42ace9de7
+uuid: fc09af75-1983-490d-8a72-ab3eab32e49e
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.competition_entry.field_stream
+    - paragraphs.paragraphs_type.competition_stream
     - piv_contest_competition_entry.competition_entry_type.default
-    - taxonomy.vocabulary.competition_stream
+  module:
+    - entity_reference_revisions
 id: competition_entry.default.field_stream
 field_name: field_stream
 entity_type: competition_entry
 bundle: default
 label: Stream
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:taxonomy_term'
+  handler: 'default:paragraph'
   handler_settings:
     target_bundles:
       competition_stream: competition_stream
-    sort:
-      field: name
-      direction: asc
-    auto_create: false
-    auto_create_bundle: ''
-field_type: entity_reference
+    negate: 0
+    target_bundles_drag_drop:
+      action_item:
+        weight: 18
+        enabled: false
+      communication_log:
+        weight: 19
+        enabled: false
+      competition_stream:
+        weight: 20
+        enabled: true
+      judges:
+        weight: 21
+        enabled: false
+      lead_teacher_has_yet_to_si:
+        weight: 22
+        enabled: false
+      micro_interview:
+        weight: 23
+        enabled: false
+      poet_laureate:
+        weight: 24
+        enabled: false
+      poet_questionnaire:
+        weight: 25
+        enabled: false
+      publications:
+        weight: 26
+        enabled: false
+      score_template_criteria:
+        weight: 27
+        enabled: false
+      teacher_leads_tracking:
+        weight: 28
+        enabled: false
+      teacher_questionnaire:
+        weight: 29
+        enabled: false
+      teacher_tracking:
+        weight: 30
+        enabled: false
+      this_teacher_signed_up_for:
+        weight: 31
+        enabled: false
+      tr_student:
+        weight: 32
+        enabled: false
+      types_of_support_requested:
+        weight: 33
+        enabled: false
+      visit_date_and_times:
+        weight: 34
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,17 +1,18 @@
-uuid: e0728747-3190-4197-a9e0-44e636c02b89
+uuid: 89eb63bf-2645-47d2-9778-abb0f209daa8
 langcode: en
 status: true
 dependencies:
   module:
+    - entity_reference_revisions
+    - paragraphs
     - piv_contest_competition_entry
-    - taxonomy
 id: competition_entry.field_stream
 field_name: field_stream
 entity_type: competition_entry
-type: entity_reference
+type: entity_reference_revisions
 settings:
-  target_type: taxonomy_term
-module: core
+  target_type: paragraph
+module: entity_reference_revisions
 locked: false
 cardinality: 1
 translatable: true

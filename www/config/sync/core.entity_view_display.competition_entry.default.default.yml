@@ -12,6 +12,7 @@ dependencies:
     - field.field.competition_entry.default.field_student_name
     - piv_contest_competition_entry.competition_entry_type.default
   module:
+    - entity_reference_revisions
     - file
     - user
 id: competition_entry.default.default
@@ -72,12 +73,13 @@ content:
     weight: 25
     region: content
   field_stream:
-    type: entity_reference_label
+    type: entity_reference_revisions_entity_view
     label: above
     settings:
-      link: true
+      view_mode: default
+      link: ''
     third_party_settings: {  }
-    weight: 22
+    weight: 28
     region: content
   field_student_name:
     type: string
