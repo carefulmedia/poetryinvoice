@@ -5,7 +5,10 @@ dependencies:
   config:
     - field.field.judging_session.default.field_competition
     - field.field.judging_session.default.field_competition_entries
+    - field.field.judging_session.default.field_stream
     - piv_contest_judging_session.judging_session_type.default
+  module:
+    - piv_contest_judging_session
 id: judging_session.default.default
 targetEntityType: judging_session
 bundle: default
@@ -36,6 +39,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_stream:
+    type: stream_reference
+    weight: 26
+    region: content
+    settings: {  }
     third_party_settings: {  }
   langcode:
     type: language_select

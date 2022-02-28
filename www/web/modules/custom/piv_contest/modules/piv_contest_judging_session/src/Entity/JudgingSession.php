@@ -26,6 +26,7 @@ use Drupal\user\UserInterface;
  *     "form" = {
  *       "add" = "Drupal\piv_contest_judging_session\Form\JudgingSessionForm",
  *       "edit" = "Drupal\piv_contest_judging_session\Form\JudgingSessionForm",
+ *       "session_management_ui" = "Drupal\piv_contest_judging_session\Form\JudgingSessionForm",
  *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm"
  *     },
  *     "route_provider" = {

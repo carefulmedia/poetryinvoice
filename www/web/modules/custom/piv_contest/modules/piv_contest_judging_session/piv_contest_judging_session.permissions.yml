@@ -12,3 +12,5 @@ view judging session:
   title: View judging session
 edit judging session:
   title: Edit judging session
+manage judging sessions:
+  title: Manage judging sessions

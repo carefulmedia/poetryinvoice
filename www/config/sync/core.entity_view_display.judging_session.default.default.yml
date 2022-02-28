@@ -5,8 +5,10 @@ dependencies:
   config:
     - field.field.judging_session.default.field_competition
     - field.field.judging_session.default.field_competition_entries
+    - field.field.judging_session.default.field_stream
     - piv_contest_judging_session.judging_session_type.default
   module:
+    - entity_reference_revisions
     - user
 id: judging_session.default.default
 targetEntityType: judging_session
@@ -38,6 +40,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 22
+    region: content
+  field_stream:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 23
     region: content
   status:
     type: boolean

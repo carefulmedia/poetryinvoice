@@ -1,0 +1,21 @@
+uuid: b7a8802e-f31b-4dd4-8a23-cdaaeced53c6
+langcode: en
+status: true
+dependencies:
+  module:
+    - entity_reference_revisions
+    - paragraphs
+    - piv_contest_judging_session
+id: judging_session.field_stream
+field_name: field_stream
+entity_type: judging_session
+type: entity_reference_revisions
+settings:
+  target_type: paragraph
+module: entity_reference_revisions
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

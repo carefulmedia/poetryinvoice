@@ -4,6 +4,7 @@ namespace Drupal\piv_contest\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Link;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\user\UserInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
@@ -75,6 +76,16 @@ class CompetitionController extends ControllerBase {
       'field_school' => $school,
       'field_competition' => $competition->id(),
     ]);
+
+    $manage_sessions_url = Url::fromRoute('piv_contest_judging_session.manage_sessions', [
+      'competition' => $competition->id(),
+      'user' => $user->id(),
+    ]);
+
+    $build['manage_sessions'] = Link::fromTextAndUrl(
+      t('Manage Sessions'),
+      $manage_sessions_url,
+    )->toRenderable();
 
     $build['competition'] = $this->entityTypeManager
       ->getViewBuilder('competition')
