@@ -37,7 +37,6 @@ class ManageSessionsForm extends FormBase {
   }
 
   public function buildForm(array $form, FormStateInterface $form_state,  Competition $competition = NULL) {
-    $current_user = \Drupal::currentUser();
     $form_state->set('competition', $competition);
 
     $streams_options = [];
@@ -48,10 +47,8 @@ class ManageSessionsForm extends FormBase {
 
     $add_session = Url::fromRoute('piv_contest_judging_session.add_session', [
       'competition' => $competition->id(),
-      'user' => $current_user->id(),
       'destination' => Url::fromRoute('piv_contest_judging_session.manage_sessions', [
         'competition' => $competition->id(),
-        'user' => $current_user->id(),
       ])->toString(),
     ]);
 
@@ -149,7 +146,6 @@ class ManageSessionsForm extends FormBase {
         '#title' => 'Select Entries',
         '#options' => $entries_options,
         '#default_value' => $checked_entries,
-        '#required' => TRUE,
       ];
     } else {
       unset($form['fieldset']['entries']);
@@ -161,16 +157,6 @@ class ManageSessionsForm extends FormBase {
     ];
 
     return $form['fieldset'];
-  }
-
-  private function getStreamFromCompetitionByID(Competition $competition, $id): ?Paragraph {
-    foreach ($competition->field_competition_streams as $stream) {
-      if ($stream->target_id === $id) {
-        return $stream->entity;
-      }
-    }
-
-    return NULL;
   }
 
   public function submitForm(array &$form, FormStateInterface $form_state) {

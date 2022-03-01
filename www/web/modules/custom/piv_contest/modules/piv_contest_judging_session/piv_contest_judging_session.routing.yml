@@ -1,5 +1,5 @@
 piv_contest_judging_session.manage_sessions:
-  path: '/user/{user}/competitions/{competition}/manage-sessions'
+  path: '/competitions/{competition}/manage-sessions'
   defaults:
     _title: 'Manage Sessions'
     _form: '\Drupal\piv_contest_judging_session\Form\ManageSessionsForm'
@@ -9,11 +9,9 @@ piv_contest_judging_session.manage_sessions:
     parameters:
       competition:
         type: entity:competition
-      user:
-        type: entity:user
 
 piv_contest_judging_session.add_session:
-  path: '/user/{user}/competitions/{competition}/add-session'
+  path: '/competitions/{competition}/add-session'
   defaults:
     _title: 'Create Session'
     _controller: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::add'
@@ -23,5 +21,3 @@ piv_contest_judging_session.add_session:
     parameters:
       competition:
         type: entity:competition
-      user:
-        type: entity:user

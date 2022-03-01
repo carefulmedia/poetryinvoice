@@ -5,7 +5,9 @@
  * Provides a judging session entity type.
  */
 
+use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_theme().
@@ -16,6 +18,27 @@ function piv_contest_judging_session_theme() {
       'render element' => 'elements',
     ],
   ];
+}
+
+/**
+ * Implements hook_aggregator_fetcher_info_alter().
+ */
+function piv_contest_judging_session_preprocess_competition(&$variables) {
+  $current_user = \Drupal::currentUser();
+
+  if ($current_user->hasPermission('manage judging sessions')) {
+    $competition = $variables['elements']['#competition'];
+
+    $manage_sessions_url = Url::fromRoute('piv_contest_judging_session.manage_sessions', [
+      'competition' => $competition->id(),
+    ]);
+
+    $variables['content']['manage_session'] = Link::fromTextAndUrl(
+        t('Manage Sessions'),
+        $manage_sessions_url,
+      )->toRenderable() + ['#weight' => -99];
+  }
+
 }
 
 /**

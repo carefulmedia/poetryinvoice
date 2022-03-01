@@ -33,13 +33,13 @@ class JudgingSessionController extends ControllerBase {
   }
 
   public function add(
-    UserInterface $user,
     CompetitionInterface $competition
   ): array {
+    $current_user = \Drupal::currentUser();
     //  session_management_ui
     $session = $this->entityTypeManager->getStorage('judging_session')->create([
       'field_competition' => $competition->id(),
-      'user' => $user->id(),
+      'user' => $current_user->id(),
       'bundle' => 'default',
     ]);
 

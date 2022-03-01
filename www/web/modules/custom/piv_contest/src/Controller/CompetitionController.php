@@ -72,21 +72,6 @@ class CompetitionController extends ControllerBase {
       return [];
     }
 
-    $competition_entries = $this->entityTypeManager->getStorage('competition_entry')->loadByProperties([
-      'field_school' => $school,
-      'field_competition' => $competition->id(),
-    ]);
-
-    $manage_sessions_url = Url::fromRoute('piv_contest_judging_session.manage_sessions', [
-      'competition' => $competition->id(),
-      'user' => $user->id(),
-    ]);
-
-    $build['manage_sessions'] = Link::fromTextAndUrl(
-      t('Manage Sessions'),
-      $manage_sessions_url,
-    )->toRenderable();
-
     $build['competition'] = $this->entityTypeManager
       ->getViewBuilder('competition')
       ->view($competition, 'teacher_ui');
