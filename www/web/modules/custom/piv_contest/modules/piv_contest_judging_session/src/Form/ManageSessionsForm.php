@@ -174,6 +174,8 @@ class ManageSessionsForm extends FormBase {
   }
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $form_state->setRebuild();
+
     $this->messenger()->addMessage(t('You changes have been saved'));
     $entries = $form_state->getValue('entries');
     $session_id = $form_state->getValue('session');
