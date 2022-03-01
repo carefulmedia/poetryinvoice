@@ -24,8 +24,11 @@ function piv_contest_judging_session_theme() {
  * Implements hook_aggregator_fetcher_info_alter().
  */
 function piv_contest_judging_session_preprocess_competition(&$variables) {
-  $current_user = \Drupal::currentUser();
+  if ($variables['elements']['#view_mode'] != 'full') {
+    return;
+  }
 
+  $current_user = \Drupal::currentUser();
   if ($current_user->hasPermission('manage judging sessions')) {
     $competition = $variables['elements']['#competition'];
 
