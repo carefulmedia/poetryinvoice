@@ -283,6 +283,10 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     $competition_entry = $this->routeMatch->getParameter('competition_entry');
     $stream = $this->routeMatch->getParameter('stream');
 
+    if (!$competition_entry) {
+      return NULL;
+    }
+
     // This is on add.
     if ($stream) {
       $stream_id = $stream->id();
@@ -293,6 +297,10 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
 
     if (!$competition) {
       $competition = $competition_entry->field_competition->entity;
+    }
+
+    if (!$competition->field_competition_streams) {
+      return NULL;
     }
 
     $stream_paragraphs = $competition->field_competition_streams->referencedEntities();
