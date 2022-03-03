@@ -62,7 +62,10 @@ use Drupal\user\UserInterface;
  *     "collection" = "/admin/contest/judging-session"
  *   },
  *   bundle_entity_type = "judging_session_type",
- *   field_ui_base_route = "entity.judging_session_type.edit_form"
+ *   field_ui_base_route = "entity.judging_session_type.edit_form",
+ *   constraints = {
+ *     "unique_judging_session_per_competition_entry" = {}
+ *   }
  * )
  */
 class JudgingSession extends RevisionableContentEntityBase implements JudgingSessionInterface {
