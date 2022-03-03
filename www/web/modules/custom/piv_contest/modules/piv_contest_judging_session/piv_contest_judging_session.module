@@ -5,9 +5,12 @@
  * Provides a judging session entity type.
  */
 
+use Drupal\Core\Form\FormState;
+use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Url;
+use Drupal\piv_contest_competition\Entity\Competition;
 
 /**
  * Implements hook_theme().
@@ -18,6 +21,102 @@ function piv_contest_judging_session_theme() {
       'render element' => 'elements',
     ],
   ];
+}
+
+/**
+ * Implements hook_aggregator_fetcher_info_alter().
+ */
+/**
+ * Implements hook_form_alter().
+ */
+
+function piv_contest_judging_session_form_judging_session_default_session_management_ui_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Set both judge fields as no access by default.
+  $form['field_english_judge']['#access'] = false;
+  $form['field_french_judge']['#access'] = false;
+  $form['field_competition']['#access'] = false;
+
+  $form['field_stream']['widget'][0]['target_id']['#ajax'] = [
+    'callback' => 'piv_contest_judging_session_ajax_update',
+    'wrapper' => 'form-wrapper',
+  ];
+
+  $user_input = $form_state->getUserInput();
+  if (isset($user_input['field_stream'][0]['target_id'])) {
+    $stream_value = (int) $user_input['field_stream'][0]['target_id'];
+  } else {
+    $stream_value = array_key_first($form['field_stream']['widget'][0]['target_id']['#options']);
+  }
+
+  $competition = \Drupal::routeMatch()->getParameter('competition');
+
+  $stream = piv_contest_judging_session_get_stream_by_competition_and_id($competition, $stream_value);
+  if (!$stream) {
+    return;
+  }
+
+  foreach ($stream->field_stream_languages as $language_field) {
+    switch ($language_field->target_id) {
+      case 'en':
+        $form['field_english_judge']['#access'] = true;
+        break;
+      case 'fr':
+        $form['field_french_judge']['#access'] = true;
+        break;
+    }
+  }
+
+  $form['#prefix'] = '<div id="form-wrapper">';
+  $form['#suffix'] = '</div>';
+
+  $form['actions']['submit']['#validate'][] = '::validateForm';
+  $form['actions']['submit']['#validate'][] = 'piv_contest_judging_session_validate_judges';
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function piv_contest_judging_session_validate_judges(&$form, FormState $form_state) {
+  if ($form['field_english_judge']['#access'] && $form['field_french_judge']['#access']) {
+    $english_judges = $form_state->getValue('field_english_judge');
+    $french_judges = $form_state->getValue('field_french_judge');
+
+    $total_english_judges = 0;
+    $total_french_judges = 0;
+
+    foreach ($english_judges as $judge_item) {
+      if (is_array($judge_item) && $judge_item['target_id']) {
+        $total_english_judges++;
+      }
+    }
+
+    foreach ($french_judges as $judge_item) {
+      if (is_array($judge_item) && $judge_item['target_id']) {
+        $total_french_judges++;
+      }
+    }
+
+    if ($total_french_judges !== $total_english_judges) {
+      $form_state->setErrorByName('field_english_judge', t('You should add the same amount of Judges for English and French'));
+      $form_state->setErrorByName('field_french_judge', t('You should add the same amount of Judges for English and French'));
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function piv_contest_judging_session_get_stream_by_competition_and_id(Competition $competition, ?int $id) {
+  foreach ($competition->field_competition_streams as $item) {
+    if ((int)$item->target_id === $id) {
+      return $item->entity;
+    }
+  }
+}
+
+function piv_contest_judging_session_ajax_update($form, FormStateInterface $form_state) {
+  $form_state->setRebuild();
+  return $form;
 }
 
 /**

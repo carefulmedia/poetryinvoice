@@ -5,6 +5,8 @@ dependencies:
   config:
     - field.field.judging_session.default.field_competition
     - field.field.judging_session.default.field_competition_entries
+    - field.field.judging_session.default.field_english_judge
+    - field.field.judging_session.default.field_french_judge
     - field.field.judging_session.default.field_stream
     - piv_contest_judging_session.judging_session_type.default
   module:
@@ -40,6 +42,22 @@ content:
       link: true
     third_party_settings: {  }
     weight: 22
+    region: content
+  field_english_judge:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_french_judge:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 25
     region: content
   field_stream:
     type: entity_reference_revisions_entity_view

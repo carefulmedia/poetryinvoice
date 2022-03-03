@@ -1,0 +1,20 @@
+uuid: bcf87a5e-946e-4545-85e5-84a2340d0143
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_judging_session
+    - user
+id: judging_session.field_english_judge
+field_name: field_english_judge
+entity_type: judging_session
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

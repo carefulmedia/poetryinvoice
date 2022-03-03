@@ -71,6 +71,10 @@ class UniqueJudgingSessionPerCompetitionEntryValidator extends ConstraintValidat
    * @return CompetitionEntry[]
    */
   public function getEntriesAlreadyInUseFromIDs(array $ids): array {
+    if (empty($ids)) {
+      return [];
+    }
+
     $ids = $this->judgingSessionStorage->getQuery()
       ->condition('field_competition_entries', $ids, 'IN')
       ->execute();

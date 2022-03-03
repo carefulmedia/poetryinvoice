@@ -1,0 +1,20 @@
+uuid: 930f5a1c-a1fd-4156-b0a9-e0d39f4ab19f
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_judging_session
+    - user
+id: judging_session.field_french_judge
+field_name: field_french_judge
+entity_type: judging_session
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

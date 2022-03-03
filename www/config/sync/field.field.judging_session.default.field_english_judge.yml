@@ -1,0 +1,29 @@
+uuid: 62ef094b-e5af-49db-a42a-2c73dc06e352
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.judging_session.field_english_judge
+    - piv_contest_judging_session.judging_session_type.default
+id: judging_session.default.field_english_judge
+field_name: field_english_judge
+entity_type: judging_session
+bundle: default
+label: 'English Judge'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: false
+field_type: entity_reference

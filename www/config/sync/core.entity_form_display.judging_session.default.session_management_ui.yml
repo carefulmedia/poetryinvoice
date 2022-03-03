@@ -6,6 +6,8 @@ dependencies:
     - core.entity_form_mode.judging_session.session_management_ui
     - field.field.judging_session.default.field_competition
     - field.field.judging_session.default.field_competition_entries
+    - field.field.judging_session.default.field_english_judge
+    - field.field.judging_session.default.field_french_judge
     - field.field.judging_session.default.field_stream
     - piv_contest_judging_session.judging_session_type.default
   module:
@@ -25,6 +27,26 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_english_judge:
+    type: competition_judges_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_french_judge:
+    type: competition_judges_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_stream:
     type: stream_reference
     weight: 1
@@ -33,14 +55,14 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 4
+    weight: 6
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 3
+    weight: 5
     region: content
     settings:
       display_label: false
@@ -54,7 +76,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 5
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
