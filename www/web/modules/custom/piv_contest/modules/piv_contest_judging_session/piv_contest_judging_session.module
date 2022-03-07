@@ -97,8 +97,8 @@ function piv_contest_judging_session_validate_judges(&$form, FormState $form_sta
     }
 
     if ($total_french_judges !== $total_english_judges) {
-      $form_state->setErrorByName('field_english_judge', t('You should add the same amount of Judges for English and French'));
-      $form_state->setErrorByName('field_french_judge', t('You should add the same amount of Judges for English and French'));
+      $form_state->setErrorByName('field_english_judge', t('You must add the same number of Judges for each language.'));
+      $form_state->setErrorByName('field_french_judge', t('You must add the same number of Judges for each language.'));
     }
   }
 }
