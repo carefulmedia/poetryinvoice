@@ -52,17 +52,29 @@ class ManageSessionsForm extends FormBase {
       $streams_options[$entity->id()] = $entity->field_label->value;
     }
 
+    $stream_id = $form_state->getValue('session_stream');
+    if (!$stream_id) {
+      $stream_id = $competition->field_competition_streams[0]->target_id;
+    }
+
     $add_session = Url::fromRoute('piv_contest_judging_session.add_session', [
       'competition' => $competition->id(),
       'destination' => Url::fromRoute('piv_contest_judging_session.manage_sessions', [
         'competition' => $competition->id(),
       ])->toString(),
+    ], [
+      'query' => [
+        'stream' => $stream_id,
+      ],
     ]);
 
     $form['create_session'] = Link::fromTextAndUrl(
-      t('Create new session'),
+      t('Create new session for selected stream'),
       $add_session,
     )->toRenderable();
+
+    $form['#prefix'] = '<div id="edit-output">';
+    $form['#suffix'] = '</div>';
 
     $form['session_stream'] = [
       '#type' => 'select',
@@ -78,8 +90,6 @@ class ManageSessionsForm extends FormBase {
     $form['fieldset'] = [
       '#type' => 'fieldset',
       '#title' => t('Session management'),
-      '#prefix' => '<div id="edit-output">',
-      '#suffix' => '</div>',
     ];
 
     $this->loadFormForSessionStream($form, $form_state);
@@ -88,7 +98,7 @@ class ManageSessionsForm extends FormBase {
   }
 
   public function onSessionStreamChange(array &$form, FormStateInterface $form_state) {
-    return $form['fieldset'];
+    return $form;
   }
 
   public function loadFormForSessionStream(&$form, FormStateInterface $form_state) {
