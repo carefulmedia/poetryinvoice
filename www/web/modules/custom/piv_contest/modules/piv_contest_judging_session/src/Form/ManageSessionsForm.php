@@ -123,12 +123,6 @@ class ManageSessionsForm extends FormBase {
       '#required' => TRUE,
     ];
 
-    $entry_ids = $this->competitionEntryStorage->getQuery()
-      ->condition('field_stream', $stream_id)
-      ->execute();
-
-    $entries = $this->competitionEntryStorage->loadMultiple($entry_ids);
-
     $current_session_id = $form_state->getValue('session');
 
     // Make sure we reset the session id when session stream is changed.
@@ -139,6 +133,21 @@ class ManageSessionsForm extends FormBase {
     if ($current_session_id) {
       /** @var JudgingSession $current_session */
       $current_session = $this->judgingSessionsStorage->load($current_session_id);
+
+      $form['fieldset']['session']['#description'] = $current_session->toLink(
+        t('Edit this Session'),
+        'edit-form',
+        [
+          'query' => [
+            'destination' => Url::fromRoute(
+              'piv_contest_judging_session.manage_sessions',
+              [
+                'competition' => $competition->id(),
+              ]
+            )->toString(),
+          ],
+        ],
+      );
 
       $items_to_add = $this->getEntriesFromList(
         $this->getAvailableEntriesForStream($stream_id),

@@ -16,25 +16,9 @@ targetEntityType: judging_session
 bundle: default
 mode: default
 content:
-  created:
-    type: datetime_timestamp
-    weight: 5
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_competition:
     type: entity_reference_autocomplete
-    weight: 6
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-  field_competition_entries:
-    type: entity_reference_autocomplete
-    weight: 7
+    weight: 2
     region: content
     settings:
       match_operator: CONTAINS
@@ -44,7 +28,7 @@ content:
     third_party_settings: {  }
   field_english_judge:
     type: competition_judges_autocomplete
-    weight: 27
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -54,7 +38,7 @@ content:
     third_party_settings: {  }
   field_french_judge:
     type: competition_judges_autocomplete
-    weight: 28
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS
@@ -64,16 +48,9 @@ content:
     third_party_settings: {  }
   field_stream:
     type: stream_reference
-    weight: 26
+    weight: 3
     region: content
     settings: {  }
-    third_party_settings: {  }
-  langcode:
-    type: language_select
-    weight: 2
-    region: content
-    settings:
-      include_locked: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -90,19 +67,9 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  translation:
-    weight: 3
-    region: content
-    settings: {  }
-    third_party_settings: {  }
-  uid:
-    type: entity_reference_autocomplete
-    weight: 4
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
-hidden: {  }
+hidden:
+  created: true
+  field_competition_entries: true
+  langcode: true
+  translation: true
+  uid: true
