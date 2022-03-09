@@ -2,14 +2,12 @@
 
 namespace Drupal\piv_contest_judging_session\Controller;
 
-use Drupal\Core\Access\AccessResult;
-use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityFormBuilderInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
-use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class JudgingSessionController extends ControllerBase {
 
@@ -33,13 +31,21 @@ class JudgingSessionController extends ControllerBase {
   }
 
   public function add(
-    CompetitionInterface $competition
+    CompetitionInterface $competition,
+    Request $request
   ): array {
     $current_user = \Drupal::currentUser();
+    $stream_id = $request->query->get('stream');
+    $stream = \Drupal::entityTypeManager()->getStorage('paragraph')->load($stream_id);
+
+    $title = "{$competition->label()} {$stream->field_label->value} judging session";
+
     //  session_management_ui
     $session = $this->entityTypeManager->getStorage('judging_session')->create([
       'field_competition' => $competition->id(),
       'user' => $current_user->id(),
+      'field_stream' => $stream,
+      'title' => $title,
       'bundle' => 'default',
     ]);
 
