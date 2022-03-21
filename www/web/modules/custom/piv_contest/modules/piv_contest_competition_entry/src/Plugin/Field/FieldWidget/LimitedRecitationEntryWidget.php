@@ -283,7 +283,7 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     $competition_entry = $this->routeMatch->getParameter('competition_entry');
     $stream = $this->routeMatch->getParameter('stream');
 
-    if (!$competition_entry) {
+    if (!$competition_entry && !$stream) {
       return NULL;
     }
 
