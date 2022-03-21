@@ -3,10 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.judging_session.default.field_all_scoring_completed
     - field.field.judging_session.default.field_competition
     - field.field.judging_session.default.field_competition_entries
     - field.field.judging_session.default.field_english_judge
     - field.field.judging_session.default.field_french_judge
+    - field.field.judging_session.default.field_ready_for_scoring
     - field.field.judging_session.default.field_stream
     - piv_contest_judging_session.judging_session_type.default
   module:
@@ -26,6 +28,16 @@ content:
       timezone: ''
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_all_scoring_completed:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 27
     region: content
   field_competition:
     type: entity_reference_label
@@ -58,6 +70,16 @@ content:
       link: true
     third_party_settings: {  }
     weight: 25
+    region: content
+  field_ready_for_scoring:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 26
     region: content
   field_stream:
     type: entity_reference_revisions_entity_view

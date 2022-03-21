@@ -1,0 +1,23 @@
+uuid: a044d071-3351-48f9-b5e8-d7a4a42d16b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.judging_session.field_ready_for_scoring
+    - piv_contest_judging_session.judging_session_type.default
+id: judging_session.default.field_ready_for_scoring
+field_name: field_ready_for_scoring
+entity_type: judging_session
+bundle: default
+label: 'Ready for scoring'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

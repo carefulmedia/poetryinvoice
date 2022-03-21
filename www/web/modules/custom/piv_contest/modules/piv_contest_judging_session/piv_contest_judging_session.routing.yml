@@ -21,3 +21,29 @@ piv_contest_judging_session.add_session:
     parameters:
       competition:
         type: entity:competition
+
+piv_contest_judging_session.start_judging:
+  path: '/user/{user}/start-judging'
+  defaults:
+    _title: 'Start judging'
+    _controller: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::startJudging'
+  requirements:
+    _custom_access: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::accessStartJudging'
+  options:
+    parameters:
+      user:
+        type: entity:user
+
+piv_contest_judging_session.judge_recitations:
+  path: '/user/{user}/judge/{session}'
+  defaults:
+    _title: 'Judge now'
+    _controller: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::judgeSession'
+  requirements:
+    _custom_access: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::accessJudgeSession'
+  options:
+    parameters:
+      user:
+        type: entity:user
+      session:
+        type: entity:judging_session

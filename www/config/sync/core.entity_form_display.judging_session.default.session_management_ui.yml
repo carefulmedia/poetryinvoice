@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.judging_session.session_management_ui
+    - field.field.judging_session.default.field_all_scoring_completed
     - field.field.judging_session.default.field_competition
     - field.field.judging_session.default.field_competition_entries
     - field.field.judging_session.default.field_english_judge
     - field.field.judging_session.default.field_french_judge
+    - field.field.judging_session.default.field_ready_for_scoring
     - field.field.judging_session.default.field_stream
     - piv_contest_judging_session.judging_session_type.default
   module:
@@ -19,7 +21,7 @@ mode: session_management_ui
 content:
   field_competition:
     type: entity_reference_autocomplete
-    weight: 2
+    weight: 3
     region: content
     settings:
       match_operator: CONTAINS
@@ -29,7 +31,7 @@ content:
     third_party_settings: {  }
   field_english_judge:
     type: competition_judges_autocomplete
-    weight: 3
+    weight: 4
     region: content
     settings:
       match_operator: CONTAINS
@@ -39,7 +41,7 @@ content:
     third_party_settings: {  }
   field_french_judge:
     type: competition_judges_autocomplete
-    weight: 4
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS
@@ -47,22 +49,29 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_ready_for_scoring:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_stream:
     type: stream_reference
-    weight: 1
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 6
+    weight: 7
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 5
+    weight: 6
     region: content
     settings:
       display_label: false
@@ -76,11 +85,12 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   created: true
+  field_all_scoring_completed: true
   field_competition_entries: true
   uid: true

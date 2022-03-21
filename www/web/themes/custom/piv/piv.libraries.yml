@@ -3,3 +3,8 @@ global-styling:
   css:
     theme:
       assets/css/styles.css: {}
+  js:
+    assets/js/disable-link: {}
+
+  dependencies:
+    - core/jquery

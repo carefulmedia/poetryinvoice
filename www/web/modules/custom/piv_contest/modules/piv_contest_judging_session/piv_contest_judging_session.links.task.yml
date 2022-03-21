@@ -19,3 +19,8 @@ entity.judging_session_type.collection:
   title: List
   route_name: entity.judging_session_type.collection
   base_route: entity.judging_session_type.collection
+piv_contest_judging_session.start_judging:
+  route_name: piv_contest_judging_session.start_judging
+  base_route: entity.user.canonical
+  title: 'Start Judging'
+  weight: 99

@@ -1,0 +1,23 @@
+uuid: 41222413-0623-4f07-913e-116f0f41f29c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.judging_session.field_all_scoring_completed
+    - piv_contest_judging_session.judging_session_type.default
+id: judging_session.default.field_all_scoring_completed
+field_name: field_all_scoring_completed
+entity_type: judging_session
+bundle: default
+label: 'All scoring completed'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
