@@ -52,7 +52,11 @@ function _piv_contest_judging_session_manage_session_form(&$form, FormStateInter
   if (isset($user_input['field_stream'][0]['target_id'])) {
     $stream_value = (int) $user_input['field_stream'][0]['target_id'];
   } else {
-    $stream_value = array_key_first($form['field_stream']['widget'][0]['target_id']['#options']);
+    if (isset($form['field_stream']['widget'][0]['target_id']['#default_value'])) {
+      $stream_value = $form['field_stream']['widget'][0]['target_id']['#default_value'];
+    } else {
+      $stream_value = array_key_first($form['field_stream']['widget'][0]['target_id']['#options']);
+    }
   }
 
   $competition = \Drupal::routeMatch()->getParameter('competition');
