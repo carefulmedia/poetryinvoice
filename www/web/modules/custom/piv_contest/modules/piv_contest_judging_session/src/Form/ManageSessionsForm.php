@@ -120,11 +120,23 @@ class ManageSessionsForm extends FormBase {
       $sessions_options[$session->id()] = $session->label();
     }
 
+    $current_session_id = $form_state->getValue('session');
+
+    // Make sure we reset the session id when session stream is changed.
+    if (!in_array($current_session_id, $session_ids)) {
+      $current_session_id = NULL;
+    }
+
+    $session_id = \Drupal::request()->query->get('session');
+    if (!$current_session_id && $session_id) {
+      $current_session_id = $session_id;
+    }
+
     $form['fieldset']['session'] = [
       '#type' => 'select',
       '#title' => t('Select Session'),
       '#options' => $sessions_options,
-      '#default_value' => NULL,
+      '#default_value' => $current_session_id,
       '#ajax' => [
         'callback' => [$this, 'onSessionStreamChange'],
         'wrapper' => 'edit-output',
@@ -133,12 +145,6 @@ class ManageSessionsForm extends FormBase {
       '#required' => TRUE,
     ];
 
-    $current_session_id = $form_state->getValue('session');
-
-    // Make sure we reset the session id when session stream is changed.
-    if (!in_array($current_session_id, $session_ids)) {
-      $current_session_id = NULL;
-    }
 
     if ($current_session_id) {
       /** @var JudgingSession $current_session */
@@ -153,6 +159,11 @@ class ManageSessionsForm extends FormBase {
               'piv_contest_judging_session.manage_sessions',
               [
                 'competition' => $competition->id(),
+              ],
+              [
+                'query' => [
+                  'session' => $current_session_id,
+                ]
               ]
             )->toString(),
           ],
