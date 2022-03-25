@@ -110,6 +110,7 @@ permissions:
   - 'administer ckeditor'
   - 'administer comments'
   - 'administer competition'
+  - 'administer competition entry'
   - 'administer contact forms'
   - 'administer content translations'
   - 'administer content types'

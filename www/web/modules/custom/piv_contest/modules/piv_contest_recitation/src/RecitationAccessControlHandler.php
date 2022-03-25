@@ -4,19 +4,41 @@ namespace Drupal\piv_contest_recitation;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityAccessControlHandler;
+use Drupal\Core\Entity\EntityHandlerInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\piv_contest_competition_entry\Service\CompetitionLockService;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Defines the access control handler for the recitation entity type.
  */
-class RecitationAccessControlHandler extends EntityAccessControlHandler {
+class RecitationAccessControlHandler extends EntityAccessControlHandler implements EntityHandlerInterface {
+
+  private $currentRouteMatch;
+
+  public function __construct(
+    EntityTypeInterface $entity_type,
+    RouteMatchInterface $currentRouteMatch
+  ) {
+    parent::__construct($entity_type);
+    $this->currentRouteMatch = $currentRouteMatch;
+  }
+
+  public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
+    return new static(
+      $entity_type,
+      $container->get('current_route_match')
+    );
+  }
 
   /**
    * {@inheritdoc}
    */
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
-
     switch ($operation) {
       case 'view':
         return AccessResult::allowedIfHasPermission($account, 'view recitation');
@@ -28,6 +50,15 @@ class RecitationAccessControlHandler extends EntityAccessControlHandler {
           $permissions[] = 'edit own recitation';
         }
 
+        /** @var \Drupal\piv_contest_competition_entry\Entity\CompetitionEntry $competition_entry */
+        $competition_entry = $this->currentRouteMatch->getParameter('competition_entry');
+        if ($competition_entry) {
+          $hasAccessCompetitionEntry = $competition_entry->access('update', $account, TRUE);
+          if ($hasAccessCompetitionEntry->isAllowed()) {
+            return $hasAccessCompetitionEntry;
+          }
+        }
+
         return AccessResult::allowedIfHasPermissions($account, $permissions, 'OR');
 
       case 'delete':
@@ -35,6 +66,15 @@ class RecitationAccessControlHandler extends EntityAccessControlHandler {
 
         if ($entity->get('uid')->target_id === $account->id()) {
           $permissions[] = 'delete own recitation';
+        }
+
+        /** @var \Drupal\piv_contest_competition_entry\Entity\CompetitionEntry $competition_entry */
+        $competition_entry = $this->currentRouteMatch->getParameter('competition_entry');
+        if ($competition_entry) {
+          $hasAccessCompetitionEntry = $competition_entry->access('delete', $account, TRUE);
+          if ($hasAccessCompetitionEntry->isAllowed()) {
+            return $hasAccessCompetitionEntry;
+          }
         }
 
         return AccessResult::allowedIfHasPermissions($account, $permissions, 'OR');
