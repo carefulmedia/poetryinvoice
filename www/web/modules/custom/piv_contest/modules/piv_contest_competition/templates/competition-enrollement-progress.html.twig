@@ -5,12 +5,16 @@
  */
 #}
 <section id="enrollment">
+  <p>{{ message }}</p>
   <table>
     <tr>
       <td>{{ 'Stream' |t }}</td>
       <td>{{ 'Name' |t }}</td>
       <td>{{ 'Recitations' |t }}</td>
       <td>{{ 'Permission' |t }}</td>
+      {% if competition_has_criteria %}
+        <td>{{ 'Missing Criteria' |t }}</td>
+      {% endif %}
       <td></td>
     </tr>
     {% for stream in streams %}
@@ -19,7 +23,9 @@
         <td>{{ stream.student }}</td>
         <td {{ stream.is_recitations_completed ? 'class="completed"' }}>{{ stream.recitations }}</td>
         <td {{ stream.is_permissions_completed ? 'class="completed"' }}>{{ stream.permissions }}</td>
-        <td>{{ stream.permissions }}</td>
+        {% if competition_has_criteria %}
+          <td>{{ stream.missing_criteria }}</td>
+        {% endif %}
         <td>
           {% for link in stream.links %}
             {{ link }}

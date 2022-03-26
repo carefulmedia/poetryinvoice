@@ -72,15 +72,33 @@ class CompetitionController extends ControllerBase {
       return [];
     }
 
+
     $build['competition'] = $this->entityTypeManager
       ->getViewBuilder('competition')
       ->view($competition, 'teacher_ui');
+
+    $criterias = [];
+    foreach ($competition->field_criteria as $item) {
+      $criterias[] = $item->entity->label();
+    }
+
+    $message = [];
+
+    if (count($criterias) > 0) {
+      $message = [
+        '#theme' => 'item_list',
+        '#prefix' => '<b>' . t('This competition requires that all entries contain at least one poem with each of the following criteria:') . '</b>',
+        '#list_type' => 'ul',
+        '#items' => $criterias,
+      ];
+    }
 
     $build['enrollement'] = [
       '#theme' => 'competition_enrollement_progress',
       '#school' => $user->field_school->entity,
       '#competition' => $competition,
       '#teacher' => $user,
+      '#message' => $message,
     ];
 
     return $build;
