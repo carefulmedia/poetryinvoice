@@ -61,7 +61,6 @@ class ScoreForm extends FormBase {
       '#type' => 'container',
       '#tree' => TRUE,
     ] + $this->scoreFormBuilder->getForm($score_template);
-    
     $form['submit'] = [
       '#type' => 'submit',
       '#value' => $this->t('Save score'),

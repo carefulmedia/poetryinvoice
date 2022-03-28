@@ -41,10 +41,7 @@ class JudgingSessionController extends ControllerBase {
     );
   }
 
-  public function add(
-    CompetitionInterface $competition,
-    Request $request
-  ): array {
+  public function add(CompetitionInterface $competition, Request $request): array {
     $current_user = \Drupal::currentUser();
     $stream_id = $request->query->get('stream');
     $stream = \Drupal::entityTypeManager()->getStorage('paragraph')->load($stream_id);
@@ -126,7 +123,6 @@ class JudgingSessionController extends ControllerBase {
 
   private function getReadyJudgingSessions(User $user): array {
     $judging_session_manager = $this->entityTypeManager->getStorage('judging_session');
-
     $query = $judging_session_manager->getQuery();
 
     $group = $query->orConditionGroup()
@@ -141,12 +137,41 @@ class JudgingSessionController extends ControllerBase {
     return $judging_session_manager->loadMultiple($ids);
   }
 
-
+  /**
+   * Judge a session.
+   *
+   * One recitation is judged each time, however the recitation to be judged is
+   * determined in a custom order, where the first recitation for all entries
+   * are judged first, then all second recitations for all entries, and it goes
+   * like that. Between the all first, all second, all third, etc recitation,
+   * there is a "break" page so the judge knows he judged all first recitations
+   * (for example).
+   */
   public function judgeSession(User $user, JudgingSession $session): array {
-    return [
-      '#markup' => 'change me',
+    $recitation_data = $this->judgeSessionService->nextRecitation($session, $user);
+    if (!$recitation_data) {
+      return ['#markup' => 'There are no recitations to judge in this session.'];
+    }
+
+    $recitation = $recitation_data['recitation'];
+    $poem = $recitation->field_poem->entity;
+    if (!$poem) {
+      throw new \Exception('No poem is assigned to this recitation');
+    }
+
+    $build = [
+      '#theme' => 'recitation_judging',
     ];
+    $build['title'] = ['#markup' => $poem->title->value];
+    $build['video'] = $recitation->field_recitation_video->view([
+      'type' => 'entity_reference_entity_view',
+      'label' => 'hidden',
+    ]);
+    $build['form'] = \Drupal::formBuilder()
+      ->getForm('Drupal\piv_contest\Form\ScoreForm', $recitation, $session);
+    return $build;
   }
+
 
   public function accessJudgeSession(User $user, JudgingSession $session): AccessResult {
     // @TODO change this.

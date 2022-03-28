@@ -1,0 +1,13 @@
+<div{{ attributes }}>
+  {% if content %}
+    {{ content.title }}
+    <div class='recitation-judging__container'>
+      <div class='recitation-judging__video'>
+        {{ content.video }}
+      </div>
+      <div class='recitation-judging__form'>
+        {{ content.form }}
+      </div>
+    </div>
+  {% endif %}
+</div>

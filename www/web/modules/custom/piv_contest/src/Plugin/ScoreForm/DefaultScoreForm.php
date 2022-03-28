@@ -20,10 +20,14 @@ class DefaultScoreForm extends ScoreFormPluginBase {
    * {@inheritdoc}
    */
   public function form(ScoreTemplateInterface $score_template) {
-    $form = [];
-    $form['criteria'] = [
-      '#type' => 'container',
+    $form = [
+      '#theme' => 'recitation_score_form_default',
     ];
+    $form['criteria'] = [];
+    $labels = array_column($score_template->field_score_option_labels->getValue(), 'value');
+    $form['labels'] = array_map(function ($label) {
+      return ['#markup' => $label];
+    }, $labels);
     foreach ($score_template->field_criteria->referencedEntities() as $delta => $criteria) {
       $options = array_column($criteria->field_score_options->getValue(), 'value');
       $options = array_combine($options, $options);
@@ -31,6 +35,7 @@ class DefaultScoreForm extends ScoreFormPluginBase {
         '#type' => 'radios',
         '#title' => $criteria->field_criterion->value,
         '#options' => $options,
+        '#required' => TRUE,
       ];
     }
     return $form;

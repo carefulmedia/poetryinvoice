@@ -5,19 +5,33 @@
  * Primary module hooks for PIV Constest module.
  */
 
+use Drupal\Core\Render\Element;
+
 /**
  * Implements hook_entity_type_alter().
  */
 function piv_contest_entity_type_alter(array &$entity_types) {
-  $entity_types['paragraph']->addConstraint('stream_constraint');
+  if (!empty($entity_types['paragraph'])) {
+    $entity_types['paragraph']->addConstraint('stream_constraint');
+  }
 }
 
+/**
+ * Implements hook_theme().
+ */
+function piv_contest_theme() {
+  return [
+    'recitation_score_form_default' => [
+      'render element' => 'elements',
+    ],
+  ];
+}
 
-function teste() {
-  //$s = Drupal::service('plugin.manager.score_form');
-  //$s->createInstance('default');
-
-  $s = Drupal::service('piv_contest.score_form_builder');
-  $score_template = \Drupal::entityTypeManager()->getStorage('score_template')->load(1);
-  $s->getForm($score_template);
+/**
+ * Implements template_preprocess_HOOK().
+ */
+function template_preprocess_recitation_score_form_default(array &$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['form'][$key] = $variables['elements'][$key];
+  }
 }

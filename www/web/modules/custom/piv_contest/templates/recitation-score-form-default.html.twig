@@ -1,0 +1,20 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      {% for i, label in form.labels if i|first != '#' %}
+        <th>{{ label }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for i, criterion in form.criteria if i|first != '#' %}
+      <tr>
+        <td>{{ criterion['#title'] }}</td>
+        {% for j, option in criterion if j|first != '#' %}
+          <td>{{ option }}</td>
+        {% endfor %} 
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

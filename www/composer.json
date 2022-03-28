@@ -33,7 +33,7 @@
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.8",
         "drush/drush": "^10",
-        "kint-php/kint": "^3.3",
+        "kint-php/kint": "^4.1",
         "vlucas/phpdotenv": "^5.3"
     },
     "conflict": {

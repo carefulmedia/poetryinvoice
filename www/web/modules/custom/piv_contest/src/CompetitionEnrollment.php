@@ -78,24 +78,22 @@ class CompetitionEnrollment {
     $competition_id = $this->competition->id();
 
     // Set redirection after form submit.
-    $destination = 'user/' . $teacher_id . '/competitions/' . $competition_id;
-
+    $destination = Url::fromRoute('piv_contest.competition', [
+      'user' => $teacher_id,
+      'competition' => $competition_id,
+    ])->toString();
     $streams = [];
-    foreach ($this->competition->field_competition_streams as $stream_field) {
+    foreach ($this->competition->field_competition_streams->referencedEntities() as $stream_entity) {
       $stream = [];
-
-      $stream_entity = $this->entityTypeManager
-        ->getStorage('paragraph')
-        ->load($stream_field->target_id);
 
       // Get the competition entry for this stream.
       $entry = $this->entityTypeManager
-      ->getStorage('competition_entry')
-      ->loadByProperties([
-        'field_school' => $school_id,
-        'field_competition' => $competition_id,
-        'field_stream' => $stream_field->target_id,
-      ]);
+        ->getStorage('competition_entry')
+        ->loadByProperties([
+          'field_school' => $school_id,
+          'field_competition' => $competition_id,
+          'field_stream' => $stream_entity->id(),
+        ]);
       $entry = array_pop($entry);
 
       if (!empty($entry)) {
