@@ -2,7 +2,9 @@
 
 namespace Drupal\piv_contest;
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\node\Entity\Node;
 use Drupal\piv_contest_competition_entry\CompetitionEntryInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\node\NodeInterface;
@@ -58,6 +60,22 @@ class CompetitionService {
     }
 
     return TRUE;
+  }
+
+  public function currentCanAddEntriesForSchoolOnCompetition(NodeInterface $school, CompetitionInterface $competition): AccessResult {
+    if (!$this->schoolCanManageEntriesForCompetition($school, $competition)) {
+      return AccessResult::forbidden();
+    }
+
+    $current_account = \Drupal::currentUser();
+    $current_user = \Drupal::entityTypeManager()->getStorage('user')->load($current_account->id());
+
+    $permissions = ['administer competition entry'];
+    if ($current_user->field_school->target_id === $school->id()) {
+      $permissions[] = 'add competition entry for own school';
+    }
+
+    return AccessResult::allowedIfHasPermissions($current_account, $permissions, 'OR');
   }
 
   /**

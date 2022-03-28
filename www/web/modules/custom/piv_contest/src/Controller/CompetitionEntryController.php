@@ -70,24 +70,13 @@ class CompetitionEntryController extends ControllerBase {
     CompetitionInterface $competition,
     ParagraphInterface $stream
   ) {
-    return AccessResult::allowed();
-
     $school = $user->field_school->entity;
     if (!$school) {
       return AccessResult::forbidden();
     }
 
-    // When editing, we need to also verify if the competition_entry is for the
-    // same school and same competition in the url. This means that different
-    // teachers can manage the entries of the same school.
-    if ($competition_entry) {
-      if ($competition_entry->field_school->target_id != $school->id()
-      || $competition_entry->field_competition->target_id != $competition->id()) {
-        return AccessResult::forbidden();
-      }
-    }
 
-    return AccessResult::allowedIf($this->competitionService->schoolCanManageEntriesForCompetition($school, $competition));
+    return $this->competitionService->currentCanAddEntriesForSchoolOnCompetition($school, $competition);
   }
 
   /**
@@ -123,7 +112,7 @@ class CompetitionEntryController extends ControllerBase {
     CompetitionInterface $competition,
     CompetitionEntryInterface $competition_entry
   ) {
-    return AccessResult::allowed();
+    return $competition_entry->access('update', \Drupal::currentUser(), TRUE);
   }
 
   public function edit(

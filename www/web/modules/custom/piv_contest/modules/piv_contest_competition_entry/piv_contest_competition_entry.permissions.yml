@@ -2,6 +2,10 @@ administer competition entry types:
   title: 'Administer competition entry types'
   description: 'Maintain the types of competition entry entity.'
   restrict access: true
+administer competition entry:
+  title: 'Administer competition entries'
+  description: 'Administer all competition entries'
+  restrict access: true
 access competition entry overview:
   title: 'Access competition entry overview page'
 delete competition entry:
@@ -16,3 +20,9 @@ edit locked competition:
   title: Edit locked competition
 delete own competition entry:
   title: Delete own competition entry
+delete competition entry for own school:
+  title: Delete competition entry for own school
+add competition entry for own school:
+  title: Add competition entry for own school
+edit competition entry for own school:
+  title: Edit competition entry for own school

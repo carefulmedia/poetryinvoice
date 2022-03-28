@@ -131,15 +131,17 @@ class CompetitionEnrollment {
           $editTitle = t('view');
         }
 
-        // Add link to edit existing entry.
-        $stream['links'][] = [
-          '#type' => 'link',
-          '#title' => $editTitle,
-          '#url' => $editUrl ,
-          '#cache' => [
-            'tags' => $entry->getCacheTags(),
-          ],
-        ];
+        if ($editUrl->access(\Drupal::currentUser())) {
+          // Add link to edit existing entry.
+          $stream['links'][] = [
+            '#type' => 'link',
+            '#title' => $editTitle,
+            '#url' => $editUrl ,
+            '#cache' => [
+              'tags' => $entry->getCacheTags(),
+            ],
+          ];
+        }
 
         if ($deleteUrl->access(\Drupal::currentUser())) {
           // Add link to delete existing entry.
@@ -160,20 +162,25 @@ class CompetitionEnrollment {
         foreach ($streams_header as $k => $v) {
           $stream[$k] = NULL;
         }
-        // Add link to create new entry.
-        $stream['links'][] = [
-          '#type' => 'link',
-          '#title' => t('Add new entry'),
-          '#url' => Url::fromRoute('piv_contest.competition_entry_add', [
-            'user' => $this->teacher->id(),
-            'competition' => $this->competition->id(),
-            'stream' => $stream_entity->id(),
-          ], [
-            'query' => [
-              'destination' => $destination,
-            ]
-          ]),
-        ];
+
+        $addUrl = Url::fromRoute('piv_contest.competition_entry_add', [
+          'user' => $this->teacher->id(),
+          'competition' => $this->competition->id(),
+          'stream' => $stream_entity->id(),
+        ], [
+          'query' => [
+            'destination' => $destination,
+          ]
+        ]);
+
+        if ($addUrl->access(\Drupal::currentUser())) {
+          // Add link to create new entry.
+          $stream['links'][] = [
+            '#type' => 'link',
+            '#title' => t('Add new entry'),
+            '#url' => $addUrl,
+          ];
+        }
       }
 
       $stream['name'] = $stream_entity->field_label->value;
