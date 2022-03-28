@@ -7,6 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\piv_contest_recitation\RecitationInterface;
 use Drupal\piv_contest_judging_session\JudgingSessionInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Drupal\Core\Url;
 
 /**
  * Provides a Score Form form.
@@ -39,7 +40,7 @@ class ScoreForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, RecitationInterface $recitation = NULL, JudgingSessionInterface $judging_session = NULL) { 
+  public function buildForm(array $form, FormStateInterface $form_state, RecitationInterface $recitation = NULL, JudgingSessionInterface $judging_session = NULL, Url $destination = NULL, $message = NULL) {
     if (!$recitation || !$judging_session) {
       throw new NotFoundHttpException();
     }
@@ -48,7 +49,7 @@ class ScoreForm extends FormBase {
       // This field is required.
       throw new NotFoundHttpException();
     }
-
+    // Values from the constructor.
     $form['recitation'] = [
       '#type' => 'value',
       '#value' => $recitation,
@@ -56,6 +57,14 @@ class ScoreForm extends FormBase {
     $form['judging_session'] = [
       '#type' => 'value',
       '#value' => $judging_session,
+    ];
+    $form['destination'] = [
+      '#type' => 'value',
+      '#value' => $destination,
+    ];
+    $form['message'] = [
+      '#type' => 'value',
+      '#value' => $message,
     ];
     $form['score_template_form'] = [
       '#type' => 'container',
@@ -81,10 +90,16 @@ class ScoreForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $this->messenger()->addStatus($this->t('The score has been created.'));
     $values = $form_state->getValues();
+    if ($values['destination']) {
+      $form_state->setRedirectUrl($values['destination']);
+    }
+    if ($values['message']) {
+      $this->messenger()->addStatus($values['message']);
+    }
     $judging_session = $values['judging_session'];
     $recitation = $values['recitation'];
     $score_template_form_values = $values['score_template_form'];
-    $result = $this->scoreFormBuilder
+    $this->scoreFormBuilder
       ->createScore($recitation, $judging_session, $score_template_form_values);
   }
 

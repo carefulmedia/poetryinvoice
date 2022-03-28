@@ -4,14 +4,13 @@ namespace Drupal\piv_contest;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\node\Entity\Node;
 use Drupal\piv_contest_competition_entry\CompetitionEntryInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
 
 /**
- * CompetitionService service.
+ * The Competition helper service.
  */
 class CompetitionService {
 
@@ -22,6 +21,11 @@ class CompetitionService {
    */
   protected $entityTypeManager;
 
+  /**
+   * A competition entity.
+   *
+   * @var \Drupal\piv_contest_competition\CompetitionInterface
+   */
   protected $competition;
 
   /**
@@ -62,6 +66,9 @@ class CompetitionService {
     return TRUE;
   }
 
+  /**
+   * Check access for current user to add entries to a competition.
+   */
   public function currentCanAddEntriesForSchoolOnCompetition(NodeInterface $school, CompetitionInterface $competition): AccessResult {
     if (!$this->schoolCanManageEntriesForCompetition($school, $competition)) {
       return AccessResult::forbidden();

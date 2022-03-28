@@ -14,9 +14,12 @@ use Drupal\user\UserInterface;
 
 /**
  * @file
- *  Service allowing management of competition enrollment for a school.
+ * Service allowing management of competition enrollment for a school.
  */
 
+/**
+ * Competition enrollment helper class.
+ */
 class CompetitionEnrollment {
 
   private $is_initiated = FALSE;

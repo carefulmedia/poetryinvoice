@@ -7,9 +7,9 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\piv_contest_recitation\RecitationInterface;
 use Drupal\piv_contest_judging_session\JudgingSessionInterface;
- 
+
 /**
- * ScoreFormBuilder service.
+ * The service to build score forms.
  */
 class ScoreFormBuilder {
 
@@ -36,11 +36,6 @@ class ScoreFormBuilder {
 
   /**
    * Constructs a ScoreFormBuilder object.
-   *
-   * @param \Drupal\piv_contest\ScoreFormPluginManager $plugin_manager_score_form
-   *   The plugin.manager.score_form service.
-   * @param \Drupal\piv_contest\EntityTypeManager $entity_type_manager
-   *   The entity_type.manager service.
    */
   public function __construct(ScoreFormPluginManager $plugin_manager_score_form, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $current_user) {
     $this->pluginManagerScoreForm = $plugin_manager_score_form;
@@ -58,7 +53,7 @@ class ScoreFormBuilder {
       throw new \Exception("No ScoreForm plugin defined for bundle {$bundle}.");
     }
 
-    return $this->pluginManagerScoreForm->createInstance($bundle); 
+    return $this->pluginManagerScoreForm->createInstance($bundle);
   }
 
   /**
@@ -79,7 +74,7 @@ class ScoreFormBuilder {
       // This field is required.
       return FALSE;
     }
-    
+
     $bundle = $score_template->bundle();
     $score_template_type = $this->entityTypeManager
       ->getStorage('score_template_type')

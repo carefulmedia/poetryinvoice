@@ -32,5 +32,4 @@ class CompetitionConstraintValidator extends ConstraintValidator {
     }
   }
 
-
 }

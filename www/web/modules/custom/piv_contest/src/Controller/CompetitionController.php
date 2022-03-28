@@ -4,18 +4,19 @@ namespace Drupal\piv_contest\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Link;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\user\UserInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
-use Drupal\Core\Url;
 use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * Returns responses for PIV Contest routes.
  */
 class CompetitionController extends ControllerBase {
+
+  use StringTranslationTrait;
 
   /**
    * The entity type manager.
@@ -33,14 +34,8 @@ class CompetitionController extends ControllerBase {
 
   /**
    * The controller constructor.
-   *
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity type manager.
    */
-  public function __construct(
-    EntityTypeManagerInterface $entity_type_manager,
-    LanguageManager $language_manager
-  ) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, LanguageManager $language_manager) {
     $this->entityTypeManager = $entity_type_manager;
     $this->currentLanguage = $language_manager->getCurrentLanguage();
   }
@@ -55,10 +50,16 @@ class CompetitionController extends ControllerBase {
     );
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function access(UserInterface $user, CompetitionInterface $competition) {
     return AccessResult::allowed();
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function title(CompetitionInterface $competition) {
     return $competition->label();
   }
@@ -71,7 +72,6 @@ class CompetitionController extends ControllerBase {
     if (!$school) {
       return [];
     }
-
 
     $build['competition'] = $this->entityTypeManager
       ->getViewBuilder('competition')
@@ -87,7 +87,7 @@ class CompetitionController extends ControllerBase {
     if (count($criterias) > 0) {
       $message = [
         '#theme' => 'item_list',
-        '#prefix' => '<b>' . t('This competition requires that all entries contain at least one poem with each of the following criteria:') . '</b>',
+        '#prefix' => '<b>' . $this->t('This competition requires that all entries contain at least one poem with each of the following criteria:') . '</b>',
         '#list_type' => 'ul',
         '#items' => $criterias,
       ];
@@ -102,6 +102,6 @@ class CompetitionController extends ControllerBase {
     ];
 
     return $build;
-
   }
+
 }

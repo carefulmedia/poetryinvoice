@@ -14,8 +14,18 @@ use Symfony\Component\Validator\Constraint;
  */
 class CompetitionConstraint extends Constraint {
 
+  /**
+   * Field location error message.
+   *
+   * @var string
+   */
   public $locationErrorMessage = 'Field Location is required.';
 
+  /**
+   * Field invited school error message.
+   *
+   * @var string
+   */
   public $invitedSchoolsErrorMessage = 'Field Invited Schools is required.';
 
 }

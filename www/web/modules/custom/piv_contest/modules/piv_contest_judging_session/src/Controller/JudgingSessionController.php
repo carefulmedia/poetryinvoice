@@ -15,6 +15,7 @@ use Drupal\user\Entity\User;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class JudgingSessionController extends ControllerBase {
 
@@ -147,10 +148,15 @@ class JudgingSessionController extends ControllerBase {
    * there is a "break" page so the judge knows he judged all first recitations
    * (for example).
    */
-  public function judgeSession(User $user, JudgingSession $session): array {
+  public function judgeSession(User $user, JudgingSession $session) {
+    // This is used in multiple places.
+    $start_judging_url = Url::fromRoute('piv_contest_judging_session.start_judging', [
+      'user' => $user->id(),
+    ]);
     $recitation_data = $this->judgeSessionService->nextRecitation($session, $user);
     if (!$recitation_data) {
-      return ['#markup' => 'There are no recitations to judge in this session.'];
+      $this->messenger()->addMessage('There are no more recitations to judge in this session.');
+      return new RedirectResponse($start_judging_url->toString());
     }
 
     $recitation = $recitation_data['recitation'];
@@ -166,12 +172,28 @@ class JudgingSessionController extends ControllerBase {
     $build['video'] = $recitation->field_recitation_video->view([
       'type' => 'entity_reference_entity_view',
       'label' => 'hidden',
-    ]);
+    ]);    
+    // If thats the last item in a round, redirect back to the recitation list.
+    $destination = NULL;
+    $message = NULL;
+    if ($recitation_data['last_of_round']) {
+      $destination = $start_judging_url;
+      $message = $this->t('You finished judging a round of recitations.');
+    }
     $build['form'] = \Drupal::formBuilder()
-      ->getForm('Drupal\piv_contest\Form\ScoreForm', $recitation, $session);
+      ->getForm('Drupal\piv_contest\Form\ScoreForm', $recitation, $session, $destination, $message);
+    $build['judge_later'] = Link::fromTextAndUrl($this->t('Judge later'), $start_judging_url)->toRenderable();
+    // Same link as above.
+    $build['back'] = Link::fromTextAndUrl($this->t('Back to all sessions'), $start_judging_url)->toRenderable();
+    $build['recitation_evaluated'] = [
+      '#markup' => $this->t('Recitation evaluated: @evaluated / @count', [
+        '@evaluated' => $this->judgeSessionService->numberOfRecitationsEvaluatedByJudge($session, $user),
+        '@count' => $this->judgeSessionService->totalNumberOfRecitations($session, $user),
+      ]),
+    ];
+      
     return $build;
   }
-
 
   public function accessJudgeSession(User $user, JudgingSession $session): AccessResult {
     // @TODO change this.

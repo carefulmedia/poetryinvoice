@@ -12,11 +12,14 @@ use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * Returns responses for PIV Contest routes.
  */
 class CompetitionsListController extends ControllerBase {
+
+  use StringTranslationTrait;
 
   /**
    * The database connection.
@@ -66,6 +69,9 @@ class CompetitionsListController extends ControllerBase {
     );
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function access(AccountInterface $account) {
     $is_allowed = TRUE;
     if (!in_array('teacher', $account->getRoles())) {
@@ -80,7 +86,7 @@ class CompetitionsListController extends ControllerBase {
   public function build(UserInterface $user) {
     $school = $user->field_school->target_id;
     if (!$school) {
-      return ['#markup' => t('No school associated with teacher account.')];
+      return ['#markup' => $this->t('No school associated with teacher account.')];
     }
 
     $now = (new DrupalDatetime('now'))
@@ -105,7 +111,7 @@ class CompetitionsListController extends ControllerBase {
     $query->condition($invited_only_condition);
     $results = $query->execute();
     if (!$results) {
-      return ['#markup' => t('No active competitions.')];
+      return ['#markup' => $this->t('No active competitions.')];
     }
 
     // Get the number of entries per competition.
@@ -114,11 +120,11 @@ class CompetitionsListController extends ControllerBase {
     foreach ($competitions as $id => $competition) {
       $competitions_entries[$id] = $competition_entry_storage->loadByProperties([
         'field_competition' => $id,
-        'field_school' => $school
+        'field_school' => $school,
       ]);
     }
 
-    $competitions_with_entries = array_filter($competitions, function($competition) use ($competitions_entries) {
+    $competitions_with_entries = array_filter($competitions, function ($competition) use ($competitions_entries) {
       return count($competitions_entries[$competition->id()]);
     });
     $competitions_without_entries = array_diff_key($competitions, $competitions_with_entries);
@@ -131,23 +137,19 @@ class CompetitionsListController extends ControllerBase {
     if ($competitions_with_entries) {
       $build['competition']['with_entries'] = [
         '#type' => 'fieldset',
-        '#title' => t('Competitions in which your school is participating'),
+        '#title' => $this->t('Competitions in which your school is participating'),
       ];
       foreach ($competitions_with_entries as $id => $competition) {
         $build['competition']['with_entries'][] = [
           'competition' => $competition_view_builder->view($competition, 'teaser'),
-          // 'entries' => [
-          //   '#type' => 'item',
-          //   '#markup' => "Entries " . count($competitions_entries[$id]),
-          // ],
           'link' => [
             '#type' => 'link',
-            '#title' => t('Manage your competition entries'),
+            '#title' => $this->t('Manage your competition entries'),
             '#url' => Url::fromRoute('piv_contest.competition', [
               'user' => $user->id(),
               'competition' => $id,
             ]),
-          ]
+          ],
         ];
       }
     }
@@ -155,7 +157,7 @@ class CompetitionsListController extends ControllerBase {
     if ($competitions_without_entries) {
       $build['competition']['without_entries'] = [
         '#type' => 'fieldset',
-        '#title' => t('Competitions in which your school can enroll'),
+        '#title' => $this->t('Competitions in which your school can enroll'),
       ];
 
       foreach ($competitions_without_entries as $id => $competition) {
@@ -163,7 +165,7 @@ class CompetitionsListController extends ControllerBase {
           'competition' => $competition_view_builder->view($competition, 'teaser'),
           'link' => [
             '#type' => 'link',
-            '#title' => t('Enroll your school'),
+            '#title' => $this->t('Enroll your school'),
             '#url' => Url::fromRoute('piv_contest.competition', [
               'user' => $user->id(),
               'competition' => $id,

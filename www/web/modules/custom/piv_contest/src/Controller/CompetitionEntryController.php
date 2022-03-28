@@ -41,9 +41,6 @@ class CompetitionEntryController extends ControllerBase {
 
   /**
    * The controller constructor.
-   *
-   * @param \Drupal\Core\Entity\EntityFormBuilderInterface $entity_form_builder
-   *   The entity form builder service.
    */
   public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, CompetitionService $competition_service) {
     $this->entityFormBuilder = $entity_form_builder;
@@ -63,18 +60,13 @@ class CompetitionEntryController extends ControllerBase {
   }
 
   /**
-   * {@inheritdoc}
+   * Verify access to add entry.
    */
-  public function access_add(
-    UserInterface $user,
-    CompetitionInterface $competition,
-    ParagraphInterface $stream
-  ) {
+  public function accessAdd(UserInterface $user, CompetitionInterface $competition, ParagraphInterface $stream) {
     $school = $user->field_school->entity;
     if (!$school) {
       return AccessResult::forbidden();
     }
-
 
     return $this->competitionService->currentCanAddEntriesForSchoolOnCompetition($school, $competition);
   }
@@ -82,11 +74,7 @@ class CompetitionEntryController extends ControllerBase {
   /**
    * Builds the competition entry form.
    */
-  public function add(
-    UserInterface $user,
-    CompetitionInterface $competition,
-    ParagraphInterface $stream
-  ) {
+  public function add(UserInterface $user, CompetitionInterface $competition, ParagraphInterface $stream) {
     $school = $user->field_school->target_id;
     $competition_entry = $this->entityTypeManager->getStorage('competition_entry')->create([
       'field_competition' => $competition->id(),
@@ -107,19 +95,17 @@ class CompetitionEntryController extends ControllerBase {
     return $form;
   }
 
-  public function access_edit(
-    UserInterface $user,
-    CompetitionInterface $competition,
-    CompetitionEntryInterface $competition_entry
-  ) {
-    return $competition_entry->access('update', \Drupal::currentUser(), TRUE);
+  /**
+   * Verify access to edit entry.
+   */
+  public function accessEdit(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
+    return $competition_entry->access('update', $user, TRUE);
   }
 
-  public function edit(
-    UserInterface $user,
-    CompetitionInterface $competition,
-    CompetitionEntryInterface $competition_entry
-  ) {
+  /**
+   * Edit form.
+   */
+  public function edit(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
     // The form is different for team or individual competitions.
     $is_team_competition = !empty($competition->field_team_competition->value);
     $form_mode = $is_team_competition

@@ -11,6 +11,17 @@ class JudgeSession {
    * Order the recitations in a session.
    */
   public function orderRecitationsList(JudgingSession $session, User $judge) : array {
+    $languages = [];
+    $judge_id = $judge->id();
+    $french_judges = array_column($session->field_french_judge->getValue(), 'target_id');
+    $english_judges = array_column($session->field_english_judge->getValue(), 'target_id');
+    if (in_array($judge_id, $french_judges)) {
+      $languages[] = 'fr';
+    }
+    if (in_array($judge_id, $english_judges)) {
+      $languages[] = 'en';
+    }
+
     static $list = [];
     $key = $session->id() . ':' . $judge->id();
     if (empty($list[$key])) {
@@ -21,7 +32,13 @@ class JudgeSession {
 
       $score_storage = \Drupal::entityTypeManager()->getStorage('score');
       foreach ($session->field_competition_entries->referencedEntities() as $competition_entry) {
-        foreach ($competition_entry->field_recitations->referencedEntities() as $delta => $recitation) {
+        $recitations = $competition_entry->field_recitations->referencedEntities();
+        $total_recitations = count($competition_entries);
+        foreach ($recitations as $delta => $recitation) {
+          // Only consider the languages this judge is assigned to.
+          if (!in_array($recitation->langcode->value, $languages)) {
+            continue;
+          }
           $score = $score_storage->loadByProperties([
             'judge' => $judge->id(),
             'judging_session' => $session->id(),
@@ -31,11 +48,12 @@ class JudgeSession {
           $list[$key][$delta][] = [
             'recitation' => $recitation,
             'score' => $score,
-            'show_break_panel' => empty($list[$key][$delta]) && $delta > 0,
+            'last_of_round' => ($total_recitations == ($delta + 1)),
           ];
         }
       }
     }
+
     // Flatten the array.
     return array_merge(...$list[$key]);
   }
