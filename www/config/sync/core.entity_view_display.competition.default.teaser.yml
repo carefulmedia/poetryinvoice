@@ -10,6 +10,7 @@ dependencies:
     - field.field.competition.default.field_competition_current_level
     - field.field.competition.default.field_competition_levels
     - field.field.competition.default.field_competition_streams
+    - field.field.competition.default.field_criteria
     - field.field.competition.default.field_invited_schools
     - field.field.competition.default.field_judges
     - field.field.competition.default.field_judging_deadline
@@ -86,6 +87,7 @@ hidden:
   field_competition_current_level: true
   field_competition_levels: true
   field_competition_streams: true
+  field_criteria: true
   field_invited_schools: true
   field_judges: true
   field_judging_deadline: true

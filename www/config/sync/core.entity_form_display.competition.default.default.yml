@@ -9,6 +9,7 @@ dependencies:
     - field.field.competition.default.field_competition_current_level
     - field.field.competition.default.field_competition_levels
     - field.field.competition.default.field_competition_streams
+    - field.field.competition.default.field_criteria
     - field.field.competition.default.field_invited_schools
     - field.field.competition.default.field_judges
     - field.field.competition.default.field_judging_deadline
@@ -86,6 +87,16 @@ content:
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: ''
+    third_party_settings: {  }
+  field_criteria:
+    type: entity_reference_autocomplete
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_invited_schools:
     type: entity_reference_autocomplete

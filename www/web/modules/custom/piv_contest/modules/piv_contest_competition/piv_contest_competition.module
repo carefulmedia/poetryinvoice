@@ -23,6 +23,8 @@ function piv_contest_competition_theme() {
         'teacher' => NULL,
         'school' => NULL,
         'streams' => [],
+        'message' => [],
+        'competition_has_criteria' => FALSE,
       ],
     ],
   ];
@@ -46,6 +48,7 @@ function template_preprocess_competition(array &$variables) {
 }
 
 function template_preprocess_competition_enrollement_progress(&$variables) {
+  /** @var \Drupal\piv_contest\CompetitionEnrollment $enrollment */
   $enrollment = Drupal::service('piv_contest.competition_enrollment');
   $enrollment->init(
     $variables['school'],
@@ -53,6 +56,7 @@ function template_preprocess_competition_enrollement_progress(&$variables) {
     $variables['teacher']
   );
   $variables['streams'] = $enrollment->getStreams();
+  $variables['competition_has_criteria'] = $enrollment->competitionHasRequiredCriteria($variables['competition']);
 }
 
 /**

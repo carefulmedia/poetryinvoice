@@ -9,6 +9,7 @@ dependencies:
     - field.field.competition.default.field_competition_current_level
     - field.field.competition.default.field_competition_levels
     - field.field.competition.default.field_competition_streams
+    - field.field.competition.default.field_criteria
     - field.field.competition.default.field_invited_schools
     - field.field.competition.default.field_judges
     - field.field.competition.default.field_judging_deadline
@@ -35,6 +36,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_criteria:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_location:
     type: address_default

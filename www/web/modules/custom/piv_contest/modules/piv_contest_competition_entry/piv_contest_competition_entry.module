@@ -32,15 +32,13 @@ function piv_contest_competition_entry_competition_entry_presave(CompetitionEntr
   /** @var \Drupal\node\NodeInterface $school */
   $school = $user->field_school->entity;
 
-  $number_valid_recitations = $competition_enrollment_service->getNumberOfValidRecitationsInEntry($entity);
+  $entity->field_complete = FALSE;
+  if ($competition_enrollment_service->isCompetitionEntryCompleted($entity)) {
+    $entity->field_complete = TRUE;
+  }
+
   $stream = $entity->getStream();
   if ($stream) {
-    // Set to complete when requirements are met.
-    $required_recitations_stream = $competition_enrollment_service->getRequiredRecitationsForStream($stream);
-    if ($number_valid_recitations >= $required_recitations_stream && $entity->field_release_form->entity != NULL) {
-      $entity->field_complete = TRUE;
-    }
-
     // Set default title if title is empty.
     // Set default title.
     $title = $entity->getTitle();

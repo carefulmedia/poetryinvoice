@@ -7,6 +7,8 @@ use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\piv_contest_competition\Entity\Competition;
+use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
 use Drupal\piv_contest_competition_entry\Service\CompetitionLockService;
 use Drupal\user\UserInterface;
 
@@ -71,6 +73,7 @@ class CompetitionEnrollment {
       'student' => t('Student'),
       'recitations' => t('Recitations'),
       'permission' => t('Permission'),
+      'missing_criteria' => t('Missing Criteria'),
     ];
 
     $school_id = $this->school->id();
@@ -125,6 +128,12 @@ class CompetitionEnrollment {
         $stream['is_recitations_completed'] = $this->isRecitationsCompleted($stream_entity, $entry);
         $stream['is_permissions_completed'] = $entry->field_release_form->entity != NULL;
         $stream['is_completed'] = (bool) $entry->field_complete->value;
+
+        $missing_criteria = $this->getMissingCriteria($entry);
+        if (count($missing_criteria) > 0) {
+          // Add all missing criterias here.
+          $stream['missing_criteria'] = implode($missing_criteria, ',');
+        }
 
         $editTitle = t('edit');
         if ($this->lockService->isLocked($entry)) {
@@ -201,9 +210,20 @@ class CompetitionEnrollment {
   }
 
   public function getNumberOfValidRecitationsInEntry(EntityInterface $competitionEntry): int {
+    $competition = $competitionEntry->field_competition->entity;
+    $is_online = (bool) $competition->field_online_competition->value;
+
     $number_of_valid_poems = 0;
     foreach ($competitionEntry->field_recitations as $recitation) {
       $entity = $recitation->entity;
+
+
+      $video = $entity->field_recitation_video->entity;
+      // IF it's an online competition recitation must also contain a video.
+      if ($is_online && !$video) {
+        continue;
+      }
+
       if ($poem = $entity->field_poem->entity) {
         $number_of_valid_poems++;
       }
@@ -214,6 +234,76 @@ class CompetitionEnrollment {
 
   public function getRequiredRecitationsForStream(EntityInterface $stream): int {
     return count($stream->field_stream_languages) * (int) $stream->field_min_recitations->value;
+  }
+
+  public function isCompetitionEntryCompleted(CompetitionEntry $entity): bool {
+    $stream = $entity->getStream();
+    if (!$stream) {
+      return FALSE;
+    }
+
+    $missing_criterias = $this->getMissingCriteria($entity);
+    if (count($missing_criterias) > 0) {
+      return FALSE;
+    }
+
+    $number_valid_recitations = $this->getNumberOfValidRecitationsInEntry($entity);
+    $required_recitations_stream = $this->getRequiredRecitationsForStream($stream);
+    if ($number_valid_recitations >= $required_recitations_stream && $entity->field_release_form->entity != NULL) {
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+  public function competitionHasRequiredCriteria(Competition $competition): bool {
+    $required_criteria_list = $competition->field_criteria;
+    if (count($required_criteria_list) === 0) {
+      return FALSE;
+    }
+
+    return TRUE;
+  }
+
+  public function getMissingCriteria(CompetitionEntry $entity): array {
+    $competition = $entity->field_competition->entity;
+    if (!$competition) {
+      return [];
+    }
+
+    $required_criteria_list = $competition->field_criteria;
+    if (count($required_criteria_list) === 0) {
+      return [];
+    }
+
+    $required_criteria = [];
+    foreach ($required_criteria_list as $item) {
+      $criteria = $item->entity;
+      $required_criteria[$criteria->id()] = $criteria->label();
+    }
+
+    foreach ($entity->field_recitations as $recitation_item) {
+      $recitation = $recitation_item->entity;
+
+      $poem = $recitation->field_poem->entity;
+      if (!$poem) {
+        continue;
+      }
+
+      foreach ($poem->field_poem_thems as $poem_item) {
+        $criteria = $poem_item->entity;
+        if (!$criteria) {
+          continue;
+        }
+
+        // If we match the criteria remove from the requirements.
+        if (isset($required_criteria[$criteria->id()])) {
+          unset($required_criteria[$criteria->id()]);
+        }
+      }
+    }
+
+    return $required_criteria;
   }
 
   /**

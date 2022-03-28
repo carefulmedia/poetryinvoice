@@ -1,0 +1,29 @@
+uuid: 1ecf27eb-f0cc-45a8-91ca-fc15beaf1a96
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_criteria
+    - piv_contest_competition.competition_type.default
+    - taxonomy.vocabulary.themes
+id: competition.default.field_criteria
+field_name: field_criteria
+entity_type: competition
+bundle: default
+label: Criteria
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      themes: themes
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
