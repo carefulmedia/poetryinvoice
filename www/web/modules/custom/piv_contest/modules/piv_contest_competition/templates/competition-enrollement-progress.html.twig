@@ -24,7 +24,7 @@
         <td {{ stream.is_recitations_completed ? 'class="completed"' }}>{{ stream.recitations }}</td>
         <td {{ stream.is_permissions_completed ? 'class="completed"' }}>{{ stream.permissions }}</td>
         {% if competition_has_criteria %}
-          <td>{{ stream.missing_criteria }}</td>
+          <td {{ stream.is_missing_criteria_completed ? 'class="completed"' }}>{{ stream.missing_criteria }}</td>
         {% endif %}
         <td>
           {% for link in stream.links %}
