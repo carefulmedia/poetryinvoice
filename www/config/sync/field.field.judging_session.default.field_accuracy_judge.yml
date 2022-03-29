@@ -1,0 +1,56 @@
+uuid: 25df0d71-aff1-4234-bffa-aecdf17a6bfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.judging_session.field_accuracy_judge
+    - piv_contest_judging_session.judging_session_type.default
+id: judging_session.default.field_accuracy_judge
+field_name: field_accuracy_judge
+entity_type: judging_session
+bundle: default
+label: 'Accuracy Judge'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: role
+      role:
+        accuracy_judge: accuracy_judge
+        teacher: '0'
+        non_canadian_educator: '0'
+        teacher_en_: '0'
+        teacher_fr_: '0'
+        administrator: '0'
+        proofreader: '0'
+        content_creator: '0'
+        translator: '0'
+        icanlocalize_translator: '0'
+        icanlocalize_manager: '0'
+        judge: '0'
+        account_approval: '0'
+        competition_administrator: '0'
+        php_editor: '0'
+        pierre: '0'
+        lesson_plan_creator: '0'
+        superadmin: '0'
+        poet_network: '0'
+        pic_pal: '0'
+        poet: '0'
+        anthology_editor: '0'
+        grandfathered_pir: '0'
+        education_consultant: '0'
+        journal_editor: '0'
+        junior_editor: '0'
+    include_anonymous: true
+field_type: entity_reference

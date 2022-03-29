@@ -1,0 +1,20 @@
+uuid: d8a91f62-9672-4008-ad8d-79b249cca7d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_judging_session
+    - user
+id: judging_session.field_accuracy_judge
+field_name: field_accuracy_judge
+entity_type: judging_session
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
