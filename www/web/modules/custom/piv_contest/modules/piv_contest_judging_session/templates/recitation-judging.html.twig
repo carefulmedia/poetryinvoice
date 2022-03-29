@@ -1,14 +1,16 @@
 <div{{ attributes }}>
   {% if content %}
-    <div class='recitation-judging__back'>
-      {{ content.back }}
-    </div>
-    <div class='recitation-judging__evaluated'>
-      {{ content.recitation_evaluated }}
-    </div>
-    <div class='recitation-judging__title'>
-      {{ content.title }}
-    </div>
+    <header>
+      <div class='recitation-judging__back'>
+        {{ content.back }}
+      </div>
+      <div class='recitation-judging__evaluated'>
+        {{ content.recitation_evaluated }}
+      </div>
+      <h2 class='recitation-judging__title'>
+        {{ content.title }}
+      </h2>
+    </header>
     <div class='recitation-judging__container'>
       <div class='recitation-judging__video'>
         {{ content.video }}
@@ -16,7 +18,9 @@
       <div class='recitation-judging__form'>
         {{ content.form }}
       </div>
-      <div class='recitation-judging__judge-later'>{{ content.judge_later }}</div>
     </div>
+    <footer>
+      <div class='recitation-judging__judge-later'>{{ content.judge_later }}</div>
+    </footer>
   {% endif %}
 </div>

@@ -5,17 +5,3 @@
 body {
   color: black;
 }
-
-.completed {
-  background-color: #0e8106;
-}
-
-.completed > td {
-  background-color: #0e8106;
-}
-
-a.disabled {
-  color: #666666 !important;
-  text-decoration: none !important;
-  cursor: default !important;
-}

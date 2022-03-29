@@ -1,0 +1,17 @@
+.recitation-judging__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.recitation-judging__container .recitation-judging__form {
+  text-align: right;
+}
+.recitation-judging__container .recitation-judging__form .form-submit {
+  margin: 0;
+}
+.recitation-judging__container .recitation-judging__form table {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+.recitation-judging__container .recitation-judging__video iframe {
+  width: 100%;
+}
