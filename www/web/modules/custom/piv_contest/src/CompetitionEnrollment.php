@@ -131,11 +131,15 @@ class CompetitionEnrollment {
         $stream['is_recitations_completed'] = $this->isRecitationsCompleted($stream_entity, $entry);
         $stream['is_permissions_completed'] = $entry->field_release_form->entity != NULL;
         $stream['is_completed'] = (bool) $entry->field_complete->value;
+        $stream['is_missing_criteria_completed'] = FALSE;
 
         $missing_criteria = $this->getMissingCriteria($entry);
         if (count($missing_criteria) > 0) {
           // Add all missing criterias here.
           $stream['missing_criteria'] = implode($missing_criteria, ',');
+        } else {
+          $stream['is_missing_criteria_completed'] = TRUE;
+          $stream['missing_criteria'] = '';
         }
 
         $editTitle = t('edit');
