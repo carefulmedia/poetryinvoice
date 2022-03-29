@@ -1025,6 +1025,7 @@ permissions:
   - 'use text format filtered_html'
   - 'use text format full_html'
   - 'use text format php_code'
+  - 'view all competitions'
   - 'view all user locations'
   - 'view any main profile'
   - 'view any unpublished article content'

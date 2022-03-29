@@ -8,7 +8,9 @@ delete competition:
   title: Delete competition
 create competition:
   title: Create competition
-view competition:
-  title: View competition
+view all competitions:
+  title: View all competition
+view own school competitions:
+  title: View own school competitions
 edit competition:
   title: Edit competition

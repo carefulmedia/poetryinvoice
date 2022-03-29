@@ -192,4 +192,5 @@ permissions:
   - 'view own field_youtube_recitation_url'
   - 'view own piv_release_form'
   - 'view own piv_student_mail'
+  - 'view own school competitions'
   - 'view piv_release_form'

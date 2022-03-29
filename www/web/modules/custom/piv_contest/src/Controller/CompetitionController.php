@@ -54,7 +54,7 @@ class CompetitionController extends ControllerBase {
    * {@inheritdoc}
    */
   public function access(UserInterface $user, CompetitionInterface $competition) {
-    return AccessResult::allowed();
+    return $competition->access('view', \Drupal::currentUser(), TRUE);
   }
 
   /**
