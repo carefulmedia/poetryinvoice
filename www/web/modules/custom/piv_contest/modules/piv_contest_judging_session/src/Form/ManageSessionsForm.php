@@ -247,6 +247,12 @@ class ManageSessionsForm extends FormBase {
         continue;
       }
 
+      $is_completed = (bool) $entity->field_complete->value;
+      // We just want to show completed entries.
+      if (!$is_completed) {
+        continue;
+      }
+
       $entries[$entity->id()][0] = $entity->label() ?: "";
       $entries[$entity->id()][3] = $entity->field_student_name->value ?: "";
 
