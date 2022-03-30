@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.judging_session.default.field_accuracy_judge
     - field.field.judging_session.default.field_all_scoring_completed
     - field.field.judging_session.default.field_competition
     - field.field.judging_session.default.field_competition_entries
@@ -28,6 +29,14 @@ content:
       timezone: ''
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_accuracy_judge:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 28
     region: content
   field_all_scoring_completed:
     type: boolean

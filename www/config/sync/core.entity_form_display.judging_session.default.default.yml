@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.judging_session.default.field_accuracy_judge
     - field.field.judging_session.default.field_all_scoring_completed
     - field.field.judging_session.default.field_competition
     - field.field.judging_session.default.field_competition_entries
@@ -18,6 +19,16 @@ targetEntityType: judging_session
 bundle: default
 mode: default
 content:
+  field_accuracy_judge:
+    type: competition_judges_autocomplete
+    weight: 26
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: '10'
+      size: '60'
+      placeholder: ''
+    third_party_settings: {  }
   field_competition:
     type: entity_reference_autocomplete
     weight: 3
