@@ -5,7 +5,6 @@
  * Provides a competition entry entity type.
  */
 
-use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
@@ -22,6 +21,9 @@ function piv_contest_competition_entry_theme() {
   ];
 }
 
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
 function piv_contest_competition_entry_competition_entry_presave(CompetitionEntry $entity) {
   /** @var \Drupal\piv_contest\CompetitionEnrollment $competition_enrollment_service */
   $competition_enrollment_service = \Drupal::service('piv_contest.competition_enrollment');
@@ -51,11 +53,12 @@ function piv_contest_competition_entry_competition_entry_presave(CompetitionEntr
       ));
     }
   }
-
-
 }
 
-function piv_contest_form_alter(&$form, FormStateInterface $formState, $form_id) {
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function piv_contest_competition_entry_form_alter(&$form, FormStateInterface $formState, $form_id) {
   if ($form_id != 'competition_entry_default_teacher_competition_entry_form') {
     return;
   }
@@ -68,7 +71,7 @@ function piv_contest_form_alter(&$form, FormStateInterface $formState, $form_id)
   /** @var \Drupal\piv_contest_competition_entry\Service\CompetitionLockService $lock_service */
   $lock_service = \Drupal::service('piv_contest_competition_entry.competition_lock_service');
   if ($lock_service->isLocked($competition_entry)) {
-    $form['#disabled'] = true;
+    $form['#disabled'] = TRUE;
   }
 }
 
@@ -79,8 +82,8 @@ function piv_contest_form_alter(&$form, FormStateInterface $formState, $form_id)
  *
  * @param array $variables
  *   An associative array containing:
- *   - elements: An associative array containing the competition entry information and any
- *     fields attached to the entity.
+ *   - elements: An associative array containing the competition entry
+ *     information and any fields attached to the entity.
  *   - attributes: HTML attributes for the containing element.
  */
 function template_preprocess_competition_entry(array &$variables) {
