@@ -4,31 +4,87 @@ namespace Drupal\piv_contest_judging_session\Controller;
 
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\CsrfTokenGenerator;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityFormBuilderInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\piv_contest_judging_session\Entity\JudgingSession;
 use Drupal\piv_contest_judging_session\Service\JudgeSession;
+use Drupal\piv_contest_recitation\Entity\Recitation;
 use Drupal\user\Entity\User;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
+/**
+ * @class Judging Session controller.
+ */
 class JudgingSessionController extends ControllerBase {
 
+  /**
+   * Entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
   protected $entityTypeManager;
 
+  /**
+   * Entity form builder.
+   *
+   * @var \Drupal\Core\Entity\EntityFormBuilderInterface
+   */
   protected $entityFormBuilder;
 
+  /**
+   * The judge session service.
+   *
+   * @var \Drupal\piv_contest_judging_session\Service\JudgeSession
+   */
   protected $judgeSessionService;
 
-  public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, JudgeSession $judgeSession) {
+  /**
+   * Current logged in user.
+   *
+   * @var \Drupal\Core\Session\AccountProxyInterface
+   */
+  protected $currentUser;
+
+  /**
+   * CSRF Token generator.
+   *
+   * @var \Drupal\Core\Access\CsrfTokenGenerator
+   */
+  protected $tokenGenerator;
+
+  /**
+   * Form builder.
+   *
+   * @var \Drupal\Core\Form\FormBuilderInterface
+   */
+  protected $formBuilder;
+
+  /**
+   * JudgingSessionController constructor.
+   */
+  public function __construct(
+    EntityFormBuilderInterface $entity_form_builder,
+    EntityTypeManagerInterface $entity_type_manager,
+    JudgeSession $judge_session,
+    AccountProxyInterface $current_user,
+    CsrfTokenGenerator $csrf_token_generator,
+    FormBuilderInterface $form_builder
+  ) {
     $this->entityFormBuilder = $entity_form_builder;
     $this->entityTypeManager = $entity_type_manager;
-    $this->judgeSessionService = $judgeSession;
+    $this->judgeSessionService = $judge_session;
+    $this->currentUser = $current_user;
+    $this->tokenGenerator = $csrf_token_generator;
+    $this->formBuilder = $form_builder;
   }
 
   /**
@@ -38,21 +94,25 @@ class JudgingSessionController extends ControllerBase {
     return new static(
       $container->get('entity.form_builder'),
       $container->get('entity_type.manager'),
-      $container->get('piv_contest_judging_session.service.judge_session')
+      $container->get('piv_contest_judging_session.service.judge_session'),
+      $container->get('current_user'),
+      $container->get('csrf_token'),
+      $container->get('form_builder')
     );
   }
 
+  /**
+   * Add new judging session page.
+   */
   public function add(CompetitionInterface $competition, Request $request): array {
-    $current_user = \Drupal::currentUser();
     $stream_id = $request->query->get('stream');
-    $stream = \Drupal::entityTypeManager()->getStorage('paragraph')->load($stream_id);
+    $stream = $this->entityTypeManager->getStorage('paragraph')->load($stream_id);
 
     $title = "{$competition->label()} {$stream->field_label->value} judging session";
 
-    //  session_management_ui
     $session = $this->entityTypeManager->getStorage('judging_session')->create([
       'field_competition' => $competition->id(),
-      'user' => $current_user->id(),
+      'user' => $this->currentUser->id(),
       'field_stream' => $stream,
       'title' => $title,
       'bundle' => 'default',
@@ -64,15 +124,27 @@ class JudgingSessionController extends ControllerBase {
     return $form;
   }
 
+  /**
+   * Page to start judging.
+   */
   public function startJudging(User $user): array {
     /** @var \Drupal\Core\Entity\EntityInterface[] $sessions */
     $sessions = $this->getReadyJudgingSessions($user);
     $rows = [];
     foreach ($sessions as $session) {
-      $link =  Link::fromTextAndUrl(t('Judge now'), Url::fromRoute('piv_contest_judging_session.judge_recitations', [
+      $url = Url::fromRoute('piv_contest_judging_session.read_poems', [
         'session' => $session->id(),
         'user' => $user->id(),
-      ]))->toRenderable();
+      ]);
+      // If user have read all the poems we send them directly to
+      // the correct page.
+      if ($this->judgeSessionService->numberOfRecitationReadByJudge($session, $user) === $this->judgeSessionService->totalNumberOfRecitations($session, $user)) {
+        $url = Url::fromRoute('piv_contest_judging_session.judge_recitations', [
+          'session' => $session->id(),
+          'user' => $user->id(),
+        ]);
+      }
+      $link = Link::fromTextAndUrl($this->t('Judge now'), $url)->toRenderable();
 
       if ($this->judgeSessionService->isSessionEvaluatedByJudge($session, $user)) {
         $link['#attributes']['class'][] = 'disabled';
@@ -93,20 +165,23 @@ class JudgingSessionController extends ControllerBase {
     $response['table'] = [
       '#type' => 'table',
       '#header' => [
-        t('Session Id'),
-        t('Recitations evaluated'),
-        t('Evaluate'),
+        $this->t('Session Id'),
+        $this->t('Recitations evaluated'),
+        $this->t('Evaluate'),
       ],
       '#rows' => $rows,
     ];
 
     $uri = Url::fromUserInput('/judge-pages/how-judge-our-online-contests');
 
-    $response['link'] = Link::fromTextAndUrl(t('How to judge the Online Contest'), $uri)->toRenderable();
+    $response['link'] = Link::fromTextAndUrl($this->t('How to judge the Online Contest'), $uri)->toRenderable();
 
     return $response;
   }
 
+  /**
+   * Check if user has access to StartJudging action.
+   */
   public function accessStartJudging(User $user): AccessResult {
     $entities = $this->getReadyJudgingSessions($user);
 
@@ -122,6 +197,91 @@ class JudgingSessionController extends ControllerBase {
     return AccessResult::allowedIfHasPermission($user, 'judge a judging session')->addCacheTags($tags);
   }
 
+  /**
+   * Page for a judge to read the poems.
+   */
+  public function readPoems(User $user, JudgingSession $session): array {
+    $recitation = $this->judgeSessionService->nextRecitationToRead($session, $user);
+    if (!$recitation) {
+      return [
+        '#markup' => $this->t('No recitations to read'),
+      ];
+    }
+
+    $session_id = $session->id();
+    $recitation_id = $recitation->id();
+
+    $poem = $recitation->field_poem->entity;
+    $build = [
+      '#theme' => 'recitation_read_recitations',
+    ];
+    $build['back'] = [
+      '#markup' => Link::fromTextAndUrl('Back to all sessions', Url::fromRoute('piv_contest_judging_session.start_judging', [
+        'user' => $user->id(),
+      ]))->toString(),
+    ];
+    $build['title'] = ['#markup' => $poem->title->value];
+    $build['description'] = ['#markup' => $poem->body->value];
+    $build['video'] = $recitation->field_recitation_video->view([
+      'type' => 'entity_reference_entity_view',
+      'label' => 'hidden',
+    ]);
+    $build['recitation_reads'] = [
+      '#markup' => $this->t('Poems read: @read/@total', [
+        '@read' => $this->judgeSessionService->numberOfRecitationReadByJudge($session, $user),
+        '@total' => $this->judgeSessionService->totalNumberOfRecitations($session, $user),
+      ]),
+    ];
+
+    if ($this->judgeSessionService->numberOfRecitationReadByJudge($session, $user) === $this->judgeSessionService->totalNumberOfRecitations($session, $user)) {
+      $build['read_next'] = [
+        '#markup' => Link::fromTextAndUrl($this->t('Start judging'), Url::fromRoute('piv_contest_judging_session.judge_recitations', [
+          'user' => $user->id(),
+          'session' => $session->id(),
+        ]))->toString(),
+      ];
+    }
+    else {
+      $url = Url::fromRoute(
+        'piv_contest_judging_session.mark_recitation_as_read',
+        [
+          'session' => $session_id,
+          'user' => $user->id(),
+          'recitation' => $recitation_id,
+        ],
+      );
+      $token = $this->tokenGenerator->get($url->getInternalPath());
+      $url->setOptions(['query' => ['token' => $token]]);
+
+      $build['read_next'] = [
+        '#markup' => Link::fromTextAndUrl('Read next Poem', $url)->toString(),
+      ];
+    }
+
+    $build['read_later'] = [
+      '#markup' => Link::fromTextAndUrl('Read poems later', Url::fromRoute('piv_contest_judging_session.start_judging', [
+        'user' => $user->id(),
+      ]))->toString(),
+    ];
+
+    return $build;
+  }
+
+  /**
+   * Endpoint to mark recitation as read by a judge.
+   */
+  public function markRecitationAsRead(User $user, JudgingSession $session, Recitation $recitation): RedirectResponse {
+    $this->judgeSessionService->markRecitationAsRead($session, $user, $recitation);
+
+    return $this->redirect('piv_contest_judging_session.read_poems', [
+      'user' => $user->id(),
+      'session' => $session->id(),
+    ]);
+  }
+
+  /**
+   * Get sessions that are ready to be judged.
+   */
   private function getReadyJudgingSessions(User $user): array {
     $judging_session_manager = $this->entityTypeManager->getStorage('judging_session');
     $query = $judging_session_manager->getQuery();
@@ -130,7 +290,7 @@ class JudgingSessionController extends ControllerBase {
       ->condition('field_english_judge.target_id', $user->id(), '=')
       ->condition('field_french_judge.target_id', $user->id(), '=');
 
-    $ids =  $query
+    $ids = $query
       ->condition('field_ready_for_scoring', TRUE)
       ->condition($group)
       ->execute();
@@ -145,10 +305,18 @@ class JudgingSessionController extends ControllerBase {
    * determined in a custom order, where the first recitation for all entries
    * are judged first, then all second recitations for all entries, and it goes
    * like that. Between the all first, all second, all third, etc recitation,
-   * there is a "break" page so the judge knows he judged all first recitations
-   * (for example).
+   * there is a "break" page so the judge knows that judged
+   * all first recitations (for example).
    */
   public function judgeSession(User $user, JudgingSession $session) {
+    // Not allowed to judge if user have not read the recitation yet.
+    if ($this->judgeSessionService->numberOfRecitationReadByJudge($session, $user) !== $this->judgeSessionService->totalNumberOfRecitations($session, $user)) {
+      return $this->redirect('piv_contest_judging_session.read_poems', [
+        'session' => $session->id(),
+        'user' => $user->id(),
+      ]);
+    }
+
     // This is used in multiple places.
     $start_judging_url = Url::fromRoute('piv_contest_judging_session.start_judging', [
       'user' => $user->id(),
@@ -172,7 +340,7 @@ class JudgingSessionController extends ControllerBase {
     $build['video'] = $recitation->field_recitation_video->view([
       'type' => 'entity_reference_entity_view',
       'label' => 'hidden',
-    ]);    
+    ]);
     // If thats the last item in a round, redirect back to the recitation list.
     $destination = NULL;
     $message = NULL;
@@ -180,7 +348,7 @@ class JudgingSessionController extends ControllerBase {
       $destination = $start_judging_url;
       $message = $this->t('You finished judging a round of recitations.');
     }
-    $build['form'] = \Drupal::formBuilder()
+    $build['form'] = $this->formBuilder
       ->getForm('Drupal\piv_contest\Form\ScoreForm', $recitation, $session, $destination, $message);
     $build['judge_later'] = Link::fromTextAndUrl($this->t('Judge later'), $start_judging_url)->toRenderable();
     // Same link as above.
@@ -191,12 +359,16 @@ class JudgingSessionController extends ControllerBase {
         '@count' => $this->judgeSessionService->totalNumberOfRecitations($session, $user),
       ]),
     ];
-      
+
     return $build;
   }
 
+  /**
+   * Check if user has access to judge a session.
+   */
   public function accessJudgeSession(User $user, JudgingSession $session): AccessResult {
     // @TODO change this.
     return AccessResult::allowed();
   }
+
 }

@@ -1,0 +1,60 @@
+<?php
+
+use Drupal\Core\Database\Database;
+
+/**
+ * Implements hook_install().
+ */
+function piv_contest_judging_session_install() {
+  piv_contest_judging_session_update_9101();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function piv_contest_judging_session_uninstall() {
+  $schema = Database::getConnection()->schema();
+  $schema->dropTable('judging_session_poems_read');
+}
+
+/**
+ * Creates a table to track which poem a judge have read.
+ */
+function piv_contest_judging_session_update_9101() {
+  $spec = [
+    'description' => t('Table to record which poems a judge have read'),
+    'fields' => [
+      'session_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => '0',
+        'unsigned' => TRUE,
+      ],
+      'judge_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => '0',
+        'unsigned' => TRUE,
+      ],
+      'recitation' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => '0',
+        'unsigned' => TRUE,
+      ],
+      'created_at' => [
+        'type' => 'varchar',
+        'mysql_type' => 'datetime',
+        'not null' => TRUE,
+      ],
+    ],
+    'primary key' => ['judge_id', 'session_id', 'recitation'],
+    'indexes' => [
+      // Index used to get all poems read by a judge.
+      'session_id_judge_idx' => ['session_id', 'judge_id'],
+    ],
+  ];
+
+  $schema = Database::getConnection()->schema();
+  $schema->createTable('judging_session_recitations_read', $spec);
+}
