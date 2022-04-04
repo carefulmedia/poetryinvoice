@@ -6,6 +6,10 @@
  */
 
 use Drupal\Core\Render\Element;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_entity_type_alter().
@@ -35,3 +39,103 @@ function template_preprocess_recitation_score_form_default(array &$variables) {
     $variables['form'][$key] = $variables['elements'][$key];
   }
 }
+
+/**
+ * @defgroup piv_contest_entity_access Custom entity access
+ * @{
+ * Custom access to custom entities.
+ *
+ * The code here prevent inconsistences by preventing users from deleting
+ * content that is being referenced by other content.
+ * For example: deleting a score_template when there is a score referencing it.
+ * Further validation are created as constraints.
+ *
+ * @see \Drupal\piv_contest_score_template\Plugin\Validation\Constraint\ScoreTemplateConstraintValidator::validate()
+ * @see \Drupal\piv_contest\Plugin\Validation\Constraint\CompetitionConstraintValidator::validate()
+ */
+
+/**
+ * Custom function to verify if there are scores for a score_template_type.
+ */
+function _piv_contest_score_exists_for_score_template_type($bundle) {
+  return (bool) \Drupal::entityTypeManager()->getStorage('score')->getQuery()
+    ->condition('score_template.entity:score_template.bundle', $bundle)
+    ->execute();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ *
+ * Prevents deleting or updating score_template entities if there is a score
+ * referencing it.
+ */
+function piv_contest_score_template_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if ($operation == 'delete') {
+    $query = \Drupal::entityTypeManager()->getStorage('score')->getQuery();
+    $results = $query->condition('score_template', $entity->id())->execute();
+    if ($results) {
+      return AccessResult::forbidden();
+    }
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Make it impossible to change the "Score Type" when editing a
+ * score_template_type if there are score entities referencing score_template
+ * entities of this bundle.
+ */
+function piv_contest_form_score_template_type_edit_form_alter(&$form, FormStateInterface $form_state) {
+  $id = $form_state->getFormObject()->getEntity()->id();
+  if (_piv_contest_score_exists_for_score_template_type($id)) {
+    $form['score_type']['#disabled'] = TRUE;
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function piv_contest_form_competition_default_edit_form_alter(&$form, FormStateInterface $form_state) {
+  // There is also a constraint with the same conditions.
+  // @see \Drupal\piv_contest\Plugin\Validation\Constraint\CompetitionConstraintValidator::validate()
+  $competition = $form_state->getFormObject()->getEntity();
+  $results = \Drupal::entityTypeManager()->getStorage('score')->getQuery()
+    ->condition('judging_session.entity:judging_session.field_competition', $competition->id())
+    ->execute();
+  if ($results) {
+    $form['field_score_template']['#disabled'] = TRUE;
+    \Drupal::messenger()->addWarning('This competition already have recitations and/or scores, some fields are disabled.');
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function piv_contest_score_template_type_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  $id = $entity->id();
+  if ($operation == 'delete' && _piv_contest_score_exists_for_score_template_type($id)) {
+    \Drupal::messenger()->addWarning('This score_template_type have score entities referencing it. Deleting and editing are disabled.');
+    return AccessResult::forbidden();
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_access().
+ */
+function piv_contest_field_config_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  if ($operation == 'delete' && $entity->get('entity_type') == 'score_template') {
+    if (_piv_contest_score_exists_for_score_template_type($entity->get('bundle'))) {
+      // Duplicated messages are not displayed duplicated.
+      \Drupal::messenger()->addWarning('This score_template_type have score entities referencing it. Deleting fields is disabled.');
+      return AccessResult::forbidden();
+    }
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * @} End of "defgroup piv_contest_entity_access".
+ */

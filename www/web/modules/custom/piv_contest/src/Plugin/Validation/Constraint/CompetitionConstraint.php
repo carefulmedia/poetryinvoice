@@ -28,4 +28,11 @@ class CompetitionConstraint extends Constraint {
    */
   public $invitedSchoolsErrorMessage = 'Field Invited Schools is required.';
 
+  /**
+   * Prevent changing the score template.
+   *
+   * @var string
+   */
+  public $cantChangeScoreTemplate = 'There are scores for recitations on this competition using this score template already.';
+
 }
