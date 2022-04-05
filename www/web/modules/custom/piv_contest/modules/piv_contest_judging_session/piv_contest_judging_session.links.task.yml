@@ -23,4 +23,10 @@ piv_contest_judging_session.start_judging:
   route_name: piv_contest_judging_session.start_judging
   base_route: entity.user.canonical
   title: 'Start Judging'
+  weight: 98
+piv_contest_judging_session.judge_for_accuracy:
+  route_name: piv_contest_judging_session.judge_for_accuracy
+  base_route: entity.user.canonical
+  title: 'Judge for accuracy'
   weight: 99
+

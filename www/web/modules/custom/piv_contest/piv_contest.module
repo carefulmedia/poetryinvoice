@@ -35,3 +35,22 @@ function template_preprocess_recitation_score_form_default(array &$variables) {
     $variables['form'][$key] = $variables['elements'][$key];
   }
 }
+
+/**
+ * Implements hook_theme_suggestions_alter().
+ */
+function piv_contest_theme_suggestions_alter(array &$suggestions, array $variables, $hook) {
+  if (in_array($hook, [
+    'competition',
+    'competition_entry',
+    'judging_session',
+    'recitation',
+    'score',
+    'score_template',
+  ])) {
+    $view_mode = $variables['elements']['#view_mode'] ?? NULL;
+    if ($view_mode) {
+      $suggestions[] = "{$hook}__{$view_mode}";
+    }
+  }
+}

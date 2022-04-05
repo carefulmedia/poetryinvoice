@@ -4,8 +4,55 @@ namespace Drupal\piv_contest_judging_session\Service;
 
 use Drupal\piv_contest_judging_session\Entity\JudgingSession;
 use Drupal\user\Entity\User;
+use Drupal\piv_contest_recitation\Entity\Recitation;
+use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+
 
 class JudgeSession {
+
+  /**
+   * The entity type manager service.
+   * 
+   * @var \Drupal\Core\Entity\EntityTypeManager
+   */
+  protected $entityTypeManager;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+    $this->entityTypeManager = $entity_type_manager;
+  }
+
+  /**
+   * Check if a competition entry was already scored for accuracy.
+   */
+  public function entryWasScoredForAccuracy(CompetitionEntry $competition_entry) {
+    foreach ($competition_entry->field_recitations->referencedEntities() as $recitation) {
+      if ($recitation->field_score->isEmpty()) {
+        return FALSE;
+      }
+    }
+    return TRUE;
+  }
+
+  /**
+   * Get the recitation score for a session.
+   */
+  public function getRecitationScore(Recitation $recitation, JudgingSession $judging_session) : int {
+    $score_storage = $this->entityTypeManager->getStorage('score');
+    $scores = $score_storage->loadByProperties([
+      'judging_session' => $judging_session->id(),
+      'recitation' => $recitation->id(),
+    ]);
+    $total = 0;
+    foreach ($scores as $score) {
+      $values = array_column($score->field_scores->getValue(), 'value');
+      $total += array_sum($values);
+    }
+    return $total;
+  }
 
   /**
    * Order the recitations in a session.
@@ -30,10 +77,10 @@ class JudgeSession {
         return [];
       }
 
-      $score_storage = \Drupal::entityTypeManager()->getStorage('score');
+      $score_storage = $this->entityTypeManager->getStorage('score');
       foreach ($session->field_competition_entries->referencedEntities() as $competition_entry) {
         $recitations = $competition_entry->field_recitations->referencedEntities();
-        $total_recitations = count($competition_entries);
+        $total_recitations = count($recitations);
         foreach ($recitations as $delta => $recitation) {
           // Only consider the languages this judge is assigned to.
           if (!in_array($recitation->langcode->value, $languages)) {
@@ -77,6 +124,9 @@ class JudgeSession {
     return FALSE;
   }
 
+  /**
+   * Check if session was evaluated by a judge already.
+   */
   public function isSessionEvaluatedByJudge(JudgingSession $session, User $judge): bool {
     return $this->nextRecitation($session, $judge) === FALSE;
   }

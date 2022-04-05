@@ -5,10 +5,6 @@ piv_contest_judging_session.manage_sessions:
     _form: '\Drupal\piv_contest_judging_session\Form\ManageSessionsForm'
   requirements:
     _permission: 'create judging session'
-  options:
-    parameters:
-      competition:
-        type: entity:competition
 
 piv_contest_judging_session.add_session:
   path: '/competition/{competition}/add-session'
@@ -17,10 +13,6 @@ piv_contest_judging_session.add_session:
     _controller: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::add'
   requirements:
     _permission: 'access content'
-  options:
-    parameters:
-      competition:
-        type: entity:competition
 
 piv_contest_judging_session.start_judging:
   path: '/user/{user}/start-judging'
@@ -29,21 +21,35 @@ piv_contest_judging_session.start_judging:
     _controller: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::startJudging'
   requirements:
     _custom_access: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::accessStartJudging'
-  options:
-    parameters:
-      user:
-        type: entity:user
 
 piv_contest_judging_session.judge_recitations:
-  path: '/user/{user}/judge/{session}'
+  path: '/user/{user}/judge/{judging_session}'
   defaults:
     _title: 'Judge now'
     _controller: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::judgeSession'
   requirements:
     _custom_access: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::accessJudgeSession'
-  options:
-    parameters:
-      user:
-        type: entity:user
-      session:
-        type: entity:judging_session
+
+piv_contest_judging_session.judge_for_accuracy:
+  path: '/user/{user}/judge-for-accuracy'
+  defaults:
+    _title: 'Judge for accuracy'
+    _controller: '\Drupal\piv_contest_judging_session\Controller\AccuracyJudgingSessionController::sessionsList'
+  requirements:
+    _custom_access: '\Drupal\piv_contest_judging_session\Controller\AccuracyJudgingSessionController::accessSessionsList'
+
+piv_contest_judging_session.judge_for_accuracy.recitations_list:
+  path: '/user/{user}/judge-for-accuracy/{judging_session}'
+  defaults:
+    _title: 'Judge for accuracy'
+    _controller: '\Drupal\piv_contest_judging_session\Controller\AccuracyJudgingSessionController::recitationsList'
+  requirements:
+    _custom_access: '\Drupal\piv_contest_judging_session\Controller\AccuracyJudgingSessionController::accessRecitationsList'
+
+piv_contest_judging_session.judge_for_accuracy.judge_competition_entry:
+  path: '/user/{user}/judge-for-accuracy/{judging_session}/{competition_entry}'
+  defaults:
+    _title: 'Judging competition entry'
+    _controller: '\Drupal\piv_contest_judging_session\Controller\AccuracyJudgingSessionController::judgeCompetitionEntry'
+  requirements:
+    _custom_access: '\Drupal\piv_contest_judging_session\Controller\AccuracyJudgingSessionController::accessJudgeCompetitionEntry'

@@ -36,8 +36,10 @@ class JudgesAutocomplete extends EntityReferenceAutocompleteWidget {
     $selection_settings = $this->getFieldSetting('handler_settings') + [
       'match_operator' => $this->getSetting('match_operator'),
       'match_limit' => $this->getSetting('match_limit'),
-      'competition_id' => $competition->id(),
     ];
+    if ($competition) {
+      $selection_settings['competition_id'] = $competition->id();
+    }
 
     $element += [
       '#type' => 'entity_autocomplete',

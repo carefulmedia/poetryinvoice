@@ -8,8 +8,15 @@ global-styling:
 
   dependencies:
     - core/jquery
+
 recitation-judging:
   version: 1.x
   css:
     theme:
       assets/css/recitation-judging.css: {}
+
+recitation-accuracy-judging:
+  version: 1.x
+  css:
+    theme:
+      assets/css/recitation-accuracy-judging.css: {}
