@@ -11,10 +11,10 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Session\AccountProxyInterface;
+use Drupal\node\NodeInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\piv_contest_judging_session\Entity\JudgingSession;
 use Drupal\piv_contest_judging_session\Service\JudgeSession;
-use Drupal\piv_contest_recitation\Entity\Recitation;
 use Drupal\user\Entity\User;
 use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -22,7 +22,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
- * @class Judging Session controller.
+ * Judging Session Controller.
  */
 class JudgingSessionController extends ControllerBase {
 
@@ -138,7 +138,7 @@ class JudgingSessionController extends ControllerBase {
       ]);
       // If user have read all the poems we send them directly to
       // the correct page.
-      if ($this->judgeSessionService->numberOfRecitationReadByJudge($session, $user) === $this->judgeSessionService->totalNumberOfRecitations($session, $user)) {
+      if ($this->judgeSessionService->numberOfPoemsReadByJudge($session, $user) === $this->judgeSessionService->totalNumberOfPoems($session, $user)) {
         $url = Url::fromRoute('piv_contest_judging_session.judge_recitations', [
           'session' => $session->id(),
           'user' => $user->id(),
@@ -201,19 +201,18 @@ class JudgingSessionController extends ControllerBase {
    * Page for a judge to read the poems.
    */
   public function readPoems(User $user, JudgingSession $session): array {
-    $recitation = $this->judgeSessionService->nextRecitationToRead($session, $user);
-    if (!$recitation) {
+    $poem = $this->judgeSessionService->nextPoemToRead($session, $user);
+    if (!$poem) {
       return [
-        '#markup' => $this->t('No recitations to read'),
+        '#markup' => $this->t('No poems to read'),
       ];
     }
 
     $session_id = $session->id();
-    $recitation_id = $recitation->id();
+    $poem_id = $poem->id();
 
-    $poem = $recitation->field_poem->entity;
     $build = [
-      '#theme' => 'recitation_read_recitations',
+      '#theme' => 'poem_read_poems',
     ];
     $build['back'] = [
       '#markup' => Link::fromTextAndUrl('Back to all sessions', Url::fromRoute('piv_contest_judging_session.start_judging', [
@@ -222,18 +221,14 @@ class JudgingSessionController extends ControllerBase {
     ];
     $build['title'] = ['#markup' => $poem->title->value];
     $build['description'] = ['#markup' => $poem->body->value];
-    $build['video'] = $recitation->field_recitation_video->view([
-      'type' => 'entity_reference_entity_view',
-      'label' => 'hidden',
-    ]);
-    $build['recitation_reads'] = [
+    $build['poems_read'] = [
       '#markup' => $this->t('Poems read: @read/@total', [
-        '@read' => $this->judgeSessionService->numberOfRecitationReadByJudge($session, $user),
-        '@total' => $this->judgeSessionService->totalNumberOfRecitations($session, $user),
+        '@read' => $this->judgeSessionService->numberOfPoemsReadByJudge($session, $user),
+        '@total' => $this->judgeSessionService->totalNumberOfPoems($session, $user),
       ]),
     ];
 
-    if ($this->judgeSessionService->numberOfRecitationReadByJudge($session, $user) === $this->judgeSessionService->totalNumberOfRecitations($session, $user)) {
+    if ($this->judgeSessionService->numberOfPoemsReadByJudge($session, $user) === $this->judgeSessionService->totalNumberOfPoems($session, $user)) {
       $build['read_next'] = [
         '#markup' => Link::fromTextAndUrl($this->t('Start judging'), Url::fromRoute('piv_contest_judging_session.judge_recitations', [
           'user' => $user->id(),
@@ -243,11 +238,11 @@ class JudgingSessionController extends ControllerBase {
     }
     else {
       $url = Url::fromRoute(
-        'piv_contest_judging_session.mark_recitation_as_read',
+        'piv_contest_judging_session.mark_poem_as_read',
         [
           'session' => $session_id,
           'user' => $user->id(),
-          'recitation' => $recitation_id,
+          'poem' => $poem_id,
         ],
       );
       $token = $this->tokenGenerator->get($url->getInternalPath());
@@ -270,8 +265,8 @@ class JudgingSessionController extends ControllerBase {
   /**
    * Endpoint to mark recitation as read by a judge.
    */
-  public function markRecitationAsRead(User $user, JudgingSession $session, Recitation $recitation): RedirectResponse {
-    $this->judgeSessionService->markRecitationAsRead($session, $user, $recitation);
+  public function markPoemAsRead(User $user, JudgingSession $session, NodeInterface $poem): RedirectResponse {
+    $this->judgeSessionService->markPoemAsRead($session, $user, $poem);
 
     return $this->redirect('piv_contest_judging_session.read_poems', [
       'user' => $user->id(),
@@ -310,7 +305,7 @@ class JudgingSessionController extends ControllerBase {
    */
   public function judgeSession(User $user, JudgingSession $session) {
     // Not allowed to judge if user have not read the recitation yet.
-    if ($this->judgeSessionService->numberOfRecitationReadByJudge($session, $user) !== $this->judgeSessionService->totalNumberOfRecitations($session, $user)) {
+    if ($this->judgeSessionService->numberOfPoemsReadByJudge($session, $user) !== $this->judgeSessionService->totalNumberOfRecitations($session, $user)) {
       return $this->redirect('piv_contest_judging_session.read_poems', [
         'session' => $session->id(),
         'user' => $user->id(),

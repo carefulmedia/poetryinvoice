@@ -1,0 +1,24 @@
+<div{{ attributes }}>
+  {% if content %}
+    <header>
+      <div class="poem-read__back">
+        {{ content.back }}
+      </div>
+      <div class="poem-read__evaluated">
+        {{ content.poems_read }}
+      </div>
+      <h2 class="poem-read__title">
+        {{ content.title }}
+      </h2>
+    </header>
+    <div class="poem-read__container">
+      <div class="recitation-read__body">
+        {{ content.description }}
+      </div>
+      <div class="poem-read__next">{{ content.read_next }}</div>
+    </div>
+    <footer>
+      <div class="poem-read__later">{{ content.read_later }}</div>
+    </footer>
+  {% endif %}
+</div>

@@ -49,11 +49,11 @@ piv_contest_judging_session.read_poems:
         type: entity:judging_session
 
 
-piv_contest_judging_session.mark_recitation_as_read:
-  path: '/user/{user}/{session}/read-recitation/{recitation}'
+piv_contest_judging_session.mark_poem_as_read:
+  path: '/user/{user}/{session}/read-poem/{poem}'
   defaults:
     _title: 'Judge now'
-    _controller: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::markRecitationAsRead'
+    _controller: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::markPoemAsRead'
   requirements:
     _custom_access: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::accessStartJudging'
     _csrf_token: 'TRUE'
@@ -63,8 +63,8 @@ piv_contest_judging_session.mark_recitation_as_read:
         type: entity:user
       session:
         type: entity:judging_session
-      recitation:
-        type: entity:recitation
+      poem:
+        type: entity:node
 
 piv_contest_judging_session.judge_recitations:
   path: '/user/{user}/judge/{session}'

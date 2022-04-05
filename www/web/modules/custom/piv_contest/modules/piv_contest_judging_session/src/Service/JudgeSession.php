@@ -6,8 +6,8 @@ use Drupal\Core\Database\Connection;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
+use Drupal\node\NodeInterface;
 use Drupal\piv_contest_judging_session\Entity\JudgingSession;
-use Drupal\piv_contest_recitation\Entity\Recitation;
 use Drupal\user\Entity\User;
 
 /**
@@ -36,6 +36,24 @@ class JudgeSession {
   public function __construct(Connection $db, EntityTypeManager $entityTypeManager) {
     $this->db = $db;
     $this->entityTypeManager = $entityTypeManager;
+  }
+
+  /**
+   * Return a list of poems to be read in the session.
+   */
+  public function poemList(JudgingSession $session, User $judge): array {
+    $list = [];
+
+    foreach ($session->field_competition_entries->referencedEntities() as $competition_entry) {
+      $recitations = $competition_entry->field_recitations->referencedEntities();
+      foreach ($recitations as $recitation) {
+        /** @var \Drupal\node\NodeInterface $poem */
+        $poem = $recitation->field_poem->entity;
+        $list[$poem->id()] = $poem;
+      }
+    }
+
+    return $list;
   }
 
   /**
@@ -97,6 +115,13 @@ class JudgeSession {
   }
 
   /**
+   * Total number of poems.
+   */
+  public function totalNumberOfPoems(JudgingSession $session, User $judge): int {
+    return count($this->poemList($session, $judge));
+  }
+
+  /**
    * Number of recitation evaluated by judge.
    */
   public function numberOfRecitationsEvaluatedByJudge(JudgingSession $session, User $judge): int {
@@ -118,24 +143,19 @@ class JudgeSession {
   }
 
   /**
-   * Next recitation to read.
+   * Get next poem to read.
    */
-  public function nextRecitationToRead(JudgingSession $session, User $judge) {
-    $list = $this->orderRecitationsList($session, $judge);
-    $read_poems = $this->getReadRecitationsByJudge($session, $judge);
-    $recitation = NULL;
-    foreach ($list as $item) {
-      $recitation = $item['recitation'];
-      if (!$recitation) {
-        continue;
-      }
-
-      if (!isset($read_poems[$recitation->id()])) {
-        return $recitation;
+  public function nextPoemToRead(JudgingSession $session, User $judge) {
+    $list = $this->poemList($session, $judge);
+    $read_poems = $this->getReadPoemsByJudge($session, $judge);
+    $poem = NULL;
+    foreach ($list as $poem) {
+      if (!isset($read_poems[$poem->id()])) {
+        return $poem;
       }
     }
 
-    return $recitation;
+    return $poem;
   }
 
   /**
@@ -146,10 +166,10 @@ class JudgeSession {
   }
 
   /**
-   * Get number of recitation read by a judge.
+   * Get number of poems read by a judge.
    */
-  public function numberOfRecitationReadByJudge(JudgingSession $session, User $judge): int {
-    $query = $this->db->query("SELECT count(*) FROM {judging_session_recitations_read} where session_id = :session and judge_id = :judge", [
+  public function numberOfPoemsReadByJudge(JudgingSession $session, User $judge): int {
+    $query = $this->db->query("SELECT count(*) FROM {judging_session_poems_read} where session_id = :session and judge_id = :judge", [
       ':session' => $session->id(),
       ':judge' => $judge->id(),
     ]);
@@ -165,8 +185,8 @@ class JudgeSession {
   /**
    * Get recitation that have been read by a judge.
    */
-  private function getReadRecitationsByJudge(JudgingSession $session, User $judge): array {
-    $query = $this->db->query("SELECT recitation FROM {judging_session_recitations_read} where session_id = :session and judge_id = :judge", [
+  private function getReadPoemsByJudge(JudgingSession $session, User $judge): array {
+    $query = $this->db->query("SELECT poem_id FROM {judging_session_poems_read} where session_id = :session and judge_id = :judge", [
       ':session' => $session->id(),
       ':judge' => $judge->id(),
     ]);
@@ -175,15 +195,15 @@ class JudgeSession {
   }
 
   /**
-   * Mark recitation as read.
+   * Mark poem as read.
    */
-  public function markRecitationAsRead(JudgingSession $session, User $judge, Recitation $recitation) {
+  public function markPoemAsRead(JudgingSession $session, User $judge, NodeInterface $poem) {
     $now = new DrupalDateTime();
-    $this->db->insert('judging_session_recitations_read')
+    $this->db->insert('judging_session_poems_read')
       ->fields([
         'session_id' => $session->id(),
         'judge_id' => $judge->id(),
-        'recitation' => $recitation->id(),
+        'poem_id' => $poem->id(),
         'created_at' => $now->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT),
       ])
       ->execute();
