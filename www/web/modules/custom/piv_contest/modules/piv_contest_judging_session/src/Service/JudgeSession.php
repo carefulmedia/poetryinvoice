@@ -5,6 +5,7 @@ namespace Drupal\piv_contest_judging_session\Service;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\Core\KeyValueStore\KeyValueFactory;
 use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\NodeInterface;
 use Drupal\piv_contest_judging_session\Entity\JudgingSession;
@@ -31,11 +32,19 @@ class JudgeSession {
   private $entityTypeManager;
 
   /**
+   * Key value to store the session user is voting on.
+   *
+   * @var \Drupal\Core\KeyValueStore\KeyValueStoreInterface
+   */
+  private $keyValueVote;
+
+  /**
    * Constructor.
    */
-  public function __construct(Connection $db, EntityTypeManager $entityTypeManager) {
+  public function __construct(Connection $db, EntityTypeManager $entityTypeManager, KeyValueFactory $key_value) {
     $this->db = $db;
     $this->entityTypeManager = $entityTypeManager;
+    $this->keyValueVote = $key_value->get('session_being_judged');
   }
 
   /**
@@ -163,6 +172,32 @@ class JudgeSession {
    */
   public function isSessionEvaluatedByJudge(JudgingSession $session, User $judge): bool {
     return $this->nextRecitation($session, $judge) === FALSE;
+  }
+
+  /**
+   * Check if user can judge the session. It should allow only 1 at the time.
+   */
+  public function canJudgeStartJudgingSession(JudgingSession $session, User $judge): bool {
+    $session_being_judged = $this->keyValueVote->get("current_session_being_judged_{$judge->id()}");
+    if (!$session_being_judged) {
+      return TRUE;
+    }
+
+    return $session_being_judged === $session->id();
+  }
+
+  /**
+   * Mark a session to being judged.
+   */
+  public function startJudgingSession(JudgingSession $session, User $judge) {
+    $this->keyValueVote->set("current_session_being_judged_{$judge->id()}", $session->id());
+  }
+
+  /**
+   * Remove session from being judged by a given judge.
+   */
+  public function removeSessionBeingJudged(User $judge) {
+    $this->keyValueVote->delete("current_session_being_judged_{$judge->id()}");
   }
 
   /**

@@ -131,6 +131,7 @@ class JudgingSessionController extends ControllerBase {
     /** @var \Drupal\Core\Entity\EntityInterface[] $sessions */
     $sessions = $this->getReadyJudgingSessions($user);
     $rows = [];
+
     foreach ($sessions as $session) {
       $url = Url::fromRoute('piv_contest_judging_session.read_poems', [
         'session' => $session->id(),
@@ -145,6 +146,15 @@ class JudgingSessionController extends ControllerBase {
         ]);
       }
       $link = Link::fromTextAndUrl($this->t('Judge now'), $url)->toRenderable();
+
+      if (!$this->judgeSessionService->canJudgeStartJudgingSession($session, $user)) {
+        $link['#attributes']['class'][] = 'disabled';
+      }
+      else {
+        if (!$this->judgeSessionService->isSessionEvaluatedByJudge($session, $user)) {
+          $this->judgeSessionService->startJudgingSession($session, $user);
+        }
+      }
 
       if ($this->judgeSessionService->isSessionEvaluatedByJudge($session, $user)) {
         $link['#attributes']['class'][] = 'disabled';
@@ -201,6 +211,8 @@ class JudgingSessionController extends ControllerBase {
    * Page for a judge to read the poems.
    */
   public function readPoems(User $user, JudgingSession $session): array {
+    $this->judgeSessionService->startJudgingSession($session, $user);
+
     $poem = $this->judgeSessionService->nextPoemToRead($session, $user);
     if (!$poem) {
       return [
@@ -304,8 +316,10 @@ class JudgingSessionController extends ControllerBase {
    * all first recitations (for example).
    */
   public function judgeSession(User $user, JudgingSession $session) {
+    $this->judgeSessionService->startJudgingSession($session, $user);
+
     // Not allowed to judge if user have not read the recitation yet.
-    if ($this->judgeSessionService->numberOfPoemsReadByJudge($session, $user) !== $this->judgeSessionService->totalNumberOfRecitations($session, $user)) {
+    if ($this->judgeSessionService->numberOfPoemsReadByJudge($session, $user) !== $this->judgeSessionService->totalNumberOfPoems($session, $user)) {
       return $this->redirect('piv_contest_judging_session.read_poems', [
         'session' => $session->id(),
         'user' => $user->id(),
@@ -318,6 +332,7 @@ class JudgingSessionController extends ControllerBase {
     ]);
     $recitation_data = $this->judgeSessionService->nextRecitation($session, $user);
     if (!$recitation_data) {
+      $this->judgeSessionService->removeSessionBeingJudged($user);
       $this->messenger()->addMessage('There are no more recitations to judge in this session.');
       return new RedirectResponse($start_judging_url->toString());
     }
@@ -362,6 +377,10 @@ class JudgingSessionController extends ControllerBase {
    * Check if user has access to judge a session.
    */
   public function accessJudgeSession(User $user, JudgingSession $session): AccessResult {
+    if (!$this->judgeSessionService->canJudgeStartJudgingSession($session, $user)) {
+      return AccessResult::forbidden();
+    }
+
     // @TODO change this.
     return AccessResult::allowed();
   }
