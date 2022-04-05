@@ -1,3 +1,6 @@
 services:
   piv_contest_judging_session.service.judge_session:
     class: Drupal\piv_contest_judging_session\Service\JudgeSession
+    arguments:
+      - '@database'
+      - '@entity_type.manager'
