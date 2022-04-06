@@ -91,7 +91,7 @@ class CompetitionListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\piv_contest_competition\CompetitionInterface */
+    /** @var \Drupal\piv_contest_competition\CompetitionInterface $entity */
     $row['id'] = $entity->id();
     $row['title'] = $entity->toLink();
     $row['status'] = $entity->isEnabled() ? $this->t('Enabled') : $this->t('Disabled');

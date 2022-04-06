@@ -74,8 +74,8 @@ class CompetitionEntry extends RevisionableContentEntityBase implements Competit
   /**
    * {@inheritdoc}
    *
-   * When a new competition entry entity is created, set the uid entity reference to
-   * the current user as the creator of the entity.
+   * When a new competition entry entity is created, set the uid entity
+   * reference to the current user as the creator of the entity.
    */
   public static function preCreate(EntityStorageInterface $storage_controller, array &$values) {
     parent::preCreate($storage_controller, $values);
@@ -254,6 +254,9 @@ class CompetitionEntry extends RevisionableContentEntityBase implements Competit
     return $fields;
   }
 
+  /**
+   * Get stream.
+   */
   public function getStream(): ?Paragraph {
     $competition = $this->field_competition->entity;
 

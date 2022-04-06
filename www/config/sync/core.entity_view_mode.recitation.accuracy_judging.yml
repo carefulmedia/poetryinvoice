@@ -1,0 +1,10 @@
+uuid: 3392e1bf-1d0c-4acd-9505-2baaf7998022
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_recitation
+id: recitation.accuracy_judging
+label: 'Accuracy judging'
+targetEntityType: recitation
+cache: true

@@ -7,9 +7,8 @@ use Drupal\Core\Field\Plugin\Field\FieldWidget\EntityReferenceAutocompleteWidget
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\user\EntityOwnerInterface;
 
-
 /**
- * Class LanguageAutocomplete
+ * Class Language Autocomplete.
  *
  * @FieldWidget(
  *   id = "piv_contest_competition_entry_langauge_autocomplete",
@@ -21,6 +20,10 @@ use Drupal\user\EntityOwnerInterface;
  * )
  */
 class LanguageAutocomplete extends EntityReferenceAutocompleteWidget {
+
+  /**
+   * {@inheritdoc}
+   */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $entity = $items->getEntity();
     $referenced_entities = $items->referencedEntities();

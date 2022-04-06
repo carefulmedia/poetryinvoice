@@ -7,6 +7,7 @@ dependencies:
     - field.field.recitation.default.field_poem
     - field.field.recitation.default.field_recitation_video
     - field.field.recitation.default.field_release_form
+    - field.field.recitation.default.field_score
     - field.field.recitation.default.field_student_name
     - piv_contest_recitation.recitation_type.default
   module:
@@ -44,6 +45,7 @@ content:
 hidden:
   created: true
   field_recitation_video: true
+  field_score: true
   langcode: true
   status: true
   title: true

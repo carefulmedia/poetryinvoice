@@ -6,7 +6,7 @@ use Drupal\Component\Utility\Html;
 use Drupal\node\Plugin\EntityReferenceSelection\NodeSelection;
 
 /**
- * Class LanguageEntityReferenceSelection
+ * Entity reference selection for languages.
  *
  * @EntityReferenceSelection(
  *   id = "language_entity_reference:node",
@@ -17,18 +17,19 @@ use Drupal\node\Plugin\EntityReferenceSelection\NodeSelection;
  * )
  */
 class LanguageEntityReferenceSelection extends NodeSelection {
+
+  /**
+   * {@inheritdoc}
+   */
   public function getReferenceableEntities($match = NULL, $match_operator = 'CONTAINS', $limit = 0) {
     $target_type = $this->getConfiguration()['target_type'];
-
     $query = $this->buildEntityQuery($match, $match_operator);
     if ($limit > 0) {
       $query->range(0, $limit);
     }
 
     $query->condition('langcode', $this->getConfiguration()['language']);
-
     $result = $query->execute();
-
     if (empty($result)) {
       return [];
     }
@@ -42,4 +43,5 @@ class LanguageEntityReferenceSelection extends NodeSelection {
 
     return $options;
   }
+
 }

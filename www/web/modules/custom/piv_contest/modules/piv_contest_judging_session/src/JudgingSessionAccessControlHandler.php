@@ -22,10 +22,16 @@ class JudgingSessionAccessControlHandler extends EntityAccessControlHandler {
         return AccessResult::allowedIfHasPermission($account, 'view judging session');
 
       case 'update':
-        return AccessResult::allowedIfHasPermissions($account, ['edit judging session', 'administer judging session'], 'OR');
+        return AccessResult::allowedIfHasPermissions($account, [
+          'edit judging session',
+          'administer judging session',
+        ], 'OR');
 
       case 'delete':
-        return AccessResult::allowedIfHasPermissions($account, ['delete judging session', 'administer judging session'], 'OR');
+        return AccessResult::allowedIfHasPermissions($account, [
+          'delete judging session',
+          'administer judging session',
+        ], 'OR');
 
       default:
         // No opinion.
@@ -38,7 +44,10 @@ class JudgingSessionAccessControlHandler extends EntityAccessControlHandler {
    * {@inheritdoc}
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
-    return AccessResult::allowedIfHasPermissions($account, ['create judging session', 'administer judging session'], 'OR');
+    return AccessResult::allowedIfHasPermissions($account, [
+      'create judging session',
+      'administer judging session',
+    ], 'OR');
   }
 
 }

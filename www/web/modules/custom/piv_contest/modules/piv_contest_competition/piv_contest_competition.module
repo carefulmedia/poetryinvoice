@@ -37,8 +37,8 @@ function piv_contest_competition_theme() {
  *
  * @param array $variables
  *   An associative array containing:
- *   - elements: An associative array containing the competition information and any
- *     fields attached to the entity.
+ *   - elements: An associative array containing the competition information and
+ *     any fields attached to the entity.
  *   - attributes: HTML attributes for the containing element.
  */
 function template_preprocess_competition(array &$variables) {
@@ -47,6 +47,9 @@ function template_preprocess_competition(array &$variables) {
   }
 }
 
+/**
+ * Implements template_preprocess_competition_enrollement_progress()
+ */
 function template_preprocess_competition_enrollement_progress(&$variables) {
   /** @var \Drupal\piv_contest\CompetitionEnrollment $enrollment */
   $enrollment = Drupal::service('piv_contest.competition_enrollment');

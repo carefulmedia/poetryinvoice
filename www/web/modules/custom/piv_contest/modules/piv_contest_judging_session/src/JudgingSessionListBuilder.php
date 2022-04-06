@@ -91,7 +91,7 @@ class JudgingSessionListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\piv_contest_judging_session\JudgingSessionInterface */
+    /** @var \Drupal\piv_contest_judging_session\JudgingSessionInterface $entity */
     $row['id'] = $entity->id();
     $row['title'] = $entity->toLink();
     $row['status'] = $entity->isEnabled() ? $this->t('Enabled') : $this->t('Disabled');

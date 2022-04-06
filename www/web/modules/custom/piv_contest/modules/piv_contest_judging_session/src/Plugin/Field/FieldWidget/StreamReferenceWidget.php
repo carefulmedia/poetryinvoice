@@ -2,7 +2,6 @@
 
 namespace Drupal\piv_contest_judging_session\Plugin\Field\FieldWidget;
 
-use Drupal\Core\Field\Annotation\FieldWidget;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\WidgetBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -21,6 +20,10 @@ use Drupal\Core\Form\FormStateInterface;
  * )
  */
 class StreamReferenceWidget extends WidgetBase {
+
+  /**
+   * {@inheritdoc}
+   */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $session = \Drupal::routeMatch()->getParameter('judging_session');
     $competition = \Drupal::routeMatch()->getParameter('competition');
@@ -54,9 +57,12 @@ class StreamReferenceWidget extends WidgetBase {
     return ['target_id' => $element];
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function massageFormValues(array $values, array $form, FormStateInterface $form_state) {
     foreach ($values as $key => $value) {
-      if($value['target_id']) {
+      if ($value['target_id']) {
         $entity = \Drupal::entityTypeManager()->getStorage('paragraph')->load($value['target_id']);
         // Add the current revision ID.
         $values[$key]['target_revision_id'] = $entity->getRevisionId();

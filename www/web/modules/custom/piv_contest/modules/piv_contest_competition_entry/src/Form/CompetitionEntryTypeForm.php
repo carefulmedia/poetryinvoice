@@ -42,7 +42,10 @@ class CompetitionEntryTypeForm extends BundleEntityFormBase {
       '#default_value' => $entity_type->id(),
       '#maxlength' => EntityTypeInterface::BUNDLE_MAX_LENGTH,
       '#machine_name' => [
-        'exists' => ['Drupal\piv_contest_competition_entry\Entity\CompetitionEntryType', 'load'],
+        'exists' => [
+          'Drupal\piv_contest_competition_entry\Entity\CompetitionEntryType',
+          'load',
+        ],
         'source' => ['label'],
       ],
       '#description' => $this->t('A unique machine-readable name for this competition entry type. It must only contain lowercase letters, numbers, and underscores.'),

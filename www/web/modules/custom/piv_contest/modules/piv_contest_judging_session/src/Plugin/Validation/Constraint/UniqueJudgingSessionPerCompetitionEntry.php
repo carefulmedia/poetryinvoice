@@ -14,5 +14,11 @@ use Symfony\Component\Validator\Constraint;
  */
 class UniqueJudgingSessionPerCompetitionEntry extends Constraint {
 
+  /**
+   * The error message.
+   *
+   * @var string
+   */
   public $message = 'This competition entry is already being used by <a href="@judging_session_link">@judging_session_text</a>';
+
 }

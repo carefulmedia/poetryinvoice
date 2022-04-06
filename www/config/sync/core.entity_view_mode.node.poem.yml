@@ -1,0 +1,10 @@
+uuid: 08564edd-40d6-4732-b424-3ddb36d44073
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.poem
+label: 'Poem Only'
+targetEntityType: node
+cache: true

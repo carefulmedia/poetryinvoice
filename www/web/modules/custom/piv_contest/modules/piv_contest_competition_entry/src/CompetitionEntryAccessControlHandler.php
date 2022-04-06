@@ -18,28 +18,37 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class CompetitionEntryAccessControlHandler extends EntityAccessControlHandler implements EntityHandlerInterface {
 
   /**
-   * @var CompetitionLockService $competitionLockService
+   * The competition lock service.
+   *
+   * @var \Drupal\piv_contest_competition_entry\Service\CompetitionLockService
    */
   private $competitionLockService;
 
+  /**
+   * The user storage.
+   *
+   * @var \Drupal\user\UserStorage
+   */
   private $userStorage;
 
-  public function __construct(
-    EntityTypeInterface $entity_type,
-    CompetitionLockService $competitionLockService,
-    EntityTypeManager $entityTypeManager
-  ) {
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(EntityTypeInterface $entity_type, CompetitionLockService $competitionLockService, EntityTypeManager $entityTypeManager) {
     parent::__construct($entity_type);
     $this->competitionLockService = $competitionLockService;
     $this->userStorage = $entityTypeManager->getStorage('user');
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
-     return new static(
-        $entity_type,
-        $container->get('piv_contest_competition_entry.competition_lock_service'),
-        $container->get('entity_type.manager')
-     );
+    return new static(
+      $entity_type,
+      $container->get('piv_contest_competition_entry.competition_lock_service'),
+      $container->get('entity_type.manager')
+    );
   }
 
   /**
@@ -63,15 +72,18 @@ class CompetitionEntryAccessControlHandler extends EntityAccessControlHandler im
           return $is_allowed_result;
         }
 
-        $permissions = ['edit competition entry', 'administer competition entry'];
+        $permissions = [
+          'edit competition entry',
+          'administer competition entry',
+        ];
 
         $user_school = $user->field_school->target_id;
         $entity_school = $entity->field_school->target_id;
         if ($user_school === $entity_school) {
           $permissions[] = 'edit competition entry for own school';
         }
-
         return AccessResult::allowedIfHasPermissions($account, $permissions, 'OR');
+
       case 'delete':
         $is_locked = $this->competitionLockService->isLocked($entity);
         if ($is_locked) {
@@ -82,7 +94,10 @@ class CompetitionEntryAccessControlHandler extends EntityAccessControlHandler im
           return $is_allowed_result;
         }
 
-        $permissions = ['delete competition entry', 'administer competition entry'];
+        $permissions = [
+          'delete competition entry',
+          'administer competition entry',
+        ];
         if ($account->id() === $entity->getOwnerId()) {
           $permissions[] = 'delete own competition entry';
         }
@@ -92,8 +107,8 @@ class CompetitionEntryAccessControlHandler extends EntityAccessControlHandler im
         if ($user_school === $entity_school) {
           $permissions[] = 'delete competition entry for own school';
         }
-
         return AccessResult::allowedIfHasPermissions($account, $permissions, 'OR');
+
       default:
         // No opinion.
         return AccessResult::neutral();
@@ -105,7 +120,10 @@ class CompetitionEntryAccessControlHandler extends EntityAccessControlHandler im
    * {@inheritdoc}
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
-    return AccessResult::allowedIfHasPermissions($account, ['create competition entry', 'administer competition entry'], 'OR');
+    return AccessResult::allowedIfHasPermissions($account, [
+      'create competition entry',
+      'administer competition entry',
+    ], 'OR');
   }
 
 }

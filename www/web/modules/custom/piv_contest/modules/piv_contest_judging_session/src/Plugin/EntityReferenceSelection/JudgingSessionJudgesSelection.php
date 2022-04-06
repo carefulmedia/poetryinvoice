@@ -2,13 +2,11 @@
 
 namespace Drupal\piv_contest_judging_session\Plugin\EntityReferenceSelection;
 
-use Drupal\Component\Utility\Html;
 use Drupal\Core\Database\Query\SelectInterface;
-use Drupal\node\Plugin\EntityReferenceSelection\NodeSelection;
 use Drupal\user\Plugin\EntityReferenceSelection\UserSelection;
 
 /**
- * Class JudgingSessionJudgesSelection
+ * Entity reference selection to select Judges.
  *
  * @EntityReferenceSelection(
  *   id = "judges_selection:user",
@@ -19,6 +17,10 @@ use Drupal\user\Plugin\EntityReferenceSelection\UserSelection;
  * )
  */
 class JudgingSessionJudgesSelection extends UserSelection {
+
+  /**
+   * {@inheritdoc}
+   */
   public function entityQueryAlter(SelectInterface $query) {
     parent::entityQueryAlter($query);
 
@@ -32,7 +34,7 @@ class JudgingSessionJudgesSelection extends UserSelection {
         $ids[] = $judge_field->target_id;
       }
     }
-
     $query->condition('base_table.uid', $ids, 'IN');
   }
+
 }

@@ -6,6 +6,7 @@ dependencies:
     - field.field.recitation.default.field_poem
     - field.field.recitation.default.field_recitation_video
     - field.field.recitation.default.field_release_form
+    - field.field.recitation.default.field_score
     - field.field.recitation.default.field_student_name
     - piv_contest_recitation.recitation_type.default
   module:
@@ -41,6 +42,13 @@ content:
     region: content
     settings:
       progress_indicator: throbber
+    third_party_settings: {  }
+  field_score:
+    type: number
+    weight: 28
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true

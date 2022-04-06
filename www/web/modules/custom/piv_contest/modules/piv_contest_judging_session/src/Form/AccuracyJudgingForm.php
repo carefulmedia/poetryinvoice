@@ -4,12 +4,36 @@ namespace Drupal\piv_contest_judging_session\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Provides a PIV Contest Judging Session form.
  */
 class AccuracyJudgingForm extends FormBase {
+
+  /**
+   * The entity type manager service.
+   *
+   * @var Drupal\Core\Entity\EntityTypeManager
+   */
+  protected $entityTypeManager;
+
+  /**
+   * Class constructor.
+   */
+  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+    $this->entityTypeManager = $entity_type_manager;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('entity_type.manager')
+    );
+  }
 
   /**
    * {@inheritdoc}
@@ -23,7 +47,7 @@ class AccuracyJudgingForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state, array $recitations = []) {
     $form['#tree'] = TRUE;
-    $view_builder = \Drupal::entityTypeManager()->getViewBuilder('recitation');
+    $view_builder = $this->entityTypeManager->getViewBuilder('recitation');
     foreach ($recitations as $recitation) {
       $form['recitations'][$recitation->id()] = [
         '#type' => 'container',
@@ -66,7 +90,7 @@ class AccuracyJudgingForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $scores = $form_state->getValue('recitations');
-    foreach ($scores as $recitation_id => $data) {
+    foreach ($scores as $data) {
       $score = $data['score'];
       $recitation = $data['recitation'];
       $recitation->field_score = $score;

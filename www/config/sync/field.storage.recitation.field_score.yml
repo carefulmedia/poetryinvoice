@@ -1,0 +1,20 @@
+uuid: 223a1997-7762-4655-a0ba-b146adf3d50f
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_recitation
+id: recitation.field_score
+field_name: field_score
+entity_type: recitation
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

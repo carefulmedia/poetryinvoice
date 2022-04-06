@@ -19,6 +19,7 @@ use Drupal\inline_entity_form\Plugin\Field\FieldWidget\InlineEntityFormComplex;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\piv_contest_recitation\Entity\Recitation;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * Plugin implementation of the 'limited_recitation_entry_widget' widget.
@@ -36,11 +37,25 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
  */
 class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
 
+  use StringTranslationTrait;
+
+  /**
+   * The route match service.
+   *
+   * @var \Drupal\Core\Routing\RouteMatchInterface
+   */
   protected $routeMatch;
 
+  /**
+   * The translation manager service.
+   *
+   * @var \Drupal\Core\StringTranslation\TranslationManager
+   */
   protected $translationManager;
 
-
+  /**
+   * {@inheritdoc}
+   */
   public function __construct(
     $plugin_id,
     $plugin_definition,
@@ -92,20 +107,16 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     );
   }
 
-
   /**
-   * @param \Drupal\Core\Field\FieldItemListInterface $items
-   * @param int $delta
-   * @param array $element
-   * @param array $form
-   * @param \Drupal\Core\Form\FormStateInterface $form_state
-   *
-   * @return array
+   * {@inheritdoc}
    */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $response = parent::formElement($items, $delta, $element, $form, $form_state);
-
-    $entities = $form_state->get(['inline_entity_form', $this->getIefId(), 'entities']);
+    $entities = $form_state->get([
+      'inline_entity_form',
+      $this->getIefId(),
+      'entities',
+    ]);
 
     $max_number_recitations = $this->getMaxNumberOfRecitations();
     if (count($entities) >= $max_number_recitations) {
@@ -122,16 +133,23 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
 
     $title = $this->t('@recitation_text required.', ['@recitation_text' => $recitationsText]);
     $response['#field_title'] = $title;
-    $response['#description'] = t('You can add a maximum of @max', ['@max' => $recitationsText]);
+    $response['#description'] = $this->t('You can add a maximum of @max', ['@max' => $recitationsText]);
 
     return $response;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   protected function prepareFormState(FormStateInterface $form_state, FieldItemListInterface $items, $translating = FALSE) {
     parent::prepareFormState($form_state, $items, $translating);
 
     /** @var array $entities */
-    $entities = $form_state->get(['inline_entity_form', $this->getIefId(), 'entities']);
+    $entities = $form_state->get([
+      'inline_entity_form',
+      $this->getIefId(),
+      'entities',
+    ]);
 
     $widget_state = $form_state->get(['inline_entity_form', $this->iefId]);
 
@@ -159,13 +177,13 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
       // Add missing items per language.
       for ($i = $numberItems; $i < $max_number_recitations; $i++) {
         $widget_state['entities'][] = [
-          'entity' =>  Recitation::create([
+          'entity' => Recitation::create([
             'bundle' => 'default',
             'langcode' => $language,
           ]),
-          'weight' => $startIndex+$i,
+          'weight' => $startIndex + $i,
           'form' => NULL,
-          'needs_save' => true,
+          'needs_save' => TRUE,
         ];
       }
       $startIndex++;
@@ -174,6 +192,9 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     $form_state->set(['inline_entity_form', $this->iefId], $widget_state);
   }
 
+  /**
+   * Get the maximum number of recitations.
+   */
   private function getMaxNumberOfRecitations(): int {
     $stream = $this->getStreamParagraph();
     if (!$stream) {
@@ -186,6 +207,9 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     return $number_languages * (int) $stream->field_min_recitations->value;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function extractFormValues(FieldItemListInterface $items, array $form, FormStateInterface $form_state) {
     if ($this->isDefaultValueWidget($form_state)) {
       $items->filterEmptyItems();
@@ -213,12 +237,12 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
       }
       elseif ($widget_state['form'] == 'ief_add_existing') {
         $parent = NestedArray::getValue($form, [$field_name, 'widget', 'form']);
-        $element = isset($parent['entity_id']) ? $parent['entity_id'] : [];
+        $element = $parent['entity_id'] ?? [];
         if (!empty($element['#value'])) {
           $options = [
-              'target_type' => $element['#target_type'],
-              'handler' => $element['#selection_handler'],
-            ] + $element['#selection_settings'];
+            'target_type' => $element['#target_type'],
+            'handler' => $element['#selection_handler'],
+          ] + $element['#selection_settings'];
           /** @var \Drupal\Core\Entity\EntityReferenceSelection\SelectionInterface $handler */
           $handler = $this->selectionManager->getInstance($options);
           $input_values = $element['#tags'] ? Tags::explode($element['#value']) : [$element['#value']];
@@ -226,8 +250,8 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
           foreach ($input_values as $input) {
             $match = EntityAutocomplete::extractEntityIdFromAutocompleteInput($input);
             if ($match === NULL) {
-              // Try to get a match from the input string when the user didn't use
-              // the autocomplete but filled in a value manually.
+              // Try to get a match from the input string when the user didn't
+              // use the autocomplete but filled in a value manually.
               $entities_by_bundle = $handler->getReferenceableEntities($input, '=');
               $entities = array_reduce($entities_by_bundle, function ($flattened, $bundle_entities) {
                 return $flattened + $bundle_entities;
@@ -278,6 +302,9 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     $items->filterEmptyItems();
   }
 
+  /**
+   * Get the stream paragraph.
+   */
   private function getStreamParagraph(): ?Paragraph {
     $competition = $this->routeMatch->getParameter('competition');
     $competition_entry = $this->routeMatch->getParameter('competition_entry');
@@ -290,7 +317,8 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     // This is on add.
     if ($stream) {
       $stream_id = $stream->id();
-    } else {
+    }
+    else {
       // This is on edit.
       $stream_id = $competition_entry->field_stream->target_id;
     }
@@ -315,6 +343,9 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     return NULL;
   }
 
+  /**
+   * Get recitations per language.
+   */
   private function getNumberOfRecitationsPerLanguage(): int {
     $stream = $this->getStreamParagraph();
     if (!$stream) {
@@ -324,11 +355,15 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     return $stream->field_min_recitations->value;
   }
 
+  /**
+   * Validade the max number of recitations.
+   */
   public function validateMaxNumber(array $elements, FormStateInterface $form_state, array $form) {
     $entities = $form_state->getValue(['field_recitations', 'entities']);
     $max_number_recitations = $this->getMaxNumberOfRecitations();
     if (count($entities) > $max_number_recitations) {
-      $form_state->setError($elements['entities'], t('the maximum number of recitations is @max_number', ['@max_number' => $max_number_recitations]));
+      $form_state->setError($elements['entities'], $this->t('the maximum number of recitations is @max_number', ['@max_number' => $max_number_recitations]));
     }
   }
+
 }

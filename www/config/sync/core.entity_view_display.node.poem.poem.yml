@@ -1,8 +1,9 @@
-uuid: ed7bf94a-cce9-46f5-ab6b-b36ff9f9fe0c
+uuid: 5035ee80-0150-475a-a61b-981e7202be47
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.poem
     - field.field.node.poem.body
     - field.field.node.poem.comment_node_poem
     - field.field.node.poem.field_biligraphical_info
@@ -36,10 +37,10 @@ dependencies:
   module:
     - text
     - user
-id: node.poem.default
+id: node.poem.poem
 targetEntityType: node
 bundle: poem
-mode: default
+mode: poem
 content:
   body:
     type: text_default

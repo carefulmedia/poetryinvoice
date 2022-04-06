@@ -69,15 +69,24 @@ class CompetitionsListController extends ControllerBase {
     );
   }
 
-  /**
-   * {@inheritdoc}
-   */
-  public function access(AccountInterface $account) {
-    $is_allowed = TRUE;
-    if (!in_array('teacher', $account->getRoles())) {
-      $is_allowed = FALSE;
+  public function access() {
+    $permissions = ['view all competitions'];
+
+    $user_storage = $this->entityTypeManager->getStorage('user');
+    $user = \Drupal::routeMatch()->getParameter('user');
+
+    if ($user) {
+      $logger_user = $user_storage->load($this->currentUser->id());
+
+      $logger_user_school = $logger_user->field_school->target_id;
+      $user_school = $user->field_school->target_id;
+
+      if ($user_school === $logger_user_school) {
+        $permissions[] = 'view own school competitions';
+      }
     }
-    return AccessResult::allowedIf($is_allowed);
+
+    return AccessResult::allowedIfHasPermissions($this->currentUser, $permissions, 'OR');
   }
 
   /**

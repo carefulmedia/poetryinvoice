@@ -5,11 +5,9 @@ namespace Drupal\piv_contest_judging_session\Plugin\Field\FieldWidget;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Field\Plugin\Field\FieldWidget\EntityReferenceAutocompleteWidget;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\user\EntityOwnerInterface;
-
 
 /**
- * Class JudgesAutocomplete
+ * Judges auto complete.
  *
  * @FieldWidget(
  *   id = "competition_judges_autocomplete",
@@ -21,8 +19,11 @@ use Drupal\user\EntityOwnerInterface;
  * )
  */
 class JudgesAutocomplete extends EntityReferenceAutocompleteWidget {
+
+  /**
+   * {@inheritdoc}
+   */
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
-    $entity = $items->getEntity();
     $referenced_entities = $items->referencedEntities();
 
     $competition = \Drupal::routeMatch()->getParameter('competition');

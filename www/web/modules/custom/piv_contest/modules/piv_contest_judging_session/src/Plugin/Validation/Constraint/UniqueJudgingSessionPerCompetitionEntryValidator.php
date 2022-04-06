@@ -4,7 +4,6 @@ namespace Drupal\piv_contest_judging_session\Plugin\Validation\Constraint;
 
 use Drupal\Core\DependencyInjection\ContainerInjectionInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
@@ -14,8 +13,16 @@ use Symfony\Component\Validator\ConstraintValidator;
  */
 class UniqueJudgingSessionPerCompetitionEntryValidator extends ConstraintValidator implements ContainerInjectionInterface {
 
+  /**
+   * The Judging Session Storage.
+   *
+   * @var \Drupal\Core\Entity\Sql\SqlContentEntityStorage
+   */
   private $judgingSessionStorage;
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct(EntityTypeManagerInterface $entity_type_manager) {
     $this->judgingSessionStorage = $entity_type_manager->getStorage('judging_session');
   }
@@ -50,7 +57,8 @@ class UniqueJudgingSessionPerCompetitionEntryValidator extends ConstraintValidat
       if (isset($entries_in_use[$entry])) {
         $session = $entries_in_use[$entry];
 
-        // this means it's added to the current session, we do not fail on that case.
+        // This means it's added to the current session, we do not fail on that
+        // case.
         if ($session->id() === $entity->id()) {
           continue;
         }
@@ -66,10 +74,9 @@ class UniqueJudgingSessionPerCompetitionEntryValidator extends ConstraintValidat
   }
 
   /**
-   * @param array $ids
-   *
-   * @return CompetitionEntry[]
+   * Get entries already used.
    */
+  // @phpcs:ignore
   public function getEntriesAlreadyInUseFromIDs(array $ids): array {
     if (empty($ids)) {
       return [];

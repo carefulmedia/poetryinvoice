@@ -29,4 +29,3 @@ piv_contest_judging_session.judge_for_accuracy:
   base_route: entity.user.canonical
   title: 'Judge for accuracy'
   weight: 99
-

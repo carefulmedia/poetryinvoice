@@ -1,18 +1,19 @@
-uuid: d88c52c9-03e4-42b4-b37d-20f79f1682f6
+uuid: 5e6a1e59-5839-460a-84e4-464c9895b26b
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.recitation.accuracy_judging
     - field.field.recitation.default.field_poem
     - field.field.recitation.default.field_recitation_video
     - field.field.recitation.default.field_release_form
     - field.field.recitation.default.field_score
     - field.field.recitation.default.field_student_name
     - piv_contest_recitation.recitation_type.default
-id: recitation.default.default
+id: recitation.default.accuracy_judging
 targetEntityType: recitation
 bundle: default
-mode: default
+mode: accuracy_judging
 content:
   field_poem:
     type: entity_reference_entity_view
@@ -21,7 +22,7 @@ content:
       view_mode: poem
       link: false
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
   field_recitation_video:
     type: entity_reference_entity_view
@@ -30,15 +31,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 2
-    region: content
-  title:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
 hidden:
   created: true
@@ -47,4 +40,5 @@ hidden:
   field_student_name: true
   langcode: true
   status: true
+  title: true
   uid: true

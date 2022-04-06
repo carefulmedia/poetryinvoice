@@ -4,28 +4,86 @@ namespace Drupal\piv_contest_competition;
 
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Entity\EntityAccessControlHandler;
+use Drupal\Core\Entity\EntityHandlerInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\Core\Entity\EntityTypeManager;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Defines the access control handler for the competition entity type.
  */
-class CompetitionAccessControlHandler extends EntityAccessControlHandler {
+class CompetitionAccessControlHandler extends EntityAccessControlHandler implements EntityHandlerInterface {
+
+  /**
+   * The User storage.
+   *
+   * @var \Drupal\user\UserStorage
+   */
+  private $userStorage;
+
+  /**
+   * The route match service.
+   *
+   * @var Drupal\Core\Routing\RouteMatchInterface
+   */
+  private $routeMatch;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(EntityTypeInterface $entity_type, EntityTypeManager $entityTypeManager, RouteMatchInterface $routeMatch) {
+    parent::__construct($entity_type);
+    $this->userStorage = $entityTypeManager->getStorage('user');
+    $this->routeMatch = $routeMatch;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
+    return new static(
+      $entity_type,
+      $container->get('entity_type.manager'),
+      $container->get('current_route_match')
+    );
+  }
 
   /**
    * {@inheritdoc}
    */
   protected function checkAccess(EntityInterface $entity, $operation, AccountInterface $account) {
-
     switch ($operation) {
       case 'view':
-        return AccessResult::allowedIfHasPermission($account, 'view competition');
+        $permissions = ['view all competitions'];
+
+        $user = $this->routeMatch->getParameter('user');
+        if ($user) {
+          $logger_user = $this->userStorage->load($account->id());
+
+          $logger_user_school = $logger_user->field_school->target_id;
+          $user_school = $user->field_school->target_id;
+
+          if ($user_school === $logger_user_school) {
+            $permissions[] = 'view own school competitions';
+          }
+        }
+
+        return AccessResult::allowedIfHasPermissions($account, $permissions, 'OR');
 
       case 'update':
-        return AccessResult::allowedIfHasPermissions($account, ['edit competition', 'administer competition'], 'OR');
+        return AccessResult::allowedIfHasPermissions($account, [
+          'edit competition',
+          'administer competition',
+        ], 'OR');
 
       case 'delete':
-        return AccessResult::allowedIfHasPermissions($account, ['delete competition', 'administer competition'], 'OR');
+        return AccessResult::allowedIfHasPermissions($account, [
+          'delete competition',
+          'administer competition',
+        ], 'OR');
 
       default:
         // No opinion.
@@ -38,7 +96,10 @@ class CompetitionAccessControlHandler extends EntityAccessControlHandler {
    * {@inheritdoc}
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
-    return AccessResult::allowedIfHasPermissions($account, ['create competition', 'administer competition'], 'OR');
+    return AccessResult::allowedIfHasPermissions($account, [
+      'create competition',
+      'administer competition',
+    ], 'OR');
   }
 
 }
