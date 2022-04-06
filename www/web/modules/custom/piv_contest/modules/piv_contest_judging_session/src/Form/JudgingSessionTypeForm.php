@@ -42,7 +42,10 @@ class JudgingSessionTypeForm extends BundleEntityFormBase {
       '#default_value' => $entity_type->id(),
       '#maxlength' => EntityTypeInterface::BUNDLE_MAX_LENGTH,
       '#machine_name' => [
-        'exists' => ['Drupal\piv_contest_judging_session\Entity\JudgingSessionType', 'load'],
+        'exists' => [
+          'Drupal\piv_contest_judging_session\Entity\JudgingSessionType',
+          'load',
+        ],
         'source' => ['label'],
       ],
       '#description' => $this->t('A unique machine-readable name for this judging session type. It must only contain lowercase letters, numbers, and underscores.'),

@@ -103,14 +103,15 @@ class CompetitionService {
       foreach ($stream_types as $stream_type) {
         $required_recitations[$stream_type] = $stream->field_min_recitations->value;
       }
-      break; // @todo for now we only consider the first stream.
+      // @todo for now we only consider the first stream.
+      break;
     }
 
-    //ksm($required_recitations);
+    // ksm($required_recitations);
     // ksm($competition_entry->field_stream);
     // ksm($competition_entry->field_recitations->count());
     foreach ($competition_entry->field_recitations->referencedEntities() as $recitation) {
-      //ksm($recitation);
+      // ksm($recitation);
     }
 
     return;

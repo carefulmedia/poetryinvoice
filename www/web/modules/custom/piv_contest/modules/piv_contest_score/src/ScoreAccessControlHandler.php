@@ -22,10 +22,16 @@ class ScoreAccessControlHandler extends EntityAccessControlHandler {
         return AccessResult::allowedIfHasPermission($account, 'view score');
 
       case 'update':
-        return AccessResult::allowedIfHasPermissions($account, ['edit score', 'administer score'], 'OR');
+        return AccessResult::allowedIfHasPermissions($account, [
+          'edit score',
+          'administer score',
+        ], 'OR');
 
       case 'delete':
-        return AccessResult::allowedIfHasPermissions($account, ['delete score', 'administer score'], 'OR');
+        return AccessResult::allowedIfHasPermissions($account, [
+          'delete score',
+          'administer score',
+        ], 'OR');
 
       default:
         // No opinion.
@@ -38,7 +44,10 @@ class ScoreAccessControlHandler extends EntityAccessControlHandler {
    * {@inheritdoc}
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
-    return AccessResult::allowedIfHasPermissions($account, ['create score', 'administer score'], 'OR');
+    return AccessResult::allowedIfHasPermissions($account, [
+      'create score',
+      'administer score',
+    ], 'OR');
   }
 
 }

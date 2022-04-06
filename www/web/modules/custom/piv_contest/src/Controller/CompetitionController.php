@@ -8,7 +8,6 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\user\UserInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\Core\Language\LanguageManager;
-use Drupal\Core\Access\AccessResult;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**

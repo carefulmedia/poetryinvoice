@@ -24,12 +24,6 @@ function piv_contest_recitation_theme() {
  * Prepares variables for recitation templates.
  *
  * Default template: recitation.html.twig.
- *
- * @param array $variables
- *   An associative array containing:
- *   - elements: An associative array containing the recitation information and any
- *     fields attached to the entity.
- *   - attributes: HTML attributes for the containing element.
  */
 function template_preprocess_recitation(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
@@ -37,6 +31,9 @@ function template_preprocess_recitation(array &$variables) {
   }
 }
 
+/**
+ * Implements hook_inline_entity_form_table_fields_alter().
+ */
 function piv_contest_recitation_inline_entity_form_table_fields_alter(array &$fields, array $context) {
   if ($context['entity_type'] === 'recitation') {
     $fields['label'] = [
@@ -52,10 +49,16 @@ function piv_contest_recitation_inline_entity_form_table_fields_alter(array &$fi
   }
 }
 
+/**
+ * Custom callback.
+ */
 function piv_contest_recitation_inline_entity_form_language_callback(Recitation $entity) {
   return $entity->language()->getName();
 }
 
+/**
+ * Custom callback.
+ */
 function piv_contest_recitation_inline_entity_form_title_callback(Recitation $entity) {
   /** @var \Drupal\node\Entity\Node $poem */
   $poem = $entity->field_poem->entity;

@@ -3,47 +3,82 @@
 namespace Drupal\piv_contest_judging_session\Form;
 
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Entity\ContentEntityForm;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
-use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\piv_contest_competition\Entity\Competition;
-use Drupal\piv_contest_judging_session\Entity\JudgingSession;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * Form controller for the judging session entity edit forms.
  */
 class ManageSessionsForm extends FormBase {
 
+  /**
+   * The competition entry storage.
+   *
+   * @var \Drupal\Core\Entity\Sql\SqlContentEntityStorage
+   */
   protected $competitionEntryStorage;
 
+
+  /**
+   * The Judging Session Storage.
+   *
+   * @var \Drupal\Core\Entity\Sql\SqlContentEntityStorage
+   */
   protected $judgingSessionsStorage;
 
+  /**
+   * The database service.
+   *
+   * @var Drupal\Core\Database\Connection
+   */
   protected $database;
 
-  public function __construct(EntityTypeManagerInterface $entityTypeManager, Connection $db) {
+  /**
+   * The request stack.
+   *
+   * @var Symfony\Component\HttpFoundation\RequestStack
+   */
+  protected $requestStack;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(EntityTypeManagerInterface $entityTypeManager, Connection $db, RequestStack $request_stack) {
     $this->competitionEntryStorage = $entityTypeManager->getStorage('competition_entry');
     $this->judgingSessionsStorage = $entityTypeManager->getStorage('judging_session');
     $this->database = $db;
+    $this->requestStack = $request_stack;
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity_type.manager'),
-      $container->get('database')
+      $container->get('database'),
+      $container->get('request_stack')
     );
   }
 
+  /**
+   * {@inheritdoc}
+   */
   public function getFormId() {
     return 'piv_contest_judging_session_manage_sessions';
   }
 
-  public function buildForm(array $form, FormStateInterface $form_state,  Competition $competition = NULL) {
+  /**
+   * Build the form.
+   */
+  public function buildForm(array $form, FormStateInterface $form_state, Competition $competition = NULL) {
     $form_state->set('competition', $competition);
 
     $streams_options = [];
@@ -69,7 +104,7 @@ class ManageSessionsForm extends FormBase {
     ]);
 
     $form['create_session'] = Link::fromTextAndUrl(
-      t('Create new session for selected stream'),
+      $this->t('Create new session for selected stream'),
       $add_session,
     )->toRenderable();
 
@@ -79,7 +114,7 @@ class ManageSessionsForm extends FormBase {
     $form['session_stream'] = [
       '#type' => 'select',
       '#options' => $streams_options,
-      '#title' => t('Select the session stream'),
+      '#title' => $this->t('Select the session stream'),
       '#ajax' => [
         'callback' => [$this, 'onSessionStreamChange'],
         'wrapper' => 'edit-output',
@@ -89,7 +124,7 @@ class ManageSessionsForm extends FormBase {
 
     $form['fieldset'] = [
       '#type' => 'fieldset',
-      '#title' => t('Session management'),
+      '#title' => $this->t('Session management'),
     ];
 
     $this->loadFormForSessionStream($form, $form_state);
@@ -97,10 +132,16 @@ class ManageSessionsForm extends FormBase {
     return $form;
   }
 
+  /**
+   * Ajax callback.
+   */
   public function onSessionStreamChange(array &$form, FormStateInterface $form_state) {
     return $form;
   }
 
+  /**
+   * Load the form and populate on $form.
+   */
   public function loadFormForSessionStream(&$form, FormStateInterface $form_state) {
     $competition = $form_state->get('competition');
 
@@ -127,14 +168,14 @@ class ManageSessionsForm extends FormBase {
       $current_session_id = NULL;
     }
 
-    $session_id = \Drupal::request()->query->get('session');
+    $session_id = $this->requestStack->getCurrentRequest()->query->get('session');
     if (!$current_session_id && $session_id) {
       $current_session_id = $session_id;
     }
 
     $form['fieldset']['session'] = [
       '#type' => 'select',
-      '#title' => t('Select Session'),
+      '#title' => $this->t('Select Session'),
       '#options' => $sessions_options,
       '#default_value' => $current_session_id,
       '#ajax' => [
@@ -145,13 +186,12 @@ class ManageSessionsForm extends FormBase {
       '#required' => TRUE,
     ];
 
-
     if ($current_session_id) {
-      /** @var JudgingSession $current_session */
+      /** @var \Drupal\piv_contest_judging_session\Entity\JudgingSession $current_session */
       $current_session = $this->judgingSessionsStorage->load($current_session_id);
 
       $form['fieldset']['session']['#description'] = $current_session->toLink(
-        t('Edit this Session'),
+        $this->t('Edit this Session'),
         'edit-form',
         [
           'query' => [
@@ -163,7 +203,7 @@ class ManageSessionsForm extends FormBase {
               [
                 'query' => [
                   'session' => $current_session_id,
-                ]
+                ],
               ]
             )->toString(),
           ],
@@ -176,13 +216,13 @@ class ManageSessionsForm extends FormBase {
 
       $form['fieldset']['add_entries'] = [
         '#type' => 'fieldset',
-        '#title' => t('Add entries'),
+        '#title' => $this->t('Add entries'),
       ];
 
       $form['fieldset']['add_entries']['items_to_add'] = [
         '#type' => 'tableselect',
         '#header' => ['Entry name', 'Province', 'City', 'Student'],
-        '#title' => t('Add entries'),
+        '#title' => $this->t('Add entries'),
         '#options' => $items_to_add,
       ];
 
@@ -190,25 +230,28 @@ class ManageSessionsForm extends FormBase {
 
       $form['fieldset']['remove_entries'] = [
         '#type' => 'fieldset',
-        '#title' => t('Remove Entries'),
+        '#title' => $this->t('Remove Entries'),
       ];
 
       $form['fieldset']['remove_entries']['items_to_remove'] = [
         '#type' => 'tableselect',
         '#header' => ['Entry name', 'Province', 'City', 'Student'],
-        '#title' => t('Remove entries'),
+        '#title' => $this->t('Remove entries'),
         '#options' => $entries_to_delete,
       ];
     }
 
     $form['submit'] = [
       '#type' => 'submit',
-      '#value' => t('Save'),
+      '#value' => $this->t('Save'),
     ];
 
     return $form['fieldset'];
   }
 
+  /**
+   * Get all available entries for a stream.
+   */
   protected function getAvailableEntriesForStream($stream_id): array {
     $query = $this->database->query('
         SELECT id from {competition_entry} as ce
@@ -233,13 +276,17 @@ class ManageSessionsForm extends FormBase {
     );
   }
 
+  /**
+   * Get entries from list.
+   */
   protected function getEntriesFromList($items): array {
     $entries = [];
 
     foreach ($items as $item) {
       if ($item instanceof EntityInterface) {
         $entity = $item;
-      } else {
+      }
+      else {
         $entity = $item->entity;
       }
 
@@ -273,10 +320,13 @@ class ManageSessionsForm extends FormBase {
     return $entries;
   }
 
+  /**
+   * Form submit.
+   */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $form_state->setRebuild();
 
-    $this->messenger()->addMessage(t('You changes have been saved'));
+    $this->messenger()->addMessage($this->t('You changes have been saved'));
 
     $session_id = $form_state->getValue('session');
     $items_to_remove = $form_state->getValue('items_to_remove');
@@ -285,7 +335,7 @@ class ManageSessionsForm extends FormBase {
     $session = $this->judgingSessionsStorage->load($session_id);
 
     $new_items = [];
-    foreach ($session->field_competition_entries as $key => $field_entry) {
+    foreach ($session->field_competition_entries as $field_entry) {
       // Exclude items to remove.
       if (!in_array($field_entry->target_id, $items_to_remove)) {
         $new_items[] = $field_entry->target_id;
@@ -312,6 +362,9 @@ class ManageSessionsForm extends FormBase {
     return $form;
   }
 
+  /**
+   * Form validation.
+   */
   public function validateForm(array &$form, FormStateInterface $form_state) {
     return $form;
   }

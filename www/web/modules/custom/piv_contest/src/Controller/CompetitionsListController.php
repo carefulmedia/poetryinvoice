@@ -69,13 +69,13 @@ class CompetitionsListController extends ControllerBase {
     );
   }
 
-  public function access() {
+  /**
+   * {@inheritdoc}
+   */
+  public function access(UserInterface $user) {
     $permissions = ['view all competitions'];
-
-    $user_storage = $this->entityTypeManager->getStorage('user');
-    $user = \Drupal::routeMatch()->getParameter('user');
-
     if ($user) {
+      $user_storage = $this->entityTypeManager->getStorage('user');
       $logger_user = $user_storage->load($this->currentUser->id());
 
       $logger_user_school = $logger_user->field_school->target_id;

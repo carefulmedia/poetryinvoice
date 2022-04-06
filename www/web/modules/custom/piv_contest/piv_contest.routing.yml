@@ -13,7 +13,7 @@ system.admin_contest:
     link_id: 'system.admin_contest'
     _title: 'Contest'
   requirements:
-    _permission: 'access administration pages'
+    _permission: 'administer site configuration'
 
 system.admin_contest_config:
   path: '/admin/contest/config'
@@ -22,7 +22,7 @@ system.admin_contest_config:
     link_id: 'system.admin_contest_config'
     _title: 'Configure'
   requirements:
-    _permission: 'access administration pages'
+    _permission: 'administer site configuration'
 
 piv_content.competitions_list:
   path: '/user/{user}/competitions'

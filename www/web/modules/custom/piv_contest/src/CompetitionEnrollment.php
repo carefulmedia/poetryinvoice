@@ -11,6 +11,7 @@ use Drupal\piv_contest_competition\Entity\Competition;
 use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
 use Drupal\piv_contest_competition_entry\Service\CompetitionLockService;
 use Drupal\user\UserInterface;
+use Drupal\Core\StringTranslation\StringTranslationTrait;
 
 /**
  * @file
@@ -22,42 +23,72 @@ use Drupal\user\UserInterface;
  */
 class CompetitionEnrollment {
 
-  private $is_initiated = FALSE;
+  use StringTranslationTrait;
 
-  // School node.
+  /**
+   * Check if instance is initiated.
+   *
+   * @var bool
+   */
+  private $isInitiated = FALSE;
+
+  /**
+   * School node.
+   *
+   * @var \Drupal\node\NodeInterface
+   */
   private $school;
 
-  // Competition entity.
+  /**
+   * Competition entity.
+   *
+   * @var Drupal\piv_contest_competition\CompetitionInterface
+   */
   private $competition;
 
-  // Competition entry entities.
+  /**
+   * Competition entry entities.
+   *
+   * @var Drupal\piv_contest_competition_entry\Entity\CompetitionEntry[]
+   */
   private $entries = [];
 
-  // User object.
+  /**
+   * User object.
+   *
+   * @var Drupal\user\UserInterface
+   */
   private $teacher;
 
-  /** @var \Drupal\piv_contest_competition_entry\Service\CompetitionLockService $lockService */
+  /**
+   * The lock service.
+   *
+   * @var \Drupal\piv_contest_competition_entry\Service\CompetitionLockService
+   */
   private $lockService;
 
+  /**
+   * {@inheritdoc}
+   */
   public function __construct(EntityTypeManagerInterface $entity_type_manager, CompetitionLockService $lockService) {
     $this->entityTypeManager = $entity_type_manager;
     $this->lockService = $lockService;
   }
 
-  public function init(
-    NodeInterface $school,
-    CompetitionInterface $competition,
-    UserInterface $teacher
-  ) {
+  /**
+   * Init values for class.
+   */
+  public function init(NodeInterface $school, CompetitionInterface $competition, UserInterface $teacher) {
     $this->school = $school;
     $this->competition = $competition;
     $this->teacher = $teacher;
-    $this->is_initiated = TRUE;
+    $this->isInitiated = TRUE;
   }
 
   /**
-   * Get enrollment progress for each competition stream in an array that is
-   * suitable to generate a html table.
+   * Get enrollment progress for each competition stream.
+   *
+   * Return the value in an array that is suitable to generate a html table.
    */
   public function getStreams() {
     if ($this->competition->field_team_competition->value) {
@@ -72,11 +103,11 @@ class CompetitionEnrollment {
   private function getStreamsIndividual() {
     // Headers row.
     $streams_header = [
-      'name' => t('Stream'),
-      'student' => t('Student'),
-      'recitations' => t('Recitations'),
-      'permission' => t('Permission'),
-      'missing_criteria' => t('Missing Criteria'),
+      'name' => $this->t('Stream'),
+      'student' => $this->t('Student'),
+      'recitations' => $this->t('Recitations'),
+      'permission' => $this->t('Permission'),
+      'missing_criteria' => $this->t('Missing Criteria'),
     ];
 
     $school_id = $this->school->id();
@@ -101,17 +132,16 @@ class CompetitionEnrollment {
           'field_stream' => $stream_entity->id(),
         ]);
       $entry = array_pop($entry);
-
       if (!empty($entry)) {
         $editUrl = Url::fromRoute('piv_contest.competition_entry_edit', [
-            'user' => $teacher_id,
-            'competition' => $competition_id,
-            'competition_entry' => $entry->id(),
-          ], [
-            'query' => [
-              'destination' => $destination,
-            ]
-          ]
+          'user' => $teacher_id,
+          'competition' => $competition_id,
+          'competition_entry' => $entry->id(),
+        ], [
+          'query' => [
+            'destination' => $destination,
+          ],
+        ]
         );
 
         $deleteUrl = Url::fromRoute('entity.competition_entry.delete_form', [
@@ -119,11 +149,11 @@ class CompetitionEnrollment {
         ], [
           'query' => [
             'destination' => $destination,
-          ]
+          ],
         ]);
 
         $stream['student'] = $entry->field_student_name->value;
-        $stream['recitations'] = t("@current out of @required", [
+        $stream['recitations'] = $this->t("@current out of @required", [
           '@current' => $this->getNumberOfValidRecitationsInEntry($entry),
           '@required' => $this->getRequiredRecitationsForStream($stream_entity),
         ]);
@@ -137,17 +167,17 @@ class CompetitionEnrollment {
         if (count($missing_criteria) > 0) {
           // Add all missing criterias here.
           $stream['missing_criteria'] = implode($missing_criteria, ',');
-        } else {
+        }
+        else {
           $stream['is_missing_criteria_completed'] = TRUE;
           $stream['missing_criteria'] = '';
         }
 
-        $editTitle = t('edit');
+        $editTitle = $this->t('edit');
         if ($this->lockService->isLocked($entry)) {
-          $editTitle = t('view');
+          $editTitle = $this->t('view');
         }
-
-        if ($editUrl->access(\Drupal::currentUser())) {
+        if ($editUrl->access()) {
           // Add link to edit existing entry.
           $stream['links'][] = [
             '#type' => 'link',
@@ -158,12 +188,11 @@ class CompetitionEnrollment {
             ],
           ];
         }
-
-        if ($deleteUrl->access(\Drupal::currentUser())) {
+        if ($deleteUrl->access()) {
           // Add link to delete existing entry.
           $stream['links'][] = [
             '#type' => 'link',
-            '#title' => t('delete'),
+            '#title' => $this->t('delete'),
             '#url' => $deleteUrl,
             '#cache' => [
               'tags' => $entry->getCacheTags(),
@@ -186,14 +215,14 @@ class CompetitionEnrollment {
         ], [
           'query' => [
             'destination' => $destination,
-          ]
+          ],
         ]);
 
-        if ($addUrl->access(\Drupal::currentUser())) {
+        if ($addUrl->access()) {
           // Add link to create new entry.
           $stream['links'][] = [
             '#type' => 'link',
-            '#title' => t('Add new entry'),
+            '#title' => $this->t('Add new entry'),
             '#url' => $addUrl,
           ];
         }
@@ -208,6 +237,9 @@ class CompetitionEnrollment {
     return $streams;
   }
 
+  /**
+   * Check if competition entry have all recitations required.
+   */
   public function isRecitationsCompleted(EntityInterface $stream, EntityInterface $competitionEntry): bool {
     if ($this->getNumberOfValidRecitationsInEntry($competitionEntry) >= $this->getRequiredRecitationsForStream($stream)) {
       return TRUE;
@@ -216,6 +248,9 @@ class CompetitionEnrollment {
     return FALSE;
   }
 
+  /**
+   * Get the number of valid recitations in a competition entry.
+   */
   public function getNumberOfValidRecitationsInEntry(EntityInterface $competitionEntry): int {
     $competition = $competitionEntry->field_competition->entity;
     $is_online = (bool) $competition->field_online_competition->value;
@@ -223,7 +258,6 @@ class CompetitionEnrollment {
     $number_of_valid_poems = 0;
     foreach ($competitionEntry->field_recitations as $recitation) {
       $entity = $recitation->entity;
-
 
       $video = $entity->field_recitation_video->entity;
       // IF it's an online competition recitation must also contain a video.
@@ -239,10 +273,16 @@ class CompetitionEnrollment {
     return $number_of_valid_poems;
   }
 
+  /**
+   * Get the min required recitations for a stream.
+   */
   public function getRequiredRecitationsForStream(EntityInterface $stream): int {
     return count($stream->field_stream_languages) * (int) $stream->field_min_recitations->value;
   }
 
+  /**
+   * Check if competition entry is complete.
+   */
   public function isCompetitionEntryCompleted(CompetitionEntry $entity): bool {
     $stream = $entity->getStream();
     if (!$stream) {
@@ -263,6 +303,9 @@ class CompetitionEnrollment {
     return FALSE;
   }
 
+  /**
+   * Check if a competition have the required criteria.
+   */
   public function competitionHasRequiredCriteria(Competition $competition): bool {
     $required_criteria_list = $competition->field_criteria;
     if (count($required_criteria_list) === 0) {
@@ -272,6 +315,9 @@ class CompetitionEnrollment {
     return TRUE;
   }
 
+  /**
+   * Get the missing criteria for a competition entry.
+   */
   public function getMissingCriteria(CompetitionEntry $entity): array {
     $competition = $entity->field_competition->entity;
     if (!$competition) {
@@ -317,13 +363,11 @@ class CompetitionEnrollment {
    * Team competition.
    */
   private function getStreamsTeam() {
-    foreach ($this->competition->field_competition_streams as $stream_field) {
-      // student name is per recitation for team competitions, not per entry.
-    }
-  }
-
-  private function getNumberOfRecitations() {
-
+    // Team streams are not implemented yet.
+    return $this->getStreamsIndividual();
+    /*foreach ($this->competition->field_competition_streams as $stream_field) {
+    // Student name is per recitation for team competitions, not per entry.
+    }*/
   }
 
 }

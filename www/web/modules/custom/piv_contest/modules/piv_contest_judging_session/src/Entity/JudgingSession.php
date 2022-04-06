@@ -75,8 +75,8 @@ class JudgingSession extends RevisionableContentEntityBase implements JudgingSes
   /**
    * {@inheritdoc}
    *
-   * When a new judging session entity is created, set the uid entity reference to
-   * the current user as the creator of the entity.
+   * When a new judging session entity is created, set the uid entity reference
+   * to the current user as the creator of the entity.
    */
   public static function preCreate(EntityStorageInterface $storage_controller, array &$values) {
     parent::preCreate($storage_controller, $values);

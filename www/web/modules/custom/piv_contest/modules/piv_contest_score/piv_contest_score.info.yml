@@ -6,6 +6,6 @@ core: 8.x
 core_version_requirement: ^8 || ^9
 configure: entity.score_type.collection
 dependencies:
-  - piv_contest_score_template
-  - piv_contest_judging_session
-  - piv_contest_recitation
+  - piv_contest_score_template:piv_contest_score_template
+  - piv_contest_judging_session:piv_contest_judging_session
+  - piv_contest_recitation:piv_contest_recitation

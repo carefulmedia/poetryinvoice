@@ -42,7 +42,10 @@ class RecitationTypeForm extends BundleEntityFormBase {
       '#default_value' => $entity_type->id(),
       '#maxlength' => EntityTypeInterface::BUNDLE_MAX_LENGTH,
       '#machine_name' => [
-        'exists' => ['Drupal\piv_contest_recitation\Entity\RecitationType', 'load'],
+        'exists' => [
+          'Drupal\piv_contest_recitation\Entity\RecitationType',
+          'load',
+        ],
         'source' => ['label'],
       ],
       '#description' => $this->t('A unique machine-readable name for this recitation type. It must only contain lowercase letters, numbers, and underscores.'),

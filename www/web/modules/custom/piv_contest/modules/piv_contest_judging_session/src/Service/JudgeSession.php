@@ -11,7 +11,6 @@ use Drupal\node\NodeInterface;
 use Drupal\piv_contest_judging_session\Entity\JudgingSession;
 use Drupal\user\Entity\User;
 use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\piv_contest_recitation\Entity\Recitation;
 
 /**

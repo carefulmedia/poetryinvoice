@@ -33,7 +33,7 @@ function piv_contest_judging_session_update_9101() {
 }
 
 /**
- * Update recitations read to poems read
+ * Update recitations read to poems read.
  */
 function piv_contest_judging_session_update_9102() {
   $schema = Database::getConnection()->schema();
@@ -43,6 +43,9 @@ function piv_contest_judging_session_update_9102() {
   $schema->createTable('judging_session_poems_read', $spec);
 }
 
+/**
+ * Poems read table schema.
+ */
 function _piv_contest_judging_session_poems_read_schema(): array {
   return [
     'description' => t('Table to record which poems a judge have read'),

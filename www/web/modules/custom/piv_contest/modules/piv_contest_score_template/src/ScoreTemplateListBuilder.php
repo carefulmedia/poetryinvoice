@@ -91,7 +91,7 @@ class ScoreTemplateListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\piv_contest_score_template\ScoreTemplateInterface */
+    /** @var \Drupal\piv_contest_score_template\ScoreTemplateInterface $entity */
     $row['id'] = $entity->id();
     $row['title'] = $entity->toLink();
     $row['status'] = $entity->isEnabled() ? $this->t('Enabled') : $this->t('Disabled');

@@ -91,7 +91,7 @@ class RecitationListBuilder extends EntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
-    /* @var $entity \Drupal\piv_contest_recitation\RecitationInterface */
+    /** @var \Drupal\piv_contest_recitation\RecitationInterface $entity */
     $row['id'] = $entity->id();
     $row['title'] = $entity->toLink();
     $row['status'] = $entity->isEnabled() ? $this->t('Enabled') : $this->t('Disabled');

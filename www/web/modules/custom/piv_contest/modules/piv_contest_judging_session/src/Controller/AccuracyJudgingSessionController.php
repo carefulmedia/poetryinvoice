@@ -5,17 +5,14 @@ namespace Drupal\piv_contest_judging_session\Controller;
 use Drupal\Component\Render\FormattableMarkup;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Core\Entity\EntityFormBuilderInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Link;
-use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\piv_contest_judging_session\Entity\JudgingSession;
 use Drupal\piv_contest_judging_session\Service\JudgeSession;
 use Drupal\user\Entity\User;
 use Drupal\Core\Url;
 use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Form\FormBuilderInterface;
 use Drupal\Core\Routing\RedirectDestination;
@@ -27,28 +24,28 @@ class AccuracyJudgingSessionController extends ControllerBase {
 
   /**
    * The entity type manager.
-   * 
+   *
    * @var \Drupal\Core\Entity\EntityTypeManager
    */
   protected $entityTypeManager;
 
   /**
    * The judge service.
-   * 
+   *
    * @var \Drupal\piv_contest_judging_session\Service\JudgeSession
    */
   protected $judgeSessionService;
 
   /**
    * The form builder service.
-   * 
+   *
    * @var \Drupal\Core\Form\FormBuilder
    */
   protected $formBuilder;
-  
+
   /**
    * The redirect destination service.
-   * 
+   *
    * @var Drupal\Core\Routing\RedirectDestination
    */
   protected $redirectDestination;
@@ -74,7 +71,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
       $container->get('redirect.destination')
     );
   }
-  
+
   /**
    * Generate a list of recitations.
    */
@@ -100,17 +97,17 @@ class AccuracyJudgingSessionController extends ControllerBase {
           ->getRecitationScore($recitation, $judging_session);
         $accuracy_score += $recitation->field_score->value ?? 0;
       }
-      
+
       $school = $competition_entry->field_school->entity;
       $link = $this->judgeSessionService->entryWasScoredForAccuracy($competition_entry)
         ? $this->t('Accuracy judging completed')
         : Link::createFromRoute($this->t('Judge now'), 'piv_contest_judging_session.judge_for_accuracy.judge_competition_entry', [
-            'user' => $user->id(),
-            'judging_session' => $judging_session->id(),
-            'competition_entry' => $competition_entry->id(),
-          ], [
-            'query' => $destination,
-          ]);
+          'user' => $user->id(),
+          'judging_session' => $judging_session->id(),
+          'competition_entry' => $competition_entry->id(),
+        ], [
+          'query' => $destination,
+        ]);
 
       $rows[] = [
         implode(', ', $student_name),
@@ -122,7 +119,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
         $link,
       ];
     }
-    
+
     $build['table'] = [
       '#type' => 'table',
       '#header' => [
@@ -136,10 +133,10 @@ class AccuracyJudgingSessionController extends ControllerBase {
       ],
       '#rows' => $rows,
     ];
-    
+
     return $build;
   }
-  
+
   /**
    * Display a form to judge a competition entry.
    */
@@ -159,7 +156,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
     $judging_sessions = $this->getReadyJudgingSessions($user);
     $rows = [];
     foreach ($judging_sessions as $judging_session) {
-      $link = Link::createFromRoute(t('Judge now'), 'piv_contest_judging_session.judge_for_accuracy.recitations_list', [
+      $link = Link::createFromRoute($this->t('Judge now'), 'piv_contest_judging_session.judge_for_accuracy.recitations_list', [
         'judging_session' => $judging_session->id(),
         'user' => $user->id(),
       ])->toRenderable();
@@ -183,9 +180,9 @@ class AccuracyJudgingSessionController extends ControllerBase {
     $response['table'] = [
       '#type' => 'table',
       '#header' => [
-        t('Session'),
-        t('Recitations evaluated'),
-        t('Evaluate'),
+        $this->t('Session'),
+        $this->t('Recitations evaluated'),
+        $this->t('Evaluate'),
       ],
       '#rows' => $rows,
     ];
@@ -211,8 +208,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
    * determined in a custom order, where the first recitation for all entries
    * are judged first, then all second recitations for all entries, and it goes
    * like that. Between the all first, all second, all third, etc recitation,
-   * there is a "break" page so the judge knows he judged all first recitations
-   * (for example).
+   * there is a "break" page.
    */
   public function judgeSession(User $user, JudgingSession $judging_session) {
     // This is used in multiple places.
@@ -238,7 +234,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
     $build['video'] = $recitation->field_recitation_video->view([
       'type' => 'entity_reference_entity_view',
       'label' => 'hidden',
-    ]);    
+    ]);
     // If thats the last item in a round, redirect back to the recitation list.
     $destination = NULL;
     $message = NULL;
@@ -246,7 +242,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
       $destination = $start_judging_url;
       $message = $this->t('You finished judging a round of recitations.');
     }
-    $build['form'] = \Drupal::formBuilder()
+    $build['form'] = $this->formBuilder
       ->getForm('Drupal\piv_contest\Form\ScoreForm', $recitation, $judging_session, $destination, $message);
     $build['judge_later'] = Link::fromTextAndUrl($this->t('Judge later'), $start_judging_url)->toRenderable();
     // Same link as above.
@@ -257,18 +253,18 @@ class AccuracyJudgingSessionController extends ControllerBase {
         '@count' => $this->judgeSessionService->totalNumberOfRecitations($judging_session, $user),
       ]),
     ];
-      
+
     return $build;
   }
-  
+
   /**
    * Check if user can access the sessions list.
    */
   public function accessSessionsList(User $user): AccessResult {
     $entities = $this->getReadyJudgingSessions($user);
-    $tags = ['judging_session_list'];    
+    $tags = ['judging_session_list'];
     return $entities
-      ? AccessResult::allowed()->addCacheTags($tags) 
+      ? AccessResult::allowed()->addCacheTags($tags)
       : AccessResult::neutral()->addCacheTags($tags);
   }
 
@@ -281,7 +277,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
     return AccessResult::allowedIf($ready_for_scoring && $user_is_judge)
       ->addCacheTags($judging_session->getCacheTags());
   }
-  
+
   /**
    * Check if user can accuracy judge a competition entry and its recitations.
    */
@@ -292,5 +288,5 @@ class AccuracyJudgingSessionController extends ControllerBase {
     return AccessResult::allowedIf($can_access_recitation_list && !$entry_was_scored_for_accuracy)
       ->addCacheTags($tags);
   }
-  
+
 }

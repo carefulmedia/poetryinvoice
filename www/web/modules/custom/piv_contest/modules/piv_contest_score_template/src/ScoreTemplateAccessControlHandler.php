@@ -18,7 +18,7 @@ class ScoreTemplateAccessControlHandler extends EntityAccessControlHandler imple
 
   /**
    * The entity type manager service.
-   * 
+   *
    * @var Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
@@ -53,7 +53,10 @@ class ScoreTemplateAccessControlHandler extends EntityAccessControlHandler imple
         return AccessResult::allowedIfHasPermission($account, 'view score template');
 
       case 'update':
-        return AccessResult::allowedIfHasPermissions($account, ['edit score template', 'administer score template'], 'OR');
+        return AccessResult::allowedIfHasPermissions($account, [
+          'edit score template',
+          'administer score template',
+        ], 'OR');
 
       case 'delete':
         // Prevent deleting templates if there are scores using it.
@@ -62,7 +65,10 @@ class ScoreTemplateAccessControlHandler extends EntityAccessControlHandler imple
         if ($results) {
           return AccessResult::forbidden('There is a score using this score template');
         }
-        return AccessResult::allowedIfHasPermissions($account, ['delete score template', 'administer score template'], 'OR');
+        return AccessResult::allowedIfHasPermissions($account, [
+          'delete score template',
+          'administer score template',
+        ], 'OR');
 
       default:
         // No opinion.
@@ -75,7 +81,10 @@ class ScoreTemplateAccessControlHandler extends EntityAccessControlHandler imple
    * {@inheritdoc}
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL) {
-    return AccessResult::allowedIfHasPermissions($account, ['create score template', 'administer score template'], 'OR');
+    return AccessResult::allowedIfHasPermissions($account, [
+      'create score template',
+      'administer score template',
+    ], 'OR');
   }
 
 }
