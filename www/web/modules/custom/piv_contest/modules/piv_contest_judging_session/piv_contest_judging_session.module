@@ -23,7 +23,7 @@ function piv_contest_judging_session_theme() {
     'recitation_judging' => [
       'render element' => 'elements',
     ],
-    'recitation_read_recitations' => [
+    'poem_read_poems' => [
       'render element' => 'elements',
     ],
   ];
@@ -41,7 +41,7 @@ function template_preprocess_recitation_judging(array &$variables) {
 /**
  * Implements template_preprocess_HOOK().
  */
-function template_preprocess_recitation_read_recitations(array &$variables) {
+function template_preprocess_poem_read_poems(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
   }

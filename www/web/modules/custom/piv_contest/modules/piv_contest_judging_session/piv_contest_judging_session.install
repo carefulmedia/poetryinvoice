@@ -26,7 +26,25 @@ function piv_contest_judging_session_uninstall() {
  * Creates a table to track which poem a judge have read.
  */
 function piv_contest_judging_session_update_9101() {
-  $spec = [
+  $spec = _piv_contest_judging_session_poems_read_schema();
+
+  $schema = Database::getConnection()->schema();
+  $schema->createTable('judging_session_recitations_read', $spec);
+}
+
+/**
+ * Update recitations read to poems read
+ */
+function piv_contest_judging_session_update_9102() {
+  $schema = Database::getConnection()->schema();
+  $schema->dropTable('judging_session_recitations_read');
+
+  $spec = _piv_contest_judging_session_poems_read_schema();
+  $schema->createTable('judging_session_poems_read', $spec);
+}
+
+function _piv_contest_judging_session_poems_read_schema(): array {
+  return [
     'description' => t('Table to record which poems a judge have read'),
     'fields' => [
       'session_id' => [
@@ -41,7 +59,7 @@ function piv_contest_judging_session_update_9101() {
         'default' => '0',
         'unsigned' => TRUE,
       ],
-      'recitation' => [
+      'poem_id' => [
         'type' => 'int',
         'not null' => TRUE,
         'default' => '0',
@@ -53,13 +71,10 @@ function piv_contest_judging_session_update_9101() {
         'not null' => TRUE,
       ],
     ],
-    'primary key' => ['judge_id', 'session_id', 'recitation'],
+    'primary key' => ['judge_id', 'session_id', 'poem_id'],
     'indexes' => [
       // Index used to get all poems read by a judge.
       'session_id_judge_idx' => ['session_id', 'judge_id'],
     ],
   ];
-
-  $schema = Database::getConnection()->schema();
-  $schema->createTable('judging_session_recitations_read', $spec);
 }
