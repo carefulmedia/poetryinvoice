@@ -121,14 +121,16 @@ class JudgeSession {
       }
 
       $score_storage = $this->entityTypeManager->getStorage('score');
-      foreach ($session->field_competition_entries->referencedEntities() as $competition_entry) {
+      $competition_entries = array_values($session->field_competition_entries->referencedEntities());
+      $competition_total = count($competition_entries);
+      foreach ($competition_entries as $competition_delta => $competition_entry) {
         $recitations = $competition_entry->field_recitations->referencedEntities();
-        $total_recitations = count($recitations);
+        // Only consider the languages this judge is assigned to and ignore the
+        // original delta in case of mixed multiple languages.
+        $recitations = array_values(array_filter($recitations, function ($recitation) use ($languages) {
+          return in_array($recitation->langcode->value, $languages);
+        }));
         foreach ($recitations as $delta => $recitation) {
-          // Only consider the languages this judge is assigned to.
-          if (!in_array($recitation->langcode->value, $languages)) {
-            continue;
-          }
           $score = $score_storage->loadByProperties([
             'judge' => $judge->id(),
             'judging_session' => $session->id(),
@@ -138,12 +140,11 @@ class JudgeSession {
           $list[$key][$delta][] = [
             'recitation' => $recitation,
             'score' => $score,
-            'last_of_round' => ($total_recitations == ($delta + 1)),
+            'last_of_round' => ($competition_total == ($competition_delta + 1)),
           ];
         }
       }
     }
-
     // Flatten the array.
     return array_merge(...$list[$key]);
   }
