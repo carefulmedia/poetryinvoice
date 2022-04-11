@@ -81,8 +81,8 @@ class CompetitionEntryController extends ControllerBase {
       'field_school' => $school,
       'bundle' => 'default',
       'field_stream' => $stream,
+      'field_competition_current_level' => $competition->field_competition_current_level->value,
     ]);
-
     // The form is different for team or individual competitions.
     $is_team_competition = !empty($competition->field_team_competition->value);
     $form_mode = $is_team_competition

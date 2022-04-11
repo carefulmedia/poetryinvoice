@@ -6,6 +6,7 @@ dependencies:
     - field.field.judging_session.default.field_accuracy_judge
     - field.field.judging_session.default.field_all_scoring_completed
     - field.field.judging_session.default.field_competition
+    - field.field.judging_session.default.field_competition_current_level
     - field.field.judging_session.default.field_competition_entries
     - field.field.judging_session.default.field_english_judge
     - field.field.judging_session.default.field_french_judge
@@ -21,7 +22,7 @@ mode: default
 content:
   field_accuracy_judge:
     type: competition_judges_autocomplete
-    weight: 26
+    weight: 7
     region: content
     settings:
       match_operator: CONTAINS
@@ -90,6 +91,7 @@ content:
 hidden:
   created: true
   field_all_scoring_completed: true
+  field_competition_current_level: true
   field_competition_entries: true
   langcode: true
   translation: true

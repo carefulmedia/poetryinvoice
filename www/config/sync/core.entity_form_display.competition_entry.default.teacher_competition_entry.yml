@@ -6,6 +6,7 @@ dependencies:
     - core.entity_form_mode.competition_entry.teacher_competition_entry
     - core.entity_form_mode.recitation.online_individual
     - field.field.competition_entry.default.field_competition
+    - field.field.competition_entry.default.field_competition_current_level
     - field.field.competition_entry.default.field_complete
     - field.field.competition_entry.default.field_recitations
     - field.field.competition_entry.default.field_release_form
@@ -56,6 +57,7 @@ content:
 hidden:
   created: true
   field_competition: true
+  field_competition_current_level: true
   field_complete: true
   field_school: true
   field_stream: true

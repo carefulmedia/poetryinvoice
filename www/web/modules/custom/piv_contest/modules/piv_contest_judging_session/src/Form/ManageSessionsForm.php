@@ -80,7 +80,6 @@ class ManageSessionsForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state, Competition $competition = NULL) {
     $form_state->set('competition', $competition);
-
     $streams_options = [];
     foreach ($competition->field_competition_streams as $stream) {
       $entity = $stream->entity;
@@ -122,6 +121,21 @@ class ManageSessionsForm extends FormBase {
       ],
     ];
 
+    $competition_levels = array_column($competition->field_competition_levels->getValue(), 'value');
+    $competition_levels = array_combine($competition_levels, $competition_levels);
+    $current_level = $competition->field_competition_current_level->value ?? 1;
+    $form['competition_level'] = [
+      '#type' => 'select',
+      '#options' => $competition_levels,
+      '#title' => $this->t('Competition levels'),
+      '#default_value' => $current_level,
+      '#ajax' => [
+        'callback' => [$this, 'onLevelChange'],
+        'wrapper' => 'edit-output',
+        'event' => 'change',
+      ],
+    ];
+
     $form['fieldset'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Session management'),
@@ -140,22 +154,30 @@ class ManageSessionsForm extends FormBase {
   }
 
   /**
+   * Ajax callback.
+   */
+  public function onLevelChange(array &$form, FormStateInterface $form_state) {
+    return $form;
+  }
+
+  /**
    * Load the form and populate on $form.
    */
   public function loadFormForSessionStream(&$form, FormStateInterface $form_state) {
     $competition = $form_state->get('competition');
+    $competition_level = $form_state->getValue('competition_level')
+      ?? $competition->field_competition_current_level->value
+      ?? 1;
 
     $stream_id = $form_state->getValue('session_stream');
     if (!$stream_id) {
       $stream_id = $competition->field_competition_streams[0]->target_id;
     }
 
-    $session_ids = $this->judgingSessionsStorage->getQuery()
-      ->condition('field_stream', $stream_id)
-      ->execute();
-
-    $sessions = $this->judgingSessionsStorage->loadMultiple($session_ids);
-
+    $sessions = $this->judgingSessionsStorage->loadByProperties([
+      'field_stream' => $stream_id,
+      'field_competition_current_level' => $competition_level,
+    ]);
     $sessions_options = [];
     foreach ($sessions as $session) {
       $sessions_options[$session->id()] = $session->label();
@@ -164,7 +186,7 @@ class ManageSessionsForm extends FormBase {
     $current_session_id = $form_state->getValue('session');
 
     // Make sure we reset the session id when session stream is changed.
-    if (!in_array($current_session_id, $session_ids)) {
+    if (!isset($sessions_options[$current_session_id])) {
       $current_session_id = NULL;
     }
 

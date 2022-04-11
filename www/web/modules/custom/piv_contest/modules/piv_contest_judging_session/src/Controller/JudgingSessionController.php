@@ -104,6 +104,7 @@ class JudgingSessionController extends ControllerBase {
     $title = "{$competition->label()} {$stream->field_label->value} judging session";
     $judging_session = $this->entityTypeManager->getStorage('judging_session')->create([
       'field_competition' => $competition->id(),
+      'field_competition_current_level' => $competition->field_competition_current_level->value,
       'user' => $this->currentUser->id(),
       'field_stream' => $stream,
       'title' => $title,
