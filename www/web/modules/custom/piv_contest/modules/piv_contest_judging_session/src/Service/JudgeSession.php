@@ -220,6 +220,14 @@ class JudgeSession {
   }
 
   /**
+   * Return what session is being judged.
+   */
+  // @phpcs:ignore
+  public function getCurrentSessionBeingJudgedByUserID(int $id): ?int {
+    return $this->keyValueVote->get("current_session_being_judged_{$id}");
+  }
+
+  /**
    * Mark a session to being judged.
    */
   public function startJudgingSession(JudgingSession $session, User $judge) {
@@ -230,7 +238,15 @@ class JudgeSession {
    * Remove session from being judged by a given judge.
    */
   public function removeSessionBeingJudged(User $judge) {
-    $this->keyValueVote->delete("current_session_being_judged_{$judge->id()}");
+    $this->removeSessionBeingJudgeByUserID($judge->id());
+  }
+
+  /**
+   * Remove session from being judged by a given user id.
+   */
+  // @phpcs:ignore
+  public function removeSessionBeingJudgeByUserID(int $id) {
+    $this->keyValueVote->delete("current_session_being_judged_{$id}");
   }
 
   /**
