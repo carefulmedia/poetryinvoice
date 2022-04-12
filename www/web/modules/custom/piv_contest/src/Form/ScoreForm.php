@@ -22,11 +22,28 @@ class ScoreForm extends FormBase {
   protected $scoreFormBuilder;
 
   /**
+   * The judge session service.
+   *
+   * @var \Drupal\piv_contest_judging_session\Service\JudgeSession
+   */
+  protected $judgeSessionService;
+
+  /**
+   * Current user.
+   *
+   * @var \Drupal\user\Entity\User
+   */
+  protected $currentUser;
+
+  /**
    * {@inheritdoc}
    */
   public static function create($container) {
     $form = new static();
+    $user_storage = $container->get('entity_type.manager')->getStorage('user');
     $form->scoreFormBuilder = $container->get('piv_contest.score_form_builder');
+    $form->judgeSessionService = $container->get('piv_contest_judging_session.service.judge_session');
+    $form->currentUser = $user_storage->load($container->get('current_user')->id());
     return $form;
   }
 
@@ -101,6 +118,13 @@ class ScoreForm extends FormBase {
     $score_template_form_values = $values['score_template_form'];
     $this->scoreFormBuilder
       ->createScore($recitation, $judging_session, $score_template_form_values);
+
+    $sessions = $this->judgeSessionService->orderRecitationsList($judging_session, $this->currentUser);
+    $last_recitation_data = array_pop($sessions);
+    $last_recitation = $last_recitation_data['recitation'];
+    if ($last_recitation->id() === $recitation->id()) {
+      $this->judgeSessionService->removeSessionBeingJudged($this->currentUser);
+    }
   }
 
 }

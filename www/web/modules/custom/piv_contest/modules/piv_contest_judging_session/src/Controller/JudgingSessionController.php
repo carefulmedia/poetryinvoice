@@ -129,6 +129,7 @@ class JudgingSessionController extends ControllerBase {
         'judging_session' => $judging_session->id(),
         'user' => $user->id(),
       ]);
+
       // If user have read all the poems we send them directly to
       // the correct page.
       if ($this->judgeSessionService->numberOfPoemsReadByJudge($judging_session, $user) === $this->judgeSessionService->totalNumberOfPoems($judging_session, $user)) {
@@ -137,12 +138,19 @@ class JudgingSessionController extends ControllerBase {
           'user' => $user->id(),
         ]);
       }
+
       $link = Link::fromTextAndUrl($this->t('Judge now'), $url)->toRenderable();
-      if (!$this->judgeSessionService->canJudgeStartJudgingSession($judging_session, $user)) {
-        $link['#attributes']['class'][] = 'disabled';
+
+      if ($this->judgeSessionService->isSessionEvaluatedByJudge($judging_session, $user)) {
+        $link = ['#markup' => $this->t('Judging complete')];
       }
       else {
-        if (!$this->judgeSessionService->isSessionEvaluatedByJudge($judging_session, $user)) {
+        if (!$this->judgeSessionService->canJudgeStartJudgingSession($judging_session, $user)) {
+          $link = [
+            '#markup' => '-',
+          ];
+        }
+        else {
           $this->judgeSessionService->startJudgingSession($judging_session, $user);
         }
       }

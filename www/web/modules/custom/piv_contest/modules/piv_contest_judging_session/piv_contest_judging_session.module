@@ -5,6 +5,7 @@
  * Provides a judging session entity type.
  */
 
+use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
@@ -204,5 +205,26 @@ function piv_contest_judging_session_preprocess_competition(&$variables) {
 function template_preprocess_judging_session(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function piv_contest_judging_session_judging_session_presave(EntityInterface $entity) {
+  $session = \Drupal::entityTypeManager()->getStorage('judging_session')->load($entity->id());
+  $french_judges = array_column($session->field_french_judge->getValue(), 'target_id');
+  $english_judges = array_column($session->field_english_judge->getValue(), 'target_id');
+
+  $judges = array_merge($french_judges, $english_judges);
+
+  /** @var \Drupal\piv_contest_judging_session\Service\JudgeSession $judge_session_service */
+  $judge_session_service = \Drupal::service('piv_contest_judging_session.service.judge_session');
+
+  foreach ($judges as $judge) {
+    $session_being_judged = (int) $judge_session_service->getCurrentSessionBeingJudgedByUserID((int) $judge);
+    if ($session_being_judged === (int) $entity->id()) {
+      $judge_session_service->removeSessionBeingJudgeByUserID((int) $judge);
+    }
   }
 }
