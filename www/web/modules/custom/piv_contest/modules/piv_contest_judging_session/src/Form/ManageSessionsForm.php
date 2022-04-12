@@ -122,11 +122,14 @@ class ManageSessionsForm extends FormBase {
     ];
 
     $competition_levels = array_column($competition->field_competition_levels->getValue(), 'value');
-    $competition_levels = array_combine($competition_levels, $competition_levels);
     $current_level = $competition->field_competition_current_level->value ?? 1;
+    $competition_levels_options = [];
+    foreach ($competition_levels as $delta => $value) {
+      $competition_levels_options[$delta + 1] = $value;
+    }
     $form['competition_level'] = [
       '#type' => 'select',
-      '#options' => $competition_levels,
+      '#options' => $competition_levels_options,
       '#title' => $this->t('Competition levels'),
       '#default_value' => $current_level,
       '#ajax' => [
