@@ -60,6 +60,14 @@ function template_preprocess_competition_enrollement_progress(&$variables) {
   );
   $variables['streams'] = $enrollment->getStreams();
   $variables['competition_has_criteria'] = $enrollment->competitionHasRequiredCriteria($variables['competition']);
+  $variables['cache'] = [
+    '#cache' => [
+      'tags' => [
+        'user',
+        'competition_entry_list',
+      ],
+    ],
+  ];
 }
 
 /**

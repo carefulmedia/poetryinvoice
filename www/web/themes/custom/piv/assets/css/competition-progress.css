@@ -1,0 +1,6 @@
+#competition-progress .promoted td {
+  background-color: #42a877;
+}
+#competition-progress .promoted input {
+  display: none;
+}

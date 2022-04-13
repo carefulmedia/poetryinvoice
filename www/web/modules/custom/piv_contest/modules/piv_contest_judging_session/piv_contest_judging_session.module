@@ -9,7 +9,6 @@ use Drupal\Core\Form\FormState;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Element;
-use Drupal\Core\Url;
 use Drupal\piv_contest_competition\Entity\Competition;
 
 /**
@@ -181,14 +180,12 @@ function piv_contest_judging_session_preprocess_competition(&$variables) {
   if ($current_user->hasPermission('manage judging sessions')) {
     $competition = $variables['elements']['#competition'];
 
-    $manage_sessions_url = Url::fromRoute('piv_contest_judging_session.manage_sessions', [
+    $variables['content']['manage_session'] = Link::createFromRoute(t('Manage Sessions'), 'piv_contest_judging_session.manage_sessions', [
       'competition' => $competition->id(),
-    ]);
-
-    $variables['content']['manage_session'] = Link::fromTextAndUrl(
-        t('Manage Sessions'),
-        $manage_sessions_url,
-      )->toRenderable() + ['#weight' => -99];
+    ])->toRenderable() + ['#weight' => -99];
+    $variables['content']['competition_progress'] = Link::createFromRoute(t('Competition Progress'), 'piv_contest_judging_session.competition_progress', [
+      'competition' => $competition->id(),
+    ])->toRenderable() + ['#weight' => -98];
   }
 
 }
