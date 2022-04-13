@@ -56,6 +56,7 @@ permissions:
   - 'access Content creator profiles'
   - 'access Judge profiles'
   - 'access to all judge for accuracy pages'
+  - 'access to all judge session pages'
   - 'access Lesson Plan Creator profiles'
   - 'access Non-Canadian educator profiles'
   - 'access PDF version'
