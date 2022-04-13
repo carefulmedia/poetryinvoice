@@ -8,4 +8,5 @@ weight: 12
 is_admin: null
 permissions:
   - 'access search combine'
+  - 'access own judge session page'
   - 'judge a judging session'
