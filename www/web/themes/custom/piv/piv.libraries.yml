@@ -4,7 +4,7 @@ global-styling:
     theme:
       assets/css/styles.css: {}
   js:
-    assets/js/disable-link: {}
+    assets/js/disable-link.js: {}
 
   dependencies:
     - core/jquery
@@ -20,3 +20,9 @@ recitation-accuracy-judging:
   css:
     theme:
       assets/css/recitation-accuracy-judging.css: {}
+
+competition-progress:
+  version: 1.x
+  css:
+    theme:
+      assets/css/competition-progress.css: {}

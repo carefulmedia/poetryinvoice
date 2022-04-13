@@ -6,6 +6,14 @@ piv_contest_judging_session.manage_sessions:
   requirements:
     _permission: 'create judging session'
 
+piv_contest_judging_session.competition_progress:
+  path: '/competition/{competition}/progress'
+  defaults:
+    _title: 'Competition Progress'
+    _form: '\Drupal\piv_contest_judging_session\Form\CompetitionProgressForm'
+  requirements:
+    _permission: 'create judging session'
+
 piv_contest_judging_session.add_session:
   path: '/competition/{competition}/add-session'
   defaults:

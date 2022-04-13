@@ -338,8 +338,8 @@ class ManageSessionsForm extends FormBase {
       }
 
       $address = $school->field_address;
-      $entries[$entity->id()][1] = $address->administrative_area;
-      $entries[$entity->id()][2] = $address->locality;
+      $entries[$entity->id()][1] = $address->administrative_area ?? '';
+      $entries[$entity->id()][2] = $address->locality ?? '';
     }
 
     return $entries;
