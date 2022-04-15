@@ -80,6 +80,7 @@ class ManageSessionsForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state, Competition $competition = NULL) {
     $form_state->set('competition', $competition);
+    $current_level = $competition->field_competition_current_level->value ?? 1;
     $streams_options = [];
     foreach ($competition->field_competition_streams as $stream) {
       $entity = $stream->entity;
@@ -90,7 +91,7 @@ class ManageSessionsForm extends FormBase {
     if (!$stream_id) {
       $stream_id = $competition->field_competition_streams[0]->target_id;
     }
-
+    $level = $form_state->getValue('competition_level') ?? $current_level;
     $add_session = Url::fromRoute('piv_contest_judging_session.add_session', [
       'competition' => $competition->id(),
       'destination' => Url::fromRoute('piv_contest_judging_session.manage_sessions', [
@@ -99,11 +100,12 @@ class ManageSessionsForm extends FormBase {
     ], [
       'query' => [
         'stream' => $stream_id,
+        'level' => $level,
       ],
     ]);
 
     $form['create_session'] = Link::fromTextAndUrl(
-      $this->t('Create new session for selected stream'),
+      $this->t('Create new session for selected stream and level'),
       $add_session,
     )->toRenderable();
 
@@ -122,7 +124,6 @@ class ManageSessionsForm extends FormBase {
     ];
 
     $competition_levels = array_column($competition->field_competition_levels->getValue(), 'value');
-    $current_level = $competition->field_competition_current_level->value ?? 1;
     $competition_levels_options = [];
     foreach ($competition_levels as $delta => $value) {
       $competition_levels_options[$delta + 1] = $value;
@@ -137,6 +138,7 @@ class ManageSessionsForm extends FormBase {
         'wrapper' => 'edit-output',
         'event' => 'change',
       ],
+      '#attributes' => ['autocomplete' => 'off'],
     ];
 
     $form['fieldset'] = [
@@ -209,6 +211,7 @@ class ManageSessionsForm extends FormBase {
         'event' => 'change',
       ],
       '#required' => TRUE,
+      '#attributes' => ['autocomplete' => 'off'],
     ];
 
     if ($current_session_id) {
