@@ -99,12 +99,19 @@ class JudgingSessionController extends ControllerBase {
    */
   public function add(CompetitionInterface $competition, Request $request): array {
     $stream_id = $request->query->get('stream');
+    $level = $request->query->get('level') ?? 1;
     $stream = $this->entityTypeManager->getStorage('paragraph')->load($stream_id);
-
-    $title = "{$competition->label()} {$stream->field_label->value} judging session";
+    $level_name = $competition->field_competition_levels[$level]->value;
+    $identifier = $this->entityTypeManager
+      ->getStorage('judging_session')
+      ->getQuery()
+      ->condition('field_competition', $competition->id())
+      ->count()->execute();
+    $identifier += 1;
+    $title = "{$competition->label()} {$stream->field_label->value} judging session, $level_name ($identifier)";
     $judging_session = $this->entityTypeManager->getStorage('judging_session')->create([
       'field_competition' => $competition->id(),
-      'field_competition_current_level' => $competition->field_competition_current_level->value,
+      'field_competition_current_level' => $level,
       'user' => $this->currentUser->id(),
       'field_stream' => $stream,
       'title' => $title,
