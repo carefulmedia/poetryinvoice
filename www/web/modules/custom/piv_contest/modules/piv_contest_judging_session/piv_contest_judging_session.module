@@ -228,3 +228,28 @@ function piv_contest_judging_session_judging_session_presave(EntityInterface $en
     }
   }
 }
+
+/**
+ * Implements hook_field_widget_form_alter().
+ * 
+ * Changes the judge field on judging_session to only let the user select the
+ * judges referenced in the competition.
+ */
+function piv_contest_judging_session_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if ($element['#entity_type'] == 'judging_session') {
+    $field_name = $context['items']->getFieldDefinition()->getName();
+    if (in_array($field_name, ['field_accuracy_judge', 'field_english_judge', 'field_french_judge'])) {
+      $entity = $form_state->getFormObject()->getEntity();
+      if ($competition = $entity->field_competition->entity) {
+        $judges = $competition->field_judges->referencedEntities();
+        $options = ['_none' => t('- None -')];
+        foreach ($judges as $judge) {
+          $options[$judge->id()] = $judge->label();
+        }
+        // Intersect with original options to make sure the filters in the field
+        // configurations are considered too.
+        $element['#options'] = array_intersect_key($element['#options'], $options);
+      }
+    }
+  }
+}

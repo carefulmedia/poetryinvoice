@@ -26,7 +26,6 @@ development.services.yml
 # Composer-generated
 /vendor/
 /web/core/
-/web/libraries/
 /web/modules/contrib/
 /web/profiles/contrib/
 /web/themes/contrib/
