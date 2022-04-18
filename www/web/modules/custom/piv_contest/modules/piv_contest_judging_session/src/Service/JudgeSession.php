@@ -51,9 +51,30 @@ class JudgeSession {
   }
 
   /**
+   * Return the languages that a judge has to judge.
+   */
+  private function getLanguagesForJudge(JudgingSession $session, User $judge): array {
+    $languages = [];
+
+    $judge_id = $judge->id();
+    $french_judges = array_column($session->field_french_judge->getValue(), 'target_id');
+    $english_judges = array_column($session->field_english_judge->getValue(), 'target_id');
+    if (in_array($judge_id, $french_judges)) {
+      $languages[] = 'fr';
+    }
+    if (in_array($judge_id, $english_judges)) {
+      $languages[] = 'en';
+    }
+
+    return $languages;
+  }
+
+  /**
    * Return a list of poems to be read in the session.
    */
   public function poemList(JudgingSession $session, User $judge): array {
+    $languages = $this->getLanguagesForJudge($session, $judge);
+
     $list = [];
 
     foreach ($session->field_competition_entries->referencedEntities() as $competition_entry) {
@@ -61,7 +82,9 @@ class JudgeSession {
       foreach ($recitations as $recitation) {
         /** @var \Drupal\node\NodeInterface $poem */
         $poem = $recitation->field_poem->entity;
-        $list[$poem->id()] = $poem;
+        if (in_array($poem->language()->getId(), $languages)) {
+          $list[$poem->id()] = $poem;
+        }
       }
     }
 
@@ -101,16 +124,7 @@ class JudgeSession {
    * Order the recitations in a session.
    */
   public function orderRecitationsList(JudgingSession $session, User $judge) : array {
-    $languages = [];
-    $judge_id = $judge->id();
-    $french_judges = array_column($session->field_french_judge->getValue(), 'target_id');
-    $english_judges = array_column($session->field_english_judge->getValue(), 'target_id');
-    if (in_array($judge_id, $french_judges)) {
-      $languages[] = 'fr';
-    }
-    if (in_array($judge_id, $english_judges)) {
-      $languages[] = 'en';
-    }
+    $languages = $this->getLanguagesForJudge($session, $judge);
 
     static $list = [];
     $key = $session->id() . ':' . $judge->id();
