@@ -9,6 +9,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
 use Drupal\user\Entity\User;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Implements hook_theme().
@@ -24,7 +25,7 @@ function piv_contest_competition_entry_theme() {
 /**
  * Implements hook_ENTITY_TYPE_presave().
  */
-function piv_contest_competition_entry_competition_entry_presave(CompetitionEntry $entity) {
+function piv_contest_competition_entry_competition_entry_presave(EntityInterface $entity) {
   /** @var \Drupal\piv_contest\CompetitionEnrollment $competition_enrollment_service */
   $competition_enrollment_service = \Drupal::service('piv_contest.competition_enrollment');
 

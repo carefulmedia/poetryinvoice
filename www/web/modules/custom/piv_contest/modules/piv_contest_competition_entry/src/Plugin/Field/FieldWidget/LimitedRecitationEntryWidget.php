@@ -161,18 +161,18 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
 
     $max_number_recitations = $this->getNumberOfRecitationsPerLanguage();
     $languages = $stream->field_stream_languages->getValue();
-
     $total_per_language = [];
     foreach ($languages as $language) {
       $total_per_language[$language['target_id']] = 0;
     }
 
+    $startIndex = 0;
     foreach ($entities as $item) {
       $entity = $item['entity'];
       $total_per_language[$entity->language()->getId()]++;
+      $startIndex++;
     }
 
-    $startIndex = 0;
     foreach ($total_per_language as $language => $numberItems) {
       // Add missing items per language.
       for ($i = $numberItems; $i < $max_number_recitations; $i++) {
@@ -181,12 +181,11 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
             'bundle' => 'default',
             'langcode' => $language,
           ]),
-          'weight' => $startIndex + $i,
+          'weight' => $startIndex++,
           'form' => NULL,
           'needs_save' => TRUE,
         ];
       }
-      $startIndex++;
     }
 
     $form_state->set(['inline_entity_form', $this->iefId], $widget_state);
