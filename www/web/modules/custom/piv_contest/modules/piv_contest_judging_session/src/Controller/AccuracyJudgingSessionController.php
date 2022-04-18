@@ -7,6 +7,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\piv_contest_judging_session\Entity\JudgingSession;
 use Drupal\piv_contest_judging_session\Service\JudgeSession;
 use Drupal\user\Entity\User;
@@ -53,11 +54,12 @@ class AccuracyJudgingSessionController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, JudgeSession $judge_session, FormBuilderInterface $form_builder, RedirectDestination $redirect_destination) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, JudgeSession $judge_session, FormBuilderInterface $form_builder, RedirectDestination $redirect_destination, AccountProxyInterface $current_user) {
     $this->entityTypeManager = $entity_type_manager;
     $this->judgeSessionService = $judge_session;
     $this->formBuilder = $form_builder;
     $this->redirectDestination = $redirect_destination;
+    $this->currentUser = $current_user;
   }
 
   /**
@@ -68,7 +70,8 @@ class AccuracyJudgingSessionController extends ControllerBase {
       $container->get('entity_type.manager'),
       $container->get('piv_contest_judging_session.service.judge_session'),
       $container->get('form_builder'),
-      $container->get('redirect.destination')
+      $container->get('redirect.destination'),
+      $container->get('current_user')
     );
   }
 
@@ -261,11 +264,19 @@ class AccuracyJudgingSessionController extends ControllerBase {
    * Check if user can access the sessions list.
    */
   public function accessSessionsList(User $user): AccessResult {
-    $entities = $this->getReadyJudgingSessions($user);
     $tags = ['judging_session_list'];
-    return $entities
-      ? AccessResult::allowed()->addCacheTags($tags)
-      : AccessResult::neutral()->addCacheTags($tags);
+    $permissions = ['access to all judge for accuracy pages'];
+
+    $entities = $this->getReadyJudgingSessions($user);
+    if (!$entities) {
+      return AccessResult::forbidden()->addCacheTags($tags);
+    }
+
+    if ($user->id() === $this->currentUser->id()) {
+      $permissions[] = 'access own judge for accuracy page';
+    }
+
+    return AccessResult::allowedIfHasPermissions($this->currentUser, $permissions, 'OR')->addCacheTags($tags);
   }
 
   /**
@@ -273,8 +284,21 @@ class AccuracyJudgingSessionController extends ControllerBase {
    */
   public function accessRecitationsList(User $user, JudgingSession $judging_session): AccessResult {
     $ready_for_scoring = (BOOL) $judging_session->field_ready_for_scoring->value;
+    if (!$ready_for_scoring) {
+      return AccessResult::forbidden()->addCacheTags($judging_session->getCacheTags());
+    }
+
     $user_is_judge = $judging_session->field_accuracy_judge->target_id == $user->id();
-    return AccessResult::allowedIf($ready_for_scoring && $user_is_judge)
+    if (!$user_is_judge) {
+      return AccessResult::forbidden()->addCacheTags($judging_session->getCacheTags());
+    }
+
+    $permissions = ['access to all judge for accuracy pages'];
+    if ($user->id() === $this->currentUser->id()) {
+      $permissions[] = 'access own judge for accuracy page';
+    }
+
+    return AccessResult::allowedIfHasPermissions($this->currentUser, $permissions, 'OR')
       ->addCacheTags($judging_session->getCacheTags());
   }
 

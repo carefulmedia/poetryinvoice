@@ -8,3 +8,4 @@ weight: 15
 is_admin: null
 permissions:
   - 'access search combine'
+  - 'access own judge for accuracy page'

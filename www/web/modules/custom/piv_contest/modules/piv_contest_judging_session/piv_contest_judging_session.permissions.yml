@@ -14,3 +14,13 @@ edit judging session:
   title: Edit judging session
 manage judging sessions:
   title: Manage judging sessions
+access own judge for accuracy page:
+  title: Access own judge for accuracy page
+access to all judge for accuracy pages:
+  title: Access judge for accuracy for all users
+  restrict access: true
+access own judge session page:
+  title: Access own judge session page
+access to all judge session pages:
+  title: Access to all judge session pages
+  restrict access: true

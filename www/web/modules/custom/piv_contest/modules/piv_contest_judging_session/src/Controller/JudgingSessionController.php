@@ -136,6 +136,7 @@ class JudgingSessionController extends ControllerBase {
         'judging_session' => $judging_session->id(),
         'user' => $user->id(),
       ]);
+
       // If user have read all the poems we send them directly to
       // the correct page.
       if ($this->judgeSessionService->numberOfPoemsReadByJudge($judging_session, $user) === $this->judgeSessionService->totalNumberOfPoems($judging_session, $user)) {
@@ -144,12 +145,19 @@ class JudgingSessionController extends ControllerBase {
           'user' => $user->id(),
         ]);
       }
+
       $link = Link::fromTextAndUrl($this->t('Judge now'), $url)->toRenderable();
-      if (!$this->judgeSessionService->canJudgeStartJudgingSession($judging_session, $user)) {
-        $link['#attributes']['class'][] = 'disabled';
+
+      if ($this->judgeSessionService->isSessionEvaluatedByJudge($judging_session, $user)) {
+        $link = ['#markup' => $this->t('Judging complete')];
       }
       else {
-        if (!$this->judgeSessionService->isSessionEvaluatedByJudge($judging_session, $user)) {
+        if (!$this->judgeSessionService->canJudgeStartJudgingSession($judging_session, $user)) {
+          $link = [
+            '#markup' => '-',
+          ];
+        }
+        else {
           $this->judgeSessionService->startJudgingSession($judging_session, $user);
         }
       }
@@ -187,11 +195,20 @@ class JudgingSessionController extends ControllerBase {
    * Check if user can access the judging page.
    */
   public function accessStartJudging(User $user): AccessResult {
-    $entities = $this->getReadyJudgingSessions($user);
     $tags = ['judging_session_list'];
-    return $entities
-      ? AccessResult::allowed()->addCacheTags($tags)
-      : AccessResult::neutral()->addCacheTags($tags);
+
+    $entities = $this->getReadyJudgingSessions($user);
+    if (!$entities) {
+      return AccessResult::forbidden()->addCacheTags($tags);
+    }
+
+    $permissions = ['access to all judge session pages'];
+
+    if ($user->id() === $this->currentUser->id()) {
+      $permissions[] = 'access own judge session page';
+    }
+
+    return AccessResult::allowedIfHasPermissions($this->currentUser, $permissions, 'OR')->addCacheTags($tags);
   }
 
   /**
@@ -359,14 +376,21 @@ class JudgingSessionController extends ControllerBase {
    */
   public function accessJudgeSession(User $user, JudgingSession $judging_session): AccessResult {
     if (!$this->judgeSessionService->canJudgeStartJudgingSession($judging_session, $user)) {
-      return AccessResult::forbidden();
+      return AccessResult::forbidden()->addCacheTags($judging_session->getCacheTags());
     }
 
     $ready_for_scoring = (BOOL) $judging_session->field_ready_for_scoring->value;
+    if (!$ready_for_scoring) {
+      return AccessResult::forbidden()->addCacheTags($judging_session->getCacheTags());
+    }
+
     $judges = array_merge($judging_session->field_english_judge->getValue(), $judging_session->field_french_judge->getValue());
     $user_is_judge = in_array($user->id(), array_column($judges, 'target_id'));
-    return AccessResult::allowedIf($ready_for_scoring && $user_is_judge)
-      ->addCacheTags($judging_session->getCacheTags());
+    if (!$user_is_judge) {
+      return AccessResult::forbidden()->addCacheTags($judging_session->getCacheTags());
+    }
+
+    return $this->accessStartJudging($user, $judging_session);
   }
 
 }
