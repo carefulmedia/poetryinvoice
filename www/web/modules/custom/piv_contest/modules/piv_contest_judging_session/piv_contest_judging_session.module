@@ -217,8 +217,13 @@ function template_preprocess_judging_session(array &$variables) {
  * Implements hook_entity_presave().
  */
 function piv_contest_judging_session_judging_session_presave(EntityInterface $entity) {
-  $french_judges = array_column($entity->field_french_judge->getValue(), 'target_id');
-  $english_judges = array_column($entity->field_english_judge->getValue(), 'target_id');
+  $session = \Drupal::entityTypeManager()->getStorage('judging_session')->load($entity->id());
+  if (!$session) {
+    return;
+  }
+
+  $french_judges = array_column($session->field_french_judge->getValue(), 'target_id');
+  $english_judges = array_column($session->field_english_judge->getValue(), 'target_id');
 
   $judges = array_merge($french_judges, $english_judges);
 
