@@ -187,6 +187,11 @@ function piv_contest_judging_session_preprocess_competition(&$variables) {
     $variables['content']['competition_progress'] = Link::createFromRoute(t('Competition Progress'), 'piv_contest_judging_session.competition_progress', [
       'competition' => $competition->id(),
     ])->toRenderable() + ['#weight' => -98];
+    $variables['content']['manage_session']['#prefix'] = '<div>';
+    $variables['content']['manage_session']['#suffix'] = '</div>';
+    $variables['content']['competition_progress']['#prefix'] = '<div>';
+    $variables['content']['competition_progress']['#suffix'] = '</div>';
+
   }
 
 }
@@ -230,7 +235,7 @@ function piv_contest_judging_session_judging_session_presave(EntityInterface $en
 
 /**
  * Implements hook_field_widget_form_alter().
- * 
+ *
  * Changes the judge field on judging_session to only let the user select the
  * judges referenced in the competition.
  */
