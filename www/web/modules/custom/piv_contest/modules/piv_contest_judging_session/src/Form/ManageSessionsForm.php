@@ -196,7 +196,7 @@ class ManageSessionsForm extends FormBase {
     }
 
     $session_id = $this->requestStack->getCurrentRequest()->query->get('session');
-    if (!$current_session_id && $session_id) {
+    if (!$current_session_id && $session_id && isset($sessions_options[$session_id])) {
       $current_session_id = $session_id;
     }
 
