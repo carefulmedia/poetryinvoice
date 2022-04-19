@@ -238,10 +238,7 @@ class ManageSessionsForm extends FormBase {
         ],
       );
 
-      $items_to_add = $this->getEntriesFromList(
-        $this->getAvailableEntriesForStream($stream_id),
-      );
-
+      $items_to_add = $this->getEntriesFromList($this->getAvailableEntriesForSession($current_session));
       $form['fieldset']['add_entries'] = [
         '#type' => 'fieldset',
         '#title' => $this->t('Add entries'),
@@ -275,6 +272,25 @@ class ManageSessionsForm extends FormBase {
     ];
 
     return $form['fieldset'];
+  }
+
+  /**
+   * Get all available entries for a session.
+   */
+  protected function getAvailableEntriesForSession($judging_session): array {
+    $competition_id = $judging_session->field_competition->target_id;
+    if (!$competition_id) {
+      return [];
+    }
+    $already_added = array_column($judging_session->field_competition_entries->getValue(), 'target_id');
+    $query = $this->competitionEntryStorage->getQuery()
+      ->condition('field_competition', $competition_id)
+      ->condition('field_competition_current_level', $judging_session->field_competition_current_level->value);
+    if ($already_added) {
+      $query->condition('id', $already_added, 'NOT IN');
+    }
+    $competition_entry_ids = $query->execute();
+    return $this->competitionEntryStorage->loadMultiple($competition_entry_ids);
   }
 
   /**
