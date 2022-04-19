@@ -15,6 +15,7 @@ dependencies:
     - field.field.judging_session.default.field_stream
     - piv_contest_judging_session.judging_session_type.default
   module:
+    - chosen_field
     - piv_contest_judging_session
 id: judging_session.default.session_management_ui
 targetEntityType: judging_session
@@ -22,14 +23,10 @@ bundle: default
 mode: session_management_ui
 content:
   field_accuracy_judge:
-    type: competition_judges_autocomplete
+    type: chosen_select
     weight: 6
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_competition:
     type: entity_reference_autocomplete
@@ -42,24 +39,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_english_judge:
-    type: competition_judges_autocomplete
+    type: chosen_select
     weight: 4
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_french_judge:
-    type: competition_judges_autocomplete
+    type: chosen_select
     weight: 5
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_ready_for_scoring:
     type: boolean_checkbox
