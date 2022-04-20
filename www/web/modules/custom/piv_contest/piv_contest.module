@@ -125,7 +125,7 @@ function piv_contest_form_competition_default_edit_form_alter(&$form, FormStateI
     ->execute();
   if ($results) {
     $form['field_score_template']['#disabled'] = TRUE;
-    \Drupal::messenger()->addWarning('This competition already have recitations and/or scores, some fields are disabled.');
+    \Drupal::messenger()->addWarning('This competition already has recitations and/or scores, some fields are disabled.');
   }
 }
 
@@ -135,7 +135,7 @@ function piv_contest_form_competition_default_edit_form_alter(&$form, FormStateI
 function piv_contest_score_template_type_access(EntityInterface $entity, $operation, AccountInterface $account) {
   $id = $entity->id();
   if ($operation == 'delete' && _piv_contest_score_exists_for_score_template_type($id)) {
-    \Drupal::messenger()->addWarning('This score_template_type have score entities referencing it. Deleting and editing are disabled.');
+    \Drupal::messenger()->addWarning('This score_template_type has score entities referencing it. Deleting and editing are disabled.');
     return AccessResult::forbidden();
   }
   return AccessResult::neutral();
@@ -148,7 +148,7 @@ function piv_contest_field_config_access(EntityInterface $entity, $operation, Ac
   if ($operation == 'delete' && $entity->get('entity_type') == 'score_template') {
     if (_piv_contest_score_exists_for_score_template_type($entity->get('bundle'))) {
       // Duplicated messages are not displayed duplicated.
-      \Drupal::messenger()->addWarning('This score_template_type have score entities referencing it. Deleting fields is disabled.');
+      \Drupal::messenger()->addWarning('This score_template_type has score entities referencing it. Deleting fields is disabled.');
       return AccessResult::forbidden();
     }
   }
