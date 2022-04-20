@@ -217,7 +217,7 @@ function template_preprocess_judging_session(array &$variables) {
  * Implements hook_entity_presave().
  */
 function piv_contest_judging_session_judging_session_presave(EntityInterface $entity) {
-  $session = \Drupal::entityTypeManager()->getStorage('judging_session')->load($entity->id());
+  $session = $entity->original;
   if (!$session) {
     return;
   }
