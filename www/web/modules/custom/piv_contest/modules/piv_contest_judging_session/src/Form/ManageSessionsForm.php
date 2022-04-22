@@ -80,7 +80,10 @@ class ManageSessionsForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state, Competition $competition = NULL) {
     $form_state->set('competition', $competition);
-    $current_level = $competition->field_competition_current_level->value ?? 1;
+    $current_level = $form_state->getValue('competition_level') ??
+      $this->requestStack->getCurrentRequest()->get('level') ??
+      $competition->field_competition_current_level->value ?? 1;
+
     $streams_options = [];
     foreach ($competition->field_competition_streams as $stream) {
       $entity = $stream->entity;
@@ -91,7 +94,7 @@ class ManageSessionsForm extends FormBase {
     if (!$stream_id) {
       $stream_id = $competition->field_competition_streams[0]->target_id;
     }
-    $level = $form_state->getValue('competition_level') ?? $current_level;
+
     $add_session = Url::fromRoute('piv_contest_judging_session.add_session', [
       'competition' => $competition->id(),
       'destination' => Url::fromRoute('piv_contest_judging_session.manage_sessions', [
@@ -100,7 +103,7 @@ class ManageSessionsForm extends FormBase {
     ], [
       'query' => [
         'stream' => $stream_id,
-        'level' => $level,
+        'level' => $current_level,
       ],
     ]);
 
@@ -170,9 +173,10 @@ class ManageSessionsForm extends FormBase {
    */
   public function loadFormForSessionStream(&$form, FormStateInterface $form_state) {
     $competition = $form_state->get('competition');
-    $competition_level = $form_state->getValue('competition_level')
-      ?? $competition->field_competition_current_level->value
-      ?? 1;
+
+    $competition_level = $form_state->getValue('competition_level') ??
+      $this->requestStack->getCurrentRequest()->get('level') ??
+      $competition->field_competition_current_level->value ?? 1;
 
     $stream_id = $form_state->getValue('session_stream');
     if (!$stream_id) {
@@ -231,6 +235,7 @@ class ManageSessionsForm extends FormBase {
               [
                 'query' => [
                   'session' => $current_session_id,
+                  'level' => $competition_level,
                 ],
               ]
             )->toString(),
