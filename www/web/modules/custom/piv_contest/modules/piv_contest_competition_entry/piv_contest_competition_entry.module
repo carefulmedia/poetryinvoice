@@ -7,6 +7,7 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
+use Drupal\piv_contest_competition\Form\CompetitionForm;
 use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
 use Drupal\user\Entity\User;
 use Drupal\Core\Entity\EntityInterface;
@@ -90,5 +91,46 @@ function piv_contest_competition_entry_form_alter(&$form, FormStateInterface $fo
 function template_preprocess_competition_entry(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Competition Default Edit form Alter.
+ */
+function piv_contest_competition_entry_form_competition_default_edit_form_alter(&$form, FormStateInterface $form_state) {
+  $storage = \Drupal::entityTypeManager()->getStorage('competition_entry');
+
+  $build_info = $form_state->getBuildInfo();
+  if (!isset($build_info['callback_object'])) {
+    return;
+  }
+
+  $callback_object = $build_info['callback_object'];
+  if (!$callback_object instanceof CompetitionForm) {
+    return;
+  }
+
+  $entity = $callback_object->getEntity();
+
+  $fields_to_disable = [
+    'field_min_recitations',
+    'field_entries_required_school',
+    'field_max_entries_school',
+    'field_stream_languages',
+  ];
+
+  foreach ($entity->field_competition_streams as $key => $field_item) {
+    $items = $storage->getQuery()
+      ->condition('field_stream.target_id', $field_item->target_id)
+      ->range(0, 1)
+      ->execute();
+
+    $has_items = count($items) > 0;
+    if ($has_items) {
+      // Check if there is any competition entry for that competition.
+      foreach ($fields_to_disable as $field_name) {
+        $form['field_competition_streams']['widget'][$key]['subform'][$field_name]['#disabled'] = TRUE;
+      }
+    }
   }
 }

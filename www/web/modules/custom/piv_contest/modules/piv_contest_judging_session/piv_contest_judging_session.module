@@ -245,6 +245,10 @@ function piv_contest_judging_session_judging_session_presave(EntityInterface $en
  * judges referenced in the competition.
  */
 function piv_contest_judging_session_field_widget_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if (!isset($element['##entity_type'])) {
+    return;
+  }
+
   if ($element['#entity_type'] == 'judging_session') {
     $field_name = $context['items']->getFieldDefinition()->getName();
     if (in_array($field_name, ['field_accuracy_judge', 'field_english_judge', 'field_french_judge'])) {
