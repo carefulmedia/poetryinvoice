@@ -186,7 +186,7 @@ class Competition extends RevisionableContentEntityBase implements CompetitionIn
     $fields['status'] = BaseFieldDefinition::create('boolean')
       ->setRevisionable(TRUE)
       ->setLabel(t('Status'))
-      ->setDescription(t('A boolean indicating whether the competition is enabled.'))
+      ->setDescription(t('A boolean indicating the competition entity status.'))
       ->setDefaultValue(TRUE)
       ->setSetting('on_label', 'Enabled')
       ->setDisplayOptions('form', [

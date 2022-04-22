@@ -10,7 +10,7 @@ field_name: field_active
 entity_type: competition
 bundle: default
 label: Active
-description: ''
+description: 'Dictates if a teacher can enroll and create competition entries from their profile interface.'
 required: false
 translatable: false
 default_value:
