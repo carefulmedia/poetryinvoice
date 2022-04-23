@@ -64,12 +64,7 @@ class CompetitionEntryAccessControlHandler extends EntityAccessControlHandler im
       case 'update':
         $is_locked = $this->competitionLockService->isLocked($entity);
         if ($is_locked) {
-          $is_allowed_result = AccessResult::allowedIfHasPermission($account, 'edit locked competition');
-          if ($is_allowed_result->isAllowed()) {
-            \Drupal::messenger()->addWarning('This competition entry is locked. Only edit it if you know what you are doing.');
-          }
-
-          return $is_allowed_result;
+          return AccessResult::allowedIfHasPermission($account, 'edit locked competition');
         }
 
         $permissions = [
@@ -87,11 +82,7 @@ class CompetitionEntryAccessControlHandler extends EntityAccessControlHandler im
       case 'delete':
         $is_locked = $this->competitionLockService->isLocked($entity);
         if ($is_locked) {
-          $is_allowed_result = AccessResult::allowedIfHasPermission($account, 'edit locked competition');
-          if ($is_allowed_result->isAllowed()) {
-            \Drupal::messenger()->addWarning('This competition entry is locked. Only edit it if you know what you are doing.');
-          }
-          return $is_allowed_result;
+          return AccessResult::allowedIfHasPermission($account, 'edit locked competition');
         }
 
         $permissions = [
