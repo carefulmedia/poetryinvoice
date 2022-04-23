@@ -132,11 +132,11 @@ class JudgingSessionController extends ControllerBase {
     $judging_sessions = $this->getReadyJudgingSessions($user);
     $rows = [];
 
-    // Make sure at least one session is available to judge
-    $has_session_available = false;
+    // Make sure at least one session is available to judge.
+    $has_session_available = FALSE;
     foreach ($judging_sessions as $judging_session) {
       if ($this->judgeSessionService->canJudgeStartJudgingSession($judging_session, $user)) {
-        $has_session_available = true;
+        $has_session_available = TRUE;
         break;
       }
     }
@@ -229,7 +229,15 @@ class JudgingSessionController extends ControllerBase {
   /**
    * Page for a judge to read the poems.
    */
-  public function readPoems(User $user, JudgingSession $judging_session): array {
+  public function readPoems(User $user, JudgingSession $judging_session) {
+    // IF user has read all poems redirect to judging page.
+    if ($this->judgeSessionService->numberOfPoemsReadByJudge($judging_session, $user) === $this->judgeSessionService->totalNumberOfPoems($judging_session, $user)) {
+      return $this->redirect('piv_contest_judging_session.judge_recitations', [
+        'user' => $user->id(),
+        'judging_session' => $judging_session->id(),
+      ]);
+    }
+
     $this->judgeSessionService->startJudgingSession($judging_session, $user);
     $poem = $this->judgeSessionService->nextPoemToRead($judging_session, $user);
     if (!$poem) {
@@ -257,30 +265,25 @@ class JudgingSessionController extends ControllerBase {
       ]),
     ];
 
-    if ($this->judgeSessionService->numberOfPoemsReadByJudge($judging_session, $user) === $this->judgeSessionService->totalNumberOfPoems($judging_session, $user)) {
-      $build['read_next'] = [
-        '#markup' => Link::fromTextAndUrl($this->t('Start judging'), Url::fromRoute('piv_contest_judging_session.judge_recitations', [
-          'user' => $user->id(),
-          'judging_session' => $judging_session->id(),
-        ]))->toString(),
-      ];
-    }
-    else {
-      $url = Url::fromRoute(
-        'piv_contest_judging_session.mark_poem_as_read',
-        [
-          'judging_session' => $session_id,
-          'user' => $user->id(),
-          'poem' => $poem_id,
-        ],
-      );
-      $token = $this->tokenGenerator->get($url->getInternalPath());
-      $url->setOptions(['query' => ['token' => $token]]);
+    $url = Url::fromRoute(
+      'piv_contest_judging_session.mark_poem_as_read',
+      [
+        'judging_session' => $session_id,
+        'user' => $user->id(),
+        'poem' => $poem_id,
+      ],
+    );
+    $token = $this->tokenGenerator->get($url->getInternalPath());
+    $url->setOptions(['query' => ['token' => $token]]);
 
-      $build['read_next'] = [
-        '#markup' => Link::fromTextAndUrl('Read next Poem', $url)->toString(),
-      ];
+    $text = $this->t('Read next Poem');
+    if ($this->judgeSessionService->numberOfPoemsReadByJudge($judging_session, $user) + 1 >= $this->judgeSessionService->totalNumberOfPoems($judging_session, $user)) {
+      $text = $this->t('Start judging');
     }
+
+    $build['read_next'] = [
+      '#markup' => Link::fromTextAndUrl($text, $url)->toString(),
+    ];
 
     $build['read_later'] = [
       '#markup' => Link::fromTextAndUrl('Read poems later', Url::fromRoute('piv_contest_judging_session.start_judging', [
@@ -296,6 +299,14 @@ class JudgingSessionController extends ControllerBase {
    */
   public function markPoemAsRead(User $user, JudgingSession $judging_session, NodeInterface $poem): RedirectResponse {
     $this->judgeSessionService->markPoemAsRead($judging_session, $user, $poem);
+    // IF user has read all poems redirect to judging page.
+    if ($this->judgeSessionService->numberOfPoemsReadByJudge($judging_session, $user) === $this->judgeSessionService->totalNumberOfPoems($judging_session, $user)) {
+      return $this->redirect('piv_contest_judging_session.judge_recitations', [
+        'user' => $user->id(),
+        'judging_session' => $judging_session->id(),
+      ]);
+    }
+
     return $this->redirect('piv_contest_judging_session.read_poems', [
       'user' => $user->id(),
       'judging_session' => $judging_session->id(),
