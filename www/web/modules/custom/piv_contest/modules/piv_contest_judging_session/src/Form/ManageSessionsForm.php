@@ -290,7 +290,8 @@ class ManageSessionsForm extends FormBase {
     $already_added = array_column($judging_session->field_competition_entries->getValue(), 'target_id');
     $query = $this->competitionEntryStorage->getQuery()
       ->condition('field_competition', $competition_id)
-      ->condition('field_competition_current_level', $judging_session->field_competition_current_level->value);
+      ->condition('field_competition_current_level', $judging_session->field_competition_current_level->value)
+      ->condition('field_stream', $judging_session->field_stream->target_id);
     if ($already_added) {
       $query->condition('id', $already_added, 'NOT IN');
     }
