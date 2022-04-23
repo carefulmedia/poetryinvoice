@@ -79,7 +79,8 @@ display:
             thousand_separator: ''
             prefix_suffix: true
           group_column: value
-          group_columns: {  }
+          group_columns:
+            entity_id: entity_id
           group_rows: true
           delta_limit: 0
           delta_offset: 0
@@ -874,7 +875,7 @@ display:
         options:
           query_comment: ''
           disable_sql_rewrite: false
-          distinct: false
+          distinct: true
           replica: false
           query_tags: {  }
       relationships:
@@ -914,6 +915,7 @@ display:
           admin_label: 'field_french_judge: User'
           plugin_id: standard
           required: false
+      group_by: true
       header: {  }
       footer:
         result:
