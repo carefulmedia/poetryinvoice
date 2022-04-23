@@ -131,6 +131,21 @@ class JudgingSessionController extends ControllerBase {
     /** @var \Drupal\Core\Entity\EntityInterface[] $judging_sessions */
     $judging_sessions = $this->getReadyJudgingSessions($user);
     $rows = [];
+
+    // Make sure at least one session is available to judge
+    $has_session_available = false;
+    foreach ($judging_sessions as $judging_session) {
+      if ($this->judgeSessionService->canJudgeStartJudgingSession($judging_session, $user)) {
+        $has_session_available = true;
+        break;
+      }
+    }
+
+    // Make sure we clean this up and first session will be judged by default.
+    if (!$has_session_available && count($judging_sessions) > 0) {
+      $this->judgeSessionService->removeSessionBeingJudged($user);
+    }
+
     foreach ($judging_sessions as $judging_session) {
       $url = Url::fromRoute('piv_contest_judging_session.read_poems', [
         'judging_session' => $judging_session->id(),
