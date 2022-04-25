@@ -287,14 +287,20 @@ class ManageSessionsForm extends FormBase {
     if (!$competition_id) {
       return [];
     }
+
+    $stream_id = $judging_session->field_stream->target_id;
+    $available_entries = $this->getAvailableEntriesForStream($stream_id);
+
     $already_added = array_column($judging_session->field_competition_entries->getValue(), 'target_id');
     $query = $this->competitionEntryStorage->getQuery()
       ->condition('field_competition', $competition_id)
       ->condition('field_competition_current_level', $judging_session->field_competition_current_level->value)
-      ->condition('field_stream', $judging_session->field_stream->target_id);
+      ->condition('field_stream', $stream_id)
+      ->condition('id', array_keys($available_entries), 'IN');
     if ($already_added) {
       $query->condition('id', $already_added, 'NOT IN');
     }
+
     $competition_entry_ids = $query->execute();
     return $this->competitionEntryStorage->loadMultiple($competition_entry_ids);
   }
