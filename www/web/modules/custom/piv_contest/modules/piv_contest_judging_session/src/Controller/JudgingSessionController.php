@@ -101,7 +101,7 @@ class JudgingSessionController extends ControllerBase {
     $stream_id = $request->query->get('stream');
     $level = $request->query->get('level') ?? 1;
     $stream = $this->entityTypeManager->getStorage('paragraph')->load($stream_id);
-    $level_name = $competition->field_competition_levels[$level]->value;
+    $level_name = $competition->field_competition_levels[$level - 1]->value;
     $identifier = $this->entityTypeManager
       ->getStorage('judging_session')
       ->getQuery()
