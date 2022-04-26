@@ -243,7 +243,7 @@ class ManageSessionsForm extends FormBase {
         ],
       );
 
-      $items_to_add = $this->getEntriesFromList($this->getAvailableEntriesForSession($current_session));
+      $items_to_add = $this->getEntriesFromList($this->getAvailableEntriesForSession($current_session, $competition_level));
       $form['fieldset']['add_entries'] = [
         '#type' => 'fieldset',
         '#title' => $this->t('Add entries'),
@@ -282,14 +282,14 @@ class ManageSessionsForm extends FormBase {
   /**
    * Get all available entries for a session.
    */
-  protected function getAvailableEntriesForSession($judging_session): array {
+  protected function getAvailableEntriesForSession($judging_session, $level): array {
     $competition_id = $judging_session->field_competition->target_id;
     if (!$competition_id) {
       return [];
     }
 
     $stream_id = $judging_session->field_stream->target_id;
-    $available_entries = $this->getAvailableEntriesForStream($stream_id);
+    $available_entries = $this->getAvailableEntriesForStreamAndLevel($stream_id, $level);
     if (empty($available_entries)) {
       return [];
     }
@@ -311,18 +311,37 @@ class ManageSessionsForm extends FormBase {
   /**
    * Get all available entries for a stream.
    */
-  protected function getAvailableEntriesForStream($stream_id): array {
+  protected function getAvailableEntriesForStreamAndLevel($stream_id, $level): array {
     $query = $this->database->query('
         SELECT id from {competition_entry} as ce
             LEFT JOIN {judging_session__field_competition_entries} as js
                 ON ce.id = js.field_competition_entries_target_id
             LEFT JOIN {competition_entry__field_stream} as fst
                 ON ce.id = fst.entity_id
-            WHERE js.field_competition_entries_target_id is NULL
+            WHERE 1=1
               AND fst.field_stream_target_id = :stream_id
+              AND (
+                (
+                    js.field_competition_entries_target_id is NULL
+                ) OR (
+                    js.field_competition_entries_target_id NOT IN (
+                        SELECT id from {competition_entry} as ce
+                            LEFT JOIN {judging_session__field_competition_entries} as js
+                                ON ce.id = js.field_competition_entries_target_id
+                            LEFT JOIN {competition_entry__field_stream} as fst
+                                ON ce.id = fst.entity_id
+                            LEFT JOIN {judging_session__field_competition_current_level} as lvl
+                                on js.entity_id = lvl.entity_id
+                            WHERE 1=1
+                                AND fst.field_stream_target_id = :stream_id
+                                AND lvl.field_competition_current_level_value = :level
+                    )
+                )
+              )
     ',
       [
         ':stream_id' => $stream_id,
+        ':level' => $level,
       ],
     );
 
@@ -331,8 +350,9 @@ class ManageSessionsForm extends FormBase {
     }
 
     return $this->competitionEntryStorage->loadMultiple(
-      $query->fetchAll(\PDO::FETCH_COLUMN),
+      $query->fetchAll(\PDO::FETCH_COLUMN)
     );
+
   }
 
   /**
