@@ -14,7 +14,6 @@ dependencies:
     - field.field.judging_session.default.field_stream
     - piv_contest_judging_session.judging_session_type.default
   module:
-    - chosen_field
     - piv_contest_judging_session
 id: judging_session.default.default
 targetEntityType: judging_session
@@ -22,7 +21,7 @@ bundle: default
 mode: default
 content:
   field_accuracy_judge:
-    type: chosen_select
+    type: chosen_judges_select
     weight: 7
     region: content
     settings: {  }
@@ -38,13 +37,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_english_judge:
-    type: chosen_select
+    type: chosen_judges_select
     weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   field_french_judge:
-    type: chosen_select
+    type: chosen_judges_select
     weight: 6
     region: content
     settings: {  }
