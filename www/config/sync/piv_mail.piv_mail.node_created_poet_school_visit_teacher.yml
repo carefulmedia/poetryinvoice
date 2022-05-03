@@ -1,0 +1,30 @@
+en:
+  active: 1
+  to:
+    teacher_that_created_the_visit: teacher_that_created_the_visit
+    all_teachers_at_the_school: all_teachers_at_the_school
+    include_from: include_from
+    poet: 0
+    visit_admin: 0
+    site_admin: 0
+    teachers_involved_in_the_visit: 0
+  to_more: ''
+  subject: 'A poet visit has been requested for [school_name]'
+  body:
+    value: "<p><span style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">Dear teachers</span><span style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">,</span></p>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">&nbsp;</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">We are delighted that&nbsp;[school_name] has made a request for a visit through our Poet In Your Class program.&nbsp;</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">&nbsp;</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">This email is being sent to the teacher at your school who has requested a poet visit, [booking_teacher], and to all other teachers with accounts on our site. Our program covers the cost of one 3-hour in-person visit or two 1-hour virtual visits per school, so we invite you to coordinate with your colleague(s) to ensure the greatest number of students can benefit from this visit.</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">&nbsp;</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">A member of our team will contact [booking_teacher] shortly to organize your poet visit.</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">&nbsp;</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">In the meantime, please consider <a href=\"https://poetryinvoice.com/sites/default/files/PIV-Flyer.pdf\">printing this flyer</a> and hanging it in your classrooms and hallways to help promote our monthly poetry prize. Your students could win $100 and publication in our poetry journal VOICES/VOIX!</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">&nbsp;</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">Sincerely yours,</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">&nbsp;</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">The Poetry In Voice Team</div>\r\n"
+    format: full_html
+fr:
+  active: 1
+  to:
+    teacher_that_created_the_visit: teacher_that_created_the_visit
+    all_teachers_at_the_school: all_teachers_at_the_school
+    include_from: include_from
+    poet: 0
+    visit_admin: 0
+    site_admin: 0
+    teachers_involved_in_the_visit: 0
+  to_more: ''
+  subject: 'La visite d’un ou d’une poète a été demandée : [school_name]'
+  body:
+    value: "<p>Bonjour,</p>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">Merci de participer au programme Poètes à l’école des Voix de la poésie !</div>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">\r\n<div>&nbsp;</div>\r\n\r\n<div>Ce message automatique est envoyé à tous les enseignant·es de [school_name] qui ont&nbsp;<span class=\"il\">un</span>&nbsp;compte sur notre site pour vous permettre de travailler avec [booking_teacher] qui a demandé&nbsp;<span class=\"il\">une</span>&nbsp;<span class=\"il\">visite</span>&nbsp;de&nbsp;<span class=\"il\">poète</span>.</div>\r\n\r\n<div>Notre programme couvre les frais d’une visite en personne d’un maximum de trois heures passées dans l’école, ou encore de deux visites virtuelles d’une heure.&nbsp;</div>\r\n\r\n<div>&nbsp;</div>\r\n\r\n<div>[booking_teacher],&nbsp;<span class=\"il\">une</span>&nbsp;membre de notre équipe vous contactera dans les prochains jours pour organiser cette&nbsp;<span class=\"il\">visite</span>.&nbsp;</div>\r\n\r\n<div>&nbsp;</div>\r\n\r\n<div>&nbsp;</div>\r\n\r\n<div>Cordialement,</div>\r\n\r\n<div>&nbsp;</div>\r\n\r\n<div>L’équipe des Voix de la poésie</div>\r\n</div>\r\n\r\n<p><span style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">PS : Pensez à <a href=\"http://poetryinvoice.com/sites/default/files/LVP-Flyer.pdf\">imprimer ce dépliant</a> et à l'accrocher dans vos salles de classe et dans les couloirs pour aider à promouvoir notre prix mensuel de poésie. Vos élèves pourraient gagner 100 $ et être publié·e·s dans notre journal de poésie, VOICES/VOIX !</span></p>\r\n"
+    format: full_html

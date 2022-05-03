@@ -1,0 +1,14 @@
+en:
+  active: 1
+  to_more: info@poetryinvoice.com
+  subject: 'Thank you for submitting to VOICES'
+  body:
+    value: "<p>Dear [first_name],</p>\r\n\r\n<p>Thank you for your submission. We are thrilled to see your interest in our new poetry journal, VOICES.</p>\r\n\r\n<p>You’ll be notified in May whether your work will be published. The issue will appear on our website in June. We hope you’ll check it out.</p>\r\n\r\n<p>Best,<br />\r\nThe Poetry In Voice Team</p>\r\n"
+    format: full_html
+fr:
+  active: 1
+  to_more: info@lesvoixdelapoesie.com
+  subject: 'Merci pour votre soumission au journal de poésie VOIX'
+  body:
+    value: "<p>Bonjour [first_name],</p>\r\n\r\n<p>Merci d’avoir soumis un texte à notre journal de poésie, <em>VOIX </em>! Vous saurez si votre texte sera publié avant le 5 juin.</p>\r\n\r\n<p>La parution du journal sera accessible sur notre site en juin. Nous espérons que vous irez la lire !</p>\r\n\r\n<p>Merci encore,<br />\r\nL'équipe des Voix de la poésie</p>\r\n"
+    format: full_html

@@ -1,0 +1,78 @@
+uuid: f4a82e26-c6ec-4d20-a5c4-e6ba6bd4f367
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tr_student.field_legal_name
+    - field.field.paragraph.tr_student.field_poem
+    - field.field.paragraph.tr_student.field_recitation_order
+    - field.field.paragraph.tr_student.field_stage_name
+    - field.field.paragraph.tr_student.field_student_name_1
+    - field.field.paragraph.tr_student.piv_release_form
+    - field.field.paragraph.tr_student.piv_student_mail
+    - paragraphs.paragraphs_type.tr_student
+  module:
+    - file
+id: paragraph.tr_student.default
+targetEntityType: paragraph
+bundle: tr_student
+mode: default
+content:
+  field_legal_name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_poem:
+    type: entity_reference_autocomplete
+    weight: 4
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_recitation_order:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_stage_name:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_student_name_1:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  piv_release_form:
+    type: file_generic
+    weight: 6
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  piv_student_mail:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for PIV Base module.
+ */
+
+use Drupal\Core\Session\AccountInterface;
+
+/**
+ * Implements hook_user_format_name_alter().
+ */
+function piv_base_user_format_name_alter(&$name, AccountInterface $account) {
+  if ($account->isAuthenticated()) {
+    $user = \Drupal::entityTypeManager()->getStorage('user')->load($account->id());
+    if ($user) {
+      $first_name = $user->piv_teacher_first_name->value;
+      $last_name = $user->piv_teacher_last_name->value;
+      if ($first_name || $last_name) {
+        $name = trim("$first_name $last_name");
+      }
+    }
+  }
+}

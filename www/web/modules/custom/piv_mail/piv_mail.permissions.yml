@@ -1,0 +1,4 @@
+administer piv_mail configuration:
+  title: 'Administer piv_mail configuration'
+  description: 'Optional description.'
+  restrict access: true

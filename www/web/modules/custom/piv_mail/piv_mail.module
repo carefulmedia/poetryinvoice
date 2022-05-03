@@ -1,0 +1,335 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for PIV Mail module.
+ *
+ * @DCG
+ * This file is no longer required in Drupal 8.
+ * @see https://www.drupal.org/node/2217931
+ */
+
+use Drupal\node\NodeInterface;
+use Drupal\paragraphs\ParagraphInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function piv_mail_node_insert(NodeInterface $node) {
+  $user = $node->uid->entity;
+  $langcode = $node->langcode->value;
+  $replacements_service = \Drupal::service('piv_mail.replacements_service');
+  $replacements_service
+    ->addSource('node', $node)
+    ->addSource('user', $user);
+
+  switch ($node->bundle()) {
+    case 'journal_poem':
+      $from = $langcode == 'fr' ? 'journal@lesvoixdelapoesie.com' : 'journal@poetryinvoice.com';
+      piv_mail_send_mail('node_created_journal_poem', $langcode, $replacements_service, $from);
+      break;
+
+    case 'writing_prompt':
+      piv_mail_send_mail('node_created_writing_prompt', $langcode, $replacements_service, 'info@poetryinvoice.com');
+      break;
+
+    case 'lesson_plan':
+      piv_mail_send_mail('node_created_lesson_plan', $langcode, $replacements_service, 'info@poetryinvoice.com');
+      break;
+
+    case 'pal_pir_school_visit':
+      \Drupal::messenger()
+        ->addStatus(t("Thank you for requesting a poet visit. An email with the details of your request has been sent to you and to all teachers at your school with an account on our site. If you don’t receive our email, please check your spam folder and be sure to “unspam” our email address if necessary. Contact webmaster@poetryinvoice.com if needed.</p><p>We will be in touch shortly to work with you to arrange a visit."));
+      $replacements_service
+        ->addSource('teacher', $user)
+        ->addSource('school', $user->field_school->entity)
+        ->addSource('visit_node', $node);
+      $school_province = $node->field_address->administrative_area;
+      // These emails never consider the visit admin.
+      $provinces = ['QC', 'NS', 'NB', 'PEI'];
+      $from = ($langcode == 'fr' || in_array($school_province, $provinces))
+        ? 'caroline@lesvoixdelapoesie.com'
+        : 'tessa@poetryinvoice.com';
+      piv_mail_send_mail('node_created_poet_school_visit_admin', $langcode, $replacements_service, $from);
+      piv_mail_send_mail('node_created_poet_school_visit_teacher', $langcode, $replacements_service, $from);
+      break;
+
+    // This one will migrate to the contest implementation in the future.
+    case 'team_regionals_entry':
+      $replacements_service
+        ->reset()
+        ->addSource('team_regional_entry', $node);
+      piv_mail_send_mail('team_regional_entry_created', $langcode, $replacements_service, 'info@poetryinvoice.com');
+      break;
+
+  }
+}
+
+/**
+ * Check if a survey is complete.
+ */
+function piv_mail_is_survey_completed($role, $node) {
+  switch ($role) {
+    case 'teacher':
+      $paragraph_field = 'field_teacher_questionnaire';
+      $boolean_field = 'field_visit_completed_teacher';
+      break;
+
+    case 'poet':
+      $paragraph_field = 'field_poet_questionnaire';
+      $boolean_field = 'field_visit_completed_poet';
+      break;
+
+  }
+
+  return (BOOL) ($node->{$paragraph_field}->entity->{$boolean_field}->value ?? FALSE);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function piv_mail_paragraph_presave(ParagraphInterface $paragraph) {
+  // Cancel e-mails if survey is complete.
+  switch ($paragraph->bundle()) {
+    case 'teacher_questionnaire':
+      $node = $paragraph->getParentEntity();
+      if ($node && piv_mail_is_survey_completed('teacher', $node)) {
+        $nid = $node->id();
+        \Drupal::service('piv_mail.mail_queue')
+          ->deleteItemByKey("teacher_survey_reminder_one_week_after_visit:$nid");
+      }
+      break;
+
+    case 'poet_questionnaire':
+      $node = $paragraph->getParentEntity();
+      if ($node && piv_mail_is_survey_completed('poet', $node)) {
+        $nid = $node->id();
+        \Drupal::service('piv_mail.mail_queue')
+          ->deleteItemByKey("poet_survey_reminder_one_week_after_visit:$nid");
+      }
+      break;
+
+  }
+}
+
+/**
+ * Implemets hook_ENTITY_TYPE_delete().
+ */
+function piv_mail_node_delete(NodeInterface $node) {
+  if ($node->bundle() != 'pal_pir_school_visit') {
+    return;
+  }
+  // Remove tasks from queue when deleting the node.
+  $mail_queue = \Drupal::service('piv_mail.mail_queue');
+  $mail_queue->deleteItemsByNid($nid);
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function piv_mail_node_update(NodeInterface $node) {
+  if ($node->bundle() != 'pal_pir_school_visit') {
+    return;
+  }
+
+  $nid = $node->id();
+  $completed = $node->field_completed->value;
+  if ($completed == 'Cancelled') {
+    // Delete all scheduled emails.
+    $mail_queue = \Drupal::service('piv_mail.mail_queue');
+    $mail_queue->deleteItemsByNid($nid);
+    return;
+  }
+
+  $langcode = $node->langcode->value;
+  // Comes from visit admin email or the hardcoded emails below if visit admin
+  // is empty.
+  $from = $node->field_visit_admin->entity->mail->value ?? NULL;
+  if (!$from) {
+    $provinces = ['QC', 'NS', 'NB', 'PEI'];
+    $from = ($langcode == 'fr' || in_array($school_province, $provinces))
+      ? 'caroline@lesvoixdelapoesie.com'
+      : 'tessa@poetryinvoice.com';
+  }
+
+  $mail_queue = \Drupal::service('piv_mail.mail_queue');
+  $booked = !empty($node->field_booked_->value);
+  $booked_original = !empty($node->original->field_booked_->value);
+  $date = clone $node->field_agreed_visit_date->date;
+  $user = $node->uid->entity;
+  $replacements_service = \Drupal::service('piv_mail.replacements_service');
+  $replacements_service
+    ->addSource('node', $node)
+    ->addSource('visit_node', $node)
+    ->addSource('teacher', $user)
+    ->addSource('user', $user)
+    ->addSource('school', $user->field_school->entity);
+
+  if ($date && $booked) {
+    // Inline function to send emails if necessary.
+    $queue_mail = function ($key, $send_date) use ($langcode, $replacements_service, $from) {
+      if ($send_date < time()) {
+        return FALSE;
+      }
+
+      $queue_key = "$key:$nid";
+      return piv_mail_send_mail($key, $langcode, $replacements_service, $from, $send_date, $queue_key);
+    };
+
+    $visit_date = $date->setTime(0, 0, 0)->getTimestamp();
+
+    // Send mail one week before poet visit.
+    $queue_mail('one_week_before_visit_email_reminder', $visit_date - (7 * 24 * 60 * 60));
+
+    // Send mail one day before visit.
+    $queue_mail('one_day_before_visit_email_reminder', $visit_date - (24 * 60 * 60));
+
+    // Send mail one day after visit.
+    if ($chosen_poet) {
+      $queue_mail('poet_survey_reminder_one_day_after_visit', $visit_date + (24 * 60 * 60));
+    }
+
+    // Mail teacher one day after visit.
+    $queue_mail('teacher_survey_reminder_one_day_after_visit', $visit_date + (24 * 60 * 60));
+
+    // Mail teacher one week after visit.
+    if (!piv_mail_is_survey_completed('teacher', $node)) {
+      $queue_mail('teacher_survey_reminder_one_week_after_visit', $visit_date + (7 * 24 * 60 * 60));
+    }
+    // Mail poet one week after visit.
+    if (!piv_mail_is_survey_completed('poet', $node)) {
+      $queue_mail('poet_survey_reminder_one_week_after_visit', $visit_date + (7 * 24 * 60 * 60));
+    }
+  }
+
+  // Mail when node is booked, a node can't be booked on creation usually,
+  // since the booked field is admin only.
+  if ($booked && !$booked_original) {
+    piv_mail_send_mail('notification_booked_status_applied_to_visit', $langcode, $replacements_service, $from);
+  }
+
+  // Mail if there were changes to the node while its booked and the date is in
+  // the future.
+  if ($booked && $booked_original) {
+    $original_date = clone $node->original->field_agreed_visit_date->date;
+    $new_date = clone $node->field_agreed_visit_date->date;
+    if ($new_date->getTimestamp() < time()) {
+      return;
+    }
+
+    $date_changed = $original_date != $new_date;
+    $poet_changed = $node->field_pal_pir->target_id != $node->original->field_pal_pir->target_id;
+
+    if ($date_changed || $poet_changed) {
+      // Need to clone, instantiate the service again will just return the same
+      // instance.
+      $replacements_service_for_original_node = clone $replacements_service;
+      $user_original = $node->original->uid->entity;
+      $replacements_service_for_original_node
+        ->reset()
+        ->addSource('node', $node->original)
+        ->addSource('visit_node', $node->original)
+        ->addSource('teacher', $user_original)
+        ->addSource('user', $user_original)
+        ->addSource('school', $user_original->field_school->entity);
+      $replacements_service->setOriginal($replacements_service_for_original_node);
+      piv_mail_send_mail('booked_visit_change_notifications', $langcode, $replacements_service, $from);
+    }
+  }
+
+}
+
+/**
+ * Implements hook_mail().
+ */
+function piv_mail_mail($key, &$message, $params) {
+  $message['subject'] = $params['subject'];
+  $message['body'][] = $params['body'];
+  if (!empty($params['from'])) {
+    $message['from'] = $params['from'];
+  }
+}
+
+/**
+ * Send a email.
+ *
+ * The $replacement_service should be already feed with sources. The send_date
+ * is a unix timestamp indicating the minimum date this mail should be sent.
+ * Return TRUE if a email was sent, FALSE if fail or if the email was put in
+ * the queue.
+ */
+function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL, $send_date = FALSE, $queue_key = FALSE) {
+  $mail_manager = \Drupal::service('plugin.manager.mail');
+  $piv_mail_manager = \Drupal::service('plugin.manager.piv_mail');
+  if ($piv_mail_manager->hasDefinition($key)) {
+    $instance = $piv_mail_manager->createInstance($key);
+    $configurations = $instance->getConfiguration();
+    if (empty($configurations[$langcode]['active'])) {
+      return FALSE;
+    }
+    if ($send_date) {
+      if (!$queue_key) {
+        throw new \Exception('A queue key is required if a send_date is provided');
+      }
+      $replacements_data = $replacements_service->pack();
+      $data = [
+        'key' => $key,
+        'langcode' => $langcode,
+        'replacements_data' => $replacements_data,
+      ];
+      $mail_queue = \Drupal::service('piv_mail.mail_queue');
+      $mail_queue->createItem($queue_key, $data, $send_date);
+    }
+    else {
+      if (!$from) {
+        $from = \Drupal::config('system.site')->get('mail');
+      }
+      $body = $configurations[$langcode]['body']['value'] ?? NULL;
+      $body = $replacements_service->replace($body);
+      $subject = $configurations[$langcode]['subject'] ?? NULL;
+      $subject = $replacements_service->replace($subject);
+      // Calculate $to.
+      // In some plugins the "to_more" is hardcoded by overriding the settings
+      // in the plugin constructor.
+      $to_more = $configurations[$langcode]['to_more'] ?? '';
+      $to_more = array_filter(explode(' ', $to_more), function ($email) {
+        return filter_var($email, FILTER_VALIDATE_EMAIL);
+      });
+      $to_configs = $configurations[$langcode]['to'] ?? [];
+      $to_configs = array_filter($to_configs);
+      $to = $replacements_service->recipients(array_filter($to_configs));
+      $to = array_merge($to, $to_more);
+      // Add the "include from address.
+      if (in_array('include_from', $to_configs)) {
+        $to[] = $from;
+      }
+      $to = implode(',', array_unique($to));
+      $params = ['body' => $body, 'subject' => $subject, 'from' => $from];
+      $send = TRUE;
+      $result = $mail_manager->mail('piv_mail', $key, $to, $langcode, $params, NULL, $send);
+      return $result;
+    }
+  }
+  return FALSE;
+}
+
+/**
+ * Implements hook_cron().
+ */
+function piv_mail_cron() {
+  $mail_queue = \Drupal::service('piv_mail.mail_queue');
+  $replacements_service = \Drupal::service('piv_mail.replacements_service');
+  // Run for 5 minutes max.
+  $timeout = time() + 300;
+  while (time() < $timeout && $item = $mail_queue->claimItem()) {
+    try {
+      $replacements_service->unpack($item->data);
+      if (piv_mail_send_mail($item->key, $item->langcode, $replacements_service)) {
+        $mail_queue->deleteItem($item);
+      }
+    }
+    catch (\Exception $e) {
+      continue;
+    }
+  }
+}

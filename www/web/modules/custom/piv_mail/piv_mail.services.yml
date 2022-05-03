@@ -1,0 +1,16 @@
+services:
+  plugin.manager.piv_mail:
+    class: Drupal\piv_mail\PivMailPluginManager
+    arguments:
+      - '@container.namespaces'
+      - '@cache.discovery'
+      - '@module_handler'
+      - '@config.factory'
+
+  piv_mail.replacements_service:
+    class: Drupal\piv_mail\ReplacementsService
+    arguments: ['@entity_type.manager', '@country_manager', '@date.formatter']
+
+  piv_mail.mail_queue:
+    class: Drupal\piv_mail\PivMailQueue
+    arguments: ['@database']

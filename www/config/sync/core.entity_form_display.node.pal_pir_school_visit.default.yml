@@ -1,0 +1,201 @@
+uuid: e5040e0b-fc15-49f9-ae28-5475c3623837
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.pal_pir_school_visit.comment_node_pal_pir_school_vi
+    - field.field.node.pal_pir_school_visit.field_agreed_visit_date
+    - field.field.node.pal_pir_school_visit.field_amount_to_be_paid_to_each_
+    - field.field.node.pal_pir_school_visit.field_booked_
+    - field.field.node.pal_pir_school_visit.field_catherine_attending_
+    - field.field.node.pal_pir_school_visit.field_completed
+    - field.field.node.pal_pir_school_visit.field_date_and_poet_chosen
+    - field.field.node.pal_pir_school_visit.field_date_and_start_time
+    - field.field.node.pal_pir_school_visit.field_do_you_have_any_poet_prefe
+    - field.field.node.pal_pir_school_visit.field_hold
+    - field.field.node.pal_pir_school_visit.field_in_person_or_teleconferenc
+    - field.field.node.pal_pir_school_visit.field_notes
+    - field.field.node.pal_pir_school_visit.field_other_time_options
+    - field.field.node.pal_pir_school_visit.field_paid_
+    - field.field.node.pal_pir_school_visit.field_pal_pir
+    - field.field.node.pal_pir_school_visit.field_pal_pir_report
+    - field.field.node.pal_pir_school_visit.field_poet_questionnaire
+    - field.field.node.pal_pir_school_visit.field_preferred_date
+    - field.field.node.pal_pir_school_visit.field_preferred_poet_s_
+    - field.field.node.pal_pir_school_visit.field_teacher_questionnaire
+    - field.field.node.pal_pir_school_visit.field_teacher_report
+    - field.field.node.pal_pir_school_visit.field_teacher_s_involved
+    - field.field.node.pal_pir_school_visit.field_teacher_virtual_or_in_pers
+    - field.field.node.pal_pir_school_visit.field_total_students_involved
+    - field.field.node.pal_pir_school_visit.field_travel_time_supplement
+    - field.field.node.pal_pir_school_visit.field_visit_admin
+    - field.field.node.pal_pir_school_visit.field_visit_date_and_times
+    - node.type.pal_pir_school_visit
+  module:
+    - datetime
+    - paragraphs
+    - path
+id: node.pal_pir_school_visit.default
+targetEntityType: node
+bundle: pal_pir_school_visit
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_agreed_visit_date:
+    type: datetime_default
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_booked_:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_completed:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_in_person_or_teleconferenc:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_notes:
+    type: string_textarea
+    weight: 15
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_pal_pir:
+    type: entity_reference_autocomplete
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_poet_questionnaire:
+    type: entity_reference_paragraphs
+    weight: 14
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  field_teacher_questionnaire:
+    type: entity_reference_paragraphs
+    weight: 13
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  field_visit_admin:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  comment_node_pal_pir_school_vi: true
+  field_amount_to_be_paid_to_each_: true
+  field_catherine_attending_: true
+  field_date_and_poet_chosen: true
+  field_date_and_start_time: true
+  field_do_you_have_any_poet_prefe: true
+  field_hold: true
+  field_other_time_options: true
+  field_paid_: true
+  field_pal_pir_report: true
+  field_preferred_date: true
+  field_preferred_poet_s_: true
+  field_teacher_report: true
+  field_teacher_s_involved: true
+  field_teacher_virtual_or_in_pers: true
+  field_total_students_involved: true
+  field_travel_time_supplement: true
+  field_visit_date_and_times: true

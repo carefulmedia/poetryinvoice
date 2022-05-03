@@ -1,0 +1,30 @@
+en:
+  active: 1
+  to:
+    teacher_that_created_the_visit: teacher_that_created_the_visit
+    include_from: include_from
+    poet: 0
+    visit_admin: 0
+    site_admin: 0
+    all_teachers_at_the_school: 0
+    teachers_involved_in_the_visit: 0
+  to_more: ''
+  subject: 'Please fill out our questionnaire for your poet visit!'
+  body:
+    value: "<p>Dear [booking_teacher],</p>\r\n\r\n<p>We hope your poet visit with [poet_name] was a success yesterday. Please take a few minutes to fill out our questionnaire so that we can continue to improve the program:<br />\r\n[link_to_teacher_survey_href]</p>\r\n\r\n<p>All the best,<br />\r\n[visit_admin]</p>\r\n"
+    format: full_html
+fr:
+  active: 1
+  to:
+    poet: poet
+    include_from: include_from
+    visit_admin: 0
+    site_admin: 0
+    teacher_that_created_the_visit: 0
+    all_teachers_at_the_school: 0
+    teachers_involved_in_the_visit: 0
+  to_more: ''
+  subject: 'Remplissez notre sondage sur la visite reçue hier'
+  body:
+    value: "<p>Bonjour [booking_teacher],</p>\r\n\r\n<p>Nous espérons que la visite de [poet_name] dans votre classe hier a été appréciée par vos élèves !<br />\r\nNous vous demandons de prendre quelques minutes pour remplir notre sondage afin que nous puissions continuer d’améliorer le programme :<br />\r\n[link_to_teacher_survey_href]</p>\r\n\r\n<p>Cordialement,</p>\r\n\r\n<div style=\"font-family: Arial, Helvetica, sans-serif; font-size: small;\">L’équipe des Voix de la poésie</div>\r\n\r\n<div>&nbsp;</div>\r\n"
+    format: full_html

@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * @file
+ * Piv mail install file.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function piv_mail_schema() {
+  $schema['piv_mail_queue'] = [
+    'description' => 'E-mails queue.',
+    'fields' => [
+      'id' => [
+        'description' => 'The entry id.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      'key' => [
+        'description' => 'A unique key to prevent entry duplication',
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ],
+      'data' => [
+        'description' => 'The serialized data.',
+        'type' => 'blob',
+        'size' => 'big',
+        'not null' => TRUE,
+      ],
+      'date' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'normal',
+        'description' => 'Minimum date to send the e-mail.',
+      ],
+      'expire' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'size' => 'normal',
+        'description' => 'Expire time for this item when claimed.',
+      ],
+    ],
+    'primary key' => [
+      'id',
+      'key',
+    ],
+    'indexes' => [
+      'key' => [
+        'key',
+      ],
+      'date' => [
+        'date',
+      ],
+    ],
+  ];
+  return $schema;
+}

@@ -1,0 +1,7 @@
+piv_mail.settings_form:
+  path: '/admin/config/system/piv-mail'
+  defaults:
+    _title: 'PIV Mail settings'
+    _form: 'Drupal\piv_mail\Form\SettingsForm'
+  requirements:
+    _permission: 'administer piv_mail configuration'
