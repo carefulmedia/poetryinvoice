@@ -277,7 +277,9 @@ class JudgingSessionController extends ControllerBase {
     $url->setOptions(['query' => ['token' => $token]]);
 
     $text = $this->t('Read next Poem');
-    if ($this->judgeSessionService->numberOfPoemsReadByJudge($judging_session, $user) + 1 >= $this->judgeSessionService->totalNumberOfPoems($judging_session, $user)) {
+
+    $isLastPage = $this->judgeSessionService->numberOfPoemsReadByJudge($judging_session, $user) + 1 >= $this->judgeSessionService->totalNumberOfPoems($judging_session, $user);
+    if ($isLastPage) {
       $text = $this->t('Start judging');
     }
 
@@ -285,11 +287,13 @@ class JudgingSessionController extends ControllerBase {
       '#markup' => Link::fromTextAndUrl($text, $url)->toString(),
     ];
 
-    $build['read_later'] = [
-      '#markup' => Link::fromTextAndUrl('Read poems later', Url::fromRoute('piv_contest_judging_session.start_judging', [
-        'user' => $user->id(),
-      ]))->toString(),
-    ];
+    if (!$isLastPage) {
+      $build['read_later'] = [
+        '#markup' => Link::fromTextAndUrl('Read poems later', Url::fromRoute('piv_contest_judging_session.start_judging', [
+          'user' => $user->id(),
+        ]))->toString(),
+      ];
+    }
 
     return $build;
   }
