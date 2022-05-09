@@ -29,8 +29,11 @@ class DefaultScoreForm extends ScoreFormPluginBase {
       return ['#markup' => $label];
     }, $labels);
     foreach ($score_template->field_criteria->referencedEntities() as $delta => $criteria) {
-      $options = array_column($criteria->field_score_options->getValue(), 'value');
-      $options = array_combine($options, $options);
+      $values = array_column($criteria->field_score_options->getValue(), 'value');
+      $options = [];
+      foreach ($values as $option => $value) {
+        $options["{$option}_{$value}"] = $value;
+      }
       $form['criteria'][$delta] = [
         '#type' => 'radios',
         '#title' => $criteria->field_criterion->value,
@@ -46,6 +49,7 @@ class DefaultScoreForm extends ScoreFormPluginBase {
    */
   public function save(ScoreInterface $score, array $values) {
     $scores = $values['criteria'] ?? [];
+    $scores = array_map(fn ($score) => explode('_', $score)[1] ?? 0, $scores);
     $score->field_scores = $scores;
   }
 
