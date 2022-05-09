@@ -180,6 +180,7 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
           'entity' => Recitation::create([
             'bundle' => 'default',
             'langcode' => $language,
+            'field_stream_language' => $language,
           ]),
           'weight' => $startIndex++,
           'form' => NULL,

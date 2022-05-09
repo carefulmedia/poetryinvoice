@@ -1,0 +1,6 @@
+_core:
+  default_config_hash: Lyq2qEVdqC3WGdC6i59fH8FE1BltZd-fRD8EQM1VNwI
+tablesorter_theme: system
+tablesorter_zebra: 1
+tablesorter_zebra_odd_class: odd
+tablesorter_zebra_even_class: even

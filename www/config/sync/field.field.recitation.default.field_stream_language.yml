@@ -1,0 +1,23 @@
+uuid: 44c3f866-7dfe-4c88-921f-2a8de817fdec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.recitation.field_stream_language
+    - piv_contest_recitation.recitation_type.default
+id: recitation.default.field_stream_language
+field_name: field_stream_language
+entity_type: recitation
+bundle: default
+label: 'Stream Language'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:configurable_language'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

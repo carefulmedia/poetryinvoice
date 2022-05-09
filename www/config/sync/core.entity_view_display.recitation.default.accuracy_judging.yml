@@ -8,6 +8,7 @@ dependencies:
     - field.field.recitation.default.field_recitation_video
     - field.field.recitation.default.field_release_form
     - field.field.recitation.default.field_score
+    - field.field.recitation.default.field_stream_language
     - field.field.recitation.default.field_student_name
     - piv_contest_recitation.recitation_type.default
 id: recitation.default.accuracy_judging
@@ -37,6 +38,7 @@ hidden:
   created: true
   field_release_form: true
   field_score: true
+  field_stream_language: true
   field_student_name: true
   langcode: true
   status: true
