@@ -1,15 +1,15 @@
-uuid: f6a1ef39-e578-482a-a6c0-b83656feb7ba
+uuid: 98d1338e-bb0b-47cb-9e5c-250492a47e31
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.recitation.field_student_name
+    - field.storage.recitation.field_student_last_name
     - piv_contest_recitation.recitation_type.default
-id: recitation.default.field_student_name
-field_name: field_student_name
+id: recitation.default.field_student_last_name
+field_name: field_student_last_name
 entity_type: recitation
 bundle: default
-label: 'Student first name'
+label: 'Student last name'
 description: ''
 required: true
 translatable: false

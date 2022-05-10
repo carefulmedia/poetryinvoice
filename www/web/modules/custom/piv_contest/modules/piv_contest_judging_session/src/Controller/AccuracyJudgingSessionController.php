@@ -87,15 +87,8 @@ class AccuracyJudgingSessionController extends ControllerBase {
     foreach ($judging_session->field_competition_entries->referencedEntities() as $competition_entry) {
       $regular_score = 0;
       $accuracy_score = 0;
-      $student_name = [];
-      if (!$is_team_competition) {
-        $student_name = [$competition_entry->field_student_name->value];
-      }
 
       foreach ($competition_entry->field_recitations->referencedEntities() as $recitation) {
-        if ($is_team_competition) {
-          $student_name[] = $recitation->field_student_name->value;
-        }
         $regular_score += $this->judgeSessionService
           ->getRecitationScore($recitation, $judging_session);
         $accuracy_score += $recitation->field_score->value ?? 0;
@@ -113,7 +106,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
         ]);
 
       $rows[] = [
-        implode(', ', $student_name),
+        $competition_entry->getStudentsDisplayName(),
         $school->title->value,
         $school->field_address->administrative_area,
         $regular_score,

@@ -1,0 +1,18 @@
+uuid: bb8a7b20-dfae-4382-b52a-4fc5e33464b1
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition_entry
+id: competition_entry.field_student_email
+field_name: field_student_email
+entity_type: competition_entry
+type: email
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -127,7 +127,6 @@ class CompetitionProgressForm extends FormBase {
         '#theme' => 'page_title',
         '#title' => $judging_session->label(),
       ];
-      $is_team_competition = (BOOL) $competition->field_team_competition->value;
       // Initiate a score array with 0 values.
       $judges = array_merge(
         array_map(fn ($id) => "$id:en", array_column($judging_session->field_english_judge->getValue(), 'target_id')),
@@ -216,16 +215,7 @@ class CompetitionProgressForm extends FormBase {
         foreach ($map_judge as $competition_entry_id => $data) {
           $competition_entry = $this->competitionEntryStorage->load($competition_entry_id);
           $competition_entry_level = $competition_entry->field_competition_current_level->value;
-          $student_name = [];
-          if ($is_team_competition) {
-            foreach ($competition_entry->field_recitations->referencedEntities() as $recitation) {
-              $student_name[] = $recitation->field_student_name->value;
-            }
-            $student_name = implode(', ', array_filter($student_name));
-          }
-          else {
-            $student_name = $competition_entry->field_student_name->value;
-          }
+          $student_name = $competition_entry->getStudentsDisplayName();
           $score = $data['score'];
           $accuracy = $data['accuracy'];
           $total_score = $score + $accuracy;

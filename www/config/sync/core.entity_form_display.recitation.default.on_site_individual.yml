@@ -9,7 +9,11 @@ dependencies:
     - field.field.recitation.default.field_release_form
     - field.field.recitation.default.field_score
     - field.field.recitation.default.field_stream_language
+    - field.field.recitation.default.field_student_email
+    - field.field.recitation.default.field_student_grade
+    - field.field.recitation.default.field_student_last_name
     - field.field.recitation.default.field_student_name
+    - field.field.recitation.default.field_student_stage_name
     - piv_contest_recitation.recitation_type.default
 id: recitation.default.on_site_individual
 targetEntityType: recitation
@@ -32,7 +36,11 @@ hidden:
   field_release_form: true
   field_score: true
   field_stream_language: true
+  field_student_email: true
+  field_student_grade: true
+  field_student_last_name: true
   field_student_name: true
+  field_student_stage_name: true
   langcode: true
   status: true
   title: true

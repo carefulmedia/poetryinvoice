@@ -10,11 +10,16 @@ dependencies:
     - field.field.competition_entry.default.field_release_form
     - field.field.competition_entry.default.field_school
     - field.field.competition_entry.default.field_stream
+    - field.field.competition_entry.default.field_student_email
+    - field.field.competition_entry.default.field_student_grade
+    - field.field.competition_entry.default.field_student_last_name
     - field.field.competition_entry.default.field_student_name
+    - field.field.competition_entry.default.field_student_stage_name
     - piv_contest_competition_entry.competition_entry_type.default
   module:
     - entity_reference_revisions
     - file
+    - options
     - user
 id: competition_entry.default.default
 targetEntityType: competition_entry
@@ -91,6 +96,28 @@ content:
     third_party_settings: {  }
     weight: 28
     region: content
+  field_student_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 32
+    region: content
+  field_student_grade:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 33
+    region: content
+  field_student_last_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 30
+    region: content
   field_student_name:
     type: string
     label: above
@@ -98,6 +125,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 27
+    region: content
+  field_student_stage_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 31
     region: content
   status:
     type: boolean

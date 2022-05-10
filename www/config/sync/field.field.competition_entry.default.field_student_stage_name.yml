@@ -1,17 +1,17 @@
-uuid: 786d6d8a-d900-4a41-b564-9df702c6df5a
+uuid: 40296dbe-1bc2-426f-9eea-58de506e122a
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.competition_entry.field_student_name
+    - field.storage.competition_entry.field_student_stage_name
     - piv_contest_competition_entry.competition_entry_type.default
-id: competition_entry.default.field_student_name
-field_name: field_student_name
+id: competition_entry.default.field_student_stage_name
+field_name: field_student_stage_name
 entity_type: competition_entry
 bundle: default
-label: 'Student first name'
+label: 'Student stage name'
 description: ''
-required: true
+required: false
 translatable: false
 default_value: {  }
 default_value_callback: ''

@@ -9,7 +9,11 @@ dependencies:
     - field.field.recitation.default.field_release_form
     - field.field.recitation.default.field_score
     - field.field.recitation.default.field_stream_language
+    - field.field.recitation.default.field_student_email
+    - field.field.recitation.default.field_student_grade
+    - field.field.recitation.default.field_student_last_name
     - field.field.recitation.default.field_student_name
+    - field.field.recitation.default.field_student_stage_name
     - piv_contest_recitation.recitation_type.default
   module:
     - file
@@ -44,14 +48,44 @@ content:
     third_party_settings: {  }
   field_release_form:
     type: file_generic
-    weight: 3
+    weight: 7
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
+  field_student_email:
+    type: email_default
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_student_grade:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_student_last_name:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_student_name:
     type: string_textfield
-    weight: 2
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_stage_name:
+    type: string_textfield
+    weight: 5
     region: content
     settings:
       size: 60

@@ -1,0 +1,42 @@
+uuid: b47cf7f0-7d6d-4bf9-be38-723e880e577a
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - piv_contest_competition_entry
+id: competition_entry.field_student_grade
+field_name: field_student_grade
+entity_type: competition_entry
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: 'grade 6'
+      label: 'grade 6'
+    -
+      value: 'grade 7'
+      label: 'grade 7'
+    -
+      value: 'grade 8'
+      label: 'grade 8'
+    -
+      value: 'grade 9'
+      label: 'grade 9'
+    -
+      value: 'grade 10'
+      label: 'grade 10'
+    -
+      value: 'grade 11'
+      label: 'grade 11'
+    -
+      value: 'grade 12/CEGEP I'
+      label: 'grade 12/CEGEP I'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

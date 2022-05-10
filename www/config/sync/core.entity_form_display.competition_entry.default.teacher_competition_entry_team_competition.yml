@@ -12,7 +12,11 @@ dependencies:
     - field.field.competition_entry.default.field_release_form
     - field.field.competition_entry.default.field_school
     - field.field.competition_entry.default.field_stream
+    - field.field.competition_entry.default.field_student_email
+    - field.field.competition_entry.default.field_student_grade
+    - field.field.competition_entry.default.field_student_last_name
     - field.field.competition_entry.default.field_student_name
+    - field.field.competition_entry.default.field_student_stage_name
     - piv_contest_competition_entry.competition_entry_type.default
   module:
     - piv_contest_competition_entry
@@ -46,7 +50,11 @@ hidden:
   field_release_form: true
   field_school: true
   field_stream: true
+  field_student_email: true
+  field_student_grade: true
+  field_student_last_name: true
   field_student_name: true
+  field_student_stage_name: true
   langcode: true
   status: true
   title: true
