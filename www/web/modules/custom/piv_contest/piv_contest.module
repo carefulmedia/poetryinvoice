@@ -85,8 +85,7 @@ function _piv_contest_score_exists_for_score_template_type($bundle) {
 /**
  * Implements hook_ENTITY_TYPE_access().
  *
- * Prevents deleting or updating score_template entities if there is a score
- * referencing it.
+ * Prevents deleting score_template entities if there is a score referencing it.
  */
 function piv_contest_score_template_access(EntityInterface $entity, $operation, AccountInterface $account) {
   if ($operation == 'delete') {
@@ -97,6 +96,35 @@ function piv_contest_score_template_access(EntityInterface $entity, $operation, 
     }
   }
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ *
+ * Prevent editing some fields in a score template if there are scores using it
+ * already.
+ */
+function piv_contest_form_score_template_default_edit_form_alter(&$form, FormStateInterface $form_state) {
+  if (_piv_contest_score_exists_for_score_template_type('default')) {
+    \Drupal::messenger()->addWarning('This score_template has score entities referencing it. Some fields are disabled.');
+    // Disable everything but the label.
+    $form['field_criteria']['widget']['#disabled'] = TRUE;
+    foreach (Element::children($form['field_criteria']['widget']) as $delta) {
+      $field_criteria = &$form['field_criteria']['widget'][$delta];
+      $field_criteria['subform']['field_criterion']['#disabled'] = FALSE;
+    }
+    // Let change the score options labels, but can't add more or delete.
+    foreach (Element::children($form['field_score_option_labels']['widget']) as $delta) {
+      $field_score_option_labels = &$form['field_score_option_labels']['widget'][$delta]['value'];
+      if ($field_score_option_labels['#default_value']) {
+        $field_score_option_labels['#required'] = TRUE;
+      }
+      else {
+        $field_score_option_labels['#disabled'] = TRUE;
+      }
+    }
+    $form['field_score_option_labels']['widget']['add_more']['#disabled'] = TRUE;
+  }
 }
 
 /**
