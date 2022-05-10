@@ -76,7 +76,7 @@ class ReplacementsService {
       'title' => 'Visit admin',
     ],
     'site_admin' => [
-      'title' => 'Site admin (visits@poetryincoice.com or visits@lesvoixdelapoesie.com)',
+      'title' => 'Site admin (visits@poetryinvoice.com or visits@lesvoixdelapoesie.com)',
     ],
     'teacher_that_created_the_visit' => [
       'source' => 'visit_node',
