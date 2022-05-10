@@ -1,0 +1,18 @@
+uuid: 4ba7991b-b000-4e78-9ba1-0e76fad3c7b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_recitation
+id: recitation.field_student_email
+field_name: field_student_email
+entity_type: recitation
+type: email
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
