@@ -153,3 +153,12 @@ function _piv_contest_competition_entry_form_show_locked_message() {
     \Drupal::messenger()->addWarning('This competition entry is locked. Only edit it if you know what you are doing.');
   }
 }
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function piv_contest_competition_entry_entity_type_alter(array &$entity_types) {
+  if (!empty($entity_types['competition_entry'])) {
+    $entity_types['competition_entry']->addConstraint('competition_entry_constraint');
+  }
+}
