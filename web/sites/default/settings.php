@@ -799,10 +799,6 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  * Keep this code block at the end of this file to take full effect.
  */
 
-if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-  include $app_root . '/' . $site_path . '/settings.local.php';
-}
-
 /**
  * Default lando configurations. If needed, this can be overriden in the
  * gitignored settings.local.php file.
@@ -831,8 +827,7 @@ $databases['migrate']['default'] = [
 
 $settings['config_sync_directory'] = '../config/sync';
 $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy', 'devel_php'];
-//$settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
 
-/*$settings['cache']['bins']['render'] = 'cache.backend.null';
-$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
-$settings['cache']['bins']['page'] = 'cache.backend.null';*/
+if (file_exists($app_root . '/' . $site_path . '/settings.platform.php')) {
+  include $app_root . '/' . $site_path . '/settings.platform.php';
+}
