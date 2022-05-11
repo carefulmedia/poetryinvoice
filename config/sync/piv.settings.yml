@@ -1,0 +1,12 @@
+features:
+  node_user_picture: 0
+  comment_user_picture: 0
+  comment_user_verification: 0
+  favicon: 1
+logo:
+  use_default: 0
+  path: ''
+favicon:
+  use_default: 0
+  path: themes/custom/piv/favicon.png
+  mimetype: image/png

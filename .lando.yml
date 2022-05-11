@@ -1,8 +1,8 @@
 name: piv9
 recipe: drupal9
 config:
-  php: '7.4'
-  webroot: www/web
+  php: '8.1'
+  webroot: web
   xdebug: true
 
 services:
@@ -19,7 +19,7 @@ services:
   node:
     type: node
     build:
-      - cd /app/www/web/themes/custom/piv && npm install
+      - cd /app/web/themes/custom/piv && npm install
     globals:
       gulp-cli: latest
   mailhog:
@@ -29,7 +29,7 @@ services:
 
 tooling:
   drush:
-    cmd: /app/www/vendor/drush/drush/drush --root=/app/www/web
+    cmd: /app/vendor/drush/drush/drush --root=/app/web
     env:
       DRUSH_OPTIONS_URI: "http://piv9.lndo.site"
   npm:
@@ -40,9 +40,9 @@ tooling:
     service: node
   phpcs:
     service: appserver
-    cmd: /app/www/vendor/bin/phpcs --standard=Drupal,DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,yml
+    cmd: /app/vendor/bin/phpcs --standard=Drupal,DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,yml
     description: Run phpcs for given folder or file.
   phpcbf:
     service: appserver
-    cmd: /app/www/vendor/bin/phpcbf --standard=Drupal,DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,yml
+    cmd: /app/vendor/bin/phpcbf --standard=Drupal,DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,yml
     description: Run phpcbf for given folder or file.
