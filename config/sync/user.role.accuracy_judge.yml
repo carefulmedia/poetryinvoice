@@ -1,11 +1,13 @@
 uuid: 82052fd5-9fa2-42bb-8e1e-f0f6bef2ac50
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - piv_contest_judging_session
 id: accuracy_judge
 label: 'Accuracy judge'
 weight: 15
 is_admin: null
 permissions:
-  - 'access search combine'
   - 'access own judge for accuracy page'
+  - 'access search combine'

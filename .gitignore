@@ -1,16 +1,39 @@
-/.editorconfig
-/.gitattributes
-/.idea
-# Apple crap
-.DS_Store
+#
+# App
+#
 
-# Environment variables
-.env
-*node_modules*
-
-# DBs
+# Database backups
+/database/*
+!/database/.gitkeep
 *.sql
 *.sql.gz
 
-# Ignored configurations
-piv_canadian_content.settings.*
+# Private files
+/private/*
+!/private/*/
+/private/*/*
+!/private/*/.gitkeep
+
+# Environment variables
+.env
+
+#
+# Drupal
+#
+/web/sites/default/files
+settings.local.php
+services.local.yml
+development.services.yml
+
+# Composer-generated
+/vendor/
+/web/core/
+/web/modules/contrib/
+/web/profiles/contrib/
+/web/themes/contrib/
+
+# SimpleTest environment
+/web/sites/simpletest
+
+dump
+node_modules/

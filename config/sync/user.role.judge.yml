@@ -1,12 +1,14 @@
 uuid: 9ae28bb9-fd79-4bd4-85a6-cb1433baff9f
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - piv_contest_judging_session
 id: judge
 label: Judge
 weight: 12
 is_admin: null
 permissions:
-  - 'access search combine'
   - 'access own judge session page'
+  - 'access search combine'
   - 'judge a judging session'

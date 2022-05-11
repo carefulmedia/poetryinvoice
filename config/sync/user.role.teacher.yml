@@ -11,8 +11,10 @@ dependencies:
     - comment
     - contact
     - media
-    - piv_contest_recitation
     - node
+    - piv_contest_competition
+    - piv_contest_competition_entry
+    - piv_contest_recitation
 id: teacher
 label: Teacher
 weight: 0
