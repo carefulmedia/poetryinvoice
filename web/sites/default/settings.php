@@ -828,6 +828,6 @@ $databases['migrate']['default'] = [
 $settings['config_sync_directory'] = '../config/sync';
 $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy', 'devel_php'];
 
-if (file_exists($app_root . '/' . $site_path . '/settings.platform.php')) {
-  include $app_root . '/' . $site_path . '/settings.platform.php';
+if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
+  include $app_root . '/' . $site_path . '/settings.platformsh.php';
 }
