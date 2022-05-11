@@ -16,19 +16,20 @@ dependencies:
     - piv_contest_recitation.recitation_type.default
   module:
     - file
+    - piv_contest_competition_entry
 id: recitation.default.default
 targetEntityType: recitation
 bundle: default
 mode: default
 content:
   field_poem:
-    type: entity_reference_autocomplete
+    type: piv_contest_competition_entry_langauge_autocomplete
     weight: 0
     region: content
     settings:
       match_operator: CONTAINS
-      match_limit: 10
-      size: 60
+      match_limit: '10'
+      size: '60'
       placeholder: ''
     third_party_settings: {  }
   field_recitation_video:

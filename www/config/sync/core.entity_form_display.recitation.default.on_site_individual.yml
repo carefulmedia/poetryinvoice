@@ -15,13 +15,15 @@ dependencies:
     - field.field.recitation.default.field_student_name
     - field.field.recitation.default.field_student_stage_name
     - piv_contest_recitation.recitation_type.default
+  module:
+    - piv_contest_competition_entry
 id: recitation.default.on_site_individual
 targetEntityType: recitation
 bundle: default
 mode: on_site_individual
 content:
   field_poem:
-    type: entity_reference_autocomplete
+    type: piv_contest_competition_entry_langauge_autocomplete
     weight: 0
     region: content
     settings:

@@ -17,13 +17,14 @@ dependencies:
     - piv_contest_recitation.recitation_type.default
   module:
     - file
+    - piv_contest_competition_entry
 id: recitation.default.on_site_team
 targetEntityType: recitation
 bundle: default
 mode: on_site_team
 content:
   field_poem:
-    type: entity_reference_autocomplete
+    type: piv_contest_competition_entry_langauge_autocomplete
     weight: 0
     region: content
     settings:
