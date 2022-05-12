@@ -87,7 +87,7 @@ abstract class PivMailPluginBase extends PluginBase implements PivMailInterface 
       '#type' => 'checkbox',
       '#title' => $this->t('Active'),
       '#default_value' => $configurations['active'] ?? FALSE,
-      '#description' => $this->t('Send an email to selected recipients when there are changes on a visit and the field booked was already checked.'),
+      '#description' => $this->pluginDefinition['description'] ?? '',
     ];
     $recipients = ReplacementsService::$recipients;
     $recipients_filtered = array_filter($recipients, function ($option) use ($plugin_sources) {
