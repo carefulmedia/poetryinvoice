@@ -32,6 +32,10 @@ if (isset($platformsh->branch)) {
   } // Development type environment.
   else {
     $config['system.logging']['error_level'] = 'verbose';
+    $config['mailsystem.settings']['defaults'] = [
+      'formatter' => 'test_mail_collector',
+      'sender' => 'test_mail_collector',
+    ];
   }
 }
 
