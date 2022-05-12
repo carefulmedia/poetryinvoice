@@ -52,6 +52,13 @@ function piv_mail_node_insert(NodeInterface $node) {
         : 'tessa@poetryinvoice.com';
       piv_mail_send_mail('node_created_poet_school_visit_admin', $langcode, $replacements_service, $from);
       piv_mail_send_mail('node_created_poet_school_visit_teacher', $langcode, $replacements_service, $from);
+      // Technically no user will be able to create a node already booked, but
+      // a admin can do that on behalf of a teacher.
+      $booked = !empty($node->field_booked_->value);
+      if ($booked) {
+        piv_mail_send_mail('notification_booked_status_applied_to_visit', $langcode, $replacements_service, $from);
+      }
+
       break;
 
     // This one will migrate to the contest implementation in the future.
@@ -155,7 +162,10 @@ function piv_mail_node_update(NodeInterface $node) {
   $mail_queue = \Drupal::service('piv_mail.mail_queue');
   $booked = !empty($node->field_booked_->value);
   $booked_original = !empty($node->original->field_booked_->value);
-  $date = clone $node->field_agreed_visit_date->date;
+  $date = NULL;
+  if (!$node->field_agreed_visit_date->isEmpty()) {
+    $date = clone $node->field_agreed_visit_date->date;
+  }
   $user = $node->uid->entity;
   $replacements_service = \Drupal::service('piv_mail.replacements_service');
   $replacements_service
@@ -203,7 +213,8 @@ function piv_mail_node_update(NodeInterface $node) {
   }
 
   // Mail when node is booked, a node can't be booked on creation usually,
-  // since the booked field is admin only.
+  // since the booked field is admin only, we still consider it in the node
+  // insert in case a admin create the node on behalf of a different user.
   if ($booked && !$booked_original) {
     piv_mail_send_mail('notification_booked_status_applied_to_visit', $langcode, $replacements_service, $from);
   }
@@ -211,9 +222,9 @@ function piv_mail_node_update(NodeInterface $node) {
   // Mail if there were changes to the node while its booked and the date is in
   // the future.
   if ($booked && $booked_original) {
-    $original_date = clone $node->original->field_agreed_visit_date->date;
-    $new_date = clone $node->field_agreed_visit_date->date;
-    if ($new_date->getTimestamp() < time()) {
+    $original_date = $node->original->field_agreed_visit_date->date;
+    $new_date = $node->field_agreed_visit_date->date;
+    if (!$new_date || $new_date->getTimestamp() < time()) {
       return;
     }
 
