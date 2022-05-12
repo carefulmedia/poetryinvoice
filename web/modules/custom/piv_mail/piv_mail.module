@@ -155,7 +155,10 @@ function piv_mail_node_update(NodeInterface $node) {
   $mail_queue = \Drupal::service('piv_mail.mail_queue');
   $booked = !empty($node->field_booked_->value);
   $booked_original = !empty($node->original->field_booked_->value);
-  $date = clone $node->field_agreed_visit_date->date;
+  $date = NULL;
+  if (!$node->field_agreed_visit_date->isEmpty()) {
+    $date = clone $node->field_agreed_visit_date->date;
+  }
   $user = $node->uid->entity;
   $replacements_service = \Drupal::service('piv_mail.replacements_service');
   $replacements_service
@@ -211,9 +214,9 @@ function piv_mail_node_update(NodeInterface $node) {
   // Mail if there were changes to the node while its booked and the date is in
   // the future.
   if ($booked && $booked_original) {
-    $original_date = clone $node->original->field_agreed_visit_date->date;
-    $new_date = clone $node->field_agreed_visit_date->date;
-    if ($new_date->getTimestamp() < time()) {
+    $original_date = $node->original->field_agreed_visit_date->date;
+    $new_date = $node->field_agreed_visit_date->date;
+    if (!$new_date || $new_date->getTimestamp() < time()) {
       return;
     }
 

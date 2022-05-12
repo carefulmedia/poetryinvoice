@@ -336,7 +336,7 @@ class ReplacementsService {
       if (!empty($this->sources[$source])) {
         foreach ($tokens as $token) {
           $token_value = $this->replaceToken($token);
-          if ($this->original) {
+          if (!empty($this->original)) {
             $original_token_value = $this->original->replaceToken($token);
             if ($token_value != $original_token_value) {
               $token_value = "$prefix <br><strong>$token_value</strong>";
