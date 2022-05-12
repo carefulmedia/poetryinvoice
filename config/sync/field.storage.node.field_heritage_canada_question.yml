@@ -1,0 +1,18 @@
+uuid: a6def671-816d-4d5b-945f-d6475560d4ce
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_heritage_canada_question
+field_name: field_heritage_canada_question
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

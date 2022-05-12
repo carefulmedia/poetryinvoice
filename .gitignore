@@ -16,7 +16,7 @@
 
 # Config ignored files.
 */sync/mailsystem.settings.yml
-*/sync/piv_canadian_content.yml
+*/sync/piv_canadian_content.settings.yml
 
 # Environment variables
 .env

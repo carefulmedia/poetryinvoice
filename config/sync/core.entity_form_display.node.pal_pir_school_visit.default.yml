@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.pal_pir_school_visit.field_date_and_poet_chosen
     - field.field.node.pal_pir_school_visit.field_date_and_start_time
     - field.field.node.pal_pir_school_visit.field_do_you_have_any_poet_prefe
+    - field.field.node.pal_pir_school_visit.field_heritage_canada_question
     - field.field.node.pal_pir_school_visit.field_hold
     - field.field.node.pal_pir_school_visit.field_in_person_or_teleconferenc
     - field.field.node.pal_pir_school_visit.field_notes
@@ -62,6 +63,12 @@ content:
   field_completed:
     type: options_select
     weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heritage_canada_question:
+    type: options_buttons
+    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }
