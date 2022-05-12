@@ -54,6 +54,7 @@ class ReplacementsService {
       'visit_notes',
       'link_to_poet_page_href',
       'visit_type',
+      'visit_language',
     ],
     'team_regional_entry' => [
       'contest_name',
@@ -270,6 +271,9 @@ class ReplacementsService {
 
           }
           return '';
+
+        case 'visit_language':
+          return $sources['visit_node']->language()->getName();
 
         case 'link_to_poet_survey_href':
         case 'link_to_teacher_survey_href':
