@@ -1,0 +1,23 @@
+uuid: 0cc5344b-d537-4c18-95d9-a441c21c6f5f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_heritage_canada_question
+    - node.type.pal_pir_school_visit
+id: node.pal_pir_school_visit.field_heritage_canada_question
+field_name: field_heritage_canada_question
+entity_type: node
+bundle: pal_pir_school_visit
+label: ' Are you teaching French or English as an additional language . . .'
+description: '. . . or do you teach at an immersion or bilingual school, or in an Official Language Minority Community?'
+required: true
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

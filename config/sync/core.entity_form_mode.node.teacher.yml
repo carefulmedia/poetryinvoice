@@ -1,0 +1,10 @@
+uuid: ecece4c4-bce2-4a55-bfc8-0974a87bb99c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.teacher
+label: Teacher
+targetEntityType: node
+cache: true

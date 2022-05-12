@@ -1,9 +1,9 @@
-uuid: 6108461d-91df-4760-9af5-4670916c9e50
+uuid: ae012aa1-d072-40c3-be1e-7b4d102f44b4
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_form_mode.node.teacher
     - field.field.node.pal_pir_school_visit.comment_node_pal_pir_school_vi
     - field.field.node.pal_pir_school_visit.field_agreed_visit_date
     - field.field.node.pal_pir_school_visit.field_amount_to_be_paid_to_each_
@@ -34,44 +34,106 @@ dependencies:
     - field.field.node.pal_pir_school_visit.field_visit_date_and_times
     - node.type.pal_pir_school_visit
   module:
-    - user
-id: node.pal_pir_school_visit.teaser
+    - chosen_field
+    - datetime
+id: node.pal_pir_school_visit.teacher
 targetEntityType: node
 bundle: pal_pir_school_visit
-mode: teaser
+mode: teacher
 content:
-  links:
+  field_date_and_start_time:
+    type: datetime_default
+    weight: 3
+    region: content
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+  field_do_you_have_any_poet_prefe:
+    type: boolean_checkbox
+    weight: 0
     region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_heritage_canada_question:
+    type: options_buttons
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_notes:
+    type: string_textarea
+    weight: 6
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_other_time_options:
+    type: string_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_preferred_date:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_preferred_poet_s_:
+    type: chosen_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_teacher_virtual_or_in_pers:
+    type: options_select
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_total_students_involved:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 7
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
 hidden:
   comment_node_pal_pir_school_vi: true
+  created: true
   field_agreed_visit_date: true
   field_amount_to_be_paid_to_each_: true
   field_booked_: true
   field_catherine_attending_: true
   field_completed: true
   field_date_and_poet_chosen: true
-  field_date_and_start_time: true
-  field_do_you_have_any_poet_prefe: true
-  field_heritage_canada_question: true
   field_hold: true
   field_in_person_or_teleconferenc: true
-  field_notes: true
-  field_other_time_options: true
   field_paid_: true
   field_pal_pir: true
   field_pal_pir_report: true
   field_poet_questionnaire: true
-  field_preferred_date: true
-  field_preferred_poet_s_: true
   field_teacher_questionnaire: true
   field_teacher_report: true
   field_teacher_s_involved: true
-  field_teacher_virtual_or_in_pers: true
-  field_total_students_involved: true
   field_travel_time_supplement: true
   field_visit_admin: true
   field_visit_date_and_times: true
-  langcode: true
+  path: true
+  promote: true
+  status: true
+  sticky: true
+  title: true
+  translation: true
+  uid: true

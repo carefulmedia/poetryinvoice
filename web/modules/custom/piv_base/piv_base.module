@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_user_format_name_alter().
@@ -19,6 +21,47 @@ function piv_base_user_format_name_alter(&$name, AccountInterface $account) {
       if ($first_name || $last_name) {
         $name = trim("$first_name $last_name");
       }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_form_mode_alter().
+ */
+function piv_base_entity_form_mode_alter(&$form_mode, EntityInterface $entity) {
+  // Change the poet school visit form nodes if they are created by a teacher
+  // that is not an admin.
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'pal_pir_school_visit') {
+    $current_user = \Drupal::currentUser();
+    $roles = $current_user->getRoles();
+    if ($current_user->id() != 1
+    && !in_array('superadmin', $roles)
+    && in_array('teacher', $roles)) {
+      $form_mode = 'teacher';
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function piv_base_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  if (in_array($form_id, [
+    'node_pal_pir_school_visit_form',
+    'node_pal_pir_school_visit_edit_form',
+  ])) {
+    $form_display = $form_state->getStorage()['form_display'];
+    if ($form_display && $form_display->getMode() == 'teacher') {
+      $form['field_preferred_poet_s_']['#states'] = [
+        'visible' => [
+          ':input[name="field_do_you_have_any_poet_prefe[value]"]' => ['checked' => TRUE],
+        ],
+      ];
+      $form['field_date_and_start_time']['#states'] = [
+        'visible' => [
+          ':input[name="field_preferred_date[value]"]' => ['checked' => TRUE],
+        ],
+      ];
     }
   }
 }
