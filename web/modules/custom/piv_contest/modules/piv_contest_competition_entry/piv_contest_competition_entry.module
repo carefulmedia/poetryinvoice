@@ -59,16 +59,14 @@ function piv_contest_competition_entry_competition_entry_presave(EntityInterface
 /**
  * Implements hook_form_FORM_ID_alter().
  */
-function piv_contest_competition_entry_form_alter(&$form, FormStateInterface $formState, $form_id) {
+function piv_contest_competition_entry_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if (in_array($form_id, ['competition_entry_default_edit_form', 'competition_entry_default_teacher_competition_entry_form'])) {
     _piv_contest_competition_entry_form_show_locked_message();
   }
 
-
   if ($form_id != 'competition_entry_default_teacher_competition_entry_form') {
     return;
   }
-
 
   $competition_entry = \Drupal::routeMatch()->getParameter('competition_entry');
   if (!$competition_entry) {
@@ -80,6 +78,7 @@ function piv_contest_competition_entry_form_alter(&$form, FormStateInterface $fo
   if ($lock_service->isLocked($competition_entry)) {
     $form['#disabled'] = TRUE;
   }
+
 }
 
 /**
@@ -151,14 +150,5 @@ function _piv_contest_competition_entry_form_show_locked_message() {
   $lock_service = \Drupal::service('piv_contest_competition_entry.competition_lock_service');
   if ($lock_service->isLocked($competition_entry)) {
     \Drupal::messenger()->addWarning('This competition entry is locked. Only edit it if you know what you are doing.');
-  }
-}
-
-/**
- * Implements hook_entity_type_alter().
- */
-function piv_contest_competition_entry_entity_type_alter(array &$entity_types) {
-  if (!empty($entity_types['competition_entry'])) {
-    $entity_types['competition_entry']->addConstraint('competition_entry_constraint');
   }
 }

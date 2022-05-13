@@ -20,6 +20,7 @@ use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\piv_contest_recitation\Entity\Recitation;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Render\Element;
 
 /**
  * Plugin implementation of the 'limited_recitation_entry_widget' widget.
@@ -356,13 +357,25 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
   }
 
   /**
-   * Validade the max number of recitations.
+   * Validade the competition entry recitations.
    */
   public function validateMaxNumber(array $elements, FormStateInterface $form_state, array $form) {
+    // Check poems are unique per entry.
+    $poem_ids = [];
+    foreach (Element::children($elements['entities']) as $delta) {
+      $recitation = $elements['entities'][$delta]['#entity'] ?? NULL;
+      $poem_id = $recitation ? $recitation->field_poem->target_id ?? NULL : NULL;
+      if ($poem_id && in_array($poem_id, $poem_ids)) {
+        $form_state->setError($elements, $this->t('Each recitation should be for a different poem.'));
+      }
+      $poem_ids[] = $poem_id;
+    }
+
+    // Check maximum number of recitations.
     $entities = $form_state->getValue(['field_recitations', 'entities']);
     $max_number_recitations = $this->getMaxNumberOfRecitations();
     if (count($entities) > $max_number_recitations) {
-      $form_state->setError($elements['entities'], $this->t('the maximum number of recitations is @max_number', ['@max_number' => $max_number_recitations]));
+      $form_state->setError($elements, $this->t('the maximum number of recitations is @max_number', ['@max_number' => $max_number_recitations]));
     }
   }
 
