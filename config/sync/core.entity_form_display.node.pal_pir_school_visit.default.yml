@@ -60,17 +60,50 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_catherine_attending_:
+    type: options_select
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_completed:
     type: options_select
     weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_heritage_canada_question:
-    type: options_buttons
-    weight: 26
+  field_date_and_poet_chosen:
+    type: boolean_checkbox
+    weight: 21
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_date_and_start_time:
+    type: datetime_default
+    weight: 20
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_do_you_have_any_poet_prefe:
+    type: boolean_checkbox
+    weight: 19
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_heritage_canada_question:
+    type: options_buttons
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_hold:
+    type: boolean_checkbox
+    weight: 23
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_in_person_or_teleconferenc:
     type: options_select
@@ -119,6 +152,13 @@ content:
       add_mode: dropdown
       form_display_mode: default
       default_paragraph_type: ''
+    third_party_settings: {  }
+  field_total_students_involved:
+    type: number
+    weight: 24
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   field_visit_admin:
     type: entity_reference_autocomplete
@@ -190,11 +230,6 @@ content:
 hidden:
   comment_node_pal_pir_school_vi: true
   field_amount_to_be_paid_to_each_: true
-  field_catherine_attending_: true
-  field_date_and_poet_chosen: true
-  field_date_and_start_time: true
-  field_do_you_have_any_poet_prefe: true
-  field_hold: true
   field_other_time_options: true
   field_paid_: true
   field_pal_pir_report: true
@@ -203,6 +238,5 @@ hidden:
   field_teacher_report: true
   field_teacher_s_involved: true
   field_teacher_virtual_or_in_pers: true
-  field_total_students_involved: true
   field_travel_time_supplement: true
   field_visit_date_and_times: true
