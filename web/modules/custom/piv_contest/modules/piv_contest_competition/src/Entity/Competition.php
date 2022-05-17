@@ -21,7 +21,7 @@ use Drupal\user\UserInterface;
  *   handlers = {
  *     "view_builder" = "Drupal\Core\Entity\EntityViewBuilder",
  *     "list_builder" = "Drupal\piv_contest_competition\CompetitionListBuilder",
- *     "views_data" = "Drupal\views\EntityViewsData",
+ *     "views_data" = "Drupal\piv_contest\ContestViewsData",
  *     "access" = "Drupal\piv_contest_competition\CompetitionAccessControlHandler",
  *     "form" = {
  *       "add" = "Drupal\piv_contest_competition\Form\CompetitionForm",
@@ -55,6 +55,7 @@ use Drupal\user\UserInterface;
  *   links = {
  *     "add-form" = "/admin/contest/competition/add/{competition_type}",
  *     "add-page" = "/admin/contest/competition/add",
+ *     "delete-multiple-form" = "/admin/content/competition/delete",
  *     "canonical" = "/competition/{competition}",
  *     "edit-form" = "/admin/contest/competition/{competition}/edit",
  *     "delete-form" = "/admin/contest/competition/{competition}/delete",

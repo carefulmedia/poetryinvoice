@@ -1,0 +1,13 @@
+uuid: 33344f4c-2bc6-4c21-bb30-6a9627b6a130
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest
+_core:
+  default_config_hash: vpBH8OmL4sdesCdeZLsW8KOutB5gkbreWJbfjhfFKaQ
+id: competition_entry_delete_action
+label: 'Delete competition entry'
+type: competition_entry
+plugin: 'entity:delete_action:competition_entry'
+configuration: {  }

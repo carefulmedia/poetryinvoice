@@ -59,3 +59,51 @@ piv_contest.competition_entry_edit:
     _controller: '\Drupal\piv_contest\Controller\CompetitionEntryController::edit'
   requirements:
     _custom_access: '\Drupal\piv_contest\Controller\CompetitionEntryController::accessEdit'
+
+entity.competition.delete_multiple_form:
+  path: '/admin/content/competition/delete'
+  defaults:
+    _form: '\Drupal\Core\Entity\Form\DeleteMultipleForm'
+    entity_type_id: 'competition'
+  requirements:
+    _entity_delete_multiple_access: 'competition'
+
+entity.competition_entry.delete_multiple_form:
+  path: '/admin/content/competition-entry/delete'
+  defaults:
+    _form: '\Drupal\Core\Entity\Form\DeleteMultipleForm'
+    entity_type_id: 'competition_entry'
+  requirements:
+    _entity_delete_multiple_access: 'competition_entry'
+
+entity.judging_session.delete_multiple_form:
+  path: '/admin/content/judging-session/delete'
+  defaults:
+    _form: '\Drupal\Core\Entity\Form\DeleteMultipleForm'
+    entity_type_id: 'judging_session'
+  requirements:
+    _entity_delete_multiple_access: 'judging_session'
+
+entity.recitation.delete_multiple_form:
+  path: '/admin/content/recitation/delete'
+  defaults:
+    _form: '\Drupal\Core\Entity\Form\DeleteMultipleForm'
+    entity_type_id: 'recitation'
+  requirements:
+    _entity_delete_multiple_access: 'recitation'
+
+entity.score_template.delete_multiple_form:
+  path: '/admin/content/score-template/delete'
+  defaults:
+    _form: '\Drupal\Core\Entity\Form\DeleteMultipleForm'
+    entity_type_id: 'score_template'
+  requirements:
+    _entity_delete_multiple_access: 'score_template'
+
+entity.score.delete_multiple_form:
+  path: '/admin/content/score/delete'
+  defaults:
+    _form: '\Drupal\Core\Entity\Form\DeleteMultipleForm'
+    entity_type_id: 'score'
+  requirements:
+    _entity_delete_multiple_access: 'score'
