@@ -70,6 +70,18 @@ class JudgeSession {
   }
 
   /**
+   * Checks if the judge is an accuracy judge.
+   */
+  private function isAccuracyJudge(JudgingSession $session, User $judge): bool {
+    $judges = array_column($session->field_accuracy_judge->getValue(), 'target_id');
+    if (in_array($judge->id(), $judges)) {
+      return TRUE;
+    }
+
+    return FALSE;
+  }
+
+  /**
    * Return a list of poems to be read in the session.
    */
   public function poemList(JudgingSession $session, User $judge): array {
@@ -141,9 +153,12 @@ class JudgeSession {
         $recitations = $competition_entry->field_recitations->referencedEntities();
         // Only consider the languages this judge is assigned to and ignore the
         // original delta in case of mixed multiple languages.
-        $recitations = array_values(array_filter($recitations, function ($recitation) use ($languages) {
-          return in_array($recitation->langcode->value, $languages);
-        }));
+        if (!$this->isAccuracyJudge($session, $judge)) {
+          $recitations = array_values(array_filter($recitations, function ($recitation) use ($languages) {
+            return in_array($recitation->langcode->value, $languages);
+          }));
+        }
+
         foreach ($recitations as $delta => $recitation) {
           $score = $score_storage->loadByProperties([
             'judge' => $judge->id(),
@@ -159,6 +174,11 @@ class JudgeSession {
         }
       }
     }
+
+    if (empty($list[$key])) {
+      return [];
+    }
+
     // Flatten the array.
     return array_merge(...$list[$key]);
   }
