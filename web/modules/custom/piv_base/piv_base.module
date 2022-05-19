@@ -8,6 +8,7 @@
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Access\AccessResult;
 
 /**
  * Implements hook_user_format_name_alter().
@@ -64,4 +65,37 @@ function piv_base_form_alter(&$form, FormStateInterface $form_state, $form_id) {
       ];
     }
   }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function piv_base_node_presave(EntityInterface $entity) {
+  if ($entity->bundle() == 'pal_pir_school_visit') {
+    // A user without a school should not be able to create school visits.
+    // @see piv_base_entity_create_access().
+    $user = $entity->uid->entity;
+    $replacements_service = \Drupal::service('piv_mail.replacements_service');
+    $replacements_service
+      ->addSource('visit_node', $entity)
+      ->addSource('school', $user->field_school->entity);
+    $title = $replacements_service->replace("[visit_language] school visit for [school_name] in [school_province]");
+    $entity->title = $title;
+  }
+}
+
+/**
+ * Implements hook_entity_create_access().
+ */
+function piv_base_entity_create_access(AccountInterface $account, array $context, $entity_bundle) {
+  // Prevent teachers with no schools from creating school visits.
+  $entity_type_id = $context['entity_type_id'] ?? NULL;
+  if ($entity_type_id == 'node' && $entity_bundle == 'pal_pir_school_visit') {
+    $user = \Drupal::entityTypeManager()->getStorage('user')->load($account->id());
+    if (!$user || empty($user->field_school->target_id)) {
+      return AccessResult::forbidden();
+    }
+  }
+
+  return AccessResult::neutral();
 }
