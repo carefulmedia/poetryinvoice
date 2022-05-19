@@ -30,6 +30,10 @@ class CompetitionLockService {
   public function isLocked(CompetitionEntry $competition_entry): bool {
     // If competition is not active then it's locked.
     $competition = $competition_entry->field_competition->entity;
+    if (!$competition) {
+      return false;
+    }
+
     if (!$competition->field_active->value) {
       return TRUE;
     }

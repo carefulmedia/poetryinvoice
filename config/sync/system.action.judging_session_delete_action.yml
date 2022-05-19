@@ -1,0 +1,13 @@
+uuid: e51076b9-ee8b-4d9b-8c25-006e6160b75b
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest
+_core:
+  default_config_hash: vpBH8OmL4sdesCdeZLsW8KOutB5gkbreWJbfjhfFKaQ
+id: judging_session_delete_action
+label: 'Delete judging session'
+type: judging_session
+plugin: 'entity:delete_action:judging_session'
+configuration: {  }

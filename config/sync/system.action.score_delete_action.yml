@@ -1,0 +1,13 @@
+uuid: cf42928e-050f-4813-99bd-3e46977093df
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest
+_core:
+  default_config_hash: vpBH8OmL4sdesCdeZLsW8KOutB5gkbreWJbfjhfFKaQ
+id: score_delete_action
+label: 'Delete score'
+type: score
+plugin: 'entity:delete_action:score'
+configuration: {  }

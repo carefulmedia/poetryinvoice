@@ -57,6 +57,7 @@ use Drupal\user\UserInterface;
  *     "add-form" = "/admin/contest/judging-session/add/{judging_session_type}",
  *     "add-page" = "/admin/contest/judging-session/add",
  *     "canonical" = "/judging_session/{judging_session}",
+ *     "delete-multiple-form" = "/admin/content/judging-session/delete",
  *     "edit-form" = "/admin/contest/judging-session/{judging_session}/edit",
  *     "delete-form" = "/admin/contest/judging-session/{judging_session}/delete",
  *     "collection" = "/admin/contest/judging-session"

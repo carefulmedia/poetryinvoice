@@ -58,6 +58,7 @@ use Drupal\user\UserInterface;
  *   links = {
  *     "add-form" = "/admin/contest/competition-entry/add/{competition_entry_type}",
  *     "add-page" = "/admin/contest/competition-entry/add",
+ *     "delete-multiple-form" = "/admin/content/competition-entry/delete",
  *     "canonical" = "/competition_entry/{competition_entry}",
  *     "edit-form" = "/admin/contest/competition-entry/{competition_entry}/edit",
  *     "delete-form" = "/admin/contest/competition-entry/{competition_entry}/delete",

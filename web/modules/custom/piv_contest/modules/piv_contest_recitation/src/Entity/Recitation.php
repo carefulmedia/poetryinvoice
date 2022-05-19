@@ -57,6 +57,7 @@ use Drupal\user\UserInterface;
  *     "add-page" = "/admin/contest/recitation/add",
  *     "canonical" = "/recitation/{recitation}",
  *     "edit-form" = "/admin/contest/recitation/{recitation}/edit",
+ *     "delete-multiple-form" = "/admin/content/recitation/delete",
  *     "delete-form" = "/admin/contest/recitation/{recitation}/delete",
  *     "collection" = "/admin/contest/recitation"
  *   },
