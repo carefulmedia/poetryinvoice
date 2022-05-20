@@ -1,0 +1,37 @@
+<?php
+
+/**
+ * @file
+ * Primary module hooks for PIV Popular Vote module.
+ */
+
+/**
+ * Get the student name given a competition entry id.
+ *
+ * This is similar to the CompetitionEntry::getStudentsDisplayName, however
+ * this returns the first recitation student name for the language or the
+ * competition entry student name if there is no value in the recitation.
+ */
+function piv_popular_vote_get_student_name($competition_entry_id) {
+  $competition_entry = \Drupal::entityTypeManager()
+    ->getStorage('competition_entry')
+    ->load($competition_entry_id);
+  if (!$competition_entry) {
+    return NULL;
+  }
+
+  $competition = $competition_entry->field_competition->entity;
+  if (!$competition) {
+    return NULL;
+  }
+
+  $recitation = $competition_entry->field_recitations->entity;
+  if (!$recitation) {
+    return NULL;
+  }
+
+  $is_team_competition = (BOOL) $competition->field_team_competition->value;
+  return $is_team_competition
+    ? piv_contest_get_student_name($recitation)
+    : piv_contest_get_student_name($competition_entry);
+}

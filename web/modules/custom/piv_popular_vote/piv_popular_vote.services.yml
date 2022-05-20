@@ -1,0 +1,4 @@
+services:
+  piv_popular_vote.manager:
+    class: Drupal\piv_popular_vote\PivPopularVoteManager
+    arguments: ['@database']

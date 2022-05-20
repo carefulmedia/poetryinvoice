@@ -1,0 +1,23 @@
+uuid: 109b85ce-0081-4001-b112-862e6b3032d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_enable_popular_voting
+    - piv_contest_competition.competition_type.default
+id: competition.default.field_enable_popular_voting
+field_name: field_enable_popular_voting
+entity_type: competition
+bundle: default
+label: 'Enable popular voting'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

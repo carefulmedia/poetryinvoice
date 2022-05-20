@@ -1,0 +1,35 @@
+piv_popular_vote.peoples_choice:
+  path: '/competition/{competition}/peoples-choice'
+  defaults:
+    _title: 'People''s Choice Award'
+    _controller: '\Drupal\piv_popular_vote\Controller\PivPopularVoteController::build'
+  requirements:
+    _custom_access: '\Drupal\piv_popular_vote\Controller\PivPopularVoteController::access'
+
+piv_popular_vote.popular_vote:
+  path: '/competition/{competition}/peoples-choice/{competition_entry}/vote'
+  defaults:
+    _title: 'Vote'
+    _form: 'Drupal\piv_popular_vote\Form\PopularVoteForm'
+  requirements:
+    _custom_access: '\Drupal\piv_popular_vote\Form\PopularVoteForm::access'
+    
+piv_popular_vote.popular_votes:
+  path: '/competition/{competition}/admin/popular-votes'
+  defaults:
+    _title: 'Popular votes'
+    _controller: 'Drupal\piv_popular_vote\Controller\PopularVotesAdminController::build'
+  requirements:
+    _permission: 'access content'
+  options:
+    _admin_route: TRUE
+    
+piv_popular_vote.popular_votes_results:
+  path: '/competition/{competition}/admin/popular-votes-results'
+  defaults:
+    _title: 'Popular votes results'
+    _controller: 'Drupal\piv_popular_vote\Controller\PopularVoteResultsController::build'
+  requirements:
+    _permission: 'access content'
+  options:
+    _admin_route: TRUE

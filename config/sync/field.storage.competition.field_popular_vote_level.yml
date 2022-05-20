@@ -1,0 +1,20 @@
+uuid: d43d331f-88af-4caf-9c4a-356e9efded33
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition
+id: competition.field_popular_vote_level
+field_name: field_popular_vote_level
+entity_type: competition
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

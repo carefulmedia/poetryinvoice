@@ -278,24 +278,14 @@ class CompetitionEntry extends RevisionableContentEntityBase implements Competit
       return '';
     }
 
-    $get_student_name = function($entity) {
-      $student_name = $entity->field_student_stage_name->value;
-      if (!empty($student_name)) {
-        return $student_name;
-      }
-      $first_name = $entity->field_student_name->value;
-      $last_name = $entity->field_student_last_name->value;
-      return "{$last_name}, {$first_name}";
-    };
-
     $is_team_competition = (BOOL) $competition->field_team_competition->value;
     if ($is_team_competition && $this->hasField('field_recitations')) {
       foreach ($this->field_recitations->referencedEntities() as $recitation) {
-        $student_name[] = $get_student_name($recitation);
+        $student_name[] = piv_contest_get_student_name($recitation);
       }
       return implode('; ', $student_name);
     }
-    return $get_student_name($this);
+    return piv_contest_get_student_name($this);
   }
 
 }

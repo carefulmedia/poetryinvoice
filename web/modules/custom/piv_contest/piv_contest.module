@@ -12,6 +12,19 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
+ * Get a student name from a recitation or a competition entry.
+ */
+function piv_contest_get_student_name($entity) {
+  $student_name = $entity->field_student_stage_name->value;
+  if (!empty($student_name)) {
+    return $student_name;
+  }
+  $first_name = $entity->field_student_name->value;
+  $last_name = $entity->field_student_last_name->value;
+  return "{$last_name}, {$first_name}";
+}
+
+/**
  * Implements hook_entity_type_alter().
  */
 function piv_contest_entity_type_alter(array &$entity_types) {

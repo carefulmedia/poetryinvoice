@@ -1,0 +1,4 @@
+administer piv_popular_vote configuration:
+  title: 'Administer piv_popular_vote configuration'
+  description: 'Optional description.'
+  restrict access: true
