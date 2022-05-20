@@ -10,7 +10,7 @@ field_name: field_popular_vote_level
 entity_type: competition
 bundle: default
 label: 'Competition Entry Level'
-description: 'The competition entry level necessary to be considered in the popular vote.'
+description: 'The minimum competition entry level necessary to be considered in the popular vote. <br>Changing the level after voting starts will create unpredictable consequences'
 required: false
 translatable: false
 default_value: {  }
