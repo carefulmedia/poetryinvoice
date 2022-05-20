@@ -57,6 +57,7 @@ use Drupal\user\UserInterface;
  *     "add-page" = "/admin/contest/score-template/add",
  *     "canonical" = "/score_template/{score_template}",
  *     "edit-form" = "/admin/contest/score-template/{score_template}/edit",
+ *     "delete-multiple-form" = "/admin/content/score-template/delete",
  *     "delete-form" = "/admin/contest/score-template/{score_template}/delete",
  *     "collection" = "/admin/contest/score-template"
  *   },

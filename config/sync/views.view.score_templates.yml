@@ -1,17 +1,16 @@
-uuid: f97ad340-d678-4a2c-9f47-affcbf61e8a1
+uuid: c32023f6-5bad-4f73-9ab5-5f6954039b7e
 langcode: en
 status: true
 dependencies:
   module:
     - piv_contest
-    - piv_contest_competition
-    - user
-id: competitions
-label: Competitions
+    - piv_contest_score_template
+id: score_templates
+label: 'Score Templates'
 module: views
 description: ''
 tag: ''
-base_table: competition_field_data
+base_table: score_template_field_data
 base_field: id
 display:
   default:
@@ -20,16 +19,16 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Competitions
+      title: 'Score Templates'
       fields:
         contest_bulk_form:
           id: contest_bulk_form
-          table: competition
+          table: score_template
           field: contest_bulk_form
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: competition
+          entity_type: score_template
           plugin_id: contest_bulk_form
           label: 'Contest operations bulk form'
           exclude: false
@@ -75,75 +74,9 @@ display:
           action_title: Action
           include_exclude: exclude
           selected_actions: {  }
-        id:
-          id: id
-          table: competition_field_data
-          field: id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: competition
-          entity_field: id
-          plugin_id: field
-          label: ID
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: number_integer
-          settings:
-            thousand_separator: ''
-            prefix_suffix: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         title:
           id: title
-          table: competition_field_data
+          table: score_template_field_data
           field: title
           relationship: none
           group_type: group
@@ -208,12 +141,12 @@ display:
           field_api_classes: false
         status:
           id: status
-          table: competition_field_data
+          table: score_template_field_data
           field: status
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: competition
+          entity_type: score_template
           entity_field: status
           plugin_id: field
           label: Status
@@ -275,12 +208,12 @@ display:
           field_api_classes: false
         uid:
           id: uid
-          table: competition_field_data
+          table: score_template_field_data
           field: uid
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: competition
+          entity_type: score_template
           entity_field: uid
           plugin_id: field
           label: Author
@@ -340,12 +273,12 @@ display:
           field_api_classes: false
         created:
           id: created
-          table: competition_field_data
+          table: score_template_field_data
           field: created
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: competition
+          entity_type: score_template
           entity_field: created
           plugin_id: field
           label: Created
@@ -407,12 +340,12 @@ display:
           field_api_classes: false
         changed:
           id: changed
-          table: competition_field_data
+          table: score_template_field_data
           field: changed
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: competition
+          entity_type: score_template
           entity_field: changed
           plugin_id: field
           label: Updated
@@ -474,12 +407,12 @@ display:
           field_api_classes: false
         operations:
           id: operations
-          table: competition
+          table: score_template
           field: operations
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: competition
+          entity_type: score_template
           plugin_id: entity_operations
           label: 'Operations links'
           exclude: false
@@ -524,17 +457,15 @@ display:
           hide_alter_empty: true
           destination: false
       pager:
-        type: full
+        type: mini
         options:
           offset: 0
-          items_per_page: 50
+          items_per_page: 20
           total_pages: null
           id: 0
           tags:
             next: ››
             previous: ‹‹
-            first: '« First'
-            last: 'Last »'
           expose:
             items_per_page: false
             items_per_page_label: 'Items per page'
@@ -543,21 +474,19 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
-          quantity: 9
       exposed_form:
         type: basic
         options:
           submit_button: Apply
-          reset_button: true
+          reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
-        options:
-          perm: 'access competition overview'
+        type: none
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -565,12 +494,12 @@ display:
       sorts:
         id:
           id: id
-          table: competition_field_data
+          table: score_template_field_data
           field: id
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: competition
+          entity_type: score_template
           entity_field: id
           plugin_id: standard
           order: ASC
@@ -579,144 +508,9 @@ display:
             field_identifier: ''
           exposed: false
       arguments: {  }
-      filters:
-        title:
-          id: title
-          table: competition_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: competition
-          entity_field: title
-          plugin_id: string
-          operator: contains
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: title_op
-            label: Title
-            description: ''
-            use_operator: false
-            operator: title_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: title
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              teacher: '0'
-              non_canadian_educator: '0'
-              teacher_en_: '0'
-              teacher_fr_: '0'
-              anonymous: '0'
-              administrator: '0'
-              proofreader: '0'
-              content_creator: '0'
-              translator: '0'
-              icanlocalize_translator: '0'
-              icanlocalize_manager: '0'
-              judge: '0'
-              account_approval: '0'
-              competition_administrator: '0'
-              accuracy_judge: '0'
-              php_editor: '0'
-              pierre: '0'
-              lesson_plan_creator: '0'
-              superadmin: '0'
-              poet_network: '0'
-              pic_pal: '0'
-              poet: '0'
-              anthology_editor: '0'
-              grandfathered_pir: '0'
-              education_consultant: '0'
-              journal_editor: '0'
-              junior_editor: '0'
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
+      filters: {  }
       style:
         type: table
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-          columns:
-            id: id
-            title: title
-            status: status
-            uid: uid
-            created: created
-            changed: changed
-            operations: operations
-          default: id
-          info:
-            id:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            title:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            status:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            uid:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            created:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            changed:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            operations:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-          override: true
-          sticky: false
-          summary: ''
-          empty_table: false
-          caption: ''
-          description: ''
       row:
         type: fields
       query:
@@ -729,26 +523,14 @@ display:
           query_tags: {  }
       relationships: {  }
       header: {  }
-      footer:
-        result:
-          id: result
-          table: views
-          field: result
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: result
-          empty: true
-          content: 'Displaying @start - @end of @total'
+      footer: {  }
       display_extenders: {  }
     cache_metadata:
       max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
         - url.query_args
-        - user.permissions
       tags: {  }
   page_1:
     id: page_1
@@ -757,13 +539,11 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: admin/contest/competition
+      path: admin/contest/score-template
     cache_metadata:
       max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
         - url.query_args
-        - user.permissions
       tags: {  }

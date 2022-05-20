@@ -1,0 +1,13 @@
+uuid: 2571b955-88cb-4870-b089-c83c8cabc621
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest
+_core:
+  default_config_hash: vpBH8OmL4sdesCdeZLsW8KOutB5gkbreWJbfjhfFKaQ
+id: recitation_delete_action
+label: 'Delete recitation'
+type: recitation
+plugin: 'entity:delete_action:recitation'
+configuration: {  }
