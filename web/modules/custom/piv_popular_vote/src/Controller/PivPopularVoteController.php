@@ -56,12 +56,15 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
    * Builds the response.
    */
   public function build(CompetitionInterface $competition) {
-    $competition_entries = $this->entityTypeManager
-      ->getStorage('competition_entry')
-      ->loadByProperties([
-        'field_competition' => $competition->id(),
-        'field_competition_current_level' => $competition->field_popular_vote_level->value ?? 1,
-      ]);
+    $level = $competition->field_popular_vote_level->value ?? 1;
+    $competition_entry_storage = $this->entityTypeManager->getStorage('competition_entry');
+    $competition_entry_ids = $competition_entry_storage->getQuery()
+      ->condition('field_competition', $competition->id())
+      ->condition('field_competition_current_level', $level, '>=')
+      ->execute();
+    $competition_entries = $competition_entry_ids
+      ? $competition_entry_storage->loadMultiple($competition_entry_ids)
+      : [];
 
     $build['recitations'] = [
       '#type' => 'container',
@@ -74,8 +77,26 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
       if (!$recitation || $recitation->language()->getId() != $current_language) {
         continue;
       }
+      $school_address = '';
+      if ($school = $competition_entry->field_school->entity) {
+        $school_address .= '<br>' . $school->label();
+        if ($address = $school->field_address[0]) {
+          $school_address .= "<br>{$address->locality}, {$address->administrative_area}";
+        }
+      }
+
+      $school ? $school->field_address->view() : NULL;
       $build['recitations'][$recitation->id()] = [
         '#type' => 'container',
+        'header' => [
+          '#type' => 'container',
+          'student' => [
+            '#markup' => piv_popular_vote_get_student_name($competition_entry->id()),
+          ],
+          'school_address' => [
+            '#markup' => $school_address,
+          ],
+        ],
         'video' => $recitation->field_recitation_video->view([
           'type' => 'entity_reference_entity_view',
           'label' => 'hidden',

@@ -29,6 +29,18 @@ class PivPopularVoteManager {
   }
 
   /**
+   * Check if there is a vote for this email on this competition.
+   */
+  public function hasVoted($voter_email, $competition_id) {
+    return (BOOL) $this->connection->select(self::TABLE_NAME, 't')
+      ->condition('voter_email', $voter_email)
+      ->condition('competition_id', $competition_id)
+      ->fields('t', ['id'])
+      ->execute()
+      ->fetch();
+  }
+
+  /**
    * Create a vote.
    */
   public function vote($voter_email, $voter_name, $competition_entry_id, $competition_id, $langcode) {

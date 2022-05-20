@@ -75,6 +75,7 @@ class PopularVoteForm extends FormBase {
       return $form;
     }
     $language = $recitation->field_stream_language->entity ?? $recitation->language();
+
     $form['langcode'] = [
       '#type' => 'value',
       '#value' => $language->getId(),
@@ -117,6 +118,35 @@ class PopularVoteForm extends FormBase {
         'event' => 'click',
       ],
     ];
+
+    // If user already voted, display a success message instead.
+    $voted = $form_state->get('voted') ?? FALSE;
+    if ($voted) {
+      $form['name']['#access'] = FALSE;
+      $form['email']['#access'] = FALSE;
+      $form['actions']['submit']['#access'] = FALSE;
+      $form['text'] = [
+        '#markup' => $this->t('Thank you for voting!'),
+      ];
+      $form['actions']['cancel']['#value'] = $this->t('Close');
+      return $form;
+    }
+
+    // If user already voted with that email, ask for confirmation.
+    $ask_to_confirm_vote = $form_state->get('ask_to_confirm_vote') ?? FALSE;
+    if ($ask_to_confirm_vote) {
+      $form['has_voted_information'] = [
+        '#weight' => -1,
+        '#type' => 'fieldset',
+        'text' => [
+          '#markup' => $this->t('Do you want to cancel your last choice, and select this recitation?'),
+        ],
+      ];
+      $form['actions']['submit']['#value'] = $this->t('Mark as my new choice');
+      return $form;
+    }
+
+    // Return normal form.
     return $form;
   }
 
@@ -124,13 +154,6 @@ class PopularVoteForm extends FormBase {
    * Ajax callback.
    */
   public function ajaxSubmit(array &$form, FormStateInterface $form_state) {
-    $form['name']['#access'] = FALSE;
-    $form['email']['#access'] = FALSE;
-    $form['actions']['submit']['#access'] = FALSE;
-    $form['text'] = [
-      '#markup' => $this->t('Thank you for voting!'),
-    ];
-    $form['actions']['cancel']['#value'] = $this->t('Close');
     return $form;
   }
 
@@ -160,8 +183,18 @@ class PopularVoteForm extends FormBase {
     $name = $form_state->getValue('name');
     $email = $form_state->getValue('email');
     $langcode = $form_state->getValue('langcode');
+    $form_state->setRebuild(TRUE);
+
+    // Email already voted and user did not confirm yet.
+    if (!isset($form['has_voted_information']) && $this->pivPopularVoteManager->hasVoted($email, $competition)) {
+      $form_state->set('ask_to_confirm_vote', TRUE);
+      return;
+    }
+
+    // Success.
     $this->pivPopularVoteManager
       ->vote($email, $name, $competition_entry, $competition, $langcode);
+    $form_state->set('voted', TRUE);
   }
 
 }
