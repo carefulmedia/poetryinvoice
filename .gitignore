@@ -15,7 +15,6 @@
 !/private/*/.gitkeep
 
 # Config ignored files.
-*/sync/mailsystem.settings.yml
 */sync/piv_canadian_content.settings.yml
 
 # Environment variables
