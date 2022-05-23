@@ -828,6 +828,17 @@ $databases['migrate']['default'] = [
 $settings['config_sync_directory'] = '../config/sync';
 $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy', 'devel_php'];
 
+// Lando configurations.
+if (getenv('LANDO') == 'ON') {
+  // By default reroute email is enabled and overriden with configuration, here
+  // we disable reroute email since lando will capture emails with mailhog.
+  $config['reroute_email.settings']['enable'] = FALSE;
+}
+
 if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
   include $app_root . '/' . $site_path . '/settings.platformsh.php';
+}
+
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
 }
