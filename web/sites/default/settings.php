@@ -828,6 +828,7 @@ $databases['migrate']['default'] = [
 $settings['config_sync_directory'] = '../config/sync';
 $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy', 'devel_php'];
 
+$config['reroute_email.settings']['enable'] = TRUE;
 // Lando configurations.
 if (getenv('LANDO') == 'ON') {
   // By default reroute email is enabled and overriden with configuration, here

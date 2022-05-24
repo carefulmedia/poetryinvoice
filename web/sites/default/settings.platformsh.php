@@ -30,7 +30,7 @@ if (isset($platformsh->branch)) {
   if ($platformsh->branch == 'master' || $platformsh->onDedicated()) {
     $config['system.logging']['error_level'] = 'hide';
     // For now, production should also re-route emails.
-    // $config['reroute_email.settings']['enable'] = FALSE;
+    $config['reroute_email.settings']['enable'] = TRUE;
   } // Development type environment.
   else {
     $config['system.logging']['error_level'] = 'verbose';
