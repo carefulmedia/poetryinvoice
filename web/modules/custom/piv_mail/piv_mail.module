@@ -44,7 +44,7 @@ function piv_mail_node_insert(NodeInterface $node) {
         ->addSource('teacher', $user)
         ->addSource('school', $user->field_school->entity)
         ->addSource('visit_node', $node);
-      $school_province = $user->field_school->entity->field_address->administrative_area;
+      $school_province = $user->field_school->entity->field_address->administrative_area ?? NULL;
       // These emails never consider the visit admin.
       $provinces = ['QC', 'NS', 'NB', 'PEI'];
       $from = ($langcode == 'fr' || in_array($school_province, $provinces))
@@ -148,11 +148,13 @@ function piv_mail_node_update(NodeInterface $node) {
     return;
   }
 
+  $user = $node->uid->entity;
   $langcode = $node->langcode->value;
   // Comes from visit admin email or the hardcoded emails below if visit admin
   // is empty.
   $from = $node->field_visit_admin->entity->mail->value ?? NULL;
   if (!$from) {
+    $school_province = $user->field_school->entity->field_address->administrative_area ?? NULL;
     $provinces = ['QC', 'NS', 'NB', 'PEI'];
     $from = ($langcode == 'fr' || in_array($school_province, $provinces))
       ? 'caroline@lesvoixdelapoesie.com'
@@ -177,7 +179,7 @@ function piv_mail_node_update(NodeInterface $node) {
 
   if ($date && $booked) {
     // Inline function to send emails if necessary.
-    $queue_mail = function ($key, $send_date) use ($langcode, $replacements_service, $from) {
+    $queue_mail = function ($key, $send_date) use ($langcode, $replacements_service, $from, $nid) {
       if ($send_date < time()) {
         return FALSE;
       }
@@ -195,6 +197,7 @@ function piv_mail_node_update(NodeInterface $node) {
     $queue_mail('one_day_before_visit_email_reminder', $visit_date - (24 * 60 * 60));
 
     // Send mail one day after visit.
+    $chosen_poet = $node->field_pal_pir->entity;
     if ($chosen_poet) {
       $queue_mail('poet_survey_reminder_one_day_after_visit', $visit_date + (24 * 60 * 60));
     }
