@@ -44,7 +44,7 @@ function piv_mail_node_insert(NodeInterface $node) {
         ->addSource('teacher', $user)
         ->addSource('school', $user->field_school->entity)
         ->addSource('visit_node', $node);
-      $school_province = $node->field_address->administrative_area;
+      $school_province = $user->field_school->entity->field_address->administrative_area;
       // These emails never consider the visit admin.
       $provinces = ['QC', 'NS', 'NB', 'PEI'];
       $from = ($langcode == 'fr' || in_array($school_province, $provinces))
