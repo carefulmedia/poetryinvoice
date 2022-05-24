@@ -66,12 +66,15 @@ class PopularVoteResultsController extends ControllerBase implements ContainerIn
    * Builds the response.
    */
   public function build(CompetitionInterface $competition) {
-    $competition_entries = $this->entityTypeManager
-      ->getStorage('competition_entry')
-      ->loadByProperties([
-        'field_competition' => $competition->id(),
-        'field_competition_current_level' => $competition->field_popular_vote_level->value ?? 1,
-      ]);
+    $level = $competition->field_popular_vote_level->value ?? 1;
+    $competition_entry_storage = $this->entityTypeManager->getStorage('competition_entry');
+    $competition_entry_ids = $competition_entry_storage->getQuery()
+      ->condition('field_competition', $competition->id())
+      ->condition('field_competition_current_level', $level, '>=')
+      ->execute();
+    $competition_entries = $competition_entry_ids
+      ? $competition_entry_storage->loadMultiple($competition_entry_ids)
+      : [];
     $query = $this->connection->select(PivPopularVoteManager::TABLE_NAME, 't')
       ->condition('competition_id', $competition->id())
       ->fields('t', ['competition_entry_id']);

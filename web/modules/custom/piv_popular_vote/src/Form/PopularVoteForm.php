@@ -111,7 +111,7 @@ class PopularVoteForm extends FormBase {
       ],
     ];
     $form['actions']['cancel'] = [
-      '#type' => 'submit',
+      '#type' => 'button',
       '#value' => $this->t('Cancel'),
       '#ajax' => [
         'callback' => [$this, 'ajaxCloseDialog'],
