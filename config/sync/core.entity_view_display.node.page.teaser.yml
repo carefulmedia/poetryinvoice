@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.comment_node_page
     - field.field.node.page.field_banner_subtitle
+    - field.field.node.page.field_banner_title
+    - field.field.node.page.field_files
     - field.field.node.page.field_images_insert
     - field.field.node.page.field_tags
     - node.type.page
@@ -34,6 +36,8 @@ content:
 hidden:
   comment_node_page: true
   field_banner_subtitle: true
+  field_banner_title: true
+  field_files: true
   field_images_insert: true
   field_tags: true
   langcode: true

@@ -1,0 +1,23 @@
+uuid: 704bf1fd-6c56-432c-a7c8-47e47b40156f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paid_
+    - node.type.mixtape
+id: node.mixtape.field_paid_
+field_name: field_paid_
+entity_type: node
+bundle: mixtape
+label: 'Paid?'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

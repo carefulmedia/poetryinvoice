@@ -1,0 +1,21 @@
+uuid: a224720e-41c1-40d5-b214-c9b47f27c683
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recommended_reading
+    - node.type.mixtape
+  module:
+    - text
+id: node.mixtape.field_recommended_reading
+field_name: field_recommended_reading
+entity_type: node
+bundle: mixtape
+label: 'Recommended reading'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

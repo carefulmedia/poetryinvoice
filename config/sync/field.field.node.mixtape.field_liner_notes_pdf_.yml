@@ -1,0 +1,27 @@
+uuid: e24c5b5e-7ae9-4c2e-af1d-a03edfe42874
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_liner_notes_pdf_
+    - node.type.mixtape
+  module:
+    - file
+id: node.mixtape.field_liner_notes_pdf_
+field_name: field_liner_notes_pdf_
+entity_type: node
+bundle: mixtape
+label: 'J-Card (PDF)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: pdf
+  max_filesize: ''
+  description_field: false
+field_type: file

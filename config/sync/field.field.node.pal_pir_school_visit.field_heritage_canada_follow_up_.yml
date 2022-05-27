@@ -1,0 +1,21 @@
+uuid: 7e4ca47c-739f-4e8e-af7e-4e4ffbb05410
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_heritage_canada_follow_up_
+    - node.type.pal_pir_school_visit
+  module:
+    - options
+id: node.pal_pir_school_visit.field_heritage_canada_follow_up_
+field_name: field_heritage_canada_follow_up_
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Please check the box that best describes you.'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_float

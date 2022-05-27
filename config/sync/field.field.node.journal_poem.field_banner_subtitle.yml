@@ -1,0 +1,21 @@
+uuid: 1c2066cb-3fc9-44bf-81cc-ce19033f8f77
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner_subtitle
+    - node.type.journal_poem
+  module:
+    - text
+id: node.journal_poem.field_banner_subtitle
+field_name: field_banner_subtitle
+entity_type: node
+bundle: journal_poem
+label: 'Banner subtitle'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

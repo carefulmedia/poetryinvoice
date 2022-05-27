@@ -7,11 +7,14 @@ dependencies:
     - field.field.node.page.body
     - field.field.node.page.comment_node_page
     - field.field.node.page.field_banner_subtitle
+    - field.field.node.page.field_banner_title
+    - field.field.node.page.field_files
     - field.field.node.page.field_images_insert
     - field.field.node.page.field_tags
     - node.type.page
   module:
     - comment
+    - file
     - image
     - text
     - user
@@ -44,6 +47,22 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_banner_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_files:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 103
     region: content
   field_images_insert:
     type: image

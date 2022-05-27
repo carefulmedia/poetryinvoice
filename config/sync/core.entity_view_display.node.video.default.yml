@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.video.field_video_image
     - field.field.node.video.field_video_poem
     - field.field.node.video.field_years_in_competition
+    - field.field.node.video.field_yt_video
     - node.type.video
   module:
     - comment
@@ -59,6 +60,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_yt_video:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 101
     region: content
   links:
     settings: {  }

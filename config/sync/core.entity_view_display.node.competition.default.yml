@@ -6,30 +6,16 @@ dependencies:
     - core.entity_view_display.comment.comment_node_competition.default
     - field.field.node.competition.body
     - field.field.node.competition.comment_node_competition
-    - field.field.node.competition.field_active
-    - field.field.node.competition.field_by_invitation_only
-    - field.field.node.competition.field_competition_current_level
-    - field.field.node.competition.field_competition_levels
     - field.field.node.competition.field_competition_school
-    - field.field.node.competition.field_competition_streams
     - field.field.node.competition.field_host_teacher
-    - field.field.node.competition.field_invited_schools
-    - field.field.node.competition.field_judge
     - field.field.node.competition.field_judges
-    - field.field.node.competition.field_judging_deadline
     - field.field.node.competition.field_language_stream
     - field.field.node.competition.field_level
-    - field.field.node.competition.field_location
-    - field.field.node.competition.field_online_competition
-    - field.field.node.competition.field_open_date
-    - field.field.node.competition.field_score_template
     - field.field.node.competition.field_submission_deadline
-    - field.field.node.competition.field_team_competition
     - field.field.node.competition.field_winners_announced
     - field.field.node.competition.field_years_in_competition
     - node.type.competition
   module:
-    - address
     - comment
     - datetime
     - entity_reference_revisions
@@ -57,52 +43,6 @@ content:
     third_party_settings: {  }
     weight: 20
     region: content
-  field_active:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 109
-    region: content
-  field_by_invitation_only:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 106
-    region: content
-  field_competition_current_level:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 111
-    region: content
-  field_competition_levels:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 110
-    region: content
-  field_competition_streams:
-    type: entity_reference_revisions_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    weight: 103
-    region: content
   field_host_teacher:
     type: entity_reference_label
     label: above
@@ -110,22 +50,6 @@ content:
       link: true
     third_party_settings: {  }
     weight: 11
-    region: content
-  field_invited_schools:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 108
-    region: content
-  field_judge:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 112
     region: content
   field_judges:
     type: entity_reference_revisions_entity_view
@@ -135,15 +59,6 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 5
-    region: content
-  field_judging_deadline:
-    type: datetime_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 102
     region: content
   field_language_stream:
     type: list_default
@@ -159,40 +74,6 @@ content:
     third_party_settings: {  }
     weight: 7
     region: content
-  field_location:
-    type: address_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 107
-    region: content
-  field_online_competition:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 105
-    region: content
-  field_open_date:
-    type: datetime_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 101
-    region: content
-  field_score_template:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 113
-    region: content
   field_submission_deadline:
     type: datetime_default
     label: above
@@ -201,16 +82,6 @@ content:
       format_type: long
     third_party_settings: {  }
     weight: 9
-    region: content
-  field_team_competition:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 104
     region: content
   field_winners_announced:
     type: datetime_default

@@ -1,0 +1,23 @@
+uuid: 37389000-83e2-4795-988f-1b74e1f255ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.mixtape
+  module:
+    - text
+id: node.mixtape.body
+field_name: body
+entity_type: node
+bundle: mixtape
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

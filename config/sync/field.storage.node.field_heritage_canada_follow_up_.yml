@@ -1,0 +1,36 @@
+uuid: 38132c11-92a2-443a-b767-7195f5b12c4f
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_heritage_canada_follow_up_
+field_name: field_heritage_canada_follow_up_
+entity_type: node
+type: list_float
+settings:
+  allowed_values:
+    -
+      value: !!float 0
+      label: 'I teach in French at a school where the dominant language is English.'
+    -
+      value: !!float 1
+      label: 'I teach in English at a school where the dominant language is French.'
+    -
+      value: !!float 2
+      label: 'I teach at a French school where the larger community is predominantly English.'
+    -
+      value: !!float 3
+      label: 'I teach at an English school where the surrounding community is predominantly French'
+    -
+      value: !!float 4
+      label: 'I teach at a bilingual school.'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,21 @@
+uuid: 301bdeb5-ddf4-4479-acb8-d708da60e7ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pronouns
+    - node.type.journal_poem
+  module:
+    - options
+id: node.journal_poem.field_pronouns
+field_name: field_pronouns
+entity_type: node
+bundle: journal_poem
+label: Pronouns
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

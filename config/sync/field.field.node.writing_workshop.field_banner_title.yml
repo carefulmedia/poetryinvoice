@@ -1,0 +1,19 @@
+uuid: b2340a1c-d27d-47e1-a137-a17ddec2b9ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner_title
+    - node.type.writing_workshop
+id: node.writing_workshop.field_banner_title
+field_name: field_banner_title
+entity_type: node
+bundle: writing_workshop
+label: 'Banner title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

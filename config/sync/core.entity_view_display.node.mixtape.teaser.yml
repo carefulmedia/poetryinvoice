@@ -1,0 +1,47 @@
+uuid: 5a5ef0b1-12b8-4935-a8c5-e9a548f81d22
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.mixtape.body
+    - field.field.node.mixtape.field_completed
+    - field.field.node.mixtape.field_doodles
+    - field.field.node.mixtape.field_liner_notes_pdf_
+    - field.field.node.mixtape.field_mixtape_background_image
+    - field.field.node.mixtape.field_mixtape_image
+    - field.field.node.mixtape.field_paid_
+    - field.field.node.mixtape.field_poems
+    - field.field.node.mixtape.field_recommended_reading
+    - node.type.mixtape
+  module:
+    - text
+    - user
+id: node.mixtape.teaser
+targetEntityType: node
+bundle: mixtape
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_completed: true
+  field_doodles: true
+  field_liner_notes_pdf_: true
+  field_mixtape_background_image: true
+  field_mixtape_image: true
+  field_paid_: true
+  field_poems: true
+  field_recommended_reading: true
+  langcode: true

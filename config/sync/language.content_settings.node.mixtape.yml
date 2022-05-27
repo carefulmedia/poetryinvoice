@@ -1,0 +1,11 @@
+uuid: 9b39f65c-fa21-427e-a8ce-08d75890af33
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.mixtape
+id: node.mixtape
+target_entity_type_id: node
+target_bundle: mixtape
+default_langcode: site_default
+language_alterable: false

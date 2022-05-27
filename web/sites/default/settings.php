@@ -835,6 +835,7 @@ if (getenv('LANDO') == 'ON') {
   // we disable reroute email since lando will capture emails with mailhog.
   $config['reroute_email.settings']['enable'] = FALSE;
   $config['system.logging']['error_level'] = 'verbose';
+  $settings['file_private_path'] = '../private';
 }
 
 if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {

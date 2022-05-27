@@ -1,0 +1,42 @@
+uuid: 2837615f-1942-47b5-a35a-e90cdf98bc84
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_funding_source
+field_name: field_funding_source
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: C.A.M.
+      label: C.A.M.
+    -
+      value: 'Canadian Heritage'
+      label: 'Canadian Heritage'
+    -
+      value: C.S.F.
+      label: C.S.F.
+    -
+      value: 'The Scott Griffin Foundation'
+      label: 'The Scott Griffin Foundation'
+    -
+      value: 'The Canada Council for the Arts'
+      label: 'The Canada Council for the Arts'
+    -
+      value: T.D.S.B.
+      label: T.D.S.B.
+    -
+      value: ELAN
+      label: ELAN
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

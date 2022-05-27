@@ -6,25 +6,12 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.competition.body
     - field.field.node.competition.comment_node_competition
-    - field.field.node.competition.field_active
-    - field.field.node.competition.field_by_invitation_only
-    - field.field.node.competition.field_competition_current_level
-    - field.field.node.competition.field_competition_levels
     - field.field.node.competition.field_competition_school
-    - field.field.node.competition.field_competition_streams
     - field.field.node.competition.field_host_teacher
-    - field.field.node.competition.field_invited_schools
-    - field.field.node.competition.field_judge
     - field.field.node.competition.field_judges
-    - field.field.node.competition.field_judging_deadline
     - field.field.node.competition.field_language_stream
     - field.field.node.competition.field_level
-    - field.field.node.competition.field_location
-    - field.field.node.competition.field_online_competition
-    - field.field.node.competition.field_open_date
-    - field.field.node.competition.field_score_template
     - field.field.node.competition.field_submission_deadline
-    - field.field.node.competition.field_team_competition
     - field.field.node.competition.field_winners_announced
     - field.field.node.competition.field_years_in_competition
     - node.type.competition
@@ -51,25 +38,12 @@ content:
     region: content
 hidden:
   comment_node_competition: true
-  field_active: true
-  field_by_invitation_only: true
-  field_competition_current_level: true
-  field_competition_levels: true
   field_competition_school: true
-  field_competition_streams: true
   field_host_teacher: true
-  field_invited_schools: true
-  field_judge: true
   field_judges: true
-  field_judging_deadline: true
   field_language_stream: true
   field_level: true
-  field_location: true
-  field_online_competition: true
-  field_open_date: true
-  field_score_template: true
   field_submission_deadline: true
-  field_team_competition: true
   field_winners_announced: true
   field_years_in_competition: true
   langcode: true

@@ -23,4 +23,7 @@ settings:
       type_of_video: type_of_video
     sort:
       field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
 field_type: entity_reference

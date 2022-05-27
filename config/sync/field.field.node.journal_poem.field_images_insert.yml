@@ -1,0 +1,45 @@
+uuid: 3ca834b9-3202-4db9-a97d-35d7a09de0c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_images_insert
+    - node.type.journal_poem
+  module:
+    - content_translation
+    - image
+third_party_settings:
+  content_translation:
+    translation_sync:
+      alt: alt
+      title: title
+      file: '0'
+id: node.journal_poem.field_images_insert
+field_name: field_images_insert
+entity_type: node
+bundle: journal_poem
+label: image
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg'
+  max_filesize: ''
+  max_resolution: ''
+  min_resolution: ''
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

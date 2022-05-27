@@ -163,6 +163,46 @@ process:
     -
       plugin: get
       source: field_poem_reason
+  field_legal_name_boolean:
+    -
+      plugin: get
+      source: field_legal_name_boolean
+  field_legal_name:
+    -
+      plugin: get
+      source: field_legal_name
+  field_pronouns:
+    -
+      plugin: get
+      source: field_pronouns
+  field_student_photo:
+    -
+      plugin: sub_process
+      source: field_student_photo
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_banner_subtitle:
+    -
+      plugin: get
+      source: field_banner_subtitle
+  field_banner_title:
+    -
+      plugin: get
+      source: field_banner_title
+  field_images_insert:
+    -
+      plugin: sub_process
+      source: field_images_insert
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
 destination:
   plugin: 'entity_complete:node'
   translations: true

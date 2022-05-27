@@ -1,0 +1,48 @@
+uuid: cbe2f982-c866-4fa3-8cd0-cc437c89a0d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.judges.field_completed
+    - field.field.paragraph.judges.field_confirmed_
+    - field.field.paragraph.judges.field_judge
+    - field.field.paragraph.judges.field_paid_
+    - paragraphs.paragraphs_type.judges
+id: paragraph.judges.default
+targetEntityType: paragraph
+bundle: judges
+mode: default
+content:
+  field_completed:
+    type: options_buttons
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_confirmed_:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_judge:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_paid_:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

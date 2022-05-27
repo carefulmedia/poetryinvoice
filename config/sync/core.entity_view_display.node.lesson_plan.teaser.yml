@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.lesson_plan.field_paid_
     - field.field.node.lesson_plan.field_periods
     - field.field.node.lesson_plan.field_poets_plural_user
+    - field.field.node.lesson_plan.field_rating
     - field.field.node.lesson_plan.field_rwt
     - field.field.node.lesson_plan.field_suggest_a_new_folder_to_fi
     - field.field.node.lesson_plan.field_variations_for_older_stude
@@ -63,6 +64,7 @@ hidden:
   field_paid_: true
   field_periods: true
   field_poets_plural_user: true
+  field_rating: true
   field_rwt: true
   field_suggest_a_new_folder_to_fi: true
   field_variations_for_older_stude: true

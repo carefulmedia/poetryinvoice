@@ -1,0 +1,29 @@
+uuid: 97f49cf2-9b81-436f-ab4c-af0ab6e9787e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rating
+    - node.type.lesson_plan
+  module:
+    - fivestar
+id: node.lesson_plan.field_rating
+field_name: field_rating
+entity_type: node
+bundle: lesson_plan
+label: Rating
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  stars: 5
+  allow_clear: false
+  allow_revote: true
+  allow_ownvote: true
+  rated_while: viewing
+  enable_voting_target: false
+  target_bridge_field: ''
+  target_fivestar_field: ''
+field_type: fivestar

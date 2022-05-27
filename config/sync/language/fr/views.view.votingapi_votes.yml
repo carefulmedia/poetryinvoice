@@ -1,0 +1,78 @@
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        id:
+          label: 'Identifiant (ID)'
+          separator: ', '
+        type:
+          label: 'Type de vote'
+          separator: ', '
+        value:
+          label: Valeur
+          separator: ', '
+        vote_source:
+          separator: ', '
+        user_id:
+          separator: ', '
+        timestamp:
+          separator: ', '
+      filters:
+        type:
+          expose:
+            label: 'Type de vote'
+        entity_type:
+          expose:
+            label: 'Type d''entité'
+  admin_page:
+    display_options:
+      fields:
+        id:
+          label: 'Identifiant (ID)'
+          separator: ', '
+        type:
+          label: 'Type de vote'
+          separator: ', '
+        entity_id:
+          separator: ', '
+        entity_type:
+          label: 'Type d''entité'
+          separator: ', '
+        value:
+          label: Valeur
+          separator: ', '
+        vote_source:
+          separator: ', '
+        user_id:
+          separator: ', '
+        timestamp:
+          separator: ', '
+      menu:
+        title: Votes
+  node_page:
+    display_options:
+      menu:
+        title: Votes
+      arguments:
+        entity_id:
+          exception:
+            title: All

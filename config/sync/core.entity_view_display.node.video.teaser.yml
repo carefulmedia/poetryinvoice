@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.video.field_video_image
     - field.field.node.video.field_video_poem
     - field.field.node.video.field_years_in_competition
+    - field.field.node.video.field_yt_video
     - node.type.video
   module:
     - text
@@ -54,4 +55,5 @@ hidden:
   field_video_image: true
   field_video_poem: true
   field_years_in_competition: true
+  field_yt_video: true
   langcode: true

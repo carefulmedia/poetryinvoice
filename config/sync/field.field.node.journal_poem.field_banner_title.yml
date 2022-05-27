@@ -1,0 +1,19 @@
+uuid: e46b7c7c-d0dd-418f-8756-bccc06000740
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_banner_title
+    - node.type.journal_poem
+id: node.journal_poem.field_banner_title
+field_name: field_banner_title
+entity_type: node
+bundle: journal_poem
+label: 'Banner title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

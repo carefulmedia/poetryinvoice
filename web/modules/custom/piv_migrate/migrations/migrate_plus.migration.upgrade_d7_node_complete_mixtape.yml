@@ -1,0 +1,141 @@
+uuid: fa8d4608-90c3-4f5d-9902-bb9ea9368751
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_node_complete_mixtape
+class: Drupal\node\Plugin\migrate\D7NodeTranslation
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+migration_group: migrate_drupal_7
+label: 'Node complete (Mixtape)'
+source:
+  plugin: d7_node_complete
+  node_type: mixtape
+process:
+  nid:
+    -
+      plugin: get
+      source: tnid
+  vid:
+    -
+      plugin: get
+      source: vid
+  langcode:
+    -
+      plugin: default_value
+      source: language
+      default_value: und
+  title:
+    -
+      plugin: get
+      source: title
+  uid:
+    -
+      plugin: get
+      source: node_uid
+  status:
+    -
+      plugin: get
+      source: status
+  created:
+    -
+      plugin: get
+      source: created
+  changed:
+    -
+      plugin: get
+      source: timestamp
+  promote:
+    -
+      plugin: get
+      source: promote
+  sticky:
+    -
+      plugin: get
+      source: sticky
+  revision_uid:
+    -
+      plugin: get
+      source: revision_uid
+  revision_log:
+    -
+      plugin: get
+      source: log
+  revision_timestamp:
+    -
+      plugin: get
+      source: timestamp
+  content_translation_source:
+    -
+      plugin: get
+      source: source_langcode
+  body:
+    -
+      plugin: get
+      source: body
+  field_completed:
+    -
+      plugin: get
+      source: field_completed
+  field_doodles:
+    -
+      plugin: sub_process
+      source: field_doodles
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_liner_notes_pdf_:
+    -
+      plugin: sub_process
+      source: field_liner_notes_pdf_
+      process:
+        target_id: fid
+        display: display
+        description: description
+  field_mixtape_background_image:
+    -
+      plugin: sub_process
+      source: field_mixtape_background_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_mixtape_image:
+    -
+      plugin: sub_process
+      source: field_mixtape_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_paid_:
+    -
+      plugin: get
+      source: field_paid_
+  field_poems:
+    -
+      plugin: sub_process
+      source: field_poems
+      process:
+        target_id: tid
+  field_recommended_reading:
+    -
+      plugin: get
+      source: field_recommended_reading
+destination:
+  plugin: 'entity_complete:node'
+  translations: true
+  default_bundle: mixtape
+migration_dependencies:
+  required:
+    - upgrade_d7_user

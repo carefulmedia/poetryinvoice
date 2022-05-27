@@ -6,18 +6,25 @@ dependencies:
     - core.entity_view_display.comment.comment_node_journal_poem.default
     - field.field.node.journal_poem.comment_node_journal_poem
     - field.field.node.journal_poem.field_acceptance_level
+    - field.field.node.journal_poem.field_banner_subtitle
+    - field.field.node.journal_poem.field_banner_title
     - field.field.node.journal_poem.field_email1
     - field.field.node.journal_poem.field_grade
     - field.field.node.journal_poem.field_i_consent_to_poetry_in_voi
+    - field.field.node.journal_poem.field_images_insert
     - field.field.node.journal_poem.field_journal_poem_body
+    - field.field.node.journal_poem.field_legal_name
+    - field.field.node.journal_poem.field_legal_name_boolean
     - field.field.node.journal_poem.field_phone
     - field.field.node.journal_poem.field_poem_attachment
     - field.field.node.journal_poem.field_poem_being_responded_to
     - field.field.node.journal_poem.field_poem_reason
     - field.field.node.journal_poem.field_poem_type
     - field.field.node.journal_poem.field_poet_who_visited_your_scho
+    - field.field.node.journal_poem.field_pronouns
     - field.field.node.journal_poem.field_response_or_prompt
     - field.field.node.journal_poem.field_school_journal
+    - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
     - field.field.node.journal_poem.field_teacher
     - field.field.node.journal_poem.field_writing_prompt
@@ -27,6 +34,7 @@ dependencies:
   module:
     - comment
     - file
+    - image
     - options
     - text
     - user
@@ -51,6 +59,21 @@ content:
     third_party_settings: {  }
     weight: 13
     region: content
+  field_banner_subtitle:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_banner_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 106
+    region: content
   field_email1:
     type: string
     label: above
@@ -73,12 +96,39 @@ content:
     third_party_settings: {  }
     weight: 12
     region: content
+  field_images_insert:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 107
+    region: content
   field_journal_poem_body:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
     weight: 15
+    region: content
+  field_legal_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_legal_name_boolean:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_phone:
     type: string
@@ -126,6 +176,13 @@ content:
     third_party_settings: {  }
     weight: 17
     region: content
+  field_pronouns:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
+    region: content
   field_response_or_prompt:
     type: list_default
     label: above
@@ -140,6 +197,15 @@ content:
       link: true
     third_party_settings: {  }
     weight: 6
+    region: content
+  field_student_photo:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+    third_party_settings: {  }
+    weight: 104
     region: content
   field_submission_info_confirmed:
     type: list_default

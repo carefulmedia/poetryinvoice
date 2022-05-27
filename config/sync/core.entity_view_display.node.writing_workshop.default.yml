@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.writing_workshop.body
     - field.field.node.writing_workshop.comment_node_writing_workshop
     - field.field.node.writing_workshop.field_banner_subtitle
+    - field.field.node.writing_workshop.field_banner_title
     - field.field.node.writing_workshop.field_images_insert
     - field.field.node.writing_workshop.field_preface
     - field.field.node.writing_workshop.field_suffix
@@ -35,6 +36,14 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_banner_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_preface:
     type: text_default

@@ -173,6 +173,10 @@ process:
     -
       plugin: get
       source: field_paid_
+  field_rating:
+    -
+      plugin: get
+      source: field_rating
 destination:
   plugin: 'entity_complete:node'
   translations: true

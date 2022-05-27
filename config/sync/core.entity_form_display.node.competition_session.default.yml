@@ -1,0 +1,139 @@
+uuid: 753dda27-1cd6-4ecd-a4ea-02dfc81923d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.competition_session.comment_node_competition_sessi
+    - field.field.node.competition_session.field_multi_judge_session_id
+    - field.field.node.competition_session.field_session_year
+    - field.field.node.competition_session.piv_entry_level
+    - field.field.node.competition_session.piv_session_accuracy_judge
+    - field.field.node.competition_session.piv_session_judge
+    - field.field.node.competition_session.piv_session_judge_en
+    - field.field.node.competition_session.piv_session_judge_fr
+    - field.field.node.competition_session.piv_session_language
+    - field.field.node.competition_session.piv_session_year
+    - node.type.competition_session
+  module:
+    - path
+id: node.competition_session.default
+targetEntityType: node
+bundle: competition_session
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_multi_judge_session_id:
+    type: number
+    weight: 5
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_session_year:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 7
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  piv_entry_level:
+    type: options_buttons
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  piv_session_accuracy_judge:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  piv_session_judge:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  piv_session_year:
+    type: number
+    weight: 6
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 14
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 8
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  comment_node_competition_sessi: true
+  piv_session_judge_en: true
+  piv_session_judge_fr: true
+  piv_session_language: true

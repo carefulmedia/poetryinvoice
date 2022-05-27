@@ -242,3 +242,4 @@ destination:
 migration_dependencies:
   required:
     - upgrade_d7_user
+    - upgrade_d7_node_complete_poem_rights_contact

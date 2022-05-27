@@ -1,0 +1,23 @@
+uuid: e786e66b-a6d3-4922-ab1e-939a670ef34a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_funding_source
+    - node.type.pal_pir_school_visit
+  module:
+    - options
+id: node.pal_pir_school_visit.field_funding_source
+field_name: field_funding_source
+entity_type: node
+bundle: pal_pir_school_visit
+label: 'Funding source'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 'The Scott Griffin Foundation'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

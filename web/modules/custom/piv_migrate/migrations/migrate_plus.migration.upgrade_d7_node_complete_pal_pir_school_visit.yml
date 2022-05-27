@@ -212,6 +212,18 @@ process:
     -
       plugin: get
       source: field_teacher_virtual_or_in_pers
+  field_funding_source:
+    -
+      plugin: get
+      source: field_funding_source
+  field_heritage_canada_question:
+    -
+      plugin: get
+      source: field_heritage_canada_question
+  field_heritage_canada_follow_up_:
+    -
+      plugin: get
+      source: field_heritage_canada_follow_up_
 destination:
   plugin: 'entity_complete:node'
   translations: true
