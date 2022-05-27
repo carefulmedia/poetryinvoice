@@ -66,6 +66,7 @@ module:
   piv_mail: 0
   piv_migrate: 0
   piv_pathauto: 0
+  piv_popular_vote: 0
   quickedit: 0
   rdf: 0
   reroute_email: 0

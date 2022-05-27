@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the PIV Popular Vote module.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function piv_popular_vote_schema() {
+  $schema['piv_popular_vote'] = [
+    'description' => 'Store popular votes.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique record ID.',
+      ],
+      'competition_entry_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The {competition_entry}.id for this vote.',
+      ],
+      'competition_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The {competition}.id for this vote, for fast referencing.',
+      ],
+      'voter_email' => [
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Voter e-mail.',
+      ],
+      'voter_name' => [
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Voter name.',
+      ],
+      'langcode' => [
+        'type' => 'varchar_ascii',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The competition entry stream langcode.',
+      ],
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Timestamp when the vote was created.',
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'competition_entry_id' => ['competition_entry_id'],
+      'competition_id' => ['competition_id'],
+    ],
+  ];
+
+  return $schema;
+}

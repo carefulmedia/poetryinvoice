@@ -1,0 +1,17 @@
+piv_popular_vote.popular_votes:
+  title: 'Popular Votes'
+  base_route: 'entity.competition.canonical'
+  route_name: 'piv_popular_vote.popular_votes'
+  weight: 4
+  
+piv_popular_vote.popular_votes_results:
+  title: 'Popular Votes Results'
+  base_route: 'entity.competition.canonical'
+  route_name: 'piv_popular_vote.popular_votes_results'
+  weight: 5
+
+piv_popular_vote.peoples_choice:
+  title: 'People''s choice'
+  base_route: 'entity.competition.canonical'
+  route_name: 'piv_popular_vote.peoples_choice'
+  weight: 3

@@ -1,0 +1,23 @@
+uuid: baf803a9-657a-4af7-a649-d02cf5ebbe68
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_popular_vote_level
+    - piv_contest_competition.competition_type.default
+id: competition.default.field_popular_vote_level
+field_name: field_popular_vote_level
+entity_type: competition
+bundle: default
+label: 'Competition Entry Level'
+description: 'The minimum competition entry level necessary to be considered in the popular vote. <br>Changing the level after voting starts will create unpredictable consequences'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

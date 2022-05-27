@@ -1,0 +1,10 @@
+name: PIV Popular Vote
+type: module
+description: Code and features related to popular voting.
+package: PIV
+core: 8.x
+core_version_requirement: ^8 || ^9
+dependencies:
+  - piv_contest_competition:piv_contest_competition
+  - piv_contest_competition_entry:piv_contest_competition_entry
+  - piv_contest_recitation:piv_contest_recitation

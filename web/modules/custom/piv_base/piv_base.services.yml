@@ -1,0 +1,5 @@
+services:
+  piv_base.uninstall_validator:
+    class: Drupal\piv_base\PivBaseUninstallValidator
+    tags:
+      - { name: module_install.uninstall_validator }

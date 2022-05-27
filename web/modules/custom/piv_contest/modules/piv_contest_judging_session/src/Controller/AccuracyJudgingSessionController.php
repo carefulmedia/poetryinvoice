@@ -157,15 +157,15 @@ class AccuracyJudgingSessionController extends ControllerBase {
         'user' => $user->id(),
       ])->toRenderable();
 
-      if ($this->judgeSessionService->isSessionEvaluatedByJudge($judging_session, $user)) {
+      if ($this->judgeSessionService->isSessionEvaluatedByAccuracyJudge($judging_session, $user)) {
         $link['#attributes']['class'][] = 'disabled';
       }
 
       $rows[] = [
         $judging_session->label(),
         new FormattableMarkup('@evaluated/@total', [
-          '@evaluated' => $this->judgeSessionService->numberOfRecitationsEvaluatedByJudge($judging_session, $user),
-          '@total' => $this->judgeSessionService->totalNumberOfRecitations($judging_session, $user),
+          '@evaluated' => $this->judgeSessionService->numberOfRecitationsEvaluatedByAccuracyJudge($judging_session, $user),
+          '@total' => $this->judgeSessionService->totalNumberOfRecitationsAccuracy($judging_session, $user),
         ]),
         [
           'data' => $link,

@@ -332,14 +332,22 @@ class ReplacementsService {
       ?? $this->sources['visit_node']->langcode->value
       ?? 'en';
     $prefix = $langcode == 'en' ? '***CHANGED***' : '***MODIFIÉ***';
+    // Do not add the prefix to modified links.
+    $ignore_modified_tokens = [
+      'link_to_poet_page_href',
+      'link_to_teacher_survey_href',
+      'link_to_poet_survey_href',
+    ];
     foreach ($this::$tokens as $source => $tokens) {
       if (!empty($this->sources[$source])) {
         foreach ($tokens as $token) {
           $token_value = $this->replaceToken($token);
           if (!empty($this->original)) {
             $original_token_value = $this->original->replaceToken($token);
-            if ($token_value != $original_token_value) {
-              $token_value = "$prefix <br><strong>$token_value</strong>";
+            if (!in_array($token, $ignore_modified_tokens)) {
+              if ($token_value != $original_token_value) {
+                $token_value = "$prefix <br><strong>$token_value</strong>";
+              }
             }
           }
           $text = str_replace("[$token]", $token_value, $text);

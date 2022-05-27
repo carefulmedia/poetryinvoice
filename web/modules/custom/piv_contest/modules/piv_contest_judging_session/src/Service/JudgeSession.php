@@ -123,7 +123,7 @@ class JudgeSession {
   /**
    * Order the recitations in a session.
    */
-  public function orderRecitationsList(JudgingSession $session, User $judge) : array {
+  public function orderRecitationsList(JudgingSession $session, User $judge, $is_accuracy = FALSE) : array {
     $languages = $this->getLanguagesForJudge($session, $judge);
 
     static $list = [];
@@ -141,9 +141,12 @@ class JudgeSession {
         $recitations = $competition_entry->field_recitations->referencedEntities();
         // Only consider the languages this judge is assigned to and ignore the
         // original delta in case of mixed multiple languages.
-        $recitations = array_values(array_filter($recitations, function ($recitation) use ($languages) {
-          return in_array($recitation->langcode->value, $languages);
-        }));
+        if (!$is_accuracy) {
+          $recitations = array_values(array_filter($recitations, function ($recitation) use ($languages) {
+            return in_array($recitation->langcode->value, $languages);
+          }));
+        }
+
         foreach ($recitations as $delta => $recitation) {
           $score = $score_storage->loadByProperties([
             'judge' => $judge->id(),
@@ -154,11 +157,17 @@ class JudgeSession {
           $list[$key][$delta][] = [
             'recitation' => $recitation,
             'score' => $score,
+            'is_accuracy_scored' => !$recitation->field_score->isEmpty(),
             'last_of_round' => ($competition_total == ($competition_delta + 1)),
           ];
         }
       }
     }
+
+    if (empty($list[$key])) {
+      return [];
+    }
+
     // Flatten the array.
     return array_merge(...$list[$key]);
   }
@@ -168,6 +177,13 @@ class JudgeSession {
    */
   public function totalNumberOfRecitations(JudgingSession $session, User $judge): int {
     return count($this->orderRecitationsList($session, $judge));
+  }
+
+  /**
+   * Total number of recitation on accuracy judging.
+   */
+  public function totalNumberOfRecitationsAccuracy(JudgingSession $session, User $judge): int {
+    return count($this->orderRecitationsList($session, $judge, TRUE));
   }
 
   /**
@@ -186,11 +202,27 @@ class JudgeSession {
   }
 
   /**
+   * Number of recitation evaluated by accuracy judge.
+   */
+  public function numberOfRecitationsEvaluatedByAccuracyJudge(JudgingSession $session, User $judge): int {
+    $list = $this->orderRecitationsList($session, $judge, TRUE);
+    return count(array_filter($list, fn ($item) => $item['is_accuracy_scored']));
+  }
+
+  /**
    * Next recitation to evaluate.
    */
-  public function nextRecitation(JudgingSession $session, User $judge) {
+  public function nextRecitation(JudgingSession $session, User $judge, $is_accuracy = FALSE) {
     $list = $this->orderRecitationsList($session, $judge);
     foreach ($list as $recitation) {
+      if ($is_accuracy) {
+        if (!$recitation['is_accuracy_scored']) {
+          return $recitation;
+        }
+
+        continue;
+      }
+
       if (empty($recitation['score'])) {
         return $recitation;
       }
@@ -219,6 +251,13 @@ class JudgeSession {
    */
   public function isSessionEvaluatedByJudge(JudgingSession $session, User $judge): bool {
     return $this->nextRecitation($session, $judge) === FALSE;
+  }
+
+  /**
+   * Return if session was evaluated by a accuracy judge.
+   */
+  public function isSessionEvaluatedByAccuracyJudge(JudgingSession $session, User $judge): bool {
+    return $this->nextRecitation($session, $judge, TRUE) === FALSE;
   }
 
   /**

@@ -1,8 +1,9 @@
 _core:
   default_config_hash: gbxsfZiC2MMjzyiqbCPrKXXxlhQDa0pMNs0FSt_33ds
-enable: false
-allowed: ''
+enable: true
+address: ''
 roles: {  }
+allowed: ''
 description: true
 message: true
 mailkeys: ''
