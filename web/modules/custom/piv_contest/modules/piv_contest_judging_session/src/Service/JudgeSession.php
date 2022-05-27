@@ -213,7 +213,7 @@ class JudgeSession {
    * Next recitation to evaluate.
    */
   public function nextRecitation(JudgingSession $session, User $judge, $is_accuracy = FALSE) {
-    $list = $this->orderRecitationsList($session, $judge);
+    $list = $this->orderRecitationsList($session, $judge, $is_accuracy);
     foreach ($list as $recitation) {
       if ($is_accuracy) {
         if (!$recitation['is_accuracy_scored']) {

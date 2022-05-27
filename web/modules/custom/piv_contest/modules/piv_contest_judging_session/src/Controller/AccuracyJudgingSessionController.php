@@ -158,7 +158,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
       ])->toRenderable();
 
       if ($this->judgeSessionService->isSessionEvaluatedByAccuracyJudge($judging_session, $user)) {
-        $link['#attributes']['class'][] = 'disabled';
+        $link = $this->t('Accuracy judging complete');
       }
 
       $rows[] = [
