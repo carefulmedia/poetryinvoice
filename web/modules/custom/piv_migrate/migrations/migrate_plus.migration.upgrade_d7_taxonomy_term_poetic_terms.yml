@@ -1,4 +1,4 @@
-uuid: 901b6d82-d8e9-4c3e-9bce-942af50a1108
+uuid: 37ad69d5-e95b-4087-8fd0-07577ee08640
 langcode: en
 status: true
 dependencies: {  }
@@ -91,4 +91,7 @@ destination:
   default_bundle: poetic_terms
 migration_dependencies:
   required:
+    - upgrade_d7_taxonomy_vocabulary
+  optional:
+    - upgrade_d7_field_instance
     - upgrade_d7_taxonomy_vocabulary

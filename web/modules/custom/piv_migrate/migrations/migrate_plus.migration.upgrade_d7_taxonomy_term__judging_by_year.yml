@@ -1,4 +1,4 @@
-uuid: 57b21241-0329-479a-86d1-b3134040be27
+uuid: 86961604-159e-4525-adb4-29b22aeea99f
 langcode: en
 status: true
 dependencies: {  }
@@ -81,4 +81,7 @@ destination:
   default_bundle: _judging_by_year
 migration_dependencies:
   required:
+    - upgrade_d7_taxonomy_vocabulary
+  optional:
+    - upgrade_d7_field_instance
     - upgrade_d7_taxonomy_vocabulary

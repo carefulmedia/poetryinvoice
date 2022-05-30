@@ -1,0 +1,62 @@
+uuid: 3f515859-c8e7-485f-9915-e4e09f333c6e
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_micro_interview
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Micro interview)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_micro_interview
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_q1:
+    -
+      plugin: get
+      source: field_q1
+  field_q2:
+    -
+      plugin: get
+      source: field_q2
+  field_q3:
+    -
+      plugin: get
+      source: field_q3
+  field_q4:
+    -
+      plugin: get
+      source: field_q4
+  field_q5:
+    -
+      plugin: get
+      source: field_q5
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: micro_interview
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance

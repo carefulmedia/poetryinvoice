@@ -1,0 +1,21 @@
+<?php
+
+use Drupal\migrate\Plugin\MigrateSourceInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Row;
+
+/**
+ * Implements hook_migrate_prepare_row().
+ * 
+ * Make sure nodes have titles.
+ */
+function piv_migrate_migrate_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
+  $plugin = $migration->getDestinationConfiguration()['plugin'];
+  if ($plugin == 'entity_complete:node') {
+    $title = $row->getSourceProperty('title');
+    $tnid = $row->getSourceProperty('tnid');
+    if (!$title) {
+      $row->setSourceProperty('title', $tnid);
+    }
+  }
+}

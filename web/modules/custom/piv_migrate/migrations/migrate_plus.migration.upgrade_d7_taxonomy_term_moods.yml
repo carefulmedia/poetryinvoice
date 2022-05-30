@@ -1,4 +1,4 @@
-uuid: fda82af3-a178-475c-b031-d4cfaaecc925
+uuid: 4837b84b-00d1-4ed4-911e-1d9d98fbf4b9
 langcode: en
 status: true
 dependencies: {  }
@@ -91,4 +91,7 @@ destination:
   default_bundle: moods
 migration_dependencies:
   required:
+    - upgrade_d7_taxonomy_vocabulary
+  optional:
+    - upgrade_d7_field_instance
     - upgrade_d7_taxonomy_vocabulary

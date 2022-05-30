@@ -1,4 +1,4 @@
-uuid: 08830913-fb5b-46cf-8bdf-3b7d364d51fa
+uuid: ea62bb85-8209-4e60-aea8-775a545b6f23
 langcode: en
 status: true
 dependencies: {  }
@@ -122,20 +122,120 @@ process:
         target_id: nid
   field_teacher_tracking:
     -
-      plugin: get
+      plugin: sub_process
       source: field_teacher_tracking
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_teacher_leads_tracking:
     -
-      plugin: get
+      plugin: sub_process
       source: field_teacher_leads_tracking
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_communication_log:
     -
-      plugin: get
+      plugin: sub_process
       source: field_communication_log
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_action_item:
     -
-      plugin: get
+      plugin: sub_process
       source: field_action_item
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_assigned_to_team_member:
     -
       plugin: get
@@ -158,12 +258,62 @@ process:
       source: field_french_signature
   field_this_teacher_signed_up_for:
     -
-      plugin: get
+      plugin: sub_process
       source: field_this_teacher_signed_up_for
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_lead_teacher_has_yet_to_si:
     -
-      plugin: get
+      plugin: sub_process
       source: field_lead_teacher_has_yet_to_si
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_sign_up_date3:
     -
       plugin: sub_process
@@ -294,24 +444,99 @@ process:
       source: field_griffin_finalist
   field_publications:
     -
-      plugin: get
+      plugin: sub_process
       source: field_publications
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_dormant_:
     -
       plugin: get
       source: field_dormant_
   field_poet_laureate:
     -
-      plugin: get
+      plugin: sub_process
       source: field_poet_laureate
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_poet_notes:
     -
       plugin: get
       source: field_poet_notes
   field_micro_interview:
     -
-      plugin: get
+      plugin: sub_process
       source: field_micro_interview
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_virtual_visits:
     -
       plugin: get
@@ -394,7 +619,22 @@ destination:
 migration_dependencies:
   required:
     - upgrade_d7_user_role
+    - upgrade_d7_field_collection_teacher_tracking
+    - upgrade_d7_field_collection_teacher_leads_tracking
+#    - upgrade_d7_field_collection_communication_log
+    - upgrade_d7_field_collection_action_item
+    - upgrade_d7_field_collection_this_teacher_signed_up_for
+    - upgrade_d7_field_collection_lead_teacher_has_yet_to_si
+    - upgrade_d7_field_collection_publications
+    - upgrade_d7_field_collection_poet_laureate
+    - upgrade_d7_field_collection_micro_interview
   optional:
+    - upgrade_d7_field_instance
     - upgrade_d7_file
+    - upgrade_language
+    - upgrade_default_language
+    - upgrade_user_picture_field_instance
+    - upgrade_user_picture_entity_display
+    - upgrade_user_picture_entity_form_display
     - upgrade_d7_user_role
     - upgrade_d7_user

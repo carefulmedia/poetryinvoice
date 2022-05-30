@@ -1,4 +1,4 @@
-uuid: 46f07675-6782-4d58-880a-0a5c88d05f25
+uuid: 0c85f265-ca25-4e12-b219-1338be9523e4
 langcode: en
 status: true
 dependencies: {  }
@@ -81,4 +81,7 @@ destination:
   default_bundle: competition_stream
 migration_dependencies:
   required:
+    - upgrade_d7_taxonomy_vocabulary
+  optional:
+    - upgrade_d7_field_instance
     - upgrade_d7_taxonomy_vocabulary

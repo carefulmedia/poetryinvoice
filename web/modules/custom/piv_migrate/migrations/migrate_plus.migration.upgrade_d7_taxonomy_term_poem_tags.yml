@@ -1,4 +1,4 @@
-uuid: 2367cd9f-9c02-4914-8014-9dc85b8b5c9f
+uuid: e13363c9-1e6d-4829-996d-4f1b8a0ccd28
 langcode: en
 status: true
 dependencies: {  }
@@ -95,4 +95,7 @@ destination:
   default_bundle: poem_tags
 migration_dependencies:
   required:
+    - upgrade_d7_taxonomy_vocabulary
+  optional:
+    - upgrade_d7_field_instance
     - upgrade_d7_taxonomy_vocabulary

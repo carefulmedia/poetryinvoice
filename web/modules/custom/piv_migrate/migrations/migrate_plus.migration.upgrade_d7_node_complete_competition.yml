@@ -1,4 +1,4 @@
-uuid: 3b9591be-9900-4762-88d2-fda1dff40045
+uuid: bf701bd4-eb87-4d3d-8e63-fc2e83b29b1d
 langcode: en
 status: true
 dependencies: {  }
@@ -88,8 +88,33 @@ process:
         target_id: nid
   field_judges:
     -
-      plugin: get
+      plugin: sub_process
       source: field_judges
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_years_in_competition:
     -
       plugin: get
@@ -137,4 +162,12 @@ destination:
   default_bundle: competition
 migration_dependencies:
   required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+    - upgrade_d7_field_collection_judges
+    - upgrade_d7_field_collection_revisions_judges
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance
     - upgrade_d7_user

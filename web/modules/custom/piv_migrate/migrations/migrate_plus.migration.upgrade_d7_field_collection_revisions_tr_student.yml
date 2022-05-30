@@ -1,0 +1,104 @@
+uuid: aaa3e984-761a-4284-9638-df3899dc9e68
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_revisions_tr_student
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Revisions Content'
+migration_group: migrate_drupal_7
+label: 'Field Collection Revisions (Tr student)'
+source:
+  plugin: d7_field_collection_item_revision
+  field_name: field_tr_student
+process:
+  id:
+    -
+      plugin: paragraphs_lookup
+      tags:
+        - 'Field Collection Content'
+      source: item_id
+    -
+      plugin: extract
+      index:
+        - id
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  piv_release_form:
+    -
+      plugin: sub_process
+      source: piv_release_form
+      process:
+        target_id: fid
+        display: display
+        description: description
+  field_poem:
+    -
+      plugin: sub_process
+      source: field_poem
+      process:
+        target_id: nid
+  field_student_name_1:
+    -
+      plugin: get
+      source: field_student_name_1
+  field_legal_name:
+    -
+      plugin: get
+      source: field_legal_name
+  piv_student_mail:
+    -
+      plugin: get
+      source: piv_student_mail
+  field_recitation_order:
+    -
+      plugin: get
+      source: field_recitation_order
+  field_stage_name:
+    -
+      plugin: get
+      source: field_stage_name
+  field_youtube_recitation_url:
+    -
+      plugin: get
+      source: field_youtube_recitation_url
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  new_revisions: true
+  default_bundle: tr_student
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_teacher_tracking
+    - upgrade_d7_field_collection_teacher_leads_tracking
+#    - upgrade_d7_field_collection_communication_log
+    - upgrade_d7_field_collection_action_item
+    - upgrade_d7_field_collection_types_of_support_requested
+    - upgrade_d7_field_collection_this_teacher_signed_up_for
+    - upgrade_d7_field_collection_lead_teacher_has_yet_to_si
+    - upgrade_d7_field_collection_visit_date_and_times
+    - upgrade_d7_field_collection_tr_student
+    - upgrade_d7_field_collection_publications
+    - upgrade_d7_field_collection_poet_laureate
+    - upgrade_d7_field_collection_micro_interview
+    - upgrade_d7_field_collection_poet_questionnaire
+    - upgrade_d7_field_collection_teacher_questionnaire
+    - upgrade_d7_field_collection_judges
+  optional: {  }

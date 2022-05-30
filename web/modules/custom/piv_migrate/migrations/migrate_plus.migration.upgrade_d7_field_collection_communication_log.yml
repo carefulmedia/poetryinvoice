@@ -1,0 +1,56 @@
+uuid: 72ef4e05-d875-4fb5-891f-226e7f53fb4d
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_communication_log
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Communication log)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_communication_log
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_comm_log_date:
+    -
+      plugin: sub_process
+      source: field_comm_log_date
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_log:
+    -
+      plugin: get
+      source: field_log
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: communication_log
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance

@@ -1,4 +1,4 @@
-uuid: 5d4c9736-2784-49cf-8542-e703c817611f
+uuid: 91e77e73-8735-4974-a04f-e41254825eac
 langcode: en
 status: true
 dependencies: {  }
@@ -10,7 +10,7 @@ migration_tags:
   - 'Drupal 7'
   - Content
 migration_group: migrate_drupal_7
-label: 'Node complete (Poll)'
+label: 'Node complete (Sondage)'
 source:
   plugin: d7_node_complete
   node_type: poll
@@ -83,3 +83,8 @@ destination:
 migration_dependencies:
   required:
     - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

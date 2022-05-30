@@ -1,0 +1,61 @@
+uuid: c4802cf1-7ead-45bf-bd17-777a29d3883c
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_poet_laureate
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Poet laureate)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_poet_laureate
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_city:
+    -
+      plugin: get
+      source: field_city
+  field_dates:
+    -
+      plugin: sub_process
+      source: field_dates
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: Y-m-d
+          source: value
+        end_value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: Y-m-d
+          source: value2
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: poet_laureate
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance

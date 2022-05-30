@@ -1,0 +1,65 @@
+uuid: af32e006-5c2c-47fe-873e-0f2b74be97b6
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_visit_date_and_times
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Visit date and times)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_visit_date_and_times
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_pal_visit_date_and_time:
+    -
+      plugin: sub_process
+      source: field_pal_visit_date_and_time
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: 'Y-m-d\TH:i:s'
+          source: value
+        end_value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: 'Y-m-d\TH:i:s'
+          source: value2
+  field_classroom:
+    -
+      plugin: get
+      source: field_classroom
+  field_notes:
+    -
+      plugin: get
+      source: field_notes
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: visit_date_and_times
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance

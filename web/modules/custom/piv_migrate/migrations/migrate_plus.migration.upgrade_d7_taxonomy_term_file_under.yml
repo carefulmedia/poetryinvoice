@@ -1,4 +1,4 @@
-uuid: 4ff67172-d5e3-41fc-b139-dd1c6e013620
+uuid: a1441f62-cb2c-4cc1-83bc-c8448d81c3c9
 langcode: en
 status: true
 dependencies: {  }
@@ -81,4 +81,7 @@ destination:
   default_bundle: file_under
 migration_dependencies:
   required:
+    - upgrade_d7_taxonomy_vocabulary
+  optional:
+    - upgrade_d7_field_instance
     - upgrade_d7_taxonomy_vocabulary

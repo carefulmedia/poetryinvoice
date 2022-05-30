@@ -1,0 +1,64 @@
+uuid: 2b3a69b4-b890-4853-a37e-bd5a58ec339e
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_judges
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Judges)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_judges
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_confirmed_:
+    -
+      plugin: get
+      source: field_confirmed_
+  field_judge:
+    -
+      plugin: sub_process
+      source: field_judge
+      process:
+        target_id:
+          plugin: migration_lookup
+          migration: upgrade_d7_user
+          source: uid
+  field_paid_:
+    -
+      plugin: get
+      source: field_paid_
+  field_completed:
+    -
+      plugin: get
+      source: field_completed
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: judges
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_user

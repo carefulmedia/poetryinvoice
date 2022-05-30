@@ -1,4 +1,4 @@
-uuid: fa8d4608-90c3-4f5d-9902-bb9ea9368751
+uuid: d171f37a-c20c-4f68-a5fa-9c3704b3f32e
 langcode: en
 status: true
 dependencies: {  }
@@ -72,18 +72,46 @@ process:
     -
       plugin: get
       source: source_langcode
+  comment_node_mixtape/0/status:
+    -
+      plugin: get
+      source: comment
   body:
     -
       plugin: get
       source: body
+  field_paid_:
+    -
+      plugin: get
+      source: field_paid_
   field_completed:
     -
       plugin: get
       source: field_completed
-  field_doodles:
+  field_mixtape_image:
     -
       plugin: sub_process
-      source: field_doodles
+      source: field_mixtape_image
+      process:
+        target_id: fid
+        alt: alt
+        title: title
+        width: width
+        height: height
+  field_recommended_reading:
+    -
+      plugin: get
+      source: field_recommended_reading
+  field_poems:
+    -
+      plugin: sub_process
+      source: field_poems
+      process:
+        target_id: nid
+  field_mixtape_background_image:
+    -
+      plugin: sub_process
+      source: field_mixtape_background_image
       process:
         target_id: fid
         alt: alt
@@ -98,40 +126,16 @@ process:
         target_id: fid
         display: display
         description: description
-  field_mixtape_background_image:
+  field_doodles:
     -
       plugin: sub_process
-      source: field_mixtape_background_image
+      source: field_doodles
       process:
         target_id: fid
         alt: alt
         title: title
         width: width
         height: height
-  field_mixtape_image:
-    -
-      plugin: sub_process
-      source: field_mixtape_image
-      process:
-        target_id: fid
-        alt: alt
-        title: title
-        width: width
-        height: height
-  field_paid_:
-    -
-      plugin: get
-      source: field_paid_
-  field_poems:
-    -
-      plugin: sub_process
-      source: field_poems
-      process:
-        target_id: tid
-  field_recommended_reading:
-    -
-      plugin: get
-      source: field_recommended_reading
 destination:
   plugin: 'entity_complete:node'
   translations: true
@@ -139,3 +143,8 @@ destination:
 migration_dependencies:
   required:
     - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

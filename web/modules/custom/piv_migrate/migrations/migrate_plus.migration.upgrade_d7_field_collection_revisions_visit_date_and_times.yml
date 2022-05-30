@@ -1,0 +1,89 @@
+uuid: e57e8b53-3774-43b2-88dd-c0038ca2bec9
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_revisions_visit_date_and_times
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Revisions Content'
+migration_group: migrate_drupal_7
+label: 'Field Collection Revisions (Visit date and times)'
+source:
+  plugin: d7_field_collection_item_revision
+  field_name: field_visit_date_and_times
+process:
+  id:
+    -
+      plugin: paragraphs_lookup
+      tags:
+        - 'Field Collection Content'
+      source: item_id
+    -
+      plugin: extract
+      index:
+        - id
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_pal_visit_date_and_time:
+    -
+      plugin: sub_process
+      source: field_pal_visit_date_and_time
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: 'Y-m-d\TH:i:s'
+          source: value
+        end_value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: 'Y-m-d\TH:i:s'
+          source: value2
+  field_classroom:
+    -
+      plugin: get
+      source: field_classroom
+  field_notes:
+    -
+      plugin: get
+      source: field_notes
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  new_revisions: true
+  default_bundle: visit_date_and_times
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_teacher_tracking
+    - upgrade_d7_field_collection_teacher_leads_tracking
+#    - upgrade_d7_field_collection_communication_log
+    - upgrade_d7_field_collection_action_item
+    - upgrade_d7_field_collection_types_of_support_requested
+    - upgrade_d7_field_collection_this_teacher_signed_up_for
+    - upgrade_d7_field_collection_lead_teacher_has_yet_to_si
+    - upgrade_d7_field_collection_visit_date_and_times
+    - upgrade_d7_field_collection_tr_student
+    - upgrade_d7_field_collection_publications
+    - upgrade_d7_field_collection_poet_laureate
+    - upgrade_d7_field_collection_micro_interview
+    - upgrade_d7_field_collection_poet_questionnaire
+    - upgrade_d7_field_collection_teacher_questionnaire
+    - upgrade_d7_field_collection_judges
+  optional: {  }

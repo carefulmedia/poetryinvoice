@@ -1,4 +1,4 @@
-uuid: bed0f502-0742-4e13-957c-092732943f0d
+uuid: c484cbc6-2a07-482b-998d-af0337911c53
 langcode: en
 status: true
 dependencies: {  }
@@ -31,7 +31,42 @@ process:
   entity_id:
     -
       plugin: migration_lookup
-      migration: {  }
+      migration:
+        - upgrade_d7_node_complete_article
+        - upgrade_d7_node_complete_page
+        - upgrade_d7_node_complete_poll
+        - upgrade_d7_node_complete_forum
+        - upgrade_d7_node_complete_poem
+        - upgrade_d7_node_complete_blog
+        - upgrade_d7_node_complete_event
+        - upgrade_d7_node_complete_school
+        - upgrade_d7_node_complete_competition
+        - upgrade_d7_node_complete_venue
+        - upgrade_d7_node_complete_press_release
+        - upgrade_d7_node_complete_video
+        - upgrade_d7_node_complete_lesson_plan
+        - upgrade_d7_node_complete_panel
+        - upgrade_d7_node_complete_faq
+        - upgrade_d7_node_complete_media_coverage
+        - upgrade_d7_node_complete_quote
+        - upgrade_d7_node_complete_slideshow_image
+        - upgrade_d7_node_complete_competition_entry
+        - upgrade_d7_node_complete_student
+        - upgrade_d7_node_complete_competition_session
+        - upgrade_d7_node_complete_judge_page
+        - upgrade_d7_node_complete_maptest
+        - upgrade_d7_node_complete_school_champion
+        - upgrade_d7_node_complete_power_points
+        - upgrade_d7_node_complete_fca
+        - upgrade_d7_node_complete_writing_prompt
+        - upgrade_d7_node_complete_bulletin_board
+        - upgrade_d7_node_complete_writing_workshop
+        - upgrade_d7_node_complete_poem_rights_contact
+        - upgrade_d7_node_complete_pal_pir_school_visit
+        - upgrade_d7_node_complete_team_regionals_entry
+        - upgrade_d7_node_complete_journal_poem
+        - upgrade_d7_node_complete_test
+        - upgrade_d7_node_complete_mixtape
       source: nid
     -
       plugin: node_complete_node_lookup
@@ -42,6 +77,12 @@ process:
     -
       plugin: get
       source: constants/entity_type
+    -
+      plugin: static_map
+      map:
+        field_collection_item: paragraph
+        paragraphs_item: paragraph
+      bypass: true
   comment_type:
     -
       plugin: migration_lookup
@@ -107,7 +148,113 @@ destination:
   plugin: 'entity:comment'
 migration_dependencies:
   required:
+    - upgrade_d7_node_complete_article
+    - upgrade_d7_node_complete_page
+    - upgrade_d7_node_complete_poll
+    - upgrade_d7_node_complete_forum
+    - upgrade_d7_node_complete_poem
+    - upgrade_d7_node_complete_blog
+    - upgrade_d7_node_complete_event
+    - upgrade_d7_node_complete_school
+    - upgrade_d7_node_complete_competition
+    - upgrade_d7_node_complete_venue
+    - upgrade_d7_node_complete_press_release
+    - upgrade_d7_node_complete_video
+    - upgrade_d7_node_complete_lesson_plan
+    - upgrade_d7_node_complete_panel
+    - upgrade_d7_node_complete_faq
+    - upgrade_d7_node_complete_media_coverage
+    - upgrade_d7_node_complete_quote
+    - upgrade_d7_node_complete_slideshow_image
+    - upgrade_d7_node_complete_competition_entry
+    - upgrade_d7_node_complete_student
+    - upgrade_d7_node_complete_competition_session
+    - upgrade_d7_node_complete_judge_page
+    - upgrade_d7_node_complete_maptest
+    - upgrade_d7_node_complete_school_champion
+    - upgrade_d7_node_complete_power_points
+    - upgrade_d7_node_complete_fca
+    - upgrade_d7_node_complete_writing_prompt
+    - upgrade_d7_node_complete_bulletin_board
+    - upgrade_d7_node_complete_writing_workshop
+    - upgrade_d7_node_complete_poem_rights_contact
+    - upgrade_d7_node_complete_pal_pir_school_visit
+    - upgrade_d7_node_complete_team_regionals_entry
+    - upgrade_d7_node_complete_journal_poem
+    - upgrade_d7_node_complete_test
+    - upgrade_d7_node_complete_mixtape
     - upgrade_d7_comment_type
   optional:
+    - upgrade_d7_node_complete_article
+    - upgrade_d7_node_complete_page
+    - upgrade_d7_node_complete_poll
+    - upgrade_d7_node_complete_forum
+    - upgrade_d7_node_complete_poem
+    - upgrade_d7_node_complete_blog
+    - upgrade_d7_node_complete_event
+    - upgrade_d7_node_complete_school
+    - upgrade_d7_node_complete_competition
+    - upgrade_d7_node_complete_venue
+    - upgrade_d7_node_complete_press_release
+    - upgrade_d7_node_complete_video
+    - upgrade_d7_node_complete_lesson_plan
+    - upgrade_d7_node_complete_panel
+    - upgrade_d7_node_complete_faq
+    - upgrade_d7_node_complete_media_coverage
+    - upgrade_d7_node_complete_quote
+    - upgrade_d7_node_complete_slideshow_image
+    - upgrade_d7_node_complete_competition_entry
+    - upgrade_d7_node_complete_student
+    - upgrade_d7_node_complete_competition_session
+    - upgrade_d7_node_complete_judge_page
+    - upgrade_d7_node_complete_maptest
+    - upgrade_d7_node_complete_school_champion
+    - upgrade_d7_node_complete_power_points
+    - upgrade_d7_node_complete_fca
+    - upgrade_d7_node_complete_writing_prompt
+    - upgrade_d7_node_complete_bulletin_board
+    - upgrade_d7_node_complete_writing_workshop
+    - upgrade_d7_node_complete_poem_rights_contact
+    - upgrade_d7_node_complete_pal_pir_school_visit
+    - upgrade_d7_node_complete_team_regionals_entry
+    - upgrade_d7_node_complete_journal_poem
+    - upgrade_d7_node_complete_test
+    - upgrade_d7_node_complete_mixtape
+    - upgrade_d7_field_collection_type
     - upgrade_d7_comment
     - upgrade_d7_comment_type
+    - upgrade_d7_node_complete_article
+    - upgrade_d7_node_complete_page
+    - upgrade_d7_node_complete_poll
+    - upgrade_d7_node_complete_forum
+    - upgrade_d7_node_complete_poem
+    - upgrade_d7_node_complete_blog
+    - upgrade_d7_node_complete_event
+    - upgrade_d7_node_complete_school
+    - upgrade_d7_node_complete_competition
+    - upgrade_d7_node_complete_venue
+    - upgrade_d7_node_complete_press_release
+    - upgrade_d7_node_complete_video
+    - upgrade_d7_node_complete_lesson_plan
+    - upgrade_d7_node_complete_panel
+    - upgrade_d7_node_complete_faq
+    - upgrade_d7_node_complete_media_coverage
+    - upgrade_d7_node_complete_quote
+    - upgrade_d7_node_complete_slideshow_image
+    - upgrade_d7_node_complete_competition_entry
+    - upgrade_d7_node_complete_student
+    - upgrade_d7_node_complete_competition_session
+    - upgrade_d7_node_complete_judge_page
+    - upgrade_d7_node_complete_maptest
+    - upgrade_d7_node_complete_school_champion
+    - upgrade_d7_node_complete_power_points
+    - upgrade_d7_node_complete_fca
+    - upgrade_d7_node_complete_writing_prompt
+    - upgrade_d7_node_complete_bulletin_board
+    - upgrade_d7_node_complete_writing_workshop
+    - upgrade_d7_node_complete_poem_rights_contact
+    - upgrade_d7_node_complete_pal_pir_school_visit
+    - upgrade_d7_node_complete_team_regionals_entry
+    - upgrade_d7_node_complete_journal_poem
+    - upgrade_d7_node_complete_test
+    - upgrade_d7_node_complete_mixtape

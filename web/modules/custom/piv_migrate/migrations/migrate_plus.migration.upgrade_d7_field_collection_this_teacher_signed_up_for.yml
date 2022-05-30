@@ -1,0 +1,122 @@
+uuid: 535bdef6-ec31-432c-ad17-8bde8fd48d51
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_this_teacher_signed_up_for
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (This teacher signed up for)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_this_teacher_signed_up_for
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_lead_teacher:
+    -
+      plugin: get
+      source: field_lead_teacher
+  field_send_both_fr_and_en_info_p:
+    -
+      plugin: get
+      source: field_send_both_fr_and_en_info_p
+  field_en_info_pack_sent:
+    -
+      plugin: sub_process
+      source: field_en_info_pack_sent
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_fr_info_pack_sent:
+    -
+      plugin: sub_process
+      source: field_fr_info_pack_sent
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_send_additional_en_posters:
+    -
+      plugin: get
+      source: field_send_additional_en_posters
+  field_en_posters_sent:
+    -
+      plugin: sub_process
+      source: field_en_posters_sent
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_send_additional_fr_posters:
+    -
+      plugin: get
+      source: field_send_additional_fr_posters
+  field_fr_posters_sent:
+    -
+      plugin: sub_process
+      source: field_fr_posters_sent
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_is_this_teacher_an_ambassa:
+    -
+      plugin: get
+      source: field_is_this_teacher_an_ambassa
+  field_ambassador_involvement_ide:
+    -
+      plugin: get
+      source: field_ambassador_involvement_ide
+  field_feedback_from_participatin:
+    -
+      plugin: get
+      source: field_feedback_from_participatin
+  field_keener:
+    -
+      plugin: get
+      source: field_keener
+  field_not_competing_this_year:
+    -
+      plugin: get
+      source: field_not_competing_this_year
+  field_reasons_if_school_teacher_:
+    -
+      plugin: get
+      source: field_reasons_if_school_teacher_
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: this_teacher_signed_up_for
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance

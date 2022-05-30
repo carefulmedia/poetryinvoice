@@ -1,4 +1,4 @@
-uuid: e3365cd2-ae5d-4ee9-928e-755291789a18
+uuid: 7539ecbc-5644-41cd-a4ad-83b78bd54ee2
 langcode: en
 status: true
 dependencies: {  }
@@ -169,4 +169,10 @@ destination:
   default_bundle: video
 migration_dependencies:
   required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance
     - upgrade_d7_user

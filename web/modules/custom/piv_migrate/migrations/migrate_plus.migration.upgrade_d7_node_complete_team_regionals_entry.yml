@@ -1,4 +1,4 @@
-uuid: 8fc34996-eca5-471e-a780-ec0a1c6b64cf
+uuid: 313cf3c2-f370-4eac-9b07-8f3271e606d9
 langcode: en
 status: true
 dependencies: {  }
@@ -84,8 +84,33 @@ process:
         target_id: nid
   field_tr_student:
     -
-      plugin: get
+      plugin: sub_process
       source: field_tr_student
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_place_team_regional:
     -
       plugin: get
@@ -96,4 +121,11 @@ destination:
   default_bundle: team_regionals_entry
 migration_dependencies:
   required:
-    - upgrade_d7_use
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+    - upgrade_d7_field_collection_tr_student
+    - upgrade_d7_field_collection_revisions_tr_student
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

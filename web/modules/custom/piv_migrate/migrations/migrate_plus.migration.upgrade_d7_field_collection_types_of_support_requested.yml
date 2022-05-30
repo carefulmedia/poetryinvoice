@@ -1,0 +1,50 @@
+uuid: 1d5009cc-be37-4dba-ba52-4a0ef78b8507
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_types_of_support_requested
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Types of support requested)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_types_of_support_requested
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_support_types:
+    -
+      plugin: get
+      source: field_support_types
+  field_additonal_comments:
+    -
+      plugin: get
+      source: field_additonal_comments
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: types_of_support_requested
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance

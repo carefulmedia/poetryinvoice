@@ -1,0 +1,80 @@
+uuid: b40147d3-b1ce-4b54-86e6-393e8b3a2123
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_tr_student
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Tr student)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_tr_student
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  piv_release_form:
+    -
+      plugin: sub_process
+      source: piv_release_form
+      process:
+        target_id: fid
+        display: display
+        description: description
+  field_poem:
+    -
+      plugin: sub_process
+      source: field_poem
+      process:
+        target_id: nid
+  field_student_name_1:
+    -
+      plugin: get
+      source: field_student_name_1
+  field_legal_name:
+    -
+      plugin: get
+      source: field_legal_name
+  piv_student_mail:
+    -
+      plugin: get
+      source: piv_student_mail
+  field_recitation_order:
+    -
+      plugin: get
+      source: field_recitation_order
+  field_stage_name:
+    -
+      plugin: get
+      source: field_stage_name
+  field_youtube_recitation_url:
+    -
+      plugin: get
+      source: field_youtube_recitation_url
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: tr_student
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance

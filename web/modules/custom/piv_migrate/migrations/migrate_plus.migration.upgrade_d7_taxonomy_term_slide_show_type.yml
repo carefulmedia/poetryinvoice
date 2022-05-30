@@ -1,4 +1,4 @@
-uuid: c1100cea-f02b-4af9-b4bc-f9258b798fbf
+uuid: b596fd5d-c731-46dc-8475-adc192c10321
 langcode: en
 status: true
 dependencies: {  }
@@ -81,4 +81,7 @@ destination:
   default_bundle: slide_show_type
 migration_dependencies:
   required:
+    - upgrade_d7_taxonomy_vocabulary
+  optional:
+    - upgrade_d7_field_instance
     - upgrade_d7_taxonomy_vocabulary

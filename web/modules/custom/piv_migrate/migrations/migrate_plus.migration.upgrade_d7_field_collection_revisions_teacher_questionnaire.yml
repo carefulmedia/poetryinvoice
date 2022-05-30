@@ -1,0 +1,122 @@
+uuid: a648531f-d29a-4784-9d43-d36f5a3f799d
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_revisions_teacher_questionnaire
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Revisions Content'
+migration_group: migrate_drupal_7
+label: 'Field Collection Revisions (Teacher questionnaire)'
+source:
+  plugin: d7_field_collection_item_revision
+  field_name: field_teacher_questionnaire
+process:
+  id:
+    -
+      plugin: paragraphs_lookup
+      tags:
+        - 'Field Collection Content'
+      source: item_id
+    -
+      plugin: extract
+      index:
+        - id
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_visit_completed_teacher:
+    -
+      plugin: get
+      source: field_visit_completed_teacher
+  field_teacher_incomplete_reason:
+    -
+      plugin: get
+      source: field_teacher_incomplete_reason
+  field_expectations_teacher:
+    -
+      plugin: get
+      source: field_expectations_teacher
+  field_teacher_preparation_teache:
+    -
+      plugin: get
+      source: field_teacher_preparation_teache
+  field_poet_preparation_teacher:
+    -
+      plugin: get
+      source: field_poet_preparation_teacher
+  field_student_engaglement_teache:
+    -
+      plugin: get
+      source: field_student_engaglement_teache
+  field_poet_engagement_teacher:
+    -
+      plugin: get
+      source: field_poet_engagement_teacher
+  field_work_student_teacher:
+    -
+      plugin: get
+      source: field_work_student_teacher
+  field_remarkable_teacher:
+    -
+      plugin: get
+      source: field_remarkable_teacher
+  field_effect_teacher:
+    -
+      plugin: get
+      source: field_effect_teacher
+  field_feedback_teacher:
+    -
+      plugin: get
+      source: field_feedback_teacher
+  field_release_teacher:
+    -
+      plugin: get
+      source: field_release_teacher
+  field_how_did_you_hear_about_the:
+    -
+      plugin: get
+      source: field_how_did_you_hear_about_the
+  field_which_grade_s_participated:
+    -
+      plugin: get
+      source: field_which_grade_s_participated
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  new_revisions: true
+  default_bundle: teacher_questionnaire
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_teacher_tracking
+    - upgrade_d7_field_collection_teacher_leads_tracking
+#    - upgrade_d7_field_collection_communication_log
+    - upgrade_d7_field_collection_action_item
+    - upgrade_d7_field_collection_types_of_support_requested
+    - upgrade_d7_field_collection_this_teacher_signed_up_for
+    - upgrade_d7_field_collection_lead_teacher_has_yet_to_si
+    - upgrade_d7_field_collection_visit_date_and_times
+    - upgrade_d7_field_collection_tr_student
+    - upgrade_d7_field_collection_publications
+    - upgrade_d7_field_collection_poet_laureate
+    - upgrade_d7_field_collection_micro_interview
+    - upgrade_d7_field_collection_poet_questionnaire
+    - upgrade_d7_field_collection_teacher_questionnaire
+    - upgrade_d7_field_collection_judges
+  optional: {  }

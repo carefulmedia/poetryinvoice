@@ -1,4 +1,4 @@
-uuid: f23a8f52-01ab-4115-a8df-403bbc9984ec
+uuid: bd9b8e2a-745b-4894-addb-1c16e8c85c18
 langcode: en
 status: true
 dependencies: {  }
@@ -10,7 +10,7 @@ migration_tags:
   - 'Drupal 7'
   - Content
 migration_group: migrate_drupal_7
-label: 'Node complete (Student)'
+label: 'Node complete (Concurrent(e))'
 source:
   plugin: d7_node_complete
   node_type: student
@@ -30,11 +30,8 @@ process:
       default_value: und
   title:
     -
-      plugin: concat_value
-      source:
-        - piv_student_first_name
-        - piv_student_last_name
-      delimiter: " "
+      plugin: get
+      source: title
   uid:
     -
       plugin: get
@@ -118,3 +115,8 @@ destination:
 migration_dependencies:
   required:
     - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

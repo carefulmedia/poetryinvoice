@@ -1,0 +1,194 @@
+uuid: 757e22e1-5063-457f-83ec-b82ebece26d8
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_revisions_teacher_tracking
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Revisions Content'
+migration_group: migrate_drupal_7
+label: 'Field Collection Revisions (Teacher tracking)'
+source:
+  plugin: d7_field_collection_item_revision
+  field_name: field_teacher_tracking
+process:
+  id:
+    -
+      plugin: paragraphs_lookup
+      tags:
+        - 'Field Collection Content'
+      source: item_id
+    -
+      plugin: extract
+      index:
+        - id
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_lead_teacher:
+    -
+      plugin: get
+      source: field_lead_teacher
+  field_en_info_pack_sent:
+    -
+      plugin: sub_process
+      source: field_en_info_pack_sent
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_fr_info_pack_sent:
+    -
+      plugin: sub_process
+      source: field_fr_info_pack_sent
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_date_of_school_competition:
+    -
+      plugin: sub_process
+      source: field_date_of_school_competition
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_school_competition_comment:
+    -
+      plugin: get
+      source: field_school_competition_comment
+  field_results_of_school_competit:
+    -
+      plugin: get
+      source: field_results_of_school_competit
+  field_types_of_support_requested:
+    -
+      plugin: sub_process
+      source: field_types_of_support_requested
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
+  field_is_this_teacher_an_ambassa:
+    -
+      plugin: get
+      source: field_is_this_teacher_an_ambassa
+  field_ambassador_involvement_ide:
+    -
+      plugin: get
+      source: field_ambassador_involvement_ide
+  field_feedback_from_participatin:
+    -
+      plugin: get
+      source: field_feedback_from_participatin
+  field_reasons_if_school_teacher_:
+    -
+      plugin: get
+      source: field_reasons_if_school_teacher_
+  field_not_competing_this_year:
+    -
+      plugin: get
+      source: field_not_competing_this_year
+  field_send_additional_en_posters:
+    -
+      plugin: get
+      source: field_send_additional_en_posters
+  field_send_additional_fr_posters:
+    -
+      plugin: get
+      source: field_send_additional_fr_posters
+  field_fr_posters_sent:
+    -
+      plugin: sub_process
+      source: field_fr_posters_sent
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_en_posters_sent:
+    -
+      plugin: sub_process
+      source: field_en_posters_sent
+      process:
+        value:
+          plugin: format_date
+          from_format: 'Y-m-d\TH:i:s'
+          to_format: Y-m-d
+          source: value
+  field_send_both_fr_and_en_info_p:
+    -
+      plugin: get
+      source: field_send_both_fr_and_en_info_p
+  field_keener:
+    -
+      plugin: get
+      source: field_keener
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  new_revisions: true
+  default_bundle: teacher_tracking
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_teacher_tracking
+    - upgrade_d7_field_collection_teacher_leads_tracking
+#    - upgrade_d7_field_collection_communication_log
+    - upgrade_d7_field_collection_action_item
+    - upgrade_d7_field_collection_types_of_support_requested
+    - upgrade_d7_field_collection_this_teacher_signed_up_for
+    - upgrade_d7_field_collection_lead_teacher_has_yet_to_si
+    - upgrade_d7_field_collection_visit_date_and_times
+    - upgrade_d7_field_collection_tr_student
+    - upgrade_d7_field_collection_publications
+    - upgrade_d7_field_collection_poet_laureate
+    - upgrade_d7_field_collection_micro_interview
+    - upgrade_d7_field_collection_poet_questionnaire
+    - upgrade_d7_field_collection_teacher_questionnaire
+    - upgrade_d7_field_collection_judges
+    - upgrade_d7_field_collection_types_of_support_requested
+  optional: {  }

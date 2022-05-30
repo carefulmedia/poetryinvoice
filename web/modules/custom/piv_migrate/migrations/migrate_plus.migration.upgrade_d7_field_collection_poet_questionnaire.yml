@@ -1,0 +1,98 @@
+uuid: cd2ba172-43dc-4fb6-9f6d-723c5af42133
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_poet_questionnaire
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Poet questionnaire)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_poet_questionnaire
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_visit_completed_poet:
+    -
+      plugin: get
+      source: field_visit_completed_poet
+  field_poet_incomplete_reason:
+    -
+      plugin: get
+      source: field_poet_incomplete_reason
+  field_expectations_poet:
+    -
+      plugin: get
+      source: field_expectations_poet
+  field_poet_focus:
+    -
+      plugin: get
+      source: field_poet_focus
+  field_other_focus:
+    -
+      plugin: get
+      source: field_other_focus
+  field_poet_preparation_poet:
+    -
+      plugin: get
+      source: field_poet_preparation_poet
+  field_teacher_preparation_poet:
+    -
+      plugin: get
+      source: field_teacher_preparation_poet
+  field_student_engagement_poet:
+    -
+      plugin: get
+      source: field_student_engagement_poet
+  field_teacher_involvement_poet:
+    -
+      plugin: get
+      source: field_teacher_involvement_poet
+  field_work_student_poet:
+    -
+      plugin: get
+      source: field_work_student_poet
+  field_teacher_present:
+    -
+      plugin: get
+      source: field_teacher_present
+  field_poet_feedback:
+    -
+      plugin: get
+      source: field_poet_feedback
+  field_release_teacher:
+    -
+      plugin: get
+      source: field_release_teacher
+  field_remarkable_teacher:
+    -
+      plugin: get
+      source: field_remarkable_teacher
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: poet_questionnaire
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance

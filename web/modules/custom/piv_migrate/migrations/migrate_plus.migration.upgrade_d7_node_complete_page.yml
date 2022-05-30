@@ -1,4 +1,4 @@
-uuid: fa8d4608-90c3-4f5d-9902-bb9ea9368750
+uuid: d06b99fb-5be5-47bb-998c-0266deffe295
 langcode: en
 status: true
 dependencies: {  }
@@ -104,6 +104,14 @@ process:
     -
       plugin: get
       source: field_banner_subtitle
+  field_files:
+    -
+      plugin: sub_process
+      source: field_files
+      process:
+        target_id: fid
+        display: display
+        description: description
 destination:
   plugin: 'entity_complete:node'
   translations: true
@@ -111,3 +119,8 @@ destination:
 migration_dependencies:
   required:
     - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

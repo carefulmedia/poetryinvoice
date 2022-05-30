@@ -1,0 +1,70 @@
+uuid: 6e2d0ada-57a4-42a7-a8af-a8dd3a719c36
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_taxonomy_term_localized_translation
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - Multilingual
+migration_group: migrate_drupal_7
+label: 'Taxonomy localized term translations'
+source:
+  plugin: d7_term_localized_translation
+  translations: true
+process:
+  tid:
+    -
+      plugin: get
+      source: tid
+  langcode:
+    -
+      plugin: get
+      source: ltlanguage
+  vid:
+    -
+      plugin: migration_lookup
+      migration: upgrade_d7_taxonomy_vocabulary
+      source: vid
+  name:
+    -
+      plugin: callback
+      source:
+        - name_translated
+        - name
+      callable: array_filter
+    -
+      plugin: callback
+      callable: current
+  description:
+    -
+      plugin: callback
+      source:
+        - description_translated
+        - description
+      callable: array_filter
+    -
+      plugin: callback
+      callable: current
+destination:
+  plugin: 'entity:taxonomy_term'
+  translations: true
+migration_dependencies:
+  required:
+    - upgrade_language
+    - upgrade_d7_taxonomy_term_tags
+    - upgrade_d7_taxonomy_term_discussions
+    - upgrade_d7_taxonomy_term_themes
+    - upgrade_d7_taxonomy_term_type_of_video
+    - upgrade_d7_taxonomy_term_slide_show_type
+    - upgrade_d7_taxonomy_term_poetic_terms
+    - upgrade_d7_taxonomy_term_competition_stream
+    - upgrade_d7_taxonomy_term_poem_tags
+    - upgrade_d7_taxonomy_term_moods
+    - upgrade_d7_taxonomy_term_file_under
+    - upgrade_d7_taxonomy_term__judging_by_year
+  optional:
+    - upgrade_d7_taxonomy_vocabulary

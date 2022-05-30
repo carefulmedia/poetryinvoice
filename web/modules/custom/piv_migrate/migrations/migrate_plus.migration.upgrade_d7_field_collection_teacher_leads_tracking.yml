@@ -1,0 +1,58 @@
+uuid: 9930e1c2-cda8-4107-bf8c-2e14abf36f21
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_teacher_leads_tracking
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Teacher leads tracking)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_teacher_leads_tracking
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_contact_me_later_this_year:
+    -
+      plugin: get
+      source: field_contact_me_later_this_year
+  field_contact_me_next_year:
+    -
+      plugin: get
+      source: field_contact_me_next_year
+  field_misc_details_about_lead:
+    -
+      plugin: get
+      source: field_misc_details_about_lead
+  field_reason_not_interested:
+    -
+      plugin: get
+      source: field_reason_not_interested
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: teacher_leads_tracking
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance

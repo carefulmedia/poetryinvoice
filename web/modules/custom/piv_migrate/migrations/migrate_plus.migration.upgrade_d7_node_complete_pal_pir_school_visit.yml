@@ -1,4 +1,4 @@
-uuid: 53cd9a7a-38db-4abd-a857-aa451ae9aa17
+uuid: b5bac4f0-4366-4162-b4cd-394daa5df532
 langcode: en
 status: true
 dependencies: {  }
@@ -78,8 +78,33 @@ process:
       source: comment
   field_visit_date_and_times:
     -
-      plugin: get
+      plugin: sub_process
       source: field_visit_date_and_times
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_pal_pir:
     -
       plugin: sub_process
@@ -167,8 +192,33 @@ process:
       source: field_total_students_involved
   field_poet_questionnaire:
     -
-      plugin: get
+      plugin: sub_process
       source: field_poet_questionnaire
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_agreed_visit_date:
     -
       plugin: sub_process
@@ -189,8 +239,33 @@ process:
       source: field_preferred_date
   field_teacher_questionnaire:
     -
-      plugin: get
+      plugin: sub_process
       source: field_teacher_questionnaire
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_visit_admin:
     -
       plugin: sub_process
@@ -216,18 +291,30 @@ process:
     -
       plugin: get
       source: field_funding_source
-  field_heritage_canada_question:
-    -
-      plugin: get
-      source: field_heritage_canada_question
   field_heritage_canada_follow_up_:
     -
       plugin: get
       source: field_heritage_canada_follow_up_
+  field_heritage_canada_question:
+    -
+      plugin: get
+      source: field_heritage_canada_question
 destination:
   plugin: 'entity_complete:node'
   translations: true
   default_bundle: pal_pir_school_visit
 migration_dependencies:
   required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+    - upgrade_d7_field_collection_visit_date_and_times
+    - upgrade_d7_field_collection_revisions_visit_date_and_times
+    - upgrade_d7_field_collection_poet_questionnaire
+    - upgrade_d7_field_collection_revisions_poet_questionnaire
+    - upgrade_d7_field_collection_teacher_questionnaire
+    - upgrade_d7_field_collection_revisions_teacher_questionnaire
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance
     - upgrade_d7_user

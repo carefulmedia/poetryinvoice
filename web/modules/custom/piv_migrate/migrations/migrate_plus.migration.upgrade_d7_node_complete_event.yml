@@ -1,4 +1,4 @@
-uuid: 8f759cf3-204c-409f-9f97-cb1b6bf0e7bc
+uuid: 59440fa5-abdb-4852-96e4-b3ccc2f08169
 langcode: en
 status: true
 dependencies: {  }
@@ -86,6 +86,11 @@ process:
           from_format: 'Y-m-d H:i:s'
           to_format: 'Y-m-d\TH:i:s'
           source: value
+        end_value:
+          plugin: format_date
+          from_format: 'Y-m-d H:i:s'
+          to_format: 'Y-m-d\TH:i:s'
+          source: value2
   body:
     -
       plugin: get
@@ -109,3 +114,8 @@ destination:
 migration_dependencies:
   required:
     - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

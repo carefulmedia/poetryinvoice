@@ -1,0 +1,98 @@
+uuid: 62ea4b7c-3ac6-4450-bcd4-fab89662c37a
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_teacher_questionnaire
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Teacher questionnaire)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_teacher_questionnaire
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_visit_completed_teacher:
+    -
+      plugin: get
+      source: field_visit_completed_teacher
+  field_teacher_incomplete_reason:
+    -
+      plugin: get
+      source: field_teacher_incomplete_reason
+  field_expectations_teacher:
+    -
+      plugin: get
+      source: field_expectations_teacher
+  field_teacher_preparation_teache:
+    -
+      plugin: get
+      source: field_teacher_preparation_teache
+  field_poet_preparation_teacher:
+    -
+      plugin: get
+      source: field_poet_preparation_teacher
+  field_student_engaglement_teache:
+    -
+      plugin: get
+      source: field_student_engaglement_teache
+  field_poet_engagement_teacher:
+    -
+      plugin: get
+      source: field_poet_engagement_teacher
+  field_work_student_teacher:
+    -
+      plugin: get
+      source: field_work_student_teacher
+  field_remarkable_teacher:
+    -
+      plugin: get
+      source: field_remarkable_teacher
+  field_effect_teacher:
+    -
+      plugin: get
+      source: field_effect_teacher
+  field_feedback_teacher:
+    -
+      plugin: get
+      source: field_feedback_teacher
+  field_release_teacher:
+    -
+      plugin: get
+      source: field_release_teacher
+  field_how_did_you_hear_about_the:
+    -
+      plugin: get
+      source: field_how_did_you_hear_about_the
+  field_which_grade_s_participated:
+    -
+      plugin: get
+      source: field_which_grade_s_participated
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: teacher_questionnaire
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance

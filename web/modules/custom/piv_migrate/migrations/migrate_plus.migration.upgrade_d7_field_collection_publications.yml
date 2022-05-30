@@ -1,0 +1,66 @@
+uuid: 53c06d2d-9cbe-43b3-9fe3-b6141cf8f18e
+langcode: en
+status: true
+dependencies: {  }
+id: upgrade_d7_field_collection_publications
+class: Drupal\migrate\Plugin\Migration
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Field Collection Content'
+migration_group: migrate_drupal_7
+label: 'Field Collections (Publications)'
+source:
+  plugin: d7_field_collection_item
+  field_name: field_publications
+process:
+  type:
+    -
+      plugin: get
+      source: bundle
+  parent_id:
+    -
+      plugin: get
+      source: parent_id
+  parent_type:
+    -
+      plugin: get
+      source: parent_type
+  parent_field_name:
+    -
+      plugin: get
+      source: field_name
+  field_date_publication:
+    -
+      plugin: get
+      source: field_date_publication
+  field_publication_type:
+    -
+      plugin: get
+      source: field_publication_type
+  field_title:
+    -
+      plugin: get
+      source: field_title
+  field_publisher:
+    -
+      plugin: get
+      source: field_publisher
+  field_editorts:
+    -
+      plugin: get
+      source: field_editorts
+  field_poem_title:
+    -
+      plugin: get
+      source: field_poem_title
+destination:
+  plugin: 'entity_reference_revisions:paragraph'
+  default_bundle: publications
+migration_dependencies:
+  required:
+    - upgrade_d7_field_collection_type
+  optional:
+    - upgrade_d7_field_instance

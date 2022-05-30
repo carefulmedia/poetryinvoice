@@ -1,4 +1,4 @@
-uuid: 5a43a6df-0162-4fcf-a9b3-336164df1df6
+uuid: 59999bec-565e-48d8-bea0-b6b640bf800a
 langcode: en
 status: true
 dependencies: {  }
@@ -103,3 +103,8 @@ destination:
 migration_dependencies:
   required:
     - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance

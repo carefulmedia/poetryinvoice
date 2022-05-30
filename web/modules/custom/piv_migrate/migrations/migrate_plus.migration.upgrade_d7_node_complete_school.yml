@@ -1,4 +1,4 @@
-uuid: 9437752a-7fe4-4600-8289-09b8c06f1f59
+uuid: 435ca04b-897c-4296-a971-e2eac926f8a5
 langcode: en
 status: true
 dependencies: {  }
@@ -32,8 +32,6 @@ process:
     -
       plugin: get
       source: title
-    -
-      plugin: random_value_on_empty
   uid:
     -
       plugin: get
@@ -142,8 +140,33 @@ process:
       source: field_cdb_id
   field_communication_log:
     -
-      plugin: get
+      plugin: sub_process
       source: field_communication_log
+      process:
+        target_id:
+          -
+            plugin: paragraphs_lookup
+            tags: 'Field Collection Content'
+            source: value
+          -
+            plugin: extract
+            index:
+              - id
+        target_revision_id:
+          -
+            plugin: paragraphs_lookup
+            tags:
+              - 'Field Collection Revisions Content'
+              - 'Field Collection Content'
+            tag_ids:
+              'Field Collection Revisions Content':
+                - revision_id
+              'Field Collection Content':
+                - value
+          -
+            plugin: extract
+            index:
+              - revision_id
   field_not_competing_this_year:
     -
       plugin: get
@@ -179,4 +202,12 @@ destination:
   default_bundle: school
 migration_dependencies:
   required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+#    - upgrade_d7_field_collection_communication_log
+    - upgrade_d7_field_collection_revisions_communication_log
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance
     - upgrade_d7_user

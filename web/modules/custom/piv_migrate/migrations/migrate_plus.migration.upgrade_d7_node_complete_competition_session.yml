@@ -1,4 +1,4 @@
-uuid: 27f19e17-0a50-4592-8d9c-ac75662339ad
+uuid: 028406fb-26ae-4e62-ad91-0a7216815635
 langcode: en
 status: true
 dependencies: {  }
@@ -138,4 +138,10 @@ destination:
   default_bundle: competition_session
 migration_dependencies:
   required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance
     - upgrade_d7_user

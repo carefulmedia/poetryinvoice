@@ -1,4 +1,4 @@
-uuid: ad4f790d-db5f-42b6-8aee-7d9421bd202d
+uuid: 33f5a215-12f5-4d62-9574-bf356471f34d
 langcode: en
 status: true
 dependencies: {  }
@@ -173,14 +173,16 @@ process:
     -
       plugin: get
       source: field_paid_
-  field_rating:
-    -
-      plugin: get
-      source: field_rating
 destination:
   plugin: 'entity_complete:node'
   translations: true
   default_bundle: lesson_plan
 migration_dependencies:
   required:
+    - upgrade_d7_user
+    - upgrade_d7_node_type
+    - upgrade_language
+  optional:
+    - upgrade_d7_field_instance
+    - upgrade_d7_comment_field_instance
     - upgrade_d7_user
