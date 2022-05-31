@@ -38,6 +38,7 @@
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.8",
         "drupal/reroute_email": "^2.1",
+        "drupal/s3fs": "^3.0@beta",
         "drupal/tablesorter": "^2.0@RC",
         "drush/drush": "^10",
         "kint-php/kint": "^4.1",

@@ -163,3 +163,19 @@ foreach ($platformsh->variables() as $name => $value) {
       break;
   }
 }
+
+if ($platformsh->isValidPlatform()) {
+  // Amazon S3.
+  $s3_access = $platformsh->variable('S3FS_ACCESS_KEY', FALSE);
+  $s3_secret = $platformsh->variable('S3FS_SECRET_KEY', FALSE);
+  if ($s3_access && $s3_secret) {
+    $settings['s3fs.access_key'] = $s3_access;
+    $settings['s3fs.secret_key'] = $s3_secret;
+    $settings['s3fs.use_s3_for_public'] = TRUE;
+    $settings['s3fs.use_s3_for_private'] = TRUE;
+    $config['s3fs.settings']['bucket'] = 'piv-prod';
+    $config['s3fs.settings']['public_folder'] = 'public';
+    $config['s3fs.settings']['private_folder'] = 'private';
+    $config['s3fs.settings']['region'] = 'ca-central-1';
+  }
+}
