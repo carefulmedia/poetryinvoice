@@ -136,6 +136,13 @@ web:
                 '^/sites/default/files/(css|js)':
                     expires: 2w
 
+        # Roulette.
+        '/roulette':
+            allow: true
+            expires: 5m
+            passthru: '/roulette/index.php'
+            root: 'web/roulette'
+
 crons:
     # Run Drupal's cron tasks every 19 minutes.
     drupal:
