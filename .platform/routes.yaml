@@ -33,6 +33,6 @@
     to: "https://{default}/"
 
 # Needs to end on /
-"https://www.{default}/roulette":
+"https://{default}/roulette":
     type: redirect
     to: "https://{default}/roulette/"
