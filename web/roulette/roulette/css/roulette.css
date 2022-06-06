@@ -1,0 +1,466 @@
+
+.logo,
+.slider-up {
+    vertical-align: middle
+}
+
+#logo-title,
+.choice-title,
+.slotMachine {
+    text-align: center
+}
+h4 {text-align: center}
+
+@font-face {
+    font-family: FrutigerRoman;
+    src: url(/roulette/fonts/frutigerltstd-roman-webfont.eot);
+    src: url(/roulette/fonts/frutigerltstd-roman-webfont.eot?#iefix) format('embedded-opentype'), url(/roulette/fonts/frutigerltstd-roman-webfont.woff) format('woff'), url(/roulette/fonts/frutigerltstd-roman-webfont.ttf) format('truetype'), url(/roulette/fonts/frutigerltstd-roman-webfont.svg#FrutigerLTStd45Light) format('svg');
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: FrutigerLight;
+    src: url(/roulette/fonts/frutigerltstd-light-webfont.eot);
+    src: url(/roulette/fonts/frutigerltstd-light-webfont.eot?#iefix) format('embedded-opentype'), url(/roulette/fonts/frutigerltstd-light-webfont.woff) format('woff'), url(/roulette/fonts/frutigerltstd-light-webfont.ttf) format('truetype'), url(/roulette/fonts/frutigerltstd-light-webfont.svg#FrutigerLTStd45Light) format('svg');
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: ClarendonBold;
+    src: url(/roulette/fonts/clarendonltstd-bold-webfont.eot);
+    src: url(/roulette/fonts/clarendonltstd-bold-webfont.eot?#iefix) format('embedded-opentype'), url(/roulette/fonts/clarendonltstd-bold-webfont.woff) format('woff'), url(/roulette/fonts/clarendonltstd-bold-webfont.ttf) format('truetype'), url(/roulette/fonts/clarendonltstd-bold-webfont.svg#ClarendonLTStdBold) format('svg');
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: ClarendonRoman;
+    src: url(/roulette/fonts/clarendonltstd-webfont.eot);
+    src: url(/roulette/fonts/clarendonltstd-webfont.eot?#iefix) format('embedded-opentype'), url(/roulette/fonts/clarendonltstd-webfont.woff) format('woff'), url(/roulette/fonts/clarendonltstd-webfont.ttf) format('truetype'), url(/roulette/fonts/clarendonltstd-webfont.svg#ClarendonLTStdRoman) format('svg');
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: ClarendonLight;
+    src: url(/roulette/fonts/clarendonltstd-light-webfont.eot);
+    src: url(/roulette/fonts/clarendonltstd-light-webfont.eot?#iefix) format('embedded-opentype'), url(/roulette/fonts/clarendonltstd-light-webfont.woff) format('woff'), url(/roulette/fonts/clarendonltstd-light-webfont.ttf) format('truetype'), url(/roulette/fonts/clarendonltstd-light-webfont.svg#ClarendonLTStdLight) format('svg');
+    font-weight: 400;
+    font-style: normal
+}
+
+#piv-toolbar {
+    background-color: #001a23;
+    color: #fff;
+    font-size: 12px;
+    height: 28px;
+    padding: 0;
+    width: 100%
+}
+
+#piv-toolbar-langswitch {
+    display: inline
+}
+
+.piv-toolbar-inner {
+    padding-left: 20px;
+    padding-top: 5px
+}
+
+#piv-toolbar ul.language-switcher-locale-url {
+    margin: 0;
+    padding: 0;
+    right: 0;
+    top: 5px
+}
+
+ul.language-switcher-locale-url {
+    float: right;
+    list-style-type: none;
+    margin: 30px 0 0;
+    position: relative;
+    right: 14px;
+    top: 3px;
+    z-index: 10
+}
+
+#exit a img,
+#main,
+#toggle2,
+.slider {
+    position: absolute
+}
+
+ul.language-switcher-locale-url li.active {
+    display: none
+}
+
+#page-title,
+#social-icons,
+ul.language-switcher-locale-url li {
+    display: inline
+}
+
+ul.language-switcher-locale-url a,
+ul.language-switcher-locale-url a:link,
+ul.language-switcher-locale-url a:visited {
+    background: url(/sites/all/themes/piv_lvp/images/lang-bg.png);
+    color: #000;
+    height: 30px;
+    margin: 0 0 0 25px;
+    padding: 8px 10px
+}
+
+#piv-toolbar a span {
+    background: url(/sites/all/modules/admin_menu/admin_menu_toolbar/toolbar.png) 0 -45px no-repeat;
+    display: inline;
+    height: 14px;
+    position: absolute;
+    text-indent: -9999px;
+    top: 8px;
+    width: 11px
+}
+
+#main,
+body {
+    background-color: #26afed!important
+}
+
+#piv-toolbar a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: underline
+}
+
+#piv-toolbar .follow-us {
+    margin-left: 30px
+}
+
+.toolbar-right {
+    float: right
+}
+
+body {
+    color: #001a23!important
+}
+
+#main {
+    height: 100%;
+    width: 100%
+}
+
+.logo {
+    background-color: #26afed;
+    padding-top: 1em;
+    padding-bottom: 1em
+}
+
+.slider,
+.slider div {
+    background-color: #001A23
+}
+
+#page-title {
+    color: #fff;
+    font-family: ClarendonLight;
+    padding-left: .8em
+}
+
+#exit,
+#exit a {
+    width: 40px;
+    display: inline-block;
+    height: 100%
+}
+
+#exit a img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0
+}
+
+#poemFooter,
+#spinFooter,
+#toggle2,
+.img-responsive,
+.slider {
+    width: 100%
+}
+
+.slider-up {
+    height: 90px;
+    margin-top: 1em
+}
+
+.slider-up img {
+    float: right!important;
+    cursor: pointer
+}
+
+.slider-up img:hover {
+    -webkit-filter: brightness(10000%) contrast(1000%);
+    filter: brightness(10000%) contrast(1000%)
+}
+
+#choices {
+    margin-top: 90px
+}
+
+.choice1 {
+    padding: 5px!important;
+    cursor: pointer
+}
+
+.choice1:hover {
+    filter: invert(100%) contrast(1000%)
+}
+
+.choice1:hover,
+.slotMachine img:hover {
+    -webkit-filter: invert(100%) contrast(1000%)
+}
+
+.choice-title {
+    font-family: FrutigerRoman;
+    font-size: 4vw;
+    cursor: pointer
+}
+
+.slider {
+    height: 100%;
+    bottom: 0;
+    color: #001A23
+}
+
+#toggle2 {
+    background: #fff;
+    top: 0;
+    display: none;
+    color: #000;
+    z-index: 100;
+    min-width: 100%;
+    height: auto;
+    padding-bottom: 80px;
+    min-height: 700px
+}
+
+.circleContainer,
+.slotMachine {
+    position: relative;
+    display: inline-block
+}
+
+.container,
+.container-fluid,
+.row {
+    margin-right: 0!important;
+    margin-left: 0!important;
+    padding-left: 0!important;
+    padding-right: 0!important
+}
+
+.slotMachine {
+    background-color: #09bcef;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 5px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer
+}
+
+.slotMachine img:hover {
+    filter: invert(100%) contrast(1000%)
+}
+
+.poetMachines .slotMachine img:hover {
+    -webkit-filter: invert(0) contrast(150%);
+    filter: invert(0) contrast(150%)
+}
+
+.slider .slotMachineContainer,
+.slider .slotMachineContainer div {
+    background-color: #26afed;
+    border: none
+}
+
+.poetMachines .slotMachine {
+    background-color: #001A23
+}
+
+.circleContainer {
+    padding: 0!important
+}
+
+.circleContainer img {
+    width: 100%;
+    height: 100%
+}
+
+.circleDummy {
+    margin-top: 100%
+}
+
+.machineResult {
+    color: #fff;
+    text-align: center;
+    font-size: 1.2em;
+    font-family: FrutigerLight;
+    min-height: 3em!important;
+    cursor: pointer;
+    margin-top: 20px
+}
+
+.poemButton a,
+.slotMachineButton {
+
+
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 19px;
+    text-align: center
+}
+
+.noBorder {
+    border: none!important;
+    background: 0 0!important
+}
+
+.nameRow {
+    min-height: 10em
+}
+
+.buttonRow {
+    bottom: 0
+}
+
+.slotMachineButton {
+    background-color: #056b89;
+    text-indent: 0;
+    display: inline-block;
+    color: #fff;
+    font-family: FrutigerRoman margin-top: 10px;
+    padding: 12px
+}
+
+.slotMachineButton:hover {
+    color: #001A23;
+    background-color: #fff;
+    text-decoration: none;
+    outline: 0;
+    border: none
+}
+
+.slotMachineButton:active,
+.slotMachineButton:focus {
+    position: relative;
+    top: 1px;
+    outline: 0;
+    border: none
+}
+
+#spinFooter {
+    opacity: 1;
+    text-align: center;
+    background-color: #001A23;
+    padding: 0 0 40px
+}
+
+#poemFooter .row div {
+    padding: 0!important
+}
+
+#back2 img {
+    float: right;
+    cursor: pointer
+}
+
+#back2 img:hover {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%)
+}
+
+#poemFooter {
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
+    text-align: center;
+    padding: 20px
+}
+
+.poemButton a {
+    color: #fff;
+    font-family: FrutigerRoman;
+    background-color: #001A23;
+    padding: 12px
+}
+
+.poemButton a:hover {
+    color: #26afed;
+    text-decoration: none
+}
+
+#poem h1 {
+    color: #000;
+    font: 27px ClarendonLight;
+    margin-top: 10px
+}
+
+#poem h4 {
+    font: 14px FrutigerRoman;
+    text-transform: uppercase
+}
+
+#poem p {
+    color: #3b3b3b!important;
+    font-family: ClarendonLight!important;
+    font-size: 16px!important;
+    line-height: 20px;
+    margin: 0!important;
+    padding-left: 1em;
+    text-indent: -1em
+}
+
+#element_to_pop_up {
+	background-color: #26afed !important;
+    border-radius: 10px;
+    box-shadow: 0 0 25px 5px #999;
+    display: none;
+    padding: 25px;
+    color: #001a23;
+    max-width: 90%
+}
+
+.b-close {
+    border-radius: 7px;
+    box-shadow: none;
+    font: 700 131% sans-serif;
+    padding: 0 6px 2px;
+    position: absolute;
+    right: -7px;
+    top: -7px;
+    background-color: #001a23;
+    color: #fff
+}
+
+b-close:hover {
+    cursor: pointer
+}
+
+button {
+    border: none!important
+}
+
+.verse {
+    margin-bottom: 25px
+}

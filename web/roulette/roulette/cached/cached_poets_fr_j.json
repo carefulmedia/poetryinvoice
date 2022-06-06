@@ -1,0 +1,1537 @@
+{
+  "nodes" : [
+    {
+      "node" : {
+        "Nid" : "19228",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-19228-1568911761.jpg?itok=D396CySj",
+        "title" : "Jean-Pierre Siméon"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "19225",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-19225-1568908730.jpg?itok=j3n0ryYU",
+        "title" : "Isabelle Damotte"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "18567",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-18567-1564422018.jpg?itok=t18QAZUR",
+        "title" : "Clara B.-Turcotte"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "18551",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-18551-1563984616.jpg?itok=GFQZLQhc",
+        "title" : "Simon Boulerice"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "16381",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-16381-1545165236.jpg?itok=4MADsA4F",
+        "title" : "Judith S. Pointejour"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "16293",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-16293-1544547185.jpg?itok=h0yJFz74",
+        "title" : "Laure Morali"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "16059",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-16059-1543329387.jpg?itok=GAQ5noLw",
+        "title" : "Nadine Ltaif"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "15358",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-15358-1540405736.jpg?itok=wZLCLso8",
+        "title" : "Daniel Groleau Landry"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "15158",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-15158-1549642067.jpg?itok=FvDKxQVp",
+        "title" : "M.K. Blais"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "15150",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-15150-1539956427.jpg?itok=G5X9idIV",
+        "title" : "Mélanie Landreville"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "15144",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-15144-1549642489.jpg?itok=rp1hH-1w",
+        "title" : "Paul Chamberland"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "15133",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-15133-1539635141.jpg?itok=FJdKHx2B",
+        "title" : "Geneviève Boudreau"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "15049",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-15049-1539197048.jpg?itok=SJtNffF-",
+        "title" : "René Lapierre"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "15042",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-15042-1539191793.jpg?itok=oNKJen1q",
+        "title" : "Raôul Duguay"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "14869",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-14869-1538763914.jpg?itok=Aq0Zgmej",
+        "title" : "Bertrand Laverdure"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "14109",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-14109-1534857019.jpg?itok=0D6Bl0wd",
+        "title" : "Natasha Kanapé Fontaine"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13934",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13934-1532353239.jpg?itok=XBafcwQj",
+        "title" : "Alejandra Pizarnik"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13927",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13927-1532120287.jpg?itok=cXOujnFb",
+        "title" : "Patrick Lafontaine"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13926",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13926-1532119772.jpg?itok=Qz6G0-Fy",
+        "title" : "Judy Quinn"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13925",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13925-1532118951.jpg?itok=WVwHrGji",
+        "title" : "Arundhathi Subramaniam"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13853",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13853-1531837943.jpg?itok=CBblP27k",
+        "title" : "José Acquelin"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13647",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13647-1551210562.jpg?itok=m901GRjI",
+        "title" : "Maram Al-Masri"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13646",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13646-1530723750.jpg?itok=aedj5POd",
+        "title" : "Tanella Boni"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13642",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13642-1534946839.jpg?itok=CzTxPMkK",
+        "title" : "Élise Turcotte"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13640",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13640-1530712031.jpg?itok=yrFH8VT9",
+        "title" : "Laurance Ouellet Tremblay"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13607",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13607-1530290638.jpg?itok=WTuhEhBH",
+        "title" : "Georges Ribemont-Dessaignes"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13600",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13600-1530110901.jpg?itok=MY9q6Mnd",
+        "title" : "Jean-Pierre Verheggen"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13467",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/fiset_louise_0.jpg?itok=s9ZZgmB_",
+        "title" : "Louise Fiset"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13466",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/frenaud_1945_visuel.jpg?itok=i79wkVZh",
+        "title" : "André Frénaud"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13465",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/claude_roy.jpg?itok=rLVGRFHZ",
+        "title" : "Claude Roy"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13464",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/marie-andree_gill1.jpg?itok=lM1P9UiO",
+        "title" : "Marie-Andrée Gill"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13462",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/louis-karl-picard-sioui.jpg?itok=B5ZhSYqu",
+        "title" : "Louis-Karl Picard-Sioui"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13461",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/louisseize_par_david_fortin.jpg?itok=3EzrNhIW",
+        "title" : "Caroline Louisseize"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13460",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/daphne_b_0.jpg?itok=fWvvA4UN",
+        "title" : "Daphné B."
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13444",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/s_p_thibodeau.jpg?itok=Z9L5hYps",
+        "title" : "Serge Patrice Thibodeau"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13427",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/108862264_o.jpg?itok=XlJsZ4Ap",
+        "title" : "Chloé Savoie-Bernard"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13428",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/des-roches_roger.jpg?itok=Px_91pvB",
+        "title" : "Roger Des Roches"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13426",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/458px-alphonse_daudet_3_0.jpg?itok=GoQHqDcx",
+        "title" : "Alphonse Daudet"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13415",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/perros-georges.jpg?itok=F4Ekr6X3",
+        "title" : "Georges Perros"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13414",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/l_0.jpg?itok=1gTOFDVp",
+        "title" : "Lise Gaboury-Diallo"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13402",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/genevieve_desrosiers.jpg?itok=7Hh4AACG",
+        "title" : "Geneviève Desrosiers"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13400",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/michele-voltaire-marcelin.jpg?itok=F_eDovf6",
+        "title" : "Michèle Voltaire Marcelin"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13398",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/139a4818.png?itok=J2da8C7Z",
+        "title" : "Laurent Fadanni"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13399",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/lpd.png?itok=V0DTmUt_",
+        "title" : "Louis-Philippe Dalembert"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13393",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/louise-desjardins.jpg?itok=Stq4gd-w",
+        "title" : "Louise Desjardins"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13394",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jg.png?itok=phV1SRpv",
+        "title" : "Juan Garcia"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13395",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jovette-alice_bernier.jpg?itok=uHJOI7bl",
+        "title" : "Jovette Bernier"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13392",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/rodney-saint-eloi.jpg?itok=sY7D2Rnn",
+        "title" : "Rodney Saint-Éloi"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13382",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/valery-larbaud.jpg?itok=geNsF3Oj",
+        "title" : "Valery Larbaud"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13383",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/paul-chanel-malenfant.jpg?itok=VUBVpg8Y",
+        "title" : "Paul Chanel Malenfant"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13379",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/gaston-tremblay.jpg?itok=0QB63IZj",
+        "title" : "Gaston Tremblay"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13380",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/charles-vildrac.jpg?itok=qw161GzK",
+        "title" : "Charles Vildrac"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13378",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/tanner.png?itok=hwn8fPuV",
+        "title" : "Jacqueline Tanner"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13376",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/rp.jpg?itok=1gvxcrPW",
+        "title" : "René Philombe"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13377",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/robert_sabatier.jpg?itok=5Q8W9v7O",
+        "title" : "Robert Sabatier"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13375",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/unnamed.jpg?itok=a7p4tq35",
+        "title" : "Yambo Ouologem"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13374",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/geo-norge.jpg?itok=k_p6WoYs",
+        "title" : "Géo Norge"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13372",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/annette-mbaye-derneville.jpg?itok=NWsMZoi_",
+        "title" : "Annette Mbaye d’Erneville"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13369",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/sony_labou_tansi.jpg?itok=8lVzCjNL",
+        "title" : "Sony Labou Tansi"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13367",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/lucie-julia.jpg?itok=08Aq6keY",
+        "title" : "Lucie Julia"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13368",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/abdellatif-laabi.jpg?itok=CtR3NCAU",
+        "title" : "Abdellatif Laâbi"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13364",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/roger-dorsinville.jpg?itok=OhcRpMHm",
+        "title" : "Roger Dorsinville"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13365",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/arton25_0.jpg?itok=-KQk5pug",
+        "title" : "Nadine Fidji"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13363",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/culture1_1202757.jpg?itok=1NmxxcO9",
+        "title" : "Assia Djébar"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13362",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/georges-desportes.jpg?itok=_--nijKE",
+        "title" : "Georges Desportes"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13361",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/denise-desautels.jpg?itok=g7m2hGZY",
+        "title" : "Denise Desautels"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13360",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/robert_choquette.jpg?itok=J_mqVY0B",
+        "title" : "Robert Choquette"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13358",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/mod-2630903.jpg?itok=K6jXsI3q",
+        "title" : "Claude Ber"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13355",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/pierre-akendengue.jpg?itok=WZKuq_Vr",
+        "title" : "Pierre Akendengue"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13357",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/bebey.jpg?itok=l55F9kG0",
+        "title" : "Francis Bebey"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13356",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/marc-alyn.jpg?itok=rAsX6Gpk",
+        "title" : "Marc Alyn"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13354",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/marie-celie-agnant.jpg?itok=GjhSQOfm",
+        "title" : "Marie-Célie Agnant"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13353",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/louis-philippe_hebert.jpg?itok=Xf1FvZ45",
+        "title" : "Louis-Philippe Hébert"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13352",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/birago_diop.jpg?itok=JS4Q0QEm",
+        "title" : "Birago Diop"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13350",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/new2113.jpg?itok=DfiQ4PRt",
+        "title" : "Léon-Gontran Damas"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13349",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/andree-chedid.jpg?itok=Uk4D2E-A",
+        "title" : "Andrée Chedid"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13348",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/michel_van_schendel.jpg?itok=N0NISuQp",
+        "title" : "Michel Van Schendel"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13347",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/yves_prefontaine.jpg?itok=Hqtmkzi3",
+        "title" : "Yves Préfontaine"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13344",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/pierre_morency.jpg?itok=U-Kob74e",
+        "title" : "Pierre Morency"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13345",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/genevieve_amyot.jpg?itok=p5PN4XCY",
+        "title" : "Geneviève Amyot"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13343",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/elvire_maurouard.jpg?itok=Zu6KYVCj",
+        "title" : "Elvire Maurouard"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13342",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/mars-k.jpg?itok=UwwrBJQU",
+        "title" : "Kettly Mars"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13341",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jr_0.png?itok=w45tnRoj",
+        "title" : "Jean Royer"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13340",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/alphonse-piche.jpg?itok=Aa27Da-M",
+        "title" : "Alphonse Piché"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13339",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/sonia-lamontagne.jpg?itok=cTZRHkGz",
+        "title" : "Sonia Lamontagne"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13337",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/haeffely.png?itok=6ERF7rYZ",
+        "title" : "Claude Haeffely"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13335",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/rachel_leclerc.jpg?itok=OSxsI6TE",
+        "title" : "Rachel Leclerc"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13332",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/amina-said.jpg?itok=4b_Ilzha",
+        "title" : "Amina Saïd"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13331",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/butor-michel_0.jpg?itok=BBjTNUSX",
+        "title" : "Michel Butor"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13330",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/marc_arseneau_0.jpg?itok=_VHfKU-A",
+        "title" : "Marc Arseneau"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13329",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/roubaud-jacques.jpg?itok=h13Ah1Gm",
+        "title" : "Jacques Roubaud"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13326",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/catherine-pozzi.jpg?itok=tSgNOW2e",
+        "title" : "Catherine Pozzi"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13328",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/ludovic_janvier.jpg?itok=SeHb-O-O",
+        "title" : "Ludovic Janvier"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13325",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/brives.png?itok=vlMCXv79",
+        "title" : "Martial de Brives"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13324",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/voltaire.jpg?itok=7xqfd2l6",
+        "title" : "François-Marie Arouet Voltaire"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13323",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/gaetane_de_montreuil.jpg?itok=bl4erqxx",
+        "title" : "Gaétane de Montreuil"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13322",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/maurice_maeterlinck.jpg?itok=wQl6r56M",
+        "title" : "Maurice Maeterlinck"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13320",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jean_lahor.jpg?itok=y8HUXS56",
+        "title" : "Jean Lahor"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13317",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/dominique.png?itok=Ftk4RHG0",
+        "title" : "Jean Dominique"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13319",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jean-pierre_claris_de_florian_0.jpg?itok=lrX9A_vX",
+        "title" : "Jean-Pierre Claris de Florian"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13318",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/593279054.jpg?itok=nm1WJE4V",
+        "title" : "Fabre d’Églantine"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13314",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/amedeo_modigliani.jpg?itok=JpXcxx77",
+        "title" : "Blaise Cendrars"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13316",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/laurent-drelincourt.jpg?itok=-wfnh0hV",
+        "title" : "Laurent Drelincourt"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13315",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/cocteau_1923.jpg?itok=Ob0-Xmcb",
+        "title" : "Jean Cocteau"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13312",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/cadou.jpg?itok=0VbTs5wP",
+        "title" : "Réné Guy Cadou"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13311",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13311-1539355088.jpg?itok=dt6l9AD8",
+        "title" : "Auguste Brizeux"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13313",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/emile_deschamps_0.jpg?itok=H7885X7Q",
+        "title" : "Émile Deschamps"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13309",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/mohammed-dib.jpg?itok=lV8WChlp",
+        "title" : "Mohammed Dib"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13308",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/vezina_0.png?itok=Ove2mWdm",
+        "title" : "Medjé Vézina"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13310",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/guy_goffette_-_foire_du_livre_de_bruxelles_2011_-_01-cropt.jpg?itok=13l31ytU",
+        "title" : "Guy Goffette"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13306",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/carole-david.jpg?itok=tRJHOv3Y",
+        "title" : "Carole David"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13307",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/43330_5.jpg?itok=qFQWDpRp",
+        "title" : "Michel Garneau"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13304",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jacques_rancourt.jpg?itok=1j6_NaXJ",
+        "title" : "Jacques Rancourt"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13303",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/normand_de_bellefeuille.jpg?itok=S-BUix7I",
+        "title" : "Normand de Bellefeuille"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13302",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/499576524_1920-1200.jpg?itok=_V0RJNjY",
+        "title" : "Lucien Francœur"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13300",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/yves_bonnefoy.jpg?itok=K6CUBfEz",
+        "title" : "Yves Bonnefoy"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13301",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jean-paul-daoust.jpg?itok=lyR065hG",
+        "title" : "Jean-Paul Daoust"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13299",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/anthony-phelps.jpg?itok=14tDNDY2",
+        "title" : "Anthony Phelps"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13296",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/dyane_leger.jpg?itok=UUD2sAMo",
+        "title" : "Dyane Léger"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13298",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/rita-mestokosho_0.jpg?itok=Iv9KfcdZ",
+        "title" : "Rita Mestokosho"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13297",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/francis_jammes_0.jpg?itok=VPFWZhHM",
+        "title" : "Francis Jammes"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13294",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/armand-robin.jpg?itok=eM3gXoGP",
+        "title" : "Armand Robin"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13292",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jacques_prevert.jpg?itok=eMeYwt2Z",
+        "title" : "Jacques Prévert"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13291",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/alain-jouffroy_0.jpg?itok=729sjjwS",
+        "title" : "Alain Jouffroy"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13290",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/philippe_jaccottet.jpg?itok=nAR0B5CF",
+        "title" : "Philippe Jaccottet"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13288",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/benjaminperet.jpg?itok=d0zfPDsf",
+        "title" : "Benjamin Péret"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13285",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/lasnier.jpg?itok=F6ZOXXfQ",
+        "title" : "Rina Lasnier"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13287",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/louis_le_cardonnel.jpg?itok=M4SO1SYw",
+        "title" : "Louis Le Cardonnel"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13286",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/gaston-miron_0.jpg?itok=LQQW9Bzd",
+        "title" : "Gaston Miron"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13284",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/josephine-bacon.jpg?itok=_eU4oqTw",
+        "title" : "Joséphine Bacon"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13283",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13283-1531853441.png?itok=vjaBUSO_",
+        "title" : "Andrée Lacelle"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13282",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/nedjmartine-vincent.jpg?itok=sX-cjbFN",
+        "title" : "Nedjmhartine Vincent"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13216",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/raymond-queneau.jpg?itok=XTBYGNVw",
+        "title" : "Raymond Queneau"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13215",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/henri-michaux.jpg?itok=2YdFRWaD",
+        "title" : "Henri Michaux"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13214",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/aragon.jpg?itok=p3O96jFO",
+        "title" : "Louis Aragon"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13213",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/p1030362.jpg?itok=24TgxWbi",
+        "title" : "Marie Noël"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13208",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/marie_uguay.jpg?itok=gV3mNA7O",
+        "title" : "Marie Uguay"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13209",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/gilles_vigneault.jpg?itok=OVkBm55o",
+        "title" : "Gilles Vigneault"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13207",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/cousinade_supervielle.jpg?itok=LtyZSCLY",
+        "title" : "Jules Supervielle"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13206",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/leopold-sedar-senghor-ancien-president-du-senegal-academicien-poete-pose-le-10-mai-1985-a-tours_843040.jpg?itok=j64o1Qoh",
+        "title" : "Léopold Sédar Senghor"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13205",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/paul-savoie.jpg?itok=j2CAF6X2",
+        "title" : "Paul Savoie"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13204",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/ramuz.jpg?itok=hrCl9Fog",
+        "title" : "Ferdinand Ramuz"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13202",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/roger_leveille.jpg?itok=NP-7Zeqg",
+        "title" : "J.R. Léveillé"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13203",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/531e4861a8f28.jpg?itok=fEDQOXUF",
+        "title" : "Gérard de Nerval"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13201",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/07d9f62933ee6017815a7f40dcddef25_original.jpg?itok=P_mvy7uJ",
+        "title" : "Robert Desnos"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13200",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/robert-dickson.jpg?itok=exAo0m2S",
+        "title" : "Robert Dickson"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13199",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/diaquoi-deslandes.png?itok=xkvrEtLg",
+        "title" : "Célie Diaquoi-Deslandes"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13197",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/signature_paul_eluard.jpg?itok=rsOvsMov",
+        "title" : "Paul Éluard"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13198",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/helene_dorion_-_2011.jpg?itok=qBLNea8P",
+        "title" : "Hélène Dorion"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13196",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/gerald-godin.jpg?itok=l5UCOgWb",
+        "title" : "Gérald Godin"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13195",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/ann-hebert.jpg?itok=tAaY0mY9",
+        "title" : "Anne Hébert"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13194",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/alain-grandbois.jpg?itok=dL3kZrjI",
+        "title" : "Alain Grandbois"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13193",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/paul-marie-lapointe.jpg?itok=B1KrAUFV",
+        "title" : "Paul-Marie Lapointe"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13191",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/gerald_leblanc.jpg?itok=IcI-3YA6",
+        "title" : "Gérald Leblanc"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13192",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/lefrancois-alexis.jpg?itok=ZbdOqToq",
+        "title" : "Alexis Lefrançois"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13190",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/georgette-leblanc.jpg?itok=7-KUxJ8Y",
+        "title" : "Georgette Leblanc"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13187",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/cesaire.jpg?itok=M9jpGVMc",
+        "title" : "Aimé Césaire"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13188",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/785605.jpg?itok=lnLCcFc-",
+        "title" : "Jacques Chessex"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13189",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/chiasson_hermenegilde.jpg?itok=ALG4Madj",
+        "title" : "Herménégilde Chiasson"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13184",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/alfred-desrochers.jpg?itok=F61EaAlE",
+        "title" : "Alfred Desrochers"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13185",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/patrice-desbiens.jpg?itok=2OBABsk0",
+        "title" : "Patrice Desbiens"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13186",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jacques_brault.jpg?itok=SH_yqUMj",
+        "title" : "Jacques Brault"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13183",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/gilles-henault.jpg?itok=jyKTC77p",
+        "title" : "Gilles Hénault"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13092",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/553910-apollinaire.jpg?itok=_C7-i7Ri",
+        "title" : "Guillaume Apollinaire"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13093",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/baudelaire.jpg?itok=PIQvyRDC",
+        "title" : "Charles Baudelaire"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13089",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/cros.jpg?itok=OeHZPEK9",
+        "title" : "Charles Cros"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13090",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/corbiere.jpg?itok=3Iu3zxV_",
+        "title" : "Tristan Corbière"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13091",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/chenier.jpg?itok=Be0jrf2l",
+        "title" : "André Chénier"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13087",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/desbordes-valmore-marcelline.jpg?itok=SbEXmDPT",
+        "title" : "Marceline Desbordes-Valmore"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13088",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/maxresdefault.jpg?itok=UAldoi5a",
+        "title" : "Anna de Noailles"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13085",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/gautier.jpg?itok=jDnbiDYc",
+        "title" : "Théophile Gautier"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13086",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/dubellay.jpg?itok=N5VFqc_D",
+        "title" : "Joachim Du Bellay"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13084",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/juleslaforgue.jpg?itok=ewT7jNYL",
+        "title" : "Jules Laforgue"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13081",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/lafontaine_rigaud.jpg?itok=nnYE6ZQe",
+        "title" : "Jean de La Fontaine"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13082",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/victor_hugo_by_etienne_carjat_1876.jpg?itok=LXp07fXC",
+        "title" : "Victor Hugo"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13083",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/louise_labe.jpg?itok=N63mTpPX",
+        "title" : "Louise Labé"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13080",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/lamartine.jpg?itok=43ZbTvNS",
+        "title" : "Alphonse de Lamartine"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13079",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/francois-de-malherbe.jpg?itok=CxiIQ6tK",
+        "title" : "François de Malherbe"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13075",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/theophile_de_viau.jpg?itok=lCqPCmc1",
+        "title" : "Théophile de Viau"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13077",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/alfred_de_vigny.jpg?itok=FCDogb1l",
+        "title" : "Alfred de Vigny"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13076",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/francis_viele-griffin.jpg?itok=Bz4_wOHC",
+        "title" : "Francis Vielé-Griffin"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13074",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/paul_valery.jpg?itok=8m9Ire7d",
+        "title" : "Paul Valéry"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13072",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/albert_samain.jpg?itok=kTtf4u54",
+        "title" : "Albert Samain"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13070",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/sully-prudhomme.jpg?itok=kYYp6F4y",
+        "title" : "Sully Prudhomme"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13069",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/de_musset.jpg?itok=AbwNxE5j",
+        "title" : "Alfred de Musset"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13071",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/henri_de_regnier.jpg?itok=GePd99DI",
+        "title" : "Henri de Régnier"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13066",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/lemay.jpg?itok=E538wtoU",
+        "title" : "Pamphile LeMay"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13068",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/catulle_mendes.jpg?itok=7r90ghMZ",
+        "title" : "Catulle Mendès"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13067",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/albert-lozeau.jpg?itok=4HxoW0q5",
+        "title" : "Albert Lozeau"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13063",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jose-maria_de_heredia.jpg?itok=A0-Cz0sq",
+        "title" : "José Maria de Heredia"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13065",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/leconte_de_lisle.jpg?itok=P67IQKxz",
+        "title" : "Charles Leconte de Lisle"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13064",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jodelle_etienne.jpg?itok=IhmR0oCX",
+        "title" : "Étienne Jodelle"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13062",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/alfred-garneau.jpg?itok=avDTLUsW",
+        "title" : "Alfred Garneau"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13061",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-13061-1566585978.jpg?itok=jWCGDB7W",
+        "title" : "Eudore Évanturel"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13060",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/neree-beauchemin_0.jpg?itok=kDhUIeeH",
+        "title" : "Nérée Beauchemin"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13059",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/francois_edouard_joachim_coppee.jpg?itok=MwI2cPlm",
+        "title" : "François Coppée"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13057",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/bruant.jpg?itok=JUSBp9cG",
+        "title" : "Aristide Bruant"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13054",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/ob_6a9fbb_buste-philippe-desportes.jpg?itok=JjHGJB5L",
+        "title" : "Philippe Desportes"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13056",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/louis-frechette.jpg?itok=dBfJyi9K",
+        "title" : "Louis Fréchette"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13055",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/elskamp.jpg?itok=4cNhXoHv",
+        "title" : "Max Elskamp"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13053",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/pierre_corneille.jpg?itok=m0b6GoAZ",
+        "title" : "Pierre Corneille"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13052",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/achille_chavee.jpg?itok=d-ZRAnC1",
+        "title" : "Achille Chavée"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13051",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/villon_1_lg.jpg?itok=tVWijSyP",
+        "title" : "François Villon"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13050",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/verlaine.jpg?itok=m1tYOExo",
+        "title" : "Paul Verlaine"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13049",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/emile_verhaeren.jpg?itok=62ThPfcd",
+        "title" : "Émile Verhaeren"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13048",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/garneau_0.jpg?itok=PI41YDwn",
+        "title" : "Hector de Saint-Denys Garneau"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13046",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/rimbaud.jpg?itok=mmenBIyb",
+        "title" : "Arthur Rimbaud"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13047",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/ronsard.jpg?itok=Jur2Bs_9",
+        "title" : "Pierre de Ronsard"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13038",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/mathurin-regnier.jpg?itok=j3CyoaNP",
+        "title" : "Mathurin Régnier"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13037",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/nelligan.jpg?itok=meRd2pps",
+        "title" : "Émile Nelligan"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "13036",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/jean-tardieu.jpg?itok=S1akCY16",
+        "title" : "Jean Tardieu"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "12642",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-12642-1560777612.jpg?itok=79Q5TCI9",
+        "title" : "Nathalie Watteyne"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "12432",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/marc-antoine_k_phaneuf_christian_leduc.jpg?itok=82pSJPwP",
+        "title" : "Marc-Antoine K. Phaneuf"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "10718",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-10718-1532554241.png?itok=LfSGZhlS",
+        "title" : "Louise Dupré"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "10717",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-10717-1565975500.jpg?itok=FYrBR_we",
+        "title" : "Hector Ruiz"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "10241",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/pictures/picture-10241-1506715247.jpg?itok=E_GkDnpC",
+        "title" : "François Rioux"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "6987",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/ccl_photo_mathieu_poirier_0.jpg?itok=xvu_9TOC",
+        "title" : "Catherine Cormier-Larose"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "3944",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/pierre-nepveu.jpg?itok=VeFnlAmC",
+        "title" : "Pierre Nepveu"
+      }
+    },
+    {
+      "node" : {
+        "Nid" : "3053",
+        "image" : "https://www.lesvoixdelapoesie.com/sites/default/files/styles/poet_roulette/public/images/authors/martine-audet-autoportrait.jpg?itok=rlFjyXdj",
+        "title" : "Martine Audet"
+      }
+    }
+  ]
+}
