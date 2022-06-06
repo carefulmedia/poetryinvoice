@@ -137,7 +137,7 @@ web:
                     expires: 2w
 
         # Roulette.
-        '/roulette':
+        '/roulette/':
             allow: true
             expires: 5m
             passthru: '/roulette/index.php'
