@@ -21,6 +21,10 @@ dependencies:
 relationships:
     database: 'db:mysql'
 
+variables:
+    php:
+        memory_limit: "256M"
+
 # The size of the persistent disk of the application (in MB).
 disk: 1024
 
