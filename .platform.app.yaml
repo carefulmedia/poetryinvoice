@@ -140,7 +140,8 @@ web:
         '/roulette':
             allow: true
             expires: 5m
-            root: 'web/roulette'
+            passthru: '/roulette/index.php'
+            root: 'web'
 
 crons:
     # Run Drupal's cron tasks every 19 minutes.
