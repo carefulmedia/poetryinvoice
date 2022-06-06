@@ -1,0 +1,19 @@
+uuid: 2a30b990-5a57-4b4a-ae77-74d5786e4140
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_feedback_from_participatin
+field_name: field_feedback_from_participatin
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

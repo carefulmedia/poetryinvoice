@@ -1,0 +1,33 @@
+uuid: d8cd099b-789a-48d5-9b87-f3cc1cb9d446
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.communication_log.field_comm_log_date
+    - field.field.paragraph.communication_log.field_log
+    - paragraphs.paragraphs_type.communication_log
+  module:
+    - datetime
+    - text
+id: paragraph.communication_log.default
+targetEntityType: paragraph
+bundle: communication_log
+mode: default
+content:
+  field_comm_log_date:
+    type: datetime_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_log:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

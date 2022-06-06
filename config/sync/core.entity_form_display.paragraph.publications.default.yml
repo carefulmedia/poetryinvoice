@@ -1,0 +1,66 @@
+uuid: a992252d-2c2e-4adc-95d9-4428887f9519
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.publications.field_date_publication
+    - field.field.paragraph.publications.field_editorts
+    - field.field.paragraph.publications.field_poem_title
+    - field.field.paragraph.publications.field_publication_type
+    - field.field.paragraph.publications.field_publisher
+    - field.field.paragraph.publications.field_title
+    - paragraphs.paragraphs_type.publications
+id: paragraph.publications.default
+targetEntityType: paragraph
+bundle: publications
+mode: default
+content:
+  field_date_publication:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_editorts:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_poem_title:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_publication_type:
+    type: options_buttons
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_publisher:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

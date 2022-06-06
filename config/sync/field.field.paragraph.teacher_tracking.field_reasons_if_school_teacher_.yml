@@ -1,0 +1,19 @@
+uuid: e2272370-7717-4f5d-95af-a7e647ec7c16
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_reasons_if_school_teacher_
+    - paragraphs.paragraphs_type.teacher_tracking
+id: paragraph.teacher_tracking.field_reasons_if_school_teacher_
+field_name: field_reasons_if_school_teacher_
+entity_type: paragraph
+bundle: teacher_tracking
+label: 'Reasons if school/teacher didn''t compete'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,19 @@
+uuid: 38c8704e-434c-429a-aeb3-94bb345b92a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_feedback_from_participatin
+    - paragraphs.paragraphs_type.teacher_tracking
+id: paragraph.teacher_tracking.field_feedback_from_participatin
+field_name: field_feedback_from_participatin
+entity_type: paragraph
+bundle: teacher_tracking
+label: 'Feedback from participating in PIV'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

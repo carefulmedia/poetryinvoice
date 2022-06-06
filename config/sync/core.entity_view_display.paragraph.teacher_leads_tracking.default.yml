@@ -1,0 +1,26 @@
+uuid: 9abe135f-f378-4a65-baac-a488846d97d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.teacher_leads_tracking.field_contact_me_later_this_year
+    - field.field.paragraph.teacher_leads_tracking.field_contact_me_next_year
+    - field.field.paragraph.teacher_leads_tracking.field_misc_details_about_lead
+    - field.field.paragraph.teacher_leads_tracking.field_reason_not_interested
+    - paragraphs.paragraphs_type.teacher_leads_tracking
+id: paragraph.teacher_leads_tracking.default
+targetEntityType: paragraph
+bundle: teacher_leads_tracking
+mode: default
+content:
+  field_misc_details_about_lead:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_contact_me_later_this_year: true
+  field_contact_me_next_year: true
+  field_reason_not_interested: true

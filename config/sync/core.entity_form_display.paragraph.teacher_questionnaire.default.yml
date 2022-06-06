@@ -23,6 +23,80 @@ targetEntityType: paragraph
 bundle: teacher_questionnaire
 mode: default
 content:
+  field_effect_teacher:
+    type: string_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_expectations_teacher:
+    type: options_buttons
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_feedback_teacher:
+    type: string_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_how_did_you_hear_about_the:
+    type: options_buttons
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_poet_engagement_teacher:
+    type: options_buttons
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_poet_preparation_teacher:
+    type: options_buttons
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_release_teacher:
+    type: options_buttons
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_remarkable_teacher:
+    type: string_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_engaglement_teache:
+    type: options_buttons
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_teacher_incomplete_reason:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_teacher_preparation_teache:
+    type: options_buttons
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_visit_completed_teacher:
     type: boolean_checkbox
     weight: 0
@@ -30,19 +104,18 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_which_grade_s_participated:
+    type: options_buttons
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_work_student_teacher:
+    type: options_buttons
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
-  field_effect_teacher: true
-  field_expectations_teacher: true
-  field_feedback_teacher: true
-  field_how_did_you_hear_about_the: true
-  field_poet_engagement_teacher: true
-  field_poet_preparation_teacher: true
-  field_release_teacher: true
-  field_remarkable_teacher: true
-  field_student_engaglement_teache: true
-  field_teacher_incomplete_reason: true
-  field_teacher_preparation_teache: true
-  field_which_grade_s_participated: true
-  field_work_student_teacher: true
   status: true

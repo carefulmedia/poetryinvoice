@@ -1,0 +1,32 @@
+uuid: 7501edca-ed31-49fa-b85b-e478d5084a8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.types_of_support_requested.field_additonal_comments
+    - field.field.paragraph.types_of_support_requested.field_support_types
+    - paragraphs.paragraphs_type.types_of_support_requested
+  module:
+    - text
+id: paragraph.types_of_support_requested.default
+targetEntityType: paragraph
+bundle: types_of_support_requested
+mode: default
+content:
+  field_additonal_comments:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_support_types:
+    type: options_buttons
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,125 @@
+uuid: 0e4e07a8-67e8-49f2-bc36-d02ffb81c4ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.this_teacher_signed_up_for.field_ambassador_involvement_ide
+    - field.field.paragraph.this_teacher_signed_up_for.field_en_info_pack_sent
+    - field.field.paragraph.this_teacher_signed_up_for.field_en_posters_sent
+    - field.field.paragraph.this_teacher_signed_up_for.field_feedback_from_participatin
+    - field.field.paragraph.this_teacher_signed_up_for.field_fr_info_pack_sent
+    - field.field.paragraph.this_teacher_signed_up_for.field_fr_posters_sent
+    - field.field.paragraph.this_teacher_signed_up_for.field_is_this_teacher_an_ambassa
+    - field.field.paragraph.this_teacher_signed_up_for.field_keener
+    - field.field.paragraph.this_teacher_signed_up_for.field_lead_teacher
+    - field.field.paragraph.this_teacher_signed_up_for.field_not_competing_this_year
+    - field.field.paragraph.this_teacher_signed_up_for.field_reasons_if_school_teacher_
+    - field.field.paragraph.this_teacher_signed_up_for.field_send_additional_en_posters
+    - field.field.paragraph.this_teacher_signed_up_for.field_send_additional_fr_posters
+    - field.field.paragraph.this_teacher_signed_up_for.field_send_both_fr_and_en_info_p
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+  module:
+    - datetime
+id: paragraph.this_teacher_signed_up_for.default
+targetEntityType: paragraph
+bundle: this_teacher_signed_up_for
+mode: default
+content:
+  field_ambassador_involvement_ide:
+    type: string_textarea
+    weight: 9
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_en_info_pack_sent:
+    type: datetime_default
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_en_posters_sent:
+    type: datetime_default
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_feedback_from_participatin:
+    type: string_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_fr_info_pack_sent:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_fr_posters_sent:
+    type: datetime_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_is_this_teacher_an_ambassa:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_keener:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_lead_teacher:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_not_competing_this_year:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_reasons_if_school_teacher_:
+    type: string_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_send_additional_en_posters:
+    type: options_buttons
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_send_additional_fr_posters:
+    type: options_buttons
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_send_both_fr_and_en_info_p:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

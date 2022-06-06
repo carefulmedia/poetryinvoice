@@ -1,0 +1,52 @@
+uuid: 5de5e3e8-8b08-4b92-88bc-de38a91f926a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.this_teacher_signed_up_for.field_ambassador_involvement_ide
+    - field.field.paragraph.this_teacher_signed_up_for.field_en_info_pack_sent
+    - field.field.paragraph.this_teacher_signed_up_for.field_en_posters_sent
+    - field.field.paragraph.this_teacher_signed_up_for.field_feedback_from_participatin
+    - field.field.paragraph.this_teacher_signed_up_for.field_fr_info_pack_sent
+    - field.field.paragraph.this_teacher_signed_up_for.field_fr_posters_sent
+    - field.field.paragraph.this_teacher_signed_up_for.field_is_this_teacher_an_ambassa
+    - field.field.paragraph.this_teacher_signed_up_for.field_keener
+    - field.field.paragraph.this_teacher_signed_up_for.field_lead_teacher
+    - field.field.paragraph.this_teacher_signed_up_for.field_not_competing_this_year
+    - field.field.paragraph.this_teacher_signed_up_for.field_reasons_if_school_teacher_
+    - field.field.paragraph.this_teacher_signed_up_for.field_send_additional_en_posters
+    - field.field.paragraph.this_teacher_signed_up_for.field_send_additional_fr_posters
+    - field.field.paragraph.this_teacher_signed_up_for.field_send_both_fr_and_en_info_p
+    - paragraphs.paragraphs_type.this_teacher_signed_up_for
+id: paragraph.this_teacher_signed_up_for.default
+targetEntityType: paragraph
+bundle: this_teacher_signed_up_for
+mode: default
+content:
+  field_feedback_from_participatin:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_reasons_if_school_teacher_:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_ambassador_involvement_ide: true
+  field_en_info_pack_sent: true
+  field_en_posters_sent: true
+  field_fr_info_pack_sent: true
+  field_fr_posters_sent: true
+  field_is_this_teacher_an_ambassa: true
+  field_keener: true
+  field_lead_teacher: true
+  field_not_competing_this_year: true
+  field_send_additional_en_posters: true
+  field_send_additional_fr_posters: true
+  field_send_both_fr_and_en_info_p: true

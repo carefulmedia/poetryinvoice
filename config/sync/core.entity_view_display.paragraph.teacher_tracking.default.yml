@@ -1,0 +1,60 @@
+uuid: 85466f06-6479-4c56-8895-284d6593f09e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.teacher_tracking.field_ambassador_involvement_ide
+    - field.field.paragraph.teacher_tracking.field_date_of_school_competition
+    - field.field.paragraph.teacher_tracking.field_en_info_pack_sent
+    - field.field.paragraph.teacher_tracking.field_en_posters_sent
+    - field.field.paragraph.teacher_tracking.field_feedback_from_participatin
+    - field.field.paragraph.teacher_tracking.field_fr_info_pack_sent
+    - field.field.paragraph.teacher_tracking.field_fr_posters_sent
+    - field.field.paragraph.teacher_tracking.field_is_this_teacher_an_ambassa
+    - field.field.paragraph.teacher_tracking.field_keener
+    - field.field.paragraph.teacher_tracking.field_lead_teacher
+    - field.field.paragraph.teacher_tracking.field_not_competing_this_year
+    - field.field.paragraph.teacher_tracking.field_reasons_if_school_teacher_
+    - field.field.paragraph.teacher_tracking.field_results_of_school_competit
+    - field.field.paragraph.teacher_tracking.field_school_competition_comment
+    - field.field.paragraph.teacher_tracking.field_send_additional_en_posters
+    - field.field.paragraph.teacher_tracking.field_send_additional_fr_posters
+    - field.field.paragraph.teacher_tracking.field_send_both_fr_and_en_info_p
+    - field.field.paragraph.teacher_tracking.field_types_of_support_requested
+    - paragraphs.paragraphs_type.teacher_tracking
+id: paragraph.teacher_tracking.default
+targetEntityType: paragraph
+bundle: teacher_tracking
+mode: default
+content:
+  field_feedback_from_participatin:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_reasons_if_school_teacher_:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  field_ambassador_involvement_ide: true
+  field_date_of_school_competition: true
+  field_en_info_pack_sent: true
+  field_en_posters_sent: true
+  field_fr_info_pack_sent: true
+  field_fr_posters_sent: true
+  field_is_this_teacher_an_ambassa: true
+  field_keener: true
+  field_lead_teacher: true
+  field_not_competing_this_year: true
+  field_results_of_school_competit: true
+  field_school_competition_comment: true
+  field_send_additional_en_posters: true
+  field_send_additional_fr_posters: true
+  field_send_both_fr_and_en_info_p: true
+  field_types_of_support_requested: true

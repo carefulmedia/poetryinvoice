@@ -1,0 +1,32 @@
+uuid: 53d8bba4-b2ff-40b2-8d23-6e6c37400cb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.poet_laureate.field_city
+    - field.field.paragraph.poet_laureate.field_dates
+    - paragraphs.paragraphs_type.poet_laureate
+  module:
+    - datetime
+id: paragraph.poet_laureate.default
+targetEntityType: paragraph
+bundle: poet_laureate
+mode: default
+content:
+  field_city:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_dates:
+    type: datetime_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

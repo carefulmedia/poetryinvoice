@@ -1,0 +1,26 @@
+uuid: dbc0d25e-2658-4783-beb3-5e6b085a7196
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.lead_teacher_has_yet_to_si.field_contact_me_later_this_year
+    - field.field.paragraph.lead_teacher_has_yet_to_si.field_contact_me_next_year
+    - field.field.paragraph.lead_teacher_has_yet_to_si.field_misc_details_about_lead
+    - field.field.paragraph.lead_teacher_has_yet_to_si.field_reason_not_interested
+    - paragraphs.paragraphs_type.lead_teacher_has_yet_to_si
+id: paragraph.lead_teacher_has_yet_to_si.default
+targetEntityType: paragraph
+bundle: lead_teacher_has_yet_to_si
+mode: default
+content:
+  field_misc_details_about_lead:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_contact_me_later_this_year: true
+  field_contact_me_next_year: true
+  field_reason_not_interested: true

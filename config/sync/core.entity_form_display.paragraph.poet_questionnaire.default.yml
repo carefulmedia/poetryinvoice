@@ -23,6 +23,87 @@ targetEntityType: paragraph
 bundle: poet_questionnaire
 mode: default
 content:
+  field_expectations_poet:
+    type: options_buttons
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_other_focus:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_poet_feedback:
+    type: string_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_poet_focus:
+    type: options_buttons
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_poet_incomplete_reason:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_poet_preparation_poet:
+    type: options_buttons
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_release_teacher:
+    type: options_buttons
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_remarkable_teacher:
+    type: string_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_student_engagement_poet:
+    type: options_buttons
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_teacher_involvement_poet:
+    type: options_buttons
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_teacher_preparation_poet:
+    type: options_buttons
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_teacher_present:
+    type: boolean_checkbox
+    weight: 10
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_visit_completed_poet:
     type: boolean_checkbox
     weight: 0
@@ -30,19 +111,12 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_work_student_poet:
+    type: options_buttons
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
 hidden:
   created: true
-  field_expectations_poet: true
-  field_other_focus: true
-  field_poet_feedback: true
-  field_poet_focus: true
-  field_poet_incomplete_reason: true
-  field_poet_preparation_poet: true
-  field_release_teacher: true
-  field_remarkable_teacher: true
-  field_student_engagement_poet: true
-  field_teacher_involvement_poet: true
-  field_teacher_preparation_poet: true
-  field_teacher_present: true
-  field_work_student_poet: true
   status: true
