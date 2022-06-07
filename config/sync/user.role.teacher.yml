@@ -10,6 +10,7 @@ dependencies:
   module:
     - comment
     - contact
+    - fivestar
     - media
     - node
     - piv_contest_competition
