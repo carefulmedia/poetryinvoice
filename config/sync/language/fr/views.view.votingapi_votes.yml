@@ -66,12 +66,8 @@ display:
           separator: ', '
         timestamp:
           separator: ', '
-      menu:
-        title: Votes
   node_page:
     display_options:
-      menu:
-        title: Votes
       arguments:
         entity_id:
           exception:
