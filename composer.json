@@ -113,5 +113,12 @@
                 "      composer remove drupal/core-project-message"
             ]
         }
+    },
+    "scripts": {
+        "run-migrations": [
+            "drush pmu pathauto -y",
+            "drush mim --group=migrate_drupal_7",
+            "drush cim -y"
+        ]
     }
 }
