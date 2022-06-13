@@ -10,7 +10,6 @@ dependencies:
   module:
     - comment
     - contact
-    - fivestar
     - media
     - node
     - piv_contest_competition
@@ -127,7 +126,6 @@ permissions:
   - 'edit piv_release_form'
   - 'manage own competition entries'
   - 'post comments'
-  - 'rate content'
   - 'search bulletin_board content'
   - 'search forum content'
   - 'skip comment approval'

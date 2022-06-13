@@ -20,7 +20,6 @@ dependencies:
     - field.field.node.lesson_plan.field_paid_
     - field.field.node.lesson_plan.field_periods
     - field.field.node.lesson_plan.field_poets_plural_user
-    - field.field.node.lesson_plan.field_rating
     - field.field.node.lesson_plan.field_rwt
     - field.field.node.lesson_plan.field_suggest_a_new_folder_to_fi
     - field.field.node.lesson_plan.field_variations_for_older_stude
@@ -30,7 +29,6 @@ dependencies:
   module:
     - comment
     - file
-    - fivestar
     - options
     - text
     - user
@@ -97,16 +95,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 22
-    region: content
-  field_rating:
-    type: fivestar_stars
-    label: above
-    settings:
-      text_format: average
-      display_format: average
-      fivestar_widget: basic
-    third_party_settings: {  }
-    weight: 101
     region: content
   field_variations_for_older_stude:
     type: text_default
