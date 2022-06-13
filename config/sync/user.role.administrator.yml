@@ -27,7 +27,9 @@ dependencies:
     - comment
     - contact
     - contextual
+    - field_permissions
     - filter
+    - forum
     - image
     - ip2country
     - language
@@ -35,11 +37,17 @@ dependencies:
     - node
     - path
     - pathauto
+    - piv_contest_competition
+    - piv_contest_competition_entry
+    - piv_contest_judging_session
+    - piv_poem_password
     - search
     - shortcut
     - system
+    - tablesorter
     - taxonomy
     - views_ui
+    - votingapi
 _core:
   default_config_hash: Om6FEO7vZZMkPIbVvfxtdkWerQ2PvQM4sWUd6Q3ZnfI
 id: administrator
@@ -54,8 +62,6 @@ permissions:
   - 'access Competition administrator profiles'
   - 'access Content creator profiles'
   - 'access Judge profiles'
-  - 'access to all judge for accuracy pages'
-  - 'access to all judge session pages'
   - 'access Lesson Plan Creator profiles'
   - 'access Non-Canadian educator profiles'
   - 'access PDF version'
@@ -97,6 +103,8 @@ permissions:
   - 'access site-wide contact form'
   - 'access statistics'
   - 'access tablesorter content'
+  - 'access to all judge for accuracy pages'
+  - 'access to all judge session pages'
   - 'access user contact forms'
   - 'access user profiles'
   - admin_classes
@@ -498,6 +506,7 @@ permissions:
   - 'edit any video content'
   - 'edit any writing_prompt content'
   - 'edit body'
+  - 'edit competition entry'
   - 'edit faq'
   - 'edit field_2016_rs'
   - 'edit field_about_me'
@@ -685,7 +694,6 @@ permissions:
   - 'edit field_writing_prompt'
   - 'edit field_years_in_competition'
   - 'edit field_youtube_recitation_url'
-  - 'edit competition entry'
   - 'edit meta tags'
   - 'edit own article content'
   - 'edit own body'

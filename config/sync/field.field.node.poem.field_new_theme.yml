@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_new_theme
     - node.type.poem
-    - taxonomy.vocabulary.poem_tags
 id: node.poem.field_new_theme
 field_name: field_new_theme
 entity_type: node
@@ -17,10 +16,11 @@ translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:taxonomy_term'
+  handler: views
   handler_settings:
-    target_bundles:
-      poem_tags: poem_tags
-    sort:
-      field: _none
+    view:
+      view_name: language_restricted_taxonomy_terms
+      display_name: entity_reference_1
+      arguments:
+        - poem_tags
 field_type: entity_reference

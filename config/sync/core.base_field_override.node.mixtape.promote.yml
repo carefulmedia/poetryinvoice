@@ -1,0 +1,22 @@
+uuid: 586a7cdc-dd0c-443f-8985-dae83b71a627
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.mixtape
+id: node.mixtape.promote
+field_name: promote
+entity_type: node
+bundle: mixtape
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

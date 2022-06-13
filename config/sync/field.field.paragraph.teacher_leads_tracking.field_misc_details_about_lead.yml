@@ -12,7 +12,7 @@ bundle: teacher_leads_tracking
 label: 'Misc details about lead'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

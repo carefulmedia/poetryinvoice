@@ -1,0 +1,20 @@
+uuid: 8733ebda-1796-4e32-a522-9609b480b9dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.mixtape
+  module:
+    - path
+id: node.mixtape.path
+field_name: path
+entity_type: node
+bundle: mixtape
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

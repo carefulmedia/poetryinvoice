@@ -12,7 +12,7 @@ bundle: this_teacher_signed_up_for
 label: 'Reasons if school/teacher didn''t compete'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
