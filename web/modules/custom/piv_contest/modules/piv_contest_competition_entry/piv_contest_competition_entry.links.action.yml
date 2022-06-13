@@ -4,8 +4,9 @@ competition_entry.type_add:
   appears_on:
     - entity.competition_entry_type.collection
 
-competition_entry.add_page:
-  route_name: entity.competition_entry.add_page
-  title: 'Add competition entry'
-  appears_on:
-    - entity.competition_entry.collection
+# Competition entries need to be added from the contest page.
+#competition_entry.add_page:
+#  route_name: entity.competition_entry.add_page
+#  title: 'Add competition entry'
+#  appears_on:
+#    - entity.competition_entry.collection
