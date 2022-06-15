@@ -34,7 +34,7 @@ mounts:
     '/web/sites/default/files':
         source: local
         source_path: 'files'
-    '/roulette/cached':
+    '/web/roulette/cached':
         source: local
         source_path: 'cached'
     # Drupal gets its own dedicated tmp directory. The settings.platformsh.php
