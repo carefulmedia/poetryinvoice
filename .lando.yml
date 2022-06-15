@@ -5,6 +5,10 @@ config:
   webroot: web
   xdebug: true
 
+proxy:
+  appserver:
+    - piv9.lndo.site
+    - lesvoixdelapoesie.lndo.site
 services:
   pma:
     type: phpmyadmin

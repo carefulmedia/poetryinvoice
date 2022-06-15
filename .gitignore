@@ -41,3 +41,6 @@ development.services.yml
 
 dump
 node_modules/
+
+# Roulette
+/web/roulette/cached/*.json
