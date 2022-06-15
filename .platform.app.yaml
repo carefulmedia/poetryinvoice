@@ -34,9 +34,9 @@ mounts:
     '/web/sites/default/files':
         source: local
         source_path: 'files'
-    '/web/roulette/cached':
+    '/web/roulette/cached/data':
         source: local
-        source_path: 'cached'
+        source_path: 'data'
     # Drupal gets its own dedicated tmp directory. The settings.platformsh.php
     # file will automatically configure Drupal to use this directory.
     '/tmp':
@@ -145,10 +145,6 @@ web:
             expires: 5m
             passthru: '/roulette/index.php'
             root: 'web/roulette'
-        '/roulette/cached':
-            allow: true
-            expires: 5m
-            root: 'web/roulette/cached'
 
 crons:
     # Run Drupal's cron tasks every 19 minutes.

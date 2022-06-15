@@ -2,7 +2,7 @@
     // copy file content into a string var
 	$lang = $_GET['lang'];
 	$c = $_GET['c'];
-    $json_file = file_get_contents('https://www.poetryinvoice.com/roulette/cached/cached_poets_'.$lang. '_' . $c .'.json');
+    $json_file = file_get_contents(__DIR__ . '/data/cached_poets_'.$lang. '_' . $c .'.json');
     // convert the string to a json object
     $jfo = json_decode($json_file);
 
