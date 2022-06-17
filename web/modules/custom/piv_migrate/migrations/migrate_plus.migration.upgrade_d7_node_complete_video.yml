@@ -150,10 +150,7 @@ process:
         title: title
         width: width
         height: height
-  field_yt_video:
-    -
-      plugin: get
-      source: field_yt_video
+  field_yt_video: field_yt_video/0/input
   field_poets_plural_user:
     -
       plugin: sub_process
