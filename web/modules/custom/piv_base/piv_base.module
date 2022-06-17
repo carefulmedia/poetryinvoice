@@ -72,15 +72,8 @@ function piv_base_form_alter(&$form, FormStateInterface $form_state, $form_id) {
  */
 function piv_base_node_presave(EntityInterface $entity) {
   if ($entity->bundle() == 'pal_pir_school_visit') {
-    // A user without a school should not be able to create school visits.
-    // @see piv_base_entity_create_access().
-    $user = $entity->uid->entity;
-    $replacements_service = \Drupal::service('piv_mail.replacements_service');
-    $replacements_service
-      ->addSource('visit_node', $entity)
-      ->addSource('school', $user->field_school->entity);
-    $title = $replacements_service->replace("[visit_language] school visit for [school_name] in [school_province]");
-    $entity->title = $title;
+    // Title is the node created time or current time in case of new node.
+    $entity->title = $entity->created->value ?? \Drupal::time()->getCurrentTime();
   }
 }
 
