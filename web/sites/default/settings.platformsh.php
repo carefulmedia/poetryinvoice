@@ -25,16 +25,24 @@ if ($platformsh->hasRelationship('database')) {
 // Enable verbose error messages on development branches, but not on the production branch.
 // You may add more debug-centric settings here if desired to have them automatically enable
 // on development but not production.
+
 if (isset($platformsh->branch)) {
   // Production type environment.
   if ($platformsh->branch == 'master' || $platformsh->onDedicated()) {
     $config['system.logging']['error_level'] = 'hide';
     // For now, production should also re-route emails.
     $config['reroute_email.settings']['enable'] = TRUE;
+    // Platform production uses domain for language negotiation, default domains
+    // are set for lando.
+    $config['language.negotiation']['url']['source'] = 'domain';
+    $config['language.negotiation']['url']['domains']['en'] = 'poetryinvoice.ca';
+    $config['language.negotiation']['url']['domains']['fr'] = 'lesvoixdelapoesie.ca';
   } // Development type environment.
   else {
     $config['system.logging']['error_level'] = 'verbose';
     $config['reroute_email.settings']['enable'] = TRUE;
+    // On platform dev environments, use the path prefix.
+    $config['language.negotiation']['url']['source'] = 'path_prefix';
   }
 }
 
