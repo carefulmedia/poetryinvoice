@@ -31,6 +31,7 @@
         "drupal/fivestar": "^1.0@alpha",
         "drupal/inline_entity_form": "^1.0@RC",
         "drupal/ip2country": "^1.10",
+        "drupal/mail_login": "^2.0",
         "drupal/mailsystem": "^4.3",
         "drupal/message": "^1.2",
         "drupal/migrate_plus": "^5",
