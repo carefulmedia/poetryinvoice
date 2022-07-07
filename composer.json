@@ -21,6 +21,7 @@
         "drupal/address": "^1.9",
         "drupal/admin_toolbar": "^3.0",
         "drupal/adminimal_theme": "^1.6",
+        "drupal/at_tool": "^2.0",
         "drupal/better_exposed_filters": "^5.1",
         "drupal/bootstrap": "^3.25",
         "drupal/bootstrap5": "^1.1",

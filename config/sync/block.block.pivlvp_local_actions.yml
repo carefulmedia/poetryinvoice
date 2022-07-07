@@ -1,0 +1,20 @@
+uuid: 9f65106a-4415-425c-9651-12b7b19daa27
+langcode: en
+status: true
+dependencies:
+  theme:
+    - pivlvp
+_core:
+  default_config_hash: HIhApH6-s0mnw4HB36o0T97BhCUiMs18TK858_HoTn0
+id: pivlvp_local_actions
+theme: pivlvp
+region: content
+weight: 3
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

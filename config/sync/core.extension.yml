@@ -4,6 +4,8 @@ module:
   address: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
+  at_theme_generator: 0
+  at_tool: 0
   automated_cron: 0
   better_exposed_filters: 0
   big_pipe: 0
@@ -130,4 +132,5 @@ theme:
   adminimal_theme: 0
   bootstrap_barrio: 0
   bootstrap_barrio_subtheme: 0
+  pivlvp: 0
 profile: minimal
