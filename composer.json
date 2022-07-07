@@ -59,6 +59,7 @@
         "drupal/s3fs": "^3.0@beta",
         "drupal/tablesorter": "^2.0@RC",
         "drupal/tb_megamenu": "^1.7",
+        "drupal/twbstools": "2.1.x-dev",
         "drupal/views_bulk_edit": "^2.6",
         "drupal/views_bulk_operations": "^4.1",
         "drupal/webform": "^6.1",
