@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "245dde8f23855e50d7da216af225e7f3",
+    "content-hash": "ba3acf63b018bb1a5f36ba66d08ed397",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2380,54 +2380,6 @@
             }
         },
         {
-            "name": "drupal/at_tool",
-            "version": "2.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/at_tool.git",
-                "reference": "2.0.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/at_tool-2.0.3.zip",
-                "reference": "2.0.3",
-                "shasum": "a7e15fe72e8a165a60865a15cca362e3b4e2fdc5"
-            },
-            "require": {
-                "drupal/adaptivetheme": "^5.0",
-                "drupal/core": "^9.3 || ^10"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "2.0.3",
-                    "datestamp": "1643915557",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0+"
-            ],
-            "authors": [
-                {
-                    "name": "Matt",
-                    "homepage": "http://adaptivethemes.com",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Tools to support Adaptivetheme 8.x and sub-themes, includes the AT Theme Generator.",
-            "homepage": "https://www.drupal.org/project/at_tool",
-            "support": {
-                "source": "http://git.drupal.org/project/at_tool.git",
-                "issues": "https://www.drupal.org/project/issues/at_tool",
-                "irc": "irc://irc.freenode.org/drupal-contribute"
-            }
-        },
-        {
             "name": "drupal/better_exposed_filters",
             "version": "5.1.0",
             "source": {
@@ -2494,115 +2446,6 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/better_exposed_filters",
                 "issues": "https://www.drupal.org/project/issues/better_exposed_filters"
-            }
-        },
-        {
-            "name": "drupal/bootstrap",
-            "version": "3.25.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/bootstrap.git",
-                "reference": "8.x-3.25"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap-8.x-3.25.zip",
-                "reference": "8.x-3.25",
-                "shasum": "1334aad091973f53ddc4d7b426ee85e7428a3684"
-            },
-            "require": {
-                "drupal/core": "^9.3 || ^10"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-3.25",
-                    "datestamp": "1654873483",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Mark Carver (markcarver)",
-                    "homepage": "https://www.drupal.org/u/markcarver",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "John McCormick (neardark)",
-                    "homepage": "https://www.drupal.org/u/neardark",
-                    "role": "Co-maintainer"
-                },
-                {
-                    "name": "Fabiano Sant'Ana (wundo)",
-                    "homepage": "https://www.drupal.org/u/wundo",
-                    "role": "Co-maintainer"
-                },
-                {
-                    "name": "Shelane French (shelane)",
-                    "homepage": "https://www.drupal.org/u/shelane",
-                    "role": "Co-maintainer"
-                }
-            ],
-            "description": "Built to use Bootstrap, a sleek, intuitive, and powerful front-end framework for faster and easier web development.",
-            "homepage": "https://www.drupal.org/project/bootstrap",
-            "support": {
-                "source": "https://git.drupalcode.org/project/bootstrap",
-                "docs": "https://drupal-bootstrap.org",
-                "issues": "https://www.drupal.org/project/issues/bootstrap",
-                "irc": "irc://irc.freenode.org/drupal-bootstrap"
-            }
-        },
-        {
-            "name": "drupal/bootstrap5",
-            "version": "1.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/bootstrap5.git",
-                "reference": "1.1.3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/bootstrap5-1.1.3.zip",
-                "reference": "1.1.3",
-                "shasum": "eb3745cda3ff9ad7f99fbe073b752d899323b31e"
-            },
-            "require": {
-                "drupal/core": "^8.9 || ^9"
-            },
-            "type": "drupal-theme",
-            "extra": {
-                "drupal": {
-                    "version": "1.1.3",
-                    "datestamp": "1641738987",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Vladimir Roudakov (vladimiraus)",
-                    "homepage": "https://www.drupal.org/u/vladimiraus",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Master theme using Bootstrap 5: powerful front-end framework for faster and easier web development.",
-            "homepage": "https://www.drupal.org/project/bootstrap5",
-            "support": {
-                "source": "https://git.drupalcode.org/project/bootstrap5",
-                "issues": "https://www.drupal.org/project/issues/bootstrap5"
             }
         },
         {
@@ -3835,76 +3678,6 @@
             "homepage": "https://www.drupal.org/project/devel_php",
             "support": {
                 "source": "https://git.drupalcode.org/project/devel_php"
-            }
-        },
-        {
-            "name": "drupal/ds",
-            "version": "3.13.0",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/ds.git",
-                "reference": "8.x-3.13"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/ds-8.x-3.13.zip",
-                "reference": "8.x-3.13",
-                "shasum": "86c87f1bf845d26594ae3ce0061d8f311bdce73c"
-            },
-            "require": {
-                "drupal/core": "^8.8 || ^9"
-            },
-            "require-dev": {
-                "drupal/devel": "3.x-dev",
-                "drupal/field_group": "3.x-dev"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "drupal": {
-                    "version": "8.x-3.13",
-                    "datestamp": "1624456614",
-                    "security-coverage": {
-                        "status": "covered",
-                        "message": "Covered by Drupal's security advisory policy"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Bram Goffings",
-                    "homepage": "https://www.drupal.org/user/172527",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Kristof De Jaeger",
-                    "homepage": "http://realize.be/",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "Brecht Ceyssens",
-                    "homepage": "https://www.drupal.org/user/591438",
-                    "role": "Maintainer"
-                },
-                {
-                    "name": "swentel",
-                    "homepage": "https://www.drupal.org/user/107403"
-                }
-            ],
-            "description": "Extend the display options for every entity type.",
-            "homepage": "https://www.drupal.org/project/ds",
-            "keywords": [
-                "drupal",
-                "layout",
-                "php"
-            ],
-            "support": {
-                "source": "http://git.drupal.org/project/ds.git",
-                "issues": "https://www.drupal.org/project/issues/ds",
-                "irc": "irc://irc.freenode.org/drupal-contribute"
             }
         },
         {
@@ -5749,49 +5522,6 @@
             "homepage": "https://www.drupal.org/project/token",
             "support": {
                 "source": "https://git.drupalcode.org/project/token"
-            }
-        },
-        {
-            "name": "drupal/twbstools",
-            "version": "dev-2.1.x",
-            "source": {
-                "type": "git",
-                "url": "https://git.drupalcode.org/project/twbstools.git",
-                "reference": "688a219c8306d5d2143f85aae3f4880fb080ad61"
-            },
-            "require": {
-                "drupal/core": "^9"
-            },
-            "type": "drupal-module",
-            "extra": {
-                "branch-alias": {
-                    "dev-2.1.x": "2.1.x-dev"
-                },
-                "drupal": {
-                    "version": "2.1.x-dev",
-                    "datestamp": "1650994889",
-                    "security-coverage": {
-                        "status": "not-covered",
-                        "message": "Project has not opted into security advisory coverage!"
-                    }
-                }
-            },
-            "notification-url": "https://packages.drupal.org/8/downloads",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Vladimir Roudakov (vladimiraus)",
-                    "homepage": "https://www.drupal.org/u/vladimiraus",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "Companion module for [Bootstrap 5 theme] to provide better content editor and developer experience.",
-            "homepage": "https://www.drupal.org/project/twbstools",
-            "support": {
-                "source": "https://git.drupalcode.org/project/twbstools",
-                "issues": "https://www.drupal.org/project/issues/twbstools"
             }
         },
         {
@@ -8215,33 +7945,6 @@
                 "source": "https://github.com/ralouphie/getallheaders/tree/develop"
             },
             "time": "2019-03-08T08:55:37+00:00"
-        },
-        {
-            "name": "salsadigitalauorg/civictheme",
-            "version": "0.52.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/salsadigitalauorg/civictheme.git",
-                "reference": "e6c4e06669c0d1ff640dce60f28846fd3e7a1925"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/salsadigitalauorg/civictheme/zipball/e6c4e06669c0d1ff640dce60f28846fd3e7a1925",
-                "reference": "e6c4e06669c0d1ff640dce60f28846fd3e7a1925",
-                "shasum": ""
-            },
-            "type": "drupal-theme",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "proprietary"
-            ],
-            "description": "CivicTheme is a Drupal 9 component-based theme.",
-            "homepage": "https://github.com/salsadigitalauorg/civictheme",
-            "support": {
-                "issues": "https://github.com/salsadigitalauorg/civictheme_source/issues",
-                "source": "https://github.com/salsadigitalauorg/civictheme/tree/0.52.0"
-            },
-            "time": "2022-07-05T14:04:10+00:00"
         },
         {
             "name": "sirbrillig/phpcs-variable-analysis",
@@ -11377,7 +11080,6 @@
         "drupal/mimemail": 15,
         "drupal/s3fs": 10,
         "drupal/tablesorter": 5,
-        "drupal/twbstools": 20,
         "drupal/zen": 15
     },
     "prefer-stable": true,

@@ -108,7 +108,6 @@ module:
   token: 0
   toolbar: 0
   tour: 0
-  twbstools: 0
   update: 0
   user: 0
   views_bulk_edit: 0
@@ -131,5 +130,4 @@ theme:
   adminimal_theme: 0
   bootstrap_barrio: 0
   bootstrap_barrio_subtheme: 0
-  pivlvp: 0
 profile: minimal
