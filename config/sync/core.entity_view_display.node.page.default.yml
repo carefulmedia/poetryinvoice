@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.page.created
     - field.field.node.page.body
     - field.field.node.page.comment_node_page
     - field.field.node.page.field_banner_subtitle
@@ -14,8 +15,117 @@ dependencies:
   module:
     - file
     - image
+    - layout_builder
+    - layout_discovery
     - text
     - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          34684631-663c-4f7e-b636-5f1dadde3570:
+            uuid: 34684631-663c-4f7e-b636-5f1dadde3570
+            region: content
+            configuration:
+              id: 'field_block:node:page:field_images_insert'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: ''
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          e7847688-fab7-470e-bf7f-710a842635f5:
+            uuid: e7847688-fab7-470e-bf7f-710a842635f5
+            region: content
+            configuration:
+              id: 'field_block:node:page:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          eca287a1-2256-49b9-8859-dab4b0299608:
+            uuid: eca287a1-2256-49b9-8859-dab4b0299608
+            region: content
+            configuration:
+              id: 'field_block:node:page:field_files'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: file_default
+                label: above
+                settings:
+                  use_description_as_link_text: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          20bf7f85-9f6f-4bc9-bf63-1fb63c47ac60:
+            uuid: 20bf7f85-9f6f-4bc9-bf63-1fb63c47ac60
+            region: content
+            configuration:
+              id: 'extra_field_block:node:page:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 3
+            additional: {  }
+          aa531dbc-1b7a-4125-902d-0e9e0105de3b:
+            uuid: aa531dbc-1b7a-4125-902d-0e9e0105de3b
+            region: content
+            configuration:
+              id: 'field_block:node:page:langcode'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: language
+                label: above
+                settings:
+                  link_to_entity: false
+                  native_language: false
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          d638c4d7-5364-404e-94b5-23487d97d1d5:
+            uuid: d638c4d7-5364-404e-94b5-23487d97d1d5
+            region: content
+            configuration:
+              id: 'field_block:node:page:created'
+              label: 'Authored on'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: timestamp
+                label: above
+                settings:
+                  date_format: medium
+                  custom_date_format: ''
+                  timezone: ''
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+        third_party_settings: {  }
 _core:
   default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
 id: node.page.default
@@ -47,6 +157,15 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  langcode:
+    type: language
+    label: above
+    settings:
+      link_to_entity: false
+      native_language: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
   links:
     settings: {  }
     third_party_settings: {  }
@@ -57,4 +176,3 @@ hidden:
   field_banner_subtitle: true
   field_banner_title: true
   field_tags: true
-  langcode: true

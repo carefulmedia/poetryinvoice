@@ -113,6 +113,44 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_bio_completed_:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_bio_not_by_author_paid_:
+    type: boolean_checkbox
+    weight: 13
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_bio_written_by:
+    type: entity_reference_autocomplete
+    weight: 14
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_cheque_made_to:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_completed:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_micro_interview:
     type: inline_entity_form_complex
     weight: 10
@@ -189,14 +227,9 @@ hidden:
   field_action_item: true
   field_additional_email: true
   field_assigned_to_team_member: true
-  field_bio_completed_: true
-  field_bio_not_by_author_paid_: true
   field_bio_trans: true
-  field_bio_written_by: true
   field_canadian_educator_: true
-  field_cheque_made_to: true
   field_communication_log: true
-  field_completed: true
   field_contest_judging: true
   field_cv: true
   field_dead_lead: true
