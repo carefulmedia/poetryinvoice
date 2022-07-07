@@ -6,8 +6,15 @@ dependencies:
     - field.field.taxonomy_term.forums.forum_container
     - taxonomy.vocabulary.forums
   module:
+    - field_layout
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 _core:
   default_config_hash: Pz0jtV2VqHKzGIFCCdSe_OhjD1JVpfzVwtkKl_-vTcE
 id: taxonomy_term.forums.default
@@ -48,6 +55,11 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   forum_container: true

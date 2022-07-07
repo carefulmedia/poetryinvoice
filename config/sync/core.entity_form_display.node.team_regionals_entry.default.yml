@@ -10,8 +10,15 @@ dependencies:
     - node.type.team_regionals_entry
   module:
     - comment
+    - field_layout
+    - layout_discovery
     - paragraphs
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.team_regionals_entry.default
 targetEntityType: node
 bundle: team_regionals_entry

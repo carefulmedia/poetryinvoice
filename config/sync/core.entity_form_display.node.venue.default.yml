@@ -11,9 +11,16 @@ dependencies:
     - node.type.venue
   module:
     - address
+    - field_layout
     - image
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.venue.default
 targetEntityType: node
 bundle: venue

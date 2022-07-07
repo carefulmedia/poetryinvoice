@@ -8,6 +8,14 @@ dependencies:
     - field.field.paragraph.teacher_leads_tracking.field_misc_details_about_lead
     - field.field.paragraph.teacher_leads_tracking.field_reason_not_interested
     - paragraphs.paragraphs_type.teacher_leads_tracking
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.teacher_leads_tracking.default
 targetEntityType: paragraph
 bundle: teacher_leads_tracking

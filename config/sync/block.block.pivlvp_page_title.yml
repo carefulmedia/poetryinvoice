@@ -1,0 +1,27 @@
+uuid: dbdaeb32-dd38-42c1-89c7-07781fe40904
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pivlvp
+_core:
+  default_config_hash: OyPFTXx4egKeF3j7zAXJTAVCKvWF-p1guNqNDgcVe0I
+id: pivlvp_page_title
+theme: pivlvp
+region: content
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: "/node/*\r\n/user/*\r\n<front>"

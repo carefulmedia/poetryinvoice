@@ -13,6 +13,8 @@ dependencies:
     - paragraphs.paragraphs_type.competition_stream
   module:
     - field_group
+    - field_layout
+    - layout_discovery
 third_party_settings:
   field_group:
     group_teachers_ui:
@@ -30,6 +32,10 @@ third_party_settings:
         id: ''
         description: ''
         required_fields: true
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.competition_stream.default
 targetEntityType: paragraph
 bundle: competition_stream

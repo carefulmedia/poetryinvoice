@@ -7,7 +7,14 @@ dependencies:
     - field.field.score_template.default.field_score_option_labels
     - piv_contest_score_template.score_template_type.default
   module:
+    - field_layout
+    - layout_discovery
     - paragraphs
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: score_template.default.default
 targetEntityType: score_template
 bundle: default

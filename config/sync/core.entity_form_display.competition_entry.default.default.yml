@@ -17,8 +17,15 @@ dependencies:
     - field.field.competition_entry.default.field_student_stage_name
     - piv_contest_competition_entry.competition_entry_type.default
   module:
+    - field_layout
     - file
+    - layout_discovery
     - piv_contest_competition_entry
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: competition_entry.default.default
 targetEntityType: competition_entry
 bundle: default

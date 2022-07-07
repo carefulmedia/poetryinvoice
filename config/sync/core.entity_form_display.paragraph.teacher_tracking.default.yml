@@ -24,7 +24,14 @@ dependencies:
     - paragraphs.paragraphs_type.teacher_tracking
   module:
     - datetime
+    - field_layout
     - inline_entity_form
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.teacher_tracking.default
 targetEntityType: paragraph
 bundle: teacher_tracking

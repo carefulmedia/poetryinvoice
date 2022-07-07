@@ -1,0 +1,25 @@
+uuid: 1abe97b9-f593-4360-a46c-e57c85b95af5
+langcode: en
+status: false
+dependencies:
+  config:
+    - system.menu.menu-english-nav
+  module:
+    - system
+  theme:
+    - pivlvp
+id: englishnav
+theme: pivlvp
+region: navbar
+weight: -6
+provider: null
+plugin: 'system_menu_block:menu-english-nav'
+settings:
+  id: 'system_menu_block:menu-english-nav'
+  label: 'English NAV'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility: {  }

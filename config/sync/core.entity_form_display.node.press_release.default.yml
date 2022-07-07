@@ -9,9 +9,16 @@ dependencies:
     - image.style.thumbnail
     - node.type.press_release
   module:
+    - field_layout
     - image
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.press_release.default
 targetEntityType: node
 bundle: press_release

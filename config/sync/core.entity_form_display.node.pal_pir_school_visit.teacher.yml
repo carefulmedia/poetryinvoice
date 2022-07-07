@@ -38,6 +38,13 @@ dependencies:
   module:
     - chosen_field
     - datetime
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.pal_pir_school_visit.teacher
 targetEntityType: node
 bundle: pal_pir_school_visit

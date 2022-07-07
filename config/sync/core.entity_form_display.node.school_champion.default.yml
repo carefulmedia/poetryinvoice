@@ -11,9 +11,16 @@ dependencies:
     - image.style.thumbnail
     - node.type.school_champion
   module:
+    - field_layout
     - image
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.school_champion.default
 targetEntityType: node
 bundle: school_champion

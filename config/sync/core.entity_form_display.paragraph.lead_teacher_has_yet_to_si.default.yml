@@ -8,6 +8,14 @@ dependencies:
     - field.field.paragraph.lead_teacher_has_yet_to_si.field_misc_details_about_lead
     - field.field.paragraph.lead_teacher_has_yet_to_si.field_reason_not_interested
     - paragraphs.paragraphs_type.lead_teacher_has_yet_to_si
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.lead_teacher_has_yet_to_si.default
 targetEntityType: paragraph
 bundle: lead_teacher_has_yet_to_si

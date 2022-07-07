@@ -9,8 +9,15 @@ dependencies:
     - field.field.node.bulletin_board.field_other_description
     - node.type.bulletin_board
   module:
+    - field_layout
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.bulletin_board.default
 targetEntityType: node
 bundle: bulletin_board

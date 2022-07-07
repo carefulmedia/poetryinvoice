@@ -7,8 +7,15 @@ dependencies:
     - field.field.node.judge_page.comment_node_judge_page
     - node.type.judge_page
   module:
+    - field_layout
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.judge_page.default
 targetEntityType: node
 bundle: judge_page

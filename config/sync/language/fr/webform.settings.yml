@@ -1,0 +1,13 @@
+settings:
+  default_submit_button_label: Soumettre
+  default_reset_button_label: Reset
+  default_delete_button_label: Supprimer
+  default_preview_next_button_label: Preview
+  default_preview_label: Preview
+  dialog_options:
+    narrow:
+      title: Étroit
+    wide:
+      title: Large
+element:
+  default_more_title: More

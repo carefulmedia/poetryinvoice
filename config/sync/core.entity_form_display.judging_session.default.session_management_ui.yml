@@ -15,7 +15,14 @@ dependencies:
     - field.field.judging_session.default.field_stream
     - piv_contest_judging_session.judging_session_type.default
   module:
+    - field_layout
+    - layout_discovery
     - piv_contest_judging_session
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: judging_session.default.session_management_ui
 targetEntityType: judging_session
 bundle: default

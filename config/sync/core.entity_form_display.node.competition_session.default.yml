@@ -15,7 +15,14 @@ dependencies:
     - field.field.node.competition_session.piv_session_year
     - node.type.competition_session
   module:
+    - field_layout
+    - layout_discovery
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.competition_session.default
 targetEntityType: node
 bundle: competition_session

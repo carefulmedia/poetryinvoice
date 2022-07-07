@@ -11,9 +11,16 @@ dependencies:
     - image.style.thumbnail
     - node.type.writing_prompt
   module:
+    - field_layout
     - image
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.writing_prompt.default
 targetEntityType: node
 bundle: writing_prompt

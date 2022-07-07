@@ -8,9 +8,16 @@ dependencies:
     - field.field.node.power_points.field_pp_file
     - node.type.power_points
   module:
+    - field_layout
     - file
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.power_points.default
 targetEntityType: node
 bundle: power_points

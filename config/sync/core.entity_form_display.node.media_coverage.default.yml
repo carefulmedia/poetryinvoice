@@ -11,9 +11,16 @@ dependencies:
     - image.style.thumbnail
     - node.type.media_coverage
   module:
+    - field_layout
     - image
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.media_coverage.default
 targetEntityType: node
 bundle: media_coverage

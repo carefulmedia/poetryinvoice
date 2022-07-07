@@ -29,9 +29,16 @@ dependencies:
     - node.type.school
   module:
     - address
+    - field_layout
     - image
     - inline_entity_form
+    - layout_discovery
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.school.default
 targetEntityType: node
 bundle: school

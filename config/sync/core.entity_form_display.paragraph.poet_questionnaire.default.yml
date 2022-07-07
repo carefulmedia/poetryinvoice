@@ -18,6 +18,14 @@ dependencies:
     - field.field.paragraph.poet_questionnaire.field_visit_completed_poet
     - field.field.paragraph.poet_questionnaire.field_work_student_poet
     - paragraphs.paragraphs_type.poet_questionnaire
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.poet_questionnaire.default
 targetEntityType: paragraph
 bundle: poet_questionnaire

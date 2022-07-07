@@ -6,6 +6,14 @@ dependencies:
     - field.field.paragraph.score_template_criteria.field_criterion
     - field.field.paragraph.score_template_criteria.field_score_options
     - paragraphs.paragraphs_type.score_template_criteria
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.score_template_criteria.default
 targetEntityType: paragraph
 bundle: score_template_criteria

@@ -27,6 +27,8 @@ dependencies:
     - address
     - datetime
     - field_group
+    - field_layout
+    - layout_discovery
     - paragraphs
     - text
 third_party_settings:
@@ -114,6 +116,10 @@ third_party_settings:
         formatter: closed
         description: ''
         required_fields: true
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: competition.default.default
 targetEntityType: competition
 bundle: default

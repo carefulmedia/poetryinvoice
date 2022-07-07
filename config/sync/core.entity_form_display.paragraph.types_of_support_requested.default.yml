@@ -7,7 +7,14 @@ dependencies:
     - field.field.paragraph.types_of_support_requested.field_support_types
     - paragraphs.paragraphs_type.types_of_support_requested
   module:
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.types_of_support_requested.default
 targetEntityType: paragraph
 bundle: types_of_support_requested

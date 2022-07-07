@@ -36,9 +36,16 @@ dependencies:
     - node.type.pal_pir_school_visit
   module:
     - datetime
+    - field_layout
     - inline_entity_form
+    - layout_discovery
     - paragraphs
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.pal_pir_school_visit.default
 targetEntityType: node
 bundle: pal_pir_school_visit

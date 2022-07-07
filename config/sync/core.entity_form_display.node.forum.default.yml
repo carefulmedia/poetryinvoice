@@ -8,8 +8,15 @@ dependencies:
     - field.field.node.forum.taxonomy_forums
     - node.type.forum
   module:
+    - field_layout
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.forum.default
 targetEntityType: node
 bundle: forum

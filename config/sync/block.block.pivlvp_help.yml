@@ -1,0 +1,22 @@
+uuid: 98b0c14f-2cc9-4367-a038-9c57d60bc457
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - pivlvp
+_core:
+  default_config_hash: CZcBU5goNrBDU24v-EbBriLjTKeSH1gtu8qhiuFu83Q
+id: pivlvp_help
+theme: pivlvp
+region: content
+weight: 2
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

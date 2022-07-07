@@ -10,7 +10,14 @@ dependencies:
     - field.field.paragraph.micro_interview.field_q5
     - paragraphs.paragraphs_type.micro_interview
   module:
+    - field_layout
+    - layout_discovery
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.micro_interview.default
 targetEntityType: paragraph
 bundle: micro_interview

@@ -8,6 +8,14 @@ dependencies:
     - field.field.paragraph.judges.field_judge
     - field.field.paragraph.judges.field_paid_
     - paragraphs.paragraphs_type.judges
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.judges.default
 targetEntityType: paragraph
 bundle: judges

@@ -18,6 +18,14 @@ dependencies:
     - field.field.paragraph.teacher_questionnaire.field_which_grade_s_participated
     - field.field.paragraph.teacher_questionnaire.field_work_student_teacher
     - paragraphs.paragraphs_type.teacher_questionnaire
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.teacher_questionnaire.default
 targetEntityType: paragraph
 bundle: teacher_questionnaire

@@ -10,9 +10,16 @@ dependencies:
     - image.style.thumbnail
     - node.type.slideshow_image
   module:
+    - field_layout
     - image
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.slideshow_image.default
 targetEntityType: node
 bundle: slideshow_image

@@ -11,8 +11,15 @@ dependencies:
     - image.style.thumbnail
     - node.type.fca
   module:
+    - field_layout
     - image
+    - layout_discovery
     - path
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.fca.default
 targetEntityType: node
 bundle: fca

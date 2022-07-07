@@ -16,7 +16,14 @@ dependencies:
     - field.field.recitation.default.field_student_stage_name
     - piv_contest_recitation.recitation_type.default
   module:
+    - field_layout
+    - layout_discovery
     - piv_contest_competition_entry
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: recitation.default.on_site_individual
 targetEntityType: recitation
 bundle: default

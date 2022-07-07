@@ -12,7 +12,14 @@ dependencies:
     - field.field.paragraph.tr_student.piv_student_mail
     - paragraphs.paragraphs_type.tr_student
   module:
+    - field_layout
     - file
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.tr_student.default
 targetEntityType: paragraph
 bundle: tr_student

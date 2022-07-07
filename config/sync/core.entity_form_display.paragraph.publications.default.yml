@@ -10,6 +10,14 @@ dependencies:
     - field.field.paragraph.publications.field_publisher
     - field.field.paragraph.publications.field_title
     - paragraphs.paragraphs_type.publications
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: paragraph.publications.default
 targetEntityType: paragraph
 bundle: publications

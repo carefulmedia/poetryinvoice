@@ -15,10 +15,17 @@ dependencies:
     - image.style.thumbnail
     - node.type.mixtape
   module:
+    - field_layout
     - file
     - image
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.mixtape.default
 targetEntityType: node
 bundle: mixtape

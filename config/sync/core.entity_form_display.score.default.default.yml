@@ -5,6 +5,14 @@ dependencies:
   config:
     - field.field.score.default.field_scores
     - piv_contest_score.score_type.default
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: score.default.default
 targetEntityType: score
 bundle: default

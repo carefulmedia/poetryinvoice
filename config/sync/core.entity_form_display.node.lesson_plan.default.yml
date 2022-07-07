@@ -26,9 +26,16 @@ dependencies:
     - field.field.node.lesson_plan.field_video_poem
     - node.type.lesson_plan
   module:
+    - field_layout
     - file
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.lesson_plan.default
 targetEntityType: node
 bundle: lesson_plan

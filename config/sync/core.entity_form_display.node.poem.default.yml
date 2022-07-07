@@ -36,10 +36,17 @@ dependencies:
     - node.type.poem
   module:
     - datetime
+    - field_layout
     - file
     - image
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.poem.default
 targetEntityType: node
 bundle: poem

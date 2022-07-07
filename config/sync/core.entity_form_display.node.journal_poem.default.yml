@@ -32,10 +32,17 @@ dependencies:
     - image.style.thumbnail
     - node.type.journal_poem
   module:
+    - field_layout
     - file
     - image
+    - layout_discovery
     - path
     - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 id: node.journal_poem.default
 targetEntityType: node
 bundle: journal_poem
