@@ -23,7 +23,7 @@ relationships:
 
 variables:
     php:
-        memory_limit: "256M"
+        memory_limit: "512M"
 
 # The size of the persistent disk of the application (in MB).
 disk: 1024
