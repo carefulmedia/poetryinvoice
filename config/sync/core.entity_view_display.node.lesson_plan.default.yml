@@ -28,47 +28,11 @@ dependencies:
     - node.type.lesson_plan
   module:
     - comment
-    - ds
     - file
     - options
     - taxonomy
     - text
     - user
-third_party_settings:
-  ds:
-    layout:
-      id: twocol-9-3
-      library: at_core/at.twocol-9-3
-      disable_css: false
-      entity_classes: all_classes
-      settings:
-        label: ''
-    regions:
-      col_1:
-        - langcode
-        - field_additional_poems
-        - field_commissioned_
-        - field_copyright
-        - field_file_under_
-        - field_grades
-        - field_learning_objectives
-        - field_poets_plural_user
-        - field_rwt
-        - field_suggest_a_new_folder_to_fi
-        - field_video_poem
-        - field_lesson_objectives
-        - field_materials_resources
-        - field_activity_description_steps
-        - field_variations_for_older_stude
-        - field_attachments
-        - field_paid_
-        - links
-      col_2:
-        - body
-        - field_periods
-        - field_variations_for_younger_stu
-        - field_completed
-        - comment_node_lesson_plan
 id: node.lesson_plan.default
 targetEntityType: node
 bundle: lesson_plan

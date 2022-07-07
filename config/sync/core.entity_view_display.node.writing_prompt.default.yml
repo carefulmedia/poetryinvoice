@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_display.comment.comment_node_writing_prompt.default
     - field.field.node.writing_prompt.body
     - field.field.node.writing_prompt.comment_node_writing_prompt
     - field.field.node.writing_prompt.field_completed
@@ -11,9 +10,7 @@ dependencies:
     - field.field.node.writing_prompt.field_prompt_image
     - node.type.writing_prompt
   module:
-    - comment
     - image
-    - options
     - text
     - user
 id: node.writing_prompt.default
@@ -26,31 +23,8 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
-    region: content
-  comment_node_writing_prompt:
-    type: comment_default
-    label: hidden
-    settings:
-      view_mode: default
-      pager_id: 0
-    third_party_settings: {  }
-    weight: 20
-    region: content
-  field_completed:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 3
-    region: content
-  field_paid_:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 4
-    region: content
+    weight: 2
+    region: first
   field_prompt_image:
     type: image
     label: hidden
@@ -59,11 +33,10 @@ content:
       image_style: ''
     third_party_settings: {  }
     weight: 0
-    region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 100
-    region: content
+    region: top
 hidden:
+  comment_node_writing_prompt: true
+  field_completed: true
+  field_paid_: true
   langcode: true
+  links: true
