@@ -2,9 +2,9 @@ _core:
   default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
 langcode: en
 uuid: 7b58cb0e-b9ce-4b97-bd38-8f0d9f41bdc3
-name: 'Poetry In Voice'
+name: LVP
 mail: webmaster@poetryinvoice.com
-slogan: 'Canada''s best resource for teaching poetry. Lesson plans for teachers, and poems, writing workshops and more for students'
+slogan: 'FR TK'
 page:
   403: ''
   404: ''

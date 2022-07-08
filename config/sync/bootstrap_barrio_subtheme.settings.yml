@@ -8,7 +8,8 @@ features:
   favicon: true
   node_user_picture: true
 logo:
-  use_default: true
+  path: 'public://English.png'
+  use_default: false
 bootstrap_barrio_library: production
 bootstrap_barrio_source: '0'
 bootstrap_barrio_fluid_container: 0
