@@ -1,17 +1,15 @@
-uuid: 6899cfb5-18ec-499e-a020-5f3e56889143
+uuid: 838d126d-9f98-4d70-87c9-0902f0f1c299
 langcode: en
 status: true
 dependencies:
   module:
     - system
   theme:
-    - pivlvp_barrio
-_core:
-  default_config_hash: nuW1Z5MdvzbCCEZ9RQojaEWB6Zni32zTq-v5OWbS2sc
-id: pivlvp_barrio_branding
-theme: pivlvp_barrio
+    - piv_barrio
+id: sitebranding
+theme: piv_barrio
 region: top_header
-weight: -6
+weight: 0
 provider: null
 plugin: system_branding_block
 settings:
@@ -20,6 +18,6 @@ settings:
   label_display: '0'
   provider: system
   use_site_logo: true
-  use_site_name: true
+  use_site_name: false
   use_site_slogan: false
 visibility: {  }

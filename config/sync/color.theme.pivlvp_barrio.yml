@@ -10,9 +10,9 @@ palette:
   titleslogan: '#fffeff'
   text: '#3b3b3b'
   link: '#0071b3'
-logo: 'public://color/pivlvp_barrio-fa39a7bf/logo.svg'
+logo: 'public://color/pivlvp_barrio-8f6871b2/logo.svg'
 stylesheets:
-  - 'public://color/pivlvp_barrio-fa39a7bf/colors.css'
+  - 'public://color/pivlvp_barrio-8f6871b2/colors.css'
 files:
-  - 'public://color/pivlvp_barrio-fa39a7bf/logo.svg'
-  - 'public://color/pivlvp_barrio-fa39a7bf/colors.css'
+  - 'public://color/pivlvp_barrio-8f6871b2/logo.svg'
+  - 'public://color/pivlvp_barrio-8f6871b2/colors.css'

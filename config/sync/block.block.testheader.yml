@@ -1,0 +1,30 @@
+uuid: 04c373f1-7cc4-433a-9d2c-68fe8fba48bb
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:523a2d45-11b8-4d6f-b506-f23505f05507'
+  module:
+    - block_content
+    - system
+  theme:
+    - piv_barrio
+id: testheader
+theme: piv_barrio
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:523a2d45-11b8-4d6f-b506-f23505f05507'
+settings:
+  id: 'block_content:523a2d45-11b8-4d6f-b506-f23505f05507'
+  label: 'test header'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'

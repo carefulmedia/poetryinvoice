@@ -1,5 +1,0 @@
-# Schema for the configuration files of the PIVLVP Barrio Subtheme.
-
-pivlvp_barrio.settings:
-  type: bootstrap_barrio.settings
-  label: 'PIVLVP Barrio settings'
