@@ -1,0 +1,22 @@
+uuid: 3dc85979-b97d-45d1-81f6-be81d261279b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pivlvp
+_core:
+  default_config_hash: UYGha3x7TqeKD5cqgYdNw8KRr846VUOX6kgtklXyU1w
+id: pivlvp_content
+theme: pivlvp
+region: content
+weight: 4
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

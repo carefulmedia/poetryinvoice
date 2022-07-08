@@ -1,0 +1,25 @@
+uuid: a5d13e48-1c2a-45b7-ad14-5be6bc689928
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bootstrap_barrio
+_core:
+  default_config_hash: KJMU-gLLpZzGlu-SBinseh4A6M23fgeXOyb3450z43Y
+id: bootstrap_barrio_branding
+theme: bootstrap_barrio
+region: top_header
+weight: 0
+provider: null
+plugin: system_branding_block
+settings:
+  id: system_branding_block
+  label: 'Site branding'
+  label_display: '0'
+  provider: system
+  use_site_logo: true
+  use_site_name: true
+  use_site_slogan: false
+visibility: {  }

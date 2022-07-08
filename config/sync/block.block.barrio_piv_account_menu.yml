@@ -1,0 +1,27 @@
+uuid: 26ef5eee-e599-4484-a73a-f62bd10dfe29
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - system
+  theme:
+    - barrio_piv
+_core:
+  default_config_hash: pWhbV91oEO46C20fUpF8SoM_wo2udXwNfhZp7AVkNTU
+id: barrio_piv_account_menu
+theme: barrio_piv
+region: top_header
+weight: 0
+provider: null
+plugin: 'system_menu_block:account'
+settings:
+  id: 'system_menu_block:account'
+  label: 'User menu'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

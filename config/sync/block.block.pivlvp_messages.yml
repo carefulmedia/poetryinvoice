@@ -1,0 +1,22 @@
+uuid: 385fd8e0-9645-4d23-b5c8-fbff5460ff57
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pivlvp
+_core:
+  default_config_hash: jK23fqe30xZMi1OWFNixYkNkc6K-KuIMPn75zR03GdQ
+id: pivlvp_messages
+theme: pivlvp
+region: highlighted
+weight: -100
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

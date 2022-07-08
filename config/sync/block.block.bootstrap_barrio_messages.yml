@@ -1,0 +1,22 @@
+uuid: 41296b50-165a-4f55-ad35-62582654d6d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - bootstrap_barrio
+_core:
+  default_config_hash: jK23fqe30xZMi1OWFNixYkNkc6K-KuIMPn75zR03GdQ
+id: bootstrap_barrio_messages
+theme: bootstrap_barrio
+region: highlighted
+weight: -100
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }
