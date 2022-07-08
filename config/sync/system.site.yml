@@ -2,9 +2,9 @@ _core:
   default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE
 langcode: en
 uuid: 7b58cb0e-b9ce-4b97-bd38-8f0d9f41bdc3
-name: LVP
+name: 'Poetry In Voice'
 mail: webmaster@poetryinvoice.com
-slogan: 'FR TK'
+slogan: 'A registered charity that wants all Canadians to speak poetry.'
 page:
   403: ''
   404: ''
