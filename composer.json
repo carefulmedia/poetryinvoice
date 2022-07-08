@@ -57,7 +57,6 @@
         "drupal/tb_megamenu": "^1.7",
         "drupal/views_bulk_edit": "^2.6",
         "drupal/views_bulk_operations": "^4.1",
-        "drupal/webform": "^6.1",
         "drupal/zen": "^7.0@alpha",
         "drush/drush": "^10",
         "kint-php/kint": "^4.1",
