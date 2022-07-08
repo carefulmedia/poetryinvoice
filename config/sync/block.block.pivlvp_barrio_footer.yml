@@ -1,4 +1,4 @@
-uuid: 4e5919ac-77f6-4e47-9e37-38f7a31807dc
+uuid: c70fb693-7be9-4b74-a60e-bdfdd18cab74
 langcode: en
 status: true
 dependencies:
@@ -7,13 +7,13 @@ dependencies:
   module:
     - system
   theme:
-    - bootstrap_barrio_subtheme
+    - pivlvp_barrio
 _core:
   default_config_hash: xBR1vgpnqSUW4pA2LC3rfhu27FQUox9zZEYsdAFM2Sg
-id: bootstrap_barrio_subtheme_footer
-theme: bootstrap_barrio_subtheme
-region: top_header
-weight: -6
+id: pivlvp_barrio_footer
+theme: pivlvp_barrio
+region: top_header_form
+weight: -5
 provider: null
 plugin: 'system_menu_block:footer'
 settings:

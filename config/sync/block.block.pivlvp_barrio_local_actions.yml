@@ -1,13 +1,13 @@
-uuid: 6c29691e-a617-43bb-99c5-afe2ccb27318
+uuid: 7becd836-2f30-41d7-8194-5b6a301ed491
 langcode: en
 status: true
 dependencies:
   theme:
-    - bootstrap_barrio_subtheme
+    - pivlvp_barrio
 _core:
   default_config_hash: MBqG1B5mr5-fPSCDyTR6z2zVTRxZ10XeS_pAw6C7za4
-id: bootstrap_barrio_subtheme_local_actions
-theme: bootstrap_barrio_subtheme
+id: pivlvp_barrio_local_actions
+theme: pivlvp_barrio
 region: content
 weight: -2
 provider: null

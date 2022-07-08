@@ -1,15 +1,15 @@
-uuid: c722b4c8-9c48-4548-be1d-341e006d5181
+uuid: 9237efaa-dd90-46aa-9dee-ac3b264075e1
 langcode: en
 status: true
 dependencies:
   module:
     - language
   theme:
-    - bootstrap_barrio_subtheme
-id: languageswitcher
-theme: bootstrap_barrio_subtheme
+    - pivlvp_barrio
+id: pivlvp_barrio_languageswitcher
+theme: pivlvp_barrio
 region: top_header
-weight: 0
+weight: -4
 provider: null
 plugin: 'language_block:language_interface'
 settings:

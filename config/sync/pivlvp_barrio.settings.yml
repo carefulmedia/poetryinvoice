@@ -1,5 +1,3 @@
-_core:
-  default_config_hash: w2HQYJGLG4-Mmk19eIIKgoXCiXEJm-NVSNhhv-VdpUI
 favicon:
   use_default: true
 features:
@@ -9,15 +7,14 @@ features:
   node_user_picture: true
 logo:
   use_default: true
-bootstrap_barrio_library: production
 bootstrap_barrio_source: '0'
 bootstrap_barrio_fluid_container: 0
 bootstrap_barrio_region_clean_top_header: 0
-bootstrap_barrio_region_class_top_header: 'row container'
+bootstrap_barrio_region_class_top_header: row
 bootstrap_barrio_region_clean_top_header_form: 0
 bootstrap_barrio_region_class_top_header_form: row
 bootstrap_barrio_region_clean_header: 1
-bootstrap_barrio_region_class_header: ''
+bootstrap_barrio_region_class_header: container
 bootstrap_barrio_region_clean_header_form: 0
 bootstrap_barrio_region_class_header_form: row
 bootstrap_barrio_region_clean_primary_menu: 1
@@ -56,18 +53,18 @@ bootstrap_barrio_region_clean_footer_fourth: 0
 bootstrap_barrio_region_class_footer_fourth: row
 bootstrap_barrio_region_clean_footer_fifth: 0
 bootstrap_barrio_region_class_footer_fifth: row
-bootstrap_barrio_sidebar_position: both
+bootstrap_barrio_sidebar_position: left
 bootstrap_barrio_content_offset: 0
 bootstrap_barrio_sidebar_collapse: 0
-bootstrap_barrio_sidebar_first_width: 4
+bootstrap_barrio_sidebar_first_width: 2
 bootstrap_barrio_sidebar_first_offset: 0
-bootstrap_barrio_sidebar_second_width: 3
+bootstrap_barrio_sidebar_second_width: 2
 bootstrap_barrio_sidebar_second_offset: 0
-bootstrap_barrio_button: 1
+bootstrap_barrio_button: 0
 bootstrap_barrio_button_size: ''
 bootstrap_barrio_button_outline: 0
 bootstrap_barrio_navbar_container: '0'
-bootstrap_barrio_navbar_toggle: navbar-toggleable-lg
+bootstrap_barrio_navbar_toggle: navbar-toggleable-xl
 bootstrap_barrio_navbar_top_navbar: 0
 bootstrap_barrio_navbar_top_class: ''
 bootstrap_barrio_navbar_class: ''
@@ -79,7 +76,7 @@ bootstrap_barrio_navbar_color: ''
 bootstrap_barrio_navbar_background: ''
 bootstrap_barrio_navbar_flyout: false
 bootstrap_barrio_navbar_slide: false
-bootstrap_barrio_messages_widget: alerts
+bootstrap_barrio_messages_widget: default
 bootstrap_barrio_navbar_top_affix: 0
 bootstrap_barrio_navbar_affix: 0
 bootstrap_barrio_sidebar_first_affix: 0
@@ -88,9 +85,9 @@ bootstrap_barrio_scroll_spy: ''
 bootstrap_barrio_google_fonts: ''
 bootstrap_barrio_bootstrap_icons: 0
 bootstrap_barrio_icons: ''
-bootstrap_barrio_system_messages: messages_white
-bootstrap_barrio_table_style: table-striped
-bootstrap_barrio_table_hover: 1
+bootstrap_barrio_system_messages: ''
+bootstrap_barrio_table_style: ''
+bootstrap_barrio_table_hover: 0
 bootstrap_barrio_table_head: ''
 bootstrap_barrio_image_fluid: false
 bootstrap_barrio_tabs_style: ''
