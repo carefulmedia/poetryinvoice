@@ -9,6 +9,8 @@ module:
   big_pipe: 0
   block: 0
   block_content: 0
+  block_styles: 0
+  block_styles_bootstrap: 0
   bootstrap_layout_builder: 0
   bootstrap_layouts: 0
   bootstrap_styles: 0
@@ -99,6 +101,7 @@ module:
   search: 0
   serialization: 0
   shortcut: 0
+  styles_api: 0
   system: 0
   tablesorter: 0
   taxonomy: 0

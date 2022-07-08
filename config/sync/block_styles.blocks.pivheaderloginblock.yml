@@ -1,0 +1,8 @@
+uuid: 8c343f26-4ef9-444f-973d-eaa744b6951e
+langcode: en
+status: true
+dependencies: {  }
+id: pivheaderloginblock
+theme: ''
+text: ''
+classes: col-sm-3

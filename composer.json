@@ -22,6 +22,7 @@
         "drupal/admin_toolbar": "^3.0",
         "drupal/adminimal_theme": "^1.6",
         "drupal/better_exposed_filters": "^5.1",
+        "drupal/block_styles": "^2.0",
         "drupal/bootstrap_barrio": "^5.5",
         "drupal/bootstrap_layout_builder": "^2.0",
         "drupal/bootstrap_layouts": "^5.2",
