@@ -1,0 +1,25 @@
+uuid: 962663e7-e85e-46a4-96c1-3ca8e46b7d47
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:c1e97fa5-ef85-4bc0-a909-871c7c0b3483'
+  module:
+    - block_content
+  theme:
+    - lvp_barrio
+id: headerhamburgernav
+theme: lvp_barrio
+region: header
+weight: -3
+provider: null
+plugin: 'block_content:c1e97fa5-ef85-4bc0-a909-871c7c0b3483'
+settings:
+  id: 'block_content:c1e97fa5-ef85-4bc0-a909-871c7c0b3483'
+  label: 'Header hamburger nav'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

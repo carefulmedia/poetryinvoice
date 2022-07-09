@@ -1,0 +1,25 @@
+uuid: 1c08ff02-09c5-4c0f-97d9-bbe8126d04da
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:df83bd82-cb93-4c72-a8a2-9c62f166b2d8'
+  module:
+    - block_content
+  theme:
+    - lvp_barrio
+id: dropdownsupermenu
+theme: lvp_barrio
+region: highlighted
+weight: -6
+provider: null
+plugin: 'block_content:df83bd82-cb93-4c72-a8a2-9c62f166b2d8'
+settings:
+  id: 'block_content:df83bd82-cb93-4c72-a8a2-9c62f166b2d8'
+  label: 'Dropdown supermenu'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

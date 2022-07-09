@@ -11,7 +11,7 @@ dependencies:
 id: headerusericon
 theme: lvp_barrio
 region: header
-weight: 0
+weight: -5
 provider: null
 plugin: 'block_content:e9bc64bb-8482-4278-b6f8-b78bc1296d1f'
 settings:
