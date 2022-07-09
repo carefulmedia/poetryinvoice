@@ -1,0 +1,27 @@
+uuid: d587d8f4-280e-4733-9546-4311616ee910
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - lvp_barrio
+_core:
+  default_config_hash: OyPFTXx4egKeF3j7zAXJTAVCKvWF-p1guNqNDgcVe0I
+id: lvp_barrio_page_title
+theme: lvp_barrio
+region: content
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: "/node/*\r\n/user/*\r\n<front>"

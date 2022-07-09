@@ -1,0 +1,22 @@
+uuid: 02879dac-3c3d-4de7-b6fe-46a3d724db03
+langcode: en
+status: true
+dependencies:
+  theme:
+    - lvp_barrio
+_core:
+  default_config_hash: YxWGMqHcGIvee0_fY9mRvp8VAOu5kfJrVitRBpmGePc
+id: lvp_barrio_local_tasks
+theme: lvp_barrio
+region: content
+weight: 1
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

@@ -1,0 +1,23 @@
+uuid: 2987376d-21c6-4dc0-a6ec-2b550a304cdf
+langcode: en
+status: true
+dependencies:
+  module:
+    - search
+  theme:
+    - lvp_barrio
+_core:
+  default_config_hash: SCVxcSUvTzvlw9z8SCuXDFc-W8ndssOsDAgr3vftHE0
+id: lvp_barrio_search
+theme: lvp_barrio
+region: sidebar_second
+weight: 0
+provider: null
+plugin: search_form_block
+settings:
+  id: search_form_block
+  label: Search
+  label_display: '0'
+  provider: search
+  page_id: ''
+visibility: {  }

@@ -1,0 +1,22 @@
+uuid: a133aaeb-2bef-45ea-9d66-9aa2c4dca838
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - lvp_barrio
+_core:
+  default_config_hash: UYGha3x7TqeKD5cqgYdNw8KRr846VUOX6kgtklXyU1w
+id: lvp_barrio_content
+theme: lvp_barrio
+region: content
+weight: 4
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

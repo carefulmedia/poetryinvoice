@@ -1,0 +1,22 @@
+uuid: 57871d54-c102-4863-88af-70d223d19fd4
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - lvp_barrio
+_core:
+  default_config_hash: CZcBU5goNrBDU24v-EbBriLjTKeSH1gtu8qhiuFu83Q
+id: lvp_barrio_help
+theme: lvp_barrio
+region: content
+weight: 2
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

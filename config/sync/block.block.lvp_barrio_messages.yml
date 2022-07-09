@@ -1,0 +1,22 @@
+uuid: db6293ad-935c-4f21-9729-1d926252f80b
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - lvp_barrio
+_core:
+  default_config_hash: jK23fqe30xZMi1OWFNixYkNkc6K-KuIMPn75zR03GdQ
+id: lvp_barrio_messages
+theme: lvp_barrio
+region: highlighted
+weight: -100
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

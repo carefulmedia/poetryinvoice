@@ -1,0 +1,20 @@
+uuid: 95cace2a-c1df-4c73-b26a-fbf5478ebced
+langcode: en
+status: true
+dependencies:
+  theme:
+    - lvp_barrio
+_core:
+  default_config_hash: HIhApH6-s0mnw4HB36o0T97BhCUiMs18TK858_HoTn0
+id: lvp_barrio_local_actions
+theme: lvp_barrio
+region: content
+weight: 3
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

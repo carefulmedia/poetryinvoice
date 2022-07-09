@@ -14,7 +14,7 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * Example on how to alter theme settings form
  */
-function barrio_piv_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+function lvp_barrio_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
   $form['components']['navbar']['bootstrap_barrio_navbar_top_background']['#options'] = [
     'bg-primary' => t('Primary'),
     'bg-secondary' => t('Secondary'),
@@ -31,14 +31,4 @@ function barrio_piv_form_system_theme_settings_alter(&$form, FormStateInterface 
     'bg-white' => t('White'),
     'bg-transparent' => t('Transparent'),
   ];
-}
-/**
- * Use language code for the language switcher
- */
-function barrio_piv_preprocess_links__language_block(&$variables) {
-  foreach ($variables['links'] as $i => $link) {
-    // @var \Drupal\language\Entity\ConfigurableLanguage $linkLanguage
-    $linkLanguage = $link['link']['#options']['language'];
-    $variables['links'][$i]['link']['#title'] = $linkLanguage->get('id');
-  }
 }

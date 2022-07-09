@@ -1,0 +1,22 @@
+uuid: 11115a98-fc7f-45eb-901f-e960c60b0097
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - lvp_barrio
+_core:
+  default_config_hash: JRFOJ8KdrwUUiinXDIGFzdAUy_4Uj-QHKvCvCW4MqPs
+id: lvp_barrio_login
+theme: lvp_barrio
+region: sidebar_second
+weight: 20
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  label_display: visible
+  provider: user
+visibility: {  }
