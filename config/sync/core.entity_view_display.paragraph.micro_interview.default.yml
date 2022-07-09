@@ -1,0 +1,54 @@
+uuid: 5eff43fc-72b5-461f-9901-f5d40740c246
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.micro_interview.field_q1
+    - field.field.paragraph.micro_interview.field_q2
+    - field.field.paragraph.micro_interview.field_q3
+    - field.field.paragraph.micro_interview.field_q4
+    - field.field.paragraph.micro_interview.field_q5
+    - paragraphs.paragraphs_type.micro_interview
+  module:
+    - text
+id: paragraph.micro_interview.default
+targetEntityType: paragraph
+bundle: micro_interview
+mode: default
+content:
+  field_q1:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_q2:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_q3:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_q4:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_q5:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden: {  }
