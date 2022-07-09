@@ -133,4 +133,7 @@ theme:
   adminimal_theme: 0
   bootstrap_barrio: 0
   lvp_barrio: 0
+  claro: 0
+  piv: 0
+  barrio_piv: 0
 profile: minimal

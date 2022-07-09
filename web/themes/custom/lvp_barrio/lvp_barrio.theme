@@ -32,3 +32,23 @@ function lvp_barrio_form_system_theme_settings_alter(&$form, FormStateInterface 
     'bg-transparent' => t('Transparent'),
   ];
 }
+
+/**
+ * Make language variable available in twig files
+ */
+function lvp_barrio_preprocess_block(&$vars) {
+
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $vars['language'] = $language;
+}
+
+/**
+ * Use language code for the language switcher
+ */
+function lvp_barrio_preprocess_links__language_block(&$variables) {
+  foreach ($variables['links'] as $i => $link) {
+    // @var \Drupal\language\Entity\ConfigurableLanguage $linkLanguage
+    $linkLanguage = $link['link']['#options']['language'];
+    $variables['links'][$i]['link']['#title'] = $linkLanguage->get('id');
+  }
+}

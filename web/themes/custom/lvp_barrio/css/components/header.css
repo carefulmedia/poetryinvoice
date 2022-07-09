@@ -37,4 +37,26 @@
     float: none;
   }
 }
-.language-switcher-language-url {display:none}
+.nav-link.is-active {
+    display: none;
+}
+.bi-person-circle {
+    color: white;
+}
+.language-link {
+    color:white;
+    text-decoration: none;
+    border:2px solid white;    
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    padding: 5px 9px;
+    font-size: 1.5em;
+
+}
+.header-logo {
+    height: 4em;
+}
+#navbar-main {
+    background-color: #631F14;
+}

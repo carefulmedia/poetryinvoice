@@ -1,0 +1,22 @@
+uuid: 7b2ab62c-5615-4e76-9c34-71db9e082250
+langcode: en
+status: true
+dependencies:
+  module:
+    - help
+  theme:
+    - piv
+_core:
+  default_config_hash: CZcBU5goNrBDU24v-EbBriLjTKeSH1gtu8qhiuFu83Q
+id: piv_help
+theme: piv
+region: content
+weight: 2
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility: {  }

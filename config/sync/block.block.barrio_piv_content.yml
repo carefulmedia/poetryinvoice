@@ -1,0 +1,22 @@
+uuid: b29e71f2-3a35-48ce-998d-e6e76db55324
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - barrio_piv
+_core:
+  default_config_hash: UYGha3x7TqeKD5cqgYdNw8KRr846VUOX6kgtklXyU1w
+id: barrio_piv_content
+theme: barrio_piv
+region: content
+weight: 4
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

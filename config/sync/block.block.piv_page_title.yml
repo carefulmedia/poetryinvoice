@@ -1,0 +1,27 @@
+uuid: 6184f7f5-2b51-4148-947c-0aca7f9ac2fc
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - piv
+_core:
+  default_config_hash: OyPFTXx4egKeF3j7zAXJTAVCKvWF-p1guNqNDgcVe0I
+id: piv_page_title
+theme: piv
+region: content
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    context_mapping: {  }
+    pages: "/node/*\r\n/user/*\r\n<front>"

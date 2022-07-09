@@ -60,7 +60,6 @@
         "drupal/views_bulk_operations": "^4.1",
         "drupal/zen": "^7.0@alpha",
         "drush/drush": "^10",
-        "kint-php/kint": "^4.1",
         "platformsh/config-reader": "^2.4"
     },
     "conflict": {
@@ -151,5 +150,8 @@
             "drush mim --group=migrate_drupal_7",
             "drush cim -y"
         ]
+    },
+    "require-dev": {
+        "kint-php/kint": "^4.1"
     }
 }

@@ -1,0 +1,25 @@
+uuid: 51a20792-2740-46d1-bc4e-3dd3c6610c3b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e9bc64bb-8482-4278-b6f8-b78bc1296d1f'
+  module:
+    - block_content
+  theme:
+    - lvp_barrio
+id: headerusericon
+theme: lvp_barrio
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:e9bc64bb-8482-4278-b6f8-b78bc1296d1f'
+settings:
+  id: 'block_content:e9bc64bb-8482-4278-b6f8-b78bc1296d1f'
+  label: 'Header user icon'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
