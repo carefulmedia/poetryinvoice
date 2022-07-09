@@ -10,8 +10,8 @@ _core:
   default_config_hash: JRFOJ8KdrwUUiinXDIGFzdAUy_4Uj-QHKvCvCW4MqPs
 id: lvp_barrio_login
 theme: lvp_barrio
-region: sidebar_second
-weight: 20
+region: footer_first
+weight: -5
 provider: null
 plugin: user_login_block
 settings:

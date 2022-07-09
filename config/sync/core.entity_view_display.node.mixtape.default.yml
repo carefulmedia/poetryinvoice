@@ -16,9 +16,144 @@ dependencies:
   module:
     - file
     - image
-    - options
+    - layout_builder
+    - layout_discovery
     - text
     - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          a128f7b7-a204-4408-acb7-1b39747e6810:
+            uuid: a128f7b7-a204-4408-acb7-1b39747e6810
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_mixtape_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: ''
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          944d0226-1710-47c0-9309-839504c96c07:
+            uuid: 944d0226-1710-47c0-9309-839504c96c07
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          3a299e2c-a055-4fcf-ae4f-1a2473bb5abe:
+            uuid: 3a299e2c-a055-4fcf-ae4f-1a2473bb5abe
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_recommended_reading'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          f8852e17-371e-4e85-9c73-6d39a3262679:
+            uuid: f8852e17-371e-4e85-9c73-6d39a3262679
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_poems'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          7d98a006-2d60-4184-832c-1fda5d5abde9:
+            uuid: 7d98a006-2d60-4184-832c-1fda5d5abde9
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_liner_notes_pdf_'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: file_default
+                label: above
+                settings:
+                  use_description_as_link_text: true
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          413c10ce-0dca-4f56-a6a5-0ba704e39986:
+            uuid: 413c10ce-0dca-4f56-a6a5-0ba704e39986
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_mixtape_background_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: above
+                settings:
+                  image_link: ''
+                  image_style: ''
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          2ab91667-b03b-4c01-b13c-a97b1157c3ec:
+            uuid: 2ab91667-b03b-4c01-b13c-a97b1157c3ec
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_doodles'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: above
+                settings:
+                  image_link: ''
+                  image_style: ''
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
+          66410f3b-103f-42c2-86f3-acce5e204259:
+            uuid: 66410f3b-103f-42c2-86f3-acce5e204259
+            region: content
+            configuration:
+              id: 'extra_field_block:node:mixtape:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 7
+            additional: {  }
+        third_party_settings: {  }
 id: node.mixtape.default
 targetEntityType: node
 bundle: mixtape
@@ -29,14 +164,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
-    region: content
-  field_completed:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 102
+    weight: 1
     region: content
   field_doodles:
     type: image
@@ -45,7 +173,7 @@ content:
       image_link: ''
       image_style: ''
     third_party_settings: {  }
-    weight: 108
+    weight: 7
     region: content
   field_liner_notes_pdf_:
     type: file_default
@@ -53,7 +181,7 @@ content:
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 107
+    weight: 5
     region: content
   field_mixtape_background_image:
     type: image
@@ -62,26 +190,16 @@ content:
       image_link: ''
       image_style: ''
     third_party_settings: {  }
-    weight: 109
+    weight: 6
     region: content
   field_mixtape_image:
     type: image
-    label: above
+    label: hidden
     settings:
       image_link: ''
       image_style: ''
     third_party_settings: {  }
-    weight: 104
-    region: content
-  field_paid_:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 103
+    weight: 0
     region: content
   field_poems:
     type: entity_reference_label
@@ -89,19 +207,21 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 106
+    weight: 3
     region: content
   field_recommended_reading:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 105
+    weight: 2
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 8
     region: content
 hidden:
+  field_completed: true
+  field_paid_: true
   langcode: true

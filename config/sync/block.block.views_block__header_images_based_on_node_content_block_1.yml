@@ -1,0 +1,25 @@
+uuid: d5789fef-00ba-4fac-bce2-4e592b0ae257
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.header_images_based_on_node_content
+  module:
+    - views
+  theme:
+    - lvp_barrio
+id: views_block__header_images_based_on_node_content_block_1
+theme: lvp_barrio
+region: highlighted
+weight: -5
+provider: null
+plugin: 'views_block:header_images_based_on_node_content-block_1'
+settings:
+  id: 'views_block:header_images_based_on_node_content-block_1'
+  label: ''
+  label_display: '0'
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility: {  }

@@ -46,66 +46,132 @@ third_party_settings:
     allow_custom: false
     sections:
       -
-        layout_id: layout_onecol
+        layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
+          context_mapping: {  }
+          container_wrapper_classes: ''
+          container_wrapper_attributes: null
+          container_wrapper:
+            bootstrap_styles:
+              background:
+                background_type: color
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              text_alignment:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: null
+            blb_region_col_2: null
+          breakpoints:
+            desktop: blb_col_9_3
+            tablet: blb_col_9_3
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-9
+              - col-md-9
+              - col-12
+            blb_region_col_2:
+              - col-lg-3
+              - col-md-3
+              - col-12
+          remove_gutters: '0'
         components:
           3d795e64-e6c3-4558-a257-d777aadde2ae:
             uuid: 3d795e64-e6c3-4558-a257-d777aadde2ae
-            region: content
+            region: blb_region_col_1
             configuration:
               id: 'field_block:node:journal_poem:piv_teacher_first_name'
+              label: 'First name'
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          e75180ad-d234-4350-8f6c-b424bfee6186:
-            uuid: e75180ad-d234-4350-8f6c-b424bfee6186
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:piv_teacher_last_name'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          e0f316a2-4d9e-4913-91d3-dc9e4bad45ce:
-            uuid: e0f316a2-4d9e-4913-91d3-dc9e4bad45ce
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_phone'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-          0601f1eb-a83b-4d13-888f-84d3b943dd2b:
-            uuid: 0601f1eb-a83b-4d13-888f-84d3b943dd2b
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_email1'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: string
                 label: above
@@ -114,164 +180,28 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 3
             additional: {  }
-          d9e2a472-6367-4ffa-ae33-10d74cab0a3d:
-            uuid: d9e2a472-6367-4ffa-ae33-10d74cab0a3d
-            region: content
+          e75180ad-d234-4350-8f6c-b424bfee6186:
+            uuid: e75180ad-d234-4350-8f6c-b424bfee6186
+            region: blb_region_col_1
             configuration:
-              id: 'field_block:node:journal_poem:field_teacher'
+              id: 'field_block:node:journal_poem:piv_teacher_last_name'
+              label: 'Last name'
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: string
                 label: above
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 4
-            additional: {  }
-          04318d26-0a8b-49f1-95c7-b24fbe53ec2a:
-            uuid: 04318d26-0a8b-49f1-95c7-b24fbe53ec2a
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_school_journal'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 5
-            additional: {  }
-          e1a29992-6ddd-4ab7-9739-3c8453d53fed:
-            uuid: e1a29992-6ddd-4ab7-9739-3c8453d53fed
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_poem_attachment'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: file_default
-                label: above
-                settings:
-                  use_description_as_link_text: true
-                third_party_settings: {  }
-            weight: 6
-            additional: {  }
-          4e606e90-16da-4dad-a397-80581e7d2f3b:
-            uuid: 4e606e90-16da-4dad-a397-80581e7d2f3b
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_response_or_prompt'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: list_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 7
-            additional: {  }
-          d39d6d30-f857-4e84-aa88-87987a5d7ecf:
-            uuid: d39d6d30-f857-4e84-aa88-87987a5d7ecf
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_poem_being_responded_to'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 8
-            additional: {  }
-          7baad692-442b-4eb2-a52d-cb5ac5c00bff:
-            uuid: 7baad692-442b-4eb2-a52d-cb5ac5c00bff
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_writing_prompt'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 9
-            additional: {  }
-          24562855-9ffb-46c0-9d99-4f8af647b156:
-            uuid: 24562855-9ffb-46c0-9d99-4f8af647b156
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_grade'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: list_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 10
-            additional: {  }
-          bd538985-93c7-47ea-8a3a-7b4ce5e69920:
-            uuid: bd538985-93c7-47ea-8a3a-7b4ce5e69920
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_i_consent_to_poetry_in_voi'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: list_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 11
-            additional: {  }
-          1a307928-ad9b-4cb3-9721-94be5323fdd7:
-            uuid: 1a307928-ad9b-4cb3-9721-94be5323fdd7
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_acceptance_level'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: list_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 12
-            additional: {  }
-          47fd21c6-4473-46ad-834b-8aad0fd29597:
-            uuid: 47fd21c6-4473-46ad-834b-8aad0fd29597
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_submission_info_confirmed'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: list_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 13
+            weight: 2
             additional: {  }
           d81ace97-2088-49c2-b6dc-9471db42fb87:
             uuid: d81ace97-2088-49c2-b6dc-9471db42fb87
-            region: content
+            region: blb_region_col_1
             configuration:
               id: 'field_block:node:journal_poem:field_journal_poem_body'
               label_display: '0'
@@ -282,42 +212,11 @@ third_party_settings:
                 label: above
                 settings: {  }
                 third_party_settings: {  }
-            weight: 14
-            additional: {  }
-          5d7bcc79-690e-4e2a-a9e8-15928fd32dc0:
-            uuid: 5d7bcc79-690e-4e2a-a9e8-15928fd32dc0
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_poem_type'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: list_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 15
-            additional: {  }
-          f15950db-b545-4c35-82b1-f4d112dbfa32:
-            uuid: f15950db-b545-4c35-82b1-f4d112dbfa32
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_poet_who_visited_your_scho'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 16
+            weight: 4
             additional: {  }
           88a73148-e1e4-49cb-8d67-11652675eb9a:
             uuid: 88a73148-e1e4-49cb-8d67-11652675eb9a
-            region: content
+            region: blb_region_col_2
             configuration:
               id: 'field_block:node:journal_poem:field_poem_reason'
               label_display: '0'
@@ -328,87 +227,11 @@ third_party_settings:
                 label: above
                 settings: {  }
                 third_party_settings: {  }
-            weight: 17
-            additional: {  }
-          a71ca2b7-a8cc-4bb6-8c4b-f7f30b8585af:
-            uuid: a71ca2b7-a8cc-4bb6-8c4b-f7f30b8585af
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:comment_node_journal_poem'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: comment_default
-                label: hidden
-                settings:
-                  view_mode: default
-                  pager_id: 0
-                third_party_settings: {  }
-            weight: 18
-            additional: {  }
-          b3ce92d5-f20d-4bb9-9d5d-4e6371ec9c46:
-            uuid: b3ce92d5-f20d-4bb9-9d5d-4e6371ec9c46
-            region: content
-            configuration:
-              id: 'extra_field_block:node:journal_poem:links'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 19
-            additional: {  }
-          38d2363c-2ad1-485f-ab29-23d004f42f12:
-            uuid: 38d2363c-2ad1-485f-ab29-23d004f42f12
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_legal_name_boolean'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: boolean
-                label: above
-                settings:
-                  format: default
-                  format_custom_false: ''
-                  format_custom_true: ''
-                third_party_settings: {  }
-            weight: 20
-            additional: {  }
-          38e40904-0bbd-44be-bb44-7985ca547754:
-            uuid: 38e40904-0bbd-44be-bb44-7985ca547754
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_legal_name'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 21
-            additional: {  }
-          885463a0-7100-49a6-95e3-37f580be3d89:
-            uuid: 885463a0-7100-49a6-95e3-37f580be3d89
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_pronouns'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: list_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 22
+            weight: 4
             additional: {  }
           cf6fc150-0cf2-493d-885b-868a5027bf4e:
             uuid: cf6fc150-0cf2-493d-885b-868a5027bf4e
-            region: content
+            region: blb_region_col_2
             configuration:
               id: 'field_block:node:journal_poem:field_student_photo'
               label_display: '0'
@@ -421,56 +244,45 @@ third_party_settings:
                   image_link: ''
                   image_style: ''
                 third_party_settings: {  }
-            weight: 23
+            weight: 1
             additional: {  }
-          ffcdf6d0-ec1d-4e88-be7c-970f9a085733:
-            uuid: ffcdf6d0-ec1d-4e88-be7c-970f9a085733
-            region: content
+          24562855-9ffb-46c0-9d99-4f8af647b156:
+            uuid: 24562855-9ffb-46c0-9d99-4f8af647b156
+            region: blb_region_col_2
             configuration:
-              id: 'field_block:node:journal_poem:field_banner_subtitle'
+              id: 'field_block:node:journal_poem:field_grade'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
               formatter:
-                type: text_default
+                type: list_default
                 label: above
                 settings: {  }
                 third_party_settings: {  }
-            weight: 24
+            weight: 2
             additional: {  }
-          d5d6de7f-d4b3-4248-8654-58078d4da616:
-            uuid: d5d6de7f-d4b3-4248-8654-58078d4da616
-            region: content
+          04318d26-0a8b-49f1-95c7-b24fbe53ec2a:
+            uuid: 04318d26-0a8b-49f1-95c7-b24fbe53ec2a
+            region: blb_region_col_2
             configuration:
-              id: 'field_block:node:journal_poem:field_banner_title'
+              id: 'field_block:node:journal_poem:field_school_journal'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
               formatter:
-                type: string
+                type: entity_reference_label
                 label: above
                 settings:
-                  link_to_entity: false
+                  link: true
                 third_party_settings: {  }
-            weight: 25
+            weight: 3
             additional: {  }
-          91fae7e7-8712-4236-a149-62dc1ca5c409:
-            uuid: 91fae7e7-8712-4236-a149-62dc1ca5c409
-            region: content
-            configuration:
-              id: 'field_block:node:journal_poem:field_images_insert'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: image
-                label: above
-                settings:
-                  image_link: ''
-                  image_style: ''
-                third_party_settings: {  }
-            weight: 26
-            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components: {  }
         third_party_settings: {  }
 id: node.journal_poem.default
 targetEntityType: node

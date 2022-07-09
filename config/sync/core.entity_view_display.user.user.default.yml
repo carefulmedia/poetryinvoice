@@ -77,7 +77,6 @@ dependencies:
   module:
     - entity_reference_revisions
     - image
-    - options
     - text
     - user
 _core:
@@ -87,64 +86,6 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
-  field_bio_completed_:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 67
-    region: content
-  field_bio_not_by_author_paid_:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 68
-    region: content
-  field_bio_written_by:
-    type: entity_reference_label
-    label: above
-    settings:
-      link: true
-    third_party_settings: {  }
-    weight: 69
-    region: content
-  field_canadian_educator_:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 13
-    region: content
-  field_google_calendar_iframe_cod:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 4
-    region: content
-  field_how_did_you_hear_from_us_2:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 14
-    region: content
-  field_i_am_interested_in_doing_i:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 72
-    region: content
-  field_lifespan:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 1
-    region: content
   field_micro_interview:
     type: entity_reference_revisions_entity_view
     label: above
@@ -152,7 +93,7 @@ content:
       view_mode: full
       link: ''
     third_party_settings: {  }
-    weight: 6
+    weight: 3
     region: content
   field_my_favourite_poem_and_or_p:
     type: string
@@ -160,44 +101,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 7
-    region: content
-  field_my_role_at_school_organiza:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 17
-    region: content
-  field_non_school_organization:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 16
-    region: content
-  field_online_semifinals_2015:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 12
-    region: content
-  field_pause_solicitation:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 15
-    region: content
-  field_peer_support:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 71
+    weight: 4
     region: content
   field_photo_credit:
     type: string
@@ -205,14 +109,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 0
-    region: content
-  field_poet_in_class:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 19
+    weight: 1
     region: content
   field_poetry_is_:
     type: string
@@ -220,7 +117,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 8
+    weight: 5
     region: content
   field_school:
     type: entity_reference_entity_view
@@ -229,21 +126,14 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 11
-    region: content
-  field_team_regionals_2017:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 18
+    weight: 8
     region: content
   field_user_bio:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 5
+    weight: 2
     region: content
   field_what_grades_do_you_teach:
     type: string
@@ -251,7 +141,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 9
+    weight: 6
     region: content
   field_what_subjects_do_you_teach:
     type: string
@@ -259,10 +149,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 10
-    region: content
-  member_for:
-    weight: 5
+    weight: 7
     region: content
   user_picture:
     type: image
@@ -271,14 +158,18 @@ content:
       image_link: content
       image_style: ''
     third_party_settings: {  }
-    weight: 73
+    weight: 0
     region: content
 hidden:
   field_about_me: true
   field_action_item: true
   field_additional_email: true
   field_assigned_to_team_member: true
+  field_bio_completed_: true
+  field_bio_not_by_author_paid_: true
   field_bio_trans: true
+  field_bio_written_by: true
+  field_canadian_educator_: true
   field_cheque_made_to: true
   field_communication_log: true
   field_completed: true
@@ -291,19 +182,29 @@ hidden:
   field_email_variable: true
   field_french_signature: true
   field_gg_finalist: true
+  field_google_calendar_iframe_cod: true
   field_griffin_finalist: true
   field_gst_hst_: true
+  field_how_did_you_hear_from_us_2: true
+  field_i_am_interested_in_doing_i: true
   field_i_am_interested_in_judging: true
   field_i_am_interested_in_partici: true
   field_i_am_interested_in_writing: true
   field_i_have_completed_my_profil: true
   field_judging: true
   field_lead_teacher_has_yet_to_si: true
+  field_lifespan: true
+  field_my_role_at_school_organiza: true
+  field_non_school_organization: true
   field_not_a_teacher_: true
   field_one_line_bio: true
+  field_online_semifinals_2015: true
   field_paid_: true
+  field_pause_solicitation: true
+  field_peer_support: true
   field_phone: true
   field_poem_languages: true
+  field_poet_in_class: true
   field_poet_laureate: true
   field_poet_notes: true
   field_pst_qst_: true
@@ -314,11 +215,13 @@ hidden:
   field_teacher_confirmation: true
   field_teacher_leads_tracking: true
   field_teacher_tracking: true
+  field_team_regionals_2017: true
   field_this_teacher_signed_up_for: true
   field_virtual_visits: true
   field_writing_content: true
   field_years_in_competition: true
   langcode: true
+  member_for: true
   piv_teacher_first_name: true
   piv_teacher_last_name: true
   piv_teacher_profile_origin: true

@@ -24,4 +24,4 @@ visibility:
     id: request_path
     negate: true
     context_mapping: {  }
-    pages: "/node/*\r\n/user/*\r\n<front>"
+    pages: '<front>'
