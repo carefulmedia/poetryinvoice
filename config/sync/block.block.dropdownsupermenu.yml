@@ -6,6 +6,7 @@ dependencies:
     - 'block_content:basic:df83bd82-cb93-4c72-a8a2-9c62f166b2d8'
   module:
     - block_content
+    - system
   theme:
     - lvp_barrio
 id: dropdownsupermenu
@@ -22,4 +23,8 @@ settings:
   status: true
   info: ''
   view_mode: full
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '*'
