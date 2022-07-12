@@ -4,11 +4,7 @@ status: true
 dependencies:
   module:
     - datetime
-    - field_permissions
     - paragraphs
-third_party_settings:
-  field_permissions:
-    permission_type: custom
 id: paragraph.field_date_of_school_competition
 field_name: field_date_of_school_competition
 entity_type: paragraph

@@ -3,12 +3,8 @@ langcode: und
 status: true
 dependencies:
   module:
-    - field_permissions
     - options
     - user
-third_party_settings:
-  field_permissions:
-    permission_type: custom
 id: user.field_email_variable
 field_name: field_email_variable
 entity_type: user

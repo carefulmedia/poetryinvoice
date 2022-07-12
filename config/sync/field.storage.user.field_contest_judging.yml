@@ -3,12 +3,8 @@ langcode: und
 status: true
 dependencies:
   module:
-    - field_permissions
     - taxonomy
     - user
-third_party_settings:
-  field_permissions:
-    permission_type: custom
 id: user.field_contest_judging
 field_name: field_contest_judging
 entity_type: user

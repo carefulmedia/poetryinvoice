@@ -3,12 +3,8 @@ langcode: und
 status: true
 dependencies:
   module:
-    - field_permissions
     - node
     - options
-third_party_settings:
-  field_permissions:
-    permission_type: custom
 id: node.field_travel_time_supplement
 field_name: field_travel_time_supplement
 entity_type: node

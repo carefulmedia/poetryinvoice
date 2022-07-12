@@ -3,13 +3,9 @@ langcode: und
 status: true
 dependencies:
   module:
-    - field_permissions
     - file
     - image
     - node
-third_party_settings:
-  field_permissions:
-    permission_type: custom
 id: node.field_start_here_image
 field_name: field_start_here_image
 entity_type: node

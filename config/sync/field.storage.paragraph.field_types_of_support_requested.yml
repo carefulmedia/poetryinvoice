@@ -4,11 +4,7 @@ status: true
 dependencies:
   module:
     - entity_reference_revisions
-    - field_permissions
     - paragraphs
-third_party_settings:
-  field_permissions:
-    permission_type: custom
 id: paragraph.field_types_of_support_requested
 field_name: field_types_of_support_requested
 entity_type: paragraph

@@ -3,13 +3,9 @@ langcode: und
 status: true
 dependencies:
   module:
-    - field_permissions
     - file
     - image
     - node
-third_party_settings:
-  field_permissions:
-    permission_type: public
 id: node.field_quote_photo
 field_name: field_quote_photo
 entity_type: node

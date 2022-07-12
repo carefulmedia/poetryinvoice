@@ -4,12 +4,8 @@ status: true
 dependencies:
   module:
     - entity_reference_revisions
-    - field_permissions
     - node
     - paragraphs
-third_party_settings:
-  field_permissions:
-    permission_type: custom
 id: node.field_tr_student
 field_name: field_tr_student
 entity_type: node

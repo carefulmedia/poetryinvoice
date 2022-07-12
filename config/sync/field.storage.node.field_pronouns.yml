@@ -3,12 +3,8 @@ langcode: en
 status: true
 dependencies:
   module:
-    - field_permissions
     - node
     - options
-third_party_settings:
-  field_permissions:
-    permission_type: private
 id: node.field_pronouns
 field_name: field_pronouns
 entity_type: node
