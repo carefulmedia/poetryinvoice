@@ -4,7 +4,11 @@ status: true
 dependencies:
   module:
     - datetime
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_winners_announced
 field_name: field_winners_announced
 entity_type: node

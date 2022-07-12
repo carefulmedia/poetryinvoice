@@ -3,7 +3,11 @@ langcode: und
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_reason_not_interested
 field_name: field_reason_not_interested
 entity_type: paragraph

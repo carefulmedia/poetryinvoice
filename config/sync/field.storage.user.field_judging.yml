@@ -3,8 +3,12 @@ langcode: und
 status: true
 dependencies:
   module:
+    - field_permissions
     - options
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: private
 id: user.field_judging
 field_name: field_judging
 entity_type: user
