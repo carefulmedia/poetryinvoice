@@ -4,12 +4,8 @@ status: true
 dependencies:
   module:
     - entity_reference_revisions
-    - field_permissions
     - paragraphs
     - user
-third_party_settings:
-  field_permissions:
-    permission_type: custom
 id: user.field_poet_laureate
 field_name: field_poet_laureate
 entity_type: user

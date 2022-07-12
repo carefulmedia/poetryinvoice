@@ -93,6 +93,7 @@ module:
   piv_pathauto: 0
   piv_poem_password: 0
   piv_popular_vote: 0
+  quick_node_clone: 0
   quickedit: 0
   rdf: 0
   redirect: 0

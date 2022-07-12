@@ -3,12 +3,8 @@ langcode: en
 status: true
 dependencies:
   module:
-    - field_permissions
     - options
     - paragraphs
-third_party_settings:
-  field_permissions:
-    permission_type: custom
 id: paragraph.field_send_additional_en_posters
 field_name: field_send_additional_en_posters
 entity_type: paragraph
