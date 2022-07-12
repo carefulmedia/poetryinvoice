@@ -37,9 +37,7 @@
     float: none;
   }
 }
-.nav-link.is-active {
-    display: none;
-}
+
 .bi-person-circle {
     color: white;
 }
@@ -61,7 +59,7 @@
     background-color: #631F14;
 }
 .navbar,
-.navbar-inverse {
+.navbar-inverse {https://www.lesvoixdelapoesie.com/enseigner/plans-de-cours/des-experiences-de-traduction
   border-radius: 0;
   border: none;
   margin-bottom: 0;
