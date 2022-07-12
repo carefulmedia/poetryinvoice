@@ -4,8 +4,12 @@ status: true
 dependencies:
   module:
     - entity_reference_revisions
+    - field_permissions
     - paragraphs
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: user.field_micro_interview
 field_name: field_micro_interview
 entity_type: user
