@@ -70,7 +70,6 @@
 
 .nav li {
   display: inline;
-  color: white;
 }
 
 .navbar-inverse .navbar-nav>li>a {
@@ -88,9 +87,10 @@
 }
 
 
-.navbar-expand-lg .navbar-toggler {
+/* .navbar-expand-lg .navbar-toggler {
     display: inline-block !important;
 
 }
+*/
 .navbar-toggler-icon {color: white}
 
