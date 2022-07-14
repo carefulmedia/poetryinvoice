@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - filter.format.full_html
     - node.type.bulletin_board
     - node.type.competition
     - node.type.event
@@ -18,7 +17,7 @@ dependencies:
     - node.type.writing_prompt
   module:
     - contact
-    - filter
+    - field_permissions
     - locale
     - node
     - search
@@ -82,7 +81,6 @@ permissions:
   - 'search content'
   - 'translate interface'
   - 'use advanced search'
-  - 'use text format full_html'
   - 'view field_variations_for_younger_stu'
   - 'view own unpublished content'
   - 'view revisions'

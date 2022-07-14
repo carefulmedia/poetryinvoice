@@ -1,7 +1,9 @@
 uuid: db142973-143a-43ce-8c7c-1e7f5901ca19
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - field_permissions
 id: non_canadian_educator
 label: 'Non-Canadian educator'
 weight: 1

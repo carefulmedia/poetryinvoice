@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - filter.format.full_html
     - node.type.bulletin_board
     - node.type.competition
     - node.type.event
@@ -19,7 +18,7 @@ dependencies:
     - node.type.video
     - node.type.writing_prompt
   module:
-    - filter
+    - field_permissions
     - node
     - system
 id: content_creator
@@ -127,7 +126,6 @@ permissions:
   - 'edit own video content'
   - 'edit own writing_prompt content'
   - 'revert revisions'
-  - 'use text format full_html'
   - 'view field_biligraphical_info'
   - 'view field_broadsides_are_allowed'
   - 'view field_mobile_apps_are_allowed'

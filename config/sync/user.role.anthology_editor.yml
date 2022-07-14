@@ -5,6 +5,7 @@ dependencies:
   config:
     - node.type.poem
   module:
+    - field_permissions
     - node
     - system
 id: anthology_editor

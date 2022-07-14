@@ -1,11 +1,18 @@
 uuid: 0e7fe883-277f-41a0-8cb0-169bd9c807a0
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - filter.format.full_html
+    - filter.format.php_code
+  module:
+    - filter
 id: superadmin
 label: SUPERADMIN
 weight: 19
 is_admin: null
 permissions:
   - 'access search combine'
+  - 'use text format full_html'
+  - 'use text format php_code'
   - 'view unpublished taxonomy terms'

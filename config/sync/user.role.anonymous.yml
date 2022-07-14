@@ -6,6 +6,7 @@ dependencies:
     - node.type.journal_poem
   module:
     - contact
+    - field_permissions
     - media
     - node
     - search

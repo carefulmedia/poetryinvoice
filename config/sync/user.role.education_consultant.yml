@@ -1,7 +1,9 @@
 uuid: b3513f17-b723-4aba-94b8-0eaf7e38bdee
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - field_permissions
 id: education_consultant
 label: 'Education consultant'
 weight: 25

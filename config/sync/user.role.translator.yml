@@ -2,11 +2,9 @@ uuid: eb7df147-3b71-488a-b6d0-05baba496ee1
 langcode: en
 status: true
 dependencies:
-  config:
-    - filter.format.full_html
   module:
     - contextual
-    - filter
+    - field_permissions
     - locale
     - node
 id: translator
@@ -24,6 +22,5 @@ permissions:
   - 'edit own field_years_in_competition'
   - 'translate content'
   - 'translate interface'
-  - 'use text format full_html'
   - 'view field_years_in_competition'
   - 'view own field_years_in_competition'

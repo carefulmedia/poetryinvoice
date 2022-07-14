@@ -37,6 +37,7 @@ global-styling:
       css/components/views.css: {}
       css/components/ui-dialog.css: {}
       css/components/progress.css: { weight: -10 }
+
 bootstrap:
   js:
     /libraries/popper.js/dist/umd/popper.min.js: { weight: -49 }
