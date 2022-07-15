@@ -11,7 +11,7 @@ _core:
 id: piv_help
 theme: piv
 region: content
-weight: 2
+weight: -3
 provider: null
 plugin: help_block
 settings:

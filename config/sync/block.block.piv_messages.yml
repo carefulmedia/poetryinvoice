@@ -10,8 +10,8 @@ _core:
   default_config_hash: jK23fqe30xZMi1OWFNixYkNkc6K-KuIMPn75zR03GdQ
 id: piv_messages
 theme: piv
-region: highlighted
-weight: -100
+region: secondary_menu
+weight: -5
 provider: null
 plugin: system_messages_block
 settings:
