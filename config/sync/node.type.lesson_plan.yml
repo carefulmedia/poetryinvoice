@@ -9,7 +9,7 @@ third_party_settings:
     available_menus:
       - menu-english-nav
       - menu-french-nav
-    parent: 'menu-english-nav:0:'
+    parent: 'menu-english-nav:'
 name: 'Lesson Plan'
 type: lesson_plan
 description: 'Lesson Plans from our community of teachers and poets'
