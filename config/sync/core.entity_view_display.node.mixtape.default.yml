@@ -157,10 +157,10 @@ third_party_settings:
             uuid: f4d1ce06-43e3-4d66-bbac-d12c531283c6
             region: content
             configuration:
+              id: 'field_block:node:mixtape:field_doodles'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:node:mixtape:field_doodles'
               formatter:
                 type: image
                 label: above
@@ -176,10 +176,10 @@ third_party_settings:
             uuid: 982d8638-5063-4239-b060-1608291d45ee
             region: content
             configuration:
+              id: 'field_block:node:mixtape:field_mixtape_background_image'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:node:mixtape:field_mixtape_background_image'
               formatter:
                 type: image
                 label: above
@@ -195,10 +195,10 @@ third_party_settings:
             uuid: ce65f5b0-123c-4f22-96cb-70343e62d52e
             region: content
             configuration:
+              id: 'field_block:node:mixtape:field_mixtape_image'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:node:mixtape:field_mixtape_image'
               formatter:
                 type: image
                 label: hidden

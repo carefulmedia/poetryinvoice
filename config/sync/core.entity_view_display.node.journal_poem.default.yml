@@ -49,6 +49,7 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
+          context_mapping: {  }
           container_wrapper_classes: ''
           container_wrapper_attributes: null
           container_wrapper:
@@ -158,7 +159,6 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
-          context_mapping: {  }
           remove_gutters: '0'
         components:
           3d795e64-e6c3-4558-a257-d777aadde2ae:
@@ -281,10 +281,10 @@ third_party_settings:
             uuid: aa122e1b-96d6-452c-83b1-6021b7f296d5
             region: content
             configuration:
+              id: 'field_block:node:journal_poem:field_images_insert'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:node:journal_poem:field_images_insert'
               formatter:
                 type: image
                 label: above
@@ -300,10 +300,10 @@ third_party_settings:
             uuid: c52671d3-a152-4ad1-b326-0ca2d767d9f8
             region: content
             configuration:
+              id: 'field_block:node:journal_poem:field_student_photo'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
-              id: 'field_block:node:journal_poem:field_student_photo'
               formatter:
                 type: image
                 label: above
