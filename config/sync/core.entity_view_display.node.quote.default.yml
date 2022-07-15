@@ -50,6 +50,8 @@ content:
     settings:
       image_link: ''
       image_style: home_page_700x250
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 2
     region: content

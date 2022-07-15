@@ -153,6 +153,63 @@ third_party_settings:
                 entity: layout_builder.entity
             weight: 7
             additional: {  }
+          f4d1ce06-43e3-4d66-bbac-d12c531283c6:
+            uuid: f4d1ce06-43e3-4d66-bbac-d12c531283c6
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:mixtape:field_doodles'
+              formatter:
+                type: image
+                label: above
+                settings:
+                  image_link: ''
+                  image_style: ''
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 8
+            additional: {  }
+          982d8638-5063-4239-b060-1608291d45ee:
+            uuid: 982d8638-5063-4239-b060-1608291d45ee
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:mixtape:field_mixtape_background_image'
+              formatter:
+                type: image
+                label: above
+                settings:
+                  image_link: ''
+                  image_style: ''
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 9
+            additional: {  }
+          ce65f5b0-123c-4f22-96cb-70343e62d52e:
+            uuid: ce65f5b0-123c-4f22-96cb-70343e62d52e
+            region: content
+            configuration:
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              id: 'field_block:node:mixtape:field_mixtape_image'
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: ''
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 10
+            additional: {  }
         third_party_settings: {  }
 id: node.mixtape.default
 targetEntityType: node
@@ -172,6 +229,8 @@ content:
     settings:
       image_link: ''
       image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 7
     region: content
@@ -189,6 +248,8 @@ content:
     settings:
       image_link: ''
       image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 6
     region: content
@@ -198,6 +259,8 @@ content:
     settings:
       image_link: ''
       image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content
