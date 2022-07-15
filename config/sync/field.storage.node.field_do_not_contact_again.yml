@@ -1,9 +1,13 @@
 uuid: 8447da0d-95d9-43ef-a46b-5c320817fbbb
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_do_not_contact_again
 field_name: field_do_not_contact_again
 entity_type: node

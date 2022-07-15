@@ -1,9 +1,13 @@
 uuid: a2804f77-4501-4849-b8f7-0dfc64c45874
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_paid_
 field_name: field_paid_
 entity_type: node

@@ -1,9 +1,13 @@
 uuid: f90efd78-76fb-4227-9457-d31498d9c9db
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_not_competing_this_year
 field_name: field_not_competing_this_year
 entity_type: node

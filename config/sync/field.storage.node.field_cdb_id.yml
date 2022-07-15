@@ -1,9 +1,13 @@
 uuid: 5a643a81-ab7b-4627-ae25-8d6512f42bf6
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_cdb_id
 field_name: field_cdb_id
 entity_type: node

@@ -1,9 +1,13 @@
 uuid: 4a4db8de-1c44-4445-bbd8-dbd8b72b96a5
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_teacher_present
 field_name: field_teacher_present
 entity_type: paragraph

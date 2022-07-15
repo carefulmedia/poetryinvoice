@@ -1,16 +1,23 @@
 uuid: 9bff5e79-5e16-4312-bf65-311b80f75c29
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
     - options
+third_party_settings:
+  field_permissions:
+    permission_type: private
 id: node.field_poem_type
 field_name: field_poem_type
 entity_type: node
 type: list_string
 settings:
   allowed_values:
+    -
+      value: '1'
+      label: 'Poetry prompt prize'
     -
       value: 'Response poem'
       label: 'Response poem'

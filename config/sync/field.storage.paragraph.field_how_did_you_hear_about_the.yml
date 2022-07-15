@@ -1,5 +1,5 @@
 uuid: 2e7f8282-a2b0-4d3b-9874-c168cf0404a5
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
@@ -8,7 +8,7 @@ dependencies:
     - paragraphs
 third_party_settings:
   field_permissions:
-    permission_type: public
+    permission_type: private
 id: paragraph.field_how_did_you_hear_about_the
 field_name: field_how_did_you_hear_about_the
 entity_type: paragraph

@@ -1,9 +1,13 @@
 uuid: fe83d168-3d35-4b10-a032-607b9c8e26ae
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: user.field_virtual_visits
 field_name: field_virtual_visits
 entity_type: user

@@ -1,10 +1,14 @@
 uuid: f09219f8-fc54-4e3f-9cb4-048c1c10e629
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - options
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: user.field_griffin_finalist
 field_name: field_griffin_finalist
 entity_type: user

@@ -2,10 +2,8 @@ uuid: c13d8bc6-6d29-4d7c-b038-d8e618ed579b
 langcode: en
 status: true
 dependencies:
-  config:
-    - filter.format.full_html
   module:
-    - filter
+    - field_permissions
     - node
     - system
 id: lesson_plan_creator
@@ -46,7 +44,6 @@ permissions:
   - 'edit own field_video_poem'
   - 'edit own field_what_grades_do_you_teach'
   - 'edit own field_what_subjects_do_you_teach'
-  - 'use text format full_html'
   - 'view field_about_me'
   - 'view field_additional_poems'
   - 'view field_copyright'

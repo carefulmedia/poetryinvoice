@@ -1,9 +1,13 @@
 uuid: 13077fba-13f1-4ec4-a01f-4e391d56f273
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_results_of_school_competit
 field_name: field_results_of_school_competit
 entity_type: paragraph

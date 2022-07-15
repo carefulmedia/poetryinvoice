@@ -1,9 +1,13 @@
 uuid: 20875178-95b7-4d93-b597-75d5bfe08d21
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_recitation_order
 field_name: field_recitation_order
 entity_type: paragraph

@@ -1,10 +1,14 @@
 uuid: 33e4472b-6c50-42ab-94dd-646ee3505e41
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
     - comment
+    - field_permissions
     - text
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: comment.comment_body
 field_name: comment_body
 entity_type: comment

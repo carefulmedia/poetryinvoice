@@ -1,9 +1,13 @@
 uuid: 6ae8bf2d-52a6-4b0d-a18d-a86c7f382abd
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: private
 id: user.field_poet_in_class
 field_name: field_poet_in_class
 entity_type: user

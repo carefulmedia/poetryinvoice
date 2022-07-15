@@ -1,7 +1,9 @@
 uuid: 8cdeaf2d-c6fe-486a-b501-1b81bc93bf5d
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - field_permissions
 id: teacher_en_
 label: 'Teacher (en)'
 weight: 2

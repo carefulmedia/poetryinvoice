@@ -1,10 +1,14 @@
 uuid: 6bb19f97-2bed-42f3-b9a8-4f1bffc1274d
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - options
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: private
 id: user.field_writing_content
 field_name: field_writing_content
 entity_type: user

@@ -1,10 +1,14 @@
 uuid: 35acee0e-3685-42f6-a779-47b09d285c76
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
     - options
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_2016_rs
 field_name: field_2016_rs
 entity_type: node

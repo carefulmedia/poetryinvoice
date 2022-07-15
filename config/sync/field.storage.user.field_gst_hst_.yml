@@ -1,9 +1,13 @@
 uuid: 3269c1e0-dc6a-4624-9dc6-1a10333bbf9e
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: private
 id: user.field_gst_hst_
 field_name: field_gst_hst_
 entity_type: user

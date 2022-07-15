@@ -1,9 +1,13 @@
 uuid: 5311bfa6-f93e-497e-9bea-8cfe46e01634
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: user.field_my_role_at_school_organiza
 field_name: field_my_role_at_school_organiza
 entity_type: user

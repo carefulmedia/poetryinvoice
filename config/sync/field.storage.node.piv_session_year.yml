@@ -1,9 +1,13 @@
 uuid: e9e2ab45-c461-4620-aae1-5903e4a60f06
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: node.piv_session_year
 field_name: piv_session_year
 entity_type: node

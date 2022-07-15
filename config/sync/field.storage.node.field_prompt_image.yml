@@ -1,11 +1,15 @@
 uuid: dc7afff7-b7e6-4b59-8f38-bd6d37a89cac
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - file
     - image
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_prompt_image
 field_name: field_prompt_image
 entity_type: node

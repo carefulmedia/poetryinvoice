@@ -14,8 +14,112 @@ dependencies:
   module:
     - comment
     - image
+    - layout_builder
     - text
     - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          f2afeafe-e627-4e89-bf41-a1bafb17209c:
+            uuid: f2afeafe-e627-4e89-bf41-a1bafb17209c
+            region: content
+            configuration:
+              id: 'field_block:node:article:field_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: large
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          f53476ab-fc2e-4cf2-ae85-d2d7a3e21b85:
+            uuid: f53476ab-fc2e-4cf2-ae85-d2d7a3e21b85
+            region: content
+            configuration:
+              id: 'field_block:node:article:field_tags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          aa1e14d4-1ae7-4707-b149-8e782bcb4392:
+            uuid: aa1e14d4-1ae7-4707-b149-8e782bcb4392
+            region: content
+            configuration:
+              id: 'field_block:node:article:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          731959c0-ff2f-4d57-8c0d-1fe8c1578887:
+            uuid: 731959c0-ff2f-4d57-8c0d-1fe8c1578887
+            region: content
+            configuration:
+              id: 'field_block:node:article:comment_node_article'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: comment_default
+                label: hidden
+                settings:
+                  view_mode: default
+                  pager_id: 0
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          5b35a4b4-043a-4560-9d71-945c1ea96079:
+            uuid: 5b35a4b4-043a-4560-9d71-945c1ea96079
+            region: content
+            configuration:
+              id: 'extra_field_block:node:article:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 4
+            additional: {  }
+          82c7fbe2-8311-4be1-8c9b-3690a0f82f37:
+            uuid: 82c7fbe2-8311-4be1-8c9b-3690a0f82f37
+            region: content
+            configuration:
+              id: 'field_block:node:article:comment'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: comment_default
+                label: above
+                settings:
+                  view_mode: default
+                  pager_id: 0
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+        third_party_settings: {  }
 _core:
   default_config_hash: ChmU3AVqDKU32A_fyChG0W9dTRKmVBR58B6OClCLvZI
 id: node.article.default

@@ -1,9 +1,13 @@
 uuid: 7c70e71d-2fdb-41c6-b5ae-29ecf5f13df4
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_date_and_poet_chosen
 field_name: field_date_and_poet_chosen
 entity_type: node

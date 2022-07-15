@@ -1,9 +1,13 @@
 uuid: d3d5a0ff-d4d0-402a-82b9-a56df063b6d5
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: private
 id: node.field_phone
 field_name: field_phone
 entity_type: node

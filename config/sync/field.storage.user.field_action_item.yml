@@ -1,11 +1,15 @@
 uuid: 9f612de5-5517-4cdf-bb22-f913277f7650
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
     - entity_reference_revisions
+    - field_permissions
     - paragraphs
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: user.field_action_item
 field_name: field_action_item
 entity_type: user

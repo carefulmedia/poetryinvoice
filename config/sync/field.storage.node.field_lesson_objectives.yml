@@ -1,10 +1,14 @@
 uuid: 5e9a0151-6d2c-417b-8b2b-948dde0fa918
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
     - text
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_lesson_objectives
 field_name: field_lesson_objectives
 entity_type: node

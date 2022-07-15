@@ -1,11 +1,15 @@
 uuid: f98f24a4-d8d4-482e-b605-f28eb3176a57
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - file
     - image
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_school_image
 field_name: field_school_image
 entity_type: node

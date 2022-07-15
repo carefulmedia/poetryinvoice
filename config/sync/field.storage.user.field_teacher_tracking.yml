@@ -1,11 +1,15 @@
 uuid: 9e0bb300-32c6-4c33-b4ad-6df32925dd17
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
     - entity_reference_revisions
+    - field_permissions
     - paragraphs
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: user.field_teacher_tracking
 field_name: field_teacher_tracking
 entity_type: user

@@ -1,9 +1,13 @@
 uuid: 1627b4db-b077-4521-b263-41ecbc185bfe
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_visit_completed_poet
 field_name: field_visit_completed_poet
 entity_type: paragraph

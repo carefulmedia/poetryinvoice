@@ -1,10 +1,14 @@
 uuid: 170dfeb5-5cb5-4eed-86c3-903bdf7403ca
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
     - text
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: node.field_preface
 field_name: field_preface
 entity_type: node

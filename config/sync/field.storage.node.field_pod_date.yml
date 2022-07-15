@@ -1,10 +1,14 @@
 uuid: 67bc460b-9dad-42db-bac6-abcf3a8ce32c
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
     - datetime
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: node.field_pod_date
 field_name: field_pod_date
 entity_type: node

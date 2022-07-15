@@ -1,11 +1,15 @@
 uuid: d7c86ee1-b146-4407-8681-18fad7951e86
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
     - entity_reference_revisions
+    - field_permissions
     - paragraphs
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: user.field_communication_log
 field_name: field_communication_log
 entity_type: user

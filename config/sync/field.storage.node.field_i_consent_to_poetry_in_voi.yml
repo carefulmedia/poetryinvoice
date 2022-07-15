@@ -1,9 +1,13 @@
 uuid: a532ad48-3a43-4288-94f1-f17ff54c1f5d
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: private
 id: node.field_i_consent_to_poetry_in_voi
 field_name: field_i_consent_to_poetry_in_voi
 entity_type: node

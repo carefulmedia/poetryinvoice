@@ -1,9 +1,13 @@
 uuid: 0f2ccb60-0731-4483-b3c9-974af2d8f356
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: node.field_teacher
 field_name: field_teacher
 entity_type: node

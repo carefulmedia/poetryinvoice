@@ -1,9 +1,13 @@
 uuid: 8e0ad256-d708-4e50-afd2-3a09c6456ae8
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_canada_restrict
 field_name: field_canada_restrict
 entity_type: node

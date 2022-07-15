@@ -1,9 +1,13 @@
 uuid: 50fb9320-bf62-4450-ad23-cf3df588ca8e
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_stage_name
 field_name: field_stage_name
 entity_type: paragraph

@@ -1,9 +1,13 @@
 uuid: f71d917a-ff4c-4d24-861b-bbf905b48d14
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: private
 id: node.field_nf_video
 field_name: field_nf_video
 entity_type: node

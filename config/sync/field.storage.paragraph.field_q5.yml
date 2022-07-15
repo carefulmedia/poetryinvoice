@@ -1,10 +1,14 @@
 uuid: 727afe4d-5b9f-4c6a-9fae-0966def59a48
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
     - text
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: paragraph.field_q5
 field_name: field_q5
 entity_type: paragraph

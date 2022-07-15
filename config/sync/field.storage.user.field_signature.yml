@@ -1,9 +1,13 @@
 uuid: d1fd9dd7-bdb7-4951-b154-d136870ae8a6
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: private
 id: user.field_signature
 field_name: field_signature
 entity_type: user

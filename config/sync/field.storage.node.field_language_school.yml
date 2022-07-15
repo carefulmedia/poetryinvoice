@@ -1,10 +1,14 @@
 uuid: f9623b90-67c1-4fc6-bf6f-d1ce6ae954d3
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
     - options
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_language_school
 field_name: field_language_school
 entity_type: node

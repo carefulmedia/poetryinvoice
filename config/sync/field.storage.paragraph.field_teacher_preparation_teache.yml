@@ -1,10 +1,14 @@
 uuid: e7fe47d0-625c-436d-9fda-6668b4fc30ad
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - options
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_teacher_preparation_teache
 field_name: field_teacher_preparation_teache
 entity_type: paragraph

@@ -5,6 +5,7 @@ dependencies:
   config:
     - node.type.journal_poem
   module:
+    - field_permissions
     - node
 id: journal_editor
 label: 'Journal editor'

@@ -1,10 +1,14 @@
 uuid: 86e52a63-9f7b-4700-ab87-9cc092ec3160
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
     - text
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_activity_description_steps
 field_name: field_activity_description_steps
 entity_type: node

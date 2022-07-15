@@ -1,9 +1,13 @@
 uuid: 76334787-58c0-4de4-a424-309791c11e56
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: node.field_source
 field_name: field_source
 entity_type: node

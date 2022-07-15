@@ -1,9 +1,13 @@
 uuid: cb8289fd-ed4f-48f2-999c-677901396ea7
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_teacher_incomplete_reason
 field_name: field_teacher_incomplete_reason
 entity_type: paragraph

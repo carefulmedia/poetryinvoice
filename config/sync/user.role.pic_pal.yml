@@ -6,6 +6,7 @@ dependencies:
     - node.type.pal_pir_school_visit
     - node.type.writing_prompt
   module:
+    - field_permissions
     - node
 id: pic_pal
 label: PIC/PAL

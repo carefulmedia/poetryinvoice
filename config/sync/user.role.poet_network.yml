@@ -4,11 +4,11 @@ status: true
 dependencies:
   config:
     - filter.format.filtered_html
-    - filter.format.full_html
     - node.type.school
     - node.type.writing_prompt
   module:
     - contact
+    - field_permissions
     - filter
     - node
 id: poet_network
@@ -47,7 +47,6 @@ permissions:
   - 'search pal_pir_school_visit content'
   - 'search writing_prompt content'
   - 'use text format filtered_html'
-  - 'use text format full_html'
   - 'view all user locations'
   - 'view any unpublished pal_pir_school_visit content'
   - 'view body'

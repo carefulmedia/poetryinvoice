@@ -1,9 +1,13 @@
 uuid: 6c7b0bb3-d13b-4b06-a778-179851b1ac2a
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_ambassador_involvement_ide
 field_name: field_ambassador_involvement_ide
 entity_type: paragraph

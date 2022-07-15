@@ -1,9 +1,13 @@
 uuid: b92a8e86-3769-4119-b131-58c811c46641
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_school_competition_comment
 field_name: field_school_competition_comment
 entity_type: paragraph

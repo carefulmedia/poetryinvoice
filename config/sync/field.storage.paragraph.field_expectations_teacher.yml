@@ -1,10 +1,14 @@
 uuid: 93e745df-bb72-4993-84a6-3e1b9300f932
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - options
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_expectations_teacher
 field_name: field_expectations_teacher
 entity_type: paragraph

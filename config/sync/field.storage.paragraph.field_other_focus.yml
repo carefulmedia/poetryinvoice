@@ -1,9 +1,13 @@
 uuid: 9e4c21ff-c857-4818-bd9e-ab6af86690ef
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_other_focus
 field_name: field_other_focus
 entity_type: paragraph

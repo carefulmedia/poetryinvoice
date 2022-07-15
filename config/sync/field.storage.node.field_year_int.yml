@@ -1,9 +1,13 @@
 uuid: 2119c16f-bfe5-45da-a6bb-815efb9a45bc
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: node.field_year_int
 field_name: field_year_int
 entity_type: node

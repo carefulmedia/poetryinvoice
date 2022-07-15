@@ -1,10 +1,14 @@
 uuid: aa52da2c-4f9e-4b71-9adf-92d0622324a6
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
     - entity_reference_revisions
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_types_of_support_requested
 field_name: field_types_of_support_requested
 entity_type: paragraph

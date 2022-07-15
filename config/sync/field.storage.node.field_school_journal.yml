@@ -1,9 +1,13 @@
 uuid: 3e81b81a-1854-4131-a5f5-2a560e32586b
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: node.field_school_journal
 field_name: field_school_journal
 entity_type: node

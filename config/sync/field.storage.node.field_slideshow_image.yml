@@ -1,11 +1,15 @@
 uuid: 1c53b5a6-2d07-420b-9315-0350b055d99c
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - file
     - image
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: node.field_slideshow_image
 field_name: field_slideshow_image
 entity_type: node

@@ -1,10 +1,14 @@
 uuid: eb869b22-9f34-4a2e-b753-c288598c715b
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
     - datetime
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_agreed_visit_date
 field_name: field_agreed_visit_date
 entity_type: node

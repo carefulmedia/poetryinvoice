@@ -1,9 +1,13 @@
 uuid: f2c4f8f0-38d7-4d2e-b262-e323beab4454
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_do_you_have_any_poet_prefe
 field_name: field_do_you_have_any_poet_prefe
 entity_type: node

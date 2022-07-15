@@ -1,9 +1,13 @@
 uuid: 38d69703-6ee4-4533-976a-db6b522c3744
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_contact_person
 field_name: field_contact_person
 entity_type: node

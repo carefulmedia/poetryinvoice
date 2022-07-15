@@ -1,10 +1,14 @@
 uuid: 42565fbe-1201-4288-a94d-da855e9d8a82
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
     - datetime
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_en_info_pack_sent
 field_name: field_en_info_pack_sent
 entity_type: paragraph

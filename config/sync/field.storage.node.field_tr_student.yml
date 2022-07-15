@@ -1,11 +1,15 @@
 uuid: b8b8cd81-904b-4b54-9fc5-d40cf365a0ae
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
     - entity_reference_revisions
+    - field_permissions
     - node
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_tr_student
 field_name: field_tr_student
 entity_type: node

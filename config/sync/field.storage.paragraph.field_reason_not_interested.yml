@@ -1,9 +1,13 @@
 uuid: 9c416b11-28af-40de-8085-4638b3346faf
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_reason_not_interested
 field_name: field_reason_not_interested
 entity_type: paragraph

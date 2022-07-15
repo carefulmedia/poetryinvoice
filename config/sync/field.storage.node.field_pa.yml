@@ -1,10 +1,14 @@
 uuid: 99edd56b-f103-48c9-94a4-4c44b5680f16
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_pa
 field_name: field_pa
 entity_type: node

@@ -1,9 +1,13 @@
 uuid: 03ba3242-72fc-4a8a-85e6-90769cdbf3e2
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_is_this_teacher_an_ambassa
 field_name: field_is_this_teacher_an_ambassa
 entity_type: paragraph

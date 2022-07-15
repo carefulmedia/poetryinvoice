@@ -1,10 +1,14 @@
 uuid: 139a7127-59e3-4fca-9ac4-1c60b69fe43f
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - options
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_send_additional_fr_posters
 field_name: field_send_additional_fr_posters
 entity_type: paragraph

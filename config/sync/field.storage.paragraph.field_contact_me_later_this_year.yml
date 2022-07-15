@@ -1,9 +1,13 @@
 uuid: 7269bf2d-eb42-4d46-8464-2382552162d8
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_contact_me_later_this_year
 field_name: field_contact_me_later_this_year
 entity_type: paragraph

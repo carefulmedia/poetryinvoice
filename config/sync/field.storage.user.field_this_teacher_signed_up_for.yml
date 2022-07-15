@@ -1,11 +1,15 @@
 uuid: 91044eff-abd2-4508-ab11-8b40a02d6407
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
     - entity_reference_revisions
+    - field_permissions
     - paragraphs
     - user
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: user.field_this_teacher_signed_up_for
 field_name: field_this_teacher_signed_up_for
 entity_type: user

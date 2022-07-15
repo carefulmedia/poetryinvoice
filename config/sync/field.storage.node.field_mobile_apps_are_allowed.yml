@@ -1,9 +1,13 @@
 uuid: a23db4ac-1404-4149-beaf-dc57ce236c9d
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_mobile_apps_are_allowed
 field_name: field_mobile_apps_are_allowed
 entity_type: node

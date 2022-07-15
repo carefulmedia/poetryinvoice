@@ -1,9 +1,13 @@
 uuid: 16bc9dea-012e-4fce-a0eb-e4262b518340
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_copyright
 field_name: field_copyright
 entity_type: node

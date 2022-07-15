@@ -1,10 +1,14 @@
 uuid: 568bd818-97da-4eb5-9f36-bdf3f83774f7
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - file
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: node.field_poem_attachment
 field_name: field_poem_attachment
 entity_type: node

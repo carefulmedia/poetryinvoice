@@ -10,6 +10,7 @@ dependencies:
   module:
     - comment
     - contact
+    - field_permissions
     - media
     - node
     - piv_contest_competition

@@ -1,11 +1,15 @@
 uuid: 6c4ff515-fc77-4abe-ae27-7bc37b4e31e3
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - file
     - image
     - taxonomy
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: taxonomy_term.field_roulette_image
 field_name: field_roulette_image
 entity_type: taxonomy_term

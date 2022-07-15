@@ -1,10 +1,14 @@
 uuid: b713922f-c3b1-421c-83ce-c109203b3ca4
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - options
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: paragraph.field_publication_type
 field_name: field_publication_type
 entity_type: paragraph

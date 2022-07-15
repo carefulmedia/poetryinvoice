@@ -1,10 +1,14 @@
 uuid: 2830f450-7d82-4a09-b5d9-57a08f591484
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
     - datetime
+    - field_permissions
     - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
 id: paragraph.field_en_posters_sent
 field_name: field_en_posters_sent
 entity_type: paragraph

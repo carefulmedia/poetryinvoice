@@ -1,9 +1,13 @@
 uuid: af3cda4e-94ba-402d-937a-f435e5b491e2
-langcode: und
+langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: node.piv_student_grade
 field_name: piv_student_grade
 entity_type: node
