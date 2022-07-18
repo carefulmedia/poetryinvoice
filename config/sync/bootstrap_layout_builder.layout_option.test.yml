@@ -1,0 +1,13 @@
+uuid: b2a05217-8654-488f-a9ce-7bfbae012fff
+langcode: en
+status: true
+dependencies: {  }
+id: test
+layout_id: blb_col_1
+label: test
+structure: '12'
+breakpoints:
+  desktop: desktop
+  tablet: 0
+  mobile: 0
+weight: 0

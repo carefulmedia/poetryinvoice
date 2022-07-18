@@ -1,0 +1,27 @@
+uuid: 6fb8aa37-c504-4cba-a92c-46b3aa7ec11f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - pivlvp
+_core:
+  default_config_hash: OyPFTXx4egKeF3j7zAXJTAVCKvWF-p1guNqNDgcVe0I
+id: pivlvp_page_title
+theme: pivlvp
+region: content
+weight: 0
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/*\r\n/user/*\r\n<front>"
+    negate: true
+    context_mapping: {  }

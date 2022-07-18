@@ -1,0 +1,22 @@
+uuid: 739d0de9-ecde-4829-a05d-fac55882feed
+langcode: en
+status: true
+dependencies:
+  theme:
+    - pivlvp
+_core:
+  default_config_hash: YxWGMqHcGIvee0_fY9mRvp8VAOu5kfJrVitRBpmGePc
+id: pivlvp_local_tasks
+theme: pivlvp
+region: content
+weight: 1
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: Tabs
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: true
+visibility: {  }

@@ -107,6 +107,7 @@ module:
   reroute_email: 0
   rest: 0
   s3fs: 0
+  scheduler: 0
   search: 0
   serialization: 0
   shortcut: 0
@@ -147,4 +148,5 @@ theme:
   barrio_piv: 0
   gin: 0
   olivero: 0
+  pivlvp: 0
 profile: minimal
