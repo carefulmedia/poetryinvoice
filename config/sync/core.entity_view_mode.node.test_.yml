@@ -1,0 +1,10 @@
+uuid: 081db8a1-fc02-4904-9c88-1a498d9f0853
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.test_
+label: 'Test journal poem view'
+targetEntityType: node
+cache: true

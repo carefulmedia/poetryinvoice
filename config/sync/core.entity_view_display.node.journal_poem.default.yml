@@ -32,10 +32,13 @@ dependencies:
     - field.field.node.journal_poem.piv_teacher_last_name
     - node.type.journal_poem
   module:
+    - bootstrap_layouts
     - comment
+    - ctools
     - file
     - image
     - layout_builder
+    - layout_builder_restrictions
     - layout_discovery
     - options
     - text
@@ -46,11 +49,64 @@ third_party_settings:
     allow_custom: false
     sections:
       -
+        layout_id: bs_1col
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          layout:
+            wrapper: div
+            classes:
+              row: row
+            add_layout_class: 1
+            attributes: ''
+          regions:
+            main:
+              wrapper: div
+              classes:
+                col-sm-12: col-sm-12
+              add_region_classes: 1
+              attributes: ''
+        components:
+          dc49ede0-fba4-4cfa-91e4-195b6788ae0c:
+            uuid: dc49ede0-fba4-4cfa-91e4-195b6788ae0c
+            region: main
+            configuration:
+              id: 'entity_view:node'
+              label: 'Entity view (Content)'
+              label_display: '0'
+              provider: ctools
+              view_mode: test_
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
           context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+          breakpoints:
+            desktop: blb_col_9_3
+            tablet: blb_col_9_3
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-9
+              - col-md-9
+              - col-12
+            blb_region_col_2:
+              - col-lg-3
+              - col-md-3
+              - col-12
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
@@ -135,30 +191,10 @@ third_party_settings:
                   class: _none
               scroll_effects:
                 class: null
-          container_wrapper_bg_color_class: ''
-          container_wrapper_bg_media: null
-          container: container
-          section_classes: ''
           section_attributes: null
-          regions_classes:
-            blb_region_col_1: ''
-            blb_region_col_2: ''
           regions_attributes:
             blb_region_col_1: null
             blb_region_col_2: null
-          breakpoints:
-            desktop: blb_col_9_3
-            tablet: blb_col_9_3
-            mobile: blb_col_12
-          layout_regions_classes:
-            blb_region_col_1:
-              - col-lg-9
-              - col-md-9
-              - col-12
-            blb_region_col_2:
-              - col-lg-3
-              - col-md-3
-              - col-12
           remove_gutters: '0'
         components:
           3d795e64-e6c3-4558-a257-d777aadde2ae:
@@ -322,6 +358,15 @@ third_party_settings:
           label: ''
         components: {  }
         third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
 id: node.journal_poem.default
 targetEntityType: node
 bundle: journal_poem
