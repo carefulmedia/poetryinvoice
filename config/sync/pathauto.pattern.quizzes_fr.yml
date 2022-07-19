@@ -8,12 +8,12 @@ dependencies:
 id: quizzes_fr
 label: 'Quizzes FR'
 type: 'canonical_entities:node'
-pattern: '/lire/questionnaires/[node:title]'
+pattern: '/binge/questionnaires/[node:title]'
 selection_criteria:
-  e25c519a-50bd-4385-a60a-663b18a500c0:
+  7a5005d3-a8cf-49ad-9340-2c8876814ce2:
     id: language
     negate: false
-    uuid: e25c519a-50bd-4385-a60a-663b18a500c0
+    uuid: 7a5005d3-a8cf-49ad-9340-2c8876814ce2
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

@@ -8,20 +8,20 @@ dependencies:
 id: quizzes_en
 label: 'Quizzes EN'
 type: 'canonical_entities:node'
-pattern: '/read/quizzes/[node:title]'
+pattern: '/binge/quizzes/[node:title]'
 selection_criteria:
-  66af9242-4d89-4f99-97a4-7ce9edc83a57:
+  7e6a36ce-9608-4fed-9af0-144d12d0aaf6:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 66af9242-4d89-4f99-97a4-7ce9edc83a57
+    uuid: 7e6a36ce-9608-4fed-9af0-144d12d0aaf6
     context_mapping:
       node: node
     bundles:
       quiz: quiz
-  546113f2-24fc-49c5-b243-0eb5e7ce64f6:
+  029e6fd4-aa74-411c-98be-5cc787a9b1bd:
     id: language
     negate: false
-    uuid: 546113f2-24fc-49c5-b243-0eb5e7ce64f6
+    uuid: 029e6fd4-aa74-411c-98be-5cc787a9b1bd
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

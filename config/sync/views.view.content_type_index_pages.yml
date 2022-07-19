@@ -299,7 +299,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      path: read/quizzes
+      path: binge/quizzes
     cache_metadata:
       max-age: -1
       contexts:
