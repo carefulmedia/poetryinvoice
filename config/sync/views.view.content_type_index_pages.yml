@@ -221,7 +221,7 @@ display:
             operator_list: {  }
         langcode:
           id: langcode
-          table: node
+          table: node_field_data
           field: langcode
           relationship: none
           group_type: group
