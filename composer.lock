@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fbe68661f79c5e38d8f02bb91442e59c",
+    "content-hash": "9cfb7b6eea225bfdd4eaf21147598ba6",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5781,6 +5781,62 @@
             }
         },
         {
+            "name": "drupal/select_translation",
+            "version": "2.0.0-alpha1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/select_translation.git",
+                "reference": "2.0.0-alpha1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/select_translation-2.0.0-alpha1.zip",
+                "reference": "2.0.0-alpha1",
+                "shasum": "ad4a7a211a4149d8cfe57d804b49ad86367ac1a3"
+            },
+            "require": {
+                "drupal/core": "^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0-alpha1",
+                    "datestamp": "1643100276",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Alice Heaton",
+                    "homepage": "https://www.drupal.org/user/60899"
+                },
+                {
+                    "name": "Anybody",
+                    "homepage": "https://www.drupal.org/user/291091"
+                },
+                {
+                    "name": "alcroito",
+                    "homepage": "https://www.drupal.org/user/176134"
+                },
+                {
+                    "name": "ao2",
+                    "homepage": "https://www.drupal.org/user/234884"
+                }
+            ],
+            "description": "Provides a Views filter to select which translation of a node should be displayed.",
+            "homepage": "https://www.drupal.org/project/select_translation",
+            "support": {
+                "source": "https://git.drupalcode.org/project/select_translation"
+            }
+        },
+        {
             "name": "drupal/styles_api",
             "version": "1.1.0",
             "source": {
@@ -11517,6 +11573,7 @@
         "drupal/inline_entity_form": 5,
         "drupal/mimemail": 15,
         "drupal/s3fs": 10,
+        "drupal/select_translation": 15,
         "drupal/tablesorter": 5,
         "drupal/zen": 15
     },

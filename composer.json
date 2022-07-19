@@ -61,6 +61,7 @@
         "drupal/reroute_email": "^2.1",
         "drupal/s3fs": "^3.0@beta",
         "drupal/scheduler": "^1.4",
+        "drupal/select_translation": "^2.0@alpha",
         "drupal/tablesorter": "^2.0@RC",
         "drupal/tb_megamenu": "^1.7",
         "drupal/views_bulk_edit": "^2.6",
