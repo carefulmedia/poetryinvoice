@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_date_and_start_time
+    - field.storage.node.field_funding_source
     - field.storage.node.field_other_time_options
     - field.storage.node.field_pal_pir
     - field.storage.node.field_preferred_poet_s_
     - field.storage.node.field_teacher_virtual_or_in_pers
+    - field.storage.node.field_visit_admin
     - node.type.pal_pir_school_visit
     - system.menu.admin
   module:
@@ -15,6 +17,7 @@ dependencies:
     - datetime
     - node
     - options
+    - paragraphs
     - user
     - views_bulk_operations
 id: school_visits
@@ -880,6 +883,131 @@ display:
           text: edit
           output_url_as_text: false
           absolute: false
+        field_visit_admin:
+          id: field_visit_admin
+          table: node__field_visit_admin
+          field: field_visit_admin
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_funding_source:
+          id: field_funding_source
+          table: node__field_funding_source
+          field: field_funding_source
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Funding source'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
         type: mini
         options:
@@ -1567,6 +1695,15 @@ display:
           admin_label: 'field_preferred_poet_s_: User'
           plugin_id: standard
           required: false
+        field_poet_questionnaire:
+          id: field_poet_questionnaire
+          table: node__field_poet_questionnaire
+          field: field_poet_questionnaire
+          relationship: none
+          group_type: group
+          admin_label: 'field_poet_questionnaire: Paragraph'
+          plugin_id: standard
+          required: false
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -1581,8 +1718,10 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_date_and_start_time'
+        - 'config:field.storage.node.field_funding_source'
         - 'config:field.storage.node.field_preferred_poet_s_'
         - 'config:field.storage.node.field_teacher_virtual_or_in_pers'
+        - 'config:field.storage.node.field_visit_admin'
   page_1:
     id: page_1
     display_title: Page
@@ -1611,8 +1750,10 @@ display:
         - user.permissions
       tags:
         - 'config:field.storage.node.field_date_and_start_time'
+        - 'config:field.storage.node.field_funding_source'
         - 'config:field.storage.node.field_preferred_poet_s_'
         - 'config:field.storage.node.field_teacher_virtual_or_in_pers'
+        - 'config:field.storage.node.field_visit_admin'
   page_2:
     id: page_2
     display_title: 'Page 2'
@@ -3118,3 +3259,2209 @@ display:
         - 'config:field.storage.node.field_pal_pir'
         - 'config:field.storage.node.field_preferred_poet_s_'
         - 'config:field.storage.node.field_teacher_virtual_or_in_pers'
+  page_3:
+    id: page_3
+    display_title: 'Page 3'
+    display_plugin: page
+    position: 3
+    display_options:
+      title: 'Booked not Past'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            pal_pir_school_visit: pal_pir_school_visit
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_visit_admin_target_id:
+          id: field_visit_admin_target_id
+          table: node__field_visit_admin
+          field: field_visit_admin_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: 'not empty'
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        langcode:
+          id: langcode
+          table: node
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: langcode_op
+            label: Language
+            description: ''
+            use_operator: false
+            operator: langcode_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: langcode
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_completed_value:
+          id: field_completed_value
+          table: node__field_completed
+          field: field_completed_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_completed_value_op
+            label: 'Completed?'
+            description: ''
+            use_operator: false
+            operator: field_completed_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_completed_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        field_address_administrative_area:
+          id: field_address_administrative_area
+          table: node__field_address
+          field: field_address_administrative_area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: administrative_area
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_address_administrative_area_op
+            label: Province
+            description: ''
+            use_operator: false
+            operator: field_address_administrative_area_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_address_administrative_area
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+            label_type: static
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          country:
+            country_source: static
+            country_argument_id: ''
+            country_filter_id: ''
+            country_static_code: CA
+        created:
+          id: created
+          table: node_field_revision
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: '2021-09-01'
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_op
+            label: 'Authored on'
+            description: ''
+            use_operator: false
+            operator: created_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_pal_pir_target_id:
+          id: field_pal_pir_target_id
+          table: node__field_pal_pir
+          field: field_pal_pir_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_pal_pir_target_id_op
+            label: 'Chosen poet'
+            description: ''
+            use_operator: false
+            operator: field_pal_pir_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_pal_pir_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_booked__value:
+          id: field_booked__value
+          table: node__field_booked_
+          field: field_booked__value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_agreed_visit_date_value:
+          id: field_agreed_visit_date_value
+          table: node__field_agreed_visit_date
+          field: field_agreed_visit_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: now
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
+      path: pic-pal/not-past
+      menu:
+        type: normal
+        title: 'Booked not Past'
+        description: ''
+        weight: 0
+        expanded: false
+        menu_name: admin
+        parent: 'menu_link_content:8a109781-3069-4293-9604-7245e9c50be9'
+        context: '0'
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_date_and_start_time'
+        - 'config:field.storage.node.field_funding_source'
+        - 'config:field.storage.node.field_preferred_poet_s_'
+        - 'config:field.storage.node.field_teacher_virtual_or_in_pers'
+        - 'config:field.storage.node.field_visit_admin'
+  page_4:
+    id: page_4
+    display_title: 'Page 4'
+    display_plugin: page
+    position: 4
+    display_options:
+      title: 'Past not Completed'
+      fields:
+        views_bulk_operations_bulk_form:
+          id: views_bulk_operations_bulk_form
+          table: views
+          field: views_bulk_operations_bulk_form
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: views_bulk_operations_bulk_form
+          label: 'Views bulk operations'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          batch: true
+          batch_size: 10
+          form_step: true
+          buttons: false
+          action_title: Action
+          clear_on_exposed: true
+          force_selection_info: false
+          selected_actions:
+            7:
+              action_id: views_bulk_edit
+              preconfiguration:
+                add_confirmation: false
+                label_override: 'Assign admin'
+                get_bundles_from_results: true
+        counter:
+          id: counter
+          table: views
+          field: counter
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: counter
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          counter_start: 1
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: 'Visit ID'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: field
+          label: 'Requested on'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp
+          settings:
+            date_format: html_date
+            custom_date_format: ''
+            timezone: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        uid:
+          id: uid
+          table: node_field_revision
+          field: uid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: uid
+          plugin_id: field
+          label: Teacher
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        title_1:
+          id: title_1
+          table: node_field_data
+          field: title
+          relationship: field_school
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: School
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_address_locality:
+          id: field_address_locality
+          table: node__field_address
+          field: field_address_locality
+          relationship: field_school
+          group_type: group
+          admin_label: ''
+          plugin_id: subdivision
+          label: City
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
+        field_address_administrative_area:
+          id: field_address_administrative_area
+          table: node__field_address
+          field: field_address_administrative_area
+          relationship: field_school
+          group_type: group
+          admin_label: ''
+          plugin_id: subdivision
+          label: Province
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
+        field_teacher_virtual_or_in_pers:
+          id: field_teacher_virtual_or_in_pers
+          table: node__field_teacher_virtual_or_in_pers
+          field: field_teacher_virtual_or_in_pers
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'In-person/Virtual preference'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        langcode:
+          id: langcode
+          table: node
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: field
+          label: Language
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: language
+          settings:
+            link_to_entity: false
+            native_language: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        mail:
+          id: mail
+          table: users_field_data
+          field: mail
+          relationship: field_preferred_poet_s_
+          group_type: group
+          admin_label: ''
+          entity_type: user
+          entity_field: mail
+          plugin_id: field
+          label: Email
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_preferred_poet_s_:
+          id: field_preferred_poet_s_
+          table: node__field_preferred_poet_s_
+          field: field_preferred_poet_s_
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Preferred poet'
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{{ field_preferred_poet_s_ }} \r\n{{ mail }}"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_date_and_start_time:
+          id: field_date_and_start_time
+          table: node__field_date_and_start_time
+          field: field_date_and_start_time
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Preferred date and start time'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            timezone_override: ''
+            format_type: short
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: entity_link_edit
+          label: Edit
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: edit
+          output_url_as_text: false
+          absolute: false
+        field_visit_admin:
+          id: field_visit_admin
+          table: node__field_visit_admin
+          field: field_visit_admin
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_funding_source:
+          id: field_funding_source
+          table: node__field_funding_source
+          field: field_funding_source
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Funding source'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            pal_pir_school_visit: pal_pir_school_visit
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_visit_admin_target_id:
+          id: field_visit_admin_target_id
+          table: node__field_visit_admin
+          field: field_visit_admin_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: empty
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        langcode:
+          id: langcode
+          table: node
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: langcode_op
+            label: Language
+            description: ''
+            use_operator: false
+            operator: langcode_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: langcode
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_completed_value:
+          id: field_completed_value
+          table: node__field_completed
+          field: field_completed_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_completed_value_op
+            label: 'Completed?'
+            description: ''
+            use_operator: false
+            operator: field_completed_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_completed_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        field_address_administrative_area:
+          id: field_address_administrative_area
+          table: node__field_address
+          field: field_address_administrative_area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: administrative_area
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_address_administrative_area_op
+            label: Province
+            description: ''
+            use_operator: false
+            operator: field_address_administrative_area_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_address_administrative_area
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+            label_type: static
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          country:
+            country_source: static
+            country_argument_id: ''
+            country_filter_id: ''
+            country_static_code: CA
+        created:
+          id: created
+          table: node_field_revision
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: '2021-09-01'
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_op
+            label: 'Authored on'
+            description: ''
+            use_operator: false
+            operator: created_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_pal_pir_target_id:
+          id: field_pal_pir_target_id
+          table: node__field_pal_pir
+          field: field_pal_pir_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_pal_pir_target_id_op
+            label: 'Chosen poet'
+            description: ''
+            use_operator: false
+            operator: field_pal_pir_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_pal_pir_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_completed_value_1:
+          id: field_completed_value_1
+          table: node__field_completed
+          field: field_completed_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: not
+          value:
+            Cancelled: Cancelled
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        field_agreed_visit_date_value:
+          id: field_agreed_visit_date_value
+          table: node__field_agreed_visit_date
+          field: field_agreed_visit_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '<'
+          value:
+            min: ''
+            max: ''
+            value: now
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_booked__value:
+          id: field_booked__value
+          table: node__field_booked_
+          field: field_booked__value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_visit_completed_poet_value:
+          id: field_visit_completed_poet_value
+          table: paragraph__field_visit_completed_poet
+          field: field_visit_completed_poet_value
+          relationship: field_poet_questionnaire
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '!='
+          value: '1'
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: AND
+      defaults:
+        title: false
+        fields: false
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
+      path: pic-pal/past-not-completed
+      menu:
+        type: normal
+        title: 'Past not Completed'
+        description: ''
+        weight: 6
+        expanded: false
+        menu_name: admin
+        parent: 'menu_link_content:8a109781-3069-4293-9604-7245e9c50be9'
+        context: '0'
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_date_and_start_time'
+        - 'config:field.storage.node.field_funding_source'
+        - 'config:field.storage.node.field_preferred_poet_s_'
+        - 'config:field.storage.node.field_teacher_virtual_or_in_pers'
+        - 'config:field.storage.node.field_visit_admin'
