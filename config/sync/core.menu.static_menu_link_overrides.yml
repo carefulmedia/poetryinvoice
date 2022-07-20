@@ -14,43 +14,43 @@ definitions:
     expanded: false
     enabled: true
   system__admin_contest:
-    weight: -96
-    menu_name: admin
-    parent: system.admin
-    expanded: false
-    enabled: true
-  system__themes_page:
     weight: -95
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
-  system__modules_list:
+  system__themes_page:
     weight: -94
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
-  system__admin_config:
+  system__modules_list:
     weight: -93
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
-  entity__user__collection:
+  system__admin_config:
     weight: -92
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
-  system__admin_reports:
+  entity__user__collection:
     weight: -91
     menu_name: admin
     parent: system.admin
     expanded: false
     enabled: true
-  help__main:
+  system__admin_reports:
     weight: -90
+    menu_name: admin
+    parent: system.admin
+    expanded: false
+    enabled: true
+  help__main:
+    weight: -89
     menu_name: admin
     parent: system.admin
     expanded: false

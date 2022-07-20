@@ -2207,10 +2207,45 @@ display:
         type: normal
         title: 'Requested not Assigned'
         description: 'All unassigned visits'
-        weight: 4
+        weight: 2
         expanded: false
         menu_name: admin
-        parent: 'menu_link_content:8a109781-3069-4293-9604-7245e9c50be9'
+        parent: 'views_view:views.school_visits.page_10'
+        context: '0'
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_date_and_start_time'
+        - 'config:field.storage.node.field_funding_source'
+        - 'config:field.storage.node.field_preferred_poet_s_'
+        - 'config:field.storage.node.field_teacher_virtual_or_in_pers'
+        - 'config:field.storage.node.field_visit_admin'
+  page_10:
+    id: page_10
+    display_title: 'Page 10'
+    display_plugin: page
+    position: 10
+    display_options:
+      title: 'Dummy page for visits'
+      defaults:
+        title: false
+      display_extenders: {  }
+      path: admin/pic-pal
+      menu:
+        type: normal
+        title: PIC/PAL
+        description: ''
+        weight: -96
+        expanded: false
+        menu_name: admin
+        parent: system.admin
         context: '0'
     cache_metadata:
       max-age: 0
@@ -3712,10 +3747,10 @@ display:
         type: normal
         title: 'Assigned not Booked'
         description: ''
-        weight: 3
+        weight: 1
         expanded: false
         menu_name: admin
-        parent: 'menu_link_content:8a109781-3069-4293-9604-7245e9c50be9'
+        parent: 'views_view:views.school_visits.page_10'
         context: '0'
     cache_metadata:
       max-age: 0
@@ -4288,10 +4323,10 @@ display:
         type: normal
         title: 'Booked not Past'
         description: ''
-        weight: 5
+        weight: 3
         expanded: false
         menu_name: admin
-        parent: 'menu_link_content:8a109781-3069-4293-9604-7245e9c50be9'
+        parent: 'views_view:views.school_visits.page_10'
         context: '0'
     cache_metadata:
       max-age: 0
@@ -5918,10 +5953,10 @@ display:
         type: normal
         title: 'Past not Completed'
         description: ''
-        weight: 6
+        weight: 4
         expanded: false
         menu_name: admin
-        parent: 'menu_link_content:8a109781-3069-4293-9604-7245e9c50be9'
+        parent: 'views_view:views.school_visits.page_10'
         context: '0'
     cache_metadata:
       max-age: 0
@@ -6536,10 +6571,10 @@ display:
         type: normal
         title: 'Completed not Paid'
         description: ''
-        weight: 7
+        weight: 5
         expanded: false
         menu_name: admin
-        parent: 'menu_link_content:8a109781-3069-4293-9604-7245e9c50be9'
+        parent: 'views_view:views.school_visits.page_10'
         context: '0'
     cache_metadata:
       max-age: 0
@@ -7067,10 +7102,10 @@ display:
         type: normal
         title: Paid
         description: ''
-        weight: 8
+        weight: 6
         expanded: false
         menu_name: admin
-        parent: 'menu_link_content:8a109781-3069-4293-9604-7245e9c50be9'
+        parent: 'views_view:views.school_visits.page_10'
         context: '0'
     cache_metadata:
       max-age: 0
@@ -7561,10 +7596,10 @@ display:
         type: normal
         title: Cancelled
         description: ''
-        weight: 9
+        weight: 7
         expanded: false
         menu_name: admin
-        parent: 'menu_link_content:8a109781-3069-4293-9604-7245e9c50be9'
+        parent: 'views_view:views.school_visits.page_10'
         context: '0'
     cache_metadata:
       max-age: 0
@@ -8155,10 +8190,10 @@ display:
         type: normal
         title: 'All Visits and Requests'
         description: ''
-        weight: 10
+        weight: 8
         expanded: false
         menu_name: admin
-        parent: 'menu_link_content:8a109781-3069-4293-9604-7245e9c50be9'
+        parent: 'views_view:views.school_visits.page_10'
         context: '0'
     cache_metadata:
       max-age: 0
@@ -8757,10 +8792,10 @@ display:
         type: normal
         title: 'All Booked'
         description: ''
-        weight: 11
+        weight: 9
         expanded: false
         menu_name: admin
-        parent: 'menu_link_content:8a109781-3069-4293-9604-7245e9c50be9'
+        parent: 'views_view:views.school_visits.page_10'
         context: '0'
     cache_metadata:
       max-age: 0
