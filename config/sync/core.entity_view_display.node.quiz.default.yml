@@ -4,9 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.node.quiz.body
+    - field.field.node.quiz.field_completed
     - field.field.node.quiz.field_image
+    - field.field.node.quiz.field_paid_
     - node.type.quiz
   module:
+    - options
     - text
     - user
 id: node.quiz.default
@@ -20,6 +23,23 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_completed:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_paid_:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
     region: content
 hidden:
   field_image: true

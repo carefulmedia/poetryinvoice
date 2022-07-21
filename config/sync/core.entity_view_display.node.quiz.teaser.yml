@@ -5,7 +5,9 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.quiz.body
+    - field.field.node.quiz.field_completed
     - field.field.node.quiz.field_image
+    - field.field.node.quiz.field_paid_
     - node.type.quiz
   module:
     - text
@@ -29,5 +31,7 @@ content:
     weight: 100
     region: content
 hidden:
+  field_completed: true
   field_image: true
+  field_paid_: true
   langcode: true
