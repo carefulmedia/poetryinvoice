@@ -77,6 +77,7 @@ dependencies:
     - image.style.thumbnail
   module:
     - field_layout
+    - file
     - image
     - inline_entity_form
     - layout_discovery
@@ -115,21 +116,21 @@ content:
     third_party_settings: {  }
   field_bio_completed_:
     type: boolean_checkbox
-    weight: 11
+    weight: 13
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_bio_not_by_author_paid_:
     type: boolean_checkbox
-    weight: 13
+    weight: 14
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_bio_written_by:
     type: entity_reference_autocomplete
-    weight: 14
+    weight: 12
     region: content
     settings:
       match_operator: CONTAINS
@@ -139,7 +140,7 @@ content:
     third_party_settings: {  }
   field_cheque_made_to:
     type: string_textfield
-    weight: 12
+    weight: 15
     region: content
     settings:
       size: 60
@@ -147,13 +148,20 @@ content:
     third_party_settings: {  }
   field_completed:
     type: options_select
-    weight: 15
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_cv:
+    type: file_generic
+    weight: 18
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
   field_micro_interview:
     type: inline_entity_form_complex
-    weight: 10
+    weight: 11
     region: content
     settings:
       form_mode: default
@@ -168,6 +176,13 @@ content:
       collapsed: false
       revision: false
     third_party_settings: {  }
+  field_paid_:
+    type: boolean_checkbox
+    weight: 17
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_school:
     type: entity_reference_autocomplete
     weight: 5
@@ -176,6 +191,14 @@ content:
       match_operator: CONTAINS
       match_limit: 10
       size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_user_bio:
+    type: text_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
       placeholder: ''
     third_party_settings: {  }
   langcode:
@@ -231,7 +254,6 @@ hidden:
   field_canadian_educator_: true
   field_communication_log: true
   field_contest_judging: true
-  field_cv: true
   field_dead_lead: true
   field_deceased_poet: true
   field_dormant_: true
@@ -257,7 +279,6 @@ hidden:
   field_not_a_teacher_: true
   field_one_line_bio: true
   field_online_semifinals_2015: true
-  field_paid_: true
   field_pause_solicitation: true
   field_peer_support: true
   field_phone: true
@@ -277,7 +298,6 @@ hidden:
   field_teacher_tracking: true
   field_team_regionals_2017: true
   field_this_teacher_signed_up_for: true
-  field_user_bio: true
   field_virtual_visits: true
   field_what_grades_do_you_teach: true
   field_what_subjects_do_you_teach: true
