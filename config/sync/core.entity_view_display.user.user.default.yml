@@ -63,6 +63,7 @@ dependencies:
     - field.field.user.user.field_teacher_leads_tracking
     - field.field.user.user.field_teacher_tracking
     - field.field.user.user.field_team_regionals_2017
+    - field.field.user.user.field_test
     - field.field.user.user.field_this_teacher_signed_up_for
     - field.field.user.user.field_user_bio
     - field.field.user.user.field_virtual_visits
@@ -127,6 +128,16 @@ content:
       link: false
     third_party_settings: {  }
     weight: 8
+    region: content
+  field_test:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 9
     region: content
   field_user_bio:
     type: text_default

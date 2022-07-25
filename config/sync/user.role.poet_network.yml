@@ -32,6 +32,7 @@ permissions:
   - 'create body'
   - 'create field_classroom'
   - 'create field_pa'
+  - 'create field_user_bio'
   - 'create writing_prompt content'
   - 'edit any school content'
   - 'edit field_classroom'

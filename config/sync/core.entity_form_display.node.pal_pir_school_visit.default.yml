@@ -35,12 +35,14 @@ dependencies:
     - field.field.node.pal_pir_school_visit.field_visit_date_and_times
     - node.type.pal_pir_school_visit
   module:
+    - conditional_fields
     - datetime
     - field_layout
     - inline_entity_form
     - layout_discovery
     - paragraphs
     - path
+    - scheduler
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -62,7 +64,28 @@ content:
     weight: 6
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        5f667a7c-693d-4873-b64d-57767fb169a4:
+          entity_type: node
+          bundle: pal_pir_school_visit
+          dependee: field_date_and_poet_chosen
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_amount_to_be_paid_to_each_:
     type: options_select
     weight: 20
@@ -75,7 +98,28 @@ content:
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        aeafc70c-5eb2-4bc7-9902-cede1c8027b4:
+          entity_type: node
+          bundle: pal_pir_school_visit
+          dependee: field_date_and_poet_chosen
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_catherine_attending_:
     type: options_select
     weight: 16
@@ -100,14 +144,96 @@ content:
     weight: 10
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        2e0e1678-f2a1-4957-bddf-94f9e7abcb83:
+          entity_type: node
+          bundle: pal_pir_school_visit
+          dependee: field_date_and_poet_chosen
+          settings:
+            state: '!visible'
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
+        7f7efb2a-e27e-412c-9718-f8a014bc0db1:
+          entity_type: node
+          bundle: pal_pir_school_visit
+          dependee: field_preferred_date
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_do_you_have_any_poet_prefe:
     type: boolean_checkbox
     weight: 7
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        2c37cca7-fbf4-4cd8-8894-048b8d0bc416:
+          entity_type: node
+          bundle: pal_pir_school_visit
+          dependee: field_date_and_poet_chosen
+          settings:
+            state: '!visible'
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
+        b0bc4c0e-bd8f-4d9c-888b-0605297f5410:
+          entity_type: node
+          bundle: pal_pir_school_visit
+          dependee: field_date_and_poet_chosen
+          settings:
+            state: '!visible'
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_funding_source:
     type: options_select
     weight: 28
@@ -138,7 +264,28 @@ content:
     weight: 4
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        281a496d-1ca8-4700-8956-df3fbc4dd625:
+          entity_type: node
+          bundle: pal_pir_school_visit
+          dependee: field_date_and_poet_chosen
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_notes:
     type: string_textarea
     weight: 13
@@ -171,7 +318,28 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        c98c3fa2-ed28-45e7-9171-97ef277eb820:
+          entity_type: node
+          bundle: pal_pir_school_visit
+          dependee: field_date_and_poet_chosen
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_pal_pir_report:
     type: string_textarea
     weight: 18
@@ -198,7 +366,28 @@ content:
     region: content
     settings:
       display_label: true
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        b58ed6bf-56b0-400e-9dd2-71b5137baa1e:
+          entity_type: node
+          bundle: pal_pir_school_visit
+          dependee: field_date_and_poet_chosen
+          settings:
+            state: '!visible'
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_preferred_poet_s_:
     type: entity_reference_autocomplete
     weight: 8
@@ -208,7 +397,48 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        be381b7d-b05b-458d-8e50-04371ff1bf24:
+          entity_type: node
+          bundle: pal_pir_school_visit
+          dependee: field_date_and_poet_chosen
+          settings:
+            state: '!visible'
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
+        5ecd7c60-8496-4e36-9d4a-2509d5a18d39:
+          entity_type: node
+          bundle: pal_pir_school_visit
+          dependee: field_do_you_have_any_poet_prefe
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_teacher_questionnaire:
     type: entity_reference_paragraphs
     weight: 24
@@ -305,6 +535,12 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
     type: boolean_checkbox
     weight: 37
@@ -341,6 +577,17 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   comment_node_pal_pir_school_vi: true

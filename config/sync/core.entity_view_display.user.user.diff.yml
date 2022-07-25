@@ -64,6 +64,7 @@ dependencies:
     - field.field.user.user.field_teacher_leads_tracking
     - field.field.user.user.field_teacher_tracking
     - field.field.user.user.field_team_regionals_2017
+    - field.field.user.user.field_test
     - field.field.user.user.field_this_teacher_signed_up_for
     - field.field.user.user.field_user_bio
     - field.field.user.user.field_virtual_visits
@@ -339,6 +340,7 @@ hidden:
   field_teacher_leads_tracking: true
   field_teacher_tracking: true
   field_team_regionals_2017: true
+  field_test: true
   field_this_teacher_signed_up_for: true
   field_virtual_visits: true
   field_writing_content: true
