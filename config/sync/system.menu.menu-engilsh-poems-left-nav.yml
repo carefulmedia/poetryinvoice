@@ -1,8 +1,0 @@
-uuid: 7ce27e96-2871-4b48-be26-99ab68f0eb90
-langcode: en
-status: true
-dependencies: {  }
-id: menu-engilsh-poems-left-nav
-label: 'Engilsh Poems Left Nav'
-description: ''
-locked: false

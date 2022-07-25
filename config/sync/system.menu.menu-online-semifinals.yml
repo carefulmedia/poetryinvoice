@@ -1,8 +1,0 @@
-uuid: aaae1a51-084b-4958-be8c-bdead69245ad
-langcode: en
-status: true
-dependencies: {  }
-id: menu-online-semifinals
-label: 'Online Semifinals'
-description: ''
-locked: false

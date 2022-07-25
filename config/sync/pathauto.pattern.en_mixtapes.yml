@@ -1,33 +1,33 @@
-uuid: 1989fa71-4657-4347-bd99-efc0ed955fb0
+uuid: 7884d0e6-01ce-4027-86a5-e2aef4ae1668
 langcode: en
 status: true
 dependencies:
   module:
     - language
     - node
-id: quizzes_fr
-label: 'Quizzes FR'
+id: en_mixtapes
+label: 'EN mixtapes'
 type: 'canonical_entities:node'
-pattern: '/binge/questionnaires/[node:title]'
+pattern: 'read/mixtapes/[node:title]'
 selection_criteria:
-  bd98aab7-6b1b-4e49-8e22-f074bc966db3:
+  13f8c17f-9454-484d-91c0-fced2019dae8:
     id: 'entity_bundle:node'
     negate: false
-    uuid: bd98aab7-6b1b-4e49-8e22-f074bc966db3
+    uuid: 13f8c17f-9454-484d-91c0-fced2019dae8
     context_mapping:
       node: node
     bundles:
-      quiz: quiz
-  4896e438-a766-4a00-9e2d-6029f31fd200:
+      mixtape: mixtape
+  77fbea94-27dd-41a9-850a-3e29b5ee46e8:
     id: language
     negate: false
-    uuid: 4896e438-a766-4a00-9e2d-6029f31fd200
+    uuid: 77fbea94-27dd-41a9-850a-3e29b5ee46e8
     context_mapping:
       language: 'node:langcode:language'
     langcodes:
-      fr: fr
+      en: en
 selection_logic: and
-weight: -5
+weight: -10
 relationships:
   'node:langcode:language':
     label: Language

@@ -8,7 +8,7 @@ dependencies:
 id: poem_french_
 label: 'Poem (French)'
 type: 'canonical_entities:node'
-pattern: 'poemes/[node:title]'
+pattern: '/lire/poemes/[node:title]'
 selection_criteria:
   2b47f66b-bb9c-4b02-86a4-e01815f91fba:
     id: node_type
@@ -18,10 +18,18 @@ selection_criteria:
       node: node
     bundles:
       poem: poem
-  b6aadb38-c682-4a61-9b71-3683fb6625dd:
+  565c40cb-6bdc-497d-a5b8-1d3494b06c6e:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 565c40cb-6bdc-497d-a5b8-1d3494b06c6e
+    context_mapping:
+      node: node
+    bundles:
+      poem: poem
+  efe65ff0-7c38-4287-a49e-24c137512bec:
     id: language
     negate: false
-    uuid: b6aadb38-c682-4a61-9b71-3683fb6625dd
+    uuid: efe65ff0-7c38-4287-a49e-24c137512bec
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

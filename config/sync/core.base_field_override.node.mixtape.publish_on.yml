@@ -1,0 +1,18 @@
+uuid: 2d52eda9-579c-4edd-a83d-0628dd9fd1fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.mixtape
+id: node.mixtape.publish_on
+field_name: publish_on
+entity_type: node
+bundle: mixtape
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,33 @@
+uuid: 2986c2bb-966a-489f-8920-34c9a26ac340
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - taxonomy
+id: en_forms_and_terms
+label: 'EN forms and terms'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/read/forms-terms/[term:name]'
+selection_criteria:
+  cc39ef1d-8908-44b5-8c3f-2f79bf86acb0:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: cc39ef1d-8908-44b5-8c3f-2f79bf86acb0
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      poetic_terms: poetic_terms
+  406b16ff-37ba-452c-b60d-2730a2fe19d0:
+    id: language
+    negate: false
+    uuid: 406b16ff-37ba-452c-b60d-2730a2fe19d0
+    context_mapping:
+      language: 'taxonomy_term:langcode:language'
+    langcodes:
+      en: en
+selection_logic: and
+weight: -10
+relationships:
+  'taxonomy_term:langcode:language':
+    label: Language

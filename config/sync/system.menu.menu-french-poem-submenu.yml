@@ -1,8 +1,0 @@
-uuid: 5d9cefd0-cc4a-4c94-816e-a37ac3ac4060
-langcode: fr
-status: true
-dependencies: {  }
-id: menu-french-poem-submenu
-label: 'French Poem Submenu'
-description: ''
-locked: false

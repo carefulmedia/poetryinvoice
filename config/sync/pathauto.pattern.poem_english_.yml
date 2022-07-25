@@ -8,7 +8,7 @@ dependencies:
 id: poem_english_
 label: 'Poem (English)'
 type: 'canonical_entities:node'
-pattern: 'poems/[node:title]'
+pattern: '/read/poems/[node:title]'
 selection_criteria:
   580fc80a-9202-4d06-8d77-8a36c93c6997:
     id: node_type
@@ -18,10 +18,18 @@ selection_criteria:
       node: node
     bundles:
       poem: poem
-  f2777428-a879-4657-abb0-1d09c76d1b54:
+  6e93930a-9d94-4fea-a086-16b78da971fe:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 6e93930a-9d94-4fea-a086-16b78da971fe
+    context_mapping:
+      node: node
+    bundles:
+      poem: poem
+  539989c6-8e1c-45f9-8541-b632be852f9e:
     id: language
     negate: false
-    uuid: f2777428-a879-4657-abb0-1d09c76d1b54
+    uuid: 539989c6-8e1c-45f9-8541-b632be852f9e
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

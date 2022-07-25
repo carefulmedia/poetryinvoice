@@ -1,8 +1,0 @@
-uuid: 1269daec-b571-4dd0-a38a-0e16a68e6342
-langcode: en
-status: true
-dependencies: {  }
-id: menu-english-nav
-label: 'English NAV'
-description: ''
-locked: false

@@ -1,0 +1,18 @@
+uuid: 93925695-6f6a-4f1c-9296-a2419db5e57b
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.mixtape
+id: node.mixtape.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: mixtape
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp
