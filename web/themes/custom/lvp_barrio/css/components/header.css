@@ -96,7 +96,7 @@ z-index: 2;
     position: relative;
 }
 
-.block-views-blockheader-images-based-on-node-content-block-1 img {
+.highlighted .container img {
     width: 100%;
     
 }
@@ -104,7 +104,9 @@ z-index: 2;
     width: 100% !important;
     margin: 0;
     padding: 0;
-    max-width: 100% !important
+    max-width: 100% !important;
+    position: relative;
+    top: -4em;
 }
 @media (min-width: 992px)
 .navbar-expand-lg .navbar-toggler {
