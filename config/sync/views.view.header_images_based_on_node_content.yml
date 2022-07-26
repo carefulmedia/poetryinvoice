@@ -7,7 +7,6 @@ dependencies:
   module:
     - image
     - node
-    - user
 id: header_images_based_on_node_content
 label: 'header images based on node content'
 module: views
@@ -106,9 +105,8 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
-        options:
-          perm: 'access content'
+        type: none
+        options: {  }
       cache:
         type: tag
         options: {  }
@@ -204,7 +202,6 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:field.storage.node.field_images_insert'
   block_1:
@@ -222,6 +219,5 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
-        - user.permissions
       tags:
         - 'config:field.storage.node.field_images_insert'

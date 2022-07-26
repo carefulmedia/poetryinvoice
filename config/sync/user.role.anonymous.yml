@@ -104,6 +104,7 @@ permissions:
   - 'view field_gg_finalist'
   - 'view field_grades'
   - 'view field_griffin_finalist'
+  - 'view field_images_insert'
   - 'view field_judge'
   - 'view field_legal_name'
   - 'view field_lesson_objectives'

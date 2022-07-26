@@ -2,10 +2,7 @@ uuid: 962663e7-e85e-46a4-96c1-3ca8e46b7d47
 langcode: en
 status: true
 dependencies:
-  content:
-    - 'block_content:basic:c1e97fa5-ef85-4bc0-a909-871c7c0b3483'
   module:
-    - block_content
     - system
   theme:
     - lvp_barrio

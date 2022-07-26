@@ -55,16 +55,15 @@
 .header-logo {
     height: 4em;
 }
+.header {
+    height: 4em;
+}
 #navbar-main {
-    background-color: #631F14;
+background: rgba(0, 0, 0, 0.4);
+backdrop-filter: blur(100px);
+z-index: 2;
 }
-.navbar,
-.navbar-inverse {https://www.lesvoixdelapoesie.com/enseigner/plans-de-cours/des-experiences-de-traduction
-  border-radius: 0;
-  border: none;
-  margin-bottom: 0;
-  min-height: 80px;
-}
+
 
 .nav li {
   display: inline;
@@ -91,4 +90,19 @@
 }
 */
 .navbar-toggler-icon {color: white}
+
+.block-views-blockheader-images-based-on-node-content-block-1{
+    top: -4em;
+}
+
+.block-views-blockheader-images-based-on-node-content-block-1 img {
+    width: 100%
+}
+.highlighted .container {
+    width: 100% !important;
+    margin: 0;
+    padding: 0;
+    max-width: 100% !important
+}
+
 
