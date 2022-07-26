@@ -106,5 +106,8 @@ z-index: 2;
     padding: 0;
     max-width: 100% !important
 }
-
+@media (min-width: 992px)
+.navbar-expand-lg .navbar-toggler {
+    display: inline ;
+}
 

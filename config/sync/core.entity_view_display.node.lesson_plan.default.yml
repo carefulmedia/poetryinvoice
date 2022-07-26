@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
     - core.base_field_override.node.lesson_plan.uid
     - field.field.node.lesson_plan.body
     - field.field.node.lesson_plan.comment_node_lesson_plan
@@ -43,6 +44,26 @@ third_party_settings:
           label: ''
           context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_bg_color_class: _none
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: layout-main
+            blb_region_col_2: brown-sidebar
+          breakpoints:
+            desktop: blb_col_9_3
+            tablet: blb_col_9_3
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-9
+              - col-md-9
+              - col-12
+            blb_region_col_2:
+              - col-lg-3
+              - col-md-3
+              - col-12
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
@@ -127,43 +148,26 @@ third_party_settings:
                   class: _none
               scroll_effects:
                 class: null
-          container_wrapper_bg_color_class: ''
-          container_wrapper_bg_media: null
-          container: container
-          section_classes: ''
           section_attributes: null
-          regions_classes:
-            blb_region_col_1: ''
-            blb_region_col_2: ''
           regions_attributes:
             blb_region_col_1: null
             blb_region_col_2: null
-          breakpoints:
-            desktop: blb_col_9_3
-            tablet: blb_col_9_3
-            mobile: blb_col_12
-          layout_regions_classes:
-            blb_region_col_1:
-              - col-lg-9
-              - col-md-9
-              - col-12
-            blb_region_col_2:
-              - col-lg-3
-              - col-md-3
-              - col-12
-          remove_gutters: '0'
+          remove_gutters: 0
         components:
           5fce835d-86b0-41f9-baae-a987be48662d:
             uuid: 5fce835d-86b0-41f9-baae-a987be48662d
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:lesson_plan:field_materials_resources'
-              label_display: '0'
+              label: 'Materials and Resources'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: text_default
-                label: above
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
             weight: 8
@@ -181,7 +185,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: text_default
-                label: above
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
             weight: 9
@@ -199,137 +203,66 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: text_default
-                label: above
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
             weight: 10
-            additional: {  }
-          75f34817-0aaf-45fa-99be-3bc91941e83a:
-            uuid: 75f34817-0aaf-45fa-99be-3bc91941e83a
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:node:lesson_plan:field_rwt'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: boolean
-                label: above
-                settings:
-                  format: default
-                  format_custom_false: ''
-                  format_custom_true: ''
-                third_party_settings: {  }
-            weight: 5
             additional: {  }
           f76a8c4e-495a-47d1-908b-a961042cc636:
             uuid: f76a8c4e-495a-47d1-908b-a961042cc636
             region: blb_region_col_2
             configuration:
               id: 'field_block:node:lesson_plan:field_learning_objectives'
-              label_display: '0'
+              label: Skills
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: list_default
-                label: above
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 6
-            additional: {  }
-          57bfff6d-8974-4032-b24b-adb0ccd34c7b:
-            uuid: 57bfff6d-8974-4032-b24b-adb0ccd34c7b
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:node:lesson_plan:field_file_under_'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 4
-            additional: {  }
-          4dd217e3-64b6-498e-8318-0ad4ebc3e4f9:
-            uuid: 4dd217e3-64b6-498e-8318-0ad4ebc3e4f9
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:node:lesson_plan:field_grades'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: list_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 3
-            additional: {  }
-          575fd8d9-be93-485f-b87a-223b48925be2:
-            uuid: 575fd8d9-be93-485f-b87a-223b48925be2
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:node:lesson_plan:field_periods'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 2
+            weight: 8
             additional: {  }
           cd2d52a9-203f-4d8a-8a9b-9c5c2d22dac2:
             uuid: cd2d52a9-203f-4d8a-8a9b-9c5c2d22dac2
             region: blb_region_col_2
             configuration:
               id: 'field_block:node:lesson_plan:field_poets_plural_user'
-              label_display: '0'
+              label: 'Poets in this Lesson Plan'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: above
+                label: hidden
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 1
+            weight: 7
             additional: {  }
           2031ee07-abcb-42f3-bf1e-8b7344a0aeda:
             uuid: 2031ee07-abcb-42f3-bf1e-8b7344a0aeda
             region: blb_region_col_2
             configuration:
               id: 'field_block:node:lesson_plan:field_video_poem'
-              label_display: '0'
+              label: 'Poems Used in this Lesson Plan'
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: above
+                label: hidden
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          da7fb028-b160-4d23-bbbe-69893d818297:
-            uuid: da7fb028-b160-4d23-bbbe-69893d818297
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:node:lesson_plan:field_additional_poems'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 7
+            weight: 6
             additional: {  }
           e3022915-ee64-4d09-b14f-a1cf5d2c97c9:
             uuid: e3022915-ee64-4d09-b14f-a1cf5d2c97c9
@@ -344,7 +277,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: text_default
-                label: above
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
             weight: 5
@@ -362,7 +295,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: text_default
-                label: above
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
             weight: 6
@@ -380,7 +313,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: text_default
-                label: above
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
             weight: 7
@@ -398,7 +331,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: text_default
-                label: above
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
             weight: 4
@@ -416,7 +349,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: file_default
-                label: above
+                label: hidden
                 settings:
                   use_description_as_link_text: true
                 third_party_settings: {  }
@@ -439,6 +372,115 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             weight: 3
+            additional: {  }
+          575fd8d9-be93-485f-b87a-223b48925be2:
+            uuid: 575fd8d9-be93-485f-b87a-223b48925be2
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_periods'
+              label: Periods
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          4dd217e3-64b6-498e-8318-0ad4ebc3e4f9:
+            uuid: 4dd217e3-64b6-498e-8318-0ad4ebc3e4f9
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_grades'
+              label: Grades
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: list_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          57bfff6d-8974-4032-b24b-adb0ccd34c7b:
+            uuid: 57bfff6d-8974-4032-b24b-adb0ccd34c7b
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_file_under_'
+              label: Subjects
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          da7fb028-b160-4d23-bbbe-69893d818297:
+            uuid: da7fb028-b160-4d23-bbbe-69893d818297
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_additional_poems'
+              label: 'Additional Poems'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          75f34817-0aaf-45fa-99be-3bc91941e83a:
+            uuid: 75f34817-0aaf-45fa-99be-3bc91941e83a
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_rwt'
+              label: 'Lesson  provided by ReadWriteThink.org, a website developed by the International Reading Association and the National Council of'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: boolean
+                label: hidden
+                settings:
+                  format: custom
+                  format_custom_false: ''
+                  format_custom_true: 'Lesson  provided by ReadWriteThink.org, a website developed by the International Reading Association and the National Council of'
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          93d4b443-7dfb-4e56-be40-3d1bb91a5f32:
+            uuid: 93d4b443-7dfb-4e56-be40-3d1bb91a5f32
+            region: blb_region_col_2
+            configuration:
+              id: 'inline_block:basic'
+              label: 'ABOUT THIS LESSON PLAN'
+              label_display: visible
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_revision_id: 4
+              block_serialized: null
+            weight: 0
             additional: {  }
         third_party_settings: {  }
 id: node.lesson_plan.default

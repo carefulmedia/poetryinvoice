@@ -1,0 +1,33 @@
+uuid: 7a2fc3a4-f102-4e61-83e5-ce26599b55c8
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:48b16ac8-3e0e-4c45-9337-519c7618ce68'
+  module:
+    - block_content
+    - node
+  theme:
+    - lvp_barrio
+id: headerimageforlessonplans
+theme: lvp_barrio
+region: highlighted
+weight: 0
+provider: null
+plugin: 'block_content:48b16ac8-3e0e-4c45-9337-519c7618ce68'
+settings:
+  id: 'block_content:48b16ac8-3e0e-4c45-9337-519c7618ce68'
+  label: 'Header image for Lesson Plans'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      lesson_plan: lesson_plan

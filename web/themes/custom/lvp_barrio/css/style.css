@@ -5,11 +5,8 @@
 .temp-image {width: 100%}
 
 
-body, h1,
-h1 a {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 700;
-}
+body,
+h1,
 h2,
 h3,
 h4,
@@ -19,6 +16,98 @@ h2 a,
 h3 a,
 p {
   font-family: 'Roboto', sans-serif;
+    color: #000;
 }
 
 
+
+h2 {
+font-family: 'Roboto';
+font-size: 18px;
+font-weight: 1000;
+line-height: 21px;
+letter-spacing: 0.1em;
+text-align: left;
+text-transform: uppercase;
+font-variation-settings: 'wdth' 110, 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+}
+
+.block-field-blocknodelesson-planbody p {
+font-family: Lora;
+font-size: 20px;
+font-weight: 400;
+line-height: 36px;
+letter-spacing: 0em;
+text-align: left;
+}
+p {
+font-family: Lora;
+font-size: 17px;
+font-weight: 400;
+line-height: 30px;
+letter-spacing: 0em;
+text-align: left;
+}
+
+li {
+font-family: Roboto;
+font-size: 17px;
+font-weight: 400;
+line-height: 30px;
+letter-spacing: 0em;
+text-align: left;
+}
+.block-field-blocknodelesson-planfield-lesson-objectives, .block-field-blocknodelesson-planfield-materials-resources {
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
+  border-radius: 6px;
+  background: #fff;
+  padding: 15px
+}
+
+.block {
+    margin-bottom: 40px;
+}
+.brown-sidebar {
+background: #724713;
+border-radius: 8px;
+color: #fff;
+height: fit-content;
+padding: 20px
+}
+.brown-sidebar a {
+color: #fff
+}
+.brown-sidebar h2 {
+color: #fff;
+
+}
+.brown-sidebar h2.heading {
+font-size: 18px;
+font-weight: 1000;
+line-height: 21px;
+letter-spacing: 0.1em;
+text-align: left;
+font-variation-settings: 'wdth' 110, 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+}
+
+
+.layout-main {
+padding-right: 10%;
+}
+h1.title {
+font-family: ''Roboto';
+font-size: 45px;
+font-weight: 700;
+line-height: 47px;
+letter-spacing: 0em;
+text-align: left;
+
+}
+.brown-sidebar .block {
+border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+padding: 0 0 1.2em;
+}
+
+.field--type-entity-reference {
+    margin: 0 0;
+}

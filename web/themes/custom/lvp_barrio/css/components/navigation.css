@@ -97,6 +97,23 @@ ul.dropdown-menu {
   color: #fff;
 }
 
+
 .nav-link {
-   display: none;
+    color: #fff;
+}
+
+.nav-link a {
+    color: #fff;
+}
+
+.nav-link-https--piv9lndosite-read {
+color: #C53D27;
+}
+@media (min-width: 992px)
+.navbar-expand-lg .navbar-nav .nav-link {
+
+}
+@media (min-width: 992px)
+.navbar-expand-lg .navbar-toggler {
+    display: inline ;
 }
