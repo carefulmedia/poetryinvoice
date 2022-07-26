@@ -1,23 +1,23 @@
-uuid: e4dea592-202b-43ca-be9b-f56bcb6efc56
+uuid: ccb67760-f710-4676-bd6c-6c9a06fc2fb5
 langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.main
+    - system.menu.fr-main-menu
   module:
     - language
     - menu_block
   theme:
     - lvp_barrio
-id: mainnavigation
+id: frmainmenu
 theme: lvp_barrio
 region: primary_menu
 weight: 0
 provider: null
-plugin: 'menu_block:main'
+plugin: 'menu_block:fr-main-menu'
 settings:
-  id: 'menu_block:main'
-  label: 'EN Main Menu'
+  id: 'menu_block:fr-main-menu'
+  label: 'FR Main menu'
   label_display: '0'
   provider: menu_block
   follow: false
@@ -27,7 +27,7 @@ settings:
   level: 1
   depth: 0
   expand_all_items: false
-  parent: 'main:'
+  parent: 'fr-main-menu:'
   suggestion: main
 visibility:
   language:
@@ -36,4 +36,4 @@ visibility:
     context_mapping:
       language: '@language.current_language_context:language_interface'
     langcodes:
-      en: en
+      fr: fr

@@ -1,0 +1,8 @@
+uuid: b1f29402-2228-437b-b741-251c12129cce
+langcode: fr
+status: true
+dependencies: {  }
+id: fr-main-menu
+label: 'FR Main menu'
+description: ''
+locked: false
