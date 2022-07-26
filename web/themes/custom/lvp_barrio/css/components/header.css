@@ -91,12 +91,14 @@ z-index: 2;
 */
 .navbar-toggler-icon {color: white}
 
-.block-views-blockheader-images-based-on-node-content-block-1{
+.block-views-blockheader-images-based-on-node-content-block-1 {
     top: -4em;
+    position: relative;
 }
 
 .block-views-blockheader-images-based-on-node-content-block-1 img {
-    width: 100%
+    width: 100%;
+    
 }
 .highlighted .container {
     width: 100% !important;
