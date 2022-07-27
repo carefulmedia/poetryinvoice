@@ -46,21 +46,18 @@
     text-decoration: none;
     border:2px solid white;    
     border-radius:50%;
-    -moz-border-radius:50%;
-    -webkit-border-radius:50%;
-    padding: 5px 9px;
-    font-size: 1.5em;
+    font-size: 1.5rem;
 
 }
 .header-logo {
-    height: 4em;
+    height: 3rem;
 }
-.header {
-    height: 4em;
+.navbar {
+    height: 4rem
 }
 #navbar-main {
-background: rgba(0, 0, 0, 0.4);
-backdrop-filter: blur(100px);
+background: rgba(0, 0, 0, 0.3);
+backdrop-filter: blur(50px);
 z-index: 2;
 }
 
@@ -72,7 +69,7 @@ z-index: 2;
 .navbar-inverse .navbar-nav>li>a {
   color: #ffffff;
   font-family: Lato;
-  font-size: 1.7em;
+  font-size: 1.7rem;
   font-weight: 300;
   padding: 30px 25px 33px 25px;
 }
@@ -91,9 +88,8 @@ z-index: 2;
 */
 .navbar-toggler-icon {color: white}
 
-.block-views-blockheader-images-based-on-node-content-block-1 {
-    top: -4em;
-    position: relative;
+.highlighted {
+    margin-top: -4rem;
 }
 
 .highlighted .container img {
@@ -105,8 +101,7 @@ z-index: 2;
     margin: 0;
     padding: 0;
     max-width: 100% !important;
-    position: relative;
-    top: -4em;
+
 }
 @media (min-width: 992px)
 .navbar-expand-lg .navbar-toggler {

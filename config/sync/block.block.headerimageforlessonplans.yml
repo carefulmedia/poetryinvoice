@@ -18,7 +18,7 @@ plugin: 'block_content:48b16ac8-3e0e-4c45-9337-519c7618ce68'
 settings:
   id: 'block_content:48b16ac8-3e0e-4c45-9337-519c7618ce68'
   label: 'Header image for Lesson Plans'
-  label_display: visible
+  label_display: '0'
   provider: block_content
   status: true
   info: ''

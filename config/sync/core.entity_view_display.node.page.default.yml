@@ -16,13 +16,14 @@ dependencies:
     - file
     - image
     - layout_builder
+    - layout_builder_restrictions
     - layout_discovery
     - text
     - user
 third_party_settings:
   layout_builder:
     enabled: true
-    allow_custom: false
+    allow_custom: true
     sections:
       -
         layout_id: layout_onecol
@@ -90,26 +91,16 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 1
             additional: {  }
-          0a1bbfcc-48eb-4349-bb8d-5a55e5c0f637:
-            uuid: 0a1bbfcc-48eb-4349-bb8d-5a55e5c0f637
-            region: content
-            configuration:
-              id: 'field_block:node:page:field_images_insert'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: image
-                label: hidden
-                settings:
-                  image_link: ''
-                  image_style: ''
-                  image_loading:
-                    attribute: lazy
-                third_party_settings: {  }
-            weight: 5
-            additional: {  }
         third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
 _core:
   default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
 id: node.page.default
