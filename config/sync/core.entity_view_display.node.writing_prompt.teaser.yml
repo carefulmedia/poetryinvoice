@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.writing_prompt.field_completed
     - field.field.node.writing_prompt.field_paid_
     - field.field.node.writing_prompt.field_prompt_image
+    - field.field.node.writing_prompt.field_prompt_or_exercise
     - node.type.writing_prompt
   module:
     - text
@@ -36,4 +37,5 @@ hidden:
   field_completed: true
   field_paid_: true
   field_prompt_image: true
+  field_prompt_or_exercise: true
   langcode: true

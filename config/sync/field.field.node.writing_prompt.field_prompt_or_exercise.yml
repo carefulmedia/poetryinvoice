@@ -1,0 +1,21 @@
+uuid: 571878d5-5334-4464-8e98-d53f242dd832
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_prompt_or_exercise
+    - node.type.writing_prompt
+  module:
+    - options
+id: node.writing_prompt.field_prompt_or_exercise
+field_name: field_prompt_or_exercise
+entity_type: node
+bundle: writing_prompt
+label: 'Prompt or Exercise'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_float

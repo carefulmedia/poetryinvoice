@@ -8,9 +8,11 @@ dependencies:
     - field.field.node.writing_prompt.field_completed
     - field.field.node.writing_prompt.field_paid_
     - field.field.node.writing_prompt.field_prompt_image
+    - field.field.node.writing_prompt.field_prompt_or_exercise
     - node.type.writing_prompt
   module:
     - image
+    - options
     - text
     - user
 id: node.writing_prompt.default
@@ -36,6 +38,13 @@ content:
     third_party_settings: {  }
     weight: 0
     region: top
+  field_prompt_or_exercise:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
 hidden:
   comment_node_writing_prompt: true
   field_completed: true
