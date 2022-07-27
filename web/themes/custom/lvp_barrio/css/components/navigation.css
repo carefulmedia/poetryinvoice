@@ -117,3 +117,21 @@ color: #C53D27;
 .navbar-expand-lg .navbar-toggler {
     display: inline ;
 }
+.dropdown-menu {
+    position: absolute;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #fff;
+    text-align: left;
+    list-style: none;
+    background-clip: padding-box;
+    border: 1pxsolidrgba(0,0,0,.15);
+    border-radius: 0.25rem;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(50px);
+}
+.dropdown-menu a {
+    color: #fff;
+}

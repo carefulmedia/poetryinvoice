@@ -49,6 +49,15 @@
     font-size: 1.5rem;
 
 }
+.header {
+position: fixed;
+    top: 0;
+
+    width: 100%;
+}
+.gin--horizontal-toolbar .header {
+    position: relative;
+}
 .header-logo {
     height: 3rem;
 }
@@ -88,8 +97,13 @@ z-index: 2;
 */
 .navbar-toggler-icon {color: white}
 
-.highlighted {
-    margin-top: -4rem;
+.block-views-blockheader-images-based-on-node-content-block-1 {
+
+}
+.blur img {
+    height: 4rem !important;
+    object-fit: cover;
+    object-position: top;
 }
 
 .highlighted .container img {
@@ -107,4 +121,5 @@ z-index: 2;
 .navbar-expand-lg .navbar-toggler {
     display: inline ;
 }
+
 

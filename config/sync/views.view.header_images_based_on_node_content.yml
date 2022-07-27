@@ -34,8 +34,8 @@ display:
           label: ''
           exclude: false
           alter:
-            alter_text: false
-            text: ''
+            alter_text: true
+            text: "<div class=\"blur\">{{ field_images_insert }}</div>\r\n<div class=\"no-blur\">{{ field_images_insert }}</div>"
             make_link: false
             path: ''
             absolute: false
