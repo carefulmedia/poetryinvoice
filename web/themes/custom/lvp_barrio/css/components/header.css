@@ -52,11 +52,11 @@
 .header {
 position: fixed;
     top: 0;
-
     width: 100%;
 }
 .gin--horizontal-toolbar .header {
     position: relative;
+    margin-bottom: -4rem;
 }
 .header-logo {
     height: 3rem;

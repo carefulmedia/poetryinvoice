@@ -69,9 +69,11 @@
         "drupal/tablesorter": "^2.0@RC",
         "drupal/tb_megamenu": "^1.7",
         "drupal/viewfield": "^3.0@beta",
+        "drupal/views_bootstrap": "^4.3",
         "drupal/views_bulk_edit": "^2.6",
         "drupal/views_bulk_operations": "^4.1",
         "drupal/views_field_view": "^1.0@beta",
+        "drupal/views_infinite_scroll": "^2.0",
         "drupal/zen": "^7.0@alpha",
         "drush/drush": "^10",
         "platformsh/config-reader": "^2.4"

@@ -67,14 +67,14 @@ bootstrap_barrio_button: 1
 bootstrap_barrio_button_size: ''
 bootstrap_barrio_button_outline: 1
 bootstrap_barrio_navbar_container: '1'
-bootstrap_barrio_navbar_toggle: navbar-toggleable-lg
+bootstrap_barrio_navbar_toggle: navbar-toggleable-all
 bootstrap_barrio_navbar_top_navbar: 0
 bootstrap_barrio_navbar_top_class: ''
 bootstrap_barrio_navbar_class: ''
-bootstrap_barrio_navbar_top_position: ''
+bootstrap_barrio_navbar_top_position: sticky-top
 bootstrap_barrio_navbar_top_color: ''
 bootstrap_barrio_navbar_top_background: ''
-bootstrap_barrio_navbar_position: ''
+bootstrap_barrio_navbar_position: sticky-top
 bootstrap_barrio_navbar_color: ''
 bootstrap_barrio_navbar_background: ''
 bootstrap_barrio_navbar_flyout: false
