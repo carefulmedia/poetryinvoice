@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.base_field_override.node.page.title
     - field.field.node.page.body
     - field.field.node.page.comment_node_page
     - field.field.node.page.field_banner_subtitle
@@ -72,25 +71,6 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
             weight: 4
-            additional: {  }
-          5eae213d-bc48-484e-8d79-739cb3a97093:
-            uuid: 5eae213d-bc48-484e-8d79-739cb3a97093
-            region: content
-            configuration:
-              id: 'field_block:node:page:title'
-              label: Title
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 1
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

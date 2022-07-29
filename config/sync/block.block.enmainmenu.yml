@@ -1,0 +1,20 @@
+uuid: ddad0714-5799-428b-9de8-4cd177145366
+langcode: en
+status: false
+dependencies:
+  module:
+    - tb_megamenu
+  theme:
+    - lvp_barrio
+id: enmainmenu
+theme: lvp_barrio
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'tb_megamenu_menu_block:main'
+settings:
+  id: 'tb_megamenu_menu_block:main'
+  label: 'EN Main menu'
+  label_display: visible
+  provider: tb_megamenu
+visibility: {  }

@@ -187,11 +187,10 @@ content:
                 speed: '400'
             selector: ''
   field_do_you_have_any_poet_prefe:
-    type: boolean_checkbox
+    type: options_buttons
     weight: 7
     region: content
-    settings:
-      display_label: true
+    settings: {  }
     third_party_settings:
       conditional_fields:
         2c37cca7-fbf4-4cd8-8894-048b8d0bc416:
@@ -389,14 +388,10 @@ content:
                 speed: '400'
             selector: ''
   field_preferred_poet_s_:
-    type: entity_reference_autocomplete
+    type: options_select
     weight: 8
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings:
       conditional_fields:
         be381b7d-b05b-458d-8e50-04371ff1bf24:

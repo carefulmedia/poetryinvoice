@@ -36,10 +36,10 @@ dependencies:
     - field.field.node.pal_pir_school_visit.field_visit_date_and_times
     - node.type.pal_pir_school_visit
   module:
-    - chosen_field
     - datetime
     - field_layout
     - layout_discovery
+    - scheduler
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -93,7 +93,7 @@ content:
       display_label: true
     third_party_settings: {  }
   field_preferred_poet_s_:
-    type: chosen_select
+    type: options_select
     weight: 1
     region: content
     settings: {  }
@@ -117,6 +117,23 @@ content:
     region: content
     settings:
       include_locked: true
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   comment_node_pal_pir_school_vi: true

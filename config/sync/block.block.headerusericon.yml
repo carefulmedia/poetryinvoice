@@ -13,8 +13,8 @@ plugin: 'block_content:e9bc64bb-8482-4278-b6f8-b78bc1296d1f'
 settings:
   id: 'block_content:e9bc64bb-8482-4278-b6f8-b78bc1296d1f'
   label: 'Header user icon'
-  label_display: visible
-  provider: block_content
+  label_display: '0'
+  provider: core
   status: true
   info: ''
   view_mode: full
