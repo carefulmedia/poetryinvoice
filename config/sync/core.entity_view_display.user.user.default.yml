@@ -77,7 +77,6 @@ dependencies:
     - field.field.user.user.user_picture
   module:
     - entity_reference_revisions
-    - image
     - text
     - user
 _core:
@@ -87,6 +86,14 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
+  field_lifespan:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
   field_micro_interview:
     type: entity_reference_revisions_entity_view
     label: above
@@ -94,15 +101,7 @@ content:
       view_mode: full
       link: ''
     third_party_settings: {  }
-    weight: 3
-    region: content
-  field_my_favourite_poem_and_or_p:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 4
+    weight: 2
     region: content
   field_photo_credit:
     type: string
@@ -110,68 +109,14 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 1
-    region: content
-  field_poetry_is_:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 5
-    region: content
-  field_school:
-    type: entity_reference_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: false
-    third_party_settings: {  }
-    weight: 8
-    region: content
-  field_test:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 9
+    weight: 0
     region: content
   field_user_bio:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 2
-    region: content
-  field_what_grades_do_you_teach:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 6
-    region: content
-  field_what_subjects_do_you_teach:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 7
-    region: content
-  user_picture:
-    type: image
-    label: hidden
-    settings:
-      image_link: content
-      image_style: ''
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
 hidden:
   field_about_me: true
@@ -206,7 +151,7 @@ hidden:
   field_i_have_completed_my_profil: true
   field_judging: true
   field_lead_teacher_has_yet_to_si: true
-  field_lifespan: true
+  field_my_favourite_poem_and_or_p: true
   field_my_role_at_school_organiza: true
   field_non_school_organization: true
   field_not_a_teacher_: true
@@ -220,17 +165,22 @@ hidden:
   field_poet_in_class: true
   field_poet_laureate: true
   field_poet_notes: true
+  field_poetry_is_: true
   field_pst_qst_: true
   field_publications: true
   field_ready_for_proofing: true
+  field_school: true
   field_sign_up_date3: true
   field_signature: true
   field_teacher_confirmation: true
   field_teacher_leads_tracking: true
   field_teacher_tracking: true
   field_team_regionals_2017: true
+  field_test: true
   field_this_teacher_signed_up_for: true
   field_virtual_visits: true
+  field_what_grades_do_you_teach: true
+  field_what_subjects_do_you_teach: true
   field_writing_content: true
   field_years_in_competition: true
   langcode: true
@@ -238,3 +188,4 @@ hidden:
   piv_teacher_first_name: true
   piv_teacher_last_name: true
   piv_teacher_profile_origin: true
+  user_picture: true

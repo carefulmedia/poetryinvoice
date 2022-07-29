@@ -7,7 +7,18 @@ dependencies:
     - paragraphs.paragraphs_type.micro_interview
   module:
     - entity_reference_revisions
+    - multiple_registration
     - user
+third_party_settings:
+  multiple_registration:
+    user_additional_register_form:
+      poet_network: poet_network
+      authenticated: 0
+      teacher: 0
+    user_additional_register_form_required:
+      authenticated: 0
+      teacher: 0
+      poet_network: 0
 id: user.user.field_micro_interview
 field_name: field_micro_interview
 entity_type: user
@@ -31,6 +42,9 @@ settings:
       communication_log:
         weight: 3
         enabled: false
+      competition_stream:
+        weight: 20
+        enabled: false
       judges:
         weight: 4
         enabled: false
@@ -48,6 +62,9 @@ settings:
         enabled: false
       publications:
         weight: 8
+        enabled: false
+      score_template_criteria:
+        weight: 27
         enabled: false
       teacher_leads_tracking:
         weight: 9

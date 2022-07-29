@@ -9,6 +9,7 @@ dependencies:
     - field_permissions
     - media
     - node
+    - paragraphs_type_permissions
     - search
     - system
 _core:
@@ -38,7 +39,6 @@ permissions:
   - 'create field_bio_not_by_author_paid_'
   - 'create field_bio_written_by'
   - 'create field_canadian_educator_'
-  - 'create field_deceased_poet'
   - 'create field_dormant_'
   - 'create field_email1'
   - 'create field_email_variable'
@@ -53,7 +53,6 @@ permissions:
   - 'create field_non_school_organization'
   - 'create field_online_semifinals_2015'
   - 'create field_pause_solicitation'
-  - 'create field_peer_support'
   - 'create field_poem_attachment'
   - 'create field_poem_being_responded_to'
   - 'create field_poet_laureate'
@@ -75,7 +74,6 @@ permissions:
   - 'diff view changes'
   - 'edit field_grades'
   - 'edit own field_grades'
-  - 'edit own field_school'
   - 'edit own field_writing_prompt'
   - 'search article content'
   - 'search blog content'
@@ -95,6 +93,7 @@ permissions:
   - 'use advanced search'
   - 'view body'
   - 'view faq page'
+  - 'view field_about_me'
   - 'view field_additional_poems'
   - 'view field_biligraphical_info'
   - 'view field_bio_trans'
@@ -109,12 +108,18 @@ permissions:
   - 'view field_legal_name'
   - 'view field_lesson_objectives'
   - 'view field_materials_resources'
+  - 'view field_micro_interview'
   - 'view field_one_line_description'
   - 'view field_periods'
   - 'view field_photo'
   - 'view field_place_team_regional'
   - 'view field_poem_thems'
   - 'view field_prompt_image'
+  - 'view field_q1'
+  - 'view field_q2'
+  - 'view field_q3'
+  - 'view field_q4'
+  - 'view field_q5'
   - 'view field_rwt'
   - 'view field_school'
   - 'view field_school_image'
@@ -125,6 +130,7 @@ permissions:
   - 'view field_student_name_1'
   - 'view field_suggest_a_new_folder_to_fi'
   - 'view field_tr_student'
+  - 'view field_user_bio'
   - 'view field_video_poem'
   - 'view field_winners_announced'
   - 'view field_years_in_competition'
@@ -135,4 +141,11 @@ permissions:
   - 'view own field_school'
   - 'view own field_school_image'
   - 'view own field_story_link'
+  - 'view own field_user_bio'
   - 'view own field_writing_prompt'
+  - 'view paragraph content competition_stream'
+  - 'view paragraph content judges'
+  - 'view paragraph content micro_interview'
+  - 'view paragraph content poet_laureate'
+  - 'view paragraph content score_template_criteria'
+  - 'view paragraph content tr_student'

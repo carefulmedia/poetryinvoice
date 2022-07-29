@@ -143,7 +143,6 @@ permissions:
   - 'edit own field_reasons_if_school_teacher_'
   - 'edit own field_recitation_order_round_1'
   - 'edit own field_results_of_school_competit'
-  - 'edit own field_school'
   - 'edit own field_school_competition_comment'
   - 'edit own field_send_additional_en_posters'
   - 'edit own field_send_additional_fr_posters'

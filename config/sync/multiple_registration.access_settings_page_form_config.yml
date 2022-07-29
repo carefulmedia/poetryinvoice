@@ -1,6 +1,7 @@
 multiple_registration_pages_allowed_list:
   teacher: teacher
   poet_network: poet_network
+  poet: poet
   anonymous: 0
   authenticated: 0
   non_canadian_educator: 0
@@ -21,7 +22,6 @@ multiple_registration_pages_allowed_list:
   lesson_plan_creator: 0
   superadmin: 0
   pic_pal: 0
-  poet: 0
   anthology_editor: 0
   grandfathered_pir: 0
   education_consultant: 0

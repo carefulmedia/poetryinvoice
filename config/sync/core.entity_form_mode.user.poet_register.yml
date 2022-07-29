@@ -5,6 +5,6 @@ dependencies:
   module:
     - user
 id: user.poet_register
-label: 'Poet register'
+label: 'Poet Networker register'
 targetEntityType: user
 cache: true

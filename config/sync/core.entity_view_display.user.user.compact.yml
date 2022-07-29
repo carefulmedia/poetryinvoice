@@ -79,6 +79,7 @@ dependencies:
     - image.style.thumbnail
   module:
     - image
+    - text
     - user
 _core:
   default_config_hash: '-cLsS3M3JycipXQt9rEb81_HxKneReoGuRh8ijcOPXs'
@@ -87,6 +88,13 @@ targetEntityType: user
 bundle: user
 mode: compact
 content:
+  field_user_bio:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
   user_picture:
     type: image
     label: hidden
@@ -161,7 +169,6 @@ hidden:
   field_team_regionals_2017: true
   field_test: true
   field_this_teacher_signed_up_for: true
-  field_user_bio: true
   field_virtual_visits: true
   field_what_grades_do_you_teach: true
   field_what_subjects_do_you_teach: true

@@ -1,0 +1,10 @@
+uuid: c0d8bc77-0e44-43e4-ab08-c36345cd78dd
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.poet_network
+label: 'Poet Networker Edit'
+targetEntityType: user
+cache: true

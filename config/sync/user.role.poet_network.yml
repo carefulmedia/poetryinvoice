@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.filtered_html
+    - filter.format.full_html
     - node.type.school
     - node.type.writing_prompt
   module:
@@ -11,6 +12,7 @@ dependencies:
     - field_permissions
     - filter
     - node
+    - paragraphs_type_permissions
 id: poet_network
 label: 'Poet network'
 weight: 20
@@ -31,9 +33,18 @@ permissions:
   - 'access user profiles'
   - 'create body'
   - 'create field_classroom'
+  - 'create field_micro_interview'
   - 'create field_pa'
+  - 'create field_q1'
+  - 'create field_q2'
+  - 'create field_q3'
+  - 'create field_q4'
+  - 'create field_q5'
   - 'create field_user_bio'
+  - 'create paragraph content micro_interview'
+  - 'create paragraph content publications'
   - 'create writing_prompt content'
+  - 'delete paragraph content publications'
   - 'edit any school content'
   - 'edit field_classroom'
   - 'edit field_pa'
@@ -41,13 +52,22 @@ permissions:
   - 'edit own field_address'
   - 'edit own field_classroom'
   - 'edit own field_i_am_interested_in_doing_i'
+  - 'edit own field_micro_interview'
   - 'edit own field_pa'
-  - 'edit own field_peer_support'
+  - 'edit own field_q1'
+  - 'edit own field_q2'
+  - 'edit own field_q3'
+  - 'edit own field_q4'
+  - 'edit own field_q5'
+  - 'edit own field_user_bio'
   - 'edit own field_virtual_visits'
   - 'edit own writing_prompt content'
   - 'search pal_pir_school_visit content'
   - 'search writing_prompt content'
+  - 'update paragraph content micro_interview'
+  - 'update paragraph content publications'
   - 'use text format filtered_html'
+  - 'use text format full_html'
   - 'view all user locations'
   - 'view any unpublished pal_pir_school_visit content'
   - 'view body'
@@ -57,11 +77,13 @@ permissions:
   - 'view field_address'
   - 'view field_classroom'
   - 'view field_in_person_or_teleconferenc'
+  - 'view field_micro_interview'
   - 'view field_notes'
   - 'view field_pa'
   - 'view field_pal_pir'
   - 'view field_teacher_s_involved'
   - 'view field_total_students_involved'
+  - 'view field_user_bio'
   - 'view field_years_in_competition'
   - 'view name on user'
   - 'view own body'
@@ -69,12 +91,20 @@ permissions:
   - 'view own field_classroom'
   - 'view own field_i_am_interested_in_doing_i'
   - 'view own field_in_person_or_teleconferenc'
+  - 'view own field_micro_interview'
   - 'view own field_notes'
   - 'view own field_pa'
   - 'view own field_pal_pir'
-  - 'view own field_peer_support'
+  - 'view own field_q1'
+  - 'view own field_q2'
+  - 'view own field_q3'
+  - 'view own field_q4'
+  - 'view own field_q5'
   - 'view own field_teacher_s_involved'
   - 'view own field_total_students_involved'
+  - 'view own field_user_bio'
   - 'view own field_virtual_visits'
   - 'view own field_years_in_competition'
   - 'view own user location'
+  - 'view paragraph content micro_interview'
+  - 'view paragraph content publications'

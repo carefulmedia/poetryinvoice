@@ -5,7 +5,18 @@ dependencies:
   config:
     - field.storage.user.field_peer_support
   module:
+    - multiple_registration
     - user
+third_party_settings:
+  multiple_registration:
+    user_additional_register_form:
+      authenticated: 0
+      teacher: 0
+      poet_network: 0
+    user_additional_register_form_required:
+      authenticated: 0
+      teacher: 0
+      poet_network: 0
 id: user.user.field_peer_support
 field_name: field_peer_support
 entity_type: user
@@ -14,9 +25,11 @@ label: 'I would like to be listed on the Peer Support webpage so other poets can
 description: ''
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: 0
 default_value_callback: ''
 settings:
-  on_label: ''
-  off_label: ''
+  on_label: 'Yes'
+  off_label: 'No'
 field_type: boolean
