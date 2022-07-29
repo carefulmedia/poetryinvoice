@@ -42,12 +42,10 @@
     color: white;
 }
 .language-link {
-    color:white;
-    text-decoration: none;
-    border:2px solid white;    
-    border-radius:50%;
+    padding: 0;
+    margin: 0;;
     font-size: 1.5rem;
-
+    text-decoration: none
 }
 .header {
 position: fixed;
@@ -120,6 +118,23 @@ z-index: 2;
 @media (min-width: 992px)
 .navbar-expand-lg .navbar-toggler {
     display: inline ;
+}
+.language-switcher-language-url .is-active {
+    display: none;
+}
+.language-switcher-language-url .links-inline {
+    border: 2px solid #fff;
+    border-radius: 50%;
+    height: 2.5em;
+    width: 2.5em;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    vertical-align: middle;
+    line-height: 2.5em;
+    display: block;
+    margin: 0 10px;
+}
 }
 
 
