@@ -59,6 +59,7 @@
         "drupal/multiple_registration": "^3.1",
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.8",
+        "drupal/prepopulate": "^2.3",
         "drupal/profile": "^1.4",
         "drupal/quick_node_clone": "^1.15",
         "drupal/redirect": "^1.7",
