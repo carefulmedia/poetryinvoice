@@ -1,0 +1,10 @@
+uuid: e4447629-7b96-4f36-a556-3a43fdae9aa5
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.teacher_edit
+label: 'Teacher edit'
+targetEntityType: user
+cache: true
