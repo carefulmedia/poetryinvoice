@@ -107,9 +107,8 @@ ul.dropdown-menu {
     color: #fff;
 }
 
-.nav-link-https--piv9lndosite-read {
-color: #C53D27;
-}
+
+
 @media (min-width: 992px)
 .navbar-expand-lg .navbar-nav .nav-link {
 
@@ -125,13 +124,12 @@ color: #C53D27;
     font-size: 1.5rem;
 }
 .menu--main {
-    border-radius: 0 0 0.5rem 0.5rem;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(50px);
+
 
 }
 .navbar-nav {
-    padding: 2rem;
+
+
 }
 .navbar-nav .nav-link {
     padding-right: 0;
@@ -139,9 +137,36 @@ color: #C53D27;
     font-weight: 900;
     font-size: 2rem;
     line-height: 3rem;
+    text-transform: uppercase;
 }
 .navbar-collapse {
 
     margin-top: 0.5rem;
+    border-radius: 0 0 0.5rem 0.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(50px);
+    padding: 2rem;
 }
+.btn-outline-primary {
+    color: #fff;
+    border-color: #fff;
+}
+header #search-block-form {
+    padding: 0 !important;
+    margin-top: 1rem;
+}
+.btn-outline-primary:hover {
+    background-color: #000;
+    border-color: #000;
+}
+
+
+.dropdown-toggle:hover {
+color:fff;
+}
+
+
+
+
+
 

@@ -1,0 +1,18 @@
+palette:
+  top: '#055a8e'
+  bottom: '#1d84c3'
+  bg: '#ffffff'
+  sidebar: '#f6f6f2'
+  sidebarborders: '#f9f9f9'
+  footer: '#292929'
+  button: '#C53D27'
+  buttonhover: '#631F14'
+  titleslogan: '#fff'
+  text: '#000'
+  link: '#0071b3'
+logo: 'public://color/lvp_barrio-4cc2ab85/logo.svg'
+stylesheets:
+  - 'public://color/lvp_barrio-4cc2ab85/colors.css'
+files:
+  - 'public://color/lvp_barrio-4cc2ab85/logo.svg'
+  - 'public://color/lvp_barrio-4cc2ab85/colors.css'
