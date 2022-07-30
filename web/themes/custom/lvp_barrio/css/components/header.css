@@ -143,4 +143,18 @@ z-index: 2;
     color: #fff;
     background-color: transparent;
 }
+.site-footer {
+    padding:0 !important;
+    background-size: cover;
+}
+.site-footer .container {
+    background: rgba(0, 0, 0, 0.6);   
+    border-radius: 1rem; 
+}
+
+.site-footer .footer-blur {
+    background: rgba(0, 0, 0, 0.3);    
+    backdrop-filter: blur(50px);
+    padding: 5rem;
+
 
