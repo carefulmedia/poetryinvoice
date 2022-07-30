@@ -1,11 +1,10 @@
-uuid: 3ccafbab-207c-4101-9f9b-09ae218773aa
+uuid: 3984a44c-eb51-468a-95ae-296f4391613e
 langcode: en
 status: true
 dependencies:
   config:
     - views.view.header_image_for_poets
   module:
-    - system
     - views
   theme:
     - lvp_barrio
@@ -23,8 +22,4 @@ settings:
   context_mapping: {  }
   views_label: ''
   items_per_page: none
-visibility:
-  request_path:
-    id: request_path
-    negate: true
-    pages: ''
+visibility: {  }
