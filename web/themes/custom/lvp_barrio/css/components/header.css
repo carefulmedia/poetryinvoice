@@ -79,6 +79,7 @@ z-index: 2;
   font-size: 1.7rem;
   font-weight: 300;
   padding: 30px 25px 33px 25px;
+  text-decoration: none;
 }
 
 .navbar-inverse .navbar-nav li a:hover {
@@ -135,6 +136,11 @@ z-index: 2;
     display: block;
     margin: 0 10px;
 }
+.dropdown-menu {
+    background-color: transparent;
 }
-
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #fff;
+    background-color: transparent;
+}
 
