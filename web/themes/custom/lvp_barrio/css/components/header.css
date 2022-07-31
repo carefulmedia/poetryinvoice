@@ -157,6 +157,9 @@ z-index: 2;
 .site-footer .footer-blur {
     background: rgba(0, 0, 0, 0.3);    
     backdrop-filter: blur(50px);
-    padding: 5rem;
+    padding: 4rem 2rem;
 
+}
+.navbar>.container {
 
+}

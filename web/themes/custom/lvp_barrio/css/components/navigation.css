@@ -146,6 +146,14 @@ ul.dropdown-menu {
     background: rgba(0, 0, 0, 0.6);
     backdrop-filter: blur(50px);
     padding: 2rem;
+
+}
+@media only screen and (max-width: 800px) {
+.navbar-collapse {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+}
+
 }
 .btn-outline-primary {
     color: #fff;
