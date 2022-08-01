@@ -10,9 +10,9 @@ palette:
   titleslogan: '#fff'
   text: '#000'
   link: '#0071b3'
-logo: 'public://color/lvp_barrio-4cc2ab85/logo.svg'
+logo: 'public://color/lvp_barrio-47fea6ef/logo.svg'
 stylesheets:
-  - 'public://color/lvp_barrio-4cc2ab85/colors.css'
+  - 'public://color/lvp_barrio-47fea6ef/colors.css'
 files:
-  - 'public://color/lvp_barrio-4cc2ab85/logo.svg'
-  - 'public://color/lvp_barrio-4cc2ab85/colors.css'
+  - ''
+  - 'public://color/lvp_barrio-47fea6ef/colors.css'
