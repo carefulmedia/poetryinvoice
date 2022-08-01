@@ -1,10 +1,14 @@
 uuid: 0c5436c6-9fd1-47bc-9df2-1aae6f3a1a0f
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - field_permissions
 id: poet
 label: Poet
 weight: 22
 is_admin: null
 permissions:
   - 'access search combine'
+  - 'create field_user_bio'
+  - 'edit own field_user_bio'

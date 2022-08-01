@@ -10,3 +10,9 @@ multiple_registration_redirect_path_poet_network: ''
 multiple_registration_hidden_poet_network: 0
 multiple_registration_form_mode_register_poet_network: poet_register
 multiple_registration_form_mode_edit_poet_network: poet_network
+multiple_registration_path_poet: /create-account/poet
+multiple_registration_url_poet: /user/register/poet
+multiple_registration_redirect_path_poet: ''
+multiple_registration_hidden_poet: 0
+multiple_registration_form_mode_register_poet: poets
+multiple_registration_form_mode_edit_poet: poets

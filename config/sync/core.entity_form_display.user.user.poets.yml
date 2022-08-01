@@ -1,8 +1,9 @@
-uuid: 56ce4bd2-cd71-4e4e-8bf1-58492e7c6648
+uuid: c878909c-ff1f-4037-8f67-0f0c5c419014
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.user.poets
     - field.field.user.user.field_about_me
     - field.field.user.user.field_action_item
     - field.field.user.user.field_additional_email
@@ -75,175 +76,211 @@ dependencies:
     - field.field.user.user.piv_teacher_last_name
     - field.field.user.user.piv_teacher_profile_origin
     - field.field.user.user.user_picture
+    - image.style.thumbnail
   module:
-    - entity_reference_revisions
-    - layout_builder
+    - field_layout
+    - image
+    - inline_entity_form
+    - layout_discovery
     - text
     - user
 third_party_settings:
-  layout_builder:
-    enabled: true
-    allow_custom: false
-    sections:
-      -
-        layout_id: layout_onecol
-        layout_settings:
-          label: ''
-        components:
-          0636ff61-24ad-45da-a18f-27766ca15d69:
-            uuid: 0636ff61-24ad-45da-a18f-27766ca15d69
-            region: content
-            configuration:
-              id: 'field_block:user:user:field_photo_credit'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          ebc730df-1a8d-471e-a84a-c44806d817b4:
-            uuid: ebc730df-1a8d-471e-a84a-c44806d817b4
-            region: content
-            configuration:
-              id: 'field_block:user:user:field_lifespan'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          446b9fac-9681-46ea-81b5-e9e450349558:
-            uuid: 446b9fac-9681-46ea-81b5-e9e450349558
-            region: content
-            configuration:
-              id: 'field_block:user:user:field_user_bio'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-          5987816f-0503-482c-872a-6a419866c0b8:
-            uuid: 5987816f-0503-482c-872a-6a419866c0b8
-            region: content
-            configuration:
-              id: 'field_block:user:user:field_micro_interview'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_revisions_entity_view
-                label: above
-                settings:
-                  view_mode: full
-                  link: ''
-                third_party_settings: {  }
-            weight: 3
-            additional: {  }
-          f9049e54-5ad4-4c43-8dab-09f4b6ecbab9:
-            uuid: f9049e54-5ad4-4c43-8dab-09f4b6ecbab9
-            region: content
-            configuration:
-              id: 'field_block:user:user:field_publications'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_revisions_entity_view
-                label: above
-                settings:
-                  view_mode: default
-                  link: ''
-                third_party_settings: {  }
-            weight: 4
-            additional: {  }
-        third_party_settings: {  }
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
 _core:
-  default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
-id: user.user.default
+  default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
+id: user.user.poets
 targetEntityType: user
 bundle: user
-mode: default
+mode: poets
 content:
-  field_lifespan:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 1
+  field_bio_completed_:
+    type: boolean_checkbox
+    weight: 12
     region: content
-  field_micro_interview:
-    type: entity_reference_revisions_entity_view
-    label: above
     settings:
-      view_mode: full
-      link: ''
+      display_label: true
     third_party_settings: {  }
-    weight: 3
+  field_bio_not_by_author_paid_:
+    type: boolean_checkbox
+    weight: 13
     region: content
-  field_photo_credit:
-    type: string
-    label: above
     settings:
-      link_to_entity: false
+      display_label: true
     third_party_settings: {  }
-    weight: 0
+  field_bio_trans:
+    type: text_textarea
+    weight: 8
     region: content
-  field_publications:
-    type: entity_reference_revisions_entity_view
-    label: above
     settings:
-      view_mode: default
-      link: ''
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
-    weight: 4
+  field_bio_written_by:
+    type: entity_reference_autocomplete
+    weight: 11
     region: content
-  field_user_bio:
-    type: text_default
-    label: above
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_cheque_made_to:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_deceased_poet:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_gg_finalist:
+    type: options_select
+    weight: 17
+    region: content
     settings: {  }
     third_party_settings: {  }
+  field_griffin_finalist:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lifespan:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_micro_interview:
+    type: inline_entity_form_complex
+    weight: 10
+    region: content
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  field_one_line_bio:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_poem_languages:
+    type: options_select
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_poet_laureate:
+    type: inline_entity_form_complex
+    weight: 18
+    region: content
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  field_test:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_user_bio:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  language:
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  piv_teacher_first_name:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  piv_teacher_last_name:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  timezone:
+    weight: 6
+    region: content
+  translation:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  user_picture:
+    type: image_image
     weight: 2
     region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
 hidden:
+  account: true
+  contact: true
   field_about_me: true
   field_action_item: true
   field_additional_email: true
   field_assigned_to_team_member: true
-  field_bio_completed_: true
-  field_bio_not_by_author_paid_: true
-  field_bio_trans: true
-  field_bio_written_by: true
   field_canadian_educator_: true
-  field_cheque_made_to: true
   field_communication_log: true
   field_completed: true
   field_contest_judging: true
   field_cv: true
   field_dead_lead: true
-  field_deceased_poet: true
   field_dormant_: true
   field_elementary: true
   field_email_variable: true
   field_french_signature: true
-  field_gg_finalist: true
   field_google_calendar_iframe_cod: true
-  field_griffin_finalist: true
   field_gst_hst_: true
   field_how_did_you_hear_from_us_2: true
   field_i_am_interested_in_doing_i: true
@@ -257,18 +294,17 @@ hidden:
   field_my_role_at_school_organiza: true
   field_non_school_organization: true
   field_not_a_teacher_: true
-  field_one_line_bio: true
   field_online_semifinals_2015: true
   field_paid_: true
   field_pause_solicitation: true
   field_peer_support: true
   field_phone: true
-  field_poem_languages: true
+  field_photo_credit: true
   field_poet_in_class: true
-  field_poet_laureate: true
   field_poet_notes: true
   field_poetry_is_: true
   field_pst_qst_: true
+  field_publications: true
   field_ready_for_proofing: true
   field_school: true
   field_sign_up_date3: true
@@ -277,7 +313,6 @@ hidden:
   field_teacher_leads_tracking: true
   field_teacher_tracking: true
   field_team_regionals_2017: true
-  field_test: true
   field_this_teacher_signed_up_for: true
   field_virtual_visits: true
   field_what_grades_do_you_teach: true
@@ -285,8 +320,5 @@ hidden:
   field_writing_content: true
   field_years_in_competition: true
   langcode: true
-  member_for: true
-  piv_teacher_first_name: true
-  piv_teacher_last_name: true
+  path: true
   piv_teacher_profile_origin: true
-  user_picture: true
