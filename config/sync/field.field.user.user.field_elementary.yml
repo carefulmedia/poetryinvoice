@@ -5,7 +5,20 @@ dependencies:
   config:
     - field.storage.user.field_elementary
   module:
+    - multiple_registration
     - user
+third_party_settings:
+  multiple_registration:
+    user_additional_register_form:
+      poet_network: poet_network
+      authenticated: 0
+      teacher: 0
+      poet: 0
+    user_additional_register_form_required:
+      authenticated: 0
+      teacher: 0
+      poet_network: 0
+      poet: 0
 id: user.user.field_elementary
 field_name: field_elementary
 entity_type: user
@@ -20,5 +33,5 @@ default_value:
 default_value_callback: ''
 settings:
   on_label: 'I am interested in doing elementary school visits'
-  off_label: ''
+  off_label: 'I am not interested in doing elementary school visits'
 field_type: boolean

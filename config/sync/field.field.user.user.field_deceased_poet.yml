@@ -10,6 +10,7 @@ dependencies:
 third_party_settings:
   multiple_registration:
     user_additional_register_form:
+      poet: poet
       authenticated: 0
       teacher: 0
       poet_network: 0
@@ -17,6 +18,7 @@ third_party_settings:
       authenticated: 0
       teacher: 0
       poet_network: 0
+      poet: 0
 id: user.user.field_deceased_poet
 field_name: field_deceased_poet
 entity_type: user

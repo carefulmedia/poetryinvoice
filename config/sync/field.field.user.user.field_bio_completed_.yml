@@ -5,7 +5,20 @@ dependencies:
   config:
     - field.storage.user.field_bio_completed_
   module:
+    - multiple_registration
     - user
+third_party_settings:
+  multiple_registration:
+    user_additional_register_form:
+      authenticated: 0
+      teacher: 0
+      poet_network: 0
+      poet: 0
+    user_additional_register_form_required:
+      poet: poet
+      authenticated: 0
+      teacher: 0
+      poet_network: 0
 id: user.user.field_bio_completed_
 field_name: field_bio_completed_
 entity_type: user
@@ -19,6 +32,6 @@ default_value:
     value: 0
 default_value_callback: ''
 settings:
-  on_label: ''
-  off_label: ''
+  on_label: 'yes'
+  off_label: 'no'
 field_type: boolean

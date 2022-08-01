@@ -16,7 +16,6 @@ dependencies:
     - field.field.user.user.field_cheque_made_to
     - field.field.user.user.field_communication_log
     - field.field.user.user.field_completed
-    - field.field.user.user.field_contest_judging
     - field.field.user.user.field_cv
     - field.field.user.user.field_dead_lead
     - field.field.user.user.field_deceased_poet
@@ -432,7 +431,6 @@ hidden:
   field_assigned_to_team_member: true
   field_canadian_educator_: true
   field_communication_log: true
-  field_contest_judging: true
   field_dead_lead: true
   field_deceased_poet: true
   field_dormant_: true

@@ -5,7 +5,20 @@ dependencies:
   config:
     - field.storage.user.field_what_grades_do_you_teach
   module:
+    - multiple_registration
     - user
+third_party_settings:
+  multiple_registration:
+    user_additional_register_form:
+      teacher: teacher
+      authenticated: 0
+      poet_network: 0
+      poet: 0
+    user_additional_register_form_required:
+      authenticated: 0
+      teacher: 0
+      poet_network: 0
+      poet: 0
 id: user.user.field_what_grades_do_you_teach
 field_name: field_what_grades_do_you_teach
 entity_type: user
