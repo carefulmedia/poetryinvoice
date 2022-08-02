@@ -5,21 +5,8 @@ dependencies:
   config:
     - field.storage.user.field_canadian_educator_
   module:
-    - multiple_registration
     - options
     - user
-third_party_settings:
-  multiple_registration:
-    user_additional_register_form:
-      teacher: teacher
-      authenticated: 0
-      poet_network: 0
-      poet: 0
-    user_additional_register_form_required:
-      authenticated: 0
-      teacher: 0
-      poet_network: 0
-      poet: 0
 id: user.user.field_canadian_educator_
 field_name: field_canadian_educator_
 entity_type: user

@@ -106,7 +106,7 @@ content:
     third_party_settings: {  }
   field_about_me:
     type: text_textarea
-    weight: 10
+    weight: 12
     region: content
     settings:
       rows: 5
@@ -114,7 +114,7 @@ content:
     third_party_settings: {  }
   field_my_favourite_poem_and_or_p:
     type: string_textfield
-    weight: 11
+    weight: 13
     region: content
     settings:
       size: 60
@@ -122,15 +122,29 @@ content:
     third_party_settings: {  }
   field_my_role_at_school_organiza:
     type: string_textfield
-    weight: 9
+    weight: 11
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_non_school_organization:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_not_a_teacher_:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_poetry_is_:
     type: string_textfield
-    weight: 12
+    weight: 14
     region: content
     settings:
       size: 60
@@ -227,8 +241,6 @@ hidden:
   field_lead_teacher_has_yet_to_si: true
   field_lifespan: true
   field_micro_interview: true
-  field_non_school_organization: true
-  field_not_a_teacher_: true
   field_one_line_bio: true
   field_online_semifinals_2015: true
   field_paid_: true

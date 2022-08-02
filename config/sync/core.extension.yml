@@ -46,6 +46,8 @@ module:
   field_ui: 0
   file: 0
   filter: 0
+  form_mode_manager: 0
+  form_mode_user_roles_assign: 0
   gin_toolbar: 0
   help: 0
   history: 0
@@ -79,7 +81,6 @@ module:
   migrate_plus: 0
   migrate_tools: 0
   mimemail: 0
-  multiple_registration: 0
   mysql: 0
   node: 0
   options: 0

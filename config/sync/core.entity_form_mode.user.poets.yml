@@ -5,6 +5,6 @@ dependencies:
   module:
     - user
 id: user.poets
-label: Poets
+label: Poet
 targetEntityType: user
 cache: true

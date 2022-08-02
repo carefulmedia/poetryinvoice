@@ -5,20 +5,7 @@ dependencies:
   config:
     - field.storage.user.field_bio_written_by
   module:
-    - multiple_registration
     - user
-third_party_settings:
-  multiple_registration:
-    user_additional_register_form:
-      authenticated: 0
-      teacher: 0
-      poet_network: 0
-      poet: 0
-    user_additional_register_form_required:
-      poet: poet
-      authenticated: 0
-      teacher: 0
-      poet_network: 0
 id: user.user.field_bio_written_by
 field_name: field_bio_written_by
 entity_type: user

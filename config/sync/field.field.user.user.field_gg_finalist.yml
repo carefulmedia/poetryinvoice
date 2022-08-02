@@ -5,21 +5,8 @@ dependencies:
   config:
     - field.storage.user.field_gg_finalist
   module:
-    - multiple_registration
     - options
     - user
-third_party_settings:
-  multiple_registration:
-    user_additional_register_form:
-      authenticated: 0
-      teacher: 0
-      poet_network: 0
-      poet: 0
-    user_additional_register_form_required:
-      poet: poet
-      authenticated: 0
-      teacher: 0
-      poet_network: 0
 id: user.user.field_gg_finalist
 field_name: field_gg_finalist
 entity_type: user
