@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: Première
+    -
+      label: Deuxième
+    -
+      label: Troisième
