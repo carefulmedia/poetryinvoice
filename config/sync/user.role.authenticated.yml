@@ -28,7 +28,6 @@ permissions:
   - 'cancel account'
   - 'create field_attachments'
   - 'create field_email1'
-  - 'create field_griffin_finalist'
   - 'create field_poem_attachment'
   - 'create field_poem_being_responded_to'
   - 'create field_writing_prompt'

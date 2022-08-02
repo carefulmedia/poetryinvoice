@@ -4,9 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.user.user.field_about_me
-    - field.field.user.user.field_action_item
     - field.field.user.user.field_additional_email
-    - field.field.user.user.field_assigned_to_team_member
     - field.field.user.user.field_bio_completed_
     - field.field.user.user.field_bio_not_by_author_paid_
     - field.field.user.user.field_bio_trans
@@ -16,24 +14,20 @@ dependencies:
     - field.field.user.user.field_communication_log
     - field.field.user.user.field_completed
     - field.field.user.user.field_cv
-    - field.field.user.user.field_dead_lead
     - field.field.user.user.field_deceased_poet
     - field.field.user.user.field_dormant_
     - field.field.user.user.field_elementary
-    - field.field.user.user.field_email_variable
     - field.field.user.user.field_french_signature
     - field.field.user.user.field_gg_finalist
     - field.field.user.user.field_google_calendar_iframe_cod
     - field.field.user.user.field_griffin_finalist
     - field.field.user.user.field_gst_hst_
-    - field.field.user.user.field_how_did_you_hear_from_us_2
     - field.field.user.user.field_i_am_interested_in_doing_i
     - field.field.user.user.field_i_am_interested_in_judging
     - field.field.user.user.field_i_am_interested_in_partici
     - field.field.user.user.field_i_am_interested_in_writing
     - field.field.user.user.field_i_have_completed_my_profil
     - field.field.user.user.field_judging
-    - field.field.user.user.field_lead_teacher_has_yet_to_si
     - field.field.user.user.field_lifespan
     - field.field.user.user.field_micro_interview
     - field.field.user.user.field_my_favourite_poem_and_or_p
@@ -41,9 +35,7 @@ dependencies:
     - field.field.user.user.field_non_school_organization
     - field.field.user.user.field_not_a_teacher_
     - field.field.user.user.field_one_line_bio
-    - field.field.user.user.field_online_semifinals_2015
     - field.field.user.user.field_paid_
-    - field.field.user.user.field_pause_solicitation
     - field.field.user.user.field_peer_support
     - field.field.user.user.field_phone
     - field.field.user.user.field_photo_credit
@@ -59,11 +51,6 @@ dependencies:
     - field.field.user.user.field_sign_up_date3
     - field.field.user.user.field_signature
     - field.field.user.user.field_teacher_confirmation
-    - field.field.user.user.field_teacher_leads_tracking
-    - field.field.user.user.field_teacher_tracking
-    - field.field.user.user.field_team_regionals_2017
-    - field.field.user.user.field_test
-    - field.field.user.user.field_this_teacher_signed_up_for
     - field.field.user.user.field_user_bio
     - field.field.user.user.field_virtual_visits
     - field.field.user.user.field_what_grades_do_you_teach
@@ -222,9 +209,7 @@ content:
     region: content
 hidden:
   field_about_me: true
-  field_action_item: true
   field_additional_email: true
-  field_assigned_to_team_member: true
   field_bio_completed_: true
   field_bio_not_by_author_paid_: true
   field_bio_trans: true
@@ -234,32 +219,26 @@ hidden:
   field_communication_log: true
   field_completed: true
   field_cv: true
-  field_dead_lead: true
   field_deceased_poet: true
   field_dormant_: true
   field_elementary: true
-  field_email_variable: true
   field_french_signature: true
   field_gg_finalist: true
   field_google_calendar_iframe_cod: true
   field_griffin_finalist: true
   field_gst_hst_: true
-  field_how_did_you_hear_from_us_2: true
   field_i_am_interested_in_doing_i: true
   field_i_am_interested_in_judging: true
   field_i_am_interested_in_partici: true
   field_i_am_interested_in_writing: true
   field_i_have_completed_my_profil: true
   field_judging: true
-  field_lead_teacher_has_yet_to_si: true
   field_my_favourite_poem_and_or_p: true
   field_my_role_at_school_organiza: true
   field_non_school_organization: true
   field_not_a_teacher_: true
   field_one_line_bio: true
-  field_online_semifinals_2015: true
   field_paid_: true
-  field_pause_solicitation: true
   field_peer_support: true
   field_phone: true
   field_poem_languages: true
@@ -273,11 +252,6 @@ hidden:
   field_sign_up_date3: true
   field_signature: true
   field_teacher_confirmation: true
-  field_teacher_leads_tracking: true
-  field_teacher_tracking: true
-  field_team_regionals_2017: true
-  field_test: true
-  field_this_teacher_signed_up_for: true
   field_virtual_visits: true
   field_what_grades_do_you_teach: true
   field_what_subjects_do_you_teach: true

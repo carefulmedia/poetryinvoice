@@ -155,7 +155,7 @@ ul.dropdown-menu {
 }
 
 }
-.btn-outline-primary {
+header #search-block-form .btn-outline-primary {
     color: #fff;
     border-color: #fff;
 }
@@ -163,7 +163,7 @@ header #search-block-form {
     padding: 0 !important;
     margin-top: 1rem;
 }
-.btn-outline-primary:hover {
+header #search-block-form .btn-outline-primary:hover {
     background-color: #000;
     border-color: #000;
 }

@@ -31,6 +31,9 @@ settings:
       communication_log:
         weight: 3
         enabled: false
+      competition_stream:
+        weight: 20
+        enabled: false
       judges:
         weight: 4
         enabled: false
@@ -49,6 +52,9 @@ settings:
       publications:
         weight: 1
         enabled: true
+      score_template_criteria:
+        weight: 27
+        enabled: false
       teacher_leads_tracking:
         weight: 9
         enabled: false

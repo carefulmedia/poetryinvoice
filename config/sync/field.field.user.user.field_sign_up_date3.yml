@@ -14,7 +14,11 @@ label: 'Account creation'
 description: ''
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: 1659406841
+  -
+    value: 1659406841
 default_value_callback: ''
 settings: {  }
 field_type: timestamp
