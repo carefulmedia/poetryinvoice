@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: 1re
+    -
+      label: 2e
+    -
+      label: 3e
+    -
+      label: 4e

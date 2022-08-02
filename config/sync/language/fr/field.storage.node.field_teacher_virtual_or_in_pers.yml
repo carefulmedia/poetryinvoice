@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'En personne'
+    -
+      label: 'Par une plateforme virtuelle'
+    -
+      label: 'Sans préférence'

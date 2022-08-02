@@ -1,0 +1,16 @@
+settings:
+  allowed_values:
+    -
+      label: 'Outils d’enseignement'
+    -
+      label: 'Perfectionnement professionnel'
+    -
+      label: Activités
+    -
+      label: 'D’autres concours'
+    -
+      label: Lectures
+    -
+      label: 'Demandes de communications'
+    -
+      label: Autre
