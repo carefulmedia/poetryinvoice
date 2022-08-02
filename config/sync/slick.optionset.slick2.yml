@@ -1,0 +1,23 @@
+uuid: 032372c9-0973-465a-acba-181e4ca110aa
+langcode: en
+status: true
+dependencies: {  }
+id: slick2
+name: slick2
+weight: 0
+label: Slick2
+group: ''
+skin: ''
+breakpoints: 0
+optimized: true
+options:
+  options__active_tab: edit-options-settings
+  settings:
+    centerMode: true
+    dots: true
+    focusOnSelect: true
+    initialSlide: 1
+    lazyLoad: ondemand
+    slidesPerRow: 0
+    slidesToShow: 3
+    swipeToSlide: true

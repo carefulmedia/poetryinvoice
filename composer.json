@@ -69,6 +69,8 @@
         "drupal/scanner": "1.x-dev@dev",
         "drupal/scheduler": "^1.4",
         "drupal/select_translation": "^2.0@alpha",
+        "drupal/slick": "^2.6",
+        "drupal/slick_views": "^2.6",
         "drupal/tablesorter": "^2.0@RC",
         "drupal/tb_megamenu": "^1.7",
         "drupal/viewfield": "^3.0@beta",

@@ -7,6 +7,7 @@ module:
   automated_cron: 0
   better_exposed_filters: 0
   big_pipe: 0
+  blazy: 0
   block: 0
   block_content: 0
   block_styles: 0
@@ -117,6 +118,9 @@ module:
   search: 0
   serialization: 0
   shortcut: 0
+  slick: 0
+  slick_ui: 0
+  slick_views: 0
   styles_api: 0
   system: 0
   tablesorter: 0
