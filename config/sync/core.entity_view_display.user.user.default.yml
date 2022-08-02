@@ -15,7 +15,6 @@ dependencies:
     - field.field.user.user.field_cheque_made_to
     - field.field.user.user.field_communication_log
     - field.field.user.user.field_completed
-    - field.field.user.user.field_contest_judging
     - field.field.user.user.field_cv
     - field.field.user.user.field_dead_lead
     - field.field.user.user.field_deceased_poet
@@ -77,8 +76,102 @@ dependencies:
     - field.field.user.user.user_picture
   module:
     - entity_reference_revisions
+    - layout_builder
+    - layout_discovery
     - text
     - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          0636ff61-24ad-45da-a18f-27766ca15d69:
+            uuid: 0636ff61-24ad-45da-a18f-27766ca15d69
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_photo_credit'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          ebc730df-1a8d-471e-a84a-c44806d817b4:
+            uuid: ebc730df-1a8d-471e-a84a-c44806d817b4
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_lifespan'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          446b9fac-9681-46ea-81b5-e9e450349558:
+            uuid: 446b9fac-9681-46ea-81b5-e9e450349558
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_user_bio'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          5987816f-0503-482c-872a-6a419866c0b8:
+            uuid: 5987816f-0503-482c-872a-6a419866c0b8
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_micro_interview'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: above
+                settings:
+                  view_mode: full
+                  link: ''
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          f9049e54-5ad4-4c43-8dab-09f4b6ecbab9:
+            uuid: f9049e54-5ad4-4c43-8dab-09f4b6ecbab9
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_publications'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                  link: ''
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+        third_party_settings: {  }
 _core:
   default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
 id: user.user.default
@@ -92,7 +185,7 @@ content:
     settings:
       link_to_entity: false
     third_party_settings: {  }
-    weight: 3
+    weight: 1
     region: content
   field_micro_interview:
     type: entity_reference_revisions_entity_view
@@ -101,7 +194,7 @@ content:
       view_mode: full
       link: ''
     third_party_settings: {  }
-    weight: 2
+    weight: 3
     region: content
   field_photo_credit:
     type: string
@@ -111,12 +204,21 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  field_publications:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
   field_user_bio:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 2
     region: content
 hidden:
   field_about_me: true
@@ -131,7 +233,6 @@ hidden:
   field_cheque_made_to: true
   field_communication_log: true
   field_completed: true
-  field_contest_judging: true
   field_cv: true
   field_dead_lead: true
   field_deceased_poet: true
@@ -167,7 +268,6 @@ hidden:
   field_poet_notes: true
   field_poetry_is_: true
   field_pst_qst_: true
-  field_publications: true
   field_ready_for_proofing: true
   field_school: true
   field_sign_up_date3: true

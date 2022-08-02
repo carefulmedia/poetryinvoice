@@ -10,8 +10,8 @@ _core:
   default_config_hash: jK23fqe30xZMi1OWFNixYkNkc6K-KuIMPn75zR03GdQ
 id: lvp_barrio_messages
 theme: lvp_barrio
-region: highlighted
-weight: -5
+region: breadcrumb
+weight: -9
 provider: null
 plugin: system_messages_block
 settings:

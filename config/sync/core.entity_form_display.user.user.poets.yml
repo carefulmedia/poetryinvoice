@@ -1,9 +1,9 @@
-uuid: d2e63834-f26c-48b6-8a5d-b2aa222e22c8
+uuid: c878909c-ff1f-4037-8f67-0f0c5c419014
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_form_mode.user.poet_register
+    - core.entity_form_mode.user.poets
     - field.field.user.user.field_about_me
     - field.field.user.user.field_action_item
     - field.field.user.user.field_additional_email
@@ -16,7 +16,6 @@ dependencies:
     - field.field.user.user.field_cheque_made_to
     - field.field.user.user.field_communication_log
     - field.field.user.user.field_completed
-    - field.field.user.user.field_contest_judging
     - field.field.user.user.field_cv
     - field.field.user.user.field_dead_lead
     - field.field.user.user.field_deceased_poet
@@ -76,10 +75,13 @@ dependencies:
     - field.field.user.user.piv_teacher_last_name
     - field.field.user.user.piv_teacher_profile_origin
     - field.field.user.user.user_picture
+    - image.style.thumbnail
   module:
     - field_layout
-    - file
+    - image
+    - inline_entity_form
     - layout_discovery
+    - text
     - user
 third_party_settings:
   field_layout:
@@ -88,43 +90,138 @@ third_party_settings:
       label: ''
 _core:
   default_config_hash: K-1rBM8mTIkFp9RqOC2tMRUukOQ1xbRCfSKK8dEddnA
-id: user.user.poet_register
+id: user.user.poets
 targetEntityType: user
 bundle: user
-mode: poet_register
+mode: poets
 content:
   account:
     weight: 0
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_cv:
-    type: file_generic
-    weight: 7
-    region: content
-    settings:
-      progress_indicator: throbber
-    third_party_settings: {  }
-  field_i_am_interested_in_judging:
+  field_bio_completed_:
     type: boolean_checkbox
-    weight: 5
+    weight: 10
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
-  field_i_am_interested_in_partici:
+  field_bio_not_by_author_paid_:
     type: boolean_checkbox
-    weight: 4
+    weight: 11
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
-  field_i_am_interested_in_writing:
+  field_bio_trans:
+    type: text_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_bio_written_by:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_deceased_poet:
     type: boolean_checkbox
+    weight: 14
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_gg_finalist:
+    type: options_select
+    weight: 16
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_griffin_finalist:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_lifespan:
+    type: string_textfield
     weight: 6
     region: content
     settings:
-      display_label: true
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_micro_interview:
+    type: inline_entity_form_complex
+    weight: 13
+    region: content
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  field_one_line_bio:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_photo_credit:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_poem_languages:
+    type: options_select
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_poet_laureate:
+    type: inline_entity_form_complex
+    weight: 17
+    region: content
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  field_user_bio:
+    type: text_textarea
+    weight: 8
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   language:
     weight: 3
@@ -150,52 +247,50 @@ content:
   timezone:
     weight: 6
     region: content
+  user_picture:
+    type: image_image
+    weight: 4
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
 hidden:
   contact: true
   field_about_me: true
   field_action_item: true
   field_additional_email: true
   field_assigned_to_team_member: true
-  field_bio_completed_: true
-  field_bio_not_by_author_paid_: true
-  field_bio_trans: true
-  field_bio_written_by: true
   field_canadian_educator_: true
   field_cheque_made_to: true
   field_communication_log: true
   field_completed: true
-  field_contest_judging: true
+  field_cv: true
   field_dead_lead: true
-  field_deceased_poet: true
   field_dormant_: true
   field_elementary: true
   field_email_variable: true
   field_french_signature: true
-  field_gg_finalist: true
   field_google_calendar_iframe_cod: true
-  field_griffin_finalist: true
   field_gst_hst_: true
   field_how_did_you_hear_from_us_2: true
   field_i_am_interested_in_doing_i: true
+  field_i_am_interested_in_judging: true
+  field_i_am_interested_in_partici: true
+  field_i_am_interested_in_writing: true
   field_i_have_completed_my_profil: true
   field_judging: true
   field_lead_teacher_has_yet_to_si: true
-  field_lifespan: true
-  field_micro_interview: true
   field_my_favourite_poem_and_or_p: true
   field_my_role_at_school_organiza: true
   field_non_school_organization: true
   field_not_a_teacher_: true
-  field_one_line_bio: true
   field_online_semifinals_2015: true
   field_paid_: true
   field_pause_solicitation: true
   field_peer_support: true
   field_phone: true
-  field_photo_credit: true
-  field_poem_languages: true
   field_poet_in_class: true
-  field_poet_laureate: true
   field_poet_notes: true
   field_poetry_is_: true
   field_pst_qst_: true
@@ -210,7 +305,6 @@ hidden:
   field_team_regionals_2017: true
   field_test: true
   field_this_teacher_signed_up_for: true
-  field_user_bio: true
   field_virtual_visits: true
   field_what_grades_do_you_teach: true
   field_what_subjects_do_you_teach: true
@@ -220,4 +314,3 @@ hidden:
   path: true
   piv_teacher_profile_origin: true
   translation: true
-  user_picture: true

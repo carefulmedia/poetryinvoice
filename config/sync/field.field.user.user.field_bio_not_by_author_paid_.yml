@@ -19,6 +19,6 @@ default_value:
     value: 0
 default_value_callback: ''
 settings:
-  on_label: ''
-  off_label: ''
+  on_label: 'Yes'
+  off_label: 'No'
 field_type: boolean

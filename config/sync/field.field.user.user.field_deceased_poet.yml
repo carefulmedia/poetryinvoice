@@ -5,18 +5,7 @@ dependencies:
   config:
     - field.storage.user.field_deceased_poet
   module:
-    - multiple_registration
     - user
-third_party_settings:
-  multiple_registration:
-    user_additional_register_form:
-      authenticated: 0
-      teacher: 0
-      poet_network: 0
-    user_additional_register_form_required:
-      authenticated: 0
-      teacher: 0
-      poet_network: 0
 id: user.user.field_deceased_poet
 field_name: field_deceased_poet
 entity_type: user

@@ -16,7 +16,6 @@ dependencies:
     - field.field.user.user.field_cheque_made_to
     - field.field.user.user.field_communication_log
     - field.field.user.user.field_completed
-    - field.field.user.user.field_contest_judging
     - field.field.user.user.field_cv
     - field.field.user.user.field_dead_lead
     - field.field.user.user.field_deceased_poet
@@ -119,7 +118,6 @@ hidden:
   field_cheque_made_to: true
   field_communication_log: true
   field_completed: true
-  field_contest_judging: true
   field_cv: true
   field_dead_lead: true
   field_deceased_poet: true

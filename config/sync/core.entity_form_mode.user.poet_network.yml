@@ -5,6 +5,6 @@ dependencies:
   module:
     - user
 id: user.poet_network
-label: 'Poet Networker Edit'
+label: 'Poet Networker'
 targetEntityType: user
 cache: true

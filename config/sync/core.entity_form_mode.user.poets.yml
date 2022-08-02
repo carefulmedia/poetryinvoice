@@ -1,10 +1,10 @@
-uuid: 432dbfc7-cbc2-48ed-b62b-20b9e7aeb16f
+uuid: a8e3ee13-db41-4e11-a62e-563a9e4395bc
 langcode: en
 status: true
 dependencies:
   module:
     - user
-id: user.teacher_register
-label: 'Teacher register'
+id: user.poets
+label: Poet
 targetEntityType: user
 cache: true

@@ -20,5 +20,5 @@ default_value:
 default_value_callback: ''
 settings:
   on_label: 'I am interested in doing elementary school visits'
-  off_label: ''
+  off_label: 'I am not interested in doing elementary school visits'
 field_type: boolean
