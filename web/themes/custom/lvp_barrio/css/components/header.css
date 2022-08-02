@@ -48,7 +48,7 @@
     text-decoration: none
 }
 .header {
-position: fixed;
+position: sticky;
     top: 0;
     width: 100%;
 }
@@ -150,7 +150,7 @@ z-index: 2;
     background-size: cover;
 }
 .site-footer .container {
-    background: rgba(0, 0, 0, 0.6);   
+    background: rgba(0, 0, 0, 0.3);   
     border-radius: 1rem; 
 }
 

@@ -7,7 +7,7 @@ dependencies:
     - user
 third_party_settings:
   field_permissions:
-    permission_type: private
+    permission_type: custom
 id: user.field_i_have_completed_my_profil
 field_name: field_i_have_completed_my_profil
 entity_type: user

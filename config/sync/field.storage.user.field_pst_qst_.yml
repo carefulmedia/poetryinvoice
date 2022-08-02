@@ -7,7 +7,7 @@ dependencies:
     - user
 third_party_settings:
   field_permissions:
-    permission_type: private
+    permission_type: custom
 id: user.field_pst_qst_
 field_name: field_pst_qst_
 entity_type: user

@@ -5,6 +5,7 @@ dependencies:
   config:
     - views.view.header_images_based_on_node_content
   module:
+    - node
     - views
   theme:
     - lvp_barrio
@@ -22,4 +23,16 @@ settings:
   context_mapping: {  }
   views_label: ''
   items_per_page: none
-visibility: {  }
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      article: article
+      journal_poem: journal_poem
+      mixtape: mixtape
+      page: page
+      writing_prompt: writing_prompt
+      writing_workshop: writing_workshop

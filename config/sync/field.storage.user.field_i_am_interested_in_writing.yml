@@ -7,7 +7,7 @@ dependencies:
     - user
 third_party_settings:
   field_permissions:
-    permission_type: private
+    permission_type: custom
 id: user.field_i_am_interested_in_writing
 field_name: field_i_am_interested_in_writing
 entity_type: user
