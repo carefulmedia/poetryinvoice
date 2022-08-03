@@ -14,7 +14,7 @@ h4 {text-align: center}
 
 
 #piv-toolbar {
-    background-color: #001a23;
+    background-color: #000;
     color: #fff;
     font-size: 12px;
     height: 28px;
@@ -105,7 +105,7 @@ body {
 }
 
 body {
-    color: #001a23!important
+    color: #000!important
 }
 
 #main {
@@ -121,7 +121,7 @@ body {
 
 .slider,
 .slider div {
-    background-color: #001A23
+    background-color: #000
 }
 
 #page-title {
@@ -198,7 +198,7 @@ body {
 .slider {
     height: 100%;
     bottom: 0;
-    color: #001A23
+    color: #000
 }
 
 #toggle2 {
@@ -257,7 +257,7 @@ body {
 }
 
 .poetMachines .slotMachine {
-    background-color: #001A23
+    background-color: #000
 }
 
 .circleContainer {
@@ -316,7 +316,7 @@ body {
 }
 
 .slotMachineButton:hover {
-    color: #001A23;
+    color: #000;
     background-color: #fff;
     text-decoration: none;
     outline: 0;
@@ -334,7 +334,7 @@ body {
 #spinFooter {
     opacity: 1;
     text-align: center;
-    background-color: #001A23;
+    background-color: #000;
     padding: 0 0 40px
 }
 
@@ -363,7 +363,7 @@ body {
 .poemButton a {
     color: #fff;
     font-family: FrutigerRoman;
-    background-color: #001A23;
+    background-color: #000;
     padding: 12px
 }
 
@@ -399,7 +399,7 @@ body {
     box-shadow: 0 0 25px 5px #999;
     display: block;
     padding: 25px;
-    color: #001a23;
+    color: #000;
     max-width: 90%
 }
 
@@ -411,7 +411,7 @@ body {
     position: absolute;
     right: -7px;
     top: -7px;
-    background-color: #001a23;
+    background-color: #000;
     color: #fff
 }
 
