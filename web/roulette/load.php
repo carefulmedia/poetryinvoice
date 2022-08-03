@@ -1,5 +1,5 @@
 <?php
-if ($_SERVER['HTTP_HOST'] == 'www.poetryinvoice.com'){
+if ($_SERVER['HTTP_HOST'] == 'poetryinvoice.ca'){
 	$lang = 'en';
 	}
 else {
@@ -7,7 +7,7 @@ else {
 }
 ?>
 <?php
-include 'vars.php';
+include '/roulette/vars.php';
 // $header = file_get_contents('https://www.poetryinvoice.com/roulette/'. $lang .'/header.php');
 // echo $header;
 if(empty($c)){
@@ -37,7 +37,7 @@ $c = $_POST['c'];
   <div class="row logo">
     <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
     
-      <div id="logo-title"><a href="../"> <?php echo '<img src="images/icons/roulette-logo_' . $lang  . '_' . $c . '.png"'; ?> class="img-responsive" /></a>  </div>
+      <div id="logo-title"><a href="../"> <?php echo '<img src="/roulette/images/icons/roulette-logo_' . $lang  . '_' . $c . '.png"'; ?> class="img-responsive" /></a>  </div>
     </div>
   </div>
 </div>
@@ -46,13 +46,13 @@ $c = $_POST['c'];
     <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
       <div id="choices"  >
         <div clas="row">
-          <div  class="col-xs-4 col-sm-4 col-md-4 choice1" id="poetMachineButtonInit" onClick="ga('send', 'pageview', '/virtual/roulette-en/poet/initial');" > <img src="images/icons/roulette-theme-poet.svg" class="img-responsive" />
+          <div  class="col-xs-4 col-sm-4 col-md-4 choice1" id="poetMachineButtonInit" onClick="ga('send', 'pageview', '/virtual/roulette-en/poet/initial');" > <img src="/roulette/images/icons/roulette-theme-poet.svg" class="img-responsive" />
             <h2 class="choice-title"><?php echo $vars['Poets'][$lang]; ?></h2>
           </div>
-          <div  class="col-xs-4  col-sm-4 col-md-4 choice1" id="moodMachineButtonInit" onClick="ga('send', 'pageview', '/virtual/roulette-en/mood/initial');"> <img src="images/icons/roulette-theme-mood.svg" class="img-responsive" />
+          <div  class="col-xs-4  col-sm-4 col-md-4 choice1" id="moodMachineButtonInit" onClick="ga('send', 'pageview', '/virtual/roulette-en/mood/initial');"> <img src="/roulette/images/icons/roulette-theme-mood.svg" class="img-responsive" />
             <h2 class="choice-title"><?php echo $vars['Moods'][$lang]; ?></h2>
           </div>
-          <div  class="col-xs-4  col-sm-4 col-md-4 choice1" id="tagMachineButtonInit" " onClick="ga('send', 'pageview', '/virtual/roulette-en/tag/initial');"> <img src="images/icons/roulette-theme-icon2.svg" class="img-responsive slotMachineButton1" />
+          <div  class="col-xs-4  col-sm-4 col-md-4 choice1" id="tagMachineButtonInit" " onClick="ga('send', 'pageview', '/virtual/roulette-en/tag/initial');"> <img src="/roulette/images/icons/roulette-theme-icon2.svg" class="img-responsive slotMachineButton1" />
             <h2 class="choice-title"><?php echo $vars['Tags'][$lang]; ?></h2>
           </div>
         </div>
@@ -61,17 +61,17 @@ $c = $_POST['c'];
   </div>
   <div id="toggle2">&nbsp;
     <div class="row interactive">
-    	<div class=" col-sm-6 col-sm-offset-2 col-xs-10 " id="loading"><img src="images/icons/loading.gif" /></div> 
+    	<div class=" col-sm-6 col-sm-offset-2 col-xs-10 " id="loading"><img src="/roulette/images/icons/loading.gif" /></div> 
 	  <div class=" col-sm-6 col-sm-offset-2 col-xs-10 " id="poem"></div>
 	  <div class="sticky">
 		<div id="back2" class="col-xs-2">
-			<img src="images/icons/right.png" height="60" width="40" /></div>
+			<img src="/roulette/images/icons/right.png" height="60" width="40" /></div>
 		</div>
 	  </div> 
   </div>
   <div id="tag-slider" class="slider">
     <div class="row">
-      <div  class=" col-sm-8 col-sm-offset-2 col-xs-12 slider-up "><img src="images/icons/down.png" id="tagUp"  height="40" width="60"/></div>
+      <div  class=" col-sm-8 col-sm-offset-2 col-xs-12 slider-up "><img src="/roulette/images/icons/down.png" id="tagUp"  height="40" width="60"/></div>
     </div>
     <div class="row interactive">
       <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 machineContainer">
@@ -258,7 +258,7 @@ echo $tags;
 		</script>
   <div id="mood-slider" class="slider">
     <div class="row">
-      <div  class=" col-sm-8 col-sm-offset-2 col-xs-12 slider-up "><img src="images/icons/down.png" id="moodUp"  height="40" width="60"/></div>
+      <div  class=" col-sm-8 col-sm-offset-2 col-xs-12 slider-up "><img src="/roulette/images/icons/down.png" id="moodUp"  height="40" width="60"/></div>
     </div>
     <div class="row interactive">
       <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 machineContainer">
@@ -446,7 +446,7 @@ echo $moods;
 		</script>
   <div id="poet-slider" class="slider">
     <div class="row">
-      <div  class=" col-sm-8 col-sm-offset-2 col-xs-12 slider-up "><img src="images/icons/down.png" id="poetUp"  height="40" width="60"/></div>
+      <div  class=" col-sm-8 col-sm-offset-2 col-xs-12 slider-up "><img src="/roulette/images/icons/down.png" id="poetUp"  height="40" width="60"/></div>
     </div>
     <div class="row interactive">
       <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12 machineContainer">
@@ -809,10 +809,10 @@ $(document).on('click', '.heart', (event) => {
 	let target = event.currentTarget;
 	let poemId = $(target).attr("data-index");
 	if ($(target).attr("src") === 'images/icons/heart-outline.png'){
-		$(target).attr("src","images/icons/heart-full.png");
+		$(target).attr("src","/roulette/images/icons/heart-full.png");
 		storeFavPoem(poemId);
 	} else {
-		$(target).attr("src","images/icons/heart-outline.png");
+		$(target).attr("src","/roulette/images/icons/heart-outline.png");
 		removeFavPoem(poemId);
 	}
 	highlightFavourite(poemId);

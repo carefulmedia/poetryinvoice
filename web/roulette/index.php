@@ -6,7 +6,7 @@ if ($_SERVER['HTTP_HOST'] == 'www.poetryinvoice.com'){
 else {
 	$lang = 'fr';
 }
-include 'vars.php';
+include '/roulette/vars.php';
 
 $c = $_GET['c'] ?? NULL;
 
@@ -72,7 +72,7 @@ $(function() {
 <?php
 }
 else {
-include 'load.php';
+include '/roulette/load.php';
 
 }
 ?>
