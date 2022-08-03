@@ -34,12 +34,12 @@ ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<link rel="stylesheet" type="text/css" href= "https://poetryinvoice.ca/roulette/css/roulette.css" />
+<link rel="stylesheet" type="text/css" href= "/roulette/css/roulette.css" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css" media="screen" />
 <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.slotmachine-min.js"></script>
+	<script type="text/javascript" src="/roulette/js/jquery.slotmachine-min.js"></script>
 
 </head>
 <body>
@@ -109,5 +109,5 @@ $('#element_to_pop_up').bPopup().close();
 })
 
 </script>
-	<script type="text/javascript" src="/js/jquery.bpopup.min.js"></script>
+	<script type="text/javascript" src="/roulette/js/jquery.bpopup.min.js"></script>
 
