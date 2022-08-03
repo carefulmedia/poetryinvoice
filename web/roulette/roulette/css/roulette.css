@@ -87,7 +87,7 @@ ul.language-switcher-locale-url a:visited {
 
 #main,
 body {
-    background-color: #26afed!important
+    background-color: #481139!important
 }
 
 #piv-toolbar a {
@@ -114,7 +114,7 @@ body {
 }
 
 .logo {
-    background-color: #26afed;
+    background-color: #481139;
     padding-top: 1em;
     padding-bottom: 1em
 }
@@ -252,7 +252,7 @@ body {
 
 .slider .slotMachineContainer,
 .slider .slotMachineContainer div {
-    background-color: #26afed;
+    background-color: #481139;
     border: none
 }
 
@@ -368,7 +368,7 @@ body {
 }
 
 .poemButton a:hover {
-    color: #26afed;
+    color: #481139;
     text-decoration: none
 }
 
@@ -394,7 +394,7 @@ body {
 }
 
 #element_to_pop_up {
-	background-color: #26afed !important;
+	background-color: #481139 !important;
     border-radius: 10px;
     box-shadow: 0 0 25px 5px #999;
     display: block;
