@@ -293,7 +293,22 @@ display:
       title: 'Mixtape slider'
       defaults:
         title: false
+        header: false
       display_description: ''
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: '<h3>Mixtapes</h3<h4>Explore our poetic playlists!</h4>'
+            format: full_html
+          tokenize: false
       display_extenders: {  }
     cache_metadata:
       max-age: -1
