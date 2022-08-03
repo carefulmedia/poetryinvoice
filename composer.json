@@ -48,6 +48,7 @@
         "drupal/inline_entity_form": "^1.0@RC",
         "drupal/ip2country": "^1.10",
         "drupal/jquery_ui": "^1.4",
+        "drupal/jsonapi_views": "^1.0",
         "drupal/layout_builder_restrictions": "^2.13",
         "drupal/mail_login": "^2.0",
         "drupal/mailsystem": "^4.3",
