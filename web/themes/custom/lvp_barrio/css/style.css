@@ -119,17 +119,15 @@ padding: 30px
 
 }
 
-.plum-bg h1, .plum-bg h2, .plum-bg h3, .plum-bg h4, .plum-bg h5, .plum-bg h6,.plum-bg p  {
+.plum-bg h1, .plum-bg h2, .plum-bg h3, .plum-bg h4, .plum-bg h5, .plum-bg h6, .plum-bg p  {
 color: #fff;
 }
+
 .plum-bg .container {
-margin-top: 40px
+margin-top: 40px;
 
 }
-.plum-bg .container {
-margin-top: 40px
-border: 4px dashed #FFFFFF;
-}
+
 .plum-bg .container col-4 {
 border-right: 4px dashed #FFFFFF;
 text-align: center;
