@@ -6,7 +6,7 @@ if ($_SERVER['HTTP_HOST'] == 'www.poetryinvoice.com'){
 else {
 	$lang = 'fr';
 }
-include '/roulette/vars.php';
+include '/app/web/roulette/vars.php';
 
 $c = $_GET['c'] ?? NULL;
 
