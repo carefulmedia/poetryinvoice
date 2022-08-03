@@ -39,7 +39,7 @@ ga('send', 'pageview');
 <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/jquery.slotmachine-min.js"></script>
+	<script type="text/javascript" src="/js/jquery.slotmachine-min.js"></script>
 
 </head>
 <body>
@@ -109,5 +109,5 @@ $('#element_to_pop_up').bPopup().close();
 })
 
 </script>
-	<script type="text/javascript" src="js/jquery.bpopup.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.bpopup.min.js"></script>
 
