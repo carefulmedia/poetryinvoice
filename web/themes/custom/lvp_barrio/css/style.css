@@ -114,6 +114,16 @@ padding: 0 0 1.2em;
 .mixtapes-discover {
     margin-bottom: 8rem;
 }
+.mixtapes-discover .more-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+background: #893B73;
+border-radius: 4px;
+padding: 1rem;
+color: #fff;
+}
+}
 .plum-bg {
 background: rgba(72, 17, 57, 1);
 padding: 50px 10px
