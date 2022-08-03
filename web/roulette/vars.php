@@ -12,8 +12,8 @@ $vars = array (
     "Page_title"  => array("en" => "Poetry In Voice | Poem Roulette", "fr" => "Les voix de la poésie | À vos jeux"),
 	"Roulette"  => array("en" => "Poem Roulette", "fr" => "À vos jeux"),
 	"favourites"  => array("en" => "My Favourites", "fr" => "Favoris"),
-	"language"  => array("fr" => "<a href=\"https://www.poetryinvoice.com/roulette\" class=\"language-link active\" xml:lang=\"en\">English</a>",
- 	"en" => "<a href=\"https://www.lesvoixdelapoesie.com/roulette\" class=\"language-link\" xml:lang=\"fr\">Français</a>"),	
+	"language"  => array("fr" => "<a href=\"https://poetryinvoice.ca/roulette\" class=\"language-link active\" xml:lang=\"en\">English</a>",
+ 	"en" => "<a href=\"https://lesvoixdelapoesie.ca/roulette\" class=\"language-link\" xml:lang=\"fr\">Français</a>"),	
     "More"  => array("en" => "See more", "fr" => "EN SAVOIR PLUS")
 
 
