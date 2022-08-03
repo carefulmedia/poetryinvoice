@@ -72,7 +72,7 @@ $(function() {
 <?php
 }
 else {
-include '/roulette/load.php';
+include '/app/web/roulette/load.php';
 
 }
 ?>
@@ -85,7 +85,7 @@ var c = "j";
 
 $('#element_to_pop_up').bPopup().close();
     $.ajax({
-      url: "/roulette/load.php",
+      url: "/app/web/roulette/load.php",
       data: "c="+c,
       type: "post",
       success: function(data){
@@ -98,7 +98,7 @@ $('#element_to_pop_up').bPopup().close();
 var c = "s";
 $('#element_to_pop_up').bPopup().close();
     $.ajax({
-      url: "/roulette/load.php",
+      url: "/app/web/roulette/load.php",
       data: "c="+c,
       type: "post",
       success: function(data){
