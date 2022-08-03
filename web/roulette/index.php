@@ -6,7 +6,7 @@ if ($_SERVER['HTTP_HOST'] == 'www.poetryinvoice.com'){
 else {
 	$lang = 'fr';
 }
-include '/app/web/roulette/vars.php';
+include '//app/web/roulette/vars.php';
 
 $c = $_GET['c'] ?? NULL;
 
@@ -72,7 +72,7 @@ $(function() {
 <?php
 }
 else {
-include '/app/web/roulette/load.php';
+include '/roulette/load.php';
 
 }
 ?>
@@ -85,7 +85,7 @@ var c = "j";
 
 $('#element_to_pop_up').bPopup().close();
     $.ajax({
-      url: "/app/web/roulette/load.php",
+      url: "/roulette/load.php",
       data: "c="+c,
       type: "post",
       success: function(data){
@@ -98,7 +98,7 @@ $('#element_to_pop_up').bPopup().close();
 var c = "s";
 $('#element_to_pop_up').bPopup().close();
     $.ajax({
-      url: "/app/web/roulette/load.php",
+      url: "/roulette/load.php",
       data: "c="+c,
       type: "post",
       success: function(data){

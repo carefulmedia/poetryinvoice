@@ -7,7 +7,7 @@ else {
 }
 ?>
 <?php
-include '/roulette/vars.php';
+include '//app/web/roulette/vars.php';
 // $header = file_get_contents('https://www.poetryinvoice.com/roulette/'. $lang .'/header.php');
 // echo $header;
 if(empty($c)){
