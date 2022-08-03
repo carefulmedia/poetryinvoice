@@ -138,5 +138,8 @@ vertical-align: middle;
 border-right: none;
 
 }
-
+.plum-bg .container .col-4 img {
+height: 8em;
+margin-bottom: 3em;
+}
 
