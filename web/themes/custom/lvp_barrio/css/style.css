@@ -128,13 +128,13 @@ margin-top: 40px;
 
 }
 
-.plum-bg .container col-4 {
+.plum-bg .container .col-4 {
 border-right: 4px dashed #FFFFFF;
 text-align: center;
 vertical-align: middle;
 }
 
-.plum-bg .container col-4:last-child {
+.plum-bg .container .col-4:last-child {
 border-right: none;
 
 }
