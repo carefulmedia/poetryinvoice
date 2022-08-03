@@ -25,13 +25,7 @@ class TransformAliasIfNode extends ProcessPluginBase {
     if (count($parts) === 2 && $parts[0] === 'node' && $migrated_nid_field) {
       $migrated_nid = $row->get($migrated_nid_field);
       if ($migrated_nid) {
-        return "/node/{$migrated_nid}";
-      }
-    }
-    // Need to always add a / to beggining if there isn't one.
-    if (is_string($value)) {
-      if ($value[0] != '/') {
-        return "/{$value}";
+        return "node/{$migrated_nid}";
       }
     }
     return $value;
