@@ -1,6 +1,6 @@
 
 <?php
-if ($_SERVER['HTTP_HOST'] == 'www.poetryinvoice.com'){
+if ($_SERVER['HTTP_HOST'] == 'poetryinvoice.ca'){
 	$lang = 'en';
 	}
 else {
@@ -56,19 +56,7 @@ ga('send', 'pageview');
 <?php
 if(empty($c)) {
 ?>
-<script>
-$(function() {
 
-		$('#element_to_pop_up').bPopup({
-			zIndex: 2
-			, modalClose: false
-			, modal: true,
-			speed: 450,
-			transition: 'slideDown'
-		});
- 
-	});
-</script>
 <?php
 }
 else {

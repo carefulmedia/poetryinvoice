@@ -17,7 +17,7 @@ $c = $_POST['c'];
 // echo $tags;
 ?>
 <div class="container-fluid">  
- 
+ <!--
 	<div id="topBar" class="row">
 		<div class="dropdown">
 		 <div class="admin-menu-icon admin-menu-toolbar-category expandable"><a href="../"><span>Home</span></a></div>
@@ -41,6 +41,7 @@ $c = $_POST['c'];
     </div>
   </div>
 </div>
+-->
 <div id="main" class="container" >
   <div class="row interactive">
     <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">

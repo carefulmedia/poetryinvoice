@@ -11,45 +11,7 @@
 }
 h4 {text-align: center}
 
-@font-face {
-    font-family: FrutigerRoman;
-    src: url(/roulette/fonts/frutigerltstd-roman-webfont.eot);
-    src: url(/roulette/fonts/frutigerltstd-roman-webfont.eot?#iefix) format('embedded-opentype'), url(/roulette/fonts/frutigerltstd-roman-webfont.woff) format('woff'), url(/roulette/fonts/frutigerltstd-roman-webfont.ttf) format('truetype'), url(/roulette/fonts/frutigerltstd-roman-webfont.svg#FrutigerLTStd45Light) format('svg');
-    font-weight: 400;
-    font-style: normal
-}
 
-@font-face {
-    font-family: FrutigerLight;
-    src: url(/roulette/fonts/frutigerltstd-light-webfont.eot);
-    src: url(/roulette/fonts/frutigerltstd-light-webfont.eot?#iefix) format('embedded-opentype'), url(/roulette/fonts/frutigerltstd-light-webfont.woff) format('woff'), url(/roulette/fonts/frutigerltstd-light-webfont.ttf) format('truetype'), url(/roulette/fonts/frutigerltstd-light-webfont.svg#FrutigerLTStd45Light) format('svg');
-    font-weight: 400;
-    font-style: normal
-}
-
-@font-face {
-    font-family: ClarendonBold;
-    src: url(/roulette/fonts/clarendonltstd-bold-webfont.eot);
-    src: url(/roulette/fonts/clarendonltstd-bold-webfont.eot?#iefix) format('embedded-opentype'), url(/roulette/fonts/clarendonltstd-bold-webfont.woff) format('woff'), url(/roulette/fonts/clarendonltstd-bold-webfont.ttf) format('truetype'), url(/roulette/fonts/clarendonltstd-bold-webfont.svg#ClarendonLTStdBold) format('svg');
-    font-weight: 400;
-    font-style: normal
-}
-
-@font-face {
-    font-family: ClarendonRoman;
-    src: url(/roulette/fonts/clarendonltstd-webfont.eot);
-    src: url(/roulette/fonts/clarendonltstd-webfont.eot?#iefix) format('embedded-opentype'), url(/roulette/fonts/clarendonltstd-webfont.woff) format('woff'), url(/roulette/fonts/clarendonltstd-webfont.ttf) format('truetype'), url(/roulette/fonts/clarendonltstd-webfont.svg#ClarendonLTStdRoman) format('svg');
-    font-weight: 400;
-    font-style: normal
-}
-
-@font-face {
-    font-family: ClarendonLight;
-    src: url(/roulette/fonts/clarendonltstd-light-webfont.eot);
-    src: url(/roulette/fonts/clarendonltstd-light-webfont.eot?#iefix) format('embedded-opentype'), url(/roulette/fonts/clarendonltstd-light-webfont.woff) format('woff'), url(/roulette/fonts/clarendonltstd-light-webfont.ttf) format('truetype'), url(/roulette/fonts/clarendonltstd-light-webfont.svg#ClarendonLTStdLight) format('svg');
-    font-weight: 400;
-    font-style: normal
-}
 
 #piv-toolbar {
     background-color: #001a23;
@@ -435,7 +397,7 @@ body {
 	background-color: #26afed !important;
     border-radius: 10px;
     box-shadow: 0 0 25px 5px #999;
-    display: none;
+    display: block;
     padding: 25px;
     color: #001a23;
     max-width: 90%
