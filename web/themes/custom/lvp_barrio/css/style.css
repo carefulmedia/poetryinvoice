@@ -111,3 +111,49 @@ padding: 0 0 1.2em;
 .field--type-entity-reference {
     margin: 0 0;
 }
+.mixtapes-discover {
+    margin-bottom: 8rem;
+}
+.mixtapes-discover .more-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #893B73;
+    border-radius: 6px;
+    padding: .5rem;
+    color: #fff;
+}
+.mixtapes-discover .more-link a {
+    color: white;
+    text-decoration: none;
+}
+.plum-bg {
+background: rgba(72, 17, 57, 1);
+padding: 50px 10px
+}
+
+.plum-bg h1, .plum-bg h2, .plum-bg h3, .plum-bg h4, .plum-bg h5, .plum-bg h6, .plum-bg p  {
+color: #fff;
+}
+
+.plum-bg .container {
+
+    margin: 6rem 0;
+
+}
+
+.plum-bg .container .col-4 {
+border-right: 4px dashed #FFFFFF;
+text-align: center;
+vertical-align: middle;
+}
+
+.plum-bg .container .col-4:last-child {
+border-right: none;
+
+}
+.plum-bg .container .col-4 img {
+height: 8em;
+margin-bottom: 3em;
+}
+
