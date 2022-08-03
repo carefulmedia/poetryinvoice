@@ -111,10 +111,12 @@ padding: 0 0 1.2em;
 .field--type-entity-reference {
     margin: 0 0;
 }
-
+.mixtapes-discover {
+    margin-bottom: 8rem;
+}
 .plum-bg {
 background: rgba(72, 17, 57, 1);
-padding: 30px
+padding: 50px 10px
 
 
 }
@@ -124,7 +126,8 @@ color: #fff;
 }
 
 .plum-bg .container {
-margin-top: 40px;
+
+    margin: 6rem 0;
 
 }
 
