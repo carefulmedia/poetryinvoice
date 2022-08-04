@@ -36,6 +36,7 @@ dependencies:
     - system.menu.account
   module:
     - layout_builder
+    - layout_builder_restrictions
     - layout_discovery
     - menu_block
     - options
@@ -44,7 +45,7 @@ dependencies:
 third_party_settings:
   layout_builder:
     enabled: true
-    allow_custom: false
+    allow_custom: true
     sections:
       -
         layout_id: layout_onecol
@@ -73,6 +74,26 @@ third_party_settings:
           label: ''
           context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+          breakpoints:
+            desktop: blb_col_6_6
+            tablet: blb_col_6_6
+            mobile: blb_col_6_6
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-6
+              - col-md-6
+              - col-6
+            blb_region_col_2:
+              - col-lg-6
+              - col-md-6
+              - col-6
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
@@ -157,30 +178,10 @@ third_party_settings:
                   class: _none
               scroll_effects:
                 class: null
-          container_wrapper_bg_color_class: ''
-          container_wrapper_bg_media: null
-          container: container
-          section_classes: ''
           section_attributes: null
-          regions_classes:
-            blb_region_col_1: ''
-            blb_region_col_2: ''
           regions_attributes:
             blb_region_col_1: null
             blb_region_col_2: null
-          breakpoints:
-            desktop: blb_col_6_6
-            tablet: blb_col_6_6
-            mobile: blb_col_6_6
-          layout_regions_classes:
-            blb_region_col_1:
-              - col-lg-6
-              - col-md-6
-              - col-6
-            blb_region_col_2:
-              - col-lg-6
-              - col-md-6
-              - col-6
           remove_gutters: '0'
         components:
           50e96d02-71ff-4e4a-a038-1890a2ab2efb:
@@ -310,6 +311,14 @@ third_party_settings:
           label: ''
           context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+          breakpoints: {  }
+          layout_regions_classes: {  }
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
@@ -394,17 +403,9 @@ third_party_settings:
                   class: _none
               scroll_effects:
                 class: null
-          container_wrapper_bg_color_class: ''
-          container_wrapper_bg_media: null
-          container: container
-          section_classes: ''
           section_attributes: null
-          regions_classes:
-            blb_region_col_1: ''
           regions_attributes:
             blb_region_col_1: {  }
-          breakpoints: {  }
-          layout_regions_classes: {  }
           remove_gutters: '0'
         components:
           bdf0f978-ebf7-4149-b6ae-55ec5ee3c32e:
@@ -455,6 +456,15 @@ third_party_settings:
             weight: 0
             additional: {  }
         third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
 id: node.poem.default
 targetEntityType: node
 bundle: poem

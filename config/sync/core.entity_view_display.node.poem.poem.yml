@@ -33,6 +33,7 @@ dependencies:
     - field.field.node.poem.field_start_here_poem
     - field.field.node.poem.field_start_here_video
     - field.field.node.poem.field_terms_and_forms
+    - field.field.node.poem.layout_builder__layout
     - node.type.poem
   module:
     - text
@@ -79,4 +80,5 @@ hidden:
   field_start_here_video: true
   field_terms_and_forms: true
   langcode: true
+  layout_builder__layout: true
   links: true
