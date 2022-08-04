@@ -1,9 +1,9 @@
 <?php
-if ($_SERVER['HTTP_HOST'] == 'poetryinvoice.ca'){
-	$lang = 'en';
+if ($_SERVER['HTTP_HOST'] == 'lesvoixdelapoesie.ca'){
+	$lang = 'fr';
 	}
 else {
-	$lang = 'fr';
+	$lang = 'en';
 }
 ?>
 <?php
