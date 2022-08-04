@@ -12,7 +12,7 @@ field_name: body
 entity_type: node
 bundle: poem
 label: Body
-description: 'You can also use this for a poem that requires a 2nd column. This will display as the second column.'
+description: ''
 required: false
 translatable: true
 default_value: {  }

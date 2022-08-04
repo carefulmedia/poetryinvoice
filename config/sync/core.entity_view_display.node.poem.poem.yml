@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.poem
     - field.field.node.poem.body
     - field.field.node.poem.comment_node_poem
+    - field.field.node.poem.field_2_column_poem
     - field.field.node.poem.field_biligraphical_info
     - field.field.node.poem.field_broadsides_are_allowed
     - field.field.node.poem.field_canada_restrict
@@ -52,6 +53,7 @@ content:
     region: content
 hidden:
   comment_node_poem: true
+  field_2_column_poem: true
   field_biligraphical_info: true
   field_broadsides_are_allowed: true
   field_canada_restrict: true

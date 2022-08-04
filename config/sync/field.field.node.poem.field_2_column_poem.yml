@@ -1,0 +1,21 @@
+uuid: d855333d-d598-46ea-aa25-30d3518d61b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_2_column_poem
+    - node.type.poem
+  module:
+    - text
+id: node.poem.field_2_column_poem
+field_name: field_2_column_poem
+entity_type: node
+bundle: poem
+label: '2 column poem'
+description: "This can be used for 2 column poems, sometimes for translation to appear beside original.\r\nAfter saving, ask David to change layout for this page to see effect."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

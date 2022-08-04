@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.poem.body
     - field.field.node.poem.comment_node_poem
+    - field.field.node.poem.field_2_column_poem
     - field.field.node.poem.field_biligraphical_info
     - field.field.node.poem.field_broadsides_are_allowed
     - field.field.node.poem.field_canada_restrict
@@ -32,6 +33,7 @@ dependencies:
     - field.field.node.poem.field_start_here_poem
     - field.field.node.poem.field_start_here_video
     - field.field.node.poem.field_terms_and_forms
+    - field.field.node.poem.layout_builder__layout
     - node.type.poem
     - system.menu.account
   module:
@@ -66,6 +68,21 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             weight: 0
+            additional: {  }
+          94c9df55-9d67-4509-aeb0-c1c6e4171c81:
+            uuid: 94c9df55-9d67-4509-aeb0-c1c6e4171c81
+            region: content
+            configuration:
+              id: 'field_block:node:poem:field_2_column_poem'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -
@@ -477,6 +494,13 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  field_2_column_poem:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
   field_biligraphical_info:
     type: text_default
     label: above
@@ -553,4 +577,5 @@ hidden:
   field_start_here_poem: true
   field_start_here_video: true
   langcode: true
+  layout_builder__layout: true
   links: true

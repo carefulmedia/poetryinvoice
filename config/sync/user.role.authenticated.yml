@@ -56,6 +56,7 @@ permissions:
   - 'use advanced search'
   - 'view body'
   - 'view faq page'
+  - 'view field_2_column_poem'
   - 'view field_about_me'
   - 'view field_activity_description_steps'
   - 'view field_additional_poems'
