@@ -89,6 +89,7 @@ permissions:
   - 'view field_bio_trans'
   - 'view field_copyright'
   - 'view field_dive_in'
+  - 'view field_epigraph'
   - 'view field_file_under_'
   - 'view field_gg_finalist'
   - 'view field_grades'

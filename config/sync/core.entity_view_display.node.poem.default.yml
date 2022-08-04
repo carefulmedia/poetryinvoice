@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.poem.field_dive_in
     - field.field.node.poem.field_dive_in_attribution
     - field.field.node.poem.field_editor
+    - field.field.node.poem.field_epigraph
     - field.field.node.poem.field_grades
     - field.field.node.poem.field_mobile_apps_are_allowed
     - field.field.node.poem.field_moods
@@ -67,13 +68,13 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 0
+            weight: 1
             additional: {  }
-          94c9df55-9d67-4509-aeb0-c1c6e4171c81:
-            uuid: 94c9df55-9d67-4509-aeb0-c1c6e4171c81
+          d195c2f8-8130-44cb-8c70-253883aaa6aa:
+            uuid: d195c2f8-8130-44cb-8c70-253883aaa6aa
             region: content
             configuration:
-              id: 'field_block:node:poem:field_2_column_poem'
+              id: 'field_block:node:poem:field_epigraph'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
@@ -82,7 +83,7 @@ third_party_settings:
                 label: above
                 settings: {  }
                 third_party_settings: {  }
-            weight: 1
+            weight: 0
             additional: {  }
         third_party_settings: {  }
       -
@@ -522,6 +523,13 @@ content:
       link: true
     third_party_settings: {  }
     weight: 3
+    region: content
+  field_epigraph:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
     region: content
   field_grades:
     type: list_default

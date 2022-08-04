@@ -1,0 +1,21 @@
+uuid: db5b0c6e-303b-4f62-837b-3c9d6ef3dfb7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_epigraph
+    - node.type.poem
+  module:
+    - text
+id: node.poem.field_epigraph
+field_name: field_epigraph
+entity_type: node
+bundle: poem
+label: Epigraph
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
