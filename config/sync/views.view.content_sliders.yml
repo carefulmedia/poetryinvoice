@@ -306,7 +306,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<h3>Mixtapes</h3<h4>Explore our poetic playlists!</h4>'
+            value: "<h3>Mixtapes</h3>\r\n<h4 class=\"plum-text\">Explore our poetic playlists!</h4>"
             format: full_html
           tokenize: false
       display_extenders: {  }

@@ -1,6 +1,6 @@
 uuid: 3984a44c-eb51-468a-95ae-296f4391613e
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - views.view.header_image_for_poets

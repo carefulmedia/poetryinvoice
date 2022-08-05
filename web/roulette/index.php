@@ -1,12 +1,12 @@
 
 <?php
-if ($_SERVER['HTTP_HOST'] == 'www.poetryinvoice.com'){
-	$lang = 'en';
+if ($_SERVER['HTTP_HOST'] == 'lesvoixdelapoesie.ca'){
+	$lang = 'fr';
 	}
 else {
-	$lang = 'fr';
+	$lang = 'en';
 }
-include 'vars.php';
+include '//app/web/roulette/vars.php';
 
 $c = $_GET['c'] ?? NULL;
 
@@ -25,7 +25,7 @@ $c = $_GET['c'] ?? NULL;
 
 <!-- Google Analytics -->
 <script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){	
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
@@ -34,12 +34,12 @@ ga('send', 'pageview');
 </script>
 <!-- End Google Analytics -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-<link rel="stylesheet" type="text/css" href= "https://poetryinvoice.ca/roulette/css/roulette.css" />
+<link rel="stylesheet" type="text/css" href= "/roulette/css/roulette.css?rnd=233387882428" />
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" type="text/css" media="screen" />
 <script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="js/jquery.slotmachine-min.js"></script>
+	<script type="text/javascript" src="/roulette/js/jquery.slotmachine-min.js"></script>
 
 </head>
 <body>
@@ -56,23 +56,11 @@ ga('send', 'pageview');
 <?php
 if(empty($c)) {
 ?>
-<script>
-$(function() {
 
-		$('#element_to_pop_up').bPopup({
-			zIndex: 2
-			, modalClose: false
-			, modal: true,
-			speed: 450,
-			transition: 'slideDown'
-		});
- 
-	});
-</script>
 <?php
 }
 else {
-include 'load.php';
+include '/roulette/load.php';
 
 }
 ?>
@@ -85,7 +73,7 @@ var c = "j";
 
 $('#element_to_pop_up').bPopup().close();
     $.ajax({
-      url: "load.php",
+      url: "/roulette/load.php",
       data: "c="+c,
       type: "post",
       success: function(data){
@@ -98,7 +86,7 @@ $('#element_to_pop_up').bPopup().close();
 var c = "s";
 $('#element_to_pop_up').bPopup().close();
     $.ajax({
-      url: "load.php",
+      url: "/roulette/load.php",
       data: "c="+c,
       type: "post",
       success: function(data){
@@ -109,5 +97,5 @@ $('#element_to_pop_up').bPopup().close();
 })
 
 </script>
-	<script type="text/javascript" src="js/jquery.bpopup.min.js"></script>
+	<script type="text/javascript" src="/roulette/js/jquery.bpopup.min.js"></script>
 

@@ -166,7 +166,7 @@ display:
         type: infinite_scroll
         options:
           offset: 0
-          items_per_page: 10
+          items_per_page: 12
           total_pages: null
           id: 0
           tags:
@@ -344,11 +344,11 @@ display:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          col_xs: col-6
+          col_xs: col-12
           col_sm: col-sm-6
-          col_md: col-md-4
-          col_lg: col-lg-3
-          col_xl: col-xl-3
+          col_md: col-md-6
+          col_lg: col-lg-6
+          col_xl: col-xl-6
       row:
         type: fields
         options:
@@ -1413,7 +1413,7 @@ display:
         sorts: false
         filters: false
         filter_groups: false
-      use_ajax: false
+      use_ajax: true
       display_description: ''
       display_extenders: {  }
     cache_metadata:
