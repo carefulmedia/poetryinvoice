@@ -477,7 +477,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<h1 data-id=\"{{nid}}\">{{ title }}</h1>\r\n<h4 class=\"poet-name\">{{ piv_teacher_first_name }}  {{ piv_teacher_last_name }} </h4>\r\n<div class=\"verse\">{{ body }}</div>\r\n</div>\r\n<hr>\r\n<div class=\"hidden\" id=\"poemPath\">{{ view_node }}</div>\r\n<br>\r\n<br>\r\n<br>\r\n"
+            text: "<h1 data-id=\"{{nid}}\">{{ title }}</h1>\r\n<h4 class=\"poet-name\">{{ piv_teacher_first_name }}  {{ piv_teacher_last_name }} </h4>\r\n<div class=\"verse\">{{ body }}</div>\r\n</div>\r\n<div class=\"hidden\" id=\"poemPath\">{{ view_node }}</div>\r\n<br>\r\n"
             make_link: false
             path: ''
             absolute: false

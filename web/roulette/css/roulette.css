@@ -251,10 +251,10 @@ body {
     cursor: pointer
 }
 
-.choice1 img {
+.choice1 img:hover {
     filter: invert(100%) contrast(1000%)
 }
-.choice1:hover img {
+.choice1 img {
     filter: none;
 }
 
@@ -262,10 +262,10 @@ body {
     -webkit-filter: invert(100%) contrast(1000%)
 }
 .choice1 h2 {
- color:white;
+ color:893B73;
 }
 .choice1:hover h2 {
- color:black;
+ color:white;
 }
 .choice-title {
     font-family: FrutigerRoman;
@@ -487,7 +487,7 @@ body {
     width: 70% !important;
     transform: translate(-50%, -50%);
     border-radius: 10px;
-    box-shadow: 0 0 25px 5px #999;
+    box-shadow: 0 0 25px 5px #481139;
     display: block;
     padding: 25px;
     color: #893B73;
@@ -532,6 +532,8 @@ button {
 
 hr.thick-line {
     border: 1px solid;
+    margin-bottom: 8rem;
+    margin-top: 8rem;;
 }
 
 .sticky {
