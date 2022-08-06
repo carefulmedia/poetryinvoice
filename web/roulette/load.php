@@ -79,7 +79,7 @@ $c = $_POST['c'];
         <div class="row">
           <?php
 
-$tags = file_get_contents('https://www.poetryinvoice.com/roulette/cached/cached_tags.php?lang='.$lang.'&c='.$c);
+$tags = file_get_contents('cached_tags.php?lang='.$lang.'&c='.$c);
 echo $tags;
 
 ?>
@@ -266,7 +266,7 @@ echo $tags;
         <div class="row">
           <?php
 
-$moods = file_get_contents('https://www.poetryinvoice.com/roulette/cached/cached_moods.php?lang='.$lang.'&c='.$c);
+$moods = file_get_contents('/roulette/cached/cached_moods.php?lang='.$lang.'&c='.$c);
 echo $moods;
 ?>
         </div>
@@ -454,7 +454,7 @@ echo $moods;
         <div class="row">
           <?php
 
-$poets = file_get_contents('https://www.poetryinvoice.com/roulette/cached/cached_poets.php?lang='.$lang.'&c='.$c);
+$poets = file_get_contents('/roulette/cached/cached_poets.php?lang='.$lang.'&c='.$c);
 echo $poets;
 ?>
         </div>
