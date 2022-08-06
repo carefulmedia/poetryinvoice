@@ -1,0 +1,33 @@
+uuid: 02d97ff3-1805-46e0-ac54-ac06aa0d2441
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: writing_workshops_en
+label: 'Writing Workshops EN'
+type: 'canonical_entities:node'
+pattern: 'write/writing-workshops/[node:title]'
+selection_criteria:
+  5c4cf5d5-c50a-4d84-9706-03eb18ebbbfb:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 5c4cf5d5-c50a-4d84-9706-03eb18ebbbfb
+    context_mapping:
+      node: node
+    bundles:
+      writing_workshop: writing_workshop
+  0173387b-9872-4dcf-be52-88786994a2f0:
+    id: language
+    negate: false
+    uuid: 0173387b-9872-4dcf-be52-88786994a2f0
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      en: en
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

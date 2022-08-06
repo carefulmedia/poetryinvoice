@@ -13,10 +13,12 @@ dependencies:
     - image.style.1200x900
     - image.style.150x150
     - image.style.400x300
+    - image.style.home_front_700x400
     - node.type.article
     - node.type.lesson_plan
     - node.type.media_coverage
     - node.type.mixtape
+    - node.type.podcast
     - node.type.poem
     - node.type.press_release
     - node.type.quiz
@@ -28,7 +30,6 @@ dependencies:
     - image
     - node
     - options
-    - statistics
     - taxonomy
     - text
     - user
@@ -715,6 +716,284 @@ display:
       tags:
         - 'config:field.storage.node.body'
         - 'config:field.storage.node.field_mixtape_image'
+  block_10:
+    id: block_10
+    display_title: Podcasts
+    display_plugin: block
+    position: 10
+    display_options:
+      fields:
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: false
+        user_picture:
+          id: user_picture
+          table: user__user_picture
+          field: user_picture
+          relationship: field_poet_s_in_podcast
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: true
+            path: '{{ view_node }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image
+          settings:
+            image_link: ''
+            image_style: home_front_700x400
+            image_loading:
+              attribute: lazy
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            podcast: podcast
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        relationships: false
+        fields: false
+        filters: false
+        filter_groups: false
+      relationships:
+        field_poet_s_in_podcast:
+          id: field_poet_s_in_podcast
+          table: node__field_poet_s_in_podcast
+          field: field_poet_s_in_podcast
+          relationship: none
+          group_type: group
+          admin_label: 'field_poet_s_in_podcast : User'
+          plugin_id: standard
+          required: false
+      display_description: ''
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.user.user_picture'
   block_2:
     id: block_2
     display_title: Quizzes
@@ -1087,63 +1366,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        totalcount:
-          id: totalcount
-          table: node_counter
-          field: totalcount
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: statistics_numeric
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          set_precision: false
-          precision: 0
-          decimal: .
-          separator: ','
-          format_plural: false
-          format_plural_string: !!binary MQNAY291bnQ=
-          prefix: ''
-          suffix: ''
       exposed_form:
         type: bef
         options:
@@ -1317,78 +1539,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        field_poem_thems_target_id:
-          id: field_poem_thems_target_id
-          table: node__field_poem_thems
-          field: field_poem_thems_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: taxonomy_index_tid
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_poem_thems_target_id_op
-            label: 'Contest Criteria (field_poem_thems)'
-            description: ''
-            use_operator: false
-            operator: field_poem_thems_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_poem_thems_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              teacher: '0'
-              non_canadian_educator: '0'
-              teacher_en_: '0'
-              teacher_fr_: '0'
-              anonymous: '0'
-              administrator: '0'
-              proofreader: '0'
-              content_creator: '0'
-              translator: '0'
-              icanlocalize_translator: '0'
-              icanlocalize_manager: '0'
-              judge: '0'
-              account_approval: '0'
-              competition_administrator: '0'
-              accuracy_judge: '0'
-              php_editor: '0'
-              pierre: '0'
-              lesson_plan_creator: '0'
-              superadmin: '0'
-              poet_network: '0'
-              pic_pal: '0'
-              poet: '0'
-              anthology_editor: '0'
-              grandfathered_pir: '0'
-              education_consultant: '0'
-              journal_editor: '0'
-              junior_editor: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: true
-          vid: themes
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
         combine:
           id: combine
           table: views
@@ -1403,7 +1553,7 @@ display:
           exposed: true
           expose:
             operator_id: combine_op
-            label: 'Combine fields filter'
+            label: Search
             description: ''
             use_operator: false
             operator: combine_op
@@ -1482,7 +1632,6 @@ display:
         - url
         - url.query_args
         - 'url.query_args:sort_by'
-        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:

@@ -1,0 +1,33 @@
+uuid: 4071e3fb-53a2-405b-b6d5-44d55805c42f
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: podcasts_en
+label: 'Podcasts EN'
+type: 'canonical_entities:node'
+pattern: '/binge/podcasts/[node:title]'
+selection_criteria:
+  da3700e8-b6af-47b2-aa74-7586fce73933:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: da3700e8-b6af-47b2-aa74-7586fce73933
+    context_mapping:
+      node: node
+    bundles:
+      podcast: podcast
+  bd535a52-00f5-4776-b1ae-b39389420f3b:
+    id: language
+    negate: false
+    uuid: bd535a52-00f5-4776-b1ae-b39389420f3b
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      en: en
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

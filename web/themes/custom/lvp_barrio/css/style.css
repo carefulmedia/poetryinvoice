@@ -167,4 +167,30 @@ overflow:hidden;
 padding:0;
 margin:0;
 }
+.youtube-container--responsive, .field-name-field-google-calendar-iframe-cod .field-item, .field-name-field-yt-video .field-item {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+.youtube-container--responsive iframe, .field-name-field-google-calendar-iframe-cod .field-item iframe, .field-name-field-yt-video .field-item iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.youtube-container--responsive iframe {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.node--type-writing-workshop li {
+    list-style: none;
+}
+
 
