@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.mixtape.field_liner_notes_pdf_
     - field.field.node.mixtape.field_mixtape_background_image
     - field.field.node.mixtape.field_mixtape_image
+    - field.field.node.mixtape.field_mixtape_media
     - field.field.node.mixtape.field_paid_
     - field.field.node.mixtape.field_poems
     - field.field.node.mixtape.field_recommended_reading
@@ -210,6 +211,23 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 10
             additional: {  }
+          48cc30d1-037b-4187-9cce-0d28ef46f630:
+            uuid: 48cc30d1-037b-4187-9cce-0d28ef46f630
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_mixtape_media'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                  link: false
+                third_party_settings: {  }
+            weight: 12
+            additional: {  }
         third_party_settings: {  }
 id: node.mixtape.default
 targetEntityType: node
@@ -263,6 +281,15 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_mixtape_media:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 10
     region: content
   field_poems:
     type: entity_reference_label

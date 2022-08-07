@@ -76,12 +76,24 @@ third_party_settings:
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
-      allowed_layouts: {  }
+      allowed_layouts:
+        - layout_onecol
+        - bs_2col_bricked
+        - barrio_cardbasic
+        - barrio_media
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
       blacklisted_blocks: {  }
       whitelisted_blocks: {  }
       restricted_categories: {  }
     entity_view_mode_restriction_by_region:
-      allowed_layouts: {  }
+      allowed_layouts:
+        - layout_onecol
+        - bs_2col_bricked
+        - barrio_cardbasic
+        - barrio_media
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
 _core:
   default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
 id: node.page.default

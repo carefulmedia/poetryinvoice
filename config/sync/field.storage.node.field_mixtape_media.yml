@@ -1,22 +1,23 @@
-uuid: 96c344d9-5bd4-454a-bef3-fed56f330e11
+uuid: a0f71a13-3d9e-4ecc-89c6-95dacc70a339
 langcode: en
 status: true
 dependencies:
   module:
     - field_permissions
+    - media
     - node
-    - text
 third_party_settings:
   field_permissions:
     permission_type: public
-id: node.field_banner_subtitle
-field_name: field_banner_subtitle
+id: node.field_mixtape_media
+field_name: field_mixtape_media
 entity_type: node
-type: text_long
-settings: {  }
-module: text
+type: entity_reference
+settings:
+  target_type: media
+module: core
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

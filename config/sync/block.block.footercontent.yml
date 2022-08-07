@@ -2,10 +2,6 @@ uuid: f021a280-0bd0-4405-8f50-daafedeb399d
 langcode: en
 status: true
 dependencies:
-  content:
-    - 'block_content:basic:fed94f01-1d5a-4bb0-b183-b137062c234b'
-  module:
-    - block_content
   theme:
     - lvp_barrio
 id: footercontent
