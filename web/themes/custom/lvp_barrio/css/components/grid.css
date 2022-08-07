@@ -39,10 +39,20 @@
 .content-index.dive-in  {
     height: fit-content;
 }
+.content-index.dive-in  {
+    height: 20rem;
 
+}
 .content-index.lesson-plan  {
     height: 30rem;
 }
+.content-index.mixtape  {
+
+    padding: 0;
+    height: 30rem;
+}
+
+
 .block-views .author img {
     border-radius: 50%;
     height: 2rem;
@@ -64,25 +74,25 @@ h3.name {
 .block-views p {
     margin: 0;
 }
-.block-views a:hover img {
+.lesson-plans a:hover img, .poems a:hover img{
  height: 2.5rem;
     width: 2.5rem;
 transition: all .8s ease;
 }
-
-.block-views a:hover {
+.mixtape a:hover img {
+filter: brightness(1.25);
+transition: all .8s ease;
+}
+.content-index a:hover {
 color: #893B73;
 transition: all .8s ease;
 }
 
-.block-views-blockcontent-type-index-pages-block-5 .block-views a:hover {
+.lesson-plans a:hover {
 color: #724713;
 }
 .content-index .lesson-plans {
-
     height: fit-content;
-
-
 }
 
 .masonry-item  {
@@ -91,6 +101,9 @@ width: 46%;
 
 @media screen and (max-width: 399px) {
 .masonry-item {
-width: 100%;
+width: 95%;
 }
+}
+.mixtape .content {
+ padding: 15px;	
 }
