@@ -31,7 +31,7 @@
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
     border-radius: 10px;
     background: #fff;
-    height: 20rem;
+    height: fit-content;
     overflow: hidden;
     padding: 2rem;
     margin-bottom: 3rem
@@ -78,14 +78,11 @@ transition: all .8s ease;
 .block-views-blockcontent-type-index-pages-block-5 .block-views a:hover {
 color: #724713;
 }
-.content .lesson-plans {
-    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
-    border-radius: 10px;
-    background: #fff;
-    height: 20rem;
-    overflow: hidden;
-    padding: 2rem;
-    margin-bottom: 3rem;
+.content-index .lesson-plans {
+
+    height: fit-content;
+
+
 }
 
 .masonry-item  {

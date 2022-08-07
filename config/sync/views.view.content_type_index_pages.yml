@@ -1194,7 +1194,7 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -1237,7 +1237,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_link: content
+            image_link: ''
             image_style: 150x150
             image_loading:
               attribute: lazy
@@ -1262,7 +1262,7 @@ display:
           entity_field: name
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -1305,7 +1305,7 @@ display:
           click_sort_column: value
           type: user_name
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1327,21 +1327,39 @@ display:
           entity_field: title
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
+            text: ''
             make_link: false
+            path: ''
             absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
             word_boundary: false
             ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
             strip_tags: false
             trim: false
+            preserve_tags: ''
             html: false
           element_type: ''
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -1352,7 +1370,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1372,7 +1390,7 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -1389,17 +1407,17 @@ display:
             prefix: ''
             suffix: ''
             target: ''
-            nl2br: true
+            nl2br: false
             max_length: 300
             word_boundary: true
             ellipsis: true
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: true
+            strip_tags: false
             trim: true
             preserve_tags: ''
-            html: false
+            html: true
           element_type: ''
           element_class: ''
           element_label_type: ''
@@ -1426,6 +1444,59 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "<div class=\"index-views poems content-index\">\r\n\r\n<a href=\"{{ view_node }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n    <div class=\"author\">\r\n\t\t    <span=\"img\">\r\n\t\t\t    {{ user_picture }}\r\n            </span>\r\n                <h3 class=\"name\">\r\n                {{ name }}\r\n            </h3>\r\n\r\n    </div>\t\t\t\t\r\n    <div class=\"content\">\r\n      \t\t<h2>{{ title }}</h2>\r\n\t        <p>{{ body }}</p>\r\n\t\t    \r\n        <div class=\"fadeout\"></div>\r\n    </div>\r\n</a>\r\n</div>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: false
       exposed_form:
         type: bef
         options:
@@ -1907,7 +1978,7 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -1950,7 +2021,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_link: content
+            image_link: ''
             image_style: 150x150
             image_loading:
               attribute: lazy
@@ -1975,7 +2046,7 @@ display:
           entity_field: name
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -2018,7 +2089,7 @@ display:
           click_sort_column: value
           type: user_name
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -2040,21 +2111,39 @@ display:
           entity_field: title
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
+            text: ''
             make_link: false
+            path: ''
             absolute: false
-            word_boundary: false
-            ellipsis: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 300
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
             strip_tags: false
-            trim: false
+            trim: true
+            preserve_tags: ''
             html: false
           element_type: ''
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -2065,7 +2154,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -2085,7 +2174,7 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -2102,8 +2191,8 @@ display:
             prefix: ''
             suffix: ''
             target: ''
-            nl2br: true
-            max_length: 200
+            nl2br: false
+            max_length: 300
             word_boundary: true
             ellipsis: true
             more_link: false
@@ -2138,6 +2227,59 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "<div class=\"index-views lesson-plans content-index\">\r\n\r\n<a href=\"{{ view_node }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n    <div class=\"author\">\r\n\t\t    <span=\"img\">\r\n\t\t\t    {{ user_picture }}\r\n            </span>\r\n                <h3 class=\"name\">\r\n                {{ name }}\r\n            </h3>\r\n\r\n    </div>\t\t\t\t\r\n    <div class=\"content\">\r\n      \t\t<h2>{{ title }}</h2>\r\n\t        <p>{{ body }}</p>\r\n\t\t    \r\n        <div class=\"fadeout\"></div>\r\n    </div>\r\n</a>\r\n</div>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: false
       exposed_form:
         type: bef
         options:
