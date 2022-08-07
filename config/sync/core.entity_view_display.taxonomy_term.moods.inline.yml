@@ -1,0 +1,83 @@
+uuid: ee8343ad-7b49-42ef-8e2d-75c214129fdb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.taxonomy_term.inline
+    - field.field.taxonomy_term.moods.field_roulette_image
+    - image.style.medium
+    - taxonomy.vocabulary.moods
+  module:
+    - image
+    - layout_builder
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          2917fe7b-3fdc-4d0b-b0c2-54de88ac77c3:
+            uuid: 2917fe7b-3fdc-4d0b-b0c2-54de88ac77c3
+            region: content
+            configuration:
+              id: 'field_block:taxonomy_term:moods:description'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          58bfc126-bdda-465e-86b4-6c01b88a3151:
+            uuid: 58bfc126-bdda-465e-86b4-6c01b88a3151
+            region: content
+            configuration:
+              id: 'field_block:taxonomy_term:moods:field_roulette_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: medium
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+id: taxonomy_term.moods.inline
+targetEntityType: taxonomy_term
+bundle: moods
+mode: inline
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_roulette_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: medium
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  langcode: true

@@ -2,7 +2,6 @@
  * @file
  * Subtheme specific CSS.
  */
-.temp-image {width: 100%}
 
 
 body,
@@ -14,40 +13,90 @@ h5,
 h6,
 h2 a,
 h3 a,
-p {
-  font-family: 'Roboto', sans-serif;
-    color: #000;
+{
+color: #000;
+font-family: 'Roboto';
 }
 
-
+h1 {
+font-family: 'Roboto';
+font-size: 45px;
+font-weight: 700;
+line-height: 47px;
+text-align: left;
+font-style:normal;
+}
 
 h2 {
 font-family: 'Roboto';
-font-size: 18px;
-font-weight: 1000;
-line-height: 21px;
-letter-spacing: 0.1em;
-text-align: left;
-text-transform: uppercase;
-font-variation-settings: 'wdth' 110, 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+font-style: normal;
+font-weight: 400;
+font-size: 32px;
+line-height: 34px;
+/* or 106% */
+font-stretch: 70;
+font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
 
-.block-field-blocknodelesson-planbody p {
-font-family: Lora;
+h3, .block-layout-builder h2  {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 1000;
+font-size: 18px;
+line-height: 21px;
+/* or 117% */
+letter-spacing: 0.1em;
+text-transform: uppercase;
+font-stretch: 110;
+font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+}
+h4  {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 500;
+font-size: 18px;
+line-height: 21px;
+/* or 117% */
+letter-spacing: 0.1em;
+text-transform: uppercase;
+font-stretch: 110;
+font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+}
+h5 {
+
+}
+a {
+    color: #000
+}
+p, .serif-large {
+font-family: 'Lora';
+font-style: normal;
+font-weight: 400;
 font-size: 20px;
-font-weight: 400;
 line-height: 36px;
-letter-spacing: 0em;
-text-align: left;
+/* or 180% */
 }
-p {
-font-family: Lora;
-font-size: 17px;
+.serif {
+font-family: 'Lora';
+font-style: normal;
 font-weight: 400;
+font-size: 17px;
 line-height: 30px;
-letter-spacing: 0em;
-text-align: left;
+/* or 176% */
 }
+.sans-serif {
+font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 17px;
+line-height: 30px;
+color: #000000;
+}
+.white {
+color: #fff
+}
+
+
 
 li {
 font-family: Roboto;
@@ -61,52 +110,14 @@ text-align: left;
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
   border-radius: 6px;
   background: #fff;
-  padding: 15px
+  padding: 15px !important;
 }
 
-.block {
- /*   margin-bottom: 40px;*/
-}
-.brown-sidebar {
-background: #724713;
-border-radius: 8px;
-color: #fff;
-height: fit-content;
-padding: 20px
-}
-.brown-sidebar a {
-color: #fff
-}
-.brown-sidebar h2 {
-color: #fff;
-
-}
-.brown-sidebar h2.heading {
-font-size: 18px;
-font-weight: 1000;
-line-height: 21px;
-letter-spacing: 0.1em;
-text-align: left;
-font-variation-settings: 'wdth' 110, 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+.block-layout-builder {
+margin-bottom: 40px;
+padding: 20px 0px;
 }
 
-
-.layout-main {
-padding-right: 10%;
-}
-h1.title {
-font-family: ''Roboto';
-font-size: 45px;
-font-weight: 700;
-line-height: 47px;
-letter-spacing: 0em;
-text-align: left;
-
-}
-.brown-sidebar .block {
-border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-padding: 0 0 1.2em;
-}
 
 .field--type-entity-reference {
     margin: 0 0;
@@ -147,6 +158,7 @@ border-right: 4px dashed #FFFFFF;
 text-align: center;
 vertical-align: middle;
 }
+
 
 .plum-bg .container .col-4:last-child {
 border-right: none;

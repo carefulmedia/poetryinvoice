@@ -28,6 +28,7 @@ dependencies:
   module:
     - better_exposed_filters
     - image
+    - masonry_views
     - node
     - options
     - taxonomy
@@ -164,6 +165,59 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: false
       pager:
         type: infinite_scroll
         options:
@@ -341,16 +395,22 @@ display:
             default_group_multiple: {  }
             group_items: {  }
       style:
-        type: views_bootstrap_grid
+        type: masonry
         options:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          col_xs: col-12
-          col_sm: col-sm-6
-          col_md: col-md-6
-          col_lg: col-lg-6
-          col_xl: col-xl-6
+          layoutColumnWidth: '33'
+          layoutColumnWidthUnit: px
+          gutterWidth: '20'
+          stampSelector: ''
+          isLayoutResizable: 1
+          isLayoutAnimated: 1
+          layoutAnimationDuration: '500'
+          isLayoutFitsWidth: 0
+          isLayoutImagesLoadedFirst: 0
+          isLayoutImagesLazyLoaded: 0
+          isItemsPositionInPercent: 0
       row:
         type: fields
         options:
@@ -3222,7 +3282,7 @@ display:
           entity_field: title
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -3241,8 +3301,8 @@ display:
             target: ''
             nl2br: false
             max_length: 0
-            word_boundary: true
-            ellipsis: true
+            word_boundary: false
+            ellipsis: false
             more_link: false
             more_link_text: ''
             more_link_path: ''
@@ -3265,7 +3325,7 @@ display:
           click_sort_column: value
           type: string
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -3285,7 +3345,7 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -3339,6 +3399,59 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "<div class=\"index-views dive-in content-index\">\r\n\r\n<a href=\"{{ view_node }} \" class=\"area-link\" style=\"display:block\">\r\n    <div class=\"content\">\r\n      \t\t<h2>{{ title }}</h2>\r\n\t        <p>{{ field_one_line_description }} </p>\r\n\t\t    \r\n\r\n    </div>\r\n</a>\r\n</div>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: false
       exposed_form:
         type: bef
         options:

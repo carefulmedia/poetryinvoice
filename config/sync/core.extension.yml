@@ -69,6 +69,7 @@ module:
   locale: 0
   mail_login: 0
   mailsystem: 0
+  masonry: 0
   media: 0
   media_library: 0
   media_library_form_element: 0
@@ -144,6 +145,7 @@ module:
   votingapi: 0
   forum: 1
   pathauto: 1
+  masonry_views: 2
   content_translation: 10
   views: 10
   paragraphs: 11

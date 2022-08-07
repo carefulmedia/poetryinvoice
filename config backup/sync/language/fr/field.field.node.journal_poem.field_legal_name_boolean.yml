@@ -1,0 +1,4 @@
+label: 'Le nom ci-dessus n''est pas mon nom légal'
+settings:
+  on_label: Oui
+  off_label: Non
