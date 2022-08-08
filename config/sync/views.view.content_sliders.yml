@@ -269,7 +269,7 @@ display:
           layout: ''
           cache: 0
           skin: fullwidth
-          style: ''
+          style: grid
           grid: ''
           grid_medium: ''
           grid_small: ''

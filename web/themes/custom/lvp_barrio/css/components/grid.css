@@ -46,12 +46,14 @@
 .content-index.lesson-plan  {
     height: 30rem;
 }
-.content-index.mixtape  {
+.content-index.mixtape, .content-index.podcast  {
 
     padding: 0;
     height: 30rem;
 }
-
+.content-index.podcast {
+height: 17.5rem;
+}
 
 .block-views .author img {
     border-radius: 50%;
@@ -79,7 +81,7 @@ h3.name {
     width: 2.5rem;
 transition: all .8s ease;
 }
-.mixtape a:hover img {
+.mixtape a:hover img, .podcast a:hover img  {
 filter: brightness(1.25);
 transition: all .8s ease;
 }
@@ -94,7 +96,9 @@ color: #724713;
 .content-index .lesson-plans {
     height: fit-content;
 }
-
+.mixtape .content, .podcast .content {
+ padding: 15px;	
+}
 .masonry-item  {
 width: 46%;
 }
@@ -104,6 +108,22 @@ width: 46%;
 width: 95%;
 }
 }
-.mixtape .content {
- padding: 15px;	
+.content-index .book {
+position: absolute;
+    top: 0;
+    right: 0;
+    padding: 12px;
+    color: #fff !important;
+    background-color: #165740;
+    margin: 15px;
+    border-radius: 10px;
+}
+.content-index .book:hover {
+    background-color: #299f75;
+transition: all .4s ease;
+}
+.content-index .book a {
+color: #fff;
+text-transform: uppercase;
+
 }
