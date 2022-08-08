@@ -222,7 +222,7 @@ display:
         type: infinite_scroll
         options:
           offset: 0
-          items_per_page: 24
+          items_per_page: 12
           total_pages: null
           id: 0
           tags:
@@ -3022,6 +3022,27 @@ display:
           text: view
           output_url_as_text: true
           absolute: false
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 6
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
       exposed_form:
         type: bef
         options:
@@ -3201,6 +3222,7 @@ display:
           1: AND
       defaults:
         title: false
+        pager: false
         exposed_form: false
         fields: false
         sorts: false
