@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - blazy
+    - linkit
     - slick
 name: 'Filtered HTML'
 format: filtered_html
@@ -71,7 +72,7 @@ filters:
   blazy_filter:
     id: blazy_filter
     provider: blazy
-    status: false
+    status: true
     weight: 3
     settings:
       media_switch: ''
@@ -82,3 +83,10 @@ filters:
         img: img
         iframe: iframe
       use_data_uri: '0'
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: 0
+    settings:
+      title: true
