@@ -98,6 +98,56 @@ class PivMigrateCommands extends DrushCommands {
   }
 
   /**
+   * Migrate users address.
+   *
+   * @usage piv_migrate-user-address
+   *   Fix terms migrations.
+   *
+   * @command piv_migrate:user-address
+   */
+  public function migrateUserAddress() {
+    $entity_type_manager = \Drupal::entityTypeManager();
+    $user_storage = $entity_type_manager->getStorage('user');
+    $query = $this->db()->select('location_instance', 'i');
+    $query->join('location', 'l', 'l.lid = i.lid');
+    $addresses = $query->condition('i.uid', 0, '>')
+      ->fields('l')
+      ->fields('i')
+      ->execute()
+      ->fetchAllAssoc('uid');
+
+    foreach ($addresses as $uid => $address) {
+      if ($user = $user_storage->load($uid)) {
+        if ($user->field_address->isEmpty()) {
+          if ($user->hasRole('poet_network') || $user->hasRole('poet')) {
+            if (!empty($address->province)
+            || !empty($address->city)
+            || !empty($address->postal_code)
+            || !empty($address->street)
+            || !empty($address->additional)) {
+              $user->field_address = [
+                'country_code' => empty($address->country) ? NULL : strtoupper($address->country),
+                'administrative_area' => empty($address->province) ? NULL : strtoupper($address->province),
+                'locality' => $address->city ?? NULL,
+                'dependent_locality' => NULL,
+                'postal_code' => $address->postal_code ?? NULL,
+                'sorting_code' => NULL,
+                'address_line1' => $address->street ?? NULL,
+                'address_line2' => $address->additional ?? NULL,
+                'organization' => NULL,
+                'given_name' => NULL,
+                'additional_name' => NULL,
+                'family_name' => NULL,
+              ];
+              $user->save();
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /**
    * Migrate from textfield to youtube field.
    *
    * @usage piv_migrate-fix-video

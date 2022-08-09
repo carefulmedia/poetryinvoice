@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.user.user.field_about_me
     - field.field.user.user.field_additional_email
+    - field.field.user.user.field_address
     - field.field.user.user.field_bio_completed_
     - field.field.user.user.field_bio_not_by_author_paid_
     - field.field.user.user.field_bio_trans
@@ -62,6 +63,7 @@ dependencies:
     - field.field.user.user.piv_teacher_profile_origin
     - field.field.user.user.user_picture
   module:
+    - address
     - field_layout
     - layout_discovery
     - user
@@ -79,6 +81,12 @@ mode: default
 content:
   account:
     weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_address:
+    type: address_default
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }

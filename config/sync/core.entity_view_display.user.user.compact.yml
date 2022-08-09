@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.user.compact
     - field.field.user.user.field_about_me
     - field.field.user.user.field_additional_email
+    - field.field.user.user.field_address
     - field.field.user.user.field_bio_completed_
     - field.field.user.user.field_bio_not_by_author_paid_
     - field.field.user.user.field_bio_trans
@@ -95,6 +96,7 @@ content:
 hidden:
   field_about_me: true
   field_additional_email: true
+  field_address: true
   field_bio_completed_: true
   field_bio_not_by_author_paid_: true
   field_bio_trans: true
