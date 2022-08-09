@@ -34,5 +34,6 @@ visibility:
       journal_poem: journal_poem
       mixtape: mixtape
       page: page
+      poem: poem
       writing_prompt: writing_prompt
       writing_workshop: writing_workshop

@@ -1,0 +1,35 @@
+uuid: 610c7ec7-65f1-4537-a1e5-6433fc7aa8d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.podcast.body
+    - field.field.node.podcast.field_poet_s_in_podcast
+    - field.field.node.podcast.field_soundcloud
+    - node.type.podcast
+  module:
+    - text
+    - user
+id: node.podcast.teaser
+targetEntityType: node
+bundle: podcast
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_poet_s_in_podcast: true
+  field_soundcloud: true
+  langcode: true

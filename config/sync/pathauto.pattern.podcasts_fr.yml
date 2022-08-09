@@ -1,0 +1,33 @@
+uuid: ed046d2d-fd4f-4a93-a68e-f3b9889542d3
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: podcasts_fr
+label: 'Podcasts FR'
+type: 'canonical_entities:node'
+pattern: '/ecouter/podcasts/[node:title]'
+selection_criteria:
+  d1184423-e669-45bd-93c3-64c9bce23331:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: d1184423-e669-45bd-93c3-64c9bce23331
+    context_mapping:
+      node: node
+    bundles:
+      podcast: podcast
+  a2e5268a-4bd9-40ad-8daf-0674fec33a4e:
+    id: language
+    negate: false
+    uuid: a2e5268a-4bd9-40ad-8daf-0674fec33a4e
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      fr: fr
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

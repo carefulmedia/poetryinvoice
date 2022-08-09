@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    3:
+      label: '6e année à 2e sec./6e à 8e année'
+    4:
+      label: '3e sec. au cégep/9e à 12e année'
