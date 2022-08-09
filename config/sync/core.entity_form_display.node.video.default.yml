@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.video.field_poem_retired
     - field.field.node.video.field_poets_plural_user
     - field.field.node.video.field_type_of_video
+    - field.field.node.video.field_video
     - field.field.node.video.field_video_caption
     - field.field.node.video.field_video_image
     - field.field.node.video.field_video_poem
@@ -25,7 +26,9 @@ dependencies:
     - field_layout
     - image
     - layout_discovery
+    - media_library
     - path
+    - scheduler
     - text
 third_party_settings:
   field_layout:
@@ -113,6 +116,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_video:
+    type: media_library_widget
+    weight: 51
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
   field_video_caption:
     type: text_textarea
     weight: 5
@@ -173,6 +183,12 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   status:
     type: boolean_checkbox
     weight: 22
@@ -209,6 +225,17 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   comment_node_video: true

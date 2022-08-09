@@ -97,4 +97,37 @@ class PivMigrateCommands extends DrushCommands {
     $term_storage->delete($terms_to_delete);
   }
 
+  /**
+   * Migrate from textfield to youtube field.
+   *
+   * @usage piv_migrate-fix-video
+   *   Fix video migrations.
+   *
+   * @command piv_migrate:fix-video
+   */
+  public function fixVideo() {
+    $entity_type_manager = \Drupal::entityTypeManager();
+    $nodes = $entity_type_manager->getStorage('node')
+      ->loadByProperties([
+        'type' => 'video',
+      ]);
+    $media_storage = $entity_type_manager->getStorage('media');
+    foreach ($nodes as $node) {
+      if ($node->field_video->isEmpty() && $video = $node->field_yt_video->value) {
+        // Transform embed links into normal youtube links.
+        if (strpos($video, 'embed') !== FALSE) {
+          $video_id = str_replace('/embed/', '', parse_url($video, PHP_URL_PATH));
+          $video = "https://youtu.be/{$video_id}";
+        }
+        $media = $media_storage->create([
+          'field_media_oembed_video' => $video,
+          'bundle' => 'remote_video',
+        ]);
+        $media->save();
+        $node->field_video = $media->id();
+        $node->save();
+      }
+    }
+  }
+
 }
