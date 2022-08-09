@@ -99,7 +99,6 @@ module:
   piv_contest_score: 0
   piv_contest_score_template: 0
   piv_mail: 0
-  piv_migrate: 0
   piv_pathauto: 0
   piv_poem_password: 0
   piv_popular_vote: 0
