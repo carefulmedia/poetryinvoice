@@ -70,6 +70,7 @@
         "drupal/quick_node_clone": "^1.15",
         "drupal/redirect": "^1.7",
         "drupal/reroute_email": "^2.1",
+        "drupal/responsive_menu": "^4.4",
         "drupal/s3fs": "^3.0@beta",
         "drupal/scanner": "1.x-dev@dev",
         "drupal/scheduler": "^1.4",
