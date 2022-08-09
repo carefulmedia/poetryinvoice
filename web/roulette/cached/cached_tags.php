@@ -2,7 +2,6 @@
     // copy file content into a string var
 	$lang = $_GET['lang'];
 	$c = $_GET['c'];
-echo($lang);
     $json_file = file_get_contents(__DIR__ . '/roulette/cached/data/cached_tags_'.$lang.'.json');
     // convert the string to a json object
     $jfo = json_decode($json_file);

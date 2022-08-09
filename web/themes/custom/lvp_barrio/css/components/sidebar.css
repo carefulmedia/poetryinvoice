@@ -1,15 +1,18 @@
 /* ------------------ Sidebar ----------------- */
 
-.sidebar .block {
-  border-style: solid;
-  border-width: 1px;
-  padding: 15px 15px;
-  margin: 0 0 20px;
+.sidebar  {
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
+    border-radius: 10px;
+    padding: 15px 15px;
+    margin: 0 0 20px;
+    background: #fff;
+    border: none;
+    height: fit-content;
 }
 
 .sidebar h2 {
   margin: 0 0 0.5em;
-  border-bottom: 1px solid #d6d6d6;
+    border: none;
   padding-bottom: 5px;
   text-shadow: 0 1px 0 #fff;
   font-size: 1.071em;
@@ -34,3 +37,45 @@
 .sidebar nav .nav {
   margin: 0 -1rem;
 }
+.gold-dark-bg {
+    background: #724713;
+    color: #fff;
+    padding: 20px
+}
+
+.dark a {
+color: #fff
+}
+
+.dark h2 {
+color: #fff;
+
+}
+
+.layout-main {
+padding-right: 10%;
+}
+
+.sidebar .block  {
+border: none;
+border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+padding: 0 0 1.2em;
+}
+.sidebar a {
+text-decoration:none
+}
+.sidebar .block-inline-blockbasic, .sidebar .block-field-blocknodelesson-planfield-learning-objectives {
+border-bottom: none !important;
+}
+.sidebar .block-inline-blockbasic h3 {
+    font-style: normal;
+font-weight: 1000;
+font-size: 18px;
+line-height: 21px;
+/* or 117% */
+letter-spacing: 0.1em;
+text-transform: uppercase;
+font-stretch: 110;
+font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+}
+

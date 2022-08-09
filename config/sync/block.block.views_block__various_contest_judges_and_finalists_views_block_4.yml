@@ -1,0 +1,29 @@
+uuid: 99f9babd-4970-4f20-9afc-f045631873a9
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.various_contest_judges_and_finalists_views
+  module:
+    - system
+    - views
+  theme:
+    - lvp_barrio
+id: views_block__various_contest_judges_and_finalists_views_block_4
+theme: lvp_barrio
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'views_block:various_contest_judges_and_finalists_views-block_4'
+settings:
+  id: 'views_block:various_contest_judges_and_finalists_views-block_4'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/recite/national-contests/judges/*\r\n/reciter/concours-nationaux/jury/*"

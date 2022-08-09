@@ -36,12 +36,10 @@ dependencies:
     - field.field.node.poem.field_terms_and_forms
     - field.field.node.poem.layout_builder__layout
     - node.type.poem
-    - system.menu.account
   module:
     - layout_builder
     - layout_builder_restrictions
     - layout_discovery
-    - menu_block
     - options
     - text
     - user
@@ -208,53 +206,17 @@ third_party_settings:
             configuration:
               id: 'field_block:node:poem:field_moods'
               label: Moods
-              label_display: '0'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: above
+                label: hidden
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          d9db0982-7c67-4d37-91f9-57268d4f515b:
-            uuid: d9db0982-7c67-4d37-91f9-57268d4f515b
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:node:poem:field_terms_and_forms'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          d6ea02bd-b679-4d9e-969b-385c0aff9ca5:
-            uuid: d6ea02bd-b679-4d9e-969b-385c0aff9ca5
-            region: blb_region_col_1
-            configuration:
-              id: 'menu_block:account'
-              label: 'User account menu'
-              label_display: visible
-              provider: menu_block
-              context_mapping: {  }
-              follow: false
-              follow_parent: child
-              label_link: false
-              label_type: block
-              level: 1
-              depth: 0
-              expand_all_items: false
-              parent: 'account:'
-              suggestion: account
             weight: 1
             additional: {  }
           18be323b-92a9-4647-a5fe-2b2f7a4fae1c:
@@ -294,31 +256,35 @@ third_party_settings:
             configuration:
               id: 'field_block:node:poem:field_new_theme'
               label: Tags
-              label_display: '0'
+              label_display: visible
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: above
+                label: hidden
                 settings:
                   link: true
                 third_party_settings: {  }
             weight: 2
             additional: {  }
-          c38e3652-0f78-4cdd-9bea-c947e0d552fd:
-            uuid: c38e3652-0f78-4cdd-9bea-c947e0d552fd
+          d9db0982-7c67-4d37-91f9-57268d4f515b:
+            uuid: d9db0982-7c67-4d37-91f9-57268d4f515b
             region: blb_region_col_2
             configuration:
-              id: 'field_block:node:poem:field_biligraphical_info'
-              label_display: '0'
+              id: 'field_block:node:poem:field_terms_and_forms'
+              label: Terms
+              label_display: visible
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                type: text_default
-                label: above
-                settings: {  }
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: false
                 third_party_settings: {  }
             weight: 3
             additional: {  }
@@ -439,7 +405,7 @@ third_party_settings:
                 label: above
                 settings: {  }
                 third_party_settings: {  }
-            weight: 1
+            weight: 2
             additional: {  }
           90b7d121-6e17-4365-aebe-2238cc832b31:
             uuid: 90b7d121-6e17-4365-aebe-2238cc832b31
@@ -455,23 +421,22 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 2
+            weight: 3
             additional: {  }
-          bd02af58-23ca-4da8-9338-9e8d54616e24:
-            uuid: bd02af58-23ca-4da8-9338-9e8d54616e24
+          c38e3652-0f78-4cdd-9bea-c947e0d552fd:
+            uuid: c38e3652-0f78-4cdd-9bea-c947e0d552fd
             region: blb_region_col_1
             configuration:
-              id: 'field_block:node:poem:field_one_line_description'
+              id: 'field_block:node:poem:field_biligraphical_info'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
               formatter:
-                type: string
+                type: text_default
                 label: above
-                settings:
-                  link_to_entity: false
+                settings: {  }
                 third_party_settings: {  }
-            weight: 0
+            weight: 4
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

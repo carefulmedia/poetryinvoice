@@ -18,6 +18,7 @@ global-styling:
       # @see https://www.drupal.org/node/2389735
       css/components/feed-icon.css: {}
       css/components/field.css: {}
+      css/components/grid.css: {}
       css/components/header.css: {}
       css/components/help.css: {}
       css/components/icons.css: {}

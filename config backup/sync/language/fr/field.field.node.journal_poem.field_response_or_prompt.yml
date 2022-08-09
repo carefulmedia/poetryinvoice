@@ -1,0 +1,4 @@
+label: 'Avez-vous écrit une réponse à un poème ou suivi un exercice de création?'
+settings:
+  on_label: 'Poème en réponse à un poème'
+  off_label: 'Poème inspiré par un exercice de création'

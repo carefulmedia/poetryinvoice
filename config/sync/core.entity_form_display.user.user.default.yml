@@ -82,6 +82,20 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_bio_not_by_author_paid_:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_paid_:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   timezone:
     weight: 6
     region: content
@@ -90,7 +104,6 @@ hidden:
   field_about_me: true
   field_additional_email: true
   field_bio_completed_: true
-  field_bio_not_by_author_paid_: true
   field_bio_trans: true
   field_bio_written_by: true
   field_canadian_educator_: true
@@ -119,7 +132,6 @@ hidden:
   field_non_school_organization: true
   field_not_a_teacher_: true
   field_one_line_bio: true
-  field_paid_: true
   field_peer_support: true
   field_phone: true
   field_photo_credit: true

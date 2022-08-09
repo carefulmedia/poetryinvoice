@@ -1,0 +1,21 @@
+uuid: bd7098b5-7b8b-463e-8515-ac35f6857fa9
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+label: 'Linkit profile'
+id: linkit_profile
+description: ''
+matchers:
+  f2be6ca2-263c-4d5f-b9ad-669f12b5c6c6:
+    id: 'entity:node'
+    uuid: f2be6ca2-263c-4d5f-b9ad-669f12b5c6c6
+    settings:
+      metadata: ''
+      bundles: {  }
+      group_by_bundle: false
+      substitution_type: canonical
+      limit: 100
+      include_unpublished: true
+    weight: 0

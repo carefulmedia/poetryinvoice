@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.mixtape.field_liner_notes_pdf_
     - field.field.node.mixtape.field_mixtape_background_image
     - field.field.node.mixtape.field_mixtape_image
+    - field.field.node.mixtape.field_mixtape_media
     - field.field.node.mixtape.field_paid_
     - field.field.node.mixtape.field_poems
     - field.field.node.mixtape.field_recommended_reading
@@ -41,6 +42,7 @@ hidden:
   field_liner_notes_pdf_: true
   field_mixtape_background_image: true
   field_mixtape_image: true
+  field_mixtape_media: true
   field_paid_: true
   field_poems: true
   field_recommended_reading: true

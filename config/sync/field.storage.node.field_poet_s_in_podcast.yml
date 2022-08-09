@@ -1,0 +1,24 @@
+uuid: 347886c3-b9a8-46d0-bf22-0093deecb7c4
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - node
+    - user
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_poet_s_in_podcast
+field_name: field_poet_s_in_podcast
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
