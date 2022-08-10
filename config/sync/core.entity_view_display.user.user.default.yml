@@ -51,6 +51,7 @@ dependencies:
     - field.field.user.user.field_school
     - field.field.user.user.field_sign_up_date3
     - field.field.user.user.field_signature
+    - field.field.user.user.field_social_links
     - field.field.user.user.field_teacher_confirmation
     - field.field.user.user.field_user_bio
     - field.field.user.user.field_virtual_visits
@@ -67,6 +68,7 @@ dependencies:
     - entity_reference_revisions
     - layout_builder
     - layout_discovery
+    - social_link_field
     - text
     - user
 third_party_settings:
@@ -175,6 +177,24 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 5
             additional: {  }
+          4c71e014-4936-42e2-8aec-31560abad29b:
+            uuid: 4c71e014-4936-42e2-8aec-31560abad29b
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_social_links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: font_awesome
+                label: above
+                settings:
+                  icon_type: common
+                  orientation: vertical
+                  new_tab: true
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
         third_party_settings: {  }
 _core:
   default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
@@ -223,6 +243,16 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_social_links:
+    type: font_awesome
+    label: above
+    settings:
+      icon_type: common
+      orientation: vertical
+      new_tab: true
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_user_bio:
     type: text_default

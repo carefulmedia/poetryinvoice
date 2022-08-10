@@ -52,6 +52,7 @@ dependencies:
     - field.field.user.user.field_school
     - field.field.user.user.field_sign_up_date3
     - field.field.user.user.field_signature
+    - field.field.user.user.field_social_links
     - field.field.user.user.field_teacher_confirmation
     - field.field.user.user.field_user_bio
     - field.field.user.user.field_virtual_visits
@@ -249,6 +250,7 @@ hidden:
   field_ready_for_proofing: true
   field_sign_up_date3: true
   field_signature: true
+  field_social_links: true
   field_teacher_confirmation: true
   field_user_bio: true
   field_virtual_visits: true

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9bc71073023ef827a81f3a677558441d",
+    "content-hash": "b4384f01aa907af8a8981901ee0d3a52",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6954,6 +6954,52 @@
             }
         },
         {
+            "name": "drupal/social_link_field",
+            "version": "dev-1.x",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/social_link_field.git",
+                "reference": "bc69470c8fd7989184d03a926f1e3a3d126016cc"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.1-alpha1+6-dev",
+                    "datestamp": "1621684568",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Dev releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Roman Hryshkanych",
+                    "homepage": "https://www.drupal.org/u/romixua"
+                },
+                {
+                    "name": "voleger",
+                    "homepage": "https://www.drupal.org/user/3260314"
+                }
+            ],
+            "description": "Provide field type with social links.",
+            "homepage": "https://www.drupal.org/project/social_link_field",
+            "support": {
+                "source": "http://cgit.drupalcode.org/social_link_field",
+                "issues": "https://www.drupal.org/project/issues/social_link_field"
+            }
+        },
+        {
             "name": "drupal/styles_api",
             "version": "1.1.0",
             "source": {
@@ -13052,6 +13098,7 @@
         "drupal/s3fs": 10,
         "drupal/scanner": 20,
         "drupal/select_translation": 15,
+        "drupal/social_link_field": 20,
         "drupal/tablesorter": 5,
         "drupal/viewfield": 10,
         "drupal/views_field_view": 10,
@@ -13061,5 +13108,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.1.0"
 }

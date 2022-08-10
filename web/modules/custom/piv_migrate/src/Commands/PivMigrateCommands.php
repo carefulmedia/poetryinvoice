@@ -100,8 +100,8 @@ class PivMigrateCommands extends DrushCommands {
   /**
    * Migrate users address.
    *
-   * @usage piv_migrate-user-address
-   *   Fix terms migrations.
+   * @usage piv_migrate:user-address
+   *   Migrate users address.
    *
    * @command piv_migrate:user-address
    */
@@ -143,6 +143,57 @@ class PivMigrateCommands extends DrushCommands {
             }
           }
         }
+      }
+    }
+  }
+
+  /**
+   * Migrate users social links.
+   *
+   * @usage piv_migrate:user-social-links
+   *   Migrate user social links.
+   *
+   * @command piv_migrate:user-social-links
+   */
+  public function migrateUserSocialLinks() {
+    $entity_type_manager = \Drupal::entityTypeManager();
+    $user_storage = $entity_type_manager->getStorage('user');
+    $results = $this->db()
+      ->select('field_data_field_social_links', 's')
+      ->condition('bundle', 'user')
+      ->fields('s')
+      ->execute()
+      ->fetchAll();
+
+    $social_links = [];
+    foreach ($results as $result) {
+      $service = $result->field_social_links_service;
+      switch ($service) {
+        case 'youtube':
+          $path = parse_url($result->field_social_links_url, PHP_URL_PATH);
+          $parts = array_values(array_filter(explode('/', $path)));
+          if (count($parts) > 1 && $parts[0] == 'channel') {
+            $link = $parts[1];
+          }
+          else {
+            continue 2;
+          }
+          break;
+
+        default:
+          $link = str_replace('/', '', parse_url($result->field_social_links_url, PHP_URL_PATH));
+          break;
+      }
+
+      $social_links[$result->entity_id][] = [
+        'social' => $service,
+        'link' => $link,
+      ];
+    }
+    foreach ($social_links as $uid => $links) {
+      if ($user = $user_storage->load($uid)) {
+        $user->field_social_links = $links;
+        $user->save();
       }
     }
   }
