@@ -8,6 +8,7 @@
     background: #fff;
     border: none;
     height: fit-content;
+font-family: 'Roboto';
 }
 
 .sidebar h2 {
@@ -19,9 +20,11 @@
   line-height: 1.2;
 }
 
-.sidebar .block .content {
+.sidebar .block .content, .sidebar .block .content li, 
+.sidebar .block .content p {
   font-size: 0.914em;
   line-height: 1.4;
+font-family: 'Roboto';
 }
 
 .sidebar tbody {
@@ -38,7 +41,7 @@
   margin: 0 -1rem;
 }
 .gold-dark-bg {
-    background: #724713;
+    background-color: var(--gold-dark); 
     color: #fff;
     padding: 20px
 }
