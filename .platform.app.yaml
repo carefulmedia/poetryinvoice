@@ -26,7 +26,7 @@ variables:
         memory_limit: "512M"
 
 # The size of the persistent disk of the application (in MB).
-disk: 384
+disk: 1024
 
 # The 'mounts' describe writable, persistent filesystem mounts in the application.
 mounts:
