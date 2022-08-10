@@ -40,6 +40,8 @@ module:
   dynamic_page_cache: 0
   editablefields: 0
   editor: 0
+  entity_print: 0
+  entity_print_views: 0
   entity_reference_revisions: 0
   field: 0
   field_group: 0
@@ -90,6 +92,7 @@ module:
   node: 0
   options: 0
   page_cache: 0
+  page_specific_class: 0
   paragraphs_type_permissions: 0
   path: 0
   path_alias: 0
@@ -126,6 +129,7 @@ module:
   slick_views: 0
   social_link_field: 0
   statistics: 0
+  string_field_formatter: 0
   styles_api: 0
   system: 0
   tablesorter: 0
@@ -133,6 +137,7 @@ module:
   tb_megamenu: 0
   telephone: 0
   text: 0
+  text_field_formatter: 0
   token: 0
   toolbar: 0
   tour: 0

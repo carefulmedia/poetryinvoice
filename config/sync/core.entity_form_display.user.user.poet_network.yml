@@ -64,12 +64,12 @@ dependencies:
     - field.field.user.user.piv_teacher_last_name
     - field.field.user.user.piv_teacher_profile_origin
     - field.field.user.user.user_picture
-    - image.style.thumbnail
+    - image.style.400x300
   module:
     - field_group
     - field_layout
     - file
-    - image
+    - focal_point
     - inline_entity_form
     - layout_discovery
     - text
@@ -377,12 +377,14 @@ content:
     weight: 6
     region: content
   user_picture:
-    type: image_image
+    type: image_focal_point
     weight: 5
     region: content
     settings:
       progress_indicator: throbber
-      preview_image_style: thumbnail
+      preview_image_style: 400x300
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
 hidden:
   field_about_me: true
