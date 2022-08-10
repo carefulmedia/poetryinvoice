@@ -826,7 +826,7 @@ $databases['migrate']['default'] = [
 ];
 
 $settings['config_sync_directory'] = '../config/sync';
-$settings['config_exclude_modules'] = ['devel', 'stage_file_proxy', 'devel_php'];
+$settings['config_exclude_modules'] = ['devel', 'stage_file_proxy', 'devel_php', 'piv_migrate'];
 
 $config['reroute_email.settings']['enable'] = TRUE;
 // Lando configurations.

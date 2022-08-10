@@ -130,7 +130,6 @@ permissions:
   - 'skip comment approval'
   - 'subscribe to content'
   - 'view field_about_me'
-  - 'view field_address'
   - 'view field_agreed_visit_date'
   - 'view field_date_and_poet_chosen'
   - 'view field_file_under'

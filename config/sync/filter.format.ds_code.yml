@@ -1,8 +1,18 @@
 uuid: f4d23038-d078-458b-a9cb-36c61f9668ae
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - slick
 name: 'Display Suite code'
 format: ds_code
-weight: 12
-filters: {  }
+weight: -4
+filters:
+  slick_filter:
+    id: slick_filter
+    provider: slick
+    status: false
+    weight: 4
+    settings:
+      optionset: default
+      media_switch: ''

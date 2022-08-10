@@ -6,6 +6,7 @@ dependencies:
     - core.entity_form_mode.user.teacher_edit
     - field.field.user.user.field_about_me
     - field.field.user.user.field_additional_email
+    - field.field.user.user.field_address
     - field.field.user.user.field_bio_completed_
     - field.field.user.user.field_bio_not_by_author_paid_
     - field.field.user.user.field_bio_trans
@@ -51,6 +52,7 @@ dependencies:
     - field.field.user.user.field_school
     - field.field.user.user.field_sign_up_date3
     - field.field.user.user.field_signature
+    - field.field.user.user.field_social_links
     - field.field.user.user.field_teacher_confirmation
     - field.field.user.user.field_user_bio
     - field.field.user.user.field_virtual_visits
@@ -209,6 +211,7 @@ content:
     third_party_settings: {  }
 hidden:
   field_additional_email: true
+  field_address: true
   field_bio_completed_: true
   field_bio_not_by_author_paid_: true
   field_bio_trans: true
@@ -247,6 +250,7 @@ hidden:
   field_ready_for_proofing: true
   field_sign_up_date3: true
   field_signature: true
+  field_social_links: true
   field_teacher_confirmation: true
   field_user_bio: true
   field_virtual_visits: true

@@ -33,7 +33,6 @@ permissions:
   - 'access site-wide contact form'
   - 'access user profiles'
   - 'cancel account'
-  - 'create field_address'
   - 'create field_assigned_to_team_member'
   - 'create field_canadian_educator_'
   - 'create field_cv'

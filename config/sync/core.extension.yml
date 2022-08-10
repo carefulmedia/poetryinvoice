@@ -106,7 +106,6 @@ module:
   piv_contest_score: 0
   piv_contest_score_template: 0
   piv_mail: 0
-  piv_migrate: 0
   piv_pathauto: 0
   piv_poem_password: 0
   piv_popular_vote: 0
@@ -128,6 +127,7 @@ module:
   slick: 0
   slick_ui: 0
   slick_views: 0
+  social_link_field: 0
   statistics: 0
   string_field_formatter: 0
   styles_api: 0

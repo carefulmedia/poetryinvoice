@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.user.user.field_about_me
     - field.field.user.user.field_additional_email
+    - field.field.user.user.field_address
     - field.field.user.user.field_bio_completed_
     - field.field.user.user.field_bio_not_by_author_paid_
     - field.field.user.user.field_bio_trans
@@ -50,6 +51,7 @@ dependencies:
     - field.field.user.user.field_school
     - field.field.user.user.field_sign_up_date3
     - field.field.user.user.field_signature
+    - field.field.user.user.field_social_links
     - field.field.user.user.field_teacher_confirmation
     - field.field.user.user.field_user_bio
     - field.field.user.user.field_virtual_visits
@@ -62,9 +64,11 @@ dependencies:
     - field.field.user.user.piv_teacher_profile_origin
     - field.field.user.user.user_picture
   module:
+    - address
     - entity_reference_revisions
     - layout_builder
     - layout_discovery
+    - social_link_field
     - text
     - user
 third_party_settings:
@@ -158,6 +162,39 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 4
             additional: {  }
+          ed3c22e8-23fe-4ace-bed8-3949b9397249:
+            uuid: ed3c22e8-23fe-4ace-bed8-3949b9397249
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_address'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: address_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          4c71e014-4936-42e2-8aec-31560abad29b:
+            uuid: 4c71e014-4936-42e2-8aec-31560abad29b
+            region: content
+            configuration:
+              id: 'field_block:user:user:field_social_links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: font_awesome
+                label: above
+                settings:
+                  icon_type: common
+                  orientation: vertical
+                  new_tab: true
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
         third_party_settings: {  }
 _core:
   default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
@@ -166,6 +203,13 @@ targetEntityType: user
 bundle: user
 mode: default
 content:
+  field_address:
+    type: address_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
   field_lifespan:
     type: string
     label: above
@@ -199,6 +243,16 @@ content:
       link: ''
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_social_links:
+    type: font_awesome
+    label: above
+    settings:
+      icon_type: common
+      orientation: vertical
+      new_tab: true
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_user_bio:
     type: text_default

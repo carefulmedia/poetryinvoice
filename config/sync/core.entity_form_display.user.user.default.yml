@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.user.user.field_about_me
     - field.field.user.user.field_additional_email
+    - field.field.user.user.field_address
     - field.field.user.user.field_bio_completed_
     - field.field.user.user.field_bio_not_by_author_paid_
     - field.field.user.user.field_bio_trans
@@ -50,6 +51,7 @@ dependencies:
     - field.field.user.user.field_school
     - field.field.user.user.field_sign_up_date3
     - field.field.user.user.field_signature
+    - field.field.user.user.field_social_links
     - field.field.user.user.field_teacher_confirmation
     - field.field.user.user.field_user_bio
     - field.field.user.user.field_virtual_visits
@@ -62,8 +64,10 @@ dependencies:
     - field.field.user.user.piv_teacher_profile_origin
     - field.field.user.user.user_picture
   module:
+    - address
     - field_layout
     - layout_discovery
+    - social_link_field
     - user
 third_party_settings:
   field_layout:
@@ -81,6 +85,34 @@ content:
     weight: 0
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_address:
+    type: address_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_bio_not_by_author_paid_:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_paid_:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_social_links:
+    type: social_links
+    weight: 8
+    region: content
+    settings:
+      select_social: false
+      disable_weight: false
     third_party_settings: {  }
   timezone:
     weight: 6
