@@ -12,7 +12,7 @@ dependencies:
 id: mainnavigation
 theme: lvp_barrio
 region: primary_menu
-weight: -9
+weight: -10
 provider: null
 plugin: 'menu_block:main'
 settings:
