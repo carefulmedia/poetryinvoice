@@ -4,4 +4,12 @@ status: true
 dependencies: {  }
 name: home_front_700x400
 label: 'Home Front 700x400'
-effects: {  }
+effects:
+  06d1ea02-ba24-431f-86f7-c963722195d8:
+    uuid: 06d1ea02-ba24-431f-86f7-c963722195d8
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 700
+      height: 400
+      anchor: center-center
