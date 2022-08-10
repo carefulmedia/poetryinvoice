@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.video.field_poem_retired
     - field.field.node.video.field_poets_plural_user
     - field.field.node.video.field_type_of_video
+    - field.field.node.video.field_video
     - field.field.node.video.field_video_caption
     - field.field.node.video.field_video_image
     - field.field.node.video.field_video_poem
@@ -51,6 +52,7 @@ hidden:
   field_poem_retired: true
   field_poets_plural_user: true
   field_type_of_video: true
+  field_video: true
   field_video_caption: true
   field_video_image: true
   field_video_poem: true

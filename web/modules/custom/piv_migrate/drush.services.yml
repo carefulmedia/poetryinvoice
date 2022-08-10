@@ -1,0 +1,5 @@
+services:
+  piv_migrate.commands:
+    class: \Drupal\piv_migrate\Commands\PivMigrateCommands
+    tags:
+      - { name: drush.command }
