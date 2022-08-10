@@ -23,6 +23,8 @@
   --white: #ffffff;
   --black: #0000;
 }
+
+
 body,
 h1,
 h2,
@@ -34,11 +36,11 @@ h2 a,
 h3 a,
 {
 color: #000;
-font-family: 'Roboto';
+font-family: 'Roboto Flex';
 }
 
 h1 {
-font-family: 'Roboto';
+font-family: 'Roboto Flex';
 font-size: 45px;
 font-weight: 700;
 line-height: 47px;
@@ -47,7 +49,7 @@ font-style:normal;
 }
 
 h2 {
-font-family: 'Roboto';
+font-family: 'Roboto Flex';
 font-style: normal;
 font-weight: 400;
 font-size: 32px;
@@ -57,8 +59,8 @@ font-stretch: 70;
 font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
 
-h3, .block-layout-builder h2  {
-font-family: 'Roboto';
+h3 {
+font-family: 'Roboto Flex';
 font-style: normal;
 font-weight: 1000;
 font-size: 18px;
@@ -70,7 +72,7 @@ font-stretch: 110;
 font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
 h4, .print__wrapper--pdf a  {
-font-family: 'Roboto';
+font-family: 'Roboto Flex';
 font-style: normal;
 font-weight: 500;
 font-size: 18px;
@@ -104,7 +106,7 @@ line-height: 30px;
 /* or 176% */
 }
 .sans-serif {
-font-family: 'Roboto';
+font-family: 'Roboto Flex';
 font-style: normal;
 font-weight: 400;
 font-size: 17px;
@@ -118,7 +120,7 @@ color: #fff
 
 
 li {
-font-family: Roboto;
+font-family: Roboto Flex;
 font-size: 17px;
 font-weight: 400;
 line-height: 30px;
@@ -237,5 +239,9 @@ margin:0;
 } 
 .binge a:hover, .ecouter a:hover  {color: var(--aqua);
 } 
-.about a:hover, .propos a:hover  {color: var(--aqua);
+.about a:hover, .propos a:hover  {color: var(--black);
 } 
+ .slick-initialized .slick__slide {
+
+margin: 0px 30px
+}

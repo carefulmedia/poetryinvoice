@@ -104,9 +104,9 @@ third_party_settings:
         - barrio_media
         - 'bootstrap_layout_builder:blb_col_2'
         - 'bootstrap_layout_builder:blb_col_3'
+      restricted_categories: {  }
       blacklisted_blocks: {  }
       whitelisted_blocks: {  }
-      restricted_categories: {  }
     entity_view_mode_restriction_by_region:
       allowed_layouts:
         - layout_onecol
@@ -164,6 +164,9 @@ content:
     region: content
 hidden:
   comment_node_page: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_banner_subtitle: true
   field_banner_title: true
   field_tags: true

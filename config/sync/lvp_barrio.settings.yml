@@ -94,5 +94,5 @@ bootstrap_barrio_table_hover: 1
 bootstrap_barrio_table_head: ''
 bootstrap_barrio_image_fluid: true
 bootstrap_barrio_tabs_style: pills
-bootstrap_barrio_hide_node_label: 1
+bootstrap_barrio_hide_node_label: 0
 bootstrap_barrio_navbar_offcanvas: ''
