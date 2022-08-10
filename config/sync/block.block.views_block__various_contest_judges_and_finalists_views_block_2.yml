@@ -1,0 +1,29 @@
+uuid: 7804e461-fc5a-42c1-94cb-bef7bfd4f15e
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.various_contest_judges_and_finalists_views
+  module:
+    - system
+    - views
+  theme:
+    - lvp_barrio
+id: views_block__various_contest_judges_and_finalists_views_block_2
+theme: lvp_barrio
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'views_block:various_contest_judges_and_finalists_views-block_2'
+settings:
+  id: 'views_block:various_contest_judges_and_finalists_views-block_2'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/recite/team-regionals/*\r\n/reciter/en-equipe/*"

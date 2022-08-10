@@ -1,7 +1,11 @@
 uuid: ba8e8ec7-1844-40b0-bd94-b78ddd6b066f
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - blazy
+    - linkit
+    - slick
 name: 'Filtered HTML'
 format: filtered_html
 weight: -9
@@ -18,7 +22,7 @@ filters:
     status: true
     weight: 1
     settings:
-      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <img src alt data-entity-type data-entity-uuid> <u> <s> <sup> <sub> <hr> <p id class=""> <h1><h2><h3><h4><h5><h6> <table class=""> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <div id class="">'
+      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <img src alt data-entity-type data-entity-uuid> <u> <s> <sup> <sub> <hr> <p id class=""> <h1> <h2> <h3> <h4> <h5> <h6> <table class=""> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <div id class=""> <iframe> <iframe allow="" allowfullscreen="" frameborder="" height="" src="" title="" width=""></iframe>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -34,3 +38,55 @@ filters:
     weight: 0
     settings:
       filter_url_length: 72
+  slick_filter:
+    id: slick_filter
+    provider: slick
+    status: false
+    weight: 4
+    settings:
+      optionset: default
+      layout: ''
+      skin: ''
+      background: false
+      loading: ''
+      preload: false
+      image_style: ''
+      media_switch: ''
+      ratio: ''
+      thumbnail_style: ''
+      overridables:
+        arrows: '0'
+        autoplay: '0'
+        dots: '0'
+        draggable: '0'
+        infinite: '0'
+        mouseWheel: '0'
+        randomize: '0'
+        variableWidth: '0'
+      optionset_thumbnail: ''
+      skin_thumbnail: ''
+      thumbnail_caption: ''
+      thumbnail_effect: ''
+      thumbnail_position: ''
+      override: false
+  blazy_filter:
+    id: blazy_filter
+    provider: blazy
+    status: true
+    weight: 3
+    settings:
+      media_switch: ''
+      hybrid_style: ''
+      box_style: ''
+      box_caption: ''
+      filter_tags:
+        img: img
+        iframe: iframe
+      use_data_uri: '0'
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: 0
+    settings:
+      title: true

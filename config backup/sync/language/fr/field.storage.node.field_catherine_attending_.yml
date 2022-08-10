@@ -1,0 +1,8 @@
+settings:
+  allowed_values:
+    -
+      label: 'En personne'
+    -
+      label: 'Par Skype'
+    -
+      label: 'N''assiste pas'

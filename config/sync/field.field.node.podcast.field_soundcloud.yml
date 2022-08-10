@@ -1,0 +1,21 @@
+uuid: 61b412db-03e0-40c0-817d-9d4c5e003ef3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_soundcloud
+    - node.type.podcast
+id: node.podcast.field_soundcloud
+field_name: field_soundcloud
+entity_type: node
+bundle: podcast
+label: SoundCloud
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings: {  }
+field_type: entity_reference

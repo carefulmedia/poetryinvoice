@@ -11,7 +11,7 @@ id: node.page.field_banner_subtitle
 field_name: field_banner_subtitle
 entity_type: node
 bundle: page
-label: 'Banner subtitle'
+label: 'Right sidebar content'
 description: ''
 required: false
 translatable: true

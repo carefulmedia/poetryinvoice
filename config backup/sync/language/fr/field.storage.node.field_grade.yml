@@ -1,0 +1,10 @@
+settings:
+  allowed_values:
+    -
+      label: '3e secondaire / 9e année'
+    -
+      label: '4e secondaire / 10e année'
+    -
+      label: '5e secondaire / 11e année'
+    -
+      label: '1re année de cégep / 12e année'

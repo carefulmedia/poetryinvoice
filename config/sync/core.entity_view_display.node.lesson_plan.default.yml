@@ -50,7 +50,7 @@ third_party_settings:
           section_classes: ''
           regions_classes:
             blb_region_col_1: layout-main
-            blb_region_col_2: brown-sidebar
+            blb_region_col_2: 'dark gold-dark-bg sidebar'
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
@@ -224,7 +224,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 8
+            weight: 9
             additional: {  }
           cd2d52a9-203f-4d8a-8a9b-9c5c2d22dac2:
             uuid: cd2d52a9-203f-4d8a-8a9b-9c5c2d22dac2
@@ -243,7 +243,7 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 7
+            weight: 8
             additional: {  }
           2031ee07-abcb-42f3-bf1e-8b7344a0aeda:
             uuid: 2031ee07-abcb-42f3-bf1e-8b7344a0aeda
@@ -262,7 +262,7 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 6
+            weight: 7
             additional: {  }
           e3022915-ee64-4d09-b14f-a1cf5d2c97c9:
             uuid: e3022915-ee64-4d09-b14f-a1cf5d2c97c9
@@ -390,7 +390,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 3
+            weight: 4
             additional: {  }
           4dd217e3-64b6-498e-8318-0ad4ebc3e4f9:
             uuid: 4dd217e3-64b6-498e-8318-0ad4ebc3e4f9
@@ -408,7 +408,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 4
+            weight: 5
             additional: {  }
           57bfff6d-8974-4032-b24b-adb0ccd34c7b:
             uuid: 57bfff6d-8974-4032-b24b-adb0ccd34c7b
@@ -427,7 +427,7 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 5
+            weight: 6
             additional: {  }
           da7fb028-b160-4d23-bbbe-69893d818297:
             uuid: da7fb028-b160-4d23-bbbe-69893d818297
@@ -445,42 +445,21 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 2
+            weight: 3
             additional: {  }
-          75f34817-0aaf-45fa-99be-3bc91941e83a:
-            uuid: 75f34817-0aaf-45fa-99be-3bc91941e83a
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:node:lesson_plan:field_rwt'
-              label: 'Lesson  provided by ReadWriteThink.org, a website developed by the International Reading Association and the National Council of'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: boolean
-                label: hidden
-                settings:
-                  format: custom
-                  format_custom_false: ''
-                  format_custom_true: 'Lesson  provided by ReadWriteThink.org, a website developed by the International Reading Association and the National Council of'
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          93d4b443-7dfb-4e56-be40-3d1bb91a5f32:
-            uuid: 93d4b443-7dfb-4e56-be40-3d1bb91a5f32
+          92fe6803-ce02-4b93-b13c-eebcc1b84373:
+            uuid: 92fe6803-ce02-4b93-b13c-eebcc1b84373
             region: blb_region_col_2
             configuration:
               id: 'inline_block:basic'
               label: 'ABOUT THIS LESSON PLAN'
-              label_display: visible
+              label_display: '0'
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
-              block_revision_id: 4
+              block_revision_id: 27
               block_serialized: null
-            weight: 0
+            weight: 2
             additional: {  }
         third_party_settings: {  }
 id: node.lesson_plan.default

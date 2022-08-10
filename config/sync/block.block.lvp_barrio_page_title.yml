@@ -1,6 +1,6 @@
 uuid: d587d8f4-280e-4733-9546-4311616ee910
 langcode: en
-status: true
+status: false
 dependencies:
   module:
     - system
@@ -11,7 +11,7 @@ _core:
 id: lvp_barrio_page_title
 theme: lvp_barrio
 region: content
-weight: 0
+weight: -11
 provider: null
 plugin: page_title_block
 settings:

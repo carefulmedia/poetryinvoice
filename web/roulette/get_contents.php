@@ -1,4 +1,4 @@
 <?php
-$tags = file_get_contents('https://www.poetryinvoice.com/roulette/test.php');
+$tags = file_get_contents('https://poetryinvoice.ca/roulette/test.php');
 echo $tags;
 ?>

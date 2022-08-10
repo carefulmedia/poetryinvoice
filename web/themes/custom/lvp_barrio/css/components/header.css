@@ -48,13 +48,16 @@
     text-decoration: none
 }
 .header {
-position: sticky;
+position: fixed;
     top: 0;
     width: 100%;
+    margin-bottom: -4rem;
+z-index:20000
 }
 .gin--horizontal-toolbar .header {
     position: relative;
     margin-bottom: -4rem;
+    z-index:200;
 }
 .header-logo {
     height: 3rem;

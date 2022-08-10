@@ -1,0 +1,20 @@
+uuid: 0ae305dd-7f06-4405-b6a5-83a7306ecde0
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+  theme:
+    - lvp_barrio
+id: userlogin
+theme: lvp_barrio
+region: content
+weight: -6
+provider: null
+plugin: user_login_block
+settings:
+  id: user_login_block
+  label: 'User login'
+  label_display: visible
+  provider: user
+visibility: {  }

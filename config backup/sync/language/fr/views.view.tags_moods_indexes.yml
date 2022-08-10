@@ -1,0 +1,22 @@
+display:
+  default:
+    display_options:
+      header:
+        area:
+          content:
+            value: "<h2>Registre</h2>\r\n\r\n<p>Comment est-ce qu’un poème donné exprime-t-il une certaine émotion comparé à un autre poème associé à la même registre ? Comment le texte passe-t-il d’une registre à une autre, comparé à un autre poème ? Comment ces éléments façonneront-ils votre récitation du texte ?</p>\r\n"
+            format: full_html
+  block_1:
+    display_options:
+      header:
+        area:
+          content:
+            value: "<h2>Thèmes</h2>\r\n\r\n<p>Comparez la façon dont un poème choisi traite de la beauté, la mort ou l’amour, par exemple, par rapport à un autre poème associé aux mêmes thèmes. Comment les textes diffèrent-ils ? Comment les deux textes se recoupent-ils ? Comment ces éléments affecteront-ils votre récitation du texte ?</p>\r\n"
+            format: full_html
+  block_2:
+    display_options:
+      header:
+        area:
+          content:
+            value: "<p>&nbsp;</p>\r\n\r\n<p><br />\r\n<a name=\"moods\"></a></p>\r\n\r\n<p>&nbsp;</p>\r\n\r\n<h2>Registre</h2>\r\n\r\n<p>Comment est-ce qu’un poème donné exprime-t-il une certaine émotion comparé à un autre poème associé à la même registre ? Comment le texte passe-t-il d’une registre à une autre, comparé à un autre poème ? Comment ces éléments façonneront-ils votre récitation du texte ?</p>\r\n"
+            format: full_html
