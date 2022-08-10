@@ -5,4 +5,4 @@
 
 db:
     type: mariadb:10.4
-    disk: 4608
+    disk: 9216
