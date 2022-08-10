@@ -44,6 +44,9 @@ content:
     region: content
 hidden:
   comment_node_video: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_canada_restrict: true
   field_competition_school: true
   field_competition_stream: true
