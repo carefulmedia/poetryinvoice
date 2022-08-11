@@ -21,7 +21,7 @@ bundle: poetic_terms
 label: 'taxonomy image'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
