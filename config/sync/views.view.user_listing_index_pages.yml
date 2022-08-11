@@ -1698,9 +1698,10 @@ display:
           default_row_class: true
           col_xs: col-12
           col_sm: col-sm-6
-          col_md: col-md-4
-          col_lg: col-lg-4
-          col_xl: col-xl-4
+          col_md: col-md-12
+          col_lg: col-lg-12
+          col_xl: col-xl-12
+          col_xxl: col-xxl-12
       row:
         type: fields
         options: {  }

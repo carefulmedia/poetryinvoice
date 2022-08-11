@@ -1,0 +1,491 @@
+uuid: 4fbab0df-177b-4abb-98f5-9fb142186999
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.poem.title
+    - core.entity_view_mode.node.full
+    - field.field.node.poem.body
+    - field.field.node.poem.comment_node_poem
+    - field.field.node.poem.field_2_column_poem
+    - field.field.node.poem.field_biligraphical_info
+    - field.field.node.poem.field_broadsides_are_allowed
+    - field.field.node.poem.field_canada_restrict
+    - field.field.node.poem.field_completed
+    - field.field.node.poem.field_dive_in
+    - field.field.node.poem.field_dive_in_attribution
+    - field.field.node.poem.field_editor
+    - field.field.node.poem.field_epigraph
+    - field.field.node.poem.field_grades
+    - field.field.node.poem.field_mobile_apps_are_allowed
+    - field.field.node.poem.field_moods
+    - field.field.node.poem.field_new_theme
+    - field.field.node.poem.field_one_line_description
+    - field.field.node.poem.field_paid_
+    - field.field.node.poem.field_password_protected
+    - field.field.node.poem.field_pdf_of_original_poem
+    - field.field.node.poem.field_poem_author_user
+    - field.field.node.poem.field_poem_retired
+    - field.field.node.poem.field_poem_rights_
+    - field.field.node.poem.field_poem_rights_contact
+    - field.field.node.poem.field_poem_thems
+    - field.field.node.poem.field_poem_title_for_sorting
+    - field.field.node.poem.field_rights_and_permissions_pdf
+    - field.field.node.poem.field_rights_expiration
+    - field.field.node.poem.field_start_here_image
+    - field.field.node.poem.field_start_here_poem
+    - field.field.node.poem.field_start_here_video
+    - field.field.node.poem.field_terms_and_forms
+    - field.field.node.poem.layout_builder__layout
+    - node.type.poem
+    - views.view.user_listing_index_pages
+  module:
+    - entity_print
+    - layout_builder
+    - layout_builder_restrictions
+    - options
+    - text
+    - user
+    - views
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_2'
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: ''
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+          breakpoints:
+            desktop: blb_col_9_3
+            tablet: blb_col_9_3
+            mobile: blb_col_9_3
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-9
+              - col-md-9
+              - col-9
+            blb_region_col_2:
+              - col-lg-3
+              - col-md-3
+              - col-3
+          remove_gutters: 0
+        components:
+          79b965fd-6e28-4dda-9d71-13aece1788b5:
+            uuid: 79b965fd-6e28-4dda-9d71-13aece1788b5
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:poem:title'
+              label: Title
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: plain_string_formatter
+                label: hidden
+                settings:
+                  link_to_entity: false
+                  wrap_tag: h1
+                  wrap_class: ''
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          c37aa004-e2c1-44b9-aa34-c7666874f3eb:
+            uuid: c37aa004-e2c1-44b9-aa34-c7666874f3eb
+            region: blb_region_col_1
+            configuration:
+              id: 'views_block:user_listing_index_pages-block_4'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 1
+            additional: {  }
+          6b21f3c8-2f00-4728-8227-1a49ad7bc7dd:
+            uuid: 6b21f3c8-2f00-4728-8227-1a49ad7bc7dd
+            region: blb_region_col_2
+            configuration:
+              id: print_links
+              label: 'Print Links'
+              label_display: '0'
+              provider: entity_print
+              context_mapping:
+                entity: layout_builder.entity
+              pdf_enabled: true
+              pdf_link_text: PRINT
+              epub_enabled: false
+              epub_link_text: 'View EPub'
+              word_docx_enabled: false
+              word_docx_link_text: 'View Word Document'
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: ''
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+          breakpoints:
+            desktop: ''
+            tablet: ''
+            mobile: ''
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-12
+              - col-md-12
+              - col-12
+          remove_gutters: 0
+        components:
+          af4f2a42-1c3a-4769-a83c-019502949940:
+            uuid: af4f2a42-1c3a-4769-a83c-019502949940
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:poem:body'
+              label: Body
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          b93dab12-0b6c-4fe4-a788-bd561e460d58:
+            uuid: b93dab12-0b6c-4fe4-a788-bd561e460d58
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:poem:field_epigraph'
+              label: Epigraph
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_2'
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: ''
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+          breakpoints:
+            desktop: blb_col_6_6
+            tablet: blb_col_6_6
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-6
+              - col-md-6
+              - col-12
+            blb_region_col_2:
+              - col-lg-6
+              - col-md-6
+              - col-12
+          remove_gutters: 0
+        components:
+          46a1c213-b9b7-4476-8e8b-c5880324af13:
+            uuid: 46a1c213-b9b7-4476-8e8b-c5880324af13
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:poem:field_new_theme'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          083b2d53-b190-45f2-a601-24019a56b6d8:
+            uuid: 083b2d53-b190-45f2-a601-24019a56b6d8
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:poem:field_moods'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          8b660fac-3baf-4e25-88f1-83043d9e751f:
+            uuid: 8b660fac-3baf-4e25-88f1-83043d9e751f
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:poem:field_grades'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          d6e559aa-d436-4e38-ab81-cdf25a3723fd:
+            uuid: d6e559aa-d436-4e38-ab81-cdf25a3723fd
+            region: blb_region_col_1
+            configuration:
+              id: 'views_block:user_listing_index_pages-block_3'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 0
+            additional: {  }
+          e231ada6-da2f-4bd9-8bfc-79c810c04f5c:
+            uuid: e231ada6-da2f-4bd9-8bfc-79c810c04f5c
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:poem:field_terms_and_forms'
+              label: 'Common Poetic Terms and Forms'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: ''
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+          breakpoints:
+            desktop: ''
+            tablet: ''
+            mobile: ''
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-12
+              - col-md-12
+              - col-12
+          remove_gutters: 0
+        components:
+          0bab9358-65e8-4476-b5a1-60e46ff60e43:
+            uuid: 0bab9358-65e8-4476-b5a1-60e46ff60e43
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:poem:field_dive_in'
+              label: 'Dive in'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          5b1763a9-140a-4892-9504-378ce864c979:
+            uuid: 5b1763a9-140a-4892-9504-378ce864c979
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:poem:field_biligraphical_info'
+              label: 'Biligraphical info'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          de55b48a-1ef9-458e-97dc-439d610efc53:
+            uuid: de55b48a-1ef9-458e-97dc-439d610efc53
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:poem:field_dive_in_attribution'
+              label: 'Dive In written by'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: inline
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: node.poem.full
+targetEntityType: node
+bundle: poem
+mode: full
+content:
+  body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_2_column_poem:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_biligraphical_info:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_dive_in:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_dive_in_attribution:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_epigraph:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_grades:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_moods:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_new_theme:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  comment_node_poem: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_broadsides_are_allowed: true
+  field_canada_restrict: true
+  field_completed: true
+  field_editor: true
+  field_mobile_apps_are_allowed: true
+  field_one_line_description: true
+  field_paid_: true
+  field_password_protected: true
+  field_pdf_of_original_poem: true
+  field_poem_author_user: true
+  field_poem_retired: true
+  field_poem_rights_: true
+  field_poem_rights_contact: true
+  field_poem_thems: true
+  field_poem_title_for_sorting: true
+  field_rights_and_permissions_pdf: true
+  field_rights_expiration: true
+  field_start_here_image: true
+  field_start_here_poem: true
+  field_start_here_video: true
+  field_terms_and_forms: true
+  langcode: true
+  layout_builder__layout: true
+  links: true
