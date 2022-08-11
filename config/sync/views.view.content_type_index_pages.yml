@@ -12,6 +12,7 @@ dependencies:
     - field.storage.user.user_picture
     - image.style.1200x900
     - image.style.150x150
+    - image.style.focal_point_700_x_
     - image.style.home_front_700x400
     - node.type.article
     - node.type.lesson_plan
@@ -514,7 +515,7 @@ display:
           type: image
           settings:
             image_link: ''
-            image_style: home_front_700x400
+            image_style: focal_point_700_x_
             image_loading:
               attribute: lazy
           group_column: ''

@@ -1,0 +1,31 @@
+uuid: 3a25f029-4e58-42b1-b060-b94ff8c1983e
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.account
+  module:
+    - menu_block
+  theme:
+    - lvp_barrio
+id: useraccountmenu
+theme: lvp_barrio
+region: primary_menu
+weight: -11
+provider: null
+plugin: 'menu_block:account'
+settings:
+  id: 'menu_block:account'
+  label: 'User account menu'
+  label_display: '0'
+  provider: menu_block
+  follow: false
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 1
+  depth: 0
+  expand_all_items: false
+  parent: 'account:'
+  suggestion: account
+visibility: {  }
