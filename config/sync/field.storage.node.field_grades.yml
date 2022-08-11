@@ -25,10 +25,10 @@ settings:
       value: 'Grades 4-6'
       label: 'Grades 4-6'
     -
-      value: 'Grades 7 & 8 / Sec. 1 & 2'
-      label: 'Grades 6-8 /  Sec. 1 & 2'
+      value: 'Grades 7 & 8 / Sec 1 & 2'
+      label: 'Grades 6-8 / Sec. 1 & 2'
     -
-      value: 'Grades 9-12 / Sec. 3-5 / CEGEP 1'
+      value: 'Grades 9-12 / Sec 3-5 / CEGEP 1'
       label: 'Grades 9-12 / Sec. 3-5 / CEGEP 1'
   allowed_values_function: ''
 module: options

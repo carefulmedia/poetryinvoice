@@ -2255,7 +2255,7 @@ display:
           text_input_required_format: full_html
           bef:
             general:
-              autosubmit: true
+              autosubmit: false
               autosubmit_exclude_textfield: true
               autosubmit_textfield_delay: 500
               autosubmit_hide: false
@@ -2268,10 +2268,10 @@ display:
               plugin_id: bef
               advanced:
                 combine: true
-                combine_rewrite: "Post date Asc|Oldest first\r\nPost date Desc|Newest first"
+                combine_rewrite: "Random Asc|Random\r\nRandom Desc|\r\nDate added Asc|\r\nDate added Desc|Newest\r\n# Reads Asc|\r\n# Reads Desc|Most popular\r\nPoem title Asc|A -> Z\r\nPoem title Desc|Z -> A"
                 reset: false
                 reset_label: ''
-                collapsible: false
+                collapsible: true
                 collapsible_label: 'Sort options'
                 is_secondary: false
             filter:
@@ -2281,10 +2281,45 @@ display:
                   placeholder_text: ''
                   collapsible: false
                   is_secondary: false
+              field_poem_thems_target_id:
+                plugin_id: bef
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: true
+                  is_secondary: false
+                select_all_none: false
+                select_all_none_nested: false
+                display_inline: true
+              field_grades_value:
+                plugin_id: bef
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: true
+                  is_secondary: false
+                select_all_none: false
+                select_all_none_nested: false
+                display_inline: true
       cache:
         type: none
         options: {  }
       sorts:
+        random:
+          id: random
+          table: views
+          field: random
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: random
+          order: ASC
+          expose:
+            label: Random
+            field_identifier: random
+          exposed: true
         created:
           id: created
           table: taxonomy_index
@@ -2324,19 +2359,6 @@ display:
           expose:
             label: 'Poem title'
             field_identifier: field_poem_title_for_sorting_value
-          exposed: true
-        random:
-          id: random
-          table: views
-          field: random
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: random
-          order: ASC
-          expose:
-            label: Random
-            field_identifier: random
           exposed: true
       filters:
         status:
@@ -2514,7 +2536,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: taxonomy_index_tid
-          operator: or
+          operator: and
           value: {  }
           group: 1
           exposed: true
@@ -2560,6 +2582,100 @@ display:
               journal_editor: '0'
               junior_editor: '0'
             reduce: false
+          is_grouped: true
+          group_info:
+            label: Categories
+            description: ''
+            identifier: field_poem_thems_target_id
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: '25 Lines or Fewer'
+                operator: or
+                value:
+                  2: '2'
+              2:
+                title: Canada
+                operator: or
+                value:
+                  15: '15'
+              3:
+                title: 'Pre 20th Century'
+                operator: or
+                value:
+                  8: '8'
+              4:
+                title: '20th/21st Century'
+                operator: not
+                value:
+                  8: '8'
+          reduce_duplicates: false
+          vid: themes
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_grades_value:
+          id: field_grades_value
+          table: node__field_grades
+          field: field_grades_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value:
+            'Grades 7 & 8 / Sec 1 & 2': 'Grades 7 & 8 / Sec 1 & 2'
+            'Grades 9-12 / Sec 3-5 / CEGEP 1': 'Grades 9-12 / Sec 3-5 / CEGEP 1'
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_grades_value_op
+            label: 'Grade levels'
+            description: ''
+            use_operator: false
+            operator: field_grades_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_grades_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: true
           is_grouped: false
           group_info:
             label: ''
@@ -2573,11 +2689,6 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-          vid: themes
-          type: select
-          hierarchy: false
-          limit: true
-          error_message: true
       filter_groups:
         operator: AND
         groups:
@@ -2591,7 +2702,7 @@ display:
         sorts: false
         filters: false
         filter_groups: false
-      use_ajax: false
+      use_ajax: true
       display_description: ''
       display_extenders: {  }
     cache_metadata:
