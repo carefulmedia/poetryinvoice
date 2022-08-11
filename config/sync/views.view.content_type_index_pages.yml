@@ -32,6 +32,7 @@ dependencies:
     - node
     - options
     - slick_views
+    - statistics
     - taxonomy
     - text
     - user
@@ -424,7 +425,7 @@ display:
         options:
           query_comment: ''
           disable_sql_rewrite: false
-          distinct: false
+          distinct: true
           replica: false
           query_tags: {  }
       relationships:
@@ -2247,7 +2248,7 @@ display:
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: false
+          expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
           text_input_required: 'Select any filter and click on Apply to see results'
@@ -2255,65 +2256,87 @@ display:
           bef:
             general:
               autosubmit: true
-              autosubmit_exclude_textfield: false
+              autosubmit_exclude_textfield: true
               autosubmit_textfield_delay: 500
-              autosubmit_hide: true
+              autosubmit_hide: false
               input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
             sort:
-              plugin_id: bef_links
+              plugin_id: bef
               advanced:
-                combine: false
-                combine_rewrite: ''
+                combine: true
+                combine_rewrite: "Post date Asc|Oldest first\r\nPost date Desc|Newest first"
                 reset: false
                 reset_label: ''
                 collapsible: false
                 collapsible_label: 'Sort options'
                 is_secondary: false
             filter:
-              field_poem_thems_target_id:
-                plugin_id: bef_links
+              combine:
+                plugin_id: default
                 advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: ''
+                  placeholder_text: ''
                   collapsible: false
                   is_secondary: false
-                select_all_none: false
+      cache:
+        type: none
+        options: {  }
       sorts:
         created:
           id: created
-          table: node_field_data
+          table: taxonomy_index
           field: created
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: created
           plugin_id: date
-          order: DESC
+          order: ASC
           expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
+            label: 'Date added'
+            field_identifier: created
+          exposed: true
           granularity: second
-        title:
-          id: title
-          table: node_field_data
-          field: title
+        totalcount:
+          id: totalcount
+          table: node_counter
+          field: totalcount
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: title
           plugin_id: standard
           order: ASC
           expose:
-            label: Title
-            field_identifier: title
+            label: '# Reads'
+            field_identifier: totalcount
+          exposed: true
+        field_poem_title_for_sorting_value:
+          id: field_poem_title_for_sorting_value
+          table: node__field_poem_title_for_sorting
+          field: field_poem_title_for_sorting_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: 'Poem title'
+            field_identifier: field_poem_title_for_sorting_value
+          exposed: true
+        random:
+          id: random
+          table: views
+          field: random
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: random
+          order: ASC
+          expose:
+            label: Random
+            field_identifier: random
           exposed: true
       filters:
         status:
@@ -2483,11 +2506,84 @@ display:
             name: name
             title: title
             body: body
+        field_poem_thems_target_id:
+          id: field_poem_thems_target_id
+          table: node__field_poem_thems
+          field: field_poem_thems_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_poem_thems_target_id_op
+            label: 'Contest Criteria (field_poem_thems)'
+            description: ''
+            use_operator: false
+            operator: field_poem_thems_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_poem_thems_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: themes
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
       filter_groups:
         operator: AND
         groups:
           1: AND
       defaults:
+        cache: false
         title: false
         use_ajax: false
         exposed_form: false
@@ -2495,17 +2591,19 @@ display:
         sorts: false
         filters: false
         filter_groups: false
-      use_ajax: true
+      use_ajax: false
       display_description: ''
       display_extenders: {  }
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
         - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
