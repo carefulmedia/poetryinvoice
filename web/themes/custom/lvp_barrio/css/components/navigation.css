@@ -229,6 +229,25 @@ color: var(--aqua) !important;
 color: var(--plum-dark) !important;
 }
 
+ .nav-link.nav-link-https--poetryinvoiceca-read {
+color: var(--plum) !important;
+}
+ .nav-link.nav-link-https--poetryinvoiceca-recite {
+color: var(--red) !important;
+}
+ .nav-link.nav-link-https--poetryinvoiceca-write {
+color: var(--mint-dark) !important;
+}
+ .nav-link.nav-link-https--poetryinvoiceca-teach {
+color: var(--gold) !important;
+}
+ .nav-link.nav-link-https--poetryinvoiceca-binge {
+color: var(--aqua) !important;
+}
+ .nav-link.nav-link-https--poetryinvoiceca-about {
+color: var(--plum-dark) !important;
+}
+
 .offcanvas-body .btn-close {
 float: right;
 display:inline;
