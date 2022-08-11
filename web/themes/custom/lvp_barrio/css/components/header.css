@@ -62,6 +62,9 @@ z-index:20000
 .header-logo {
     height: 3rem;
 }
+.header-logo.dark {
+    filter: invert(1);
+}
 .navbar {
     height: 4rem
 }
@@ -73,7 +76,7 @@ z-index: 2;
 
 
 .nav li {
-  display: inline;
+  display: block;
 }
 
 .navbar-inverse .navbar-nav>li>a {
@@ -129,7 +132,7 @@ z-index: 2;
     display: none;
 }
 .language-switcher-language-url .links-inline {
-    border: 2px solid #fff;
+    border: 2px solid #000;
     border-radius: 50%;
     height: 2.5em;
     width: 2.5em;
@@ -141,11 +144,9 @@ z-index: 2;
     display: block;
     margin: 0 10px;
 }
-.dropdown-menu {
-    background-color: transparent;
-}
+
 .dropdown-item:focus, .dropdown-item:hover {
-    color: #fff;
+    color: #000;
     background-color: transparent;
 }
 .site-footer {
@@ -169,3 +170,7 @@ z-index: 2;
 .language-switcher-language-url .contextual {
     display: none;
 }
+.navbar-collapse .user {
+float: right;
+}
+
