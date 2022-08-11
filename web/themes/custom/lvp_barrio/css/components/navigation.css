@@ -93,7 +93,7 @@ span.nav-link {
 }
 
 .dropdown-item {
-  padding: 5px 15px;
+  padding: 5px 0px;
 }
 /* Remove margin and padding around each flyout's containing UL, so that there is no "gap" where hover does not function, and flyouts vanish as you roll over the gap */
 ul.dropdown-menu {
@@ -187,8 +187,8 @@ color:fff;
 }
 #CollapsingNavbar {
     width: 100vw;
-    height: 100vw;
-    min-height: 100vw;
+    height: 100vh;
+    min-height: 100vh;
     min-width: 100vw;
 background: linear-gradient(to top, rgba(255,255,255,.6),rgba(255,255,255,1));
 
@@ -198,6 +198,7 @@ background: linear-gradient(to top, rgba(255,255,255,.6),rgba(255,255,255,1));
 .nav-item {
 display:inline;
 float:left;
+margin-right: 1rem;
 }
 .navbar-nav {
     display: flex;

@@ -98,7 +98,7 @@
               <div class="{{ navbar_collapse_class }}" id="CollapsingNavbar">
                 {% if navbar_offcanvas %}
                   <div class="offcanvas-body container">
-    {% if language == 'en' %}
+    {% if language.id == 'en' %}
         <a class="me-auto" href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="navbar-brand">
             <img class="header-logo dark" src = "/themes/custom/lvp_barrio/PIV-logo.svg" alt="{{ 'Home'|t }}" class="img-fluid d-inline-block align-top" />
         </a>
