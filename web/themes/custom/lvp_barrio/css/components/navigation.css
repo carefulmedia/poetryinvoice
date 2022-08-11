@@ -10,6 +10,7 @@
     margin-left: 16px;
     width: 100%;
     padding-bottom: 12px;
+
   }
 
   /* Enables first level dropdown from main nav links */
@@ -39,10 +40,18 @@
 
   /* Enables first level dropdown from main nav links */
   .dropdown:hover>.dropdown-menu {
-    display: block;
+display: block;
   }
+.dropdown-menu {
+display:block;
+}
 
 }
+.dropdown-menu {
+border: none;
+background: none !important;
+}
+
 
 /* Force manu items with no link to still use pointer */
 span.nav-link {
@@ -99,12 +108,12 @@ ul.dropdown-menu {
 
 
 .header .nav-link {
-    color: #fff;
+    color: #000;
     padding: 0;
 }
 
 .header .nav-link a {
-    color: #fff;
+    color: #000;
 }
 
 
@@ -119,12 +128,12 @@ ul.dropdown-menu {
 }
 
 .dropdown-menu a {
-    color: #fff;
+    color: #000;
     text-decoration: none;
     font-size: 1.5rem;
 }
 .menu--main {
-
+    margin-top: 4rem;
 
 }
 .navbar-nav {
@@ -156,8 +165,8 @@ ul.dropdown-menu {
 
 }
 header #search-block-form .btn-outline-primary {
-    color: #fff;
-    border-color: #fff;
+    color: #000;
+    border-color: #000;
 }
 header #search-block-form {
     padding: 0 !important;
@@ -172,9 +181,97 @@ header #search-block-form .btn-outline-primary:hover {
 .dropdown-toggle:hover {
 color:fff;
 }
+.offcanvas-header .btn-close {
+    postion: absolute;
+    right: 2em;
+}
+#CollapsingNavbar {
+    width: 100vw;
+    height: 100vw;
+    min-height: 100vw;
+    min-width: 100vw;
+background: linear-gradient(to top, rgba(255,255,255,.6),rgba(255,255,255,1));
+
+}
+@media (min-width: 992px)
+ {
+.nav-item {
+display:inline;
+float:left;
+}
+.navbar-nav {
+    display: flex;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    flex-direction: unset
+
+}
+}
+
+ .nav-link.nav-link-https--piv9lndosite-read {
+color: var(--plum) !important;
+}
+ .nav-link.nav-link-https--piv9lndosite-recite {
+color: var(--red) !important;
+}
+ .nav-link.nav-link-https--piv9lndosite-write {
+color: var(--mint-dark) !important;
+}
+ .nav-link.nav-link-https--piv9lndosite-teach {
+color: var(--gold) !important;
+}
+ .nav-link.nav-link-https--piv9lndosite-binge {
+color: var(--aqua) !important;
+}
+ .nav-link.nav-link-https--piv9lndosite-about {
+color: var(--plum-dark) !important;
+}
+
+ .nav-link.nav-link-https--poetryinvoiceca-read {
+color: var(--plum) !important;
+}
+ .nav-link.nav-link-https--poetryinvoiceca-recite {
+color: var(--red) !important;
+}
+ .nav-link.nav-link-https--poetryinvoiceca-write {
+color: var(--mint-dark) !important;
+}
+ .nav-link.nav-link-https--poetryinvoiceca-teach {
+color: var(--gold) !important;
+}
+ .nav-link.nav-link-https--poetryinvoiceca-binge {
+color: var(--aqua) !important;
+}
+ .nav-link.nav-link-https--poetryinvoiceca-about {
+color: var(--plum-dark) !important;
+}
+
+.offcanvas-body .btn-close {
+float: right;
+display:inline;
+margin-left: 2rem;
+
+}
+.offcanvas-body .user {
+float: right;
+display:inline;
+}
+.offcanvas-body .user a {
+margin-right: 2rem;
+
+}
+.offcanvas-body .language-switcher-language-url {
+float: right;
+display:inline;
+margin-left: 2rem;
 
 
-
-
-
-
+}
+.user .contextual {
+    display:none;
+}
+.header-logo .dark {
+    filter: invert(100%);
+}

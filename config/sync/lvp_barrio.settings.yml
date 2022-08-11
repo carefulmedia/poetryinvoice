@@ -21,7 +21,7 @@ bootstrap_barrio_region_class_header: ''
 bootstrap_barrio_region_clean_header_form: 0
 bootstrap_barrio_region_class_header_form: row
 bootstrap_barrio_region_clean_primary_menu: 1
-bootstrap_barrio_region_class_primary_menu: ''
+bootstrap_barrio_region_class_primary_menu: container
 bootstrap_barrio_region_clean_secondary_menu: 0
 bootstrap_barrio_region_class_secondary_menu: row
 bootstrap_barrio_region_clean_page_top: 0
@@ -95,4 +95,4 @@ bootstrap_barrio_table_head: ''
 bootstrap_barrio_image_fluid: true
 bootstrap_barrio_tabs_style: pills
 bootstrap_barrio_hide_node_label: 0
-bootstrap_barrio_navbar_offcanvas: ''
+bootstrap_barrio_navbar_offcanvas: offcanvas-collapse

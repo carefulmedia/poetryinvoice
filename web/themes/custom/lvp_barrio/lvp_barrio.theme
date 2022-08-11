@@ -52,3 +52,21 @@ function lvp_barrio_preprocess_links__language_block(&$variables) {
     $variables['links'][$i]['link']['#title'] = $linkLanguage->get('id');
   }
 }
+
+
+function lvp_barrio_preprocess_page(&$variables) {
+  switch (theme_get_setting('bootstrap_barrio_navbar_offcanvas')) {
+    case 'offcanvas-collapse':
+      $variables['navbar_offcanvas'] = TRUE;
+      $variables['navbar_collapse_class'] = "offcanvas offcanvas-top";
+      $variables['navbar_collapse_btn_data'] = "offcanvas";
+      break;
+    default:
+      $variables['navbar _offcanvas'] = TRUE; 
+      $variables['navbar_collapse_class'] = 'collapse navbar-collapse justify-content-end';
+      $variables['navbar_collapse_btn_data'] = "collapse";
+  }
+}
+
+
+
