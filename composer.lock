@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7b4fd7f199a42fc96ca1ffd4001f6b4d",
+    "content-hash": "3886c1e0b4ce15c99a8d48382289d75b",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -6631,6 +6631,84 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/quick_node_clone",
                 "issues": "https://www.drupal.org/project/issues/quick_node_clone"
+            }
+        },
+        {
+            "name": "drupal/realname",
+            "version": "2.0.0-beta1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/realname.git",
+                "reference": "2.0.0-beta1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/realname-2.0.0-beta1.zip",
+                "reference": "2.0.0-beta1",
+                "shasum": "02d7e43792482f777601fa6ba317eabb90522cfd"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9",
+                "drupal/token": "^1.0.0-alpha2"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0-beta1",
+                    "datestamp": "1626668790",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "hass",
+                    "homepage": "https://www.drupal.org/u/hass"
+                },
+                {
+                    "name": "See other contributors",
+                    "homepage": "https://www.drupal.org/node/266280/committers"
+                },
+                {
+                    "name": "coderintherye",
+                    "homepage": "https://www.drupal.org/user/297478"
+                },
+                {
+                    "name": "hass",
+                    "homepage": "https://www.drupal.org/user/85918"
+                },
+                {
+                    "name": "philltran",
+                    "homepage": "https://www.drupal.org/user/295397"
+                },
+                {
+                    "name": "rmiddle",
+                    "homepage": "https://www.drupal.org/user/192183"
+                },
+                {
+                    "name": "theamoeba",
+                    "homepage": "https://www.drupal.org/user/251700"
+                },
+                {
+                    "name": "tkuldeep17",
+                    "homepage": "https://www.drupal.org/user/2498278"
+                },
+                {
+                    "name": "voxpelli",
+                    "homepage": "https://www.drupal.org/user/341713"
+                }
+            ],
+            "description": "Provides token-based name displays for users.",
+            "homepage": "https://www.drupal.org/project/realname",
+            "support": {
+                "source": "https://git.drupal.org/project/realname.git",
+                "issues": "https://www.drupal.org/project/issues/realname"
             }
         },
         {
@@ -13874,6 +13952,7 @@
         "drupal/inline_entity_form": 5,
         "drupal/linkit": 10,
         "drupal/mimemail": 15,
+        "drupal/realname": 10,
         "drupal/s3fs": 10,
         "drupal/scanner": 20,
         "drupal/select_translation": 15,

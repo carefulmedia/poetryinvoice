@@ -20,6 +20,7 @@ global-styling:
       css/components/field.css: {}
       css/components/grid.css: {}
       css/components/header.css: {}
+      css/components/home-and-index.css: {}
       css/components/help.css: {}
       css/components/icons.css: {}
       css/components/image-button.css: {}
@@ -30,6 +31,7 @@ global-styling:
       css/components/search-form.css: {}
       css/components/shortcut.css: {}
       css/components/sidebar.css: {}
+      css/components/slick.css: {}
       css/components/site-footer.css: {}
       css/components/skip-link.css: {}
       css/components/table.css: {}

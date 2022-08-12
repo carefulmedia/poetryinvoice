@@ -117,12 +117,18 @@ z-index: 2;
     width: 100%;
     
 }
-.highlighted .container {
+.highlighted .container.section {
     width: 100% !important;
     margin: 0;
     padding: 0;
     max-width: 100% !important;
 
+}
+.highlighted .container.views-field-name {
+    margin-top: -8rem;
+    position: relative;
+    background: #fff;
+    width: 50%;
 }
 @media (min-width: 992px)
 .navbar-expand-lg .navbar-toggler {

@@ -8,16 +8,43 @@ weight: 0
 label: Slick2
 group: ''
 skin: ''
-breakpoints: 0
+breakpoints: 2
 optimized: true
 options:
-  options__active_tab: edit-options-settings
+  options__active_tab: edit-options-responsives
   settings:
+    adaptiveHeight: true
     centerMode: true
+    centerPadding: 30px
     dots: true
     focusOnSelect: true
     initialSlide: 1
     lazyLoad: ondemand
+    rows: 0
     slidesPerRow: 0
     slidesToShow: 3
     swipeToSlide: true
+  responsives:
+    responsive:
+      -
+        breakpoint: 768
+        unslick: false
+        settings:
+          adaptiveHeight: true
+          focusOnSelect: true
+          initialSlide: 1
+          slidesPerRow: 0
+          swipeToSlide: true
+          waitForAnimate: false
+      -
+        breakpoint: null
+        unslick: false
+        settings:
+          adaptiveHeight: true
+          centerMode: true
+          centerPadding: 30px
+          focusOnSelect: true
+          initialSlide: 1
+          slidesPerRow: 0
+          slidesToShow: 3
+          swipeToSlide: true

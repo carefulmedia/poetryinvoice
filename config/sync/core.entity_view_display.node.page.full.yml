@@ -1,9 +1,9 @@
-uuid: 6162bb2b-6ba3-4027-b726-1da2b384a375
+uuid: ec0ba38e-73fa-44ef-8d99-9ca5ac77023b
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.full
     - field.field.node.page.body
     - field.field.node.page.comment_node_page
     - field.field.node.page.field_banner_subtitle
@@ -14,32 +14,17 @@ dependencies:
     - field.field.node.page.layout_builder__layout
     - node.type.page
   module:
-    - bootstrap_layouts
+    - file
+    - image
     - layout_builder
+    - layout_builder_restrictions
     - layout_discovery
-    - text
     - user
 third_party_settings:
   layout_builder:
     enabled: true
-    allow_custom: false
+    allow_custom: true
     sections:
-      -
-        layout_id: layout_onecol
-        layout_settings:
-          label: ''
-        components:
-          53b4be46-6b00-4e40-9d36-221dcb8e1f9d:
-            uuid: 53b4be46-6b00-4e40-9d36-221dcb8e1f9d
-            region: content
-            configuration:
-              id: 'extra_field_block:node:page:links'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-            weight: 1
-            additional: {  }
-        third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
@@ -51,8 +36,8 @@ third_party_settings:
           container: ''
           section_classes: ''
           regions_classes:
-            blb_region_col_1: ''
-            blb_region_col_2: ''
+            blb_region_col_1: col-2-main
+            blb_region_col_2: col-2-sidebar
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
@@ -68,29 +53,31 @@ third_party_settings:
               - col-12
           remove_gutters: 0
         components:
-          c77fe7a6-f1a3-4599-83b6-cd9e29c23a64:
-            uuid: c77fe7a6-f1a3-4599-83b6-cd9e29c23a64
+          ada44985-bf02-4c19-95e9-c3653555e54e:
+            uuid: ada44985-bf02-4c19-95e9-c3653555e54e
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:page:body'
+              label: Body
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                type: text_summary_or_trimmed
+                type: text_default
                 label: hidden
-                settings:
-                  trim_length: 600
+                settings: {  }
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          9335a9fd-cc3b-47df-8ade-d539dedf0bbc:
-            uuid: 9335a9fd-cc3b-47df-8ade-d539dedf0bbc
+          8b67787b-d117-4a92-9ca7-7435cb421bed:
+            uuid: 8b67787b-d117-4a92-9ca7-7435cb421bed
             region: blb_region_col_2
             configuration:
               id: 'field_block:node:page:field_banner_subtitle'
               label: 'Right sidebar content'
-              label_display: visible
+              label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
@@ -104,54 +91,102 @@ third_party_settings:
             additional: {  }
         third_party_settings: {  }
       -
-        layout_id: bs_1col
+        layout_id: layout_onecol
         layout_settings:
           label: ''
-          context_mapping: {  }
-          layout:
-            wrapper: div
-            classes:
-              row: row
-            add_layout_class: 1
-            attributes: ''
-          regions:
-            main:
-              wrapper: div
-              classes:
-                col-sm-12: col-sm-12
-              add_region_classes: 1
-              attributes: ''
-        components: {  }
+        components:
+          cc205e5e-e9eb-4dd5-9708-a1fc5882b90c:
+            uuid: cc205e5e-e9eb-4dd5-9708-a1fc5882b90c
+            region: content
+            configuration:
+              id: 'field_block:node:page:field_files'
+              label: Files
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: file_default
+                label: hidden
+                settings:
+                  use_description_as_link_text: true
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
         third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - layout_onecol
+        - bs_2col
+        - bs_2col_bricked
+        - barrio_cardbasic
+        - barrio_media
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts:
+        - layout_onecol
+        - bs_2col
+        - bs_2col_bricked
+        - barrio_cardbasic
+        - barrio_media
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
 _core:
-  default_config_hash: cSv5lDnbIgDug475Hdz3woED2XMqYv3awI-J9u1JLbY
-id: node.page.teaser
+  default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
+id: node.page.full
 targetEntityType: node
 bundle: page
-mode: teaser
+mode: full
 content:
-  body:
-    type: text_summary_or_trimmed
+  field_files:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_images_insert:
+    type: image
     label: hidden
     settings:
-      trim_length: 600
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
+    region: content
+  langcode:
+    type: language
+    label: above
+    settings:
+      link_to_entity: false
+      native_language: false
+    third_party_settings: {  }
+    weight: 3
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 2
     region: content
 hidden:
+  body: true
   comment_node_page: true
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_banner_subtitle: true
   field_banner_title: true
-  field_files: true
-  field_images_insert: true
   field_tags: true
-  langcode: true
   layout_builder__layout: true

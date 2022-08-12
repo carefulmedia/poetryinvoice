@@ -22,99 +22,19 @@ dependencies:
     - user
 third_party_settings:
   layout_builder:
-    enabled: true
-    allow_custom: true
-    sections:
-      -
-        layout_id: layout_onecol
-        layout_settings:
-          label: 'Main content'
-          context_mapping: {  }
-        components: {  }
-        third_party_settings: {  }
-      -
-        layout_id: 'bootstrap_layout_builder:blb_col_2'
-        layout_settings:
-          label: ''
-          context_mapping: {  }
-          container_wrapper_classes: ''
-          container_wrapper_bg_color_class: ''
-          container_wrapper_bg_media: null
-          container: ''
-          section_classes: ''
-          regions_classes:
-            blb_region_col_1: ''
-            blb_region_col_2: ''
-          breakpoints:
-            desktop: blb_col_9_3
-            tablet: blb_col_9_3
-            mobile: blb_col_12
-          layout_regions_classes:
-            blb_region_col_1:
-              - col-lg-9
-              - col-md-9
-              - col-12
-            blb_region_col_2:
-              - col-lg-3
-              - col-md-3
-              - col-12
-          remove_gutters: 0
-        components:
-          e7847688-fab7-470e-bf7f-710a842635f5:
-            uuid: e7847688-fab7-470e-bf7f-710a842635f5
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:page:body'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: text_default
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          1a900054-7eb4-4aa3-ae51-6cde4c46ec09:
-            uuid: 1a900054-7eb4-4aa3-ae51-6cde4c46ec09
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:node:page:field_banner_subtitle'
-              label: 'Right sidebar content'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: text_default
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-        third_party_settings: {  }
+    enabled: false
+    allow_custom: false
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
-      allowed_layouts:
-        - layout_onecol
-        - bs_2col_bricked
-        - barrio_cardbasic
-        - barrio_media
-        - 'bootstrap_layout_builder:blb_col_2'
-        - 'bootstrap_layout_builder:blb_col_3'
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
       restricted_categories: {  }
       blacklisted_blocks: {  }
       whitelisted_blocks: {  }
     entity_view_mode_restriction_by_region:
-      allowed_layouts:
-        - layout_onecol
-        - bs_2col_bricked
-        - barrio_cardbasic
-        - barrio_media
-        - 'bootstrap_layout_builder:blb_col_2'
-        - 'bootstrap_layout_builder:blb_col_3'
+      allowed_layouts: {  }
 _core:
   default_config_hash: g1S3_GLaxq4l3I9RIca5Mlz02MxI2KmOquZpHw59akM
 id: node.page.default
