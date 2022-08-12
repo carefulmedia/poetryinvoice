@@ -79,6 +79,7 @@ permissions:
   - 'view field_place_team_regional'
   - 'view field_poem_thems'
   - 'view field_prompt_image'
+  - 'view field_publications'
   - 'view field_q1'
   - 'view field_q2'
   - 'view field_q3'

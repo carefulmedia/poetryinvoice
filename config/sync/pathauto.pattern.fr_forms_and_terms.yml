@@ -8,20 +8,20 @@ dependencies:
 id: fr_forms_and_terms
 label: 'FR forms and terms'
 type: 'canonical_entities:taxonomy_term'
-pattern: '/read/formes-poetiques/[term:name]'
+pattern: '/lire/formes-poetiques/[term:name]'
 selection_criteria:
-  3682a461-5f96-4fac-b2c3-c0409c805cae:
+  c372e221-613e-4c7a-bd59-5897bdb1e954:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 3682a461-5f96-4fac-b2c3-c0409c805cae
+    uuid: c372e221-613e-4c7a-bd59-5897bdb1e954
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:
       poetic_terms: poetic_terms
-  9471da14-7725-41a2-aeda-b54e2940ae93:
+  a68e2569-2f5e-48ec-a00c-065449097960:
     id: language
     negate: false
-    uuid: 9471da14-7725-41a2-aeda-b54e2940ae93
+    uuid: a68e2569-2f5e-48ec-a00c-065449097960
     context_mapping:
       language: 'taxonomy_term:langcode:language'
     langcodes:

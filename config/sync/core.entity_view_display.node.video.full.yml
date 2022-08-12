@@ -1,0 +1,325 @@
+uuid: 147dee9f-12af-474f-a79f-9a13205045b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.video.body
+    - field.field.node.video.comment_node_video
+    - field.field.node.video.field_canada_restrict
+    - field.field.node.video.field_competition_school
+    - field.field.node.video.field_competition_stream
+    - field.field.node.video.field_fca_image
+    - field.field.node.video.field_pod_date
+    - field.field.node.video.field_poem_retired
+    - field.field.node.video.field_poets_plural_user
+    - field.field.node.video.field_type_of_video
+    - field.field.node.video.field_video
+    - field.field.node.video.field_video_caption
+    - field.field.node.video.field_video_image
+    - field.field.node.video.field_video_poem
+    - field.field.node.video.field_years_in_competition
+    - field.field.node.video.field_yt_video
+    - node.type.video
+  module:
+    - bootstrap_layouts
+    - editablefields
+    - layout_builder
+    - layout_discovery
+    - media
+    - options
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          75bb286d-bc13-4a3e-be8d-e0ee92532252:
+            uuid: 75bb286d-bc13-4a3e-be8d-e0ee92532252
+            region: content
+            configuration:
+              id: 'field_block:node:video:field_video'
+              label: 'Youtube Video'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_entity_view
+                label: above
+                settings:
+                  view_mode: full
+                third_party_settings: {  }
+            weight: 9
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_3'
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: ''
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+            blb_region_col_3: ''
+          breakpoints:
+            desktop: blb_col_4_4_4
+            tablet: blb_col_6_3_3
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-4
+              - col-md-6
+              - col-12
+            blb_region_col_2:
+              - col-lg-4
+              - col-md-3
+              - col-12
+            blb_region_col_3:
+              - col-lg-4
+              - col-md-3
+              - col-12
+          remove_gutters: 0
+        components:
+          2ba4e56b-21a1-438e-9f43-215181b1543b:
+            uuid: 2ba4e56b-21a1-438e-9f43-215181b1543b
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:video:field_type_of_video'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          59298afc-3360-4593-ae99-05c656e3d3d1:
+            uuid: 59298afc-3360-4593-ae99-05c656e3d3d1
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:video:field_competition_stream'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          f802e338-8efb-47bd-b4df-fc1a224fa9dd:
+            uuid: f802e338-8efb-47bd-b4df-fc1a224fa9dd
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:video:field_competition_school'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          2c887b01-b419-45db-abb2-04c5757632b8:
+            uuid: 2c887b01-b419-45db-abb2-04c5757632b8
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:video:field_years_in_competition'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          1679edfd-cfa7-454d-b940-f5b6ab59540b:
+            uuid: 1679edfd-cfa7-454d-b940-f5b6ab59540b
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:video:field_video_poem'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          81254218-f5a7-451b-ad27-39ffbdc96a5f:
+            uuid: 81254218-f5a7-451b-ad27-39ffbdc96a5f
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:video:field_poets_plural_user'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: bs_1col
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          layout:
+            wrapper: div
+            classes:
+              row: row
+            add_layout_class: 1
+            attributes: ''
+          regions:
+            main:
+              wrapper: div
+              classes:
+                col-sm-12: col-sm-12
+              add_region_classes: 1
+              attributes: ''
+        components:
+          a90e0d32-f96e-4684-bdc4-55b2b67448e9:
+            uuid: a90e0d32-f96e-4684-bdc4-55b2b67448e9
+            region: main
+            configuration:
+              id: 'field_block:node:video:field_poem_retired'
+              label: 'Poem archived'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: custom
+                  format_custom_false: ''
+                  format_custom_true: 'This poem has been archived.'
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+id: node.video.full
+targetEntityType: node
+bundle: video
+mode: full
+content:
+  field_competition_school:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_competition_stream:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_poem_retired:
+    type: editablefields_formatter
+    label: hidden
+    settings:
+      form_mode: default
+      bypass_access: false
+      fallback_access: false
+      display_mode_access: ''
+      fallback_edit: false
+      display_mode_edit: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_poets_plural_user:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_type_of_video:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_video:
+    type: media_thumbnail
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_video_poem:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_years_in_competition:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+hidden:
+  body: true
+  comment_node_video: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_canada_restrict: true
+  field_fca_image: true
+  field_pod_date: true
+  field_video_caption: true
+  field_video_image: true
+  field_yt_video: true
+  langcode: true

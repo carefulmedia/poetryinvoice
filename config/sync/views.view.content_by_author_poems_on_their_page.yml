@@ -1,21 +1,19 @@
-uuid: 2b2678e1-dda4-42d9-a95c-5da6ed98951c
+uuid: 206c568b-fd55-4b28-b581-7806e8237313
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.user.user_picture
-    - image.style.focal_point_2000x800
-    - user.role.poet
+    - node.type.poem
   module:
-    - image
+    - node
     - user
-id: header_image_for_poets
-label: 'Header image for Poets'
+id: content_by_author_poems_on_their_page
+label: 'Content by author (poems) on their page'
 module: views
 description: ''
 tag: ''
-base_table: users_field_data
-base_field: uid
+base_table: node_field_data
+base_field: nid
 display:
   default:
     id: default
@@ -23,12 +21,12 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'Header image for Poets'
+      title: 'Content by author (poems) on their page'
       fields:
-        user_picture:
-          id: user_picture
-          table: user__user_picture
-          field: user_picture
+        title:
+          id: title
+          table: node_field_data
+          field: title
           relationship: none
           group_type: group
           admin_label: ''
@@ -66,7 +64,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -74,14 +72,11 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: target_id
-          type: image
+          click_sort_column: value
+          type: string
           settings:
-            image_link: ''
-            image_style: focal_point_2000x800
-            image_loading:
-              attribute: lazy
-          group_column: ''
+            link_to_entity: true
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -95,7 +90,7 @@ display:
         type: some
         options:
           offset: 0
-          items_per_page: 1
+          items_per_page: 5
       exposed_form:
         type: basic
         options:
@@ -109,18 +104,34 @@ display:
       access:
         type: perm
         options:
-          perm: 'access user profiles'
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
       empty: {  }
-      sorts: {  }
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
       arguments:
         uid:
           id: uid
           table: users_field_data
           field: uid
-          relationship: none
+          relationship: uid
           group_type: group
           admin_label: ''
           entity_type: user
@@ -156,9 +167,9 @@ display:
       filters:
         status:
           id: status
-          table: users_field_data
+          table: node_field_data
           field: status
-          entity_type: user
+          entity_type: node
           entity_field: status
           plugin_id: boolean
           value: '1'
@@ -167,51 +178,20 @@ display:
             operator: ''
             operator_limit_selection: false
             operator_list: {  }
-        roles_target_id:
-          id: roles_target_id
-          table: user__roles
-          field: roles_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: user
-          entity_field: roles
-          plugin_id: user_roles
-          operator: or
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
           value:
-            poet: poet
-          group: 1
-          exposed: false
+            poem: poem
           expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
       style:
-        type: default
+        type: html_list
       row:
         type: fields
       query:
@@ -222,7 +202,18 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        uid:
+          id: uid
+          table: node_field_data
+          field: uid
+          relationship: none
+          group_type: group
+          admin_label: User
+          entity_type: node
+          entity_field: uid
+          plugin_id: standard
+          required: false
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -232,9 +223,9 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:field.storage.user.user_picture'
+      tags: {  }
   block_1:
     id: block_1
     display_title: Block
@@ -248,6 +239,6 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - 'user.node_grants:view'
         - user.permissions
-      tags:
-        - 'config:field.storage.user.user_picture'
+      tags: {  }

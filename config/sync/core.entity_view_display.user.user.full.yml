@@ -1,8 +1,9 @@
-uuid: 56ce4bd2-cd71-4e4e-8bf1-58492e7c6648
+uuid: 94ec78fb-8a68-4656-8a46-598899ee1b0f
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.user.full
     - field.field.user.user.field_about_me
     - field.field.user.user.field_additional_email
     - field.field.user.user.field_address
@@ -63,14 +64,16 @@ dependencies:
     - field.field.user.user.piv_teacher_last_name
     - field.field.user.user.piv_teacher_profile_origin
     - field.field.user.user.user_picture
+    - views.view.content_by_author_poems_on_their_page
   module:
     - address
     - entity_reference_revisions
     - layout_builder
-    - layout_builder_restrictions
+    - layout_discovery
     - social_link_field
     - text
     - user
+    - views
 third_party_settings:
   layout_builder:
     enabled: true
@@ -109,8 +112,8 @@ third_party_settings:
               - col-12
           remove_gutters: 0
         components:
-          0c641eb4-112e-4343-bd02-540df2ae870a:
-            uuid: 0c641eb4-112e-4343-bd02-540df2ae870a
+          dd8e367d-0a24-4694-897a-84f1c966bb1e:
+            uuid: dd8e367d-0a24-4694-897a-84f1c966bb1e
             region: blb_region_col_1
             configuration:
               id: 'field_block:user:user:name'
@@ -121,21 +124,16 @@ third_party_settings:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: text_field_formatter
+                type: user_name
                 label: hidden
                 settings:
-                  link_to_entity: 0
-                  wrap_tag: h1
-                  wrap_class: ''
-                  wrap_attributes: ''
-                  override_link_label: ''
-                  token: ''
+                  link_to_entity: false
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          ebc730df-1a8d-471e-a84a-c44806d817b4:
-            uuid: ebc730df-1a8d-471e-a84a-c44806d817b4
-            region: blb_region_col_1
+          0bed62b4-b876-437c-aab2-b55e72a1e037:
+            uuid: 0bed62b4-b876-437c-aab2-b55e72a1e037
+            region: blb_region_col_2
             configuration:
               id: 'field_block:user:user:field_lifespan'
               label_display: '0'
@@ -147,11 +145,11 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 1
+            weight: 2
             additional: {  }
-          4c71e014-4936-42e2-8aec-31560abad29b:
-            uuid: 4c71e014-4936-42e2-8aec-31560abad29b
-            region: blb_region_col_1
+          5418bae2-9f48-462b-9183-9bcde3e15e2e:
+            uuid: 5418bae2-9f48-462b-9183-9bcde3e15e2e
+            region: blb_region_col_2
             configuration:
               id: 'field_block:user:user:field_social_links'
               label_display: '0'
@@ -165,11 +163,11 @@ third_party_settings:
                   orientation: vertical
                   new_tab: true
                 third_party_settings: {  }
-            weight: 2
+            weight: 1
             additional: {  }
-          0636ff61-24ad-45da-a18f-27766ca15d69:
-            uuid: 0636ff61-24ad-45da-a18f-27766ca15d69
-            region: blb_region_col_2
+          29ff44ec-001d-4b3a-9ecf-7cf7a6db6f2e:
+            uuid: 29ff44ec-001d-4b3a-9ecf-7cf7a6db6f2e
+            region: blb_region_col_1
             configuration:
               id: 'field_block:user:user:field_photo_credit'
               label_display: '0'
@@ -180,25 +178,6 @@ third_party_settings:
                 label: above
                 settings:
                   link_to_entity: false
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          53c201d2-463b-4d13-b046-7bb65e2a14d5:
-            uuid: 53c201d2-463b-4d13-b046-7bb65e2a14d5
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:user:user:field_publications'
-              label: Publications
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: '@user.current_user_context:current_user'
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_revisions_entity_view
-                label: above
-                settings:
-                  view_mode: full
                 third_party_settings: {  }
             weight: 1
             additional: {  }
@@ -236,17 +215,14 @@ third_party_settings:
               - col-12
           remove_gutters: 0
         components:
-          64392757-da9e-4919-a034-451538c166b3:
-            uuid: 64392757-da9e-4919-a034-451538c166b3
+          e0b106f4-01e8-49e7-a948-208f15548c65:
+            uuid: e0b106f4-01e8-49e7-a948-208f15548c65
             region: blb_region_col_1
             configuration:
               id: 'field_block:user:user:field_user_bio'
-              label: Biography
               label_display: '0'
-              provider: layout_builder
               context_mapping:
-                entity: '@user.current_user_context:current_user'
-                view_mode: view_mode
+                entity: layout_builder.entity
               formatter:
                 type: text_default
                 label: above
@@ -254,41 +230,68 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          61fe98b8-1920-43c7-b5b5-8003bf03d088:
-            uuid: 61fe98b8-1920-43c7-b5b5-8003bf03d088
+          d9114d59-0f58-4ba6-b873-71023eaaefd5:
+            uuid: d9114d59-0f58-4ba6-b873-71023eaaefd5
             region: blb_region_col_1
             configuration:
               id: 'field_block:user:user:field_micro_interview'
-              label: Micro-interview
-              label_display: visible
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: above
+                settings:
+                  view_mode: full
+                  link: ''
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          d4940fd6-6174-4f6e-8640-e99b691d080c:
+            uuid: d4940fd6-6174-4f6e-8640-e99b691d080c
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:user:user:field_publications'
+              label: Publications
+              label_display: '0'
               provider: layout_builder
               context_mapping:
-                entity: '@user.current_user_context:current_user'
+                entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
                 type: entity_reference_revisions_entity_view
                 label: above
                 settings:
-                  view_mode: default
+                  view_mode: full
                 third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          96b3c8f1-7f79-44e9-8126-232ca8896a89:
+            uuid: 96b3c8f1-7f79-44e9-8126-232ca8896a89
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:content_by_author_poems_on_their_page-block_1'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
             weight: 1
             additional: {  }
         third_party_settings: {  }
-  layout_builder_restrictions:
-    allowed_block_categories: {  }
-    entity_view_mode_restriction:
-      allowed_layouts: {  }
-      denylisted_blocks: {  }
-      allowlisted_blocks: {  }
-      restricted_categories: {  }
-    entity_view_mode_restriction_by_region:
-      allowed_layouts: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components: {  }
+        third_party_settings: {  }
 _core:
   default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
-id: user.user.default
+id: user.user.full
 targetEntityType: user
 bundle: user
-mode: default
+mode: full
 content:
   field_address:
     type: address_default
