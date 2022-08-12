@@ -82,16 +82,16 @@ body.path-user .field--label-inline .field__label {
 
 body.path-user .field--label-inline .field__item {
   padding: 0.25rem 1rem;
-  border-radius: 1rem;
-  background: #e9ecef;
+  border-radius: none;
+  background: #fff;
   min-width: 250px;
   margin: 0.25rem 0;
 }
 
 body.path-user .field--label-above .field__item {
   padding: 0.25rem 1rem;
-  border-radius: 1rem;
-  background: #e9ecef;
+  border-radius: none;
+  background: #fff;
   width: 100%;
   margin: 0.25rem 0;
 }
