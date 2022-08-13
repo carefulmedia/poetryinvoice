@@ -14,12 +14,10 @@ options:
   options__active_tab: edit-options-responsives
   settings:
     adaptiveHeight: true
-    centerMode: true
-    centerPadding: 30px
-    dots: true
     focusOnSelect: true
     initialSlide: 1
     lazyLoad: ondemand
+    randomize: true
     rows: 0
     slidesPerRow: 0
     slidesToShow: 3
@@ -41,8 +39,6 @@ options:
         unslick: false
         settings:
           adaptiveHeight: true
-          centerMode: true
-          centerPadding: 30px
           focusOnSelect: true
           initialSlide: 1
           slidesPerRow: 0

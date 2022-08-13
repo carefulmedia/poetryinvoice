@@ -1,0 +1,18 @@
+uuid: d10b1a64-a575-427a-a5b8-2f3d48fcfdab
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.podcast
+id: node.podcast.unpublish_on
+field_name: unpublish_on
+entity_type: node
+bundle: podcast
+label: 'Unpublish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

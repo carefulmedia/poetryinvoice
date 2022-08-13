@@ -85,6 +85,7 @@ permissions:
   - 'view field_q3'
   - 'view field_q4'
   - 'view field_q5'
+  - 'view field_quizz'
   - 'view field_school'
   - 'view field_school_image'
   - 'view field_start_here_image'

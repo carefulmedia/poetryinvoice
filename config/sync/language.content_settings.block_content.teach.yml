@@ -1,0 +1,16 @@
+uuid: 32eb9b6e-3705-4a0b-aa91-d5c7a44e7594
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.teach
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: block_content.teach
+target_entity_type_id: block_content
+target_bundle: teach
+default_langcode: site_default
+language_alterable: false

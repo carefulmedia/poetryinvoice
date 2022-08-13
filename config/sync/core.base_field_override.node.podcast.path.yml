@@ -1,0 +1,20 @@
+uuid: 2edd0804-133b-493c-8313-ef213e61cf78
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.podcast
+  module:
+    - path
+id: node.podcast.path
+field_name: path
+entity_type: node
+bundle: podcast
+label: 'URL alias'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: path

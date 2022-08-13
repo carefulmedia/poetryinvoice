@@ -124,6 +124,7 @@ third_party_settings:
         - bs_2col_bricked
         - barrio_cardbasic
         - barrio_media
+        - 'bootstrap_layout_builder:blb_col_1'
         - 'bootstrap_layout_builder:blb_col_2'
         - 'bootstrap_layout_builder:blb_col_3'
       denylisted_blocks: {  }
@@ -138,6 +139,7 @@ third_party_settings:
         - bs_2col_bricked
         - barrio_cardbasic
         - barrio_media
+        - 'bootstrap_layout_builder:blb_col_1'
         - 'bootstrap_layout_builder:blb_col_2'
         - 'bootstrap_layout_builder:blb_col_3'
 _core:

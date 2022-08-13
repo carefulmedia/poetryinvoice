@@ -11,10 +11,16 @@ background: var(--plum);
 color: white;
 }
 
-.mixtapes-discover {
+.index-subject-row {
     margin-bottom: 8rem;
+    position: relative;
+
 }
-.mixtapes-discover .more-link {
+.view {
+    position: relative
+}
+
+.view .more-link {
     position: absolute;
     top: 0;
     right: 0;
@@ -23,7 +29,7 @@ color: white;
     padding: .5rem;
     color: #fff;
 }
-.mixtapes-discover .more-link a {
+.view .more-link a {
     color: white;
     text-decoration: none;
 }
@@ -94,3 +100,17 @@ overflow:hidden;
 padding:0;
 margin:0;
 }
+.view-teach-index-block table {
+border-collapse:separate; 
+border-spacing:0 5em;
+}
+.view-teach-index-block .views-field-body {
+    width:67%
+}
+.view-teach-index-block tr {
+    background: #fff;
+    margin-bottom: 20px
+}
+
+
+

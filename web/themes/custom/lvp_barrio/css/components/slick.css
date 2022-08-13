@@ -132,9 +132,7 @@
   }
 }
 .slick__slide {
-  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
-  border-radius: 6px;
-  background: #fff;
+
 
 }
  .slick-initialized .slick__slide {

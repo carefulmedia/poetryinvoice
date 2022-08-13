@@ -1,0 +1,18 @@
+uuid: 1108fd51-d431-4e3d-9491-452e54fe08cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.podcast
+id: node.podcast.publish_on
+field_name: publish_on
+entity_type: node
+bundle: podcast
+label: 'Publish on'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: timestamp

@@ -1,0 +1,18 @@
+uuid: 3ee2df7c-5569-44f7-9724-7a7a3d2de31a
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.podcast
+id: node.podcast.changed
+field_name: changed
+entity_type: node
+bundle: podcast
+label: Changed
+description: 'The time that the node was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

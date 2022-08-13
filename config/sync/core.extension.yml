@@ -90,6 +90,7 @@ module:
   mysql: 0
   node: 0
   options: 0
+  owlcarousel: 0
   page_cache: 0
   page_specific_class: 0
   paragraphs_type_permissions: 0
@@ -148,6 +149,8 @@ module:
   views_bulk_operations_example: 0
   views_field_view: 0
   views_infinite_scroll: 0
+  views_slideshow: 0
+  views_slideshow_cycle: 0
   views_ui: 0
   votingapi: 0
   forum: 1
