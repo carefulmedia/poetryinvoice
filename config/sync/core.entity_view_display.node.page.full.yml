@@ -8,8 +8,11 @@ dependencies:
     - field.field.node.page.comment_node_page
     - field.field.node.page.field_banner_subtitle
     - field.field.node.page.field_banner_title
+    - field.field.node.page.field_body_lower
     - field.field.node.page.field_files
+    - field.field.node.page.field_hero_hashtag
     - field.field.node.page.field_images_insert
+    - field.field.node.page.field_right_sidebar_lower
     - field.field.node.page.field_tags
     - field.field.node.page.layout_builder__layout
     - node.type.page
@@ -190,5 +193,8 @@ hidden:
   entity_print_view_word_docx: true
   field_banner_subtitle: true
   field_banner_title: true
+  field_body_lower: true
+  field_hero_hashtag: true
+  field_right_sidebar_lower: true
   field_tags: true
   layout_builder__layout: true

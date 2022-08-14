@@ -1,0 +1,27 @@
+display:
+  block_1:
+    display_options:
+      header:
+        area:
+          content:
+            value: "<h1>Mixtapes</h1>\r\n\r\n<h2 class=\"plum-text\">Explore our poetic playlists!</h2>\r\n"
+            format: full_html
+      fields:
+        view_node:
+          text: 'LIRE PLUS'
+  block_2:
+    display_options:
+      header:
+        area:
+          content:
+            value: "<h1>Quizzes</h1>\r\n\r\n<h2>Put your poetic brain to the test!</h2>\r\n"
+            format: filtered_html
+  block_4:
+    display_options:
+      link_url: '/ecrire/exercices-de-creation?field_prompt_or_exercise_value=0'
+  block_5:
+    display_options:
+      link_url: '/ecrire/exercices-de-creation?field_prompt_or_exercise_value=1'
+  default:
+    display_options:
+      use_more_text: 'VOIR TOUT'

@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_images_insert
-    - image.style.focal_point_2000x800
+    - image.style.focal_point_scale_and_crop_1400_x_350
   module:
     - image
     - node
@@ -77,7 +77,7 @@ display:
           type: image
           settings:
             image_link: ''
-            image_style: focal_point_2000x800
+            image_style: focal_point_scale_and_crop_1400_x_350
             image_loading:
               attribute: lazy
           group_column: ''

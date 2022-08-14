@@ -1,0 +1,21 @@
+uuid: 75dff8e5-c38d-4480-817b-2d3c6fadb64a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_right_sidebar_lower
+    - node.type.page
+  module:
+    - text
+id: node.page.field_right_sidebar_lower
+field_name: field_right_sidebar_lower
+entity_type: node
+bundle: page
+label: 'Right sidebar lower'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

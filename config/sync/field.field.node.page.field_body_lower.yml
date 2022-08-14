@@ -1,0 +1,21 @@
+uuid: 6b0db975-6dad-4ecf-adae-5c02ca6d3117
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_body_lower
+    - node.type.page
+  module:
+    - text
+id: node.page.field_body_lower
+field_name: field_body_lower
+entity_type: node
+bundle: page
+label: 'Body lower'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long
