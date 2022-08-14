@@ -37,6 +37,7 @@ dependencies:
     - image
     - layout_discovery
     - path
+    - scheduler
     - text
 third_party_settings:
   field_layout:
@@ -120,7 +121,24 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        493fd44d-2caa-4a8f-813e-d8e31380b537:
+          entity_type: node
+          bundle: journal_poem
+          dependee: field_legal_name_boolean
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: 1
+            effect: show
+            effect_options: {  }
+            selector: ''
   field_legal_name_boolean:
     type: boolean_checkbox
     weight: 4
@@ -152,7 +170,29 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        10ce0535-b3bb-4fd9-a492-f503c6731ccd:
+          entity_type: node
+          bundle: journal_poem
+          dependee: field_poem_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: 'Response poem'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_poem_reason:
     type: string_textarea
     weight: 17
@@ -176,7 +216,27 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        ae7c9c34-a58f-4032-9b65-12b83d1a8c8f:
+          entity_type: node
+          bundle: journal_poem
+          dependee: field_poem_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form: {  }
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_pronouns:
     type: options_select
     weight: 6
@@ -232,7 +292,29 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        4e3e62c5-86d0-4412-b739-b4f7cface873:
+          entity_type: node
+          bundle: journal_poem
+          dependee: field_poem_type
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: 'Writing prompt poem'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   langcode:
     type: language_select
     weight: 1
@@ -268,6 +350,12 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -305,6 +393,17 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   comment_node_journal_poem: true

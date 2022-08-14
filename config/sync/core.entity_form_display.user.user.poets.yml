@@ -183,13 +183,30 @@ content:
     third_party_settings: {  }
   field_poem_languages:
     type: options_select
-    weight: 18
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }
   field_poet_laureate:
     type: inline_entity_form_complex
     weight: 17
+    region: content
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  field_publications:
+    type: inline_entity_form_complex
+    weight: 18
     region: content
     settings:
       form_mode: default
@@ -278,7 +295,6 @@ hidden:
   field_poet_notes: true
   field_poetry_is_: true
   field_pst_qst_: true
-  field_publications: true
   field_ready_for_proofing: true
   field_school: true
   field_sign_up_date3: true

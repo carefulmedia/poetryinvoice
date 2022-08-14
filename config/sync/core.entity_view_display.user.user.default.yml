@@ -185,7 +185,7 @@ third_party_settings:
             additional: {  }
           53c201d2-463b-4d13-b046-7bb65e2a14d5:
             uuid: 53c201d2-463b-4d13-b046-7bb65e2a14d5
-            region: blb_region_col_2
+            region: blb_region_col_1
             configuration:
               id: 'field_block:user:user:field_publications'
               label: Publications
@@ -200,7 +200,7 @@ third_party_settings:
                 settings:
                   view_mode: full
                 third_party_settings: {  }
-            weight: 1
+            weight: 3
             additional: {  }
         third_party_settings: {  }
       -

@@ -112,25 +112,6 @@ third_party_settings:
               - col-12
           remove_gutters: 0
         components:
-          dd8e367d-0a24-4694-897a-84f1c966bb1e:
-            uuid: dd8e367d-0a24-4694-897a-84f1c966bb1e
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:user:user:name'
-              label: Name
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: user_name
-                label: hidden
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
           0bed62b4-b876-437c-aab2-b55e72a1e037:
             uuid: 0bed62b4-b876-437c-aab2-b55e72a1e037
             region: blb_region_col_2
@@ -167,7 +148,7 @@ third_party_settings:
             additional: {  }
           29ff44ec-001d-4b3a-9ecf-7cf7a6db6f2e:
             uuid: 29ff44ec-001d-4b3a-9ecf-7cf7a6db6f2e
-            region: blb_region_col_1
+            region: blb_region_col_3
             configuration:
               id: 'field_block:user:user:field_photo_credit'
               label_display: '0'
@@ -179,11 +160,59 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 1
+            weight: 0
+            additional: {  }
+          e992b69c-3e80-412f-8a1d-8349bce75449:
+            uuid: e992b69c-3e80-412f-8a1d-8349bce75449
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:piv_teacher_first_name'
+              label: 'First name'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_field_formatter
+                label: hidden
+                settings:
+                  link_to_entity: 0
+                  wrap_tag: h1
+                  wrap_class: ''
+                  wrap_attributes: ''
+                  override_link_label: ''
+                  token: ''
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          8098eff6-44e3-456c-b97e-317073a20312:
+            uuid: 8098eff6-44e3-456c-b97e-317073a20312
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:piv_teacher_last_name'
+              label: 'Last name'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_field_formatter
+                label: hidden
+                settings:
+                  link_to_entity: 0
+                  wrap_tag: h1
+                  wrap_class: ''
+                  wrap_attributes: ''
+                  override_link_label: ''
+                  token: ''
+                third_party_settings: {  }
+            weight: 3
             additional: {  }
         third_party_settings: {  }
       -
-        layout_id: 'bootstrap_layout_builder:blb_col_3'
+        layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
           context_mapping: {  }
@@ -195,21 +224,77 @@ third_party_settings:
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
-            blb_region_col_3: ''
           breakpoints:
-            desktop: blb_col_6_3_3
-            tablet: blb_col_6_3_3
+            desktop: blb_col_9_3
+            tablet: blb_col_9_3
             mobile: blb_col_12
           layout_regions_classes:
             blb_region_col_1:
-              - col-lg-6
-              - col-md-6
+              - col-lg-9
+              - col-md-9
               - col-12
             blb_region_col_2:
               - col-lg-3
               - col-md-3
               - col-12
-            blb_region_col_3:
+          remove_gutters: 0
+        components:
+          96b3c8f1-7f79-44e9-8126-232ca8896a89:
+            uuid: 96b3c8f1-7f79-44e9-8126-232ca8896a89
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:content_by_author_poems_on_their_page-block_1'
+              label: Poems
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: Poems
+              items_per_page: none
+            weight: 0
+            additional: {  }
+          d4940fd6-6174-4f6e-8640-e99b691d080c:
+            uuid: d4940fd6-6174-4f6e-8640-e99b691d080c
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:user:user:field_publications'
+              label: Publications
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: above
+                settings:
+                  view_mode: full
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_2'
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: ''
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+          breakpoints:
+            desktop: blb_col_9_3
+            tablet: blb_col_9_3
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-9
+              - col-md-9
+              - col-12
+            blb_region_col_2:
               - col-lg-3
               - col-md-3
               - col-12
@@ -250,38 +335,6 @@ third_party_settings:
                 settings:
                   view_mode: full
                 third_party_settings: {  }
-            weight: 1
-            additional: {  }
-          d4940fd6-6174-4f6e-8640-e99b691d080c:
-            uuid: d4940fd6-6174-4f6e-8640-e99b691d080c
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:user:user:field_publications'
-              label: Publications
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_revisions_entity_view
-                label: above
-                settings:
-                  view_mode: full
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          96b3c8f1-7f79-44e9-8126-232ca8896a89:
-            uuid: 96b3c8f1-7f79-44e9-8126-232ca8896a89
-            region: blb_region_col_2
-            configuration:
-              id: 'views_block:content_by_author_poems_on_their_page-block_1'
-              label: Poems
-              label_display: visible
-              provider: views
-              context_mapping: {  }
-              views_label: Poems
-              items_per_page: none
             weight: 1
             additional: {  }
         third_party_settings: {  }
