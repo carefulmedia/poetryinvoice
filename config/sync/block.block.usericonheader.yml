@@ -11,7 +11,7 @@ dependencies:
 id: usericonheader
 theme: lvp_barrio
 region: header
-weight: 0
+weight: -14
 provider: null
 plugin: 'block_content:34828ca2-2c6b-470a-8814-2614f5b8e1a7'
 settings:

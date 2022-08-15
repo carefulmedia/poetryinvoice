@@ -9,7 +9,7 @@ dependencies:
 id: headerimageforlessonplans
 theme: lvp_barrio
 region: header
-weight: -11
+weight: -12
 provider: null
 plugin: 'block_content:48b16ac8-3e0e-4c45-9337-519c7618ce68'
 settings:

@@ -183,7 +183,7 @@ color:fff;
 }
 .offcanvas-header .btn-close {
     postion: absolute;
-    right: 2em;
+
 }
 #CollapsingNavbar {
     width: 100vw;
@@ -252,7 +252,7 @@ color: var(--plum-dark) !important;
 .offcanvas-body .btn-close {
 float: right;
 display:inline;
-margin-left: 2rem;
+
 
 }
 .offcanvas-body .user {
@@ -260,13 +260,13 @@ float: right;
 display:inline;
 }
 .offcanvas-body .user a {
-margin-right: 2rem;
+
 
 }
 .offcanvas-body .language-switcher-language-url {
 float: right;
 display:inline;
-margin-left: 2rem;
+
 
 
 }
