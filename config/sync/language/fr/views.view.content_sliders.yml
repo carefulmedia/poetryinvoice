@@ -4,7 +4,7 @@ display:
       header:
         area:
           content:
-            value: "<h1>Mixtapes</h1>\r\n\r\n<h2 class=\"plum-text\">Explore our poetic playlists!</h2>\r\n"
+            value: "<h1>Compilations</h1>\r\n\r\n<h2 class=\"plum-text\">Découvrez nos mini-anthologies poétiques!</h2>\r\n"
             format: full_html
       fields:
         view_node:
@@ -14,14 +14,31 @@ display:
       header:
         area:
           content:
-            value: "<h1>Quizzes</h1>\r\n\r\n<h2>Put your poetic brain to the test!</h2>\r\n"
+            value: "<h1>Questionnaires</h1>\r\n\r\n<h2>Faites travailler votre esprit poétique!</h2>\r\n"
             format: filtered_html
   block_4:
     display_options:
       link_url: '/ecrire/exercices-de-creation?field_prompt_or_exercise_value=0'
+      header:
+        area:
+          content:
+            value: "<h1>Exercices de création</h1>\r\n\r\n<h2>Tentez le coup!</h2>\r\n"
+            format: full_html
   block_5:
     display_options:
       link_url: '/ecrire/exercices-de-creation?field_prompt_or_exercise_value=1'
+      header:
+        area:
+          content:
+            value: "<h1>Exercices d'écriture</h1>\r\n\r\n<h2>Approfondir</h2>\r\n"
+            format: full_html
   default:
     display_options:
       use_more_text: 'VOIR TOUT'
+  block_6:
+    display_options:
+      header:
+        area:
+          content:
+            value: "<h1>Atelier d'écriture</h1>\r\n\r\n<h2>Un mois de poésie</h2>\r\n"
+            format: full_html

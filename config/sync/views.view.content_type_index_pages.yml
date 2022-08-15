@@ -14,6 +14,7 @@ dependencies:
     - field.storage.user.user_picture
     - image.style.1200x900
     - image.style.150x150
+    - image.style.320x200
     - image.style.460x375
     - image.style.focal_point_700_x_
     - image.style.home_front_700x400
@@ -3914,7 +3915,7 @@ display:
           type: media_thumbnail
           settings:
             image_link: ''
-            image_style: home_front_700x400
+            image_style: 320x200
             image_loading:
               attribute: lazy
           group_column: target_id
