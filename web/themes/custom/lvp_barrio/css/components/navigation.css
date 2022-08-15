@@ -248,22 +248,22 @@ color: var(--aqua) !important;
  .nav-link.nav-link-https--poetryinvoiceca-about {
 color: var(--plum-dark) !important;
 }
- .nav-link.nav-link-https--read {
+ .nav-link.nav-link--read {
 color: var(--plum) !important;
 }
- .nav-link.nav-link-https--recite {
+ .nav-link.nav-link--recite {
 color: var(--red) !important;
 }
- .nav-link.nav-link-https--write {
+ .nav-link.nav-link--write {
 color: var(--mint-dark) !important;
 }
- .nav-link.nav-link-https--teach {
+ .nav-link.nav-link--teach {
 color: var(--gold) !important;
 }
- .nav-link.nav-link-https--binge {
+ .nav-link.nav-link--binge {
 color: var(--aqua) !important;
 }
- .nav-link.nav-link-https--about {
+ .nav-link.nav-link--about {
 color: var(--plum-dark) !important;
 }
  .nav-link.nav-link-https--lesvoixdelapoesieca-lire {
@@ -284,22 +284,22 @@ color: var(--aqua) !important;
  .nav-link.nav-link-https--lesvoixdelapoesieca-propos {
 color: var(--plum-dark) !important;
 }
- .nav-link.nav-link-https--lire {
+ .nav-link.nav-link--lire {
 color: var(--plum) !important;
 }
- .nav-link.nav-link-https--reciter {
+ .nav-link.nav-link--reciter {
 color: var(--red) !important;
 }
- .nav-link.nav-link-https--ecrire {
+ .nav-link.nav-link--ecrire {
 color: var(--mint-dark) !important;
 }
- .nav-link.nav-link-https--enseigner {
+ .nav-link.nav-link--enseigner {
 color: var(--gold) !important;
 }
- .nav-link.nav-link-https--ecouter {
+ .nav-link.nav-link--ecouter {
 color: var(--aqua) !important;
 }
- .nav-link.nav-link-https--propos {
+ .nav-link.nav-link--propos {
 color: var(--plum-dark) !important;
 }
 .offcanvas-body .btn-close {
