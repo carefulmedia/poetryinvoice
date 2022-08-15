@@ -140,7 +140,7 @@ z-index: 2;
 
 }
 .language-switcher-language-url .nav .is-active {
-    display: none;
+    display:none;
 }
 .nav-link.fr a {
     background: url(../../assets/fr.svg) 0 0 no-repeat;

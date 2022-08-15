@@ -211,7 +211,7 @@ margin-right: 1rem;
 }
 }
 
- .nav-link.nav-link-https--piv9lndosite-read {
+ .nav-link.nav-link--read {
 color: var(--plum) !important;
 }
  .nav-link.nav-link-https--piv9lndosite-recite {
@@ -248,7 +248,60 @@ color: var(--aqua) !important;
  .nav-link.nav-link-https--poetryinvoiceca-about {
 color: var(--plum-dark) !important;
 }
-
+ .nav-link.nav-link-https--read {
+color: var(--plum) !important;
+}
+ .nav-link.nav-link-https--recite {
+color: var(--red) !important;
+}
+ .nav-link.nav-link-https--write {
+color: var(--mint-dark) !important;
+}
+ .nav-link.nav-link-https--teach {
+color: var(--gold) !important;
+}
+ .nav-link.nav-link-https--binge {
+color: var(--aqua) !important;
+}
+ .nav-link.nav-link-https--about {
+color: var(--plum-dark) !important;
+}
+ .nav-link.nav-link-https--lesvoixdelapoesieca-lire {
+color: var(--plum) !important;
+}
+ .nav-link.nav-link-https--lesvoixdelapoesieca-reciter {
+color: var(--red) !important;
+}
+ .nav-link.nav-link-https--lesvoixdelapoesieca-ecrire {
+color: var(--mint-dark) !important;
+}
+ .nav-link.nav-link-https--lesvoixdelapoesieca-enseigner {
+color: var(--gold) !important;
+}
+ .nav-link.nav-link-https--lesvoixdelapoesieca-ecouter {
+color: var(--aqua) !important;
+}
+ .nav-link.nav-link-https--lesvoixdelapoesieca-propos {
+color: var(--plum-dark) !important;
+}
+ .nav-link.nav-link-https--lire {
+color: var(--plum) !important;
+}
+ .nav-link.nav-link-https--reciter {
+color: var(--red) !important;
+}
+ .nav-link.nav-link-https--ecrire {
+color: var(--mint-dark) !important;
+}
+ .nav-link.nav-link-https--enseigner {
+color: var(--gold) !important;
+}
+ .nav-link.nav-link-https--ecouter {
+color: var(--aqua) !important;
+}
+ .nav-link.nav-link-https--propos {
+color: var(--plum-dark) !important;
+}
 .offcanvas-body .btn-close {
 float: right;
 display:inline;
