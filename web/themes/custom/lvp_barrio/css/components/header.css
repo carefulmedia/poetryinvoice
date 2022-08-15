@@ -139,7 +139,7 @@ z-index: 2;
   transition: 0.3s all linear;
 
 }
-.nav .is-active {
+.language-switcher-language-url .nav .is-active {
     display: none;
 }
 .nav-link.fr a {
