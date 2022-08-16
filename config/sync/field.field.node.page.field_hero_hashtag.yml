@@ -1,0 +1,19 @@
+uuid: 8fb60c04-7e61-4c92-9b0b-ea377361b249
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hero_hashtag
+    - node.type.page
+id: node.page.field_hero_hashtag
+field_name: field_hero_hashtag
+entity_type: node
+bundle: page
+label: 'Hero hashtag'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

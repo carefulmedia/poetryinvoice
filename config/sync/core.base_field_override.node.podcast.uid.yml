@@ -1,0 +1,20 @@
+uuid: 84c7af38-a05c-4732-a093-a56091ece7ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.podcast
+id: node.podcast.uid
+field_name: uid
+entity_type: node
+bundle: podcast
+label: 'Authored by'
+description: 'The username of the content author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: 'Drupal\node\Entity\Node::getDefaultEntityOwner'
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

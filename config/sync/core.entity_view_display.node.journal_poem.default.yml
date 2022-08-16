@@ -31,6 +31,8 @@ dependencies:
     - field.field.node.journal_poem.piv_teacher_first_name
     - field.field.node.journal_poem.piv_teacher_last_name
     - node.type.journal_poem
+    - views.view.header_images_based_on_node_content
+    - views.view.journal_poem_sidebar
   module:
     - bootstrap_layouts
     - comment
@@ -43,6 +45,7 @@ dependencies:
     - options
     - text
     - user
+    - views
 third_party_settings:
   layout_builder:
     enabled: true
@@ -79,6 +82,19 @@ third_party_settings:
               context_mapping:
                 entity: layout_builder.entity
             weight: 0
+            additional: {  }
+          2691affc-6e2b-4804-b560-6784646dc8eb:
+            uuid: 2691affc-6e2b-4804-b560-6784646dc8eb
+            region: main
+            configuration:
+              id: 'views_block:header_images_based_on_node_content-block_1'
+              label: ''
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 1
             additional: {  }
         third_party_settings: {  }
       -
@@ -263,7 +279,7 @@ third_party_settings:
                 label: above
                 settings: {  }
                 third_party_settings: {  }
-            weight: 4
+            weight: 5
             additional: {  }
           cf6fc150-0cf2-493d-885b-868a5027bf4e:
             uuid: cf6fc150-0cf2-493d-885b-868a5027bf4e
@@ -280,7 +296,7 @@ third_party_settings:
                   image_link: ''
                   image_style: ''
                 third_party_settings: {  }
-            weight: 1
+            weight: 2
             additional: {  }
           24562855-9ffb-46c0-9d99-4f8af647b156:
             uuid: 24562855-9ffb-46c0-9d99-4f8af647b156
@@ -295,7 +311,7 @@ third_party_settings:
                 label: above
                 settings: {  }
                 third_party_settings: {  }
-            weight: 2
+            weight: 3
             additional: {  }
           04318d26-0a8b-49f1-95c7-b24fbe53ec2a:
             uuid: 04318d26-0a8b-49f1-95c7-b24fbe53ec2a
@@ -311,7 +327,7 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 3
+            weight: 4
             additional: {  }
           aa122e1b-96d6-452c-83b1-6021b7f296d5:
             uuid: aa122e1b-96d6-452c-83b1-6021b7f296d5
@@ -351,6 +367,19 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 1
             additional: {  }
+          6ff8bfbf-1071-46f7-984b-04539f99dbd6:
+            uuid: 6ff8bfbf-1071-46f7-984b-04539f99dbd6
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:journal_poem_sidebar-block_1'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 1
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: layout_onecol
@@ -362,6 +391,8 @@ third_party_settings:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
       allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
       restricted_categories: {  }
       blacklisted_blocks: {  }
       whitelisted_blocks: {  }

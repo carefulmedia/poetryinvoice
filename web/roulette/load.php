@@ -79,7 +79,7 @@ $c = $_POST['c'];
         <div class="row">
           <?php
 
-$tags = file_get_contents('https://www.poetryinvoice.com/roulette/cached/cached_tags.php?lang='.$lang.'&c='.$c);
+$tags = file_get_contents('https://poetryinvoice.ca/roulette/cached/cached_tags.php?lang='.$lang.'&c='.$c);
 echo $tags;
 
 ?>

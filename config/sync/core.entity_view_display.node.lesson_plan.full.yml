@@ -1,0 +1,475 @@
+uuid: 6ec8ae64-da06-4585-b820-0ca6675b1278
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.lesson_plan.body
+    - field.field.node.lesson_plan.comment_node_lesson_plan
+    - field.field.node.lesson_plan.field_activity_description_steps
+    - field.field.node.lesson_plan.field_additional_poems
+    - field.field.node.lesson_plan.field_attachments
+    - field.field.node.lesson_plan.field_commissioned_
+    - field.field.node.lesson_plan.field_completed
+    - field.field.node.lesson_plan.field_copyright
+    - field.field.node.lesson_plan.field_file_under_
+    - field.field.node.lesson_plan.field_grades
+    - field.field.node.lesson_plan.field_learning_objectives
+    - field.field.node.lesson_plan.field_lesson_objectives
+    - field.field.node.lesson_plan.field_materials_resources
+    - field.field.node.lesson_plan.field_paid_
+    - field.field.node.lesson_plan.field_periods
+    - field.field.node.lesson_plan.field_poets_plural_user
+    - field.field.node.lesson_plan.field_rwt
+    - field.field.node.lesson_plan.field_suggest_a_new_folder_to_fi
+    - field.field.node.lesson_plan.field_variations_for_older_stude
+    - field.field.node.lesson_plan.field_variations_for_younger_stu
+    - field.field.node.lesson_plan.field_video_poem
+    - node.type.lesson_plan
+  module:
+    - file
+    - layout_builder
+    - options
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_2'
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: ''
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: layout-main
+            blb_region_col_2: 'dark gold-dark-bg sidebar'
+          breakpoints:
+            desktop: blb_col_9_3
+            tablet: blb_col_9_3
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-9
+              - col-md-9
+              - col-12
+            blb_region_col_2:
+              - col-lg-3
+              - col-md-3
+              - col-12
+          remove_gutters: 0
+        components:
+          20826fab-4f53-4826-a167-e22d62c587e6:
+            uuid: 20826fab-4f53-4826-a167-e22d62c587e6
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:body'
+              label: 'Lesson Introduction'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          08c33615-d843-440d-8273-3e7b5ec8f735:
+            uuid: 08c33615-d843-440d-8273-3e7b5ec8f735
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_lesson_objectives'
+              label: 'Learning Objectives'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          7f666de6-a8d2-4305-b29d-79a57a8696dc:
+            uuid: 7f666de6-a8d2-4305-b29d-79a57a8696dc
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_materials_resources'
+              label: 'Materials and Resources'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          5be07e39-e641-428c-b313-cf941f03bf8f:
+            uuid: 5be07e39-e641-428c-b313-cf941f03bf8f
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_activity_description_steps'
+              label: 'Activity Description'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          f2e204c3-b2a7-4325-bc33-625a506f6c66:
+            uuid: f2e204c3-b2a7-4325-bc33-625a506f6c66
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_variations_for_younger_stu'
+              label: 'Variations for Younger Students'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          1b79daff-9753-4e12-b9c0-ea8b65faf2c1:
+            uuid: 1b79daff-9753-4e12-b9c0-ea8b65faf2c1
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_variations_for_older_stude'
+              label: 'Variations for Older Students'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
+          33f4b6f3-38bf-4e45-a1cf-89af0fa1f854:
+            uuid: 33f4b6f3-38bf-4e45-a1cf-89af0fa1f854
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_video_poem'
+              label: 'Poems Used in this Lesson Plan'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          0e37026c-a699-4628-b182-66f1e48492bd:
+            uuid: 0e37026c-a699-4628-b182-66f1e48492bd
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_additional_poems'
+              label: 'Additional Poems'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
+          52ca168a-434a-4555-94ff-51e3c2cd2490:
+            uuid: 52ca168a-434a-4555-94ff-51e3c2cd2490
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_poets_plural_user'
+              label: 'Poets in this Lesson Plan'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 7
+            additional: {  }
+          4aeced8e-1769-46f5-b144-65c851427cd9:
+            uuid: 4aeced8e-1769-46f5-b144-65c851427cd9
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_periods'
+              label: Periods
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: plain_string_formatter
+                label: hidden
+                settings:
+                  link_to_entity: false
+                  wrap_tag: h2
+                  wrap_class: ''
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          e4c6a419-baba-4692-bb6f-a4e90a628e60:
+            uuid: e4c6a419-baba-4692-bb6f-a4e90a628e60
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_grades'
+              label: Grades
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: list_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          4b2b3623-81e4-46e5-b195-b5bc10295cf5:
+            uuid: 4b2b3623-81e4-46e5-b195-b5bc10295cf5
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_file_under_'
+              label: Subjects
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: hidden
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          640aa021-e091-406a-8999-0cd8e220a44a:
+            uuid: 640aa021-e091-406a-8999-0cd8e220a44a
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:lesson_plan:field_learning_objectives'
+              label: Skills
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: list_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          b334fa69-79a3-4c7b-9388-211461c8c29e:
+            uuid: b334fa69-79a3-4c7b-9388-211461c8c29e
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_attachments'
+              label: Attachments
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: file_default
+                label: hidden
+                settings:
+                  use_description_as_link_text: true
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          0106978e-d734-4af5-a6e7-84536f460563:
+            uuid: 0106978e-d734-4af5-a6e7-84536f460563
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_rwt'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 7
+            additional: {  }
+        third_party_settings: {  }
+id: node.lesson_plan.full
+targetEntityType: node
+bundle: lesson_plan
+mode: full
+content:
+  body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_activity_description_steps:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_additional_poems:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 14
+    region: content
+  field_attachments:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_file_under_:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_grades:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_learning_objectives:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_lesson_objectives:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_materials_resources:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_periods:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_poets_plural_user:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_rwt:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_variations_for_older_stude:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_variations_for_younger_stu:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_video_poem:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 13
+    region: content
+hidden:
+  comment_node_lesson_plan: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_commissioned_: true
+  field_completed: true
+  field_copyright: true
+  field_paid_: true
+  field_suggest_a_new_folder_to_fi: true
+  langcode: true
+  links: true

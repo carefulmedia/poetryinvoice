@@ -8,6 +8,7 @@ dependencies:
   module:
     - better_exposed_filters
     - node
+    - options
     - user
 id: random_poem
 label: 'Random poem'
@@ -115,7 +116,7 @@ display:
         options:
           perm: 'access content'
       cache:
-        type: tag
+        type: none
         options: {  }
       empty: {  }
       sorts:
@@ -201,6 +202,75 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_grades_value:
+          id: field_grades_value
+          table: node__field_grades
+          field: field_grades_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value:
+            'Grades 7 & 8 / Sec 1 & 2': 'Grades 7 & 8 / Sec 1 & 2'
+            'Grades 9-12 / Sec 3-5 / CEGEP 1': 'Grades 9-12 / Sec 3-5 / CEGEP 1'
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_grades_value_op
+            label: 'Grade levels'
+            description: ''
+            use_operator: false
+            operator: field_grades_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_grades_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: true
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
       style:
         type: default
       row:
@@ -225,6 +295,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }
@@ -241,6 +312,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }

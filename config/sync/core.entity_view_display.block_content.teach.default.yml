@@ -1,0 +1,39 @@
+uuid: cd720b00-d8c7-494c-83fc-43b662c9b213
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.teach
+    - field.field.block_content.teach.body
+    - field.field.block_content.teach.field_image
+  module:
+    - image
+    - text
+id: block_content.teach.default
+targetEntityType: block_content
+bundle: teach
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true

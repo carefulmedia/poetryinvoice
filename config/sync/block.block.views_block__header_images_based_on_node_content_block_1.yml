@@ -6,13 +6,14 @@ dependencies:
     - views.view.header_images_based_on_node_content
   module:
     - node
+    - system
     - views
   theme:
     - lvp_barrio
 id: views_block__header_images_based_on_node_content_block_1
 theme: lvp_barrio
 region: highlighted
-weight: -7
+weight: -8
 provider: null
 plugin: 'views_block:header_images_based_on_node_content-block_1'
 settings:
@@ -24,16 +25,15 @@ settings:
   views_label: ''
   items_per_page: none
 visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/read\r\n/read/*\r\n/lire\r\n/lire/*"
   'entity_bundle:node':
     id: 'entity_bundle:node'
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
     bundles:
-      article: article
-      journal_poem: journal_poem
-      mixtape: mixtape
       page: page
       poem: poem
-      writing_prompt: writing_prompt
-      writing_workshop: writing_workshop

@@ -1,0 +1,25 @@
+uuid: 54e8df4d-3434-4901-aa40-c89bcccb8bf6
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:34828ca2-2c6b-470a-8814-2614f5b8e1a7'
+  module:
+    - block_content
+  theme:
+    - lvp_barrio
+id: usericonheader
+theme: lvp_barrio
+region: header
+weight: -14
+provider: null
+plugin: 'block_content:34828ca2-2c6b-470a-8814-2614f5b8e1a7'
+settings:
+  id: 'block_content:34828ca2-2c6b-470a-8814-2614f5b8e1a7'
+  label: 'User Icon Header'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,4 +1,4 @@
-uuid: 53aea175-d515-4c28-bac4-4b3d9a964708
+uuid: 5149e5f7-8241-4599-b305-4f305164f603
 langcode: en
 status: true
 dependencies:
@@ -24,7 +24,7 @@ mode: default
 content:
   description:
     type: text_textarea
-    weight: 2
+    weight: 0
     region: content
     settings:
       rows: 5
@@ -32,7 +32,7 @@ content:
     third_party_settings: {  }
   field_roulette_image:
     type: image_image
-    weight: 1
+    weight: 0
     region: content
     settings:
       progress_indicator: throbber
@@ -40,14 +40,14 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 3
+    weight: 2
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   name:
     type: string_textfield
-    weight: 0
+    weight: -5
     region: content
     settings:
       size: 60
@@ -55,19 +55,19 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 5
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 6
+    weight: 100
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   translation:
-    weight: 4
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

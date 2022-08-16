@@ -24,9 +24,136 @@ dependencies:
   module:
     - comment
     - editablefields
+    - layout_builder
+    - layout_discovery
     - media
     - text
     - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          20d2c9d1-a13b-4218-bac5-b424623a5990:
+            uuid: 20d2c9d1-a13b-4218-bac5-b424623a5990
+            region: content
+            configuration:
+              id: 'field_block:node:video:field_video_caption'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          703ad442-ee4f-4102-8828-096f00bebdf7:
+            uuid: 703ad442-ee4f-4102-8828-096f00bebdf7
+            region: content
+            configuration:
+              id: 'field_block:node:video:field_poem_retired'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: editablefields_formatter
+                label: hidden
+                settings:
+                  form_mode: default
+                  bypass_access: false
+                  fallback_access: false
+                  display_mode_access: ''
+                  fallback_edit: false
+                  display_mode_edit: ''
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          23944321-9dec-4079-8df2-0f2295ca6609:
+            uuid: 23944321-9dec-4079-8df2-0f2295ca6609
+            region: content
+            configuration:
+              id: 'field_block:node:video:field_poets_plural_user'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          4a6c6f3f-01c7-4a71-ba11-3e7415732be8:
+            uuid: 4a6c6f3f-01c7-4a71-ba11-3e7415732be8
+            region: content
+            configuration:
+              id: 'field_block:node:video:comment_node_video'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: comment_default
+                label: hidden
+                settings:
+                  view_mode: default
+                  pager_id: 0
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          38147872-069b-4439-9878-7421fd20cdd9:
+            uuid: 38147872-069b-4439-9878-7421fd20cdd9
+            region: content
+            configuration:
+              id: 'extra_field_block:node:video:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 4
+            additional: {  }
+          b5b7b4e3-6089-4e87-8379-869f828eabe4:
+            uuid: b5b7b4e3-6089-4e87-8379-869f828eabe4
+            region: content
+            configuration:
+              id: 'field_block:node:video:field_yt_video'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          8022d232-485d-449e-943a-300dbedeed0d:
+            uuid: 8022d232-485d-449e-943a-300dbedeed0d
+            region: content
+            configuration:
+              id: 'field_block:node:video:field_video'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: media_thumbnail
+                label: above
+                settings:
+                  image_link: ''
+                  image_style: ''
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
+        third_party_settings: {  }
 id: node.video.default
 targetEntityType: node
 bundle: video
@@ -46,6 +173,11 @@ content:
     label: hidden
     settings:
       form_mode: default
+      bypass_access: false
+      fallback_access: false
+      display_mode_access: ''
+      fallback_edit: false
+      display_mode_edit: ''
     third_party_settings: {  }
     weight: 7
     region: content

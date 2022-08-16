@@ -1,0 +1,47 @@
+uuid: c0944ff4-47ad-4569-b7a2-e5595409455b
+langcode: en
+status: true
+dependencies: {  }
+id: teach_lesson_plans
+name: teach_lesson_plans
+weight: 0
+label: 'TEACH lesson plans'
+group: ''
+skin: ''
+breakpoints: 2
+optimized: true
+options:
+  options__active_tab: edit-options-responsives
+  settings:
+    adaptiveHeight: true
+    focusOnSelect: true
+    initialSlide: 1
+    lazyLoad: ondemand
+    randomize: true
+    rows: 0
+    slidesPerRow: 0
+    slidesToShow: 3
+    swipeToSlide: true
+  responsives:
+    responsive:
+      -
+        breakpoint: 768
+        unslick: false
+        settings:
+          adaptiveHeight: true
+          focusOnSelect: true
+          initialSlide: 1
+          slidesPerRow: 0
+          swipeToSlide: true
+          waitForAnimate: false
+      -
+        breakpoint: null
+        unslick: false
+        settings:
+          adaptiveHeight: true
+          focusOnSelect: true
+          initialSlide: 1
+          respondTo: min
+          slidesPerRow: 0
+          slidesToShow: 6
+          swipeToSlide: true

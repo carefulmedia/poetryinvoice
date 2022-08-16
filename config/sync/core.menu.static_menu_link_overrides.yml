@@ -55,3 +55,9 @@ definitions:
     weight: -89
     expanded: false
     enabled: true
+  contact__site_page:
+    menu_name: footer
+    parent: ''
+    weight: 0
+    expanded: false
+    enabled: true

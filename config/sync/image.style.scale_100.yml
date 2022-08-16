@@ -1,0 +1,15 @@
+uuid: 03e1c237-7eeb-486f-8c66-550730c7203f
+langcode: en
+status: true
+dependencies: {  }
+name: scale_100
+label: 'Scale 200'
+effects:
+  78f78cab-5fed-4c77-a05c-0804251ad69f:
+    uuid: 78f78cab-5fed-4c77-a05c-0804251ad69f
+    id: image_scale
+    weight: 1
+    data:
+      width: null
+      height: 100
+      upscale: false

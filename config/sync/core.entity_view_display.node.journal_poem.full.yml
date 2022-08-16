@@ -1,0 +1,305 @@
+uuid: 32207b1d-ab82-4729-aede-b764d5a48a40
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.journal_poem.comment_node_journal_poem
+    - field.field.node.journal_poem.field_acceptance_level
+    - field.field.node.journal_poem.field_banner_subtitle
+    - field.field.node.journal_poem.field_banner_title
+    - field.field.node.journal_poem.field_email1
+    - field.field.node.journal_poem.field_grade
+    - field.field.node.journal_poem.field_i_consent_to_poetry_in_voi
+    - field.field.node.journal_poem.field_images_insert
+    - field.field.node.journal_poem.field_journal_poem_body
+    - field.field.node.journal_poem.field_legal_name
+    - field.field.node.journal_poem.field_legal_name_boolean
+    - field.field.node.journal_poem.field_phone
+    - field.field.node.journal_poem.field_poem_attachment
+    - field.field.node.journal_poem.field_poem_being_responded_to
+    - field.field.node.journal_poem.field_poem_reason
+    - field.field.node.journal_poem.field_poem_type
+    - field.field.node.journal_poem.field_poet_who_visited_your_scho
+    - field.field.node.journal_poem.field_pronouns
+    - field.field.node.journal_poem.field_response_or_prompt
+    - field.field.node.journal_poem.field_school_journal
+    - field.field.node.journal_poem.field_student_photo
+    - field.field.node.journal_poem.field_submission_info_confirmed
+    - field.field.node.journal_poem.field_teacher
+    - field.field.node.journal_poem.field_writing_prompt
+    - field.field.node.journal_poem.piv_teacher_first_name
+    - field.field.node.journal_poem.piv_teacher_last_name
+    - node.type.journal_poem
+    - views.view.journal_poem_sidebar
+  module:
+    - editablefields
+    - image
+    - layout_builder
+    - layout_builder_restrictions
+    - options
+    - text
+    - user
+    - views
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_1'
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: ''
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+          breakpoints:
+            desktop: ''
+            tablet: ''
+            mobile: ''
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-12
+              - col-md-12
+              - col-12
+          remove_gutters: 0
+        components: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_2'
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: ''
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+          breakpoints:
+            desktop: blb_col_9_3
+            tablet: blb_col_9_3
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-9
+              - col-md-9
+              - col-12
+            blb_region_col_2:
+              - col-lg-3
+              - col-md-3
+              - col-12
+          remove_gutters: 0
+        components:
+          f6748f2c-f411-48d4-990a-1816cb61272e:
+            uuid: f6748f2c-f411-48d4-990a-1816cb61272e
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:journal_poem:field_journal_poem_body'
+              label: Poem
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          10012f08-4c68-41a1-b41c-babe2400453d:
+            uuid: 10012f08-4c68-41a1-b41c-babe2400453d
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:journal_poem_sidebar-block_1'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 8
+            additional: {  }
+          f418bb93-0f82-49e8-89d3-cfa5cd8fe1aa:
+            uuid: f418bb93-0f82-49e8-89d3-cfa5cd8fe1aa
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:journal_poem:field_banner_title'
+              label: 'Banner title'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_field_formatter
+                label: hidden
+                settings:
+                  link_to_entity: 0
+                  wrap_tag: h4
+                  wrap_class: ''
+                  wrap_attributes: ''
+                  override_link_label: ''
+                  token: ''
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          53511a20-b1f3-4564-a951-b4085e3e1ea7:
+            uuid: 53511a20-b1f3-4564-a951-b4085e3e1ea7
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:journal_poem:field_banner_subtitle'
+              label: 'Banner subtitle'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      restricted_categories: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: node.journal_poem.full
+targetEntityType: node
+bundle: journal_poem
+mode: full
+content:
+  field_banner_subtitle:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_banner_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_grade:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_images_insert:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_journal_poem_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_response_or_prompt:
+    type: editablefields_formatter
+    label: hidden
+    settings:
+      form_mode: default
+      bypass_access: false
+      fallback_access: false
+      display_mode_access: ''
+      fallback_edit: false
+      display_mode_edit: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_school_journal:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_student_photo:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_writing_prompt:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  piv_teacher_first_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  piv_teacher_last_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  comment_node_journal_poem: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_acceptance_level: true
+  field_email1: true
+  field_i_consent_to_poetry_in_voi: true
+  field_legal_name: true
+  field_legal_name_boolean: true
+  field_phone: true
+  field_poem_attachment: true
+  field_poem_being_responded_to: true
+  field_poem_reason: true
+  field_poem_type: true
+  field_poet_who_visited_your_scho: true
+  field_pronouns: true
+  field_submission_info_confirmed: true
+  field_teacher: true
+  langcode: true
+  links: true

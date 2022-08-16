@@ -98,7 +98,7 @@
               <div class="{{ navbar_collapse_class }}" id="CollapsingNavbar">
                 {% if navbar_offcanvas %}
                   <div class="offcanvas-body container">
-    {% if language == 'en' %}
+    {% if language.id == 'en' %}
         <a class="me-auto" href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="navbar-brand">
             <img class="header-logo dark" src = "/themes/custom/lvp_barrio/PIV-logo.svg" alt="{{ 'Home'|t }}" class="img-fluid d-inline-block align-top" />
         </a>
@@ -189,12 +189,10 @@
       {% block footer %}
         <div class= "footer-blur">
             <div class="{{ container }}">
-              {% if page.footer_first or page.footer_second or page.footer_third or page.footer_fourth %}
+              {% if page.footer_first or page.footer_second %}
                 <div class="site-footer__top clearfix">
                   {{ page.footer_first }}
                   {{ page.footer_second }}
-                  {{ page.footer_third }}
-                  {{ page.footer_fourth }}
                 </div>
               {% endif %}
               {% if page.footer_fifth %}

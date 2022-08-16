@@ -25,6 +25,9 @@
 }
 
 
+
+
+
 body,
 h1,
 h2,
@@ -71,7 +74,7 @@ text-transform: uppercase;
 font-stretch: 110;
 font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
-h4, .print__wrapper--pdf a  {
+h4, .print__wrapper--pdf a, .site-footer ul li.nav-item a  {
 font-family: 'Roboto Flex';
 font-style: normal;
 font-weight: 500;
@@ -143,63 +146,6 @@ padding: 20px 0px;
 .field--type-entity-reference {
     margin: 0 0;
 }
-.mixtapes-discover {
-    margin-bottom: 8rem;
-}
-.mixtapes-discover .more-link {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: #893B73;
-    border-radius: 6px;
-    padding: .5rem;
-    color: #fff;
-}
-.mixtapes-discover .more-link a {
-    color: white;
-    text-decoration: none;
-}
-.plum-bg {
-background: rgba(72, 17, 57, 1);
-padding: 50px 10px
-}
-
-.plum-bg h1, .plum-bg h2, .plum-bg h3, .plum-bg h4, .plum-bg h5, .plum-bg h6, .plum-bg p  {
-color: #fff;
-}
-
-.plum-bg .container {
-
-    margin: 6rem 0;
-
-}
-
-.plum-bg .container .col-4 {
-border-right: 4px dashed #FFFFFF;
-text-align: center;
-vertical-align: middle;
-}
-
-
-.plum-bg .container .col-4:last-child {
-border-right: none;
-
-}
-.plum-bg .container .col-4 img {
-height: 8em;
-margin-bottom: 3em;
-}
-.modal-fullscreen iframe {
-width:100%;
-height: 100%;
-margin:0;
-padding:0;
-}
-.modal-fullscreen .modal-body {
-overflow:hidden;
-padding:0;
-margin:0;
-}
 .youtube-container--responsive, .field-name-field-google-calendar-iframe-cod .field-item, .field-name-field-yt-video .field-item {
     overflow: hidden;
     position: relative;
@@ -241,7 +187,5 @@ margin:0;
 } 
 .about a:hover, .propos a:hover  {color: var(--black);
 } 
- .slick-initialized .slick__slide {
 
-margin: 0px 30px
-}
+

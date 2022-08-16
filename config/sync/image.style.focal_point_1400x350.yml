@@ -1,0 +1,17 @@
+uuid: 41707ad9-c0d0-4911-9211-01fae1f7f405
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: focal_point_1400x350
+label: 'Focal point 1400x350'
+effects:
+  63948830-c284-4cf2-b222-9c68f28b19a1:
+    uuid: 63948830-c284-4cf2-b222-9c68f28b19a1
+    id: focal_point_crop
+    weight: 1
+    data:
+      width: 1400
+      height: 350
+      crop_type: focal_point

@@ -1,0 +1,22 @@
+diff --git a/core/modules/field_layout/src/FieldLayoutBuilder.php b/core/modules/field_layout/src/FieldLayoutBuilder.php
+index fdbefd5..e54b45d 100644
+--- a/core/modules/field_layout/src/FieldLayoutBuilder.php
++++ b/core/modules/field_layout/src/FieldLayoutBuilder.php
+@@ -72,7 +72,7 @@ public function buildView(array &$build, EntityDisplayWithLayoutInterface $displ
+         // could be set by other code at run-time; these should be ignored.
+         // @todo Ideally the array structure would remain unchanged, see
+         //   https://www.drupal.org/node/2846393.
+-        if (isset($regions[$field['region']])) {
++        if (isset($field['region']) && isset($regions[$field['region']])) {
+           $regions[$field['region']][$name] = $build[$name];
+           unset($build[$name]);
+         }
+@@ -106,7 +106,7 @@ public function buildForm(array &$build, EntityDisplayWithLayoutInterface $displ
+         // avoids breaking hook_form_alter() implementations by not actually
+         // moving the field in the form structure. If a #group is already set,
+         // do not overwrite it.
+-        if (isset($regions[$field['region']]) && !isset($build[$name]['#group'])) {
++        if (isset($field['region']) && isset($regions[$field['region']]) && !isset($build[$name]['#group'])) {
+           $build[$name]['#group'] = $field['region'];
+         }
+       }

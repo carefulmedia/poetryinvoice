@@ -1,0 +1,25 @@
+uuid: 83e9a609-8484-4690-9543-3cdcde83f0da
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:9503e74d-c92c-4e9f-b181-b77d480c0c8f'
+  module:
+    - block_content
+  theme:
+    - lvp_barrio
+id: copyright
+theme: lvp_barrio
+region: footer_first
+weight: -14
+provider: null
+plugin: 'block_content:9503e74d-c92c-4e9f-b181-b77d480c0c8f'
+settings:
+  id: 'block_content:9503e74d-c92c-4e9f-b181-b77d480c0c8f'
+  label: Copyright
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

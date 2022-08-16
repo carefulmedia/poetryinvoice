@@ -1,0 +1,59 @@
+display:
+  block_12:
+    display_options:
+      header:
+        area:
+          content:
+            value: "<h1>Plans de cours</h1>\r\n\r\n<h2>De l'inspiration pour votre prochain cours de poésie</h2>\r\n"
+            format: filtered_html
+      exposed_form:
+        options:
+          submit_button: Appliquer
+          reset_button_label: Réinitialiser
+          exposed_sorts_label: 'Trier par'
+          text_input_required: 'Sélectionnez un filtre puis cliquez sur Appliquer pour les résultats'
+          bef:
+            general:
+              secondary_label: 'Options avancées'
+            sort:
+              advanced:
+                collapsible_label: 'Trier par'
+      use_more_text: Tous
+  block_3:
+    display_options:
+      exposed_form:
+        options:
+          exposed_sorts_label: 'Trier par'
+          bef:
+            sort:
+              advanced:
+                combine_rewrite: "Random Asc|Au hasard\r\nRandom Desc|\r\nDate added Asc|\r\nDate added Desc|Nouveaux\r\n# Reads Asc|\r\n# Reads Desc|Par popularité\r\nPoem title Asc|A -> Z\r\nPoem title Desc|Z -> A"
+                collapsible_label: Filtres
+            general:
+              secondary_label: 'Options avancées'
+          submit_button: Appliquer
+          reset_button_label: Réinitialiser
+          text_input_required: 'Sélectionnez un filtre puis cliquez sur Appliquer pour voir la liste'
+      filters:
+        field_poem_thems_target_id:
+          group_info:
+            label: Catégories
+            group_items:
+              1:
+                title: 'Maximum: 25 vers'
+              3:
+                title: 'Avant le 20e siècle'
+              4:
+                title: '20e/21e siècle'
+        combine:
+          expose:
+            label: Recherche
+        field_grades_value:
+          expose:
+            label: 'Niveau scolaire'
+  block_6:
+    display_options:
+      filters:
+        field_prompt_or_exercise_value:
+          expose:
+            label: 'Exercice rapide ou en profondeur'
