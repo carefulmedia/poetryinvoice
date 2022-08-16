@@ -112,5 +112,16 @@ border-spacing:0 5em;
     margin-bottom: 20px
 }
 
+.page-view-frontpage .owl-carousel .owl-item img {
+height: auto;
+}
+.page-view-frontpage .owl-carousel .owl-item .container {
+position: absolute;
+right: 10%;
+bottom: 65%;
+color: white;
+}
+
+
 
 

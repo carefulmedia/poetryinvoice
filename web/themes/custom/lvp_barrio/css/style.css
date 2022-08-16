@@ -74,7 +74,7 @@ text-transform: uppercase;
 font-stretch: 110;
 font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
-h4, .print__wrapper--pdf a  {
+h4, .print__wrapper--pdf a, .site-footer ul li.nav-item a  {
 font-family: 'Roboto Flex';
 font-style: normal;
 font-weight: 500;

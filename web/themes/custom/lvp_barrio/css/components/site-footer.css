@@ -227,3 +227,32 @@
 [dir="rtl"] .site-footer__bottom .menu-item:first-child:last-child a {
   padding-right: 0;
 }
+.site-footer li a  {
+color: #fff;
+}
+.site-footer {
+    padding:0 !important;
+    background-size: cover;
+}
+.site-footer .container {
+    background: rgba(0, 0, 0, 0.3);   
+    border-radius: 1rem; 
+}
+
+.site-footer .footer-blur {
+    background: rgba(0, 0, 0, 0.3);    
+    backdrop-filter: blur(50px);
+    padding: 4rem 0rem;
+
+}
+.site-footer .container {
+    padding: 2rem;
+}
+.footer .navbar-nav {
+display: block;
+}
+.footer .navbar-nav li {
+display: block;
+float: none;
+}
+
