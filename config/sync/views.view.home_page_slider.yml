@@ -4,7 +4,7 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_mixtape_image
-    - image.style.focal_point_700_x_
+    - image.style.focal_point_2000x800
     - node.type.mixtape
   module:
     - image
@@ -143,7 +143,7 @@ display:
           type: image
           settings:
             image_link: ''
-            image_style: focal_point_700_x_
+            image_style: focal_point_2000x800
             image_loading:
               attribute: lazy
           group_column: ''

@@ -2874,7 +2874,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "     <div data-aos=\"zoom-in-left\"\r\n       data-aos-offset=\"200\"\r\n       data-aos-easing=\"ease-in-sine\"\r\n       data-aos-duration=\"600\"><div class=\"index-views mixtape content-index\">\r\n\r\n    <a href=\"{{ view_node_1 }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n            <div class=\"image\">\r\n              {{ field_mixtape_image }}\r\n            </div>\t\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ title }}</h3>\r\n\t                <p class= \"sans-serif\">{{ body }}</p>\r\n            </div>\r\n    </a>\r\n</div></div>"
+            text: "     <div data-aos=\"zoom-in-up\"\r\n       data-aos-offset=\"200\"   data-aos-easing=\"ease-in-sine\"\r\n       data-aos-duration=\"600\"><div class=\"index-views mixtape content-index\">\r\n\r\n    <a href=\"{{ view_node_1 }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n            <div class=\"image\">\r\n              {{ field_mixtape_image }}\r\n            </div>\t\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ title }}</h3>\r\n\t                <p class= \"sans-serif\">{{ body }}</p>\r\n            </div>\r\n    </a>\r\n</div></div>"
             make_link: false
             path: ''
             absolute: false
@@ -4181,7 +4181,7 @@ display:
         sorts: false
         filters: false
         filter_groups: false
-      use_ajax: true
+      use_ajax: false
       display_description: ''
       display_extenders: {  }
     cache_metadata:
