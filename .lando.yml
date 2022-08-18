@@ -24,6 +24,7 @@ services:
     type: node
     build:
       - cd /app/web/themes/custom/piv && npm install
+      - cd /app/web/themes/custom/lvp_barrio && npm install
     globals:
       gulp-cli: latest
   mailhog:

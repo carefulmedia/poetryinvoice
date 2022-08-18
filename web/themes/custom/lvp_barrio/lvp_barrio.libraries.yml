@@ -5,48 +5,7 @@ global-styling:
   css:
     component:
       css/style.css: {}
-      css/colors.css: {}
-      css/components/affix.css: {}
-      css/components/alerts.css: {}
-      css/components/book.css: {}
-      css/components/book-navigation.css: {}
-      css/components/breadcrumb.css: {}
-      css/components/bootstrap-icons.css: {}
-      css/components/contextual.css: {}
-      css/components/dropbutton.css: {}
-      css/components/dropbutton.component.css: {}
-      # @see https://www.drupal.org/node/2389735
-      css/components/feed-icon.css: {}
-      css/components/field.css: {}
-      css/components/grid.css: {}
-      css/components/header.css: {}
-      css/components/home-and-index.css: {}
-      css/components/help.css: {}
-      css/components/icons.css: {}
-      css/components/image-button.css: {}
-      css/components/item-list.css: {}
-      css/components/list-group.css: {}
-      css/components/navigation.css: {}
-      css/components/page.css: {}
-      css/components/search-form.css: {}
-      css/components/shortcut.css: {}
-      css/components/sidebar.css: {}
-      css/components/slick.css: {}
-      css/components/site-footer.css: {}
-      css/components/skip-link.css: {}
-      css/components/table.css: {}
-      css/components/tabledrag.css: {}
-      css/components/tableselect.css: {}
-      css/components/tablesort-indicator.css: {}
-      css/components/ui.widget.css: {}
-      css/components/tabs.css: {}
-      css/components/toolbar.css: {}
-      css/components/user.css: { weight: -10 }
-      # @see https://www.drupal.org/node/2389735
-      css/components/vertical-tabs.css: {}
-      css/components/views.css: {}
-      css/components/ui-dialog.css: {}
-      css/components/progress.css: { weight: -10 }
+      css/colors-bu.css: {}
 
 bootstrap:
   js:

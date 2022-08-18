@@ -1,0 +1,244 @@
+/**
+ * @file
+ * Subtheme specific CSS.
+ */
+
+@import "components/affix";
+@import "components/alerts";
+@import "components/book";
+@import "components/book-navigation";
+@import "components/bootstrap-icons";
+@import "components/breadcrumb";
+@import "components/comments";
+@import "components/commerce";
+@import "components/contextual";
+@import "components/details";
+@import "components/dropbutton-component";
+@import "components/dropbutton";
+@import "components/feed-icon";
+@import "components/field";
+@import "components/file";
+@import "components/form";
+@import "components/forum";
+@import "components/grid";
+@import "components/header";
+@import "components/help";
+@import "components/home-and-index";
+@import "components/icons";
+@import "components/image-button";
+@import "components/image-widget";
+@import "components/img-fluid";
+@import "components/indented";
+@import "components/item-list";
+@import "components/list-group";
+@import "components/navigation";
+@import "components/node";
+@import "components/node-preview";
+@import "components/page";
+@import "components/progress";
+@import "components/search-form";
+@import "components/shortcut";
+@import "components/sidebar-collapse";
+@import "components/sidebar";
+@import "components/site-footer";
+@import "components/skip-link";
+@import "components/slick";
+@import "components/slide-nav";
+@import "components/tabledrag";
+@import "components/table";
+@import "components/tableselect";
+@import "components/tablesort-indicator";
+@import "components/tablesort";
+@import "components/tabs-full";
+@import "components/tabs";
+@import "components/textarea";
+@import "components/toolbar";
+@import "components/ui-dialog";
+@import "components/ui-widget";
+@import "components/user";
+@import "components/vertical-tabs-component";
+@import "components/vertical-tabs";
+@import "components/views";
+
+:root {
+  --plum-light: #E7D8E3;
+  --plum: #893B73;
+  --plum-dark: #481139;
+  --red-light: #F3D8D4;
+  --red: #C53D27;
+  --red-dark: #631F14;
+  --gold-light: #F4E9DA;
+  --gold: #CA8F47;
+  --gold-dark: #724713;
+  --mint-light: #D4ECE3;
+  --mint: #299F75;
+  --mint-dark: #165740;
+  --aqua-light: #D6E7EF;
+  --aqua: #3185AF;
+  --aqua-dark: #12445E;
+  --white: #ffffff;
+  --black: #000000;
+}
+
+
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h2 a,
+h3 a, {
+  color: #000;
+  font-family: 'Roboto Flex';
+}
+
+h1 {
+  font-family: 'Roboto Flex';
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 47px;
+  text-align: left;
+  font-style:normal;
+}
+
+h2 {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 34px;
+  /* or 106% */
+  font-stretch: 70;
+  font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+}
+
+h3 {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 1000;
+  font-size: 18px;
+  line-height: 21px;
+  /* or 117% */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-stretch: 110;
+  font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+}
+h4, .print__wrapper--pdf a, .site-footer ul li.nav-item a  {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  /* or 117% */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-stretch: 110;
+  font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+}
+h5 {
+
+}
+a {
+  color: #000
+}
+p, .serif-large {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 36px;
+  /* or 180% */
+}
+.serif {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 30px;
+  /* or 176% */
+}
+.sans-serif {
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 30px;
+  color: #000000;
+}
+.white {
+  color: #fff;
+}
+
+
+
+li {
+font-family: Roboto Flex;
+font-size: 17px;
+font-weight: 400;
+line-height: 30px;
+letter-spacing: 0em;
+text-align: left;
+}
+.block-field-blocknodelesson-planfield-lesson-objectives, .block-field-blocknodelesson-planfield-materials-resources {
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
+  border-radius: 6px;
+  background: #fff;
+  padding: 15px !important;
+}
+
+.block-layout-builder {
+margin-bottom: 40px;
+padding: 20px 0px;
+}
+
+
+.field--type-entity-reference {
+    margin: 0 0;
+}
+.youtube-container--responsive, .field-name-field-google-calendar-iframe-cod .field-item, .field-name-field-yt-video .field-item {
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+.youtube-container--responsive iframe, .field-name-field-google-calendar-iframe-cod .field-item iframe, .field-name-field-yt-video .field-item iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.youtube-container--responsive iframe {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.node--type-writing-workshop li {
+    list-style: none;
+}
+
+.print__wrapper  a {
+    text-decoration: none;
+}
+.read a:hover, .lire a:hover  {color: var(--plum);
+} 
+.recite a:hover, .reciter a:hover  {color: var(--red);
+} 
+.write a:hover, .ecrire a:hover  {color: var(--mint);
+} 
+.teach a:hover, .enseigner a:hover  {color: var(--gold);
+} 
+.binge a:hover, .ecouter a:hover  {color: var(--aqua);
+} 
+.about a:hover, .propos a:hover  {color: var(--black);
+} 
+
+
