@@ -55,6 +55,7 @@ dependencies:
     - field.field.user.user.field_teacher_confirmation
     - field.field.user.user.field_user_bio
     - field.field.user.user.field_virtual_visits
+    - field.field.user.user.field_welcome_modal_settings
     - field.field.user.user.field_what_grades_do_you_teach
     - field.field.user.user.field_what_subjects_do_you_teach
     - field.field.user.user.field_writing_content
@@ -88,7 +89,7 @@ content:
     third_party_settings: {  }
   field_address:
     type: address_default
-    weight: 7
+    weight: 3
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -108,7 +109,7 @@ content:
     third_party_settings: {  }
   field_social_links:
     type: social_links
-    weight: 8
+    weight: 4
     region: content
     settings:
       select_social: false
@@ -122,7 +123,6 @@ hidden:
   field_about_me: true
   field_additional_email: true
   field_bio_completed_: true
-  field_bio_not_by_author_paid_: true
   field_bio_trans: true
   field_bio_written_by: true
   field_canadian_educator_: true
@@ -151,7 +151,6 @@ hidden:
   field_non_school_organization: true
   field_not_a_teacher_: true
   field_one_line_bio: true
-  field_paid_: true
   field_peer_support: true
   field_phone: true
   field_photo_credit: true
@@ -169,6 +168,7 @@ hidden:
   field_teacher_confirmation: true
   field_user_bio: true
   field_virtual_visits: true
+  field_welcome_modal_settings: true
   field_what_grades_do_you_teach: true
   field_what_subjects_do_you_teach: true
   field_writing_content: true

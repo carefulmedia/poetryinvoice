@@ -92,3 +92,14 @@ function piv_base_entity_create_access(AccountInterface $account, array $context
 
   return AccessResult::neutral();
 }
+
+/**
+ * Implements hook_theme().
+ */
+function piv_base_theme($existing, $type, $theme, $path) {
+  return [
+    'piv_welcome_modal' => [
+      'render element' => 'form',
+    ],
+  ];
+}

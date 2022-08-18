@@ -17,6 +17,7 @@
 # Config ignored files.
 */sync/piv_canadian_content.settings.yml
 */sync/piv_poem_password.settings.yml
+*/sync/piv_base.welcome_modal_settings.yml
 
 # Environment variables
 .env

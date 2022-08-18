@@ -1,0 +1,20 @@
+uuid: 04f9b507-ae8b-4367-8ad6-14d796ea9453
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_welcome_modal_settings
+  module:
+    - user
+id: user.user.field_welcome_modal_settings
+field_name: field_welcome_modal_settings
+entity_type: user
+bundle: user
+label: 'Welcome Modal Settings'
+description: 'Serialized data with user selections in the Welcome Modal.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

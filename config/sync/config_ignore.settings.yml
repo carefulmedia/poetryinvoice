@@ -4,3 +4,4 @@ ignored_config_entities:
   - 'piv_canadian_content.*'
   - 'reroute_email.settings:address'
   - piv_poem_password.settings
+  - piv_base.welcome_modal_settings

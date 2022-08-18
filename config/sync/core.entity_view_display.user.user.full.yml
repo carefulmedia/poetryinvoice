@@ -56,6 +56,7 @@ dependencies:
     - field.field.user.user.field_teacher_confirmation
     - field.field.user.user.field_user_bio
     - field.field.user.user.field_virtual_visits
+    - field.field.user.user.field_welcome_modal_settings
     - field.field.user.user.field_what_grades_do_you_teach
     - field.field.user.user.field_what_subjects_do_you_teach
     - field.field.user.user.field_writing_content
@@ -458,6 +459,7 @@ hidden:
   field_signature: true
   field_teacher_confirmation: true
   field_virtual_visits: true
+  field_welcome_modal_settings: true
   field_what_grades_do_you_teach: true
   field_what_subjects_do_you_teach: true
   field_writing_content: true

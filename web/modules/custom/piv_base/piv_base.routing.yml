@@ -1,0 +1,16 @@
+piv_base.welcome_modal:
+  path: '/welcome-modal'
+  defaults:
+    _title: 'Welcome!'
+    _form: '\Drupal\piv_base\Form\PivWelcomeModal'
+  requirements:
+    # Public access.
+    _access: 'TRUE'
+
+piv_base.welcome_modal_settings:
+  path: '/admin/config/system/welcome-modal-settings'
+  defaults:
+    _title: 'PIV Welcome modal settings'
+    _form: 'Drupal\piv_base\Form\PivWelcomeModalSettingsForm'
+  requirements:
+    _permission: 'administer site configuration'

@@ -8,3 +8,4 @@ base theme: claro
 
 libraries:
   - piv/global-styling
+  - core/drupal.dialog

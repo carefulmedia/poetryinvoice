@@ -55,6 +55,7 @@ dependencies:
     - field.field.user.user.field_teacher_confirmation
     - field.field.user.user.field_user_bio
     - field.field.user.user.field_virtual_visits
+    - field.field.user.user.field_welcome_modal_settings
     - field.field.user.user.field_what_grades_do_you_teach
     - field.field.user.user.field_what_subjects_do_you_teach
     - field.field.user.user.field_writing_content
@@ -202,6 +203,21 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 3
             additional: {  }
+          d99328bb-637a-4bed-8953-bff5f9fd2b9d:
+            uuid: d99328bb-637a-4bed-8953-bff5f9fd2b9d
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_welcome_modal_settings'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: basic_string
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_3'
@@ -348,6 +364,13 @@ content:
     third_party_settings: {  }
     weight: 2
     region: content
+  field_welcome_modal_settings:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: blb_region_col_1
 hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
