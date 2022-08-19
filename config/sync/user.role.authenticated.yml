@@ -10,7 +10,6 @@ dependencies:
     - media
     - node
     - paragraphs_type_permissions
-    - search
     - system
 _core:
   default_config_hash: btW6TFHajhy7Eo6YUvdFiPh4TcPggo8GBXYctjV6zag
@@ -40,7 +39,6 @@ permissions:
   - 'edit own main profile'
   - 'search article content'
   - 'search blog content'
-  - 'search content'
   - 'search event content'
   - 'search faq content'
   - 'search lesson_plan content'
@@ -53,7 +51,6 @@ permissions:
   - 'search press_release content'
   - 'search video content'
   - 'submit latitude/longitude'
-  - 'use advanced search'
   - 'view body'
   - 'view faq page'
   - 'view field_2_column_poem'

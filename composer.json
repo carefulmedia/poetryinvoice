@@ -98,6 +98,7 @@
         "drupal/s3fs": "^3.0@beta",
         "drupal/scanner": "1.x-dev@dev",
         "drupal/scheduler": "^1.4",
+        "drupal/search_api": "^1.25",
         "drupal/select_translation": "^2.0@alpha",
         "drupal/slick": "^2.6",
         "drupal/slick_views": "^2.6",

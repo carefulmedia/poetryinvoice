@@ -11,7 +11,6 @@ dependencies:
     - media
     - node
     - paragraphs_type_permissions
-    - search
     - system
 _core:
   default_config_hash: pq_mEIu_B4widZN7Ap81iCJSjShFFdcL0jEiCi8VrDk
@@ -63,7 +62,6 @@ permissions:
   - 'edit own field_writing_prompt'
   - 'search article content'
   - 'search blog content'
-  - 'search content'
   - 'search event content'
   - 'search faq content'
   - 'search lesson_plan content'
@@ -76,7 +74,6 @@ permissions:
   - 'search video content'
   - 'search writing_prompt content'
   - 'search writing_workshop content'
-  - 'use advanced search'
   - 'use user.poet_network form mode'
   - 'use user.teacher_edit form mode'
   - 'view body'

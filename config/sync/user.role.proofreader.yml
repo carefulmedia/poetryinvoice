@@ -20,7 +20,6 @@ dependencies:
     - field_permissions
     - locale
     - node
-    - search
     - system
 id: proofreader
 label: Proofreader
@@ -78,9 +77,7 @@ permissions:
   - 'edit own venue content'
   - 'edit own writing_prompt content'
   - 'revert revisions'
-  - 'search content'
   - 'translate interface'
-  - 'use advanced search'
   - 'view field_variations_for_younger_stu'
   - 'view own unpublished content'
   - 'view revisions'

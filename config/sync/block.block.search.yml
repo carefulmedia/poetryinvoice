@@ -1,0 +1,23 @@
+uuid: 796803d0-94f9-411c-81ef-3eb0885145ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.search
+  module:
+    - views
+  theme:
+    - lvp_barrio
+id: search
+theme: lvp_barrio
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'views_exposed_filter_block:search-page'
+settings:
+  id: 'views_exposed_filter_block:search-page'
+  label: ''
+  label_display: visible
+  provider: views
+  views_label: ''
+visibility: {  }
