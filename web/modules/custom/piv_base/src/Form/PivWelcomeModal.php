@@ -182,7 +182,7 @@ class PivWelcomeModal extends FormBase {
     ];
     $form['go'] = [
       '#type' => 'submit',
-      '#value' => $this->t('Go'),
+      '#value' => $this->t('Go!'),
       '#ajax' => [
         'callback' => '::ajaxCallback',
         'disable-refocus' => FALSE,

@@ -3007,24 +3007,82 @@ body.path-user .field--label-above .field__item {
 .views-ui-display-tab-actions .dropbutton .form-submit:focus {
   color: #018fe2;
 }
+.ui-dialog .ui-dialog-titlebar {
+  background: #1d84c3 !important;
+}
+.ui-dialog .ui-dialog-titlebar-close {
+  background: url(../assets/x-white.svg) no-repeat !important;
+  background-size: 40px 40px !important;
+}
 #piv-welcome-modal .piv-welcome-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   min-height: 200px;
 }
 #piv-welcome-modal .piv-welcome-modal .wrapper-class {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 #piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select {
   display: flex;
+  align-items: center;
+  margin-right: 10px;
 }
 #piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select .form-required {
   font-weight: bold;
+  margin-right: 10px;
+  width: 100%;
+}
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select .form-required::after {
+  display: none;
 }
 #piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select .form-select {
   border: none;
   border-bottom: 2px solid black;
   border-radius: unset;
   padding: 0;
-  height: 35px;
+  height: 25px;
+  background-image: none;
+  font-weight: bold;
+}
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select .form-select[name="option_1"] {
+  min-width: 212px;
+}
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select .form-select[name="option_3"] {
+  margin-right: 10px;
+  max-width: 66px;
+}
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-item-option-1 label {
+  max-width: 60px;
+}
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-item-option-3 label {
+  max-width: 80px;
+}
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-wrapper {
+  margin-right: 10px;
+}
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-wrapper .form-type-item {
+  font-weight: bold;
+}
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-wrapper .form-item-teacher {
+  min-width: 160px;
+}
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-submit::before {
+  display: none;
+}
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .button {
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  background: #D3310E;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .mb-3 {
+  margin-bottom: unset !important;
 }
 :root {
   --plum-light: #E7D8E3;
