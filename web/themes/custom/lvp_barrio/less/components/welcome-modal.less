@@ -16,7 +16,7 @@
     .wrapper-class {
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: first baseline;
       .form-type-select {
         display: flex;
         align-items: center;
@@ -81,5 +81,25 @@
         margin-bottom: unset !important;
       }
     }
+    .piv-select-placeholder {
+      border-bottom: 1px solid;
+      height: 1.5rem;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+// Custom piv select
+
+.piv-welcome-modal {
+  .piv-select {
+    display: inline-block;
+    vertical-align: top;
+  }
+  .piv-select-options.hide {
+    display: none;
+  }
+  .mb-3 {
+    vertical-align: top;
   }
 }

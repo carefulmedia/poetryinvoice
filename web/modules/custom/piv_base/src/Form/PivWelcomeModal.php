@@ -81,16 +81,17 @@ class PivWelcomeModal extends FormBase {
         ->getStorage('user')
         ->load($this->currentUser->id());
 
-      $data = Json::decode($user->field_welcome_modal_settings->value);
-      if ($data) {
-        $option_1 = $data['option_1'] ?? 0;
-        $option_2 = $data['option_2'] ?? 0;
-        $option_3 = $data['option_3'] ?? 0;
+      if ($value = $user->field_welcome_modal_settings->value) {
+        $data = Json::decode($user->field_welcome_modal_settings->value);
+        if ($data) {
+          $option_1 = $data['option_1'] ?? 0;
+          $option_2 = $data['option_2'] ?? 0;
+          $option_3 = $data['option_3'] ?? 0;
+        }
       }
     }
-
     $form['option_1'] = [
-      '#type' => 'select',
+      '#type' => 'piv_select',
       '#title' => $this->t('I am a'),
       '#empty_key' => 0,
       '#empty_option' => '',
@@ -129,7 +130,7 @@ class PivWelcomeModal extends FormBase {
       ],
     ];
     $form['option_2'] = [
-      '#type' => 'select',
+      '#type' => 'piv_select',
       '#empty_key' => 0,
       '#empty_option' => '',
       '#default_value' => $option_2,
@@ -155,7 +156,7 @@ class PivWelcomeModal extends FormBase {
       ],
     ];
     $form['option_3'] = [
-      '#type' => 'select',
+      '#type' => 'piv_select',
       '#title' => $this->t('Canada'),
       '#title_display' => 'after',
       '#empty_key' => 0,

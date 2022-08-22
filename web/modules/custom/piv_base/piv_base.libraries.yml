@@ -1,0 +1,5 @@
+piv_select:
+  js:
+    js/piv-select.js: {}
+  dependencies:
+    - core/jquery
