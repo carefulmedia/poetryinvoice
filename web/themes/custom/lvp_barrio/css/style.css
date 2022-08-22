@@ -3015,44 +3015,39 @@ body.path-user .field--label-above .field__item {
   background-size: 40px 40px !important;
 }
 #piv-welcome-modal .piv-welcome-modal {
-  display: flex;
-  align-items: center;
   justify-content: center;
-  min-height: 200px;
+  min-height: 150px;
 }
-#piv-welcome-modal .piv-welcome-modal .wrapper-class {
-  display: flex;
-  justify-content: center;
-  align-items: first baseline;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select {
-  display: flex;
-  align-items: center;
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select {
+  display: inline-block;
   margin-right: 10px;
 }
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select .form-required {
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select .form-required {
+  display: inline;
   font-weight: bold;
   margin-right: 10px;
   width: 100%;
 }
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select .form-required::after {
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select .form-required::after {
   display: none;
 }
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select .form-select {
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select .piv-select {
   border: none;
-  border-bottom: 2px solid black;
   border-radius: unset;
   padding: 0;
   height: 25px;
   background-image: none;
   font-weight: bold;
 }
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select .form-select[name="option_1"] {
-  min-width: 212px;
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select .piv-select .piv-select-placeholder {
+  border-bottom: 2px solid black;
+  height: 1.5rem;
+  margin-bottom: 5px;
 }
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-select .form-select[name="option_3"] {
-  margin-right: 10px;
-  max-width: 66px;
+#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select .piv-select .piv-select-option {
+  text-transform: uppercase;
+  line-height: 20px;
+  font-size: 14px;
 }
 #piv-welcome-modal .piv-welcome-modal .wrapper-class .form-item-option-1 label {
   max-width: 60px;
@@ -3061,6 +3056,7 @@ body.path-user .field--label-above .field__item {
   max-width: 80px;
 }
 #piv-welcome-modal .piv-welcome-modal .wrapper-class .form-wrapper {
+  display: inline-block;
   margin-right: 10px;
 }
 #piv-welcome-modal .piv-welcome-modal .wrapper-class .form-wrapper .form-type-item {
@@ -3073,6 +3069,7 @@ body.path-user .field--label-above .field__item {
   display: none;
 }
 #piv-welcome-modal .piv-welcome-modal .wrapper-class .button {
+  display: block;
   height: 50px;
   width: 100px;
   border-radius: 5px;
@@ -3080,14 +3077,10 @@ body.path-user .field--label-above .field__item {
   color: white;
   text-transform: uppercase;
   font-weight: bold;
+  margin-top: 30px;
 }
 #piv-welcome-modal .piv-welcome-modal .wrapper-class .mb-3 {
   margin-bottom: unset !important;
-}
-#piv-welcome-modal .piv-welcome-modal .piv-select-placeholder {
-  border-bottom: 1px solid;
-  height: 1.5rem;
-  margin-bottom: 5px;
 }
 .piv-welcome-modal .piv-select {
   display: inline-block;
