@@ -1070,7 +1070,7 @@ h3.name {
   color: rgba(255, 255, 255, 0.75);
 }
 .navbar-dark .nav-link {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.2);
 }
 .navbar-light .nav-link:hover,
 .navbar-light .nav-link:focus {
@@ -1190,7 +1190,7 @@ h3.name {
   display: none;
 }
 .nav-link.fr a {
-  background: url(../../assets/fr.svg) 0 0 no-repeat;
+  background: url(../assets/fr.svg) 0 0 no-repeat;
   display: block;
   height: 30px;
   text-indent: -99999em;
@@ -1199,7 +1199,7 @@ h3.name {
   background-repeat: no-repeat;
 }
 .nav-link.en a {
-  background: url(../../assets/en.svg) 0 0 no-repeat;
+  background: url(../assets/en.svg) 0 0 no-repeat;
   display: block;
   height: 30px;
   text-indent: -99999em;
@@ -1208,7 +1208,7 @@ h3.name {
   background-repeat: no-repeat;
 }
 .offcanvas-body .nav-link.fr a {
-  background: url(../../assets/fr-black.svg) 0 0 no-repeat;
+  background: url(../assets/fr-black.svg) 0 0 no-repeat;
   display: block;
   height: 30px;
   text-indent: -99999em;
@@ -1218,7 +1218,7 @@ h3.name {
   margin: 0 1rem;
 }
 .offcanvas-body .nav-link.en a {
-  background: url(../../assets/en-black.svg) 0 0 no-repeat;
+  background: url(../assets/en-black.svg) 0 0 no-repeat;
   display: block;
   height: 30px;
   text-indent: -99999em;
