@@ -5,6 +5,7 @@ dependencies:
   config:
     - media.type.remote_video
     - node.type.bulletin_board
+    - node.type.journal_poem
     - node.type.pal_pir_school_visit
     - node.type.team_regionals_entry
   module:
@@ -66,6 +67,7 @@ permissions:
   - 'create field_work_student_teacher'
   - 'create field_writing_prompt'
   - 'create field_youtube_recitation_url'
+  - 'create journal_poem content'
   - 'create pal_pir_school_visit content'
   - 'create piv_release_form'
   - 'create piv_student_mail'
