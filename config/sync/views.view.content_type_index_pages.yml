@@ -4084,12 +4084,12 @@ display:
                 value:
                   15: '15'
               3:
-                title: 'Pre 20th Century'
+                title: 'Pre 21st Century'
                 operator: or
                 value:
                   8: '8'
               4:
-                title: '20th/21st Century'
+                title: '21st Century'
                 operator: not
                 value:
                   8: '8'
