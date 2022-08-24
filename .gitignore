@@ -18,6 +18,7 @@
 */sync/piv_canadian_content.settings.yml
 */sync/piv_poem_password.settings.yml
 */sync/piv_base.welcome_modal_settings.yml
+*/sync/piv_mail.piv_mail.*
 
 # Environment variables
 .env

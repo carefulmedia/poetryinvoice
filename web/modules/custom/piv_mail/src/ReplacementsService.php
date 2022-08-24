@@ -30,6 +30,7 @@ class ReplacementsService {
     'user' => [
       'first_name',
       'user',
+      'link_to_profile',
     ],
     'teacher' => [
       'booking_teacher',
@@ -188,6 +189,11 @@ class ReplacementsService {
 
         case 'user':
           return $sources['user']->name->value;
+
+        case 'link_to_profile':
+          return $sources['user']->toLink('Link to poet profile', 'edit-form', [
+            'absolute' => TRUE,
+          ])->toString();
 
         // Teacher.
         case 'booking_teacher':
@@ -350,6 +356,7 @@ class ReplacementsService {
               }
             }
           }
+          $token_value = $token_value ?? "";
           $text = str_replace("[$token]", $token_value, $text);
         }
       }
