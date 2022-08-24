@@ -5,3 +5,4 @@ ignored_config_entities:
   - 'reroute_email.settings:address'
   - piv_poem_password.settings
   - piv_base.welcome_modal_settings
+  - 'piv_mail.piv_mail.*'

@@ -154,3 +154,4 @@ permissions:
   - 'view paragraph content tr_student'
   - 'view piv_teacher_first_name'
   - 'view piv_teacher_last_name'
+  - 'view user_picture'
