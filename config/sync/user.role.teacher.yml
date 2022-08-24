@@ -12,11 +12,13 @@ dependencies:
     - comment
     - contact
     - field_permissions
+    - form_mode_manager
     - media
     - node
     - piv_contest_competition
     - piv_contest_competition_entry
     - piv_contest_recitation
+    - system
 id: teacher
 label: Teacher
 weight: 0
@@ -133,6 +135,9 @@ permissions:
   - 'search forum content'
   - 'skip comment approval'
   - 'subscribe to content'
+  - 'use node.default form mode'
+  - 'use node.teacher form mode'
+  - 'use user.teacher_edit form mode'
   - 'view field_about_me'
   - 'view field_agreed_visit_date'
   - 'view field_date_and_poet_chosen'
@@ -197,3 +202,4 @@ permissions:
   - 'view own piv_student_mail'
   - 'view own school competitions'
   - 'view piv_release_form'
+  - 'view the administration theme'

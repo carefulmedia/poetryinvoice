@@ -11,6 +11,7 @@ dependencies:
     - contact
     - field_permissions
     - filter
+    - form_mode_manager
     - node
     - paragraphs_type_permissions
 id: poet_network
@@ -83,8 +84,10 @@ permissions:
   - 'search writing_prompt content'
   - 'update paragraph content micro_interview'
   - 'update paragraph content publications'
+  - 'use node.default form mode'
   - 'use text format filtered_html'
   - 'use text format full_html'
+  - 'use user.poet_network form mode'
   - 'view all user locations'
   - 'view any unpublished pal_pir_school_visit content'
   - 'view body'
