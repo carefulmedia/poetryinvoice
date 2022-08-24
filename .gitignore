@@ -41,7 +41,7 @@ development.services.yml
 /web/sites/simpletest
 
 dump
-node_modules/
+node_modules
 
 # Roulette
 /web/roulette/cached/data/*.json
