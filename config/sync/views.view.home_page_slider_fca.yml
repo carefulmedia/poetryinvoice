@@ -9,6 +9,7 @@ dependencies:
     - field.storage.block_content.field_story_image
     - field.storage.block_content.field_sub_headline
     - field.storage.node.field_images_insert
+    - image.style.focal_point_2000x800
   module:
     - block_content
     - image
@@ -210,7 +211,7 @@ display:
           type: image
           settings:
             image_link: ''
-            image_style: ''
+            image_style: focal_point_2000x800
             image_loading:
               attribute: lazy
           group_column: ''
@@ -276,7 +277,7 @@ display:
           type: image
           settings:
             image_link: ''
-            image_style: ''
+            image_style: focal_point_2000x800
             image_loading:
               attribute: lazy
           group_column: ''
