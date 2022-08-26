@@ -9,19 +9,14 @@
 }
 #piv-welcome-modal {
   .piv-welcome-modal {
-    display: flex;
-    align-items: center;
     justify-content: center;
-    min-height: 200px;
+    min-height: 150px;
     .wrapper-class {
-      display: flex;
-      justify-content: center;
-      align-items: first baseline;
-      .form-type-select {
-        display: flex;
-        align-items: center;
+      .form-type-piv-select {
+        display: inline-block;
         margin-right: 10px;
         .form-required {
+          display: inline;
           font-weight: bold;
           margin-right: 10px;
           width: 100%;
@@ -29,21 +24,23 @@
             display: none;
           }
         }
-        .form-select {
+        .piv-select {
           border: none;
-          border-bottom: 2px solid black;
           border-radius: unset;
           padding: 0;
           height: 25px;
           background-image: none;
           font-weight: bold;
-        }
-        .form-select[name="option_1"] {
-          min-width: 212px;
-        }
-        .form-select[name="option_3"] {
-          margin-right: 10px;
-          max-width: 66px;
+          .piv-select-placeholder {
+            border-bottom: 2px solid black;
+            height: 1.5rem;
+            margin-bottom: 5px;
+          }
+          .piv-select-option {
+            text-transform: uppercase;
+            line-height: 20px;
+            font-size: 14px;
+          }
         }
       }
       .form-item-option-1 {
@@ -57,6 +54,7 @@
         }
       }
       .form-wrapper {
+        display: inline-block;
         margin-right: 10px;
         .form-type-item {
           font-weight: bold;
@@ -69,6 +67,7 @@
         display: none;
       }
       .button {
+        display: block;
         height: 50px;
         width: 100px;
         border-radius: 5px;
@@ -76,15 +75,11 @@
         color: white;
         text-transform: uppercase;
         font-weight: bold;
+        margin-top: 30px;
       }
       .mb-3 {
         margin-bottom: unset !important;
       }
-    }
-    .piv-select-placeholder {
-      border-bottom: 1px solid;
-      height: 1.5rem;
-      margin-bottom: 5px;
     }
   }
 }
