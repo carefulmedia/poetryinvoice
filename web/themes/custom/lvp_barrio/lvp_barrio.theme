@@ -73,6 +73,6 @@ function lvp_barrio_preprocess_page(&$variables) {
   */
   function lvp_barrio_preprocess_page__front(array &$variables) {
     $variables['slideshow'] = views_embed_view('home_page_slider_fca', 'block_1');
-    $variables['flyingblocks'] = views_embed_view('content_type_index_pages', 'block_14');
+    $variables['flyingblocks'] = views_embed_view('home_page_slider_fca', 'block_2');
   }
 

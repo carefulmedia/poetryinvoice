@@ -1,0 +1,23 @@
+uuid: 02eaa372-549c-4015-9a08-4a329de42637
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.home_page_fca_slider_stories
+    - field.storage.block_content.field_block_story_
+id: block_content.home_page_fca_slider_stories.field_block_story_
+field_name: field_block_story_
+entity_type: block_content
+bundle: home_page_fca_slider_stories
+label: 'Block story?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

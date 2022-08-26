@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: home_page_fca_slider_stories
-label: 'Home page FCA slider stories'
+label: 'Home page stories'
 revision: 1
 description: ''

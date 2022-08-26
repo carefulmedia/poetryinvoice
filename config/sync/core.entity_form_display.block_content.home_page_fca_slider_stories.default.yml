@@ -4,8 +4,11 @@ status: true
 dependencies:
   config:
     - block_content.type.home_page_fca_slider_stories
+    - field.field.block_content.home_page_fca_slider_stories.field_block_story_
     - field.field.block_content.home_page_fca_slider_stories.field_headline
+    - field.field.block_content.home_page_fca_slider_stories.field_in_slider
     - field.field.block_content.home_page_fca_slider_stories.field_link_if_not_to_story_page
+    - field.field.block_content.home_page_fca_slider_stories.field_slide_order
     - field.field.block_content.home_page_fca_slider_stories.field_story_image
     - field.field.block_content.home_page_fca_slider_stories.field_story_page_linked_to
     - field.field.block_content.home_page_fca_slider_stories.field_sub_headline
@@ -26,6 +29,13 @@ targetEntityType: block_content
 bundle: home_page_fca_slider_stories
 mode: default
 content:
+  field_block_story_:
+    type: boolean_checkbox
+    weight: 33
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_headline:
     type: string_textfield
     weight: 27
@@ -34,6 +44,13 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_in_slider:
+    type: boolean_checkbox
+    weight: 32
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_link_if_not_to_story_page:
     type: link_default
     weight: 30
@@ -41,6 +58,12 @@ content:
     settings:
       placeholder_url: ''
       placeholder_title: ''
+    third_party_settings: {  }
+  field_slide_order:
+    type: options_select
+    weight: 31
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_story_image:
     type: image_image
