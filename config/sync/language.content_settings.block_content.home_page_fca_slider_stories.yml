@@ -1,0 +1,16 @@
+uuid: b8172e25-9820-4fc3-9e6f-d56bd8c59fd7
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.home_page_fca_slider_stories
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: block_content.home_page_fca_slider_stories
+target_entity_type_id: block_content
+target_bundle: home_page_fca_slider_stories
+default_langcode: site_default
+language_alterable: true

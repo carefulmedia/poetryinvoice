@@ -2443,6 +2443,11 @@ display:
           text: view
           output_url_as_text: true
           absolute: false
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 18
       sorts:
         random:
           id: random
@@ -2630,6 +2635,7 @@ display:
           hide_empty: false
       defaults:
         title: false
+        pager: false
         use_more: false
         use_more_always: false
         use_more_text: false
@@ -2653,7 +2659,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url.query_args
         - user
         - 'user.node_grants:view'
         - user.permissions

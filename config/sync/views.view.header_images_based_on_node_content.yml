@@ -260,7 +260,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<h1 class="hero"><a href="/recite">#recitepoetry</a></h1>'
+            value: '<div class="container"><h1 class="hero"><a href="/recite">#recitepoetry</a></h1></div>'
             format: filtered_html
           tokenize: false
       display_extenders: {  }
