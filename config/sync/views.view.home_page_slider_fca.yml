@@ -1252,7 +1252,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"blur\">{{ field_story_image }}</div>\r\n<a href=\"{{ field_link_if_not_to_story_page }}\" class=\"area-link\">\r\n<div>{{ field_story_image }}</div>\r\n<div class=\"container fca-text\"><h1>{{ field_headline }}</h1>\r\n{{ field_sub_headline }}\r\n</div>\r\n</a>"
+            text: "<div class=\"blur\">{{ field_story_image }}</div>\r\n<a href=\"{{ field_link_if_not_to_story_page }}\" class=\"area-link\">\r\n<div>{{ field_story_image }}</div>\r\n<div class=\"container fca-text\"><h1 class=\"light\">{{ field_headline }}</h1>\r\n{{ field_sub_headline }}\r\n</div>\r\n</a>"
             make_link: false
             path: ''
             absolute: false
@@ -1496,7 +1496,32 @@ display:
         groups:
           1: AND
           2: OR
+      style:
+        type: owlcarousel
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          items: '1'
+          margin: '0'
+          nav: 1
+          autoplay: 1
+          autoplayHoverPause: 1
+          dots: 1
+          dimensionMobile: ''
+          itemsMobile: '1'
+          dimensionDesktop: ''
+          itemsDesktop: '1'
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
       defaults:
+        style: false
+        row: false
         fields: false
         filters: false
         filter_groups: false

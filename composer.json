@@ -9,6 +9,18 @@
         "chat": "https://www.drupal.org/node/314178"
     },
     "repositories": {
+        "tiny_slider": {
+            "type": "package",
+            "package": {
+                "name": "ganlanyuan/tiny-slider",
+                "version": "2.9.3",
+                "type": "drupal-library",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/ganlanyuan/tiny-slider/archive/refs/tags/v2.9.3.zip"
+                }
+            }
+        },
         "owlcarousel2": {
             "type": "package",
             "package": {
@@ -108,6 +120,7 @@
         "drupal/tablesorter": "^2.0@RC",
         "drupal/tb_megamenu": "^1.7",
         "drupal/text_field_formatter": "^2.0",
+        "drupal/tiny_slider": "^1.0@beta",
         "drupal/viewfield": "^3.0@beta",
         "drupal/views_bootstrap": "^5.5@alpha",
         "drupal/views_bulk_edit": "^2.6",
@@ -118,6 +131,7 @@
         "drupal/views_slideshow": "4.x-dev@dev",
         "drupal/zen": "^7.0@alpha",
         "drush/drush": "^10",
+        "ganlanyuan/tiny-slider": "^2.9",
         "mikehaertl/phpwkhtmltopdf": "~2.1",
         "owlcarousel2/owlcarousel2": "^2.3",
         "platformsh/config-reader": "^2.4",

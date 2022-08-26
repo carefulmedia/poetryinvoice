@@ -1391,8 +1391,45 @@ h3.name {
 .page-view-frontpage .owl-carousel .owl-item .container {
   position: absolute;
   right: 10%;
-  bottom: 65%;
-  color: white;
+  bottom: 15%;
+  color: black;
+  background-color: #fff;
+  opacity: 0.8;
+  padding: 10px;
+  border-radius: 10px;
+  width: 40%;
+}
+.owl-nav {
+  font-size: 50px;
+  line-height: 50px;
+}
+.owl-prev {
+  float: left;
+}
+.owl-next {
+  float: right;
+}
+.owl-dots {
+  margin-top: 25px;
+}
+/* Only for non-mobile */
+@media (max-width: 867px) {
+  .page-view-frontpage .owl-carousel .owl-item .container.fca-text {
+    right: 5%;
+    bottom: 5%;
+    color: black;
+    width: 90%;
+  }
+  .fca-text p {
+    display: none;
+  }
+  .page-view-frontpage .owl-carousel .owl-item img {
+    height: 80vw;
+    width: auto;
+  }
+}
+.view-home-page-slider-fca {
+  margin-bottom: 6rem;
 }
 /**
  * @file
@@ -2195,8 +2232,7 @@ header #search-block-form {
 }
 .site-footer .block {
   margin: 20px 0;
-  border: 1px solid #444;
-  border-color: rgba(255, 255, 255, 0.1);
+  border: none;
   padding: 10px;
 }
 .site-footer table {
@@ -3138,6 +3174,10 @@ h1 {
   text-align: left;
   font-style: normal;
 }
+h1.light {
+  font-weight: 400;
+  line-height: 44px;
+}
 h2 {
   font-family: 'Roboto Flex';
   font-style: normal;
@@ -3173,6 +3213,30 @@ h4,
   text-transform: uppercase;
   font-stretch: 110;
   font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+}
+/* Only for non-mobile */
+@media (max-width: 867px) {
+  h1 {
+    font-size: 36px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  h3 {
+    font-size: 18px;
+  }
+  h4 {
+    font-size: 14px;
+  }
+  p,
+  .serif-large {
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 36px;
+    /* or 180% */
+  }
 }
 a {
   color: #000;
@@ -3254,6 +3318,9 @@ li {
 }
 .node--type-writing-workshop li {
   list-style: none;
+}
+.area-link {
+  text-decoration: none;
 }
 .print__wrapper a {
   text-decoration: none;

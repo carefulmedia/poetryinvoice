@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d93f4934da0eab6370ca51a27f091e06",
+    "content-hash": "a6cb2fa6e1b869b024b7586dc3deb587",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -7864,6 +7864,60 @@
             }
         },
         {
+            "name": "drupal/tiny_slider",
+            "version": "1.0.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/tiny_slider.git",
+                "reference": "1.0.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/tiny_slider-1.0.0-beta2.zip",
+                "reference": "1.0.0-beta2",
+                "shasum": "b369d61b47c20dccb5b94b60a83142c213abb18e"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-beta2",
+                    "datestamp": "1656284741",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^10"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Hebl",
+                    "homepage": "https://www.drupal.org/user/3688118"
+                },
+                {
+                    "name": "ipwa",
+                    "homepage": "https://www.drupal.org/user/130909"
+                }
+            ],
+            "description": "Drupal integration for Tiny Slider",
+            "homepage": "https://www.drupal.org/project/owlcarousel",
+            "support": {
+                "source": "https://git.drupalcode.org/project/tiny_slider",
+                "issues": "https://www.drupal.org/project/owlcarousel"
+            }
+        },
+        {
             "name": "drupal/token",
             "version": "1.11.0",
             "source": {
@@ -8836,6 +8890,15 @@
                 "source": "https://github.com/darylldoyle/svg-sanitizer/tree/0.15.4"
             },
             "time": "2022-02-21T09:13:59+00:00"
+        },
+        {
+            "name": "ganlanyuan/tiny-slider",
+            "version": "2.9.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/ganlanyuan/tiny-slider/archive/refs/tags/v2.9.3.zip"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "grasmash/expander",
@@ -14270,6 +14333,7 @@
         "drupal/select_translation": 15,
         "drupal/social_link_field": 20,
         "drupal/tablesorter": 5,
+        "drupal/tiny_slider": 10,
         "drupal/viewfield": 10,
         "drupal/views_bootstrap": 15,
         "drupal/views_field_view": 10,
