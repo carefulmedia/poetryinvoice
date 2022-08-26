@@ -73,6 +73,8 @@ function lvp_barrio_preprocess_page(&$variables) {
   */
   function lvp_barrio_preprocess_page__front(array &$variables) {
     $variables['slideshow'] = views_embed_view('home_page_slider_fca', 'block_1');
-    $variables['flyingblocks'] = views_embed_view('home_page_slider_fca', 'block_2');
+    $variables['flyingblocks1'] = views_embed_view('home_page_slider_fca', 'block_2');
+    $variables['flyingblocks2'] = views_embed_view('home_page_slider_fca', 'block_3');
+    $variables['flyingblocks3'] = views_embed_view('home_page_slider_fca', 'block_4');
   }
 
