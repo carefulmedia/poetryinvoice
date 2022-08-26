@@ -16,6 +16,7 @@ dependencies:
     - block_content
     - image
     - link
+    - masonry_views
     - node
     - owlcarousel
     - text
@@ -531,7 +532,7 @@ display:
         type: some
         options:
           offset: 0
-          items_per_page: 4
+          items_per_page: 8
       exposed_form:
         type: basic
         options:
@@ -2002,7 +2003,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "     <div data-aos=\"zoom-in-up\"\r\n       data-aos-offset=\"200\"   data-aos-easing=\"ease-in-sine\"\r\n       data-aos-duration=\"600\">\r\n<div class=\"index-views mixtape content-index\">\r\n\r\n    <a href=\"{{ field_link_if_not_to_story_page }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n            <div class=\"image\">\r\n          {{ field_story_image }} \r\n            </div>\t\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ field_headline }} </h3>\r\n\t                <p class= \"sans-serif\">{{ field_sub_headline }} </p>\r\n            </div>\r\n    </a>\r\n</div></div>"
+            text: "     <div data-aos=\"zoom-in-up\"\r\n       data-aos-offset=\"200\"   data-aos-easing=\"ease-in-sine\"\r\n       data-aos-duration=\"600\" data-aos-anchor-placement=\"top-center\">>\r\n<div class=\"index-views content-index\">\r\n\r\n    <a href=\"{{ field_link_if_not_to_story_page }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n            <div class=\"image\">\r\n          {{ field_story_image }} \r\n            </div>\t\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ field_headline }} </h3>\r\n\t                <p class= \"sans-serif\">{{ field_sub_headline }} </p>\r\n            </div>\r\n    </a>\r\n</div></div>"
             make_link: false
             path: ''
             absolute: false
@@ -2275,8 +2276,34 @@ display:
         groups:
           1: AND
           2: OR
+      style:
+        type: masonry
+        options:
+          grouping: {  }
+          row_class: .lesson-plans-index
+          default_row_class: true
+          layoutColumnWidth: '50'
+          layoutColumnWidthUnit: '%'
+          gutterWidth: '50'
+          stampSelector: ''
+          isLayoutResizable: 1
+          isLayoutAnimated: 1
+          layoutAnimationDuration: '500'
+          isLayoutFitsWidth: 0
+          isLayoutImagesLoadedFirst: 1
+          isLayoutImagesLazyLoaded: 0
+          isItemsPositionInPercent: 0
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
       defaults:
         title: false
+        style: false
+        row: false
         fields: false
         filters: false
         filter_groups: false
