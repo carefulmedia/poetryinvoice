@@ -1429,7 +1429,13 @@ h3.name {
   }
 }
 .view-home-page-slider-fca {
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
+}
+.view-home-page-slider-fca .views-view-grid .row {
+  justify-content: center!important;
+}
+#views-bootstrap-home-page-slider-fca-block-2 .content-index.mixtape {
+  height: 35rem;
 }
 /**
  * @file
@@ -3348,6 +3354,17 @@ li {
 .about a:hover,
 .propos a:hover {
   color: var(--black);
+}
+.button {
+  height: 50px;
+  width: 100px;
+  border-radius: 5px;
+  background: #D3310E;
+  color: white;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 15px;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
