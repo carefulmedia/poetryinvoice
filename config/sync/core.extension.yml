@@ -82,6 +82,7 @@ module:
   menu_block: 0
   menu_link_content: 0
   menu_ui: 0
+  menus_attribute: 0
   message: 0
   migrate: 0
   migrate_drupal: 0

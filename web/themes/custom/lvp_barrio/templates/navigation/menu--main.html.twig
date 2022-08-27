@@ -30,11 +30,12 @@
   {% import _self as menus %}
   {% if items %}
     {% if menu_level == 0 %}
-      <ul{{ attributes.addClass('nav navbar-nav')|without('id') }}>
+      <ul{{ attributes.addClass('nav navbar-nav menu')|without('id') }}>
     {% else %}
       <ul class="dropdown-menu">
     {% endif %}
     {% for item in items %}
+      {% set menu_attributes = menus_attribute(items|keys[loop.index0]) %}
       {%
         set classes = [
           menu_level ? 'dropdown-item' : 'nav-item',
@@ -42,9 +43,17 @@
           item.is_collapsed ? 'menu-item--collapsed',
           item.in_active_trail ? 'active',
           item.below ? 'dropdown',
+          menu_attributes.item.class ? menu_attributes.item.class
+
         ]
       %}
-      <li{{ item.attributes.addClass(classes) }}>
+      <li{{ item.attributes.addClass(classes) }}
+        {% if menu_attributes.item.id %}
+          {{ item.attributes.setAttribute('id', menu_attributes.item.id) }}
+        {% endif %}
+
+
+>
         {%
           set link_classes = [
             not menu_level ? 'nav-link',
@@ -59,7 +68,9 @@
           {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
         {% else %}
           {{ link(item.title, item.url, {'class': link_classes}) }}
+
         {% endif %}
+
       </li>
     {% endfor %}
     </ul>
