@@ -4809,7 +4809,7 @@ display:
           empty: false
           content:
             value: '<div data-aos="fade-up"><h1>For teachers:</h1></div>'
-            format: filtered_html
+            format: php_code
           tokenize: false
       display_extenders: {  }
     cache_metadata:

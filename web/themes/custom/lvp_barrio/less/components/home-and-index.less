@@ -2,10 +2,7 @@
  * @file
  * Subtheme specific CSS.
  */
-.plum-bg.roulette-discover {
-background: var(--plum-dark);
 
-}
 .block-layout-builder .plum-bg.roulette-discover.col-2-sidebar {
 background: var(--plum);
 color: white;
@@ -24,7 +21,6 @@ color: white;
     position: absolute;
     top: 0;
     right: 0;
-    background: #893B73;
     border-radius: 6px;
     padding: .5rem;
     color: #fff;
@@ -35,14 +31,14 @@ color: white;
 }
 .plum-bg.roulette-discover {
 background: rgba(72, 17, 57, 1);
-padding: 3rem 3rem;
+padding: 0;
 }
 
 .plum-bg.roulette-discover h1, .plum-bg.roulette-discover h2, .plum-bg.roulette-discover h3, .plum-bg.roulette-discover h4, .plum-bg.roulette-discover h5, .plum-bg.roulette-discover h6, .plum-bg.roulette-discover p  {
 color: #fff;
 
 }
-.plum-bg.roulette-discover h1 {
+.plum-bg.roulette-discover .col-4 h1 {
 text-align: center;
 
 }
@@ -70,7 +66,8 @@ transition: all .8s ease;
 }
 .plum-bg.roulette-discover .container {
 
-    margin: 6rem 0;
+    margin: 4rem auto;
+    padding: 0;
 
 }
 
@@ -192,3 +189,28 @@ margin-bottom: 8rem;
 margin-top: 8rem;
 margin-bottom: 8rem;
 }
+
+ .row-full{
+ width: 100vw;
+ position: relative;
+ margin-left: -50vw;
+ height: fit-content;
+ margin-top: 100px;
+ left: 50%;
+}
+
+.row-full .col-12 {
+    padding: 0;
+    margin: 0;
+padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+padding-top: 3rem;
+padding-bottom: 3rem;
+
+}
+
+
+
+
+
+
