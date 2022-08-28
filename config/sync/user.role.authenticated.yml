@@ -84,6 +84,7 @@ permissions:
   - 'view field_new_theme'
   - 'view field_one_line_description'
   - 'view field_periods'
+  - 'view field_photo_credit'
   - 'view field_place_team_regional'
   - 'view field_poem_thems'
   - 'view field_prompt_image'

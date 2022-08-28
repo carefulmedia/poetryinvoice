@@ -6,10 +6,12 @@ dependencies:
     - node.type.journal_poem
   module:
     - contact
+    - entity_print
     - field_permissions
     - form_mode_manager
     - media
     - node
+    - paragraphs
     - paragraphs_type_permissions
     - system
 _core:
@@ -62,6 +64,7 @@ permissions:
   - 'edit own field_grades'
   - 'edit own field_test'
   - 'edit own field_writing_prompt'
+  - 'entity print access type paragraph'
   - 'search article content'
   - 'search blog content'
   - 'search event content'
@@ -111,6 +114,7 @@ permissions:
   - 'view field_one_line_description'
   - 'view field_periods'
   - 'view field_photo'
+  - 'view field_photo_credit'
   - 'view field_place_team_regional'
   - 'view field_poem_thems'
   - 'view field_prompt_image'
@@ -156,8 +160,10 @@ permissions:
   - 'view paragraph content judges'
   - 'view paragraph content micro_interview'
   - 'view paragraph content poet_laureate'
+  - 'view paragraph content publications'
   - 'view paragraph content score_template_criteria'
   - 'view paragraph content tr_student'
   - 'view piv_teacher_first_name'
   - 'view piv_teacher_last_name'
+  - 'view unpublished paragraphs'
   - 'view user_picture'
