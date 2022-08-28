@@ -1268,7 +1268,8 @@ summary {
   margin-bottom: 2rem;
 }
 .content-index,
-.col-2-sidebar .block-layout-builder {
+.col-2-sidebar .block-layout-builder,
+.poem-extras .block-layout-builder .content {
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
   border-radius: 10px;
   background: #fff;
@@ -1357,6 +1358,9 @@ h3.name {
 .content-index .book a {
   color: #fff;
   text-transform: uppercase;
+}
+.node--type-poem .content-index.mixtape {
+  height: 35rem;
 }
 /* ------------------ Header ------------------ */
 .navbar-dark .nav-link:hover,
@@ -2173,6 +2177,34 @@ footer .nav-item {
 .node--unpublished .comment-text .comment-arrow {
   border-left: 1px solid #fff4f4;
   border-right: 1px solid #fff4f4;
+}
+/* Poem page styles */
+.node--type-poem .field__label {
+  text-transform: uppercase;
+  font-family: 'Roboto Flex';
+  font-style: normal;
+  font-weight: 1000;
+  font-size: 18px;
+  line-height: 21px;
+  /* or 117% */
+  letter-spacing: 0.1em;
+}
+.node--type-poem .field__item a {
+  text-decoration: none;
+}
+.node--type-poem .field__item:last-child a::after {
+  content: '';
+}
+.node--type-poem .field__item a::after {
+  content: ',';
+}
+.node--type-poem .block-field-blocknodepoembody {
+  padding-bottom: 6rem;
+  border-bottom: 4px dashed rgba(0, 0, 0, 0.4);
+  margin-bottom: 7rem;
+}
+.node--type-poem .main-content {
+  margin-bottom: 7rem;
 }
 .node-preview-container {
   background: #d1e8f5;
@@ -3445,6 +3477,7 @@ h2 a,
 h3 a {
   color: #000;
   font-family: 'Roboto Flex';
+  word-break: break-word;
 }
 h1 {
   font-family: 'Roboto Flex';
@@ -3577,7 +3610,6 @@ li {
 }
 .block-layout-builder {
   margin-bottom: 40px;
-  padding: 20px 0px;
 }
 .field--type-entity-reference {
   margin: 0 0;

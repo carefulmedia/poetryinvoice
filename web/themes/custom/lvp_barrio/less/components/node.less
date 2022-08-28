@@ -66,3 +66,37 @@
   border-left: 1px solid #fff4f4;
   border-right: 1px solid #fff4f4;
 }
+/* Poem page styles */
+
+.node--type-poem {
+    .field__label {
+    text-transform: uppercase;  
+    font-family: 'Roboto Flex';
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 18px;
+    line-height: 21px;
+    /* or 117% */
+    letter-spacing: 0.1em;
+    }
+    .field__item a {
+    text-decoration: none;
+  //  border-right: 1px solid #000;
+  //  padding: 0 5px;
+        
+    }
+    .field__item:last-child a::after {
+    content: '';
+    }
+    .field__item a::after {
+    content: ',';
+    }
+    .block-field-blocknodepoembody {
+    padding-bottom: 6rem;
+    border-bottom: 4px dashed rgba(0, 0, 0, 0.4);
+    margin-bottom: 7rem;
+    }
+    .main-content {
+    margin-bottom: 7rem;    
+    }
+}

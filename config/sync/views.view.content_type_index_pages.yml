@@ -4186,7 +4186,7 @@ display:
         sorts: false
         filters: false
         filter_groups: false
-      use_ajax: false
+      use_ajax: true
       display_description: ''
       display_extenders: {  }
     cache_metadata:

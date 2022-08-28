@@ -2281,8 +2281,8 @@ display:
           label: ''
           exclude: true
           alter:
-            alter_text: true
-            text: "<div class=\"poet\"><div class=\"name-date\">\r\n<span class=\"name\">{{ name }}</span>\r\n</div></div>"
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -2429,8 +2429,19 @@ display:
           validate_options: {  }
           break_phrase: false
           not: false
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: picpal
+          default_row_class: true
+      row:
+        type: fields
+        options: {  }
       defaults:
         pager: false
+        style: false
+        row: false
         relationships: false
         fields: false
         arguments: false
