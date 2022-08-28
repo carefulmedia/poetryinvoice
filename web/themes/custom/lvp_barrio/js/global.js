@@ -17,7 +17,7 @@
         // Set background image of parent block to this image URL.
         $('.site-footer').css('background-image', 'url(' + imgSrc + ')');
        	     let scrollRef = 0;
-      //  $( ".site-footer" ).fadeIn( 1500 );
+        $( ".site-footer" ).fadeIn( 1500 );
         // Assistance for Animate On Scroll issue not working properly
         window.addEventListener('scroll', function() {
           // increase value up to 10, then refresh AOS
