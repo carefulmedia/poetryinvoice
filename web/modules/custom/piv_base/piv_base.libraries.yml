@@ -3,3 +3,9 @@ piv_select:
     js/piv-select.js: {}
   dependencies:
     - core/jquery
+
+welcome_modal:
+  js:
+    js/welcome-modal.js: {}
+  dependencies:
+    - core/jquery

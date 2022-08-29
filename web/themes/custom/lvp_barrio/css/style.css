@@ -3007,90 +3007,124 @@ body.path-user .field--label-above .field__item {
 .views-ui-display-tab-actions .dropbutton .form-submit:focus {
   color: #018fe2;
 }
-.ui-dialog .ui-dialog-titlebar {
-  background: #1d84c3 !important;
+#welcome-modal {
+  width: 100vw;
+  height: 100vh;
+  z-index: 30000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 0;
+  background: #F1EDEC;
 }
-.ui-dialog .ui-dialog-titlebar-close {
-  background: url(../assets/x-white.svg) no-repeat !important;
-  background-size: 40px 40px !important;
+#welcome-modal::backdrop {
+  background-color: #F1EDEC;
 }
-#piv-welcome-modal .piv-welcome-modal {
-  justify-content: center;
-  min-height: 150px;
+#welcome-modal .welcome-modal-inner {
+  margin-top: 3rem;
 }
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select {
-  display: inline-block;
-  margin-right: 10px;
+#welcome-modal .start-here,
+#welcome-modal .welcome-modal-back {
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 2rem;
+  font-family: 'Roboto Condensed';
 }
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select .form-required {
-  display: inline;
-  font-weight: bold;
-  margin-right: 10px;
-  width: 100%;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select .form-required::after {
-  display: none;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select .piv-select {
-  border: none;
-  border-radius: unset;
-  padding: 0;
-  height: 25px;
-  background-image: none;
-  font-weight: bold;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select .piv-select .piv-select-placeholder {
-  border-bottom: 2px solid black;
-  height: 1.5rem;
-  margin-bottom: 5px;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-type-piv-select .piv-select .piv-select-option {
-  text-transform: uppercase;
-  line-height: 20px;
-  font-size: 14px;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-item-option-1 label {
-  max-width: 60px;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-item-option-3 label {
-  max-width: 80px;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-wrapper {
-  display: inline-block;
-  margin-right: 10px;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-wrapper .form-type-item {
-  font-weight: bold;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-wrapper .form-item-teacher {
-  min-width: 160px;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .form-submit::before {
-  display: none;
-}
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .button {
+#welcome-modal .welcome-modal-back {
   display: block;
-  height: 50px;
-  width: 100px;
-  border-radius: 5px;
-  background: #D3310E;
-  color: white;
-  text-transform: uppercase;
-  font-weight: bold;
-  margin-top: 30px;
+  margin-bottom: 70px;
 }
-#piv-welcome-modal .piv-welcome-modal .wrapper-class .mb-3 {
-  margin-bottom: unset !important;
+#welcome-modal .welcome-modal-back:hover {
+  color: #000;
 }
-.piv-welcome-modal .piv-select {
-  display: inline-block;
-  vertical-align: top;
+#welcome-modal .close-welcome-modal {
+  right: 0;
+  top: 1rem;
+  position: absolute;
+  cursor: pointer;
+  font-size: 1.25rem;
 }
-.piv-welcome-modal .piv-select-options.hide {
+#welcome-modal form {
+  font-family: Roboto;
+  line-height: 100%;
+  font-weight: 900;
+}
+#welcome-modal form .form-required::after {
   display: none;
 }
-.piv-welcome-modal .mb-3 {
+#welcome-modal form .options-wrapper {
+  display: flex;
+  margin-top: 70px;
+}
+#welcome-modal .piv-select-placeholder {
+  border-bottom: 3px solid;
+  height: 2rem;
+}
+#welcome-modal .form-item-option-3 .piv-select {
+  margin: 0 10px 0 0;
+}
+#welcome-modal .piv-select {
+  display: inline-block;
   vertical-align: top;
+  margin: 0 10px;
+}
+#welcome-modal .piv-select-options {
+  text-transform: uppercase;
+  font-size: 1rem;
+  color: #918E8D;
+  line-height: 1.5rem;
+  margin-top: 15px;
+}
+#welcome-modal .piv-select-options.hide {
+  display: none;
+}
+#welcome-modal fieldset {
+  padding-top: 0;
+  opacity: 1;
+  transition: opacity 0.5s, padding-top 0.5s;
+  width: auto;
+  height: auto;
+  font-size: 0;
+}
+#welcome-modal fieldset > * {
+  font-size: 2.5rem;
+}
+#welcome-modal fieldset.select-hidden {
+  padding-top: 50px;
+  opacity: 0;
+  transition: opacity 0, padding-top 0;
+  width: 0;
+  overflow: hidden;
+  font-size: 0;
+  height: 0;
+}
+#welcome-modal #edit-go.form-submit {
+  opacity: 1;
+  transition: opacity 0.5s;
+  background-color: #C53D27;
+  border: 0;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 900;
+  width: 160px;
+  height: 70px;
+  margin-top: 40px;
+}
+#welcome-modal #edit-go.form-submit::before {
+  display: none;
+}
+#welcome-modal #edit-go.form-submit.select-hidden {
+  opacity: 0;
+  transition: opacity 0;
+}
+#welcome-modal .menu--account {
+  float: right;
+  margin-right: 30px;
+  margin-top: 2px;
+}
+#welcome-modal .menu--account a {
+  padding: 0;
+  color: #000;
 }
 :root {
   --plum-light: #E7D8E3;

@@ -1,0 +1,7 @@
+piv_user.create_account:
+  path: '/create-account'
+  defaults:
+    _title: 'Create Account'
+    _controller: '\Drupal\piv_user\Controller\CreateAccountController::build'
+  requirements:
+    _role: 'anonymous'
