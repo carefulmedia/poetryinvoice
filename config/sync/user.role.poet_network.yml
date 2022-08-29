@@ -11,6 +11,7 @@ dependencies:
     - contact
     - field_permissions
     - filter
+    - form_mode_manager
     - node
     - paragraphs_type_permissions
 id: poet_network
@@ -43,6 +44,7 @@ permissions:
   - 'create field_q5'
   - 'create paragraph content micro_interview'
   - 'create paragraph content publications'
+  - 'create user_picture'
   - 'create writing_prompt content'
   - 'delete paragraph content publications'
   - 'edit any school content'
@@ -76,13 +78,16 @@ permissions:
   - 'edit own field_user_bio'
   - 'edit own field_virtual_visits'
   - 'edit own field_writing_content'
+  - 'edit own user_picture'
   - 'edit own writing_prompt content'
   - 'search pal_pir_school_visit content'
   - 'search writing_prompt content'
   - 'update paragraph content micro_interview'
   - 'update paragraph content publications'
+  - 'use node.default form mode'
   - 'use text format filtered_html'
   - 'use text format full_html'
+  - 'use user.poet_network form mode'
   - 'view all user locations'
   - 'view any unpublished pal_pir_school_visit content'
   - 'view body'

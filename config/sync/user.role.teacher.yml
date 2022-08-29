@@ -5,17 +5,20 @@ dependencies:
   config:
     - media.type.remote_video
     - node.type.bulletin_board
+    - node.type.journal_poem
     - node.type.pal_pir_school_visit
     - node.type.team_regionals_entry
   module:
     - comment
     - contact
     - field_permissions
+    - form_mode_manager
     - media
     - node
     - piv_contest_competition
     - piv_contest_competition_entry
     - piv_contest_recitation
+    - system
 id: teacher
 label: Teacher
 weight: 0
@@ -66,11 +69,13 @@ permissions:
   - 'create field_work_student_teacher'
   - 'create field_writing_prompt'
   - 'create field_youtube_recitation_url'
+  - 'create journal_poem content'
   - 'create pal_pir_school_visit content'
   - 'create piv_release_form'
   - 'create piv_student_mail'
   - 'create remote_video media'
   - 'create team_regionals_entry content'
+  - 'create user_picture'
   - 'delete competition entry for own school'
   - 'delete own bulletin_board content'
   - 'delete own competition entry'
@@ -122,6 +127,7 @@ permissions:
   - 'edit own recitation'
   - 'edit own remote_video media'
   - 'edit own team_regionals_entry content'
+  - 'edit own user_picture'
   - 'edit piv_release_form'
   - 'manage own competition entries'
   - 'post comments'
@@ -129,6 +135,9 @@ permissions:
   - 'search forum content'
   - 'skip comment approval'
   - 'subscribe to content'
+  - 'use node.default form mode'
+  - 'use node.teacher form mode'
+  - 'use user.teacher_edit form mode'
   - 'view field_about_me'
   - 'view field_agreed_visit_date'
   - 'view field_date_and_poet_chosen'
@@ -193,3 +202,4 @@ permissions:
   - 'view own piv_student_mail'
   - 'view own school competitions'
   - 'view piv_release_form'
+  - 'view the administration theme'

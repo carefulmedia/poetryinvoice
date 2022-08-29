@@ -66,6 +66,7 @@ dependencies:
     - field.field.user.user.piv_teacher_profile_origin
     - field.field.user.user.user_picture
     - views.view.content_by_author_poems_on_their_page
+    - views.view.user_name_on_user_pages
   module:
     - address
     - entity_reference_revisions
@@ -112,12 +113,73 @@ third_party_settings:
               - col-md-3
               - col-12
           remove_gutters: 0
+        components: {  }
+        third_party_settings: {  }
+      -
+        layout_id: 'bootstrap_layout_builder:blb_col_2'
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          container_wrapper_classes: ''
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: ''
+          section_classes: ''
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
+          breakpoints:
+            desktop: blb_col_9_3
+            tablet: blb_col_9_3
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-9
+              - col-md-9
+              - col-12
+            blb_region_col_2:
+              - col-lg-3
+              - col-md-3
+              - col-12
+          remove_gutters: 0
         components:
+          38445bbe-2286-4330-a5df-b796fd08fbeb:
+            uuid: 38445bbe-2286-4330-a5df-b796fd08fbeb
+            region: blb_region_col_1
+            configuration:
+              id: 'views_block:user_name_on_user_pages-block_1'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 0
+            additional: {  }
           0bed62b4-b876-437c-aab2-b55e72a1e037:
             uuid: 0bed62b4-b876-437c-aab2-b55e72a1e037
-            region: blb_region_col_2
+            region: blb_region_col_1
             configuration:
               id: 'field_block:user:user:field_lifespan'
+              label: 'Year of birth'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          29ff44ec-001d-4b3a-9ecf-7cf7a6db6f2e:
+            uuid: 29ff44ec-001d-4b3a-9ecf-7cf7a6db6f2e
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:user:user:field_photo_credit'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
@@ -127,11 +189,11 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 2
+            weight: 0
             additional: {  }
           5418bae2-9f48-462b-9183-9bcde3e15e2e:
             uuid: 5418bae2-9f48-462b-9183-9bcde3e15e2e
-            region: blb_region_col_2
+            region: blb_region_col_1
             configuration:
               id: 'field_block:user:user:field_social_links'
               label_display: '0'
@@ -146,70 +208,6 @@ third_party_settings:
                   new_tab: true
                 third_party_settings: {  }
             weight: 1
-            additional: {  }
-          29ff44ec-001d-4b3a-9ecf-7cf7a6db6f2e:
-            uuid: 29ff44ec-001d-4b3a-9ecf-7cf7a6db6f2e
-            region: blb_region_col_3
-            configuration:
-              id: 'field_block:user:user:field_photo_credit'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: string
-                label: above
-                settings:
-                  link_to_entity: false
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          e992b69c-3e80-412f-8a1d-8349bce75449:
-            uuid: e992b69c-3e80-412f-8a1d-8349bce75449
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:user:user:piv_teacher_first_name'
-              label: 'First name'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: text_field_formatter
-                label: hidden
-                settings:
-                  link_to_entity: 0
-                  wrap_tag: h1
-                  wrap_class: ''
-                  wrap_attributes: ''
-                  override_link_label: ''
-                  token: ''
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-          8098eff6-44e3-456c-b97e-317073a20312:
-            uuid: 8098eff6-44e3-456c-b97e-317073a20312
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:user:user:piv_teacher_last_name'
-              label: 'Last name'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: text_field_formatter
-                label: hidden
-                settings:
-                  link_to_entity: 0
-                  wrap_tag: h1
-                  wrap_class: ''
-                  wrap_attributes: ''
-                  override_link_label: ''
-                  token: ''
-                third_party_settings: {  }
-            weight: 3
             additional: {  }
         third_party_settings: {  }
       -
@@ -240,6 +238,43 @@ third_party_settings:
               - col-12
           remove_gutters: 0
         components:
+          d9114d59-0f58-4ba6-b873-71023eaaefd5:
+            uuid: d9114d59-0f58-4ba6-b873-71023eaaefd5
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_micro_interview'
+              label: Micro-interview
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: hidden
+                settings:
+                  view_mode: full
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          e0b106f4-01e8-49e7-a948-208f15548c65:
+            uuid: e0b106f4-01e8-49e7-a948-208f15548c65
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_user_bio'
+              label: Biography
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
           96b3c8f1-7f79-44e9-8126-232ca8896a89:
             uuid: 96b3c8f1-7f79-44e9-8126-232ca8896a89
             region: blb_region_col_2
@@ -259,72 +294,6 @@ third_party_settings:
             configuration:
               id: 'field_block:user:user:field_publications'
               label: Publications
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: entity_reference_revisions_entity_view
-                label: above
-                settings:
-                  view_mode: full
-                third_party_settings: {  }
-            weight: 1
-            additional: {  }
-        third_party_settings: {  }
-      -
-        layout_id: 'bootstrap_layout_builder:blb_col_2'
-        layout_settings:
-          label: ''
-          context_mapping: {  }
-          container_wrapper_classes: ''
-          container_wrapper_bg_color_class: ''
-          container_wrapper_bg_media: null
-          container: ''
-          section_classes: ''
-          regions_classes:
-            blb_region_col_1: ''
-            blb_region_col_2: ''
-          breakpoints:
-            desktop: blb_col_9_3
-            tablet: blb_col_9_3
-            mobile: blb_col_12
-          layout_regions_classes:
-            blb_region_col_1:
-              - col-lg-9
-              - col-md-9
-              - col-12
-            blb_region_col_2:
-              - col-lg-3
-              - col-md-3
-              - col-12
-          remove_gutters: 0
-        components:
-          e0b106f4-01e8-49e7-a948-208f15548c65:
-            uuid: e0b106f4-01e8-49e7-a948-208f15548c65
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:user:user:field_user_bio'
-              label: Biography
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: text_default
-                label: hidden
-                settings: {  }
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          d9114d59-0f58-4ba6-b873-71023eaaefd5:
-            uuid: d9114d59-0f58-4ba6-b873-71023eaaefd5
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:user:user:field_micro_interview'
-              label: Micro-interview
               label_display: visible
               provider: layout_builder
               context_mapping:
@@ -469,4 +438,5 @@ hidden:
   piv_teacher_first_name: true
   piv_teacher_last_name: true
   piv_teacher_profile_origin: true
+  search_api_excerpt: true
   user_picture: true

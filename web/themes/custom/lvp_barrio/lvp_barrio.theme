@@ -72,7 +72,10 @@ function lvp_barrio_preprocess_page(&$variables) {
   * Implements hook_preprocess_page() for page.html.twig.
   */
   function lvp_barrio_preprocess_page__front(array &$variables) {
-    $variables['slideshow'] = views_embed_view('home_page_slider', 'block_1');
-    $variables['flyingblocks'] = views_embed_view('content_type_index_pages', 'block_14');
+    $variables['slideshow'] = views_embed_view('home_page_slider_fca', 'block_1');
+    $variables['flyingblocks1'] = views_embed_view('home_page_slider_fca', 'block_2');
+    $variables['flyingblocks2'] = views_embed_view('home_page_slider_fca', 'block_3');
+    $variables['flyingblocks3'] = views_embed_view('home_page_slider_fca', 'block_4');
+    $variables['flyingblocks4'] = views_embed_view('home_page_slider_fca', 'block_5');
   }
 

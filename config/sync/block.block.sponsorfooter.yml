@@ -1,0 +1,25 @@
+uuid: b5ef1e40-313f-4b41-b091-25360b054574
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:32df349d-fbbc-4dfc-96d8-956e6235584c'
+  module:
+    - block_content
+  theme:
+    - lvp_barrio
+id: sponsorfooter
+theme: lvp_barrio
+region: footer_second
+weight: 0
+provider: null
+plugin: 'block_content:32df349d-fbbc-4dfc-96d8-956e6235584c'
+settings:
+  id: 'block_content:32df349d-fbbc-4dfc-96d8-956e6235584c'
+  label: 'Sponsor footer '
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -2,7 +2,8 @@
   "dependencies": {
     "gulp": "^4.0.2",
     "gulp-less": "^5.0.0",
-    "gulp-minify-css": "^1.2.4"
+    "gulp-minify-css": "^1.2.4",
+    "gulp-sourcemaps": "^3.0.0"
   },
   "name": "piv",
   "version": "1.0.0",

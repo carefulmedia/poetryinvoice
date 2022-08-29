@@ -1,9 +1,12 @@
 var gulp = require("gulp");
 var less = require('gulp-less');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('less', function () {
     return gulp.src('less/*.less')
-        .pipe(less())
+    .pipe(sourcemaps.init())
+    .pipe(less())
+.pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest("css"));
 });
 

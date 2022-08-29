@@ -260,8 +260,8 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<h1 class="hero"><a href="/recite">#recitepoetry</a></h1>'
-            format: filtered_html
+            value: '<div class="container"><h1 class="hero"><a href="/recite">#recitepoetry</a></h1></div>'
+            format: php_code
           tokenize: false
       display_extenders: {  }
     cache_metadata:
@@ -471,8 +471,8 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<h1 class="hero"><a href="/read">#readpoetry</a></h1>'
-            format: filtered_html
+            value: '<div class="container"><h1 class="hero"><a href="/read">#readpoetry</a></h1></div>'
+            format: full_html
           tokenize: false
       display_extenders: {  }
       block_description: 'Read header images'
@@ -788,8 +788,8 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<h1 class="hero"><a href="/write">#writepoetry</a></h1>'
-            format: filtered_html
+            value: '<div class="container"><h1 class="hero"><a href="/write">#writepoetry</a></h1></div>'
+            format: php_code
           tokenize: false
       display_extenders: {  }
       block_description: 'Write header images'
@@ -954,8 +954,8 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<h1 class="hero"><a href="/teach">#teachpoetry</a></h1>'
-            format: filtered_html
+            value: '<div class="container"><h1 class="hero"><a href="/teach">#teachpoetry</a></h1></div>'
+            format: php_code
           tokenize: false
       display_extenders: {  }
       block_description: 'Teach header images'
@@ -1120,8 +1120,8 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<h1 class="hero"><a href="/binge">#bingepoetry</a></h1>'
-            format: filtered_html
+            value: '<div class="container"><h1 class="hero"><a href="/binge">#bingepoetry</a></h1></div>'
+            format: php_code
           tokenize: false
       display_extenders: {  }
       block_description: 'Binge header images'
@@ -1286,8 +1286,8 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<h1 class="hero"><a href="/about">#aboutpoetryinvoice</a></h1>'
-            format: filtered_html
+            value: '<div class="container"><h1 class="hero"><a href="/about">#aboutpoetryinvoice</a></h1></div>'
+            format: php_code
           tokenize: false
       display_extenders: {  }
       block_description: 'About header images'

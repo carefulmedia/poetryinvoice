@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - core.base_field_override.node.poem.title
     - core.entity_view_mode.node.full
     - field.field.node.poem.body
     - field.field.node.poem.comment_node_poem
@@ -80,27 +79,6 @@ third_party_settings:
               - col-3
           remove_gutters: 0
         components:
-          79b965fd-6e28-4dda-9d71-13aece1788b5:
-            uuid: 79b965fd-6e28-4dda-9d71-13aece1788b5
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:poem:title'
-              label: Title
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: plain_string_formatter
-                label: hidden
-                settings:
-                  link_to_entity: false
-                  wrap_tag: h1
-                  wrap_class: ''
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
           c37aa004-e2c1-44b9-aa34-c7666874f3eb:
             uuid: c37aa004-e2c1-44b9-aa34-c7666874f3eb
             region: blb_region_col_1
@@ -202,7 +180,7 @@ third_party_settings:
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
-          section_classes: ''
+          section_classes: poem-extras
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
@@ -226,12 +204,15 @@ third_party_settings:
             region: blb_region_col_2
             configuration:
               id: 'field_block:node:poem:field_new_theme'
+              label: 'TAGS:'
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: above
+                label: inline
                 settings:
                   link: true
                 third_party_settings: {  }
@@ -242,12 +223,15 @@ third_party_settings:
             region: blb_region_col_2
             configuration:
               id: 'field_block:node:poem:field_moods'
+              label: Moods
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: above
+                label: inline
                 settings:
                   link: true
                 third_party_settings: {  }
@@ -294,11 +278,30 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: entity_reference_label
-                label: hidden
+                label: inline
                 settings:
                   link: true
                 third_party_settings: {  }
             weight: 2
+            additional: {  }
+          75258e23-da26-446c-89c3-ed9ff1991b1b:
+            uuid: 75258e23-da26-446c-89c3-ed9ff1991b1b
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:poem:field_poem_thems'
+              label: 'Contest Criteria'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: inline
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 3
             additional: {  }
         third_party_settings: {  }
       -
@@ -489,3 +492,4 @@ hidden:
   langcode: true
   layout_builder__layout: true
   links: true
+  search_api_excerpt: true

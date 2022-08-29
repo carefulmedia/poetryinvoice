@@ -1,0 +1,21 @@
+uuid: 7fc75c7d-c24c-4801-b101-6bb7f020259e
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.home_page_fca_slider_stories
+    - field.storage.block_content.field_sub_headline
+  module:
+    - text
+id: block_content.home_page_fca_slider_stories.field_sub_headline
+field_name: field_sub_headline
+entity_type: block_content
+bundle: home_page_fca_slider_stories
+label: 'Sub headline'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

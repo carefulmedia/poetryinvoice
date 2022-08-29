@@ -1,0 +1,23 @@
+uuid: b5ce037c-757f-45e1-9555-f1d5d3b98102
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.home_page_fca_slider_stories
+    - field.storage.block_content.field_link_if_not_to_story_page
+  module:
+    - link
+id: block_content.home_page_fca_slider_stories.field_link_if_not_to_story_page
+field_name: field_link_if_not_to_story_page
+entity_type: block_content
+bundle: home_page_fca_slider_stories
+label: 'Link, if not to story/page'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

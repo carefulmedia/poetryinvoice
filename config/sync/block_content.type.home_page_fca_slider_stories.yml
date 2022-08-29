@@ -1,0 +1,8 @@
+uuid: 4476ac4d-a41b-4317-85b5-bf686d492160
+langcode: en
+status: true
+dependencies: {  }
+id: home_page_fca_slider_stories
+label: 'Home page stories'
+revision: 1
+description: ''

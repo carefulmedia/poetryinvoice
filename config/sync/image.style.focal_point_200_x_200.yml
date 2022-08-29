@@ -1,0 +1,17 @@
+uuid: c6c9e942-5b9e-4b50-8313-4f5b13e68b37
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: focal_point_200_x_200
+label: 'Focal point 200 x 200'
+effects:
+  b5b4d161-9712-4ef0-a2ec-cf8a99224794:
+    uuid: b5b4d161-9712-4ef0-a2ec-cf8a99224794
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 200
+      height: 200
+      crop_type: focal_point

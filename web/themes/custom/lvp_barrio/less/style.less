@@ -94,6 +94,7 @@ h2 a,
 h3 a, {
   color: #000;
   font-family: 'Roboto Flex';
+  word-break: break-word;
 }
 
 h1 {
@@ -104,7 +105,11 @@ h1 {
   text-align: left;
   font-style:normal;
 }
+h1.light {
+    font-weight: 400;
+    line-height: 44px;
 
+}
 h2 {
   font-family: 'Roboto Flex';
   font-style: normal;
@@ -143,6 +148,43 @@ h4, .print__wrapper--pdf a, .site-footer ul li.nav-item a  {
 h5 {
 
 }
+/* Only for non-mobile */
+@media (max-width: 867px) {
+
+h1 {
+font-size: 36px;
+}
+h1.hero {
+font-size: 24px;
+}
+
+h2 {
+font-size: 24px;
+}
+
+h3 {
+font-size: 18px
+}
+
+h4 {
+font-size: 14px
+}
+p, .serif-large {
+  font-family: 'Lora';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 36px;
+  /* or 180% */
+}
+.no-blur img {
+    width: 100%;
+    height: 10rem !important;
+    object-fit: cover
+}
+}
+
+
 a {
   color: #000
 }
@@ -157,6 +199,7 @@ p, .serif-large {
 .serif {
   font-family: 'Lora';
   font-style: normal;
+
   font-weight: 400;
   font-size: 17px;
   line-height: 30px;
@@ -193,7 +236,6 @@ text-align: left;
 
 .block-layout-builder {
 margin-bottom: 40px;
-padding: 20px 0px;
 }
 
 
@@ -220,12 +262,18 @@ padding: 20px 0px;
     left: 0;
     width: 100%;
     height: 100%;
+    border-radius: 10px;
 }
 
 .node--type-writing-workshop li {
     list-style: none;
 }
-
+.area-link {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
 .print__wrapper  a {
     text-decoration: none;
 }
@@ -242,4 +290,220 @@ padding: 20px 0px;
 .about a:hover, .propos a:hover  {color: var(--black);
 } 
 
+.button {
+        height: auto;
+        width: fit-content;
+        border-radius: 5px;
+        background: var(--red);
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+        text-decoration: none;
+        padding: 15px;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
+      }
+.button:hover {
+        background: white;
+        color: var(--red);
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
+transition: all .8s ease;
+}
+.button:active {
+        color: white;
+        background: var(--red-dark);
+transition: all .8s ease;
+}
+.md-bg, .dk-bg  {
+height: 100%;
+color: white !important;
+
+}
+.md-bg {
+h1, h2, h3, h4, h5, h6, p, a, li {
+color: white;
+}
+}
+.dk-bg {
+h1, h2, h3, h4, h5, h6, p, a, li {
+color: white ;
+}
+}
+.lt-bg {
+h1, h2, h3, h4, h5, h6, p, a, li {
+color: black ;
+}
+}
+.read {
+    .lt-bg {
+            background: var(--plum-light);
+    }
+
+    .md-bg {
+            background: var(--plum);
+    }
+    .dk-bg {
+            background: var(--plum-dark);
+    }
+    .area-link:hover .content  {
+            background: var(--plum-light);
+            color: var(--plum-dark);
+            height: 100%;
+            transition: all .8s ease;
+            h1, h2, h3, h4, h5, h6, p, li, a {
+                color: var(--plum-dark); 
+                transition: all .8s ease;                   
+                }
+        
+    }
+    .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content  {
+            background: none;
+            color: var(--plum-dark);
+            height: 100%;
+            transition: all .8s ease;
+            h1, h2, h3, h4, h5, h6, p, li, a {
+                color: var(--plum-dark); 
+                transition: all .8s ease;                   
+                }
+        
+    }
+    .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index  {
+            background: var(--plum-light);
+            color: var(--plum-dark);
+            height: 100%;
+            transition: all .8s ease;
+            h1, h2, h3, h4, h5, h6, p, li, a {
+                color: var(--plum-dark); 
+                transition: all .8s ease;                   
+                }
+        
+    }
+    .view .more-link {
+        background-color: var(--plum-dark);
+    }
+    .hero a {
+        background-color: var(--plum);
+     }
+
+}
+.recite {
+    .lt-bg {
+            background: var(--red-light);
+    }
+
+    .md-bg {
+            background: var(--red);
+    }
+    .dk-bg {
+            background: var(--red-dark);
+    }
+    .area-link:hover .content {
+            background: var(--red-light);
+            color: black;
+            height: 100%;
+            transition: all .8s ease;
+        h1, h2 h3, h4, h5, h6, p, li, a {
+                color: black !important; 
+            transition: all .8s ease;                   
+                }
+        
+    }
+    .view .more-link {
+        background-color: var(--red-dark);
+    }
+    .hero  a {
+        background-color: var(--red);
+     }
+
+}
+.write {
+    .lt-bg { 
+            background: var(--mint-light);
+    }
+
+    .md-bg {
+            background: var(--mint);
+    }
+    .dk-bg {
+            background: var(--mint-dark);
+    }
+    .area-link:hover .content {
+            background: var(--mint-light);
+            color: black;
+            height: 100%;
+            transition: all .8s ease;
+        h1, h2 h3, h4, h5, h6, p, li, a {
+                color: black !important; 
+            transition: all .8s ease;                   
+                }
+        
+    }
+    .view .more-link {
+        background-color: var(--mint-dark);
+    }
+    .hero a {
+        background-color: var(--mint);
+     }
+
+}
+.teach {
+    .lt-bg {
+            background: var(--gold-light);
+    }
+
+    .md-bg {
+            background: var(--gold);
+    }
+    .dk-bg {
+            background: var(--gold-dark);
+    }
+    .area-link:hover  {
+            background: var(--gold-light);
+            color: black;
+            height: 100%;
+            transition: all .8s ease;
+        h1, h2 h3, h4, h5, h6, p, li, a {
+                color: black !important; 
+            transition: all .8s ease;                   
+                }
+        
+    }
+    .view .more-link {
+        background-color: var(--gold-dark);
+    }
+    .hero a {
+        background-color: var(--gold);
+     }
+
+}
+.hero a {
+        backdrop-filter: blur(100px);
+        border-radius: 10px;
+        color: white;
+        display: inline;
+        height: 3rem;
+        padding: 1rem;
+        bottom: 0px;
+        left: 0px;
+
+}
+h1.hero a {
+        color: white;
+} 
+.hero a:hover {
+    background-color: white;
+    transition: all .8s ease;                   
+}
+.view-footer .container {
+    margin-top: -1.5rem;
+    margin-bottom: 3rem;
+
+}
+html {
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar {
+    width: 0px; /* For Chrome, Safari, and Opera */
+}
 

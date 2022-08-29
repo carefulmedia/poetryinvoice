@@ -1,0 +1,8 @@
+uuid: bb2dc847-27ec-42c6-9b3e-08eb53c502a8
+langcode: en
+status: true
+dependencies: {  }
+id: views_block__home_page_slider_fca_block_2
+theme: ''
+text: ''
+classes: justify-content-md-center

@@ -2,10 +2,7 @@
  * @file
  * Subtheme specific CSS.
  */
-.plum-bg.roulette-discover {
-background: var(--plum-dark);
 
-}
 .block-layout-builder .plum-bg.roulette-discover.col-2-sidebar {
 background: var(--plum);
 color: white;
@@ -24,7 +21,6 @@ color: white;
     position: absolute;
     top: 0;
     right: 0;
-    background: #893B73;
     border-radius: 6px;
     padding: .5rem;
     color: #fff;
@@ -35,14 +31,14 @@ color: white;
 }
 .plum-bg.roulette-discover {
 background: rgba(72, 17, 57, 1);
-padding: 3rem 3rem;
+padding: 0;
 }
 
 .plum-bg.roulette-discover h1, .plum-bg.roulette-discover h2, .plum-bg.roulette-discover h3, .plum-bg.roulette-discover h4, .plum-bg.roulette-discover h5, .plum-bg.roulette-discover h6, .plum-bg.roulette-discover p  {
 color: #fff;
 
 }
-.plum-bg.roulette-discover h1 {
+.plum-bg.roulette-discover .col-4 h1 {
 text-align: center;
 
 }
@@ -70,7 +66,8 @@ transition: all .8s ease;
 }
 .plum-bg.roulette-discover .container {
 
-    margin: 6rem 0;
+    margin: 4rem auto;
+    padding: 0;
 
 }
 
@@ -118,9 +115,101 @@ height: auto;
 .page-view-frontpage .owl-carousel .owl-item .container {
 position: absolute;
 right: 10%;
-bottom: 65%;
-color: white;
+bottom: 15%;
+    color: black;
+    background-color: #fff;
+    opacity: .8;
+    padding: 10px;
+    border-radius: 10px;
+    width: 40%;
 }
+.owl-nav {
+font-size: 50px;
+line-height: 50px;
+
+}
+.owl-prev {
+    float: left;
+}
+
+.owl-next {
+    float: right;
+}
+.owl-dots {
+    margin-top: 25px
+  
+
+}
+
+
+/* Only for non-mobile */
+@media (max-width: 867px) {
+
+.page-view-frontpage .owl-carousel .owl-item .container.fca-text {
+
+right: 5%;
+bottom: 5%;
+color: black;
+width: 90%;
+}
+.fca-text p {
+display: none;
+}
+
+.page-view-frontpage .owl-carousel .owl-item img {
+height: 80vw;
+width: auto;
+}
+.view-home-page-slider-fca h1 {
+    display: inline;
+}
+}
+
+.view-home-page-slider-fca {
+
+    margin-bottom: 4rem;
+}
+.view-home-page-slider-fca .views-view-grid .row {
+    justify-content: center!important;
+}
+.view-home-page-slider-fca .button {
+    float: right;
+    margin: 10px;
+}
+#views-bootstrap-home-page-slider-fca-block-2 .content-index.mixtape {
+    height: 35rem;
+
+}
+
+.view-display-id-block_5 {
+margin-bottom: 8rem;
+}
+
+.youtube-container--responsive.view-home-page-slider-fca {
+margin-top: 8rem;
+margin-bottom: 8rem;
+}
+
+ .row-full{
+ width: 100vw;
+ position: relative;
+ margin-left: -50vw;
+ height: fit-content;
+ margin-top: 100px;
+ left: 50%;
+}
+
+.row-full .col-12 {
+    padding: 0;
+    margin: 0;
+padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5);
+padding-top: 3rem;
+padding-bottom: 3rem;
+
+}
+
+
 
 
 

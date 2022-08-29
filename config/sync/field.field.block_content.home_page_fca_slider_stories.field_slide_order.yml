@@ -1,0 +1,21 @@
+uuid: f9b7e696-0fb1-4dde-b90d-626fb1ff3bd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.home_page_fca_slider_stories
+    - field.storage.block_content.field_slide_order
+  module:
+    - options
+id: block_content.home_page_fca_slider_stories.field_slide_order
+field_name: field_slide_order
+entity_type: block_content
+bundle: home_page_fca_slider_stories
+label: 'Slide order'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

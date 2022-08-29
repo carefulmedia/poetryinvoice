@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.page.field_files
     - field.field.node.page.field_hero_hashtag
     - field.field.node.page.field_images_insert
+    - field.field.node.page.field_related_content
     - field.field.node.page.field_right_sidebar_lower
     - field.field.node.page.field_tags
     - field.field.node.page.layout_builder__layout
@@ -85,6 +86,14 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
+  field_related_content:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
   field_right_sidebar_lower:
     type: text_default
     label: above
@@ -115,3 +124,4 @@ hidden:
   field_banner_title: true
   field_tags: true
   layout_builder__layout: true
+  search_api_excerpt: true

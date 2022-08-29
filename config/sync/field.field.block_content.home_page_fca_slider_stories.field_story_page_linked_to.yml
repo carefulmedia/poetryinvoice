@@ -1,0 +1,51 @@
+uuid: 4a677f7c-440d-4495-ad0c-726102d607d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.home_page_fca_slider_stories
+    - field.storage.block_content.field_story_page_linked_to
+    - node.type.article
+    - node.type.journal_poem
+    - node.type.lesson_plan
+    - node.type.media_coverage
+    - node.type.mixtape
+    - node.type.page
+    - node.type.poem
+    - node.type.press_release
+    - node.type.quiz
+    - node.type.video
+    - node.type.writing_prompt
+    - node.type.writing_workshop
+id: block_content.home_page_fca_slider_stories.field_story_page_linked_to
+field_name: field_story_page_linked_to
+entity_type: block_content
+bundle: home_page_fca_slider_stories
+label: 'Story/Page linked to'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      article: article
+      page: page
+      journal_poem: journal_poem
+      lesson_plan: lesson_plan
+      media_coverage: media_coverage
+      mixtape: mixtape
+      poem: poem
+      press_release: press_release
+      quiz: quiz
+      video: video
+      writing_workshop: writing_workshop
+      writing_prompt: writing_prompt
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: article
+field_type: entity_reference

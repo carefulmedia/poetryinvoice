@@ -1,0 +1,25 @@
+uuid: 0332e424-3765-46db-832d-073810a64f7a
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e319699a-3bb9-4c1f-a932-aedf05897383'
+  module:
+    - block_content
+  theme:
+    - lvp_barrio
+id: footerlogos
+theme: lvp_barrio
+region: footer_first
+weight: -17
+provider: null
+plugin: 'block_content:e319699a-3bb9-4c1f-a932-aedf05897383'
+settings:
+  id: 'block_content:e319699a-3bb9-4c1f-a932-aedf05897383'
+  label: 'Footer Logos'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

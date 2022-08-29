@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d93f4934da0eab6370ca51a27f091e06",
+    "content-hash": "400ec90d7fcd1d413d14e69809dd24dc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2488,6 +2488,60 @@
             }
         },
         {
+            "name": "drupal/anchor_link",
+            "version": "2.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/anchor_link.git",
+                "reference": "8.x-2.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/anchor_link-8.x-2.5.zip",
+                "reference": "8.x-2.5",
+                "shasum": "849e94b2687ffc1f7984604fda929d7201933757"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/fakeobjects": "^1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-2.5",
+                    "datestamp": "1612887940",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                },
+                "branch-alias": {
+                    "dev-8.x-2.x": "8.2.x-dev"
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Vardot",
+                    "homepage": "https://www.drupal.org/vardot",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "Rajab Natshah",
+                    "homepage": "https://www.drupal.org/user/1414312"
+                }
+            ],
+            "description": "This plugin module adds the better link dialog and anchor related features to CKEditor in Drupal 8.",
+            "homepage": "https://www.drupal.org/project/anchor_link",
+            "support": {
+                "source": "http://cgit.drupalcode.org/anchor_link",
+                "issues": "https://www.drupal.org/project/issues/anchor_link"
+            }
+        },
+        {
             "name": "drupal/animate_on_scroll",
             "version": "dev-1.x",
             "source": {
@@ -4391,6 +4445,59 @@
             }
         },
         {
+            "name": "drupal/fakeobjects",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/fakeobjects.git",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/fakeobjects-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "0a7a3ead609d1efd62f4f4803a41317970d8292d"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1592829875",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Kevin Quillen (kevinquillen)",
+                    "homepage": "https://www.drupal.org/u/kevinquillen",
+                    "role": "Maintainer"
+                },
+                {
+                    "name": "kevinquillen",
+                    "homepage": "https://www.drupal.org/user/317279"
+                }
+            ],
+            "description": "Adds the FakeObjects plugin to CKEditor. This plugin is a utility plugin that is required by certain user-facing CKEditor plugins.",
+            "homepage": "http://drupal.org/project/fakeobjects",
+            "keywords": [
+                "Drupal"
+            ],
+            "support": {
+                "source": "http://cgit.drupalcode.org/fakeobjects",
+                "issues": "http://drupal.org/project/issues/fakeobjects"
+            }
+        },
+        {
             "name": "drupal/fancy_login",
             "version": "3.0.0",
             "source": {
@@ -5976,6 +6083,62 @@
             "homepage": "https://www.drupal.org/project/menu_block",
             "support": {
                 "source": "https://git.drupalcode.org/project/menu_block"
+            }
+        },
+        {
+            "name": "drupal/menus_attribute",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/menus_attribute.git",
+                "reference": "8.x-1.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/menus_attribute-8.x-1.2.zip",
+                "reference": "8.x-1.2",
+                "shasum": "2d329e85cb83301fc54ccbb6b909f6963bbe7cb2"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.2",
+                    "datestamp": "1625686072",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "aloknarwaria",
+                    "homepage": "https://www.drupal.org/user/906640"
+                },
+                {
+                    "name": "pankaj1433",
+                    "homepage": "https://www.drupal.org/user/3519047"
+                },
+                {
+                    "name": "themodularlab",
+                    "homepage": "https://www.drupal.org/user/3190381"
+                },
+                {
+                    "name": "vishnusoniskr",
+                    "homepage": "https://www.drupal.org/user/3494493"
+                }
+            ],
+            "description": "Attributes for menu links",
+            "homepage": "https://www.drupal.org/project/menus_attribute",
+            "support": {
+                "source": "https://git.drupalcode.org/project/menus_attribute"
             }
         },
         {
@@ -7864,6 +8027,60 @@
             }
         },
         {
+            "name": "drupal/tiny_slider",
+            "version": "1.0.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/tiny_slider.git",
+                "reference": "1.0.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/tiny_slider-1.0.0-beta2.zip",
+                "reference": "1.0.0-beta2",
+                "shasum": "b369d61b47c20dccb5b94b60a83142c213abb18e"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-beta2",
+                    "datestamp": "1656284741",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Beta releases are not covered by Drupal security advisories."
+                    }
+                },
+                "drush": {
+                    "services": {
+                        "drush.services.yml": "^10"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Hebl",
+                    "homepage": "https://www.drupal.org/user/3688118"
+                },
+                {
+                    "name": "ipwa",
+                    "homepage": "https://www.drupal.org/user/130909"
+                }
+            ],
+            "description": "Drupal integration for Tiny Slider",
+            "homepage": "https://www.drupal.org/project/owlcarousel",
+            "support": {
+                "source": "https://git.drupalcode.org/project/tiny_slider",
+                "issues": "https://www.drupal.org/project/owlcarousel"
+            }
+        },
+        {
             "name": "drupal/token",
             "version": "1.11.0",
             "source": {
@@ -8836,6 +9053,15 @@
                 "source": "https://github.com/darylldoyle/svg-sanitizer/tree/0.15.4"
             },
             "time": "2022-02-21T09:13:59+00:00"
+        },
+        {
+            "name": "ganlanyuan/tiny-slider",
+            "version": "2.9.3",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/ganlanyuan/tiny-slider/archive/refs/tags/v2.9.3.zip"
+            },
+            "type": "drupal-library"
         },
         {
             "name": "grasmash/expander",
@@ -14270,6 +14496,7 @@
         "drupal/select_translation": 15,
         "drupal/social_link_field": 20,
         "drupal/tablesorter": 5,
+        "drupal/tiny_slider": 10,
         "drupal/viewfield": 10,
         "drupal/views_bootstrap": 15,
         "drupal/views_field_view": 10,
@@ -14280,5 +14507,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }

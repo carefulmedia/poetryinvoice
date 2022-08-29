@@ -2443,6 +2443,11 @@ display:
           text: view
           output_url_as_text: true
           absolute: false
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 18
       sorts:
         random:
           id: random
@@ -2630,6 +2635,7 @@ display:
           hide_empty: false
       defaults:
         title: false
+        pager: false
         use_more: false
         use_more_always: false
         use_more_text: false
@@ -2653,7 +2659,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url.query_args
         - user
         - 'user.node_grants:view'
         - user.permissions
@@ -3680,7 +3685,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"index-views poems content-index\">\r\n\r\n<a href=\"{{ view_node }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n    <div class=\"author\">\r\n\t\t    <span=\"img\">\r\n\t\t\t    {{ user_picture }}\r\n            </span>\r\n                <h3 class=\"name\">\r\n                {{ name }}\r\n            </h3>\r\n\r\n    </div>\t\t\t\t\r\n    <div class=\"content\">\r\n      \t\t<h2>{{ title }}</h2>\r\n\t        <p>{{ body }}</p>\r\n\t\t    \r\n        <div class=\"fadeout\"></div>\r\n    </div>\r\n</a>\r\n</div>"
+            text: "<a href=\"{{ view_node }} \" class=\"area-link\" style=\"display:block\"><div class=\"index-views poems content-index\">\r\n\r\n\r\n\r\n    <div class=\"author\">\r\n\t\t    <span=\"img\">\r\n\t\t\t    {{ user_picture }}\r\n            </span>\r\n                <h3 class=\"name\">\r\n                {{ name }}\r\n            </h3>\r\n\r\n    </div>\t\t\t\t\r\n    <div class=\"content\">\r\n      \t\t<h2>{{ title }}</h2>\r\n\t        <p>{{ body }}</p>\r\n\t\t    \r\n\r\n    </div>\r\n\r\n</div>\r\n        <div class=\"fadeout\"></div>\r\n</a>"
             make_link: false
             path: ''
             absolute: false
@@ -4084,12 +4089,12 @@ display:
                 value:
                   15: '15'
               3:
-                title: 'Pre 20th Century'
+                title: 'Pre 21st Century'
                 operator: or
                 value:
                   8: '8'
               4:
-                title: '20th/21st Century'
+                title: '21st Century'
                 operator: not
                 value:
                   8: '8'
@@ -4181,7 +4186,7 @@ display:
         sorts: false
         filters: false
         filter_groups: false
-      use_ajax: false
+      use_ajax: true
       display_description: ''
       display_extenders: {  }
     cache_metadata:

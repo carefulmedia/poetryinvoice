@@ -67,6 +67,7 @@ dependencies:
     - field.field.user.user.user_picture
     - image.style.400x300
   module:
+    - address
     - field_group
     - field_layout
     - file
@@ -153,6 +154,12 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_address:
+    type: address_default
+    weight: 0
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_bio_trans:
     type: text_textarea
@@ -389,7 +396,6 @@ content:
     third_party_settings: {  }
 hidden:
   field_about_me: true
-  field_address: true
   field_bio_completed_: true
   field_bio_not_by_author_paid_: true
   field_bio_written_by: true

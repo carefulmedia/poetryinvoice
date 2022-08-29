@@ -31,6 +31,7 @@ settings:
           items:
             - DrupalLink
             - DrupalUnlink
+            - Anchor
         -
           name: Lists
           items:
@@ -52,7 +53,10 @@ settings:
           items:
             - ShowBlocks
             - Source
-  plugins: {  }
+  plugins:
+    drupallink:
+      linkit_enabled: false
+      linkit_profile: ''
 image_upload:
   status: true
   scheme: public

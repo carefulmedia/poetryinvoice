@@ -6,10 +6,12 @@ dependencies:
     - node.type.journal_poem
   module:
     - contact
+    - entity_print
     - field_permissions
     - form_mode_manager
     - media
     - node
+    - paragraphs
     - paragraphs_type_permissions
     - system
 _core:
@@ -53,13 +55,16 @@ permissions:
   - 'create field_teacher_leads_tracking'
   - 'create field_teacher_tracking'
   - 'create field_team_regionals_2017'
+  - 'create field_test'
   - 'create field_writing_prompt'
   - 'create journal_poem content'
   - 'create piv_teacher_profile_origin'
   - 'diff view changes'
   - 'edit field_grades'
   - 'edit own field_grades'
+  - 'edit own field_test'
   - 'edit own field_writing_prompt'
+  - 'entity print access type paragraph'
   - 'search article content'
   - 'search blog content'
   - 'search event content'
@@ -74,6 +79,8 @@ permissions:
   - 'search video content'
   - 'search writing_prompt content'
   - 'search writing_workshop content'
+  - 'use node.default form mode'
+  - 'use user.default form mode'
   - 'use user.poet_network form mode'
   - 'use user.teacher_edit form mode'
   - 'view body'
@@ -107,6 +114,7 @@ permissions:
   - 'view field_one_line_description'
   - 'view field_periods'
   - 'view field_photo'
+  - 'view field_photo_credit'
   - 'view field_place_team_regional'
   - 'view field_poem_thems'
   - 'view field_prompt_image'
@@ -131,6 +139,7 @@ permissions:
   - 'view field_student_photo'
   - 'view field_suggest_a_new_folder_to_fi'
   - 'view field_terms_and_forms'
+  - 'view field_test'
   - 'view field_title'
   - 'view field_tr_student'
   - 'view field_user_bio'
@@ -144,13 +153,17 @@ permissions:
   - 'view own field_school'
   - 'view own field_school_image'
   - 'view own field_story_link'
+  - 'view own field_test'
   - 'view own field_user_bio'
   - 'view own field_writing_prompt'
   - 'view paragraph content competition_stream'
   - 'view paragraph content judges'
   - 'view paragraph content micro_interview'
   - 'view paragraph content poet_laureate'
+  - 'view paragraph content publications'
   - 'view paragraph content score_template_criteria'
   - 'view paragraph content tr_student'
   - 'view piv_teacher_first_name'
   - 'view piv_teacher_last_name'
+  - 'view unpublished paragraphs'
+  - 'view user_picture'
