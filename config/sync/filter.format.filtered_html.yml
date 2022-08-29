@@ -50,6 +50,7 @@ filters:
       background: false
       loading: ''
       preload: false
+      responsive_image_style: ''
       image_style: ''
       media_switch: ''
       ratio: ''

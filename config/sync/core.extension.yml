@@ -122,6 +122,7 @@ module:
   redirect_404: 0
   redirect_domain: 0
   reroute_email: 0
+  responsive_image: 0
   rest: 0
   s3fs: 0
   scanner: 0
@@ -137,6 +138,7 @@ module:
   statistics: 0
   string_field_formatter: 0
   styles_api: 0
+  svg_image: 0
   system: 0
   tablesorter: 0
   taxonomy: 0
