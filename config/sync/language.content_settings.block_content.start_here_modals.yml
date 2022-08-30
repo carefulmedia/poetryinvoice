@@ -1,9 +1,9 @@
-uuid: 32eb9b6e-3705-4a0b-aa91-d5c7a44e7594
+uuid: 6a81c079-edd4-4383-9d19-b223acc277de
 langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.teach
+    - block_content.type.start_here_modals
   module:
     - content_translation
 third_party_settings:
@@ -11,8 +11,8 @@ third_party_settings:
     enabled: true
     bundle_settings:
       untranslatable_fields_hide: '0'
-id: block_content.teach
+id: block_content.start_here_modals
 target_entity_type_id: block_content
-target_bundle: teach
+target_bundle: start_here_modals
 default_langcode: site_default
-language_alterable: false
+language_alterable: true

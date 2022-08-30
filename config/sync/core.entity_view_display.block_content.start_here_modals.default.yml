@@ -1,0 +1,38 @@
+uuid: b74dc51a-ae8d-4dab-8a51-b3c27cdf17ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.start_here_modals
+    - field.field.block_content.start_here_modals.field_intro_text
+    - field.field.block_content.start_here_modals.field_start_here_page_links_and_
+  module:
+    - entity_reference_revisions
+    - text
+id: block_content.start_here_modals.default
+targetEntityType: block_content
+bundle: start_here_modals
+mode: default
+content:
+  field_intro_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_start_here_page_links_and_:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  search_api_excerpt: true

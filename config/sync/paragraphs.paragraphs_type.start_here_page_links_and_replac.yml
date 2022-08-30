@@ -1,0 +1,10 @@
+uuid: bc164163-2a23-4b58-a282-740fab62dc55
+langcode: en
+status: true
+dependencies: {  }
+id: start_here_page_links_and_replac
+label: 'Start here page links and replacement text'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

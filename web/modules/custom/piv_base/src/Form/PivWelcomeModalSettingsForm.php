@@ -13,7 +13,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class PivWelcomeModalSettingsForm extends ConfigFormBase {
 
   /**
-   * The block_content storage.
+   * The view storage.
    *
    * @var Drupal\Core\Entity\Sql\SqlContentEntityStorage
    */

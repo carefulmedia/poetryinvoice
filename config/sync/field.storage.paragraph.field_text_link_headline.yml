@@ -1,0 +1,25 @@
+uuid: 89b8ff61-b454-45e6-ac99-9048308edfeb
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - paragraphs
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: paragraph.field_text_link_headline
+field_name: field_text_link_headline
+entity_type: paragraph
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,9 +1,9 @@
-uuid: b8172e25-9820-4fc3-9e6f-d56bd8c59fd7
+uuid: da99254f-7f29-4c36-9378-381643103902
 langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.home_page_fca_slider_stories
+    - paragraphs.paragraphs_type.start_here_page_links_and_replac
   module:
     - content_translation
 third_party_settings:
@@ -11,8 +11,8 @@ third_party_settings:
     enabled: true
     bundle_settings:
       untranslatable_fields_hide: '0'
-id: block_content.home_page_fca_slider_stories
-target_entity_type_id: block_content
-target_bundle: home_page_fca_slider_stories
+id: paragraph.start_here_page_links_and_replac
+target_entity_type_id: paragraph
+target_bundle: start_here_page_links_and_replac
 default_langcode: site_default
 language_alterable: true

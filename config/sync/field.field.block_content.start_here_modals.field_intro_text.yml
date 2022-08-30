@@ -1,0 +1,21 @@
+uuid: a89f260d-72bf-42bc-abbc-4952e5859385
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.start_here_modals
+    - field.storage.block_content.field_intro_text
+  module:
+    - text
+id: block_content.start_here_modals.field_intro_text
+field_name: field_intro_text
+entity_type: block_content
+bundle: start_here_modals
+label: 'Intro text'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

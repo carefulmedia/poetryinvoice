@@ -1,0 +1,19 @@
+uuid: 74a7fc63-c477-4aac-ad87-c81938f206c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_link_headline
+    - paragraphs.paragraphs_type.start_here_page_links_and_replac
+id: paragraph.start_here_page_links_and_replac.field_text_link_headline
+field_name: field_text_link_headline
+entity_type: paragraph
+bundle: start_here_page_links_and_replac
+label: 'Text link headline'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

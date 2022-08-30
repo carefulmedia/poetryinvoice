@@ -1,0 +1,70 @@
+uuid: 3f146916-59bd-4a11-b74c-0f7d53885cd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.start_here_modals
+    - field.field.block_content.start_here_modals.field_intro_text
+    - field.field.block_content.start_here_modals.field_start_here_page_links_and_
+  module:
+    - field_layout
+    - layout_discovery
+    - paragraphs
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: block_content.start_here_modals.default
+targetEntityType: block_content
+bundle: start_here_modals
+mode: default
+content:
+  field_intro_text:
+    type: text_textarea
+    weight: 26
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_start_here_page_links_and_:
+    type: paragraphs
+    weight: 27
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

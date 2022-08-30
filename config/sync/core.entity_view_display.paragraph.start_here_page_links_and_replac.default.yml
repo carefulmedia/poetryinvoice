@@ -1,0 +1,44 @@
+uuid: 0e712d61-de5d-4528-b6cd-6f3a56883b6a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.start_here_page_links_and_replac.field_content_link
+    - field.field.paragraph.start_here_page_links_and_replac.field_text_link_headline
+    - field.field.paragraph.start_here_page_links_and_replac.field_text_link_sub_headline
+    - paragraphs.paragraphs_type.start_here_page_links_and_replac
+  module:
+    - text
+id: paragraph.start_here_page_links_and_replac.default
+targetEntityType: paragraph
+bundle: start_here_page_links_and_replac
+mode: default
+content:
+  field_content_link:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_text_link_headline:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_text_link_sub_headline:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

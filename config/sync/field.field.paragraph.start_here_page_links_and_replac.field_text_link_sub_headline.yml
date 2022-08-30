@@ -1,0 +1,21 @@
+uuid: b6ac09c5-bdb3-497b-a8d6-9c9e683ea7cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_text_link_sub_headline
+    - paragraphs.paragraphs_type.start_here_page_links_and_replac
+  module:
+    - text
+id: paragraph.start_here_page_links_and_replac.field_text_link_sub_headline
+field_name: field_text_link_sub_headline
+entity_type: paragraph
+bundle: start_here_page_links_and_replac
+label: 'Text link sub-headline'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

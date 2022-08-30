@@ -1,0 +1,57 @@
+uuid: e6e01e84-5e14-4b01-9406-5f588abeac81
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.start_here_page_links_and_replac.field_content_link
+    - field.field.paragraph.start_here_page_links_and_replac.field_text_link_headline
+    - field.field.paragraph.start_here_page_links_and_replac.field_text_link_sub_headline
+    - paragraphs.paragraphs_type.start_here_page_links_and_replac
+  module:
+    - field_layout
+    - layout_discovery
+    - text
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: paragraph.start_here_page_links_and_replac.default
+targetEntityType: paragraph
+bundle: start_here_page_links_and_replac
+mode: default
+content:
+  field_content_link:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_text_link_headline:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_text_link_sub_headline:
+    type: text_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  translation:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
