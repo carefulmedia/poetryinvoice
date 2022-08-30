@@ -1,7 +1,7 @@
 (function($, Drupal) {
   Drupal.behaviors.piv_select = {
     attach: function(context, settings) {
-      $('select.piv-select', context).each(function() {
+      $(once('piv-select', 'select.piv-select', context)).each(function() {
         const $select = $(this);
         const piv_select = $(`<div></div>`)
           .addClass('piv-select');
@@ -33,11 +33,16 @@
         $('option', $select).each(function() {
           const piv_select_option = $(`<div>${this.text}</div>`).click(() => {
             $(this).prop('selected', true).change();
-            update_placeholder(this.text);
           })
           .addClass('piv-select-option')
           .appendTo(piv_select_options);
         });
+
+        $(this).change(function(e) {
+          const selected = $(this).find(':selected').first();
+          update_placeholder(selected.text());
+        }).change();
+
         $select.after(piv_select);
         $select.hide();
       });

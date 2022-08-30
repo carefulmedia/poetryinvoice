@@ -1,100 +1,118 @@
-.ui-dialog {
-  .ui-dialog-titlebar {
-    background: #1d84c3 !important;
+#welcome-modal {
+  width: 100vw;
+  height: 100vh;
+  z-index: 30000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: 0;
+  background: #F1EDEC;
+  &::backdrop {
+    background-color: #F1EDEC;
   }
-  .ui-dialog-titlebar-close {
-    background: url(../assets/x-white.svg) no-repeat !important;
-    background-size: 40px 40px !important;
+  .welcome-modal-inner {
+    margin-top: 3rem;
   }
-}
-#piv-welcome-modal {
-  .piv-welcome-modal {
-    justify-content: center;
-    min-height: 150px;
-    .wrapper-class {
-      .form-type-piv-select {
-        display: inline-block;
-        margin-right: 10px;
-        .form-required {
-          display: inline;
-          font-weight: bold;
-          margin-right: 10px;
-          width: 100%;
-          &::after {
-            display: none;
-          }
-        }
-        .piv-select {
-          border: none;
-          border-radius: unset;
-          padding: 0;
-          height: 25px;
-          background-image: none;
-          font-weight: bold;
-          .piv-select-placeholder {
-            border-bottom: 2px solid black;
-            height: 1.5rem;
-            margin-bottom: 5px;
-          }
-          .piv-select-option {
-            text-transform: uppercase;
-            line-height: 20px;
-            font-size: 14px;
-          }
-        }
-      }
-      .form-item-option-1 {
-        label {
-          max-width: 60px;
-        }
-      }
-      .form-item-option-3 {
-        label {
-          max-width: 80px;
-        }
-      }
-      .form-wrapper {
-        display: inline-block;
-        margin-right: 10px;
-        .form-type-item {
-          font-weight: bold;
-        }
-        .form-item-teacher {
-          min-width: 160px;
-        }
-      }
-      .form-submit::before {
-        display: none;
-      }
-      .button {
-        display: block;
-        height: 50px;
-        width: 100px;
-        border-radius: 5px;
-        background: #D3310E;
-        color: white;
-        text-transform: uppercase;
-        font-weight: bold;
-        margin-top: 30px;
-      }
-      .mb-3 {
-        margin-bottom: unset !important;
-      }
+  .start-here, .welcome-modal-back {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 2rem;
+    font-family: 'Roboto Condensed';
+  }
+  .welcome-modal-back {
+    display: block;
+    margin-bottom: 70px;
+    &:hover {
+      color: #000;
     }
   }
-}
-
-// Custom piv select
-
-.piv-welcome-modal {
+  .close-welcome-modal {
+    right: 0;
+    top: 1rem;
+    position: absolute;
+    cursor: pointer;
+    font-size: 1.25rem;
+  }
+  form {
+    font-family: Roboto;
+    line-height: 100%;
+    font-weight: 900;
+    .form-required::after {
+      display: none;
+    }
+    .options-wrapper {
+      display: flex;
+      margin-top: 70px;
+    }
+  }
+  .piv-select-placeholder {
+    border-bottom: 3px solid;
+    height: 2rem;
+  }
+  .form-item-option-3 .piv-select {
+    margin: 0 10px 0 0;
+  }
   .piv-select {
     display: inline-block;
     vertical-align: top;
+    margin: 0 10px;
+  }
+  .piv-select-options {
+    text-transform: uppercase;
+    font-size: 1rem;
+    color: #918E8D;
+    line-height: 1.5rem;
+    margin-top: 15px;
   }
   .piv-select-options.hide {
     display: none;
   }
-  .mb-3 {
-    vertical-align: top;
+  fieldset {
+    padding-top: 0;
+    opacity: 1;
+    transition: opacity 0.5s, padding-top 0.5s;
+    width: auto;
+    height: auto;
+    font-size: 0;
+    > * {
+      font-size: 2.5rem;
+    }
+    &.select-hidden {
+      padding-top: 50px;
+      opacity: 0;
+      transition: opacity 0, padding-top 0;
+      width: 0;
+      overflow: hidden;
+      font-size: 0;
+      height: 0;
+    }
+  }
+  #edit-go.form-submit {
+    opacity: 1;
+    transition: opacity 0.5s;
+    background-color: #C53D27;
+    border: 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 900;
+    width: 160px;
+    height: 70px;
+    margin-top: 40px;
+    &::before {
+      display: none;
+    }
+    &.select-hidden {
+      opacity: 0;
+      transition: opacity 0;
+    }
+  }
+  .menu--account {
+    float: right;
+    margin-right: 30px;
+    margin-top: 2px;
+    a {
+      padding: 0;
+      color: #000;
+    }
   }
 }

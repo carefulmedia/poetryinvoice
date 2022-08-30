@@ -9,6 +9,9 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Config\ImmutableConfig;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\Component\Serialization\Json;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\Core\Ajax\InvokeCommand;
 
 /**
  * Provides a PIV Base form.
@@ -60,17 +63,14 @@ class PivWelcomeModal extends FormBase {
    * {@inheritdoc}
    */
   public function getFormId() {
-    return 'piv_welcome_modal';
+    return 'piv_base_welcome_modal';
   }
 
   /**
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['#theme'] = 'piv_welcome_modal';
-    $form['#attach']['library'][] = 'core/drupal.states';
-    $form['#prefix'] = '<div id="piv-welcome-modal">';
-    $form['#suffix'] = '</div>';
+    $form['#attached']['library'][] = 'core/drupal.ajax';
 
     // 0 is the empty value.
     $option_1 = 0;
@@ -90,10 +90,26 @@ class PivWelcomeModal extends FormBase {
         }
       }
     }
-    $form['option_1'] = [
+
+    $form['start'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'div',
+      '#attributes' => [
+        'class' => ['start-here'],
+      ],
+      '#value' => $this->t('Start here:'),
+    ];
+
+    $form['options_wrapper'] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['options-wrapper'],
+      ],
+    ];
+    $form['options_wrapper']['option_1'] = [
       '#type' => 'piv_select',
       '#title' => $this->t('I am a'),
-      '#empty_key' => 0,
+      '#empty_value' => '_null',
       '#empty_option' => '',
       '#default_value' => $option_1,
       '#required' => TRUE,
@@ -104,34 +120,10 @@ class PivWelcomeModal extends FormBase {
         'parent_interested_person' => $this->t('parent/interested person'),
       ],
     ];
-
-    $form['option_2_label'] = [
-      '#type' => 'container',
-      '#attributes' => [
-        'id' => 'option-2-label',
-      ],
-      'student' => [
-        '#type' => 'item',
-        '#markup' => $this->t('in grades'),
-        '#states' => [
-          'visible' => [
-            'select[name="option_1"]' => ['value' => 'student'],
-          ],
-        ],
-      ],
-      'teacher' => [
-        '#type' => 'item',
-        '#markup' => $this->t('teaching grades'),
-        '#states' => [
-          'visible' => [
-            'select[name="option_1"]' => ['value' => 'teacher'],
-          ],
-        ],
-      ],
-    ];
-    $form['option_2'] = [
+    $form['options_wrapper']['option_2'] = [
       '#type' => 'piv_select',
-      '#empty_key' => 0,
+      '#title' => $this->t('in grades'),
+      '#empty_value' => '_null',
       '#empty_option' => '',
       '#default_value' => $option_2,
       '#attributes' => [
@@ -142,43 +134,18 @@ class PivWelcomeModal extends FormBase {
         '6_8' => $this->t('6-8'),
         '9_12' => $this->t('9-12'),
       ],
-      '#states' => [
-        'visible' => [
-          ['select[name="option_1"]' => ['value' => 'student']],
-          'or',
-          ['select[name="option_1"]' => ['value' => 'teacher']],
-        ],
-        'required' => [
-          ['select[name="option_1"]' => ['value' => 'student']],
-          'or',
-          ['select[name="option_1"]' => ['value' => 'teacher']],
-        ],
-      ],
     ];
-    $form['option_3'] = [
+    $form['options_wrapper']['option_3'] = [
       '#type' => 'piv_select',
       '#title' => $this->t('Canada'),
       '#title_display' => 'after',
-      '#empty_key' => 0,
+      '#empty_value' => '_null',
       '#empty_option' => '',
       '#default_value' => $option_3,
       '#required' => TRUE,
       '#options' => [
-        'in' => $this->t('in'),
+        'inside' => $this->t('inside'),
         'outside' => $this->t('outside'),
-      ],
-      '#states' => [
-        'visible' => [
-          ['select[name="option_1"]' => ['value' => 'poet']],
-          'or',
-          ['select[name="option_1"]' => ['value' => 'parent_interested_person']],
-          'or',
-          ['select[name="option_2"]' => ['value' => 'k_5']],
-          'or',
-          ['select[name="option_2"]' => ['value' => '6_8']],
-          'or',
-          ['select[name="option_2"]' => ['value' => '9_12']],
-        ],
       ],
     ];
     $form['go'] = [
@@ -186,18 +153,10 @@ class PivWelcomeModal extends FormBase {
       '#value' => $this->t('Go!'),
       '#ajax' => [
         'callback' => '::ajaxCallback',
-        'disable-refocus' => FALSE,
         'event' => 'click',
-        'wrapper' => 'piv-welcome-modal',
-      ],
-      '#states' => [
-        'visible' => [
-          ['select[name="option_3"]' => ['value' => 'in']],
-          'or',
-          ['select[name="option_3"]' => ['value' => 'outside']],
-        ],
       ],
     ];
+    $form['#suffix'] = '<div id="welcome-modal-content"></div>';
     return $form;
   }
 
@@ -205,6 +164,19 @@ class PivWelcomeModal extends FormBase {
    * {@inheritdoc}
    */
   public function ajaxCallback(array &$form, FormStateInterface $form_state) {
+    $form = [];
+    $form['back'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'a',
+      '#value' => $this->t('Back'),
+      '#attributes' => [
+        'class' => [
+          'welcome-modal-back',
+        ],
+        'href' => '#',
+      ],
+    ];
+
     $option_1 = $form_state->getValue('option_1');
     $option_2 = $form_state->getValue('option_2');
     $option_3 = $form_state->getValue('option_3');
@@ -223,16 +195,25 @@ class PivWelcomeModal extends FormBase {
       if ($entity) {
         $view_builder = $this->entityTypeManager
           ->getViewBuilder('block_content');
-        return $view_builder->view($entity);
+        $form['block'] = $view_builder->view($entity);
       }
     }
-    return ['#markup' => '<i>' . $this->t('Block not configured.') . '</i>'];
+    else {
+      $form['not_configured'] = [
+        '#markup' => '<div><i>' . $this->t('Block not configured.') . '</i></div>',
+      ];
+    }
+    $response = new AjaxResponse();
+    $response->addCommand(new HtmlCommand('#welcome-modal-content', $form));
+    $response->addCommand(new InvokeCommand('.piv-base-welcome-modal', 'hide'));
+    return $response;
   }
 
   /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
+    $form_state->setRebuild();
     $data = [
       'option_1' => $form_state->getValue('option_1'),
       'option_2' => $form_state->getValue('option_2'),

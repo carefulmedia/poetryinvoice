@@ -53,28 +53,28 @@ class PivWelcomeModalSettingsForm extends ConfigFormBase {
   private function getPossibleConfigurations() {
     return [
       'student' => [
-        'student_k_5_in' => $this->t('I am a <u>student</u> in grades <u>K-5</u> <u>in</u> canada'),
+        'student_k_5_inside' => $this->t('I am a <u>student</u> in grades <u>K-5</u> <u>inside</u> canada'),
         'student_k_5_outside' => $this->t('I am a <u>student</u> in grades <u>K-5</u> <u>outside</u> canada'),
-        'student_6_8_in' => $this->t('I am a <u>student</u> in grades <u>6-8</u> <u>in</u> canada'),
+        'student_6_8_inside' => $this->t('I am a <u>student</u> in grades <u>6-8</u> <u>inside</u> canada'),
         'student_6_8_outside' => $this->t('I am a <u>student</u> in grades <u>6-8</u> <u>outside</u> canada'),
-        'student_9_12_in' => $this->t('I am a <u>student</u> in grades <u>9-12</u> <u>in</u> canada'),
+        'student_9_12_inside' => $this->t('I am a <u>student</u> in grades <u>9-12</u> <u>inside</u> canada'),
         'student_9_12_outside' => $this->t('I am a <u>student</u> in grades <u>9-12</u> <u>outside</u> canada'),
       ],
       'teacher' => [
-        'teacher_k_5_in' => $this->t('I am a <u>teacher</u> in grades <u>K-5</u> <u>in</u> canada'),
+        'teacher_k_5_inside' => $this->t('I am a <u>teacher</u> in grades <u>K-5</u> <u>inside</u> canada'),
         'teacher_k_5_outside' => $this->t('I am a <u>teacher</u> in grades <u>K-5</u> <u>outside</u> canada'),
-        'teacher_6_8_in' => $this->t('I am a <u>teacher</u> in grades <u>6-8</u> <u>in</u> canada'),
+        'teacher_6_8_inside' => $this->t('I am a <u>teacher</u> in grades <u>6-8</u> <u>inside</u> canada'),
         'teacher_6_8_outside' => $this->t('I am a <u>teacher</u> in grades <u>6-8</u> <u>outside</u> canada'),
-        'teacher_9_12_in' => $this->t('I am a <u>teacher</u> in grades <u>9-12</u> <u>in</u> canada'),
+        'teacher_9_12_inside' => $this->t('I am a <u>teacher</u> in grades <u>9-12</u> <u>inside</u> canada'),
         'teacher_9_12_outside' => $this->t('I am a <u>teacher</u> in grades <u>9-12</u> <u>outside</u> canada'),
       ],
       'poet' => [
-        'poet_in' => $this->t('I am a <u>poet</u> <u>in</u> canada'),
+        'poet_inside' => $this->t('I am a <u>poet</u> <u>inside</u> canada'),
         'poet_outside' => $this->t('I am a <u>poet</u> <u>outside</u> canada'),
       ],
-      'parent_interested_person' => [
-        'parent_interested_person_in' => $this->t('I am a <u>parent/interested person</u> <u>in</u> canada'),
-        'parent_interested_person_outside' => $this->t('I am a <u>parent/interested person</u> <u>outside</u> canada'),
+      'parent_insideterested_person' => [
+        'parent_insideterested_person_inside' => $this->t('I am a <u>parent/interested person</u> <u>inside</u> canada'),
+        'parent_insideterested_person_outside' => $this->t('I am a <u>parent/interested person</u> <u>outside</u> canada'),
       ],
     ];
   }
@@ -88,7 +88,7 @@ class PivWelcomeModalSettingsForm extends ConfigFormBase {
       'student' => $this->t('Student'),
       'teacher' => $this->t('Teacher'),
       'poet' => $this->t('Poet'),
-      'parent_interested_person' => $this->t('Parent/Interested Person'),
+      'parent_insideterested_person' => $this->t('Parent/Interested Person'),
     ];
     $configs = $this->config('piv_base.welcome_modal_settings');
     $possible_configurations = $this->getPossibleConfigurations();
