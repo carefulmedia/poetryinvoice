@@ -1292,8 +1292,8 @@ summary {
 }
 .block-views .author img {
   border-radius: 50%;
-  height: 2rem;
-  width: 2rem;
+  height: 56px;
+  width: 56px;
   display: inline;
 }
 .block-views .author {
