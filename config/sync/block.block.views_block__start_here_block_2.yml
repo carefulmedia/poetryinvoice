@@ -1,0 +1,29 @@
+uuid: d96e7c7e-bac6-4d1e-a0b9-c8b42edfaefd
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.start_here
+  module:
+    - system
+    - views
+  theme:
+    - lvp_barrio
+id: views_block__start_here_block_2
+theme: lvp_barrio
+region: footer_fifth
+weight: 0
+provider: null
+plugin: 'views_block:start_here-block_2'
+settings:
+  id: 'views_block:start_here-block_2'
+  label: ''
+  label_display: '0'
+  provider: views
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<none>'

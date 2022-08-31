@@ -1,4 +1,4 @@
-uuid: 53c74a66-3597-479b-8651-93af6ddd7b80
+uuid: 3f48901a-9b54-4046-9aed-a1bf999a8554
 langcode: en
 status: true
 dependencies:
@@ -17,8 +17,9 @@ dependencies:
     - paragraphs
     - svg_image
     - text
-id: start_here_modal_blocks_for_each_user_selection
-label: 'Start here modal blocks for each user selection'
+    - views_bootstrap
+id: start_here
+label: 'Start here'
 module: views
 description: ''
 tag: ''
@@ -523,7 +524,7 @@ display:
         type: some
         options:
           offset: 0
-          items_per_page: 1
+          items_per_page: 70
       exposed_form:
         type: basic
         options:
@@ -544,30 +545,6 @@ display:
       sorts: {  }
       arguments: {  }
       filters:
-        status:
-          id: status
-          table: block_content_field_data
-          field: status
-          entity_type: block_content
-          entity_field: status
-          plugin_id: boolean
-          value: '1'
-          group: 1
-          expose:
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-        reusable:
-          id: reusable
-          table: block_content_field_data
-          field: reusable
-          entity_type: block_content
-          entity_field: reusable
-          plugin_id: boolean
-          value: '1'
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
         type:
           id: type
           table: block_content_field_data
@@ -626,8 +603,134 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        langcode:
+          id: langcode
+          table: block_content_field_data
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: block_content
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        langcode_1:
+          id: langcode_1
+          table: paragraphs_item_field_data
+          field: langcode
+          relationship: field_start_here_page_links_and_
+          group_type: group
+          admin_label: ''
+          entity_type: paragraph
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        langcode_2:
+          id: langcode_2
+          table: node_field_data
+          field: langcode
+          relationship: field_content_link
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value:
+            '***LANGUAGE_language_interface***': '***LANGUAGE_language_interface***'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       style:
-        type: default
+        type: views_bootstrap_grid
         options:
           grouping:
             -
@@ -636,6 +739,12 @@ display:
               rendered_strip: false
           row_class: ''
           default_row_class: true
+          col_xs: col-4
+          col_sm: col-sm-4
+          col_md: col-md-4
+          col_lg: col-lg-4
+          col_xl: col-xl-4
+          col_xxl: col-xxl-4
       row:
         type: fields
         options:
@@ -670,6 +779,7 @@ display:
           admin_label: 'field_content_link: Content'
           plugin_id: standard
           required: false
+      group_by: false
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -686,10 +796,13 @@ display:
         - 'config:field.storage.paragraph.field_text_link_sub_headline'
   block_1:
     id: block_1
-    display_title: 'CDN Grades 9-12 Student'
+    display_title: 'CDN ST 9-12'
     display_plugin: block
     position: 1
     display_options:
+      title: 'CDN ST 9-12'
+      defaults:
+        title: false
       display_description: ''
       display_extenders: {  }
     cache_metadata:
@@ -705,11 +818,11 @@ display:
         - 'config:field.storage.paragraph.field_text_link_sub_headline'
   block_2:
     id: block_2
-    display_title: 'Start Here CDN 6-8 Student'
+    display_title: 'CDN ST 6-8'
     display_plugin: block
     position: 2
     display_options:
-      title: 'Start here CDN grade 6-8 student'
+      title: 'CDN ST 6-8'
       defaults:
         title: false
       display_description: ''
