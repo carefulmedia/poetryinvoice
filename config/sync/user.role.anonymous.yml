@@ -81,8 +81,6 @@ permissions:
   - 'search writing_workshop content'
   - 'use node.default form mode'
   - 'use user.default form mode'
-  - 'use user.poet_network form mode'
-  - 'use user.teacher_edit form mode'
   - 'view body'
   - 'view faq page'
   - 'view field_2_column_poem'

@@ -1,0 +1,3 @@
+#account-type-wrapper:not(.poet) fieldset.form-item-cv {
+  display: none;
+}
