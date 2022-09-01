@@ -3606,11 +3606,11 @@ h6,
 h2 a,
 h3 a {
   color: #000;
-  font-family: 'Roboto Flex';
+  font-family: 'Roboto';
   word-break: break-word;
 }
 h1 {
-  font-family: 'Roboto Flex';
+  font-family: 'Roboto';
   font-size: 45px;
   font-weight: 700;
   line-height: 47px;
@@ -3622,7 +3622,7 @@ h1.light {
   line-height: 44px;
 }
 h2 {
-  font-family: 'Roboto Flex';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 32px;
@@ -3631,10 +3631,11 @@ h2 {
   font-stretch: 70;
   font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
-h3 {
-  font-family: 'Roboto Flex';
+h3,
+.navbar-nav .nav-link {
+  font-family: 'Roboto';
   font-style: normal;
-  font-weight: 1000;
+  font-weight: 900;
   font-size: 18px;
   line-height: 21px;
   /* or 117% */
@@ -3643,10 +3644,13 @@ h3 {
   font-stretch: 110;
   font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
+.navbar-nav .nav-link {
+  font-weight: 1000;
+}
 h4,
 .print__wrapper--pdf a,
 .site-footer ul li.nav-item a {
-  font-family: 'Roboto Flex';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -3710,7 +3714,7 @@ p,
   /* or 176% */
 }
 .sans-serif {
-  font-family: 'Roboto Flex';
+  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
@@ -3721,7 +3725,7 @@ p,
   color: #fff;
 }
 li {
-  font-family: Roboto Flex;
+  font-family: Roboto;
   font-size: 17px;
   font-weight: 400;
   line-height: 30px;
@@ -3774,7 +3778,7 @@ li {
   text-decoration: none;
   display: block;
   width: 100%;
-  height: 100%;
+  height: fit-content;
 }
 .print__wrapper a {
   text-decoration: none;
@@ -3864,105 +3868,154 @@ li {
 .lt-bg li {
   color: black ;
 }
-.read .lt-bg {
+.read .lt-bg,
+.lire .lt-bg {
   background: var(--plum-light);
 }
-.read .md-bg {
+.read .md-bg,
+.lire .md-bg {
   background: var(--plum);
 }
-.read .dk-bg {
+.read .dk-bg,
+.lire .dk-bg {
   background: var(--plum-dark);
 }
-.read .area-link:hover .content {
+.read .area-link:hover .content,
+.lire .area-link:hover .content {
   background: var(--plum-light);
   color: var(--plum-dark);
   height: 100%;
   transition: all 0.8s ease;
 }
 .read .area-link:hover .content h1,
+.lire .area-link:hover .content h1,
 .read .area-link:hover .content h2,
+.lire .area-link:hover .content h2,
 .read .area-link:hover .content h3,
+.lire .area-link:hover .content h3,
 .read .area-link:hover .content h4,
+.lire .area-link:hover .content h4,
 .read .area-link:hover .content h5,
+.lire .area-link:hover .content h5,
 .read .area-link:hover .content h6,
+.lire .area-link:hover .content h6,
 .read .area-link:hover .content p,
+.lire .area-link:hover .content p,
 .read .area-link:hover .content li,
-.read .area-link:hover .content a {
+.lire .area-link:hover .content li,
+.read .area-link:hover .content a,
+.lire .area-link:hover .content a {
   color: var(--plum-dark);
   transition: all 0.8s ease;
 }
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content {
+.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content {
   background: none;
   color: var(--plum-dark);
   height: 100%;
   transition: all 0.8s ease;
 }
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h1,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h1,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h2,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h2,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h3,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h3,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h4,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h4,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h5,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h5,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h6,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h6,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content p,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content p,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content li,
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content a {
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content li,
+.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content a,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content a {
   color: var(--plum-dark);
   transition: all 0.8s ease;
 }
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index {
+.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index {
   background: var(--plum-light);
   color: var(--plum-dark);
   height: 100%;
   transition: all 0.8s ease;
 }
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h1,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h1,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h2,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h2,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h3,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h3,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h4,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h4,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h5,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h5,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h6,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h6,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index p,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index p,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index li,
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index a {
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index li,
+.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index a,
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index a {
   color: var(--plum-dark);
   transition: all 0.8s ease;
 }
-.read .view .more-link {
+.read .view .more-link,
+.lire .view .more-link {
   background-color: var(--plum-dark);
 }
-.read .hero a {
+.read .hero a,
+.lire .hero a {
   background-color: var(--plum);
 }
-.recite .lt-bg {
+.recite .lt-bg,
+.reciter .lt-bg {
   background: var(--red-light);
 }
-.recite .md-bg {
+.recite .md-bg,
+.reciter .md-bg {
   background: var(--red);
 }
-.recite .dk-bg {
+.recite .dk-bg,
+.reciter .dk-bg {
   background: var(--red-dark);
 }
-.recite .area-link:hover .content {
+.recite .area-link:hover .content,
+.reciter .area-link:hover .content {
   background: var(--red-light);
   color: black;
   height: 100%;
   transition: all 0.8s ease;
 }
 .recite .area-link:hover .content h1,
+.reciter .area-link:hover .content h1,
 .recite .area-link:hover .content h2 h3,
+.reciter .area-link:hover .content h2 h3,
 .recite .area-link:hover .content h4,
+.reciter .area-link:hover .content h4,
 .recite .area-link:hover .content h5,
+.reciter .area-link:hover .content h5,
 .recite .area-link:hover .content h6,
+.reciter .area-link:hover .content h6,
 .recite .area-link:hover .content p,
+.reciter .area-link:hover .content p,
 .recite .area-link:hover .content li,
-.recite .area-link:hover .content a {
+.reciter .area-link:hover .content li,
+.recite .area-link:hover .content a,
+.reciter .area-link:hover .content a {
   color: black !important;
   transition: all 0.8s ease;
 }
-.recite .view .more-link {
+.recite .view .more-link,
+.reciter .view .more-link {
   background-color: var(--red-dark);
 }
-.recite .hero a {
+.recite .hero a,
+.reciter .hero a {
   background-color: var(--red);
 }
 .write .lt-bg {
@@ -4038,6 +4091,7 @@ li {
   padding: 1rem;
   bottom: 0px;
   left: 0px;
+  font-weight: 900;
 }
 h1.hero a {
   color: white;
