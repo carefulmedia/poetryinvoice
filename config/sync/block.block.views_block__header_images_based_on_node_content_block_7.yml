@@ -1,0 +1,30 @@
+uuid: 2a2de6c5-2a17-4875-995b-e8806fa53026
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.header_images_based_on_node_content
+  module:
+    - system
+    - views
+  theme:
+    - lvp_barrio
+id: views_block__header_images_based_on_node_content_block_7
+theme: lvp_barrio
+region: highlighted
+weight: 0
+provider: null
+plugin: 'views_block:header_images_based_on_node_content-block_7'
+settings:
+  id: 'views_block:header_images_based_on_node_content-block_7'
+  label: ''
+  label_display: '0'
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/read/mixtapes\r\n/lire/compilations\r\n/read/mixtapes/*\r\n/lire/compilations/*"

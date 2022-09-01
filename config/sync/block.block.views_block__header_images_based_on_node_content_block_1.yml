@@ -28,7 +28,7 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/read\r\n/read/*\r\n/lire\r\n/lire/*"
+    pages: "/read\r\n/read\r\n/lire\r\n/lire"
   'entity_bundle:node':
     id: 'entity_bundle:node'
     negate: false
