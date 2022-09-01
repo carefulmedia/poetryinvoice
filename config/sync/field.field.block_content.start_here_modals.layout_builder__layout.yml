@@ -1,0 +1,21 @@
+uuid: 403e95cf-9441-4bfc-bcb6-a98a4a61f9aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.start_here_modals
+    - field.storage.block_content.layout_builder__layout
+  module:
+    - layout_builder
+id: block_content.start_here_modals.layout_builder__layout
+field_name: layout_builder__layout
+entity_type: block_content
+bundle: start_here_modals
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: layout_section

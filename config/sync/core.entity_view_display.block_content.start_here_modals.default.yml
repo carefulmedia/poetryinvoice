@@ -6,9 +6,38 @@ dependencies:
     - block_content.type.start_here_modals
     - field.field.block_content.start_here_modals.field_intro_text
     - field.field.block_content.start_here_modals.field_start_here_page_links_and_
+    - field.field.block_content.start_here_modals.layout_builder__layout
   module:
     - entity_reference_revisions
+    - layout_builder
+    - layout_discovery
     - text
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          337c39a9-f63f-4d0a-b378-cd37bbb303bb:
+            uuid: 337c39a9-f63f-4d0a-b378-cd37bbb303bb
+            region: content
+            configuration:
+              id: 'field_block:block_content:start_here_modals:field_intro_text'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
 id: block_content.start_here_modals.default
 targetEntityType: block_content
 bundle: start_here_modals
@@ -35,4 +64,5 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   langcode: true
+  layout_builder__layout: true
   search_api_excerpt: true
