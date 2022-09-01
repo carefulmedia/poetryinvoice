@@ -3787,7 +3787,7 @@ display:
       use_more_always: true
       use_more_text: 'SEE ALL'
       link_display: custom_url
-      link_url: /teach/poet-class
+      link_url: /read/poets
       header:
         area:
           id: area
