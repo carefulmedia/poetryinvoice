@@ -23,7 +23,7 @@ class PivWelcomeModalSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager) {
-    $this->blockContentStorage = $entity_type_manager->getStorage('block');
+    $this->blockContentStorage = $entity_type_manager->getStorage('block_content');
   }
 
   /**
@@ -105,7 +105,7 @@ class PivWelcomeModalSettingsForm extends ConfigFormBase {
         $form[$group][$id] = [
           '#type' => 'entity_autocomplete',
           '#title' => $title,
-          '#target_type' => 'block',
+          '#target_type' => 'block_content',
           '#default_value' => $entity,
         ];
       }

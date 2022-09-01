@@ -190,12 +190,12 @@ class PivWelcomeModal extends FormBase {
     $entity_id = $this->configs->get($config_key);
     if ($entity_id) {
       $entity = $this->entityTypeManager
-        ->getStorage('block')
+        ->getStorage('block_content')
         ->load($entity_id);
       if ($entity) {
         $view_builder = $this->entityTypeManager
-          ->getViewBuilder('block');
-        $form['block'] = $view_builder->view($entity);
+          ->getViewBuilder('block_content');
+        $form['block_content'] = $view_builder->view($entity);
       }
     }
     else {
