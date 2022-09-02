@@ -17,8 +17,8 @@ dependencies:
     - node.type.mixtape
   module:
     - file
-    - image
     - layout_builder
+    - svg_image
     - text
     - user
 third_party_settings:
@@ -35,7 +35,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 1
+    weight: 0
     region: content
   field_doodles:
     type: image
@@ -43,10 +43,14 @@ content:
     settings:
       image_link: ''
       image_style: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
       image_loading:
         attribute: lazy
     third_party_settings: {  }
-    weight: 6
+    weight: 5
     region: content
   field_liner_notes_pdf_:
     type: file_default
@@ -54,18 +58,7 @@ content:
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 4
-    region: content
-  field_mixtape_image:
-    type: image
-    label: hidden
-    settings:
-      image_link: ''
-      image_style: ''
-      image_loading:
-        attribute: lazy
-    third_party_settings: {  }
-    weight: 0
+    weight: 3
     region: content
   field_mixtape_media:
     type: entity_reference_entity_view
@@ -74,7 +67,7 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 3
+    weight: 2
     region: content
   field_poems:
     type: entity_reference_label
@@ -82,14 +75,14 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 2
+    weight: 1
     region: content
   field_recommended_reading:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 5
+    weight: 4
     region: content
 hidden:
   entity_print_view_epub: true
@@ -97,6 +90,8 @@ hidden:
   entity_print_view_word_docx: true
   field_completed: true
   field_mixtape_background_image: true
+  field_mixtape_image: true
   field_paid_: true
   langcode: true
   links: true
+  search_api_excerpt: true

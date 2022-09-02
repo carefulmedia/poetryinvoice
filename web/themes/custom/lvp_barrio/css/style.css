@@ -4018,68 +4018,96 @@ li {
 .reciter .hero a {
   background-color: var(--red);
 }
-.write .lt-bg {
+.write .lt-bg,
+.ecrire .lt-bg {
   background: var(--mint-light);
 }
-.write .md-bg {
+.write .md-bg,
+.ecrire .md-bg {
   background: var(--mint);
 }
-.write .dk-bg {
+.write .dk-bg,
+.ecrire .dk-bg {
   background: var(--mint-dark);
 }
-.write .area-link:hover .content {
+.write .area-link:hover .content,
+.ecrire .area-link:hover .content {
   background: var(--mint-light);
   color: black;
   height: 100%;
   transition: all 0.8s ease;
 }
 .write .area-link:hover .content h1,
+.ecrire .area-link:hover .content h1,
 .write .area-link:hover .content h2 h3,
+.ecrire .area-link:hover .content h2 h3,
 .write .area-link:hover .content h4,
+.ecrire .area-link:hover .content h4,
 .write .area-link:hover .content h5,
+.ecrire .area-link:hover .content h5,
 .write .area-link:hover .content h6,
+.ecrire .area-link:hover .content h6,
 .write .area-link:hover .content p,
+.ecrire .area-link:hover .content p,
 .write .area-link:hover .content li,
-.write .area-link:hover .content a {
+.ecrire .area-link:hover .content li,
+.write .area-link:hover .content a,
+.ecrire .area-link:hover .content a {
   color: black !important;
   transition: all 0.8s ease;
 }
-.write .view .more-link {
+.write .view .more-link,
+.ecrire .view .more-link {
   background-color: var(--mint-dark);
 }
-.write .hero a {
+.write .hero a,
+.ecrire .hero a {
   background-color: var(--mint);
 }
-.teach .lt-bg {
+.teach .lt-bg,
+.enseigner .lt-bg {
   background: var(--gold-light);
 }
-.teach .md-bg {
+.teach .md-bg,
+.enseigner .md-bg {
   background: var(--gold);
 }
-.teach .dk-bg {
+.teach .dk-bg,
+.enseigner .dk-bg {
   background: var(--gold-dark);
 }
-.teach .area-link:hover {
+.teach .area-link:hover,
+.enseigner .area-link:hover {
   background: var(--gold-light);
   color: black;
   height: 100%;
   transition: all 0.8s ease;
 }
 .teach .area-link:hover h1,
+.enseigner .area-link:hover h1,
 .teach .area-link:hover h2 h3,
+.enseigner .area-link:hover h2 h3,
 .teach .area-link:hover h4,
+.enseigner .area-link:hover h4,
 .teach .area-link:hover h5,
+.enseigner .area-link:hover h5,
 .teach .area-link:hover h6,
+.enseigner .area-link:hover h6,
 .teach .area-link:hover p,
+.enseigner .area-link:hover p,
 .teach .area-link:hover li,
-.teach .area-link:hover a {
+.enseigner .area-link:hover li,
+.teach .area-link:hover a,
+.enseigner .area-link:hover a {
   color: black !important;
   transition: all 0.8s ease;
 }
-.teach .view .more-link {
+.teach .view .more-link,
+.enseigner .view .more-link {
   background-color: var(--gold-dark);
 }
-.teach .hero a {
+.teach .hero a,
+.enseigner .hero a {
   background-color: var(--gold);
 }
 .hero a {
@@ -4113,6 +4141,9 @@ html {
 html::-webkit-scrollbar {
   width: 0px;
   /* For Chrome, Safari, and Opera */
+}
+#field-language-display {
+  display: none;
 }
 
 /*# sourceMappingURL=maps/style.css.map */

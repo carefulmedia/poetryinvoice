@@ -3799,7 +3799,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: "<div data-aos=\"fade-up\"><h1>Poets</h1>\r\n<h2>TK Poets</h2></div>\r\n"
+            value: "<div data-aos=\"fade-up\"><h1>Poets</h1>\r\n<h2>Discover more about our amazing poets here</h2></div>\r\n"
             format: filtered_html
           tokenize: false
       display_extenders: {  }

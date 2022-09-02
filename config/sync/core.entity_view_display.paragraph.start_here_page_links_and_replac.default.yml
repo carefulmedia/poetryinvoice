@@ -8,7 +8,67 @@ dependencies:
     - field.field.paragraph.start_here_page_links_and_replac.field_text_link_sub_headline
     - paragraphs.paragraphs_type.start_here_page_links_and_replac
   module:
+    - layout_builder
+    - layout_discovery
     - text
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          fa259e64-0987-43ff-8977-674a5f0a0ac7:
+            uuid: fa259e64-0987-43ff-8977-674a5f0a0ac7
+            region: content
+            configuration:
+              id: 'field_block:paragraph:start_here_page_links_and_replac:field_content_link'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          b3c9a03e-13c0-4ac0-b1d0-bfe1a982bac7:
+            uuid: b3c9a03e-13c0-4ac0-b1d0-bfe1a982bac7
+            region: content
+            configuration:
+              id: 'field_block:paragraph:start_here_page_links_and_replac:field_text_link_headline'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          02bfe644-638d-40c1-92a6-3e03770a8ea2:
+            uuid: 02bfe644-638d-40c1-92a6-3e03770a8ea2
+            region: content
+            configuration:
+              id: 'field_block:paragraph:start_here_page_links_and_replac:field_text_link_sub_headline'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
 id: paragraph.start_here_page_links_and_replac.default
 targetEntityType: paragraph
 bundle: start_here_page_links_and_replac
