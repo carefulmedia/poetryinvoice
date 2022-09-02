@@ -6,7 +6,7 @@
 /* Only for mobile */
 @media (max-width: 767px) {
 
-  nav.menu--main {
+  nav.menu--main, nav.menu--fr-main-menu {
     margin-left: 16px;
     width: 100%;
     padding-bottom: 12px;
@@ -132,8 +132,8 @@ ul.dropdown-menu {
     text-decoration: none;
     font-size: 1.5rem;
 }
-.menu--main {
-    margin-top: 4rem;
+.menu--main, .menu--fr-main-menu {
+    margin-top: 3rem;
 
 }
 .navbar-nav {
@@ -278,5 +278,42 @@ footer .nav-item {
 .region-footer-second, .region-footer-second img{
     float: right !important;
 }
+
+}
+.offcanvas {
+  .nav-item {
+    padding-bottom: 1rem;
+    }
+
+  .js-form-item-search label {
+    display:none
+
+  }
+  .block-views-exposed-filter-blocksearch-page {
+  width: 50%;
+      display: inline;
+      float: left;
+  }
+  .button {
+    float: left;
+    display: inline;
+    height: 38px;
+    padding: 5px;
+  }
+  .form-control {
+    display: inline;
+    float: left ;
+  }
+  .form-row > fieldset {
+    padding: 0;
+    display: inline;
+    float: left;
+  }
+}
+.btn-outline-primary {
+  border-color: #000;
+}
+.btn-outline-primary:hover {
+  border-color: #000;
 
 }

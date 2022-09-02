@@ -1888,7 +1888,8 @@ h3.name {
  */
 /* Only for mobile */
 @media (max-width: 767px) {
-  nav.menu--main {
+  nav.menu--main,
+  nav.menu--fr-main-menu {
     margin-left: 16px;
     width: 100%;
     padding-bottom: 12px;
@@ -1987,8 +1988,9 @@ ul.dropdown-menu {
   text-decoration: none;
   font-size: 1.5rem;
 }
-.menu--main {
-  margin-top: 4rem;
+.menu--main,
+.menu--fr-main-menu {
+  margin-top: 3rem;
 }
 .navbar-nav .nav-link {
   padding-right: 0;
@@ -2111,6 +2113,38 @@ footer .nav-item {
   .region-footer-second img {
     float: right !important;
   }
+}
+.offcanvas .nav-item {
+  padding-bottom: 1rem;
+}
+.offcanvas .js-form-item-search label {
+  display: none;
+}
+.offcanvas .block-views-exposed-filter-blocksearch-page {
+  width: 50%;
+  display: inline;
+  float: left;
+}
+.offcanvas .button {
+  float: left;
+  display: inline;
+  height: 38px;
+  padding: 5px;
+}
+.offcanvas .form-control {
+  display: inline;
+  float: left ;
+}
+.offcanvas .form-row > fieldset {
+  padding: 0;
+  display: inline;
+  float: left;
+}
+.btn-outline-primary {
+  border-color: #000;
+}
+.btn-outline-primary:hover {
+  border-color: #000;
 }
 /**
  * @file
@@ -3000,8 +3034,6 @@ header #search-block-form {
   .navigation {
     display: block;
     width: auto !important;
-    padding-right: 15px;
-    padding-left: 15px;
   }
 }
 .navbar-dark .navbar-toggler-icon {
@@ -3632,7 +3664,8 @@ h2 {
   font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
 h3,
-.navbar-nav .nav-link {
+.navbar-nav .nav-link,
+.block-views-exposed-filter-blocksearch-page h2 {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
@@ -3816,7 +3849,7 @@ li {
   text-transform: uppercase;
   font-weight: bold;
   text-decoration: none;
-  padding: 15px;
+  padding: 10px;
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
 }
 .button:hover {
@@ -4144,6 +4177,9 @@ html::-webkit-scrollbar {
 }
 #field-language-display {
   display: none;
+}
+.button:hover::before {
+  filter: invert(1);
 }
 
 /*# sourceMappingURL=maps/style.css.map */
