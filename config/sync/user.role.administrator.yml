@@ -41,6 +41,7 @@ dependencies:
     - piv_contest_competition_entry
     - piv_contest_judging_session
     - piv_poem_password
+    - realname
     - redirect
     - scanner
     - shortcut

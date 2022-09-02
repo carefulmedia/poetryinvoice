@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.podcast.body
+    - field.field.node.podcast.field_images_insert
     - field.field.node.podcast.field_poet_s_in_podcast
     - field.field.node.podcast.field_soundcloud
     - node.type.podcast
@@ -20,7 +21,7 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 101
+    weight: 0
     region: content
   field_poet_s_in_podcast:
     type: entity_reference_label
@@ -28,7 +29,7 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 103
+    weight: 2
     region: content
   field_soundcloud:
     type: entity_reference_entity_view
@@ -37,12 +38,13 @@ content:
       view_mode: default
       link: false
     third_party_settings: {  }
-    weight: 102
-    region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 100
+    weight: 1
     region: content
 hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_images_insert: true
   langcode: true
+  links: true
+  search_api_excerpt: true

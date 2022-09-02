@@ -27,4 +27,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/binge/videos\r\n/binge/videos/*\r\n/ecouter/videos\r\n/ecouter/videos/*"
+    pages: "/binge/\r\n/binge/*\r\n/ecouter\r\n/ecouter/*"
