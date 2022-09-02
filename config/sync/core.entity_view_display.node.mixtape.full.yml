@@ -117,6 +117,108 @@ third_party_settings:
               items_per_page: none
             weight: 2
             additional: {  }
+          e5ac89c9-1d24-481a-af8a-4f060d500df0:
+            uuid: e5ac89c9-1d24-481a-af8a-4f060d500df0
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          32e07ad4-f178-4bc2-b9bd-ff8bfe75e688:
+            uuid: 32e07ad4-f178-4bc2-b9bd-ff8bfe75e688
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_poems'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          0cb820a2-57fc-491a-962e-797f60e04250:
+            uuid: 0cb820a2-57fc-491a-962e-797f60e04250
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_mixtape_media'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                  link: false
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          6463c7d4-950a-400a-819f-6d03020f2ea7:
+            uuid: 6463c7d4-950a-400a-819f-6d03020f2ea7
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_liner_notes_pdf_'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: file_default
+                label: above
+                settings:
+                  use_description_as_link_text: true
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          1a05ed3a-600c-400b-ae8c-2615f5acde46:
+            uuid: 1a05ed3a-600c-400b-ae8c-2615f5acde46
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_recommended_reading'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          1ffe907a-be56-441b-ae79-b49e2372702b:
+            uuid: 1ffe907a-be56-441b-ae79-b49e2372702b
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_doodles'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: above
+                settings:
+                  image_link: ''
+                  image_style: ''
+                  svg_attributes:
+                    width: null
+                    height: null
+                  svg_render_as_image: true
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: layout_onecol

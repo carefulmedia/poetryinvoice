@@ -4171,6 +4171,63 @@ li {
   left: 0px;
   font-weight: 900;
 }
+.binge .lt-bg,
+.ecouter .lt-bg {
+  background: var(--aqua-light);
+}
+.binge .md-bg,
+.ecouter .md-bg {
+  background: var(--aqua);
+}
+.binge .dk-bg,
+.ecouter .dk-bg {
+  background: var(--aqua-dark);
+}
+.binge .area-link:hover,
+.ecouter .area-link:hover {
+  background: var(--aqua-light);
+  color: black;
+  height: 100%;
+  transition: all 0.8s ease;
+}
+.binge .area-link:hover h1,
+.ecouter .area-link:hover h1,
+.binge .area-link:hover h2 h3,
+.ecouter .area-link:hover h2 h3,
+.binge .area-link:hover h4,
+.ecouter .area-link:hover h4,
+.binge .area-link:hover h5,
+.ecouter .area-link:hover h5,
+.binge .area-link:hover h6,
+.ecouter .area-link:hover h6,
+.binge .area-link:hover p,
+.ecouter .area-link:hover p,
+.binge .area-link:hover li,
+.ecouter .area-link:hover li,
+.binge .area-link:hover a,
+.ecouter .area-link:hover a {
+  color: black !important;
+  transition: all 0.8s ease;
+}
+.binge .view .more-link,
+.ecouter .view .more-link {
+  background-color: var(--aqua-dark);
+}
+.binge .hero a,
+.ecouter .hero a {
+  background-color: var(--aqua);
+}
+.hero a {
+  backdrop-filter: blur(100px);
+  border-radius: 10px;
+  color: white;
+  display: inline;
+  height: 3rem;
+  padding: 1rem;
+  bottom: 0px;
+  left: 0px;
+  font-weight: 900;
+}
 h1.hero a {
   color: white;
 }

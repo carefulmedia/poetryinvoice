@@ -976,7 +976,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: "<div class=\"blur\"><img src=\"https://piv-prod.s3.ca-central-1.amazonaws.com/public/styles/focal_point_scale_and_crop_1400_x_350/public/videos1-1.jpg?VersionId=A35i0U_55nV9qGPWNhiTY_V_FT3r2Vyt&itok=v_8lxHOs\" /></div>\r\n"
+          empty: "<div class=\"blur\"><img src=\"https://piv-prod.s3.ca-central-1.amazonaws.com/public/styles/focal_point_scale_and_crop_1400_x_350/public/shame-and-compassion_0.jpg\" /></div>\r\n<div class=\"no-blur\"><img src=\"https://piv-prod.s3.ca-central-1.amazonaws.com/public/styles/focal_point_scale_and_crop_1400_x_350/public/shame-and-compassion_0.jpg\" /></div>"
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
@@ -985,6 +985,10 @@ display:
           settings:
             image_link: ''
             image_style: focal_point_scale_and_crop_1400_x_350
+            svg_attributes:
+              width: null
+              height: null
+            svg_render_as_image: true
             image_loading:
               attribute: eager
           group_column: ''
@@ -1075,7 +1079,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: '<div class="container"><h1 class="hero"><a href="/binge">#bingepoetry</a></h1></div>'
+            value: '<div class="container"><h1 class="hero"><a href="/binge/videos">#watchpoetry</a></h1></div>'
             format: php_code
           tokenize: false
       display_extenders: {  }
