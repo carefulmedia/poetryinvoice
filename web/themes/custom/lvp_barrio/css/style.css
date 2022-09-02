@@ -2343,6 +2343,23 @@ footer .nav-item {
 .main-content {
   margin-bottom: 7rem;
 }
+/* Mixtape page styles */
+.node--type-mixtape h2 {
+  color: var(--plum);
+  margin-bottom: 3rem;
+}
+.node--type-mixtape .block-views-blockmixtage-body-block-1 {
+  padding-bottom: 4rem;
+  margin-bottom: 4rem;
+}
+.node--type-mixtape .block-views-blockcontent-type-index-pages-block-15 {
+  border-bottom: 4px dashed rgba(0, 0, 0, 0.4);
+  border-top: 4px dashed rgba(0, 0, 0, 0.4);
+  padding: 4rem 0;
+}
+.node--type-mixtape .block-views {
+  margin-bottom: 4rem;
+}
 .node-preview-container {
   background: #d1e8f5;
   background-image: -webkit-linear-gradient(top, #d1e8f5, #d3e8f4);
@@ -4180,6 +4197,10 @@ html::-webkit-scrollbar {
 }
 .button:hover::before {
   filter: invert(1);
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  background: transparent;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
