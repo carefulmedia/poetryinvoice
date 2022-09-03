@@ -1401,7 +1401,6 @@ h3.name {
   position: fixed;
   top: 0;
   width: 100%;
-  margin-bottom: -4rem;
   z-index: 20000;
 }
 .gin--horizontal-toolbar .header {
@@ -1453,11 +1452,17 @@ h3.name {
   object-fit: cover;
   object-position: top;
 }
+.no-blur img {
+  margin-top: -4rem;
+}
 .dropdown-toggle::after {
   content: none;
 }
 .highlighted .container img {
   width: 100%;
+}
+.highlighted {
+  min-height: 4rem;
 }
 .highlighted .container.section {
   width: 100% !important;
@@ -1761,6 +1766,40 @@ h3.name {
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   padding-top: 3rem;
   padding-bottom: 3rem;
+}
+/* news index page */
+.page-node-32345 {
+  /* Only for mobile */
+}
+.page-node-32345 .story {
+  min-height: 200px;
+  margin-bottom: 4rem;
+}
+.page-node-32345 .story .image {
+  display: inline;
+  float: left;
+  width: 200px;
+}
+.page-node-32345 .story .text {
+  margin-left: 220px;
+}
+.page-node-32345 .story a:hover {
+  border-radius: 10px;
+  transition: all 0.8s ease;
+  font-size: 110%;
+}
+.page-node-32345 .story a {
+  height: fit-content;
+  padding: 20px;
+}
+@media (max-width: 867px) {
+  .page-node-32345 .story .image {
+    display: block;
+    float: none;
+  }
+  .page-node-32345 .story .text {
+    margin-left: 0px;
+  }
 }
 /**
  * @file
@@ -2075,7 +2114,7 @@ header #search-block-form .btn-outline-primary:hover {
 }
 .navbar-nav .about a,
 .navbar-nav .about a:hover {
-  color: var(--plum-dark) !important;
+  color: var(--grey-dark) !important;
 }
 .navbar-nav .dropdown-item a {
   color: #000 !important;
@@ -3664,6 +3703,8 @@ body.path-user .field--label-above .field__item {
   --aqua: #3185AF;
   --aqua-dark: #12445E;
   --white: #ffffff;
+  --grey-dark: #333B42;
+  --grey: #73818D;
   --black: #000000;
 }
 body,
@@ -3760,7 +3801,7 @@ h4,
   }
   .no-blur img {
     width: 100%;
-    height: 10rem !important;
+    height: 15rem !important;
     object-fit: cover;
   }
 }
@@ -3879,7 +3920,7 @@ li {
 }
 .about a:hover,
 .propos a:hover {
-  color: var(--black);
+  color: var(--grey);
 }
 .button {
   height: auto;
@@ -4277,6 +4318,57 @@ li {
   background-color: var(--aqua-dark);
   color: white;
 }
+.about .lt-bg,
+.propos .lt-bg {
+  background: var(--aqua-light);
+}
+.about .md-bg,
+.propos .md-bg {
+  background: var(--grey);
+}
+.about .dk-bg,
+.propos .dk-bg {
+  background: var(--grey-dark);
+}
+.about .area-link:hover,
+.propos .area-link:hover {
+  background: var(--aqua-light);
+  color: black;
+  height: 100%;
+  transition: all 0.8s ease;
+}
+.about .area-link:hover h1,
+.propos .area-link:hover h1,
+.about .area-link:hover h2 h3,
+.propos .area-link:hover h2 h3,
+.about .area-link:hover h4,
+.propos .area-link:hover h4,
+.about .area-link:hover h5,
+.propos .area-link:hover h5,
+.about .area-link:hover h6,
+.propos .area-link:hover h6,
+.about .area-link:hover p,
+.propos .area-link:hover p,
+.about .area-link:hover li,
+.propos .area-link:hover li,
+.about .area-link:hover a,
+.propos .area-link:hover a {
+  color: black !important;
+  transition: all 0.8s ease;
+}
+.about .view .more-link,
+.propos .view .more-link {
+  background-color: var(--grey-dark);
+}
+.about .hero a,
+.propos .hero a {
+  background-color: var(--grey);
+}
+.about details,
+.propos details {
+  background-color: var(--grey-dark);
+  color: white;
+}
 .hero a {
   backdrop-filter: blur(100px);
   border-radius: 10px;
@@ -4297,8 +4389,11 @@ h1.hero a {
   transition: all 0.8s ease;
 }
 .view-footer .container {
-  margin-top: -1.5rem;
+  margin-top: 2.5rem;
   margin-bottom: 3rem;
+}
+.no-blur {
+  margin-bottom: -4rem;
 }
 html {
   scrollbar-width: none;

@@ -13,8 +13,8 @@ dependencies:
     - node.type.media_coverage
     - node.type.press_release
   module:
-    - image
     - node
+    - svg_image
     - text
     - user
 id: latest_news
@@ -42,12 +42,12 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
-            make_link: true
-            path: '{{ field_story_link }}'
+            make_link: false
+            path: ''
             absolute: false
             external: false
             replace_spaces: false
@@ -79,7 +79,7 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
@@ -87,6 +87,10 @@ display:
           settings:
             image_link: ''
             image_style: scale_100
+            svg_attributes:
+              width: null
+              height: null
+            svg_render_as_image: true
             image_loading:
               attribute: lazy
           group_column: ''
@@ -108,11 +112,11 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
-            make_link: true
+            make_link: false
             path: '{{ field_story_link }}'
             absolute: false
             external: false
@@ -145,7 +149,7 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
@@ -153,6 +157,10 @@ display:
           settings:
             image_link: ''
             image_style: scale_100
+            svg_attributes:
+              width: null
+              height: null
+            svg_render_as_image: true
             image_loading:
               attribute: lazy
           group_column: ''
@@ -176,7 +184,7 @@ display:
           entity_field: created
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -357,11 +365,11 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
-            make_link: true
+            make_link: false
             path: '{{ field_story_link }}'
             absolute: false
             external: false
@@ -420,7 +428,7 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
             text: ''
@@ -452,7 +460,7 @@ display:
           element_class: ''
           element_label_type: ''
           element_label_class: ''
-          element_label_colon: true
+          element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -483,10 +491,10 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
             alter_text: false
-            text: ''
+            text: "{{ title }}\r\n{{ body__summary }}\r\n"
             make_link: false
             path: '{{ field_story_link }} '
             absolute: false
@@ -603,6 +611,55 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "<div class=\"story\"><a href=\" {{ view_node }} \" class=\"area-link\">\r\n<div class=\"image\">{{ field_images_insert }} {{ field_image }} </div>\r\n<div class=\"text\">\r\n <p class=\"created\">{{ created }}</p> \r\n<h2>{{ title }}</h2>\r\n<p>{{ body }}</p> \r\n</div>\r\n</a>\r\n</div>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
       pager:
         type: some
         options:

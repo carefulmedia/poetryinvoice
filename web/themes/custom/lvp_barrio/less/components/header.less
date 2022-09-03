@@ -46,8 +46,7 @@
 position: fixed;
     top: 0;
     width: 100%;
-    margin-bottom: -4rem;
-z-index:20000
+    z-index:20000
 }
 .gin--horizontal-toolbar .header {
     position: relative;
@@ -105,12 +104,18 @@ z-index: 2;
     object-fit: cover;
     object-position: top;
 }
+.no-blur img {
+  margin-top: -4rem;
+
+}
 .dropdown-toggle::after {
     content: none;
 }
 .highlighted .container img {
     width: 100%;
-    
+}
+.highlighted {
+  min-height: 4rem;
 }
 .highlighted .container.section {
     width: 100% !important;
