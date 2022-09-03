@@ -1589,7 +1589,7 @@ h3.name {
   color: white;
 }
 .index-subject-row {
-  margin-bottom: 8rem;
+  margin-bottom: 4rem;
   position: relative;
 }
 .view {
@@ -1690,9 +1690,9 @@ h3.name {
   color: black;
   background-color: #fff;
   opacity: 0.95;
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
-  width: 40%;
+  width: fit-content;
 }
 .owl-nav {
   font-size: 50px;
@@ -1715,7 +1715,10 @@ h3.name {
     color: black;
     width: 90%;
   }
-  .fca-text p {
+  .fca-text p,
+  .fca-text h2,
+  .fca-text h3,
+  .fca-text h4 {
     display: none;
   }
   .page-view-frontpage .owl-carousel .owl-item img {
@@ -1738,9 +1741,6 @@ h3.name {
 }
 #views-bootstrap-home-page-slider-fca-block-2 .content-index.mixtape {
   height: 35rem;
-}
-.view-display-id-block_5 {
-  margin-bottom: 8rem;
 }
 .youtube-container--responsive.view-home-page-slider-fca {
   margin-top: 8rem;
@@ -3849,6 +3849,9 @@ li {
   text-decoration: none;
   display: block;
   width: 100%;
+  height: 100%;
+}
+.picpcal .area-link {
   height: fit-content;
 }
 .print__wrapper a {
@@ -3891,7 +3894,7 @@ li {
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
 }
 .button:hover {
-  background: white;
+  background: white !important;
   color: var(--red);
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
   transition: all 0.8s ease;
@@ -4043,6 +4046,15 @@ li {
 .lire .hero a {
   background-color: var(--plum);
 }
+.read .button,
+.lire .button {
+  background: var(--plum);
+}
+.read details,
+.lire details {
+  background-color: var(--plum-dark);
+  color: white;
+}
 .recite .lt-bg,
 .reciter .lt-bg {
   background: var(--red-light);
@@ -4088,6 +4100,15 @@ li {
 .recite .hero a,
 .reciter .hero a {
   background-color: var(--red);
+}
+.recite .button,
+.reciter .button {
+  background: var(--red);
+}
+.recite details,
+.reciter details {
+  background-color: var(--red-dark);
+  color: white;
 }
 .write .lt-bg,
 .ecrire .lt-bg {
@@ -4135,6 +4156,10 @@ li {
 .ecrire .hero a {
   background-color: var(--mint);
 }
+.write .button,
+.ecrire .button {
+  background: var(--mint);
+}
 .teach .lt-bg,
 .enseigner .lt-bg {
   background: var(--gold-light);
@@ -4180,6 +4205,15 @@ li {
 .teach .hero a,
 .enseigner .hero a {
   background-color: var(--gold);
+}
+.teach .button,
+.enseigner .button {
+  background: var(--gold-dark);
+}
+.teach details,
+.enseigner details {
+  background-color: var(--gold-dark);
+  color: white;
 }
 .hero a {
   backdrop-filter: blur(100px);
@@ -4238,6 +4272,11 @@ li {
 .ecouter .hero a {
   background-color: var(--aqua);
 }
+.binge details,
+.ecouter details {
+  background-color: var(--aqua-dark);
+  color: white;
+}
 .hero a {
   backdrop-filter: blur(100px);
   border-radius: 10px;
@@ -4251,6 +4290,7 @@ li {
 }
 h1.hero a {
   color: white;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
 }
 .hero a:hover {
   background-color: white;

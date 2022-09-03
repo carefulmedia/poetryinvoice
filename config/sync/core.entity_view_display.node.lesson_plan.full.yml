@@ -26,12 +26,14 @@ dependencies:
     - field.field.node.lesson_plan.field_variations_for_younger_stu
     - field.field.node.lesson_plan.field_video_poem
     - node.type.lesson_plan
+    - views.view.lesson_plan_login
   module:
     - file
     - layout_builder
     - options
     - text
     - user
+    - views
 third_party_settings:
   layout_builder:
     enabled: true
@@ -135,7 +137,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 3
+            weight: 5
             additional: {  }
           f2e204c3-b2a7-4325-bc33-625a506f6c66:
             uuid: f2e204c3-b2a7-4325-bc33-625a506f6c66
@@ -153,7 +155,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 5
+            weight: 7
             additional: {  }
           1b79daff-9753-4e12-b9c0-ea8b65faf2c1:
             uuid: 1b79daff-9753-4e12-b9c0-ea8b65faf2c1
@@ -171,7 +173,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 6
+            weight: 8
             additional: {  }
           33f4b6f3-38bf-4e45-a1cf-89af0fa1f854:
             uuid: 33f4b6f3-38bf-4e45-a1cf-89af0fa1f854
@@ -322,25 +324,41 @@ third_party_settings:
                 settings:
                   use_description_as_link_text: true
                 third_party_settings: {  }
-            weight: 4
+            weight: 6
             additional: {  }
           0106978e-d734-4af5-a6e7-84536f460563:
             uuid: 0106978e-d734-4af5-a6e7-84536f460563
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:lesson_plan:field_rwt'
+              label: 'Lesson  provided by ReadWriteThink.org, a website developed by the International Reading Association and the National Council of'
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: boolean
-                label: above
+                label: hidden
                 settings:
-                  format: default
+                  format: custom
                   format_custom_false: ''
-                  format_custom_true: ''
+                  format_custom_true: 'Lesson provided by ReadWriteThink.org, a website developed by the International Reading Association and the N.C.T.E.'
                 third_party_settings: {  }
-            weight: 7
+            weight: 9
+            additional: {  }
+          3323cdaa-c6de-4def-af40-a2898c2d0458:
+            uuid: 3323cdaa-c6de-4def-af40-a2898c2d0458
+            region: blb_region_col_1
+            configuration:
+              id: 'views_block:lesson_plan_login-block_1'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 4
             additional: {  }
         third_party_settings: {  }
 id: node.lesson_plan.full
@@ -473,3 +491,4 @@ hidden:
   field_suggest_a_new_folder_to_fi: true
   langcode: true
   links: true
+  search_api_excerpt: true

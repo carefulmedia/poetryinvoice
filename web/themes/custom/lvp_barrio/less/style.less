@@ -276,7 +276,11 @@ margin-bottom: 40px;
     text-decoration: none;
     display: block;
     width: 100%;
-    height: fit-content;
+    height: 100%;
+    
+}
+.picpcal .area-link {
+    height: fit-content; 
 }
 .print__wrapper  a {
     text-decoration: none;
@@ -307,7 +311,7 @@ margin-bottom: 40px;
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
       }
 .button:hover {
-        background: white;
+        background: white !important;
         color: var(--red);
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
 transition: all .8s ease;
@@ -387,7 +391,13 @@ color: black ;
     .hero a {
         background-color: var(--plum);
      }
-
+     .button {
+        background: var(--plum);
+        }
+        details {
+            background-color: var(--plum-dark);
+            color: white;
+        }
 }
 .recite, .reciter {
     .lt-bg {
@@ -417,7 +427,13 @@ color: black ;
     .hero  a {
         background-color: var(--red);
      }
-
+     .button {
+        background: var(--red);
+        }
+        details {
+            background-color: var(--red-dark);
+            color: white;
+        }
 }
 .write, .ecrire {
     .lt-bg { 
@@ -447,7 +463,9 @@ color: black ;
     .hero a {
         background-color: var(--mint);
      }
-
+     .button {
+        background: var(--mint);
+        }
 }
 .teach, .enseigner {
     .lt-bg {
@@ -477,7 +495,13 @@ color: black ;
     .hero a {
         background-color: var(--gold);
      }
-
+     .button {
+     background: var(--gold-dark);
+     }
+     details {
+        background-color: var(--gold-dark);
+        color: white;
+    }
 }
 
 .hero a {
@@ -520,6 +544,10 @@ color: black ;
     .hero a {
         background-color: var(--aqua);
      }
+     details {
+        background-color: var(--aqua-dark);
+        color: white;
+    }
 
 }
 
@@ -537,6 +565,7 @@ color: black ;
 }
 h1.hero a {
         color: white;
+        filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
 } 
 .hero a:hover {
     background-color: white;

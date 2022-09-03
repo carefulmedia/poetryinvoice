@@ -1,3 +1,3 @@
 _core:
   default_config_hash: WKPJoaS0nZiIboNwD58sBSpxmtib3XbeyMWgbExqsnE
-url_with_class: "/read/*|read\r\n/lire/*|lire\r\n/recite/*|recite\r\n/reciter/*|reciter\r\n/teach/*|teach\r\n/enseigner/*|enseinger\r\n/binge/*|binge\r\n/ecouter/*|ecouter\r\n/write/*|write\r\n/ecrire/*|ecrire\r\n/about/*|about\r\n/propos/*|propos"
+url_with_class: "/read/*|read\r\n/lire/*|lire\r\n/recite/*|recite\r\n/reciter/*|reciter\r\n/teach/*|teach\r\n/enseigner/*|enseigner\r\n/binge/*|binge\r\n/ecouter/*|ecouter\r\n/write/*|write\r\n/ecrire/*|ecrire\r\n/about/*|about\r\n/propos/*|propos\r\n/user/*|user"

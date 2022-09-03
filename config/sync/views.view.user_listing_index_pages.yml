@@ -3571,10 +3571,10 @@ display:
           entity_field: uid
           plugin_id: field
           label: ''
-          exclude: false
+          exclude: true
           alter:
-            alter_text: true
-            text: "    <a href=\"{{ view_user }} \" class=\"area-link\" style=\"display:block\"><div class=\"index-views mixtape content-index\" data-aos=\"fade-down\">\r\n\r\n\r\n            <div class=\"image\">\r\n\r\n {{ user_picture }}\r\n\r\n\r\n            </div>\t\r\n\r\n\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ name }}</h3>\r\n\r\n<p>{{ field_user_bio }} </p>\r\n            </div>\r\n\r\n        <div class=\"fadeout\"></div>\r\n\r\n</div>\r\n</a>"
+            alter_text: false
+            text: "<div class=\"index-views mixtape content-index\" data-aos=\"fade-down\">\r\n    <a href=\"{{ view_user }} \" class=\"area-link\" >\r\n            <div class=\"image\">\r\n               {{ user_picture }}\r\n            </div>\t\r\n            <div class=\"content\">\r\n              \t<h3>{{ name }}</h3>\r\n                <p>{{ field_user_bio }} </p>\r\n            </div>\r\n\r\n        <div class=\"fadeout\"></div>\r\n</a>\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -3626,6 +3626,55 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "<div class=\"index-views mixtape content-index\" data-aos=\"fade-down\">\r\n    <a href=\"{{ view_user }} \" class=\"area-link\" >\r\n            <div class=\"image\">\r\n               {{ user_picture }}\r\n            </div>\t\r\n            <div class=\"content\">\r\n              \t<h3>{{ name }}</h3>\r\n                <p>{{ field_user_bio }} </p>\r\n            </div>\r\n\r\n        <div class=\"fadeout\"></div>\r\n</a>\r\n</div>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
       pager:
         type: some
         options:

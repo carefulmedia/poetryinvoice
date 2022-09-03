@@ -4,13 +4,16 @@ status: true
 dependencies:
   config:
     - field.storage.node.body
+    - field.storage.node.field_activity_description_steps
     - field.storage.node.field_competition_school
     - field.storage.node.field_image
     - field.storage.node.field_images_insert
     - field.storage.node.field_mixtape_image
     - field.storage.node.field_one_line_description
+    - field.storage.node.field_poets_plural_user
     - field.storage.node.field_prompt_image
     - field.storage.node.field_video
+    - field.storage.node.field_video_poem
     - field.storage.node.field_years_in_competition
     - field.storage.user.user_picture
     - image.style.1200x900
@@ -29,6 +32,7 @@ dependencies:
     - node.type.quiz
     - node.type.video
     - node.type.writing_prompt
+    - taxonomy.vocabulary.file_under
     - taxonomy.vocabulary.themes
     - taxonomy.vocabulary.type_of_video
   content:
@@ -5784,7 +5788,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"index-views lesson-plans content-index\">\r\n\r\n<a href=\"{{ view_node }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n    <div class=\"author\">\r\n\t\t    <span=\"img\">\r\n\t\t\t    {{ user_picture }}\r\n            </span>\r\n                <h3 class=\"name\">\r\n                {{ name }}\r\n            </h3>\r\n\r\n    </div>\t\t\t\t\r\n    <div class=\"content\">\r\n      \t\t<h2>{{ title }}</h2>\r\n\t        <p>{{ body }}</p>\r\n\t\t    \r\n        <div class=\"fadeout\"></div>\r\n    </div>\r\n</a>\r\n</div>"
+            text: "<div class=\"index-views lesson-plans content-index\">\r\n<a href=\"{{ view_node }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n\r\n    <div class=\"author\">\r\n\t\t    <span=\"img\">\r\n\t\t\t    {{ user_picture }}\r\n            </span>\r\n                <h3 class=\"name\">\r\n                {{ name }}\r\n            </h3>\r\n\r\n    </div>\t\t\t\t\r\n    <div class=\"content\">\r\n      \t\t<h2>{{ title }}</h2>\r\n\t        <p>{{ body }}</p>\r\n\t\t    \r\n        <div class=\"fadeout\"></div>\r\n    </div>\r\n</a>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -5824,6 +5828,194 @@ display:
           text: view
           output_url_as_text: true
           absolute: false
+        field_activity_description_steps:
+          id: field_activity_description_steps
+          table: node__field_activity_description_steps
+          field: field_activity_description_steps
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_video_poem:
+          id: field_video_poem
+          table: node__field_video_poem
+          field: field_video_poem
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_poets_plural_user:
+          id: field_poets_plural_user
+          table: node__field_poets_plural_user
+          field: field_poets_plural_user
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
         type: infinite_scroll
         options:
@@ -5853,7 +6045,7 @@ display:
           reset_button: false
           reset_button_label: Reset
           exposed_sorts_label: 'Sort by'
-          expose_sort_order: false
+          expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
           text_input_required: 'Select any filter and click on Apply to see results'
@@ -5870,26 +6062,58 @@ display:
               secondary_open: false
               reset_button_always_show: false
             sort:
-              plugin_id: bef_links
+              plugin_id: bef
               advanced:
-                combine: false
-                combine_rewrite: ''
+                combine: true
+                combine_rewrite: "Random Asc|Random\r\nAuthored on Desc|Newest\r\nTitle Desc|Title\r\nAuthored on Asc|\r\nRandom Desc|\r\nTitle Asc|"
                 reset: false
                 reset_label: ''
-                collapsible: false
+                collapsible: true
                 collapsible_label: 'Sort options'
                 is_secondary: false
             filter:
-              field_poem_thems_target_id:
-                plugin_id: bef_links
+              field_grades_value:
+                plugin_id: bef
                 advanced:
                   sort_options: false
                   rewrite:
                     filter_rewrite_values: ''
-                  collapsible: false
+                  collapsible: true
                   is_secondary: false
                 select_all_none: false
+                select_all_none_nested: false
+                display_inline: false
+              field_file_under__target_id:
+                plugin_id: bef
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                  collapsible: true
+                  is_secondary: false
+                select_all_none: false
+                select_all_none_nested: false
+                display_inline: false
+              combine:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
       sorts:
+        random:
+          id: random
+          table: views
+          field: random
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: random
+          order: ASC
+          expose:
+            label: Random
+            field_identifier: random
+          exposed: true
         created:
           id: created
           table: node_field_data
@@ -5906,21 +6130,22 @@ display:
             field_identifier: ''
           exposed: false
           granularity: second
-        title:
-          id: title
+        created_1:
+          id: created_1
           table: node_field_data
-          field: title
+          field: created
           relationship: none
           group_type: group
           admin_label: ''
           entity_type: node
-          entity_field: title
-          plugin_id: standard
+          entity_field: created
+          plugin_id: date
           order: ASC
           expose:
-            label: Title
-            field_identifier: title
+            label: 'Authored on'
+            field_identifier: created_1
           exposed: true
+          granularity: second
       filters:
         status:
           id: status
@@ -6019,6 +6244,215 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_grades_value:
+          id: field_grades_value
+          table: node__field_grades
+          field: field_grades_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_grades_value_op
+            label: 'Grade levels'
+            description: ''
+            use_operator: false
+            operator: field_grades_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_grades_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+        field_file_under__target_id:
+          id: field_file_under__target_id
+          table: node__field_file_under_
+          field: field_file_under__target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_file_under__target_id_op
+            label: Subjects
+            description: ''
+            use_operator: false
+            operator: field_file_under__target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_file_under__target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: file_under
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        combine:
+          id: combine
+          table: views
+          field: combine
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: combine
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: combine_op
+            label: 'Search for author, poems, keywords, etc.'
+            description: ''
+            use_operator: false
+            operator: combine_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: combine
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          fields:
+            name: name
+            title: title
+            body: body
       filter_groups:
         operator: AND
         groups:
@@ -6034,16 +6468,22 @@ display:
       display_description: ''
       display_extenders: {  }
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
+        - url
         - url.query_args
         - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
+        - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
         - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_activity_description_steps'
+        - 'config:field.storage.node.field_poets_plural_user'
+        - 'config:field.storage.node.field_video_poem'
         - 'config:field.storage.user.user_picture'
   block_6:
     id: block_6
