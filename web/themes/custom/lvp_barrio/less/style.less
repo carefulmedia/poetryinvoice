@@ -310,7 +310,9 @@ margin-bottom: 40px;
         font-weight: bold;
         text-decoration: none;
         padding: 10px;
-    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
+        font-family: 'Roboto';
+        filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
+
       }
 .button:hover {
         background: white !important;
@@ -396,7 +398,7 @@ color: black ;
      .button {
         background: var(--plum);
         }
-        details {
+        details, select {
             background-color: var(--plum-dark);
             color: white;
         }
@@ -432,7 +434,7 @@ color: black ;
      .button {
         background: var(--red);
         }
-        details {
+        details, select {
             background-color: var(--red-dark);
             color: white;
         }
@@ -500,7 +502,7 @@ color: black ;
      .button {
      background: var(--gold-dark);
      }
-     details {
+     details, select {
         background-color: var(--gold-dark);
         color: white;
     }
@@ -546,7 +548,7 @@ color: black ;
     .hero a {
         background-color: var(--aqua);
      }
-     details {
+     details, select {
         background-color: var(--aqua-dark);
         color: white;
     }
@@ -580,7 +582,7 @@ color: black ;
     .hero a {
         background-color: var(--grey);
      }
-     details {
+     details, select {
         background-color: var(--grey-dark);
         color: white;
     }
@@ -608,7 +610,6 @@ h1.hero a {
 }
 .view-footer .container {
     margin-top: 2.5rem;
-    margin-bottom: 3rem;
 }
 
 .no-blur {
@@ -647,4 +648,6 @@ html::-webkit-scrollbar {
         float: left;
         margin-right: 20px;
     }
-    
+.main-content {
+    margin-top: 3rem;
+}

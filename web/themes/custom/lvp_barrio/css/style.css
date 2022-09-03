@@ -896,6 +896,7 @@ summary {
   flex: 0 1 auto;
   width: auto;
   max-width: none;
+  display: inline;
 }
 .form-row .form-actions {
   align-self: flex-end;
@@ -933,12 +934,16 @@ form .form-type-textarea {
     opacity: 0;
   }
 }
-details {
+details,
+select.form-select {
   width: fit-content;
   border-radius: 10px;
   display: inline;
   margin-right: 1.5rem;
   padding: 15px;
+}
+.form-row label {
+  display: block;
 }
 .gin--edit-form [data-drupal-link-system-path*="/delete"] {
   display: none;
@@ -1344,7 +1349,6 @@ h3.name {
   position: relative;
   float: right;
   right: 0;
-  padding: 1rem;
   color: #fff !important;
   background-color: var(--gold);
   margin: 1rem;
@@ -1358,6 +1362,9 @@ h3.name {
 .content-index .book a {
   color: #fff;
   text-transform: uppercase;
+  padding: 1rem;
+  display: block;
+  font-weight: 900;
 }
 .node--type-poem .content-index.mixtape {
   height: 35rem;
@@ -3929,6 +3936,7 @@ li {
   font-weight: bold;
   text-decoration: none;
   padding: 10px;
+  font-family: 'Roboto';
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
 }
 .button:hover {
@@ -4089,7 +4097,9 @@ li {
   background: var(--plum);
 }
 .read details,
-.lire details {
+.lire details,
+.read select,
+.lire select {
   background-color: var(--plum-dark);
   color: white;
 }
@@ -4144,7 +4154,9 @@ li {
   background: var(--red);
 }
 .recite details,
-.reciter details {
+.reciter details,
+.recite select,
+.reciter select {
   background-color: var(--red-dark);
   color: white;
 }
@@ -4249,7 +4261,9 @@ li {
   background: var(--gold-dark);
 }
 .teach details,
-.enseigner details {
+.enseigner details,
+.teach select,
+.enseigner select {
   background-color: var(--gold-dark);
   color: white;
 }
@@ -4311,7 +4325,9 @@ li {
   background-color: var(--aqua);
 }
 .binge details,
-.ecouter details {
+.ecouter details,
+.binge select,
+.ecouter select {
   background-color: var(--aqua-dark);
   color: white;
 }
@@ -4362,7 +4378,9 @@ li {
   background-color: var(--grey);
 }
 .about details,
-.propos details {
+.propos details,
+.about select,
+.propos select {
   background-color: var(--grey-dark);
   color: white;
 }
@@ -4387,7 +4405,6 @@ h1.hero a {
 }
 .view-footer .container {
   margin-top: 2.5rem;
-  margin-bottom: 3rem;
 }
 .no-blur {
   margin-bottom: -4rem;
@@ -4425,6 +4442,9 @@ html::-webkit-scrollbar {
   display: inline;
   float: left;
   margin-right: 20px;
+}
+.main-content {
+  margin-top: 3rem;
 }
 
 /*# sourceMappingURL=maps/style.css.map */

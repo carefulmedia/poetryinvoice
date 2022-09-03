@@ -284,27 +284,21 @@ display:
               reset_button_always_show: false
             filter:
               field_years_in_competition_value:
-                plugin_id: bef
+                plugin_id: default
                 advanced:
                   sort_options: false
                   rewrite:
                     filter_rewrite_values: ''
-                  collapsible: true
+                  collapsible: false
                   is_secondary: false
-                select_all_none: false
-                select_all_none_nested: false
-                display_inline: false
               field_type_of_video_target_id:
-                plugin_id: bef
+                plugin_id: default
                 advanced:
                   sort_options: false
                   rewrite:
                     filter_rewrite_values: ''
-                  collapsible: true
+                  collapsible: false
                   is_secondary: false
-                select_all_none: false
-                select_all_none_nested: false
-                display_inline: false
               combine:
                 plugin_id: default
                 advanced:

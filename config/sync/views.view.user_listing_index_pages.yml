@@ -9,8 +9,11 @@ dependencies:
     - image.style.focal_point_200_x_200
     - image.style.focal_point_700_x_
     - image.style.home_front_700x400
+    - user.role.administrator
     - user.role.pic_pal
     - user.role.poet
+    - user.role.poet_network
+    - user.role.teacher
   module:
     - address
     - better_exposed_filters
@@ -329,34 +332,31 @@ display:
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
-            sort:
-              plugin_id: default
-              advanced:
-                combine: true
-                combine_rewrite: "Created Asc|\r\nCreated Desc|Recently Added\r\nRandom Asc|Random\r\nRandom Desc|"
-                reset: false
-                reset_label: ''
-                collapsible: false
-                collapsible_label: 'Sort options'
-                is_secondary: false
             filter:
-              combine:
+              field_address_administrative_area:
                 plugin_id: default
-                advanced:
-                  placeholder_text: ''
-                  collapsible: false
-                  is_secondary: false
-              field_address_country_code:
-                plugin_id: bef
                 advanced:
                   sort_options: false
                   rewrite:
                     filter_rewrite_values: ''
                   collapsible: false
                   is_secondary: false
-                select_all_none: false
-                select_all_none_nested: false
-                display_inline: false
+              field_virtual_visits_value:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: "True|Yes\r\nFalse|"
+                  collapsible: false
+                  is_secondary: false
+              field_i_am_interested_in_doing_i_value:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: "True|yes\r\nFalse|"
+                  collapsible: false
+                  is_secondary: false
       access:
         type: perm
         options:
@@ -1103,8 +1103,12 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_link: ''
+            image_link: content
             image_style: home_front_700x400
+            svg_attributes:
+              width: null
+              height: null
+            svg_render_as_image: true
             image_loading:
               attribute: lazy
           group_column: ''
@@ -1279,7 +1283,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
+            strip_tags: true
             trim: false
             preserve_tags: ''
             html: false
@@ -1408,6 +1412,59 @@ display:
           empty_zero: false
           hide_alter_empty: true
           display_name: true
+        view_user:
+          id: view_user
+          table: users
+          field: view_user
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: user
+          plugin_id: entity_link
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: false
         uid:
           id: uid
           table: users_field_data
@@ -1422,7 +1479,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"index-views mixtape content-index\">\r\n\r\n\r\n            <div class=\"image\">\r\n    <a href=\"{{ view_user }} \" class=\"area-link\" style=\"display:block\">\r\n {{ user_picture }}\r\n</a>\r\n        <span class=\"book\"><a href=\"/node/add/pal_pir_school_visit?edit[field_preferred_poet_s_][widget]={{ uid }} \">Request {{ piv_teacher_first_name }} </a></span>\r\n            </div>\t\r\n    <a href=\"{{ view_user }} \" class=\"area-link\" style=\"display:block\">\r\n\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ name }}</h3>\r\n<h4>{{ field_address_locality }}, {{ field_address_administrative_area }}</h4>\r\n<p>{{ field_user_bio }} </p>\r\n            </div>\r\n</a>\r\n        <div class=\"fadeout\"></div>\r\n\r\n</div>\r\n"
+            text: "<div class=\"index-views mixtape content-index\">\r\n\r\n            <div class=\"image\">\r\n {{ user_picture }}\r\n\r\n        <span class=\"book\"><a href=\"/node/add/pal_pir_school_visit?edit[field_preferred_poet_s_][widget]={{ uid }} \">Request {{ piv_teacher_first_name }}</a></span>\r\n            </div>\t\r\n\r\n\t<a href=\"{{ view_user }} \" class=\"area-link\"/>\t\t\r\n            <div class=\"content\">\r\n\r\n              \t\t<h3>{{ name }}</h3>\r\n<h4>{{ field_address_locality }}, {{ field_address_administrative_area }}</h4>\r\n<p>{{ field_user_bio }} </p>\r\n\r\n            </div>\r\n</a>\r\n        <div class=\"fadeout\"></div>\r\n\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -1474,6 +1531,13 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+      access:
+        type: role
+        options:
+          role:
+            teacher: teacher
+            administrator: administrator
+            poet_network: poet_network
       sorts:
         piv_teacher_last_name_value:
           id: piv_teacher_last_name_value
@@ -1545,71 +1609,6 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           reduce_duplicates: false
-        field_virtual_visits_value:
-          id: field_virtual_visits_value
-          table: user__field_virtual_visits
-          field: field_virtual_visits_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: boolean
-          operator: '='
-          value: All
-          group: 1
-          exposed: true
-          expose:
-            operator_id: ''
-            label: 'I am interested in doing virtual visits (using Skype, Zoom, etc.). (field_virtual_visits)'
-            description: ''
-            use_operator: false
-            operator: field_virtual_visits_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_virtual_visits_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              teacher: '0'
-              non_canadian_educator: '0'
-              teacher_en_: '0'
-              teacher_fr_: '0'
-              anonymous: '0'
-              administrator: '0'
-              proofreader: '0'
-              content_creator: '0'
-              translator: '0'
-              icanlocalize_translator: '0'
-              icanlocalize_manager: '0'
-              judge: '0'
-              account_approval: '0'
-              competition_administrator: '0'
-              accuracy_judge: '0'
-              php_editor: '0'
-              pierre: '0'
-              lesson_plan_creator: '0'
-              superadmin: '0'
-              poet_network: '0'
-              pic_pal: '0'
-              poet: '0'
-              anthology_editor: '0'
-              grandfathered_pir: '0'
-              education_consultant: '0'
-              journal_editor: '0'
-              junior_editor: '0'
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
         preferred_langcode:
           id: preferred_langcode
           table: users_field_data
@@ -1724,11 +1723,143 @@ display:
             country_argument_id: ''
             country_filter_id: ''
             country_static_code: CA
+        field_virtual_visits_value:
+          id: field_virtual_visits_value
+          table: user__field_virtual_visits
+          field: field_virtual_visits_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: All
+          group: 2
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'I am interested in doing virtual visits'
+            description: ''
+            use_operator: false
+            operator: field_virtual_visits_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_virtual_visits_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_i_am_interested_in_doing_i_value:
+          id: field_i_am_interested_in_doing_i_value
+          table: user__field_i_am_interested_in_doing_i
+          field: field_i_am_interested_in_doing_i_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: All
+          group: 2
+          exposed: true
+          expose:
+            operator_id: ''
+            label: 'I am interested in doing in-class visits'
+            description: ''
+            use_operator: false
+            operator: field_i_am_interested_in_doing_i_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_i_am_interested_in_doing_i_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
       filter_groups:
         operator: AND
         groups:
           1: AND
+          2: AND
       defaults:
+        access: false
         fields: false
         sorts: false
         filters: false
@@ -1742,7 +1873,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.user.field_user_bio'
         - 'config:field.storage.user.piv_teacher_first_name'

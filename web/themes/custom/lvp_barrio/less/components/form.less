@@ -22,6 +22,7 @@
   flex: 0 1 auto;
   width: auto;
   max-width: none;
+  display: inline;
 }
 
 .form-row .form-actions {
@@ -68,14 +69,16 @@ form .form-type-textarea {
     opacity: 0;
   }
 }
-details {
+details, select.form-select  {
     width: fit-content;
     border-radius: 10px;
     display: inline;
     margin-right: 1.5rem;
     padding: 15px;
 }
-
+.form-row label {
+  display: block;
+}
 
 
 .gin--edit-form [data-drupal-link-system-path*="/delete"] {
