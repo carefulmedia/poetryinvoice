@@ -22,7 +22,6 @@ dependencies:
     - field.field.node.journal_poem.field_poem_type
     - field.field.node.journal_poem.field_poet_who_visited_your_scho
     - field.field.node.journal_poem.field_pronouns
-    - field.field.node.journal_poem.field_response_or_prompt
     - field.field.node.journal_poem.field_school_journal
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
@@ -38,11 +37,11 @@ dependencies:
     - comment
     - ctools
     - file
-    - image
     - layout_builder
     - layout_builder_restrictions
     - layout_discovery
     - options
+    - svg_image
     - text
     - user
     - views
@@ -545,13 +544,6 @@ content:
     third_party_settings: {  }
     weight: 103
     region: content
-  field_response_or_prompt:
-    type: list_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 8
-    region: content
   field_school_journal:
     type: entity_reference_label
     label: above
@@ -620,3 +612,4 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   langcode: true
+  search_api_excerpt: true

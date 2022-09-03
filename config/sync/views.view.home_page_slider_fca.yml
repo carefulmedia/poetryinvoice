@@ -14,11 +14,11 @@ dependencies:
     - image.style.focal_point_700_x_
   module:
     - block_content
-    - image
     - link
     - node
     - options
     - owlcarousel
+    - svg_image
     - text
     - views_bootstrap
 id: home_page_slider_fca
@@ -1506,7 +1506,7 @@ display:
           default_row_class: true
           items: '1'
           margin: '0'
-          nav: 1
+          nav: 0
           autoplay: 1
           autoplayHoverPause: 1
           dots: 1

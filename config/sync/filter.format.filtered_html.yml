@@ -22,7 +22,7 @@ filters:
     status: true
     weight: 1
     settings:
-      allowed_html: '<a href hreflang name class> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <img src alt data-entity-type data-entity-uuid> <u> <s> <sup> <sub> <hr> <p id class=""> <h1> <h2> <h3> <h4> <h5> <h6> <table class=""> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <div id class=""> <iframe> <iframe allow="" allowfullscreen="" frameborder="" height="" src="" title="" width=""></iframe>'
+      allowed_html: '<a href hreflang name class> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <img class width="" src alt data-entity-type data-entity-uuid> <u> <s> <sup> <sub> <hr> <p id class> <h1 class> <h2 class> <h3 class> <h4 class> <h5 class> <h6 class> <table class=""> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <div id class=""> <iframe> <iframe allow="" allowfullscreen="" frameborder="" height="" src="" title="" width=""></iframe>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:

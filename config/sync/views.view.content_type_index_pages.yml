@@ -19,7 +19,6 @@ dependencies:
     - image.style.1200x900
     - image.style.150x150
     - image.style.320x200
-    - image.style.460x375
     - image.style.focal_point_700_x_
     - image.style.home_front_700x400
     - node.type.article
@@ -43,7 +42,6 @@ dependencies:
     - 'taxonomy_term:type_of_video:e72d6a11-0e8c-4ad6-a962-482d608aeb42'
   module:
     - better_exposed_filters
-    - blazy
     - masonry_views
     - media
     - node
@@ -2275,17 +2273,12 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: blazy_media
+          type: media_thumbnail
           settings:
-            image: ''
-            view_mode: default
-            background: false
-            loading: ''
-            preload: false
-            image_style: ''
-            media_switch: ''
-            ratio: ''
-            thumbnail_style: 460x375
+            image_link: content
+            image_style: 320x200
+            image_loading:
+              attribute: lazy
           group_column: target_id
           group_columns: {  }
           group_rows: true
@@ -2480,7 +2473,7 @@ display:
         type: some
         options:
           offset: 0
-          items_per_page: 18
+          items_per_page: 9
       sorts:
         random:
           id: random

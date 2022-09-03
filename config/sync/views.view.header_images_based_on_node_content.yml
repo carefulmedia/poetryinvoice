@@ -584,7 +584,22 @@ display:
         fields: false
         filters: false
         filter_groups: false
+        footer: false
       display_description: ''
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: '<div class="container"><h1 class="hero"><a href="/recite">#recitepoetry</a></h1></div>'
+            format: php_code
+          tokenize: false
       display_extenders: {  }
       block_description: 'Recite header images'
     cache_metadata:

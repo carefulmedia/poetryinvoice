@@ -21,7 +21,6 @@ dependencies:
     - field.field.node.journal_poem.field_poem_type
     - field.field.node.journal_poem.field_poet_who_visited_your_scho
     - field.field.node.journal_poem.field_pronouns
-    - field.field.node.journal_poem.field_response_or_prompt
     - field.field.node.journal_poem.field_school_journal
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
@@ -34,10 +33,10 @@ dependencies:
   module:
     - field_layout
     - file
-    - image
     - layout_discovery
     - path
     - scheduler
+    - svg_image
     - text
 third_party_settings:
   field_layout:
@@ -51,19 +50,19 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 28
+    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }
   field_acceptance_level:
     type: options_select
-    weight: 21
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }
   field_banner_subtitle:
     type: text_textarea
-    weight: 24
+    weight: 22
     region: content
     settings:
       rows: 5
@@ -71,7 +70,7 @@ content:
     third_party_settings: {  }
   field_banner_title:
     type: string_textfield
-    weight: 25
+    weight: 23
     region: content
     settings:
       size: 60
@@ -79,7 +78,7 @@ content:
     third_party_settings: {  }
   field_email1:
     type: string_textfield
-    weight: 7
+    weight: 5
     region: content
     settings:
       size: 60
@@ -87,20 +86,20 @@ content:
     third_party_settings: {  }
   field_grade:
     type: options_select
-    weight: 9
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   field_i_consent_to_poetry_in_voi:
     type: boolean_checkbox
-    weight: 20
+    weight: 18
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_images_insert:
     type: image_image
-    weight: 26
+    weight: 24
     region: content
     settings:
       progress_indicator: throbber
@@ -108,7 +107,7 @@ content:
     third_party_settings: {  }
   field_journal_poem_body:
     type: text_textarea
-    weight: 18
+    weight: 11
     region: content
     settings:
       rows: 5
@@ -116,7 +115,7 @@ content:
     third_party_settings: {  }
   field_legal_name:
     type: string_textfield
-    weight: 5
+    weight: 3
     region: content
     settings:
       size: 60
@@ -128,7 +127,7 @@ content:
           bundle: journal_poem
           dependee: field_legal_name_boolean
           settings:
-            state: visible
+            state: '!visible'
             condition: value
             grouping: AND
             values_set: 1
@@ -141,14 +140,14 @@ content:
             selector: ''
   field_legal_name_boolean:
     type: boolean_checkbox
-    weight: 4
+    weight: 2
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_phone:
     type: string_textfield
-    weight: 8
+    weight: 6
     region: content
     settings:
       size: 60
@@ -156,7 +155,7 @@ content:
     third_party_settings: {  }
   field_poem_attachment:
     type: file_generic
-    weight: 19
+    weight: 12
     region: content
     settings:
       progress_indicator: throbber
@@ -202,8 +201,8 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_poem_type:
-    type: options_select
-    weight: 12
+    type: options_buttons
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -229,7 +228,9 @@ content:
             values_set: 1
             value: ''
             values: {  }
-            value_form: {  }
+            value_form:
+              -
+                value: 'Poet''s visit poem'
             effect: slide
             effect_options:
               fade:
@@ -239,20 +240,13 @@ content:
             selector: ''
   field_pronouns:
     type: options_select
-    weight: 6
+    weight: 4
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_response_or_prompt:
-    type: boolean_checkbox
-    weight: 13
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   field_school_journal:
     type: entity_reference_autocomplete
-    weight: 11
+    weight: 9
     region: content
     settings:
       match_operator: CONTAINS
@@ -262,7 +256,7 @@ content:
     third_party_settings: {  }
   field_student_photo:
     type: image_image
-    weight: 23
+    weight: 21
     region: content
     settings:
       progress_indicator: throbber
@@ -270,14 +264,14 @@ content:
     third_party_settings: {  }
   field_submission_info_confirmed:
     type: boolean_checkbox
-    weight: 22
+    weight: 20
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_teacher:
     type: string_textfield
-    weight: 10
+    weight: 8
     region: content
     settings:
       size: 60
@@ -317,7 +311,7 @@ content:
             selector: ''
   langcode:
     type: language_select
-    weight: 1
+    weight: 34
     region: content
     settings:
       include_locked: true
@@ -330,7 +324,7 @@ content:
     third_party_settings: {  }
   piv_teacher_first_name:
     type: string_textfield
-    weight: 2
+    weight: 0
     region: content
     settings:
       size: 60
@@ -338,7 +332,7 @@ content:
     third_party_settings: {  }
   piv_teacher_last_name:
     type: string_textfield
-    weight: 3
+    weight: 1
     region: content
     settings:
       size: 60
@@ -346,14 +340,14 @@ content:
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 30
+    weight: 28
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 29
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -373,20 +367,20 @@ content:
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 0
+    weight: 10
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 29
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 27
+    weight: 25
     region: content
     settings:
       match_operator: CONTAINS
@@ -401,7 +395,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 35
     region: content
     settings: {  }
     third_party_settings: {  }

@@ -1452,9 +1452,6 @@ h3.name {
   object-fit: cover;
   object-position: top;
 }
-.no-blur img {
-  margin-top: -4rem;
-}
 .dropdown-toggle::after {
   content: none;
 }
@@ -4421,6 +4418,13 @@ html::-webkit-scrollbar {
 }
 .main-content {
   margin-bottom: 7rem;
+}
+.comp-img {
+  width: 100px !important;
+  height: 100px;
+  display: inline;
+  float: left;
+  margin-right: 20px;
 }
 
 /*# sourceMappingURL=maps/style.css.map */

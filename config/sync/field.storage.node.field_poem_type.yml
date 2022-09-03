@@ -26,7 +26,7 @@ settings:
       label: 'Writing prompt poem'
     -
       value: 'Poet''s visit poem'
-      label: 'Poet''s visit poem'
+      label: 'Poet visit to our school'
   allowed_values_function: ''
 module: options
 locked: false
