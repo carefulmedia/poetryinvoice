@@ -1319,16 +1319,16 @@ h3.name {
 .poems a:hover img {
   height: 2.5rem;
   width: 2.5rem;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .mixtape a:hover img,
 .podcast a:hover img {
   filter: brightness(1.25);
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .content-index a:hover {
   color: #893B73;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .lesson-plans a:hover {
   color: #724713;
@@ -1655,19 +1655,19 @@ h3.name {
 }
 .plum-bg.roulette-discover .col-4:hover h1 {
   color: var(--plum-light);
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .plum-bg.roulette-discover .col-4 img {
   filter: opacity(0.8);
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .plum-bg.roulette-discover .col-4:hover img {
   filter: opacity(1);
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .plum-bg.roulette-discover a:active img {
   filter: blur(50);
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .plum-bg.roulette-discover .col-4:hover {
   cursor: pointer;
@@ -1810,7 +1810,7 @@ h3.name {
 }
 .page-node-32345 .story a:hover {
   border-radius: 10px;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
   font-size: 110%;
 }
 .page-node-32345 .story a {
@@ -1958,6 +1958,9 @@ h3.name {
     width: 100%;
     padding-bottom: 12px;
   }
+  .block-views-exposed-filter-blocksearch-page {
+    margin-left: 16px;
+  }
   /* Enables first level dropdown from main nav links */
   a.nav-link .dropdown > .dropdown-menu.show {
     display: block;
@@ -2100,13 +2103,17 @@ header #search-block-form .btn-outline-primary:hover {
   height: 100vh;
   min-height: 100vh;
   min-width: 100vw;
-  background: linear-gradient(to top, rgba(255, 255, 255, 0.6), #ffffff);
 }
 @media (min-width: 992px) {
-  .nav-item {
+  li.nav-item {
     display: inline;
     float: left;
     margin-right: 1rem;
+    min-width: 190px;
+  }
+  li.nav-item .nav-link {
+    line-height: 30px;
+    padding-bottom: 10px;
   }
   .navbar-nav {
     display: flex;
@@ -2304,6 +2311,12 @@ footer .nav-item {
 .node--type-poem .main-content {
   margin-bottom: 7rem;
 }
+.node--type-poem .block-field-blocknodepoembody p {
+  line-height: 30px;
+  padding-left: 1em;
+  text-indent: -1em;
+  margin: 0 !important;
+}
 /* Poem page styles */
 .path-user h2 {
   text-transform: uppercase;
@@ -2401,20 +2414,20 @@ footer .nav-item {
   background: none !important;
 }
 /* Mixtape page styles */
-.node--type-mixtape h2 {
+.node--type-mixtape .main-wrapper h2 {
   color: var(--plum);
   margin-bottom: 3rem;
 }
-.node--type-mixtape .block-views-blockmixtage-body-block-1 {
+.node--type-mixtape .main-wrapper .block-views-blockmixtage-body-block-1 {
   padding-bottom: 4rem;
   margin-bottom: 4rem;
 }
-.node--type-mixtape .block-views-blockcontent-type-index-pages-block-15 {
+.node--type-mixtape .main-wrapper .block-views-blockcontent-type-index-pages-block-15 {
   border-bottom: 4px dashed rgba(0, 0, 0, 0.4);
   border-top: 4px dashed rgba(0, 0, 0, 0.4);
   padding: 4rem 0;
 }
-.node--type-mixtape .block-views {
+.node--type-mixtape .main-wrapper .main-wrapper .block-views {
   margin-bottom: 4rem;
 }
 /* Video page styles */
@@ -2444,6 +2457,18 @@ footer .nav-item {
 }
 .node--type-video .row {
   --bs-gutter-x: 0;
+}
+/* Lesson plan styles */
+.node--type-lesson-plan p {
+  line-height: 30px;
+  margin-bottom: 2.5rem;
+}
+.node--type-lesson-plan .layout-main p + ul {
+  margin-bottom: 2.5rem;
+  margin-top: -2rem;
+}
+.node--type-lesson-plan p strong {
+  font-family: Roboto;
 }
 /* Winner, judge and photo event pages */
 .winner-index table a,
@@ -2498,7 +2523,7 @@ footer .nav-item {
 .winner-table table td:hover img,
 .contest-photos table td:hover img {
   filter: brightness(1.2);
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 @media (min-width: 867px) {
   .winner-table table td {
@@ -2521,7 +2546,7 @@ footer .nav-item {
 }
 .judge-page table a:hover img {
   filter: brightness(1.2);
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .node-preview-container {
   background: #d1e8f5;
@@ -3876,10 +3901,10 @@ h4,
   font-stretch: 110;
   font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
-/* Only for non-mobile */
+/* Only for mobile */
 @media (max-width: 867px) {
   h1 {
-    font-size: 36px;
+    font-size: 30px;
   }
   h1.hero {
     font-size: 24px;
@@ -3919,6 +3944,9 @@ p,
   font-size: 20px;
   line-height: 36px;
   /* or 180% */
+}
+.block-field-blocknodepoembody p {
+  font-size: 17px;
 }
 .serif {
   font-family: 'Lora';
@@ -4042,12 +4070,12 @@ li {
   background: white !important;
   color: var(--red);
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .button:active {
   color: white;
   background: var(--red-dark);
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .md-bg,
 .dk-bg {
@@ -4104,7 +4132,7 @@ li {
   background: var(--plum-light);
   color: var(--plum-dark);
   height: 100%;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .read .area-link:hover .content h1,
 .lire .area-link:hover .content h1,
@@ -4125,14 +4153,14 @@ li {
 .read .area-link:hover .content a,
 .lire .area-link:hover .content a {
   color: var(--plum-dark);
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content {
   background: none;
   color: var(--plum-dark);
   height: 100%;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h1,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h1,
@@ -4153,14 +4181,14 @@ li {
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content a,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content a {
   color: var(--plum-dark);
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index {
   background: var(--plum-light);
   color: var(--plum-dark);
   height: 100%;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h1,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h1,
@@ -4181,7 +4209,7 @@ li {
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index a,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index a {
   color: var(--plum-dark);
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .read .view .more-link,
 .lire .view .more-link {
@@ -4219,7 +4247,7 @@ li {
   background: var(--red-light);
   color: black;
   height: 100%;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .recite .area-link:hover .content h1,
 .reciter .area-link:hover .content h1,
@@ -4238,7 +4266,7 @@ li {
 .recite .area-link:hover .content a,
 .reciter .area-link:hover .content a {
   color: black !important;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .recite .view .more-link,
 .reciter .view .more-link {
@@ -4276,7 +4304,7 @@ li {
   background: var(--mint-light);
   color: black;
   height: 100%;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .write .area-link:hover .content h1,
 .ecrire .area-link:hover .content h1,
@@ -4295,7 +4323,7 @@ li {
 .write .area-link:hover .content a,
 .ecrire .area-link:hover .content a {
   color: black !important;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .write .view .more-link,
 .ecrire .view .more-link {
@@ -4326,7 +4354,7 @@ li {
   background: var(--gold-light);
   color: black;
   height: 100%;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .teach .area-link:hover h1,
 .enseigner .area-link:hover h1,
@@ -4345,7 +4373,7 @@ li {
 .teach .area-link:hover a,
 .enseigner .area-link:hover a {
   color: black !important;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .teach .view .more-link,
 .enseigner .view .more-link {
@@ -4394,7 +4422,7 @@ li {
   background: var(--aqua-light);
   color: black;
   height: 100%;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .binge .area-link:hover h1,
 .ecouter .area-link:hover h1,
@@ -4413,7 +4441,7 @@ li {
 .binge .area-link:hover a,
 .ecouter .area-link:hover a {
   color: black !important;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .binge .view .more-link,
 .ecouter .view .more-link {
@@ -4447,7 +4475,7 @@ li {
   background: var(--aqua-light);
   color: black;
   height: 100%;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .about .area-link:hover h1,
 .propos .area-link:hover h1,
@@ -4466,7 +4494,7 @@ li {
 .about .area-link:hover a,
 .propos .area-link:hover a {
   color: black !important;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .about .view .more-link,
 .propos .view .more-link {
@@ -4500,7 +4528,7 @@ h1.hero a {
 }
 .hero a:hover {
   background-color: white;
-  transition: all 0.8s ease;
+  transition: all 0.4s ease;
 }
 .view-footer .container {
   margin-top: 2.5rem;

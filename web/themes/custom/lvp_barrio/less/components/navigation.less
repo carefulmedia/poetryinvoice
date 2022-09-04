@@ -12,7 +12,9 @@
     padding-bottom: 12px;
 
   }
-
+  .block-views-exposed-filter-blocksearch-page {
+    margin-left: 16px;
+  }
   /* Enables first level dropdown from main nav links */
   a.nav-link .dropdown>.dropdown-menu.show {
       display: block;
@@ -190,15 +192,21 @@ color:fff;
     height: 100vh;
     min-height: 100vh;
     min-width: 100vw;
-background: linear-gradient(to top, rgba(255,255,255,.6),rgba(255,255,255,1));
+// background: linear-gradient(to top, rgba(255,255,255,.6),rgba(255,255,255,1));
 
 }
 @media (min-width: 992px)
  {
-.nav-item {
+li.nav-item {
 display:inline;
 float:left;
 margin-right: 1rem;
+min-width: 190px;
+}
+li.nav-item .nav-link {
+  line-height: 30px;
+  padding-bottom: 10px;
+
 }
 .navbar-nav {
     display: flex;
@@ -290,9 +298,10 @@ footer .nav-item {
 
   }
   .block-views-exposed-filter-blocksearch-page {
-  width: 50%;
-      display: inline;
-      float: left;
+    width: 50%;
+    display: inline;
+    float: left;
+
   }
   .button {
     float: left;

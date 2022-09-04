@@ -996,7 +996,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: "<div class=\"blur\"><img src=\"https://piv-prod.s3.ca-central-1.amazonaws.com/public/styles/focal_point_scale_and_crop_1400_x_350/public/shame-and-compassion_0.jpg\" /></div>\r\n<div class=\"no-blur\"><img src=\"https://piv-prod.s3.ca-central-1.amazonaws.com/public/styles/focal_point_scale_and_crop_1400_x_350/public/shame-and-compassion_0.jpg\" /></div>"
+          empty: '<div class="blur"><img src="https://piv-prod.s3.ca-central-1.amazonaws.com/public/styles/focal_point_scale_and_crop_1400_x_350/public/shame-and-compassion_0.jpg" /></div>'
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
