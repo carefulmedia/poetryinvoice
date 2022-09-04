@@ -3952,7 +3952,7 @@ display:
         type: owlcarousel
         options:
           grouping: {  }
-          row_class: picpcal
+          row_class: 'picpcal container'
           default_row_class: true
           items: '3'
           margin: '30'
@@ -4003,6 +4003,7 @@ display:
             format: filtered_html
           tokenize: false
       display_extenders: {  }
+      block_description: 'Poets on Discover'
     cache_metadata:
       max-age: 0
       contexts:

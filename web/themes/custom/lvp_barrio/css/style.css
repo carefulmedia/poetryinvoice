@@ -1616,9 +1616,26 @@ h3.name {
   color: white;
   text-decoration: none;
 }
-.plum-bg.roulette-discover {
+.page-node-27461 .plum-bg.roulette-discover,
+.page-node-27461 .poets,
+.page-node-27461 .quizzes {
   background: #481139;
-  padding: 0;
+  padding: 1rem;
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  margin-top: 100px;
+  left: 50%;
+}
+.page-node-27461 .poets {
+  background-image: url('/themes/custom/lvp_barrio/assets/poet_bg.png');
+}
+.page-node-27461 .quizzes {
+  background-image: url('/themes/custom/lvp_barrio/assets/quiz_bg.png');
+}
+.page-node-27461 h1,
+.page-node-27461 h2 {
+  color: white;
 }
 .plum-bg.roulette-discover h1,
 .plum-bg.roulette-discover h2,
@@ -1665,7 +1682,7 @@ h3.name {
 }
 .plum-bg.roulette-discover .container .col-4 img {
   height: 8em;
-  margin-bottom: 3em;
+  margin-bottom: 1rem;
 }
 .modal-fullscreen iframe {
   width: 100%;
@@ -2425,15 +2442,15 @@ footer .nav-item {
   --bs-gutter-x: 0;
 }
 /* Winner, judge and photo event pages */
-.winner-index a,
-.winner-table a,
-.contest-photos a,
-.winner-index h4,
-.winner-table h4,
-.contest-photos h4,
-.winner-index p,
-.winner-table p,
-.contest-photos p {
+.winner-index table a,
+.winner-table table a,
+.contest-photos table a,
+.winner-index table h4,
+.winner-table table h4,
+.contest-photos table h4,
+.winner-index table p,
+.winner-table table p,
+.contest-photos table p {
   text-decoration: none;
   font-family: 'Roboto';
   font-style: normal;
@@ -2446,59 +2463,59 @@ footer .nav-item {
   font-stretch: 110;
   font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
-.winner-index h4,
-.winner-table h4,
-.contest-photos h4 {
+.winner-index table h4,
+.winner-table table h4,
+.contest-photos table h4 {
   font-weight: 700;
 }
-.winner-index img,
-.winner-table img,
-.contest-photos img {
+.winner-index table img,
+.winner-table table img,
+.contest-photos table img {
   border-radius: 10px;
 }
-.winner-index table,
-.winner-table table,
-.contest-photos table {
+.winner-index table table,
+.winner-table table table,
+.contest-photos table table {
   border: none;
 }
-.winner-index tr,
-.winner-table tr,
-.contest-photos tr {
+.winner-index table tr,
+.winner-table table tr,
+.contest-photos table tr {
   background: none;
   vertical-align: top;
 }
-.winner-index td,
-.winner-table td,
-.contest-photos td {
+.winner-index table td,
+.winner-table table td,
+.contest-photos table td {
   display: block;
   width: 100%;
 }
-.winner-index td:hover img,
-.winner-table td:hover img,
-.contest-photos td:hover img {
+.winner-index table td:hover img,
+.winner-table table td:hover img,
+.contest-photos table td:hover img {
   filter: brightness(1.2);
   transition: all 0.8s ease;
 }
 @media (min-width: 867px) {
-  .winner-table td {
+  .winner-table table td {
     width: 30%;
     display: table-cell;
   }
 }
 @media (min-width: 867px) {
-  .winner-index td,
-  .contest-photos td {
+  .winner-index table td,
+  .contest-photos table td {
     width: 45%;
     display: table-cell;
   }
 }
-.judge-page h2 a {
+.judge-page table h2 a {
   text-decoration: none;
 }
-.judge-page img {
+.judge-page table img {
   border-radius: 10px;
 }
-.judge-page a:hover img {
+.judge-page table a:hover img {
   filter: brightness(1.2);
   transition: all 0.8s ease;
 }
