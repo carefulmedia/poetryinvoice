@@ -2044,7 +2044,7 @@ display:
             suffix: ''
             target: ''
             nl2br: false
-            max_length: 300
+            max_length: 150
             word_boundary: true
             ellipsis: true
             more_link: false
@@ -2092,7 +2092,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"index-views mixtape content-index\">\r\n\r\n    <a href=\"{{ view_user }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n            <div class=\"image\">\r\n {{ user_picture }}\r\n            </div>\t\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ name }}</h3>\r\n              \t\t<p>{{ field_user_bio }} </p>\r\n            </div>\r\n        <div class=\"fadeout\"></div>\r\n    </a>\r\n</div>"
+            text: "<div class=\"index-views mixtape content-index\">\r\n\r\n    <a href=\"{{ view_user }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n            <div class=\"image\">\r\n {{ user_picture }}\r\n            </div>\t\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ name }}</h3>\r\n              \t\t<p>{{ field_user_bio }} </p>\r\n            </div>\r\n\r\n    </a>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
