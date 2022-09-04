@@ -1635,6 +1635,9 @@ h3.name {
 .page-node-27461 .quizzes h2 {
   color: white;
 }
+.page-node-27461 h2 {
+  color: var(--plum);
+}
 .poets {
   background-image: url('/themes/custom/lvp_barrio/assets/poet_bg.png') !important;
 }
@@ -2090,13 +2093,17 @@ header #search-block-form {
 }
 header #search-block-form .btn-outline-primary:hover {
   background-color: #000;
-  border-color: #000;
+  border: none;
 }
 .dropdown-toggle:hover {
   color: fff;
 }
 .offcanvas-header .btn-close {
   postion: absolute;
+}
+.btn-check:focus + .btn-outline-primary,
+.btn-outline-primary:focus {
+  box-shadow: none;
 }
 #CollapsingNavbar {
   width: 100vw;
@@ -2105,17 +2112,17 @@ header #search-block-form .btn-outline-primary:hover {
   min-width: 100vw;
 }
 @media (min-width: 992px) {
-  li.nav-item {
+  .offcanvas li.nav-item {
     display: inline;
     float: left;
     margin-right: 1rem;
     min-width: 190px;
   }
-  li.nav-item .nav-link {
+  .offcanvas li.nav-item .nav-link {
     line-height: 30px;
     padding-bottom: 10px;
   }
-  .navbar-nav {
+  .offcanvas .navbar-nav {
     display: flex;
     padding-left: 0;
     margin-bottom: 0;

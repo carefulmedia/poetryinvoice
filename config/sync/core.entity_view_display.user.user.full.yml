@@ -324,7 +324,7 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 3
+            weight: 4
             additional: {  }
           c27ce88a-498f-4fe9-be76-daa708c951c7:
             uuid: c27ce88a-498f-4fe9-be76-daa708c951c7
@@ -343,7 +343,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 4
+            weight: 5
             additional: {  }
           a6fc6128-db4b-4107-ba82-b314ebfc807d:
             uuid: a6fc6128-db4b-4107-ba82-b314ebfc807d
@@ -376,7 +376,7 @@ third_party_settings:
               formatter:
                 settings: {  }
                 third_party_settings: {  }
-            weight: 5
+            weight: 6
             additional: {  }
           cb046340-66b8-4ca0-aba8-e8f74f945d8e:
             uuid: cb046340-66b8-4ca0-aba8-e8f74f945d8e
@@ -395,7 +395,7 @@ third_party_settings:
                 settings:
                   link_to_entity: false
                 third_party_settings: {  }
-            weight: 6
+            weight: 3
             additional: {  }
         third_party_settings: {  }
       -

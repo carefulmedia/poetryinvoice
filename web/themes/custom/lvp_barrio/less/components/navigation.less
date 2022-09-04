@@ -176,7 +176,7 @@ header #search-block-form {
 }
 header #search-block-form .btn-outline-primary:hover {
     background-color: #000;
-    border-color: #000;
+    border: none;
 }
 
 
@@ -186,6 +186,9 @@ color:fff;
 .offcanvas-header .btn-close {
     postion: absolute;
 
+}
+.btn-check:focus+.btn-outline-primary, .btn-outline-primary:focus {
+  box-shadow: none;
 }
 #CollapsingNavbar {
     width: 100vw;
@@ -197,18 +200,19 @@ color:fff;
 }
 @media (min-width: 992px)
  {
-li.nav-item {
+
+.offcanvas li.nav-item {
 display:inline;
 float:left;
 margin-right: 1rem;
 min-width: 190px;
 }
-li.nav-item .nav-link {
+.offcanvas li.nav-item .nav-link {
   line-height: 30px;
   padding-bottom: 10px;
 
 }
-.navbar-nav {
+.offcanvas .navbar-nav {
     display: flex;
     padding-left: 0;
     margin-bottom: 0;

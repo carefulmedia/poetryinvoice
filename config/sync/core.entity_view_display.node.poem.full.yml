@@ -170,6 +170,24 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
+          5b1763a9-140a-4892-9504-378ce864c979:
+            uuid: 5b1763a9-140a-4892-9504-378ce864c979
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:poem:field_biligraphical_info'
+              label: 'Biligraphical info'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_2'
@@ -344,24 +362,6 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             weight: 0
-            additional: {  }
-          5b1763a9-140a-4892-9504-378ce864c979:
-            uuid: 5b1763a9-140a-4892-9504-378ce864c979
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:poem:field_biligraphical_info'
-              label: 'Biligraphical info'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: text_default
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 2
             additional: {  }
           de55b48a-1ef9-458e-97dc-439d610efc53:
             uuid: de55b48a-1ef9-458e-97dc-439d610efc53
