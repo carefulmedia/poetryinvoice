@@ -254,3 +254,73 @@
     --bs-gutter-x: 0;
   }
 }
+
+/* Winner, judge and photo event pages */
+.winner-index, .winner-table, .contest-photos {
+  a, h4, p {
+  text-decoration: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  /* or 117% */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-stretch: 110;
+  font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+  }
+  h4 {
+    font-weight: 700;
+  }
+  img {
+    border-radius: 10px;
+  }
+  table {
+    border: none
+  }
+  tr {
+    background: none;
+    vertical-align: top;
+  }
+  td {
+    display: block;
+    width: 100%;
+  }
+
+
+  td:hover img {
+    filter: brightness(1.2);
+    transition: all .8s ease;
+  }
+}
+.winner-table {
+  @media (min-width: 867px) {
+    td {
+        width: 30%;
+        display: table-cell;
+    }
+  }
+
+}
+.winner-index, .contest-photos {
+  @media (min-width: 867px) {
+    td {
+        width: 45%;
+        display: table-cell;
+    }
+  }
+
+}
+.judge-page {
+ h2 a {
+  text-decoration: none;
+ }
+ img {
+  border-radius: 10px
+ }
+ a:hover img {
+  filter: brightness(1.2);
+  transition: all .8s ease;
+ }
+}

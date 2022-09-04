@@ -2424,6 +2424,84 @@ footer .nav-item {
 .node--type-video .row {
   --bs-gutter-x: 0;
 }
+/* Winner, judge and photo event pages */
+.winner-index a,
+.winner-table a,
+.contest-photos a,
+.winner-index h4,
+.winner-table h4,
+.contest-photos h4,
+.winner-index p,
+.winner-table p,
+.contest-photos p {
+  text-decoration: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  /* or 117% */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-stretch: 110;
+  font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+}
+.winner-index h4,
+.winner-table h4,
+.contest-photos h4 {
+  font-weight: 700;
+}
+.winner-index img,
+.winner-table img,
+.contest-photos img {
+  border-radius: 10px;
+}
+.winner-index table,
+.winner-table table,
+.contest-photos table {
+  border: none;
+}
+.winner-index tr,
+.winner-table tr,
+.contest-photos tr {
+  background: none;
+  vertical-align: top;
+}
+.winner-index td,
+.winner-table td,
+.contest-photos td {
+  display: block;
+  width: 100%;
+}
+.winner-index td:hover img,
+.winner-table td:hover img,
+.contest-photos td:hover img {
+  filter: brightness(1.2);
+  transition: all 0.8s ease;
+}
+@media (min-width: 867px) {
+  .winner-table td {
+    width: 30%;
+    display: table-cell;
+  }
+}
+@media (min-width: 867px) {
+  .winner-index td,
+  .contest-photos td {
+    width: 45%;
+    display: table-cell;
+  }
+}
+.judge-page h2 a {
+  text-decoration: none;
+}
+.judge-page img {
+  border-radius: 10px;
+}
+.judge-page a:hover img {
+  filter: brightness(1.2);
+  transition: all 0.8s ease;
+}
 .node-preview-container {
   background: #d1e8f5;
   background-image: -webkit-linear-gradient(top, #d1e8f5, #d3e8f4);
