@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
     - core.entity_view_mode.node.full
     - field.field.node.lesson_plan.body
     - field.field.node.lesson_plan.comment_node_lesson_plan
@@ -26,7 +27,7 @@ dependencies:
     - field.field.node.lesson_plan.field_variations_for_younger_stu
     - field.field.node.lesson_plan.field_video_poem
     - node.type.lesson_plan
-    - views.view.lesson_plan_login
+    - views.view.user_listing_index_pages
   module:
     - file
     - layout_builder
@@ -51,7 +52,7 @@ third_party_settings:
           section_classes: ''
           regions_classes:
             blb_region_col_1: layout-main
-            blb_region_col_2: 'dark gold-dark-bg sidebar'
+            blb_region_col_2: 'dk-bg sidebar'
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
@@ -83,7 +84,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 0
+            weight: 1
             additional: {  }
           08c33615-d843-440d-8273-3e7b5ec8f735:
             uuid: 08c33615-d843-440d-8273-3e7b5ec8f735
@@ -101,7 +102,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 1
+            weight: 2
             additional: {  }
           7f666de6-a8d2-4305-b29d-79a57a8696dc:
             uuid: 7f666de6-a8d2-4305-b29d-79a57a8696dc
@@ -119,7 +120,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 2
+            weight: 3
             additional: {  }
           5be07e39-e641-428c-b313-cf941f03bf8f:
             uuid: 5be07e39-e641-428c-b313-cf941f03bf8f
@@ -137,7 +138,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 5
+            weight: 4
             additional: {  }
           f2e204c3-b2a7-4325-bc33-625a506f6c66:
             uuid: f2e204c3-b2a7-4325-bc33-625a506f6c66
@@ -155,7 +156,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 7
+            weight: 6
             additional: {  }
           1b79daff-9753-4e12-b9c0-ea8b65faf2c1:
             uuid: 1b79daff-9753-4e12-b9c0-ea8b65faf2c1
@@ -173,7 +174,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 8
+            weight: 7
             additional: {  }
           33f4b6f3-38bf-4e45-a1cf-89af0fa1f854:
             uuid: 33f4b6f3-38bf-4e45-a1cf-89af0fa1f854
@@ -250,7 +251,7 @@ third_party_settings:
                   wrap_tag: h2
                   wrap_class: ''
                 third_party_settings: {  }
-            weight: 1
+            weight: 2
             additional: {  }
           e4c6a419-baba-4692-bb6f-a4e90a628e60:
             uuid: e4c6a419-baba-4692-bb6f-a4e90a628e60
@@ -268,7 +269,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 0
+            weight: 1
             additional: {  }
           4b2b3623-81e4-46e5-b195-b5bc10295cf5:
             uuid: 4b2b3623-81e4-46e5-b195-b5bc10295cf5
@@ -324,7 +325,7 @@ third_party_settings:
                 settings:
                   use_description_as_link_text: true
                 third_party_settings: {  }
-            weight: 6
+            weight: 5
             additional: {  }
           0106978e-d734-4af5-a6e7-84536f460563:
             uuid: 0106978e-d734-4af5-a6e7-84536f460563
@@ -345,20 +346,34 @@ third_party_settings:
                   format_custom_false: ''
                   format_custom_true: 'Lesson provided by ReadWriteThink.org, a website developed by the International Reading Association and the N.C.T.E.'
                 third_party_settings: {  }
-            weight: 9
+            weight: 8
             additional: {  }
-          3323cdaa-c6de-4def-af40-a2898c2d0458:
-            uuid: 3323cdaa-c6de-4def-af40-a2898c2d0458
+          c485da83-fb9b-4dac-851d-542f8593d87c:
+            uuid: c485da83-fb9b-4dac-851d-542f8593d87c
             region: blb_region_col_1
             configuration:
-              id: 'views_block:lesson_plan_login-block_1'
+              id: 'views_block:user_listing_index_pages-block_4'
               label: ''
               label_display: '0'
               provider: views
               context_mapping: {  }
               views_label: ''
               items_per_page: none
-            weight: 4
+            weight: 0
+            additional: {  }
+          8fcb5bbc-0341-4940-baff-730ffd526a84:
+            uuid: 8fcb5bbc-0341-4940-baff-730ffd526a84
+            region: blb_region_col_2
+            configuration:
+              id: 'inline_block:basic'
+              label: 'ABOUT THIS LESSON PLAN'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_revision_id: 119
+              block_serialized: null
+            weight: 0
             additional: {  }
         third_party_settings: {  }
 id: node.lesson_plan.full

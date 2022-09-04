@@ -1,9 +1,9 @@
-uuid: 787c3507-1dd4-43d5-857f-3abbd55dc067
+uuid: c6e44c16-8c18-426d-8a85-921416f45961
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:basic:342908af-4371-420d-9be4-32f7dc3e6536'
+    - 'block_content:basic:c61feac3-2d25-461a-b421-c7739dd775da'
   module:
     - block_content
     - system
@@ -14,10 +14,10 @@ theme: lvp_barrio
 region: content
 weight: 0
 provider: null
-plugin: 'block_content:342908af-4371-420d-9be4-32f7dc3e6536'
+plugin: 'block_content:c61feac3-2d25-461a-b421-c7739dd775da'
 settings:
-  id: 'block_content:342908af-4371-420d-9be4-32f7dc3e6536'
-  label: 'Poet In Class Login'
+  id: 'block_content:c61feac3-2d25-461a-b421-c7739dd775da'
+  label: 'Poet in Class Login'
   label_display: '0'
   provider: block_content
   status: true

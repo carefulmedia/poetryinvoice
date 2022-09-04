@@ -4446,5 +4446,9 @@ html::-webkit-scrollbar {
 .main-content {
   margin-top: 3rem;
 }
+#block-poetinclasslogin,
+#block-lessonplanlogin {
+  width: fit-content;
+}
 
 /*# sourceMappingURL=maps/style.css.map */

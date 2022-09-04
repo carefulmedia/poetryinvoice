@@ -2565,6 +2565,24 @@ display:
           validate_options: {  }
           break_phrase: false
           not: false
+      filters:
+        status:
+          id: status
+          table: users_field_data
+          field: status
+          entity_type: user
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: default
         options:
@@ -2581,6 +2599,8 @@ display:
         relationships: false
         fields: false
         arguments: false
+        filters: false
+        filter_groups: false
       relationships:
         uid:
           id: uid
