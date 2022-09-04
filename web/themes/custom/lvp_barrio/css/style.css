@@ -1598,7 +1598,7 @@ h3.name {
   color: white;
 }
 .index-subject-row {
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
   position: relative;
 }
 .view {
@@ -1627,15 +1627,19 @@ h3.name {
   margin-top: 100px;
   left: 50%;
 }
-.page-node-27461 .poets {
-  background-image: url('/themes/custom/lvp_barrio/assets/poet_bg.png');
-}
-.page-node-27461 .quizzes {
-  background-image: url('/themes/custom/lvp_barrio/assets/quiz_bg.png');
-}
-.page-node-27461 h1,
-.page-node-27461 h2 {
+.page-node-27461 .plum-bg.roulette-discover h1,
+.page-node-27461 .poets h1,
+.page-node-27461 .quizzes h1,
+.page-node-27461 .plum-bg.roulette-discover h2,
+.page-node-27461 .poets h2,
+.page-node-27461 .quizzes h2 {
   color: white;
+}
+.poets {
+  background-image: url('/themes/custom/lvp_barrio/assets/poet_bg.png') !important;
+}
+.quizzes {
+  background-image: url('/themes/custom/lvp_barrio/assets/quiz_bg.png') !important;
 }
 .plum-bg.roulette-discover h1,
 .plum-bg.roulette-discover h2,
