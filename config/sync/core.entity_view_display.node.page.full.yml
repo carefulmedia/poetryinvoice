@@ -41,7 +41,7 @@ third_party_settings:
           section_classes: ''
           regions_classes:
             blb_region_col_1: col-2-main
-            blb_region_col_2: 'col-2-sidebar dk-bg'
+            blb_region_col_2: col-2-sidebar
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3

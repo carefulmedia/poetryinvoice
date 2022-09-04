@@ -5,7 +5,6 @@ dependencies:
   config:
     - views.view.header_images_based_on_node_content
   module:
-    - node
     - system
     - views
   theme:
@@ -28,12 +27,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/read\r\n/read\r\n/lire\r\n/lire"
-  'entity_bundle:node':
-    id: 'entity_bundle:node'
-    negate: false
-    context_mapping:
-      node: '@node.node_route_context:node'
-    bundles:
-      page: page
-      poem: poem
+    pages: "/read\r\n/read/poems\r\n/read/poems/*\r\n/lire\r\n/lire/poemes\r\n/lire/poemes/*\r\n/read/dive-in\r\n/read/forms-terms\r\n/read/forms-terms/*\r\n/read/tags-moods/\r\n/read/tags-moods/*\r\n/lire/themes-registres\r\n/lire/themes-registres/*\r\n/lire/approfondir\r\n/lire/formes-poetiques\r\n/lire/formes-poetiques/*\r\n"

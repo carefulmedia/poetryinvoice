@@ -1,6 +1,6 @@
 uuid: dba62deb-8db5-4af2-80df-6cd52880c1a7
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - views.view.header_images_based_on_node_content
