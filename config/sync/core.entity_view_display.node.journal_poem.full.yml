@@ -22,7 +22,6 @@ dependencies:
     - field.field.node.journal_poem.field_poem_type
     - field.field.node.journal_poem.field_poet_who_visited_your_scho
     - field.field.node.journal_poem.field_pronouns
-    - field.field.node.journal_poem.field_response_or_prompt
     - field.field.node.journal_poem.field_school_journal
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
@@ -33,11 +32,10 @@ dependencies:
     - node.type.journal_poem
     - views.view.journal_poem_sidebar
   module:
-    - editablefields
-    - image
     - layout_builder
     - layout_builder_restrictions
     - options
+    - svg_image
     - text
     - user
     - views
@@ -226,19 +224,6 @@ content:
     third_party_settings: {  }
     weight: 3
     region: content
-  field_response_or_prompt:
-    type: editablefields_formatter
-    label: hidden
-    settings:
-      form_mode: default
-      bypass_access: false
-      fallback_access: false
-      display_mode_access: ''
-      fallback_edit: false
-      display_mode_edit: ''
-    third_party_settings: {  }
-    weight: 5
-    region: content
   field_school_journal:
     type: entity_reference_label
     label: above
@@ -303,3 +288,4 @@ hidden:
   field_teacher: true
   langcode: true
   links: true
+  search_api_excerpt: true

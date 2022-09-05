@@ -22,7 +22,6 @@ dependencies:
     - field.field.node.journal_poem.field_poem_type
     - field.field.node.journal_poem.field_poet_who_visited_your_scho
     - field.field.node.journal_poem.field_pronouns
-    - field.field.node.journal_poem.field_response_or_prompt
     - field.field.node.journal_poem.field_school_journal
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
@@ -32,8 +31,9 @@ dependencies:
     - field.field.node.journal_poem.piv_teacher_last_name
     - node.type.journal_poem
   module:
-    - image
     - layout_builder
+    - layout_discovery
+    - svg_image
     - text
     - user
 third_party_settings:
@@ -130,6 +130,9 @@ content:
     region: content
 hidden:
   comment_node_journal_poem: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_acceptance_level: true
   field_email1: true
   field_grade: true
@@ -144,7 +147,6 @@ hidden:
   field_poem_type: true
   field_poet_who_visited_your_scho: true
   field_pronouns: true
-  field_response_or_prompt: true
   field_school_journal: true
   field_student_photo: true
   field_submission_info_confirmed: true
@@ -154,3 +156,4 @@ hidden:
   links: true
   piv_teacher_first_name: true
   piv_teacher_last_name: true
+  search_api_excerpt: true

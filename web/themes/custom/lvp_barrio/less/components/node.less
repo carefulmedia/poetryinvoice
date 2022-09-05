@@ -66,9 +66,9 @@
   border-left: 1px solid #fff4f4;
   border-right: 1px solid #fff4f4;
 }
-/* Poem page styles */
+/* Poem page and view styles */
 
-.node--type-poem {
+.node--type-poem, .block-views-blockcontent-type-index-pages-block-15, .block-views-blockcontent-type-index-pages-block-3 {
     .field__label {
     text-transform: uppercase;  
     font-family: 'Roboto Flex';
@@ -99,9 +99,24 @@
     .main-content {
     margin-bottom: 7rem;    
     }
+    .block-field-blocknodepoembody p, .index-views.poems p {
+      line-height: 30px;
+      padding-left: 1em;
+      text-indent: -1em;
+      margin: 0 !important;
+    }
+    .index-views h2 {
+      color: #000 !important;
+      margin-bottom: 1rem !important;
+    }
+    .block-entity-print, .view-footer {
+      display:none;
+    }
+
+
 }
 
-/* Poem page styles */
+/* Poet page styles */
 
 .path-user {
 
@@ -199,11 +214,186 @@
     border-radius: none !important;
     background: none !important;
     }
+    @media (max-width: 867px) {
+      .block-field-blockuseruserfield-lifespan {
+        display: block;
+        float: none;
+        font-size: 24px;
+      }
+      .block-views-blockuser-name-on-user-pages-block-1 {
+        margin-bottom: 0;
+      }
+      .highlighted img {
+        height: 15rem !important;
+      object-fit: cover;
+      }
+      .block-field-blockuseruserfield-photo-credit {
+        margin-top: -12rem;
+        float: right;
+        right: .25rem;
+        font-size: 7px;
+        padding: .25rem;
+      }
+      .layout-main-wrapper, .main-content {
+        margin-top: 1rem;
+      }
+    }
+}
+
+/* Mixtape page styles */
+
+.node--type-mixtape .main-content {
+  h2 {
+    color: var(--plum);
+    margin-bottom: 3rem;
+  }
+  .block-views-blockmixtage-body-block-1 {
+    padding-bottom: 4rem;
+    margin-bottom: 4rem;
+  }
+  .block-views-blockcontent-type-index-pages-block-15 {
+  border-bottom : 4px dashed rgba(0, 0, 0, 0.4) ;
+  border-top : 4px dashed rgba(0, 0, 0, 0.4) ;
+  padding: 4rem 0;
+  }
+  .main-wrapper .block-views {
+    margin-bottom: 4rem;
+
+  }
+}
+/* Video page styles */
+
+.node--type-video {
+  .media-oembed-content {
+    width: 100%;
+ }
+  .field__label {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+    /* or 117% */
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-stretch: 110;
+    font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+  } 
+  a {
+    text-decoration: none;
+  }
+  .block-layout-builder {
+    margin-bottom: 0;
+  }
+  iframe {
+    border-radius: 10px;
+  }
+  .row {
+    --bs-gutter-x: 0;
+  }
+}
+
+/* Lesson plan styles */
+
+.node--type-lesson-plan {
+  p {
+    line-height: 30px;
+    margin-bottom: 2.5rem;
+  }
+  .layout-main p + ul,  {
+    margin-bottom: 2.5rem;
+    margin-top: -2rem;
+  }
+  p strong {
+    font-family: Roboto;
+  }
+  h2 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 21px;
+    /* or 117% */
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-stretch: 110;
+    font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+  }
+}
+
+/* Winner, judge and photo event pages */
+.winner-index table, .winner-table table, .contest-photos table {
+  a, h4, p {
+  text-decoration: none;
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  /* or 117% */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-stretch: 110;
+  font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+  }
+  h4 {
+    font-weight: 700;
+  }
+  img {
+    border-radius: 10px;
+  }
+  table {
+    border: none
+  }
+  tr {
+    background: none;
+    vertical-align: top;
+  }
+  td {
+    display: block;
+    width: 100%;
+  }
+
+
+  td:hover img {
+    filter: brightness(1.2);
+    transition: all .4s ease;
+  }
+}
+.winner-table table {
+  @media (min-width: 867px) {
+    td {
+        width: 30%;
+        display: table-cell;
+    }
+  }
 
 }
-    .col-lg-9, .col-md-9 {
-    padding-right: calc(var(--bs-gutter-x) * 2.5);
+.winner-index table, .contest-photos table {
+  @media (min-width: 867px) {
+    td {
+        width: 45%;
+        display: table-cell;
     }
-    .main-content {
-    margin-bottom: 7rem;    
-    }
+  }
+
+}
+.judge-page table {
+ h2 a {
+  text-decoration: none;
+ }
+ img {
+  border-radius: 10px
+ }
+ a:hover img {
+  filter: brightness(1.2);
+  transition: all .4s ease;
+  
+ }
+}
+.main-content {
+  p {
+    margin-bottom: 2rem;
+  }
+
+}

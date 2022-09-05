@@ -6,13 +6,15 @@
 /* Only for mobile */
 @media (max-width: 767px) {
 
-  nav.menu--main {
+  nav.menu--main, nav.menu--fr-main-menu {
     margin-left: 16px;
     width: 100%;
     padding-bottom: 12px;
 
   }
-
+  .block-views-exposed-filter-blocksearch-page {
+    margin-left: 16px;
+  }
   /* Enables first level dropdown from main nav links */
   a.nav-link .dropdown>.dropdown-menu.show {
       display: block;
@@ -132,8 +134,8 @@ ul.dropdown-menu {
     text-decoration: none;
     font-size: 1.5rem;
 }
-.menu--main {
-    margin-top: 4rem;
+.menu--main, .menu--fr-main-menu {
+    margin-top: 3rem;
 
 }
 .navbar-nav {
@@ -174,7 +176,7 @@ header #search-block-form {
 }
 header #search-block-form .btn-outline-primary:hover {
     background-color: #000;
-    border-color: #000;
+    border: none;
 }
 
 
@@ -185,22 +187,32 @@ color:fff;
     postion: absolute;
 
 }
+.btn-check:focus+.btn-outline-primary, .btn-outline-primary:focus {
+  box-shadow: none;
+}
 #CollapsingNavbar {
     width: 100vw;
     height: 100vh;
     min-height: 100vh;
     min-width: 100vw;
-background: linear-gradient(to top, rgba(255,255,255,.6),rgba(255,255,255,1));
+// background: linear-gradient(to top, rgba(255,255,255,.6),rgba(255,255,255,1));
 
 }
 @media (min-width: 992px)
  {
-.nav-item {
+
+.offcanvas li.nav-item {
 display:inline;
 float:left;
 margin-right: 1rem;
+min-width: 190px;
 }
-.navbar-nav {
+.offcanvas li.nav-item .nav-link {
+  line-height: 30px;
+  padding-bottom: 10px;
+
+}
+.offcanvas .navbar-nav {
     display: flex;
     padding-left: 0;
     margin-bottom: 0;
@@ -227,7 +239,7 @@ color: var(--gold) !important;
 color: var(--aqua) !important;
 }
 .navbar-nav .about a, .navbar-nav .about a:hover  {
-color: var(--plum-dark) !important;
+color: var(--grey-dark) !important;
 }
 .navbar-nav .dropdown-item a {
 color: #000 !important;
@@ -278,5 +290,43 @@ footer .nav-item {
 .region-footer-second, .region-footer-second img{
     float: right !important;
 }
+
+}
+.offcanvas {
+  .nav-item {
+    padding-bottom: 1rem;
+    }
+
+  .js-form-item-search label {
+    display:none
+
+  }
+  .block-views-exposed-filter-blocksearch-page {
+    width: 50%;
+    display: inline;
+    float: left;
+
+  }
+  .button {
+    float: left;
+    display: inline;
+    height: 38px;
+    padding: 5px;
+  }
+  .form-control {
+    display: inline;
+    float: left ;
+  }
+  .form-row > fieldset {
+    padding: 0;
+    display: inline;
+    float: left;
+  }
+}
+.btn-outline-primary {
+  border-color: #000;
+}
+.btn-outline-primary:hover {
+  border-color: #000;
 
 }

@@ -1,20 +1,18 @@
-uuid: 1f635e86-f0d4-4138-977b-62c913c7dcec
+uuid: 42f96fe0-6a82-4501-8c66-6c618c0aac94
 langcode: en
 status: true
 dependencies:
   module:
     - field_permissions
-    - node
     - user
 third_party_settings:
   field_permissions:
     permission_type: custom
-id: node.field_poem_author_user
-field_name: field_poem_author_user
-entity_type: node
-type: entity_reference
-settings:
-  target_type: user
+id: user.field_bilingual
+field_name: field_bilingual
+entity_type: user
+type: boolean
+settings: {  }
 module: core
 locked: false
 cardinality: 1

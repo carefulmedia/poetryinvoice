@@ -10,7 +10,7 @@ id: user.user.field_virtual_visits
 field_name: field_virtual_visits
 entity_type: user
 bundle: user
-label: 'I am interested in doing virtual visits (using Skype, Zoom, etc.).'
+label: 'I am interested in doing virtual visits'
 description: ''
 required: false
 translatable: false
@@ -19,6 +19,6 @@ default_value:
     value: 0
 default_value_callback: ''
 settings:
-  on_label: 'I can do virtual visits (using Skype, Hangouts, Zoom etc.)'
-  off_label: 'I can only do in-person visits (no Skype, Hangouts, Zoom, etc.)'
+  on_label: ' I am interested in doing virtual visits '
+  off_label: '-'
 field_type: boolean

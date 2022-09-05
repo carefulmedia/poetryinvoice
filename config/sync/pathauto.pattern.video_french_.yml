@@ -8,7 +8,7 @@ dependencies:
 id: video_french_
 label: 'Video (French)'
 type: 'canonical_entities:node'
-pattern: 'visionner/[node:title]'
+pattern: '/ecouter/videos/[node:title]'
 selection_criteria:
   43f5d7ca-9391-4a19-bec2-689ee7536e94:
     id: node_type
@@ -18,10 +18,18 @@ selection_criteria:
       node: node
     bundles:
       video: video
-  59751a8f-0ad8-4196-8c84-a697993bbba5:
+  59a5f682-1e03-42b0-8a94-821fb9f6085d:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 59a5f682-1e03-42b0-8a94-821fb9f6085d
+    context_mapping:
+      node: node
+    bundles:
+      video: video
+  4f9d2d47-cd1b-455c-a374-7a97c10b69cf:
     id: language
     negate: false
-    uuid: 59751a8f-0ad8-4196-8c84-a697993bbba5
+    uuid: 4f9d2d47-cd1b-455c-a374-7a97c10b69cf
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

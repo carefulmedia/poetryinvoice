@@ -27,4 +27,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/binge\r\n/binge/*\r\n/ecouter\r\n/ecouter/*"
+    pages: "/binge/\r\n/binge/*\r\n/ecouter\r\n/ecouter/*"

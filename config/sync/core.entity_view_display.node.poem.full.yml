@@ -23,7 +23,6 @@ dependencies:
     - field.field.node.poem.field_paid_
     - field.field.node.poem.field_password_protected
     - field.field.node.poem.field_pdf_of_original_poem
-    - field.field.node.poem.field_poem_author_user
     - field.field.node.poem.field_poem_retired
     - field.field.node.poem.field_poem_rights_
     - field.field.node.poem.field_poem_rights_contact
@@ -67,16 +66,16 @@ third_party_settings:
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
-            mobile: blb_col_9_3
+            mobile: blb_col_12
           layout_regions_classes:
             blb_region_col_1:
               - col-lg-9
               - col-md-9
-              - col-9
+              - col-12
             blb_region_col_2:
               - col-lg-3
               - col-md-3
-              - col-3
+              - col-12
           remove_gutters: 0
         components:
           c37aa004-e2c1-44b9-aa34-c7666874f3eb:

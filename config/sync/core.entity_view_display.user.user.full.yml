@@ -7,6 +7,7 @@ dependencies:
     - field.field.user.user.field_about_me
     - field.field.user.user.field_additional_email
     - field.field.user.user.field_address
+    - field.field.user.user.field_bilingual
     - field.field.user.user.field_bio_completed_
     - field.field.user.user.field_bio_not_by_author_paid_
     - field.field.user.user.field_bio_trans
@@ -307,6 +308,96 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 1
             additional: {  }
+          b8d3eb72-bec0-4985-a0ea-9047b5f090ef:
+            uuid: b8d3eb72-bec0-4985-a0ea-9047b5f090ef
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_school'
+              label: School
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: '@user.current_user_context:current_user'
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          c27ce88a-498f-4fe9-be76-daa708c951c7:
+            uuid: c27ce88a-498f-4fe9-be76-daa708c951c7
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_what_grades_do_you_teach'
+              label: 'Grades I teach'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: '@user.current_user_context:current_user'
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          a6fc6128-db4b-4107-ba82-b314ebfc807d:
+            uuid: a6fc6128-db4b-4107-ba82-b314ebfc807d
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_about_me'
+              label: 'About me'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: '@user.current_user_context:current_user'
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          838fb3c5-ab81-4182-a4f0-abaf2d8ee201:
+            uuid: 838fb3c5-ab81-4182-a4f0-abaf2d8ee201
+            region: blb_region_col_1
+            configuration:
+              id: 'extra_field_block:user:user:member_for'
+              label: 'Member for'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: '@user.current_user_context:current_user'
+              formatter:
+                settings: {  }
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
+          cb046340-66b8-4ca0-aba8-e8f74f945d8e:
+            uuid: cb046340-66b8-4ca0-aba8-e8f74f945d8e
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_my_favourite_poem_and_or_p'
+              label: 'My favourite poem and/or poet '
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: '@user.current_user_context:current_user'
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: layout_onecol
@@ -385,6 +476,7 @@ hidden:
   entity_print_view_word_docx: true
   field_about_me: true
   field_additional_email: true
+  field_bilingual: true
   field_bio_completed_: true
   field_bio_not_by_author_paid_: true
   field_bio_trans: true
@@ -438,5 +530,6 @@ hidden:
   piv_teacher_first_name: true
   piv_teacher_last_name: true
   piv_teacher_profile_origin: true
+  realname: true
   search_api_excerpt: true
   user_picture: true

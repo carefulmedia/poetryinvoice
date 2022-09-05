@@ -6,6 +6,7 @@ dependencies:
     - field.field.user.user.field_about_me
     - field.field.user.user.field_additional_email
     - field.field.user.user.field_address
+    - field.field.user.user.field_bilingual
     - field.field.user.user.field_bio_completed_
     - field.field.user.user.field_bio_not_by_author_paid_
     - field.field.user.user.field_bio_trans
@@ -218,6 +219,24 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 4
             additional: {  }
+          3e5a9dd1-0cda-4620-b750-2e442d9558e6:
+            uuid: 3e5a9dd1-0cda-4620-b750-2e442d9558e6
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_bilingual'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_3'
@@ -313,6 +332,16 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
+  field_bilingual:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 8
+    region: blb_region_col_1
   field_lifespan:
     type: string
     label: above
@@ -429,4 +458,6 @@ hidden:
   piv_teacher_first_name: true
   piv_teacher_last_name: true
   piv_teacher_profile_origin: true
+  realname: true
+  search_api_excerpt: true
   user_picture: true

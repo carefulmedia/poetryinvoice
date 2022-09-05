@@ -1,0 +1,30 @@
+uuid: d59d0349-20af-4b83-8610-188b21dca2cf
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:ee7ad6de-dbc8-4f23-aad2-ca06543818f4'
+  module:
+    - block_content
+    - system
+  theme:
+    - lvp_barrio
+id: nodeuserheaderimag
+theme: lvp_barrio
+region: highlighted
+weight: 0
+provider: null
+plugin: 'block_content:ee7ad6de-dbc8-4f23-aad2-ca06543818f4'
+settings:
+  id: 'block_content:ee7ad6de-dbc8-4f23-aad2-ca06543818f4'
+  label: 'Node, user header image'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/users\r\n/users/*\r\n/node/add/*"

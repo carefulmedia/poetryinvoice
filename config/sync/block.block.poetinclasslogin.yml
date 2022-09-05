@@ -1,0 +1,38 @@
+uuid: c6e44c16-8c18-426d-8a85-921416f45961
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:c61feac3-2d25-461a-b421-c7739dd775da'
+  module:
+    - block_content
+    - system
+    - user
+  theme:
+    - lvp_barrio
+id: poetinclasslogin
+theme: lvp_barrio
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:c61feac3-2d25-461a-b421-c7739dd775da'
+settings:
+  id: 'block_content:c61feac3-2d25-461a-b421-c7739dd775da'
+  label: 'Poet in Class Login'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/teach/poet-class/meet-poets-class\r\n/enseigner/poetes-lecole/les-poetes\r\n/teach/poet-class\r\n/enseigner/poetes-lecole"
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      anonymous: anonymous

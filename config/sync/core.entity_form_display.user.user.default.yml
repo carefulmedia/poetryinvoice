@@ -6,6 +6,7 @@ dependencies:
     - field.field.user.user.field_about_me
     - field.field.user.user.field_additional_email
     - field.field.user.user.field_address
+    - field.field.user.user.field_bilingual
     - field.field.user.user.field_bio_completed_
     - field.field.user.user.field_bio_not_by_author_paid_
     - field.field.user.user.field_bio_trans
@@ -92,6 +93,13 @@ content:
     weight: 3
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_bilingual:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_bio_not_by_author_paid_:
     type: boolean_checkbox

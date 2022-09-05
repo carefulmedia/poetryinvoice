@@ -11,7 +11,7 @@ id: node.poem.field_biligraphical_info
 field_name: field_biligraphical_info
 entity_type: node
 bundle: poem
-label: 'Biligraphical info'
+label: 'Bibliographical info'
 description: ''
 required: false
 translatable: true

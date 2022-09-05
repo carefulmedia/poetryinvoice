@@ -52,7 +52,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: entity_reference_entity_view
-                label: above
+                label: hidden
                 settings:
                   view_mode: full
                 third_party_settings: {  }
@@ -68,9 +68,9 @@ third_party_settings:
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
-          section_classes: ''
+          section_classes: mixtape
           regions_classes:
-            blb_region_col_1: ''
+            blb_region_col_1: 'dk-bg content-index'
             blb_region_col_2: ''
             blb_region_col_3: ''
           breakpoints:
@@ -220,7 +220,7 @@ third_party_settings:
                 view_mode: view_mode
               formatter:
                 type: boolean
-                label: above
+                label: hidden
                 settings:
                   format: custom
                   format_custom_false: ''
@@ -323,3 +323,4 @@ hidden:
   field_video_image: true
   field_yt_video: true
   langcode: true
+  search_api_excerpt: true

@@ -16,10 +16,10 @@ dependencies:
     - node.type.writing_prompt
     - node.type.writing_workshop
   module:
-    - image
     - node
     - options
     - owlcarousel
+    - svg_image
     - text
     - user
     - views_bootstrap
@@ -843,7 +843,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class = \"content-index podcast\" data-aos=\"zoom-in-left\">\r\n\r\n    <a href=\"{{ view_node }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n            <div class=\"image\">\r\n{{ field_image }} \r\n            </div>\t\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ title }}</h3>\r\n\r\n            </div>\r\n    </a>\r\n</div>"
+            text: "<div class = \"content-index podcast\" data-aos=\"zoom-in\">\r\n\r\n    <a href=\"{{ view_node }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n            <div class=\"image\">\r\n{{ field_image }} \r\n            </div>\t\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ title }}</h3>\r\n\r\n            </div>\r\n    </a>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -1010,7 +1010,7 @@ display:
           empty: false
           content:
             value: "<div data-aos=\"fade-up\"><h1>Quizzes</h1>\r\n<h2>Put your poetic brain to the test!</h2></div>"
-            format: filtered_html
+            format: full_html
           tokenize: false
       display_extenders: {  }
     cache_metadata:
@@ -1746,7 +1746,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: "<h1>Writing Prompts</h1>\r\n<h2>Try one today!</h2>\r\n\r\n"
+            value: "<div data-aos=\"fade-up\"><h1>Writing Prompts</h1>\r\n<h2>Try one today!</h2>\r\n</div>\r\n"
             format: full_html
           tokenize: false
       display_extenders: {  }
@@ -2204,7 +2204,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: "<h1>Writing Exercises</h1>\r\n<h2>Go Deeper</h2>\r\n"
+            value: "<div data-aos=\"fade-up\"><h1>Writing Exercises</h1>\r\n<h2>Go Deeper</h2>\r\n</div>\r\n"
             format: full_html
           tokenize: false
       display_extenders: {  }
@@ -2627,7 +2627,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: "<h1>Writing Workshop</h1>\r\n<h2>A month of Poetry</h2>"
+            value: "<div data-aos=\"fade-up\"><h1>Writing Workshop</h1>\r\n<h2>A month of Poetry</h2>\r\n</div>"
             format: full_html
           tokenize: false
       display_extenders: {  }

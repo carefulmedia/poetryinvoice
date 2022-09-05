@@ -14,11 +14,11 @@ dependencies:
     - image.style.focal_point_700_x_
   module:
     - block_content
-    - image
     - link
     - node
     - options
     - owlcarousel
+    - svg_image
     - text
     - views_bootstrap
 id: home_page_slider_fca
@@ -1506,7 +1506,7 @@ display:
           default_row_class: true
           items: '1'
           margin: '0'
-          nav: 1
+          nav: 0
           autoplay: 1
           autoplayHoverPause: 1
           dots: 1
@@ -3958,7 +3958,7 @@ display:
           grouping: {  }
           row_class: .lesson-plans-index
           default_row_class: true
-          col_xs: col-6
+          col_xs: col-12
           col_sm: col-sm-12
           col_md: col-md-4
           col_lg: col-lg-4
@@ -4775,7 +4775,7 @@ display:
           grouping: {  }
           row_class: .lesson-plans-index
           default_row_class: true
-          col_xs: col-6
+          col_xs: col-12
           col_sm: col-sm-12
           col_md: col-md-4
           col_lg: col-lg-4

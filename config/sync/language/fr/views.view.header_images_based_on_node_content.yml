@@ -1,0 +1,29 @@
+display:
+  default:
+    display_options:
+      empty:
+        area:
+          content:
+            value: "<p><img alt=\"\" data-entity-type=\"\" data-entity-uuid=\"\" src=\"https://piv-prod.s3.ca-central-1.amazonaws.com/public/image%209.png\" /></p>\r\n"
+            format: full_html
+  block_1:
+    display_options:
+      footer:
+        area:
+          content:
+            value: "<div class=\"container\">\r\n<h1 class=\"hero\"><a href=\"/lire\">#lirepoésie</a></h1>\r\n</div>\r\n"
+            format: full_html
+  block_2:
+    display_options:
+      footer:
+        area:
+          content:
+            value: '<div class="container"><h1 class="hero"><a href="/lire">#rFRTKecitepoetry</a></h1></div>'
+            format: php_code
+  block_7:
+    display_options:
+      footer:
+        area:
+          content:
+            value: "<div class=\"container\">\r\n<h1 class=\"hero\"><a href=\"/mixtapes\">mixtapes</a></h1>\r\n</div>\r\n"
+            format: full_html

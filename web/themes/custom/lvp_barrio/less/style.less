@@ -78,6 +78,8 @@
   --aqua: #3185AF;
   --aqua-dark: #12445E;
   --white: #ffffff;
+  --grey-dark: #333B42;
+  --grey: #73818D;
   --black: #000000;
 }
 
@@ -121,7 +123,7 @@ h2 {
   font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
 
-h3, .navbar-nav .nav-link {
+h3, .navbar-nav .nav-link, .block-views-exposed-filter-blocksearch-page h2 {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
@@ -152,11 +154,11 @@ h4, .print__wrapper--pdf a, .site-footer ul li.nav-item a  {
 h5 {
 
 }
-/* Only for non-mobile */
+/* Only for mobile */
 @media (max-width: 867px) {
 
 h1 {
-font-size: 36px;
+font-size: 30px;
 }
 h1.hero {
 font-size: 24px;
@@ -183,7 +185,7 @@ p, .serif-large {
 }
 .no-blur img {
     width: 100%;
-    height: 10rem !important;
+    height: 15rem !important;
     object-fit: cover
 }
 }
@@ -199,6 +201,9 @@ p, .serif-large {
   font-size: 20px;
   line-height: 36px;
   /* or 180% */
+}
+.block-field-blocknodepoembody p {
+    font-size: 20px;
 }
 .serif {
   font-family: 'Lora';
@@ -235,7 +240,7 @@ text-align: left;
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
   border-radius: 6px;
   background: #fff;
-  padding: 15px !important;
+  padding: 20px !important;
 }
 
 .block-layout-builder {
@@ -276,7 +281,11 @@ margin-bottom: 40px;
     text-decoration: none;
     display: block;
     width: 100%;
-    height: fit-content;
+    height: 100%;
+    
+}
+.picpcal .area-link {
+    height: 100%; 
 }
 .print__wrapper  a {
     text-decoration: none;
@@ -291,7 +300,7 @@ margin-bottom: 40px;
 } 
 .binge a:hover, .ecouter a:hover  {color: var(--aqua);
 } 
-.about a:hover, .propos a:hover  {color: var(--black);
+.about a:hover, .propos a:hover  {color: var(--grey);
 } 
 
 .button {
@@ -303,19 +312,21 @@ margin-bottom: 40px;
         text-transform: uppercase;
         font-weight: bold;
         text-decoration: none;
-        padding: 15px;
-    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
+        padding: 10px;
+        font-family: 'Roboto';
+        filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
+
       }
 .button:hover {
-        background: white;
+        background: white !important;
         color: var(--red);
     filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
-transition: all .8s ease;
+transition: all .4s ease;
 }
 .button:active {
         color: white;
         background: var(--red-dark);
-transition: all .8s ease;
+transition: all .4s ease;
 }
 .md-bg, .dk-bg  {
 height: 100%;
@@ -352,10 +363,10 @@ color: black ;
             background: var(--plum-light);
             color: var(--plum-dark);
             height: 100%;
-            transition: all .8s ease;
+            transition: all .4s ease;
             h1, h2, h3, h4, h5, h6, p, li, a {
                 color: var(--plum-dark); 
-                transition: all .8s ease;                   
+                transition: all .4s ease;                   
                 }
         
     }
@@ -363,10 +374,10 @@ color: black ;
             background: none;
             color: var(--plum-dark);
             height: 100%;
-            transition: all .8s ease;
+            transition: all .4s ease;
             h1, h2, h3, h4, h5, h6, p, li, a {
                 color: var(--plum-dark); 
-                transition: all .8s ease;                   
+                transition: all .4s ease;                   
                 }
         
     }
@@ -374,10 +385,10 @@ color: black ;
             background: var(--plum-light);
             color: var(--plum-dark);
             height: 100%;
-            transition: all .8s ease;
+            transition: all .4s ease;
             h1, h2, h3, h4, h5, h6, p, li, a {
                 color: var(--plum-dark); 
-                transition: all .8s ease;                   
+                transition: all .4s ease;                   
                 }
         
     }
@@ -387,7 +398,13 @@ color: black ;
     .hero a {
         background-color: var(--plum);
      }
-
+     .button {
+        background: var(--plum);
+        }
+        details, select {
+            background-color: var(--plum-dark);
+            color: white;
+        }
 }
 .recite, .reciter {
     .lt-bg {
@@ -404,10 +421,10 @@ color: black ;
             background: var(--red-light);
             color: black;
             height: 100%;
-            transition: all .8s ease;
+            transition: all .4s ease;
         h1, h2 h3, h4, h5, h6, p, li, a {
                 color: black !important; 
-            transition: all .8s ease;                   
+            transition: all .4s ease;                   
                 }
         
     }
@@ -417,7 +434,13 @@ color: black ;
     .hero  a {
         background-color: var(--red);
      }
-
+     .button {
+        background: var(--red);
+        }
+        details, select {
+            background-color: var(--red-dark);
+            color: white;
+        }
 }
 .write, .ecrire {
     .lt-bg { 
@@ -434,10 +457,10 @@ color: black ;
             background: var(--mint-light);
             color: black;
             height: 100%;
-            transition: all .8s ease;
+            transition: all .4s ease;
         h1, h2 h3, h4, h5, h6, p, li, a {
                 color: black !important; 
-            transition: all .8s ease;                   
+            transition: all .4s ease;                   
                 }
         
     }
@@ -447,7 +470,13 @@ color: black ;
     .hero a {
         background-color: var(--mint);
      }
-
+     .button {
+        background: var(--mint);
+        }
+    details, select {
+            background-color: var(--mint-dark);
+            color: white;
+     }
 }
 .teach, .enseigner {
     .lt-bg {
@@ -464,10 +493,10 @@ color: black ;
             background: var(--gold-light);
             color: black;
             height: 100%;
-            transition: all .8s ease;
+            transition: all .4s ease;
         h1, h2 h3, h4, h5, h6, p, li, a {
                 color: black !important; 
-            transition: all .8s ease;                   
+            transition: all .4s ease;                   
                 }
         
     }
@@ -477,7 +506,13 @@ color: black ;
     .hero a {
         background-color: var(--gold);
      }
-
+     .button {
+     background: var(--gold-dark);
+     }
+     details, select {
+        background-color: var(--gold-dark);
+        color: white;
+    }
 }
 
 .hero a {
@@ -492,17 +527,100 @@ color: black ;
         font-weight: 900;;
 
 }
+.binge, .ecouter {
+    .lt-bg {
+            background: var(--aqua-light);
+    }
+
+    .md-bg {
+            background: var(--aqua);
+    }
+    .dk-bg {
+            background: var(--aqua-dark);
+    }
+    .area-link:hover  {
+            background: var(--aqua-light);
+            color: black;
+            height: 100%;
+            transition: all .4s ease;
+        h1, h2 h3, h4, h5, h6, p, li, a {
+                color: black !important; 
+            transition: all .4s ease;                   
+                }
+        
+    }
+    .view .more-link {
+        background-color: var(--aqua-dark);
+    }
+    .hero a {
+        background-color: var(--aqua);
+     }
+     details, select {
+        background-color: var(--aqua-dark);
+        color: white;
+    }
+
+}
+.about, .propos {
+    .lt-bg {
+            background: var(--aqua-light);
+    }
+
+    .md-bg {
+            background: var(--grey);
+    }
+    .dk-bg {
+            background: var(--grey-dark);
+    }
+    .area-link:hover  {
+            background: var(--aqua-light);
+            color: black;
+            height: 100%;
+            transition: all .4s ease;
+        h1, h2 h3, h4, h5, h6, p, li, a {
+                color: black !important; 
+            transition: all .4s ease;                   
+                }
+        
+    }
+    .view .more-link {
+        background-color: var(--grey-dark);
+    }
+    .hero a {
+        background-color: var(--grey);
+     }
+     details, select {
+        background-color: var(--grey-dark);
+        color: white;
+    }
+
+}
+.hero a {
+        backdrop-filter: blur(100px);
+        border-radius: 10px;
+        color: white;
+        display: inline;
+        height: 3rem;
+        padding: 1rem;
+        bottom: 0px;
+        left: 0px;
+        font-weight: 900;;
+
+}
 h1.hero a {
         color: white;
+        filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
 } 
 .hero a:hover {
     background-color: white;
-    transition: all .8s ease;                   
+    transition: all .4s ease;                   
 }
 .view-footer .container {
-    margin-top: -1.5rem;
-    margin-bottom: 3rem;
+    margin-top: 2.5rem;
+}
 
+.no-blur {
+    margin-bottom: -4rem;
 }
 html {
     scrollbar-width: none; /* For Firefox */
@@ -515,4 +633,31 @@ html::-webkit-scrollbar {
 
 #field-language-display {
     display: none;
+}
+.button:hover::before {
+    filter: invert(1)
+
+}
+.dropdown-item.active, .dropdown-item:active {
+    background: transparent
+
+}
+.col-lg-9, .col-md-9 {
+    padding-right: calc(var(--bs-gutter-x) * 2.5);
+    }
+    .main-content {
+    margin-bottom: 7rem;    
+    }
+    .comp-img {
+        width: 100px !important;
+        height: 100px;
+        display: inline;
+        float: left;
+        margin-right: 20px;
+    }
+.main-content {
+    margin-top: 3rem;
+}
+#block-poetinclasslogin, #block-lessonplanlogin {
+    width: fit-content;
 }

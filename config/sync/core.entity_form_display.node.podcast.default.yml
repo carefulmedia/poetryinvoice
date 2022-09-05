@@ -4,11 +4,14 @@ status: true
 dependencies:
   config:
     - field.field.node.podcast.body
+    - field.field.node.podcast.field_images_insert
     - field.field.node.podcast.field_poet_s_in_podcast
     - field.field.node.podcast.field_soundcloud
+    - image.style.focal_point_700_x_
     - node.type.podcast
   module:
     - field_layout
+    - focal_point
     - layout_discovery
     - media_library
     - path
@@ -39,6 +42,16 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_images_insert:
+    type: image_focal_point
+    weight: 124
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: focal_point_700_x_
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
   field_poet_s_in_podcast:
     type: entity_reference_autocomplete

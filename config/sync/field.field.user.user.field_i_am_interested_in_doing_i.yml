@@ -19,6 +19,6 @@ default_value:
     value: 0
 default_value_callback: ''
 settings:
-  on_label: '1'
+  on_label: 'I am interested in doing in-class visits'
   off_label: '-'
 field_type: boolean
