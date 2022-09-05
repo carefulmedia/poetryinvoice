@@ -440,7 +440,7 @@ display:
           type: image
           settings:
             image_link: ''
-            image_style: 150x150
+            image_style: ''
             svg_attributes:
               width: null
               height: null

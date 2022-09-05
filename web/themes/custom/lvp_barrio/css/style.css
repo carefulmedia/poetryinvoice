@@ -941,7 +941,7 @@ select.form-select {
   display: inline;
   margin-right: 1.5rem;
   padding: 15px;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='#ffffff' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
 }
 .form-row label {
   display: block;
@@ -1264,6 +1264,7 @@ summary {
   bottom: 0em;
   width: 100%;
   height: 8em;
+  left: 0;
   background: -webkit-linear-gradient(rgba(255, 255, 255, 0) 0%, #ffffff 80%);
   background-image: -moz-linear-gradient(rgba(255, 255, 255, 0) 0%, #ffffff 80%);
   background-image: -o-linear-gradient(rgba(255, 255, 255, 0) 0%, #ffffff 80%);
@@ -1281,6 +1282,12 @@ summary {
   border-radius: 10px;
   background: #fff;
   overflow: hidden;
+  padding: 2rem;
+}
+.view-display-id-block_5 .content-index {
+  padding: 0;
+}
+.view-display-id-block_5 .content-index .area-link {
   padding: 2rem;
 }
 .lesson-plans-index .content-index {
@@ -1314,13 +1321,10 @@ h3.name {
   margin-left: 1rem;
   vertical-align: middle;
 }
-.block-views p {
-  margin: 0;
-}
 .lesson-plans a:hover img,
-.poems a:hover img {
-  height: 2.5rem;
-  width: 2.5rem;
+.block-views-blockcontent-type-index-pages-block-3 a:hover img {
+  height: 70px;
+  width: 70px;
   transition: all 0.4s ease;
 }
 .mixtape a:hover img,
@@ -2298,8 +2302,10 @@ footer .nav-item {
   border-left: 1px solid #fff4f4;
   border-right: 1px solid #fff4f4;
 }
-/* Poem page styles */
-.node--type-poem .field__label {
+/* Poem page and view styles */
+.node--type-poem .field__label,
+.block-views-blockcontent-type-index-pages-block-15 .field__label,
+.block-views-blockcontent-type-index-pages-block-3 .field__label {
   text-transform: uppercase;
   font-family: 'Roboto Flex';
   font-style: normal;
@@ -2309,30 +2315,56 @@ footer .nav-item {
   /* or 117% */
   letter-spacing: 0.1em;
 }
-.node--type-poem .field__item a {
+.node--type-poem .field__item a,
+.block-views-blockcontent-type-index-pages-block-15 .field__item a,
+.block-views-blockcontent-type-index-pages-block-3 .field__item a {
   text-decoration: none;
 }
-.node--type-poem .field__item:last-child a::after {
+.node--type-poem .field__item:last-child a::after,
+.block-views-blockcontent-type-index-pages-block-15 .field__item:last-child a::after,
+.block-views-blockcontent-type-index-pages-block-3 .field__item:last-child a::after {
   content: '';
 }
-.node--type-poem .field__item a::after {
+.node--type-poem .field__item a::after,
+.block-views-blockcontent-type-index-pages-block-15 .field__item a::after,
+.block-views-blockcontent-type-index-pages-block-3 .field__item a::after {
   content: ',';
 }
-.node--type-poem .block-field-blocknodepoembody {
+.node--type-poem .block-field-blocknodepoembody,
+.block-views-blockcontent-type-index-pages-block-15 .block-field-blocknodepoembody,
+.block-views-blockcontent-type-index-pages-block-3 .block-field-blocknodepoembody {
   padding-bottom: 6rem;
   border-bottom: 4px dashed rgba(0, 0, 0, 0.4);
   margin-bottom: 7rem;
 }
-.node--type-poem .main-content {
+.node--type-poem .main-content,
+.block-views-blockcontent-type-index-pages-block-15 .main-content,
+.block-views-blockcontent-type-index-pages-block-3 .main-content {
   margin-bottom: 7rem;
 }
-.node--type-poem .block-field-blocknodepoembody p {
+.node--type-poem .block-field-blocknodepoembody p,
+.block-views-blockcontent-type-index-pages-block-15 .block-field-blocknodepoembody p,
+.block-views-blockcontent-type-index-pages-block-3 .block-field-blocknodepoembody p,
+.node--type-poem .index-views.poems p,
+.block-views-blockcontent-type-index-pages-block-15 .index-views.poems p,
+.block-views-blockcontent-type-index-pages-block-3 .index-views.poems p {
   line-height: 30px;
   padding-left: 1em;
   text-indent: -1em;
   margin: 0 !important;
 }
-/* Poem page styles */
+.node--type-poem .index-views h2,
+.block-views-blockcontent-type-index-pages-block-15 .index-views h2,
+.block-views-blockcontent-type-index-pages-block-3 .index-views h2 {
+  color: #000 !important;
+  margin-bottom: 1rem !important;
+}
+.node--type-poem .block-entity-print,
+.block-views-blockcontent-type-index-pages-block-15 .block-entity-print,
+.block-views-blockcontent-type-index-pages-block-3 .block-entity-print {
+  display: none;
+}
+/* Poet page styles */
 .path-user h2 {
   text-transform: uppercase;
   font-family: 'Roboto Flex';
@@ -2428,6 +2460,31 @@ footer .nav-item {
   border-radius: none !important;
   background: none !important;
 }
+@media (max-width: 867px) {
+  .path-user .block-field-blockuseruserfield-lifespan {
+    display: block;
+    float: none;
+    font-size: 24px;
+  }
+  .path-user .block-views-blockuser-name-on-user-pages-block-1 {
+    margin-bottom: 0;
+  }
+  .path-user .highlighted img {
+    height: 15rem !important;
+    object-fit: cover;
+  }
+  .path-user .block-field-blockuseruserfield-photo-credit {
+    margin-top: -12rem;
+    float: right;
+    right: 0.25rem;
+    font-size: 7px;
+    padding: 0.25rem;
+  }
+  .path-user .layout-main-wrapper,
+  .path-user .main-content {
+    margin-top: 1rem;
+  }
+}
 /* Mixtape page styles */
 .node--type-mixtape .main-content h2 {
   color: var(--plum);
@@ -2484,6 +2541,18 @@ footer .nav-item {
 }
 .node--type-lesson-plan p strong {
   font-family: Roboto;
+}
+.node--type-lesson-plan h2 {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 21px;
+  /* or 117% */
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-stretch: 110;
+  font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
 }
 /* Winner, judge and photo event pages */
 .winner-index table a,
@@ -2562,6 +2631,9 @@ footer .nav-item {
 .judge-page table a:hover img {
   filter: brightness(1.2);
   transition: all 0.4s ease;
+}
+.main-content p {
+  margin-bottom: 2rem;
 }
 .node-preview-container {
   background: #d1e8f5;
@@ -3995,7 +4067,7 @@ li {
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
   border-radius: 6px;
   background: #fff;
-  padding: 15px !important;
+  padding: 20px !important;
 }
 .block-layout-builder {
   margin-bottom: 40px;
@@ -4351,6 +4423,13 @@ li {
 .write .button,
 .ecrire .button {
   background: var(--mint);
+}
+.write details,
+.ecrire details,
+.write select,
+.ecrire select {
+  background-color: var(--mint-dark);
+  color: white;
 }
 .teach .lt-bg,
 .enseigner .lt-bg {

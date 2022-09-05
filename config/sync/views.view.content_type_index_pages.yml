@@ -5769,7 +5769,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<a href=\"{{ view_node }} \" class=\"area-link\" style=\"display:block\"><div class=\"index-views poems content-index\">\r\n\r\n\r\n\r\n    <div class=\"author\">\r\n\t\t    <span=\"img\">\r\n\t\t\t    {{ user_picture }}\r\n            </span>\r\n                <h3 class=\"name\">\r\n                {{ name }}\r\n            </h3>\r\n\r\n    </div>\t\t\t\t\r\n    <div class=\"content\">\r\n      \t\t<h2>{{ title }}</h2>\r\n\t        <p>{{ body }}</p>\r\n\t\t    <p>&nbsp;</p>\r\n        <div class=\"fadeout\"></div>\r\n    </div>\r\n\r\n</div></a>"
+            text: "<div class=\"index-views poems content-index\">\r\n\r\n<a href=\"{{ view_node }} \" class=\"area-link\" style=\"display:block\">\r\n\r\n    <div class=\"author\">\r\n\t\t    <span=\"img\">\r\n\t\t\t    {{ user_picture }}\r\n            </span>\r\n                <h3 class=\"name\">\r\n                {{ name }}\r\n            </h3>\r\n\r\n    </div>\t\t\t\t\r\n    <div class=\"content\">\r\n      \t\t<h2>{{ title }}</h2>\r\n\t        <p>{{ body }}</p>\r\n\r\n\r\n    </div>\r\n        <div class=\"fadeout\"></div>\r\n</a>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
