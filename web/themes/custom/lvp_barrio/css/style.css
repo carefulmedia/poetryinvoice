@@ -944,6 +944,7 @@ select.form-select {
 }
 .form-row label {
   display: block;
+  font-weight: 700;
 }
 .gin--edit-form [data-drupal-link-system-path*="/delete"] {
   display: none;
@@ -1192,7 +1193,7 @@ select.form-select {
 #edit-combine {
   width: 100% !important;
   border-radius: 10px;
-  height: 60px;
+  height: 56px;
   margin-right: 1.5rem;
 }
 #edit-actions {
@@ -1616,6 +1617,7 @@ h3.name {
   color: white;
   text-decoration: none;
 }
+/* discover poems index page */
 .page-node-27461 .plum-bg.roulette-discover,
 .page-node-27461 .poets,
 .page-node-27461 .quizzes {
@@ -1638,11 +1640,15 @@ h3.name {
 .page-node-27461 h2 {
   color: var(--plum);
 }
-.poets {
+.page-node-27461 .poets {
   background-image: url('/themes/custom/lvp_barrio/assets/poet_bg.png') !important;
 }
-.quizzes {
+.page-node-27461 .quizzes {
   background-image: url('/themes/custom/lvp_barrio/assets/quiz_bg.png') !important;
+}
+.page-node-27461 .poets .container,
+.page-node-27461 .quizzes .container {
+  padding: 0;
 }
 .plum-bg.roulette-discover h1,
 .plum-bg.roulette-discover h2,
@@ -1829,6 +1835,7 @@ h3.name {
     margin-left: 0px;
   }
 }
+/* lesson plan index page */
 /**
  * @file
  * Visual styles for icons.
@@ -3953,7 +3960,7 @@ p,
   /* or 180% */
 }
 .block-field-blocknodepoembody p {
-  font-size: 17px;
+  font-size: 20px;
 }
 .serif {
   font-family: 'Lora';

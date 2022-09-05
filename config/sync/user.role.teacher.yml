@@ -138,6 +138,7 @@ permissions:
   - 'use user.teacher_edit form mode'
   - 'view field_about_me'
   - 'view field_agreed_visit_date'
+  - 'view field_bilingual'
   - 'view field_date_and_poet_chosen'
   - 'view field_file_under'
   - 'view field_grades'

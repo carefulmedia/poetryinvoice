@@ -7,6 +7,7 @@ dependencies:
     - field.field.user.user.field_about_me
     - field.field.user.user.field_additional_email
     - field.field.user.user.field_address
+    - field.field.user.user.field_bilingual
     - field.field.user.user.field_bio_completed_
     - field.field.user.user.field_bio_not_by_author_paid_
     - field.field.user.user.field_bio_trans
@@ -475,6 +476,7 @@ hidden:
   entity_print_view_word_docx: true
   field_about_me: true
   field_additional_email: true
+  field_bilingual: true
   field_bio_completed_: true
   field_bio_not_by_author_paid_: true
   field_bio_trans: true
