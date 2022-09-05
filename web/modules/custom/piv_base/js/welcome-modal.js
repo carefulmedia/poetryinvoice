@@ -6,27 +6,30 @@
         return;
       }
 
+      // Polyfill for <dialog>.
+      dialogPolyfill.registerDialog(welcome_modal);
+
       $('.open-welcome-modal', context).click(function() {
         welcome_modal.showModal();
       });
       $('.close-welcome-modal', context).click(function() {
         welcome_modal.close();
       });
-      
+
       $(once('welcome-modal-back', '.welcome-modal-back')).click(function(e) {
         $('.piv-base-welcome-modal').show();
         $('#welcome-modal-content').html('');
       });
-      
+
       const show = (element) => element.removeClass('select-hidden');
       const hide = (element) => element.addClass('select-hidden');
-      
+
       const option1 = $('select[name=option_1]', context);
       const option2 = $('select[name=option_2]', context);
       const option2_label = option2.parent().find('label').first();
       const option3 = $('select[name=option_3]', context);
       const submit = $('.js-form-submit', context);
-    
+
       if (!option2.val() || option2.val() == '_null') {
         hide(option2.parent());
       }
@@ -42,7 +45,7 @@
           $(this).text('');
         });
       });
-      
+
       option1.change(function(e) {
         hide(submit);
         option2.val('_null').change();
@@ -66,7 +69,7 @@
             break;
         }
       });
-      
+
       option2.change(function(e) {
         hide(submit);
         option3.val('_null').change();
@@ -79,7 +82,7 @@
             break;
         }
       });
-      
+
       option3.change(function(e) {
         switch (this.value) {
           case '_null':
