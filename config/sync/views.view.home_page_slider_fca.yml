@@ -3958,7 +3958,7 @@ display:
           grouping: {  }
           row_class: .lesson-plans-index
           default_row_class: true
-          col_xs: col-1
+          col_xs: col-12
           col_sm: col-sm-12
           col_md: col-md-4
           col_lg: col-lg-4
@@ -4775,7 +4775,7 @@ display:
           grouping: {  }
           row_class: .lesson-plans-index
           default_row_class: true
-          col_xs: col-1
+          col_xs: col-12
           col_sm: col-sm-12
           col_md: col-md-4
           col_lg: col-lg-4

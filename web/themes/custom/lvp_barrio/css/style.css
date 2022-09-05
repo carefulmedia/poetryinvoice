@@ -1471,6 +1471,9 @@ h3.name {
 .highlighted .container img {
   width: 100%;
 }
+.highlighted .container .blur img {
+  width: 100% !important;
+}
 .highlighted {
   min-height: 4rem;
 }
@@ -2361,7 +2364,10 @@ footer .nav-item {
 }
 .node--type-poem .block-entity-print,
 .block-views-blockcontent-type-index-pages-block-15 .block-entity-print,
-.block-views-blockcontent-type-index-pages-block-3 .block-entity-print {
+.block-views-blockcontent-type-index-pages-block-3 .block-entity-print,
+.node--type-poem .view-footer,
+.block-views-blockcontent-type-index-pages-block-15 .view-footer,
+.block-views-blockcontent-type-index-pages-block-3 .view-footer {
   display: none;
 }
 /* Poet page styles */
