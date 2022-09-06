@@ -13,7 +13,7 @@ bundle: user
 label: 'GST/HST #'
 description: 'Please leave blank if you do not have a GST/HST #.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

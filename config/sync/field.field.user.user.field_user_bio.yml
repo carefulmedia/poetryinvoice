@@ -14,7 +14,7 @@ bundle: user
 label: Biography
 description: '100-150 words (please include your preferred poetic style(s), subject(s), influences)'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

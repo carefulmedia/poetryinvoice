@@ -20,7 +20,7 @@ class PivMigrateCommands extends DrushCommands {
   /**
    * Fix terms migrations.
    *
-   * @usage piv_migrate-fix-terms
+   * @usage piv_migrate:fix-terms
    *   Fix terms migrations.
    *
    * @command piv_migrate:fix-terms
@@ -201,7 +201,7 @@ class PivMigrateCommands extends DrushCommands {
   /**
    * Migrate from textfield to youtube field.
    *
-   * @usage piv_migrate-fix-video
+   * @usage piv_migrate:fix-video
    *   Fix video migrations.
    *
    * @command piv_migrate:fix-video
@@ -228,6 +228,58 @@ class PivMigrateCommands extends DrushCommands {
         $node->field_video = $media->id();
         $node->save();
       }
+    }
+  }
+
+  /**
+   * Translate users and copy data from field_bio_trans.
+   *
+   * @usage piv_migrate:user-translations
+   *   Fix video migrations.
+   *
+   * @command piv_migrate:user-translations
+   */
+  public function createUserTranslations() {
+    $user_storage = \Drupal::entityTypeManager()->getStorage('user');
+    // Copy field_bio_trans to field_user_bio.
+    $uids = \Drupal::database()->select('user__field_bio_trans', 'u')
+      ->fields('u', ['entity_id'])
+      ->execute()->fetchCol();
+    foreach ($uids as $uid) {
+      $user = $user_storage->load($uid);
+      $langcode = $user->langcode->value;
+      $translate_to = $langcode == 'en' ? 'fr' : 'en';
+      $translated_user = $user->hasTranslation($translate_to)
+        ? $user->getTranslation($translate_to)
+        : $user->addTranslation($translate_to);
+      if ($bio_trans = $user->field_bio_trans->getValue()) {
+        $translated_user->field_user_bio = $bio_trans;
+        $translated_user->save();
+      }
+    }
+    // Copy french signature to signature.
+    $uids = \Drupal::database()->select('user__field_signature', 'u')
+      ->fields('u', ['entity_id'])
+      ->execute()->fetchCol();
+    foreach ($uids as $uid) {
+      $user = $user_storage->load($uid);
+      $langcode = $user->langcode->value;
+      $translate_to = $langcode == 'en' ? 'fr' : 'en';
+      $translated_user = $user->hasTranslation($translate_to)
+        ? $user->getTranslation($translate_to)
+        : $user->addTranslation($translate_to);
+      $sign_fr = $user->field_french_signature->getValue();
+      $sign_en = $user->field_signature->getValue();
+      if ($langcode == 'en') {
+        $user->field_signature = $sign_en;
+        $translated_user->field_signature = $sign_fr;
+      }
+      else {
+        $user->field_signature = $sign_fr;
+        $translated_user->field_signature = $sign_en;
+      }
+      $user->save();
+      $translated_user->save();
     }
   }
 
