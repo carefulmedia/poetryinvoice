@@ -3794,8 +3794,6 @@ dialog#welcome-modal + .backdrop {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #000;
-  opacity: 0.8;
 }
 @media (max-width: 576px) {
   .form-item-option-2.select-hidden + .form-item-option-3:not(.select-hidden) {
@@ -3803,9 +3801,11 @@ dialog#welcome-modal + .backdrop {
   }
 }
 #welcome-modal {
-  border: 0;
-  background: #F1EDEC;
-  height: 100vh;
+  border: 3px solid rgba(241, 237, 236, 0);
+  background: rgba(241, 237, 236, 0.9);
+  height: 100%;
+  box-sizing: content-box;
+  width: 100%;
 }
 #welcome-modal .user-menu a {
   margin-left: 0;
@@ -3814,18 +3814,17 @@ dialog#welcome-modal + .backdrop {
 #welcome-modal .user-menu a::before {
   display: none;
 }
-@media (min-width: 576px) {
-  #welcome-modal {
-    height: fit-content;
-  }
-}
 #welcome-modal .welcome-modal-container {
   position: relative;
-  margin: 1rem;
+  padding-top: var(--bs-gutter-x, 0.75rem);
+  padding-bottom: var(--bs-gutter-x, 0.75rem);
+  margin: 0 auto;
 }
-#welcome-modal::backdrop {
-  background-color: #000;
-  opacity: 0.8;
+@media (min-width: 576px) {
+  #welcome-modal .welcome-modal-container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 #welcome-modal .form-type-piv-select label,
 #welcome-modal .form-type-piv-select .piv-select {
@@ -3888,6 +3887,7 @@ dialog#welcome-modal + .backdrop {
   }
 }
 #welcome-modal .piv-select-placeholder {
+  cursor: pointer;
   border-bottom: 3px solid;
   min-height: 1.8rem;
 }
@@ -3907,6 +3907,7 @@ dialog#welcome-modal + .backdrop {
   color: #918E8D;
   line-height: 1.8rem;
   margin-top: 15px;
+  cursor: pointer;
 }
 #welcome-modal .piv-select-options.hide {
   display: none;
@@ -3945,10 +3946,8 @@ dialog#welcome-modal + .backdrop {
 }
 #welcome-modal .form-submit {
   opacity: 1;
-  transition: opacity 0.5s;
-  background-color: #C53D27;
+  transition: all 0.5s;
   border: 0;
-  color: #fff;
   text-transform: uppercase;
   font-weight: 900;
   width: 160px;

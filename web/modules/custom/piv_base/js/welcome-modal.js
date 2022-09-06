@@ -17,8 +17,8 @@
       });
 
       $(once('welcome-modal-back', '.welcome-modal-back')).click(function(e) {
-        $('.piv-base-welcome-modal').show();
         $('#welcome-modal-content').html('');
+        $('.piv-base-welcome-modal').fadeIn();
       });
 
       const show = (element) => element.removeClass('select-hidden');

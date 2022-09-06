@@ -154,6 +154,7 @@ class PivWelcomeModal extends FormBase {
       '#ajax' => [
         'callback' => '::ajaxCallback',
         'event' => 'click',
+        'effect' => 'fade',
       ],
     ];
     $form['#suffix'] = '<div id="welcome-modal-content"></div>';
