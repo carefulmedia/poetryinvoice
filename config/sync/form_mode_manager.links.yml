@@ -1,10 +1,11 @@
 _core:
   default_config_hash: GgQPFR9_W7yU3PXDjhT5ktVYWuoA5S4H-y88-l_5t_g
+langcode: en
 local_tasks:
   node:
     position: secondary
   user:
-    position: secondary
+    position: primary
   block_content:
     position: secondary
   comment:
@@ -15,4 +16,9 @@ local_tasks:
     position: secondary
   taxonomy_term:
     position: secondary
-langcode: en
+  competition_entry:
+    position: primary
+  judging_session:
+    position: primary
+  recitation:
+    position: primary
