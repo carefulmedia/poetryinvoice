@@ -3794,6 +3794,19 @@ dialog#welcome-modal + .backdrop {
   right: 0;
   bottom: 0;
   left: 0;
+  background-color: rgba(241, 237, 236, 0.9);
+}
+dialog,
+dialog[open]::backdrop {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s linear;
+}
+dialog[open].in,
+dialog[open].in::backdrop {
+  transition-delay: 0s;
+  opacity: 1;
+  visibility: visible;
 }
 @media (max-width: 576px) {
   .form-item-option-2.select-hidden + .form-item-option-3:not(.select-hidden) {
@@ -3806,6 +3819,7 @@ dialog#welcome-modal + .backdrop {
   height: 100%;
   box-sizing: content-box;
   width: 100%;
+  display: block;
 }
 #welcome-modal .user-menu a {
   margin-left: 0;

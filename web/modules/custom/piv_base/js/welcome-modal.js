@@ -11,9 +11,11 @@
 
       $('.open-welcome-modal', context).click(function() {
         welcome_modal.showModal();
+        $(welcome_modal).addClass('in');
       });
       $('.close-welcome-modal', context).click(function() {
         welcome_modal.close();
+        $(welcome_modal).removeClass('in');
       });
 
       $(once('welcome-modal-back', '.welcome-modal-back')).click(function(e) {

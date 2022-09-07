@@ -8,7 +8,21 @@ dialog#welcome-modal + .backdrop {
   right: 0;
   bottom: 0;
   left: 0;
-  //background-color: @modal-bg;
+  background-color: @modal-bg;
+}
+
+dialog,
+dialog[open]::backdrop {
+  visibility:hidden;
+  opacity:0;
+  transition:visibility 0s linear .3s,opacity .3s linear;
+}
+
+dialog[open].in,
+dialog[open].in::backdrop {
+  transition-delay:0s;
+  opacity: 1;
+  visibility: visible;
 }
 
 @media (max-width: 576px) {
@@ -23,6 +37,7 @@ dialog#welcome-modal + .backdrop {
   height: 100%;
   box-sizing: content-box;
   width: 100%;
+  display: block;
 
   .user-menu a {
     margin-left: 0;
