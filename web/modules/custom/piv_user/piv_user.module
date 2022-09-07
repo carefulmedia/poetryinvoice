@@ -5,6 +5,7 @@
  * Primary module hooks for PIV User module.
  */
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -13,4 +14,49 @@ use Drupal\Core\Form\FormStateInterface;
 function piv_user_form_user_admin_settings_alter(&$form, FormStateInterface $form_state) {
   $form['registration_cancellation']['user_register']['#prefix'] = t('<b class="warning">Account registration is managed by piv_user in the /create-account route.</b>');
   $form['registration_cancellation']['user_register']['#disabled'] = TRUE;
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function piv_user_preprocess_html(&$variables) {
+  $route = \Drupal::routeMatch();
+  if ($route->getRouteName() == 'entity.user.canonical') {
+    try {
+      $user = $route->getParameter('user');
+      $current_user = \Drupal::currentUser();
+      if ($current_user->id() == $user->id()) {
+        // Do not redirect if thats the current user page.
+        return;
+      }
+      if (count($user->field_poem_languages) > 1) {
+        // Poems in both languages, do not redirect.
+        return;
+      }
+      if ($user->field_bilingual->value == 1) {
+        // User is bilingual, do not redirect.
+        return;
+      }
+      if (!$user->hasRole('poet') && !$user->hasRole('poet_network')) {
+        // If not poet or poet_network, do not redirect.
+        return;
+      }
+      $user_langcode = $user->preferred_langcode->value;
+      $current_langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      if ($current_langcode == $user_langcode) {
+        // If already in user preferred language, do not redirect.
+        return;
+      }
+
+      // Redirect to poet preferred language.
+      $url = $user->toUrl();
+      $url->setOption('language', $user->preferred_langcode->language);
+      $response = new RedirectResponse($url->toString());
+      $response->send();
+      return;
+    }
+    catch (\Exception $e) {
+      // Do nothing.
+    }
+  }
 }
