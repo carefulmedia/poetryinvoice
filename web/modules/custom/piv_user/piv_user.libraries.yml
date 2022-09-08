@@ -1,0 +1,4 @@
+create_account:
+  css:
+    component:
+      css/create-account.css: {}

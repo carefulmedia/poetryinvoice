@@ -1,5 +1,4 @@
 piv_user.create_account:
-  title: 'Create Account'
-  route_name: piv_user.create_account
   menu_name: account
   weight: 10
+  class: Drupal\piv_user\Plugin\Menu\CreateAccountLink

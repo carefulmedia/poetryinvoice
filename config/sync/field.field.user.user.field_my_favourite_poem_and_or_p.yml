@@ -13,7 +13,7 @@ bundle: user
 label: 'My favourite poem and/or poet '
 description: 'This could or could not be a poem or poet in our anthology. If you like, tell us why this your favourite poem or poet.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

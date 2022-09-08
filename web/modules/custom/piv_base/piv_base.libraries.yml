@@ -4,8 +4,13 @@ piv_select:
   dependencies:
     - core/jquery
 
+dialog_polyfill:
+  js:
+    js/dialog-polyfill.js: {}
+
 welcome_modal:
   js:
     js/welcome-modal.js: {}
   dependencies:
     - core/jquery
+    - piv_base/dialog_polyfill

@@ -3792,28 +3792,82 @@ body.path-user .field--label-above .field__item {
 .views-ui-display-tab-actions .dropbutton .form-submit:focus {
   color: #018fe2;
 }
-#welcome-modal {
-  width: 100vw;
-  height: 100vh;
-  z-index: 30000;
+dialog#welcome-modal + .backdrop {
   position: fixed;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  border: 0;
-  background: #F1EDEC;
+  background-color: rgba(241, 237, 236, 0.9);
 }
-#welcome-modal::backdrop {
-  background-color: #F1EDEC;
+dialog,
+dialog[open]::backdrop {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
-#welcome-modal .welcome-modal-inner {
-  margin-top: 3rem;
+dialog[open].in,
+dialog[open].in::backdrop {
+  transition-delay: 0s;
+  opacity: 1;
+  visibility: visible;
+}
+@media (max-width: 576px) {
+  .form-item-option-2.select-hidden + .form-item-option-3:not(.select-hidden) {
+    margin-top: -50px !important;
+  }
+}
+#welcome-modal {
+  border: 3px solid rgba(241, 237, 236, 0);
+  background: rgba(241, 237, 236, 0.9);
+  height: 100%;
+  box-sizing: content-box;
+  width: 100%;
+  display: block;
+}
+#welcome-modal .user-menu a {
+  margin-left: 0;
+  margin-right: 1rem;
+}
+#welcome-modal .user-menu a::before {
+  display: none;
+}
+#welcome-modal .welcome-modal-container {
+  position: relative;
+  padding-top: var(--bs-gutter-x, 0.75rem);
+  padding-bottom: var(--bs-gutter-x, 0.75rem);
+  margin: 0 auto;
+}
+@media (min-width: 576px) {
+  #welcome-modal .welcome-modal-container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+#welcome-modal .form-type-piv-select label,
+#welcome-modal .form-type-piv-select .piv-select {
+  margin-right: 10px;
 }
 #welcome-modal .start-here,
 #welcome-modal .welcome-modal-back {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 400;
   line-height: 2rem;
   font-family: 'Roboto Condensed';
+}
+@media (min-width: 576px) {
+  #welcome-modal .start-here,
+  #welcome-modal .welcome-modal-back {
+    font-size: 2rem;
+  }
+}
+#welcome-modal .start-here {
+  margin: 20px 0;
+}
+@media (min-width: 576px) {
+  #welcome-modal .start-here {
+    margin: 0;
+  }
 }
 #welcome-modal .welcome-modal-back {
   display: block;
@@ -3824,12 +3878,14 @@ body.path-user .field--label-above .field__item {
 }
 #welcome-modal .close-welcome-modal {
   right: 0;
-  top: 1rem;
+  top: 0;
   position: absolute;
   cursor: pointer;
   font-size: 1.25rem;
 }
 #welcome-modal form {
+  display: inline-block;
+  width: 100%;
   font-family: Roboto;
   line-height: 100%;
   font-weight: 900;
@@ -3837,28 +3893,39 @@ body.path-user .field--label-above .field__item {
 #welcome-modal form .form-required::after {
   display: none;
 }
-#welcome-modal form .options-wrapper {
-  display: flex;
-  margin-top: 70px;
+@media (min-width: 576px) {
+  #welcome-modal form .options-wrapper {
+    display: flex;
+    margin-top: 70px;
+  }
+}
+@media (min-width: 576px) {
+  #welcome-modal form {
+    min-height: 320px;
+  }
 }
 #welcome-modal .piv-select-placeholder {
+  cursor: pointer;
   border-bottom: 3px solid;
-  height: 2rem;
+  min-height: 1.8rem;
 }
-#welcome-modal .form-item-option-3 .piv-select {
-  margin: 0 10px 0 0;
+@media (min-width: 576px) {
+  #welcome-modal .piv-select-placeholder {
+    min-height: 2.5rem;
+  }
 }
 #welcome-modal .piv-select {
-  display: inline-block;
   vertical-align: top;
-  margin: 0 10px;
+  margin: 0;
+  display: inline-block;
 }
 #welcome-modal .piv-select-options {
   text-transform: uppercase;
   font-size: 1rem;
   color: #918E8D;
-  line-height: 1.5rem;
+  line-height: 1.8rem;
   margin-top: 15px;
+  cursor: pointer;
 }
 #welcome-modal .piv-select-options.hide {
   display: none;
@@ -3872,7 +3939,13 @@ body.path-user .field--label-above .field__item {
   font-size: 0;
 }
 #welcome-modal fieldset > * {
-  font-size: 2.5rem;
+  font-size: 1.8rem;
+  line-height: 100%;
+}
+@media (min-width: 576px) {
+  #welcome-modal fieldset > * {
+    font-size: 2.5rem;
+  }
 }
 #welcome-modal fieldset.select-hidden {
   padding-top: 50px;
@@ -3883,29 +3956,35 @@ body.path-user .field--label-above .field__item {
   font-size: 0;
   height: 0;
 }
-#welcome-modal #edit-go.form-submit {
+@media (min-width: 576px) {
+  #welcome-modal .form-submit {
+    bottom: 0;
+    position: absolute;
+  }
+}
+#welcome-modal .form-submit {
   opacity: 1;
-  transition: opacity 0.5s;
-  background-color: #C53D27;
+  transition: all 0.5s;
   border: 0;
-  color: #fff;
   text-transform: uppercase;
   font-weight: 900;
   width: 160px;
   height: 70px;
   margin-top: 40px;
 }
-#welcome-modal #edit-go.form-submit::before {
+#welcome-modal .form-submit::before {
   display: none;
 }
-#welcome-modal #edit-go.form-submit.select-hidden {
+#welcome-modal .form-submit.select-hidden {
   opacity: 0;
   transition: opacity 0;
 }
-#welcome-modal .menu--account {
-  float: right;
-  margin-right: 30px;
-  margin-top: 2px;
+@media (min-width: 576px) {
+  #welcome-modal .menu--account {
+    float: right;
+    margin-right: 30px;
+    margin-top: 2px;
+  }
 }
 #welcome-modal .menu--account a {
   padding: 0;

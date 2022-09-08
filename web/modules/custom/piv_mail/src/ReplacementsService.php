@@ -188,7 +188,7 @@ class ReplacementsService {
           return $sources['user']->piv_teacher_first_name->value;
 
         case 'user':
-          return $sources['user']->name->value;
+          return isset($sources['user']) ? $sources['user']->getDisplayName() : NULL;
 
         case 'link_to_profile':
           return $sources['user']->toLink('Link to poet profile', 'edit-form', [
@@ -197,7 +197,7 @@ class ReplacementsService {
 
         // Teacher.
         case 'booking_teacher':
-          return $sources['teacher']->name->value;
+          return isset($sources['teacher']) ? $sources['teacher']->getDisplayName() : NULL;
 
         // School.
         case 'school_name':

@@ -13,7 +13,7 @@ bundle: user
 label: 'QST #'
 description: "NOTE: Poetry In Voice only pays 5% GST, unless the poet also has a QST #. \r\n<strong>Do not input a PST # here from any other province. And please leave blank if you do not have a QST #.</strong><br/>"
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }

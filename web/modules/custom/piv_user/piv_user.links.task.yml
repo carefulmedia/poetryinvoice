@@ -1,0 +1,4 @@
+piv_user.create_account:
+  route_name: piv_user.create_account
+  base_route: user.page
+  title: 'Create new account'

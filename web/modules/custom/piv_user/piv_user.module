@@ -5,120 +5,58 @@
  * Primary module hooks for PIV User module.
  */
 
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
-use Drupal\Core\Link;
-use Drupal\Core\Messenger\Messenger;
 
 /**
  * Implements hook_form_FORM_ID_alter().
- *
- * Alter the user registration form for poets.
  */
-function piv_user_form_user_poet_network_form_alter(&$form, FormStateInterface $form_state) {
-  $user = $form_state->getFormObject()->getEntity();
-  if (!$user->isNew()) {
-    return;
-  }
-
-  $form['actions']['submit']['#submit'][] = 'piv_user_form_user_poet_network_form_custom_submit';
+function piv_user_form_user_admin_settings_alter(&$form, FormStateInterface $form_state) {
+  $form['registration_cancellation']['user_register']['#prefix'] = t('<b class="warning">Account registration is managed by piv_user in the /create-account route.</b>');
+  $form['registration_cancellation']['user_register']['#disabled'] = TRUE;
 }
 
 /**
- * Custom submit for poet creation form.
+ * Implements hook_preprocess_html().
  */
-function piv_user_form_user_poet_network_form_custom_submit(&$form, FormStateInterface $form_state) {
-  $user = $form_state->getFormObject()->getEntity();
-  $user->addRole('poet_network');
-  $user->save();
-  \Drupal::messenger()->deleteByType(Messenger::TYPE_STATUS);
-  \Drupal::messenger()->addStatus(t('Thank you very much for applying for a Poet Network account. We will review your application and contact you soon. -The Poetry In Voice Team.'));
+function piv_user_preprocess_html(&$variables) {
+  $route = \Drupal::routeMatch();
+  if ($route->getRouteName() == 'entity.user.canonical') {
+    try {
+      $user = $route->getParameter('user');
+      $current_user = \Drupal::currentUser();
+      if ($current_user->id() == $user->id()) {
+        // Do not redirect if thats the current user page.
+        return;
+      }
+      if (count($user->field_poem_languages) > 1) {
+        // Poems in both languages, do not redirect.
+        return;
+      }
+      if ($user->field_bilingual->value == 1) {
+        // User is bilingual, do not redirect.
+        return;
+      }
+      if (!$user->hasRole('poet') && !$user->hasRole('poet_network')) {
+        // If not poet or poet_network, do not redirect.
+        return;
+      }
+      $user_langcode = $user->preferred_langcode->value;
+      $current_langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      if ($current_langcode == $user_langcode) {
+        // If already in user preferred language, do not redirect.
+        return;
+      }
 
-  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
-  $replacements_service = \Drupal::service('piv_mail.replacements_service');
-  $replacements_service->addSource('user', $user);
-  piv_mail_send_mail('poet_applied_admin', $langcode, $replacements_service);
-
-  // Do not redirect.
-  $form_state->disableRedirect();
-}
-
-/**
- * Implements hook_form_FORM_ID_alter().
- *
- * Alter the user registration form for teachers.
- */
-function piv_user_form_user_teacher_edit_form_alter(&$form, FormStateInterface $form_state) {
-  $user = $form_state->getFormObject()->getEntity();
-  if (!$user->isNew()) {
-    return;
+      // Redirect to poet preferred language.
+      $url = $user->toUrl();
+      $url->setOption('language', $user->preferred_langcode->language);
+      $response = new RedirectResponse($url->toString());
+      $response->send();
+      return;
+    }
+    catch (\Exception $e) {
+      // Do nothing.
+    }
   }
-
-  $form['actions']['submit']['#submit'][] = 'piv_user_form_user_teacher_edit_form_custom_submit';
-
-  // Value will be set on submit for value = 1.
-  $form['field_school']['widget'][0]['target_id']['#states'] = [
-    'required' => [
-      [
-        [':input[name="field_canadian_educator_"]' => ['value' => 0]],
-        'or',
-        [':input[name="field_canadian_educator_"]' => ['value' => 2]],
-      ],
-    ],
-    'invisible' => [
-      [':input[name="field_canadian_educator_"]' => ['value' => 1]],
-    ],
-  ];
-}
-
-/**
- * Custom form submit.
- *
- * Handles roles, redirects and messages.
- *
- * @see Drupal\user\RegisterForm::submitForm()
- */
-function piv_user_form_user_teacher_edit_form_custom_submit(&$form, FormStateInterface $form_state) {
-  $user = $form_state->getFormObject()->getEntity();
-
-  $need_save = FALSE;
-  switch ($user->field_canadian_educator_->value) {
-    // "I work at a canadian school".
-    case 0:
-      $user->activate()
-        ->addRole('teacher');
-      $need_save = TRUE;
-      break;
-
-    // "I am in Canada but am not affiliated with a school".
-    case 1:
-      $user->activate()
-        ->addRole('teacher');
-      $user->field_school = ['target_id' => 22469];
-      $need_save = TRUE;
-      break;
-
-    // "I work outside of Canada".
-    case 2:
-      $user->activate()
-        ->addRole('non_canadian_educator');
-      $need_save = TRUE;
-      break;
-
-  }
-
-  if ($need_save) {
-    $user->save();
-  }
-
-  $url = Url::fromUri('mailto://webmaster@poetryinvoice.com');
-  $link = Link::fromTextAndUrl('webmaster@poetryinvoice.com', $url);
-
-  \Drupal::messenger()->deleteByType(Messenger::TYPE_STATUS);
-  \Drupal::messenger()->addStatus(t('Thank you @display_name, we have sent you an email with a link to login. If you do not receive the email, please check your spam folder. Then, if needed, write to us at @email', [
-    '@display_name' => $user->getDisplayName(),
-    '@email' => $link->toString(),
-  ]));
-
-  $form_state->setRedirect('user.login');
 }
