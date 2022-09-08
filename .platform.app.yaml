@@ -155,6 +155,9 @@ web:
             allow: true
             expires: 5m
             root: 'web/journal'
+            index: 
+              - index.html
+              - index.htm
 crons:
     # Run Drupal's cron tasks every 19 minutes.
     drupal:
