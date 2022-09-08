@@ -1740,6 +1740,7 @@ h3.name {
   padding: 20px;
   border-radius: 10px;
   width: fit-content;
+  max-width: 40%;
 }
 .owl-nav {
   font-size: 50px;
@@ -1756,6 +1757,9 @@ h3.name {
 }
 /* Only for non-mobile */
 @media (max-width: 867px) {
+  .page-view-frontpage .owl-carousel .owl-item .container {
+    max-width: 100%;
+  }
   .page-view-frontpage .owl-carousel .owl-item .container.fca-text {
     right: 5%;
     bottom: 5%;
