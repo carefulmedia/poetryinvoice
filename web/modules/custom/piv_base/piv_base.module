@@ -48,6 +48,13 @@ function piv_base_entity_form_mode_alter(&$form_mode, EntityInterface $entity) {
  */
 function piv_base_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   if (in_array($form_id, [
+    'paragraph_poet_questionnaire_form',
+    'paragraph_teacher_questionnaire_form',
+  ])) {
+    $form['actions']['submit']['#submit'][] = 'piv_base_form_survey_custom_submit';
+  }
+
+  if (in_array($form_id, [
     'node_pal_pir_school_visit_form',
     'node_pal_pir_school_visit_edit_form',
   ])) {
@@ -121,4 +128,31 @@ function piv_base_preprocess_html(&$variables) {
       '#form' => \Drupal::formBuilder()->getForm('\Drupal\piv_base\Form\PivWelcomeModal'),
     ];
   }
+}
+
+/**
+ * Custom submit handler for paragraph surveys.
+ */
+function piv_base_form_survey_custom_submit($form, FormStateInterface $form_state) {
+  $paragraph = $form_state->getFormObject()->getEntity();
+  $node = $form_state->get('survey_paragraph_node') ?? $paragraph->getParentEntity();
+  // If editing a paragraph that exists, the field_name will be empty. It is not
+  // a problem since the node already references the paragraph.
+  $field_name = $form_state->get('survey_paragraph_field');
+  if ($node && $field_name && $paragraph) {
+    $node->{$field_name} = $paragraph;
+    $node->save();
+  }
+  if ($paragraph->bundle() == 'poet_questionnaire') {
+    $form_state->setRedirect('piv_base.poet_survey_view', [
+      'node' => $node->id(),
+    ]);
+  }
+  elseif ($paragraph->bundle() == 'teacher_questionnaire') {
+    $form_state->setRedirect('piv_base.teacher_survey_view', [
+      'node' => $node->id(),
+    ]);
+  }
+
+  \Drupal::messenger()->addMessage(t('The changes have been saved.'));
 }

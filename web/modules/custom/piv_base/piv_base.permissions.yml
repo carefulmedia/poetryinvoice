@@ -1,0 +1,9 @@
+edit any poet questionnaire:
+  title: 'Edit any Poet questionnaire'
+  description: 'Allow users to edit poet questionnaires.'
+  restrict access: true
+
+edit any teacher questionnaire:
+  title: 'Edit any Teacher questionnaire'
+  description: 'Allow users to edit teacher questionnaires.'
+  restrict access: true

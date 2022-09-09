@@ -6,6 +6,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Locale\CountryManagerInterface;
 use Drupal\Core\Datetime\DateFormatterInterface;
+use Drupal\Core\Link;
 
 /**
  * Do the replacements for piv_mail.
@@ -50,8 +51,8 @@ class ReplacementsService {
       'poet_name',
       'visit_datetime',
       'visit_admin',
-      'link_to_poet_survey_href',
-      'link_to_teacher_survey_href',
+      'link_to_poet_survey',
+      'link_to_teacher_survey',
       'visit_notes',
       'link_to_poet_page_href',
       'visit_type',
@@ -281,9 +282,15 @@ class ReplacementsService {
         case 'visit_language':
           return $sources['visit_node']->language()->getName();
 
-        case 'link_to_poet_survey_href':
-        case 'link_to_teacher_survey_href':
-          return "@todo ($token)";
+        case 'link_to_poet_survey':
+          return Link::createFromRoute($this->t('Link to survey'), 'piv_base.poet_survey', [
+            'node' => $sources['visit_node']->id(),
+          ])->toString()->getGeneratedLink();
+
+        case 'link_to_teacher_survey':
+          return Link::createFromRoute($this->t('Link to survey'), 'piv_base.teacher_survey', [
+            'node' => $sources['visit_node']->id(),
+          ])->toString()->getGeneratedLink();
 
         // Team regional entry.
         case 'contest_name':
@@ -341,8 +348,8 @@ class ReplacementsService {
     // Do not add the prefix to modified links.
     $ignore_modified_tokens = [
       'link_to_poet_page_href',
-      'link_to_teacher_survey_href',
-      'link_to_poet_survey_href',
+      'link_to_teacher_survey',
+      'link_to_poet_survey',
     ];
     foreach ($this::$tokens as $source => $tokens) {
       if (!empty($this->sources[$source])) {

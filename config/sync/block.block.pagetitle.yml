@@ -1,0 +1,18 @@
+uuid: 73cac04d-de12-4c29-b10d-268f53c455a2
+langcode: en
+status: true
+dependencies:
+  theme:
+    - lvp_barrio
+id: pagetitle
+theme: lvp_barrio
+region: content
+weight: -17
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

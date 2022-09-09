@@ -1,0 +1,19 @@
+piv_base.poet_survey_view:
+  route_name: piv_base.poet_survey_view
+  title: 'View'
+  base_route: piv_base.poet_survey_view
+
+piv_base.poet_survey:
+  route_name: piv_base.poet_survey
+  title: 'Edit'
+  base_route: piv_base.poet_survey_view
+
+piv_base.teacher_survey_view:
+  route_name: piv_base.teacher_survey_view
+  title: 'View'
+  base_route: piv_base.teacher_survey_view
+
+piv_base.teacher_survey:
+  route_name: piv_base.teacher_survey
+  title: 'Edit'
+  base_route: piv_base.teacher_survey_view

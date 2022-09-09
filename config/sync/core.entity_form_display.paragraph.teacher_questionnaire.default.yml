@@ -19,6 +19,7 @@ dependencies:
     - field.field.paragraph.teacher_questionnaire.field_work_student_teacher
     - paragraphs.paragraphs_type.teacher_questionnaire
   module:
+    - conditional_fields
     - field_layout
     - layout_discovery
 third_party_settings:
@@ -38,13 +39,57 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        1cfdcd2c-a56b-44ae-bcd4-d679a3baffc6:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_expectations_teacher:
     type: options_buttons
     weight: 4
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        c23c8e72-b5a5-4068-b976-1d428ecc22ab:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: "0\r\n1"
+            value_form:
+              -
+                value: null
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_feedback_teacher:
     type: string_textarea
     weight: 12
@@ -52,31 +97,141 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        87f76cbe-0410-447f-be7b-d01d5808b4b0:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: "0\r\n1"
+            value_form:
+              -
+                value: null
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_how_did_you_hear_about_the:
     type: options_buttons
     weight: 2
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        b6a6fe25-adc1-4c78-ab52-fe1bcdbd5fab:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: "0\r\n1"
+            value_form:
+              -
+                value: null
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_poet_engagement_teacher:
     type: options_buttons
     weight: 8
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        4fd435b6-12a5-48b2-aa60-2011bdef3d08:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_poet_preparation_teacher:
     type: options_buttons
     weight: 6
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        fc42e575-4805-4fe7-b2d8-e1d0aa745129:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_release_teacher:
     type: options_buttons
     weight: 13
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        05451932-9bda-444e-b1db-da870b1212ac:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_remarkable_teacher:
     type: string_textarea
     weight: 10
@@ -84,13 +239,57 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        46a4d58c-9871-416d-9f90-bf2f13a8c00a:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_student_engaglement_teache:
     type: options_buttons
     weight: 7
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        ce62fc15-6d5a-4c41-a649-91efbeb331b0:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_teacher_incomplete_reason:
     type: string_textarea
     weight: 1
@@ -98,32 +297,119 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        c061a792-5d38-4d8c-9070-6a41c30f14b1:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '0'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_teacher_preparation_teache:
     type: options_buttons
     weight: 5
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        22167cad-09bc-464b-a3ec-877246f7df6d:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_visit_completed_teacher:
-    type: boolean_checkbox
+    type: options_buttons
     weight: 0
     region: content
-    settings:
-      display_label: true
+    settings: {  }
     third_party_settings: {  }
   field_which_grade_s_participated:
     type: options_buttons
     weight: 3
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        4c45024e-3961-465d-a1d2-ca828c3c8175:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_work_student_teacher:
     type: options_buttons
     weight: 9
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        8a0eb3f8-cfe7-4f1f-89ae-7a11c5473bcd:
+          entity_type: paragraph
+          bundle: teacher_questionnaire
+          dependee: field_visit_completed_teacher
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
 hidden:
   created: true
   status: true

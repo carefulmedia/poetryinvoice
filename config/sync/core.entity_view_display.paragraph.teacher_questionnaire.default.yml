@@ -1,0 +1,133 @@
+uuid: 1bb51577-f147-4753-8a78-dbf58419b080
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.teacher_questionnaire.field_effect_teacher
+    - field.field.paragraph.teacher_questionnaire.field_expectations_teacher
+    - field.field.paragraph.teacher_questionnaire.field_feedback_teacher
+    - field.field.paragraph.teacher_questionnaire.field_how_did_you_hear_about_the
+    - field.field.paragraph.teacher_questionnaire.field_poet_engagement_teacher
+    - field.field.paragraph.teacher_questionnaire.field_poet_preparation_teacher
+    - field.field.paragraph.teacher_questionnaire.field_release_teacher
+    - field.field.paragraph.teacher_questionnaire.field_remarkable_teacher
+    - field.field.paragraph.teacher_questionnaire.field_student_engaglement_teache
+    - field.field.paragraph.teacher_questionnaire.field_teacher_incomplete_reason
+    - field.field.paragraph.teacher_questionnaire.field_teacher_preparation_teache
+    - field.field.paragraph.teacher_questionnaire.field_visit_completed_teacher
+    - field.field.paragraph.teacher_questionnaire.field_which_grade_s_participated
+    - field.field.paragraph.teacher_questionnaire.field_work_student_teacher
+    - paragraphs.paragraphs_type.teacher_questionnaire
+  module:
+    - options
+id: paragraph.teacher_questionnaire.default
+targetEntityType: paragraph
+bundle: teacher_questionnaire
+mode: default
+content:
+  field_effect_teacher:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_expectations_teacher:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_feedback_teacher:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_how_did_you_hear_about_the:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_poet_engagement_teacher:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_poet_preparation_teacher:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_release_teacher:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_remarkable_teacher:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_student_engaglement_teache:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_teacher_incomplete_reason:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_teacher_preparation_teache:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_visit_completed_teacher:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_which_grade_s_participated:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_work_student_teacher:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true
