@@ -218,6 +218,9 @@ class ReplacementsService {
           return !$a ? '' : "{$a['address_line1']}<br> {$a['locality']}, {$a['administrative_area']}<br> {$country} {$a['postal_code']}";
 
         // Node.
+        case 'nid':
+          return $sources['node']->id();
+
         case 'title':
           return $sources['node']->title->value;
 
