@@ -3823,6 +3823,8 @@ dialog[open].in::backdrop {
   height: 100%;
   box-sizing: content-box;
   width: 100%;
+}
+#welcome-modal[open] {
   display: block;
 }
 #welcome-modal .user-menu a {

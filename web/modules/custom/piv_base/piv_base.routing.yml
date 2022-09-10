@@ -5,3 +5,35 @@ piv_base.welcome_modal_settings:
     _form: 'Drupal\piv_base\Form\PivWelcomeModalSettingsForm'
   requirements:
     _permission: 'administer site configuration'
+
+piv_base.teacher_survey:
+  path: '/survey/teacher/{node}'
+  defaults:
+    _title: 'Teacher Survey'
+    _controller: '\Drupal\piv_base\Controller\SurveyController::teacherForm'
+  requirements:
+    _custom_access: '\Drupal\piv_base\Controller\SurveyController::teacherFormAccess'
+
+piv_base.poet_survey:
+  path: '/survey/poet/{node}'
+  defaults:
+    _title: 'Poet Survey'
+    _controller: '\Drupal\piv_base\Controller\SurveyController::poetForm'
+  requirements:
+    _custom_access: '\Drupal\piv_base\Controller\SurveyController::poetFormAccess'
+
+piv_base.teacher_survey_view:
+  path: '/survey/teacher/{node}/view'
+  defaults:
+    _title: 'Teacher Survey'
+    _controller: '\Drupal\piv_base\Controller\SurveyController::teacherView'
+  requirements:
+    _custom_access: '\Drupal\piv_base\Controller\SurveyController::teacherViewAccess'
+
+piv_base.poet_survey_view:
+  path: '/survey/poet/{node}/view'
+  defaults:
+    _title: 'Poet Survey'
+    _controller: '\Drupal\piv_base\Controller\SurveyController::poetView'
+  requirements:
+    _custom_access: '\Drupal\piv_base\Controller\SurveyController::poetViewAccess'

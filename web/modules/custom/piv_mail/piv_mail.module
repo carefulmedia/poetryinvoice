@@ -337,8 +337,9 @@ function piv_mail_cron() {
   $timeout = time() + 300;
   while (time() < $timeout && $item = $mail_queue->claimItem()) {
     try {
-      $replacements_service->unpack($item->data);
-      if (piv_mail_send_mail($item->key, $item->langcode, $replacements_service)) {
+      $data = $item->data;
+      $replacements_service->unpack($data['replacements_data']);
+      if (piv_mail_send_mail($data['key'], $data['langcode'], $replacements_service)) {
         $mail_queue->deleteItem($item);
       }
     }

@@ -37,8 +37,9 @@ dialog[open].in::backdrop {
   height: 100%;
   box-sizing: content-box;
   width: 100%;
-  display: block;
-
+  &[open] {
+    display: block;
+  }
   .user-menu a {
     margin-left: 0;
     margin-right: 1rem;
