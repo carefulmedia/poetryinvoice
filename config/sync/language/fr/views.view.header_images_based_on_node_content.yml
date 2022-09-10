@@ -11,19 +11,47 @@ display:
       footer:
         area:
           content:
-            value: "<div class=\"container\">\r\n<h1 class=\"hero\"><a href=\"/lire\">#lirepoésie</a></h1>\r\n</div>\r\n"
+            value: "<div class=\"container\">\r\n<h1 class=\"hero\"><a href=\"/lire\">#lire</a></h1>\r\n</div>\r\n"
             format: full_html
   block_2:
     display_options:
       footer:
         area:
           content:
-            value: '<div class="container"><h1 class="hero"><a href="/lire">#rFRTKecitepoetry</a></h1></div>'
+            value: '<div class="container"><h1 class="hero"><a href="/recite">#réciter</a></h1></div>'
             format: php_code
   block_7:
     display_options:
       footer:
         area:
           content:
-            value: "<div class=\"container\">\r\n<h1 class=\"hero\"><a href=\"/mixtapes\">mixtapes</a></h1>\r\n</div>\r\n"
+            value: "<div class=\"container\">\r\n<h1 class=\"hero\"><a href=\"/lire\">lire</a></h1>\r\n</div>\r\n"
             format: full_html
+  block_3:
+    display_options:
+      footer:
+        area:
+          content:
+            value: '<div class="container"><h1 class="hero"><a href="/ecrire">#écrire</a></h1></div>'
+            format: php_code
+  block_4:
+    display_options:
+      footer:
+        area:
+          content:
+            value: '<div class="container"><h1 class="hero"><a href="/enseigner">#enseigner</a></h1></div>'
+            format: php_code
+  block_5:
+    display_options:
+      footer:
+        area:
+          content:
+            value: '<div class="container"><h1 class="hero"><a href="/ecouter/videos">#écouter</a></h1></div>'
+            format: php_code
+  block_6:
+    display_options:
+      footer:
+        area:
+          content:
+            value: '<div class="container"><h1 class="hero"><a href="/propos">#àpropos</a></h1></div>'
+            format: php_code

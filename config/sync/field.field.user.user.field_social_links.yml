@@ -15,23 +15,7 @@ label: 'Social links'
 description: ''
 required: false
 translatable: false
-default_value:
-  -
-    actions: {  }
-    link: ''
-    social: facebook
-  -
-    actions: {  }
-    link: ''
-    social: twitter
-  -
-    actions: {  }
-    link: ''
-    social: youtube
-  -
-    actions: {  }
-    link: ''
-    social: instagram
+default_value: {  }
 default_value_callback: ''
 settings:
   platforms:

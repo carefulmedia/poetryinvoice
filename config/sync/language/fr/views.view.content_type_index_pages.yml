@@ -57,3 +57,32 @@ display:
         field_prompt_or_exercise_value:
           expose:
             label: 'Exercice rapide ou en profondeur'
+  block_14:
+    display_options:
+      header:
+        area:
+          content:
+            value: "<p>test</p>\r\n"
+            format: filtered_html
+  block_5:
+    display_options:
+      filters:
+        combine:
+          expose:
+            label: 'Recherche d''auteur, de poèmes, de mots-clés, etc.'
+        field_grades_value:
+          expose:
+            label: Années
+        field_file_under__target_id:
+          expose:
+            label: Sujets
+      sorts:
+        random:
+          expose:
+            label: 'Au hazard'
+        created_1:
+          expose:
+            label: 'Le plus récent'
+      exposed_form:
+        options:
+          exposed_sorts_label: 'Trier par'

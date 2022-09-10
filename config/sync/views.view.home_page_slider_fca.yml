@@ -8,6 +8,7 @@ dependencies:
     - field.storage.block_content.field_link_if_not_to_story_page
     - field.storage.block_content.field_story_image
     - field.storage.block_content.field_sub_headline
+    - field.storage.block_content.field_welcome_modal_
     - field.storage.node.field_image
     - field.storage.node.field_images_insert
     - image.style.focal_point_2000x800
@@ -1134,6 +1135,125 @@ display:
           label: ''
           exclude: true
           alter:
+            alter_text: true
+            text: 'href="{{ view_node }}"'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: true
+        field_link_if_not_to_story_page:
+          id: field_link_if_not_to_story_page
+          table: block_content__field_link_if_not_to_story_page
+          field: field_link_if_not_to_story_page
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: 'href="{{ field_link_if_not_to_story_page__uri }}" '
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: '{{ view_node }}'
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_welcome_modal_:
+          id: field_welcome_modal_
+          table: block_content__field_welcome_modal_
+          field: field_welcome_modal_
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
             alter_text: false
             text: ''
             make_link: false
@@ -1169,70 +1289,16 @@ display:
           element_wrapper_class: ''
           element_default_classes: true
           empty: ''
-          hide_empty: false
+          hide_empty: true
           empty_zero: false
           hide_alter_empty: true
-          text: view
-          output_url_as_text: true
-          absolute: true
-        field_link_if_not_to_story_page:
-          id: field_link_if_not_to_story_page
-          table: block_content__field_link_if_not_to_story_page
-          field: field_link_if_not_to_story_page
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: true
-            text: '{{ field_link_if_not_to_story_page__uri }} '
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: '{{ view_node }} '
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: uri
-          type: link
+          click_sort_column: value
+          type: boolean
           settings:
-            trim_length: 80
-            url_only: false
-            url_plain: false
-            rel: '0'
-            target: '0'
-          group_column: ''
+            format: custom
+            format_custom_false: ''
+            format_custom_true: open-welcome-modal
+          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -1254,7 +1320,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"blur\">{{ field_story_image }}</div>\r\n<a href=\"{{ field_link_if_not_to_story_page }}\" class=\"area-link\">\r\n<div>{{ field_story_image }}</div>\r\n<div class=\"container fca-text\"><h1 class=\"light\">{{ field_headline }}</h1>\r\n{{ field_sub_headline }}\r\n</div>\r\n</a>"
+            text: "<div class=\"blur\">{{ field_story_image }}</div>\r\n<a {{ field_link_if_not_to_story_page }} class=\"area-link  {{ field_welcome_modal_ }}\">\r\n<div>{{ field_story_image }}</div>\r\n<div class=\"container fca-text\"><h1 class=\"light\">{{ field_headline }}</h1>\r\n{{ field_sub_headline }}\r\n</div>\r\n</a>"
             make_link: false
             path: ''
             absolute: false
@@ -1509,6 +1575,7 @@ display:
           nav: 0
           autoplay: 1
           autoplayHoverPause: 1
+          loop: 1
           dots: 1
           dimensionMobile: ''
           itemsMobile: '1'
@@ -1539,6 +1606,7 @@ display:
         - 'config:field.storage.block_content.field_link_if_not_to_story_page'
         - 'config:field.storage.block_content.field_story_image'
         - 'config:field.storage.block_content.field_sub_headline'
+        - 'config:field.storage.block_content.field_welcome_modal_'
         - 'config:field.storage.node.field_image'
         - 'config:field.storage.node.field_images_insert'
   block_2:

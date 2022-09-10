@@ -61,7 +61,7 @@ display:
             label: Type
         status:
           expose:
-            label: 'True'
+            label: Oui
           group_info:
             label: 'Published status'
             group_items:

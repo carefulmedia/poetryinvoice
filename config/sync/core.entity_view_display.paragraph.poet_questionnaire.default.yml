@@ -1,0 +1,137 @@
+uuid: f4eb77d6-ea32-45e7-949f-eb51a8ff6175
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.poet_questionnaire.field_expectations_poet
+    - field.field.paragraph.poet_questionnaire.field_other_focus
+    - field.field.paragraph.poet_questionnaire.field_poet_feedback
+    - field.field.paragraph.poet_questionnaire.field_poet_focus
+    - field.field.paragraph.poet_questionnaire.field_poet_incomplete_reason
+    - field.field.paragraph.poet_questionnaire.field_poet_preparation_poet
+    - field.field.paragraph.poet_questionnaire.field_release_teacher
+    - field.field.paragraph.poet_questionnaire.field_remarkable_teacher
+    - field.field.paragraph.poet_questionnaire.field_student_engagement_poet
+    - field.field.paragraph.poet_questionnaire.field_teacher_involvement_poet
+    - field.field.paragraph.poet_questionnaire.field_teacher_preparation_poet
+    - field.field.paragraph.poet_questionnaire.field_teacher_present
+    - field.field.paragraph.poet_questionnaire.field_visit_completed_poet
+    - field.field.paragraph.poet_questionnaire.field_work_student_poet
+    - paragraphs.paragraphs_type.poet_questionnaire
+  module:
+    - options
+id: paragraph.poet_questionnaire.default
+targetEntityType: paragraph
+bundle: poet_questionnaire
+mode: default
+content:
+  field_expectations_poet:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_other_focus:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_poet_feedback:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  field_poet_focus:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_poet_incomplete_reason:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_poet_preparation_poet:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_release_teacher:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_remarkable_teacher:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_student_engagement_poet:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_teacher_involvement_poet:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_teacher_preparation_poet:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_teacher_present:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_visit_completed_poet:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_work_student_poet:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

@@ -19,6 +19,7 @@ dependencies:
     - field.field.paragraph.poet_questionnaire.field_work_student_poet
     - paragraphs.paragraphs_type.poet_questionnaire
   module:
+    - conditional_fields
     - field_layout
     - layout_discovery
 third_party_settings:
@@ -36,7 +37,29 @@ content:
     weight: 2
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        7be1d74a-ec42-4413-a5f3-1c4436cd4c30:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: "0\r\n1"
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_other_focus:
     type: string_textfield
     weight: 4
@@ -44,7 +67,50 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        64bfe876-81dc-4783-9c35-90ae7ba14cd1:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_poet_focus
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: Other
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
+        a14bc548-13a6-4798-b00b-9d9e7b8bf466:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_poet_feedback:
     type: string_textarea
     weight: 12
@@ -52,13 +118,57 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        e6a4f50a-649f-43b0-abbf-280527f581e1:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: "0\r\n1"
+            value_form:
+              -
+                value: null
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_poet_focus:
     type: options_buttons
     weight: 3
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        f56fa73d-7eca-4fb1-a5fe-5eed0ea1f454:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_poet_incomplete_reason:
     type: string_textarea
     weight: 1
@@ -66,19 +176,85 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        141f854d-f683-40f4-ba18-9184aa3ce1e0:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '0'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_poet_preparation_poet:
     type: options_buttons
     weight: 5
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        0c0f995a-2246-4bdb-a188-debe440543c3:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_release_teacher:
     type: options_buttons
     weight: 13
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        e7d4d8dd-7b4f-48d8-aa79-3f9fa410c429:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_remarkable_teacher:
     type: string_textarea
     weight: 11
@@ -86,45 +262,175 @@ content:
     settings:
       rows: 5
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        090e6e6b-67d2-42f5-b0ec-6fee913a1cfd:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_student_engagement_poet:
     type: options_buttons
     weight: 7
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        b4baeddb-f496-4b5b-8409-d0e837e68b95:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_teacher_involvement_poet:
     type: options_buttons
     weight: 8
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        5797c064-5968-41dc-9b53-2dfb303b8bbc:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_teacher_preparation_poet:
     type: options_buttons
     weight: 6
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        14dd58fe-7740-4551-a4ec-62fc590354cb:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_teacher_present:
-    type: boolean_checkbox
+    type: options_buttons
     weight: 10
     region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        4b0e5c63-0339-4660-a236-725590b2b1c3:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_visit_completed_poet:
-    type: boolean_checkbox
+    type: options_buttons
     weight: 0
     region: content
-    settings:
-      display_label: true
+    settings: {  }
     third_party_settings: {  }
   field_work_student_poet:
     type: options_buttons
     weight: 9
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        94d7b766-134b-4af6-a1fd-05276ac355d6:
+          entity_type: paragraph
+          bundle: poet_questionnaire
+          dependee: field_visit_completed_poet
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: '1'
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
 hidden:
   created: true
   status: true

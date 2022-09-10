@@ -33,3 +33,12 @@ display:
             format: filtered_html
       use_more_text: 'VOIR TOUT'
       link_url: /lire/poetes
+  block_2:
+    display_options:
+      filters:
+        field_virtual_visits_value:
+          expose:
+            label: 'Je suis intéressé à faire des visites virtuelles'
+        field_i_am_interested_in_doing_i_value:
+          expose:
+            label: 'Je suis intéressé à faire des visites en classe'

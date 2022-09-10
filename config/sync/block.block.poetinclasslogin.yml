@@ -2,10 +2,7 @@ uuid: c6e44c16-8c18-426d-8a85-921416f45961
 langcode: en
 status: true
 dependencies:
-  content:
-    - 'block_content:basic:c61feac3-2d25-461a-b421-c7739dd775da'
   module:
-    - block_content
     - system
     - user
   theme:
@@ -13,7 +10,7 @@ dependencies:
 id: poetinclasslogin
 theme: lvp_barrio
 region: content
-weight: 0
+weight: -11
 provider: null
 plugin: 'block_content:c61feac3-2d25-461a-b421-c7739dd775da'
 settings:
