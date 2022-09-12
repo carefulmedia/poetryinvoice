@@ -13,9 +13,9 @@ dependencies:
     - node.type.journal_poem
   module:
     - address
-    - image
     - node
     - options
+    - svg_image
     - user
 id: journal_poem_sidebar
 label: 'Journal poem sidebar'
@@ -461,8 +461,8 @@ display:
           label: ''
           exclude: true
           alter:
-            alter_text: true
-            text: '{{ field_poem_reason__value }}'
+            alter_text: false
+            text: '{{ field_poem_reason }} '
             make_link: false
             path: ''
             absolute: false
@@ -483,7 +483,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: true
+            strip_tags: false
             trim: false
             preserve_tags: ''
             html: false

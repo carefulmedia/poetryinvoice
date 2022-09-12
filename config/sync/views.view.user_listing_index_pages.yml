@@ -2959,7 +2959,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
+            strip_tags: true
             trim: false
             preserve_tags: ''
             html: false
@@ -3055,7 +3055,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"index-views mixtape content-index\">\r\n\r\n\r\n            <div class=\"image\">\r\n    <a href=\"{{ view_user }} \" class=\"area-link\" style=\"display:block\">\r\n {{ user_picture }}\r\n</a>\r\n        <span class=\"book\"><a href=\"/node/add/pal_pir_school_visit?edit[field_preferred_poet_s_][widget]={{ uid }} \">Request {{ piv_teacher_first_name }} </a></span>\r\n            </div>\t\r\n    <a href=\"{{ view_user }} \" class=\"area-link\" style=\"display:block\">\r\n\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ name }}</h3>\r\n<h4>{{ field_address_locality }}, {{ field_address_administrative_area }}</h4>\r\n<p>{{ field_user_bio }} </p>\r\n            </div>\r\n</a>\r\n        <div class=\"fadeout\"></div>\r\n\r\n</div>\r\n"
+            text: "<div class=\"index-views mixtape content-index\">\r\n\r\n            <div class=\"image\">\r\n {{ user_picture }}\r\n\r\n        <span class=\"book\"><a href=\"/node/add/pal_pir_school_visit?edit[field_preferred_poet_s_][widget]={{ uid }} \">Request {{ piv_teacher_first_name }}</a></span>\r\n            </div>\t\r\n\r\n\t<a href=\"{{ view_user }} \" class=\"area-link\"/>\t\t\r\n            <div class=\"content\">\r\n\r\n              \t\t<h3>{{ name }}</h3>\r\n<h4>{{ field_address_locality }}, {{ field_address_administrative_area }}</h4>\r\n<p>{{ field_user_bio }} </p>\r\n\r\n            </div>\r\n</a>\r\n        <div class=\"fadeout\"></div>\r\n\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -3233,13 +3233,14 @@ display:
         type: owlcarousel
         options:
           grouping: {  }
-          row_class: picpcal
+          row_class: picpca
           default_row_class: true
           items: '3'
           margin: '30'
           nav: 0
           autoplay: 1
           autoplayHoverPause: 1
+          loop: 0
           dots: 1
           dimensionMobile: '0'
           itemsMobile: '1'

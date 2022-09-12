@@ -1,0 +1,21 @@
+uuid: d9d92231-baa5-4d0f-bce4-93ac94dcb4b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.home_page_fca_slider_stories
+    - field.storage.block_content.field_welcome_modal_
+id: block_content.home_page_fca_slider_stories.field_welcome_modal_
+field_name: field_welcome_modal_
+entity_type: block_content
+bundle: home_page_fca_slider_stories
+label: 'Welcome modal?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

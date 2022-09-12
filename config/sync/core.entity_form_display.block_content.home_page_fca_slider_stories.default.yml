@@ -12,12 +12,13 @@ dependencies:
     - field.field.block_content.home_page_fca_slider_stories.field_story_image
     - field.field.block_content.home_page_fca_slider_stories.field_story_page_linked_to
     - field.field.block_content.home_page_fca_slider_stories.field_sub_headline
+    - field.field.block_content.home_page_fca_slider_stories.field_welcome_modal_
     - image.style.thumbnail
   module:
     - field_layout
-    - image
     - layout_discovery
     - link
+    - svg_image
     - text
 third_party_settings:
   field_layout:
@@ -90,6 +91,13 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_welcome_modal_:
+    type: boolean_checkbox
+    weight: 34
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   info:
     type: string_textfield

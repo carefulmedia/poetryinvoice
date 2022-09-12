@@ -339,6 +339,7 @@ display:
           nav: 0
           autoplay: 1
           autoplayHoverPause: 1
+          loop: 1
           dots: 1
           dimensionMobile: '0'
           itemsMobile: '1'
@@ -647,6 +648,7 @@ display:
           nav: 0
           autoplay: 1
           autoplayHoverPause: 1
+          loop: 1
           dots: 1
           dimensionMobile: '0'
           itemsMobile: '1'
@@ -1710,6 +1712,7 @@ display:
           nav: 0
           autoplay: 1
           autoplayHoverPause: 1
+          loop: 1
           dots: 1
           dimensionMobile: '0'
           itemsMobile: '1'
@@ -2168,6 +2171,7 @@ display:
           nav: 0
           autoplay: 1
           autoplayHoverPause: 1
+          loop: 1
           dots: 1
           dimensionMobile: '0'
           itemsMobile: '1'
@@ -2585,6 +2589,7 @@ display:
           nav: 0
           autoplay: 0
           autoplayHoverPause: 1
+          loop: 1
           dots: 1
           dimensionMobile: '0'
           itemsMobile: '1'
