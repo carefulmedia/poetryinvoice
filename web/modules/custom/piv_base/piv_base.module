@@ -9,6 +9,8 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Url;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Implements hook_user_format_name_alter().
@@ -119,6 +121,23 @@ function piv_base_theme($existing, $type, $theme, $path) {
  * Implements hook_preprocess_page().
  */
 function piv_base_preprocess_html(&$variables) {
+  $route = \Drupal::routeMatch();
+  if ($route->getRouteName() == 'entity.node.canonical') {
+    if ($node = $route->getParameter('node')) {
+      // If there is no translation for the current node to the current site
+      // language, redirect the user to the original node language url.
+      $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      if (!$node->hasTranslation($langcode)) {
+        $default_language = $node->language();
+        $url = $node->toUrl();
+        $url->setOption('language', $default_language);
+        $response = new RedirectResponse($url->toString());
+        $response->send();
+        return;
+      }
+    }
+  }
+
   if (!\Drupal::service('router.admin_context')->isAdminRoute()) {
     $entity_type_manager = \Drupal::entityTypeManager();
     $block = $entity_type_manager->getStorage('block')->load('useraccountmenu');
@@ -155,4 +174,23 @@ function piv_base_form_survey_custom_submit($form, FormStateInterface $form_stat
   }
 
   \Drupal::messenger()->addMessage(t('The changes have been saved.'));
+}
+
+/**
+ * Implements hook_preprocess_HOOK().
+ */
+function piv_base_preprocess_links__language_block(&$variables) {
+  $route = \Drupal::routeMatch();
+  if ($route->getRouteName() == 'entity.node.canonical') {
+    // If there is no translation, the language switcher should redirect the
+    // user to the frontpage.
+    if ($node = $route->getParameter('node')) {
+      foreach ($variables['links'] as $langcode => &$link) {
+        if (!$node->hasTranslation($langcode)) {
+          // Language is already set in the link options.
+          $link['link']['#url'] = Url::fromRoute('<front>');
+        }
+      }
+    }
+  }
 }
