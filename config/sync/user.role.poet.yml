@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - field_permissions
+    - form_mode_manager
 id: poet
 label: Poet
 weight: 22
@@ -53,6 +54,7 @@ permissions:
   - 'edit own field_user_bio'
   - 'edit own field_visit_completed_poet'
   - 'edit own field_work_student_poet'
+  - 'use user.poet_network form mode'
   - 'view field_expectations_poet'
   - 'view field_other_focus'
   - 'view field_poet_feedback'
