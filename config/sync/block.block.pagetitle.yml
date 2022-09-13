@@ -2,6 +2,8 @@ uuid: 73cac04d-de12-4c29-b10d-268f53c455a2
 langcode: en
 status: true
 dependencies:
+  module:
+    - system
   theme:
     - lvp_barrio
 id: pagetitle
@@ -15,4 +17,8 @@ settings:
   label: 'Page title'
   label_display: '0'
   provider: core
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '/user/*'
