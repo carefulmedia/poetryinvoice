@@ -675,7 +675,6 @@ display:
           nav: 0
           autoplay: 0
           autoplayHoverPause: 0
-          loop: 1
           dots: 1
           dimensionMobile: '1'
           itemsMobile: '1'

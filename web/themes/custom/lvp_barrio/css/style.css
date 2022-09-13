@@ -1284,10 +1284,12 @@ summary {
   overflow: hidden;
   padding: 2rem;
 }
-.view-display-id-block_5 .content-index {
+.page-node-2211 .view-display-id-block_5 .content-index,
+.block-views-blockcontent-type-index-pages-block-12 .content-index {
   padding: 0;
 }
-.view-display-id-block_5 .content-index .area-link {
+.page-node-2211 .view-display-id-block_5 .content-index .area-link,
+.block-views-blockcontent-type-index-pages-block-12 .content-index .area-link {
   padding: 2rem;
 }
 .lesson-plans-index .content-index {
