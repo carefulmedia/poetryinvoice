@@ -1,0 +1,6 @@
+settings:
+  allowed_values:
+    -
+      label: 'Exercice de création rapide'
+    -
+      label: 'Exercice de création en profondeur'

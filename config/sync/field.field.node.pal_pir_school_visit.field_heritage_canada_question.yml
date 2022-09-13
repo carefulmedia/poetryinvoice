@@ -9,7 +9,7 @@ id: node.pal_pir_school_visit.field_heritage_canada_question
 field_name: field_heritage_canada_question
 entity_type: node
 bundle: pal_pir_school_visit
-label: ' Are you teaching French or English as an additional language . . .'
+label: ' Are you teaching French or English as an additional language?'
 description: '. . . or do you teach at an immersion or bilingual school, or in an Official Language Minority Community?'
 required: true
 translatable: false

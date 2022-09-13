@@ -1,6 +1,12 @@
 settings:
   allowed_values:
     -
+      label: '6e primaire'
+    -
+      label: '1re secondaire / 2e année'
+    -
+      label: '2e secondaire / 8e année'
+    -
       label: '3e secondaire / 9e année'
     -
       label: '4e secondaire / 10e année'
