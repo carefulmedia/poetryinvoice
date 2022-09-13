@@ -4,3 +4,9 @@ settings:
       label: '6e année à 2e sec./6e à 8e année'
     4:
       label: '3e sec. au cégep/9e à 12e année'
+    0:
+      label: Maternelle
+    1:
+      label: '1re à 3e année'
+    2:
+      label: '4e à 6e année'
