@@ -4764,5 +4764,8 @@ html::-webkit-scrollbar {
 #block-lessonplanlogin {
   width: fit-content;
 }
+.heart {
+  display: none;
+}
 
 /*# sourceMappingURL=maps/style.css.map */
