@@ -14,6 +14,7 @@ display:
         uid:
           alter:
             text: "<div class=\"index-views mixtape content-index\">\r\n\r\n\r\n            <div class=\"image\">\r\n    <a href=\"{{ view_user }} \" class=\"area-link\" style=\"display:block\">\r\n {{ user_picture }}\r\n</a>\r\n        <span class=\"book\"><a href=\"/node/add/pal_pir_school_visit?edit[field_preferred_poet_s_][widget]={{ uid }} \">Invitez {{ piv_teacher_first_name }} </a></span>\r\n            </div>\t\r\n    <a href=\"{{ view_user }} \" class=\"area-link\" style=\"display:block\">\r\n\t\t\t\r\n            <div class=\"content\">\r\n              \t\t<h3>{{ name }}</h3>\r\n<h4>{{ field_address_locality }}, {{ field_address_administrative_area }}</h4>\r\n<p>{{ field_user_bio }} </p>\r\n            </div>\r\n</a>\r\n        <div class=\"fadeout\"></div>\r\n\r\n</div>\r\n"
+      link_url: /enseigner/poetes-lecole
   block_1:
     display_options:
       sorts:
@@ -42,3 +43,7 @@ display:
         field_i_am_interested_in_doing_i_value:
           expose:
             label: 'Je suis intéressé à faire des visites en classe'
+      fields:
+        uid:
+          alter:
+            text: "<div class=\"index-views mixtape content-index\">\r\n\r\n            <div class=\"image\">\r\n {{ user_picture }}\r\n\r\n        <span class=\"book\"><a href=\"/node/add/pal_pir_school_visit?edit[field_preferred_poet_s_][widget]={{ uid }} \">Inviter {{ piv_teacher_first_name }}</a></span>\r\n            </div>\t\r\n\r\n\t<a href=\"{{ view_user }} \" class=\"area-link\"/>\t\t\r\n            <div class=\"content\">\r\n\r\n              \t\t<h3>{{ name }}</h3>\r\n<h4>{{ field_address_locality }}, {{ field_address_administrative_area }}</h4>\r\n<p>{{ field_user_bio }} </p>\r\n\r\n            </div>\r\n</a>\r\n        <div class=\"fadeout\"></div>\r\n\r\n</div>\r\n"
