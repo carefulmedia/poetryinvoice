@@ -164,3 +164,7 @@ crons:
     drupal:
         spec: '*/19 * * * *'
         cmd: 'cd web ; drush core-cron'
+    # Run roulette every hour at minute 0
+    roulette:
+        spec: '0 * * * *'
+        cmd: 'cd web/roulette/cached ; bash generate-cache.sh'
