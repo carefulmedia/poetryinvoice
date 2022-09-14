@@ -19,6 +19,7 @@ display:
               advanced:
                 collapsible_label: 'Trier par'
       use_more_text: Tous
+      link_url: /enseigner/plan-de-cours
   block_3:
     display_options:
       exposed_form:
