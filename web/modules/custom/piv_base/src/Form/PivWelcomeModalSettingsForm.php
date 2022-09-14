@@ -72,9 +72,9 @@ class PivWelcomeModalSettingsForm extends ConfigFormBase {
         'poet_inside' => $this->t('I am a <u>poet</u> <u>inside</u> canada'),
         'poet_outside' => $this->t('I am a <u>poet</u> <u>outside</u> canada'),
       ],
-      'parent_insideterested_person' => [
-        'parent_insideterested_person_inside' => $this->t('I am a <u>parent/interested person</u> <u>inside</u> canada'),
-        'parent_insideterested_person_outside' => $this->t('I am a <u>parent/interested person</u> <u>outside</u> canada'),
+      'parent_interested_person' => [
+        'parent_interested_person_inside' => $this->t('I am a <u>parent/interested person</u> <u>inside</u> canada'),
+        'parent_interested_person_outside' => $this->t('I am a <u>parent/interested person</u> <u>outside</u> canada'),
       ],
     ];
   }
@@ -88,7 +88,7 @@ class PivWelcomeModalSettingsForm extends ConfigFormBase {
       'student' => $this->t('Student'),
       'teacher' => $this->t('Teacher'),
       'poet' => $this->t('Poet'),
-      'parent_insideterested_person' => $this->t('Parent/Interested Person'),
+      'parent_interested_person' => $this->t('Parent/Interested Person'),
     ];
     $configs = $this->config('piv_base.welcome_modal_settings');
     $possible_configurations = $this->getPossibleConfigurations();
