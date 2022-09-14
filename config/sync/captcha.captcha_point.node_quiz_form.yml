@@ -1,0 +1,7 @@
+uuid: 52e092f8-d478-4fdf-b0cc-2a152a5c6187
+langcode: en
+status: false
+dependencies: {  }
+formId: node_quiz_form
+captchaType: default
+label: node_quiz_form

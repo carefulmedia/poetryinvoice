@@ -1,0 +1,7 @@
+uuid: 4cea2dc5-5014-470f-908d-496570dc63b9
+langcode: en
+status: false
+dependencies: {  }
+formId: node_competition_form
+captchaType: default
+label: node_competition_form

@@ -107,6 +107,7 @@
         "drupal/profile": "^1.4",
         "drupal/quick_node_clone": "^1.15",
         "drupal/realname": "^2.0@beta",
+        "drupal/recaptcha": "^3.0",
         "drupal/redirect": "^1.7",
         "drupal/reroute_email": "^2.1",
         "drupal/responsive_menu": "^4.4",

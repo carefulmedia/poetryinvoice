@@ -1,0 +1,7 @@
+uuid: 36e8186d-005f-476a-80ff-b549211a3da2
+langcode: en
+status: false
+dependencies: {  }
+formId: node_writing_workshop_form
+captchaType: default
+label: node_writing_workshop_form

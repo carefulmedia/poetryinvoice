@@ -1,0 +1,7 @@
+uuid: 5ca7d25b-e38a-43d4-8ae3-78d15a76a805
+langcode: en
+status: false
+dependencies: {  }
+formId: node_competition_session_form
+captchaType: default
+label: node_competition_session_form

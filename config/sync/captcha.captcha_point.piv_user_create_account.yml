@@ -1,0 +1,7 @@
+uuid: ca8e9b8c-5776-4c2c-b140-1ded7d70dc3a
+langcode: en
+status: true
+dependencies: {  }
+formId: piv_user_create_account
+captchaType: default
+label: piv_user_create_account

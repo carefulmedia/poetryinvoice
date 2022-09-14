@@ -1,0 +1,7 @@
+uuid: 84e1d03c-19d6-44db-a96b-69c6386a878d
+langcode: en
+status: false
+dependencies: {  }
+formId: node_poem_rights_contact_form
+captchaType: default
+label: node_poem_rights_contact_form
