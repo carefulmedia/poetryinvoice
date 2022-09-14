@@ -1,0 +1,7 @@
+uuid: 6c2e76a5-9b07-427e-8f96-d93bc5985962
+langcode: en
+status: false
+dependencies: {  }
+formId: node_poll_form
+captchaType: default
+label: node_poll_form

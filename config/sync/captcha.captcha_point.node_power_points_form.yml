@@ -1,0 +1,7 @@
+uuid: b864786a-f82a-489d-9852-443632a73b4e
+langcode: en
+status: false
+dependencies: {  }
+formId: node_power_points_form
+captchaType: default
+label: node_power_points_form

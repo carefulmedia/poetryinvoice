@@ -1,0 +1,7 @@
+uuid: fb3bbd65-648d-47b3-aa19-659f3f220e3d
+langcode: en
+status: false
+dependencies: {  }
+formId: node_quote_form
+captchaType: default
+label: node_quote_form

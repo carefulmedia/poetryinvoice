@@ -1,0 +1,7 @@
+uuid: 4abdf8d6-98e3-457f-9882-89ba80f180fd
+langcode: en
+status: false
+dependencies: {  }
+formId: node_journal_poem_form
+captchaType: default
+label: node_journal_poem_form

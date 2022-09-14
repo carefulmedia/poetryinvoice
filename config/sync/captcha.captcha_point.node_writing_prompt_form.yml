@@ -1,0 +1,7 @@
+uuid: d820b945-de52-4aa1-af69-e38beb301f9e
+langcode: en
+status: false
+dependencies: {  }
+formId: node_writing_prompt_form
+captchaType: default
+label: node_writing_prompt_form

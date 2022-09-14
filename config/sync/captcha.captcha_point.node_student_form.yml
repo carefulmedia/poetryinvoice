@@ -1,0 +1,7 @@
+uuid: 8eb2596a-b674-4ab6-aa39-326c6201d0cd
+langcode: en
+status: false
+dependencies: {  }
+formId: node_student_form
+captchaType: default
+label: node_student_form

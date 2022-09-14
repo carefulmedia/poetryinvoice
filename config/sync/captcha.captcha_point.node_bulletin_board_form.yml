@@ -1,0 +1,7 @@
+uuid: 875e1b79-8166-4533-9bcf-5d222bb63aeb
+langcode: en
+status: false
+dependencies: {  }
+formId: node_bulletin_board_form
+captchaType: default
+label: node_bulletin_board_form

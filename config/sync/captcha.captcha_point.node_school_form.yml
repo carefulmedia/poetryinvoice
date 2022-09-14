@@ -1,0 +1,7 @@
+uuid: f7eec811-911d-454c-8176-67831835a452
+langcode: en
+status: false
+dependencies: {  }
+formId: node_school_form
+captchaType: default
+label: node_school_form

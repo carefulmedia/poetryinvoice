@@ -1,0 +1,7 @@
+uuid: 902690b9-b7af-4b06-99e9-5d04e6534006
+langcode: en
+status: false
+dependencies: {  }
+formId: node_team_regionals_entry_form
+captchaType: default
+label: node_team_regionals_entry_form
