@@ -86,8 +86,7 @@ function piv_base_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   ])) {
     $current_user = \Drupal::currentUser();
     $roles = $current_user->getRoles();
-    if ($current_user->id() != 1
-    && !in_array('superadmin', $roles) {
+    if ($current_user->id() != 1 && !in_array('superadmin', $roles)) {
       $form['langcode']['#access'] = FALSE;
     }
 
