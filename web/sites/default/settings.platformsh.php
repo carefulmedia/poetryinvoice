@@ -187,8 +187,8 @@ if ($platformsh->isValidPlatform()) {
   }
 
   // Platform is set to 512M but we want to limit the memory usage in the site
-  // to 128M. This way drush has enough memory.
+  // to 256M. This way drush has enough memory.
   if (PHP_SAPI !== 'cli') {
-    ini_set('memory_limit', '128M');
+    ini_set('memory_limit', '256M');
   }
 }
