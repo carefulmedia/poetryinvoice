@@ -4793,5 +4793,9 @@ html::-webkit-scrollbar {
 .heart {
   display: none;
 }
+.content img {
+  max-width: 100%;
+  height: auto;
+}
 
 /*# sourceMappingURL=maps/style.css.map */
