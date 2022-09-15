@@ -3800,7 +3800,7 @@ dialog#welcome-modal + .backdrop {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(241, 237, 236, 0.9);
+  background-color: #f1edec;
 }
 dialog,
 dialog[open]::backdrop {
@@ -3821,7 +3821,7 @@ dialog[open].in::backdrop {
 }
 #welcome-modal {
   border: 3px solid rgba(241, 237, 236, 0);
-  background: rgba(241, 237, 236, 0.9);
+  background: #f1edec;
   height: 100%;
   box-sizing: content-box;
   width: 100%;
