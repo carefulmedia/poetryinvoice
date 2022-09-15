@@ -1575,6 +1575,7 @@ display:
           nav: 0
           autoplay: 1
           autoplayHoverPause: 0
+          loop: 1
           dots: 1
           dimensionMobile: ''
           itemsMobile: '1'
