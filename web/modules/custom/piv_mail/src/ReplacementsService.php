@@ -79,7 +79,7 @@ class ReplacementsService {
       'title' => 'Visit admin',
     ],
     'site_admin' => [
-      'title' => 'Site admin (visits@poetryinvoice.com or visits@lesvoixdelapoesie.com)',
+      'title' => 'Site admin (visits@poetryinvoice.ca or visits@lesvoixdelapoesie.ca)',
     ],
     'teacher_that_created_the_visit' => [
       'source' => 'visit_node',
@@ -390,7 +390,7 @@ class ReplacementsService {
 
       case 'site_admin':
         $node = $sources['visit_node'] ?? $sources['node'] ?? NULL;
-        return $node && $node->langcode == 'fr' ? ['visits@lesvoixdelapoesie.com'] : ['visits@poetryinvoice.com'];
+        return $node && $node->langcode == 'fr' ? ['visits@lesvoixdelapoesie.ca'] : ['visits@poetryinvoice.ca'];
 
       case 'teacher_that_created_the_visit':
         $email = $sources['visit_node']->uid->entity->mail->value ?? NULL;
