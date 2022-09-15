@@ -185,9 +185,10 @@ if ($platformsh->isValidPlatform()) {
     $config['s3fs.settings']['private_folder'] = 'private';
     $config['s3fs.settings']['region'] = 'ca-central-1';
   }
-}
 
-// Make sure drush as enough memory.
-if (PHP_SAPI === 'cli') {
-  ini_set('memory_limit', '512M');
+  // Platform is set to 512M but we want to limit the memory usage in the site
+  // to 128M. This way drush has enough memory.
+  if (PHP_SAPI !== 'cli') {
+    ini_set('memory_limit', '128M');
+  }
 }
