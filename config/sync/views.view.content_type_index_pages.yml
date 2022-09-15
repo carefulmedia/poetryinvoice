@@ -2020,7 +2020,7 @@ display:
                   is_secondary: false
                 select_all_none: false
       cache:
-        type: none
+        type: tag
         options: {  }
       sorts:
         random:
@@ -3482,7 +3482,7 @@ display:
                 select_all_none_nested: false
                 display_inline: true
       cache:
-        type: none
+        type: tag
         options: {  }
       sorts:
         random:
@@ -4395,7 +4395,7 @@ display:
                   collapsible: false
                   is_secondary: false
       cache:
-        type: none
+        type: tag
         options: {  }
       sorts:
         random:
