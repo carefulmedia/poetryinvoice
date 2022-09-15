@@ -30,8 +30,7 @@ if (isset($platformsh->branch)) {
   // Production type environment.
   if ($platformsh->branch == 'master' || $platformsh->onDedicated()) {
     $config['system.logging']['error_level'] = 'hide';
-    // For now, production should also re-route emails.
-    $config['reroute_email.settings']['enable'] = TRUE;
+    $config['reroute_email.settings']['enable'] = FALSE;
     // Platform production uses domain for language negotiation, default domains
     // are set for lando.
     $config['language.negotiation']['url']['source'] = 'domain';
