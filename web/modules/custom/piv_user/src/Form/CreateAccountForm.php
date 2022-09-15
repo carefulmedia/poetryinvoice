@@ -104,7 +104,7 @@ class CreateAccountForm extends FormBase {
       '#title' => $this->t('Account type'),
       '#options' => [
         'poet' => $this->t('I am a Canadian poet and would like to join the Poet Network'),
-        'teacher' => $this->t('I work at a canadian school'),
+        'teacher' => $this->t('I work at a Canadian school'),
         'teacher_not_affiliated' => $this->t('I am in Canada but am not affiliated with a school'),
         'non_canadian' => $this->t('I work outside of Canada'),
       ],
