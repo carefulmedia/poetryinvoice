@@ -2647,6 +2647,14 @@ footer .nav-item {
 .main-content p {
   margin-bottom: 2rem;
 }
+/* Article page styles */
+.node--type-article .block-field-blocknodearticlefield-image img {
+  width: 100%;
+}
+.node--type-article .field--type-image {
+  float: none;
+  margin: 0;
+}
 .node-preview-container {
   background: #d1e8f5;
   background-image: -webkit-linear-gradient(top, #d1e8f5, #d3e8f4);

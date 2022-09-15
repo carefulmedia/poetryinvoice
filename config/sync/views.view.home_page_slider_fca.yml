@@ -1574,8 +1574,7 @@ display:
           margin: '0'
           nav: 0
           autoplay: 1
-          autoplayHoverPause: 1
-          loop: 1
+          autoplayHoverPause: 0
           dots: 1
           dimensionMobile: ''
           itemsMobile: '1'
