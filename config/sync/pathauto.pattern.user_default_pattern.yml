@@ -7,7 +7,7 @@ dependencies:
 id: user_default_pattern
 label: 'User default pattern'
 type: 'canonical_entities:user'
-pattern: 'users/[user:name]'
+pattern: 'users/[user:display-name]'
 selection_criteria: {  }
 selection_logic: and
 weight: 4
