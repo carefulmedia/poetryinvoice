@@ -4774,7 +4774,7 @@ html::-webkit-scrollbar {
   padding-right: calc(var(--bs-gutter-x) * 2.5);
 }
 .main-content {
-  margin-bottom: 7rem;
+  smargin-bottom: 7rem;
 }
 .comp-img {
   width: 100px !important;
