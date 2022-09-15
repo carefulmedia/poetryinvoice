@@ -73,6 +73,7 @@ class CreateAccountForm extends FormBase {
     $form['#tree'] = FALSE;
     $form['#attributes']['autocomplete'] = 'off';
     $form['#attached']['library'][] = 'piv_user/create_account';
+    $form['#attached']['library'][] = 'core/drupal.autocomplete';
     $form['mail'] = [
       '#type' => 'email',
       '#title' => $this->t('Email address'),
