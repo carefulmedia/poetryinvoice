@@ -41,6 +41,11 @@ function piv_user_preprocess_html(&$variables) {
         // If not poet or poet_network, do not redirect.
         return;
       }
+      if (empty($user->preferred_langcode->language) || $user->preferred_langcode->language->isLocked()) {
+        // No defined language.
+        return;
+      }
+
       $user_langcode = $user->preferred_langcode->value;
       $current_langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
       if ($current_langcode == $user_langcode) {

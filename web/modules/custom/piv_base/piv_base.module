@@ -159,11 +159,14 @@ function piv_base_preprocess_html(&$variables) {
       $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
       if (!$node->hasTranslation($langcode)) {
         $default_language = $node->language();
-        $url = $node->toUrl();
-        $url->setOption('language', $default_language);
-        $response = new RedirectResponse($url->toString());
-        $response->send();
-        return;
+        // Non-system language.
+        if (!$default_language->isLocked()) {
+          $url = $node->toUrl();
+          $url->setOption('language', $default_language);
+          $response = new RedirectResponse($url->toString());
+          $response->send();
+          return;
+        }
       }
     }
   }
