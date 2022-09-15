@@ -18,6 +18,7 @@
         $('.site-footer').css('background-image', 'url(' + imgSrc + ')');
         $( ".site-footer" ).fadeIn( 1500 );
         // Assistance for Animate On Scroll issue not working properly
+        let scrollRef = 0;
         window.addEventListener('scroll', function() {
           // increase value up to 10, then refresh AOS
           scrollRef <= 10 ? scrollRef++ : AOS.refresh();
