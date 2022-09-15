@@ -19,6 +19,7 @@
 */sync/piv_poem_password.settings.yml
 */sync/piv_base.welcome_modal_settings.yml
 */sync/piv_mail.piv_mail.*
+*/sync/reroute_email.settings.yml
 
 # Environment variables
 .env

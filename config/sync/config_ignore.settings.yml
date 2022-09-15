@@ -2,7 +2,7 @@ _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
 ignored_config_entities:
   - 'piv_canadian_content.*'
-  - 'reroute_email.settings:address'
+  - reroute_email.settings
   - piv_poem_password.settings
   - piv_base.welcome_modal_settings
   - 'piv_mail.piv_mail.*'
