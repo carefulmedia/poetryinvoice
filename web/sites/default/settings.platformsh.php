@@ -186,3 +186,8 @@ if ($platformsh->isValidPlatform()) {
     $config['s3fs.settings']['region'] = 'ca-central-1';
   }
 }
+
+// Make sure drush as enough memory.
+if (PHP_SAPI === 'cli') {
+  ini_set('memory_limit', '512M');
+}
