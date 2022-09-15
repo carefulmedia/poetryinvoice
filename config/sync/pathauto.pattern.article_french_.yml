@@ -8,7 +8,7 @@ dependencies:
 id: article_french_
 label: 'Article (French)'
 type: 'canonical_entities:node'
-pattern: 'actualites/dernieres-nouvelles/[node:title]'
+pattern: 'propos/actualites/dernieres-nouvelles/[node:title]'
 selection_criteria:
   afe34507-96cb-41fd-85d7-331677f14952:
     id: node_type
@@ -18,10 +18,18 @@ selection_criteria:
       node: node
     bundles:
       article: article
-  ee297fa1-4b0f-4aa2-879e-3c3cecbd073c:
+  f7939b58-1424-497c-a555-d08300e2fdcf:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: f7939b58-1424-497c-a555-d08300e2fdcf
+    context_mapping:
+      node: node
+    bundles:
+      article: article
+  3cfef234-8849-48bc-83f3-50e7a833d4dc:
     id: language
     negate: false
-    uuid: ee297fa1-4b0f-4aa2-879e-3c3cecbd073c
+    uuid: 3cfef234-8849-48bc-83f3-50e7a833d4dc
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

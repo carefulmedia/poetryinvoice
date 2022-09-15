@@ -8,7 +8,7 @@ dependencies:
 id: media_coverage_french_
 label: 'Media Coverage (French)'
 type: 'canonical_entities:node'
-pattern: 'actualites/dans-les-medias/[node:title]'
+pattern: 'propos/actualites/dans-les-medias/[node:title]'
 selection_criteria:
   b0416be1-6268-4fc2-b63b-efbafc558483:
     id: node_type
@@ -18,10 +18,18 @@ selection_criteria:
       node: node
     bundles:
       media_coverage: media_coverage
-  3f301bd6-dd9d-4b99-811f-daf15a6d1b18:
+  d2af6a87-170a-4180-8225-24a8c94f283f:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: d2af6a87-170a-4180-8225-24a8c94f283f
+    context_mapping:
+      node: node
+    bundles:
+      media_coverage: media_coverage
+  4830abcc-4304-48e4-b1e7-4f0cf62b50a8:
     id: language
     negate: false
-    uuid: 3f301bd6-dd9d-4b99-811f-daf15a6d1b18
+    uuid: 4830abcc-4304-48e4-b1e7-4f0cf62b50a8
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

@@ -8,7 +8,7 @@ dependencies:
 id: media_coverage_english_
 label: 'Media Coverage (English)'
 type: 'canonical_entities:node'
-pattern: 'news/media-coverage/[node:title]'
+pattern: '/about/news/media-coverage/[node:title]'
 selection_criteria:
   2f5f7592-ef36-4b7c-a295-6a05965be3ca:
     id: node_type
@@ -18,10 +18,18 @@ selection_criteria:
       node: node
     bundles:
       media_coverage: media_coverage
-  bb79b35e-f79e-4d2e-b55a-f68efaf64982:
+  a5a83668-ffe5-4dcb-a1a1-cf41078aefc4:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: a5a83668-ffe5-4dcb-a1a1-cf41078aefc4
+    context_mapping:
+      node: node
+    bundles:
+      media_coverage: media_coverage
+  34295b6e-ffad-4a8e-8ec8-234c60156c15:
     id: language
     negate: false
-    uuid: bb79b35e-f79e-4d2e-b55a-f68efaf64982
+    uuid: 34295b6e-ffad-4a8e-8ec8-234c60156c15
     context_mapping:
       language: 'node:langcode:language'
     langcodes:
