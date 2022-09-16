@@ -11,7 +11,7 @@ entity_type: node
 bundle: pal_pir_school_visit
 label: 'Date and poet chosen'
 description: ''
-required: true
+required: false
 translatable: true
 default_value:
   -
