@@ -18,7 +18,7 @@ display:
       footer:
         area:
           content:
-            value: '<div class="container"><h1 class="hero"><a href="/recite">#réciter</a></h1></div>'
+            value: '<div class="container"><h1 class="hero"><a href="/reciter">#réciter</a></h1></div>'
             format: php_code
   block_7:
     display_options:

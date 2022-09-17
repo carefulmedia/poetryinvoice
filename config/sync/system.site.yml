@@ -3,7 +3,7 @@ _core:
 langcode: en
 uuid: 7b58cb0e-b9ce-4b97-bd38-8f0d9f41bdc3
 name: 'Poetry In Voice'
-mail: webmaster@poetryinvoice.com
+mail: webmaster@poetryinvoice.ca
 slogan: 'A registered charity that wants all Canadians to speak poetry.'
 page:
   403: /node/32393

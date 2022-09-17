@@ -43,9 +43,9 @@ display:
               1:
                 title: 'Maximum: 25 vers'
               3:
-                title: 'Avant le 20e siècle'
+                title: 'Avant le 21e siècle'
               4:
-                title: '20e/21e siècle'
+                title: '21e siècle'
         combine:
           expose:
             label: Recherche

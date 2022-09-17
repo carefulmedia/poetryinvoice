@@ -21,6 +21,9 @@ display:
         random:
           expose:
             label: 'Au hasard'
+        created:
+          expose:
+            label: Publié
       filters:
         combine:
           expose:

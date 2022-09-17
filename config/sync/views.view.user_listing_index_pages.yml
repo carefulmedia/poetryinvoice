@@ -332,29 +332,29 @@ display:
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
+            sort:
+              plugin_id: default
+              advanced:
+                combine: true
+                combine_rewrite: "Random Asc|Random\r\nRandom Desc|\r\nCreated Asc|\r\nCreated Desc|Date added\r\nA-Z Asc|A -> Z\r\nA-Z Desc|Z -> A"
+                reset: false
+                reset_label: ''
+                collapsible: false
+                collapsible_label: 'Sort options'
+                is_secondary: false
             filter:
-              field_address_administrative_area:
+              combine:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  is_secondary: false
+              field_address_country_code:
                 plugin_id: default
                 advanced:
                   sort_options: false
                   rewrite:
                     filter_rewrite_values: ''
-                  collapsible: false
-                  is_secondary: false
-              field_virtual_visits_value:
-                plugin_id: default
-                advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: "True|Yes\r\nFalse|"
-                  collapsible: false
-                  is_secondary: false
-              field_i_am_interested_in_doing_i_value:
-                plugin_id: default
-                advanced:
-                  sort_options: false
-                  rewrite:
-                    filter_rewrite_values: "True|yes\r\nFalse|"
                   collapsible: false
                   is_secondary: false
       access:
@@ -767,6 +767,19 @@ display:
             field_identifier: created
           exposed: true
           granularity: second
+        piv_teacher_last_name_value:
+          id: piv_teacher_last_name_value
+          table: user__piv_teacher_last_name
+          field: piv_teacher_last_name_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: A-Z
+            field_identifier: piv_teacher_last_name_value
+          exposed: true
       filters:
         status:
           id: status
