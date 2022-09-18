@@ -3,8 +3,9 @@ langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.user.field_bio_trans
+    - field.storage.node.body
     - field.storage.user.field_user_bio
+    - field.storage.user.field_bio_trans
     - field.storage.user.piv_teacher_first_name
     - field.storage.user.piv_teacher_last_name
     - search_api.server.database
@@ -19,6 +20,15 @@ name: 'Search Everything'
 description: ''
 read_only: false
 field_settings:
+  body:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    boost: !!float 5
+    dependencies:
+      config:
+        - field.storage.node.body
   field_bio_trans:
     label: 'Bio translation » Processed text'
     datasource_id: 'entity:user'
@@ -47,6 +57,7 @@ field_settings:
     datasource_id: 'entity:user'
     property_path: piv_teacher_first_name
     type: text
+    boost: !!float 2
     dependencies:
       config:
         - field.storage.user.piv_teacher_first_name
@@ -55,6 +66,7 @@ field_settings:
     datasource_id: 'entity:user'
     property_path: piv_teacher_last_name
     type: text
+    boost: !!float 3
     dependencies:
       config:
         - field.storage.user.piv_teacher_last_name
@@ -102,6 +114,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
+    boost: !!float 8
     dependencies:
       module:
         - node

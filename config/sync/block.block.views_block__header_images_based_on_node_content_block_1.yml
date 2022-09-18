@@ -27,4 +27,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/read\r\n/read/poems\r\n/read/poems/*\r\n/lire\r\n/lire/poemes\r\n/lire/poemes/*\r\n/read/dive-in\r\n/read/forms-terms\r\n/read/forms-terms/*\r\n/read/tags-moods/\r\n/read/tags-moods/*\r\n/lire/themes-registres\r\n/lire/themes-registres/*\r\n/lire/approfondir\r\n/lire/formes-poetiques\r\n/lire/formes-poetiques/*\r\n/taxonomy/term\r\n/taxonomy/term/*\r\n/taxonomy/term/25\r\n/read/forms-terms/alliteration"
+    pages: "/read\r\n/read/poems\r\n/read/poems/*\r\n/read/poets\r\n/read/poets/*\r\n/lire\r\n/lire/poemes\r\n/lire/poemes/*\r\n/lire/poetes\r\n/lire/poetes/*\r\n/read/dive-in\r\n/read/forms-terms\r\n/read/forms-terms/*\r\n/read/tags-moods/\r\n/read/tags-moods/*\r\n/lire/themes-registres\r\n/lire/themes-registres/*\r\n/lire/approfondir\r\n/lire/formes-poetiques\r\n/lire/formes-poetiques/*\r\n/taxonomy/term\r\n/taxonomy/term/*\r\n/taxonomy/term/25\r\n/read/forms-terms/alliteration"

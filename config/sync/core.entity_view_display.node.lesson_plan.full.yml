@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - block_content.type.basic
+    - block_content.type.teach
     - core.entity_view_mode.node.full
     - field.field.node.lesson_plan.body
     - field.field.node.lesson_plan.comment_node_lesson_plan
@@ -374,6 +375,20 @@ third_party_settings:
               block_revision_id: 119
               block_serialized: null
             weight: 0
+            additional: {  }
+          d525788a-a032-4542-b7a1-8026c7989139:
+            uuid: d525788a-a032-4542-b7a1-8026c7989139
+            region: blb_region_col_2
+            configuration:
+              id: 'inline_block:teach'
+              label: 'About this Lesson Plan'
+              label_display: '0'
+              provider: layout_builder
+              view_mode: full
+              context_mapping: {  }
+              block_revision_id: 134
+              block_serialized: null
+            weight: 8
             additional: {  }
         third_party_settings: {  }
 id: node.lesson_plan.full
