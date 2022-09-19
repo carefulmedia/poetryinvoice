@@ -339,7 +339,7 @@ class CreateAccountForm extends FormBase {
         '@display_name' => $user->getDisplayName(),
         '@email' => $link->toString(),
       ]));
-      _user_mail_notify('register_no_approval_required', $user);
+      _user_mail_notify('register_no_approval_required', $user, $current_langcode);
       $form_state->setRedirect('user.login');
     }
   }
