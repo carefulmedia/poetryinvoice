@@ -151,12 +151,14 @@ function piv_base_theme($existing, $type, $theme, $path) {
  * Implements hook_preprocess_page().
  */
 function piv_base_preprocess_html(&$variables) {
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $variables['langcode'] = $langcode;
+
   $route = \Drupal::routeMatch();
   if ($route->getRouteName() == 'entity.node.canonical') {
     if ($node = $route->getParameter('node')) {
       // If there is no translation for the current node to the current site
       // language, redirect the user to the original node language url.
-      $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
       if (!$node->hasTranslation($langcode)) {
         $default_language = $node->language();
         // Non-system language.
