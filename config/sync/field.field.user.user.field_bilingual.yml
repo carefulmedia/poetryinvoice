@@ -10,7 +10,7 @@ id: user.user.field_bilingual
 field_name: field_bilingual
 entity_type: user
 bundle: user
-label: Bilingual
+label: 'I am able to equally conduct classroom visits in French and English'
 description: ''
 required: false
 translatable: false
@@ -19,6 +19,6 @@ default_value:
     value: 0
 default_value_callback: ''
 settings:
-  on_label: 'I am able to equally conduct classroom visits in French and English'
-  off_label: 'Off'
+  on_label: 'Yes'
+  off_label: 'No'
 field_type: boolean
