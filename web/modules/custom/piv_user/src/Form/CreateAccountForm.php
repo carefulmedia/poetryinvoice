@@ -74,6 +74,8 @@ class CreateAccountForm extends FormBase {
     $form['#attributes']['autocomplete'] = 'off';
     $form['#attached']['library'][] = 'piv_user/create_account';
     $form['#attached']['library'][] = 'core/drupal.autocomplete';
+    $form['#attached']['library'][] = 'file/drupal.file';
+
     $form['mail'] = [
       '#type' => 'email',
       '#title' => $this->t('Email address'),
@@ -272,8 +274,9 @@ class CreateAccountForm extends FormBase {
     $mail = trim($values['mail']);
     // If user with that email exists already, mock the user creation and
     // display the success messages but don't create a new user.
-    $email_not_exists = !(user_load_by_mail($mail));
-    $user = $this->entityTypeManager->getStorage('user')->create([
+    $user = user_load_by_mail($mail);
+    $email_not_exists = empty($user);
+    $new_user = $this->entityTypeManager->getStorage('user')->create([
       'status' => 0,
       'name' => $mail,
       'mail' => $mail,
@@ -287,42 +290,43 @@ class CreateAccountForm extends FormBase {
       'field_non_school_organization' => $values['non_school_organization'] ?? NULL,
       'field_my_role_at_school_organiza' => $values['role'] ?? NULL,
       'langcode' => $current_langcode,
+      'preferred_langcode' => $current_langcode,
     ]);
     switch ($values['account_type']) {
       case 'poet':
         if ($email_not_exists) {
-          $user->field_address = $values['address'] ?? NULL;
-          $user->addRole('poet_network');
+          $new_user->field_address = $values['address'] ?? NULL;
+          $new_user->addRole('poet_network');
           // Only save the CV if user is a poet.
           if ($file_id = $values['cv'][0] ?? NULL) {
             $file = $this->entityTypeManager->getStorage('file')->load($file_id);
             if ($file) {
               $file->setPermanent();
               $file->save();
-              $user->field_cv = ['target_id' => $file_id];
+              $new_user->field_cv = ['target_id' => $file_id];
             }
           }
-          $user->save();
+          $new_user->save();
         }
         $this->messenger()->addMessage($this->t('Thank you very much for applying for a Poet Network account. We will review your application and contact you soon. - The Poetry In Voice Team.'));
-        $this->pivMailReplacementsService->addSource('user', $user);
+        $this->pivMailReplacementsService->addSource('user', $new_user);
         piv_mail_send_mail('poet_applied_admin', $current_langcode, $this->pivMailReplacementsService);
         $form_state->setRedirect('piv_user.create_account');
         break;
 
       case 'teacher':
-        $user->addRole('teacher');
-        $user->field_school = ['target_id' => $values['school']];
+        $new_user->addRole('teacher');
+        $new_user->field_school = ['target_id' => $values['school']];
         break;
 
       case 'teacher_not_affiliated':
-        $user->addRole('teacher');
-        $user->field_school = ['target_id' => 22469];
+        $new_user->addRole('teacher');
+        $new_user->field_school = ['target_id' => 22469];
         break;
 
       case 'non_canadian':
-        $user->addRole('non_canadian_educator');
-        $user->field_school = ['target_id' => 22470];
+        $new_user->addRole('non_canadian_educator');
+        $new_user->field_school = ['target_id' => 22470];
         break;
     }
 
@@ -330,16 +334,18 @@ class CreateAccountForm extends FormBase {
     $non_poet = ['teacher', 'teacher_not_affiliated', 'non_canadian'];
     if (in_array($values['account_type'], $non_poet)) {
       if ($email_not_exists) {
-        $user->activate();
-        $user->save();
+        $new_user->activate();
+        $new_user->save();
       }
       $url = Url::fromUri('mailto://webmaster@poetryinvoice.com');
       $link = Link::fromTextAndUrl('webmaster@poetryinvoice.com', $url);
       $this->messenger()->addStatus($this->t('Thank you @display_name, we have sent you an email with a link to login. If you do not receive the email, please check your spam folder. Then, if needed, write to us at @email', [
-        '@display_name' => $user->getDisplayName(),
+        '@display_name' => $new_user->getDisplayName(),
         '@email' => $link->toString(),
       ]));
-      _user_mail_notify('register_no_approval_required', $user, $current_langcode);
+      // Resend the email to the existing user or to a new user.
+      $mail_to = $email_not_exists ? $new_user : $user;
+      _user_mail_notify('register_no_approval_required', $mail_to, $current_langcode);
       $form_state->setRedirect('user.login');
     }
   }
