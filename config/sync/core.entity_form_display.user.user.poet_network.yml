@@ -159,7 +159,7 @@ content:
     third_party_settings: {  }
   field_address:
     type: address_default
-    weight: 0
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -244,7 +244,7 @@ content:
     third_party_settings: {  }
   field_i_have_completed_my_profil:
     type: boolean_checkbox
-    weight: 18
+    weight: 28
     region: content
     settings:
       display_label: true
@@ -334,13 +334,6 @@ content:
       collapsed: false
       revision: false
     third_party_settings: {  }
-  field_ready_for_proofing:
-    type: boolean_checkbox
-    weight: 23
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
   field_user_bio:
     type: text_textarea
     weight: 11
@@ -418,6 +411,7 @@ hidden:
   field_poet_in_class: true
   field_poet_laureate: true
   field_poetry_is_: true
+  field_ready_for_proofing: true
   field_school: true
   field_sign_up_date3: true
   field_signature: true

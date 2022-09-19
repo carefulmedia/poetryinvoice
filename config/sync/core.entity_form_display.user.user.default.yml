@@ -123,6 +123,11 @@ content:
       select_social: false
       disable_weight: false
     third_party_settings: {  }
+  language:
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   timezone:
     weight: 6
     region: content
@@ -182,7 +187,6 @@ hidden:
   field_writing_content: true
   field_years_in_competition: true
   langcode: true
-  language: true
   path: true
   piv_teacher_first_name: true
   piv_teacher_last_name: true
