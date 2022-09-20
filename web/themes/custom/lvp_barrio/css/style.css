@@ -1594,6 +1594,9 @@ h3.name {
 .navbar-collapse .user {
   float: right;
 }
+.heart {
+  display: none;
+}
 /**
  * @file
  * Styles for the help block.
