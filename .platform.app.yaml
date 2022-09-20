@@ -88,6 +88,7 @@ hooks:
         php ./drush/platformsh_generate_drush_yml.php
         cd web
         drush deploy
+        pkill -f php-fpm
 
 # The configuration of app when it is exposed to the web.
 web:
