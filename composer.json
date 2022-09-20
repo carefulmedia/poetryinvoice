@@ -167,7 +167,8 @@
         "enable-patching": true,
         "patches": {
             "drupal/core": {
-                "Passing null to parameter #1 ($num) of type int|float to abs() is deprecated": "https://www.drupal.org/files/issues/2022-02-23/3261229-19.patch"
+                "Passing null to parameter #1 ($num) of type int|float to abs() is deprecated": "https://www.drupal.org/files/issues/2022-02-23/3261229-19.patch",
+                "Autocomplete intermittent on Chrome Android": "https://www.drupal.org/files/issues/2021-09-13/drupal-2909128.patch"
             },
             "drupal/owlcarousel": {
                 "Allow loop feature in settings": "https://www.drupal.org/files/issues/2022-07-11/owlcarousel-loop-setting-3226855-3_0.patch"
