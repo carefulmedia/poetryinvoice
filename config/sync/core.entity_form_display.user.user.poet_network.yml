@@ -188,7 +188,7 @@ content:
     third_party_settings: {  }
   field_completed:
     type: options_select
-    weight: 22
+    weight: 30
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -286,7 +286,7 @@ content:
     third_party_settings: {  }
   field_paid_:
     type: boolean_checkbox
-    weight: 24
+    weight: 31
     region: content
     settings:
       display_label: true
@@ -333,6 +333,13 @@ content:
       collapsible: false
       collapsed: false
       revision: false
+    third_party_settings: {  }
+  field_ready_for_proofing:
+    type: boolean_checkbox
+    weight: 29
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_user_bio:
     type: text_textarea
@@ -411,7 +418,6 @@ hidden:
   field_poet_in_class: true
   field_poet_laureate: true
   field_poetry_is_: true
-  field_ready_for_proofing: true
   field_school: true
   field_sign_up_date3: true
   field_signature: true
