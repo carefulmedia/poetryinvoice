@@ -1419,7 +1419,7 @@ h3.name {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 20000;
+  z-index: 400;
 }
 .gin--horizontal-toolbar .header {
   position: relative;
@@ -3838,7 +3838,7 @@ dialog#welcome-modal + .backdrop {
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: #f1edec;
+  background-color: #ffffff;
 }
 dialog,
 dialog[open]::backdrop {
@@ -3859,7 +3859,7 @@ dialog[open].in::backdrop {
 }
 #welcome-modal {
   border: 3px solid rgba(241, 237, 236, 0);
-  background: #f1edec;
+  background: #ffffff;
   height: 100%;
   box-sizing: content-box;
   width: 100%;
