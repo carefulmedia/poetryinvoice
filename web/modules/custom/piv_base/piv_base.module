@@ -43,6 +43,18 @@ function piv_base_entity_form_mode_alter(&$form_mode, EntityInterface $entity) {
       $form_mode = 'teacher';
     }
   }
+  if ($entity->getEntityTypeId() == 'user') {
+    $current_user = \Drupal::currentUser();
+    if (!$current_user->hasPermission('administer site configuration')) {
+      if ($entity->hasRole('teacher')) {
+        $form_mode = 'teacher_edit';
+      }
+      else if ($entity->hasRole('poet_network')) {
+        $form_mode = 'poet_network';
+      }
+      // Else, just go with default.
+    }
+  }
 }
 
 /**
@@ -66,6 +78,14 @@ function piv_base_preprocess_menu_local_tasks(&$variables) {
         }
       }
     }
+    return;
+  }
+
+  // Disable form modes for users if not admin.
+  if (!$current_user->hasPermission('administer site configuration')) {
+    unset($variables['primary']['form_mode_manager.entities:form_mode_manager.user.poet_network.task_tab']);
+    unset($variables['primary']['form_mode_manager.entities:form_mode_manager.user.poets.task_tab']);
+    unset($variables['primary']['form_mode_manager.entities:form_mode_manager.user.teacher_edit.task_tab']);
   }
 }
 

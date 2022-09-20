@@ -56,8 +56,8 @@ definitions:
     expanded: false
     enabled: true
   contact__site_page:
-    enabled: false
     menu_name: footer
     parent: ''
-    expanded: false
     weight: 0
+    expanded: false
+    enabled: false
