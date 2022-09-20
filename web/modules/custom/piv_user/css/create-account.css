@@ -1,4 +1,4 @@
-#account-type-wrapper:not(.poet) fieldset.form-item-cv {
+#account-type-wrapper:not(.poet) div.poet-container {
   display: none;
 }
 .piv-user-create-account .form-actions,

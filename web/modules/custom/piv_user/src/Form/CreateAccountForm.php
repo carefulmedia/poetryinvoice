@@ -131,8 +131,16 @@ class CreateAccountForm extends FormBase {
 
     // If there is a value, this needs to be rendered, it will be hidden with
     // css if not poet.
+    // The Address and Checkboxes needs to be rendered too since the cv reloads
+    // the form with ajax and these fields will not be rendered since they
+    // depend on the $account_type which will have no value since there is a
+    // limit_validation_errors in the file field.
     if ($account_type == 'poet' || $form_state->getValue('cv')) {
-      $form['account_type_wrapper']['cv'] = [
+      $form['account_type_wrapper']['poet'] = [
+        '#type' => 'container',
+        '#attributes' => ['class' => ['poet-container']],
+      ];
+      $form['account_type_wrapper']['poet']['cv'] = [
         '#type' => 'managed_file',
         '#title' => $this->t('CV'),
         '#upload_location' => 'private://',
@@ -144,43 +152,43 @@ class CreateAccountForm extends FormBase {
         '#weight' => 8,
         '#required' => TRUE,
       ];
+      $form['account_type_wrapper']['poet']['address'] = [
+        '#type' => 'address',
+        '#required' => TRUE,
+        '#default_value' => [
+          'country_code' => 'CA',
+        ],
+        '#field_overrides' => [
+          AddressField::ADMINISTRATIVE_AREA => FieldOverride::REQUIRED,
+          AddressField::LOCALITY => FieldOverride::REQUIRED,
+          AddressField::DEPENDENT_LOCALITY => FieldOverride::HIDDEN,
+          AddressField::POSTAL_CODE => FieldOverride::HIDDEN,
+          AddressField::SORTING_CODE => FieldOverride::HIDDEN,
+          AddressField::ADDRESS_LINE1 => FieldOverride::HIDDEN,
+          AddressField::ADDRESS_LINE2 => FieldOverride::HIDDEN,
+          AddressField::ORGANIZATION => FieldOverride::HIDDEN,
+          AddressField::GIVEN_NAME => FieldOverride::HIDDEN,
+          AddressField::ADDITIONAL_NAME => FieldOverride::HIDDEN,
+          AddressField::FAMILY_NAME => FieldOverride::HIDDEN,
+        ],
+        '#available_countries' => ['CA'],
+        '#weight' => 9,
+      ];
+      $form['account_type_wrapper']['poet']['checkboxes'] = [
+        '#type' => 'checkboxes',
+        '#options' => [
+          'poet_in_class' => $this->t('I am interested in participating in the Poet In Class program.'),
+          'judging' => $this->t('I am interested in judging recitation contests.'),
+          'writing' => $this->t('I am interested in writing content.'),
+        ],
+        '#weight' => 10,
+      ];
     }
 
     // Display different fields according to the account type selected.
     switch ($account_type) {
       case 'poet':
-        $form['account_type_wrapper']['address'] = [
-          '#type' => 'address',
-          '#required' => TRUE,
-          '#default_value' => [
-            'country_code' => 'CA',
-          ],
-          '#field_overrides' => [
-            AddressField::ADMINISTRATIVE_AREA => FieldOverride::REQUIRED,
-            AddressField::LOCALITY => FieldOverride::REQUIRED,
-            AddressField::DEPENDENT_LOCALITY => FieldOverride::HIDDEN,
-            AddressField::POSTAL_CODE => FieldOverride::HIDDEN,
-            AddressField::SORTING_CODE => FieldOverride::HIDDEN,
-            AddressField::ADDRESS_LINE1 => FieldOverride::HIDDEN,
-            AddressField::ADDRESS_LINE2 => FieldOverride::HIDDEN,
-            AddressField::ORGANIZATION => FieldOverride::HIDDEN,
-            AddressField::GIVEN_NAME => FieldOverride::HIDDEN,
-            AddressField::ADDITIONAL_NAME => FieldOverride::HIDDEN,
-            AddressField::FAMILY_NAME => FieldOverride::HIDDEN,
-          ],
-          '#available_countries' => ['CA'],
-          '#weight' => 7,
-        ];
-        $form['account_type_wrapper']['checkboxes'] = [
-          '#type' => 'checkboxes',
-          '#options' => [
-            'poet_in_class' => $this->t('I am interested in participating in the Poet In Class program.'),
-            'judging' => $this->t('I am interested in judging recitation contests.'),
-            'writing' => $this->t('I am interested in writing content.'),
-          ],
-          '#required' => TRUE,
-          '#weight' => 9,
-        ];
+        // Poet is handled in the if above.
         break;
 
       case 'teacher':
