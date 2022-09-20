@@ -1,7 +1,9 @@
 _core:
   default_config_hash: w2HQYJGLG4-Mmk19eIIKgoXCiXEJm-NVSNhhv-VdpUI
 favicon:
-  use_default: true
+  mimetype: image/vnd.microsoft.icon
+  path: 'public://favicon_0.ico'
+  use_default: false
 features:
   comment_user_picture: true
   comment_user_verification: true
