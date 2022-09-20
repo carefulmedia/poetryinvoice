@@ -1210,6 +1210,9 @@ summary {
 .form-row > fieldset {
   margin-right: 1.5rem;
 }
+form {
+  margin-bottom: 6rem;
+}
 /**
  * @file
  * Styling for the Forum module.
@@ -2245,6 +2248,9 @@ footer .nav-item {
 .btn-outline-primary:hover {
   border-color: #000;
 }
+nav.tabs ul {
+  background: none;
+}
 /**
  * @file
  * Visual styles for Bootstrap Barrio's node component.
@@ -2819,11 +2825,17 @@ header #search-block-form {
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
   border-radius: 10px;
   padding: 15px 15px;
-  margin: 0 0 20px;
+  margin: 0 0 20px 20px;
   background: #fff;
   border: none;
   height: fit-content;
   font-family: 'Roboto';
+}
+/* Only for mobile */
+@media (max-width: 867px) {
+  .sidebar {
+    margin: 0 0 20px 0px;
+  }
 }
 .sidebar h2 {
   margin: 0 0 0.5em;
@@ -4784,7 +4796,7 @@ html::-webkit-scrollbar {
   padding-right: calc(var(--bs-gutter-x) * 2.5);
 }
 .main-content {
-  smargin-bottom: 7rem;
+  margin-bottom: 7rem;
 }
 .comp-img {
   width: 100px !important;
@@ -4793,7 +4805,7 @@ html::-webkit-scrollbar {
   float: left;
   margin-right: 20px;
 }
-.main-content {
+#main {
   margin-top: 3rem;
 }
 #block-poetinclasslogin,
@@ -4806,6 +4818,20 @@ html::-webkit-scrollbar {
 .view-content img {
   max-width: 100%;
   height: auto;
+}
+a#main-content {
+  margin: 0;
+}
+nav.tabs ul {
+  background: none;
+}
+nav.tabs ul .nav-item a {
+  background: #ddd;
+  color: #000;
+}
+nav.tabs ul .nav-item a:hover {
+  background: #303030;
+  color: #e9ecef;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
