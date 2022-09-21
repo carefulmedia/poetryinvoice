@@ -241,7 +241,7 @@ display:
         type: infinite_scroll
         options:
           offset: 0
-          items_per_page: 18
+          items_per_page: 40
           total_pages: null
           id: 0
           tags:
@@ -4793,7 +4793,7 @@ display:
         sorts: false
         filters: false
         filter_groups: false
-      use_ajax: false
+      use_ajax: true
       display_description: ''
       display_extenders: {  }
     cache_metadata:

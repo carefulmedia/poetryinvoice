@@ -2377,14 +2377,6 @@ nav.tabs ul {
   color: #000 !important;
   margin-bottom: 1rem !important;
 }
-.node--type-poem .block-entity-print,
-.block-views-blockcontent-type-index-pages-block-15 .block-entity-print,
-.block-views-blockcontent-type-index-pages-block-3 .block-entity-print,
-.node--type-poem .view-footer,
-.block-views-blockcontent-type-index-pages-block-15 .view-footer,
-.block-views-blockcontent-type-index-pages-block-3 .view-footer {
-  display: none;
-}
 /* Poet page styles */
 .path-user h2 {
   text-transform: uppercase;

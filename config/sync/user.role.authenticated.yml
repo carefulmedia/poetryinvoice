@@ -43,6 +43,7 @@ permissions:
   - 'edit field_attachments'
   - 'edit field_teacher_preparation_teache'
   - 'edit own field_attachments'
+  - 'edit own field_date_publication'
   - 'edit own field_teacher_preparation_teache'
   - 'edit own field_test'
   - 'edit own main profile'

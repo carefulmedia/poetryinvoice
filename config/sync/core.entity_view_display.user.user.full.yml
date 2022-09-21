@@ -364,21 +364,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 2
             additional: {  }
-          838fb3c5-ab81-4182-a4f0-abaf2d8ee201:
-            uuid: 838fb3c5-ab81-4182-a4f0-abaf2d8ee201
-            region: blb_region_col_1
-            configuration:
-              id: 'extra_field_block:user:user:member_for'
-              label: 'Member for'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                settings: {  }
-                third_party_settings: {  }
-            weight: 6
-            additional: {  }
           cb046340-66b8-4ca0-aba8-e8f74f945d8e:
             uuid: cb046340-66b8-4ca0-aba8-e8f74f945d8e
             region: blb_region_col_1
