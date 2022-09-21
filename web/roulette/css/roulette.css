@@ -520,6 +520,7 @@ button {
 
 .heart-container {
     flex: 10%;
+    display: none;
 }
 
 .heart {
@@ -580,4 +581,7 @@ display: inline;
 }
 h4.poet {
     text-align: left
+}
+.heart {
+    display: none;
 }
