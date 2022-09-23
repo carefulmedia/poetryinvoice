@@ -11,6 +11,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Component\Utility\UrlHelper;
 
 /**
  * Implements hook_user_format_name_alter().
@@ -49,7 +50,7 @@ function piv_base_entity_form_mode_alter(&$form_mode, EntityInterface $entity) {
       if ($entity->hasRole('teacher')) {
         $form_mode = 'teacher_edit';
       }
-      else if ($entity->hasRole('poet_network')) {
+      elseif ($entity->hasRole('poet_network')) {
         $form_mode = 'poet_network';
       }
       // Else, just go with default.
@@ -248,4 +249,29 @@ function piv_base_preprocess_links__language_block(&$variables) {
       }
     }
   }
+}
+
+/**
+ * Implements hook_page_attachments_alter().
+ */
+function piv_base_page_attachments_alter(array &$attachments) {
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    // Do not alter favicon for admin routes.
+    return;
+  }
+
+  global $base_path;
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $theme = \Drupal::theme()->getActiveTheme();
+  $favicon = "{$base_path}{$theme->getPath()}/favicon-{$langcode}.ico";
+
+  // Alter favicon to use translatable favicons.
+  // Mimetype is hardcoded and will work for .ico, needs to be changed if
+  // replaced by png or others.
+  $attachments['#attached']['html_head_link'] = [];
+  $attachments['#attached']['html_head_link'][][] = [
+    'rel' => 'icon',
+    'href' => UrlHelper::stripDangerousProtocols($favicon),
+    'type' => 'image/vnd.microsoft.icon',
+  ];
 }
