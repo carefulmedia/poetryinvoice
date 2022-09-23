@@ -1,0 +1,1 @@
+{"version":3,"sources":["print.less"],"names":[],"mappings":"AAEA;AAAQ;AAAQ;EACd,wBAAA;;AAGF;EACE,sBAAA","sourcesContent":["// Print related css.\n\nheader, footer, .highlighted {\n  display: none !important;\n}\n\nbody {\n  width: 100% !important;\n}\n"],"file":"../print.css"}

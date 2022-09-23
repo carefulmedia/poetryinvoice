@@ -1,0 +1,10 @@
+header,
+footer,
+.highlighted {
+  display: none !important;
+}
+body {
+  width: 100% !important;
+}
+
+/*# sourceMappingURL=maps/print.css.map */

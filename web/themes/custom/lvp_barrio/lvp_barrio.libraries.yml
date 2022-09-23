@@ -6,6 +6,7 @@ global-styling:
     component:
       css/style.css: {}
       css/colors-bu.css: {}
+      css/print.css: { media: print }
 
 bootstrap:
   js:
