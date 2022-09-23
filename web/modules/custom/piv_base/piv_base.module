@@ -12,6 +12,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Component\Utility\UrlHelper;
+use Drupal\Core\Render\Markup;
 
 /**
  * Implements hook_user_format_name_alter().
@@ -273,5 +274,19 @@ function piv_base_page_attachments_alter(array &$attachments) {
     'rel' => 'icon',
     'href' => UrlHelper::stripDangerousProtocols($favicon),
     'type' => 'image/vnd.microsoft.icon',
+  ];
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function piv_base_preprocess_node(&$variables) {
+  // Add a print button to all node types.
+  global $base_path;
+  $path = \Drupal::service('extension.list.module')->getPath('piv_base');
+  $image_path = "{$base_path}{$path}/assets/print_icon.gif";
+  $markup = Markup::create("<img src='{$image_path}' onclick='window.print()' class='print-icon' style='cursor: pointer;'>");
+  $variables['print_button'] = [
+    '#markup' => $markup,
   ];
 }
