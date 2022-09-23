@@ -3,14 +3,12 @@
 /**
  * @file
  * Primary module hooks for PIV Mail module.
- *
- * @DCG
- * This file is no longer required in Drupal 8.
- * @see https://www.drupal.org/node/2217931
  */
 
 use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
 
 /**
  * Implements hook_ENTITY_TYPE_insert().
@@ -347,4 +345,54 @@ function piv_mail_cron() {
       continue;
     }
   }
+}
+
+/**
+ * Custom submit for user profile.
+ */
+function piv_mail_form_user_form_custom_submit(&$form, FormStateInterface $form_state) {
+  // Set a static variable that we will catch on hook_user_update to make sure
+  // we only send e-mails when the user update their profile on UI, and not
+  // some other user_save() called on backend.
+  $updated_profile_using_ui = &drupal_static('piv_mail_user_has_updated_profile_using_ui');
+  $updated_profile_using_ui = TRUE;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_alter().
+ */
+function piv_mail_form_user_form_alter(&$form, FormStateInterface $form_state) {
+  $current_user = \Drupal::currentUser();
+  $user = $form_state->getFormObject()->getEntity();
+  if ($user->hasRole('poet_network') && $user->id() == $current_user->id()) {
+    array_unshift($form['actions']['submit']['#submit'], 'piv_mail_form_user_form_custom_submit');
+  }
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function piv_mail_user_update(EntityInterface $entity) {
+  // @see piv_mail_form_user_form_custom_submit().
+  $updated_profile_using_ui = &drupal_static('piv_mail_user_has_updated_profile_using_ui', FALSE);
+  if (!$updated_profile_using_ui) {
+    return;
+  }
+
+  $diff_plugin_manager = \Drupal::service('plugin.manager.diff.layout');
+  $split_fields = $diff_plugin_manager->createInstance('split_fields');
+  $build = $split_fields->build($entity->original, $entity, $entity);
+  if (empty($build['diff']['#rows'])) {
+    // No diff.
+    return;
+  }
+
+  $user_diff = \Drupal::service('renderer')->render($build['diff']);
+  $replacements_service = \Drupal::service('piv_mail.replacements_service');
+  $replacements_service
+    ->addSource('user', $entity)
+    ->addSource('user_diff', $user_diff);
+
+  $langcode = $entity->langcode->value;
+  piv_mail_send_mail('poet_network_user_updated_profile', $langcode, $replacements_service);
 }

@@ -62,6 +62,9 @@ class ReplacementsService {
       'contest_name',
       'team_details',
     ],
+    'user_diff' => [
+      'user_diff',
+    ],
   ];
 
   /**
@@ -319,6 +322,10 @@ class ReplacementsService {
           }
           $html .= '</div>';
           return $html;
+
+        // User diff. Special case.
+        case 'user_diff':
+          return $sources['user_diff'];
 
       }
     }
