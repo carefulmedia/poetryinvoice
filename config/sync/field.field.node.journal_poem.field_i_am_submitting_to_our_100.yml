@@ -9,8 +9,8 @@ id: node.journal_poem.field_i_am_submitting_to_our_100
 field_name: field_i_am_submitting_to_our_100
 entity_type: node
 bundle: journal_poem
-label: 'I am submitting to our $100 Poetry Prompt Prize contest'
-description: 'This poem was written in response to <a href="/write/get-published">THIS MONTH’S</a> prompt'
+label: 'I am submitting to this month''s $100 Poetry Prompt Prize contest'
+description: 'This poem was written in response to <a href="/write/get-published">THIS MONTH’S</a> prompt. Your poem will also be considered for publication in <em>VOICES/VOIX</em>'
 required: false
 translatable: false
 default_value:

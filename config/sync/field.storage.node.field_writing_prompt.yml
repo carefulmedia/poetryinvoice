@@ -7,7 +7,7 @@ dependencies:
     - node
 third_party_settings:
   field_permissions:
-    permission_type: custom
+    permission_type: private
 id: node.field_writing_prompt
 field_name: field_writing_prompt
 entity_type: node
