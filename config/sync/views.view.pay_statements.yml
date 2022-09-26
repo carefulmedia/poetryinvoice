@@ -3,12 +3,14 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.user.field_address
     - field.storage.user.field_cheque_made_to
     - field.storage.user.field_gst_hst_
     - field.storage.user.field_pst_qst_
     - system.menu.admin
     - user.role.poet_network
   module:
+    - address
     - user
     - views_field_view
 id: pay_statements
@@ -1514,6 +1516,68 @@ display:
           view: invoice_components_users_
           display: block_1
           arguments: '{{ raw_fields.uid }} '
+        field_address:
+          id: field_address
+          table: user__field_address
+          field: field_address
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: langcode
+          type: address_default
+          settings: {  }
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         nothing:
           id: nothing
           table: views
@@ -1526,7 +1590,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{% if view is not empty or view_1 is not empty or view_2 is not empty or view_3 is not empty or view_4 is not empty %}\r\n   <h2>  {% if field_cheque_made_to is not empty %}\r\n    {{ field_cheque_made_to }}\r\n    {% else %}\r\n   {{ name }} \r\n    {% endif %}</h2>\r\n    {% if view is not empty %}\r\n      <h3> School Visits:</h3>\r\n      {{ view }}\r\n    {% endif %}\r\n    {% if view_1 is not empty or view_2 is not empty or view_3 is not empty or view_4 is not empty %}\r\n     <h3> Content Creation:</h3>\r\n      {{ view_1 }} \r\n      {{ view_2 }}\r\n      {{ view_3 }}\r\n      {{ view_4 }}\r\n    {% endif %}\r\n      {% if field_gst_hst_  is not empty %}\r\n     <h3>GST: \r\n      {{  field_gst_hst_ }} </h3>\r\n    {% endif %}\r\n    {% if  field_pst_qst_ is not empty %}\r\n     <h3>QST:</h3>\r\n      {{  field_pst_qst_ }} \r\n    {% endif %}\r\n<hr>\r\n{% endif %}"
+            text: "{% if view is not empty or view_1 is not empty or view_2 is not empty or view_3 is not empty or view_4 is not empty %}\r\n   <h2>  {% if field_cheque_made_to is not empty %}\r\n    {{ field_cheque_made_to }}\r\n    {% else %}\r\n   {{ name }} \r\n\r\n    {% endif %}</h2>\r\n<p>{{ mail }}</p>\r\n{{ field_address }} \r\n    {% if view is not empty %}\r\n      <h3> School Visits:</h3>\r\n      {{ view }}\r\n    {% endif %}\r\n    {% if view_1 is not empty or view_2 is not empty or view_3 is not empty or view_4 is not empty %}\r\n     <h3> Content Creation:</h3>\r\n      {{ view_1 }} \r\n      {{ view_2 }}\r\n      {{ view_3 }}\r\n      {{ view_4 }}\r\n    {% endif %}\r\n      {% if field_gst_hst_  is not empty %}\r\n     <h3>GST: \r\n      {{  field_gst_hst_ }} </h3>\r\n    {% endif %}\r\n    {% if  field_pst_qst_ is not empty %}\r\n     <h3>QST:</h3>\r\n      {{  field_pst_qst_ }} \r\n    {% endif %}\r\n<hr>\r\n{% endif %}"
             make_link: false
             path: ''
             absolute: false
@@ -1585,6 +1649,7 @@ display:
         - url.query_args
         - user.permissions
       tags:
+        - 'config:field.storage.user.field_address'
         - 'config:field.storage.user.field_cheque_made_to'
         - 'config:field.storage.user.field_gst_hst_'
         - 'config:field.storage.user.field_pst_qst_'
