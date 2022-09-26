@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.journal_poem.field_banner_title
     - field.field.node.journal_poem.field_email1
     - field.field.node.journal_poem.field_grade
+    - field.field.node.journal_poem.field_i_am_submitting_to_our_100
     - field.field.node.journal_poem.field_i_consent_to_poetry_in_voi
     - field.field.node.journal_poem.field_images_insert
     - field.field.node.journal_poem.field_journal_poem_body
@@ -136,6 +137,7 @@ hidden:
   field_acceptance_level: true
   field_email1: true
   field_grade: true
+  field_i_am_submitting_to_our_100: true
   field_i_consent_to_poetry_in_voi: true
   field_journal_poem_body: true
   field_legal_name: true
