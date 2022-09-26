@@ -381,6 +381,21 @@ function piv_mail_user_update(EntityInterface $entity) {
 
   $diff_plugin_manager = \Drupal::service('plugin.manager.diff.layout');
   $split_fields = $diff_plugin_manager->createInstance('split_fields');
+
+  // Strip tags from fields, there are other fields but for now this is the only
+  // one that a poet can edit.
+  $strip_tags_fields = ['field_user_bio'];
+  foreach ($strip_tags_fields as $field) {
+    foreach ([$entity, $entity->original] as $revision) {
+      $value = $revision->{$field}->getValue();
+      $value = array_map(function ($item) {
+        $item['value'] = strip_tags($item['value']);
+        return $item;
+      }, $value);
+      $revision->{$field} = $value;
+    }
+  }
+
   $build = $split_fields->build($entity->original, $entity, $entity);
   if (empty($build['diff']['#rows'])) {
     // No diff.
