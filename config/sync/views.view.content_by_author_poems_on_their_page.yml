@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - node.type.poem
-    - user.role.administrator
   module:
     - node
     - user
@@ -103,10 +102,9 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: role
+        type: perm
         options:
-          role:
-            administrator: administrator
+          perm: 'access content'
       cache:
         type: tag
         options: {  }
@@ -244,7 +242,7 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
-        - user.roles
+        - user.permissions
       tags: {  }
   block_1:
     id: block_1
@@ -261,5 +259,5 @@ display:
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
-        - user.roles
+        - user.permissions
       tags: {  }

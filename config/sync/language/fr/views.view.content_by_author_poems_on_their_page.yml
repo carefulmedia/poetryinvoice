@@ -1,0 +1,12 @@
+display:
+  default:
+    display_options:
+      title: 'Lire ses poèmes'
+      header:
+        area:
+          content:
+            value: "<h3>Les poèmes</h3>\r\n"
+            format: filtered_html
+  block_1:
+    display_options:
+      block_description: 'Les poèmes'
