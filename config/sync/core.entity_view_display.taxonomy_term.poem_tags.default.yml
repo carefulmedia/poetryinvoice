@@ -16,7 +16,7 @@ mode: default
 content:
   description:
     type: text_trimmed
-    label: inline
+    label: hidden
     settings:
       trim_length: 600
     third_party_settings: {  }

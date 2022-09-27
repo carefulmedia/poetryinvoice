@@ -1,0 +1,267 @@
+uuid: ec29b7d5-5c39-4ec9-a4cc-674184d4058e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.school.comment_node_school
+    - field.field.node.school.field_2016_rs
+    - field.field.node.school.field_address
+    - field.field.node.school.field_cdb_id
+    - field.field.node.school.field_communication_log
+    - field.field.node.school.field_contact_email
+    - field.field.node.school.field_contact_first_name
+    - field.field.node.school.field_contact_last_name
+    - field.field.node.school.field_do_not_contact_again
+    - field.field.node.school.field_grades_of_school
+    - field.field.node.school.field_job_title
+    - field.field.node.school.field_language_school
+    - field.field.node.school.field_not_competing_this_year
+    - field.field.node.school.field_number_of_students
+    - field.field.node.school.field_pa
+    - field.field.node.school.field_school_board
+    - field.field.node.school.field_school_image
+    - field.field.node.school.field_special_subjects
+    - field.field.node.school.field_story_link
+    - field.field.node.school.field_talked_to
+    - field.field.node.school.field_type_of_school
+    - field.field.node.school.field_years_in_competition
+    - node.type.school
+    - views.view.teachers_on_school_pages
+  module:
+    - address
+    - layout_builder
+    - layout_discovery
+    - options
+    - svg_image
+    - user
+    - views
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          9344724c-1b2f-4575-a747-4d67315ee9b4:
+            uuid: 9344724c-1b2f-4575-a747-4d67315ee9b4
+            region: content
+            configuration:
+              id: 'field_block:node:school:field_address'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: address_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          3d5ac242-2772-40b3-a202-d40832d85500:
+            uuid: 3d5ac242-2772-40b3-a202-d40832d85500
+            region: content
+            configuration:
+              id: 'field_block:node:school:field_story_link'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          84cf570f-ca29-4834-82aa-8a8f59702218:
+            uuid: 84cf570f-ca29-4834-82aa-8a8f59702218
+            region: content
+            configuration:
+              id: 'field_block:node:school:field_number_of_students'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: number_integer
+                label: above
+                settings:
+                  thousand_separator: ''
+                  prefix_suffix: true
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          421a8e63-8d25-4cff-8caf-0862d4997ad0:
+            uuid: 421a8e63-8d25-4cff-8caf-0862d4997ad0
+            region: content
+            configuration:
+              id: 'field_block:node:school:field_grades_of_school'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          4c4a5411-b320-4166-80ae-e51ff9dfdffd:
+            uuid: 4c4a5411-b320-4166-80ae-e51ff9dfdffd
+            region: content
+            configuration:
+              id: 'field_block:node:school:field_school_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: image
+                label: above
+                settings:
+                  image_link: ''
+                  image_style: ''
+                  svg_attributes:
+                    width: null
+                    height: null
+                  svg_render_as_image: true
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          e509ddf6-03b7-49d8-b0f5-791834c15c44:
+            uuid: e509ddf6-03b7-49d8-b0f5-791834c15c44
+            region: content
+            configuration:
+              id: 'field_block:node:school:field_language_school'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          2fb7be91-1232-489c-9007-3cee55690f35:
+            uuid: 2fb7be91-1232-489c-9007-3cee55690f35
+            region: content
+            configuration:
+              id: 'field_block:node:school:field_school_board'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
+          77084249-58d4-49e1-9d7e-e48c52a43971:
+            uuid: 77084249-58d4-49e1-9d7e-e48c52a43971
+            region: content
+            configuration:
+              id: 'views_block:teachers_on_school_pages-block_1'
+              label: 'Teachers at school'
+              label_display: visible
+              provider: views
+              context_mapping: {  }
+              views_label: 'Teachers at school'
+              items_per_page: none
+            weight: 7
+            additional: {  }
+        third_party_settings: {  }
+id: node.school.full
+targetEntityType: node
+bundle: school
+mode: full
+content:
+  field_address:
+    type: address_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_grades_of_school:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_language_school:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_number_of_students:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_school_board:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_school_image:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_story_link:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  comment_node_school: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_2016_rs: true
+  field_cdb_id: true
+  field_communication_log: true
+  field_contact_email: true
+  field_contact_first_name: true
+  field_contact_last_name: true
+  field_do_not_contact_again: true
+  field_job_title: true
+  field_not_competing_this_year: true
+  field_pa: true
+  field_special_subjects: true
+  field_talked_to: true
+  field_type_of_school: true
+  field_years_in_competition: true
+  langcode: true
+  links: true
+  search_api_excerpt: true

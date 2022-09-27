@@ -66,12 +66,14 @@ dependencies:
     - field.field.user.user.piv_teacher_last_name
     - field.field.user.user.piv_teacher_profile_origin
     - field.field.user.user.user_picture
+    - views.view.all_content_authored
     - views.view.content_by_author_poems_on_their_page
     - views.view.user_name_on_user_pages
   module:
     - address
     - entity_reference_revisions
     - layout_builder
+    - layout_builder_restrictions
     - layout_discovery
     - social_link_field
     - text
@@ -276,19 +278,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          96b3c8f1-7f79-44e9-8126-232ca8896a89:
-            uuid: 96b3c8f1-7f79-44e9-8126-232ca8896a89
-            region: blb_region_col_2
-            configuration:
-              id: 'views_block:content_by_author_poems_on_their_page-block_1'
-              label: Poems
-              label_display: visible
-              provider: views
-              context_mapping: {  }
-              views_label: Poems
-              items_per_page: none
-            weight: 0
-            additional: {  }
           d4940fd6-6174-4f6e-8640-e99b691d080c:
             uuid: d4940fd6-6174-4f6e-8640-e99b691d080c
             region: blb_region_col_2
@@ -306,7 +295,7 @@ third_party_settings:
                 settings:
                   view_mode: full
                 third_party_settings: {  }
-            weight: 1
+            weight: 2
             additional: {  }
           b8d3eb72-bec0-4985-a0ea-9047b5f090ef:
             uuid: b8d3eb72-bec0-4985-a0ea-9047b5f090ef
@@ -383,6 +372,33 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 3
             additional: {  }
+          f6b59fc1-ce19-4406-91f8-fe05b13f2324:
+            uuid: f6b59fc1-ce19-4406-91f8-fe05b13f2324
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:content_by_author_poems_on_their_page-block_1'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 1
+            additional: {  }
+          722a032b-eccd-46c0-b4b6-94a58f6ebe9d:
+            uuid: 722a032b-eccd-46c0-b4b6-94a58f6ebe9d
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:all_content_authored-block_1'
+              label: ''
+              label_display: visible
+              provider: views
+              context_mapping:
+                uid: layout_builder.entity
+              views_label: ''
+              items_per_page: none
+            weight: 3
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: layout_onecol
@@ -390,6 +406,15 @@ third_party_settings:
           label: ''
         components: {  }
         third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
 _core:
   default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
 id: user.user.full
