@@ -169,5 +169,6 @@ permissions:
   - 'view paragraph content tr_student'
   - 'view piv_teacher_first_name'
   - 'view piv_teacher_last_name'
+  - 'view the administration theme'
   - 'view unpublished paragraphs'
   - 'view user_picture'

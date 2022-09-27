@@ -7,6 +7,7 @@ dependencies:
     - field.field.taxonomy_term.poem_tags.field_short_description
     - taxonomy.vocabulary.poem_tags
   module:
+    - svg_image
     - text
 id: taxonomy_term.poem_tags.default
 targetEntityType: taxonomy_term
@@ -19,12 +20,27 @@ content:
     settings:
       trim_length: 600
     third_party_settings: {  }
+    weight: 1
+    region: content
+  field_roulette_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
     weight: 0
     region: content
 hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
-  field_roulette_image: true
   field_short_description: true
   langcode: true
+  search_api_excerpt: true

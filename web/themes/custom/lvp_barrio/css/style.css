@@ -1213,6 +1213,9 @@ summary {
 form {
   margin-bottom: 6rem;
 }
+.form-item__label.option {
+  font-weight: bold;
+}
 /**
  * @file
  * Styling for the Forum module.
@@ -1309,13 +1312,15 @@ form {
 .content-index.podcast {
   height: 21rem;
 }
-.block-views .author img {
+.block-views .author img,
+.view-taxonomy-term .author img {
   border-radius: 50%;
   height: 56px;
   width: 56px;
   display: inline;
 }
-.block-views .author {
+.block-views .author,
+.view-taxonomy-term .author {
   margin-bottom: 2rem;
 }
 .block-views a {
@@ -2365,7 +2370,10 @@ nav.tabs ul {
 .block-views-blockcontent-type-index-pages-block-3 .block-field-blocknodepoembody p,
 .node--type-poem .index-views.poems p,
 .block-views-blockcontent-type-index-pages-block-15 .index-views.poems p,
-.block-views-blockcontent-type-index-pages-block-3 .index-views.poems p {
+.block-views-blockcontent-type-index-pages-block-3 .index-views.poems p,
+.node--type-poem .field--name-field-2-column-poem p,
+.block-views-blockcontent-type-index-pages-block-15 .field--name-field-2-column-poem p,
+.block-views-blockcontent-type-index-pages-block-3 .field--name-field-2-column-poem p {
   line-height: 30px;
   padding-left: 1em;
   text-indent: -1em;
@@ -4176,7 +4184,8 @@ p,
   line-height: 36px;
   /* or 180% */
 }
-.block-field-blocknodepoembody p {
+.block-field-blocknodepoembody p,
+.field--name-field-2-column-poem p {
   font-size: 20px;
 }
 .serif {
@@ -4835,6 +4844,9 @@ nav.tabs ul .nav-item a {
 nav.tabs ul .nav-item a:hover {
   background: #303030;
   color: #e9ecef;
+}
+.print-icon {
+  float: right;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
