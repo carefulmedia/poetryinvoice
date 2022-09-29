@@ -109,7 +109,7 @@ content:
     third_party_settings: {  }
   field_i_would_like_to_be_conside:
     type: boolean_checkbox
-    weight: 37
+    weight: 36
     region: content
     settings:
       display_label: true
@@ -342,13 +342,6 @@ content:
               slide:
                 speed: '400'
             selector: ''
-  langcode:
-    type: language_select
-    weight: 35
-    region: content
-    settings:
-      include_locked: true
-    third_party_settings: {  }
   path:
     type: path
     weight: 33
@@ -428,9 +421,10 @@ content:
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 36
+    weight: 35
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
   comment_node_journal_poem: true
+  langcode: true
