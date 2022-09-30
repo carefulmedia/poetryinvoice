@@ -17,7 +17,7 @@ settings:
   allowed_values:
     -
       value: '1'
-      label: 'Poetry prompt prize'
+      label: ''
     -
       value: 'Response poem'
       label: 'Response poem'

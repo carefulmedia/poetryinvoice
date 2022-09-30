@@ -6,7 +6,7 @@ dependencies:
     - field.field.taxonomy_term.poetic_terms.field_roulette_image
     - taxonomy.vocabulary.poetic_terms
   module:
-    - image
+    - svg_image
     - text
 id: taxonomy_term.poetic_terms.default
 targetEntityType: taxonomy_term
@@ -22,10 +22,14 @@ content:
     region: content
   field_roulette_image:
     type: image
-    label: above
+    label: hidden
     settings:
       image_link: ''
       image_style: ''
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
       image_loading:
         attribute: lazy
     third_party_settings: {  }
@@ -36,3 +40,4 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   langcode: true
+  search_api_excerpt: true

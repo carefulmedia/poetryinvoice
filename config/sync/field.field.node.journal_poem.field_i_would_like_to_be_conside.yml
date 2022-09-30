@@ -1,0 +1,23 @@
+uuid: cc2eb5c3-83b7-43de-97f4-843df6f9671f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_i_would_like_to_be_conside
+    - node.type.journal_poem
+id: node.journal_poem.field_i_would_like_to_be_conside
+field_name: field_i_would_like_to_be_conside
+entity_type: node
+bundle: journal_poem
+label: 'I would like to be considered for FutureVerse'
+description: '<a target=”_blank” href="/write/futureverse">FutureVerse</a> is an all-expenses paid trip to Calgary from April 17-21st 2023 for a poetry intensive. Students accepted into FutureVerse will meet with authors, publishers, and writer-activists to grow their potential as future literary leaders. <a target=”_blank” href="/write/futureverse">LEARN MORE</a>'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -11,9 +11,9 @@ id: node.journal_poem.field_poem_type
 field_name: field_poem_type
 entity_type: node
 bundle: journal_poem
-label: 'Inspiration for your poem'
-description: 'Did you write your poem in response to one of the poems in our anthology, to one of our writing prompts, or to a poet''s school visit?'
-required: true
+label: 'I am submitting only to the Journal. I wrote my poem based on:'
+description: ''
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

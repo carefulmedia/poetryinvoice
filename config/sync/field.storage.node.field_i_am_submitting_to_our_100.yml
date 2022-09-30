@@ -1,4 +1,4 @@
-uuid: 7c819882-319b-4549-adbf-f62972df8980
+uuid: 5e65ecd7-b24a-4298-90e9-7f5a95cd6bff
 langcode: en
 status: true
 dependencies:
@@ -7,13 +7,12 @@ dependencies:
     - node
 third_party_settings:
   field_permissions:
-    permission_type: private
-id: node.field_poem_being_responded_to
-field_name: field_poem_being_responded_to
+    permission_type: public
+id: node.field_i_am_submitting_to_our_100
+field_name: field_i_am_submitting_to_our_100
 entity_type: node
-type: entity_reference
-settings:
-  target_type: node
+type: boolean
+settings: {  }
 module: core
 locked: false
 cardinality: 1

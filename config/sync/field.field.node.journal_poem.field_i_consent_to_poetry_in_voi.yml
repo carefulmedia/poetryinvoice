@@ -9,7 +9,7 @@ id: node.journal_poem.field_i_consent_to_poetry_in_voi
 field_name: field_i_consent_to_poetry_in_voi
 entity_type: node
 bundle: journal_poem
-label: 'I consent to Poetry In Voice/Les voix de la poésie sharing my work publicly in perpetuity'
+label: ' I consent to Poetry In Voice/Les voix de la poésie sharI consent to Poetry In Voice/Les voix de la poésie sharing my work either online or in print publicly in perpetuity.'
 description: ''
 required: false
 translatable: true
@@ -18,6 +18,6 @@ default_value:
     value: 0
 default_value_callback: ''
 settings:
-  on_label: ''
-  off_label: ''
+  on_label: 'Yes'
+  off_label: 'No'
 field_type: boolean

@@ -1,14 +1,14 @@
-uuid: 206c568b-fd55-4b28-b581-7806e8237313
+uuid: c08c01be-3354-41ff-828b-cca956e000d4
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.poem
+    - user.role.administrator
   module:
     - node
     - user
-id: content_by_author_poems_on_their_page
-label: 'Content by author (poems) on their page'
+id: all_content_authored
+label: 'All content authored'
 module: views
 description: ''
 tag: ''
@@ -21,7 +21,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Poems
+      title: 'All content authored'
       fields:
         title:
           id: title
@@ -60,11 +60,11 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: h4
+          element_type: ''
           element_class: ''
-          element_label_type: h3
+          element_label_type: ''
           element_label_class: ''
-          element_label_colon: false
+          element_label_colon: true
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
@@ -86,11 +86,89 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
-        type: some
+        type: mini
         options:
           offset: 0
-          items_per_page: 5
+          items_per_page: 10
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
       exposed_form:
         type: basic
         options:
@@ -102,9 +180,10 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            administrator: administrator
       cache:
         type: tag
         options: {  }
@@ -129,14 +208,14 @@ display:
       arguments:
         uid:
           id: uid
-          table: users_field_data
+          table: node_field_data
           field: uid
-          relationship: uid
+          relationship: none
           group_type: group
           admin_label: ''
-          entity_type: user
+          entity_type: node
           entity_field: uid
-          plugin_id: user_uid
+          plugin_id: numeric
           default_action: default
           exception:
             value: all
@@ -157,41 +236,29 @@ display:
             sort_order: asc
             number_of_records: 0
             format: default_summary
-          specify_validation: false
+          specify_validation: true
           validate:
-            type: none
+            type: 'entity:user'
             fail: 'not found'
-          validate_options: {  }
+          validate_options:
+            access: false
+            operation: view
+            multiple: 0
+            restrict_roles: false
+            roles: {  }
           break_phrase: false
           not: false
-      filters:
-        status:
-          id: status
-          table: node_field_data
-          field: status
-          entity_type: node
-          entity_field: status
-          plugin_id: boolean
-          value: '1'
-          group: 1
-          expose:
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-          value:
-            poem: poem
-          expose:
-            operator_limit_selection: false
-            operator_list: {  }
+      filters: {  }
       style:
-        type: html_list
+        type: default
+        options:
+          grouping:
+            -
+              field: type
+              rendered: true
+              rendered_strip: false
+          row_class: ''
+          default_row_class: true
       row:
         type: fields
         options:
@@ -207,32 +274,8 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships:
-        uid:
-          id: uid
-          table: node_field_data
-          field: uid
-          relationship: none
-          group_type: group
-          admin_label: User
-          entity_type: node
-          entity_field: uid
-          plugin_id: standard
-          required: false
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: text
-          empty: false
-          content:
-            value: '<h3>Poems</h3>'
-            format: filtered_html
-          tokenize: false
+      relationships: {  }
+      header: {  }
       footer: {  }
       display_extenders: {  }
     cache_metadata:
@@ -241,8 +284,9 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags: {  }
   block_1:
     id: block_1
@@ -251,13 +295,13 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      block_description: Poems
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
+        - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags: {  }
