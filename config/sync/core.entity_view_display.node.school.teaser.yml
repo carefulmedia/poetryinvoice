@@ -41,8 +41,12 @@ content:
     region: content
 hidden:
   comment_node_school: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_2016_rs: true
   field_address: true
+  field_allow_poet_visits_school: true
   field_cdb_id: true
   field_communication_log: true
   field_contact_email: true
@@ -63,3 +67,4 @@ hidden:
   field_type_of_school: true
   field_years_in_competition: true
   langcode: true
+  search_api_excerpt: true

@@ -249,6 +249,7 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_2016_rs: true
+  field_allow_poet_visits_school: true
   field_cdb_id: true
   field_communication_log: true
   field_contact_email: true

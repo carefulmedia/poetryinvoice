@@ -146,7 +146,8 @@ function piv_base_entity_create_access(AccountInterface $account, array $context
   $entity_type_id = $context['entity_type_id'] ?? NULL;
   if ($entity_type_id == 'node' && $entity_bundle == 'pal_pir_school_visit') {
     $user = \Drupal::entityTypeManager()->getStorage('user')->load($account->id());
-    if (!$user || empty($user->field_school->target_id)) {
+    $school_can_create_visit = $user->field_school->entity->field_allow_poet_visits_school->value == 1;
+    if (!$user || !$school_can_create_visit) {
       return AccessResult::forbidden();
     }
   }
