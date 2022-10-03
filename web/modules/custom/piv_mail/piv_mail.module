@@ -384,12 +384,18 @@ function piv_mail_user_update(EntityInterface $entity) {
 
   // Strip tags from fields, there are other fields but for now this is the only
   // one that a poet can edit.
-  $strip_tags_fields = ['field_user_bio'];
+  $strip_tags_fields = [
+    'field_user_bio',
+    'field_poet_notes',
+    'field_about_me',
+    'field_bio_trans',
+    'field_french_signature',
+  ];
   foreach ($strip_tags_fields as $field) {
     foreach ([$entity, $entity->original] as $revision) {
       $value = $revision->{$field}->getValue();
       $value = array_map(function ($item) {
-        $item['value'] = strip_tags($item['value']);
+        $item['value'] = trim(strip_tags($item['value']));
         return $item;
       }, $value);
       $revision->{$field} = $value;
@@ -400,6 +406,29 @@ function piv_mail_user_update(EntityInterface $entity) {
   if (empty($build['diff']['#rows'])) {
     // No diff.
     return;
+  }
+
+
+  foreach ($build['diff']['#rows'] as &$row) {
+    if (isset($row['left-row-data']['data']['#markup'])) {
+      $left = &$row['left-row-data']['data']['#markup'];
+      $left = trim(strip_tags(html_entity_decode($left)));
+    }
+    else {
+      $left = NULL;
+    }
+
+    if (isset($row['right-row-data']['data']['#markup'])) {
+      $right = &$row['right-row-data']['data']['#markup'];
+      $right = trim(strip_tags(html_entity_decode($right)));
+    }
+    else {
+      $right = NULL;
+    }
+
+    if (empty($left) && empty($right)) {
+      $row = NULL;
+    }
   }
 
   $user_diff = \Drupal::service('renderer')->render($build['diff']);
