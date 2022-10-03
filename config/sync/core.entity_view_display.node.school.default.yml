@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.school.comment_node_school
     - field.field.node.school.field_2016_rs
     - field.field.node.school.field_address
+    - field.field.node.school.field_allow_poet_visits_school
     - field.field.node.school.field_cdb_id
     - field.field.node.school.field_communication_log
     - field.field.node.school.field_contact_email
