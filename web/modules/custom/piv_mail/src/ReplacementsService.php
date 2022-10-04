@@ -65,6 +65,9 @@ class ReplacementsService {
     'user_diff' => [
       'user_diff',
     ],
+    'journal_poem' => [
+      'journal_poem_first_name',
+    ],
   ];
 
   /**
@@ -102,6 +105,10 @@ class ReplacementsService {
     'user_that_created_team_regional_entry' => [
       'source' => 'team_regional_entry',
       'title' => 'User that created the team regional entry',
+    ],
+    'journal_poem_email' => [
+      'source' => 'journal_poem',
+      'title' => 'Email from the journal poem',
     ],
   ];
 
@@ -327,6 +334,10 @@ class ReplacementsService {
         case 'user_diff':
           return $sources['user_diff'];
 
+        // Journal poem.
+        case 'journal_poem_first_name':
+          return $sources['journal_poem']->piv_teacher_first_name->value;
+
       }
     }
     catch (\Exception $e) {
@@ -428,6 +439,9 @@ class ReplacementsService {
         $mail = $sources['team_regional_entry']->uid->entity->mail->value ?? NULL;
         return $mail ? [$mail] : [];
 
+      case 'journal_poem_email':
+        $mail = $sources['journal_poem']->field_email1->value ?? NULL;
+        return $mail ? [$mail] : [];
     }
 
   }

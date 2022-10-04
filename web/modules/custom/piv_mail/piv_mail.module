@@ -23,6 +23,7 @@ function piv_mail_node_insert(NodeInterface $node) {
 
   switch ($node->bundle()) {
     case 'journal_poem':
+      $replacements_service->addSource('journal_poem', $node);
       $from = $langcode == 'fr' ? 'journal@lesvoixdelapoesie.com' : 'journal@poetryinvoice.com';
       piv_mail_send_mail('node_created_journal_poem', $langcode, $replacements_service, $from);
       break;
