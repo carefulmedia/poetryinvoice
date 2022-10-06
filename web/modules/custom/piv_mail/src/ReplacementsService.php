@@ -251,8 +251,9 @@ class ReplacementsService {
         case 'visit_datetime':
           $date = $sources['visit_node']->field_agreed_visit_date->date
             ?? $sources['visit_node']->field_date_and_start_time->date;
+          $langcode = $sources['visit_node']->langcode->value;
           return $date
-            ? $this->dateFormatter->format($date->getTimestamp(), 'custom', 'd F, Y H:i')
+            ? $this->dateFormatter->format($date->getTimestamp(), 'custom', 'd F, Y H:i', NULL, $langcode)
             : $this->t('a date to be defined');
 
         case 'visit_admin':
