@@ -91,6 +91,13 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_bilingual:
+    type: boolean_checkbox
+    weight: 36
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_bio_completed_:
     type: boolean_checkbox
     weight: 10
@@ -270,7 +277,6 @@ hidden:
   field_about_me: true
   field_additional_email: true
   field_address: true
-  field_bilingual: true
   field_canadian_educator_: true
   field_cheque_made_to: true
   field_communication_log: true
