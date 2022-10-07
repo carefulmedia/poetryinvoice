@@ -1,0 +1,4 @@
+label: 'La visite a-t-elle eu lieu ?'
+settings:
+  on_label: Oui
+  off_label: Non

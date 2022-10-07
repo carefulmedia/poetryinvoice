@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Courriel de notre organisme'
+    -
+      label: 'Courriel d’un·e membre de l’équipe'
+    -
+      label: 'Par les médias sociaux'
+    -
+      label: 'Affiche envoyée à votre école'
+    -
+      label: 'Par le bouche à oreille'
+    -
+      label: 'Conférence ou congrès'

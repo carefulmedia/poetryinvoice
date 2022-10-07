@@ -1,0 +1,4 @@
+label: 'Avez-vous rendu cette visite ?'
+settings:
+  on_label: Oui
+  off_label: Non

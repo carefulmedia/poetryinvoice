@@ -1,0 +1,14 @@
+settings:
+  allowed_values:
+    -
+      label: 'Lecture et analyse de poésie'
+    -
+      label: 'Écriture de poésie'
+    -
+      label: 'Récitation et interprétation de poésie'
+    -
+      label: 'Discussion générale sur la poésie'
+    -
+      label: 'Questions-réponses sur le travail des poètes'
+    -
+      label: Autre
