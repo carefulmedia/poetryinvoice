@@ -1,0 +1,4 @@
+label: 'Est-ce qu''un(e) membre du personnel enseignant était présent(e) en tout temps?'
+settings:
+  on_label: Oui
+  off_label: Non

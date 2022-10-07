@@ -16,7 +16,6 @@ dependencies:
     - node.type.venue
     - node.type.writing_prompt
   module:
-    - contact
     - field_permissions
     - locale
     - node
@@ -31,7 +30,6 @@ permissions:
   - 'access overlay'
   - 'access print'
   - 'access search combine'
-  - 'access user contact forms'
   - 'administer nodes'
   - 'bypass node access'
   - 'create poem content'

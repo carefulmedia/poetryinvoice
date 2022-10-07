@@ -145,11 +145,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  contact:
-    weight: 19
-    region: content
-    settings: {  }
-    third_party_settings: {  }
   field_additional_email:
     type: string_textfield
     weight: 3
@@ -181,7 +176,7 @@ content:
     third_party_settings: {  }
   field_cheque_made_to:
     type: string_textfield
-    weight: 22
+    weight: 21
     region: content
     settings:
       size: 60
@@ -189,13 +184,13 @@ content:
     third_party_settings: {  }
   field_completed:
     type: options_select
-    weight: 27
+    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }
   field_cv:
     type: file_generic
-    weight: 21
+    weight: 20
     region: content
     settings:
       progress_indicator: throbber
@@ -209,7 +204,7 @@ content:
     third_party_settings: {  }
   field_gst_hst_:
     type: string_textfield
-    weight: 23
+    weight: 22
     region: content
     settings:
       size: 60
@@ -245,7 +240,7 @@ content:
     third_party_settings: {  }
   field_i_have_completed_my_profil:
     type: boolean_checkbox
-    weight: 25
+    weight: 24
     region: content
     settings:
       display_label: true
@@ -287,7 +282,7 @@ content:
     third_party_settings: {  }
   field_paid_:
     type: boolean_checkbox
-    weight: 28
+    weight: 27
     region: content
     settings:
       display_label: true
@@ -316,7 +311,7 @@ content:
     third_party_settings: {  }
   field_pst_qst_:
     type: string_textfield
-    weight: 24
+    weight: 23
     region: content
     settings:
       size: 60
@@ -337,14 +332,14 @@ content:
     third_party_settings: {  }
   field_ready_for_proofing:
     type: boolean_checkbox
-    weight: 26
+    weight: 25
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_social_links:
     type: social_links
-    weight: 20
+    weight: 19
     region: content
     settings:
       select_social: false
@@ -406,6 +401,7 @@ content:
       offsets: '50,50'
     third_party_settings: {  }
 hidden:
+  contact: true
   field_about_me: true
   field_bio_completed_: true
   field_bio_not_by_author_paid_: true
