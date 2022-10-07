@@ -299,11 +299,17 @@ class ReplacementsService {
         case 'link_to_poet_survey':
           return Link::createFromRoute($this->t('Link to survey'), 'piv_base.poet_survey', [
             'node' => $sources['visit_node']->id(),
+          ],
+          [
+            'language' => $sources['visit_node']->language(),
           ])->toString()->getGeneratedLink();
 
         case 'link_to_teacher_survey':
           return Link::createFromRoute($this->t('Link to survey'), 'piv_base.teacher_survey', [
             'node' => $sources['visit_node']->id(),
+          ],
+          [
+            'language' => $sources['visit_node']->language(),
           ])->toString()->getGeneratedLink();
 
         // Team regional entry.
