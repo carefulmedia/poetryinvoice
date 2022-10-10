@@ -9,6 +9,8 @@ use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\Header\MailboxHeader;
 
 /**
  * Implements hook_ENTITY_TYPE_insert().
@@ -24,16 +26,15 @@ function piv_mail_node_insert(NodeInterface $node) {
   switch ($node->bundle()) {
     case 'journal_poem':
       $replacements_service->addSource('journal_poem', $node);
-      $from = $langcode == 'fr' ? 'journal@lesvoixdelapoesie.com' : 'journal@poetryinvoice.com';
-      piv_mail_send_mail('node_created_journal_poem', $langcode, $replacements_service, $from);
+      piv_mail_send_mail('node_created_journal_poem', $langcode, $replacements_service);
       break;
 
     case 'writing_prompt':
-      piv_mail_send_mail('node_created_writing_prompt', $langcode, $replacements_service, 'info@poetryinvoice.com');
+      piv_mail_send_mail('node_created_writing_prompt', $langcode, $replacements_service);
       break;
 
     case 'lesson_plan':
-      piv_mail_send_mail('node_created_lesson_plan', $langcode, $replacements_service, 'info@poetryinvoice.com');
+      piv_mail_send_mail('node_created_lesson_plan', $langcode, $replacements_service);
       break;
 
     case 'pal_pir_school_visit':
@@ -43,19 +44,13 @@ function piv_mail_node_insert(NodeInterface $node) {
         ->addSource('teacher', $user)
         ->addSource('school', $user->field_school->entity)
         ->addSource('visit_node', $node);
-      $school_province = $user->field_school->entity->field_address->administrative_area ?? NULL;
-      // These emails never consider the visit admin.
-      $provinces = ['QC', 'NS', 'NB', 'PEI'];
-      $from = ($langcode == 'fr' || in_array($school_province, $provinces))
-        ? 'caroline@lesvoixdelapoesie.com'
-        : 'tessa@poetryinvoice.com';
-      piv_mail_send_mail('node_created_poet_school_visit_admin', $langcode, $replacements_service, $from);
-      piv_mail_send_mail('node_created_poet_school_visit_teacher', $langcode, $replacements_service, $from);
+      piv_mail_send_mail('node_created_poet_school_visit_admin', $langcode, $replacements_service);
+      piv_mail_send_mail('node_created_poet_school_visit_teacher', $langcode, $replacements_service);
       // Technically no user will be able to create a node already booked, but
       // a admin can do that on behalf of a teacher.
       $booked = !empty($node->field_booked_->value);
       if ($booked) {
-        piv_mail_send_mail('notification_booked_status_applied_to_visit', $langcode, $replacements_service, $from);
+        piv_mail_send_mail('notification_booked_status_applied_to_visit', $langcode, $replacements_service);
       }
 
       break;
@@ -65,7 +60,7 @@ function piv_mail_node_insert(NodeInterface $node) {
       $replacements_service
         ->reset()
         ->addSource('team_regional_entry', $node);
-      piv_mail_send_mail('team_regional_entry_created', $langcode, $replacements_service, 'info@poetryinvoice.com');
+      piv_mail_send_mail('team_regional_entry_created', $langcode, $replacements_service);
       break;
 
   }
@@ -149,17 +144,6 @@ function piv_mail_node_update(NodeInterface $node) {
 
   $user = $node->uid->entity;
   $langcode = $node->langcode->value;
-  // Comes from visit admin email or the hardcoded emails below if visit admin
-  // is empty.
-  $from = $node->field_visit_admin->entity->mail->value ?? NULL;
-  if (!$from) {
-    $school_province = $user->field_school->entity->field_address->administrative_area ?? NULL;
-    $provinces = ['QC', 'NS', 'NB', 'PEI'];
-    $from = ($langcode == 'fr' || in_array($school_province, $provinces))
-      ? 'caroline@lesvoixdelapoesie.com'
-      : 'tessa@poetryinvoice.com';
-  }
-
   $mail_queue = \Drupal::service('piv_mail.mail_queue');
   $booked = !empty($node->field_booked_->value);
   $booked_original = !empty($node->original->field_booked_->value);
@@ -178,13 +162,13 @@ function piv_mail_node_update(NodeInterface $node) {
 
   if ($date && $booked) {
     // Inline function to send emails if necessary.
-    $queue_mail = function ($key, $send_date) use ($langcode, $replacements_service, $from, $nid) {
+    $queue_mail = function ($key, $send_date) use ($langcode, $replacements_service, $nid) {
       if ($send_date < time()) {
         return FALSE;
       }
 
       $queue_key = "$key:$nid";
-      return piv_mail_send_mail($key, $langcode, $replacements_service, $from, $send_date, $queue_key);
+      return piv_mail_send_mail($key, $langcode, $replacements_service, NULL, $send_date, $queue_key);
     };
 
     $visit_date = $date->setTime(0, 0, 0)->getTimestamp();
@@ -218,7 +202,7 @@ function piv_mail_node_update(NodeInterface $node) {
   // since the booked field is admin only, we still consider it in the node
   // insert in case a admin create the node on behalf of a different user.
   if ($booked && !$booked_original) {
-    piv_mail_send_mail('notification_booked_status_applied_to_visit', $langcode, $replacements_service, $from);
+    piv_mail_send_mail('notification_booked_status_applied_to_visit', $langcode, $replacements_service);
   }
 
   // Mail if there were changes to the node while its booked and the date is in
@@ -246,7 +230,7 @@ function piv_mail_node_update(NodeInterface $node) {
         ->addSource('user', $user_original)
         ->addSource('school', $user_original->field_school->entity);
       $replacements_service->setOriginal($replacements_service_for_original_node);
-      piv_mail_send_mail('booked_visit_change_notifications', $langcode, $replacements_service, $from);
+      piv_mail_send_mail('booked_visit_change_notifications', $langcode, $replacements_service);
     }
   }
 
@@ -259,7 +243,15 @@ function piv_mail_mail($key, &$message, $params) {
   $message['subject'] = $params['subject'];
   $message['body'][] = $params['body'];
   if (!empty($params['from'])) {
-    $message['from'] = $params['from'];
+    $from = $params['from'];
+    $sender = $message['langcode'] == 'en'
+      ? 'Poetry In Voice'
+      : 'Les voix de la poésie';
+    $mailbox = new MailboxHeader('From', new Address($from, $sender ?: ''));
+    $message['headers']['From'] = $mailbox->getBodyAsString();
+    $message['headers']['Return-Path'] = $from;
+    $message['headers']['Sender'] = $from;
+    $message['from'] = $from;
   }
 }
 
@@ -295,6 +287,9 @@ function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL
     }
     else {
       if (!$from) {
+        $from = $configurations[$langcode]['from'] ?? NULL;
+      }
+      if (!\Drupal::service('email.validator')->isValid($from)) {
         $from = \Drupal::config('system.site')->get('mail');
       }
       $body = $configurations[$langcode]['body']['value'] ?? NULL;
@@ -408,7 +403,6 @@ function piv_mail_user_update(EntityInterface $entity) {
     // No diff.
     return;
   }
-
 
   foreach ($build['diff']['#rows'] as &$row) {
     if (isset($row['left-row-data']['data']['#markup'])) {

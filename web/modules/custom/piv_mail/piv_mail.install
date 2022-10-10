@@ -61,3 +61,47 @@ function piv_mail_schema() {
   ];
   return $schema;
 }
+
+/**
+ * Update email configurations.
+ */
+function piv_mail_update_9001() {
+  $piv_mail_manager = \Drupal::service('plugin.manager.piv_mail');
+  $visits = [
+    'fr' => 'visites@lesvoixdelapoesie.com',
+    'en' => 'visits@poetryinvoice.com',
+  ];
+  $info = [
+    'fr' => 'info@poetryinvoice.com',
+    'en' => 'info@poetryinvoice.com',
+  ];
+  // Plugins poet_network_user_updated_profile and poet_applied_admin have no
+  // configurations by default.
+  $from_map = [
+    'one_week_before_visit_email_reminder' => $visits,
+    'one_day_before_visit_email_reminder' => $visits,
+    'poet_survey_reminder_one_day_after_visit' => $visits,
+    'teacher_survey_reminder_one_day_after_visit' => $visits,
+    'teacher_survey_reminder_one_week_after_visit' => $visits,
+    'poet_survey_reminder_one_week_after_visit' => $visits,
+    'notification_booked_status_applied_to_visit' => $visits,
+    'booked_visit_change_notifications' => $visits,
+    'node_created_poet_school_visit_admin' => $visits,
+    'node_created_poet_school_visit_teacher' => $visits,
+    'team_regional_entry_created' => $info,
+    'node_created_writing_prompt' => $info,
+    'node_created_lesson_plan' => $info,
+    'node_created_journal_poem' => [
+      'en' => 'journal@poetryinvoice.com',
+      'fr' => 'journal@lesvoixdelapoesie.com',
+    ],
+  ];
+  foreach ($from_map as $key => $data) {
+    $instance = $piv_mail_manager->createInstance($key);
+    $configurations = $instance->getConfiguration();
+    $configurations['en']['from'] = $data['en'];
+    $configurations['fr']['from'] = $data['fr'];
+    $instance->setConfiguration($configurations);
+    $piv_mail_manager->saveConfigurations($instance);
+  }
+}

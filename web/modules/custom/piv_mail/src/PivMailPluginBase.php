@@ -97,6 +97,12 @@ abstract class PivMailPluginBase extends PluginBase implements PivMailInterface 
     foreach ($recipients_filtered as $key => $recipient) {
       $options[$key] = $recipient['title'];
     }
+    $form['from'] = [
+      '#type' => 'email',
+      '#title' => $this->t('From:'),
+      '#default_value' => $configurations['from'] ?? [],
+      '#description' => $this->t('Must be a poetryinvoice.ca or lesvoixdelapoesie.ca email.'),
+    ];
     $form['to'] = [
       '#type' => 'checkboxes',
       '#title' => $this->t('TO:'),
