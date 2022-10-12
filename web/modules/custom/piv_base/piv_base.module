@@ -239,7 +239,8 @@ function piv_base_form_survey_custom_submit($form, FormStateInterface $form_stat
  */
 function piv_base_preprocess_links__language_block(&$variables) {
   $route = \Drupal::routeMatch();
-  if ($route->getRouteName() == 'entity.node.canonical') {
+  $route_name = $route->getRouteName();
+  if ($route_name == 'entity.node.canonical') {
     // If there is no translation, the language switcher should redirect the
     // user to the frontpage.
     if ($node = $route->getParameter('node')) {
@@ -250,6 +251,11 @@ function piv_base_preprocess_links__language_block(&$variables) {
         }
       }
     }
+  }
+  // 404 will have no route name.
+  else if ($route_name === NULL) {
+    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId(); 
+    unset($variables['links'][$langcode]);
   }
 }
 
