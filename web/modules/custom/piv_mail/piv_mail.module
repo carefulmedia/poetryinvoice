@@ -290,7 +290,7 @@ function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL
         $from = $configurations[$langcode]['from'] ?? NULL;
       }
       if (!\Drupal::service('email.validator')->isValid($from)) {
-        $from = \Drupal::config('system.site')->get('mail');
+        $from = $langcode == 'en' ? 'info@poetryinvoice.ca' : 'info@lesvoixdelapoesie.ca';
       }
       $body = $configurations[$langcode]['body']['value'] ?? NULL;
       $body = $replacements_service->replace($body);
