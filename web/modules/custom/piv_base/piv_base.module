@@ -252,11 +252,9 @@ function piv_base_preprocess_links__language_block(&$variables) {
       }
     }
   }
-  // 404 will have no route name.
-  else if ($route_name === NULL) {
-    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId(); 
-    unset($variables['links'][$langcode]);
-  }
+  // Unset the links for the current language.
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  unset($variables['links'][$langcode]);
 }
 
 /**
