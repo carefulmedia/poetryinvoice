@@ -297,19 +297,27 @@ class ReplacementsService {
           return $sources['visit_node']->language()->getName();
 
         case 'link_to_poet_survey':
-          return Link::createFromRoute($this->t('Link to survey'), 'piv_base.poet_survey', [
+          $language = $sources['visit_node']->language();
+          $text = $this->t('Link to survey', [], [
+            'langcode' => $language->getId(),
+          ]);
+          return Link::createFromRoute($text, 'piv_base.poet_survey', [
             'node' => $sources['visit_node']->id(),
           ],
           [
-            'language' => $sources['visit_node']->language(),
+            'language' => $language,
           ])->toString()->getGeneratedLink();
 
         case 'link_to_teacher_survey':
-          return Link::createFromRoute($this->t('Link to survey'), 'piv_base.teacher_survey', [
+          $language = $sources['visit_node']->language();
+          $text = $this->t('Link to survey', [], [
+            'langcode' => $language->getId(),
+          ]);
+          return Link::createFromRoute($text, 'piv_base.teacher_survey', [
             'node' => $sources['visit_node']->id(),
           ],
           [
-            'language' => $sources['visit_node']->language(),
+            'language' => $language,
           ])->toString()->getGeneratedLink();
 
         // Team regional entry.
