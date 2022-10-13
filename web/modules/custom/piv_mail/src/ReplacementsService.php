@@ -306,6 +306,7 @@ class ReplacementsService {
           ],
           [
             'language' => $language,
+            'absolute' => TRUE,
           ])->toString()->getGeneratedLink();
 
         case 'link_to_teacher_survey':
@@ -318,6 +319,7 @@ class ReplacementsService {
           ],
           [
             'language' => $language,
+            'absolute' => TRUE,
           ])->toString()->getGeneratedLink();
 
         // Team regional entry.
