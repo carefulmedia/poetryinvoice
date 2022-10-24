@@ -15,6 +15,7 @@ function piv_field_form_alter(&$form, FormStateInterface $form_state, $form_id) 
 
     // Hide the Drupal original field. It will be populated from the custom field bellow.
     $form['field_school']['#access'] = FALSE;
+    $default_value = $form['field_school']['widget'][0]['target_id']['#default_value'];
 
     // Custom submit.
     $form['actions']['submit']['#submit'][] = 'piv_field_teacher_edit_form_submit';
@@ -25,6 +26,7 @@ function piv_field_form_alter(&$form, FormStateInterface $form_state, $form_id) 
       '#description' => t('Type a few letters of your school name, wait, and then select it from the list. All Canadian schools should be in our system. Don\'t see your school? <a href="mailto:webmaster@poetryinvoice.com">Contact us</a>.'),
       '#type' => 'entity_autocomplete',
       '#target_type' => 'node',
+      '#default_value' => $default_value,
       "#validate_reference" => false,
       '#selection_handler' => 'default:piv_school',
       '#selection_settings' => [
