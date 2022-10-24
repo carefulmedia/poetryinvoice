@@ -186,6 +186,10 @@ class CreateAccountForm extends FormBase {
     }
 
     // Display different fields according to the account type selected.
+    $isPostalCode = 0;
+    if ($form_state->getValue('postal_code')) {
+      $isPostalCode = 1;
+    }
     switch ($account_type) {
       case 'poet':
         // Poet is handled in the if above.
@@ -197,17 +201,38 @@ class CreateAccountForm extends FormBase {
           '#description' => $this->t('Type a few letters of your school name, wait, and then select it from the list. All Canadian schools should be in our system. Don’t see your school? <a href="mailto:webmaster@poetryinvoice.com">Contact us</a>.'),
           '#type' => 'entity_autocomplete',
           '#target_type' => 'node',
-          '#selection_handler' => 'views',
+          "#validate_reference" => false,
+          '#selection_handler' => 'default:piv_school',
           '#selection_settings' => [
-            'view' => [
-              'view_name' => 'school_autocomplete_with_address',
-              'display_name' => 'entity_reference',
-              'arguments' => [],
+            'target_bundles' => [
+              "school" => "school",
             ],
-            'match_operator' => 'CONTAINS',
+            'sort' => [
+              "field" => "_none",
+              "direction" => "ASC",
+            ],
+            "postal_code" => $isPostalCode,
+            "auto_create" => 0,
+            "auto_create_bundle" => "",
+            "match_operator" => "CONTAINS",
+            "match_limit" => 10,
           ],
           '#required' => TRUE,
           '#weight' => 7,
+          "#prefix" => "<div id='school-reference-wrapper'>",
+          "#suffix" => "</div>",
+        ];
+        $form['account_type_wrapper']['postal_code'] = [
+          '#title' => $this->t('Filter by Postal Code?'),
+          '#type' => 'checkbox',
+          '#description' => $this->t('Default search will use the School title, check this option to search by the Postal Code instead.'),
+          '#default_value' => 0,
+          '#ajax' => [
+            'callback' => [$this, 'postalCodeCallback'],
+            'event' => 'change',
+            'wrapper' => 'school-reference-wrapper',
+          ],
+          '#weight' => 8,
         ];
         $form['account_type_wrapper']['how_did_you_hear_about_us'] = [
           '#type' => 'select',
@@ -356,6 +381,14 @@ class CreateAccountForm extends FormBase {
       _user_mail_notify('register_no_approval_required', $mail_to, $current_langcode);
       $form_state->setRedirect('user.login');
     }
+  }
+
+  /**
+   * Set the value of Postal Code.
+   */
+  public function postalCodeCallback(array &$form, FormStateInterface $form_state) {
+    $form_state->setRebuild();
+    return $form['account_type_wrapper']['school'];
   }
 
 }

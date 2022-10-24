@@ -21,6 +21,11 @@ class EntityReferenceAutocompleteSchool extends EntityReferenceAutocompleteWidge
 
   public function formElement(FieldItemListInterface $items, $delta, array $element, array &$form, FormStateInterface $form_state) {
     $widget = parent::formElement($items, $delta, $element, $form, $form_state);
+    $selection_settings = $widget['target_id']['#selection_settings'];
+    $isPostalCode = 0;
+    if ($form_state->getValue('field_school_ref')[0]['postal_code']) {
+      $isPostalCode = 1;
+    }
 
     // Ajax wrapper.
     $widget['#prefix'] = "<div id='school-reference-wrapper'>";
@@ -41,6 +46,7 @@ class EntityReferenceAutocompleteSchool extends EntityReferenceAutocompleteWidge
 
     // Foce the custom Postal code Handler...
     $widget['target_id']['#selection_handler'] = 'default:piv_school';
+    $widget['target_id']['#selection_settings'] = ['postal_code' => $isPostalCode] + $selection_settings;
 
     return $widget;
   }
@@ -49,13 +55,7 @@ class EntityReferenceAutocompleteSchool extends EntityReferenceAutocompleteWidge
    * Set the value of Postal Code.
    */
   public function postalCodeCallback(array &$form, FormStateInterface $form_state) {
-    $postal_code = $form_state->getValue('field_school_ref')[0]['postal_code'] ?? 0;
-    $form['field_school_ref']['widget'][0]['target_id']['#value'] = '';
-    if ($postal_code == 1) {
-      $form['field_school_ref']['widget'][0]['target_id']['#value'] = 'pcode: ';
-    }
     $form_state->setRebuild();
-
     return $form['field_school_ref'];
   }
 }

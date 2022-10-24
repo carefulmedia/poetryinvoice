@@ -22,14 +22,14 @@ class SchoolSelection extends NodeSelection {
    * {@inheritdoc}
    */
   protected function buildEntityQuery($match = NULL, $match_operator = 'CONTAINS') {
+    $configuration = $this->getConfiguration();
+    $postal_code = $configuration['postal_code'];
     $query = $this->entityTypeManager->getStorage('node')->getQuery();
     $query->accessCheck(TRUE);
     $query->condition('type', 'school');
 
-    // Validate if should filter by the Label or Postal Code.
-    $search = explode('pcode:', $match);
-    if ($search && isset($search[1])) {
-      $search = trim($search[1]);
+    if ($postal_code) {
+      $search = trim($match);
       if (strlen($search) > 3) {
         $start = trim(substr($search, 0, 3));
         $end = trim(substr($search, 3));
