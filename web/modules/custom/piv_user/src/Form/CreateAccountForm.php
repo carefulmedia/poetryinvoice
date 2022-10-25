@@ -223,9 +223,9 @@ class CreateAccountForm extends FormBase {
           "#suffix" => "</div>",
         ];
         $form['account_type_wrapper']['postal_code'] = [
-          '#title' => $this->t('Filter by Postal Code?'),
+          '#title' => $this->t('Search by postal code instead'),
           '#type' => 'checkbox',
-          '#description' => $this->t('Default search will use the School title, check this option to search by the Postal Code instead.'),
+          '#description' => $this->t('Check this option and then type your school\'s postal code in the School field above.'),
           '#default_value' => 0,
           '#ajax' => [
             'callback' => [$this, 'postalCodeCallback'],
