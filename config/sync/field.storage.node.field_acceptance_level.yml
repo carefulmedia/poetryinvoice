@@ -30,6 +30,9 @@ settings:
     -
       value: Accepted
       label: Accepted
+    -
+      value: 'Monthly prize winner'
+      label: 'Monthly prize winner'
   allowed_values_function: ''
 module: options
 locked: false
