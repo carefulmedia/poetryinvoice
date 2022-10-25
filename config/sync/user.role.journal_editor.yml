@@ -5,13 +5,17 @@ dependencies:
   config:
     - node.type.journal_poem
   module:
+    - editablefields
     - field_permissions
     - node
+    - toolbar
 id: journal_editor
 label: 'Journal editor'
 weight: 26
 is_admin: null
 permissions:
+  - 'access toolbar'
+  - 'administer editablefields'
   - 'create field_acceptance_level'
   - 'create field_poem_attachment'
   - 'create field_submission_info_confirmed'
@@ -28,6 +32,7 @@ permissions:
   - 'edit own field_submission_info_confirmed'
   - 'edit own journal_poem content'
   - 'search journal_poem content'
+  - 'use editablefields'
   - 'view any unpublished journal_poem content'
   - 'view field_acceptance_level'
   - 'view field_poem_attachment'
