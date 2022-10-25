@@ -14,6 +14,7 @@ dependencies:
     - field.storage.node.field_visit_admin
     - node.type.pal_pir_school_visit
     - system.menu.admin
+    - user.role.administrator
   module:
     - address
     - datetime
@@ -919,9 +920,10 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            administrator: administrator
       cache:
         type: tag
         options: {  }
@@ -1272,21 +1274,48 @@ display:
             value: '2022-09-01'
             type: date
           group: 1
-          exposed: false
+          exposed: true
           expose:
-            operator_id: ''
-            label: ''
+            operator_id: created_op
+            label: 'Requested after'
             description: ''
             use_operator: false
-            operator: ''
+            operator: created_op
             operator_limit_selection: false
             operator_list: {  }
-            identifier: ''
+            identifier: created
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
             min_placeholder: ''
             max_placeholder: ''
             placeholder: ''
@@ -1512,7 +1541,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_agreed_visit_date'
         - 'config:field.storage.node.field_funding_source'
@@ -2521,7 +2550,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_date_and_start_time'
         - 'config:field.storage.node.field_other_time_options'
@@ -2555,7 +2584,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_agreed_visit_date'
         - 'config:field.storage.node.field_funding_source'
@@ -4187,7 +4216,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_date_and_start_time'
         - 'config:field.storage.node.field_other_time_options'
@@ -5801,7 +5830,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_agreed_visit_date'
         - 'config:field.storage.node.field_funding_source'
@@ -6846,50 +6875,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        field_visit_admin_target_id:
-          id: field_visit_admin_target_id
-          table: node__field_visit_admin
-          field: field_visit_admin_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: numeric
-          operator: empty
-          value:
-            min: ''
-            max: ''
-            value: ''
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            min_placeholder: ''
-            max_placeholder: ''
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
         langcode:
           id: langcode
           table: node
@@ -7433,7 +7418,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_agreed_visit_date'
         - 'config:field.storage.node.field_funding_source'
@@ -8602,50 +8587,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        field_visit_admin_target_id:
-          id: field_visit_admin_target_id
-          table: node__field_visit_admin
-          field: field_visit_admin_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: numeric
-          operator: empty
-          value:
-            min: ''
-            max: ''
-            value: ''
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            min_placeholder: ''
-            max_placeholder: ''
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
         langcode:
           id: langcode
           table: node
@@ -8714,73 +8655,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        field_completed_value:
-          id: field_completed_value
-          table: node__field_completed
-          field: field_completed_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: list_field
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_completed_value_op
-            label: 'Completed?'
-            description: ''
-            use_operator: false
-            operator: field_completed_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_completed_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              teacher: '0'
-              non_canadian_educator: '0'
-              teacher_en_: '0'
-              teacher_fr_: '0'
-              anonymous: '0'
-              administrator: '0'
-              proofreader: '0'
-              content_creator: '0'
-              translator: '0'
-              icanlocalize_translator: '0'
-              icanlocalize_manager: '0'
-              judge: '0'
-              account_approval: '0'
-              competition_administrator: '0'
-              accuracy_judge: '0'
-              php_editor: '0'
-              pierre: '0'
-              lesson_plan_creator: '0'
-              superadmin: '0'
-              poet_network: '0'
-              pic_pal: '0'
-              poet: '0'
-              anthology_editor: '0'
-              grandfathered_pir: '0'
-              education_consultant: '0'
-              journal_editor: '0'
-              junior_editor: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
         field_address_administrative_area:
           id: field_address_administrative_area
           table: node__field_address
@@ -8973,11 +8847,11 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: datetime
-          operator: '<='
+          operator: '>'
           value:
             min: ''
             max: ''
-            value: 'now -1 day'
+            value: '2022-09-01'
             type: date
           group: 1
           exposed: false
@@ -9068,7 +8942,7 @@ display:
           exposed: true
           expose:
             operator_id: created_1_op
-            label: 'Authored on'
+            label: 'Requested after'
             description: ''
             use_operator: false
             operator: created_1_op
@@ -9151,7 +9025,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_agreed_visit_date'
         - 'config:field.storage.node.field_funding_source'
@@ -9166,504 +9040,10 @@ display:
     position: 6
     display_options:
       title: Paid
-      filters:
-        status:
-          id: status
-          table: node_field_data
-          field: status
-          entity_type: node
-          entity_field: status
-          plugin_id: boolean
-          value: '1'
-          group: 1
-          expose:
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-        type:
-          id: type
-          table: node_field_data
-          field: type
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: type
-          plugin_id: bundle
-          operator: in
-          value:
-            pal_pir_school_visit: pal_pir_school_visit
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        field_visit_admin_target_id:
-          id: field_visit_admin_target_id
-          table: node__field_visit_admin
-          field: field_visit_admin_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: numeric
-          operator: empty
-          value:
-            min: ''
-            max: ''
-            value: ''
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            min_placeholder: ''
-            max_placeholder: ''
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        langcode:
-          id: langcode
-          table: node
-          field: langcode
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: langcode
-          plugin_id: language
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: langcode_op
-            label: Language
-            description: ''
-            use_operator: false
-            operator: langcode_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: langcode
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              teacher: '0'
-              non_canadian_educator: '0'
-              teacher_en_: '0'
-              teacher_fr_: '0'
-              anonymous: '0'
-              administrator: '0'
-              proofreader: '0'
-              content_creator: '0'
-              translator: '0'
-              icanlocalize_translator: '0'
-              icanlocalize_manager: '0'
-              judge: '0'
-              account_approval: '0'
-              competition_administrator: '0'
-              accuracy_judge: '0'
-              php_editor: '0'
-              pierre: '0'
-              lesson_plan_creator: '0'
-              superadmin: '0'
-              poet_network: '0'
-              pic_pal: '0'
-              poet: '0'
-              anthology_editor: '0'
-              grandfathered_pir: '0'
-              education_consultant: '0'
-              journal_editor: '0'
-              junior_editor: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        field_completed_value:
-          id: field_completed_value
-          table: node__field_completed
-          field: field_completed_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: list_field
-          operator: or
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_completed_value_op
-            label: 'Completed?'
-            description: ''
-            use_operator: false
-            operator: field_completed_value_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_completed_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              teacher: '0'
-              non_canadian_educator: '0'
-              teacher_en_: '0'
-              teacher_fr_: '0'
-              anonymous: '0'
-              administrator: '0'
-              proofreader: '0'
-              content_creator: '0'
-              translator: '0'
-              icanlocalize_translator: '0'
-              icanlocalize_manager: '0'
-              judge: '0'
-              account_approval: '0'
-              competition_administrator: '0'
-              accuracy_judge: '0'
-              php_editor: '0'
-              pierre: '0'
-              lesson_plan_creator: '0'
-              superadmin: '0'
-              poet_network: '0'
-              pic_pal: '0'
-              poet: '0'
-              anthology_editor: '0'
-              grandfathered_pir: '0'
-              education_consultant: '0'
-              journal_editor: '0'
-              junior_editor: '0'
-            reduce: false
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          reduce_duplicates: false
-        field_address_administrative_area:
-          id: field_address_administrative_area
-          table: node__field_address
-          field: field_address_administrative_area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: administrative_area
-          operator: in
-          value: {  }
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_address_administrative_area_op
-            label: Province
-            description: ''
-            use_operator: false
-            operator: field_address_administrative_area_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_address_administrative_area
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              teacher: '0'
-              non_canadian_educator: '0'
-              teacher_en_: '0'
-              teacher_fr_: '0'
-              anonymous: '0'
-              administrator: '0'
-              proofreader: '0'
-              content_creator: '0'
-              translator: '0'
-              icanlocalize_translator: '0'
-              icanlocalize_manager: '0'
-              judge: '0'
-              account_approval: '0'
-              competition_administrator: '0'
-              accuracy_judge: '0'
-              php_editor: '0'
-              pierre: '0'
-              lesson_plan_creator: '0'
-              superadmin: '0'
-              poet_network: '0'
-              pic_pal: '0'
-              poet: '0'
-              anthology_editor: '0'
-              grandfathered_pir: '0'
-              education_consultant: '0'
-              journal_editor: '0'
-              junior_editor: '0'
-            reduce: false
-            label_type: static
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          country:
-            country_source: static
-            country_argument_id: ''
-            country_filter_id: ''
-            country_static_code: CA
-        field_pal_pir_target_id:
-          id: field_pal_pir_target_id
-          table: node__field_pal_pir
-          field: field_pal_pir_target_id
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: numeric
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_pal_pir_target_id_op
-            label: 'Chosen poet'
-            description: ''
-            use_operator: false
-            operator: field_pal_pir_target_id_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: field_pal_pir_target_id
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              teacher: '0'
-              non_canadian_educator: '0'
-              teacher_en_: '0'
-              teacher_fr_: '0'
-              anonymous: '0'
-              administrator: '0'
-              proofreader: '0'
-              content_creator: '0'
-              translator: '0'
-              icanlocalize_translator: '0'
-              icanlocalize_manager: '0'
-              judge: '0'
-              account_approval: '0'
-              competition_administrator: '0'
-              accuracy_judge: '0'
-              php_editor: '0'
-              pierre: '0'
-              lesson_plan_creator: '0'
-              superadmin: '0'
-              poet_network: '0'
-              pic_pal: '0'
-              poet: '0'
-              anthology_editor: '0'
-              grandfathered_pir: '0'
-              education_consultant: '0'
-              journal_editor: '0'
-              junior_editor: '0'
-            min_placeholder: ''
-            max_placeholder: ''
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        field_paid__value:
-          id: field_paid__value
-          table: node__field_paid_
-          field: field_paid__value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: boolean
-          operator: '='
-          value: '1'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: created
-          plugin_id: date
-          operator: '>='
-          value:
-            min: ''
-            max: ''
-            value: '2022-09-01'
-            type: date
-          group: 1
-          exposed: true
-          expose:
-            operator_id: created_op
-            label: 'Authored on'
-            description: ''
-            use_operator: false
-            operator: created_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: created
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              teacher: '0'
-              non_canadian_educator: '0'
-              teacher_en_: '0'
-              teacher_fr_: '0'
-              anonymous: '0'
-              administrator: '0'
-              proofreader: '0'
-              content_creator: '0'
-              translator: '0'
-              icanlocalize_translator: '0'
-              icanlocalize_manager: '0'
-              judge: '0'
-              account_approval: '0'
-              competition_administrator: '0'
-              accuracy_judge: '0'
-              php_editor: '0'
-              pierre: '0'
-              lesson_plan_creator: '0'
-              superadmin: '0'
-              poet_network: '0'
-              pic_pal: '0'
-              poet: '0'
-              anthology_editor: '0'
-              grandfathered_pir: '0'
-              education_consultant: '0'
-              journal_editor: '0'
-              junior_editor: '0'
-            min_placeholder: ''
-            max_placeholder: ''
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-      filter_groups:
-        operator: AND
-        groups:
-          1: AND
       defaults:
         title: false
-        filters: false
-        filter_groups: false
+        filters: true
+        filter_groups: true
       display_extenders: {  }
       path: admin/pic-pal/paid
       menu:
@@ -9683,7 +9063,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_agreed_visit_date'
         - 'config:field.storage.node.field_funding_source'
@@ -10176,7 +9556,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_agreed_visit_date'
         - 'config:field.storage.node.field_funding_source'
@@ -10610,7 +9990,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_agreed_visit_date'
         - 'config:field.storage.node.field_funding_source'
@@ -11137,7 +10517,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.node.field_agreed_visit_date'
         - 'config:field.storage.node.field_funding_source'
