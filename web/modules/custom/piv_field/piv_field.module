@@ -23,7 +23,7 @@ function piv_field_form_alter(&$form, FormStateInterface $form_state, $form_id) 
     // Custom School fields.
     $form['school'] = [
       '#title' => t('School'),
-      '#description' => t('Type a few letters of your school name, wait, and then select it from the list. All Canadian schools should be in our system. Don\'t see your school? Try searching by postal code or <a href="mailto:webmaster@poetryinvoice.com">Contact us</a>.'),
+      '#description' => t('Type a few letters of your school name, wait, and then select it from the list. All Canadian schools should be in our system.'),
       '#type' => 'entity_autocomplete',
       '#target_type' => 'node',
       '#default_value' => $default_value,

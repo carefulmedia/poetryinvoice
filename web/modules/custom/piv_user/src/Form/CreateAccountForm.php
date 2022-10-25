@@ -198,7 +198,7 @@ class CreateAccountForm extends FormBase {
       case 'teacher':
         $form['account_type_wrapper']['school'] = [
           '#title' => $this->t('School'),
-          '#description' => $this->t('Type a few letters of your school name, wait, and then select it from the list. All Canadian schools should be in our system. Don’t see your school? <a href="mailto:webmaster@poetryinvoice.com">Contact us</a>.'),
+          '#description' => $this->t('Type a few letters of your school name, wait, and then select it from the list. All Canadian schools should be in our system.'),
           '#type' => 'entity_autocomplete',
           '#target_type' => 'node',
           "#validate_reference" => false,
@@ -225,7 +225,7 @@ class CreateAccountForm extends FormBase {
         $form['account_type_wrapper']['postal_code'] = [
           '#title' => $this->t('Search by postal code instead'),
           '#type' => 'checkbox',
-          '#description' => $this->t('Check this option and then type your school\'s postal code in the School field above.'),
+          '#description' => $this->t('Check this option and then type your school\'s postal code in the School field above. Still don\’t see your school?&nbsp;<a href="mailto:webmaster@poetryinvoice.com">Contact us</a>.'),
           '#default_value' => 0,
           '#ajax' => [
             'callback' => [$this, 'postalCodeCallback'],
