@@ -102,6 +102,7 @@ permissions:
   - 'edit own field_poetry_is_'
   - 'edit own field_release_teacher'
   - 'edit own field_remarkable_teacher'
+  - 'edit own field_school'
   - 'edit own field_student_engaglement_teache'
   - 'edit own field_student_name_1'
   - 'edit own field_teacher_incomplete_reason'
