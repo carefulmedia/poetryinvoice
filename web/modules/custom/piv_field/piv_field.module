@@ -7,18 +7,31 @@
 use Drupal\Core\Form\FormStateInterface;
 
 function piv_field_form_alter(&$form, FormStateInterface $form_state, $form_id) {
-  if ($form_id == 'user_teacher_edit_form') {
+  $school_forms = [
+    'user_teacher_edit_form',
+    'node_journal_poem_form',
+    'node_journal_poem_edit_form'
+  ];
+
+  if (in_array($form_id, $school_forms)) {
+    $field = 'field_school';
+
+    if ($form_id == 'node_journal_poem_form' || $form_id == 'node_journal_poem_edit_form') {
+      $field = 'field_school_journal';
+      $form['actions']['submit']['#submit'][] = 'piv_field_poem_form_submit';
+    }
+    else if ($form_id == 'user_teacher_edit_form') {
+      $form['actions']['submit']['#submit'][] = 'piv_field_teacher_edit_form_submit';
+    }
+
     $isPostalCode = 0;
     if ($form_state->getValue('pcode')) {
       $isPostalCode = 1;
     }
 
     // Hide the Drupal original field. It will be populated from the custom field bellow.
-    $form['field_school']['#access'] = FALSE;
-    $default_value = $form['field_school']['widget'][0]['target_id']['#default_value'];
-
-    // Custom submit.
-    $form['actions']['submit']['#submit'][] = 'piv_field_teacher_edit_form_submit';
+    $form[$field]['#access'] = FALSE;
+    $default_value = $form[$field]['widget'][0]['target_id']['#default_value'];
 
     // Custom School fields.
     $form['school'] = [
@@ -81,5 +94,20 @@ function piv_field_teacher_edit_form_submit(array &$form, FormStateInterface $fo
     ];
     $account->set('field_school', $value);
     $account->save();
+  }
+}
+
+/**
+ * Custom form submit for Poem form.
+ */
+function piv_field_poem_form_submit(array &$form, FormStateInterface $form_state) {
+  $school_id = $form_state->getValue('school');
+  if ($school_id) {
+    $node = $form_state->getFormObject()->getEntity();
+    $value = [
+      ['target_id' => $school_id],
+    ];
+    $node->set('field_school_journal', $value);
+    $node->save();
   }
 }
