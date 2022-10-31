@@ -225,7 +225,7 @@ class CreateAccountForm extends FormBase {
         $form['account_type_wrapper']['postal_code'] = [
           '#title' => $this->t('Search by postal code instead'),
           '#type' => 'checkbox',
-          '#description' => $this->t('Check this option and then type your school\'s postal code in the School field above. Still don\’t see your school?&nbsp;<a href="mailto:webmaster@poetryinvoice.com">Contact us</a>.'),
+          '#description' => $this->t('Check this option and then type your school\'s postal code in the School field above. Still don’t see your school?&nbsp;<a href="mailto:webmaster@poetryinvoice.com">Contact us</a>.'),
           '#default_value' => 0,
           '#ajax' => [
             'callback' => [$this, 'postalCodeCallback'],
