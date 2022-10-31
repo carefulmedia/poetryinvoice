@@ -16,6 +16,7 @@ dependencies:
     - node
     - options
     - svg_image
+    - text
     - user
 id: journal_poem_sidebar
 label: 'Journal poem sidebar'
@@ -462,7 +463,7 @@ display:
           exclude: true
           alter:
             alter_text: false
-            text: '{{ field_poem_reason }} '
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -494,13 +495,13 @@ display:
           element_label_colon: false
           element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: false
+          element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: value
-          type: basic_string
+          click_sort_column: format
+          type: text_default
           settings: {  }
           group_column: value
           group_columns: {  }
