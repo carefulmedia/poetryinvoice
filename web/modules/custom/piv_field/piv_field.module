@@ -65,7 +65,7 @@ function piv_field_form_alter(&$form, FormStateInterface $form_state, $form_id) 
     $form['pcode'] = [
       '#title' => t('Search by postal code instead'),
       '#type' => 'checkbox',
-      '#description' => t('Check this option, and then type your school\'s postal code in the School field above.'),
+      '#description' => t('Check this option, and then type your school\'s postal code in the School field above. Still don’t see your school?&nbsp;<a href="mailto:webmaster@poetryinvoice.com">Contact us</a>.'),
       '#default_value' => 0,
       '#ajax' => [
         'callback' => 'piv_field_postal_code_callback',
