@@ -1413,7 +1413,7 @@ display:
             field_visit_admin: field_visit_admin
             field_in_person_or_teleconferenc: field_in_person_or_teleconferenc
             field_funding_source: field_funding_source
-          default: created
+          default: field_agreed_visit_date
           info:
             views_bulk_operations_bulk_form:
               align: ''
@@ -1442,7 +1442,7 @@ display:
               empty_column: false
               responsive: ''
             mail_1:
-              sortable: true
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
@@ -1519,7 +1519,7 @@ display:
               empty_column: false
               responsive: ''
             field_in_person_or_teleconferenc:
-              sortable: true
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
@@ -5780,11 +5780,434 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            pal_pir_school_visit: pal_pir_school_visit
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        langcode:
+          id: langcode
+          table: node
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: langcode_op
+            label: Language
+            description: ''
+            use_operator: false
+            operator: langcode_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: langcode
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_address_administrative_area:
+          id: field_address_administrative_area
+          table: node__field_address
+          field: field_address_administrative_area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: administrative_area
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_address_administrative_area_op
+            label: Province
+            description: ''
+            use_operator: false
+            operator: field_address_administrative_area_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_address_administrative_area
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+            label_type: static
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          country:
+            country_source: static
+            country_argument_id: ''
+            country_filter_id: ''
+            country_static_code: CA
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: '2022-09-01'
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_op
+            label: 'Requested after'
+            description: ''
+            use_operator: false
+            operator: created_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        piv_teacher_last_name_value:
+          id: piv_teacher_last_name_value
+          table: user__piv_teacher_last_name
+          field: piv_teacher_last_name_value
+          relationship: field_pal_pir
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: piv_teacher_last_name_value_op
+            label: 'Booked poet last name'
+            description: ''
+            use_operator: false
+            operator: piv_teacher_last_name_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: piv_teacher_last_name_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_booked__value:
+          id: field_booked__value
+          table: node__field_booked_
+          field: field_booked__value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_agreed_visit_date_value:
+          id: field_agreed_visit_date_value
+          table: node__field_agreed_visit_date
+          field: field_agreed_visit_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '>'
+          value:
+            min: ''
+            max: ''
+            value: 'now -1 day'
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       defaults:
         title: false
         fields: false
-        filters: true
-        filter_groups: true
+        filters: false
+        filter_groups: false
       display_extenders: {  }
       path: admin/pic-pal/not-past
       menu:
@@ -8943,10 +9366,388 @@ display:
     position: 6
     display_options:
       title: Paid
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            pal_pir_school_visit: pal_pir_school_visit
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        langcode:
+          id: langcode
+          table: node
+          field: langcode
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: langcode
+          plugin_id: language
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: langcode_op
+            label: Language
+            description: ''
+            use_operator: false
+            operator: langcode_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: langcode
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_address_administrative_area:
+          id: field_address_administrative_area
+          table: node__field_address
+          field: field_address_administrative_area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: administrative_area
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_address_administrative_area_op
+            label: Province
+            description: ''
+            use_operator: false
+            operator: field_address_administrative_area_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_address_administrative_area
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            reduce: false
+            label_type: static
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          country:
+            country_source: static
+            country_argument_id: ''
+            country_filter_id: ''
+            country_static_code: CA
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+          operator: '>='
+          value:
+            min: ''
+            max: ''
+            value: '2022-09-01'
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: created_op
+            label: 'Requested after'
+            description: ''
+            use_operator: false
+            operator: created_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: created
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        piv_teacher_last_name_value:
+          id: piv_teacher_last_name_value
+          table: user__piv_teacher_last_name
+          field: piv_teacher_last_name_value
+          relationship: field_pal_pir
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: piv_teacher_last_name_value_op
+            label: 'Booked poet last name'
+            description: ''
+            use_operator: false
+            operator: piv_teacher_last_name_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: piv_teacher_last_name_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              teacher: '0'
+              non_canadian_educator: '0'
+              teacher_en_: '0'
+              teacher_fr_: '0'
+              anonymous: '0'
+              administrator: '0'
+              proofreader: '0'
+              content_creator: '0'
+              translator: '0'
+              icanlocalize_translator: '0'
+              icanlocalize_manager: '0'
+              judge: '0'
+              account_approval: '0'
+              competition_administrator: '0'
+              accuracy_judge: '0'
+              php_editor: '0'
+              pierre: '0'
+              lesson_plan_creator: '0'
+              superadmin: '0'
+              poet_network: '0'
+              pic_pal: '0'
+              poet: '0'
+              anthology_editor: '0'
+              grandfathered_pir: '0'
+              education_consultant: '0'
+              journal_editor: '0'
+              junior_editor: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_paid__value:
+          id: field_paid__value
+          table: node__field_paid_
+          field: field_paid__value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       defaults:
         title: false
-        filters: true
-        filter_groups: true
+        filters: false
+        filter_groups: false
       display_extenders: {  }
       path: admin/pic-pal/paid
       menu:
