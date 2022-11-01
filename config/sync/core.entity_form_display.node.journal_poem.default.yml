@@ -210,7 +210,7 @@ content:
                 speed: '400'
             selector: ''
   field_poem_reason:
-    type: string_textarea
+    type: text_textarea
     weight: 18
     region: content
     settings:

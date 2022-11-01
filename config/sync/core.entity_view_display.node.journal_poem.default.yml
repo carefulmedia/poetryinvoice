@@ -303,21 +303,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 4
             additional: {  }
-          88a73148-e1e4-49cb-8d67-11652675eb9a:
-            uuid: 88a73148-e1e4-49cb-8d67-11652675eb9a
-            region: blb_region_col_2
-            configuration:
-              id: 'field_block:node:journal_poem:field_poem_reason'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: basic_string
-                label: above
-                settings: {  }
-                third_party_settings: {  }
-            weight: 5
-            additional: {  }
           cf6fc150-0cf2-493d-885b-868a5027bf4e:
             uuid: cf6fc150-0cf2-493d-885b-868a5027bf4e
             region: blb_region_col_2
@@ -573,13 +558,6 @@ content:
     third_party_settings: {  }
     weight: 9
     region: content
-  field_poem_reason:
-    type: basic_string
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 18
-    region: content
   field_poem_type:
     type: list_default
     label: above
@@ -669,5 +647,6 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_poem_reason: true
   langcode: true
   search_api_excerpt: true

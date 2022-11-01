@@ -6,6 +6,8 @@
  */
 
 use Drupal\Component\Utility\Environment;
+use Drupal\field\Entity\FieldStorageConfig;
+use Drupal\field\Entity\FieldConfig;
 
 /**
  * Set value to 'Allow poet visits for this school' field on schools.
@@ -24,4 +26,68 @@ function piv_base_update_9001() {
     $node->save();
   }
   
+}
+
+/**
+ * Replacing the plain text field_poem_reason for a formatted-long with all data.
+ */
+function piv_base_update_9002() {
+  $database = \Drupal::database();
+  $entityType = 'node';
+  $fieldName = 'field_poem_reason';
+  $table = $entityType . '__' . $fieldName;
+  $currentRows = NULL;
+  $newFieldsList = [];
+  $fieldStorage = FieldStorageConfig::loadByName($entityType, $fieldName);
+
+  if (is_null($fieldStorage)) {
+    return;
+  }
+
+  // Get all current data from DB.
+  if ($database->schema()->tableExists($table)) {
+    $currentRows = $database->select($table, 'n')
+      ->fields('n')
+      ->execute()
+      ->fetchAll();
+  }
+
+  // Use existing field config for new field.
+  foreach ($fieldStorage->getBundles() as $bundle => $label) {
+    $field = FieldConfig::loadByName($entityType, $bundle, $fieldName);
+    $newField = $field->toArray();
+    $newField['field_type'] = 'text_long';
+    $newField['settings'] = [];
+    $newFieldsList[] = $newField;
+  }
+
+  // Deleting field storage which will also delete bundles(fields).
+  $newFieldStorage = $fieldStorage->toArray();
+  $newFieldStorage['type'] = 'text_long';
+  $newFieldStorage['settings'] = [];
+
+  // Delete the old field.
+  $fieldStorage->delete();
+
+  // Purge field data. Important to create the new field with the same name.
+  field_purge_batch(40);
+
+  // Create new field storage.
+  $newFieldStorage = FieldStorageConfig::create($newFieldStorage);
+  $newFieldStorage->save();
+
+  // Create new fields.
+  foreach ($newFieldsList as $nfield) {
+    $nfieldConfig = FieldConfig::create($nfield);
+    $nfieldConfig->save();
+  }
+
+  // Restore existing data in new table.
+  if (!is_null($currentRows)) {
+    foreach ($currentRows as $row) {
+      $database->insert($table)
+        ->fields((array) $row)
+        ->execute();
+    }
+  }
 }
