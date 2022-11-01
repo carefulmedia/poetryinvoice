@@ -1,8 +1,9 @@
-uuid: d26fa187-ebf5-40fc-b491-28c6c458db83
+uuid: dd1dd0e2-7a55-40bb-8cda-1ea8036fc3a2
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.full
     - field.field.node.writing_prompt.body
     - field.field.node.writing_prompt.comment_node_writing_prompt
     - field.field.node.writing_prompt.field_completed
@@ -10,14 +11,15 @@ dependencies:
     - field.field.node.writing_prompt.field_prompt_image
     - field.field.node.writing_prompt.field_prompt_or_exercise
     - node.type.writing_prompt
+    - views.view.user_listing_index_pages
   module:
     - layout_builder
-    - layout_builder_restrictions
     - layout_discovery
     - options
     - svg_image
     - text
     - user
+    - views
 third_party_settings:
   layout_builder:
     enabled: true
@@ -28,8 +30,8 @@ third_party_settings:
         layout_settings:
           label: ''
         components:
-          f0d02eff-8e40-4963-97fa-4420e4e0d590:
-            uuid: f0d02eff-8e40-4963-97fa-4420e4e0d590
+          852e9dce-88aa-4ebb-8214-7d1c81656874:
+            uuid: 852e9dce-88aa-4ebb-8214-7d1c81656874
             region: top
             configuration:
               id: 'field_block:node:writing_prompt:field_prompt_image'
@@ -51,8 +53,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          b6001ac0-1f63-4ea6-a48a-57804c63e2b1:
-            uuid: b6001ac0-1f63-4ea6-a48a-57804c63e2b1
+          64762270-3c0b-410b-b940-1b1f701b7398:
+            uuid: 64762270-3c0b-410b-b940-1b1f701b7398
             region: first
             configuration:
               id: 'field_block:node:writing_prompt:body'
@@ -66,35 +68,68 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          dcc46883-fed9-4909-b00e-fcbf106af53f:
-            uuid: dcc46883-fed9-4909-b00e-fcbf106af53f
+          0f18799c-556d-4f86-8920-64bd6172bfcb:
+            uuid: 0f18799c-556d-4f86-8920-64bd6172bfcb
             region: content
             configuration:
-              id: 'field_block:node:writing_prompt:field_prompt_or_exercise'
+              id: 'field_block:node:writing_prompt:body'
+              label: Prompt
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
-                type: list_default
-                label: above
+                type: text_default
+                label: hidden
                 settings: {  }
                 third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          97bfd5af-4091-4aa1-a741-5656ebaf095a:
+            uuid: 97bfd5af-4091-4aa1-a741-5656ebaf095a
+            region: content
+            configuration:
+              id: 'field_block:node:writing_prompt:field_prompt_image'
+              label: 'Prompt image'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: image
+                label: hidden
+                settings:
+                  image_link: ''
+                  image_style: ''
+                  svg_attributes:
+                    width: null
+                    height: null
+                  svg_render_as_image: true
+                  image_loading:
+                    attribute: lazy
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          5f9408ca-aa70-4e00-9099-f1ddbecd682c:
+            uuid: 5f9408ca-aa70-4e00-9099-f1ddbecd682c
+            region: content
+            configuration:
+              id: 'views_block:user_listing_index_pages-block_4'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
             weight: 0
             additional: {  }
         third_party_settings: {  }
-  layout_builder_restrictions:
-    allowed_block_categories: {  }
-    entity_view_mode_restriction:
-      allowed_layouts: {  }
-      denylisted_blocks: {  }
-      allowlisted_blocks: {  }
-      restricted_categories: {  }
-    entity_view_mode_restriction_by_region:
-      allowed_layouts: {  }
-id: node.writing_prompt.default
+id: node.writing_prompt.full
 targetEntityType: node
 bundle: writing_prompt
-mode: default
+mode: full
 content:
   body:
     type: text_default

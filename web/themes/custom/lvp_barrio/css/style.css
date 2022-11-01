@@ -4101,7 +4101,8 @@ h2 {
 }
 h3,
 .navbar-nav .nav-link,
-.block-views-exposed-filter-blocksearch-page h2 {
+.block-views-exposed-filter-blocksearch-page h2,
+.username {
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 900;
@@ -4112,6 +4113,7 @@ h3,
   text-transform: uppercase;
   font-stretch: 110;
   font-variation-settings: 'GRAD' 0, 'slnt' 0, 'XTRA' 468, 'XOPQ' 96, 'YOPQ' 79, 'YTLC' 514, 'YTUC' 712, 'YTAS' 750, 'YTDE' -203, 'YTFI' 738;
+  text-decoration: none;
 }
 .navbar-nav .nav-link {
   font-weight: 1000;
