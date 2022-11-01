@@ -1400,20 +1400,19 @@ display:
             counter: counter
             title: title
             created: created
-            mail_1: mail_1
-            uid: uid
-            field_agreed_visit_date: field_agreed_visit_date
             mail: mail
+            uid: uid
             field_pal_pir: field_pal_pir
+            field_preferred_poet_s_: field_preferred_poet_s_
+            field_agreed_visit_date: field_agreed_visit_date
             title_1: title_1
             field_address_locality: field_address_locality
             field_address_administrative_area: field_address_administrative_area
             langcode: langcode
             edit_node: edit_node
             field_visit_admin: field_visit_admin
-            field_in_person_or_teleconferenc: field_in_person_or_teleconferenc
             field_funding_source: field_funding_source
-          default: field_agreed_visit_date
+          default: created
           info:
             views_bulk_operations_bulk_form:
               align: ''
@@ -1441,8 +1440,8 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            mail_1:
-              sortable: false
+            mail:
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
@@ -1455,22 +1454,22 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_agreed_visit_date:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            mail:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
             field_pal_pir:
               sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_preferred_poet_s_:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_agreed_visit_date:
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
@@ -1512,13 +1511,6 @@ display:
               empty_column: false
               responsive: ''
             field_visit_admin:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_in_person_or_teleconferenc:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1526,7 +1518,7 @@ display:
               empty_column: false
               responsive: ''
             field_funding_source:
-              sortable: true
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
