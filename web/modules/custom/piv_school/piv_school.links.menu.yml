@@ -1,0 +1,5 @@
+piv_school.admin_settings:
+  route_name: piv_school.admin_settings
+  title: 'PIV Shool'
+  description: 'The PIV School configs'
+  parent: system.admin_config_services
