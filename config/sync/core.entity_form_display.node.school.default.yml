@@ -20,7 +20,9 @@ dependencies:
     - field.field.node.school.field_number_of_students
     - field.field.node.school.field_pa
     - field.field.node.school.field_school_board
+    - field.field.node.school.field_school_district_type1
     - field.field.node.school.field_school_image
+    - field.field.node.school.field_school_phone
     - field.field.node.school.field_special_subjects
     - field.field.node.school.field_story_link
     - field.field.node.school.field_talked_to
@@ -175,6 +177,14 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_school_district_type1:
+    type: string_textfield
+    weight: 35
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_school_image:
     type: image_image
     weight: 4
@@ -182,6 +192,14 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_school_phone:
+    type: string_textfield
+    weight: 36
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_special_subjects:
     type: string_textfield
