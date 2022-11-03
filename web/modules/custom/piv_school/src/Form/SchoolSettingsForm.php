@@ -4,6 +4,7 @@ namespace Drupal\piv_school\Form;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\file\Entity\File;
 
 /**
  * The PIV School config form.
@@ -28,7 +29,7 @@ class SchoolSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $config = $this->config('account_modal.settings');
+    $config = $this->config('piv_school.settings');
 
     $validators = array(
       'file_validate_extensions' => array('csv'),
@@ -50,9 +51,13 @@ class SchoolSettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->config('account_modal.settings')
-      ->set('contacts_csv_file', $form_state->getValue('contacts_csv_file'))
-      ->save();
+    if ($file_id = $form_state->getValue(['contacts_csv_file', '0'])) {
+      $file = File::load($file_id);
+      $file->setPermanent();
+      $file->save();
+      $this->config('piv_school.settings')->set('contacts_csv_file', $form_state->getValue('contacts_csv_file'))->save();
+    }
+    $this->config('piv_school.settings')->set('contacts_csv_file', [])->save();
 
     parent::submitForm($form, $form_state);
   }
