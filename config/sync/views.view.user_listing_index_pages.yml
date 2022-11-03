@@ -2399,7 +2399,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_link: content
+            image_link: ''
             image_style: focal_point_200_x_200
             svg_attributes:
               width: null
@@ -2471,7 +2471,7 @@ display:
           click_sort_column: value
           type: user_name
           settings:
-            link_to_entity: true
+            link_to_entity: false
           group_column: value
           group_columns:
             entity_id: entity_id
