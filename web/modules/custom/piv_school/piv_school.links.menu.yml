@@ -3,3 +3,8 @@ piv_school.admin_settings:
   title: 'PIV Shool'
   description: 'The PIV School configs'
   parent: system.admin_config_services
+piv_school.sync:
+  route_name: piv_school.sync_form
+  title: 'PIV School Sync'
+  description: 'Sync all the CSV data with Drupal school node.'
+  parent: system.admin_config_services

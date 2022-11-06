@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function piv_school_theme() {
+  return [
+    'piv_school__sync_form' => [
+      'variables' => [
+        'name' => NULL,
+        'url' => NULL,
+      ],
+    ],
+  ];
+}

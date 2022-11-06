@@ -1,0 +1,7 @@
+services:
+  logger.channel.piv_school:
+    parent: logger.channel_base
+    arguments: ['piv_school']
+  piv_school.sync:
+    class: Drupal\piv_school\SyncService
+    arguments: [ '@entity_type.manager', '@config.factory', '@logger.channel.piv_school' ]
