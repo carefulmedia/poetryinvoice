@@ -41,7 +41,7 @@ class SchoolSettingsForm extends ConfigFormBase {
       '#description' => $this->t('The CSV with the School Contacts to be synced on School content.'),
       '#default_value' => $config->get('contacts_csv_file'),
       '#upload_validators' => $validators,
-      '#upload_location' => 'private://',
+      '#upload_location' => 'private://school/',
     ];
 
     return parent::buildForm($form, $form_state);
@@ -57,7 +57,9 @@ class SchoolSettingsForm extends ConfigFormBase {
       $file->save();
       $this->config('piv_school.settings')->set('contacts_csv_file', $form_state->getValue('contacts_csv_file'))->save();
     }
-    $this->config('piv_school.settings')->set('contacts_csv_file', [])->save();
+    else {
+      $this->config('piv_school.settings')->set('contacts_csv_file', [])->save();
+    }
 
     parent::submitForm($form, $form_state);
   }

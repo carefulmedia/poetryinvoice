@@ -5,3 +5,10 @@ piv_school.admin_settings:
     _form: \Drupal\piv_school\Form\SchoolSettingsForm
   requirements:
     _permission: 'administer site configuration'
+piv_school.sync_form:
+  path: /admin/config/services/piv-school-sync
+  defaults:
+    _title: 'PIV School Sync'
+    _form: \Drupal\piv_school\Form\SchoolSyncForm
+  requirements:
+    _permission: 'administer site configuration'
