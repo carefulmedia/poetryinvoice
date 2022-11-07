@@ -72,14 +72,20 @@ class SyncService {
       $keys[$i] = str_replace(' ', '_', strtolower($key_name));
     }
 
+    $total = count($csv);
+    $ignored = 0;
     foreach ($csv as $row) {
       // Only rows that record is 1 and Type 2 is not 1.
       if ($row[1] != 1 || $row[18] == 1) {
+        $ignored++;
         continue;
       }
       $rows[] = array_combine($keys, $row);
     }
 
+    $valid = $total - $ignored;
+    $params = ['%valid' => $valid, '%total' => $total, '%ignored' => $ignored];
+    $this->logger->info('Loaded CSV. Total items: %valid (%total). Number of ignored items: %ignored', $params);
     return $rows;
   }
 
