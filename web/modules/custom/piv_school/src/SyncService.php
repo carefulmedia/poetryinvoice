@@ -3,7 +3,7 @@
 namespace Drupal\piv_school;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\State\State;
 use Drupal\Core\Entity\EntityStorageException;
 use Psr\Log\LoggerInterface;
 
@@ -15,9 +15,11 @@ class SyncService {
   protected $entityManager;
 
   /**
-   * @var \Drupal\Core\Config\ConfigFactoryInterface
+   * The state store.
+   *
+   * @var \Drupal\Core\State\State
    */
-  protected $configFactory;
+  protected $state;
 
   /**
    * @var \Psr\Log\LoggerInterface
@@ -27,9 +29,9 @@ class SyncService {
   /**
    * Construct PivotalEvent.
    */
-  public function __construct(EntityTypeManagerInterface $entity_manager, ConfigFactoryInterface $config_factory, LoggerInterface $logger) {
+  public function __construct(EntityTypeManagerInterface $entity_manager, State $state, LoggerInterface $logger) {
     $this->entityManager = $entity_manager;
-    $this->configFactory = $config_factory;
+    $this->state = $state;
     $this->logger = $logger;
   }
 
@@ -40,8 +42,7 @@ class SyncService {
    *   The loaded file entity or NULL.
    */
   public function getCSVFile() {
-    $config = $this->configFactory->get('piv_school.settings');
-    if ($fid = $config->get('contacts_csv_file')) {
+    if ($fid = $this->state->get('contacts_csv_file')) {
       $fid = reset($fid);
       $file = $this->entityManager->getStorage('file')->load($fid);
       return $file;
