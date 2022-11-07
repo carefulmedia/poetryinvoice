@@ -4,6 +4,7 @@ namespace Drupal\piv_school;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Config\ConfigFactoryInterface;
+use Drupal\Core\Entity\EntityStorageException;
 use Psr\Log\LoggerInterface;
 
 class SyncService {
@@ -73,7 +74,7 @@ class SyncService {
 
     foreach ($csv as $row) {
       // Only rows that record is 1 and Type 2 is not 1.
-      if ($row['RECORD'] != 1 || $row['TYPE2'] == 1) {
+      if ($row[1] != 1 || $row[18] == 1) {
         continue;
       }
       $rows[] = array_combine($keys, $row);
@@ -98,7 +99,7 @@ class SyncService {
     ]);
 
     if ($node) {
-      return $node;
+      return reset($node);
     }
 
     return NULL;
@@ -110,7 +111,7 @@ class SyncService {
    * @return \Drupal\Core\Entity\EntityInterface
    *   The node object.
    */
-  public function createNode($fields) {
+  public function createNode() {
     return $this->entityManager->getStorage('node')->create([
       'type' => 'school',
       'langcode' => 'en',
@@ -130,22 +131,28 @@ class SyncService {
    *   The node save() response.
    */
   public function updateNode($node, $fields) {
-    $node->title = $fields['name'];
-    $node->field_cdb_id = $fields['id'];
-    $node->field_school_phone = $fields['phone'];
-    $node->field_story_link = $fields['website'];
-    $node->field_contact_first_name = $fields['first_name'];
-    $node->field_contact_last_name = $fields['last_name'];
-    $node->field_contact_email = $fields['email'];
-    $node->field_school_district_type1 = $fields['type1'];
-    $node->field_address = [
-      'country_code' => 'CA',
-      'administrative_area' => $fields['prov'],
-      'address_line1' => $fields['add1'],
-      'address_line2' => $fields['add2'],
-      'locality' => $fields['city'],
-    ];
-    return $node->save();
+    try {
+      $node->title = $fields['name'];
+      $node->field_cdb_id = $fields['id'];
+      $node->field_school_phone = $fields['phone'];
+      $node->field_story_link = $fields['website'];
+      $node->field_contact_first_name = $fields['first_name'];
+      $node->field_contact_last_name = $fields['last_name'];
+      $node->field_contact_email = $fields['email'];
+      $node->field_school_district_type1 = $fields['type1'];
+      $node->field_address = [
+        'country_code' => 'CA',
+        'administrative_area' => $fields['prov'],
+        'address_line1' => $fields['add1'],
+        'address_line2' => $fields['add2'],
+        'locality' => $fields['city'],
+      ];
+      return $node->save();
+    }
+    catch(EntityStorageException $e) {
+      $this->logger->error("Error updating the node with CDB Id %id. Error: %error", ['%id' => $fields['id'], '%error' => $e->getMessage()]);
+      return NULL;
+    }
   }
 
   /**
@@ -168,7 +175,7 @@ class SyncService {
     $batch = [
       'operations' => $operations,
       'finished' => [static::class, 'finishBatch'],
-      'title' => 'Syncing Pivotal events',
+      'title' => 'Syncing schools...',
     ];
 
     batch_set($batch);
@@ -187,19 +194,22 @@ class SyncService {
 
     $is_new = FALSE;
     $sync = \Drupal::service('piv_school.sync');
-    $node = $sync->laodNode($row['id']);
+    $logger = \Drupal::logger('piv_school');
+    $node = $sync->loadNode($row['id']);
     if (!$node) {
       $is_new = TRUE;
-      $node = $sync->createNode($row['id']);
+      $node = $sync->createNode();
     }
 
     if ($sync->updateNode($node, $row)) {
       $action = $is_new ? 'created' : 'updated';
-      \Drupal::logger('piv_school')->info("Node NID %nid - CDB ID %cdbid %action.", ['%nid' => $node->id(), '%cdbid' => $row['id'], '%action' => $action]);
+      $logger->info("Node NID %nid - CDB ID %cdbid %action.", ['%nid' => $node->id(), '%cdbid' => $row['id'], '%action' => $action]);
     }
     else {
-      \Drupal::logger('piv_school')->info("Faild to process the row ID: %cdbid", ['%cdbid' => $row['id']]);
+      $logger->info("Faild to process the row ID: %cdbid", ['%cdbid' => $row['id']]);
     }
+
+    $context['results']['num']++;
   }
 
   /**
