@@ -67,10 +67,37 @@ dependencies:
     - field.field.user.user.piv_teacher_profile_origin
     - field.field.user.user.user_picture
     - image.style.thumbnail
+    - views.view.user_listing_index_pages
   module:
+    - layout_builder
+    - layout_discovery
     - svg_image
-    - text
     - user
+    - views
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          88560bda-a848-4268-b408-f4c809ccdc91:
+            uuid: 88560bda-a848-4268-b408-f4c809ccdc91
+            region: content
+            configuration:
+              id: 'views_block:user_listing_index_pages-block_4'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
 _core:
   default_config_hash: '-cLsS3M3JycipXQt9rEb81_HxKneReoGuRh8ijcOPXs'
 id: user.user.compact
@@ -78,9 +105,7 @@ targetEntityType: user
 bundle: user
 mode: compact
 content:
-  field_user_bio:
-    type: text_default
-    label: above
+  realname:
     settings: {  }
     third_party_settings: {  }
     weight: 1
@@ -91,6 +116,10 @@ content:
     settings:
       image_link: content
       image_style: thumbnail
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
       image_loading:
         attribute: lazy
     third_party_settings: {  }
@@ -151,6 +180,7 @@ hidden:
   field_signature: true
   field_social_links: true
   field_teacher_confirmation: true
+  field_user_bio: true
   field_virtual_visits: true
   field_welcome_modal_settings: true
   field_what_grades_do_you_teach: true
@@ -162,5 +192,4 @@ hidden:
   piv_teacher_first_name: true
   piv_teacher_last_name: true
   piv_teacher_profile_origin: true
-  realname: true
   search_api_excerpt: true
