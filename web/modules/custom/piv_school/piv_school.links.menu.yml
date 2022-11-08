@@ -1,10 +1,10 @@
 piv_school.admin_settings:
   route_name: piv_school.admin_settings
-  title: 'PIV Shool'
-  description: 'The PIV School configs'
+  title: 'PIV Shool CSV file'
+  description: 'Upload the CSV file for the school database.'
   parent: system.admin_config_services
 piv_school.sync:
   route_name: piv_school.sync_form
   title: 'PIV School Sync'
-  description: 'Sync all the CSV data with Drupal school node.'
+  description: 'Sync the data from the school database with Drupal school nodes.'
   parent: system.admin_config_services
