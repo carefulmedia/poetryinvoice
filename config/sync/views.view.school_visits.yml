@@ -1400,20 +1400,19 @@ display:
             counter: counter
             title: title
             created: created
-            mail_1: mail_1
-            uid: uid
-            field_agreed_visit_date: field_agreed_visit_date
             mail: mail
+            uid: uid
             field_pal_pir: field_pal_pir
+            field_preferred_poet_s_: field_preferred_poet_s_
+            field_agreed_visit_date: field_agreed_visit_date
             title_1: title_1
             field_address_locality: field_address_locality
             field_address_administrative_area: field_address_administrative_area
             langcode: langcode
             edit_node: edit_node
             field_visit_admin: field_visit_admin
-            field_in_person_or_teleconferenc: field_in_person_or_teleconferenc
             field_funding_source: field_funding_source
-          default: field_agreed_visit_date
+          default: created
           info:
             views_bulk_operations_bulk_form:
               align: ''
@@ -1441,8 +1440,8 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            mail_1:
-              sortable: false
+            mail:
+              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
@@ -1455,22 +1454,22 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_agreed_visit_date:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            mail:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
             field_pal_pir:
               sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_preferred_poet_s_:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_agreed_visit_date:
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
@@ -1512,20 +1511,6 @@ display:
               empty_column: false
               responsive: ''
             field_visit_admin:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_in_person_or_teleconferenc:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_in_person_or_teleconferenc:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1533,7 +1518,7 @@ display:
               empty_column: false
               responsive: ''
             field_funding_source:
-              sortable: true
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
@@ -7651,7 +7636,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: boolean
-          operator: '!='
+          operator: '='
           value: '1'
           group: 1
           exposed: false
@@ -7689,8 +7674,8 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: boolean
-          operator: '='
-          value: '0'
+          operator: '!='
+          value: '1'
           group: 2
           exposed: false
           expose:
@@ -8694,6 +8679,69 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_preferred_poet_s_:
+          id: field_preferred_poet_s_
+          table: node__field_preferred_poet_s_
+          field: field_preferred_poet_s_
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Preferred poet'
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{{ field_preferred_poet_s_ }} \r\n{{ mail }}"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         edit_node:
           id: edit_node
           table: node
@@ -9300,6 +9348,7 @@ display:
         - 'config:field.storage.node.field_agreed_visit_date'
         - 'config:field.storage.node.field_funding_source'
         - 'config:field.storage.node.field_pal_pir'
+        - 'config:field.storage.node.field_preferred_poet_s_'
         - 'config:field.storage.node.field_teacher_virtual_or_in_pers'
         - 'config:field.storage.node.field_visit_admin'
   page_6:
