@@ -153,6 +153,7 @@ class SyncService {
         'address_line1' => $fields['add1'],
         'address_line2' => $fields['add2'],
         'locality' => $fields['city'],
+        'postal_code' => $fields['code'],
       ];
       return $node->save();
     }
