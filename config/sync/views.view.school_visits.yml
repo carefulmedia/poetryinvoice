@@ -1512,7 +1512,7 @@ display:
               empty_column: false
               responsive: ''
             field_visit_admin:
-              sortable: true
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
@@ -1533,7 +1533,7 @@ display:
               empty_column: false
               responsive: ''
             field_funding_source:
-              sortable: true
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
