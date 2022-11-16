@@ -6,3 +6,5 @@ ignored_config_entities:
   - piv_poem_password.settings
   - piv_base.welcome_modal_settings
   - 'piv_mail.piv_mail.*'
+  - 'views.view.*'
+
