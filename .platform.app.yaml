@@ -79,6 +79,7 @@ hooks:
     # No services are available but the disk is writeable.
     build: |
         set -e
+        curl -fsS https://platform.sh/cli/installer | php
     # The deploy hook runs after your application has been deployed and started.
     # Code cannot be modified at this point but the database is available.
     # The site is not accepting requests while this script runs so keep it
@@ -157,7 +158,7 @@ web:
             allow: true
             expires: 5m
             root: 'web/journal'
-            index: 
+            index:
               - index.html
               - index.htm
 crons:
@@ -169,3 +170,10 @@ crons:
     roulette:
         spec: '0 * * * *'
         cmd: 'cd web/roulette/cached ; bash generate-cache.sh'
+    backup:
+        spec: '0 5 * * *'
+        commands:
+            start: |
+                if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
+                   platform backup:create --yes --no-wait --live
+                fi
