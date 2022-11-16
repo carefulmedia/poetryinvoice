@@ -147,6 +147,14 @@ class SyncService {
       $node->field_contact_last_name = $fields['last_name'];
       $node->field_contact_email = $fields['email'];
       $node->field_school_district_type1 = $fields['type1'];
+      $node->field_job_title = $fields['job_title'];
+      $node->field_special_subjects = $fields['spec'];
+      $node->field_number_of_students = $fields['enr'];
+
+      if (isset($fields['language']) && !empty($fields['language'])) {
+        $node->field_language_school = $fields['language'];
+      }
+
       $node->field_address = [
         'country_code' => 'CA',
         'administrative_area' => $fields['prov'],
@@ -155,6 +163,7 @@ class SyncService {
         'locality' => $fields['city'],
         'postal_code' => $fields['code'],
       ];
+
       return $node->save();
     }
     catch(EntityStorageException $e) {
