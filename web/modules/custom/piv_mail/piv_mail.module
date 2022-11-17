@@ -171,7 +171,7 @@ function piv_mail_node_update(NodeInterface $node) {
       return piv_mail_send_mail($key, $langcode, $replacements_service, NULL, $send_date, $queue_key);
     };
 
-    $visit_date = $date->setTime(0, 0, 0)->getTimestamp();
+    $visit_date = $date->getTimestamp();
 
     // Send mail one week before poet visit.
     $queue_mail('one_week_before_visit_email_reminder', $visit_date - (7 * 24 * 60 * 60));
