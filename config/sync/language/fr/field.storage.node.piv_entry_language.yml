@@ -1,8 +1,0 @@
-settings:
-  allowed_values:
-    -
-      label: 'Section anglaise'
-    -
-      label: 'Section française'
-    -
-      label: 'Section bilingue'

@@ -1,8 +1,0 @@
-display:
-  default:
-    display_options:
-      header:
-        area:
-          content:
-            value: "<h1>Allez plus loin</h1>\r\n\r\n<h2>Utilisez notre site web pour impliquer vos élèves!</h2>\r\n"
-            format: filtered_html
