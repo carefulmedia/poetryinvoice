@@ -20,6 +20,8 @@
 */sync/piv_base.welcome_modal_settings.yml
 */sync/piv_mail.piv_mail.*
 */sync/reroute_email.settings.yml
+*/sync/views.view.*
+*/sync/language/*
 
 # Environment variables
 .env
