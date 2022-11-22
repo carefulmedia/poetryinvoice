@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.school.comment_node_school
     - field.field.node.school.field_2016_rs
     - field.field.node.school.field_address
+    - field.field.node.school.field_allow_poet_visits_school
     - field.field.node.school.field_cdb_id
     - field.field.node.school.field_communication_log
     - field.field.node.school.field_contact_email
@@ -20,7 +21,9 @@ dependencies:
     - field.field.node.school.field_number_of_students
     - field.field.node.school.field_pa
     - field.field.node.school.field_school_board
+    - field.field.node.school.field_school_district_type1
     - field.field.node.school.field_school_image
+    - field.field.node.school.field_school_phone
     - field.field.node.school.field_special_subjects
     - field.field.node.school.field_story_link
     - field.field.node.school.field_talked_to
@@ -259,6 +262,8 @@ hidden:
   field_job_title: true
   field_not_competing_this_year: true
   field_pa: true
+  field_school_district_type1: true
+  field_school_phone: true
   field_special_subjects: true
   field_talked_to: true
   field_type_of_school: true

@@ -1,8 +1,0 @@
-settings:
-  allowed_values:
-    -
-      label: 'Oui, et vous pouvez afficher mon nom'
-    -
-      label: 'Oui, en restant anonyme'
-    -
-      label: 'Non merci'
