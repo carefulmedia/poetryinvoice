@@ -122,7 +122,7 @@ function piv_mail_node_delete(NodeInterface $node) {
   }
   // Remove tasks from queue when deleting the node.
   $mail_queue = \Drupal::service('piv_mail.mail_queue');
-  $mail_queue->deleteItemsByNid($nid);
+  $mail_queue->deleteItemsByNid($node->id());
 }
 
 /**
@@ -133,18 +133,17 @@ function piv_mail_node_update(NodeInterface $node) {
     return;
   }
 
+  $mail_queue = \Drupal::service('piv_mail.mail_queue');
   $nid = $node->id();
   $completed = $node->field_completed->value;
   if ($completed == 'Cancelled') {
     // Delete all scheduled emails.
-    $mail_queue = \Drupal::service('piv_mail.mail_queue');
     $mail_queue->deleteItemsByNid($nid);
     return;
   }
 
   $user = $node->uid->entity;
   $langcode = $node->langcode->value;
-  $mail_queue = \Drupal::service('piv_mail.mail_queue');
   $booked = !empty($node->field_booked_->value);
   $booked_original = !empty($node->original->field_booked_->value);
   $date = NULL;
@@ -160,8 +159,15 @@ function piv_mail_node_update(NodeInterface $node) {
     ->addSource('user', $user)
     ->addSource('school', $user->field_school->entity);
 
+  // If the node was booked and booking is changed to FALSE, remove all queued
+  // messages.
+  if ($booked_original && !$booked) {
+    $mail_queue->deleteItemsByNid($nid);
+    return;
+  }
+
   if ($date && $booked) {
-    // Inline function to send emails if necessary.
+    // Inline function to send emails or add notification to queue.
     $queue_mail = function ($key, $send_date) use ($langcode, $replacements_service, $nid) {
       if ($send_date < time()) {
         return FALSE;
@@ -256,7 +262,7 @@ function piv_mail_mail($key, &$message, $params) {
 }
 
 /**
- * Send a email.
+ * Send a email or add to queue.
  *
  * The $replacement_service should be already feed with sources. The send_date
  * is a unix timestamp indicating the minimum date this mail should be sent.
