@@ -8,7 +8,7 @@ use Drupal\Core\Entity\EntityStorageException;
 use Psr\Log\LoggerInterface;
 
 class SyncService {
-  
+
   /**
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
@@ -139,7 +139,8 @@ class SyncService {
    */
   public function updateNode($node, $fields) {
     try {
-      $node->title = $fields['name'];
+      // Until the CSV sources manage accents, we do not update the title
+      /* $node->title = $fields['name']; */
       $node->field_cdb_id = $fields['id'];
       $node->field_school_phone = $fields['phone'];
       $node->field_story_link = $fields['website'];
