@@ -133,18 +133,17 @@ function piv_mail_node_update(NodeInterface $node) {
     return;
   }
 
+  $mail_queue = \Drupal::service('piv_mail.mail_queue');
   $nid = $node->id();
   $completed = $node->field_completed->value;
   if ($completed == 'Cancelled') {
     // Delete all scheduled emails.
-    $mail_queue = \Drupal::service('piv_mail.mail_queue');
     $mail_queue->deleteItemsByNid($nid);
     return;
   }
 
   $user = $node->uid->entity;
   $langcode = $node->langcode->value;
-  $mail_queue = \Drupal::service('piv_mail.mail_queue');
   $booked = !empty($node->field_booked_->value);
   $booked_original = !empty($node->original->field_booked_->value);
   $date = NULL;
@@ -163,7 +162,7 @@ function piv_mail_node_update(NodeInterface $node) {
   // If the node was booked and booking is changed to FALSE, remove all queued
   // messages.
   if ($booked_original && !$booked) {
-    piv_mail_remove_visit_notifications($nid);
+    $mail_queue->deleteItemsByNid($nid);
     return;
   }
 
@@ -259,27 +258,6 @@ function piv_mail_mail($key, &$message, $params) {
     $message['headers']['Return-Path'] = $from;
     $message['headers']['Sender'] = $from;
     $message['from'] = $from;
-  }
-}
-
-/**
- * Delete all queued messages for a given node.
- */
-function piv_mail_remove_visit_notifications($nid) {
-  $mail_queue_service = \Drupal::service('piv_mail.mail_queue');
-
-  // Because the piv_mail_queue does not store the school visit node id,
-  // we have to specify each unique key.
-  foreach ([
-    'one_week_before_visit_email_reminder',
-    'one_day_before_visit_email_reminder',
-    'poet_survey_reminder_one_day_after_visit',
-    'poet_survey_reminder_one_week_after_visit',
-    'teacher_survey_reminder_one_day_after_visit',
-    'teacher_survey_reminder_one_week_after_visit',
-    'teacher_survey_reminder_one_week_after_visit',
-  ] as $message_key) {
-    $mail_queue_service->deleteItemByKey("$message_key:$nid");
   }
 }
 
