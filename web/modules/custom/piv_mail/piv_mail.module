@@ -122,7 +122,7 @@ function piv_mail_node_delete(NodeInterface $node) {
   }
   // Remove tasks from queue when deleting the node.
   $mail_queue = \Drupal::service('piv_mail.mail_queue');
-  $mail_queue->deleteItemsByNid($nid);
+  $mail_queue->deleteItemsByNid($node->id());
 }
 
 /**
