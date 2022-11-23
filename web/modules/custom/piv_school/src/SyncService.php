@@ -156,6 +156,8 @@ class SyncService {
         $node->field_language_school = $fields['language'];
       }
 
+      // Until the CSV sources manage accents, we only update the postal code.
+      /*
       $node->field_address = [
         'country_code' => 'CA',
         'administrative_area' => $fields['prov'],
@@ -164,7 +166,8 @@ class SyncService {
         'locality' => $fields['city'],
         'postal_code' => $fields['code'],
       ];
-
+      */
+      $node->field_address->postal_code = $fields['code'];
       return $node->save();
     }
     catch(EntityStorageException $e) {
