@@ -137,10 +137,12 @@ class SyncService {
    * @return int
    *   The node save() response.
    */
-  public function updateNode($node, $fields) {
+  public function updateNode($node, $fields, $new = TRUE) {
     try {
       // Until the CSV sources manage accents, we do not update the title
-      /* $node->title = $fields['name']; */
+      if ($new) {
+        $node->title = $fields['name'];
+      }
       $node->field_cdb_id = $fields['id'];
       $node->field_school_phone = $fields['phone'];
       $node->field_story_link = $fields['website'];
@@ -222,7 +224,7 @@ class SyncService {
       $node = $sync->createNode();
     }
 
-    if ($sync->updateNode($node, $row)) {
+    if ($sync->updateNode($node, $row, $is_new)) {
       $action = $is_new ? 'created' : 'updated';
       $logger->info("Node NID %nid - CDB ID %cdbid %action.", ['%nid' => $node->id(), '%cdbid' => $row['id'], '%action' => $action]);
     }
