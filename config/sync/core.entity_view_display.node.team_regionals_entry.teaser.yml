@@ -23,7 +23,11 @@ content:
     region: content
 hidden:
   comment_node_team_regionals_en: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_contest_association: true
   field_place_team_regional: true
   field_tr_student: true
   langcode: true
+  search_api_excerpt: true

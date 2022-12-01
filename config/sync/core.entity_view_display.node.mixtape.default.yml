@@ -328,3 +328,4 @@ hidden:
   field_completed: true
   field_paid_: true
   langcode: true
+  search_api_excerpt: true

@@ -37,6 +37,9 @@ content:
     weight: 100
     region: content
 hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_completed: true
   field_doodles: true
   field_liner_notes_pdf_: true
@@ -47,3 +50,4 @@ hidden:
   field_poems: true
   field_recommended_reading: true
   langcode: true
+  search_api_excerpt: true

@@ -29,6 +29,9 @@ content:
     region: content
 hidden:
   comment_node_competition_sessi: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_multi_judge_session_id: true
   field_session_year: true
   langcode: true
@@ -39,3 +42,4 @@ hidden:
   piv_session_judge_fr: true
   piv_session_language: true
   piv_session_year: true
+  search_api_excerpt: true
