@@ -25,6 +25,7 @@ dependencies:
     - piv_contest_competition.competition_type.default
   module:
     - address
+    - chosen_field
     - datetime
     - field_group
     - field_layout
@@ -210,14 +211,10 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_judges:
-    type: entity_reference_autocomplete
+    type: chosen_select
     weight: 18
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_judging_deadline:
     type: datetime_default
