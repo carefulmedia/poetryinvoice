@@ -171,6 +171,11 @@ class CompetitionsListController extends ControllerBase {
 
       foreach ($competitions_without_entries as $id => $competition) {
         $build['competition']['without_entries'][] = [
+          '#type' => 'details',
+          '#title' => $competition->label(),
+          '#attributes' => [
+            'class' => ['full-width'],
+          ],
           'competition' => $competition_view_builder->view($competition, 'teaser'),
           'link' => [
             '#type' => 'link',
