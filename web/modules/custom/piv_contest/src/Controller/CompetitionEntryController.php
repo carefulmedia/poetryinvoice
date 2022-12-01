@@ -12,6 +12,7 @@ use Drupal\user\UserInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\piv_contest\CompetitionService;
 use Drupal\Paragraphs\ParagraphInterface;
+use Drupal\Core\Url;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -111,9 +112,17 @@ class CompetitionEntryController extends ControllerBase {
     $form_mode = $is_team_competition
       ? 'teacher_competition_entry_team_competition'
       : 'teacher_competition_entry';
-
+    // Redirect the user back to the competition. Only works because the entity
+    // form save method does not override the redirects, the default behavior is
+    // to redirect to the entity view page.
+    // @see Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm::save()
+    $redirect = Url::fromRoute('piv_contest.competition', [
+      'user' => $user->id(),
+      'competition' => $competition->id(),
+    ]);
+    $form_state_additions = ['redirect' => $redirect];
     $form = $this->entityFormBuilder
-      ->getForm($competition_entry, $form_mode);
+      ->getForm($competition_entry, $form_mode, $form_state_additions);
     $form['revision_information']['#access'] = FALSE;
     return $form;
   }
