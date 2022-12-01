@@ -26,7 +26,7 @@ settings:
     filter:
       type: role
       role:
-        pic_pal: pic_pal
+        poet_network: poet_network
         teacher: '0'
         non_canadian_educator: '0'
         teacher_en_: '0'
@@ -45,7 +45,7 @@ settings:
         pierre: '0'
         lesson_plan_creator: '0'
         superadmin: '0'
-        poet_network: '0'
+        pic_pal: '0'
         poet: '0'
         anthology_editor: '0'
         grandfathered_pir: '0'
