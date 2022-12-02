@@ -167,6 +167,12 @@ function piv_base_theme($existing, $type, $theme, $path) {
         'form' => NULL,
       ],
     ],
+    'piv_back_link' => [
+      'render element' => 'content',
+      'variables' => [
+        'link' => NULL,
+      ],
+    ],
   ];
 }
 
