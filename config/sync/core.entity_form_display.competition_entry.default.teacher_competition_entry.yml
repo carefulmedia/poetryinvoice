@@ -35,7 +35,7 @@ mode: teacher_competition_entry
 content:
   field_recitations:
     type: limited_recitation_entry_widget
-    weight: 0
+    weight: 5
     region: content
     settings:
       form_mode: online_individual
@@ -52,14 +52,14 @@ content:
     third_party_settings: {  }
   field_release_form:
     type: file_generic
-    weight: 6
+    weight: 4
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   field_student_email:
     type: email_default
-    weight: 5
+    weight: 3
     region: content
     settings:
       placeholder: ''
@@ -67,13 +67,13 @@ content:
     third_party_settings: {  }
   field_student_grade:
     type: options_select
-    weight: 1
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   field_student_last_name:
     type: string_textfield
-    weight: 2
+    weight: 0
     region: content
     settings:
       size: 60
@@ -81,7 +81,7 @@ content:
     third_party_settings: {  }
   field_student_name:
     type: string_textfield
-    weight: 3
+    weight: 1
     region: content
     settings:
       size: 60
@@ -89,7 +89,7 @@ content:
     third_party_settings: {  }
   field_student_stage_name:
     type: string_textfield
-    weight: 4
+    weight: 2
     region: content
     settings:
       size: 60
