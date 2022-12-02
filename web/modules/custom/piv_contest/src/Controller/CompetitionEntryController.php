@@ -13,6 +13,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\piv_contest\CompetitionService;
 use Drupal\Paragraphs\ParagraphInterface;
 use Drupal\Core\Url;
+use Drupal\Core\Link;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -73,6 +74,39 @@ class CompetitionEntryController extends ControllerBase {
   }
 
   /**
+   * Returns the competition_entry form with some data alredy populated.
+   */
+  private function getEntityForm(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
+    // The form is different for team or individual competitions.
+    $is_team_competition = !empty($competition->field_team_competition->value);
+    $form_mode = $is_team_competition
+      ? 'teacher_competition_entry_team_competition'
+      : 'teacher_competition_entry';
+
+    // Redirect the user back to the competition. Only works because the entity
+    // form save method does not override the redirects, the default behavior is
+    // to redirect to the entity view page.
+    // @see Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm::save()
+    $redirect = Url::fromRoute('piv_contest.competition', [
+      'user' => $user->id(),
+      'competition' => $competition->id(),
+    ]);
+    $form_state_additions = ['redirect' => $redirect];
+    $form = $this->entityFormBuilder
+      ->getForm($competition_entry, $form_mode, $form_state_additions);
+    $form['revision_information']['#access'] = FALSE;
+    $form['back_link'] = [
+      '#theme' => 'piv_back_link',
+      '#link' => Link::createFromRoute($this->t('Back to the competition page'), 'piv_contest.competition', [
+        'user' => $user->id(),
+        'competition' => $competition->id(),
+      ]),
+      '#weight' => -1,
+    ];
+    return $form;
+  }
+
+  /**
    * Builds the competition entry form.
    */
   public function add(UserInterface $user, CompetitionInterface $competition, ParagraphInterface $stream) {
@@ -84,16 +118,7 @@ class CompetitionEntryController extends ControllerBase {
       'field_stream' => $stream,
       'field_competition_current_level' => $competition->field_competition_current_level->value,
     ]);
-    // The form is different for team or individual competitions.
-    $is_team_competition = !empty($competition->field_team_competition->value);
-    $form_mode = $is_team_competition
-      ? 'teacher_competition_entry_team_competition'
-      : 'teacher_competition_entry';
-
-    $form = $this->entityFormBuilder
-      ->getForm($competition_entry, $form_mode);
-    $form['revision_information']['#access'] = FALSE;
-    return $form;
+    return $this->getEntityForm($user, $competition, $competition_entry);
   }
 
   /**
@@ -107,24 +132,7 @@ class CompetitionEntryController extends ControllerBase {
    * Edit form.
    */
   public function edit(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
-    // The form is different for team or individual competitions.
-    $is_team_competition = !empty($competition->field_team_competition->value);
-    $form_mode = $is_team_competition
-      ? 'teacher_competition_entry_team_competition'
-      : 'teacher_competition_entry';
-    // Redirect the user back to the competition. Only works because the entity
-    // form save method does not override the redirects, the default behavior is
-    // to redirect to the entity view page.
-    // @see Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm::save()
-    $redirect = Url::fromRoute('piv_contest.competition', [
-      'user' => $user->id(),
-      'competition' => $competition->id(),
-    ]);
-    $form_state_additions = ['redirect' => $redirect];
-    $form = $this->entityFormBuilder
-      ->getForm($competition_entry, $form_mode, $form_state_additions);
-    $form['revision_information']['#access'] = FALSE;
-    return $form;
+    return $this->getEntityForm($user, $competition, $competition_entry);
   }
 
 }
