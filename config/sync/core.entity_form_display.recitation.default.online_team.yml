@@ -18,8 +18,8 @@ dependencies:
   module:
     - field_layout
     - file
-    - inline_entity_form
     - layout_discovery
+    - piv_base
     - piv_contest_competition_entry
 third_party_settings:
   field_layout:
@@ -42,7 +42,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_recitation_video:
-    type: inline_entity_form_simple
+    type: piv_base_inline_entity_form_open
     weight: 1
     region: content
     settings:
@@ -53,6 +53,10 @@ content:
       collapsible: false
       collapsed: false
       revision: false
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
     third_party_settings: {  }
   field_release_form:
     type: file_generic
