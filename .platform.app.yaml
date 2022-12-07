@@ -175,5 +175,5 @@ crons:
         commands:
             start: |
                 if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
-                   platform backup:create --yes --no-wait --live
+                   platform backup:create --yes
                 fi
