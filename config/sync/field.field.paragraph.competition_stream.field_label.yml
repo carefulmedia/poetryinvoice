@@ -10,8 +10,8 @@ field_name: field_label
 entity_type: paragraph
 bundle: competition_stream
 label: Label
-description: ''
-required: false
+description: 'A identifier for the stream, used when managing sessions.'
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

@@ -35,6 +35,10 @@
           {% endfor %}
         </td>
       </tr>
+    {% else %}
+      <tr>
+        <td colspan="5">{{ "This contest has no competition streams yet." }}</td>
+      </tr>
     {% endfor %}
   </table>
 </section>

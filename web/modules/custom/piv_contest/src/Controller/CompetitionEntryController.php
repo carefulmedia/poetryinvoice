@@ -112,12 +112,14 @@ class CompetitionEntryController extends ControllerBase {
   public function add(UserInterface $user, CompetitionInterface $competition, ParagraphInterface $stream) {
     $school = $user->field_school->target_id;
     $competition_entry = $this->entityTypeManager->getStorage('competition_entry')->create([
+      'uid' => $user,
       'field_competition' => $competition->id(),
       'field_school' => $school,
       'bundle' => 'default',
       'field_stream' => $stream,
       'field_competition_current_level' => $competition->field_competition_current_level->value,
     ]);
+    $competition_entry->save();
     return $this->getEntityForm($user, $competition, $competition_entry);
   }
 
