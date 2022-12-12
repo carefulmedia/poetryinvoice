@@ -164,15 +164,18 @@ class CompetitionsListController extends ControllerBase {
     $build['competition']['without_entries'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Competitions in which your school can enroll'),
+      '#access' => FALSE,
     ];
     $build['competition']['future_competitions'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Future competitions'),
+      '#access' => FALSE,
     ];
 
     foreach ($competitions_without_entries as $id => $competition) {
       $in_future = $competition->field_open_date->date && $competition->field_open_date->date > $now;
       $fieldset = $in_future ? 'future_competitions' : 'without_entries';
+      $build['competition'][$fieldset]['#access'] = TRUE;
       $build['competition'][$fieldset][] = [
         '#type' => 'details',
         '#title' => $competition->label(),
