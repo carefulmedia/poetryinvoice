@@ -22,6 +22,7 @@
 */sync/reroute_email.settings.yml
 */sync/views.view.*
 */sync/language/*
+!config/sync/views.view.language_restricted_poems.yml
 
 # Environment variables
 .env

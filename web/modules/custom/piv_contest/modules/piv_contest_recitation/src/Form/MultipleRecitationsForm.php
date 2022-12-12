@@ -65,18 +65,33 @@ class MultipleRecitationsForm extends FormBase {
     $is_team_competition = !empty($competition->field_team_competition->value);
     $is_online = !empty($competition->field_online_competition->value);
 
+    $recitations = [];
     $stream = $competition_entry->field_stream->entity;
-    $number_languages = count($stream->field_stream_languages) ?? 1;
-    $number_languages = $number_languages === 0 ? 1 : $number_languages;
-    $recitations_required = $number_languages * (int) $stream->field_min_recitations->value;
-    $recitations = $competition_entry->field_recitations->referencedEntities();
-    while (count($recitations) < $recitations_required) {
-      $recitations[] = $this->entityTypeManager
-        ->getStorage('recitation')
-        ->create([
-          'bundle' => 'default',
-        ]);
+    foreach ($stream->field_stream_languages->referencedEntities() as $language) {
+      $recitations[$language->id()] = [];
     }
+    $recitations_required_per_language = (int) $stream->field_min_recitations->value;
+    foreach ($competition_entry->field_recitations->referencedEntities() as $recitation) {
+      $langcode = $recitation->language()->getId();
+      // Ignore recitations that are not for the stream languages for some
+      // reason.
+      if (isset($recitations[$langcode])) {
+        $recitations[$langcode][] = $recitation;
+      }
+    }
+    foreach ($recitations as $langcode => $recitations_for_language) {
+      while (count($recitations[$langcode]) < $recitations_required_per_language) {
+        $recitations[$langcode][] = $this->entityTypeManager
+          ->getStorage('recitation')
+          ->create([
+            'bundle' => 'default',
+            'langcode' => $langcode,
+            'field_stream_language' => $langcode,
+          ]);
+      }
+    }
+    // Flatten the array.
+    $recitations = array_merge(...array_values($recitations));
     $form['title'] = [
       '#type' => 'html_tag',
       '#tag' => 'h2',
@@ -111,11 +126,18 @@ class MultipleRecitationsForm extends FormBase {
         ],
       ];
       $poem = $recitation->field_poem->entity;
+      $langcode = $recitation->field_stream_language->target_id;
       $recitation_form['field_poem'][0]['target_id'] = [
         '#type' => 'entity_autocomplete',
         '#target_type' => 'node',
+        '#selection_handler' => 'views',
         '#selection_settings' => [
-          'target_bundles' => ['poem'],
+          'view' => [
+            'view_name' => 'language_restricted_poems',
+            'display_name' => 'entity_reference_1',
+            'arguments' => [$langcode]
+          ],
+          'match_operator' => 'CONTAINS'
         ],
         '#default_value' => $poem,
         '#title' => $this->t('Poem'),
@@ -172,7 +194,7 @@ class MultipleRecitationsForm extends FormBase {
           '#markup' => $poem ? $poem->label() : NULL,
         ],
         'language' => [
-          '#markup' => $poem ? $poem->language()->getName() : NULL,
+          '#markup' => $recitation->field_stream_language->entity->getName(),
         ],
         'operations' => [
           'edit' => [

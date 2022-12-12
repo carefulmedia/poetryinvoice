@@ -15,6 +15,7 @@ use Drupal\Paragraphs\ParagraphInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 use Drupal\Core\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -139,7 +140,13 @@ class CompetitionEntryController extends ControllerBase {
       'field_competition_current_level' => $competition->field_competition_current_level->value,
     ]);
     $competition_entry->save();
-    return $this->edit($user, $competition, $competition_entry);
+    // Redirect to the competition entry edit page.
+    $url = Url::fromRoute('piv_contest.competition_entry_edit', [
+      'user' => $user->id(),
+      'competition' => $competition->id(),
+      'competition_entry' => $competition_entry->id(),
+    ]);
+    return new RedirectResponse($url->toString());
   }
 
   /**

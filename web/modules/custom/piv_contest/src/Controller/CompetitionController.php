@@ -78,6 +78,11 @@ class CompetitionController extends ControllerBase {
         'user' => $user->id(),
       ]),
     ];
+    
+    $build['title'] = [
+      '#theme' => 'page_title',
+      '#title' => $competition->label(),
+    ];
 
     $build['competition'] = $this->entityTypeManager
       ->getViewBuilder('competition')
