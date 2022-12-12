@@ -26,7 +26,11 @@ use Drupal\user\UserInterface;
  *     "form" = {
  *       "add" = "Drupal\piv_contest_recitation\Form\RecitationForm",
  *       "edit" = "Drupal\piv_contest_recitation\Form\RecitationForm",
- *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm"
+ *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm",
+ *       "online_team" = "Drupal\piv_contest_recitation\Form\RecitationForm",
+ *       "on_site_team" = "Drupal\piv_contest_recitation\Form\RecitationForm",
+ *       "online_individual" = "Drupal\piv_contest_recitation\Form\RecitationForm",
+ *       "on_site_individual" = "Drupal\piv_contest_recitation\Form\RecitationForm"
  *     },
  *     "route_provider" = {
  *       "html" = "Drupal\Core\Entity\Routing\AdminHtmlRouteProvider",

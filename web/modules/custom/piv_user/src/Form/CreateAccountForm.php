@@ -202,7 +202,7 @@ class CreateAccountForm extends FormBase {
           '#type' => 'entity_autocomplete',
           '#target_type' => 'node',
           "#validate_reference" => false,
-          '#selection_handler' => 'default:piv_school',
+          '#selection_handler' => 'piv_field:piv_school',
           '#selection_settings' => [
             'target_bundles' => [
               "school" => "school",

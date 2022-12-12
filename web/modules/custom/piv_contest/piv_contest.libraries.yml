@@ -1,0 +1,4 @@
+competition-entry-controller:
+  css:
+    component:
+      css/competition-entry-controller.css: {}

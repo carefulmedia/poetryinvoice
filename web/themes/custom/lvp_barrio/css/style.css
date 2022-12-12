@@ -3854,8 +3854,8 @@ dialog#welcome-modal + .backdrop {
   left: 0;
   background-color: #ffffff;
 }
-dialog,
-dialog[open]::backdrop {
+dialog#welcome-modal,
+dialog#welcome-modal[open]::backdrop {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;

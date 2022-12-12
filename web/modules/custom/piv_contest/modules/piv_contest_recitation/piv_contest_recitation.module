@@ -17,6 +17,9 @@ function piv_contest_recitation_theme() {
     'recitation' => [
       'render element' => 'elements',
     ],
+    'multiple_recitations_form_table_row' => [
+      'render element' => 'elements',
+    ],
   ];
 }
 
@@ -88,4 +91,13 @@ function piv_contest_recitation_recitation_create(EntityInterface $entity) {
     'bundle' => 'remote_video',
   ]);
   $entity->field_recitation_video[] = $media;
+}
+
+/**
+ * Implements template_preprocess_HOOK().
+ */
+function template_preprocess_multiple_recitations_form_table_row(&$variables) {
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
 }

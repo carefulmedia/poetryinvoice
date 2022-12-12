@@ -14,6 +14,7 @@ use Drupal\piv_contest\CompetitionService;
 use Drupal\Paragraphs\ParagraphInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
+use Drupal\Core\Form\FormBuilderInterface;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -42,12 +43,20 @@ class CompetitionEntryController extends ControllerBase {
   protected $competitionService;
 
   /**
+   * The form builder service.
+   *
+   * @var \Drupal\Core\Form\FormBuilderInterface
+   */
+  protected $formBuilder;
+
+  /**
    * The controller constructor.
    */
-  public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, CompetitionService $competition_service) {
+  public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, CompetitionService $competition_service, FormBuilderInterface $form_builder) {
     $this->entityFormBuilder = $entity_form_builder;
     $this->entityTypeManager = $entity_type_manager;
     $this->competitionService = $competition_service;
+    $this->formBuilder = $form_builder;
   }
 
   /**
@@ -57,7 +66,8 @@ class CompetitionEntryController extends ControllerBase {
     return new static(
       $container->get('entity.form_builder'),
       $container->get('entity_type.manager'),
-      $container->get('piv_contest.competition_service')
+      $container->get('piv_contest.competition_service'),
+      $container->get('form_builder')
     );
   }
 
@@ -76,7 +86,7 @@ class CompetitionEntryController extends ControllerBase {
   /**
    * Returns the competition_entry form with some data alredy populated.
    */
-  private function getEntityForm(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
+  private function getCompetitionEntryForm(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
     // The form is different for team or individual competitions.
     $is_team_competition = !empty($competition->field_team_competition->value);
     $form_mode = $is_team_competition
@@ -107,7 +117,16 @@ class CompetitionEntryController extends ControllerBase {
   }
 
   /**
-   * Builds the competition entry form.
+   * Build the recitations form.
+   */
+  private function getRecitationsForm(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
+    $form = $this->formBuilder
+      ->getForm('Drupal\piv_contest_recitation\Form\MultipleRecitationsForm', $competition, $competition_entry);
+    return $form;
+  }
+
+  /**
+   * Add a competition entry and return the edit form.
    */
   public function add(UserInterface $user, CompetitionInterface $competition, ParagraphInterface $stream) {
     $school = $user->field_school->target_id;
@@ -120,7 +139,7 @@ class CompetitionEntryController extends ControllerBase {
       'field_competition_current_level' => $competition->field_competition_current_level->value,
     ]);
     $competition_entry->save();
-    return $this->getEntityForm($user, $competition, $competition_entry);
+    return $this->edit($user, $competition, $competition_entry);
   }
 
   /**
@@ -134,7 +153,19 @@ class CompetitionEntryController extends ControllerBase {
    * Edit form.
    */
   public function edit(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
-    return $this->getEntityForm($user, $competition, $competition_entry);
+    $competition_entry_form = $this->getCompetitionEntryForm($user, $competition, $competition_entry);
+    $recitations_form = $this->getRecitationsForm($user, $competition, $competition_entry);
+    return [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['competition-entry-wrapper'],
+      ],
+      '#attached' => [
+        'library' => ['piv_contest/competition-entry-controller'],
+      ],
+      'competition_entry_form' => $competition_entry_form,
+      'recitations' => $recitations_form,
+    ];
   }
 
 }

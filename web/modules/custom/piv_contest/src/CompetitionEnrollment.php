@@ -256,8 +256,7 @@ class CompetitionEnrollment {
     $is_online = (bool) $competition->field_online_competition->value;
 
     $number_of_valid_poems = 0;
-    foreach ($competitionEntry->field_recitations as $recitation) {
-      $entity = $recitation->entity;
+    foreach ($competitionEntry->field_recitations->referencedEntities() as $entity) {
 
       $video = $entity->field_recitation_video->entity;
       // IF it's an online competition recitation must also contain a video.
