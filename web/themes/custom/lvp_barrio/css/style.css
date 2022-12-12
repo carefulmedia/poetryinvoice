@@ -3444,6 +3444,9 @@ tr {
 thead > tr {
   border-bottom: 1px solid #000;
 }
+thead {
+  background: #000;
+}
 tr.odd {
   background: #e4e4e4;
   background: rgba(0, 0, 0, 0.105);
