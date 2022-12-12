@@ -1,8 +1,8 @@
-score_template.type_add:
-  route_name: entity.score_template_type.add_form
-  title: 'Add score template type'
-  appears_on:
-    - entity.score_template_type.collection
+#score_template.type_add:
+#  route_name: entity.score_template_type.add_form
+#  title: 'Add score template type'
+#  appears_on:
+#    - entity.score_template_type.collection
 
 score_template.add_page:
   route_name: entity.score_template.add_page
