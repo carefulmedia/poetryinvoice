@@ -20,7 +20,6 @@ dependencies:
     - field_layout
     - file
     - layout_discovery
-    - piv_contest_competition_entry
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -49,45 +48,28 @@ content:
     third_party_settings: {  }
   field_competition_current_level:
     type: number
-    weight: 26
+    weight: 11
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_complete:
     type: boolean_checkbox
-    weight: 10
+    weight: 9
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
-  field_recitations:
-    type: limited_recitation_entry_widget
-    weight: 7
-    region: content
-    settings:
-      form_mode: default
-      label_singular: ''
-      label_plural: ''
-      allow_new: '1'
-      match_operator: CONTAINS
-      revision: 0
-      override_labels: 0
-      collapsible: 0
-      collapsed: 0
-      allow_existing: 0
-      allow_duplicate: 0
-    third_party_settings: {  }
   field_release_form:
     type: file_generic
-    weight: 8
+    weight: 7
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   field_school:
     type: entity_reference_autocomplete
-    weight: 9
+    weight: 8
     region: content
     settings:
       match_operator: CONTAINS
@@ -97,7 +79,7 @@ content:
     third_party_settings: {  }
   field_student_email:
     type: email_default
-    weight: 29
+    weight: 14
     region: content
     settings:
       placeholder: ''
@@ -105,13 +87,13 @@ content:
     third_party_settings: {  }
   field_student_grade:
     type: options_select
-    weight: 30
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   field_student_last_name:
     type: string_textfield
-    weight: 27
+    weight: 12
     region: content
     settings:
       size: 60
@@ -119,7 +101,7 @@ content:
     third_party_settings: {  }
   field_student_name:
     type: string_textfield
-    weight: 11
+    weight: 10
     region: content
     settings:
       size: 60
@@ -127,7 +109,7 @@ content:
     third_party_settings: {  }
   field_student_stage_name:
     type: string_textfield
-    weight: 28
+    weight: 13
     region: content
     settings:
       size: 60
@@ -171,4 +153,5 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  field_recitations: true
   field_stream: true

@@ -14,6 +14,7 @@ dependencies:
     - field.field.judging_session.default.field_stream
     - piv_contest_judging_session.judging_session_type.default
   module:
+    - chosen_field
     - field_layout
     - layout_discovery
     - piv_contest_judging_session
@@ -28,7 +29,7 @@ bundle: default
 mode: default
 content:
   field_accuracy_judge:
-    type: chosen_judges_select
+    type: chosen_select
     weight: 7
     region: content
     settings: {  }

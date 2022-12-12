@@ -47,12 +47,12 @@ content:
     region: content
     settings:
       form_mode: default
+      revision: false
       override_labels: false
       label_singular: ''
       label_plural: ''
       collapsible: false
       collapsed: false
-      revision: false
       allow_new: true
       allow_existing: false
       match_operator: CONTAINS

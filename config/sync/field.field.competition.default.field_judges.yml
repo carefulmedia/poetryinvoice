@@ -27,7 +27,6 @@ settings:
       type: role
       role:
         judge: judge
-        accuracy_judge: accuracy_judge
         teacher: '0'
         non_canadian_educator: '0'
         teacher_en_: '0'
@@ -40,6 +39,7 @@ settings:
         icanlocalize_manager: '0'
         account_approval: '0'
         competition_administrator: '0'
+        accuracy_judge: '0'
         php_editor: '0'
         pierre: '0'
         lesson_plan_creator: '0'

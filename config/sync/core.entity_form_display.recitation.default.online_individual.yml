@@ -42,20 +42,20 @@ content:
     third_party_settings: {  }
   field_recitation_video:
     type: piv_base_inline_entity_form_open
-    weight: 26
+    weight: 1
     region: content
     settings:
       form_mode: default
+      revision: false
       override_labels: false
       label_singular: ''
       label_plural: ''
+      collapsible: false
+      collapsed: false
       allow_new: true
       allow_existing: false
       match_operator: CONTAINS
       allow_duplicate: false
-      collapsible: false
-      collapsed: false
-      revision: false
     third_party_settings: {  }
 hidden:
   created: true
