@@ -77,13 +77,11 @@ class MultipleRecitationsForm extends FormBase {
           'bundle' => 'default',
         ]);
     }
-
     $form['title'] = [
       '#type' => 'html_tag',
       '#tag' => 'h2',
-      '#value' => $this->formatPlural($recitations_required, '1 recitation required', '@count recitations required'),
+      '#value' => $this->t('Recitations'),
     ];
-
     // Recitations form is a custom table.
     $form['recitations'] = [
       '#type' => 'table',
