@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.competition.default.body
     - field.field.competition.default.field_active
+    - field.field.competition.default.field_allowed_grades
     - field.field.competition.default.field_by_invitation_only
     - field.field.competition.default.field_competition_current_level
     - field.field.competition.default.field_competition_levels
@@ -26,6 +27,7 @@ dependencies:
   module:
     - address
     - datetime
+    - options
     - text
 id: competition.default.default
 targetEntityType: competition
@@ -38,6 +40,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_allowed_grades:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
     region: content
   field_criteria:
     type: entity_reference_label
