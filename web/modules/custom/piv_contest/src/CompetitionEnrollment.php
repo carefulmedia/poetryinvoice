@@ -166,7 +166,7 @@ class CompetitionEnrollment {
         $missing_criteria = $this->getMissingCriteria($entry);
         if (count($missing_criteria) > 0) {
           // Add all missing criterias here.
-          $stream['missing_criteria'] = implode($missing_criteria, ',');
+          $stream['missing_criteria'] = implode(',', $missing_criteria);
         }
         else {
           $stream['is_missing_criteria_completed'] = TRUE;
@@ -336,6 +336,9 @@ class CompetitionEnrollment {
 
     foreach ($entity->field_recitations as $recitation_item) {
       $recitation = $recitation_item->entity;
+      if (!$recitation) {
+        continue;
+      }
 
       $poem = $recitation->field_poem->entity;
       if (!$poem) {
