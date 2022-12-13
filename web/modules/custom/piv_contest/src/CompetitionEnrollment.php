@@ -137,12 +137,7 @@ class CompetitionEnrollment {
           'user' => $teacher_id,
           'competition' => $competition_id,
           'competition_entry' => $entry->id(),
-        ], [
-          'query' => [
-            'destination' => $destination,
-          ],
-        ]
-        );
+        ]);
 
         $deleteUrl = Url::fromRoute('entity.competition_entry.delete_form', [
           'competition_entry' => $entry->id(),
@@ -166,7 +161,7 @@ class CompetitionEnrollment {
         $missing_criteria = $this->getMissingCriteria($entry);
         if (count($missing_criteria) > 0) {
           // Add all missing criterias here.
-          $stream['missing_criteria'] = implode(',', $missing_criteria);
+          $stream['missing_criteria'] = implode(', ', $missing_criteria);
         }
         else {
           $stream['is_missing_criteria_completed'] = TRUE;
@@ -212,10 +207,6 @@ class CompetitionEnrollment {
           'user' => $this->teacher->id(),
           'competition' => $this->competition->id(),
           'stream' => $stream_entity->id(),
-        ], [
-          'query' => [
-            'destination' => $destination,
-          ],
         ]);
 
         if ($addUrl->access()) {
