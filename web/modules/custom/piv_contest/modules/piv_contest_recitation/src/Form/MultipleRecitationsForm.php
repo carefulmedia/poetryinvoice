@@ -62,9 +62,9 @@ class MultipleRecitationsForm extends FormBase {
     $triggering_element = $form_state->getTriggeringElement();
     $delta = $triggering_element['#recitation_delta'] ?? NULL;
     if (is_numeric($delta)) {
-      if (isset($errors["recitations][{$delta}][operations][form][field_recitation_video][value"])) {
-        // The dialog[open] attribute doesn't look ok. A custom javascript
-        // opens the dialog.
+      // The dialog[open] attribute doesn't look ok. A custom javascript
+      // opens the dialog.
+      if ($form_state->hasAnyErrors()) {
         $form['recitations'][$delta]['operations']['form']['#attributes']['ajax-open'] = TRUE;
         array_unshift($form['recitations'][$delta]['operations']['form'], [
           '#type' => 'status_messages',
@@ -199,7 +199,7 @@ class MultipleRecitationsForm extends FormBase {
         '#name' => "submit[$i]",
         '#recitation_delta' => $i,
         '#validate' => [
-          '::validateMedia',
+          '::validateRecitation',
         ],
         '#ajax' => [
           'callback' => '::ajaxRefresh',
@@ -265,7 +265,24 @@ class MultipleRecitationsForm extends FormBase {
   /**
    * Validate a media url.
    */
-  public function validateMedia(array &$form, FormStateInterface $form_state) {
+  public function validateRecitation(array &$form, FormStateInterface $form_state) {
+    // Replace the poem error.
+    $should_replace_errors = FALSE;
+    $errors = $form_state->getErrors();
+    foreach ($errors as &$error) {
+      $string = $error->getUntranslatedString();
+      if ($string == 'There are no @entity_type_plural matching "%value".') {
+        $error = $this->t('No poem found with the title: %value', $error->getArguments());
+        $should_replace_errors = TRUE;
+      }
+    }
+    if ($should_replace_errors) {
+      $form_state->clearErrors();
+      foreach ($errors as $key => $error) {
+        $form_state->setErrorByName($key, $error);
+      }
+    }
+
     $values = $form_state->getValues();
     $triggering_element = $form_state->getTriggeringElement();
     $delta = $triggering_element['#recitation_delta'] ?? NULL;
