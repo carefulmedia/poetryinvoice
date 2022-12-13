@@ -7,6 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\piv_contest_competition\Entity\Competition;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\media\OEmbed\UrlResolverInterface;
 
 /**
  * Provides a PIV Contest Recitation form.
@@ -21,10 +22,18 @@ class MultipleRecitationsForm extends FormBase {
   protected $entityTypeManager;
 
   /**
+   * The oEmbed URL resolver service.
+   *
+   * @var \Drupal\media\OEmbed\UrlResolverInterface
+   */
+  protected $urlResolver;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, UrlResolverInterface $url_resolver) {
     $this->entityTypeManager = $entity_type_manager;
+    $this->urlResolver = $url_resolver;
   }
 
   /**
@@ -32,7 +41,8 @@ class MultipleRecitationsForm extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('media.oembed.url_resolver')
     );
   }
 
@@ -47,6 +57,20 @@ class MultipleRecitationsForm extends FormBase {
    * Refresh the form with ajax.
    */
   public function ajaxRefresh($form, $form_state) {
+    // If there is a error in a video, print that error and open the dialog.
+    $errors = $form_state->getErrors();
+    $triggering_element = $form_state->getTriggeringElement();
+    $delta = $triggering_element['#recitation_delta'] ?? NULL;
+    if (is_numeric($delta)) {
+      if (isset($errors["recitations][{$delta}][operations][form][field_recitation_video][value"])) {
+        // The dialog[open] attribute doesn't look ok. A custom javascript
+        // opens the dialog.
+        $form['recitations'][$delta]['operations']['form']['#attributes']['ajax-open'] = TRUE;
+        array_unshift($form['recitations'][$delta]['operations']['form'], [
+          '#type' => 'status_messages',
+        ]);
+      }
+    }
     return $form;
   }
 
@@ -104,7 +128,7 @@ class MultipleRecitationsForm extends FormBase {
         $this->t('Poem'),
         $this->t('Language'),
         $this->t('Operations'),
-        //$this->t('Weight'),
+        // $this->t('Weight'),
       ],
       // Table draw is not enabled since we don't know if it is required, if it
       // is, then uncomment the weight table column too below in code.
@@ -122,7 +146,10 @@ class MultipleRecitationsForm extends FormBase {
         '#type' => 'html_tag',
         '#tag' => 'dialog',
         '#attributes' => [
-          'class' => ['recitation-form'],
+          'class' => [
+            'recitation-form',
+            "recitation-form--{$i}",
+          ],
         ],
       ];
       $poem = $recitation->field_poem->entity;
@@ -135,9 +162,9 @@ class MultipleRecitationsForm extends FormBase {
           'view' => [
             'view_name' => 'language_restricted_poems',
             'display_name' => 'entity_reference_1',
-            'arguments' => [$langcode]
+            'arguments' => [$langcode],
           ],
-          'match_operator' => 'CONTAINS'
+          'match_operator' => 'CONTAINS',
         ],
         '#default_value' => $poem,
         '#title' => $this->t('Poem'),
@@ -157,6 +184,7 @@ class MultipleRecitationsForm extends FormBase {
           '#type' => 'textfield',
           '#title' => $this->t('Remote video URL'),
           '#default_value' => $media_entity ? $media_entity->field_media_oembed_video->value : NULL,
+          '#description' => t('YouTube url'),
         ],
       ];
       $recitation_form['entity'] = [
@@ -170,6 +198,9 @@ class MultipleRecitationsForm extends FormBase {
         '#value' => $this->t('Save'),
         '#name' => "submit[$i]",
         '#recitation_delta' => $i,
+        '#validate' => [
+          '::validateMedia',
+        ],
         '#ajax' => [
           'callback' => '::ajaxRefresh',
           'wrapper' => 'recitations-form-wrapper',
@@ -186,7 +217,7 @@ class MultipleRecitationsForm extends FormBase {
       // Table row.
       $is_new = $recitation->isNew();
       $edit_label = $is_new ? $this->t('Add') : $this->t('Edit');
-      $form['recitations'][] = [
+      $form['recitations'][$i] = [
         '#attributes' => [
           'class' => ['draggable'],
         ],
@@ -232,10 +263,44 @@ class MultipleRecitationsForm extends FormBase {
   }
 
   /**
+   * Validate a media url.
+   */
+  public function validateMedia(array &$form, FormStateInterface $form_state) {
+    $values = $form_state->getValues();
+    $triggering_element = $form_state->getTriggeringElement();
+    $delta = $triggering_element['#recitation_delta'] ?? NULL;
+    $recitations = $values['recitations'];
+    if (is_numeric($delta)) {
+      $recitations = [$delta => $recitations[$delta]];
+    }
+    foreach ($recitations as $key => $entry) {
+      $recitation = $entry['operations']['form'];
+      $url = $recitation['field_recitation_video']['value'] ?? NULL;
+      $entity = $recitation['entity'];
+      // Only validate if url is not empty.
+      if ($url) {
+        $media = $entity->field_recitation_video->entity;
+        $field_name = "recitations][{$key}][operations][form][field_recitation_video][value";
+        $error_message = $this->t("The url provided is not a valid YouTube url.");
+        try {
+          $provider = $this->urlResolver->getProviderByUrl($url);
+          $source = $media->getSource();
+          if (!in_array($provider->getName(), $source->getProviders(), TRUE)) {
+            $form_state->setErrorByName($field_name, $error_message);
+          }
+        }
+        catch (\Exception $e) {
+          $form_state->setErrorByName($field_name, $error_message);
+        }
+      }
+    }
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-
+    // Do nothing.
   }
 
   /**
@@ -250,7 +315,7 @@ class MultipleRecitationsForm extends FormBase {
     $recitation_entity_ids = [];
     $recitations = $values['recitations'];
     if (is_numeric($delta)) {
-      $recitations = [$recitations[$delta]];
+      $recitations = [$delta => $recitations[$delta]];
     }
     foreach ($recitations as $entry) {
       $recitation = $entry['operations']['form'];
@@ -264,7 +329,7 @@ class MultipleRecitationsForm extends FormBase {
           // Medias are added to new recitations in the
           // piv_contest_recitation_recitation_create() hook.
           if ($media = $entity->field_recitation_video->entity) {
-            $media->field_media_oembed_video = $value;
+            $media->field_media_oembed_video = $value['value'];
             $media->save();
             // This is for new medias to be attached to the recitation.
             $entity->field_recitation_video = [['target_id' => $media->id()]];

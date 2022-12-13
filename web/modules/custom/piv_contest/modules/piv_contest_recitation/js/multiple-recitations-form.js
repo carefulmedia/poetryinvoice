@@ -1,6 +1,10 @@
 (function($, Drupal) {
   Drupal.behaviors.multiple_recitations_form = {
     attach: function(context, settings) {
+      $('dialog[ajax-open]', context).first().each(function() {
+        dialogPolyfill.registerDialog(this);
+        this.showModal();
+      });
       $('dialog.recitation-form', context).each(function() {
         const dialog = this;
         // Polyfill for <dialog>.
