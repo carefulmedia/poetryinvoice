@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d6f303c27821429fda4bedea955aebe1",
+    "content-hash": "8194c040a0f148bf8c784aa76f5c9603",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4722,6 +4722,69 @@
             "homepage": "https://www.drupal.org/project/entity_reference_revisions",
             "support": {
                 "source": "https://git.drupalcode.org/project/entity_reference_revisions"
+            }
+        },
+        {
+            "name": "drupal/facebook_pixel",
+            "version": "2.0.0-rc4",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/facebook_pixel.git",
+                "reference": "2.0.0-rc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/facebook_pixel-2.0.0-rc4.zip",
+                "reference": "2.0.0-rc4",
+                "shasum": "4da148b194a30c16c37465fc0cb64b54447365a0"
+            },
+            "require": {
+                "drupal/core": "^8.9 || ^9 || ^10"
+            },
+            "require-dev": {
+                "drupal/commerce_checkout": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0-rc4",
+                    "datestamp": "1670258483",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "RC releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "andyg5000",
+                    "homepage": "https://www.drupal.org/user/808668"
+                },
+                {
+                    "name": "Anybody",
+                    "homepage": "https://www.drupal.org/user/291091"
+                },
+                {
+                    "name": "Grevil",
+                    "homepage": "https://www.drupal.org/user/3668491"
+                },
+                {
+                    "name": "heshanlk",
+                    "homepage": "https://www.drupal.org/user/199102"
+                },
+                {
+                    "name": "maciej.zgadzaj",
+                    "homepage": "https://www.drupal.org/user/271491"
+                }
+            ],
+            "description": "Allows your site to be tracked by Facebook Pixel.",
+            "homepage": "https://www.drupal.org/project/facebook_pixel",
+            "support": {
+                "source": "https://git.drupalcode.org/project/facebook_pixel"
             }
         },
         {
@@ -15000,6 +15063,7 @@
         "drupal/components": 10,
         "drupal/conditional_fields": 15,
         "drupal/editablefields": 10,
+        "drupal/facebook_pixel": 5,
         "drupal/fivestar": 15,
         "drupal/form_mode_manager": 5,
         "drupal/gin": 10,
@@ -15024,5 +15088,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }

@@ -1,0 +1,20 @@
+_core:
+  default_config_hash: uWCYoez96nX2cwvfGvSPrOuehWpgXxnqRRuhhoCGiu8
+facebook_id: ''
+visibility:
+  request_path_mode: all_pages
+  request_path_pages: |-
+    /admin
+    /admin/*
+    /batch
+    /node/add*
+    /node/*/*
+    /user/*/*
+    /user/login
+  user_role_mode: all_roles
+  user_role_roles: {  }
+privacy:
+  donottrack: true
+  fb_disable_advanced: false
+  eu_cookie_compliance: false
+  disable_noscript_img: false

@@ -74,6 +74,7 @@
         "drupal/diff": "^1.0",
         "drupal/editablefields": "^1.0@beta",
         "drupal/entity_print": "^2.6",
+        "drupal/facebook_pixel": "^2.0@RC",
         "drupal/fakeobjects": "^1.1",
         "drupal/fancy_login": "^3.0",
         "drupal/field_group": "^3.2",
