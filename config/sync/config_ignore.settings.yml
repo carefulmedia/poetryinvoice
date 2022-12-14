@@ -7,5 +7,6 @@ ignored_config_entities:
   - piv_base.welcome_modal_settings
   - 'piv_mail.piv_mail.*'
   - 'views.view.*'
+  - facebook_pixel.settings
 ignored_config_collections:
   - 'language.*'
