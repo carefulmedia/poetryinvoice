@@ -1525,13 +1525,6 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_in_person_or_teleconferenc:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
             field_funding_source:
               sortable: false
               default_sort_order: asc
