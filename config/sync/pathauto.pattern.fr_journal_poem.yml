@@ -1,0 +1,33 @@
+uuid: 11d30922-2132-4bdf-8f28-00ab0d97351f
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: fr_journal_poem
+label: 'FR Journal Poem'
+type: 'canonical_entities:node'
+pattern: '/ecrire/cest-tout-un-poeme/poemes-gagnants/[node:title]'
+selection_criteria:
+  55efa8dd-957f-4f9a-9119-6d79be5a36a0:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 55efa8dd-957f-4f9a-9119-6d79be5a36a0
+    context_mapping:
+      node: node
+    bundles:
+      journal_poem: journal_poem
+  175b98db-d96b-49d2-bdd2-7c65c7f6bbbf:
+    id: language
+    negate: false
+    uuid: 175b98db-d96b-49d2-bdd2-7c65c7f6bbbf
+    context_mapping:
+      language: 'node:langcode:language'
+    langcodes:
+      fr: fr
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language
