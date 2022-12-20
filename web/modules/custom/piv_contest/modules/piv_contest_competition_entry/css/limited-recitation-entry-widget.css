@@ -1,0 +1,47 @@
+.ui-front {
+  z-index: 1002;
+}
+.recitation-widget-modal-wrapper {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  z-index: 1000;
+}
+
+.recitation-widget-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background: #D8D8D8;
+  padding: 30px;
+  z-index: 1001;
+  border: 1px solid #D8D8D8;
+  max-height: calc(100% - 20px);
+  overflow: scroll;
+  width: calc(100% - 20px);
+}
+@media (min-width: 992px) {
+  .recitation-widget-modal {
+    width: auto;
+  }
+}
+
+.recitation-widget-modal thead {
+  display: none;
+}
+
+.recitation-widget-modal .table tr:hover {
+  background: initial;
+}
+
+.recitation-widget-modal .table tr,
+.recitation-widget-modal .table td,
+.recitation-widget-modal .table tbody {
+  border: 0;
+  border-top: 0;
+}

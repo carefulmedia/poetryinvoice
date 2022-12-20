@@ -12,6 +12,10 @@ use Drupal\user\UserInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\piv_contest\CompetitionService;
 use Drupal\Paragraphs\ParagraphInterface;
+use Drupal\Core\Url;
+use Drupal\Core\Link;
+use Drupal\Core\Form\FormBuilderInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -40,12 +44,20 @@ class CompetitionEntryController extends ControllerBase {
   protected $competitionService;
 
   /**
+   * The form builder service.
+   *
+   * @var \Drupal\Core\Form\FormBuilderInterface
+   */
+  protected $formBuilder;
+
+  /**
    * The controller constructor.
    */
-  public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, CompetitionService $competition_service) {
+  public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, CompetitionService $competition_service, FormBuilderInterface $form_builder) {
     $this->entityFormBuilder = $entity_form_builder;
     $this->entityTypeManager = $entity_type_manager;
     $this->competitionService = $competition_service;
+    $this->formBuilder = $form_builder;
   }
 
   /**
@@ -55,14 +67,15 @@ class CompetitionEntryController extends ControllerBase {
     return new static(
       $container->get('entity.form_builder'),
       $container->get('entity_type.manager'),
-      $container->get('piv_contest.competition_service')
+      $container->get('piv_contest.competition_service'),
+      $container->get('form_builder')
     );
   }
 
   /**
    * Verify access to add entry.
    */
-  public function accessAdd(UserInterface $user, CompetitionInterface $competition, ParagraphInterface $stream) {
+  public function accessAdd(UserInterface $user, CompetitionInterface $competition, ParagraphInterface $stream = NULL) {
     $school = $user->field_school->entity;
     if (!$school) {
       return AccessResult::forbidden();
@@ -72,50 +85,95 @@ class CompetitionEntryController extends ControllerBase {
   }
 
   /**
-   * Builds the competition entry form.
+   * Returns the competition_entry form with some data alredy populated.
+   */
+  private function getCompetitionEntryForm(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
+    // The form is different for team or individual competitions.
+    $is_team_competition = !empty($competition->field_team_competition->value);
+    $form_mode = $is_team_competition
+      ? 'teacher_competition_entry_team_competition'
+      : 'teacher_competition_entry';
+
+    // Redirect the user back to the competition. Only works because the entity
+    // form save method does not override the redirects, the default behavior is
+    // to redirect to the entity view page.
+    // @see Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm::save()
+    $redirect = Url::fromRoute('piv_contest.competition', [
+      'user' => $user->id(),
+      'competition' => $competition->id(),
+    ]);
+    $form_state_additions = ['redirect' => $redirect];
+    $form = $this->entityFormBuilder
+      ->getForm($competition_entry, $form_mode, $form_state_additions);
+    $form['revision_information']['#access'] = FALSE;
+    $form['back_link'] = [
+      '#theme' => 'piv_back_link',
+      '#link' => Link::createFromRoute($this->t('Back to the competition page'), 'piv_contest.competition', [
+        'user' => $user->id(),
+        'competition' => $competition->id(),
+      ]),
+      '#weight' => -1,
+    ];
+    return $form;
+  }
+
+  /**
+   * Build the recitations form.
+   */
+  private function getRecitationsForm(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
+    $form = $this->formBuilder
+      ->getForm('Drupal\piv_contest_recitation\Form\MultipleRecitationsForm', $competition, $competition_entry);
+    return $form;
+  }
+
+  /**
+   * Add a competition entry and return the edit form.
    */
   public function add(UserInterface $user, CompetitionInterface $competition, ParagraphInterface $stream) {
     $school = $user->field_school->target_id;
     $competition_entry = $this->entityTypeManager->getStorage('competition_entry')->create([
+      'uid' => $user,
       'field_competition' => $competition->id(),
       'field_school' => $school,
       'bundle' => 'default',
       'field_stream' => $stream,
       'field_competition_current_level' => $competition->field_competition_current_level->value,
     ]);
-    // The form is different for team or individual competitions.
-    $is_team_competition = !empty($competition->field_team_competition->value);
-    $form_mode = $is_team_competition
-      ? 'teacher_competition_entry_team_competition'
-      : 'teacher_competition_entry';
-
-    $form = $this->entityFormBuilder
-      ->getForm($competition_entry, $form_mode);
-    $form['revision_information']['#access'] = FALSE;
-    return $form;
+    $competition_entry->save();
+    // Redirect to the competition entry edit page.
+    $url = Url::fromRoute('piv_contest.competition_entry_edit', [
+      'user' => $user->id(),
+      'competition' => $competition->id(),
+      'competition_entry' => $competition_entry->id(),
+    ]);
+    return new RedirectResponse($url->toString());
   }
 
   /**
    * Verify access to edit entry.
    */
   public function accessEdit(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
-    return $competition_entry->access('update', $user, TRUE);
+    return $this->accessAdd($user, $competition)
+      ->andIf($competition_entry->access('update', $user, TRUE));
   }
 
   /**
    * Edit form.
    */
   public function edit(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
-    // The form is different for team or individual competitions.
-    $is_team_competition = !empty($competition->field_team_competition->value);
-    $form_mode = $is_team_competition
-      ? 'teacher_competition_entry_team_competition'
-      : 'teacher_competition_entry';
-
-    $form = $this->entityFormBuilder
-      ->getForm($competition_entry, $form_mode);
-    $form['revision_information']['#access'] = FALSE;
-    return $form;
+    $competition_entry_form = $this->getCompetitionEntryForm($user, $competition, $competition_entry);
+    $recitations_form = $this->getRecitationsForm($user, $competition, $competition_entry);
+    return [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['competition-entry-wrapper'],
+      ],
+      '#attached' => [
+        'library' => ['piv_contest/competition-entry-controller'],
+      ],
+      'competition_entry_form' => $competition_entry_form,
+      'recitations' => $recitations_form,
+    ];
   }
 
 }

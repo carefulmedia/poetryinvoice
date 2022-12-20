@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.competition.default.body
     - field.field.competition.default.field_active
+    - field.field.competition.default.field_allowed_grades
     - field.field.competition.default.field_by_invitation_only
     - field.field.competition.default.field_competition_current_level
     - field.field.competition.default.field_competition_levels
@@ -25,6 +26,7 @@ dependencies:
     - piv_contest_competition.competition_type.default
   module:
     - address
+    - chosen_field
     - datetime
     - field_group
     - field_layout
@@ -54,6 +56,7 @@ third_party_settings:
         - title
         - status
         - langcode
+        - field_allowed_grades
         - field_winners_announced
         - body
         - field_open_date
@@ -127,7 +130,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 6
+    weight: 7
     region: content
     settings:
       rows: 9
@@ -143,28 +146,34 @@ content:
     third_party_settings: {  }
   field_active:
     type: boolean_checkbox
-    weight: 15
+    weight: 16
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
+  field_allowed_grades:
+    type: options_buttons
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_by_invitation_only:
     type: boolean_checkbox
-    weight: 13
+    weight: 14
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_competition_current_level:
     type: number
-    weight: 17
+    weight: 18
     region: content
     settings:
       placeholder: ''
     third_party_settings: {  }
   field_competition_levels:
     type: string_textfield
-    weight: 16
+    weight: 17
     region: content
     settings:
       size: 60
@@ -172,7 +181,7 @@ content:
     third_party_settings: {  }
   field_competition_streams:
     type: entity_reference_paragraphs
-    weight: 19
+    weight: 20
     region: content
     settings:
       title: Paragraph
@@ -184,7 +193,7 @@ content:
     third_party_settings: {  }
   field_criteria:
     type: entity_reference_autocomplete
-    weight: 21
+    weight: 22
     region: content
     settings:
       match_operator: CONTAINS
@@ -201,7 +210,7 @@ content:
     third_party_settings: {  }
   field_invited_schools:
     type: entity_reference_autocomplete
-    weight: 14
+    weight: 15
     region: content
     settings:
       match_operator: CONTAINS
@@ -210,37 +219,33 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_judges:
-    type: entity_reference_autocomplete
-    weight: 18
+    type: chosen_select
+    weight: 19
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_judging_deadline:
     type: datetime_default
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   field_location:
     type: address_default
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   field_online_competition:
     type: boolean_checkbox
-    weight: 11
+    weight: 12
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_open_date:
     type: datetime_default
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -253,7 +258,7 @@ content:
     third_party_settings: {  }
   field_score_template:
     type: entity_reference_autocomplete
-    weight: 20
+    weight: 21
     region: content
     settings:
       match_operator: CONTAINS
@@ -263,20 +268,20 @@ content:
     third_party_settings: {  }
   field_submission_deadline:
     type: datetime_default
-    weight: 8
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
   field_team_competition:
     type: boolean_checkbox
-    weight: 10
+    weight: 11
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_winners_announced:
     type: datetime_default
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }

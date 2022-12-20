@@ -30,8 +30,10 @@ class CompetitionEntryForm extends ContentEntityForm {
       $this->messenger()->addStatus($this->t('The competition entry %label has been updated.', $message_arguments));
       $this->logger('piv_contest_competition_entry')->notice('Updated new competition entry %label.', $logger_arguments);
     }
-
-    $form_state->setRedirect('entity.competition_entry.canonical', ['competition_entry' => $entity->id()]);
+    // Do not override if there is a redirect set in the form already.
+    if (!$form_state->getRedirect()) {
+      $form_state->setRedirect('entity.competition_entry.canonical', ['competition_entry' => $entity->id()]);
+    }
   }
 
 }

@@ -27,7 +27,7 @@ use Drupal\user\UserInterface;
  *     "form" = {
  *       "add" = "Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm",
  *       "edit" = "Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm",
- *       "delete" = "Drupal\Core\Entity\ContentEntityDeleteForm",
+ *       "delete" = "Drupal\piv_contest_competition_entry\Form\CompetitionEntryDeleteForm",
  *       "teacher_competition_entry" = "Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm",
  *       "teacher_competition_entry_team_competition" = "Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm",
  *     },

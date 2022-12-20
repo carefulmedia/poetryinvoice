@@ -943,6 +943,9 @@ select.form-select {
   padding: 15px;
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
 }
+details.full-width {
+  width: 100%;
+}
 .form-row label {
   display: block;
   font-weight: 700;
@@ -3441,6 +3444,9 @@ tr {
 thead > tr {
   border-bottom: 1px solid #000;
 }
+thead {
+  background: #000;
+}
 tr.odd {
   background: #e4e4e4;
   background: rgba(0, 0, 0, 0.105);
@@ -3851,8 +3857,8 @@ dialog#welcome-modal + .backdrop {
   left: 0;
   background-color: #ffffff;
 }
-dialog,
-dialog[open]::backdrop {
+dialog#welcome-modal,
+dialog#welcome-modal[open]::backdrop {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;

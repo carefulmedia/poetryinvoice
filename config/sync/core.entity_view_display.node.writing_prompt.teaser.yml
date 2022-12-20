@@ -34,8 +34,12 @@ content:
     region: content
 hidden:
   comment_node_writing_prompt: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_completed: true
   field_paid_: true
   field_prompt_image: true
   field_prompt_or_exercise: true
   langcode: true
+  search_api_excerpt: true

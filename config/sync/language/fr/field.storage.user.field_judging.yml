@@ -1,8 +1,0 @@
-settings:
-  allowed_values:
-    -
-      label: 'Concours en équipe'
-    -
-      label: 'Finale junior en ligne'
-    -
-      label: 'Épreuves de qualification en ligne'

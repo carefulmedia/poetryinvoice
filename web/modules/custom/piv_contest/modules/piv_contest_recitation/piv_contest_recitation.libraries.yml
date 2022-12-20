@@ -1,0 +1,5 @@
+multiple-recitations-form:
+  js:
+    js/multiple-recitations-form.js: {}
+  dependencies:
+    - piv_base/dialog_polyfill

@@ -1,0 +1,5 @@
+# Custom module library for general purposes.
+limited-recitation-entry-widget:
+  css:
+    component:
+      css/limited-recitation-entry-widget.css: {}

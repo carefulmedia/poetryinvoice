@@ -31,5 +31,9 @@ content:
     region: content
 hidden:
   comment_node_power_points: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_pp_file: true
   langcode: true
+  search_api_excerpt: true

@@ -139,6 +139,24 @@ function piv_base_node_presave(EntityInterface $entity) {
 }
 
 /**
+ * Implements hook_ENTITY_TYPE_presave().
+ *
+ * If the source changed in remote video, remove the media title, so oEmbed will
+ * update it with data from the source url. Otherwise the media will retain the
+ * original title when updating a url.
+ */
+function piv_base_media_presave(EntityInterface $entity) {
+  // @see Drupal\media\Entity\Media::hasSourceFieldChanged()
+  if ($entity->bundle() == 'remote_video') {
+    $source = $entity->getSource();
+    $has_source_field_changed = isset($entity->original) && $source->getSourceFieldValue($entity) !== $source->getSourceFieldValue($entity->original);
+    if ($has_source_field_changed) {
+      $entity->setName(NULL);
+    }
+  }
+}
+
+/**
  * Implements hook_entity_create_access().
  */
 function piv_base_entity_create_access(AccountInterface $account, array $context, $entity_bundle) {
@@ -165,6 +183,12 @@ function piv_base_theme($existing, $type, $theme, $path) {
       'variables' => [
         'menu' => NULL,
         'form' => NULL,
+      ],
+    ],
+    'piv_back_link' => [
+      'render element' => 'content',
+      'variables' => [
+        'link' => NULL,
       ],
     ],
   ];

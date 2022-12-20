@@ -5,8 +5,22 @@ form_modes:
   node:
     to_exclude: {  }
   user:
-    to_exclude:
-      register: register
+    to_exclude: {  }
   commerce_order_item:
     to_exclude:
       add_to_cart: add_to_cart
+  competition_entry:
+    to_exclude:
+      teacher_competition_entry: teacher_competition_entry
+      teacher_competition_entry_team_competition: teacher_competition_entry_team_competition
+  judging_session:
+    to_exclude:
+      session_management_ui: session_management_ui
+  media:
+    to_exclude: {  }
+  recitation:
+    to_exclude:
+      on_site_individual: on_site_individual
+      on_site_team: on_site_team
+      online_individual: online_individual
+      online_team: online_team

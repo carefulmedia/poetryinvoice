@@ -136,6 +136,13 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     $response['#field_title'] = $title;
     $response['#description'] = $this->t('You can add a maximum of @max', ['@max' => $recitationsText]);
 
+    foreach (Element::children($response['entities']) as $delta) {
+      if (isset($response['entities'][$delta]['form'])) {
+        $response['entities'][$delta]['form']['#prefix'] = '<div class="recitation-widget-modal-wrapper"><div class="recitation-widget-modal">';
+        $response['entities'][$delta]['form']['#suffix'] = '</div></div>';
+      }
+    }
+    $response['#attached']['library'][] = 'piv_contest_competition_entry/limited-recitation-entry-widget';
     return $response;
   }
 

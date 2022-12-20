@@ -98,8 +98,8 @@ class CompetitionsListController extends ControllerBase {
       return ['#markup' => $this->t('No school associated with teacher account.')];
     }
 
-    $now = (new DrupalDatetime('now'))
-      ->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
+    $now = (new DrupalDatetime('now'));
+    $now_formatted = $now->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
 
     // Maybe this could move to the factory method as constructor
     // arguments.
@@ -109,10 +109,8 @@ class CompetitionsListController extends ControllerBase {
       ->getStorage('competition_entry');
     $competition_view_builder = $this->entityTypeManager
       ->getViewBuilder('competition');
-
     $query = $competition_storage->getQuery();
-    $query->condition('field_open_date', $now, '<')
-      ->condition('field_submission_deadline', $now, '>')
+    $query->condition('field_submission_deadline', $now_formatted, '>')
       ->condition('field_active', TRUE);
     $invited_only_condition = $query->orConditionGroup();
     $invited_only_condition->condition('field_by_invitation_only', FALSE);
@@ -150,6 +148,11 @@ class CompetitionsListController extends ControllerBase {
       ];
       foreach ($competitions_with_entries as $id => $competition) {
         $build['competition']['with_entries'][] = [
+          '#type' => 'details',
+          '#title' => $competition->label(),
+          '#attributes' => [
+            'class' => ['full-width'],
+          ],
           'competition' => $competition_view_builder->view($competition, 'teaser'),
           'link' => [
             '#type' => 'link',
@@ -163,25 +166,38 @@ class CompetitionsListController extends ControllerBase {
       }
     }
 
-    if ($competitions_without_entries) {
-      $build['competition']['without_entries'] = [
-        '#type' => 'fieldset',
-        '#title' => $this->t('Competitions in which your school can enroll'),
-      ];
+    $build['competition']['without_entries'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Competitions in which your school can enroll'),
+      '#access' => FALSE,
+    ];
+    $build['competition']['future_competitions'] = [
+      '#type' => 'fieldset',
+      '#title' => $this->t('Future competitions'),
+      '#access' => FALSE,
+    ];
 
-      foreach ($competitions_without_entries as $id => $competition) {
-        $build['competition']['without_entries'][] = [
-          'competition' => $competition_view_builder->view($competition, 'teaser'),
-          'link' => [
-            '#type' => 'link',
-            '#title' => $this->t('Enroll your school'),
-            '#url' => Url::fromRoute('piv_contest.competition', [
-              'user' => $user->id(),
-              'competition' => $id,
-            ]),
-          ],
-        ];
-      }
+    foreach ($competitions_without_entries as $id => $competition) {
+      $in_future = $competition->field_open_date->date && $competition->field_open_date->date > $now;
+      $fieldset = $in_future ? 'future_competitions' : 'without_entries';
+      $build['competition'][$fieldset]['#access'] = TRUE;
+      $build['competition'][$fieldset][] = [
+        '#type' => 'details',
+        '#title' => $competition->label(),
+        '#attributes' => [
+          'class' => ['full-width'],
+        ],
+        'competition' => $competition_view_builder->view($competition, 'teaser'),
+        'link' => [
+          '#type' => 'link',
+          '#title' => $this->t('Enroll your school'),
+          '#url' => Url::fromRoute('piv_contest.competition', [
+            'user' => $user->id(),
+            'competition' => $id,
+          ]),
+          '#access' => !$in_future,
+        ],
+      ];
     }
     return $build;
   }

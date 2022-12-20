@@ -9,10 +9,10 @@ use Drupal\Component\Utility\Html;
  * Provides specific access control for the node entity type.
  *
  * @EntityReferenceSelection(
- *   id = "default:piv_school",
+ *   id = "piv_field:piv_school",
  *   label = @Translation("School node selection"),
  *   entity_types = {"node"},
- *   group = "default",
+ *   group = "piv_school",
  *   weight = 1
  * )
  */

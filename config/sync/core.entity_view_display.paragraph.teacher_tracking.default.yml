@@ -42,6 +42,9 @@ content:
     weight: 1
     region: content
 hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_ambassador_involvement_ide: true
   field_date_of_school_competition: true
   field_en_info_pack_sent: true
@@ -58,3 +61,4 @@ hidden:
   field_send_additional_fr_posters: true
   field_send_both_fr_and_en_info_p: true
   field_types_of_support_requested: true
+  search_api_excerpt: true

@@ -24,6 +24,10 @@ content:
 hidden:
   body: true
   comment_node_slideshow_image: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_slideshow_image: true
   field_slideshow_type: true
   langcode: true
+  search_api_excerpt: true

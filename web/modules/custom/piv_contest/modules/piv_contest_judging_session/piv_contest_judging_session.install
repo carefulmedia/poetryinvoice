@@ -12,6 +12,7 @@ use Drupal\Core\Database\Database;
  */
 function piv_contest_judging_session_install() {
   piv_contest_judging_session_update_9101();
+  piv_contest_judging_session_update_9102();
 }
 
 /**

@@ -23,7 +23,9 @@
         <td>{{ stream.name }}</td>
         <td>{{ stream.student }}</td>
         <td {{ stream.is_recitations_completed ? 'class="completed"' }}>{{ stream.recitations }}</td>
-        <td {{ stream.is_permissions_completed ? 'class="completed"' }}>{{ stream.permissions }}</td>
+        <td {{ stream.is_permissions_completed ? 'class="completed"' }}>
+          {{ stream.is_permissions_completed ? '&check;' : '&cross;' }}
+        </td>
         {% if competition_has_criteria %}
           <td {{ stream.is_missing_criteria_completed ? 'class="completed"' }}>{{ stream.missing_criteria }}</td>
         {% endif %}
@@ -32,6 +34,10 @@
             {{ link }}
           {% endfor %}
         </td>
+      </tr>
+    {% else %}
+      <tr>
+        <td colspan="5">{{ "This contest has no competition streams yet." }}</td>
       </tr>
     {% endfor %}
   </table>

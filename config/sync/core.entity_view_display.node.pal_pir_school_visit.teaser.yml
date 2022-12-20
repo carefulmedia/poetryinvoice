@@ -49,6 +49,9 @@ content:
     region: content
 hidden:
   comment_node_pal_pir_school_vi: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_agreed_visit_date: true
   field_amount_to_be_paid_to_each_: true
   field_booked_: true
@@ -79,3 +82,4 @@ hidden:
   field_visit_admin: true
   field_visit_date_and_times: true
   langcode: true
+  search_api_excerpt: true

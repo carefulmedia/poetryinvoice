@@ -1,8 +1,0 @@
-display:
-  block_5:
-    display_options:
-      header:
-        area:
-          content:
-            value: '<div data-aos="fade-up"><h1>Pour les enseignant·e·s:</h1></div>'
-            format: php_code

@@ -40,6 +40,9 @@ content:
     region: content
 hidden:
   created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_release_form: true
   field_score: true
   field_stream_language: true
@@ -49,6 +52,7 @@ hidden:
   field_student_name: true
   field_student_stage_name: true
   langcode: true
+  search_api_excerpt: true
   status: true
   title: true
   uid: true

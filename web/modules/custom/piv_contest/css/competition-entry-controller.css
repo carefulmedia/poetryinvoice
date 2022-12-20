@@ -1,0 +1,8 @@
+.competition-entry-wrapper {
+  position: relative;
+  padding-bottom: 50px;
+}
+.competition-entry-wrapper .competition-entry-form .form-actions {
+  position: absolute;
+  bottom: 0;
+}

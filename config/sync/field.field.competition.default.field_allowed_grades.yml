@@ -1,0 +1,21 @@
+uuid: c5b15505-b244-42b9-9b14-545118d21497
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition.field_allowed_grades
+    - piv_contest_competition.competition_type.default
+  module:
+    - options
+id: competition.default.field_allowed_grades
+field_name: field_allowed_grades
+entity_type: competition
+bundle: default
+label: 'Allowed grades'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

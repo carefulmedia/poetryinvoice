@@ -49,6 +49,9 @@ content:
     region: content
 hidden:
   comment_node_lesson_plan: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_activity_description_steps: true
   field_additional_poems: true
   field_attachments: true
@@ -69,3 +72,4 @@ hidden:
   field_variations_for_younger_stu: true
   field_video_poem: true
   langcode: true
+  search_api_excerpt: true

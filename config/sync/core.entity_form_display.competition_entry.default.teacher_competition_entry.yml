@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.competition_entry.teacher_competition_entry
-    - core.entity_form_mode.recitation.online_individual
     - field.field.competition_entry.default.field_competition
     - field.field.competition_entry.default.field_competition_current_level
     - field.field.competition_entry.default.field_complete
@@ -22,7 +21,6 @@ dependencies:
     - field_layout
     - file
     - layout_discovery
-    - piv_contest_competition_entry
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -33,33 +31,16 @@ targetEntityType: competition_entry
 bundle: default
 mode: teacher_competition_entry
 content:
-  field_recitations:
-    type: limited_recitation_entry_widget
-    weight: 0
-    region: content
-    settings:
-      form_mode: online_individual
-      override_labels: false
-      label_singular: ''
-      label_plural: ''
-      allow_new: true
-      allow_existing: false
-      match_operator: CONTAINS
-      allow_duplicate: false
-      collapsible: false
-      collapsed: false
-      revision: false
-    third_party_settings: {  }
   field_release_form:
     type: file_generic
-    weight: 6
+    weight: 4
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   field_student_email:
     type: email_default
-    weight: 5
+    weight: 3
     region: content
     settings:
       placeholder: ''
@@ -67,13 +48,13 @@ content:
     third_party_settings: {  }
   field_student_grade:
     type: options_select
-    weight: 1
+    weight: 5
     region: content
     settings: {  }
     third_party_settings: {  }
   field_student_last_name:
     type: string_textfield
-    weight: 2
+    weight: 0
     region: content
     settings:
       size: 60
@@ -81,7 +62,7 @@ content:
     third_party_settings: {  }
   field_student_name:
     type: string_textfield
-    weight: 3
+    weight: 1
     region: content
     settings:
       size: 60
@@ -89,7 +70,7 @@ content:
     third_party_settings: {  }
   field_student_stage_name:
     type: string_textfield
-    weight: 4
+    weight: 2
     region: content
     settings:
       size: 60
@@ -100,6 +81,7 @@ hidden:
   field_competition: true
   field_competition_current_level: true
   field_complete: true
+  field_recitations: true
   field_school: true
   field_stream: true
   langcode: true

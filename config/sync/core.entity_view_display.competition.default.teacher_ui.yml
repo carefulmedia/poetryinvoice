@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.competition.teacher_ui
     - field.field.competition.default.body
     - field.field.competition.default.field_active
+    - field.field.competition.default.field_allowed_grades
     - field.field.competition.default.field_by_invitation_only
     - field.field.competition.default.field_competition_current_level
     - field.field.competition.default.field_competition_levels
@@ -96,7 +97,11 @@ content:
     region: content
 hidden:
   created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
   field_active: true
+  field_allowed_grades: true
   field_by_invitation_only: true
   field_competition_current_level: true
   field_competition_levels: true
@@ -109,6 +114,7 @@ hidden:
   field_popular_vote_level: true
   field_score_template: true
   langcode: true
+  search_api_excerpt: true
   status: true
   title: true
   uid: true

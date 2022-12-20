@@ -14,3 +14,9 @@ welcome_modal:
   dependencies:
     - core/jquery
     - piv_base/dialog_polyfill
+
+back_link:
+  css:
+    component:
+      css/back-link.css: {}
+

@@ -8,7 +8,6 @@ use Drupal\Core\Entity\EntityStorageException;
 use Psr\Log\LoggerInterface;
 
 class SyncService {
-
   /**
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */

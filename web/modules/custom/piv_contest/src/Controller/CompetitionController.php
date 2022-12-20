@@ -9,6 +9,7 @@ use Drupal\user\UserInterface;
 use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Link;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -71,6 +72,17 @@ class CompetitionController extends ControllerBase {
     if (!$school) {
       return [];
     }
+    $build['back_link'] = [
+      '#theme' => 'piv_back_link',
+      '#link' => Link::createFromRoute($this->t('Back to all competitions'), 'piv_content.competitions_list', [
+        'user' => $user->id(),
+      ]),
+    ];
+    
+    $build['title'] = [
+      '#theme' => 'page_title',
+      '#title' => $competition->label(),
+    ];
 
     $build['competition'] = $this->entityTypeManager
       ->getViewBuilder('competition')
