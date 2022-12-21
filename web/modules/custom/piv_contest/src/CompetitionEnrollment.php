@@ -147,7 +147,7 @@ class CompetitionEnrollment {
           ],
         ]);
 
-        $stream['student'] = $entry->field_student_name->value;
+        $stream['student'] = piv_contest_get_student_name($entry);
         $stream['recitations'] = $this->t("@current out of @required", [
           '@current' => $this->getNumberOfValidRecitationsInEntry($entry),
           '@required' => $this->getRequiredRecitationsForStream($stream_entity),
