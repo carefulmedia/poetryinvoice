@@ -3472,10 +3472,14 @@ tr th {
   border: 1px solid #fff;
   text-align: left;
   /* LTR */
+  vertical-align: middle;
 }
 [dir="rtl"] tr td,
 [dir="rtl"] tr th {
   text-align: right;
+}
+.user table tbody td a {
+  margin-left: 0;
 }
 /**
  * Responsive tables.

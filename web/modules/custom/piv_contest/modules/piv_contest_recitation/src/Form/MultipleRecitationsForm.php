@@ -126,6 +126,7 @@ class MultipleRecitationsForm extends FormBase {
       '#type' => 'table',
       '#header' => [
         $this->t('Poem'),
+        $this->t('Video'),
         $this->t('Language'),
         $this->t('Operations'),
         // $this->t('Weight'),
@@ -217,6 +218,14 @@ class MultipleRecitationsForm extends FormBase {
       // Table row.
       $is_new = $recitation->isNew();
       $edit_label = $is_new ? $this->t('Add') : $this->t('Edit');
+      $link_video = NULL;
+      if ($media_entity) {
+        $title = $media_entity->label();
+        $url = $media_entity->field_media_oembed_video->value;
+        $link_video = [
+          '#markup' => "<a target='_blank' href='{$url}'>{$title}</a>",
+        ];
+      }
       $form['recitations'][$i] = [
         '#attributes' => [
           'class' => ['draggable'],
@@ -224,6 +233,7 @@ class MultipleRecitationsForm extends FormBase {
         'poem' => [
           '#markup' => $poem ? $poem->label() : NULL,
         ],
+        'video' => $link_video,
         'language' => [
           '#markup' => $recitation->field_stream_language->entity->getName(),
         ],
