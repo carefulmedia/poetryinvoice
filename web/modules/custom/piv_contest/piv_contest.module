@@ -21,7 +21,7 @@ function piv_contest_get_student_name($entity) {
   }
   $first_name = $entity->field_student_name->value;
   $last_name = $entity->field_student_last_name->value;
-  return "{$last_name}, {$first_name}";
+  return "{$first_name} {$last_name}";
 }
 
 /**
