@@ -169,6 +169,7 @@ class MultipleRecitationsForm extends FormBase {
         ],
         '#default_value' => $poem,
         '#title' => $this->t('Poem'),
+        '#maxlength' => 500,
       ];
 
       $media_entity = $recitation->field_recitation_video->entity;
