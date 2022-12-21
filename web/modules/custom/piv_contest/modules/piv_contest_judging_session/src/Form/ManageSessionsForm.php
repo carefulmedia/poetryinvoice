@@ -380,7 +380,7 @@ class ManageSessionsForm extends FormBase {
       }
 
       $entries[$entity->id()][0] = $entity->label() ?: "";
-      $entries[$entity->id()][3] = $entity->field_student_name->value ?: "";
+      $entries[$entity->id()][3] = piv_contest_get_student_name($entity);
 
       if (!$entity->field_school) {
         continue;
