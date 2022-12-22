@@ -2673,7 +2673,7 @@ nav.tabs ul {
 }
 .node--type-article .field--type-image {
   float: none;
-  margin: 0;
+  margin: 10px;
 }
 .node-preview-container {
   background: #d1e8f5;
