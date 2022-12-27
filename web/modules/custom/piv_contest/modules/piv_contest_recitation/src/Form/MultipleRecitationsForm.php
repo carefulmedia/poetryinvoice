@@ -169,24 +169,26 @@ class MultipleRecitationsForm extends FormBase {
         ],
         '#default_value' => $poem,
         '#title' => $this->t('Poem'),
+        '#description' => t('Begin typing the poem title and then select it from the list.'),
         '#maxlength' => 500,
       ];
 
       $media_entity = $recitation->field_recitation_video->entity;
       $recitation_form['field_recitation_video'] = [
         '#type' => 'fieldset',
-        '#title' => $this->t('Video'),
+   //     '#title' => $this->t('Video'),
         '#access' => $is_online,
-        'video_title' => [
+   /*     'video_title' => [
           '#type' => 'item',
           '#title' => 'Title',
           '#markup' => $media_entity ? '<div>' . $media_entity->label() . '</div>' : '',
         ],
+   */     
         'value' => [
           '#type' => 'textfield',
-          '#title' => $this->t('Remote video URL'),
+          '#title' => $this->t('YouTube URL'),
           '#default_value' => $media_entity ? $media_entity->field_media_oembed_video->value : NULL,
-          '#description' => t('YouTube url'),
+          '#description' => t('Copy and paste the YouTube URL for your student\'s video'),
         ],
       ];
       $recitation_form['entity'] = [
