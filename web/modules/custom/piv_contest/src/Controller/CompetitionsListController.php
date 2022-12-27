@@ -144,7 +144,7 @@ class CompetitionsListController extends ControllerBase {
     if ($competitions_with_entries) {
       $build['competition']['with_entries'] = [
         '#type' => 'fieldset',
-        '#title' => $this->t('Competitions in which your school is participating'),
+        '#title' => $this->t('Current Contests'),
       ];
       foreach ($competitions_with_entries as $id => $competition) {
         $build['competition']['with_entries'][] = [
