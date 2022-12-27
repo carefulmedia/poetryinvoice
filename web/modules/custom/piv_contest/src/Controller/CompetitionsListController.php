@@ -151,12 +151,15 @@ class CompetitionsListController extends ControllerBase {
           '#type' => 'details',
           '#title' => $competition->label(),
           '#attributes' => [
-            'class' => ['full-width'],
+            'class' => ['full-width piv-competition'],
           ],
           'competition' => $competition_view_builder->view($competition, 'teaser'),
           'link' => [
             '#type' => 'link',
             '#title' => $this->t('Manage your competition entries'),
+            '#attributes' => [
+              'class' => ['button'],
+            ],
             '#url' => Url::fromRoute('piv_contest.competition', [
               'user' => $user->id(),
               'competition' => $id,
@@ -185,12 +188,15 @@ class CompetitionsListController extends ControllerBase {
         '#type' => 'details',
         '#title' => $competition->label(),
         '#attributes' => [
-          'class' => ['full-width'],
+          'class' => ['full-width piv-competition'],
         ],
         'competition' => $competition_view_builder->view($competition, 'teaser'),
         'link' => [
           '#type' => 'link',
           '#title' => $this->t('Enroll your school'),
+          '#attributes' => [
+            'class' => ['button'],
+          ],
           '#url' => Url::fromRoute('piv_contest.competition', [
             'user' => $user->id(),
             'competition' => $id,

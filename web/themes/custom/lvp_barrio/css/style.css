@@ -2675,6 +2675,26 @@ nav.tabs ul {
   float: none;
   margin: 10px;
 }
+/* Contest page styles */
+.piv-competition .button {
+  margin: 30px 0;
+  display: block;
+}
+#enrollment td {
+  padding: 15px 9px;
+  text-align: center;
+}
+.piv-back-link {
+  margin-bottom: 3rem !important;
+}
+#edit-submit,
+#edit-recitations-0-operations-form-submit {
+  background: var(--mint);
+}
+#edit-submit:hover,
+#edit-recitations-0-operations-form-submit:hover {
+  color: var(--mint);
+}
 .node-preview-container {
   background: #d1e8f5;
   background-image: -webkit-linear-gradient(top, #d1e8f5, #d3e8f4);
@@ -4305,7 +4325,8 @@ li {
 .propos a:hover {
   color: var(--grey);
 }
-.button {
+.button,
+.piv-back-link a {
   height: auto;
   width: fit-content;
   border-radius: 5px;
@@ -4318,13 +4339,15 @@ li {
   font-family: 'Roboto';
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
 }
-.button:hover {
+.button:hover,
+.piv-back-link a:hover {
   background: white !important;
   color: var(--red);
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
   transition: all 0.4s ease;
 }
-.button:active {
+.button:active,
+.piv-back-link a:active {
   color: white;
   background: var(--red-dark);
   transition: all 0.4s ease;
