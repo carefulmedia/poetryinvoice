@@ -219,7 +219,7 @@ class CompetitionEnrollment {
           // Add link to create new entry.
           $stream['links'][] = [
             '#type' => 'link',
-            '#title' => $this->t('Add new entry'),
+            '#title' => $this->t('Add'),
             '#attributes' => [
               'class' => ['button'],
             ],
