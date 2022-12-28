@@ -1,0 +1,9 @@
+status: 1
+pattern: '[node:field_contest_association] Entry'
+escape: false
+preserve_titles: false
+save: false
+chunk: 50
+dependencies:
+  config:
+    - node.type.team_regionals_entry
