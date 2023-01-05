@@ -3889,9 +3889,9 @@ dialog#welcome-modal[open]::backdrop {
 }
 dialog[open].in,
 dialog[open].in::backdrop {
-  transition-delay: 0s;
-  opacity: 1;
-  visibility: visible;
+  transition-delay: 0s !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 @media (max-width: 576px) {
   .form-item-option-2.select-hidden + .form-item-option-3:not(.select-hidden) {
