@@ -4,8 +4,26 @@ status: true
 dependencies:
   config:
     - field.storage.node.body
-    - field.storage.user.field_user_bio
+    - field.storage.node.field_2_column_poem
+    - field.storage.node.field_activity_description_steps
     - field.storage.user.field_bio_trans
+    - field.storage.node.field_body_lower
+    - field.storage.node.field_epigraph
+    - field.storage.node.field_file_under_
+    - field.storage.node.field_lesson_objectives
+    - field.storage.node.field_materials_resources
+    - field.storage.node.field_moods
+    - field.storage.node.field_new_theme
+    - field.storage.node.field_one_line_description
+    - field.storage.paragraph.field_poem_title
+    - field.storage.node.field_poet_s_in_podcast
+    - field.storage.node.field_poets_plural_user
+    - field.storage.paragraph.field_q2
+    - field.storage.paragraph.field_q3
+    - field.storage.paragraph.field_q4
+    - field.storage.paragraph.field_q5
+    - field.storage.paragraph.field_title
+    - field.storage.user.field_user_bio
     - field.storage.user.piv_teacher_first_name
     - field.storage.user.piv_teacher_last_name
     - search_api.server.database
@@ -14,6 +32,8 @@ dependencies:
   module:
     - node
     - search_api
+    - paragraphs
+    - taxonomy
     - user
 id: everything
 name: 'Search Everything'
@@ -29,6 +49,31 @@ field_settings:
     dependencies:
       config:
         - field.storage.node.body
+  body_1:
+    label: Body
+    datasource_id: 'entity:node'
+    property_path: body
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.body
+  field_2_column_poem:
+    label: '2 column poem'
+    datasource_id: 'entity:node'
+    property_path: field_2_column_poem
+    type: text
+    boost: !!float 5
+    dependencies:
+      config:
+        - field.storage.node.field_2_column_poem
+  field_activity_description_steps:
+    label: 'Activity Description'
+    datasource_id: 'entity:node'
+    property_path: field_activity_description_steps
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_activity_description_steps
   field_bio_trans:
     label: 'Bio translation » Processed text'
     datasource_id: 'entity:user'
@@ -37,10 +82,147 @@ field_settings:
     dependencies:
       config:
         - field.storage.user.field_bio_trans
+  field_body_lower:
+    label: 'Body lower'
+    datasource_id: 'entity:node'
+    property_path: field_body_lower
+    type: text
+    boost: !!float 5
+    dependencies:
+      config:
+        - field.storage.node.field_body_lower
+  field_epigraph:
+    label: Epigraph
+    datasource_id: 'entity:node'
+    property_path: field_epigraph
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_epigraph
+  field_file_under_:
+    label: Subjects
+    datasource_id: 'entity:node'
+    property_path: field_file_under_
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_file_under_
+  field_lesson_objectives:
+    label: 'Learning Objectives'
+    datasource_id: 'entity:node'
+    property_path: field_lesson_objectives
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_lesson_objectives
+  field_materials_resources:
+    label: 'Materials and Resources'
+    datasource_id: 'entity:node'
+    property_path: field_materials_resources
+    type: text
+    dependencies:
+      config:
+        - field.storage.node.field_materials_resources
+  field_moods:
+    label: Moods
+    datasource_id: 'entity:node'
+    property_path: field_moods
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_moods
+  field_new_theme:
+    label: Tags
+    datasource_id: 'entity:node'
+    property_path: field_new_theme
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_new_theme
+  field_one_line_description:
+    label: 'One line description'
+    datasource_id: 'entity:node'
+    property_path: field_one_line_description
+    type: string
+    dependencies:
+      config:
+        - field.storage.node.field_one_line_description
+  field_poem_title:
+    label: 'Poem title(s)'
+    datasource_id: 'entity:paragraph'
+    property_path: field_poem_title
+    type: string
+    dependencies:
+      config:
+        - field.storage.paragraph.field_poem_title
+  field_poet_s_in_podcast:
+    label: 'Poet(s) in podcast'
+    datasource_id: 'entity:node'
+    property_path: field_poet_s_in_podcast
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_poet_s_in_podcast
+  field_poets_plural_user:
+    label: 'Poets in this Lesson Plan'
+    datasource_id: 'entity:node'
+    property_path: field_poets_plural_user
+    type: integer
+    dependencies:
+      config:
+        - field.storage.node.field_poets_plural_user
+  field_q2:
+    label: 'When did you first start writing poetry? And then when did you start thinking of yourself as a poet?'
+    datasource_id: 'entity:paragraph'
+    property_path: field_q2
+    type: text
+    dependencies:
+      config:
+        - field.storage.paragraph.field_q2
+  field_q3:
+    label: 'What do you think a poet’s “job” is?'
+    datasource_id: 'entity:paragraph'
+    property_path: field_q3
+    type: text
+    dependencies:
+      config:
+        - field.storage.paragraph.field_q3
+  field_q4:
+    label: 'If you have a poem in our anthology what inspired you to write it?'
+    datasource_id: 'entity:paragraph'
+    property_path: field_q4
+    type: text
+    dependencies:
+      config:
+        - field.storage.paragraph.field_q4
+  field_q5:
+    label: 'If you had to choose one poem to memorize from our anthology, which one would it be?'
+    datasource_id: 'entity:paragraph'
+    property_path: field_q5
+    type: text
+    dependencies:
+      config:
+        - field.storage.paragraph.field_q5
+  field_title:
+    label: Title
+    datasource_id: 'entity:paragraph'
+    property_path: field_title
+    type: string
+    dependencies:
+      config:
+        - field.storage.paragraph.field_title
   field_user_bio:
     label: 'Biography » Processed text'
     datasource_id: 'entity:user'
     property_path: 'field_user_bio:processed'
+    type: text
+    dependencies:
+      config:
+        - field.storage.user.field_user_bio
+  field_user_bio_1:
+    label: Biography
+    datasource_id: 'entity:user'
+    property_path: field_user_bio
     type: text
     dependencies:
       config:
@@ -114,7 +296,7 @@ field_settings:
     datasource_id: 'entity:node'
     property_path: title
     type: text
-    boost: !!float 8
+    boost: !!float 21
     dependencies:
       module:
         - node
@@ -125,6 +307,14 @@ field_settings:
     type: integer
     indexed_locked: true
     type_locked: true
+    dependencies:
+      module:
+        - node
+  uid_1:
+    label: 'Authored by'
+    datasource_id: 'entity:node'
+    property_path: uid
+    type: string
     dependencies:
       module:
         - node
@@ -140,21 +330,43 @@ datasource_settings:
       default: false
       selected:
         - article
-        - bulletin_board
         - event
-        - faq
         - journal_poem
+        - lesson_plan
+        - media_coverage
         - mixtape
         - page
         - podcast
         - poem
-        - poll
-        - power_points
         - press_release
+        - quiz
         - school
         - student
+        - team_regionals_entry
         - video
         - writing_prompt
+        - writing_workshop
+    languages:
+      default: true
+      selected: {  }
+  'entity:paragraph':
+    bundles:
+      default: false
+      selected:
+        - micro_interview
+        - poet_questionnaire
+        - publications
+    languages:
+      default: true
+      selected: {  }
+  'entity:taxonomy_term':
+    bundles:
+      default: true
+      selected:
+        - file_under
+        - moods
+        - poem_tags
+        - poetic_terms
     languages:
       default: true
       selected: {  }
@@ -168,6 +380,7 @@ processor_settings:
   content_access:
     weights:
       preprocess_query: -30
+  entity_status: {  }
   entity_type: {  }
   highlight:
     weights:
@@ -231,19 +444,17 @@ processor_settings:
       - piv_teacher_last_name
       - rendered_item
   language_with_fallback: {  }
+  number_field_boost:
+    weights:
+      preprocess_index: 0
+    boosts: {  }
   rendered_item: {  }
   role_filter:
     default: false
     roles:
-      - accuracy_judge
-      - judge
-      - non_canadian_educator
       - pic_pal
       - poet
       - poet_network
-      - teacher
-      - teacher_en_
-      - teacher_fr_
   stemmer:
     weights:
       preprocess_index: 0
