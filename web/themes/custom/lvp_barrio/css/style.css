@@ -1902,6 +1902,10 @@ h3.name {
   }
 }
 /* lesson plan index page */
+.float-right {
+  position: relative;
+  float: right;
+}
 /**
  * @file
  * Visual styles for icons.
