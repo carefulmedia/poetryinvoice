@@ -1629,7 +1629,7 @@ h3.name {
 .view {
   position: relative;
 }
-.view .more-link {
+.more-link {
   position: absolute;
   top: 0;
   right: 0;
@@ -1637,9 +1637,13 @@ h3.name {
   padding: 0.5rem;
   color: #fff;
 }
-.view .more-link a {
+.more-link a {
   color: white;
   text-decoration: none;
+}
+.more-link a:hover {
+  color: var(--plum-light) !important;
+  font-weight: 900;
 }
 /* discover poems index page */
 .page-node-27461 .plum-bg.roulette-discover,
@@ -1679,6 +1683,16 @@ h3.name {
 }
 .page-node-27461 .lt-plum.plum-bg.roulette-discover a {
   text-decoration: none;
+  color: #000;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover .more-link {
+  float: right;
+  background-color: #fff;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover .more-link a:hover,
+.page-node-27461 .lt-plum.plum-bg.roulette-discover a:hover {
+  color: var(--plum) !important;
+  font-weight: 900;
 }
 .page-node-27461 h2 {
   color: var(--plum);
@@ -1709,12 +1723,17 @@ h3.name {
   color: var(--plum-light);
   transition: all 0.4s ease;
 }
+.plum-bg.roulette-discover .col-4:hover h2 {
+  color: var(--plum);
+  font-weight: 800;
+  transition: all 0.4s ease;
+}
 .plum-bg.roulette-discover .col-4 img {
   filter: opacity(0.8);
   transition: all 0.4s ease;
 }
 .plum-bg.roulette-discover .col-4:hover img {
-  filter: opacity(1);
+  filter: opacity(1) drop-shadow(1px 1px 10px white);
   transition: all 0.4s ease;
 }
 .plum-bg.roulette-discover a:active img {
