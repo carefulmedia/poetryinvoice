@@ -1645,13 +1645,14 @@ h3.name {
 .page-node-27461 .plum-bg.roulette-discover,
 .page-node-27461 .poets,
 .page-node-27461 .quizzes {
-  background: #481139;
+  background-color: var(--plum-dark);
   padding: 1rem;
   width: 100vw;
   position: relative;
   margin-left: -50vw;
   margin-top: 100px;
   left: 50%;
+  color: white;
 }
 .page-node-27461 .plum-bg.roulette-discover h1,
 .page-node-27461 .poets h1,
@@ -1660,6 +1661,24 @@ h3.name {
 .page-node-27461 .poets h2,
 .page-node-27461 .quizzes h2 {
   color: white;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover {
+  background-color: var(--plum-light);
+  padding: 1rem;
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  margin-top: 100px;
+  left: 50%;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover h1 {
+  color: var(--plum-dark);
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover h2 {
+  color: #000;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover a {
+  text-decoration: none;
 }
 .page-node-27461 h2 {
   color: var(--plum);
