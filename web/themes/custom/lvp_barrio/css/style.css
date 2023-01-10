@@ -4115,6 +4115,15 @@ dialog[open].in::backdrop {
   padding: 0;
   color: #000;
 }
+dialog.recitation-form .btn-close {
+  right: 0;
+  top: 0;
+  position: absolute;
+  cursor: pointer;
+  font-size: 1.25rem;
+  background-color: white;
+  opacity: 1;
+}
 :root {
   --plum-light: #E7D8E3;
   --plum: #893B73;

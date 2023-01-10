@@ -58,7 +58,6 @@ class MultipleRecitationsForm extends FormBase {
    */
   public function ajaxRefresh($form, $form_state) {
     // If there is a error in a video, print that error and open the dialog.
-    $errors = $form_state->getErrors();
     $triggering_element = $form_state->getTriggeringElement();
     $delta = $triggering_element['#recitation_delta'] ?? NULL;
     if (is_numeric($delta)) {
@@ -169,26 +168,25 @@ class MultipleRecitationsForm extends FormBase {
         ],
         '#default_value' => $poem,
         '#title' => $this->t('Poem'),
-        '#description' => t('Begin typing the poem title and then select it from the list.'),
+        '#description' => $this->t('Begin typing the poem title and then select it from the list.'),
         '#maxlength' => 500,
       ];
 
       $media_entity = $recitation->field_recitation_video->entity;
       $recitation_form['field_recitation_video'] = [
         '#type' => 'fieldset',
-   //     '#title' => $this->t('Video'),
+        // '#title' => $this->t('Video'),
         '#access' => $is_online,
-   /*     'video_title' => [
-          '#type' => 'item',
-          '#title' => 'Title',
-          '#markup' => $media_entity ? '<div>' . $media_entity->label() . '</div>' : '',
-        ],
-   */     
+        // 'video_title' => [
+        // '#type' => 'item',
+        // '#title' => 'Title',
+        // '#markup' => $media_entity ? '<div>' . $media_entity->label() . '</div>' : '',
+        // ],
         'value' => [
           '#type' => 'textfield',
           '#title' => $this->t('YouTube URL'),
           '#default_value' => $media_entity ? $media_entity->field_media_oembed_video->value : NULL,
-          '#description' => t('Copy and paste the YouTube URL for your student\'s video'),
+          '#description' => $this->t("Copy and paste the YouTube URL for your student's video"),
         ],
       ];
       $recitation_form['entity'] = [
@@ -221,12 +219,29 @@ class MultipleRecitationsForm extends FormBase {
       // Table row.
       $is_new = $recitation->isNew();
       $edit_label = $is_new ? $this->t('Add') : $this->t('Edit');
-      $link_video = NULL;
-      if ($media_entity) {
-        $title = $media_entity->label();
-        $url = $media_entity->field_media_oembed_video->value;
-        $link_video = [
-          '#markup' => "<a target='_blank' href='{$url}'>{$title}</a>",
+      // Video modal.
+      $video = [];
+      $embedded_video = $media_entity->field_media_oembed_video->view('oembed');
+      if (isset($embedded_video[0])) {
+        $label = $this->t('Watch video');
+        $video = [
+          'open_modal' => [
+            '#markup' => "<a href='#' class='recitation-open-modal'>{$label}</a>",
+          ],
+          'modal' => [
+            '#type' => 'html_tag',
+            '#tag' => 'dialog',
+            '#attributes' => [
+              'class' => [
+                'video-modal',
+                'recitation-form',
+              ],
+            ],
+            'close' => [
+              '#markup' => '<div class="btn-close close-modal"></div>',
+            ],
+            'video' => $embedded_video,
+          ],
         ];
       }
       $form['recitations'][$i] = [
@@ -236,7 +251,7 @@ class MultipleRecitationsForm extends FormBase {
         'poem' => [
           '#markup' => $poem ? $poem->label() : NULL,
         ],
-        'video' => $link_video,
+        'video' => $video,
         'language' => [
           '#markup' => $recitation->field_stream_language->entity->getName(),
         ],
