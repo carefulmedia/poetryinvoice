@@ -15,14 +15,14 @@ dialog#welcome-modal,
 dialog#welcome-modal[open]::backdrop {
   visibility:hidden;
   opacity:0;
-  transition:visibility 0s linear .3s,opacity .3s linear;
+  transition: visibility 0s linear .3s,opacity .3s linear;
 }
 
 dialog[open].in,
 dialog[open].in::backdrop {
-  transition-delay:0s;
-  opacity: 1;
-  visibility: visible;
+  transition-delay: 0s !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 @media (max-width: 576px) {

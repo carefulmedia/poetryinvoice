@@ -17,7 +17,7 @@ color: white;
     position: relative
 }
 
-.view .more-link {
+.more-link {
     position: absolute;
     top: 0;
     right: 0;
@@ -25,22 +25,56 @@ color: white;
     padding: .5rem;
     color: #fff;
 }
-.view .more-link a {
+ .more-link a {
     color: white;
     text-decoration: none;
+}
+.more-link a:hover {
+    color: var(--plum-light) !important;
+    font-weight: 900;
 }
 /* discover poems index page */
 .page-node-27461 {
     .plum-bg.roulette-discover, .poets, .quizzes {
-        background: rgba(72, 17, 57, 1);
+        background-color: var(--plum-dark);
         padding: 1rem;
         width: 100vw;
         position: relative;
         margin-left: -50vw;
         margin-top: 100px;
         left: 50%;
+        color: white;
         h1, h2 {
             color: white
+        }
+        
+    }
+    .lt-plum.plum-bg.roulette-discover {
+        background-color: var(--plum-light);
+        padding: 1rem;
+        width: 100vw;
+        position: relative;
+        margin-left: -50vw;
+        margin-top: 100px;
+        left: 50%;
+        h1 {
+            color: var(--plum-dark);
+        }
+        h2 {
+            color: #000;
+        }
+        a {
+            text-decoration: none;
+            color: #000;
+        }
+        .more-link {
+            float:right;
+            background-color: #fff;
+
+        }
+        .more-link a:hover, a:hover {
+            color: var(--plum) !important;
+            font-weight: 900;
         }
         
     }
@@ -72,13 +106,21 @@ color: var(--plum-light);
 transition: all .4s ease;
 
 }
+.plum-bg.roulette-discover .col-4:hover h2 {
+    color: var(--plum);
+    font-weight: 800;
+    transition: all .4s ease;
+    
+    }
 .plum-bg.roulette-discover .col-4 img {
 filter: opacity(.8);
 transition: all .4s ease;
 }
 .plum-bg.roulette-discover .col-4:hover img {
-filter: opacity(1);
+filter: opacity(1) drop-shadow(1px 1px 10px white);
+
 transition: all .4s ease;
+
 }
 .plum-bg.roulette-discover a:active img {
 filter: blur(50);
@@ -282,3 +324,7 @@ width: 200px;
 
 
 
+.float-right {
+    position: relative;
+    float: right;
+}

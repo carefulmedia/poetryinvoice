@@ -13,6 +13,7 @@ use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Language\LanguageManagerInterface;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -43,19 +44,20 @@ class CompetitionsListController extends ControllerBase {
   protected $entityTypeManager;
 
   /**
-   * The controller constructor.
+   * The language manager.
    *
-   * @param \Drupal\Core\Database\Connection $connection
-   *   The database connection.
-   * @param \Drupal\Core\Session\AccountInterface $current_user
-   *   The current user.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity type manager.
+   * @var \Drupal\Core\Language\LanguageManagerInterface
    */
-  public function __construct(Connection $connection, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager) {
+  protected $languageManager;
+
+  /**
+   * The controller constructor.
+   */
+  public function __construct(Connection $connection, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, LanguageManagerInterface $language_manager) {
     $this->connection = $connection;
     $this->currentUser = $current_user;
     $this->entityTypeManager = $entity_type_manager;
+    $this->languageManager = $language_manager;
   }
 
   /**
@@ -65,7 +67,8 @@ class CompetitionsListController extends ControllerBase {
     return new static(
       $container->get('database'),
       $container->get('current_user'),
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('language_manager')
     );
   }
 
@@ -124,7 +127,11 @@ class CompetitionsListController extends ControllerBase {
     // Get the number of entries per competition.
     $competitions = $competition_storage->loadMultiple($results);
     $competitions_entries = [];
+    $current_langcode = $this->languageManager->getCurrentLanguage()->getId();
     foreach ($competitions as $id => $competition) {
+      if ($competition->hasTranslation($current_langcode)) {
+        $competitions[$id] = $competition->getTranslation($current_langcode);
+      }
       $competitions_entries[$id] = $competition_entry_storage->loadByProperties([
         'field_competition' => $id,
         'field_school' => $school,
@@ -144,19 +151,22 @@ class CompetitionsListController extends ControllerBase {
     if ($competitions_with_entries) {
       $build['competition']['with_entries'] = [
         '#type' => 'fieldset',
-        '#title' => $this->t('Competitions in which your school is participating'),
+        '#title' => $this->t('Current Contests'),
       ];
       foreach ($competitions_with_entries as $id => $competition) {
         $build['competition']['with_entries'][] = [
           '#type' => 'details',
           '#title' => $competition->label(),
           '#attributes' => [
-            'class' => ['full-width'],
+            'class' => ['full-width piv-competition'],
           ],
           'competition' => $competition_view_builder->view($competition, 'teaser'),
           'link' => [
             '#type' => 'link',
             '#title' => $this->t('Manage your competition entries'),
+            '#attributes' => [
+              'class' => ['button'],
+            ],
             '#url' => Url::fromRoute('piv_contest.competition', [
               'user' => $user->id(),
               'competition' => $id,
@@ -185,12 +195,15 @@ class CompetitionsListController extends ControllerBase {
         '#type' => 'details',
         '#title' => $competition->label(),
         '#attributes' => [
-          'class' => ['full-width'],
+          'class' => ['full-width piv-competition'],
         ],
         'competition' => $competition_view_builder->view($competition, 'teaser'),
         'link' => [
           '#type' => 'link',
           '#title' => $this->t('Enroll your school'),
+          '#attributes' => [
+            'class' => ['button'],
+          ],
           '#url' => Url::fromRoute('piv_contest.competition', [
             'user' => $user->id(),
             'competition' => $id,

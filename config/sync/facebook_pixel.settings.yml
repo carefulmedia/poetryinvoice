@@ -1,16 +1,9 @@
 _core:
   default_config_hash: uWCYoez96nX2cwvfGvSPrOuehWpgXxnqRRuhhoCGiu8
-facebook_id: ''
+facebook_id: '124400818402120'
 visibility:
   request_path_mode: all_pages
-  request_path_pages: |-
-    /admin
-    /admin/*
-    /batch
-    /node/add*
-    /node/*/*
-    /user/*/*
-    /user/login
+  request_path_pages: "/admin\r\n/admin/*\r\n/batch\r\n/node/add*\r\n/node/*/*\r\n/user/*/*\r\n/user/login"
   user_role_mode: all_roles
   user_role_roles: {  }
 privacy:

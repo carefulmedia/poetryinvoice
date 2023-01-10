@@ -177,6 +177,9 @@ class CompetitionEnrollment {
           $stream['links'][] = [
             '#type' => 'link',
             '#title' => $editTitle,
+            '#attributes' => [
+              'class' => ['button'],
+            ],
             '#url' => $editUrl ,
             '#cache' => [
               'tags' => $entry->getCacheTags(),
@@ -188,6 +191,9 @@ class CompetitionEnrollment {
           $stream['links'][] = [
             '#type' => 'link',
             '#title' => $this->t('delete'),
+            '#attributes' => [
+              'class' => ['button'],
+            ],
             '#url' => $deleteUrl,
             '#cache' => [
               'tags' => $entry->getCacheTags(),
@@ -213,7 +219,10 @@ class CompetitionEnrollment {
           // Add link to create new entry.
           $stream['links'][] = [
             '#type' => 'link',
-            '#title' => $this->t('Add new entry'),
+            '#title' => $this->t('Add'),
+            '#attributes' => [
+              'class' => ['button'],
+            ],
             '#url' => $addUrl,
           ];
         }

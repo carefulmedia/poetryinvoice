@@ -1629,7 +1629,7 @@ h3.name {
 .view {
   position: relative;
 }
-.view .more-link {
+.more-link {
   position: absolute;
   top: 0;
   right: 0;
@@ -1637,21 +1637,26 @@ h3.name {
   padding: 0.5rem;
   color: #fff;
 }
-.view .more-link a {
+.more-link a {
   color: white;
   text-decoration: none;
+}
+.more-link a:hover {
+  color: var(--plum-light) !important;
+  font-weight: 900;
 }
 /* discover poems index page */
 .page-node-27461 .plum-bg.roulette-discover,
 .page-node-27461 .poets,
 .page-node-27461 .quizzes {
-  background: #481139;
+  background-color: var(--plum-dark);
   padding: 1rem;
   width: 100vw;
   position: relative;
   margin-left: -50vw;
   margin-top: 100px;
   left: 50%;
+  color: white;
 }
 .page-node-27461 .plum-bg.roulette-discover h1,
 .page-node-27461 .poets h1,
@@ -1660,6 +1665,34 @@ h3.name {
 .page-node-27461 .poets h2,
 .page-node-27461 .quizzes h2 {
   color: white;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover {
+  background-color: var(--plum-light);
+  padding: 1rem;
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  margin-top: 100px;
+  left: 50%;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover h1 {
+  color: var(--plum-dark);
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover h2 {
+  color: #000;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover a {
+  text-decoration: none;
+  color: #000;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover .more-link {
+  float: right;
+  background-color: #fff;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover .more-link a:hover,
+.page-node-27461 .lt-plum.plum-bg.roulette-discover a:hover {
+  color: var(--plum) !important;
+  font-weight: 900;
 }
 .page-node-27461 h2 {
   color: var(--plum);
@@ -1690,12 +1723,17 @@ h3.name {
   color: var(--plum-light);
   transition: all 0.4s ease;
 }
+.plum-bg.roulette-discover .col-4:hover h2 {
+  color: var(--plum);
+  font-weight: 800;
+  transition: all 0.4s ease;
+}
 .plum-bg.roulette-discover .col-4 img {
   filter: opacity(0.8);
   transition: all 0.4s ease;
 }
 .plum-bg.roulette-discover .col-4:hover img {
-  filter: opacity(1);
+  filter: opacity(1) drop-shadow(1px 1px 10px white);
   transition: all 0.4s ease;
 }
 .plum-bg.roulette-discover a:active img {
@@ -1864,6 +1902,10 @@ h3.name {
   }
 }
 /* lesson plan index page */
+.float-right {
+  position: relative;
+  float: right;
+}
 /**
  * @file
  * Visual styles for icons.
@@ -2673,7 +2715,27 @@ nav.tabs ul {
 }
 .node--type-article .field--type-image {
   float: none;
-  margin: 0;
+  margin: 10px;
+}
+/* Contest page styles */
+.piv-competition .button {
+  margin: 30px 0;
+  display: block;
+}
+#enrollment td {
+  padding: 15px 9px;
+  text-align: center;
+}
+.piv-back-link {
+  margin-bottom: 3rem !important;
+}
+#edit-submit,
+#edit-recitations-0-operations-form-submit {
+  background: var(--mint);
+}
+#edit-submit:hover,
+#edit-recitations-0-operations-form-submit:hover {
+  color: var(--mint);
 }
 .node-preview-container {
   background: #d1e8f5;
@@ -3869,9 +3931,9 @@ dialog#welcome-modal[open]::backdrop {
 }
 dialog[open].in,
 dialog[open].in::backdrop {
-  transition-delay: 0s;
-  opacity: 1;
-  visibility: visible;
+  transition-delay: 0s !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 @media (max-width: 576px) {
   .form-item-option-2.select-hidden + .form-item-option-3:not(.select-hidden) {
@@ -4305,7 +4367,8 @@ li {
 .propos a:hover {
   color: var(--grey);
 }
-.button {
+.button,
+.piv-back-link a {
   height: auto;
   width: fit-content;
   border-radius: 5px;
@@ -4318,13 +4381,15 @@ li {
   font-family: 'Roboto';
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
 }
-.button:hover {
+.button:hover,
+.piv-back-link a:hover {
   background: white !important;
   color: var(--red);
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
   transition: all 0.4s ease;
 }
-.button:active {
+.button:active,
+.piv-back-link a:active {
   color: white;
   background: var(--red-dark);
   transition: all 0.4s ease;
