@@ -13,6 +13,7 @@ use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Language\LanguageManagerInterface;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -43,19 +44,20 @@ class CompetitionsListController extends ControllerBase {
   protected $entityTypeManager;
 
   /**
-   * The controller constructor.
+   * The language manager.
    *
-   * @param \Drupal\Core\Database\Connection $connection
-   *   The database connection.
-   * @param \Drupal\Core\Session\AccountInterface $current_user
-   *   The current user.
-   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
-   *   The entity type manager.
+   * @var \Drupal\Core\Language\LanguageManagerInterface
    */
-  public function __construct(Connection $connection, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager) {
+  protected $languageManager;
+
+  /**
+   * The controller constructor.
+   */
+  public function __construct(Connection $connection, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, LanguageManagerInterface $language_manager) {
     $this->connection = $connection;
     $this->currentUser = $current_user;
     $this->entityTypeManager = $entity_type_manager;
+    $this->languageManager = $language_manager;
   }
 
   /**
@@ -65,7 +67,8 @@ class CompetitionsListController extends ControllerBase {
     return new static(
       $container->get('database'),
       $container->get('current_user'),
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('language_manager')
     );
   }
 
@@ -124,7 +127,11 @@ class CompetitionsListController extends ControllerBase {
     // Get the number of entries per competition.
     $competitions = $competition_storage->loadMultiple($results);
     $competitions_entries = [];
+    $current_langcode = $this->languageManager->getCurrentLanguage()->getId();
     foreach ($competitions as $id => $competition) {
+      if ($competition->hasTranslation($current_langcode)) {
+        $competitions[$id] = $competition->getTranslation($current_langcode);
+      }
       $competitions_entries[$id] = $competition_entry_storage->loadByProperties([
         'field_competition' => $id,
         'field_school' => $school,
