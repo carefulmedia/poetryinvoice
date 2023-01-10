@@ -14,6 +14,7 @@ use Drupal\Core\Url;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Language\LanguageManagerInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -213,6 +214,28 @@ class CompetitionsListController extends ControllerBase {
       ];
     }
     return $build;
+  }
+
+  /**
+   * Redirect to the competitions page or to login page.
+   */
+  public function onlineSemifinalsRedirect() {
+    if ($this->currentUser->isAnonymous()) {
+      // Redirect to the login page with the competition list as a destination.
+      $destination = Url::fromRoute('piv_contest.online_semifinals_redirect')->toString();
+      $login_url = Url::fromRoute('user.login', [], [
+        'query' => [
+          'destination' => $destination,
+        ],
+      ])->toString();
+      return new RedirectResponse($login_url);
+    }
+
+    // Else redirect to the competitions list.
+    $url = Url::fromRoute('piv_content.competitions_list', [
+      'user' => $this->currentUser->id(),
+    ])->toString();
+    return new RedirectResponse($url);
   }
 
 }
