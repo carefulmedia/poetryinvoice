@@ -120,6 +120,7 @@ module:
   piv_poem_password: 0
   piv_popular_vote: 0
   piv_school: 0
+  piv_search: 0
   piv_user: 0
   prepopulate: 0
   quick_node_clone: 0
@@ -138,6 +139,8 @@ module:
   scheduler: 0
   search_api: 0
   search_api_db: 0
+  search_api_solr: 0
+  search_api_solr_admin: 0
   serialization: 0
   shortcut: 0
   slick: 0

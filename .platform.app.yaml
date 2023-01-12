@@ -20,6 +20,7 @@ dependencies:
 # side is in the form `<service name>:<endpoint name>`.
 relationships:
     database: 'db:mysql'
+    solr: "solr:main"
 
 variables:
     php:
