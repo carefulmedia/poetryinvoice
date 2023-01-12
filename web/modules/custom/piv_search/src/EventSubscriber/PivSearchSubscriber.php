@@ -31,13 +31,13 @@ class PivSearchSubscriber implements EventSubscriberInterface {
         ->setBoost(100);
     }
     elseif ($entity_type == 'node') {
+      $bundle_label = $entity->type->entity->label();
+      $document->setField('zs_entity_type', $bundle_label);
       if ($bundle == 'poem') {
-        $bundle_label = $entity->type->entity->label();
         $author = $entity->uid->entity->getDisplayName();
         $author = array_map('strtolower', explode(' ', $author));
         $document->setField('tm_X3b_und_poem_author', $author)
-          ->removeField('tm_X3b_en_poem_author')
-          ->setField('zs_entity_type', $bundle_label);
+          ->removeField('tm_X3b_en_poem_author');
       }
       else {
         $document->removeField('tm_X3b_und_poem_author');

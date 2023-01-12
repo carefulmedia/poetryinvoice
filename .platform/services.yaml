@@ -5,7 +5,7 @@
 
 db:
     type: mariadb:10.4
-    disk: 9216
+    disk: 8192
 
 solr:
     type: solr:8.11
