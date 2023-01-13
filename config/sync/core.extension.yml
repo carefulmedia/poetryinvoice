@@ -91,6 +91,10 @@ module:
   menu_ui: 0
   menus_attribute: 0
   message: 0
+  metatag: 0
+  metatag_google_cse: 0
+  metatag_routes: 0
+  metatag_views: 0
   migrate: 0
   migrate_drupal: 0
   migrate_plus: 0
