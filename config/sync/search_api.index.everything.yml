@@ -100,7 +100,7 @@ field_settings:
     type: solr_string_storage
     boost: !!float 8
     configuration:
-      dummy_value: dummy
+      dummy_value: ''
   full_name_searchable:
     label: 'Searchable full name'
     datasource_id: 'entity:user'
@@ -108,7 +108,7 @@ field_settings:
     type: text
     boost: !!float 21
     configuration:
-      dummy_value: dummy
+      dummy_value: ''
   node_grants:
     label: 'Node access information'
     property_path: search_api_node_grants
@@ -123,7 +123,7 @@ field_settings:
     type: text
     boost: !!float 5
     configuration:
-      dummy_value: dummy
+      dummy_value: ''
   rendered_item:
     label: 'Rendered HTML output'
     property_path: rendered_item

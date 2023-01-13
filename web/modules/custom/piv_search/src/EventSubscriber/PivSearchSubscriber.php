@@ -2,7 +2,6 @@
 
 namespace Drupal\piv_search\EventSubscriber;
 
-use Drupal\Core\Messenger\MessengerInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Drupal\search_api_solr\Event\SearchApiSolrEvents;
 use Drupal\search_api_solr\Event\PostCreateIndexDocumentEvent;
@@ -40,8 +39,10 @@ class PivSearchSubscriber implements EventSubscriberInterface {
           ->removeField('tm_X3b_en_poem_author');
       }
       else {
-        $document->removeField('tm_X3b_und_poem_author');
-        $document->removeField('sort_X3b_und_poem_author');
+        // Remove dummy fields if no value.
+        $document->removeField('tm_X3b_und_poem_author')
+          ->removeField('sort_X3b_und_poem_author')
+          ->removeField('tm_X3b_en_poem_author');
       }
     }
   }

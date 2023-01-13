@@ -9,5 +9,6 @@ ignored_config_entities:
   - 'views.view.*'
   - facebook_pixel.settings
   - ~views.view.language_restricted_poems
+  - ~views.view.search
 ignored_config_collections:
   - 'language.*'
