@@ -6,6 +6,7 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -62,10 +63,19 @@ function lvp_barrio_preprocess_page(&$variables) {
       $variables['navbar_collapse_btn_data'] = "offcanvas";
       break;
     default:
-      $variables['navbar _offcanvas'] = TRUE; 
+      $variables['navbar_offcanvas'] = TRUE;
       $variables['navbar_collapse_class'] = 'collapse navbar-collapse justify-content-end';
       $variables['navbar_collapse_btn_data'] = "collapse";
   }
+
+  $variables['page']['header']['#sorted'] = FALSE;
+  $weight = $variables['page']['header']['usericonheader']['#weight'] ?? -14;
+  $url = Url::fromRoute('view.search.page')->toString();
+  $variables['page']['header']['search_icon'] = [
+    '#markup' => "<a href='{$url}' class='search-icon'><svg width='24' height='24' fill='#fff' xmlns='http://www.w3.org/2000/svg' fill-rule='evenodd' clip-rule='evenodd'><path d='M15.853 16.56c-1.683 1.517-3.911 2.44-6.353 2.44-5.243 0-9.5-4.257-9.5-9.5s4.257-9.5 9.5-9.5 9.5 4.257 9.5 9.5c0 2.442-.923 4.67-2.44 6.353l7.44 7.44-.707.707-7.44-7.44zm-6.353-15.56c4.691 0 8.5 3.809 8.5 8.5s-3.809 8.5-8.5 8.5-8.5-3.809-8.5-8.5 3.809-8.5 8.5-8.5z'/></svg></a>",
+    '#weight' => $weight - 0.1,
+    '#allowed_tags' => ['svg', 'path', 'a'],
+  ];
 }
 
   /**
