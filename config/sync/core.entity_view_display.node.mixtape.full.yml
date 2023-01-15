@@ -230,11 +230,11 @@ third_party_settings:
             region: content
             configuration:
               id: 'views_block:content_type_index_pages-block_15'
-              label: 'The Poems'
+              label: ''
               label_display: visible
               provider: views
               context_mapping: {  }
-              views_label: 'The Poems'
+              views_label: ''
               items_per_page: none
             weight: 0
             additional: {  }

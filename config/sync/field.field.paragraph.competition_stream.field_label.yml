@@ -12,7 +12,7 @@ bundle: competition_stream
 label: Label
 description: 'A identifier for the stream, used when managing sessions.'
 required: true
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
