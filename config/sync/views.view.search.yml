@@ -7,6 +7,7 @@ dependencies:
     - search_api.index.everything
   module:
     - search_api
+    - user
 id: search
 label: Search
 module: views
@@ -385,8 +386,9 @@ display:
           text_input_required: 'Select any filter and click on Apply to see results'
           text_input_required_format: filtered_html
       access:
-        type: none
-        options: {  }
+        type: perm
+        options:
+          perm: 'administer views'
       cache:
         type: none
         options: {  }
@@ -509,6 +511,7 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:search_api.index.everything'
   page:
@@ -518,7 +521,10 @@ display:
     position: 1
     display_options:
       exposed_block: true
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       path: search
     cache_metadata:
       max-age: -1
@@ -528,5 +534,6 @@ display:
         - url
         - url.query_args
         - 'user.node_grants:view'
+        - user.permissions
       tags:
         - 'config:search_api.index.everything'
