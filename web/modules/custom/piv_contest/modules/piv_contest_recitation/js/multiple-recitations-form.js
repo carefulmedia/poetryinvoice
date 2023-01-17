@@ -21,6 +21,18 @@
           $dialog[0].showModal();
         }
       });
-    }
+    }    
   };
+
+  // Hook on tabledrag drop.
+  const original = Drupal.tableDrag.prototype.onDrop;
+  Drupal.tableDrag.prototype.onDrop = function () {
+    const result = original();
+    if (this.changed) {
+      $('button[name=save-weight]').first().click();
+    }
+    return result;
+  }
+  
 })(jQuery, Drupal);
+

@@ -128,17 +128,15 @@ class MultipleRecitationsForm extends FormBase {
         $this->t('Video'),
         $this->t('Language'),
         $this->t('Operations'),
-        // $this->t('Weight'),
+        $this->t('Weight'),
       ],
-      // Table draw is not enabled since we don't know if it is required, if it
-      // is, then uncomment the weight table column too below in code.
-      /*'#tabledrag' => [
+      '#tabledrag' => [
         [
           'action' => 'order',
           'relationship' => 'sibling',
           'group' => 'table-sort-weight',
         ],
-      ],*/
+      ],
     ];
 
     // Map the grades from the Competition to the Poems.
@@ -295,7 +293,7 @@ class MultipleRecitationsForm extends FormBase {
           ],
           'form' => $recitation_form,
         ],
-        /*'weight' => [
+        'weight' => [
           '#type' => 'weight',
           '#title' => $this->t('Weight'),
           '#title_display' => 'invisible',
@@ -305,9 +303,20 @@ class MultipleRecitationsForm extends FormBase {
               'table-sort-weight',
             ],
           ],
-        ],*/
+        ],
       ];
     }
+    $form['save_weight'] = [
+      '#type' => 'submit',
+      '#submit' => ['::submitWeight'],
+      '#value' => $this->t('Save weight'),
+      '#name' => 'save-weight',
+      '#ajax' => [
+        'callback' => '::ajaxRefresh',
+        'wrapper' => 'recitations-form-wrapper',
+        'event' => 'click',
+      ],
+    ];
     return $form;
   }
 
@@ -430,6 +439,30 @@ class MultipleRecitationsForm extends FormBase {
     if ($entity) {
       $entity->delete();
     }
+  }
+
+  /**
+   * Save the weight automatically.
+   */
+  public function submitWeight(&$form, FormStateInterface $form_state) {
+    $form_state->setRebuild();
+    $competition_entry = $form_state->get('competition_entry');
+    $values = $form_state->getValues();
+    foreach ($values['recitations'] as $entry) {
+      $weight = $entry['weight'] ?? NULL;
+      $entity = $entry['operations']['form']['entity'] ?? NULL;
+      if ($entity && !$entity->isNew()) {
+        if ($weight) {
+          $references[$weight] = ['target_id' => $entity->id()];
+        }
+        else {
+          $references[] = ['target_id' => $entity->id()];
+        }
+      }
+    }
+    ksort($references);
+    $competition_entry->field_recitations = $references;
+    $competition_entry->save();
   }
 
 }
