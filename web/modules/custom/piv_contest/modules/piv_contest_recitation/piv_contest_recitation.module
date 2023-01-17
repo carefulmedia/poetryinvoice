@@ -101,3 +101,28 @@ function template_preprocess_multiple_recitations_form_table_row(&$variables) {
     $variables['content'][$key] = $variables['elements'][$key];
   }
 }
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function piv_contest_recitation_views_query_alter($view, $query) {
+  // The arguments for this views have spaces and slashes, a "or" argument for
+  // views needs a + sign, a + sign is also a space in a urlencoded argument
+  // which makes it hard to filter by arguments with space, slash is actually a
+  // separator for arguments.
+  // Manually transform the query condition into a "IN" condition.
+  if ($view->id() == 'language_restricted_poems') {
+    foreach ($query->where as &$where) {
+      foreach ($where as &$conditions) {
+        if (is_array($conditions)) {
+          foreach ($conditions as &$condition) {
+            if ($condition['field'] == 'node__field_grades.field_grades_value' && !empty($condition['value']) && is_string($condition['value'])) {
+              $condition['operator'] = 'in';
+              $condition['value'] = explode('+', $condition['value']);
+            }
+          }
+        }
+      }
+    }
+  }
+}

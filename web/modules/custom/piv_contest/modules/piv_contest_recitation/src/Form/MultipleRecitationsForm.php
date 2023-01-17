@@ -141,6 +141,26 @@ class MultipleRecitationsForm extends FormBase {
       ],*/
     ];
 
+    // Map the grades from the Competition to the Poems.
+    // It is confusing that 'grade 6' points to 'Grades 7 & 8 / Sec 1 & 2',
+    // this is because the 'Grades 7 & 8 / Sec 1 & 2' is actually the option
+    // value, but the option label is "6 to 8". This is legacy code.
+    $grades_map = [
+      'grade 6' => 'Grades 7 & 8 / Sec 1 & 2',
+      'grade 7' => 'Grades 7 & 8 / Sec 1 & 2',
+      'grade 8' => 'Grades 7 & 8 / Sec 1 & 2',
+      'grade 9' => 'Grades 9-12 / Sec 3-5 / CEGEP 1',
+      'grade 10' => 'Grades 9-12 / Sec 3-5 / CEGEP 1',
+      'grade 11' => 'Grades 9-12 / Sec 3-5 / CEGEP 1',
+      'grade 12/CEGEP I' => 'Grades 9-12 / Sec 3-5 / CEGEP 1',
+    ];
+    $allowed_grades = array_column($competition->field_allowed_grades->getValue(), 'value');
+    $poem_grades = [];
+    foreach ($allowed_grades as $allowed_grade) {
+      $poem_grades[] = $grades_map[$allowed_grade] ?? NULL;
+    }
+    $poem_grades = array_filter(array_unique($poem_grades));
+    $poem_grades_arg = implode('+', $poem_grades);
     foreach (array_values($recitations) as $i => $recitation) {
       $recitation_form = [
         '#type' => 'html_tag',
@@ -159,10 +179,11 @@ class MultipleRecitationsForm extends FormBase {
         '#target_type' => 'node',
         '#selection_handler' => 'views',
         '#selection_settings' => [
+          // @see piv_contest_recitation_views_query_alter()
           'view' => [
             'view_name' => 'language_restricted_poems',
             'display_name' => 'entity_reference_1',
-            'arguments' => [$langcode],
+            'arguments' => [$langcode, $poem_grades_arg],
           ],
           'match_operator' => 'CONTAINS',
         ],
