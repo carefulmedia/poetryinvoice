@@ -107,7 +107,7 @@ class CompetitionEnrollment {
       'student' => $this->t('Student'),
       'recitations' => $this->t('Recitations'),
       'permission' => $this->t('Permission'),
-      'missing_criteria' => $this->t('Missing Criteria'),
+      'criteria' => $this->t('Criteria'),
     ];
 
     $school_id = $this->school->id();
@@ -158,14 +158,24 @@ class CompetitionEnrollment {
         $stream['is_completed'] = (bool) $entry->field_complete->value;
         $stream['is_missing_criteria_completed'] = FALSE;
 
-        $missing_criteria = $this->getMissingCriteria($entry);
-        if (count($missing_criteria) > 0) {
-          // Add all missing criterias here.
-          $stream['missing_criteria'] = implode(', ', $missing_criteria);
+        $all_criteria = [];
+        $missing_criteria = $this->getMissingCriteria($entry, $all_criteria);
+        $stream['criteria'] = [];
+        foreach ($all_criteria as $criteria) {
+          $stream['criteria'][] = [
+            '#type' => 'html_tag',
+            '#tag' => 'span',
+            '#value' => $criteria,
+            '#attributes' => [
+              'class' => in_array($criteria, $missing_criteria)
+                ? ['criteria-is-missing']
+                : ['criteria-is-met'],
+            ],
+          ];
         }
-        else {
+
+        if (empty($missing_criteria)) {
           $stream['is_missing_criteria_completed'] = TRUE;
-          $stream['missing_criteria'] = '';
         }
 
         $editTitle = $this->t('edit');
@@ -316,8 +326,11 @@ class CompetitionEnrollment {
 
   /**
    * Get the missing criteria for a competition entry.
+   *
+   * Second argument will be populated by reference with all the required
+   * criteria if a variable is provided.
    */
-  public function getMissingCriteria(CompetitionEntry $entity): array {
+  public function getMissingCriteria(CompetitionEntry $entity, array &$all_criteria = []): array {
     $competition = $entity->field_competition->entity;
     if (!$competition) {
       return [];
@@ -333,6 +346,7 @@ class CompetitionEnrollment {
       $criteria = $item->entity;
       $required_criteria[$criteria->id()] = $criteria->label();
     }
+    $all_criteria = $required_criteria;
 
     foreach ($entity->field_recitations as $recitation_item) {
       $recitation = $recitation_item->entity;
