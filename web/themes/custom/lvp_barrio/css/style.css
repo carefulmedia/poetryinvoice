@@ -2242,7 +2242,8 @@ header #search-block-form .btn-outline-primary:hover {
 .nav-link-https--piv9lndosite-read:hover {
   color: var(--plum) !important;
 }
-.offcanvas-body .user {
+.offcanvas-body .user,
+.offcanvas-body .search-icon {
   float: right;
   display: inline;
 }
