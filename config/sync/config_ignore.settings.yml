@@ -10,5 +10,6 @@ ignored_config_entities:
   - facebook_pixel.settings
   - ~views.view.language_restricted_poems
   - ~views.view.search
+  - ~views.view.competitions
 ignored_config_collections:
   - 'language.*'
