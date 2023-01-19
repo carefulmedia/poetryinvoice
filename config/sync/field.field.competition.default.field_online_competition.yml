@@ -12,7 +12,7 @@ bundle: default
 label: 'Online competition'
 description: 'Indicates that this competition will be held online.'
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 0

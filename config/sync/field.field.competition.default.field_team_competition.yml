@@ -12,7 +12,7 @@ bundle: default
 label: 'Team Competition'
 description: 'A team competition requires that a different student is provided for each recitation.'
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 0

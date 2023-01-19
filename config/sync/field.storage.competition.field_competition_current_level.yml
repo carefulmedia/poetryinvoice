@@ -3,7 +3,11 @@ langcode: en
 status: true
 dependencies:
   module:
+    - field_permissions
     - piv_contest_competition
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: competition.field_competition_current_level
 field_name: field_competition_current_level
 entity_type: competition

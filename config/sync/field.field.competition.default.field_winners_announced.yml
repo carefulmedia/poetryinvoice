@@ -14,7 +14,7 @@ bundle: default
 label: 'Contest Date / Winners Announced'
 description: 'Announcement date for Online Contests, day and time of contest for Team Regionals and National Finals'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }
