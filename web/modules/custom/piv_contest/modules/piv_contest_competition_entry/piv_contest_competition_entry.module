@@ -31,9 +31,15 @@ function piv_contest_competition_entry_competition_entry_presave(EntityInterface
   $competition = $entity->field_competition->entity;
   $school = $user->field_school->entity;
 
-  $entity->field_complete = FALSE;
   if ($competition_enrollment_service->isCompetitionEntryCompleted($entity)) {
+    if (empty($entity->field_complete->value)) {
+      // Competition was set to complete now.
+      \Drupal::messenger()->addStatus(t('Your competition entry is complete!'));
+    }
     $entity->field_complete = TRUE;
+  }
+  else {
+    $entity->field_complete = FALSE;
   }
 
   $stream = $entity->getStream();
