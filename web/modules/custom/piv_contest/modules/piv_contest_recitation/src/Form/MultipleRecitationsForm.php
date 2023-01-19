@@ -124,6 +124,7 @@ class MultipleRecitationsForm extends FormBase {
     $form['recitations'] = [
       '#type' => 'table',
       '#header' => [
+        $this->t('Order'),
         $this->t('Poem'),
         $this->t('Video'),
         $this->t('Language'),
@@ -266,6 +267,9 @@ class MultipleRecitationsForm extends FormBase {
       $form['recitations'][$i] = [
         '#attributes' => [
           'class' => ['draggable'],
+        ],
+        'order' => [
+          '#markup' => $i + 1,
         ],
         'poem' => [
           '#markup' => $poem ? $poem->label() : NULL,
