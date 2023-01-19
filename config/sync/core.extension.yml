@@ -173,6 +173,7 @@ module:
   views_bulk_operations_example: 0
   views_field_view: 0
   views_infinite_scroll: 0
+  views_random_seed: 0
   views_slideshow: 0
   views_slideshow_cycle: 0
   views_ui: 0
