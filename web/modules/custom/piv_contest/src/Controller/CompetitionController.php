@@ -10,6 +10,7 @@ use Drupal\piv_contest_competition\CompetitionInterface;
 use Drupal\Core\Language\LanguageManager;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Link;
+use Drupal\Core\Render\Markup;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -68,7 +69,7 @@ class CompetitionController extends ControllerBase {
    * Builds the competition entry form.
    */
   public function build(UserInterface $user, CompetitionInterface $competition) {
-    $school = $user->field_school->target_id;
+    $school = $user->field_school->entity;
     if (!$school) {
       return [];
     }
@@ -78,10 +79,29 @@ class CompetitionController extends ControllerBase {
         'user' => $user->id(),
       ]),
     ];
-    
+
     $build['title'] = [
-      '#theme' => 'page_title',
-      '#title' => $competition->label(),
+      '#type' => 'item',
+      'title' => [
+        '#theme' => 'page_title',
+        '#title' => $competition->label(),
+      ],
+    ];
+
+    $build['school'] = [
+      '#type' => 'item',
+      'school_title' => [
+        '#type' => 'html_tag',
+        '#tag' => 'h2',
+        '#value' => $school->label(),
+      ],
+      'description' => [
+        '#type' => 'html_tag',
+        '#tag' => 'small',
+        '#value' => $this->t('Not your school? Contact us as @email', [
+          '@email' => Markup::create('<a href="mailto:info@poetryinvoice.ca">info@poetryinvoice.ca</a>'),
+        ]),
+      ],
     ];
 
     $build['competition'] = $this->entityTypeManager
@@ -106,7 +126,7 @@ class CompetitionController extends ControllerBase {
 
     $build['enrollement'] = [
       '#theme' => 'competition_enrollement_progress',
-      '#school' => $user->field_school->entity,
+      '#school' => $school,
       '#competition' => $competition,
       '#teacher' => $user,
       '#message' => $message,
