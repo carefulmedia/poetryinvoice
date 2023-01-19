@@ -8,6 +8,7 @@
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
 
 /**
  * Implements hook_theme().
@@ -109,5 +110,14 @@ function piv_contest_competition_entry_form_competition_default_edit_form_alter(
         $form['field_competition_streams']['widget'][$key]['subform'][$field_name]['#disabled'] = TRUE;
       }
     }
+  }
+}
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function piv_contest_competition_entry_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
+  if ($entity_type->id() == 'competition_entry' && !empty($fields['field_school'])) {
+    $fields['field_school']->addConstraint('PivContestCompetitionEntrySchool');
   }
 }
