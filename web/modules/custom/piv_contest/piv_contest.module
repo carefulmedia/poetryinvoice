@@ -215,3 +215,35 @@ function piv_contest_field_widget_options_select_form_alter(&$element, FormState
     }
   }
 }
+
+/**
+ * @defgroup piv_contest_delete Delete dependent entities
+ * @{
+ * Make sure children entities are deleted when parents are deleted.
+ */
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ *
+ * Delete referenced recitations when deleting the competition entry.
+ */
+function piv_contest_competition_entry_delete(EntityInterface $entity) {
+  foreach ($entity->field_recitations->referencedEntities() as $recitation) {
+    $recitation->delete();
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ *
+ * Delete referenced medias when deleting a recitation.
+ */
+function piv_contest_recitation_delete(EntityInterface $entity) {
+  foreach ($entity->field_recitation_video->referencedEntities() as $media) {
+    $media->delete();
+  }
+}
+
+/**
+ * @} End of "defgroup piv_contest_delete".
+ */
