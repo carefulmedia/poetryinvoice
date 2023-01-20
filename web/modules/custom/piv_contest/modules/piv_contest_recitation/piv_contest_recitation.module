@@ -82,18 +82,6 @@ function piv_contest_recitation_recitation_presave(EntityInterface $entity) {
 }
 
 /**
- * Implements hook_ENTITY_TYPE_create().
- */
-function piv_contest_recitation_recitation_create(EntityInterface $entity) {
-  // Create a empty media on recitations so the field is already open when
-  // creating a new recitation.
-  $media = \Drupal::entityTypeManager()->getStorage('media')->create([
-    'bundle' => 'remote_video',
-  ]);
-  $entity->field_recitation_video[] = $media;
-}
-
-/**
  * Implements template_preprocess_HOOK().
  */
 function template_preprocess_multiple_recitations_form_table_row(&$variables) {

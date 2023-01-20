@@ -161,6 +161,8 @@ class CompetitionEntryController extends ControllerBase {
    * Edit form.
    */
   public function edit(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
+    // The competition entry form is responsible to generate the recitations
+    // and save it.
     $competition_entry_form = $this->getCompetitionEntryForm($user, $competition, $competition_entry);
     $recitations_form = $this->getRecitationsForm($user, $competition, $competition_entry);
     return [

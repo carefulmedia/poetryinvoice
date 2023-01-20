@@ -102,19 +102,29 @@ class MultipleRecitationsForm extends FormBase {
         $recitations[$langcode][] = $recitation;
       }
     }
+    $need_save = FALSE;
     foreach ($recitations as $langcode => $recitations_for_language) {
       while (count($recitations[$langcode]) < $recitations_required_per_language) {
-        $recitations[$langcode][] = $this->entityTypeManager
+        $new_recitation = $this->entityTypeManager
           ->getStorage('recitation')
           ->create([
             'bundle' => 'default',
             'langcode' => $langcode,
             'field_stream_language' => $langcode,
           ]);
+        if ($new_recitation->save()) {
+          $need_save = TRUE;
+          $recitations[$langcode][] = $new_recitation;
+        }
       }
     }
     // Flatten the array.
     $recitations = array_merge(...array_values($recitations));
+    if ($need_save) {
+      $competition_entry->field_recitations = $recitations;
+      $competition_entry->save();
+    }
+
     $form['title'] = [
       '#type' => 'html_tag',
       '#tag' => 'h2',
@@ -161,6 +171,13 @@ class MultipleRecitationsForm extends FormBase {
     $poem_grades = array_filter(array_unique($poem_grades));
     $poem_grades_arg = implode('+', $poem_grades);
     foreach (array_values($recitations) as $i => $recitation) {
+      $media = $recitation->field_recitation_video->entity;
+      if (!$media) {
+        $media = $this->entityTypeManager->getStorage('media')->create([
+          'bundle' => 'remote_video',
+        ]);
+        $recitation->field_recitation_video = [$media];
+      }
       $recitation_form = [
         '#type' => 'html_tag',
         '#tag' => 'dialog',
@@ -195,13 +212,7 @@ class MultipleRecitationsForm extends FormBase {
       $media_entity = $recitation->field_recitation_video->entity;
       $recitation_form['field_recitation_video'] = [
         '#type' => 'fieldset',
-        // '#title' => $this->t('Video'),
         '#access' => $is_online,
-        // 'video_title' => [
-        // '#type' => 'item',
-        // '#title' => 'Title',
-        // '#markup' => $media_entity ? '<div>' . $media_entity->label() . '</div>' : '',
-        // ],
         'value' => [
           '#type' => 'textfield',
           '#title' => $this->t('YouTube URL'),
@@ -241,7 +252,9 @@ class MultipleRecitationsForm extends FormBase {
       $edit_label = $is_new ? $this->t('Add') : $this->t('Edit');
       // Video modal.
       $video = [];
-      $embedded_video = $media_entity->field_media_oembed_video->view('oembed');
+      $embedded_video = $media_entity
+        ? $media_entity->field_media_oembed_video->view('oembed')
+        : NULL;
       if (isset($embedded_video[0])) {
         $label = $this->t('Watch video');
         $video = [
@@ -281,19 +294,6 @@ class MultipleRecitationsForm extends FormBase {
         'operations' => [
           'edit' => [
             '#markup' => "<a href='#' class='button btn recitation-open-modal'>{$edit_label}</a>",
-          ],
-          'delete' => [
-            '#type' => 'submit',
-            '#submit' => ['::submitDelete'],
-            '#value' => $this->t('Remove'),
-            '#recitation_delta' => $i,
-            '#name' => "delete[$i]",
-            '#access' => !$is_new,
-            '#ajax' => [
-              'callback' => '::ajaxRefresh',
-              'wrapper' => 'recitations-form-wrapper',
-              'event' => 'click',
-            ],
           ],
           'form' => $recitation_form,
         ],
@@ -391,7 +391,6 @@ class MultipleRecitationsForm extends FormBase {
     $values = $form_state->getValues();
     $triggering_element = $form_state->getTriggeringElement();
     $delta = $triggering_element['#recitation_delta'] ?? NULL;
-    $recitation_entity_ids = [];
     $recitations = $values['recitations'];
     if (is_numeric($delta)) {
       $recitations = [$delta => $recitations[$delta]];
@@ -405,14 +404,10 @@ class MultipleRecitationsForm extends FormBase {
         // otherwise create one populate and save it there. This field
         // cardinality is 1.
         if ($field_name == 'field_recitation_video') {
-          // Medias are added to new recitations in the
-          // piv_contest_recitation_recitation_create() hook.
-          if ($media = $entity->field_recitation_video->entity) {
-            $media->field_media_oembed_video = $value['value'];
-            $media->save();
-            // This is for new medias to be attached to the recitation.
-            $entity->field_recitation_video = [['target_id' => $media->id()]];
-          }
+          $media = $entity->field_recitation_video->entity;
+          $media->field_media_oembed_video = $value['value'];
+          $media->save();
+          $entity->field_recitation_video = [['target_id' => $media->id()]];
         }
         else {
           if ($entity->hasField($field_name)) {
@@ -421,28 +416,8 @@ class MultipleRecitationsForm extends FormBase {
         }
       }
       $entity->save();
-      $recitation_entity_ids[] = $entity->id();
     }
-    $competition_entry = $form_state->get('competition_entry');
-    $existing_recitations = array_column($competition_entry->field_recitations->getValue(), 'target_id');
-    $recitation_entity_ids = array_unique(array_merge($existing_recitations, $recitation_entity_ids));
-    $competition_entry->field_recitations = $recitation_entity_ids;
-    $competition_entry->save();
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function submitDelete(&$form, FormStateInterface $form_state) {
-    $form_state->setRebuild();
-    $triggering_element = $form_state->getTriggeringElement();
-    $delta = $triggering_element['#recitation_delta'];
-    $values = $form_state->getValues();
-    $recitations = $values['recitations'];
-    $entity = $recitations[$delta]['operations']['form']['entity'] ?? NULL;
-    if ($entity) {
-      $entity->delete();
-    }
+    // The competition entry should not be saved on this submit.
   }
 
   /**
