@@ -121,3 +121,16 @@ function piv_contest_competition_entry_entity_bundle_field_info_alter(&$fields, 
     $fields['field_school']->addConstraint('PivContestCompetitionEntrySchool');
   }
 }
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function piv_contest_competition_entry_entity_type_build(&$entity_types) {
+  if (!empty($entity_types['competition_entry'])) {
+    // Remove the constraint that prevents a user from saving a entry since it
+    // breaks when editing recitations and trying to save it.
+    $constraints = $entity_types['competition_entry']->getConstraints();
+    unset($constraints['EntityChanged']);
+    $entity_types['competition_entry']->setConstraints($constraints);
+  }
+}
