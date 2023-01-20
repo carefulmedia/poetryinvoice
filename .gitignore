@@ -25,6 +25,11 @@
 !config/sync/views.view.language_restricted_poems.yml
 !config/sync/views.view.search.yml
 !config/sync/views.view.competitions.yml
+!config/sync/views.view.competition_entries.yml
+!config/sync/views.view.judging_sessions.yml
+!config/sync/views.view.recitations.yml
+!config/sync/views.view.scores.yml
+!config/sync/views.view.score_templates.yml
 
 # Environment variables
 .env
