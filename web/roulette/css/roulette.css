@@ -585,3 +585,17 @@ h4.poet {
 .heart {
     display: none;
 }
+p.rteindent1
+{margin-left: 23px !important;}
+p.rteindent2
+{margin-left: 46px !important;}
+p.rteindent3
+{margin-left: 69px !important;}
+p.rteindent4
+{margin-left: 53px !important;}
+p.rteindent5
+{margin-left: 163px !important;}
+
+p.interval {
+  margin-bottom: 30px !important
+}
