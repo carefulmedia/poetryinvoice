@@ -2758,7 +2758,7 @@ nav.tabs ul {
   margin-left: 163px !important;
 }
 .node--type-poem .block-field-blocknodepoembody p.interval {
-  margin-top: 30px !important;
+  margin-bottom: 30px !important;
 }
 .node-preview-container {
   background: #d1e8f5;
