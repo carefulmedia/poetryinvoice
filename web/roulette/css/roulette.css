@@ -466,7 +466,9 @@ body {
 
 #poem h4 {
     font: 14px FrutigerRoman;
-    text-transform: uppercase
+    text-transform: uppercase;
+    text-align: right;
+    margin-bottom: 20px;
 }
 
 #poem p {
