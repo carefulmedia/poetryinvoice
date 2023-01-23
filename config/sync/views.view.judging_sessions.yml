@@ -999,12 +999,15 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      rendering_language: '***LANGUAGE_language_interface***'
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       path: admin/contest/judging-session
     cache_metadata:
       max-age: 0
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args

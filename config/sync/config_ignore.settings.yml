@@ -11,5 +11,10 @@ ignored_config_entities:
   - ~views.view.language_restricted_poems
   - ~views.view.search
   - ~views.view.competitions
+  - ~views.view.competition_entries
+  - ~views.view.judging_sessions
+  - ~views.view.recitations
+  - ~views.view.scores
+  - ~views.view.score_templates
 ignored_config_collections:
   - 'language.*'

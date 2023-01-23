@@ -794,7 +794,7 @@ display:
         options:
           query_comment: ''
           disable_sql_rewrite: false
-          distinct: false
+          distinct: true
           replica: false
           query_tags: {  }
       relationships:
@@ -844,12 +844,15 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      rendering_language: '***LANGUAGE_language_interface***'
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       path: admin/contest/competition-entry
     cache_metadata:
       max-age: 0
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
