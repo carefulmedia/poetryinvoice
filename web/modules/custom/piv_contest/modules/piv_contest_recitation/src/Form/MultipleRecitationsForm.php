@@ -310,17 +310,6 @@ class MultipleRecitationsForm extends FormBase {
         ],
       ];
     }
-    $form['save_weight'] = [
-      '#type' => 'submit',
-      '#submit' => ['::submitWeight'],
-      '#value' => $this->t('Save weight'),
-      '#name' => 'save-weight',
-      '#ajax' => [
-        'callback' => '::ajaxRefresh',
-        'wrapper' => 'recitations-form-wrapper',
-        'event' => 'click',
-      ],
-    ];
     return $form;
   }
 
@@ -418,32 +407,6 @@ class MultipleRecitationsForm extends FormBase {
       $entity->save();
     }
     // The competition entry should not be saved on this submit.
-  }
-
-  /**
-   * Save the weight automatically.
-   */
-  public function submitWeight(&$form, FormStateInterface $form_state) {
-    $form_state->setRebuild();
-    $competition_entry = $form_state->get('competition_entry');
-    $values = $form_state->getValues();
-    foreach ($values['recitations'] as $entry) {
-      $weight = $entry['weight'] ?? NULL;
-      $entity = $entry['operations']['form']['entity'] ?? NULL;
-      if ($entity && !$entity->isNew()) {
-        if ($weight) {
-          $references[$weight] = ['target_id' => $entity->id()];
-        }
-        else {
-          $references[] = ['target_id' => $entity->id()];
-        }
-      }
-    }
-    ksort($references);
-    // Custom flag to sinalize hooks.
-    $competition_entry->piv_changed_recitations_order = TRUE;
-    $competition_entry->field_recitations = $references;
-    $competition_entry->save();
   }
 
 }

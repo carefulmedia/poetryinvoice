@@ -10,6 +10,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Component\Serialization\Json;
 
 /**
  * Get a student name from a recitation or a competition entry.
@@ -247,3 +248,46 @@ function piv_contest_recitation_delete(EntityInterface $entity) {
 /**
  * @} End of "defgroup piv_contest_delete".
  */
+
+/**
+ * Implements hook_form_FORM_BASE_alter().
+ */
+function piv_contest_form_competition_entry_form_alter(&$form, FormStateInterface $form_state) {
+  if ($form_state->get('piv_custom_weight')) {
+    $form['recitation_weight'] = [
+      '#type' => 'textfield',
+      '#name' => 'recitation_weight',
+      '#attributes' => ['class' => ['hidden']],
+    ];
+    array_unshift($form['actions']['submit']['#submit'], 'piv_contest_competition_entry_custom_submit');
+  }
+}
+
+/**
+ * Custom submit.
+ *
+ * A custom field "recitation_weight" copies the values from the recitation form
+ * for the recitations weight. This is required because the form that reorder
+ * the recitations is not the same form that edits the competition entry.
+ */
+function piv_contest_competition_entry_custom_submit(&$form, FormStateInterface $form_state) {
+  $input = $form_state->getUserInput();
+  $weights = Json::decode($input['recitation_weight'] ?? []);
+  if ($weights) {
+    $entity = $form_state->getFormObject()->getEntity();
+    $ids = array_column($entity->field_recitations->getValue(), 'target_id');
+    $order = [];
+    foreach ($weights as $name => $weight) {
+      $weight_delta = explode('[', $name)[1] ?? '';
+      $weight_delta = str_replace(']', '', $weight_delta);
+      if (is_numeric($weight_delta)) {
+        $order[$weight] = $ids[$weight_delta];
+      }
+    }
+    $order = array_filter($order);
+    if (count($ids) == count(array_intersect($order, $ids))) {
+      ksort($order);
+      $entity->field_recitations = $order;
+    }
+  }
+}

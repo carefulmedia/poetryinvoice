@@ -30,12 +30,9 @@ function piv_contest_competition_entry_competition_entry_presave(EntityInterface
   $school = $entity->field_school->entity;
 
   if ($competition_enrollment_service->isCompetitionEntryCompleted($entity)) {
-    if (empty($entity->piv_changed_recitations_order)) {
-      // Competition was set to complete now.
-      \Drupal::messenger()->addStatus(t('Congratulations, you have completed your “@stream_name” entry is now complete!', [
-        '@stream_name' => $entity->field_stream->entity->field_label->value,
-      ]));
-    }
+    \Drupal::messenger()->addStatus(t('Congratulations, you have completed your “@stream_name” entry is now complete!', [
+      '@stream_name' => $entity->field_stream->entity->field_label->value,
+    ]));
     $entity->field_complete = TRUE;
   }
   else {
@@ -121,18 +118,5 @@ function piv_contest_competition_entry_form_competition_default_edit_form_alter(
 function piv_contest_competition_entry_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
   if ($entity_type->id() == 'competition_entry' && !empty($fields['field_school'])) {
     $fields['field_school']->addConstraint('PivContestCompetitionEntrySchool');
-  }
-}
-
-/**
- * Implements hook_entity_type_build().
- */
-function piv_contest_competition_entry_entity_type_build(&$entity_types) {
-  if (!empty($entity_types['competition_entry'])) {
-    // Remove the constraint that prevents a user from saving a entry since it
-    // breaks when editing recitations and trying to save it.
-    $constraints = $entity_types['competition_entry']->getConstraints();
-    unset($constraints['EntityChanged']);
-    $entity_types['competition_entry']->setConstraints($constraints);
   }
 }

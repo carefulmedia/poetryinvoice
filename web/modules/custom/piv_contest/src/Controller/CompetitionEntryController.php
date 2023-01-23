@@ -102,7 +102,10 @@ class CompetitionEntryController extends ControllerBase {
       'user' => $user->id(),
       'competition' => $competition->id(),
     ]);
-    $form_state_additions = ['redirect' => $redirect];
+    $form_state_additions = [
+      'piv_custom_weight' => TRUE,
+      'redirect' => $redirect,
+    ];
     $form = $this->entityFormBuilder
       ->getForm($competition_entry, $form_mode, $form_state_additions);
     $form['revision_information']['#access'] = FALSE;

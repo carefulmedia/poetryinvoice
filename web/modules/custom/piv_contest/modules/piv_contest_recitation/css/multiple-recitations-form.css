@@ -14,6 +14,6 @@
   display: none;
 }
 
-.piv-contest-recitation-multiple-recitations .tabledrag-changed-warning {
-  font-size: 0;
+input[name="recitation_weight"] {
+  display: none;
 }
