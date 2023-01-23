@@ -440,6 +440,8 @@ class MultipleRecitationsForm extends FormBase {
       }
     }
     ksort($references);
+    // Custom flag to sinalize hooks.
+    $competition_entry->piv_changed_recitations_order = TRUE;
     $competition_entry->field_recitations = $references;
     $competition_entry->save();
   }

@@ -30,9 +30,11 @@ function piv_contest_competition_entry_competition_entry_presave(EntityInterface
   $school = $entity->field_school->entity;
 
   if ($competition_enrollment_service->isCompetitionEntryCompleted($entity)) {
-    if (empty($entity->field_complete->value)) {
+    if (empty($entity->piv_changed_recitations_order)) {
       // Competition was set to complete now.
-      \Drupal::messenger()->addStatus(t('Your competition entry is complete!'));
+      \Drupal::messenger()->addStatus(t('Congratulations, you have completed your “@stream_name” entry is now complete!', [
+        '@stream_name' => $entity->field_stream->entity->field_label->value,
+      ]));
     }
     $entity->field_complete = TRUE;
   }
