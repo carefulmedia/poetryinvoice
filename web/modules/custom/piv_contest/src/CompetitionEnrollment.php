@@ -264,8 +264,6 @@ class CompetitionEnrollment {
   public function getNumberOfValidRecitationsInEntry(EntityInterface $competitionEntry): int {
     $competition = $competitionEntry->field_competition->entity;
     $is_online = (bool) $competition->field_online_competition->value;
-    ini_set('memory_limit', -1);
-    ini_set('max_execution_time', -1);
     $number_of_valid_poems = 0;
     foreach ($competitionEntry->field_recitations->referencedEntities() as $entity) {
 
