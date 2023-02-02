@@ -17,3 +17,4 @@ services:
     arguments:
       - '@entity_type.manager'
       - '@piv_contest_competition_entry.competition_lock_service'
+      - '@language_manager'

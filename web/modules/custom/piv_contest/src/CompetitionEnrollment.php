@@ -12,6 +12,7 @@ use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
 use Drupal\piv_contest_competition_entry\Service\CompetitionLockService;
 use Drupal\user\UserInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Language\LanguageManagerInterface;
 
 /**
  * @file
@@ -24,6 +25,13 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 class CompetitionEnrollment {
 
   use StringTranslationTrait;
+
+  /**
+   * Current language code.
+   *
+   * @var string
+   */
+  private $currentLanguage = NULL;
 
   /**
    * Check if instance is initiated.
@@ -70,9 +78,14 @@ class CompetitionEnrollment {
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, CompetitionLockService $lockService) {
+  public function __construct(
+    EntityTypeManagerInterface $entity_type_manager,
+    CompetitionLockService $lockService,
+    LanguageManagerInterface $language_manager
+  ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->lockService = $lockService;
+    $this->currentLanguage = $language_manager->getCurrentLanguage()->getId();
   }
 
   /**
@@ -238,6 +251,9 @@ class CompetitionEnrollment {
         }
       }
 
+      if ($stream_entity->hasTranslation($this->currentLanguage)) {
+        $stream_entity = $stream_entity->getTranslation($this->currentLanguage);
+      }
       $stream['name'] = $stream_entity->field_label->value;
       $streams[] = $stream;
     }
