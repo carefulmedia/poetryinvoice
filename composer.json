@@ -127,6 +127,7 @@
         "drupal/social_link_field": "1.x-dev@dev",
         "drupal/string_field_formatter": "^2.0",
         "drupal/svg_image": "^1.16",
+        "drupal/system_messages_override": "^1.0@beta",
         "drupal/tablesorter": "^2.0@RC",
         "drupal/tb_megamenu": "^1.7",
         "drupal/text_field_formatter": "^2.0",

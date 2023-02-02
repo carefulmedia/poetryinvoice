@@ -283,8 +283,11 @@ class CompetitionEnrollment {
     $number_of_valid_poems = 0;
     foreach ($competitionEntry->field_recitations->referencedEntities() as $entity) {
 
+      $embed_code = NULL;
       $video = $entity->field_recitation_video->entity;
-      $embed_code = $video->get('field_media_oembed_video')->value;
+      if ($video) {
+        $embed_code = $video->get('field_media_oembed_video')->value;
+      }
 
       // IF it's an online competition recitation must also contain a video.
       if ($is_online && is_null($embed_code)) {

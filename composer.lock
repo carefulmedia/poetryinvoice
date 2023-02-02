@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b0023a7e9cb655282535833b577a794f",
+    "content-hash": "fc52bcb08212e9bcf545d2cc8aeada19",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -8673,6 +8673,59 @@
             }
         },
         {
+            "name": "drupal/system_messages_override",
+            "version": "1.0.0-beta2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/system_messages_override.git",
+                "reference": "1.0.0-beta2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/system_messages_override-1.0.0-beta2.zip",
+                "reference": "1.0.0-beta2",
+                "shasum": "76f5c61676f85266dfd5179b3b7d2b1a370ead65"
+            },
+            "require": {
+                "drupal/core": "^8.8 || ^9"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.0-beta2",
+                    "datestamp": "1634111226",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "SyfJO",
+                    "homepage": "https://www.drupal.org/user/3640773"
+                },
+                {
+                    "name": "YahyaAlHamad",
+                    "homepage": "https://www.drupal.org/user/3601769"
+                },
+                {
+                    "name": "m.abdulqader",
+                    "homepage": "https://www.drupal.org/user/1281252"
+                }
+            ],
+            "description": "Provides a ways to alter and change Drupal's system messages.",
+            "homepage": "https://www.drupal.org/project/system_messages_override",
+            "support": {
+                "source": "http://cgit.drupalcode.org/system_messages_override",
+                "issues": "https://www.drupal.org/project/issues/system_messages_override"
+            }
+        },
+        {
             "name": "drupal/tablesorter",
             "version": "2.0.1-rc1",
             "source": {
@@ -15807,6 +15860,7 @@
         "drupal/scanner": 20,
         "drupal/select_translation": 15,
         "drupal/social_link_field": 20,
+        "drupal/system_messages_override": 10,
         "drupal/tablesorter": 5,
         "drupal/tiny_slider": 10,
         "drupal/viewfield": 10,
@@ -15819,5 +15873,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.2.0"
 }
