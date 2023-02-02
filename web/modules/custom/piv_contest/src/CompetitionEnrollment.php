@@ -264,16 +264,18 @@ class CompetitionEnrollment {
   public function getNumberOfValidRecitationsInEntry(EntityInterface $competitionEntry): int {
     $competition = $competitionEntry->field_competition->entity;
     $is_online = (bool) $competition->field_online_competition->value;
-
+    ini_set('memory_limit', -1);
+    ini_set('max_execution_time', -1);
     $number_of_valid_poems = 0;
     foreach ($competitionEntry->field_recitations->referencedEntities() as $entity) {
 
       $video = $entity->field_recitation_video->entity;
+      $embed_code = $video->get('field_media_oembed_video')->value;
+
       // IF it's an online competition recitation must also contain a video.
-      if ($is_online && !$video) {
+      if ($is_online && is_null($embed_code)) {
         continue;
       }
-
       if ($poem = $entity->field_poem->entity) {
         $number_of_valid_poems++;
       }
