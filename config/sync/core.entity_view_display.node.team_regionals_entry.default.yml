@@ -26,7 +26,7 @@ content:
       view_mode: default
       pager_id: 0
     third_party_settings: {  }
-    weight: 20
+    weight: 3
     region: content
   field_contest_association:
     type: entity_reference_label
@@ -34,28 +34,28 @@ content:
     settings:
       link: true
     third_party_settings: {  }
-    weight: 3
+    weight: 0
     region: content
   field_place_team_regional:
     type: list_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 4
+    weight: 2
     region: content
   field_tr_student:
     type: entity_reference_revisions_entity_view
     label: above
     settings:
-      view_mode: full
+      view_mode: default
       link: ''
     third_party_settings: {  }
-    weight: 0
+    weight: 1
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 4
     region: content
 hidden:
   entity_print_view_epub: true
