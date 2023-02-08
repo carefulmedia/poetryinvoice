@@ -4372,7 +4372,7 @@ li {
   width: 100%;
   height: 100%;
 }
-.picpcal .area-link {
+36px .picpcal .area-link {
   height: 100%;
 }
 .print__wrapper a {
@@ -4949,6 +4949,15 @@ nav.tabs ul .nav-item a:hover {
 }
 .print-icon {
   float: right;
+}
+.views-field-nothing {
+  page-break-after: always;
+}
+@media print {
+  .views-field-nothing {
+    page-break-after: always;
+  }
+  /* page-break-after works, as well */
 }
 
 /*# sourceMappingURL=maps/style.css.map */
