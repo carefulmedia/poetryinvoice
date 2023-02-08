@@ -5,6 +5,12 @@ footer,
 }
 body {
   width: 100% !important;
+  font: serif !important;
+}
+h2 {
+
+  font: sans-serif !important;
+
 }
 .views-field-nothing {
   page-break-after: always;
