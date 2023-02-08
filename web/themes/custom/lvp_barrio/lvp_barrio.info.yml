@@ -36,6 +36,8 @@ regions:
 entity_print:
   view:
    all: 'lvp_barrio/print-styling'
+  node:
+   all: 'lvp_barrio/print-styling'
 
 # Information added by Drupal.org packaging script on 2021-10-11
 version: '5.5.4'

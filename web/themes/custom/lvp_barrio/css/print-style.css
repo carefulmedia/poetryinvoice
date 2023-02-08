@@ -1,8 +1,6 @@
-@media print {
-    .views-field-nothing { page-break-after: always; } /* page-break-after works, as well */
-}
-h2 {
+.views-field-nothing { page-break-after: always; } /* page-break-after works, as well */
 
+h2 {
     font: sans-serif !important;
-  
   }
+
