@@ -30,3 +30,9 @@ color.preview:
     color/preview.js: {}
   dependencies:
     - color/drupal.color
+
+print-styling:
+  version: VERSION
+  css:
+    theme:
+      css/print-style.css: {}
