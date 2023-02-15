@@ -161,10 +161,17 @@
                            <div class="justify-content-md-center" {{ flyingblocks1 }} </div>
                             {{ flyingblocks2 }}
                             {{ flyingblocks3 }}
+   {% if language.id == 'en' %}
                             <div class="youtube-container--responsive view-home-page-slider-fca" data-aos="flip-left">
                                 <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315"  src="https://www.youtube.com/embed/RVIX0addQL0?hd=1&amp;rel=0&amp;autoplay=0">
                                 </iframe>
                             </div>
+    {% else %}
+                            <div class="youtube-container--responsive view-home-page-slider-fca" data-aos="flip-left">
+                                <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315"  src="https://www.youtube.com/watch?v=OW-xgl1Dy0o?hd=1&amp;rel=0&amp;autoplay=0">
+                                </iframe>
+                            </div>
+    {% endif %}
                             {{ flyingblocks4 }}
                         </div>
                     </div>
