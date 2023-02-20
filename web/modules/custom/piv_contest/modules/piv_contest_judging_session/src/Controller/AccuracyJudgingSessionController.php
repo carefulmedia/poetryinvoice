@@ -236,7 +236,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
     $message = NULL;
     if ($recitation_data['last_of_round']) {
       $destination = $start_judging_url;
-      $message = $this->t('Thank you for completing this round. Please take a few moments before beginning the next round of this session.);
+      $message = $this->t('Thank you for completing this round. Please take a few moments before beginning the next round of this session.');
     }
     $build['form'] = $this->formBuilder
       ->getForm('Drupal\piv_contest\Form\ScoreForm', $recitation, $judging_session, $destination, $message);

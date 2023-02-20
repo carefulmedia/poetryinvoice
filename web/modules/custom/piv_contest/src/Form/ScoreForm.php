@@ -124,8 +124,6 @@ class ScoreForm extends FormBase {
     $last_recitation = $last_recitation_data['recitation'];
     if ($last_recitation->id() === $recitation->id()) {
       $this->judgeSessionService->removeSessionBeingJudged($this->currentUser);
-      $message = $this->t('Thank you for completing this session. If you have more sessions to judge in the table below, click on "Judge now" when you are ready.');
-
     }
   }
 
