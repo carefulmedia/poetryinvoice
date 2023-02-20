@@ -252,7 +252,7 @@ class JudgingSessionController extends ControllerBase {
       '#theme' => 'poem_read_poems',
     ];
     $build['back'] = [
-      '#markup' => Link::fromTextAndUrl('Back to all sessions', Url::fromRoute('piv_contest_judging_session.start_judging', [
+      '#markup' => Link::fromTextAndUrl($this->t('Back to all sessions'), Url::fromRoute('piv_contest_judging_session.start_judging', [
         'user' => $user->id(),
       ]))->toString(),
     ];
