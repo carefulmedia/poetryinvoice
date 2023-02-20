@@ -194,7 +194,7 @@ class JudgeSession {
   }
 
   /**
-   * Number of recitation evaluated by judge.
+   * Number of recitations evaluated by judge.
    */
   public function numberOfRecitationsEvaluatedByJudge(JudgingSession $session, User $judge): int {
     $list = $this->orderRecitationsList($session, $judge);
@@ -202,7 +202,7 @@ class JudgeSession {
   }
 
   /**
-   * Number of recitation evaluated by accuracy judge.
+   * Number of recitations evaluated by accuracy judge.
    */
   public function numberOfRecitationsEvaluatedByAccuracyJudge(JudgingSession $session, User $judge): int {
     $list = $this->orderRecitationsList($session, $judge, TRUE);

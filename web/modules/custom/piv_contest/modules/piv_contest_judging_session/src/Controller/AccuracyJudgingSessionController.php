@@ -244,7 +244,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
     // Same link as above.
     $build['back'] = Link::fromTextAndUrl($this->t('Back to all sessions'), $start_judging_url)->toRenderable();
     $build['recitation_evaluated'] = [
-      '#markup' => $this->t('Recitation evaluated: @evaluated / @count', [
+      '#markup' => $this->t('Recitations evaluated: @evaluated / @count', [
         '@evaluated' => $this->judgeSessionService->numberOfRecitationsEvaluatedByJudge($judging_session, $user),
         '@count' => $this->judgeSessionService->totalNumberOfRecitations($judging_session, $user),
       ]),
