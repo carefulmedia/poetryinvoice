@@ -3,6 +3,6 @@ langcode: en
 status: true
 dependencies: {  }
 id: comment_node_pal_pir_school_vi
-label: 'Poet School Visit comment'
+label: 'Poet School Visit'
 target_entity_type_id: node
-description: null
+description: ''
