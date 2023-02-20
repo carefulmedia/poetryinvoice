@@ -105,7 +105,7 @@ class ScoreForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->messenger()->addStatus($this->t('The score has been created.'));
+    $this->messenger()->addStatus($this->t('The score has been saved.'));
     $values = $form_state->getValues();
     if ($values['destination']) {
       $form_state->setRedirectUrl($values['destination']);
@@ -124,6 +124,8 @@ class ScoreForm extends FormBase {
     $last_recitation = $last_recitation_data['recitation'];
     if ($last_recitation->id() === $recitation->id()) {
       $this->judgeSessionService->removeSessionBeingJudged($this->currentUser);
+      $message = $this->t('Thank you for completing this session. If you have more sessions to judge in the table below, click on "Judge now" when you are ready.');
+
     }
   }
 
