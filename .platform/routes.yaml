@@ -69,3 +69,11 @@
 "https://poetryinvoice.com/":
     type: redirect
     to: "https://{default}/"
+
+"https://www.lesvoixdelapoesie.com/":
+    type: redirect
+    to: "https://lesvoixdelapoesie.ca/"
+
+"https://lesvoixdelapoesie.com/":
+    type: redirect
+    to: "https://lesvoixdelapoesie.ca/"
