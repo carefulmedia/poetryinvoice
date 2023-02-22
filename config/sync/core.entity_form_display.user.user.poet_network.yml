@@ -30,6 +30,7 @@ dependencies:
     - field.field.user.user.field_i_am_interested_in_partici
     - field.field.user.user.field_i_am_interested_in_writing
     - field.field.user.user.field_i_have_completed_my_profil
+    - field.field.user.user.field_indigenous_identifying
     - field.field.user.user.field_judging
     - field.field.user.user.field_lifespan
     - field.field.user.user.field_micro_interview
@@ -414,6 +415,7 @@ hidden:
   field_gg_finalist: true
   field_google_calendar_iframe_cod: true
   field_griffin_finalist: true
+  field_indigenous_identifying: true
   field_my_favourite_poem_and_or_p: true
   field_my_role_at_school_organiza: true
   field_non_school_organization: true

@@ -105,7 +105,7 @@ class ScoreForm extends FormBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->messenger()->addStatus($this->t('The score has been created.'));
+    $this->messenger()->addStatus($this->t('The score has been saved.'));
     $values = $form_state->getValues();
     if ($values['destination']) {
       $form_state->setRedirectUrl($values['destination']);
