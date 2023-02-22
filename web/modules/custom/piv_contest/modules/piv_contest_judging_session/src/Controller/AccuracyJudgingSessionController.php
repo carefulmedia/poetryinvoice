@@ -236,7 +236,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
     $message = NULL;
     if ($recitation_data['last_of_round']) {
       $destination = $start_judging_url;
-      $message = $this->t('You finished judging a round of recitations.');
+      $message = $this->t('Thank you for completing this round. Please take a few moments before beginning the next round of this session.');
     }
     $build['form'] = $this->formBuilder
       ->getForm('Drupal\piv_contest\Form\ScoreForm', $recitation, $judging_session, $destination, $message);
@@ -244,7 +244,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
     // Same link as above.
     $build['back'] = Link::fromTextAndUrl($this->t('Back to all sessions'), $start_judging_url)->toRenderable();
     $build['recitation_evaluated'] = [
-      '#markup' => $this->t('Recitation evaluated: @evaluated / @count', [
+      '#markup' => $this->t('Recitations evaluated: @evaluated / @count', [
         '@evaluated' => $this->judgeSessionService->numberOfRecitationsEvaluatedByJudge($judging_session, $user),
         '@count' => $this->judgeSessionService->totalNumberOfRecitations($judging_session, $user),
       ]),

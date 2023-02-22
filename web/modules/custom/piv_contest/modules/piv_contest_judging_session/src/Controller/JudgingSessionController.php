@@ -201,7 +201,7 @@ class JudgingSessionController extends ControllerBase {
 
     $uri = Url::fromUserInput('/judge-pages/how-judge-our-online-contests');
 
-    $response['link'] = Link::fromTextAndUrl($this->t('How to judge the Online Contest'), $uri)->toRenderable();
+    $response['link'] = Link::fromTextAndUrl($this->t('How to judge an online contest'), $uri)->toRenderable();
 
     return $response;
   }
@@ -252,7 +252,7 @@ class JudgingSessionController extends ControllerBase {
       '#theme' => 'poem_read_poems',
     ];
     $build['back'] = [
-      '#markup' => Link::fromTextAndUrl('Back to all sessions', Url::fromRoute('piv_contest_judging_session.start_judging', [
+      '#markup' => Link::fromTextAndUrl($this->t('Back to all sessions'), Url::fromRoute('piv_contest_judging_session.start_judging', [
         'user' => $user->id(),
       ]))->toString(),
     ];
@@ -276,7 +276,7 @@ class JudgingSessionController extends ControllerBase {
     $token = $this->tokenGenerator->get($url->getInternalPath());
     $url->setOptions(['query' => ['token' => $token]]);
 
-    $text = $this->t('Read next Poem');
+    $text = $this->t('Read next poem');
 
     $isLastPage = $this->judgeSessionService->numberOfPoemsReadByJudge($judging_session, $user) + 1 >= $this->judgeSessionService->totalNumberOfPoems($judging_session, $user);
     if ($isLastPage) {
@@ -289,7 +289,7 @@ class JudgingSessionController extends ControllerBase {
 
     if (!$isLastPage) {
       $build['read_later'] = [
-        '#markup' => Link::fromTextAndUrl('Read poems later', Url::fromRoute('piv_contest_judging_session.start_judging', [
+        '#markup' => Link::fromTextAndUrl($this->t('Read poems later'), Url::fromRoute('piv_contest_judging_session.start_judging', [
           'user' => $user->id(),
         ]))->toString(),
       ];
@@ -384,7 +384,7 @@ class JudgingSessionController extends ControllerBase {
     $message = NULL;
     if ($recitation_data['last_of_round']) {
       $destination = $start_judging_url;
-      $message = $this->t('You finished judging a round of recitations.');
+      $message = $this->t('Thank you for completing this round. Please take a few moments before beginning the next round of this session.');
     }
     $build['form'] = $this->formBuilder
       ->getForm('Drupal\piv_contest\Form\ScoreForm', $recitation, $judging_session, $destination, $message);
@@ -392,7 +392,7 @@ class JudgingSessionController extends ControllerBase {
     // Same link as above.
     $build['back'] = Link::fromTextAndUrl($this->t('Back to all sessions'), $start_judging_url)->toRenderable();
     $build['recitation_evaluated'] = [
-      '#markup' => $this->t('Recitation evaluated: @evaluated / @count', [
+      '#markup' => $this->t('Recitations evaluated: @evaluated / @count', [
         '@evaluated' => $this->judgeSessionService->numberOfRecitationsEvaluatedByJudge($judging_session, $user),
         '@count' => $this->judgeSessionService->totalNumberOfRecitations($judging_session, $user),
       ]),

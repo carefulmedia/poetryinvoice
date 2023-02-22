@@ -22,7 +22,7 @@ third_party_settings:
     unpublish_enable: false
     unpublish_required: false
     unpublish_revision: false
-name: 'une visite de Poète à l''école'
+name: 'Poet School Visit'
 type: pal_pir_school_visit
 description: ''
 help: ''

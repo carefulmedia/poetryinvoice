@@ -22,7 +22,7 @@ third_party_settings:
     unpublish_enable: false
     unpublish_required: false
     unpublish_revision: false
-name: 'un poème au journal'
+name: 'Jounal Poem'
 type: journal_poem
 description: 'Submissions to our Poetry Journal'
 help: ''
