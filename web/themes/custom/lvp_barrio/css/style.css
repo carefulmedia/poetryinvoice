@@ -4448,6 +4448,18 @@ li {
 .recitation-judging__video .media-oembed-content {
   width: 100%;
 }
+.piv-contest-score .form-check-input[type="radio"] {
+  border-radius: 50%;
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+.piv-contest-score label {
+  display: inline-block;
+  font-size: 30px;
+  margin-left: 10px;
+  padding: 0;
+}
 .md-bg,
 .dk-bg {
   height: 100%;
