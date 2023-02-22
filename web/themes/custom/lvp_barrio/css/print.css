@@ -6,5 +6,8 @@ footer,
 body {
   width: 100% !important;
 }
+.views-field-nothing {
+  page-break-after: always;
+}
 
 /*# sourceMappingURL=maps/print.css.map */
