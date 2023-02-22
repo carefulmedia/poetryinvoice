@@ -4403,7 +4403,9 @@ li {
   color: var(--grey);
 }
 .button,
-.piv-back-link a {
+.piv-back-link a,
+.recitation-judging__back a,
+.recitation-judging__judge-later a {
   height: auto;
   width: fit-content;
   border-radius: 5px;
@@ -4417,17 +4419,46 @@ li {
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
 }
 .button:hover,
-.piv-back-link a:hover {
+.piv-back-link a:hover,
+.recitation-judging__back a:hover,
+.recitation-judging__judge-later a:hover {
   background: white !important;
   color: var(--red);
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
   transition: all 0.4s ease;
 }
 .button:active,
-.piv-back-link a:active {
+.piv-back-link a:active,
+.recitation-judging__back a:active,
+.recitation-judging__judge-later a:active {
   color: white;
   background: var(--red-dark);
   transition: all 0.4s ease;
+}
+.recitation-judging__back {
+  margin-bottom: 3rem !important;
+}
+.user .view-header-image-for-poets {
+  display: none;
+}
+.recitation-judging__evaluated {
+  margin-top: -3rem !important;
+  float: right;
+}
+.recitation-judging__video .media-oembed-content {
+  width: 100%;
+}
+.piv-contest-score .form-check-input[type="radio"] {
+  border-radius: 50%;
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+.piv-contest-score label {
+  display: inline-block;
+  font-size: 30px;
+  margin-left: 10px;
+  padding: 0;
 }
 .md-bg,
 .dk-bg {
