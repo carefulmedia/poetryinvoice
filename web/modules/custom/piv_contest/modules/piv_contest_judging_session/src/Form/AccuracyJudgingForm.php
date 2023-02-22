@@ -6,6 +6,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Routing\CurrentRouteMatch;
 
 /**
  * Provides a PIV Contest Judging Session form.
@@ -20,10 +21,18 @@ class AccuracyJudgingForm extends FormBase {
   protected $entityTypeManager;
 
   /**
+   * The current route.
+   *
+   * @var Drupal\Core\Routing\CurrentRouteMatch
+   */
+  protected $routeMatch;
+
+  /**
    * Class constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, CurrentRouteMatch $current_route_match) {
     $this->entityTypeManager = $entity_type_manager;
+    $this->routeMatch = $current_route_match;
   }
 
   /**
@@ -31,7 +40,8 @@ class AccuracyJudgingForm extends FormBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('entity_type.manager')
+      $container->get('entity_type.manager'),
+      $container->get('current_route_match')
     );
   }
 
@@ -95,6 +105,15 @@ class AccuracyJudgingForm extends FormBase {
       $recitation = $data['recitation'];
       $recitation->field_score = $score;
       $recitation->save();
+    }
+
+    $user = $this->routeMatch->getRawParameter('user');
+    $judging_session = $this->routeMatch->getRawParameter('judging_session');
+    if ($user && $judging_session) {
+      $form_state->setRedirect('piv_contest_judging_session.judge_for_accuracy.recitations_list', [
+        'user' => $user,
+        'judging_session' => $judging_session,
+      ]);
     }
   }
 
