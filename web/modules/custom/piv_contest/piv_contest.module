@@ -291,3 +291,32 @@ function piv_contest_competition_entry_custom_submit(&$form, FormStateInterface 
     }
   }
 }
+
+/**
+ * Implements hook_entity_presave().
+ */
+function piv_contest_paragraph_presave(EntityInterface $entity) {
+  // Paragraphs have a reference to their parent entities that holds the parent
+  // id, type and field name that are referencing it. The parent is set on a
+  // postSave hook and is updated to the last entity that was saved, this is
+  // done on Drupal\entity_reference_revisions\Plugin\Field\FieldType::EntityReferenceRevisionsItem().
+  // The competition_stream paragraph is used on competitions and also
+  // referenced in a competition_entry when creating one, that means that if a
+  // user creates a competition_entry, this stream paragraph will now set the
+  // competition entry as the parent.
+  // Now, if a user deletes that competition entry, the paragraph will be set
+  // as orphan and will get deleted on cron by the entity_reference_revisions
+  // module.
+  // This hook prevents the parent from being updated in the cases mentioned
+  // above, guaranting that a competition is always the parent.
+  if ($entity->bundle() == 'competition_stream') {
+    if ($entity->parent_type->value != 'competition' && $entity->original) {
+      $original = $entity->original;
+      if ($original->parent_type->value == 'competition') {
+        $entity->parent_id = $original->parent_id;
+        $entity->parent_type = $original->parent_type;
+        $entity->parent_field_name = $original->parent_field_name;
+      }
+    }
+  }
+}
