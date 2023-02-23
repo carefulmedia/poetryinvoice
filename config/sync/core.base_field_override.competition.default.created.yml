@@ -1,0 +1,18 @@
+uuid: a7645418-8578-4d7c-8102-0f8b67f216df
+langcode: en
+status: true
+dependencies:
+  config:
+    - piv_contest_competition.competition_type.default
+id: competition.default.created
+field_name: created
+entity_type: competition
+bundle: default
+label: 'Authored on'
+description: 'The time that the competition was created.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

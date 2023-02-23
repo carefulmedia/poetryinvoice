@@ -12,6 +12,7 @@ use Drupal\piv_contest_competition_entry\Entity\CompetitionEntry;
 use Drupal\piv_contest_competition_entry\Service\CompetitionLockService;
 use Drupal\user\UserInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
+use Drupal\Core\Language\LanguageManagerInterface;
 
 /**
  * @file
@@ -24,6 +25,13 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 class CompetitionEnrollment {
 
   use StringTranslationTrait;
+
+  /**
+   * Current language code.
+   *
+   * @var string
+   */
+  private $currentLanguage = NULL;
 
   /**
    * Check if instance is initiated.
@@ -70,9 +78,14 @@ class CompetitionEnrollment {
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, CompetitionLockService $lockService) {
+  public function __construct(
+    EntityTypeManagerInterface $entity_type_manager,
+    CompetitionLockService $lockService,
+    LanguageManagerInterface $language_manager
+  ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->lockService = $lockService;
+    $this->currentLanguage = $language_manager->getCurrentLanguage()->getId();
   }
 
   /**
@@ -107,7 +120,7 @@ class CompetitionEnrollment {
       'student' => $this->t('Student'),
       'recitations' => $this->t('Recitations'),
       'permission' => $this->t('Permission'),
-      'missing_criteria' => $this->t('Missing Criteria'),
+      'criteria' => $this->t('Criteria'),
     ];
 
     $school_id = $this->school->id();
@@ -147,7 +160,7 @@ class CompetitionEnrollment {
           ],
         ]);
 
-        $stream['student'] = $entry->field_student_name->value;
+        $stream['student'] = piv_contest_get_student_name($entry);
         $stream['recitations'] = $this->t("@current out of @required", [
           '@current' => $this->getNumberOfValidRecitationsInEntry($entry),
           '@required' => $this->getRequiredRecitationsForStream($stream_entity),
@@ -158,14 +171,24 @@ class CompetitionEnrollment {
         $stream['is_completed'] = (bool) $entry->field_complete->value;
         $stream['is_missing_criteria_completed'] = FALSE;
 
-        $missing_criteria = $this->getMissingCriteria($entry);
-        if (count($missing_criteria) > 0) {
-          // Add all missing criterias here.
-          $stream['missing_criteria'] = implode(', ', $missing_criteria);
+        $all_criteria = [];
+        $missing_criteria = $this->getMissingCriteria($entry, $all_criteria);
+        $stream['criteria'] = [];
+        foreach ($all_criteria as $criteria) {
+          $stream['criteria'][] = [
+            '#type' => 'html_tag',
+            '#tag' => 'span',
+            '#value' => $criteria,
+            '#attributes' => [
+              'class' => in_array($criteria, $missing_criteria)
+                ? ['criteria-is-missing']
+                : ['criteria-is-met'],
+            ],
+          ];
         }
-        else {
+
+        if (empty($missing_criteria)) {
           $stream['is_missing_criteria_completed'] = TRUE;
-          $stream['missing_criteria'] = '';
         }
 
         $editTitle = $this->t('edit');
@@ -177,6 +200,9 @@ class CompetitionEnrollment {
           $stream['links'][] = [
             '#type' => 'link',
             '#title' => $editTitle,
+            '#attributes' => [
+              'class' => ['button'],
+            ],
             '#url' => $editUrl ,
             '#cache' => [
               'tags' => $entry->getCacheTags(),
@@ -188,6 +214,9 @@ class CompetitionEnrollment {
           $stream['links'][] = [
             '#type' => 'link',
             '#title' => $this->t('delete'),
+            '#attributes' => [
+              'class' => ['button'],
+            ],
             '#url' => $deleteUrl,
             '#cache' => [
               'tags' => $entry->getCacheTags(),
@@ -213,12 +242,18 @@ class CompetitionEnrollment {
           // Add link to create new entry.
           $stream['links'][] = [
             '#type' => 'link',
-            '#title' => $this->t('Add new entry'),
+            '#title' => $this->t('Add'),
+            '#attributes' => [
+              'class' => ['button'],
+            ],
             '#url' => $addUrl,
           ];
         }
       }
 
+      if ($stream_entity->hasTranslation($this->currentLanguage)) {
+        $stream_entity = $stream_entity->getTranslation($this->currentLanguage);
+      }
       $stream['name'] = $stream_entity->field_label->value;
       $streams[] = $stream;
     }
@@ -245,16 +280,19 @@ class CompetitionEnrollment {
   public function getNumberOfValidRecitationsInEntry(EntityInterface $competitionEntry): int {
     $competition = $competitionEntry->field_competition->entity;
     $is_online = (bool) $competition->field_online_competition->value;
-
     $number_of_valid_poems = 0;
     foreach ($competitionEntry->field_recitations->referencedEntities() as $entity) {
 
+      $embed_code = NULL;
       $video = $entity->field_recitation_video->entity;
-      // IF it's an online competition recitation must also contain a video.
-      if ($is_online && !$video) {
-        continue;
+      if ($video) {
+        $embed_code = $video->get('field_media_oembed_video')->value;
       }
 
+      // IF it's an online competition recitation must also contain a video.
+      if ($is_online && is_null($embed_code)) {
+        continue;
+      }
       if ($poem = $entity->field_poem->entity) {
         $number_of_valid_poems++;
       }
@@ -307,8 +345,11 @@ class CompetitionEnrollment {
 
   /**
    * Get the missing criteria for a competition entry.
+   *
+   * Second argument will be populated by reference with all the required
+   * criteria if a variable is provided.
    */
-  public function getMissingCriteria(CompetitionEntry $entity): array {
+  public function getMissingCriteria(CompetitionEntry $entity, array &$all_criteria = []): array {
     $competition = $entity->field_competition->entity;
     if (!$competition) {
       return [];
@@ -324,6 +365,7 @@ class CompetitionEnrollment {
       $criteria = $item->entity;
       $required_criteria[$criteria->id()] = $criteria->label();
     }
+    $all_criteria = $required_criteria;
 
     foreach ($entity->field_recitations as $recitation_item) {
       $recitation = $recitation_item->entity;

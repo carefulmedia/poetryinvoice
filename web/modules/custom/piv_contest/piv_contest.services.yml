@@ -5,7 +5,7 @@ services:
 
   piv_contest.score_form_builder:
     class: Drupal\piv_contest\ScoreFormBuilder
-    arguments: ['@plugin.manager.score_form', '@entity_type.manager', '@current_user']
+    arguments: ['@plugin.manager.score_form', '@entity_type.manager', '@current_user', '@language_manager']
 
   piv_contest.competition_service:
     class: Drupal\piv_contest\CompetitionService
@@ -17,3 +17,4 @@ services:
     arguments:
       - '@entity_type.manager'
       - '@piv_contest_competition_entry.competition_lock_service'
+      - '@language_manager'

@@ -1,0 +1,19 @@
+.piv-contest-recitation-multiple-recitations .draggable a.tabledrag-handle {
+  height: auto;
+  margin-left: 0;
+}
+.piv-contest-recitation-multiple-recitations .draggable a.tabledrag-handle .handle {
+  width: 16px;
+  height: 16px;
+  background-position: 0;
+  padding: 0;
+  margin: 1px 10px 0 0;
+}
+.piv-contest-recitation-multiple-recitations .tabledrag-toggle-weight,
+.piv-contest-recitation-multiple-recitations button[name="save-weight"] {
+  display: none;
+}
+
+input[name="recitation_weight"] {
+  display: none;
+}

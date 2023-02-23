@@ -1,0 +1,76 @@
+uuid: 4731d01d-5ff3-4710-9ced-3f7a3065e0f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tr_student.field_legal_name
+    - field.field.paragraph.tr_student.field_poem
+    - field.field.paragraph.tr_student.field_recitation_order
+    - field.field.paragraph.tr_student.field_stage_name
+    - field.field.paragraph.tr_student.field_student_name_1
+    - field.field.paragraph.tr_student.piv_release_form
+    - field.field.paragraph.tr_student.piv_student_mail
+    - paragraphs.paragraphs_type.tr_student
+  module:
+    - file
+id: paragraph.tr_student.default
+targetEntityType: paragraph
+bundle: tr_student
+mode: default
+content:
+  field_legal_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_poem:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_stage_name:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_student_name_1:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  piv_release_form:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  piv_student_mail:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_recitation_order: true
+  search_api_excerpt: true

@@ -3,3 +3,7 @@ multiple-recitations-form:
     js/multiple-recitations-form.js: {}
   dependencies:
     - piv_base/dialog_polyfill
+    - core/drupal.tabledrag
+  css:
+    component:
+      css/multiple-recitations-form.css: {}

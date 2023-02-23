@@ -102,7 +102,10 @@ class CompetitionEntryController extends ControllerBase {
       'user' => $user->id(),
       'competition' => $competition->id(),
     ]);
-    $form_state_additions = ['redirect' => $redirect];
+    $form_state_additions = [
+      'piv_custom_weight' => TRUE,
+      'redirect' => $redirect,
+    ];
     $form = $this->entityFormBuilder
       ->getForm($competition_entry, $form_mode, $form_state_additions);
     $form['revision_information']['#access'] = FALSE;
@@ -161,6 +164,8 @@ class CompetitionEntryController extends ControllerBase {
    * Edit form.
    */
   public function edit(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
+    // The competition entry form is responsible to generate the recitations
+    // and save it.
     $competition_entry_form = $this->getCompetitionEntryForm($user, $competition, $competition_entry);
     $recitations_form = $this->getRecitationsForm($user, $competition, $competition_entry);
     return [

@@ -1,0 +1,5 @@
+services:
+  piv_search.event_subscriber:
+    class: Drupal\piv_search\EventSubscriber\PivSearchSubscriber
+    tags:
+      - { name: event_subscriber }

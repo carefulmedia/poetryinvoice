@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.basic
     - block_content.type.teach
     - core.entity_view_mode.node.full
     - field.field.node.lesson_plan.body
@@ -360,20 +359,6 @@ third_party_settings:
               context_mapping: {  }
               views_label: ''
               items_per_page: none
-            weight: 0
-            additional: {  }
-          8fcb5bbc-0341-4940-baff-730ffd526a84:
-            uuid: 8fcb5bbc-0341-4940-baff-730ffd526a84
-            region: blb_region_col_2
-            configuration:
-              id: 'inline_block:basic'
-              label: 'ABOUT THIS LESSON PLAN'
-              label_display: '0'
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_revision_id: 119
-              block_serialized: null
             weight: 0
             additional: {  }
           d525788a-a032-4542-b7a1-8026c7989139:

@@ -14,6 +14,7 @@ dependencies:
     - form_mode_manager
     - media
     - node
+    - paragraphs_type_permissions
     - piv_contest_competition
     - piv_contest_competition_entry
     - piv_contest_recitation
@@ -37,6 +38,7 @@ permissions:
   - 'add competition entry for own school'
   - 'create bi_team_regional_entry content'
   - 'create bulletin_board content'
+  - 'create field_contest_association'
   - 'create field_date_and_start_time'
   - 'create field_do_you_have_any_poet_prefe'
   - 'create field_effect_teacher'
@@ -66,7 +68,7 @@ permissions:
   - 'create field_work_student_teacher'
   - 'create field_youtube_recitation_url'
   - 'create journal_poem content'
-  - 'create pal_pir_school_visit content'
+  - 'create paragraph content tr_student'
   - 'create piv_release_form'
   - 'create piv_student_mail'
   - 'create remote_video media'
@@ -77,6 +79,8 @@ permissions:
   - 'delete own competition entry'
   - 'delete own recitation'
   - 'delete own remote_video media'
+  - 'delete paragraph content this_teacher_signed_up_for'
+  - 'delete paragraph content tr_student'
   - 'edit competition entry for own school'
   - 'edit field_grades'
   - 'edit field_poem'
@@ -86,6 +90,7 @@ permissions:
   - 'edit own bulletin_board content'
   - 'edit own comments'
   - 'edit own field_about_me'
+  - 'edit own field_contest_association'
   - 'edit own field_effect_teacher'
   - 'edit own field_expectations_teacher'
   - 'edit own field_feedback_teacher'
@@ -109,6 +114,7 @@ permissions:
   - 'edit own field_teacher_preparation_teache'
   - 'edit own field_teacher_questionnaire'
   - 'edit own field_total_students_involved'
+  - 'edit own field_tr_student'
   - 'edit own field_visit_completed_teacher'
   - 'edit own field_what_grades_do_you_teach'
   - 'edit own field_what_subjects_do_you_teach'
@@ -128,12 +134,14 @@ permissions:
   - 'search forum content'
   - 'skip comment approval'
   - 'subscribe to content'
+  - 'update paragraph content tr_student'
   - 'use node.default form mode'
   - 'use node.teacher form mode'
   - 'use user.teacher_edit form mode'
   - 'view field_about_me'
   - 'view field_agreed_visit_date'
   - 'view field_bilingual'
+  - 'view field_contest_association'
   - 'view field_date_and_poet_chosen'
   - 'view field_file_under'
   - 'view field_grades'
@@ -153,6 +161,7 @@ permissions:
   - 'view field_youtube_recitation_url'
   - 'view own field_about_me'
   - 'view own field_agreed_visit_date'
+  - 'view own field_contest_association'
   - 'view own field_date_and_poet_chosen'
   - 'view own field_effect_teacher'
   - 'view own field_expectations_teacher'
@@ -183,6 +192,7 @@ permissions:
   - 'view own field_teacher_questionnaire'
   - 'view own field_teacher_virtual_or_in_pers'
   - 'view own field_total_students_involved'
+  - 'view own field_tr_student'
   - 'view own field_visit_completed_teacher'
   - 'view own field_what_grades_do_you_teach'
   - 'view own field_what_subjects_do_you_teach'
@@ -191,5 +201,6 @@ permissions:
   - 'view own piv_release_form'
   - 'view own piv_student_mail'
   - 'view own school competitions'
+  - 'view paragraph content tr_student'
   - 'view piv_release_form'
   - 'view the administration theme'

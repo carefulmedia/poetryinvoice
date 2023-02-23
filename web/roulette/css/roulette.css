@@ -466,7 +466,9 @@ body {
 
 #poem h4 {
     font: 14px FrutigerRoman;
-    text-transform: uppercase
+    text-transform: uppercase;
+    text-align: right;
+    margin-bottom: 20px;
 }
 
 #poem p {
@@ -584,4 +586,18 @@ h4.poet {
 }
 .heart {
     display: none;
+}
+#poem p.rteindent1
+{margin-left: 23px !important;}
+#poem p.rteindent2
+{margin-left: 46px !important;}
+#poem p.rteindent3
+{margin-left: 69px !important;}
+#poem p.rteindent4
+{margin-left: 53px !important;}
+#poem p.rteindent5
+{margin-left: 163px !important;}
+
+#poem p.interval {
+  margin-bottom: 30px !important
 }

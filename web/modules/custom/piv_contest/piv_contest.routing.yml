@@ -32,6 +32,31 @@ piv_content.competitions_list:
   requirements:
     _custom_access: '\Drupal\piv_contest\Controller\CompetitionsListController::access'
 
+# Redirects.
+piv_contest.online_semifinals_redirect:
+  path: '/user/online-semifinals/entries'
+  defaults:
+    _title: 'Online semifinals'
+    _controller: '\Drupal\piv_contest\Controller\CompetitionsListController::onlineSemifinalsRedirect'
+  requirements:
+    _permission: 'access content'
+
+piv_contest.recite_submit_redirect:
+  path: '/recite/submit'
+  defaults:
+    _title: 'Online semifinals'
+    _controller: '\Drupal\piv_contest\Controller\CompetitionsListController::onlineSemifinalsRedirect'
+  requirements:
+    _permission: 'access content'
+
+piv_contest.reciter_soumettre_redirect:
+  path: '/reciter/soumettre'
+  defaults:
+    _title: 'Online semifinals'
+    _controller: '\Drupal\piv_contest\Controller\CompetitionsListController::onlineSemifinalsRedirect'
+  requirements:
+    _permission: 'access content'
+
 piv_contest.competition:
   path: '/user/{user}/competitions/{competition}'
   defaults:

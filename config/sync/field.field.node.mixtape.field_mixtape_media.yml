@@ -10,7 +10,7 @@ id: node.mixtape.field_mixtape_media
 field_name: field_mixtape_media
 entity_type: node
 bundle: mixtape
-label: 'Mixtape media'
+label: 'Poem readings'
 description: ''
 required: false
 translatable: false

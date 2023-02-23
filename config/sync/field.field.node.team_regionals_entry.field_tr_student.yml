@@ -12,7 +12,7 @@ id: node.team_regionals_entry.field_tr_student
 field_name: field_tr_student
 entity_type: node
 bundle: team_regionals_entry
-label: Student
+label: Students
 description: ''
 required: true
 translatable: true
@@ -31,6 +31,9 @@ settings:
       communication_log:
         weight: 3
         enabled: false
+      competition_stream:
+        weight: 21
+        enabled: false
       judges:
         weight: 4
         enabled: false
@@ -48,6 +51,12 @@ settings:
         enabled: false
       publications:
         weight: 9
+        enabled: false
+      score_template_criteria:
+        weight: 28
+        enabled: false
+      start_here_page_links_and_replac:
+        weight: 29
         enabled: false
       teacher_leads_tracking:
         weight: 10

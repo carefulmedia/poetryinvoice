@@ -9,12 +9,12 @@
   <p>{{ message }}</p>
   <table>
     <tr>
-      <td>{{ 'Stream' |t }}</td>
-      <td>{{ 'Name' |t }}</td>
+      <td>{{ 'Contest stream' |t }}</td>
+      <td>{{ 'Student name' |t }}</td>
       <td>{{ 'Recitations' |t }}</td>
-      <td>{{ 'Permission' |t }}</td>
+      <td>{{ 'Permission form' |t }}</td>
       {% if competition_has_criteria %}
-        <td>{{ 'Missing Criteria' |t }}</td>
+        <td>{{ 'Criteria' |t }}</td>
       {% endif %}
       <td></td>
     </tr>
@@ -27,7 +27,7 @@
           {{ stream.is_permissions_completed ? '&check;' : '&cross;' }}
         </td>
         {% if competition_has_criteria %}
-          <td {{ stream.is_missing_criteria_completed ? 'class="completed"' }}>{{ stream.missing_criteria }}</td>
+          <td {{ stream.is_missing_criteria_completed ? 'class="completed"' }}>{{ stream.criteria }}</td>
         {% endif %}
         <td>
           {% for link in stream.links %}

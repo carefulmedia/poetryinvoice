@@ -1,0 +1,20 @@
+uuid: a3ecccf6-5fbf-4327-a564-f4544e91d8c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - piv_contest_competition.competition_type.default
+id: competition.default.uid
+field_name: uid
+entity_type: competition
+bundle: default
+label: Author
+description: 'The user ID of the competition author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference

@@ -1565,8 +1565,12 @@ h3.name {
 .block-block-content34828ca2-2c6b-470a-8814-2614f5b8e1a7 .contextual {
   display: none;
 }
-.user a {
+.menu--account a,
+.search-icon {
   margin-left: 1rem;
+}
+#block-usericonheader {
+  margin-left: 0.5rem;
 }
 .navbar-toggler,
 #block-usericonheader,
@@ -1629,7 +1633,7 @@ h3.name {
 .view {
   position: relative;
 }
-.view .more-link {
+.more-link {
   position: absolute;
   top: 0;
   right: 0;
@@ -1637,21 +1641,26 @@ h3.name {
   padding: 0.5rem;
   color: #fff;
 }
-.view .more-link a {
+.more-link a {
   color: white;
   text-decoration: none;
+}
+.more-link a:hover {
+  color: var(--plum-light) !important;
+  font-weight: 900;
 }
 /* discover poems index page */
 .page-node-27461 .plum-bg.roulette-discover,
 .page-node-27461 .poets,
 .page-node-27461 .quizzes {
-  background: #481139;
+  background-color: var(--plum-dark);
   padding: 1rem;
   width: 100vw;
   position: relative;
   margin-left: -50vw;
   margin-top: 100px;
   left: 50%;
+  color: white;
 }
 .page-node-27461 .plum-bg.roulette-discover h1,
 .page-node-27461 .poets h1,
@@ -1660,6 +1669,34 @@ h3.name {
 .page-node-27461 .poets h2,
 .page-node-27461 .quizzes h2 {
   color: white;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover {
+  background-color: var(--plum-light);
+  padding: 1rem;
+  width: 100vw;
+  position: relative;
+  margin-left: -50vw;
+  margin-top: 100px;
+  left: 50%;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover h1 {
+  color: var(--plum-dark);
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover h2 {
+  color: #000;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover a {
+  text-decoration: none;
+  color: #000;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover .more-link {
+  float: right;
+  background-color: #fff;
+}
+.page-node-27461 .lt-plum.plum-bg.roulette-discover .more-link a:hover,
+.page-node-27461 .lt-plum.plum-bg.roulette-discover a:hover {
+  color: var(--plum) !important;
+  font-weight: 900;
 }
 .page-node-27461 h2 {
   color: var(--plum);
@@ -1690,12 +1727,17 @@ h3.name {
   color: var(--plum-light);
   transition: all 0.4s ease;
 }
+.plum-bg.roulette-discover .col-4:hover h2 {
+  color: var(--plum);
+  font-weight: 800;
+  transition: all 0.4s ease;
+}
 .plum-bg.roulette-discover .col-4 img {
   filter: opacity(0.8);
   transition: all 0.4s ease;
 }
 .plum-bg.roulette-discover .col-4:hover img {
-  filter: opacity(1);
+  filter: opacity(1) drop-shadow(1px 1px 10px white);
   transition: all 0.4s ease;
 }
 .plum-bg.roulette-discover a:active img {
@@ -1864,6 +1906,10 @@ h3.name {
   }
 }
 /* lesson plan index page */
+.float-right {
+  position: relative;
+  float: right;
+}
 /**
  * @file
  * Visual styles for icons.
@@ -2200,7 +2246,8 @@ header #search-block-form .btn-outline-primary:hover {
 .nav-link-https--piv9lndosite-read:hover {
   color: var(--plum) !important;
 }
-.offcanvas-body .user {
+.offcanvas-body .user,
+.offcanvas-body .search-icon {
   float: right;
   display: inline;
 }
@@ -2673,7 +2720,45 @@ nav.tabs ul {
 }
 .node--type-article .field--type-image {
   float: none;
-  margin: 0;
+  margin: 10px;
+}
+/* Contest page styles */
+.piv-competition .button {
+  margin: 30px 0;
+  display: block;
+}
+#enrollment td {
+  padding: 15px 9px;
+  text-align: center;
+}
+.piv-back-link {
+  margin-bottom: 3rem !important;
+}
+#edit-submit,
+#edit-recitations-0-operations-form-submit {
+  background: var(--mint);
+}
+#edit-submit:hover,
+#edit-recitations-0-operations-form-submit:hover {
+  color: var(--mint);
+}
+.node--type-poem .block-field-blocknodepoembody p.rteindent1 {
+  margin-left: 23px !important;
+}
+.node--type-poem .block-field-blocknodepoembody p.rteindent2 {
+  margin-left: 46px !important;
+}
+.node--type-poem .block-field-blocknodepoembody p.rteindent3 {
+  margin-left: 69px !important;
+}
+.node--type-poem .block-field-blocknodepoembody p.rteindent4 {
+  margin-left: 53px !important;
+}
+.node--type-poem .block-field-blocknodepoembody p.rteindent5 {
+  margin-left: 163px !important;
+}
+.node--type-poem .block-field-blocknodepoembody p.interval {
+  margin-bottom: 30px !important;
 }
 .node-preview-container {
   background: #d1e8f5;
@@ -2767,6 +2852,9 @@ header #search-block-form {
 }
 #search-block-form {
   display: flex;
+}
+.view-id-search .views-row {
+  margin-bottom: 3rem;
 }
 /**
  * @file
@@ -3472,10 +3560,14 @@ tr th {
   border: 1px solid #fff;
   text-align: left;
   /* LTR */
+  vertical-align: middle;
 }
 [dir="rtl"] tr td,
 [dir="rtl"] tr th {
   text-align: right;
+}
+.user table tbody td a {
+  margin-left: 0;
 }
 /**
  * Responsive tables.
@@ -3865,9 +3957,9 @@ dialog#welcome-modal[open]::backdrop {
 }
 dialog[open].in,
 dialog[open].in::backdrop {
-  transition-delay: 0s;
-  opacity: 1;
-  visibility: visible;
+  transition-delay: 0s !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 @media (max-width: 576px) {
   .form-item-option-2.select-hidden + .form-item-option-3:not(.select-hidden) {
@@ -4048,6 +4140,15 @@ dialog[open].in::backdrop {
 #welcome-modal .menu--account a {
   padding: 0;
   color: #000;
+}
+dialog.recitation-form .btn-close {
+  right: 0;
+  top: 0;
+  position: absolute;
+  cursor: pointer;
+  font-size: 1.25rem;
+  background-color: white;
+  opacity: 1;
 }
 :root {
   --plum-light: #E7D8E3;
@@ -4271,7 +4372,7 @@ li {
   width: 100%;
   height: 100%;
 }
-.picpcal .area-link {
+36px .picpcal .area-link {
   height: 100%;
 }
 .print__wrapper a {
@@ -4301,7 +4402,10 @@ li {
 .propos a:hover {
   color: var(--grey);
 }
-.button {
+.button,
+.piv-back-link a,
+.recitation-judging__back a,
+.recitation-judging__judge-later a {
   height: auto;
   width: fit-content;
   border-radius: 5px;
@@ -4314,16 +4418,47 @@ li {
   font-family: 'Roboto';
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
 }
-.button:hover {
+.button:hover,
+.piv-back-link a:hover,
+.recitation-judging__back a:hover,
+.recitation-judging__judge-later a:hover {
   background: white !important;
   color: var(--red);
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
   transition: all 0.4s ease;
 }
-.button:active {
+.button:active,
+.piv-back-link a:active,
+.recitation-judging__back a:active,
+.recitation-judging__judge-later a:active {
   color: white;
   background: var(--red-dark);
   transition: all 0.4s ease;
+}
+.recitation-judging__back {
+  margin-bottom: 3rem !important;
+}
+.user .view-header-image-for-poets {
+  display: none;
+}
+.recitation-judging__evaluated {
+  margin-top: -3rem !important;
+  float: right;
+}
+.recitation-judging__video .media-oembed-content {
+  width: 100%;
+}
+.piv-contest-score .form-check-input[type="radio"] {
+  border-radius: 50%;
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+.piv-contest-score label {
+  display: inline-block;
+  font-size: 30px;
+  margin-left: 10px;
+  padding: 0;
 }
 .md-bg,
 .dk-bg {
@@ -4791,16 +4926,6 @@ h1.hero a {
 .no-blur {
   margin-bottom: -4rem;
 }
-html {
-  scrollbar-width: none;
-  /* For Firefox */
-  -ms-overflow-style: none;
-  /* For Internet Explorer and Edge */
-}
-html::-webkit-scrollbar {
-  width: 0px;
-  /* For Chrome, Safari, and Opera */
-}
 #field-language-display {
   display: none;
 }
@@ -4855,6 +4980,15 @@ nav.tabs ul .nav-item a:hover {
 }
 .print-icon {
   float: right;
+}
+.views-field-nothing {
+  page-break-after: always;
+}
+@media print {
+  .views-field-nothing {
+    page-break-after: always;
+  }
+  /* page-break-after works, as well */
 }
 
 /*# sourceMappingURL=maps/style.css.map */

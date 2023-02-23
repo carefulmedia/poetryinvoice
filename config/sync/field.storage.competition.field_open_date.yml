@@ -4,7 +4,11 @@ status: true
 dependencies:
   module:
     - datetime
+    - field_permissions
     - piv_contest_competition
+third_party_settings:
+  field_permissions:
+    permission_type: public
 id: competition.field_open_date
 field_name: field_open_date
 entity_type: competition

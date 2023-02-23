@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies: {  }
 id: tr_student
-label: 'Tr student'
+label: 'Team Regional Student'
 icon_uuid: null
 icon_default: null
 description: 'Migrated from field_collection field_tr_student'

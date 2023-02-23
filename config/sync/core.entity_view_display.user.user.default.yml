@@ -29,6 +29,7 @@ dependencies:
     - field.field.user.user.field_i_am_interested_in_partici
     - field.field.user.user.field_i_am_interested_in_writing
     - field.field.user.user.field_i_have_completed_my_profil
+    - field.field.user.user.field_indigenous_identifying
     - field.field.user.user.field_judging
     - field.field.user.user.field_lifespan
     - field.field.user.user.field_micro_interview
@@ -237,6 +238,24 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 5
             additional: {  }
+          ca7b78e3-a545-4b3d-ab67-f6d93a7220c1:
+            uuid: ca7b78e3-a545-4b3d-ab67-f6d93a7220c1
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_indigenous_identifying'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_3'
@@ -341,6 +360,16 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 8
+    region: blb_region_col_1
+  field_indigenous_identifying:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 9
     region: blb_region_col_1
   field_lifespan:
     type: string

@@ -21,6 +21,17 @@
           $dialog[0].showModal();
         }
       });
-    }
+      
+      // Copy weight to entity form.
+      $('form.competition-entry-form', context).submit(function(e) {
+        let values = {};
+        $('.piv-contest-recitation-multiple-recitations select.table-sort-weight').each(function() {
+          values[this.name] = this.value;
+        });
+        $('[name="recitation_weight"]', $(this)).val(JSON.stringify(values));
+      });
+    }    
   };
+ 
 })(jQuery, Drupal);
+

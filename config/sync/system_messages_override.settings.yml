@@ -1,0 +1,7 @@
+_core:
+  default_config_hash: LOg6RdDweYs1vDaF9OxDWjXbfeILZ0lYn0uQe-O0-sk
+messages_override:
+  f0f96d95-15e3-4f4f-9393-7ebf3b383e6c:
+    original: 'Could not retrieve the oEmbed resource.'
+    new: 'The embeded video url is not valid or not accessible.'
+debug: 0

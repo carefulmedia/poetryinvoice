@@ -1,0 +1,25 @@
+uuid: 917af2b2-eddf-47df-a42d-066d2274ebc5
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:c7cc6230-cb32-492a-844c-7c4a4749bada'
+  module:
+    - block_content
+  theme:
+    - lvp_barrio
+id: onlinesubmitbutton
+theme: lvp_barrio
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'block_content:c7cc6230-cb32-492a-844c-7c4a4749bada'
+settings:
+  id: 'block_content:c7cc6230-cb32-492a-844c-7c4a4749bada'
+  label: 'Online submit button'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

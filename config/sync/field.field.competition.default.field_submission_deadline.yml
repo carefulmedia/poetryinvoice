@@ -14,7 +14,7 @@ bundle: default
 label: 'Closing date'
 description: 'Date after which teachers will not be allowed to submit entries to a competition without intervention from a site admin. Also indicates the date after which teachers will not be able to edit competition entries anymore.'
 required: true
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

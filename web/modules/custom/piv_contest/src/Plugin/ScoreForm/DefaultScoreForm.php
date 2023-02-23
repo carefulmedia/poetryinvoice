@@ -19,7 +19,10 @@ class DefaultScoreForm extends ScoreFormPluginBase {
   /**
    * {@inheritdoc}
    */
-  public function form(ScoreTemplateInterface $score_template) {
+  public function form(ScoreTemplateInterface $score_template, $language = NULL) {
+    if ($language && $score_template->hasTranslation($language)) {
+      $score_template = $score_template->getTranslation($language);
+    }
     $form = [
       '#theme' => 'recitation_score_form_default',
     ];
@@ -29,6 +32,9 @@ class DefaultScoreForm extends ScoreFormPluginBase {
       return ['#markup' => $label];
     }, $labels);
     foreach ($score_template->field_criteria->referencedEntities() as $delta => $criteria) {
+      if ($language && $criteria->hasTranslation($language)) {
+        $criteria = $criteria->getTranslation($language);
+      }
       $values = array_column($criteria->field_score_options->getValue(), 'value');
       $options = [];
       foreach ($values as $option => $value) {

@@ -1,0 +1,18 @@
+uuid: 542c1744-5425-4614-ab5a-02d710045994
+langcode: en
+status: true
+dependencies:
+  config:
+    - piv_contest_competition.competition_type.default
+id: competition.default.changed
+field_name: changed
+entity_type: competition
+bundle: default
+label: Changed
+description: 'The time that the competition was last edited.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

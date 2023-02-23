@@ -37,3 +37,21 @@ piv_base.poet_survey_view:
     _controller: '\Drupal\piv_base\Controller\SurveyController::poetView'
   requirements:
     _custom_access: '\Drupal\piv_base\Controller\SurveyController::poetViewAccess'
+
+piv_base.google_search_en:
+  path: '/advanced-search'
+  defaults:
+    _title: 'Search'
+    _controller: '\Drupal\piv_base\Controller\GoogleSearchController::build'
+    route_language: 'en'
+  requirements:
+    _permission: 'access content'
+
+piv_base.google_search_fr:
+  path: '/recherche-avancee'
+  defaults:
+    _title: 'Search'
+    _controller: '\Drupal\piv_base\Controller\GoogleSearchController::build'
+    route_language: 'fr'
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,78 @@
+.views-field-nothing { page-break-after: always; } /* page-break-after works, as well */
+
+
+
+
+  .block-field-blocknodepoembody p, .field--name-field-2-column-poem p {
+    font-size: 20px;
+}
+p, .serif-large {
+    font-family: 'Lora', serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 36px;
+}
+.node--type-poem .block-field-blocknodepoembody p, .block-views-blockcontent-type-index-pages-block-15 .block-field-blocknodepoembody p, .block-views-blockcontent-type-index-pages-block-3 .block-field-blocknodepoembody p, .node--type-poem .index-views.poems p, .block-views-blockcontent-type-index-pages-block-15 .index-views.poems p, .block-views-blockcontent-type-index-pages-block-3 .index-views.poems p, .node--type-poem .field--name-field-2-column-poem p, .block-views-blockcontent-type-index-pages-block-15 .field--name-field-2-column-poem p, .block-views-blockcontent-type-index-pages-block-3 .field--name-field-2-column-poem p {
+    line-height: 30px;
+    padding-left: 1em;
+    text-indent: -1em;
+    margin: 0 !important;
+}
+
+.node--type-poem .block-field-blocknodepoembody p.rteindent1
+{margin-left: 23px !important;}
+.node--type-poem .block-field-blocknodepoembody p.rteindent2
+{margin-left: 46px !important;}
+.node--type-poem .block-field-blocknodepoembody p.rteindent3
+{margin-left: 69px !important;}
+.node--type-poem .block-field-blocknodepoembody p.rteindent4
+{margin-left: 53px !important;}
+.node--type-poem .block-field-blocknodepoembody p.rteindent5
+{margin-left: 163px !important;}
+
+.node--type-poem .block-field-blocknodepoembody p.interval {
+  margin-bottom: 30px !important
+}
+
+h3.name {
+    display: inline;
+    margin-left: 1rem;
+    vertical-align: middle;
+    margin-bottom: 2rem;
+}
+
+h3, .navbar-nav .nav-link, .block-views-exposed-filter-blocksearch-page h2, .username {
+    font-family: 'Roboto', sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 21px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+ text-decoration: none;
+}
+
+h3.name {
+    display: inline;
+    margin-left: 1rem;
+    vertical-align: middle;
+}
+
+h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 45px;
+    font-weight: 700;
+    line-height: 47px;
+    text-align: left;
+    font-style: normal;
+}
+
+body, h1, h2, h3, h4, h5, h6, h2 a, h3 a {
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    word-break: break-word;
+}
+.views-field-uid {
+    margin-bottom: 2em;
+}

@@ -7,9 +7,8 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Element;
-use Drupal\piv_contest_competition\Form\CompetitionForm;
-use Drupal\user\Entity\User;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
 
 /**
  * Implements hook_theme().
@@ -27,27 +26,28 @@ function piv_contest_competition_entry_theme() {
  */
 function piv_contest_competition_entry_competition_entry_presave(EntityInterface $entity) {
   $competition_enrollment_service = \Drupal::service('piv_contest.competition_enrollment');
-  $user = $entity->uid->entity;
   $competition = $entity->field_competition->entity;
-  $school = $user->field_school->entity;
+  $school = $entity->field_school->entity;
 
-  $entity->field_complete = FALSE;
   if ($competition_enrollment_service->isCompetitionEntryCompleted($entity)) {
+    \Drupal::messenger()->addStatus(t('Congratulations, you have completed your “@stream_name” entry is now complete!', [
+      '@stream_name' => $entity->field_stream->entity->field_label->value,
+    ]));
     $entity->field_complete = TRUE;
+  }
+  else {
+    $entity->field_complete = FALSE;
   }
 
   $stream = $entity->getStream();
-  if ($stream) {
-    // Set default title if empty.
-    $title = $entity->getTitle();
-    if (!$title && $school) {
-      $entity->setTitle(
-        sprintf('%s - %s - %s',
-        $school->label(),
-        $competition->getTitle(),
-        $stream->field_label->value,
-      ));
-    }
+  // If there is no stream or no school do not update the title.
+  if ($stream && $school) {
+    $entity->setTitle(
+      sprintf('%s - %s - %s',
+      $school->label(),
+      $competition->getTitle(),
+      $stream->field_label->value,
+    ));
   }
 }
 
@@ -109,5 +109,14 @@ function piv_contest_competition_entry_form_competition_default_edit_form_alter(
         $form['field_competition_streams']['widget'][$key]['subform'][$field_name]['#disabled'] = TRUE;
       }
     }
+  }
+}
+
+/**
+ * Implements hook_entity_bundle_field_info_alter().
+ */
+function piv_contest_competition_entry_entity_bundle_field_info_alter(&$fields, EntityTypeInterface $entity_type, $bundle) {
+  if ($entity_type->id() == 'competition_entry' && !empty($fields['field_school'])) {
+    $fields['field_school']->addConstraint('PivContestCompetitionEntrySchool');
   }
 }

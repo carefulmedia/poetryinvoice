@@ -9,6 +9,8 @@ proxy:
   appserver:
     - piv9.lndo.site
     - lesvoixdelapoesie.lndo.site
+  solr:
+    - solr.piv9.lndo.site:8983
 services:
   pma:
     type: phpmyadmin
@@ -33,6 +35,11 @@ services:
       - appserver
   phpmyadmin:
     type: phpmyadmin
+  solr:
+    type: solr:8.11
+    portforward: true
+    config:
+      dir: config/solr-config-set
 
 tooling:
   drush:

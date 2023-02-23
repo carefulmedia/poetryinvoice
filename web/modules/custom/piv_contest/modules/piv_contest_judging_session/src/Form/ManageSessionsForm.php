@@ -380,7 +380,7 @@ class ManageSessionsForm extends FormBase {
       }
 
       $entries[$entity->id()][0] = $entity->label() ?: "";
-      $entries[$entity->id()][3] = $entity->field_student_name->value ?: "";
+      $entries[$entity->id()][3] = piv_contest_get_student_name($entity);
 
       if (!$entity->field_school) {
         continue;
@@ -407,9 +407,9 @@ class ManageSessionsForm extends FormBase {
 
     $this->messenger()->addMessage($this->t('You changes have been saved'));
 
-    $session_id = $form_state->getValue('session');
-    $items_to_remove = $form_state->getValue('items_to_remove');
-    $items_to_add = $form_state->getValue('items_to_add');
+    $session_id = $form_state->getValue('session', NULL);
+    $items_to_remove = $form_state->getValue('items_to_remove', []);
+    $items_to_add = $form_state->getValue('items_to_add', []);
 
     $session = $this->judgingSessionsStorage->load($session_id);
 

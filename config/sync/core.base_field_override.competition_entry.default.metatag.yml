@@ -1,0 +1,18 @@
+uuid: b267562e-ff32-4952-8ec8-a7d0bfe42b39
+langcode: en
+status: true
+dependencies:
+  config:
+    - piv_contest_competition_entry.competition_entry_type.default
+id: competition_entry.default.metatag
+field_name: metatag
+entity_type: competition_entry
+bundle: default
+label: 'Metatags (Hidden field for JSON support)'
+description: 'The meta tags for the entity.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: map

@@ -4,16 +4,16 @@ div.piv-back-link {
 }
 
 div.piv-back-link a {
-  margin-left: 26px;
+  margin-left: 10px;
+  position: relative;
 }
 .piv-back-link a::before {
   content: "";
   display: block;
-  position: absolute;
-  top: 50%;
+  margin-top: 4px;
+  float: left;
   width: 17px;
   height: 17px;
-  transform: translateY(-50%);
   background-color: var(--colorGinIcons);
   -webkit-mask-image: url("/themes/contrib/gin/dist/media/sprite.svg#backtosite-view");
   mask-image: url("/themes/contrib/gin/dist/media/sprite.svg#backtosite-view");

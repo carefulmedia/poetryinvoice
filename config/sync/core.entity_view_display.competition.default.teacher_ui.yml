@@ -41,31 +41,12 @@ content:
     third_party_settings: {  }
     weight: 0
     region: content
-  field_judging_deadline:
-    type: datetime_default
-    label: above
-    settings:
-      timezone_override: ''
-      format_type: medium
-    third_party_settings: {  }
-    weight: 2
-    region: content
   field_location:
     type: address_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 5
-    region: content
-  field_online_competition:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 4
+    weight: 3
     region: content
   field_submission_deadline:
     type: datetime_default
@@ -76,16 +57,6 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  field_team_competition:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 6
-    region: content
   field_winners_announced:
     type: datetime_default
     label: above
@@ -93,7 +64,7 @@ content:
       timezone_override: ''
       format_type: medium
     third_party_settings: {  }
-    weight: 3
+    weight: 2
     region: content
 hidden:
   created: true
@@ -110,9 +81,12 @@ hidden:
   field_enable_popular_voting: true
   field_invited_schools: true
   field_judges: true
+  field_judging_deadline: true
+  field_online_competition: true
   field_open_date: true
   field_popular_vote_level: true
   field_score_template: true
+  field_team_competition: true
   langcode: true
   search_api_excerpt: true
   status: true
