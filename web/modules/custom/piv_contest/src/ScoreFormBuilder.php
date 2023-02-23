@@ -7,6 +7,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Session\AccountProxyInterface;
 use Drupal\piv_contest_recitation\RecitationInterface;
 use Drupal\piv_contest_judging_session\JudgingSessionInterface;
+use Drupal\Core\Language\LanguageManagerInterface;
 
 /**
  * The service to build score forms.
@@ -35,12 +36,20 @@ class ScoreFormBuilder {
   protected $currentUser;
 
   /**
+   * Current language code.
+   *
+   * @var string
+   */
+  protected $currentLanguage = NULL;
+
+  /**
    * Constructs a ScoreFormBuilder object.
    */
-  public function __construct(ScoreFormPluginManager $plugin_manager_score_form, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $current_user) {
+  public function __construct(ScoreFormPluginManager $plugin_manager_score_form, EntityTypeManagerInterface $entity_type_manager, AccountProxyInterface $current_user, LanguageManagerInterface $language_manager) {
     $this->pluginManagerScoreForm = $plugin_manager_score_form;
     $this->entityTypeManager = $entity_type_manager;
     $this->currentUser = $current_user;
+    $this->currentLanguage = $language_manager->getCurrentLanguage()->getId();
   }
 
   /**
@@ -61,7 +70,7 @@ class ScoreFormBuilder {
    */
   public function getForm(ScoreTemplateInterface $score_template) {
     $instance = $this->getInstance($score_template);
-    return $instance->form($score_template);
+    return $instance->form($score_template, $this->currentLanguage);
   }
 
   /**

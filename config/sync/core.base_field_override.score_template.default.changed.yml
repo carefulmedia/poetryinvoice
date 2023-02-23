@@ -1,0 +1,18 @@
+uuid: 94dcbd8d-6300-43a5-b9e5-2d185794d6b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - piv_contest_score_template.score_template_type.default
+id: score_template.default.changed
+field_name: changed
+entity_type: score_template
+bundle: default
+label: Changed
+description: 'The time that the score template was last edited.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: changed

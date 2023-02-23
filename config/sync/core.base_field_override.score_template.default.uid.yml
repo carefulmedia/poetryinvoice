@@ -1,0 +1,20 @@
+uuid: 18501f55-a16d-4b8d-9d14-2d3d94f416ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - piv_contest_score_template.score_template_type.default
+id: score_template.default.uid
+field_name: uid
+entity_type: score_template
+bundle: default
+label: Author
+description: 'The user ID of the score template author.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: default
+  handler_settings: {  }
+field_type: entity_reference
