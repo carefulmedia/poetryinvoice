@@ -1,4 +1,4 @@
-<div{{ attributes }}>
+<div{{ attributes.addClass('node--type-poem') }}>
   {% if content %}
     <header>
       <div class="poem-read__back">
@@ -10,8 +10,21 @@
       <h2 class="poem-read__title">
         {{ content.title }}
       </h2>
+      {% if content.author is not null %}
+        <div class="poem-read__author block-views">
+          {{ content.author }}
+        </div>
+      {% endif %}
     </header>
-    <div class="poem-read__container">
+    
+    {{ content.node }}
+    
+    <div class="poem-read__container block-field-blocknodepoembody">
+      {% if content.field_epigraph is not null %}
+        <div class="recitation-read__epigraph block-layout-builder">
+          {{ content.field_epigraph }}
+        </div>
+      {% endif %}
       <div class="recitation-read__body">
         {{ content.description }}
       </div>
