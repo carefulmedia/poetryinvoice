@@ -1,0 +1,10 @@
+uuid: 3a51631e-d377-4489-b65a-0bda7aaf2a8a
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.stream_label
+label: 'Stream label'
+targetEntityType: paragraph
+cache: true
