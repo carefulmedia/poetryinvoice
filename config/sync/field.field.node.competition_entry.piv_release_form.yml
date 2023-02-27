@@ -12,7 +12,7 @@ field_name: piv_release_form
 entity_type: node
 bundle: competition_entry
 label: 'Release Form'
-description: ''
+description: '<a href="https://piv-prod.s3.ca-central-1.amazonaws.com/downloads/permission-slips.pdf">Blank permission form</a>'
 required: true
 translatable: true
 default_value: {  }

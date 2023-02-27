@@ -1,0 +1,44 @@
+uuid: 99fedf5f-dd83-477c-9813-4b8242a2399f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.stream_label
+    - field.field.paragraph.competition_stream.field_competition_stream_type
+    - field.field.paragraph.competition_stream.field_description
+    - field.field.paragraph.competition_stream.field_entries_required_school
+    - field.field.paragraph.competition_stream.field_label
+    - field.field.paragraph.competition_stream.field_max_entries_school
+    - field.field.paragraph.competition_stream.field_min_recitations
+    - field.field.paragraph.competition_stream.field_stream_languages
+    - paragraphs.paragraphs_type.competition_stream
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: paragraph.competition_stream.stream_label
+targetEntityType: paragraph
+bundle: competition_stream
+mode: stream_label
+content:
+  field_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_competition_stream_type: true
+  field_description: true
+  field_entries_required_school: true
+  field_max_entries_school: true
+  field_min_recitations: true
+  field_stream_languages: true
+  search_api_excerpt: true
