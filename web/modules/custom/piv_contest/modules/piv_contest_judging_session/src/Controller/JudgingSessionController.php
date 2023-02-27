@@ -257,7 +257,34 @@ class JudgingSessionController extends ControllerBase {
       ]))->toString(),
     ];
     $build['title'] = ['#markup' => $poem->title->value];
-    $build['description'] = ['#markup' => $poem->body->value];
+    $build['author'] = [
+      '#type' => 'view',
+      '#name' => 'user_listing_index_pages',
+      '#display_id' => 'block_4',
+      '#arguments' => [$poem->id()],
+      '#embed' => TRUE,
+    ];
+
+    if ($poem->body->value) {
+      $build['description'] = [
+        '#type' => 'processed_text',
+        '#text' => $poem->body->value,
+        '#format' => $poem->body->format,
+      ];
+    }
+    else {
+      $build['description'] = NULL;
+    }
+    if ($poem->field_epigraph->value) {
+      $build['field_epigraph'] = [
+        '#type' => 'processed_text',
+        '#text' => $poem->field_epigraph->value,
+        '#format' => $poem->field_epigraph->format,
+      ];
+    }
+    else {
+      $build['field_epigraph'] = NULL;
+    }
     $build['poems_read'] = [
       '#markup' => $this->t('Poems read: @read/@total', [
         '@read' => $this->judgeSessionService->numberOfPoemsReadByJudge($judging_session, $user),
