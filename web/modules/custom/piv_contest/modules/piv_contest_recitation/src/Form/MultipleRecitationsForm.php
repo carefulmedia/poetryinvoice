@@ -164,6 +164,13 @@ class MultipleRecitationsForm extends FormBase {
       'grade 12/CEGEP I' => 'Grades 9-12 / Sec 3-5 / CEGEP 1',
     ];
     $allowed_grades = array_column($competition->field_allowed_grades->getValue(), 'value');
+
+    // See PIV-479: https://monarq.atlassian.net/browse/PIV-479.
+    $allowed_grades = [
+      'grade 8',
+      'grade 9',
+    ];
+
     $poem_grades = [];
     foreach ($allowed_grades as $allowed_grade) {
       $poem_grades[] = $grades_map[$allowed_grade] ?? NULL;
