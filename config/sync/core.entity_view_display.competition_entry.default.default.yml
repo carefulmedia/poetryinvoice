@@ -15,6 +15,7 @@ dependencies:
     - field.field.competition_entry.default.field_student_last_name
     - field.field.competition_entry.default.field_student_name
     - field.field.competition_entry.default.field_student_stage_name
+    - field.field.competition_entry.default.field_validated
     - piv_contest_competition_entry.competition_entry_type.default
   module:
     - entity_reference_revisions
@@ -133,6 +134,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 31
+    region: content
+  field_validated:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 34
     region: content
   status:
     type: boolean

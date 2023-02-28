@@ -1,0 +1,21 @@
+uuid: afaf3a81-fe0a-42c8-8c83-46993de63323
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition_entry.field_validated
+    - piv_contest_competition_entry.competition_entry_type.default
+  module:
+    - options
+id: competition_entry.default.field_validated
+field_name: field_validated
+entity_type: competition_entry
+bundle: default
+label: Validated
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_float

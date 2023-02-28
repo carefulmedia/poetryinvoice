@@ -16,6 +16,7 @@ dependencies:
     - field.field.competition_entry.default.field_student_last_name
     - field.field.competition_entry.default.field_student_name
     - field.field.competition_entry.default.field_student_stage_name
+    - field.field.competition_entry.default.field_validated
     - piv_contest_competition_entry.competition_entry_type.default
   module:
     - field_layout
@@ -44,6 +45,7 @@ hidden:
   field_student_last_name: true
   field_student_name: true
   field_student_stage_name: true
+  field_validated: true
   langcode: true
   status: true
   title: true

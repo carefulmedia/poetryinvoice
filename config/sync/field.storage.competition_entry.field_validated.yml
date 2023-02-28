@@ -1,0 +1,31 @@
+uuid: 8d44f288-7ddc-4fc2-ba65-18589ed4859d
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - options
+    - piv_contest_competition_entry
+third_party_settings:
+  field_permissions:
+    permission_type: custom
+id: competition_entry.field_validated
+field_name: field_validated
+entity_type: competition_entry
+type: list_float
+settings:
+  allowed_values:
+    -
+      value: !!float 0
+      label: Failed
+    -
+      value: !!float 1
+      label: Validated
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
