@@ -28,7 +28,7 @@ if ($platformsh->hasRelationship('database')) {
 
 if (isset($platformsh->branch)) {
   // Production type environment.
-  if ($platformsh->branch == 'master' || $platformsh->onDedicated()) {
+  if ($platformsh->branch == 'master') {
     $config['system.logging']['error_level'] = 'hide';
     $config['reroute_email.settings']['enable'] = FALSE;
     // Platform production uses domain for language negotiation, default domains
@@ -171,7 +171,11 @@ foreach ($platformsh->variables() as $name => $value) {
   }
 }
 
-if ($platformsh->isValidPlatform()) {
+if (
+    $platformsh->isValidPlatform()
+    && isset($platformsh->branch)
+    && $platformsh->branch == 'master'
+  ) {
   // Amazon S3.
   $s3_access = $platformsh->variable('S3FS_ACCESS_KEY', FALSE);
   $s3_secret = $platformsh->variable('S3FS_SECRET_KEY', FALSE);
