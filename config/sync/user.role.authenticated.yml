@@ -24,6 +24,7 @@ permissions:
   - 'access search combine'
   - 'access send to friend'
   - 'access site-wide contact form'
+  - 'access user profiles'
   - 'administer fusion labels'
   - 'cancel account'
   - 'create field_attachments'
