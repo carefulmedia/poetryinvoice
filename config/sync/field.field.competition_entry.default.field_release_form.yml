@@ -12,7 +12,7 @@ field_name: field_release_form
 entity_type: competition_entry
 bundle: default
 label: 'Release form'
-description: ''
+description: 'To upload your signed <a href="https://piv-prod.s3.ca-central-1.amazonaws.com/downloads/permission-slips.pdf">permission slip</a>, you can scan it or simply take a picture of it and click ''Choose File'' to select the file from your computer or phone.'
 required: false
 translatable: false
 default_value: {  }
@@ -21,7 +21,7 @@ settings:
   handler: 'default:file'
   handler_settings: {  }
   file_directory: '[date:custom:Y]-[date:custom:m]'
-  file_extensions: pdf
+  file_extensions: 'pdf jpeg jpg gif png'
   max_filesize: ''
   description_field: false
 field_type: file
