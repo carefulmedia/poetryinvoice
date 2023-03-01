@@ -84,6 +84,14 @@ class AccuracyJudgingSessionController extends ControllerBase {
     $is_team_competition = (BOOL) $competition->field_team_competition->value;
     $rows = [];
     $destination = $this->redirectDestination->getAsArray();
+
+    $build['back_link'] = [
+      '#theme' => 'piv_back_link',
+      '#link' => Link::createFromRoute($this->t('Back to Judge for accuracy'), 'piv_contest_judging_session.judge_for_accuracy', [
+        'user' => $user->id(),
+      ]),
+    ];
+
     foreach ($judging_session->field_competition_entries->referencedEntities() as $competition_entry) {
       $regular_score = 0;
       $accuracy_score = 0;
@@ -95,10 +103,10 @@ class AccuracyJudgingSessionController extends ControllerBase {
       }
 
       $school = $competition_entry->field_school->entity;
-      $link = $this->judgeSessionService->entryWasScoredForAccuracy($competition_entry)
-        ? $this->t('Accuracy judging completed')
-        : Link::createFromRoute($this->t('Judge now'), 'piv_contest_judging_session.judge_for_accuracy.judge_competition_entry', [
-          'user' => $user->id(),
+      $completed = $this->judgeSessionService->entryWasScoredForAccuracy($competition_entry);
+      $label = $completed ? $this->t('Edit scores (Accuracy judging complete)') : $this->t('Judge now');
+      $link = Link::createFromRoute($label, 'piv_contest_judging_session.judge_for_accuracy.judge_competition_entry', [
+        'user' => $user->id(),
           'judging_session' => $judging_session->id(),
           'competition_entry' => $competition_entry->id(),
         ], [
@@ -158,7 +166,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
       ])->toRenderable();
 
       if ($this->judgeSessionService->isSessionEvaluatedByAccuracyJudge($judging_session, $user)) {
-        $link = $this->t('Accuracy judging complete');
+        $link['#title'] = $this->t('Edit scores (Accuracy judging complete)');
       }
 
       $rows[] = [
@@ -301,8 +309,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
   public function accessJudgeCompetitionEntry(User $user, JudgingSession $judging_session, CompetitionEntry $competition_entry) : AccessResult {
     $tags = array_merge($competition_entry->getCacheTags(), $judging_session->getCacheTags());
     $can_access_recitation_list = $this->accessRecitationsList($user, $judging_session);
-    $entry_was_scored_for_accuracy = $this->judgeSessionService->entryWasScoredForAccuracy($competition_entry);
-    return AccessResult::allowedIf($can_access_recitation_list && !$entry_was_scored_for_accuracy)
+    return AccessResult::allowedIf($can_access_recitation_list)
       ->addCacheTags($tags);
   }
 
