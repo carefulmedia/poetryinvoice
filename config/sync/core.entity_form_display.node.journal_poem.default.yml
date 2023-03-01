@@ -342,6 +342,13 @@ content:
               slide:
                 speed: '400'
             selector: ''
+  langcode:
+    type: language_select
+    weight: 0
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
   path:
     type: path
     weight: 33
@@ -427,4 +434,3 @@ content:
     third_party_settings: {  }
 hidden:
   comment_node_journal_poem: true
-  langcode: true
