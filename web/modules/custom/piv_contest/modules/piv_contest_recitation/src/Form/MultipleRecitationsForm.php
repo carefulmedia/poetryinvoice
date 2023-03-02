@@ -88,23 +88,24 @@ class MultipleRecitationsForm extends FormBase {
     $is_team_competition = !empty($competition->field_team_competition->value);
     $is_online = !empty($competition->field_online_competition->value);
 
-    $recitations = [];
+    $existing_recitations_for_language = [];
     $stream = $competition_entry->field_stream->entity;
     foreach ($stream->field_stream_languages->referencedEntities() as $language) {
-      $recitations[$language->id()] = [];
+      $existing_recitations_for_language[$language->id()] = 0;
     }
     $recitations_required_per_language = (int) $stream->field_min_recitations->value;
-    foreach ($competition_entry->field_recitations->referencedEntities() as $recitation) {
+    foreach ($competition_entry->field_recitations->referencedEntities() as $order => $recitation) {
       $langcode = $recitation->language()->getId();
       // Ignore recitations that are not for the stream languages for some
       // reason.
-      if (isset($recitations[$langcode])) {
-        $recitations[$langcode][] = $recitation;
+      if (isset($existing_recitations_for_language[$langcode])) {
+        $existing_recitations_for_language[$langcode]++;
+        $recitations[] = $recitation;
       }
     }
     $need_save = FALSE;
-    foreach ($recitations as $langcode => $recitations_for_language) {
-      while (count($recitations[$langcode]) < $recitations_required_per_language) {
+    foreach ($existing_recitations_for_language as $langcode => &$count) {
+      while ($count < $recitations_required_per_language) {
         $new_recitation = $this->entityTypeManager
           ->getStorage('recitation')
           ->create([
@@ -112,14 +113,14 @@ class MultipleRecitationsForm extends FormBase {
             'langcode' => $langcode,
             'field_stream_language' => $langcode,
           ]);
+        $count++;
         if ($new_recitation->save()) {
           $need_save = TRUE;
-          $recitations[$langcode][] = $new_recitation;
+          $recitations[] = $new_recitation;
         }
       }
     }
     // Flatten the array.
-    $recitations = array_merge(...array_values($recitations));
     if ($need_save) {
       $competition_entry->field_recitations = $recitations;
       $competition_entry->save();

@@ -258,6 +258,7 @@ function piv_contest_form_competition_entry_form_alter(&$form, FormStateInterfac
       '#type' => 'textfield',
       '#name' => 'recitation_weight',
       '#attributes' => ['class' => ['hidden']],
+      '#maxlength' => 9999999,
     ];
     array_unshift($form['actions']['submit']['#submit'], 'piv_contest_competition_entry_custom_submit');
   }
