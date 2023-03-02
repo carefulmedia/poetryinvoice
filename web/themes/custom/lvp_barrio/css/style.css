@@ -4487,6 +4487,9 @@ poem-read__later a:active {
   margin-left: 10px;
   padding: 0;
 }
+.poem-read__next {
+  margin-top: 4rem;
+}
 .md-bg,
 .dk-bg {
   height: 100%;
