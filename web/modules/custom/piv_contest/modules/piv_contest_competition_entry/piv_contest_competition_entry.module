@@ -58,7 +58,9 @@ function piv_contest_competition_entry_form_competition_entry_form_alter(&$form,
   $competition_entry = $form_state->getFormObject()->getEntity();
   $lock_service = \Drupal::service('piv_contest_competition_entry.competition_lock_service');
   if ($lock_service->isLocked($competition_entry)) {
-    $form['#disabled'] = TRUE;
+    if (!piv_contest_user_can_bypass_permissions()) {
+      $form['#disabled'] = TRUE;
+    }
     \Drupal::messenger()
       ->addWarning('This competition entry is locked. Only edit it if you know what you are doing.');
   }
@@ -119,4 +121,13 @@ function piv_contest_competition_entry_entity_bundle_field_info_alter(&$fields, 
   if ($entity_type->id() == 'competition_entry' && !empty($fields['field_school'])) {
     $fields['field_school']->addConstraint('PivContestCompetitionEntrySchool');
   }
+}
+
+/**
+ * Helper function to check if user have permission to bypass permissions.
+ */
+function piv_contest_user_can_bypass_permissions() {
+  // Will always return true for user 1.
+  $current_user = \Drupal::service('current_user');
+  return $current_user->hasPermission('administer any contest entity');
 }

@@ -1,0 +1,4 @@
+administer any contest entity:
+  title: 'Administer any contest related entity'
+  description: 'Let users edit competitions and competition entries, even after they are locked.'
+  restrict access: true

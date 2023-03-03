@@ -181,8 +181,8 @@ class CompetitionEnrollment {
             '#value' => $criteria,
             '#attributes' => [
               'class' => in_array($criteria, $missing_criteria)
-                ? ['criteria-is-missing']
-                : ['criteria-is-met'],
+              ? ['criteria-is-missing']
+              : ['criteria-is-met'],
             ],
           ];
         }
@@ -192,7 +192,7 @@ class CompetitionEnrollment {
         }
 
         $editTitle = $this->t('edit');
-        if ($this->lockService->isLocked($entry)) {
+        if ($this->lockService->isLocked($entry) && !piv_contest_user_can_bypass_permissions()) {
           $editTitle = $this->t('view');
         }
         if ($editUrl->access()) {

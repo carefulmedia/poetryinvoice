@@ -114,8 +114,11 @@ class CompetitionsListController extends ControllerBase {
     $competition_view_builder = $this->entityTypeManager
       ->getViewBuilder('competition');
     $query = $competition_storage->getQuery();
-    $query->condition('field_submission_deadline', $now_formatted, '>')
-      ->condition('field_active', TRUE);
+    if (!piv_contest_user_can_bypass_permissions()) {
+      // Filter out past submissions if logged in user can't see it.
+      $query->condition('field_submission_deadline', $now_formatted, '>');
+    }
+    $query->condition('field_active', TRUE);
     $invited_only_condition = $query->orConditionGroup();
     $invited_only_condition->condition('field_by_invitation_only', FALSE);
     $invited_only_condition->condition('field_invited_schools', $school);
@@ -153,9 +156,23 @@ class CompetitionsListController extends ControllerBase {
       $build['competition']['with_entries'] = [
         '#type' => 'fieldset',
         '#title' => $this->t('Current Contests'),
+        '#access' => FALSE,
       ];
+      $build['competition']['closed_registration'] = [
+        '#type' => 'fieldset',
+        '#title' => $this->t('Closed registration'),
+        'intro' => [
+          '#markup' => $this->t('<small>Competitions where the submission deadline expired already, intended for admins to be able to edit it.</small>'),
+        ],
+        '#access' => FALSE,
+      ];
+
       foreach ($competitions_with_entries as $id => $competition) {
-        $build['competition']['with_entries'][] = [
+        $section = $competition->field_submission_deadline->date > $now
+          ? 'with_entries'
+          : 'closed_registration';
+        $build['competition'][$section]['#access'] = TRUE;
+        $build['competition'][$section][] = [
           '#type' => 'details',
           '#title' => $competition->label(),
           '#attributes' => [
@@ -175,6 +192,9 @@ class CompetitionsListController extends ControllerBase {
           ],
         ];
       }
+      if (!piv_contest_user_can_bypass_permissions()) {
+        $build['competition']['closed_registration']['#access'] = FALSE;
+      }
     }
 
     $build['competition']['without_entries'] = [
@@ -188,16 +208,33 @@ class CompetitionsListController extends ControllerBase {
       '#access' => FALSE,
     ];
 
+    $alert_expired_deadline = [
+      '#theme' => 'status_messages',
+      '#message_list' => [
+        'warning' => [
+          $this->t('Competition deadline already expired. Only enroll if you know what you are doing.'),
+        ],
+      ],
+      '#status_headings' => [
+        'status' => $this->t('Status message'),
+        'error' => $this->t('Error message'),
+        'warning' => $this->t('Warning message'),
+      ],
+    ];
+
     foreach ($competitions_without_entries as $id => $competition) {
       $in_future = $competition->field_open_date->date && $competition->field_open_date->date > $now;
+      $is_closed = $competition->field_submission_deadline->date && $competition->field_submission_deadline->date <= $now;
       $fieldset = $in_future ? 'future_competitions' : 'without_entries';
       $build['competition'][$fieldset]['#access'] = TRUE;
+      $message = $is_closed ? $alert_expired_deadline : [];
       $build['competition'][$fieldset][] = [
         '#type' => 'details',
         '#title' => $competition->label(),
         '#attributes' => [
           'class' => ['full-width piv-competition'],
         ],
+        'message' => $message,
         'competition' => $competition_view_builder->view($competition, 'teaser'),
         'link' => [
           '#type' => 'link',

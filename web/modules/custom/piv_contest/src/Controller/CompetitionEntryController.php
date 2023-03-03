@@ -156,8 +156,7 @@ class CompetitionEntryController extends ControllerBase {
    * Verify access to edit entry.
    */
   public function accessEdit(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
-    return $this->accessAdd($user, $competition)
-      ->andIf($competition_entry->access('update', $user, TRUE));
+    return AccessResult::allowedIf($competition_entry->access('update', $user, TRUE) || piv_contest_user_can_bypass_permissions());
   }
 
   /**
