@@ -216,6 +216,7 @@ class CompetitionProgressForm extends FormBase {
           $competition_entry = $this->competitionEntryStorage->load($competition_entry_id);
           $competition_entry_level = $competition_entry->field_competition_current_level->value;
           $student_name = $competition_entry->getStudentsDisplayName();
+          $school = $competition_entry->field_school->entity;
           $score = $data['score'];
           $accuracy = $data['accuracy'];
           $total_score = $score + $accuracy;
@@ -231,7 +232,8 @@ class CompetitionProgressForm extends FormBase {
           if (empty($totalled_scores_data[$competition_entry_id])) {
             $totalled_scores_data[$competition_entry_id] = [
               'student' => $student_name,
-              'province' => '',
+              'province' => $school ? $school->field_address->administrative_area ?? '' : '',
+              'school' => $school ? $school->label() : '',
               'judging_score' => 0,
               'accuracy' => $accuracy * $judges_count,
               'total_score' => 0,
@@ -320,6 +322,7 @@ class CompetitionProgressForm extends FormBase {
       $totalled_scores_header = [
         'student' => $this->t('Student'),
         'province' => $this->t('Province'),
+        'school' => $this->t('School'),
         'judging_score' => $this->t('Judging Score'),
         'accuracy' => $this->t('Accuracy'),
         'total_score' => $this->t('Total Score'),
