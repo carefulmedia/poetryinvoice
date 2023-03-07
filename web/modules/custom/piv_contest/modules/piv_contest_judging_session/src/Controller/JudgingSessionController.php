@@ -409,7 +409,15 @@ class JudgingSessionController extends ControllerBase {
     // If thats the last item in a round, redirect back to the recitation list.
     $destination = NULL;
     $message = NULL;
-    if ($recitation_data['last_of_round']) {
+
+    // Check if thats the last poem to be evaluated on this session.
+    $evaluated = $this->judgeSessionService->numberOfRecitationsEvaluatedByJudge($judging_session, $user);
+    $total = $this->judgeSessionService->totalNumberOfRecitations($judging_session, $user);
+    if ($evaluated + 1 == $total) {
+      $destination = $start_judging_url;
+      $message = $this->t('Thank you for completing this session. If you have other sessions ready to judge below, you may begin them now. We may assign you more sessions for the next judging period, and we will email you when they are ready.');
+    }
+    else if ($recitation_data['last_of_round']) {
       $destination = $start_judging_url;
       $message = $this->t('Thank you for completing this round. Please take a few moments before beginning the next round of this session.');
     }
