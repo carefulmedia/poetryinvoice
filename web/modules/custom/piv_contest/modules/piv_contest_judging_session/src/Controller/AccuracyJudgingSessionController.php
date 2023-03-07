@@ -393,14 +393,16 @@ class AccuracyJudgingSessionController extends ControllerBase {
     if (!$user_is_judge) {
       return AccessResult::forbidden()->addCacheTags($judging_session->getCacheTags());
     }
-
-    $permissions = ['access to all judge for accuracy pages'];
+    if ($this->currentUser->hasPermission('access to all judge for accuracy pages')) {
+      return AccessResult::allowed()->addCacheTags($judging_session->getCacheTags());
+    }
     if ($user->id() === $this->currentUser->id()) {
-      $permissions[] = 'access own judge for accuracy page';
+      if ($this->currentUser->hasPermission('access own judge for accuracy page')) {
+        return AccessResult::allowed()->addCacheTags($judging_session->getCacheTags());
+      }
     }
 
-    return AccessResult::allowedIfHasPermissions($this->currentUser, $permissions, 'OR')
-      ->addCacheTags($judging_session->getCacheTags());
+    return AccessResult::forbidden()->addCacheTags($judging_session->getCacheTags());
   }
 
   /**
@@ -409,8 +411,10 @@ class AccuracyJudgingSessionController extends ControllerBase {
   public function accessJudgeCompetitionEntry(User $user, JudgingSession $judging_session, CompetitionEntry $competition_entry) : AccessResult {
     $tags = array_merge($competition_entry->getCacheTags(), $judging_session->getCacheTags());
     $can_access_recitation_list = $this->accessRecitationsList($user, $judging_session);
-    return AccessResult::allowedIf($can_access_recitation_list)
-      ->addCacheTags($tags);
+    if ($can_access_recitation_list->isAllowed()) {
+      return AccessResult::allowed()->addCacheTags($tags);
+    }
+    return AccessResult::forbidden()->addCacheTags($tags);
   }
 
 }
