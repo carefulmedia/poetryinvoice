@@ -1,0 +1,10 @@
+uuid: 9da9ff0c-8bf3-45a5-a5db-2d31807df28b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.accuracy_judging_poem
+label: 'Accuracy Judging Poem'
+targetEntityType: node
+cache: true
