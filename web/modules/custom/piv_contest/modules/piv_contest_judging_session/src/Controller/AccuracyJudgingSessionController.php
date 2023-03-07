@@ -92,48 +92,148 @@ class AccuracyJudgingSessionController extends ControllerBase {
       ]),
     ];
 
+    $score_storage = $this->entityTypeManager->getStorage('score');
+    $judges_count = $judging_session->field_english_judge->count() + $judging_session->field_french_judge->count();
+
+    // Initiate a score array with 0 values.
+    $judges = array_merge(
+      array_map(fn ($id) => "$id:en", array_column($judging_session->field_english_judge->getValue(), 'target_id')),
+      array_map(fn ($id) => "$id:fr", array_column($judging_session->field_french_judge->getValue(), 'target_id')),
+    );
+    $judges = array_flip($judges);
+    foreach ($judges as $judge => $value) {
+      $judges[$judge] = 0;
+    }
+    $map = [];
     foreach ($judging_session->field_competition_entries->referencedEntities() as $competition_entry) {
+      $competition_entry_id = $competition_entry->id();
       $regular_score = 0;
       $accuracy_score = 0;
 
+      $score_per_judge = [];
       foreach ($competition_entry->field_recitations->referencedEntities() as $recitation) {
         $regular_score += $this->judgeSessionService
           ->getRecitationScore($recitation, $judging_session);
         $accuracy_score += $recitation->field_score->value ?? 0;
+
+        $scores = $score_storage->loadByProperties([
+          'judging_session' => $judging_session->id(),
+          'recitation' => $recitation->id(),
+        ]);
+        foreach ($scores as $score) {
+          $judge_id = $score->judge->target_id;
+          $stream_language = $recitation->field_stream_language->target_id;
+          $key = implode(':', [$judge_id, $stream_language]);
+          if (empty($score_per_judge[$key])) {
+            $score_per_judge[$key] = 0;
+          }
+          $values = array_column($score->field_scores->getValue(), 'value');
+          $score_per_judge[$key] += array_sum($values);
+        }
       }
+      $map[$competition_entry_id] = [
+        'accuracy' => $accuracy_score,
+        'score' => $score_per_judge + $judges,
+      ];
 
       $school = $competition_entry->field_school->entity;
       $completed = $this->judgeSessionService->entryWasScoredForAccuracy($competition_entry);
       $label = $completed ? $this->t('Edit scores (Accuracy judging complete)') : $this->t('Judge now');
       $link = Link::createFromRoute($label, 'piv_contest_judging_session.judge_for_accuracy.judge_competition_entry', [
         'user' => $user->id(),
-          'judging_session' => $judging_session->id(),
-          'competition_entry' => $competition_entry->id(),
-        ], [
-          'query' => $destination,
-        ]);
+        'judging_session' => $judging_session->id(),
+        'competition_entry' => $competition_entry->id(),
+      ], [
+        'query' => $destination,
+      ]);
 
-      $rows[] = [
-        $competition_entry->getStudentsDisplayName(),
-        $school->title->value,
-        $school->field_address->administrative_area,
-        $regular_score,
-        $accuracy_score,
-        $regular_score + $accuracy_score,
-        $link,
+      $accuracy_total = $accuracy_score * $judges_count;
+      $rows[$competition_entry_id] = [
+        'student' => $competition_entry->getStudentsDisplayName(),
+        'school' => $school->title->value,
+        'province' => $school->field_address->administrative_area,
+        'judge_score' => $regular_score,
+        'accuracy_score' => $accuracy_total,
+        'total' => $regular_score + $accuracy_total,
+        'rank' => 0, // Added later.
+        'op' => $link,
       ];
     }
 
+    $map2 = [];
+    foreach ($map as $competition_entry_id => $score) {
+      $accuracy = $score['accuracy'];
+      foreach ($score['score'] as $key => $score_value) {
+        if (!isset($map2[$key][$competition_entry_id])) {
+          $map2[$key][$competition_entry_id] = [
+            'accuracy' => $accuracy,
+            'score' => 0,
+          ];
+        }
+        $map2[$key][$competition_entry_id]['score'] += $score_value;
+      }
+    }
+
+    foreach ($map2 as $key => $judge_scores) {
+      // Reorder each judge map by total score desc.
+      uasort($judge_scores, function ($a, $b) {
+        $total_a = $a['score'] + $a['accuracy'];
+        $total_b = $b['score'] + $b['accuracy'];
+        if ($total_a == $total_b) {
+          return 0;
+        }
+        return $total_a > $total_b ? -1 : 1;
+      });
+      $map2[$key] = $judge_scores;
+
+      $i = 1;
+      $last_score = 0;
+      $last_rank = 1;
+      foreach ($judge_scores as $competition_entry_id => $data) {
+        $score = $data['score'];
+        $accuracy = $data['accuracy'];
+        $total_score = $score + $accuracy;
+        $rank = $total_score == $last_score ? $last_rank : $i;
+        $map2[$key][$competition_entry_id]['rank'] = $rank;
+        $last_score = $total_score;
+        $last_rank = $rank;
+        $i++;
+      }
+    }
+
+    // Now, sum all ranks.
+    foreach ($map2 as $key => $judge_scores) {
+      foreach ($judge_scores as $competition_entry_id => $data) {
+        if (!isset($rows[$competition_entry_id]['rank'])) {
+          $rows[$competition_entry_id]['rank'] = 0;
+        }
+        $rows[$competition_entry_id]['rank'] += $data['rank'];
+      }
+    }
+
+    // Reorder rows by rank and total_score.
+    uasort($rows, function ($a, $b) {
+      if ($a['rank'] == $b['rank']) {
+        if ($a['total'] == $b['total']) {
+          return 0;
+        }
+        // More score is better.
+        return $a['total'] > $b['total'] ? -1 : 1;
+      }
+      // Less rank is better.
+      return $a['rank'] < $b['rank'] ? -1 : 1;
+    });
     $build['table'] = [
       '#type' => 'table',
       '#header' => [
-        $is_team_competition ? $this->t('Students') : $this->t('Student'),
-        $this->t('School'),
-        $this->t('Province'),
-        $this->t('Judge score'),
-        $this->t('Accuracy score'),
-        $this->t('Total'),
-        $this->t('Judge now'),
+        'student' => $is_team_competition ? $this->t('Students') : $this->t('Student'),
+        'school' => $this->t('School'),
+        'province' => $this->t('Province'),
+        'judge_score' => $this->t('Judge score'),
+        'accuracy_score' => $this->t('Accuracy score'),
+        'total' => $this->t('Total'),
+        'rank' => $this->t('Rank'),
+        'op' => $this->t('Judge now'),
       ],
       '#rows' => $rows,
     ];
