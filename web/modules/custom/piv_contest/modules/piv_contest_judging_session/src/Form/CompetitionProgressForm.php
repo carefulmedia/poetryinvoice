@@ -122,7 +122,6 @@ class CompetitionProgressForm extends FormBase {
     $judging_session_id = $form_state->getValue('judging_session');
     if ($judging_session_id) {
       $judging_session = $this->judgingSessionsStorage->load($judging_session_id);
-      $judges_count = $judging_session->field_english_judge->count() + $judging_session->field_french_judge->count();
       $form['judging_session_title'] = [
         '#theme' => 'page_title',
         '#title' => $judging_session->label(),
@@ -151,11 +150,16 @@ class CompetitionProgressForm extends FormBase {
       $score_storage = $this->entityTypeManager->getStorage('score');
       $map = [];
       foreach ($judging_session->field_competition_entries->referencedEntities() as $competition_entry) {
-        $accuracy_total = 0;
+        $accuracy_per_language = [];
         $score_per_judge = [];
         $competition_entry_id = $competition_entry->id();
         foreach ($competition_entry->field_recitations->referencedEntities() as $recitation) {
-          $accuracy_total += $recitation->field_score->value ?? 0;
+          $language = $recitation->field_stream_language->target_id;
+          if (empty($accuracy_per_language[$language])) {
+            $accuracy_per_language[$language] = 0;
+          }
+          $accuracy_per_language[$language] += $recitation->field_score->value ?? 0;
+
           $scores = $score_storage->loadByProperties([
             'judging_session' => $judging_session->id(),
             'recitation' => $recitation->id(),
@@ -173,25 +177,24 @@ class CompetitionProgressForm extends FormBase {
           }
         }
         $map[$competition_entry_id] = [
-          'accuracy' => $accuracy_total,
+          'accuracy_per_language' => $accuracy_per_language,
           'score' => $score_per_judge + $judges,
         ];
       }
-
       $map2 = [];
       foreach ($map as $competition_entry_id => $score) {
-        $accuracy = $score['accuracy'];
+        $accuracy_per_language = $score['accuracy_per_language'];
         foreach ($score['score'] as $key => $score_value) {
+          [, $language] = explode(':', $key);
           if (!isset($map2[$key][$competition_entry_id])) {
             $map2[$key][$competition_entry_id] = [
-              'accuracy' => $accuracy,
+              'accuracy' => $accuracy_per_language[$language] ?? 0,
               'score' => 0,
             ];
           }
           $map2[$key][$competition_entry_id]['score'] += $score_value;
         }
       }
-
       // Totalles scores for the final table.
       $totalled_scores_data = [];
       // Contains all information for all judges tables.
@@ -235,7 +238,7 @@ class CompetitionProgressForm extends FormBase {
               'province' => $school ? $school->field_address->administrative_area ?? '' : '',
               'school' => $school ? $school->label() : '',
               'judging_score' => 0,
-              'accuracy' => $accuracy * $judges_count,
+              'accuracy' => 0,
               'total_score' => 0,
               'edit' => ['data' => $competition_entry->toLink('Edit', 'edit-form')],
               'rank' => 0,
@@ -245,6 +248,7 @@ class CompetitionProgressForm extends FormBase {
             ];
           }
           $totalled_scores_data[$competition_entry_id]['judging_score'] += $score;
+          $totalled_scores_data[$competition_entry_id]['accuracy'] += $accuracy;
           $totalled_scores_data[$competition_entry_id]['total_score'] = $totalled_scores_data[$competition_entry_id]['accuracy'] + $totalled_scores_data[$competition_entry_id]['judging_score'];
           $totalled_scores_data[$competition_entry_id]['rank'] += $rank;
           $last_score = $total_score;

@@ -93,8 +93,6 @@ class AccuracyJudgingSessionController extends ControllerBase {
     ];
 
     $score_storage = $this->entityTypeManager->getStorage('score');
-    $judges_count = $judging_session->field_english_judge->count() + $judging_session->field_french_judge->count();
-
     // Initiate a score array with 0 values.
     $judges = array_merge(
       array_map(fn ($id) => "$id:en", array_column($judging_session->field_english_judge->getValue(), 'target_id')),
@@ -108,13 +106,16 @@ class AccuracyJudgingSessionController extends ControllerBase {
     foreach ($judging_session->field_competition_entries->referencedEntities() as $competition_entry) {
       $competition_entry_id = $competition_entry->id();
       $regular_score = 0;
-      $accuracy_score = 0;
-
+      $accuracy_per_language = [];
       $score_per_judge = [];
       foreach ($competition_entry->field_recitations->referencedEntities() as $recitation) {
         $regular_score += $this->judgeSessionService
           ->getRecitationScore($recitation, $judging_session);
-        $accuracy_score += $recitation->field_score->value ?? 0;
+        $language = $recitation->field_stream_language->target_id;
+        if (empty($accuracy_per_language[$language])) {
+          $accuracy_per_language[$language] = 0;
+        }
+        $accuracy_per_language[$language] += $recitation->field_score->value ?? 0;
 
         $scores = $score_storage->loadByProperties([
           'judging_session' => $judging_session->id(),
@@ -132,7 +133,7 @@ class AccuracyJudgingSessionController extends ControllerBase {
         }
       }
       $map[$competition_entry_id] = [
-        'accuracy' => $accuracy_score,
+        'accuracy_per_language' => $accuracy_per_language,
         'score' => $score_per_judge + $judges,
       ];
 
@@ -146,27 +147,27 @@ class AccuracyJudgingSessionController extends ControllerBase {
       ], [
         'query' => $destination,
       ]);
-
-      $accuracy_total = $accuracy_score * $judges_count;
+      // Items set to 0 are calculated later.
       $rows[$competition_entry_id] = [
         'student' => $competition_entry->getStudentsDisplayName(),
         'school' => $school->title->value,
         'province' => $school->field_address->administrative_area,
         'judge_score' => $regular_score,
-        'accuracy_score' => $accuracy_total,
-        'total' => $regular_score + $accuracy_total,
-        'rank' => 0, // Added later.
+        'accuracy_score' => 0,
+        'total' => 0,
+        'rank' => 0,
         'op' => $link,
       ];
     }
 
     $map2 = [];
     foreach ($map as $competition_entry_id => $score) {
-      $accuracy = $score['accuracy'];
+      $accuracy_per_language = $score['accuracy_per_language'];
       foreach ($score['score'] as $key => $score_value) {
+        [, $language] = explode(':', $key);
         if (!isset($map2[$key][$competition_entry_id])) {
           $map2[$key][$competition_entry_id] = [
-            'accuracy' => $accuracy,
+            'accuracy' => $accuracy_per_language[$language] ?? 0,
             'score' => 0,
           ];
         }
@@ -201,13 +202,15 @@ class AccuracyJudgingSessionController extends ControllerBase {
       }
     }
 
-    // Now, sum all ranks.
+    // Now, sum all ranks and all accuracy and total.
     foreach ($map2 as $key => $judge_scores) {
       foreach ($judge_scores as $competition_entry_id => $data) {
         if (!isset($rows[$competition_entry_id]['rank'])) {
           $rows[$competition_entry_id]['rank'] = 0;
         }
         $rows[$competition_entry_id]['rank'] += $data['rank'];
+        $rows[$competition_entry_id]['accuracy_score'] += $data['accuracy'];
+        $rows[$competition_entry_id]['total'] = $rows[$competition_entry_id]['accuracy_score'] + $rows[$competition_entry_id]['judge_score'];
       }
     }
 
