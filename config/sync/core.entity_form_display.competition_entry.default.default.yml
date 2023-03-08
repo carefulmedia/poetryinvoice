@@ -6,6 +6,7 @@ dependencies:
     - field.field.competition_entry.default.field_competition
     - field.field.competition_entry.default.field_competition_current_level
     - field.field.competition_entry.default.field_complete
+    - field.field.competition_entry.default.field_place
     - field.field.competition_entry.default.field_recitations
     - field.field.competition_entry.default.field_release_form
     - field.field.competition_entry.default.field_school
@@ -60,6 +61,12 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_place:
+    type: options_select
+    weight: 27
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_release_form:
     type: file_generic
