@@ -4317,8 +4317,11 @@ p,
 .white {
   color: #fff;
 }
-li {
+.content li {
   font-family: 'Lora';
+}
+li {
+  font-family: Roboto;
   font-size: 17px;
   font-weight: 400;
   line-height: 30px;
