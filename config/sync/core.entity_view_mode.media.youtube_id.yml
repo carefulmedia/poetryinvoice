@@ -1,0 +1,10 @@
+uuid: ad3afb0b-c089-43df-ad0d-b39ce4bca368
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.youtube_id
+label: 'Youtube ID'
+targetEntityType: media
+cache: true

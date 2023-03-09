@@ -1,0 +1,10 @@
+uuid: 201dfd19-7897-4234-8849-eecce384e94d
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_recitation
+id: recitation.video_only
+label: 'Video only'
+targetEntityType: recitation
+cache: true

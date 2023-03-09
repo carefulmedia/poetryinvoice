@@ -73,9 +73,12 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
     $current_language = $this->languageManager->getCurrentLanguage()->getId();
     // Get the first recitation for each competition entry.
     foreach ($competition_entries as $competition_entry) {
-      $recitation = $competition_entry->field_recitations->entity;
+      if (!isset($competition_entry->field_recitations[1])) {
+        break;
+      }
+      $recitation = $competition_entry->field_recitations[1]->entity;
       if (!$recitation || $recitation->language()->getId() != $current_language) {
-        continue;
+        break;
       }
       $school_address = '';
       if ($school = $competition_entry->field_school->entity) {

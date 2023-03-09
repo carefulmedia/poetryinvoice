@@ -1,0 +1,54 @@
+uuid: 1874625a-1524-44bf-9a50-b48d1ca2d070
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.recitation.facewall
+    - field.field.recitation.default.field_poem
+    - field.field.recitation.default.field_recitation_video
+    - field.field.recitation.default.field_release_form
+    - field.field.recitation.default.field_score
+    - field.field.recitation.default.field_stream_language
+    - field.field.recitation.default.field_student_email
+    - field.field.recitation.default.field_student_grade
+    - field.field.recitation.default.field_student_last_name
+    - field.field.recitation.default.field_student_name
+    - field.field.recitation.default.field_student_stage_name
+    - piv_contest_recitation.recitation_type.default
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: recitation.default.facewall
+targetEntityType: recitation
+bundle: default
+mode: facewall
+content:
+  field_recitation_video:
+    type: entity_reference_entity_id
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_poem: true
+  field_release_form: true
+  field_score: true
+  field_stream_language: true
+  field_student_email: true
+  field_student_grade: true
+  field_student_last_name: true
+  field_student_name: true
+  field_student_stage_name: true
+  langcode: true
+  search_api_excerpt: true
+  status: true
+  title: true
+  uid: true

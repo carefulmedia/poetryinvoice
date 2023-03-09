@@ -4318,7 +4318,7 @@ p,
   color: #fff;
 }
 li {
-  font-family: Roboto;
+  font-family: 'Lora';
   font-size: 17px;
   font-weight: 400;
   line-height: 30px;
@@ -5019,6 +5019,20 @@ nav.tabs ul .nav-item a:hover {
     page-break-after: always;
   }
   /* page-break-after works, as well */
+}
+.path-peoples-choice .field--name-field-recitation-video {
+  margin-bottom: 2rem;
+}
+.path-peoples-choice a.use-ajax {
+  margin-bottom: 5rem;
+  display: block;
+}
+.path-peoples-choice div {
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  text-align: left;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
