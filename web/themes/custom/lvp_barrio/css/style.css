@@ -5021,7 +5021,7 @@ nav.tabs ul .nav-item a:hover {
   /* page-break-after works, as well */
 }
 .path-peoples-choice .field--name-field-recitation-video {
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 .path-peoples-choice a.use-ajax {
   margin-bottom: 5rem;
