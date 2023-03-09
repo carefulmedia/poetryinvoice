@@ -20,7 +20,7 @@ piv_contest_judging_session.add_session:
     _title: 'Create Session'
     _controller: '\Drupal\piv_contest_judging_session\Controller\JudgingSessionController::add'
   requirements:
-    _permission: 'access content'
+    _permission: 'create judging session'
 
 piv_contest_judging_session.start_judging:
   path: '/user/{user}/start-judging'

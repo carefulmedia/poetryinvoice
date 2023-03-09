@@ -1,10 +1,11 @@
-piv_contest.add_score:
-  path: '/judge/{recitation}/{judging_session}'
-  defaults:
-    _title: 'Create Score'
-    _form: 'Drupal\piv_contest\Form\ScoreForm'
-  requirements:
-    _permission: 'access content'
+# This page was created by mistake, nothing links to it.
+#piv_contest.add_score:
+#  path: '/judge/{recitation}/{judging_session}'
+#  defaults:
+#    _title: 'Create Score'
+#    _form: 'Drupal\piv_contest\Form\ScoreForm'
+#  requirements:
+#    _permission: 'administer site configuration'
 
 system.admin_contest:
   path: '/admin/contest'
