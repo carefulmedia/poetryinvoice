@@ -78,7 +78,7 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
       }
       $recitation = $competition_entry->field_recitations[1]->entity;
       if (!$recitation || $recitation->language()->getId() != $current_language) {
-        break;
+        continue;
       }
       $school_address = '';
       if ($school = $competition_entry->field_school->entity) {
