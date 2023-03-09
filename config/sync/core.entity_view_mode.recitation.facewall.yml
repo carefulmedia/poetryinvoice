@@ -1,0 +1,10 @@
+uuid: b76e05d5-c478-423c-a96f-d6ec5c9580a7
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_recitation
+id: recitation.facewall
+label: Facewall
+targetEntityType: recitation
+cache: true
