@@ -1,0 +1,30 @@
+uuid: 4524d20f-6a98-41fc-a780-cd031ceea5bc
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:443cb24e-2e6f-41a7-9557-414071f93f1d'
+  module:
+    - block_content
+    - system
+  theme:
+    - lvp_barrio
+id: peopleschoiceintro
+theme: lvp_barrio
+region: content
+weight: -19
+provider: null
+plugin: 'block_content:443cb24e-2e6f-41a7-9557-414071f93f1d'
+settings:
+  id: 'block_content:443cb24e-2e6f-41a7-9557-414071f93f1d'
+  label: 'Peoples choice intro'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/peoples-choice\r\n/choix-du-public"
