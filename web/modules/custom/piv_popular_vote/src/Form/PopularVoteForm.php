@@ -186,7 +186,7 @@ class PopularVoteForm extends FormBase {
     $form_state->setRebuild(TRUE);
 
     // Email already voted and user did not confirm yet.
-    if (!isset($form['has_voted_information']) && $this->pivPopularVoteManager->hasVoted($email, $competition)) {
+    if (!isset($form['has_voted_information']) && $this->pivPopularVoteManager->hasVoted($email, $competition, $langcode)) {
       $form_state->set('ask_to_confirm_vote', TRUE);
       return;
     }
