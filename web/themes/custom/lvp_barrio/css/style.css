@@ -5037,5 +5037,10 @@ nav.tabs ul .nav-item a:hover {
   line-height: 24px;
   text-align: left;
 }
+.ui-widget.ui-widget-content {
+  width: 90vw !important;
+  top: auto !important;
+  left: auto !important;
+}
 
 /*# sourceMappingURL=maps/style.css.map */
