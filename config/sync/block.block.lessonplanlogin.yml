@@ -13,7 +13,7 @@ dependencies:
 id: lessonplanlogin
 theme: lvp_barrio
 region: content
-weight: -12
+weight: -14
 provider: null
 plugin: 'block_content:6330aa62-37d8-4c69-8a74-55543c4893c2'
 settings:

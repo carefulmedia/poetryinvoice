@@ -9,7 +9,7 @@ dependencies:
 id: userlogin
 theme: lvp_barrio
 region: content
-weight: -10
+weight: -12
 provider: null
 plugin: user_login_block
 settings:
