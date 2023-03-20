@@ -69,15 +69,20 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
     $build['recitations'] = [
       '#type' => 'container',
     ];
+    $build['#attached']['library'][] = 'piv_popular_vote/youtube';
 
     $current_language = $this->languageManager->getCurrentLanguage()->getId();
-    // Get the first recitation for each competition entry.
+    // Get the second recitation for each competition entry.
     foreach ($competition_entries as $competition_entry) {
       if (!isset($competition_entry->field_recitations[1])) {
         continue;
       }
       $recitation = $competition_entry->field_recitations[1]->entity;
       if (!$recitation || $recitation->language()->getId() != $current_language) {
+        continue;
+      }
+      $video = $recitation->field_recitation_video->entity->field_media_oembed_video->value ?? NULL;
+      if (!$video) {
         continue;
       }
       $school_address = '';
@@ -87,7 +92,6 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
           $school_address .= "<br>{$address->locality}, {$address->administrative_area}";
         }
       }
-
       $school ? $school->field_address->view() : NULL;
       $build['recitations'][$recitation->id()] = [
         '#type' => 'container',
@@ -100,10 +104,10 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
             '#markup' => $school_address,
           ],
         ],
-        'video' => $recitation->field_recitation_video->view([
-          'type' => 'entity_reference_entity_view',
-          'label' => 'hidden',
-        ]),
+        'video' => [
+          '#theme' => 'piv_youtube',
+          '#url' => $video,
+        ],
         'link' => [
           '#type' => 'link',
           '#url' => Url::fromRoute('piv_popular_vote.popular_vote', [

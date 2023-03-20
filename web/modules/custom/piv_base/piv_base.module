@@ -203,6 +203,15 @@ function piv_base_theme($existing, $type, $theme, $path) {
         'link' => NULL,
       ],
     ],
+    // Custom theme to render youtube videos without oembed and with jsonapi
+    // enabled.
+    'piv_youtube' => [
+      'render element' => 'content',
+      'variables' => [
+        'url' => NULL,
+        'id' => NULL,
+      ],
+    ],
   ];
 }
 
@@ -330,4 +339,23 @@ function piv_base_preprocess_node(&$variables) {
   $variables['print_button'] = [
     '#markup' => $markup,
   ];
+}
+
+/**
+ * Implements hook_preprocess_piv_youtube().
+ */
+function template_preprocess_piv_youtube(&$variables) {
+  if (!empty($variables['id'])) {
+    return;
+  }
+
+  if (!empty($variables['url'])) {
+    // Extract the id from a url.
+    $regexp = '/(?im)\b(?:https?:\/\/)?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)\/(?:(?:\??v=?i?=?\/?)|watch\?vi?=|watch\?.*?&v=|embed\/|)([A-Z0-9_-]{11})\S*(?=\s|$)/';
+    preg_match($regexp, $variables['url'], $match);
+    $id = $match[1] ?? NULL;
+    if ($id) {
+      $variables['id'] = $id;
+    }
+  }
 }
