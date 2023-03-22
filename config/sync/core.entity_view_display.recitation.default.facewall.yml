@@ -14,9 +14,11 @@ dependencies:
     - field.field.recitation.default.field_student_last_name
     - field.field.recitation.default.field_student_name
     - field.field.recitation.default.field_student_stage_name
+    - image.style.home_front_700x400
     - piv_contest_recitation.recitation_type.default
   module:
     - layout_builder
+    - media
 third_party_settings:
   layout_builder:
     enabled: false
@@ -27,9 +29,13 @@ bundle: default
 mode: facewall
 content:
   field_recitation_video:
-    type: entity_reference_entity_id
+    type: media_thumbnail
     label: hidden
-    settings: {  }
+    settings:
+      image_link: ''
+      image_style: home_front_700x400
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content
