@@ -87,8 +87,8 @@ class PopularVoteResultsController extends ControllerBase implements ContainerIn
     $languages = [];
     $votes_total = 0;
     foreach ($competition_entries as $competition_entry) {
-      // Use the first recitation.
-      $recitation = $competition_entry->field_recitations->entity;
+      // Use the second recitation.
+      $recitation = $competition_entry->field_recitations[1]->entity;
       if (!$recitation) {
         continue;
       }
