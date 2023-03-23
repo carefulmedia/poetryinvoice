@@ -12,6 +12,7 @@ dependencies:
     - field.field.competition.default.field_competition_streams
     - field.field.competition.default.field_criteria
     - field.field.competition.default.field_enable_popular_voting
+    - field.field.competition.default.field_enable_the_voting_ui
     - field.field.competition.default.field_invited_schools
     - field.field.competition.default.field_judges
     - field.field.competition.default.field_judging_deadline
@@ -89,6 +90,7 @@ third_party_settings:
     group_popular_vote:
       children:
         - field_enable_popular_voting
+        - field_enable_the_voting_ui
         - field_popular_vote_level
       label: 'Popular Vote'
       region: content
@@ -208,6 +210,13 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_enable_the_voting_ui:
+    type: boolean_checkbox
+    weight: 24
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_invited_schools:
     type: entity_reference_autocomplete
     weight: 15
@@ -251,7 +260,7 @@ content:
     third_party_settings: {  }
   field_popular_vote_level:
     type: number
-    weight: 24
+    weight: 25
     region: content
     settings:
       placeholder: ''
