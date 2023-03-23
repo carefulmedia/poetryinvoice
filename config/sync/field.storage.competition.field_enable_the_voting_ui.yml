@@ -1,4 +1,4 @@
-uuid: 3a866a35-4d89-4a3d-86b4-7aa140df4e3a
+uuid: eff9edce-1aaf-454e-9017-243327a3c365
 langcode: en
 status: true
 dependencies:
@@ -8,8 +8,8 @@ dependencies:
 third_party_settings:
   field_permissions:
     permission_type: public
-id: competition.field_enable_popular_voting
-field_name: field_enable_popular_voting
+id: competition.field_enable_the_voting_ui
+field_name: field_enable_the_voting_ui
 entity_type: competition
 type: boolean
 settings: {  }

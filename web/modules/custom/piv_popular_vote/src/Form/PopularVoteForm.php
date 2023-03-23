@@ -53,9 +53,10 @@ class PopularVoteForm extends FormBase {
    */
   public function access(AccountInterface $account, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
     $popular_voting_enabled = !empty($competition->field_enable_popular_voting->value);
+    $enable_the_voting_ui = !empty($competition->field_enable_the_voting_ui->value);
     $status = !empty($competition->status->value);
     $competition_entry_is_for_competition = $competition_entry->field_competition->target_id == $competition->id();
-    return AccessResult::allowedIf($competition_entry_is_for_competition && $popular_voting_enabled && $status)
+    return AccessResult::allowedIf($competition_entry_is_for_competition && $popular_voting_enabled && $enable_the_voting_ui && $status)
       ->addCacheableDependency($competition);
   }
 

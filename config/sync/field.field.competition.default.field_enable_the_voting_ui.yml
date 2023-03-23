@@ -1,21 +1,21 @@
-uuid: 109b85ce-0081-4001-b112-862e6b3032d4
+uuid: 22db4363-12b3-4ecb-ae2c-303e5a43f7d7
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.competition.field_enable_popular_voting
+    - field.storage.competition.field_enable_the_voting_ui
     - piv_contest_competition.competition_type.default
-id: competition.default.field_enable_popular_voting
-field_name: field_enable_popular_voting
+id: competition.default.field_enable_the_voting_ui
+field_name: field_enable_the_voting_ui
 entity_type: competition
 bundle: default
-label: 'Activate the popular vote page for this competition'
+label: 'Enable the voting UI on the active page'
 description: ''
 required: false
 translatable: false
 default_value:
   -
-    value: 0
+    value: 1
 default_value_callback: ''
 settings:
   on_label: 'On'
