@@ -94,12 +94,16 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
         }
       }
       $school ? $school->field_address->view() : NULL;
+      $student_name = piv_popular_vote_get_student_name($competition_entry->id());
       $build['recitations'][$recitation->id()] = [
         '#type' => 'container',
+        'anchor' => [
+          '#markup' => "<a name='{$student_name}'></a>",
+        ],
         'header' => [
           '#type' => 'container',
           'student' => [
-            '#markup' => piv_popular_vote_get_student_name($competition_entry->id()),
+            '#markup' => "{$student_name} <a href='#{$student_name}'>#</a>",
           ],
           'school_address' => [
             '#markup' => $school_address,
