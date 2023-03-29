@@ -77,13 +77,13 @@ class PopularVotesAdminTableForm extends FormBase {
       '#type' => 'value',
       '#value' => $filter_form_state,
     ];
-    // Constestants names were calculates in the filter form state.
+    // Contestants names were calculated in the filter form state.
     $contestants = $filter_form_state->get('contestants');
     $languages = $filter_form_state->get('languages');
     $competition_entry_id_filter = $filter_form_state->getValue('competition_entry_id') ?? 0;
     $langcode_filter = $filter_form_state->getValue('langcode') ?? 0;
     $header = [
-      'constestant' => [
+      'contestant' => [
         'data' => $this->t('Contestant'),
         'field' => 'competition_entry_id',
       ],
@@ -105,6 +105,7 @@ class PopularVotesAdminTableForm extends FormBase {
       ],
     ];
     $query = $this->connection->select(PivPopularVoteManager::TABLE_NAME, 't')
+      ->condition('competition_id', $competition->id())
       ->fields('t');
     $query = $query->extend('Drupal\Core\Database\Query\TableSortExtender')
       ->orderByHeader($header);
@@ -125,7 +126,7 @@ class PopularVotesAdminTableForm extends FormBase {
       ])->toString();
       $competition_entry_id = $row->competition_entry_id;
       $contestant = Markup::create("{$contestants[$competition_entry_id]} ({$link})");
-      $rows[$row->id]['constestant'] = $contestant;
+      $rows[$row->id]['contestant'] = $contestant;
       $rows[$row->id]['created'] = $this->dateFormatter->format($row->created);
       $rows[$row->id]['langcode'] = $languages[$row->langcode];
     }
