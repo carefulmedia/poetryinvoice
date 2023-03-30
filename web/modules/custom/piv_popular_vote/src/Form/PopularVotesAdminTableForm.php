@@ -162,7 +162,9 @@ class PopularVotesAdminTableForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $form_state->setRebuild();
     $selected_votes = array_filter($form_state->getValue('votes_table'));
-    $this->pivPopularVoteManager->delete($selected_votes);
+    if ($selected_votes) {
+      $this->pivPopularVoteManager->delete($selected_votes);
+    }
     $this->messenger()->addMessage($this->t('@count vote(s) deleted.', [
       '@count' => count($selected_votes),
     ]));
