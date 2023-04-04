@@ -1,0 +1,21 @@
+uuid: 2a85f3a0-dcd8-44d6-b306-3e66ffa67702
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_language_stream
+    - node.type.team_regionals_entry
+  module:
+    - options
+id: node.team_regionals_entry.field_language_stream
+field_name: field_language_stream
+entity_type: node
+bundle: team_regionals_entry
+label: 'Language Stream (for finals))'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_integer

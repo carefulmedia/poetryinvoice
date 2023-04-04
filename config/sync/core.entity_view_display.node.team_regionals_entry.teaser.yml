@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.team_regionals_entry.comment_node_team_regionals_en
     - field.field.node.team_regionals_entry.field_contest_association
+    - field.field.node.team_regionals_entry.field_language_stream
     - field.field.node.team_regionals_entry.field_place_team_regional
     - field.field.node.team_regionals_entry.field_tr_student
     - node.type.team_regionals_entry
@@ -27,6 +28,7 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_contest_association: true
+  field_language_stream: true
   field_place_team_regional: true
   field_tr_student: true
   langcode: true
