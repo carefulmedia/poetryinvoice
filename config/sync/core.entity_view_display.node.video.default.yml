@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.video.field_video_poem
     - field.field.node.video.field_years_in_competition
     - field.field.node.video.field_yt_video
+    - field.field.node.video.layout_builder__layout
     - node.type.video
   module:
     - comment
@@ -235,4 +236,5 @@ hidden:
   field_video_poem: true
   field_years_in_competition: true
   langcode: true
+  layout_builder__layout: true
   search_api_excerpt: true

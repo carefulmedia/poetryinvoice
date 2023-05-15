@@ -14,7 +14,6 @@ dependencies:
     - field.field.recitation.default.field_student_last_name
     - field.field.recitation.default.field_student_name
     - field.field.recitation.default.field_student_stage_name
-    - image.style.home_front_700x400
     - piv_contest_recitation.recitation_type.default
   module:
     - layout_builder
@@ -33,7 +32,7 @@ content:
     label: hidden
     settings:
       image_link: ''
-      image_style: home_front_700x400
+      image_style: ''
       image_loading:
         attribute: lazy
     third_party_settings: {  }
