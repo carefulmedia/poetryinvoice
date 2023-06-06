@@ -6,13 +6,3 @@
 db:
     type: mariadb:10.4
     disk: 8192
-
-solr:
-    type: solr:8.11
-    disk: 1024
-    configuration:
-        cores:
-            main: {}
-        endpoints:
-            main:
-                core: main
