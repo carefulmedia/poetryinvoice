@@ -1,7 +1,8 @@
      <?php
     // copy file content into a string var
   $lang = $_GET['lang'];
-$c = $_GET['c'];
+  $c = $_GET['c'];
+  ini_set('default_socket_timeout', 5);
     $json_file = file_get_contents(__DIR__ . '/data/cached_moods_' . $lang . '.json');
     // convert the string to a json object
     $nodes = json_decode($json_file);
