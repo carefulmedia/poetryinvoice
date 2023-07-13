@@ -28,7 +28,7 @@ settings:
   handler: 'default:file'
   handler_settings: {  }
   file_directory: ''
-  file_extensions: jpg
+  file_extensions: 'jpg webp'
   max_filesize: 300KB
   max_resolution: ''
   min_resolution: ''
