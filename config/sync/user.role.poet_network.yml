@@ -8,6 +8,7 @@ dependencies:
     - node.type.school
     - node.type.writing_prompt
   module:
+    - contact
     - field_permissions
     - filter
     - form_mode_manager
@@ -28,6 +29,7 @@ permissions:
   - 'access Teacher (fr) profiles'
   - 'access Teacher profiles'
   - 'access search combine'
+  - 'access user contact forms'
   - 'access user profiles'
   - 'create body'
   - 'create field_address'

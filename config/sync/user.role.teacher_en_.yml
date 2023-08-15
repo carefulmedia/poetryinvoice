@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - contact
     - field_permissions
 id: teacher_en_
 label: 'Teacher (en)'
@@ -10,6 +11,7 @@ weight: 2
 is_admin: null
 permissions:
   - 'access search combine'
+  - 'access user contact forms'
   - 'create field_stage_name'
   - 'edit field_stage_name'
   - 'edit own field_stage_name'
