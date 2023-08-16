@@ -10,7 +10,7 @@ field_name: field_i_would_like_to_be_conside
 entity_type: node
 bundle: journal_poem
 label: 'I would like to be considered for FutureVerse'
-description: '<a target=”_blank” href="/write/futureverse">FutureVerse</a> is an all-expenses paid trip to Calgary from April 17-21st 2023 for a poetry intensive. Students accepted into FutureVerse will meet with authors, publishers, and writer-activists to grow their potential as future literary leaders. <a target=”_blank” href="/write/futureverse">LEARN MORE</a>'
+description: '<a target=”_blank” href="/write/futureverse">FutureVerse</a> is an all-expenses paid trip for students in grades 10-12 to Ottawa from April 22-26 2024 for a poetry intensive. Students accepted into FutureVerse will meet with authors, publishers, and writer-activists to grow their potential as future literary leaders. <a target=”_blank” href="/write/futureverse">LEARN MORE</a>'
 required: false
 translatable: false
 default_value:

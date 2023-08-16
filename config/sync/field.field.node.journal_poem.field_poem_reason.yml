@@ -11,7 +11,7 @@ id: node.journal_poem.field_poem_reason
 field_name: field_poem_reason
 entity_type: node
 bundle: journal_poem
-label: 'Tell us in a few sentences how the poem/prompt/visit influenced the creation of your poem. '
+label: 'Tell us in a few sentences the inspiration for your poem. '
 description: ''
 required: false
 translatable: true
