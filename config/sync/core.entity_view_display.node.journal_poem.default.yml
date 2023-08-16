@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.journal_poem.field_banner_title
     - field.field.node.journal_poem.field_email1
     - field.field.node.journal_poem.field_grade
-    - field.field.node.journal_poem.field_i_am_submitting_to_our_100
     - field.field.node.journal_poem.field_i_consent_to_poetry_in_voi
     - field.field.node.journal_poem.field_i_would_like_to_be_conside
     - field.field.node.journal_poem.field_images_insert
@@ -35,6 +34,7 @@ dependencies:
     - views.view.header_images_based_on_node_content
     - views.view.journal_poem_sidebar
   module:
+    - bootstrap_layout_builder
     - bootstrap_layouts
     - comment
     - ctools
@@ -97,24 +97,6 @@ third_party_settings:
               items_per_page: none
             weight: 1
             additional: {  }
-          9eab1ba2-20d0-47c9-aba7-d32a4f066992:
-            uuid: 9eab1ba2-20d0-47c9-aba7-d32a4f066992
-            region: main
-            configuration:
-              id: 'field_block:node:journal_poem:field_i_am_submitting_to_our_100'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: boolean
-                label: above
-                settings:
-                  format: default
-                  format_custom_false: ''
-                  format_custom_true: ''
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
           a370d3f4-fc1d-4a14-bed4-d96600bb76f6:
             uuid: a370d3f4-fc1d-4a14-bed4-d96600bb76f6
             region: main
@@ -138,28 +120,7 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
-          container_wrapper_bg_color_class: ''
-          container_wrapper_bg_media: null
-          container: container
-          section_classes: ''
-          regions_classes:
-            blb_region_col_1: ''
-            blb_region_col_2: ''
-          breakpoints:
-            desktop: blb_col_9_3
-            tablet: blb_col_9_3
-            mobile: blb_col_12
-          layout_regions_classes:
-            blb_region_col_1:
-              - col-lg-9
-              - col-md-9
-              - col-12
-            blb_region_col_2:
-              - col-lg-3
-              - col-md-3
-              - col-12
           container_wrapper_attributes: null
           container_wrapper:
             bootstrap_styles:
@@ -178,8 +139,6 @@ third_party_settings:
                   background_attachment: not_fixed
                   background_size: cover
               text_color:
-                class: null
-              text_alignment:
                 class: null
               padding:
                 class: _none
@@ -244,11 +203,34 @@ third_party_settings:
                   class: _none
               scroll_effects:
                 class: null
+              text_alignment:
+                class: null
+          container_wrapper_bg_color_class: ''
+          container_wrapper_bg_media: null
+          container: container
+          section_classes: ''
           section_attributes: null
+          regions_classes:
+            blb_region_col_1: ''
+            blb_region_col_2: ''
           regions_attributes:
             blb_region_col_1: null
             blb_region_col_2: null
+          breakpoints:
+            desktop: blb_col_9_3
+            tablet: blb_col_9_3
+            mobile: blb_col_12
+          layout_regions_classes:
+            blb_region_col_1:
+              - col-lg-9
+              - col-md-9
+              - col-12
+            blb_region_col_2:
+              - col-lg-3
+              - col-md-3
+              - col-12
           remove_gutters: '0'
+          context_mapping: {  }
         components:
           3d795e64-e6c3-4558-a257-d777aadde2ae:
             uuid: 3d795e64-e6c3-4558-a257-d777aadde2ae
@@ -471,16 +453,6 @@ content:
     third_party_settings: {  }
     weight: 11
     region: content
-  field_i_am_submitting_to_our_100:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 108
-    region: main
   field_i_consent_to_poetry_in_voi:
     type: list_default
     label: above

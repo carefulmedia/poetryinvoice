@@ -10,7 +10,6 @@ dependencies:
     - field.field.node.journal_poem.field_banner_title
     - field.field.node.journal_poem.field_email1
     - field.field.node.journal_poem.field_grade
-    - field.field.node.journal_poem.field_i_am_submitting_to_our_100
     - field.field.node.journal_poem.field_i_consent_to_poetry_in_voi
     - field.field.node.journal_poem.field_i_would_like_to_be_conside
     - field.field.node.journal_poem.field_images_insert
@@ -34,6 +33,7 @@ dependencies:
     - node.type.journal_poem
     - views.view.journal_poem_sidebar
   module:
+    - bootstrap_layout_builder
     - layout_builder
     - layout_builder_restrictions
     - options
@@ -50,14 +50,19 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_1'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: {  }
           breakpoints:
             desktop: ''
             tablet: ''
@@ -67,22 +72,29 @@ third_party_settings:
               - col-lg-12
               - col-md-12
               - col-12
-          remove_gutters: 0
+          remove_gutters: '0'
+          context_mapping: {  }
         components: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
@@ -96,7 +108,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
-          remove_gutters: 0
+          remove_gutters: '0'
+          context_mapping: {  }
         components:
           f6748f2c-f411-48d4-990a-1816cb61272e:
             uuid: f6748f2c-f411-48d4-990a-1816cb61272e
@@ -276,7 +289,6 @@ hidden:
   entity_print_view_word_docx: true
   field_acceptance_level: true
   field_email1: true
-  field_i_am_submitting_to_our_100: true
   field_i_consent_to_poetry_in_voi: true
   field_i_would_like_to_be_conside: true
   field_legal_name: true
