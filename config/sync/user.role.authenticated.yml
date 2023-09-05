@@ -8,6 +8,7 @@ dependencies:
     - contact
     - field_permissions
     - form_mode_manager
+    - google_analytics
     - media
     - node
     - paragraphs_type_permissions
@@ -47,6 +48,7 @@ permissions:
   - 'edit own main profile'
   - 'edit own piv_teacher_first_name'
   - 'edit own piv_teacher_last_name'
+  - 'opt-in or out of google analytics tracking'
   - 'search article content'
   - 'search blog content'
   - 'search event content'

@@ -30,6 +30,7 @@
 !config/sync/views.view.recitations.yml
 !config/sync/views.view.scores.yml
 !config/sync/views.view.score_templates.yml
+config/sync/google_analytics.settings.yml
 
 # Environment variables
 .env
