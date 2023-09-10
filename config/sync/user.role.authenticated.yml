@@ -8,7 +8,6 @@ dependencies:
     - contact
     - field_permissions
     - form_mode_manager
-    - google_analytics
     - media
     - node
     - paragraphs_type_permissions

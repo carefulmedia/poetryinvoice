@@ -6,17 +6,19 @@ dependencies:
     - field.field.node.writing_prompt.body
     - field.field.node.writing_prompt.comment_node_writing_prompt
     - field.field.node.writing_prompt.field_completed
+    - field.field.node.writing_prompt.field_featured_prompt_starting_d
     - field.field.node.writing_prompt.field_paid_
     - field.field.node.writing_prompt.field_prompt_image
     - field.field.node.writing_prompt.field_prompt_or_exercise
     - image.style.thumbnail
     - node.type.writing_prompt
   module:
+    - datetime
     - field_layout
-    - image
     - layout_discovery
     - path
     - scheduler
+    - svg_image
     - text
 third_party_settings:
   field_layout:
@@ -47,6 +49,12 @@ content:
   field_completed:
     type: options_buttons
     weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_featured_prompt_starting_d:
+    type: datetime_default
+    weight: 52
     region: content
     settings: {  }
     third_party_settings: {  }
