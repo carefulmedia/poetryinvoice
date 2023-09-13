@@ -10,6 +10,7 @@ dependencies:
     - node.type.team_regionals_entry
   module:
     - comment
+    - contact
     - field_permissions
     - form_mode_manager
     - media
@@ -34,6 +35,7 @@ permissions:
   - 'access Teacher profiles'
   - 'access comments'
   - 'access search combine'
+  - 'access user contact forms'
   - 'access user profiles'
   - 'add competition entry for own school'
   - 'create bi_team_regional_entry content'

@@ -14,9 +14,6 @@
 # http://www.robotstxt.org/robotstxt.html
 
 User-agent: *
-Disallow: /
-
-User-agent: Googlebot
 # CSS, JS, Images
 Allow: /core/*.css$
 Allow: /core/*.css?
@@ -66,3 +63,5 @@ Disallow: /index.php/user/login
 Disallow: /index.php/user/logout
 Disallow: /index.php/media/oembed
 Disallow: /index.php/*/media/oembed
+# custom
+Disallow: /roulette

@@ -16,9 +16,6 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: '1'
-      label: ''
-    -
       value: 'Response poem'
       label: 'Response poem'
     -
@@ -27,6 +24,9 @@ settings:
     -
       value: 'Poet''s visit poem'
       label: 'Poet visit to our school'
+    -
+      value: '1'
+      label: 'None of the above'
   allowed_values_function: ''
 module: options
 locked: false

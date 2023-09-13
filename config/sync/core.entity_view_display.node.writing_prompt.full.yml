@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.writing_prompt.body
     - field.field.node.writing_prompt.comment_node_writing_prompt
     - field.field.node.writing_prompt.field_completed
+    - field.field.node.writing_prompt.field_featured_prompt_starting_d
     - field.field.node.writing_prompt.field_paid_
     - field.field.node.writing_prompt.field_prompt_image
     - field.field.node.writing_prompt.field_prompt_or_exercise
@@ -166,6 +167,7 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_completed: true
+  field_featured_prompt_starting_d: true
   field_paid_: true
   langcode: true
   links: true

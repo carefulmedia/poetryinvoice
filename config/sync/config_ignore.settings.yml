@@ -16,5 +16,6 @@ ignored_config_entities:
   - ~views.view.recitations
   - ~views.view.scores
   - ~views.view.score_templates
+  - google_analytics.settings
 ignored_config_collections:
   - 'language.*'

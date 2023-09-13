@@ -1,0 +1,21 @@
+uuid: a24cb5f4-d698-424b-9df8-4d4a37542c5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_featured_prompt_starting_d
+    - node.type.writing_prompt
+  module:
+    - datetime
+id: node.writing_prompt.field_featured_prompt_starting_d
+field_name: field_featured_prompt_starting_d
+entity_type: node
+bundle: writing_prompt
+label: 'Featured prompt starting date'
+description: 'Only fill this out for a future date a prompt will be feautred. It will stop being featured only when another prompt''s feature start date has arrived.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

@@ -6,11 +6,13 @@ dependencies:
     - field.field.node.writing_prompt.body
     - field.field.node.writing_prompt.comment_node_writing_prompt
     - field.field.node.writing_prompt.field_completed
+    - field.field.node.writing_prompt.field_featured_prompt_starting_d
     - field.field.node.writing_prompt.field_paid_
     - field.field.node.writing_prompt.field_prompt_image
     - field.field.node.writing_prompt.field_prompt_or_exercise
     - node.type.writing_prompt
   module:
+    - datetime
     - layout_builder
     - layout_builder_restrictions
     - layout_discovery
@@ -81,6 +83,23 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
+          3805c92d-1549-48e7-a227-95dbbe0c8cdb:
+            uuid: 3805c92d-1549-48e7-a227-95dbbe0c8cdb
+            region: content
+            configuration:
+              id: 'field_block:node:writing_prompt:field_featured_prompt_starting_d'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: datetime_default
+                label: above
+                settings:
+                  timezone_override: ''
+                  format_type: medium
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -103,6 +122,15 @@ content:
     third_party_settings: {  }
     weight: 2
     region: first
+  field_featured_prompt_starting_d:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 4
+    region: content
   field_prompt_image:
     type: image
     label: hidden

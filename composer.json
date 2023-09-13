@@ -84,6 +84,7 @@
         "drupal/focal_point": "^1.5",
         "drupal/form_mode_manager": "^2.0@RC",
         "drupal/gin": "^3.0@beta",
+        "drupal/google_analytics": "^4.0",
         "drupal/imce": "^2.4",
         "drupal/inline_entity_form": "^1.0@RC",
         "drupal/ip2country": "^1.10",

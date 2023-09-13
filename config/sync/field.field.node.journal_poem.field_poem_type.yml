@@ -11,11 +11,13 @@ id: node.journal_poem.field_poem_type
 field_name: field_poem_type
 entity_type: node
 bundle: journal_poem
-label: 'I am submitting only to the Journal. I wrote my poem based on:'
+label: 'I wrote my poem based on:'
 description: ''
 required: true
 translatable: true
-default_value: {  }
+default_value:
+  -
+    value: '1'
 default_value_callback: ''
 settings: {  }
 field_type: list_string
