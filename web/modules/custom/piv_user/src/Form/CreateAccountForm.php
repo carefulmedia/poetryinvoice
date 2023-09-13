@@ -105,7 +105,8 @@ class CreateAccountForm extends FormBase {
       '#required' => TRUE,
       '#title' => $this->t('Account type'),
       '#options' => [
-     //   'poet' => $this->t('I am a Canadian poet and would like to join the Poet Network'),
+        // @phpcs:ignore
+        // 'poet' => $this->t('I am a Canadian poet and would like to join the Poet Network'),
         'teacher' => $this->t('I work at a Canadian school'),
         'teacher_not_affiliated' => $this->t('I am in Canada but am not affiliated with a school'),
         'non_canadian' => $this->t('I work outside of Canada'),
@@ -201,7 +202,7 @@ class CreateAccountForm extends FormBase {
           '#description' => $this->t('Type a few letters of your school name, wait, and then select it from the list. All Canadian schools should be in our system.'),
           '#type' => 'entity_autocomplete',
           '#target_type' => 'node',
-          "#validate_reference" => false,
+          '#validate_reference' => FALSE,
           '#selection_handler' => 'piv_field:piv_school',
           '#selection_settings' => [
             'target_bundles' => [

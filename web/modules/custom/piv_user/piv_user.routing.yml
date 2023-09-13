@@ -5,3 +5,11 @@ piv_user.create_account:
     _form: 'Drupal\piv_user\Form\CreateAccountForm'
   requirements:
     _user_is_logged_in: 'FALSE'
+
+piv_user.login_required:
+  path: '/login-required'
+  defaults:
+    _title: 'Login Required'
+    _controller: '\Drupal\piv_user\Controller\LoginRequiredController::build'
+  requirements:
+    _user_is_logged_in: 'FALSE'

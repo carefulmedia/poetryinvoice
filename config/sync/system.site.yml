@@ -6,7 +6,7 @@ name: 'Poetry In Voice'
 mail: webmaster@poetryinvoice.ca
 slogan: 'A registered charity that wants all Canadians to speak poetry.'
 page:
-  403: /node/32393
+  403: /login-required
   404: /node/32394
   front: /node
 admin_compact_mode: false
