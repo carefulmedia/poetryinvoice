@@ -249,6 +249,7 @@ function piv_base_preprocess_html(&$variables) {
       '#menu' => $entity_type_manager->getViewBuilder('block')->view($block),
       '#form' => \Drupal::formBuilder()->getForm('\Drupal\piv_base\Form\PivWelcomeModal'),
     ];
+    $variables['page_bottom']['#attached']['library'][] = 'piv_base/redirect_after_login';
   }
 }
 

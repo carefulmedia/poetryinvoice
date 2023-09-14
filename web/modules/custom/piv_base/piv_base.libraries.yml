@@ -20,3 +20,9 @@ back_link:
     component:
       css/back-link.css: {}
 
+redirect_after_login:
+  js:
+    js/redirect-after-login.js: {}
+  dependencies:
+    - core/jquery
+    - core/once
