@@ -206,7 +206,7 @@ function piv_contest_field_config_access(EntityInterface $entity, $operation, Ac
  */
 function piv_contest_field_widget_options_select_form_alter(&$element, FormStateInterface $form_state, $context) {
   // Filter the grades select element by the allowed values in the competition.
-  if ($element['#entity_type'] == 'competition_entry' && $context['items']->getName() == 'field_student_grade') {
+  if (!empty($element['#entity_type']) && $element['#entity_type'] == 'competition_entry' && $context['items']->getName() == 'field_student_grade') {
     $competition_entry = $form_state->getFormObject()->getEntity();
     if ($competition = $competition_entry->field_competition->entity) {
       $allowed_values = array_flip(array_column($competition->field_allowed_grades->getValue(), 'value'));
@@ -319,5 +319,14 @@ function piv_contest_paragraph_presave(EntityInterface $entity) {
         $entity->parent_field_name = $original->parent_field_name;
       }
     }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function piv_contest_form_editablefields_form_alter(&$form, $form_state, $form_id) {
+  if (!empty($form['submit']['#ajax'])) {
+    $form['submit']['#ajax']['disable-refocus'] = TRUE;
   }
 }
