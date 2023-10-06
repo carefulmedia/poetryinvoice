@@ -13,14 +13,15 @@
     <link rel="shortcut icon" href="https://www.poetryinvoice.com/sites/all/themes/piv_lvp/images/piv-logo.png" type="image/png" />
     <title><?php echo $vars['Page_title'][$lang]; ?></title>
     <!-- Google Analytics -->
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', '<?php echo $vars['Ga'][$lang]; ?>', 'auto');
-      ga('send', 'pageview');
-    </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $vars['Ga'][$lang]; ?>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '<?php echo $vars["Ga"][$lang]; ?>');
+</script>
     <!-- End Google Analytics -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href= "/roulette/css/roulette.css?rnd=23333878382428" />
