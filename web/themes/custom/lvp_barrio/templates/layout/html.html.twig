@@ -44,18 +44,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&family=Roboto:wght@400;700;900;1000&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
     <script type="text/javascript">
-      {% if langcode == 'en' %}
-     async src="https://www.googletagmanager.com/gtag/js?id=UA-26068356-1"
+      {% if langcode == 'en' %}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-26068356-1"></script>
+<script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'UA-26068356-1');
-      {% else %}
- async src="https://www.googletagmanager.com/gtag/js?id=G-TG7GVE6FXW"
+</script>
+      {% else %}</script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELSJBZMZJT"></script>
+<script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-TG7GVE6FXW');    
+
+  gtag('config', 'G-ELSJBZMZJT');
+</script> <script>
       {% endif %}
     </script>
   </head>
