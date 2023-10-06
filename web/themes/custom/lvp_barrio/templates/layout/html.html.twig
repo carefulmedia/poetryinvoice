@@ -45,9 +45,17 @@
     <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
     <script type="text/javascript">
       {% if langcode == 'en' %}
-        var _gaq = _gaq || [];_gaq.push(["_setAccount", "UA-26068356-1"]);_gaq.push(["_setDomainName", "none"]);_gaq.push(["_setAllowLinker", true]);_gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+     async src="https://www.googletagmanager.com/gtag/js?id=UA-26068356-1"
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-26068356-1');
       {% else %}
-        var _gaq = _gaq || [];_gaq.push(["_setAccount", "UA-26064354-1"]);_gaq.push(["_setDomainName", "none"]);_gaq.push(["_setAllowLinker", true]);_gaq.push(["_trackPageview"]);(function() {var ga = document.createElement("script");ga.type = "text/javascript";ga.async = true;ga.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";var s = document.getElementsByTagName("script")[0];s.parentNode.insertBefore(ga, s);})();
+ async src="https://www.googletagmanager.com/gtag/js?id=G-TG7GVE6FXW"
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TG7GVE6FXW');    
       {% endif %}
     </script>
   </head>
