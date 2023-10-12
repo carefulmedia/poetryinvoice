@@ -87,6 +87,7 @@
         "drupal/geofield": "^1.55",
         "drupal/geolocation": "^3.12",
         "drupal/gin": "^3.0@beta",
+        "drupal/google_analytics": "^4.0",
         "drupal/html_titles": "^1.1",
         "drupal/imce": "^2.4",
         "drupal/inline_entity_form": "^1.0@RC",
