@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.school.field_contact_first_name
     - field.field.node.school.field_contact_last_name
     - field.field.node.school.field_do_not_contact_again
+    - field.field.node.school.field_geolocation
     - field.field.node.school.field_grades_of_school
     - field.field.node.school.field_job_title
     - field.field.node.school.field_language_school
@@ -56,6 +57,7 @@ hidden:
   field_contact_first_name: true
   field_contact_last_name: true
   field_do_not_contact_again: true
+  field_geolocation: true
   field_grades_of_school: true
   field_job_title: true
   field_language_school: true

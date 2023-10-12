@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.school.field_contact_first_name
     - field.field.node.school.field_contact_last_name
     - field.field.node.school.field_do_not_contact_again
+    - field.field.node.school.field_geolocation
     - field.field.node.school.field_grades_of_school
     - field.field.node.school.field_job_title
     - field.field.node.school.field_language_school
@@ -33,6 +34,7 @@ dependencies:
   module:
     - address
     - field_layout
+    - geolocation
     - inline_entity_form
     - layout_discovery
     - path
@@ -128,6 +130,12 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_geolocation:
+    type: geolocation_latlng
+    weight: 37
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_grades_of_school:
     type: options_select

@@ -1,20 +1,20 @@
-uuid: b14e4c2e-cb8e-4246-8029-b444f16d4171
+uuid: 1d0e9b24-3d45-4eb8-8e23-72b69e93c159
 langcode: en
 status: true
 dependencies:
   module:
-    - address
     - field_permissions
+    - geolocation
     - node
 third_party_settings:
   field_permissions:
     permission_type: public
-id: node.field_address
-field_name: field_address
+id: node.field_geolocation
+field_name: field_geolocation
 entity_type: node
-type: address
+type: geolocation
 settings: {  }
-module: address
+module: geolocation
 locked: false
 cardinality: 1
 translatable: true

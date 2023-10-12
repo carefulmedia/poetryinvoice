@@ -83,6 +83,9 @@
         "drupal/fivestar": "^1.0@alpha",
         "drupal/focal_point": "^1.5",
         "drupal/form_mode_manager": "^2.0@RC",
+        "drupal/geocoder": "^3.34",
+        "drupal/geofield": "^1.55",
+        "drupal/geolocation": "^3.12",
         "drupal/gin": "^3.0@beta",
         "drupal/html_titles": "^1.1",
         "drupal/imce": "^2.4",
@@ -146,6 +149,7 @@
         "drupal/zen": "^7.0@alpha",
         "drush/drush": "^10",
         "ganlanyuan/tiny-slider": "^2.9",
+        "geocoder-php/google-maps-provider": "^4.7",
         "mikehaertl/phpwkhtmltopdf": "~2.1",
         "owlcarousel2/owlcarousel2": "^2.3",
         "platformsh/config-reader": "^2.4",
@@ -165,7 +169,8 @@
             "cweagans/composer-patches": true,
             "drupal/core-composer-scaffold": true,
             "drupal/core-project-message": true,
-            "wikimedia/composer-merge-plugin": true
+            "wikimedia/composer-merge-plugin": true,
+            "php-http/discovery": true
         }
     },
     "extra": {
