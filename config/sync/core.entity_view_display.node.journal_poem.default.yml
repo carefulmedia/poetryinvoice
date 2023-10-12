@@ -24,6 +24,7 @@ dependencies:
     - field.field.node.journal_poem.field_poet_who_visited_your_scho
     - field.field.node.journal_poem.field_pronouns
     - field.field.node.journal_poem.field_school_journal
+    - field.field.node.journal_poem.field_selected_for_futureverse
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
     - field.field.node.journal_poem.field_teacher
@@ -114,6 +115,24 @@ third_party_settings:
                   format_custom_true: ''
                 third_party_settings: {  }
             weight: 3
+            additional: {  }
+          610999ac-6e6f-4a4b-9653-1c51bca94380:
+            uuid: 610999ac-6e6f-4a4b-9653-1c51bca94380
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_selected_for_futureverse'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 4
             additional: {  }
         third_party_settings: {  }
       -
@@ -560,6 +579,16 @@ content:
     third_party_settings: {  }
     weight: 6
     region: content
+  field_selected_for_futureverse:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 110
+    region: main
   field_student_photo:
     type: image
     label: above

@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.journal_poem.field_poet_who_visited_your_scho
     - field.field.node.journal_poem.field_pronouns
     - field.field.node.journal_poem.field_school_journal
+    - field.field.node.journal_poem.field_selected_for_futureverse
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
     - field.field.node.journal_poem.field_teacher
@@ -278,6 +279,13 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_selected_for_futureverse:
+    type: boolean_checkbox
+    weight: 37
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_student_photo:
     type: image_image
