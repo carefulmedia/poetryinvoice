@@ -52,10 +52,11 @@
           var c = "j";
           $('#element_to_pop_up').bPopup().close();
           $.ajax({
-            url: "/roulette/load.php",
+            url: "load.php",
             data: "c="+c,
             type: "post",
-            success: function(data) { $('#d1').html(data); }
+            success: function(data) { $('#d1').html(data); },
+            timeout: 5000,
           });
         })
 
@@ -63,10 +64,11 @@
           var c = "s";
           $('#element_to_pop_up').bPopup().close();
           $.ajax({
-            url: "/roulette/load.php",
+            url: "load.php",
             data: "c="+c,
             type: "post",
-            success: function(data) { $('#d1').html(data); }
+            success: function(data) { $('#d1').html(data); },
+            timeout: 5000,
           });
         });
       });

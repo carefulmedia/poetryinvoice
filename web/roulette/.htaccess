@@ -1,3 +1,2 @@
-<IfModule mod_headers.c>
-Header set Connection keep-alive
-</IfModule>
+# Preventing download .gz files.
+RewriteRule ^(.*?\.gz)$ /roulette

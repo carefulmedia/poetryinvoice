@@ -3,11 +3,11 @@
   $lang = $_GET['lang'];
   $c = $_GET['c'];
   ini_set('default_socket_timeout', 5);
-    $json_file = file_get_contents(__DIR__ . '/data/cached_poets_'.$lang. '_' . $c .'.json');
-    // convert the string to a json object
-    $nodes = json_decode($json_file);
-    // listing posts
-//  echo '<pre>'; print_r($nodes); echo '</pre>';
+  $json_file = file_get_contents(__DIR__ . '/data/cached_poets_'.$lang. '_' . $c .'.json');
+  // convert the string to a json object
+  $nodes = json_decode($json_file);
+  // listing posts
+  //  echo '<pre>'; print_r($nodes); echo '</pre>';
   $number = sizeof($nodes);
   $third = floor($number / 3);
   $twoThird =floor($number / 1.5);

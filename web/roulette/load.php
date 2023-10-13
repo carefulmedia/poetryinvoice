@@ -1,25 +1,24 @@
 <?php
-if ($_SERVER['HTTP_HOST'] == 'lesvoixdelapoesie.ca'){
-  $lang = 'fr';
+  if ($_SERVER['HTTP_HOST'] == 'lesvoixdelapoesie.ca') {
+    $lang = 'fr';
+  } else {
+    $lang = 'en';
   }
-else {
-  $lang = 'en';
-}
   $base_url = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https" : "http");
   $base_url .= "://{$_SERVER['HTTP_HOST']}";
 ?>
 <?php
-include '//app/web/roulette/vars.php';
+  include_once __DIR__ . '/vars.php';
 // $header = file_get_contents('https://www.poetryinvoice.com/roulette/'. $lang .'/header.php');
 // echo $header;
-if(empty($c)){
-$c = $_POST['c'];
-}
+  if (empty($c)) {
+    $c = $_POST['c'];
+  }
 // $tags = file_get_contents('https://www.poetryinvoice.com/roulette/cached/cached_tags.php?lang='.$lang.'&c='.$c);
 // echo $tags;
 ?>
 <div class="container-fluid">
- <!--
+ <?php /*
   <div id="topBar" class="row">
     <div class="dropdown">
      <div class="admin-menu-icon admin-menu-toolbar-category expandable"><a href="../"><span>Home</span></a></div>
@@ -27,7 +26,7 @@ $c = $_POST['c'];
       </span>
       </button>
       <div id="favouritesDropdown" class="dropdown-menu">
-        <h4><?php echo$vars['favourites'][$lang]; ?> </h4><hr>
+        <h4><?php echo $vars['favourites'][$lang]; ?> </h4><hr>
         <ul id="favouritePoems"></ul>
       </div>
       <div class="language-switcher-locale-url">
@@ -43,7 +42,7 @@ $c = $_POST['c'];
     </div>
   </div>
 </div>
--->
+*/?>
 <div id="main" class="container" >
   <div class="row interactive">
     <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
@@ -754,17 +753,21 @@ appendPoemButton = (poemId, poemPath) => {
   $("#visitPoem" + poemId).attr( "href", ""+poemPath+"" );
 
 }
-  $.getJSON( tagId  , function(data) {
-    poems = data;
-    poemIndex = 0;
-    var poem = poems[poemIndex].content;
+  $.ajax({
+    dataType: "json",
+    url: tagId,
+    timeout: 5000,
+    success: function(poems) {
+      poemIndex = 0;
+      var poem = poems[poemIndex].content;
       var poemId = $(poem).filter('h1').attr("data-id");
-    var poemPath = $(poem).filter('#poemPath').html();
-    $("#poem").hide().html("<div id='"+ poemId+"'>" + poem).fadeIn('slow');
-    $( "#loading" ).hide();
-    appendLikeButton(poemId);
-    appendPoemButton(poemId, poemPath);
-    $("#poem").append("</div>");
+      var poemPath = $(poem).filter('#poemPath').html();
+      $("#poem").hide().html("<div id='"+ poemId+"'>" + poem).fadeIn('slow');
+      $( "#loading" ).hide();
+      appendLikeButton(poemId);
+      appendPoemButton(poemId, poemPath);
+      $("#poem").append("</div>");
+    }
   });
 });
 
