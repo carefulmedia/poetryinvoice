@@ -139,9 +139,7 @@ class SyncService {
   public function updateNode($node, $fields, $new = TRUE) {
     try {
       // Until the CSV sources manage accents, we do not update the title
-      if ($new) {
-        $node->title = $fields['name'];
-      }
+      $node->title = $fields['name'];
       $node->field_cdb_id = $fields['id'];
       $node->field_school_phone = $fields['phone'];
       $node->field_story_link = $fields['website'];
@@ -158,7 +156,6 @@ class SyncService {
       }
 
       // Until the CSV sources manage accents, we only update the postal code.
-      /*
       $node->field_address = [
         'country_code' => 'CA',
         'administrative_area' => $fields['prov'],
@@ -167,8 +164,6 @@ class SyncService {
         'locality' => $fields['city'],
         'postal_code' => $fields['code'],
       ];
-      */
-      $node->field_address->postal_code = $fields['code'];
       return $node->save();
     }
     catch(EntityStorageException $e) {
