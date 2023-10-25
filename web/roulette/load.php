@@ -726,9 +726,9 @@ $( ".slotMachine, .machineResult" ).click(function() {
   var c = "<?php echo $c; ?>";
   tagId = "../poem-roulette/" + $(this).attr('type') + "s/" + c + "/";
   tagId += $( "#" +  $(this).attr('type')  + "Machine" + $(this).attr("number") + "Result" ).attr("name");
-  var gaPage;
-  gaPage = tagId.replace('../','virtual/');
-  ga('send', 'pageview', gaPage);
+ // var gaPage;
+ // gaPage = tagId.replace('../','virtual/');
+ // ga('send', 'pageview', gaPage);
 
 appendLikeButton = (poemId) => {
   $(".verse").last().wrap("<div class='flex-container'/>");
