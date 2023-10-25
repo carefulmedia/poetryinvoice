@@ -52,7 +52,7 @@
           var c = "j";
           $('#element_to_pop_up').bPopup().close();
           $.ajax({
-            url: "load.php",
+            url: "/roulette/load.php",
             data: "c="+c,
             type: "post",
             success: function(data) { $('#d1').html(data); },
@@ -64,7 +64,7 @@
           var c = "s";
           $('#element_to_pop_up').bPopup().close();
           $.ajax({
-            url: "load.php",
+            url: "/roulette/load.php",
             data: "c="+c,
             type: "post",
             success: function(data) { $('#d1').html(data); },
