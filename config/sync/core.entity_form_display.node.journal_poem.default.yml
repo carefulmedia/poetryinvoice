@@ -36,6 +36,7 @@ dependencies:
     - conditional_fields
     - field_layout
     - file
+    - focal_point
     - layout_discovery
     - path
     - scheduler
@@ -288,12 +289,14 @@ content:
       display_label: true
     third_party_settings: {  }
   field_student_photo:
-    type: image_image
+    type: image_focal_point
     weight: 22
     region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
   field_submission_info_confirmed:
     type: boolean_checkbox
