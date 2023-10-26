@@ -1824,18 +1824,33 @@ h3.name {
     color: black;
     width: 90%;
   }
-  .fca-text p,
-  .fca-text h2,
-  .fca-text h3,
-  .fca-text h4 {
-    display: none;
-  }
-  .page-view-frontpage .owl-carousel .owl-item img {
-    height: 80vw;
-    width: auto;
+  .page-view-frontpage .owl-carousel .owl-item .container {
+    position: relative;
+    bottom: 0%;
+    color: black;
+    width: fit-content;
+    max-width: 90%;
   }
   .view-home-page-slider-fca h1 {
     display: inline;
+  }
+  .page-view-frontpage .owl-carousel .owl-item p {
+    line-height: 24px;
+  }
+  .page-view-frontpage .owl-carousel .owl-item h2 {
+    line-height: 24px;
+    font-family: 'Lora';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+  }
+  .page-view-frontpage .owl-carousel .owl-item h3 {
+    display: inline;
+    float: left;
+  }
+  .page-view-frontpage .owl-carousel .owl-item .button {
+    display: inline;
+    float: right;
   }
 }
 .view-home-page-slider-fca {
