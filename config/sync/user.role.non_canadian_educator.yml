@@ -13,5 +13,6 @@ permissions:
   - 'create field_grades'
   - 'edit field_grades'
   - 'edit own field_grades'
+  - 'view body'
   - 'view field_grades'
   - 'view own field_grades'

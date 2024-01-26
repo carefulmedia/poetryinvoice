@@ -15,5 +15,6 @@ permissions:
   - 'create field_stage_name'
   - 'edit field_stage_name'
   - 'edit own field_stage_name'
+  - 'view body'
   - 'view field_stage_name'
   - 'view own field_stage_name'

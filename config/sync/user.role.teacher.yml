@@ -140,6 +140,7 @@ permissions:
   - 'use node.default form mode'
   - 'use node.teacher form mode'
   - 'use user.teacher_edit form mode'
+  - 'view body'
   - 'view field_about_me'
   - 'view field_agreed_visit_date'
   - 'view field_bilingual'
