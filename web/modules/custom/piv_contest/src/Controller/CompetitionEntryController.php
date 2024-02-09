@@ -16,6 +16,7 @@ use Drupal\Core\Url;
 use Drupal\Core\Link;
 use Drupal\Core\Form\FormBuilderInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Returns responses for PIV Contest routes.
@@ -51,13 +52,21 @@ class CompetitionEntryController extends ControllerBase {
   protected $formBuilder;
 
   /**
+   * The current user.
+   *
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $currentUser;
+
+  /**
    * The controller constructor.
    */
-  public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, CompetitionService $competition_service, FormBuilderInterface $form_builder) {
+  public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, CompetitionService $competition_service, FormBuilderInterface $form_builder, AccountInterface $current_user) {
     $this->entityFormBuilder = $entity_form_builder;
     $this->entityTypeManager = $entity_type_manager;
     $this->competitionService = $competition_service;
     $this->formBuilder = $form_builder;
+    $this->currentUser = $current_user;
   }
 
   /**
@@ -68,7 +77,8 @@ class CompetitionEntryController extends ControllerBase {
       $container->get('entity.form_builder'),
       $container->get('entity_type.manager'),
       $container->get('piv_contest.competition_service'),
-      $container->get('form_builder')
+      $container->get('form_builder'),
+      $container->get('current_user')
     );
   }
 
@@ -156,7 +166,9 @@ class CompetitionEntryController extends ControllerBase {
    * Verify access to edit entry.
    */
   public function accessEdit(UserInterface $user, CompetitionInterface $competition, CompetitionEntryInterface $competition_entry) {
-    return AccessResult::allowedIf($competition_entry->access('update', $user, TRUE) || piv_contest_user_can_bypass_permissions());
+    $can_update = $competition_entry->access('update', \Drupal::currentUser(), TRUE)->isAllowed();
+    $result = AccessResult::allowedIf($can_update || piv_contest_user_can_bypass_permissions());
+    return $result->isAllowed() ? $result : AccessResult::forbidden();
   }
 
   /**
