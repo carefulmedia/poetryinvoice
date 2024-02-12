@@ -11,6 +11,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Component\Serialization\Json;
+use Drupal\piv_contest_competition_entry\Form\CompetitionEntryForm;
 
 /**
  * Get a student name from a recitation or a competition entry.
@@ -205,9 +206,10 @@ function piv_contest_field_config_access(EntityInterface $entity, $operation, Ac
  * Implements hook_field_widget_WIDGET_TYPE_form_alter().
  */
 function piv_contest_field_widget_options_select_form_alter(&$element, FormStateInterface $form_state, $context) {
+  $form_object = $form_state->getFormObject();
   // Filter the grades select element by the allowed values in the competition.
-  if (!empty($element['#entity_type']) && $element['#entity_type'] == 'competition_entry' && $context['items']->getName() == 'field_student_grade') {
-    $competition_entry = $form_state->getFormObject()->getEntity();
+  if (is_a($form_object, CompetitionEntryForm::class) && $context['items']->getName() == 'field_student_grade') {
+    $competition_entry = $form_object->getEntity();
     if ($competition = $competition_entry->field_competition->entity) {
       $allowed_values = array_flip(array_column($competition->field_allowed_grades->getValue(), 'value'));
       if ($allowed_values) {
