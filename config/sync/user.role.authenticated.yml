@@ -118,6 +118,7 @@ permissions:
   - 'view field_start_here_page_links_and_'
   - 'view field_start_here_poem'
   - 'view field_start_here_video'
+  - 'view field_student_bio'
   - 'view field_student_name_1'
   - 'view field_student_photo'
   - 'view field_suggest_a_new_folder_to_fi'

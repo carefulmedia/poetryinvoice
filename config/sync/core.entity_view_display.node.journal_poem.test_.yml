@@ -25,6 +25,8 @@ dependencies:
     - field.field.node.journal_poem.field_pronouns
     - field.field.node.journal_poem.field_school_journal
     - field.field.node.journal_poem.field_selected_for_futureverse
+    - field.field.node.journal_poem.field_shortlisted_for_futurevers
+    - field.field.node.journal_poem.field_student_bio
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
     - field.field.node.journal_poem.field_teacher
@@ -152,6 +154,8 @@ hidden:
   field_pronouns: true
   field_school_journal: true
   field_selected_for_futureverse: true
+  field_shortlisted_for_futurevers: true
+  field_student_bio: true
   field_student_photo: true
   field_submission_info_confirmed: true
   field_teacher: true

@@ -1,0 +1,23 @@
+uuid: 85a58134-7a2a-4a18-a58f-347af52f2337
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_shortlisted_for_futurevers
+    - node.type.journal_poem
+id: node.journal_poem.field_shortlisted_for_futurevers
+field_name: field_shortlisted_for_futurevers
+entity_type: node
+bundle: journal_poem
+label: 'Shortlisted for FutureVerse'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
