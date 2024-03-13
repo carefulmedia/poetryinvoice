@@ -1431,46 +1431,46 @@ display:
       style:
         type: table
         options:
-          grouping: {  }
+          grouping:
+            -
+              field: field_stream
+              rendered: true
+              rendered_strip: false
           row_class: ''
           default_row_class: true
           columns:
-            counter: counter
-            contest_bulk_form: contest_bulk_form
-            id: id
+            field_place: field_place
+            field_student_name: field_student_name
+            field_student_last_name: field_student_last_name
+            field_student_stage_name: field_student_stage_name
             title: title
-            status: status
-            uid: uid
-            created: created
-            changed: changed
-            operations: operations
-            field_release_form: field_release_form
-            field_complete: field_complete
-            uid_1: uid_1
-            id_1: id_1
-            nothing: nothing
-            preferred_langcode: preferred_langcode
-            piv_teacher_first_name: piv_teacher_first_name
-            mail: mail
+            field_address_locality: field_address_locality
+            field_address_administrative_area: field_address_administrative_area
             field_stream: field_stream
-            field_student_grade: field_student_grade
-            field_location_locality: field_location_locality
-            access: access
-          default: '-1'
+          default: field_place
           info:
-            counter:
+            field_place:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            contest_bulk_form:
+            field_student_name:
+              sortable: false
+              default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            id:
+            field_student_last_name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_student_stage_name:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1484,87 +1484,14 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            status:
+            field_address_locality:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            uid:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            created:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            changed:
-              sortable: true
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            operations:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_release_form:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_complete:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            uid_1:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            id_1:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            nothing:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            preferred_langcode:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            piv_teacher_first_name:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            mail:
+            field_address_administrative_area:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1573,27 +1500,6 @@ display:
               responsive: ''
             field_stream:
               sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_student_grade:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_location_locality:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            access:
-              sortable: true
               default_sort_order: asc
               align: ''
               separator: ''
@@ -9197,7 +9103,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '{{ field_student_stage_name }} from {{ title }}, {{ field_address_locality }}, {{ field_address_administrative_area }} '
+            text: '<a href="/peoples-choice/#urlencode{{ field_student_stage_name }}">{{ field_student_stage_name }} from {{ title }}, {{ field_address_locality }}, {{ field_address_administrative_area }}</a> '
             make_link: false
             path: ''
             absolute: false
@@ -9309,9 +9215,9 @@ display:
           plugin_id: standard
           order: ASC
           expose:
-            label: 'Student last name'
-            field_identifier: field_student_last_name_value
-          exposed: true
+            label: ''
+            field_identifier: ''
+          exposed: false
         field_place_value:
           id: field_place_value
           table: competition_entry__field_place
