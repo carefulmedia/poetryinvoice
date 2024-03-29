@@ -104,7 +104,7 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
         'header' => [
           '#type' => 'container',
           'student' => [
-            '#markup' => "{$student_name} <a href='#{$encoded_student_name}'>#</a>",
+            '#markup' => "{$student_name} <a href='{$encoded_student_name}'></a>",
           ],
           'school_address' => [
             '#markup' => $school_address,
