@@ -1,0 +1,13 @@
+uuid: d659cad0-5f0e-4053-9cbd-f5143bb8995c
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: KGJcRMzAuyKuQ5btKIxMYthx4yk2Oa3ciVDmzxaGKLQ
+id: google
+label: Google
+url: 'https://www.google.com/ping?sitemap=[sitemap]'
+index_now_url: null
+sitemap_variants:
+  default: default
+  index: index

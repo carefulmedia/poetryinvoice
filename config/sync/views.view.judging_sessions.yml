@@ -575,7 +575,7 @@ display:
           entity_type: judging_session
           entity_field: id
           plugin_id: standard
-          order: ASC
+          order: DESC
           expose:
             label: ''
             field_identifier: ''
@@ -861,6 +861,7 @@ display:
           row_class: ''
           default_row_class: true
           columns:
+            contest_bulk_form: contest_bulk_form
             id: id
             title: title
             status: status
@@ -870,9 +871,14 @@ display:
             operations: operations
           default: id
           info:
+            contest_bulk_form:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             id:
               sortable: true
-              default_sort_order: asc
+              default_sort_order: desc
               align: ''
               separator: ''
               empty_column: false

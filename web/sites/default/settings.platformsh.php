@@ -36,6 +36,9 @@ if (isset($platformsh->branch)) {
     $config['language.negotiation']['url']['source'] = 'domain';
     $config['language.negotiation']['url']['domains']['en'] = 'poetryinvoice.ca';
     $config['language.negotiation']['url']['domains']['fr'] = 'lesvoixdelapoesie.ca';
+    // Enable sitemap submission to search engines.
+    $config['simple_sitemap_engines.settings']['index_now_enabled'] = TRUE;
+    $config['simple_sitemap_engines.settings']['enabled'] = TRUE;
   } // Development type environment.
   else {
     $config['system.logging']['error_level'] = 'verbose';

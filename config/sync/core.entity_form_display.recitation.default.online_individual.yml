@@ -56,6 +56,15 @@ content:
       allow_existing: false
       match_operator: CONTAINS
       allow_duplicate: false
+      removed_reference: optional
+    third_party_settings: {  }
+  field_student_name:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
 hidden:
   created: true
@@ -65,7 +74,6 @@ hidden:
   field_student_email: true
   field_student_grade: true
   field_student_last_name: true
-  field_student_name: true
   field_student_stage_name: true
   langcode: true
   status: true
