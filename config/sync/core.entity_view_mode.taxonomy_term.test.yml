@@ -6,5 +6,6 @@ dependencies:
     - taxonomy
 id: taxonomy_term.test
 label: test
+description: ''
 targetEntityType: taxonomy_term
 cache: true

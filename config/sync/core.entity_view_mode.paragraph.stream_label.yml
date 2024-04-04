@@ -6,5 +6,6 @@ dependencies:
     - paragraphs
 id: paragraph.stream_label
 label: 'Stream label'
+description: ''
 targetEntityType: paragraph
 cache: true

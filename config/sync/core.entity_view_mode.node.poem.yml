@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.poem
 label: 'Poem Only'
+description: ''
 targetEntityType: node
 cache: true

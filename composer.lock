@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2bf023150d9bef2b560fd78079096302",
+    "content-hash": "d946b60001dbd8475b0842b12db8c8aa",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3310,6 +3310,60 @@
             }
         },
         {
+            "name": "drupal/classy",
+            "version": "1.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/classy.git",
+                "reference": "1.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/classy-1.0.2.zip",
+                "reference": "1.0.2",
+                "shasum": "c2f4fbfd9ae7d4e0cbd952d96247d00a0759da06"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10",
+                "drupal/stable": "^2.0.0"
+            },
+            "type": "drupal-theme",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.2",
+                    "datestamp": "1663949784",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bnjmnm",
+                    "homepage": "https://www.drupal.org/user/2369194"
+                },
+                {
+                    "name": "davidhernandez",
+                    "homepage": "https://www.drupal.org/user/274559"
+                },
+                {
+                    "name": "lauriii",
+                    "homepage": "https://www.drupal.org/user/1078742"
+                }
+            ],
+            "description": "The Classy base theme from Drupal 8/9 moved to contrib",
+            "homepage": "https://drupal.org/project/classy",
+            "support": {
+                "source": "https://git.drupalcode.org/project/classy",
+                "issues": "https://drupal.org/project/issues/classy"
+            }
+        },
+        {
             "name": "drupal/coder",
             "version": "8.3.23",
             "source": {
@@ -3763,16 +3817,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "10.1.8",
+            "version": "10.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "fe4fd82ecd1f70db397c58d4360e15de0b4785c7"
+                "reference": "dddd242b74f40df892a7f16a48245c3b76d9b003"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/fe4fd82ecd1f70db397c58d4360e15de0b4785c7",
-                "reference": "fe4fd82ecd1f70db397c58d4360e15de0b4785c7",
+                "url": "https://api.github.com/repos/drupal/core/zipball/dddd242b74f40df892a7f16a48245c3b76d9b003",
+                "reference": "dddd242b74f40df892a7f16a48245c3b76d9b003",
                 "shasum": ""
             },
             "require": {
@@ -3802,23 +3856,26 @@
                 "php": ">=8.1.0",
                 "psr/log": "^3.0",
                 "sebastian/diff": "^4",
-                "symfony/console": "^6.3",
-                "symfony/dependency-injection": "^6.3",
-                "symfony/event-dispatcher": "^6.3",
-                "symfony/http-foundation": "^6.3",
-                "symfony/http-kernel": "^6.3",
-                "symfony/mime": "^6.3",
+                "symfony/console": "^6.4",
+                "symfony/dependency-injection": "^6.4",
+                "symfony/event-dispatcher": "^6.4",
+                "symfony/filesystem": "^6.4",
+                "symfony/finder": "^6.4",
+                "symfony/http-foundation": "^6.4",
+                "symfony/http-kernel": "^6.4",
+                "symfony/mailer": "^6.4",
+                "symfony/mime": "^6.4",
                 "symfony/polyfill-iconv": "^1.26",
-                "symfony/process": "^6.3",
-                "symfony/psr-http-message-bridge": "^2.1",
-                "symfony/routing": "^6.3",
-                "symfony/serializer": "^6.3",
-                "symfony/validator": "^6.3",
-                "symfony/yaml": "^6.3",
+                "symfony/process": "^6.4",
+                "symfony/psr-http-message-bridge": "^2.1|^6.4",
+                "symfony/routing": "^6.4",
+                "symfony/serializer": "^6.4",
+                "symfony/validator": "^6.4",
+                "symfony/yaml": "^6.4",
                 "twig/twig": "^3.5.0"
             },
             "conflict": {
-                "drush/drush": "<8.1.10"
+                "drush/drush": "<12.4.3"
             },
             "replace": {
                 "drupal/core-annotation": "self.version",
@@ -3917,9 +3974,9 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/10.1.8"
+                "source": "https://github.com/drupal/core/tree/10.2.5"
             },
-            "time": "2024-01-16T21:11:11+00:00"
+            "time": "2024-04-03T07:19:20+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
@@ -6638,6 +6695,78 @@
             }
         },
         {
+            "name": "drupal/media_library_theme_reset",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/media_library_theme_reset.git",
+                "reference": "8.x-1.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/media_library_theme_reset-8.x-1.5.zip",
+                "reference": "8.x-1.5",
+                "shasum": "d0e26fb6a0e4b59ff3410bd3f3781165cc27b935"
+            },
+            "require": {
+                "drupal/core": "^8 || ^9 || ^10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "8.x-1.5",
+                    "datestamp": "1670618180",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "gravelpot",
+                    "homepage": "https://www.drupal.org/user/748208"
+                },
+                {
+                    "name": "Jeff Cardwell",
+                    "homepage": "https://www.drupal.org/user/2913129"
+                },
+                {
+                    "name": "lreynaga",
+                    "homepage": "https://www.drupal.org/user/3400232"
+                },
+                {
+                    "name": "mark_fullmer",
+                    "homepage": "https://www.drupal.org/user/2612816"
+                },
+                {
+                    "name": "mmarler",
+                    "homepage": "https://www.drupal.org/user/500192"
+                },
+                {
+                    "name": "ricksta",
+                    "homepage": "https://www.drupal.org/user/311042"
+                },
+                {
+                    "name": "texas_tater",
+                    "homepage": "https://www.drupal.org/user/753614"
+                },
+                {
+                    "name": "utexas",
+                    "homepage": "https://www.drupal.org/user/3716409"
+                }
+            ],
+            "description": "Display the Media Library with an administrative theme",
+            "homepage": "https://www.drupal.org/project/media_library_theme_reset",
+            "support": {
+                "source": "https://git.drupalcode.org/project/media_library_theme_reset"
+            }
+        },
+        {
             "name": "drupal/menu_block",
             "version": "1.10.0",
             "source": {
@@ -7600,6 +7729,158 @@
             "support": {
                 "source": "https://git.drupalcode.org/project/quick_node_clone",
                 "issues": "https://www.drupal.org/project/issues/quick_node_clone"
+            }
+        },
+        {
+            "name": "drupal/quickedit",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/quickedit.git",
+                "reference": "1.0.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/quickedit-1.0.3.zip",
+                "reference": "1.0.3",
+                "shasum": "2fb9eb812010743949dd7ec1a9fc0cff4c1fb4ce"
+            },
+            "require": {
+                "drupal/core": "^9.4 || ^10"
+            },
+            "require-dev": {
+                "drupal/ckeditor": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "1.0.3",
+                    "datestamp": "1663069901",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Devin Carlson",
+                    "homepage": "https://www.drupal.org/user/290182"
+                },
+                {
+                    "name": "dww",
+                    "homepage": "https://www.drupal.org/user/46549"
+                },
+                {
+                    "name": "Gábor Hojtsy",
+                    "homepage": "https://www.drupal.org/user/4166"
+                },
+                {
+                    "name": "jessebeach",
+                    "homepage": "https://www.drupal.org/user/748566"
+                },
+                {
+                    "name": "nod_",
+                    "homepage": "https://www.drupal.org/user/598310"
+                },
+                {
+                    "name": "tkoleary",
+                    "homepage": "https://www.drupal.org/user/627430"
+                },
+                {
+                    "name": "webchick",
+                    "homepage": "https://www.drupal.org/user/24967"
+                },
+                {
+                    "name": "Wim Leers",
+                    "homepage": "https://www.drupal.org/user/99777"
+                }
+            ],
+            "description": "In-place content editing (contrib).",
+            "homepage": "https://www.drupal.org/project/quickedit",
+            "support": {
+                "source": "https://git.drupalcode.org/project/quickedit"
+            }
+        },
+        {
+            "name": "drupal/rdf",
+            "version": "2.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/rdf.git",
+                "reference": "2.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/rdf-2.1.1.zip",
+                "reference": "2.1.1",
+                "shasum": "9c897d1313abdabbe80806d79643faffaa0b2466"
+            },
+            "require": {
+                "drupal/core": "^9.4 || ^10.0",
+                "easyrdf/easyrdf": "^0.9 || ^1.0"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "drupal": {
+                    "version": "2.1.1",
+                    "datestamp": "1666340902",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Arto",
+                    "homepage": "https://www.drupal.org/user/26089"
+                },
+                {
+                    "name": "bbrala",
+                    "homepage": "https://www.drupal.org/user/3366066"
+                },
+                {
+                    "name": "bhuga",
+                    "homepage": "https://www.drupal.org/user/186547"
+                },
+                {
+                    "name": "febbraro",
+                    "homepage": "https://www.drupal.org/user/43670"
+                },
+                {
+                    "name": "jmiccolis",
+                    "homepage": "https://www.drupal.org/user/31731"
+                },
+                {
+                    "name": "linclark",
+                    "homepage": "https://www.drupal.org/user/396253"
+                },
+                {
+                    "name": "miglius",
+                    "homepage": "https://www.drupal.org/user/18741"
+                },
+                {
+                    "name": "scor",
+                    "homepage": "https://www.drupal.org/user/52142"
+                },
+                {
+                    "name": "smustgrave",
+                    "homepage": "https://www.drupal.org/user/3252890"
+                }
+            ],
+            "description": "Enriches your content with metadata to let other applications (e.g. search engines, aggregators) better understand its relationships and attributes",
+            "homepage": "https://www.drupal.org/project/rdf",
+            "support": {
+                "source": "https://git.drupalcode.org/project/rdf"
             }
         },
         {
@@ -8590,6 +8871,58 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/social_link_field",
                 "issues": "https://www.drupal.org/project/issues/social_link_field"
+            }
+        },
+        {
+            "name": "drupal/stable",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/stable.git",
+                "reference": "2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/stable-2.0.0.zip",
+                "reference": "2.0.0",
+                "shasum": "1d1ba799280bd6b9a3c46a158e6026663e080f3f"
+            },
+            "require": {
+                "drupal/core": "^9 || ^10"
+            },
+            "type": "drupal-theme",
+            "extra": {
+                "drupal": {
+                    "version": "2.0.0",
+                    "datestamp": "1663102967",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "bnjmnm",
+                    "homepage": "https://www.drupal.org/user/2369194"
+                },
+                {
+                    "name": "Cottser",
+                    "homepage": "https://www.drupal.org/user/1167326"
+                },
+                {
+                    "name": "lauriii",
+                    "homepage": "https://www.drupal.org/user/1078742"
+                }
+            ],
+            "description": "A base theme using Drupal 8.0.0's core markup and CSS.",
+            "homepage": "https://www.drupal.org/project/stable",
+            "support": {
+                "source": "https://git.drupalcode.org/project/stable"
             }
         },
         {
@@ -9981,6 +10314,81 @@
                 }
             ],
             "time": "2024-03-20T15:03:27+00:00"
+        },
+        {
+            "name": "easyrdf/easyrdf",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/easyrdf/easyrdf.git",
+                "reference": "c7b0a9dbcb211eb7de03ee99ff5b52d17f2a8e64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/easyrdf/easyrdf/zipball/c7b0a9dbcb211eb7de03ee99ff5b52d17f2a8e64",
+                "reference": "c7b0a9dbcb211eb7de03ee99ff5b52d17f2a8e64",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-mbstring": "*",
+                "ext-pcre": "*",
+                "ext-xmlreader": "*",
+                "lib-libxml": "*",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "code-lts/doctum": "^5",
+                "ml/json-ld": "~1.0",
+                "phpunit/phpunit": "^7",
+                "semsol/arc2": "^2.4",
+                "squizlabs/php_codesniffer": "3.*",
+                "zendframework/zend-http": "~2.3"
+            },
+            "suggest": {
+                "ml/json-ld": "~1.0",
+                "semsol/arc2": "~2.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EasyRdf\\": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nicholas Humfrey",
+                    "email": "njh@aelius.com",
+                    "homepage": "http://www.aelius.com/njh/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Alexey Zakhlestin",
+                    "email": "indeyets@gmail.com",
+                    "homepage": "http://indeyets.ru/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "EasyRdf is a PHP library designed to make it easy to consume and produce RDF.",
+            "homepage": "http://www.easyrdf.org/",
+            "keywords": [
+                "Linked Data",
+                "RDF",
+                "Semantic Web",
+                "Turtle",
+                "rdfa",
+                "sparql"
+            ],
+            "support": {
+                "forum": "http://groups.google.com/group/easyrdf/",
+                "issues": "http://github.com/easyrdf/easyrdf/issues",
+                "source": "https://github.com/easyrdf/easyrdf/tree/1.1.1"
+            },
+            "time": "2020-12-02T08:47:31+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -14623,6 +15031,86 @@
                 }
             ],
             "time": "2024-04-03T06:09:15+00:00"
+        },
+        {
+            "name": "symfony/mailer",
+            "version": "v6.4.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/mailer.git",
+                "reference": "677f34a6f4b4559e08acf73ae0aec460479e5859"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/mailer/zipball/677f34a6f4b4559e08acf73ae0aec460479e5859",
+                "reference": "677f34a6f4b4559e08acf73ae0aec460479e5859",
+                "shasum": ""
+            },
+            "require": {
+                "egulias/email-validator": "^2.1.10|^3|^4",
+                "php": ">=8.1",
+                "psr/event-dispatcher": "^1",
+                "psr/log": "^1|^2|^3",
+                "symfony/event-dispatcher": "^5.4|^6.0|^7.0",
+                "symfony/mime": "^6.2|^7.0",
+                "symfony/service-contracts": "^2.5|^3"
+            },
+            "conflict": {
+                "symfony/http-client-contracts": "<2.5",
+                "symfony/http-kernel": "<5.4",
+                "symfony/messenger": "<6.2",
+                "symfony/mime": "<6.2",
+                "symfony/twig-bridge": "<6.2.1"
+            },
+            "require-dev": {
+                "symfony/console": "^5.4|^6.0|^7.0",
+                "symfony/http-client": "^5.4|^6.0|^7.0",
+                "symfony/messenger": "^6.2|^7.0",
+                "symfony/twig-bridge": "^6.2|^7.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Mailer\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Helps sending emails",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/mailer/tree/v6.4.6"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-03-27T21:14:17+00:00"
         },
         {
             "name": "symfony/mime",

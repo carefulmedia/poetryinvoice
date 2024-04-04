@@ -6,5 +6,6 @@ dependencies:
     - piv_contest_recitation
 id: recitation.online_individual
 label: 'online individual'
+description: ''
 targetEntityType: recitation
 cache: true

@@ -6,5 +6,6 @@ dependencies:
     - piv_contest_competition
 id: competition.teacher_ui
 label: 'Teacher UI'
+description: ''
 targetEntityType: competition
 cache: true
