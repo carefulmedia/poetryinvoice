@@ -88,6 +88,7 @@ hooks:
         set -e
         php ./drush/platformsh_generate_drush_yml.php
         cd web
+        drush cr
         drush deploy
         pkill -f php-fpm
 
