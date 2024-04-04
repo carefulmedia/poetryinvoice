@@ -6,5 +6,6 @@ dependencies:
     - piv_contest_recitation
 id: recitation.video_only
 label: 'Video only'
+description: ''
 targetEntityType: recitation
 cache: true

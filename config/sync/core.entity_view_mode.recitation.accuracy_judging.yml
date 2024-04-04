@@ -6,5 +6,6 @@ dependencies:
     - piv_contest_recitation
 id: recitation.accuracy_judging
 label: 'Accuracy judging'
+description: ''
 targetEntityType: recitation
 cache: true

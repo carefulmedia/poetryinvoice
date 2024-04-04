@@ -6,5 +6,6 @@ dependencies:
     - media
 id: media.youtube_id
 label: 'Youtube ID'
+description: ''
 targetEntityType: media
 cache: true

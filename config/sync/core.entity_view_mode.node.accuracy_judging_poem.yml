@@ -6,5 +6,6 @@ dependencies:
     - node
 id: node.accuracy_judging_poem
 label: 'Accuracy Judging Poem'
+description: ''
 targetEntityType: node
 cache: true

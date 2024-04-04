@@ -6,5 +6,6 @@ dependencies:
     - taxonomy
 id: taxonomy_term.inline
 label: Inline
+description: ''
 targetEntityType: taxonomy_term
 cache: true

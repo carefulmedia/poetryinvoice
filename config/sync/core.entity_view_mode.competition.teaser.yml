@@ -6,5 +6,6 @@ dependencies:
     - piv_contest_competition
 id: competition.teaser
 label: Teaser
+description: ''
 targetEntityType: competition
 cache: true

@@ -6,5 +6,6 @@ dependencies:
     - user
 id: user.diff
 label: diff
+description: ''
 targetEntityType: user
 cache: true

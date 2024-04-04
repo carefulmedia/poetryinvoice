@@ -6,5 +6,6 @@ dependencies:
     - piv_contest_recitation
 id: recitation.facewall
 label: Facewall
+description: ''
 targetEntityType: recitation
 cache: true
