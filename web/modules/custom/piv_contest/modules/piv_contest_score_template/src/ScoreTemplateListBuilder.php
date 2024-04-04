@@ -67,6 +67,7 @@ class ScoreTemplateListBuilder extends EntityListBuilder {
 
     $total = $this->getStorage()
       ->getQuery()
+      ->accessCheck(FALSE)
       ->count()
       ->execute();
 

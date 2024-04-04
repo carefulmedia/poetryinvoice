@@ -16,10 +16,10 @@ type: list_float
 settings:
   allowed_values:
     -
-      value: !!float 1
+      value: 1.0
       label: 'In person, $500'
     -
-      value: !!float 2
+      value: 2.0
       label: 'Virtual, $250'
   allowed_values_function: ''
 module: options

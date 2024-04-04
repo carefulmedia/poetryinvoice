@@ -13,7 +13,7 @@ class CompetitionEntryDeleteForm extends ContentEntityDeleteForm {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $entity = $this->getEntity();
     $uid = $entity->uid->target_id;
     $competition_id = $entity->field_competition->target_id;

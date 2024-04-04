@@ -84,7 +84,7 @@ class ScoreTemplateTypeForm extends BundleEntityFormBase {
   /**
    * {@inheritdoc}
    */
-  public function save(array $form, FormStateInterface $form_state) {
+  public function save(array $form, FormStateInterface $form_state): void {
     $entity_type = $this->entity;
 
     $entity_type->set('id', trim($entity_type->id()));

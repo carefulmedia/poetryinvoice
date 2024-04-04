@@ -12,7 +12,7 @@ field_name: field_featured_prompt_starting_d
 entity_type: node
 bundle: writing_prompt
 label: 'Featured prompt starting date'
-description: 'Only fill this out for a future date a prompt will be feautred. It will stop being featured only when another prompt''s feature start date has arrived.'
+description: "Only fill this out for a future date a prompt will be feautred. It will stop being featured only when another prompt's feature start date has arrived."
 required: false
 translatable: false
 default_value: {  }

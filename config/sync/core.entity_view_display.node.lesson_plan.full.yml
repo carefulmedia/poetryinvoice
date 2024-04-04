@@ -379,9 +379,9 @@ third_party_settings:
               label_display: '0'
               provider: layout_builder
               view_mode: full
-              context_mapping: {  }
               block_revision_id: 134
               block_serialized: null
+              context_mapping: {  }
             weight: 8
             additional: {  }
           7d8892ac-d12c-4390-9e1a-57d5ef0453e4:

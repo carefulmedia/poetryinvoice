@@ -16,10 +16,10 @@ dependencies:
     - node.type.mixtape
   module:
     - file
-    - image
     - layout_builder
     - layout_builder_restrictions
     - layout_discovery
+    - svg_image
     - text
     - user
 third_party_settings:

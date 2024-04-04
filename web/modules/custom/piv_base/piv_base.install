@@ -16,6 +16,7 @@ function piv_base_update_9001() {
   Environment::setTimeLimit(0);
   $node_storage = \Drupal::entityTypeManager()->getStorage('node');
   $nids = $node_storage->getQuery()
+    ->accessCheck(FALSE)
     ->notExists('field_allow_poet_visits_school')
     ->condition('type', 'school')
     ->execute();

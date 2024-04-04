@@ -2,7 +2,6 @@ name: PIV Pathauto
 type: module
 description: Custom pathauto code to generate users paths.
 package: Poetry in voice
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 dependencies:
   - pathauto

@@ -24,12 +24,11 @@ module:
   chosen: 0
   chosen_field: 0
   chosen_lib: 0
-  ckeditor: 0
+  ckeditor5: 0
   comment: 0
   components: 0
   conditional_fields: 0
   config: 0
-  config_filter: 0
   config_ignore: 0
   config_log: 0
   config_translation: 0
@@ -49,8 +48,8 @@ module:
   entity_print: 0
   entity_print_views: 0
   entity_reference_revisions: 0
+  exif_orientation: 0
   facebook_pixel: 0
-  fakeobjects: 0
   field: 0
   field_group: 0
   field_layout: 0
@@ -98,7 +97,6 @@ module:
   media: 0
   media_library: 0
   media_library_form_element: 0
-  media_library_theme_reset: 0
   menu_block: 0
   menu_link_content: 0
   menu_ui: 0
@@ -122,6 +120,7 @@ module:
   paragraphs_type_permissions: 0
   path: 0
   path_alias: 0
+  phpass: 0
   piv_base: 0
   piv_canadian_content: 0
   piv_contest: 0
@@ -141,8 +140,6 @@ module:
   piv_user: 0
   prepopulate: 0
   quick_node_clone: 0
-  quickedit: 0
-  rdf: 0
   realname: 0
   recaptcha: 0
   redirect: 0
@@ -160,6 +157,8 @@ module:
   search_api_solr_admin: 0
   serialization: 0
   shortcut: 0
+  simple_sitemap: 0
+  simple_sitemap_engines: 0
   slick: 0
   slick_ui: 0
   slick_views: 0
@@ -180,6 +179,7 @@ module:
   toolbar: 0
   tour: 0
   update: 0
+  upgrade_status: 0
   user: 0
   views_bootstrap: 0
   views_bulk_edit: 0
@@ -202,11 +202,9 @@ module:
   minimal: 1000
 theme:
   stable9: 0
-  stable: 0
-  at_core: 0
-  classy: 0
   bootstrap_barrio: 0
   lvp_barrio: 0
   claro: 0
   gin: 0
+  piv: 0
 profile: minimal

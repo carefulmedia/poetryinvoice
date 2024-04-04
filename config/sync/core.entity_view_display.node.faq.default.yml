@@ -11,7 +11,7 @@ dependencies:
     - node.type.faq
   module:
     - comment
-    - image
+    - svg_image
     - text
     - user
 id: node.faq.default

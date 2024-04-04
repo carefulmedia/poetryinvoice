@@ -17,6 +17,7 @@ dependencies:
     - node.type.writing_prompt
   module:
     - field_permissions
+    - file
     - locale
     - node
     - system
@@ -25,11 +26,7 @@ label: Proofreader
 weight: 7
 is_admin: null
 permissions:
-  - 'access PDF version'
   - 'access content overview'
-  - 'access overlay'
-  - 'access print'
-  - 'access search combine'
   - 'administer nodes'
   - 'bypass node access'
   - 'create poem content'
@@ -37,15 +34,14 @@ permissions:
   - 'delete any forum content'
   - 'delete any judge_page content'
   - 'delete any lesson_plan content'
-  - 'delete any lesson_plan_special content'
   - 'delete any page content'
   - 'delete any student content'
   - 'delete any writing_prompt content'
   - 'delete own bulletin_board content'
+  - 'delete own files'
   - 'delete own forum content'
   - 'delete own judge_page content'
   - 'delete own lesson_plan content'
-  - 'delete own lesson_plan_special content'
   - 'delete own page content'
   - 'delete own student content'
   - 'delete own writing_prompt content'
@@ -54,7 +50,6 @@ permissions:
   - 'edit any forum content'
   - 'edit any judge_page content'
   - 'edit any lesson_plan content'
-  - 'edit any lesson_plan_special content'
   - 'edit any page content'
   - 'edit any poem content'
   - 'edit any press_release content'
@@ -67,16 +62,13 @@ permissions:
   - 'edit own forum content'
   - 'edit own judge_page content'
   - 'edit own lesson_plan content'
-  - 'edit own lesson_plan_special content'
   - 'edit own page content'
   - 'edit own poem content'
   - 'edit own press_release content'
   - 'edit own student content'
   - 'edit own venue content'
   - 'edit own writing_prompt content'
-  - 'revert revisions'
   - 'translate interface'
   - 'view field_variations_for_younger_stu'
   - 'view own unpublished content'
-  - 'view revisions'
   - 'view the administration theme'

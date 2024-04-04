@@ -1,0 +1,27 @@
+uuid: c8ac6ac1-217f-4d20-9971-6a88475b1ce9
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - piv
+id: piv_dropdownsupermenu
+theme: piv
+region: highlighted
+weight: -7
+provider: null
+plugin: 'block_content:df83bd82-cb93-4c72-a8a2-9c62f166b2d8'
+settings:
+  id: 'block_content:df83bd82-cb93-4c72-a8a2-9c62f166b2d8'
+  label: 'Dropdown supermenu'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '*'

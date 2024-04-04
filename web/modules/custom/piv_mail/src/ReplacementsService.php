@@ -157,7 +157,7 @@ class ReplacementsService {
    * original value of a node in a hook_node_update. If there is a original
    * set, then the replace() will flag the tokens that changed with a prefix.
    */
-  public function setOriginal(?ReplacementsService $original = NULL) {
+  public function setOriginal(?ReplacementsService $original = NULL): void {
     $this->original = $original;
   }
 

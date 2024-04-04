@@ -1,0 +1,30 @@
+uuid: 19987191-16b3-448b-a40a-e92cf30bc842
+langcode: en
+status: false
+dependencies:
+  module:
+    - node
+  theme:
+    - piv
+id: piv_headerimageforlessonplans
+theme: piv
+region: header
+weight: -12
+provider: null
+plugin: 'block_content:48b16ac8-3e0e-4c45-9337-519c7618ce68'
+settings:
+  id: 'block_content:48b16ac8-3e0e-4c45-9337-519c7618ce68'
+  label: 'Header image for Lesson Plans'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      lesson_plan: lesson_plan

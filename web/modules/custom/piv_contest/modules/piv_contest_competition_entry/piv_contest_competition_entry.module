@@ -103,6 +103,7 @@ function piv_contest_competition_entry_form_competition_default_edit_form_alter(
   ];
   foreach ($entity->field_competition_streams as $key => $field_item) {
     $items = $storage->getQuery()
+      ->accessCheck(FALSE)
       ->condition('field_stream.target_id', $field_item->target_id)
       ->range(0, 1)
       ->execute();

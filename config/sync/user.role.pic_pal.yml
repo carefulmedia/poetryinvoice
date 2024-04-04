@@ -7,13 +7,13 @@ dependencies:
     - node.type.writing_prompt
   module:
     - field_permissions
+    - file
     - node
 id: pic_pal
 label: PIC/PAL
 weight: 21
 is_admin: null
 permissions:
-  - 'access search combine'
   - 'create body'
   - 'create field_expectations_poet'
   - 'create field_other_focus'
@@ -30,6 +30,7 @@ permissions:
   - 'create field_visit_completed_poet'
   - 'create field_work_student_poet'
   - 'create writing_prompt content'
+  - 'delete own files'
   - 'edit any pal_pir_school_visit content'
   - 'edit field_expectations_poet'
   - 'edit field_other_focus'
@@ -64,12 +65,10 @@ permissions:
   - 'edit own field_work_student_poet'
   - 'edit own pal_pir_school_visit content'
   - 'edit own writing_prompt content'
-  - 'search writing_prompt content'
   - 'view field_agreed_visit_date'
   - 'view field_date_and_poet_chosen'
   - 'view field_expectations_poet'
   - 'view field_other_focus'
-  - 'view field_pal_visit_date_and_time'
   - 'view field_poet_feedback'
   - 'view field_poet_focus'
   - 'view field_poet_incomplete_reason'
@@ -87,7 +86,6 @@ permissions:
   - 'view own field_date_and_poet_chosen'
   - 'view own field_expectations_poet'
   - 'view own field_other_focus'
-  - 'view own field_pal_visit_date_and_time'
   - 'view own field_poet_feedback'
   - 'view own field_poet_focus'
   - 'view own field_poet_incomplete_reason'

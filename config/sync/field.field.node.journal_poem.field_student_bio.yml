@@ -1,0 +1,21 @@
+uuid: 52f6c7df-bb77-442a-aeba-8187af4682d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_student_bio
+    - node.type.journal_poem
+  module:
+    - text
+id: node.journal_poem.field_student_bio
+field_name: field_student_bio
+entity_type: node
+bundle: journal_poem
+label: 'Student bio'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

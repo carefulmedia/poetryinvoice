@@ -178,7 +178,7 @@ class SyncService {
    * @param bool $is_drush
    *   If this is a drush call or not.
    */
-  public function start($is_drush = FALSE) {
+  public function start($is_drush = FALSE): void {
     $rows = $this->loadCSVData();
     $operations = [];
 
@@ -204,7 +204,7 @@ class SyncService {
   /**
    * Execute a event sync.
    */
-  public static function processBatch($row, &$context) {
+  public static function processBatch($row, &$context): void {
     if (!isset($context['results']['num'])) {
       $context['results']['num'] = 0;
     }
@@ -232,7 +232,7 @@ class SyncService {
   /**
    * The batch finish callback.
    */
-  public static function finishBatch($success, $results, $operations) {
+  public static function finishBatch($success, $results, $operations): void {
     if ($success) {
       $message = \Drupal::translation()->formatPlural(
         $results['num'],

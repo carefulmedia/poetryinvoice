@@ -67,6 +67,7 @@ class RecitationListBuilder extends EntityListBuilder {
 
     $total = $this->getStorage()
       ->getQuery()
+      ->accessCheck(FALSE)
       ->count()
       ->execute();
 

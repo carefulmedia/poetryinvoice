@@ -9,7 +9,7 @@ id: paragraph.this_teacher_signed_up_for.field_reasons_if_school_teacher_
 field_name: field_reasons_if_school_teacher_
 entity_type: paragraph
 bundle: this_teacher_signed_up_for
-label: 'Reasons if school/teacher didn''t compete'
+label: "Reasons if school/teacher didn't compete"
 description: ''
 required: false
 translatable: false

@@ -294,14 +294,14 @@ class CreateAccountForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     // Do nothing.
   }
 
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $current_langcode = $this->languageManager->getCurrentLanguage()->getId();
     $values = $form_state->getValues();
     $checkboxes = $values['checkboxes'] ?? [];

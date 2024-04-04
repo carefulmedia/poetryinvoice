@@ -18,9 +18,9 @@ dependencies:
     - node.type.page
   module:
     - file
-    - image
     - layout_builder
     - layout_builder_restrictions
+    - svg_image
     - text
     - user
 third_party_settings:

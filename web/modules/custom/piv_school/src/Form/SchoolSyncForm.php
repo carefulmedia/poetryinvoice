@@ -6,6 +6,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\piv_school\SyncService;
+use Drupal\Core\Url;
 
 /**
  * Class SchoolSyncForm.
@@ -47,9 +48,8 @@ class SchoolSyncForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     $file = $this->syncService->getCSVFile();
-    $file_name = $file->get('filename')->value;
-    $uri = $file->get('uri')->value;
-    $url = file_create_url($uri);
+    $file_name = $file->filename->value;
+    $url = $file->createFileUrl(FALSE);
     $prefix = [
       '#theme' => 'piv_school__sync_form',
       '#name' => $file_name,
@@ -69,7 +69,7 @@ class SchoolSyncForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $this->syncService->start();
   }
 

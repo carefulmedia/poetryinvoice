@@ -283,14 +283,14 @@ class JudgeSession {
   /**
    * Mark a session to being judged.
    */
-  public function startJudgingSession(JudgingSession $session, User $judge) {
+  public function startJudgingSession(JudgingSession $session, User $judge): void {
     $this->keyValueVote->set("current_session_being_judged_{$judge->id()}", $session->id());
   }
 
   /**
    * Remove session from being judged by a given judge.
    */
-  public function removeSessionBeingJudged(User $judge) {
+  public function removeSessionBeingJudged(User $judge): void {
     $this->removeSessionBeingJudgeByUserID($judge->id());
   }
 
@@ -298,7 +298,7 @@ class JudgeSession {
    * Remove session from being judged by a given user id.
    */
   // @phpcs:ignore
-  public function removeSessionBeingJudgeByUserID(int $id) {
+  public function removeSessionBeingJudgeByUserID(int $id): void {
     $this->keyValueVote->delete("current_session_being_judged_{$id}");
   }
 
@@ -334,7 +334,7 @@ class JudgeSession {
   /**
    * Mark poem as read.
    */
-  public function markPoemAsRead(JudgingSession $session, User $judge, NodeInterface $poem) {
+  public function markPoemAsRead(JudgingSession $session, User $judge, NodeInterface $poem): void {
     $now = new DrupalDateTime();
     $this->db->insert('judging_session_poems_read')
       ->fields([

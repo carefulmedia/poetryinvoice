@@ -5,14 +5,15 @@ dependencies:
   module:
     - contact
     - field_permissions
+    - file
 id: teacher_fr_
 label: 'Teacher (fr)'
 weight: 3
 is_admin: null
 permissions:
-  - 'access search combine'
   - 'access user contact forms'
   - 'create field_stage_name'
+  - 'delete own files'
   - 'edit field_stage_name'
   - 'edit own field_stage_name'
   - 'view body'

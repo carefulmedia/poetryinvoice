@@ -397,6 +397,15 @@ display:
             date_format: medium
             custom_date_format: ''
             timezone: ''
+            tooltip:
+              date_format: ''
+              custom_date_format: ''
+            time_diff:
+              enabled: false
+              future_format: '@interval hence'
+              past_format: '@interval ago'
+              granularity: 2
+              refresh: 60
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -464,6 +473,15 @@ display:
             date_format: medium
             custom_date_format: ''
             timezone: ''
+            tooltip:
+              date_format: ''
+              custom_date_format: ''
+            time_diff:
+              enabled: false
+              future_format: '@interval hence'
+              past_format: '@interval ago'
+              granularity: 2
+              refresh: 60
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -575,7 +593,7 @@ display:
           entity_type: judging_session
           entity_field: id
           plugin_id: standard
-          order: ASC
+          order: DESC
           expose:
             label: ''
             field_identifier: ''
@@ -861,6 +879,7 @@ display:
           row_class: ''
           default_row_class: true
           columns:
+            contest_bulk_form: contest_bulk_form
             id: id
             title: title
             status: status
@@ -870,9 +889,14 @@ display:
             operations: operations
           default: id
           info:
+            contest_bulk_form:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             id:
               sortable: true
-              default_sort_order: asc
+              default_sort_order: desc
               align: ''
               separator: ''
               empty_column: false

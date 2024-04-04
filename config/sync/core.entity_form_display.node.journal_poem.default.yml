@@ -24,6 +24,8 @@ dependencies:
     - field.field.node.journal_poem.field_pronouns
     - field.field.node.journal_poem.field_school_journal
     - field.field.node.journal_poem.field_selected_for_futureverse
+    - field.field.node.journal_poem.field_shortlisted_for_futurevers
+    - field.field.node.journal_poem.field_student_bio
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
     - field.field.node.journal_poem.field_teacher
@@ -257,7 +259,7 @@ content:
             values: {  }
             value_form:
               -
-                value: 'Poet''s visit poem'
+                value: "Poet's visit poem"
             effect: slide
             effect_options:
               fade:
@@ -283,10 +285,25 @@ content:
     third_party_settings: {  }
   field_selected_for_futureverse:
     type: boolean_checkbox
+    weight: 38
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_shortlisted_for_futurevers:
+    type: boolean_checkbox
     weight: 37
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_student_bio:
+    type: text_textarea
+    weight: 39
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_student_photo:
     type: image_focal_point

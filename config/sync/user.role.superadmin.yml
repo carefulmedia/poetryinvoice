@@ -6,13 +6,13 @@ dependencies:
     - filter.format.full_html
     - filter.format.php_code
   module:
+    - file
     - filter
 id: superadmin
 label: SUPERADMIN
 weight: 19
 is_admin: null
 permissions:
-  - 'access search combine'
+  - 'delete own files'
   - 'use text format full_html'
   - 'use text format php_code'
-  - 'view unpublished taxonomy terms'

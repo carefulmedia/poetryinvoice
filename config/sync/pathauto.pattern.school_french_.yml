@@ -11,7 +11,7 @@ type: 'canonical_entities:node'
 pattern: 'le-concours/ecoles/[node:title]'
 selection_criteria:
   330bc0be-da70-4734-9e2d-37143d3eb4a1:
-    id: node_type
+    id: 'entity_bundle:node'
     negate: false
     uuid: 330bc0be-da70-4734-9e2d-37143d3eb4a1
     context_mapping:

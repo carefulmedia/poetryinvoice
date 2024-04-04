@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
+    - file
     - piv_contest_judging_session
 id: accuracy_judge
 label: 'Accuracy judge'
@@ -10,4 +11,4 @@ weight: 15
 is_admin: null
 permissions:
   - 'access own judge for accuracy page'
-  - 'access search combine'
+  - 'delete own files'

@@ -170,14 +170,14 @@ class PopularVoteForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     // Nothing to validate.
   }
 
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     // Create vote.
     $competition_entry = $form_state->getValue('competition_entry');
     $competition = $form_state->getValue('competition');

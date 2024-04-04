@@ -324,7 +324,7 @@ class MultipleRecitationsForm extends FormBase {
   /**
    * Validate a media url.
    */
-  public function validateRecitation(array &$form, FormStateInterface $form_state) {
+  public function validateRecitation(array &$form, FormStateInterface $form_state): void {
     // Replace the poem error.
     $should_replace_errors = FALSE;
     $errors = $form_state->getErrors();
@@ -375,14 +375,14 @@ class MultipleRecitationsForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     // Do nothing.
   }
 
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $this->messenger()->addStatus($this->t('The recitation has been saved.'));
     $form_state->setRebuild();
     $values = $form_state->getValues();

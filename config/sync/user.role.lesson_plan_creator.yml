@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - field_permissions
+    - file
     - node
     - system
 id: lesson_plan_creator
@@ -11,10 +12,7 @@ label: 'Lesson Plan Creator'
 weight: 18
 is_admin: null
 permissions:
-  - 'access administration menu'
   - 'access administration pages'
-  - 'access search combine'
-  - 'bypass mollom protection'
   - 'create field_activity_description_steps'
   - 'create field_additional_poems'
   - 'create field_copyright'
@@ -26,6 +24,7 @@ permissions:
   - 'create field_variations_for_older_stude'
   - 'create field_variations_for_younger_stu'
   - 'create field_video_poem'
+  - 'delete own files'
   - 'edit own body'
   - 'edit own field_about_me'
   - 'edit own field_activity_description_steps'

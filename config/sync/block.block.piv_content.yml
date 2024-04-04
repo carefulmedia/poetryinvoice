@@ -1,0 +1,22 @@
+uuid: 17b87570-cc6b-4774-8f78-fbab7036b7eb
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - piv
+_core:
+  default_config_hash: UYGha3x7TqeKD5cqgYdNw8KRr846VUOX6kgtklXyU1w
+id: piv_content
+theme: piv
+region: content
+weight: -15
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

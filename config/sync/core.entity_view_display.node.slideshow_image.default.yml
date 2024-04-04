@@ -11,7 +11,7 @@ dependencies:
     - node.type.slideshow_image
   module:
     - comment
-    - image
+    - svg_image
     - text
     - user
 id: node.slideshow_image.default

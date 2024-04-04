@@ -69,6 +69,7 @@ class PopularVoteResultsController extends ControllerBase implements ContainerIn
     $level = $competition->field_popular_vote_level->value ?? 1;
     $competition_entry_storage = $this->entityTypeManager->getStorage('competition_entry');
     $competition_entry_ids = $competition_entry_storage->getQuery()
+      ->accessCheck(FALSE)
       ->condition('field_competition', $competition->id())
       ->condition('field_competition_current_level', $level, '>=')
       ->execute();

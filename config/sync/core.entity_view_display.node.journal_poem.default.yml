@@ -25,6 +25,8 @@ dependencies:
     - field.field.node.journal_poem.field_pronouns
     - field.field.node.journal_poem.field_school_journal
     - field.field.node.journal_poem.field_selected_for_futureverse
+    - field.field.node.journal_poem.field_shortlisted_for_futurevers
+    - field.field.node.journal_poem.field_student_bio
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
     - field.field.node.journal_poem.field_teacher
@@ -133,6 +135,39 @@ third_party_settings:
                   format_custom_true: ''
                 third_party_settings: {  }
             weight: 4
+            additional: {  }
+          455d815f-aa2e-4d7f-8b08-269bac67b455:
+            uuid: 455d815f-aa2e-4d7f-8b08-269bac67b455
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_student_bio'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          7a2d88c3-24bd-438d-8404-71f6535d6ce6:
+            uuid: 7a2d88c3-24bd-438d-8404-71f6535d6ce6
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_shortlisted_for_futurevers'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 6
             additional: {  }
         third_party_settings: {  }
       -
@@ -588,6 +623,23 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 110
+    region: main
+  field_shortlisted_for_futurevers:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 112
+    region: main
+  field_student_bio:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 111
     region: main
   field_student_photo:
     type: image

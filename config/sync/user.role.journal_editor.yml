@@ -7,6 +7,7 @@ dependencies:
   module:
     - editablefields
     - field_permissions
+    - file
     - node
     - toolbar
 id: journal_editor
@@ -21,6 +22,7 @@ permissions:
   - 'create field_submission_info_confirmed'
   - 'create journal_poem content'
   - 'delete any journal_poem content'
+  - 'delete own files'
   - 'delete own journal_poem content'
   - 'edit any journal_poem content'
   - 'edit field_acceptance_level'
@@ -31,9 +33,7 @@ permissions:
   - 'edit own field_poem_attachment'
   - 'edit own field_submission_info_confirmed'
   - 'edit own journal_poem content'
-  - 'search journal_poem content'
   - 'use editablefields'
-  - 'view any unpublished journal_poem content'
   - 'view field_acceptance_level'
   - 'view field_poem_attachment'
   - 'view field_submission_info_confirmed'

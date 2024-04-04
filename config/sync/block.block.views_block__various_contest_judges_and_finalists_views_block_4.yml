@@ -27,4 +27,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/recite/national-contests/judges/*\r\n/reciter/concours-nationaux/jury/*"
+    pages: "/recite/national-contests/judges/*\r\n/reciter/concours-nationaux/jury/*\r\n/reciter/concours-en-ligne/jury/*"

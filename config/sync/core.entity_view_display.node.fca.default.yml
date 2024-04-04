@@ -12,8 +12,8 @@ dependencies:
     - node.type.fca
   module:
     - comment
-    - image
     - options
+    - svg_image
     - user
 id: node.fca.default
 targetEntityType: node

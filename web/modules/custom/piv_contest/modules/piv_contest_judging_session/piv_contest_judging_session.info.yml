@@ -2,6 +2,5 @@ name: PIV Contest Judging Session
 type: module
 description: 'Provides a judging session entity.'
 package: PIV
-core: 8.x
-core_version_requirement: ^8 || ^9
+core_version_requirement: ^9 || ^10
 configure: entity.judging_session_type.collection

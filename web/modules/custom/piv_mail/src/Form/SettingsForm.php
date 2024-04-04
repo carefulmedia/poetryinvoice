@@ -96,7 +96,7 @@ class SettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     foreach ($this->pivMailPluginManager->getDefinitions() as $plugin_id => $definition) {
       $instance = $this->pivMailPluginManager->createInstance($plugin_id);
       $instance->validateConfigurationForm($form, $form_state);
@@ -107,7 +107,7 @@ class SettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $plugins_values = $form_state->getValue('plugins');
     foreach ($this->pivMailPluginManager->getDefinitions() as $plugin_id => $definition) {
       $instance = $this->pivMailPluginManager->createInstance($plugin_id);

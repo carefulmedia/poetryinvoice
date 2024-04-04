@@ -86,7 +86,7 @@ class PasswordForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     $configs = $this->getConfigurations();
     $given_password = $form_state->getValue('password');
     $config_password = $configs->get('password');
@@ -98,7 +98,7 @@ class PasswordForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     user_cookie_save(['piv_poem_password_valid' => 1]);
     $this->tempStore->get('piv_poem_password')->set('piv_poem_password_valid', 1);
   }

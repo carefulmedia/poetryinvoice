@@ -6,6 +6,7 @@
  */
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Jaybizzle\CrawlerDetect\CrawlerDetect;
 
 /**
  * Implements hook_preprocess_node().
@@ -19,6 +20,13 @@ function piv_canadian_content_preprocess_node(&$variables) {
   if (empty($node->field_canada_restrict->value)) {
     return;
   }
+
+  // Let crawlers access it.
+  $crawler_detect = new CrawlerDetect();
+  if ($crawler_detect->isCrawler()) {
+    return;
+  }
+
   // Disable cache if its restricted.
   $variables['#cache']['max-age'] = 0;
 

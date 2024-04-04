@@ -16,19 +16,19 @@ type: list_float
 settings:
   allowed_values:
     -
-      value: !!float 0
+      value: 0.0
       label: 'I teach in French at a school where the dominant language is English.'
     -
-      value: !!float 1
+      value: 1.0
       label: 'I teach in English at a school where the dominant language is French.'
     -
-      value: !!float 2
+      value: 2.0
       label: 'I teach at a French school where the larger community is predominantly English.'
     -
-      value: !!float 3
+      value: 3.0
       label: 'I teach at an English school where the surrounding community is predominantly French'
     -
-      value: !!float 4
+      value: 4.0
       label: 'I teach at a bilingual school.'
   allowed_values_function: ''
 module: options

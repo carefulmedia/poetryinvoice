@@ -51,7 +51,7 @@ class SchoolSettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $state = \Drupal::state();
 
     if ($file_id = $form_state->getValue(['contacts_csv_file', '0'])) {

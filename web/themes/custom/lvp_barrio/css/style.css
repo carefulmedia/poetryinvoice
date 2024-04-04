@@ -1446,6 +1446,7 @@ h3.name {
 #navbar-main {
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   z-index: 2;
 }
 .nav li {
@@ -2171,6 +2172,7 @@ ul.dropdown-menu {
   border-radius: 0 0 0.5rem 0.5rem;
   background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   padding: 2rem;
 }
 @media only screen and (max-width: 800px) {
@@ -3316,6 +3318,7 @@ h4 a {
 .site-footer .footer-blur {
   background: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   padding: 4rem 0rem;
 }
 .site-footer .container {

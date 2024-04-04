@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.video.layout_builder__layout
     - node.type.video
   module:
+    - bootstrap_layout_builder
     - bootstrap_layouts
     - editablefields
     - layout_builder
@@ -65,16 +66,23 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_3'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: mixtape
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: 'dk-bg content-index'
             blb_region_col_2: ''
             blb_region_col_3: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
+            blb_region_col_3: {  }
           breakpoints:
             desktop: blb_col_4_4_4
             tablet: blb_col_6_3_3
@@ -92,6 +100,7 @@ third_party_settings:
               - col-lg-4
               - col-md-3
               - col-12
+          context_mapping: {  }
           remove_gutters: 0
         components:
           2ba4e56b-21a1-438e-9f43-215181b1543b:
