@@ -13,7 +13,7 @@ class ScoreTemplateConstraintValidator extends ConstraintValidator {
   /**
    * {@inheritdoc}
    */
-  public function validate($entity, Constraint $constraint) {
+  public function validate($entity, Constraint $constraint): void {
     $entity_type_manager = \Drupal::entityTypeManager();
     $original = $entity->isNew()
       ? NULL
@@ -41,6 +41,7 @@ class ScoreTemplateConstraintValidator extends ConstraintValidator {
       // score options.
       if ($original) {
         $results = $entity_type_manager->getStorage('score')->getQuery()
+          ->accessCheck(FALSE)
           ->condition('score_template', $entity->id())
           ->execute();
         if ($results) {

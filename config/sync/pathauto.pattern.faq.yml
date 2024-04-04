@@ -10,7 +10,7 @@ type: 'canonical_entities:node'
 pattern: 'faq/[node:title]'
 selection_criteria:
   8c470c3a-5d96-4f91-90a0-4245228c59f0:
-    id: node_type
+    id: 'entity_bundle:node'
     negate: false
     uuid: 8c470c3a-5d96-4f91-90a0-4245228c59f0
     context_mapping:

@@ -75,7 +75,7 @@ class Score extends RevisionableContentEntityBase implements ScoreInterface {
    * When a new score entity is created, set the uid entity reference to
    * the current user as the creator of the entity.
    */
-  public static function preCreate(EntityStorageInterface $storage_controller, array &$values) {
+  public static function preCreate(EntityStorageInterface $storage_controller, array &$values): void {
     parent::preCreate($storage_controller, $values);
     $values += ['uid' => \Drupal::currentUser()->id()];
   }

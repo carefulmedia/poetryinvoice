@@ -5,6 +5,7 @@ dependencies:
   module:
     - blazy
     - linkit
+    - media
     - slick
 name: 'Filtered HTML'
 format: filtered_html
@@ -22,7 +23,7 @@ filters:
     status: true
     weight: 1
     settings:
-      allowed_html: '<a href hreflang name class> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <img class width="" src alt data-entity-type data-entity-uuid> <u> <s> <sup> <sub> <hr> <p id class> <h1 class> <h2 class> <h3 class> <h4 class> <h5 class> <h6 class> <table class=""> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <div id class=""> <iframe> <iframe allow="" allowfullscreen="" frameborder="" height="" src="" title="" width=""></iframe>'
+      allowed_html: '<a id target rel class hreflang name href data-entity-type data-entity-uuid data-entity-substitution> <br> <p id class="text-align-left text-align-center text-align-right text-align-justify"> <h1 class> <h2 class="text-align-left text-align-center text-align-right text-align-justify"> <h3 class="text-align-left text-align-center text-align-right text-align-justify"> <h4 class="text-align-left text-align-center text-align-right text-align-justify"> <h5 class="text-align-left text-align-center text-align-right text-align-justify"> <h6 class="text-align-left text-align-center text-align-right text-align-justify"> <cite> <dl> <dt> <dd> <blockquote cite> <ul type> <ol type start> <img class width src alt data-entity-type data-entity-uuid height data-caption data-align> <table class> <div id class> <iframe allow allowfullscreen frameborder height src title width> <strong> <em> <u> <code> <s> <sub> <sup> <li> <hr> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption> <drupal-media data-entity-type data-entity-uuid alt data-caption data-align>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -44,17 +45,27 @@ filters:
     status: false
     weight: 4
     settings:
+      caption:
+        alt: '0'
+        title: '0'
       optionset: default
       layout: ''
-      skin: ''
       background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_media_style: ''
       loading: ''
-      preload: false
       responsive_image_style: ''
+      box_style: ''
       image_style: ''
       media_switch: ''
       ratio: ''
       thumbnail_style: ''
+      grid: ''
+      grid_medium: ''
+      grid_small: ''
+      style: ''
+      skin: ''
       overridables:
         arrows: '0'
         autoplay: '0'
@@ -70,6 +81,8 @@ filters:
       thumbnail_effect: ''
       thumbnail_position: ''
       override: false
+      preserve_keys: false
+      visible_items: null
   blazy_filter:
     id: blazy_filter
     provider: blazy
@@ -79,6 +92,7 @@ filters:
       media_switch: ''
       hybrid_style: ''
       box_style: ''
+      box_media_style: ''
       box_caption: ''
       filter_tags:
         img: img
@@ -91,3 +105,26 @@ filters:
     weight: 0
     settings:
       title: true
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: 100
+    settings:
+      default_view_mode: default
+      allowed_view_modes: {  }
+      allowed_media_types:
+        file: file
+        remote_video: remote_video
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
+  filter_align:
+    id: filter_align
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }

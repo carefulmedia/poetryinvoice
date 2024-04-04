@@ -10,7 +10,7 @@ field_name: field_send_both_fr_and_en_info_p
 entity_type: paragraph
 bundle: teacher_tracking
 label: 'Send both FR and EN info packs'
-description: 'If you are looking for a way to send ONLY the info package in the language that is not the teacher''s, there isn''t one! Change the language of the teacher instead. That dictates the language they receive info from us. Use this if you want to send both info packs in cases where this lead teacher is also representing the teacher in the other language. Do not click this if the school has a lead teacher in the other language since they will then be receiving the info pack in their language. '
+description: "If you are looking for a way to send ONLY the info package in the language that is not the teacher's, there isn't one! Change the language of the teacher instead. That dictates the language they receive info from us. Use this if you want to send both info packs in cases where this lead teacher is also representing the teacher in the other language. Do not click this if the school has a lead teacher in the other language since they will then be receiving the info pack in their language. "
 required: false
 translatable: false
 default_value:

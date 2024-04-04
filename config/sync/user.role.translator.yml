@@ -5,6 +5,7 @@ dependencies:
   module:
     - contextual
     - field_permissions
+    - file
     - locale
     - node
 id: translator
@@ -13,14 +14,11 @@ weight: 9
 is_admin: null
 permissions:
   - 'access contextual links'
-  - 'access search combine'
   - 'bypass node access'
-  - 'can do translation jobs'
-  - 'can manage translation jobs'
   - 'create field_years_in_competition'
+  - 'delete own files'
   - 'edit field_years_in_competition'
   - 'edit own field_years_in_competition'
-  - 'translate content'
   - 'translate interface'
   - 'view field_years_in_competition'
   - 'view own field_years_in_competition'

@@ -12,6 +12,7 @@ dependencies:
     - comment
     - contact
     - field_permissions
+    - file
     - form_mode_manager
     - media
     - node
@@ -25,20 +26,10 @@ label: Teacher
 weight: 0
 is_admin: null
 permissions:
-  - 'access Content creator profiles'
-  - 'access Non-Canadian educator profiles'
-  - 'access PIC/PAL profiles'
-  - 'access Poet network profiles'
-  - 'access Poet profiles'
-  - 'access Teacher (en) profiles'
-  - 'access Teacher (fr) profiles'
-  - 'access Teacher profiles'
   - 'access comments'
-  - 'access search combine'
   - 'access user contact forms'
   - 'access user profiles'
   - 'add competition entry for own school'
-  - 'create bi_team_regional_entry content'
   - 'create bulletin_board content'
   - 'create field_contest_association'
   - 'create field_date_and_start_time'
@@ -68,7 +59,6 @@ permissions:
   - 'create field_tr_student'
   - 'create field_visit_completed_teacher'
   - 'create field_work_student_teacher'
-  - 'create field_youtube_recitation_url'
   - 'create journal_poem content'
   - 'create paragraph content tr_student'
   - 'create piv_release_form'
@@ -79,6 +69,7 @@ permissions:
   - 'delete competition entry for own school'
   - 'delete own bulletin_board content'
   - 'delete own competition entry'
+  - 'delete own files'
   - 'delete own recitation'
   - 'delete own remote_video media'
   - 'delete paragraph content this_teacher_signed_up_for'
@@ -87,8 +78,6 @@ permissions:
   - 'edit field_grades'
   - 'edit field_poem'
   - 'edit field_student_name_1'
-  - 'edit field_youtube_recitation_url'
-  - 'edit own bi_team_regional_entry content'
   - 'edit own bulletin_board content'
   - 'edit own comments'
   - 'edit own field_about_me'
@@ -121,7 +110,6 @@ permissions:
   - 'edit own field_what_grades_do_you_teach'
   - 'edit own field_what_subjects_do_you_teach'
   - 'edit own field_work_student_teacher'
-  - 'edit own field_youtube_recitation_url'
   - 'edit own pal_pir_school_visit content'
   - 'edit own piv_release_form'
   - 'edit own piv_student_mail'
@@ -130,12 +118,8 @@ permissions:
   - 'edit own team_regionals_entry content'
   - 'edit own user_picture'
   - 'edit piv_release_form'
-  - 'manage own competition entries'
   - 'post comments'
-  - 'search bulletin_board content'
-  - 'search forum content'
   - 'skip comment approval'
-  - 'subscribe to content'
   - 'update paragraph content tr_student'
   - 'use node.default form mode'
   - 'use node.teacher form mode'
@@ -161,7 +145,6 @@ permissions:
   - 'view field_virtual_visits'
   - 'view field_what_grades_do_you_teach'
   - 'view field_what_subjects_do_you_teach'
-  - 'view field_youtube_recitation_url'
   - 'view own field_about_me'
   - 'view own field_agreed_visit_date'
   - 'view own field_contest_association'
@@ -200,7 +183,6 @@ permissions:
   - 'view own field_what_grades_do_you_teach'
   - 'view own field_what_subjects_do_you_teach'
   - 'view own field_work_student_teacher'
-  - 'view own field_youtube_recitation_url'
   - 'view own piv_release_form'
   - 'view own piv_student_mail'
   - 'view own school competitions'

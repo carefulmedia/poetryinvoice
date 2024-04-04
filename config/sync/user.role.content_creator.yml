@@ -19,6 +19,7 @@ dependencies:
     - node.type.writing_prompt
   module:
     - field_permissions
+    - file
     - node
     - system
 id: content_creator
@@ -26,19 +27,12 @@ label: 'Content creator'
 weight: 8
 is_admin: null
 permissions:
-  - 'access PDF version'
-  - 'access administration menu'
   - 'access administration pages'
   - 'access content overview'
-  - 'access search combine'
-  - 'administer faq order'
   - 'administer nodes'
   - 'bypass node access'
-  - 'clone node'
-  - 'clone own nodes'
   - 'create competition content'
   - 'create event content'
-  - 'create faq'
   - 'create faq content'
   - 'create field_biligraphical_info'
   - 'create field_broadsides_are_allowed'
@@ -50,7 +44,6 @@ permissions:
   - 'create field_rights_expiration'
   - 'create field_years_in_competition'
   - 'create lesson_plan content'
-  - 'create lesson_plan_special content'
   - 'create page content'
   - 'create poem content'
   - 'create press_release content'
@@ -60,15 +53,14 @@ permissions:
   - 'delete any forum content'
   - 'delete any judge_page content'
   - 'delete any lesson_plan content'
-  - 'delete any lesson_plan_special content'
   - 'delete any page content'
   - 'delete any student content'
   - 'delete any writing_prompt content'
   - 'delete own bulletin_board content'
+  - 'delete own files'
   - 'delete own forum content'
   - 'delete own judge_page content'
   - 'delete own lesson_plan content'
-  - 'delete own lesson_plan_special content'
   - 'delete own page content'
   - 'delete own student content'
   - 'delete own writing_prompt content'
@@ -79,7 +71,6 @@ permissions:
   - 'edit any forum content'
   - 'edit any judge_page content'
   - 'edit any lesson_plan content'
-  - 'edit any lesson_plan_special content'
   - 'edit any page content'
   - 'edit any poem content'
   - 'edit any press_release content'
@@ -87,7 +78,6 @@ permissions:
   - 'edit any venue content'
   - 'edit any video content'
   - 'edit any writing_prompt content'
-  - 'edit faq'
   - 'edit field_biligraphical_info'
   - 'edit field_broadsides_are_allowed'
   - 'edit field_dive_in'
@@ -103,7 +93,6 @@ permissions:
   - 'edit own bulletin_board content'
   - 'edit own competition content'
   - 'edit own event content'
-  - 'edit own faq'
   - 'edit own faq content'
   - 'edit own field_biligraphical_info'
   - 'edit own field_broadsides_are_allowed'
@@ -117,7 +106,6 @@ permissions:
   - 'edit own forum content'
   - 'edit own judge_page content'
   - 'edit own lesson_plan content'
-  - 'edit own lesson_plan_special content'
   - 'edit own page content'
   - 'edit own poem content'
   - 'edit own press_release content'
@@ -125,7 +113,6 @@ permissions:
   - 'edit own venue content'
   - 'edit own video content'
   - 'edit own writing_prompt content'
-  - 'revert revisions'
   - 'view field_biligraphical_info'
   - 'view field_broadsides_are_allowed'
   - 'view field_mobile_apps_are_allowed'
@@ -145,4 +132,3 @@ permissions:
   - 'view own field_rights_expiration'
   - 'view own field_years_in_competition'
   - 'view own unpublished content'
-  - 'view revisions'

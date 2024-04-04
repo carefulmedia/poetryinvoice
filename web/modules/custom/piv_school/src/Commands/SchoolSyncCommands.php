@@ -15,7 +15,7 @@ class SchoolSyncCommands extends DrushCommands {
    * @command piv:school-sync
    * @aliases pss,piv-ss
    */
-  public function SchoolSync() {
+  public function SchoolSync(): void {
     $this->output()->writeln('Syncing the schools.');
     \Drupal::service('piv_school.sync')->start(TRUE);
   }

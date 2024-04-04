@@ -1,0 +1,25 @@
+uuid: 9d38b0f7-f236-4704-81f9-d2a7e6c294f8
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:9503e74d-c92c-4e9f-b181-b77d480c0c8f'
+  module:
+    - block_content
+  theme:
+    - piv
+id: piv_copyright
+theme: piv
+region: sidebar_first
+weight: -14
+provider: null
+plugin: 'block_content:9503e74d-c92c-4e9f-b181-b77d480c0c8f'
+settings:
+  id: 'block_content:9503e74d-c92c-4e9f-b181-b77d480c0c8f'
+  label: Copyright
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

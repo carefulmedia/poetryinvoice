@@ -105,6 +105,7 @@ class JudgingSessionController extends ControllerBase {
     $identifier = $this->entityTypeManager
       ->getStorage('judging_session')
       ->getQuery()
+      ->accessCheck(FALSE)
       ->condition('field_competition', $competition->id())
       ->count()->execute();
     $identifier += 1;
@@ -349,7 +350,7 @@ class JudgingSessionController extends ControllerBase {
    */
   private function getReadyJudgingSessions(User $user): array {
     $judging_session_manager = $this->entityTypeManager->getStorage('judging_session');
-    $query = $judging_session_manager->getQuery();
+    $query = $judging_session_manager->getQuery()->accessCheck(FALSE);
     $group = $query->orConditionGroup()
       ->condition('field_english_judge', $user->id())
       ->condition('field_french_judge', $user->id());

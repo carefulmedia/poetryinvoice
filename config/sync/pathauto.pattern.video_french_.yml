@@ -11,7 +11,7 @@ type: 'canonical_entities:node'
 pattern: '/ecouter/videos/[node:title]'
 selection_criteria:
   43f5d7ca-9391-4a19-bec2-689ee7536e94:
-    id: node_type
+    id: 'entity_bundle:node'
     negate: false
     uuid: 43f5d7ca-9391-4a19-bec2-689ee7536e94
     context_mapping:

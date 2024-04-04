@@ -13,7 +13,7 @@ class StreamConstraintValidator extends ConstraintValidator {
   /**
    * {@inheritdoc}
    */
-  public function validate($entity, Constraint $constraint) {
+  public function validate($entity, Constraint $constraint): void {
     if ($entity->bundle() != 'competition_stream') {
       return;
     }

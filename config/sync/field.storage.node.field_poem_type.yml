@@ -22,7 +22,7 @@ settings:
       value: 'Writing prompt poem'
       label: 'Writing prompt poem'
     -
-      value: 'Poet''s visit poem'
+      value: "Poet's visit poem"
       label: 'Poet visit to our school'
     -
       value: '1'

@@ -60,7 +60,10 @@ class ScoreTemplateAccessControlHandler extends EntityAccessControlHandler imple
 
       case 'delete':
         // Prevent deleting templates if there are scores using it.
-        $query = $this->entityTypeManager->getStorage('score')->getQuery();
+        $query = $this->entityTypeManager
+          ->getStorage('score')
+          ->getQuery()
+          ->accessCheck(FALSE);
         $results = $query->condition('score_template', $entity->id())->execute();
         if ($results) {
           return AccessResult::forbidden('There is a score using this score template');

@@ -11,7 +11,7 @@ type: 'canonical_entities:node'
 pattern: 'propos/actualites/dernieres-nouvelles/[node:title]'
 selection_criteria:
   afe34507-96cb-41fd-85d7-331677f14952:
-    id: node_type
+    id: 'entity_bundle:node'
     negate: false
     uuid: afe34507-96cb-41fd-85d7-331677f14952
     context_mapping:

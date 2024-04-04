@@ -25,7 +25,7 @@ class PivMigrateCommands extends DrushCommands {
    *
    * @command piv_migrate:fix-terms
    */
-  public function fixTerms() {
+  public function fixTerms(): void {
     $entity_type_manager = \Drupal::entityTypeManager();
     $results = $this->db()
       ->select('taxonomy_term_data', 't')
@@ -105,7 +105,7 @@ class PivMigrateCommands extends DrushCommands {
    *
    * @command piv_migrate:user-address
    */
-  public function migrateUserAddress() {
+  public function migrateUserAddress(): void {
     $entity_type_manager = \Drupal::entityTypeManager();
     $user_storage = $entity_type_manager->getStorage('user');
     $query = $this->db()->select('location_instance', 'i');
@@ -155,7 +155,7 @@ class PivMigrateCommands extends DrushCommands {
    *
    * @command piv_migrate:user-social-links
    */
-  public function migrateUserSocialLinks() {
+  public function migrateUserSocialLinks(): void {
     $entity_type_manager = \Drupal::entityTypeManager();
     $user_storage = $entity_type_manager->getStorage('user');
     $results = $this->db()
@@ -206,7 +206,7 @@ class PivMigrateCommands extends DrushCommands {
    *
    * @command piv_migrate:fix-video
    */
-  public function fixVideo() {
+  public function fixVideo(): void {
     $entity_type_manager = \Drupal::entityTypeManager();
     $nodes = $entity_type_manager->getStorage('node')
       ->loadByProperties([
@@ -239,7 +239,7 @@ class PivMigrateCommands extends DrushCommands {
    *
    * @command piv_migrate:user-translations
    */
-  public function createUserTranslations() {
+  public function createUserTranslations(): void {
     $user_storage = \Drupal::entityTypeManager()->getStorage('user');
     // Copy field_bio_trans to field_user_bio.
     $uids = \Drupal::database()->select('user__field_bio_trans', 'u')

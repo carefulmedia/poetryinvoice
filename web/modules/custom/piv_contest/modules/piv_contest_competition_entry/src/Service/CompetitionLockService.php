@@ -48,6 +48,7 @@ class CompetitionLockService {
 
     // If there's any judging session enabled it's locked.
     $nids = $this->storage->getQuery()
+      ->accessCheck(FALSE)
       ->condition('field_competition_entries', $competition_entry->id())
       ->condition('status', TRUE)
       ->execute();

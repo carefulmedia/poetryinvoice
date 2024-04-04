@@ -1,0 +1,30 @@
+uuid: c6745df9-3397-4cd9-871a-0e36eae1e9d9
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:fb80c102-eb04-469b-b0b3-040e03ad462a'
+  module:
+    - block_content
+    - system
+  theme:
+    - piv
+id: piv_logincreateaccount
+theme: piv
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'block_content:fb80c102-eb04-469b-b0b3-040e03ad462a'
+settings:
+  id: 'block_content:fb80c102-eb04-469b-b0b3-040e03ad462a'
+  label: 'Login/create account'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/user/login\r\n/create-account\r\n/user/password"

@@ -42,7 +42,7 @@ class SchoolConstraintValidator extends ConstraintValidator implements Container
   /**
    * {@inheritdoc}
    */
-  public function validate($items, Constraint $constraint) {
+  public function validate($items, Constraint $constraint): void {
     $entity = $items->getEntity();
     $entity_id = $entity->id();
     $field_stream = $entity->field_stream->target_id;
@@ -51,7 +51,10 @@ class SchoolConstraintValidator extends ConstraintValidator implements Container
         continue;
       }
 
-      $query = $this->entityTypeManager->getStorage('competition_entry')->getQuery();
+      $query = $this->entityTypeManager
+        ->getStorage('competition_entry')
+        ->getQuery()
+        ->accessCheck(FALSE);
       $results = $query->condition('field_school', $item->target_id)
         ->condition('field_stream', $field_stream)
         ->accessCheck(FALSE)

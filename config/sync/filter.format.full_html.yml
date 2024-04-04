@@ -4,6 +4,8 @@ status: true
 dependencies:
   module:
     - blazy
+    - linkit
+    - media
     - slick
 _core:
   default_config_hash: WNeK5FbcY8pXgEpbD_KgRzlF1-5PL3BJXwqaBctPTqw
@@ -11,17 +13,11 @@ name: 'Full HTML'
 format: full_html
 weight: -9
 filters:
-  filter_htmlcorrector:
-    id: filter_htmlcorrector
-    provider: filter
-    status: true
-    weight: 10
-    settings: {  }
   filter_autop:
     id: filter_autop
     provider: filter
     status: true
-    weight: 1
+    weight: 2
     settings: {  }
   filter_url:
     id: filter_url
@@ -33,10 +29,10 @@ filters:
   filter_html:
     id: filter_html
     provider: filter
-    status: false
-    weight: -10
+    status: true
+    weight: 1
     settings:
-      allowed_html: '<em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <s> <sup> <sub> <img src alt data-entity-type data-entity-uuid> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr> <hr> <p> <h1> <pre> <a href hreflang href name>'
+      allowed_html: '<a id target rel class hreflang name href data-entity-type data-entity-uuid data-entity-substitution> <br> <p id class="text-align-left text-align-center text-align-right text-align-justify"> <h1 class> <h2 class="text-align-left text-align-center text-align-right text-align-justify"> <h3 class="text-align-left text-align-center text-align-right text-align-justify"> <h4 class="text-align-left text-align-center text-align-right text-align-justify"> <h5 class="text-align-left text-align-center text-align-right text-align-justify"> <h6 class="text-align-left text-align-center text-align-right text-align-justify"> <cite> <dl> <dt> <dd> <blockquote cite> <ul type> <ol type start> <img class width src alt data-entity-type data-entity-uuid height data-caption data-align> <table class> <div id class> <iframe allow allowfullscreen frameborder height src title width> <strong> <em> <u> <code> <s> <sub> <sup> <li> <hr> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption> <drupal-media data-entity-type data-entity-uuid alt data-caption data-align>'
       filter_html_help: true
       filter_html_nofollow: false
   slick_filter:
@@ -45,16 +41,27 @@ filters:
     status: false
     weight: 4
     settings:
+      caption:
+        alt: '0'
+        title: '0'
       optionset: default
       layout: ''
-      skin: ''
       background: false
+      box_caption: ''
+      box_caption_custom: ''
+      box_media_style: ''
       loading: ''
-      preload: false
+      responsive_image_style: ''
+      box_style: ''
       image_style: ''
       media_switch: ''
       ratio: ''
       thumbnail_style: ''
+      grid: ''
+      grid_medium: ''
+      grid_small: ''
+      style: ''
+      skin: ''
       overridables:
         arrows: '0'
         autoplay: '0'
@@ -70,17 +77,56 @@ filters:
       thumbnail_effect: ''
       thumbnail_position: ''
       override: false
+      preserve_keys: false
+      visible_items: null
   blazy_filter:
     id: blazy_filter
     provider: blazy
-    status: false
+    status: true
     weight: 3
     settings:
       media_switch: ''
       hybrid_style: ''
       box_style: ''
+      box_media_style: ''
       box_caption: ''
       filter_tags:
         img: img
         iframe: iframe
       use_data_uri: '0'
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: 0
+    settings:
+      title: true
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: 100
+    settings:
+      default_view_mode: default
+      allowed_view_modes: {  }
+      allowed_media_types:
+        file: file
+        remote_video: remote_video
+  filter_align:
+    id: filter_align
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
+  filter_caption:
+    id: filter_caption
+    provider: filter
+    status: true
+    weight: 0
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
+    settings: {  }

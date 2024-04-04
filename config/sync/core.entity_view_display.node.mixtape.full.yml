@@ -19,6 +19,7 @@ dependencies:
     - views.view.mixtage_body
     - views.view.user_listing_index_pages
   module:
+    - bootstrap_layout_builder
     - file
     - layout_builder
     - layout_discovery
@@ -35,15 +36,21 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
@@ -57,6 +64,7 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
+          context_mapping: {  }
           remove_gutters: 0
         components:
           e71d46e4-af35-4fa7-995b-5aa498132b00:
@@ -243,15 +251,21 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
@@ -265,6 +279,7 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
+          context_mapping: {  }
           remove_gutters: 0
         components:
           5358b325-4ea0-428c-a27b-7e1850d6209e:

@@ -13,7 +13,7 @@ class CompetitionConstraintValidator extends ConstraintValidator {
   /**
    * {@inheritdoc}
    */
-  public function validate($entity, Constraint $constraint) {
+  public function validate($entity, Constraint $constraint): void {
     if ($entity->bundle() != 'default') {
       return;
     }
@@ -41,6 +41,7 @@ class CompetitionConstraintValidator extends ConstraintValidator {
         // Prevent editing the score_template if there are scores for this
         // competition.
         $results = $entity_type_manager->getStorage('score')->getQuery()
+          ->accessCheck(FALSE)
           ->condition('judging_session.entity:judging_session.field_competition', $entity->id())
           ->execute();
         if ($results) {

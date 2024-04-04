@@ -5,11 +5,12 @@ dependencies:
   config:
     - filter.format.php_code
   module:
+    - file
     - filter
 id: php_editor
 label: 'Php editor'
 weight: 16
 is_admin: null
 permissions:
-  - 'access search combine'
+  - 'delete own files'
   - 'use text format php_code'

@@ -16,10 +16,10 @@ type: list_float
 settings:
   allowed_values:
     -
-      value: !!float 0
+      value: 0.0
       label: Prompt
     -
-      value: !!float 1
+      value: 1.0
       label: 'Longer Exercise'
   allowed_values_function: ''
 module: options

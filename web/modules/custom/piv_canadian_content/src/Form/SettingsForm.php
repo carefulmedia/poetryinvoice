@@ -82,7 +82,7 @@ class SettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $this->config('piv_canadian_content.settings')
       ->set('piv_canadian_content_redirect_en', $form_state->getValue('piv_canadian_content_redirect_en'))
       ->set('piv_canadian_content_redirect_fr', $form_state->getValue('piv_canadian_content_redirect_fr'))

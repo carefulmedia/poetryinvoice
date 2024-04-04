@@ -360,7 +360,7 @@ class CompetitionProgressForm extends FormBase {
   /**
    * Promote the selected entries.
    */
-  public function promote(array &$form, FormStateInterface $form_state) {
+  public function promote(array &$form, FormStateInterface $form_state): void {
     $form_state->setRebuild(TRUE);
     $to_promote = array_filter($form_state->getValue('totalled_scores'));
     if ($to_promote) {

@@ -21,7 +21,7 @@ class JudgingSessionJudgesSelection extends UserSelection {
   /**
    * {@inheritdoc}
    */
-  public function entityQueryAlter(SelectInterface $query) {
+  public function entityQueryAlter(SelectInterface $query): void {
     parent::entityQueryAlter($query);
 
     $competition_id = $this->getConfiguration()['competition_id'];

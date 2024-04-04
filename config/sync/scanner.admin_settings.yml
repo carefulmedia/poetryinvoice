@@ -43,3 +43,4 @@ fields_of_selected_content_type:
   'node:quiz:body': 'node:quiz:body'
   'node:writing_prompt:body': 'node:writing_prompt:body'
   'node:writing_workshop:body': 'node:writing_workshop:body'
+word_boundaries: auto

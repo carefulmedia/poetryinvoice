@@ -91,14 +91,14 @@ class AccuracyJudgingForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state): void {
     // Nothing to validate.
   }
 
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $scores = $form_state->getValue('recitations');
     foreach ($scores as $data) {
       $score = $data['score'];

@@ -14,6 +14,7 @@ dependencies:
     - image.style.large
     - node.type.article
   module:
+    - bootstrap_layout_builder
     - comment
     - layout_builder
     - layout_builder_restrictions
@@ -30,15 +31,21 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
@@ -52,6 +59,7 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
+          context_mapping: {  }
           remove_gutters: 0
         components:
           b8958451-ecf4-4151-92c4-7a58e4f70ba1:
@@ -85,15 +93,21 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
@@ -107,6 +121,7 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
+          context_mapping: {  }
           remove_gutters: 0
         components:
           dc162151-5dec-4ab1-b589-1cd5c72756f3:

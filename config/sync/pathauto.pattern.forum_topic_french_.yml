@@ -11,7 +11,7 @@ type: 'canonical_entities:node'
 pattern: 'enseigner/salle/table-rondes/[node:taxonomy_forums:entity:name]/[node:title]'
 selection_criteria:
   4f6a8bc9-855d-4085-ba91-17d46099e2c3:
-    id: node_type
+    id: 'entity_bundle:node'
     negate: false
     uuid: 4f6a8bc9-855d-4085-ba91-17d46099e2c3
     context_mapping:

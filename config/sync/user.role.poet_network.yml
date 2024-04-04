@@ -10,6 +10,7 @@ dependencies:
   module:
     - contact
     - field_permissions
+    - file
     - filter
     - form_mode_manager
     - node
@@ -19,16 +20,6 @@ label: 'Poet network'
 weight: 20
 is_admin: null
 permissions:
-  - 'access Content creator profiles'
-  - 'access Judge profiles'
-  - 'access Non-Canadian educator profiles'
-  - 'access PIC/PAL profiles'
-  - 'access Poet network profiles'
-  - 'access Poet profiles'
-  - 'access Teacher (en) profiles'
-  - 'access Teacher (fr) profiles'
-  - 'access Teacher profiles'
-  - 'access search combine'
   - 'access user contact forms'
   - 'access user profiles'
   - 'create body'
@@ -70,6 +61,7 @@ permissions:
   - 'create paragraph content publications'
   - 'create user_picture'
   - 'create writing_prompt content'
+  - 'delete own files'
   - 'delete paragraph content publications'
   - 'edit any school content'
   - 'edit field_classroom'
@@ -152,8 +144,6 @@ permissions:
   - 'edit own field_writing_content'
   - 'edit own user_picture'
   - 'edit own writing_prompt content'
-  - 'search pal_pir_school_visit content'
-  - 'search writing_prompt content'
   - 'update paragraph content micro_interview'
   - 'update paragraph content poet_questionnaire'
   - 'update paragraph content publications'
@@ -161,12 +151,7 @@ permissions:
   - 'use text format filtered_html'
   - 'use text format full_html'
   - 'use user.poet_network form mode'
-  - 'view all user locations'
-  - 'view any unpublished pal_pir_school_visit content'
   - 'view body'
-  - 'view ds_user_picture on comment'
-  - 'view ds_user_picture on node'
-  - 'view ds_user_picture on user'
   - 'view field_classroom'
   - 'view field_date_publication'
   - 'view field_expectations_poet'
@@ -194,7 +179,6 @@ permissions:
   - 'view field_visit_completed_poet'
   - 'view field_work_student_poet'
   - 'view field_years_in_competition'
-  - 'view name on user'
   - 'view own body'
   - 'view own field_additional_email'
   - 'view own field_address'
@@ -250,6 +234,5 @@ permissions:
   - 'view own field_work_student_poet'
   - 'view own field_writing_content'
   - 'view own field_years_in_competition'
-  - 'view own user location'
   - 'view paragraph content micro_interview'
   - 'view paragraph content publications'

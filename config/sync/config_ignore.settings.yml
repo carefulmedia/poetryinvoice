@@ -1,21 +1,22 @@
 _core:
   default_config_hash: UVH1aJ4b44UM-VdPVN7hNNuuVqfReJxwfVeDQH1Hvsk
+mode: simple
 ignored_config_entities:
-  - 'piv_canadian_content.*'
-  - reroute_email.settings
-  - piv_poem_password.settings
-  - piv_base.welcome_modal_settings
-  - 'piv_mail.piv_mail.*'
-  - 'views.view.*'
   - facebook_pixel.settings
-  - ~views.view.language_restricted_poems
-  - ~views.view.search
-  - ~views.view.competitions
-  - ~views.view.competition_entries
-  - ~views.view.judging_sessions
-  - ~views.view.recitations
-  - ~views.view.scores
-  - ~views.view.score_templates
   - google_analytics.settings
+  - piv_base.welcome_modal_settings
+  - 'piv_canadian_content.*'
+  - 'piv_mail.piv_mail.*'
+  - piv_poem_password.settings
+  - reroute_email.settings
+  - 'views.view.*'
+  - ~views.view.competition_entries
+  - ~views.view.competitions
+  - ~views.view.judging_sessions
+  - ~views.view.language_restricted_poems
+  - ~views.view.recitations
+  - ~views.view.score_templates
+  - ~views.view.scores
+  - ~views.view.search
 ignored_config_collections:
   - 'language.*'

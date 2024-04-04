@@ -11,7 +11,7 @@ type: 'canonical_entities:node'
 pattern: 'ecrire/exercise-creation/[node:title]'
 selection_criteria:
   3a561bf9-3581-49f8-8af6-2bd700e35d2f:
-    id: node_type
+    id: 'entity_bundle:node'
     negate: false
     uuid: 3a561bf9-3581-49f8-8af6-2bd700e35d2f
     context_mapping:

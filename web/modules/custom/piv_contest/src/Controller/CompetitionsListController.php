@@ -113,7 +113,7 @@ class CompetitionsListController extends ControllerBase {
       ->getStorage('competition_entry');
     $competition_view_builder = $this->entityTypeManager
       ->getViewBuilder('competition');
-    $query = $competition_storage->getQuery();
+    $query = $competition_storage->getQuery()->accessCheck(FALSE);
     if (!piv_contest_user_can_bypass_permissions()) {
       // Filter out past submissions if logged in user can't see it.
       $query->condition('field_submission_deadline', $now_formatted, '>');

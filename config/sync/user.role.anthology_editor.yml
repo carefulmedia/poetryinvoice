@@ -6,6 +6,7 @@ dependencies:
     - node.type.poem
   module:
     - field_permissions
+    - file
     - node
     - system
 id: anthology_editor
@@ -13,10 +14,8 @@ label: 'Anthology editor'
 weight: 23
 is_admin: null
 permissions:
-  - 'access administration menu'
   - 'access administration pages'
-  - 'access search combine'
+  - 'delete own files'
   - 'edit any poem content'
   - 'edit own poem content'
-  - 'view any unpublished poem content'
   - 'view field_start_here_poem'

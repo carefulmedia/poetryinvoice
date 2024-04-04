@@ -67,7 +67,7 @@ class PivMailPluginManager extends DefaultPluginManager {
   /**
    * Save the configurations for plugin.
    */
-  public function saveConfigurations(PivMailInterface $plugin) {
+  public function saveConfigurations(PivMailInterface $plugin): void {
     $plugin_id = $plugin->getPluginId();
     $this->configFactory
       ->getEditable($this->getConfigName($plugin_id))

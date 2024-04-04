@@ -218,7 +218,7 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
   /**
    * {@inheritdoc}
    */
-  public function extractFormValues(FieldItemListInterface $items, array $form, FormStateInterface $form_state) {
+  public function extractFormValues(FieldItemListInterface $items, array $form, FormStateInterface $form_state): void {
     if ($this->isDefaultValueWidget($form_state)) {
       $items->filterEmptyItems();
       return;
@@ -366,7 +366,7 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
   /**
    * Validade the competition entry recitations.
    */
-  public function validateMaxNumber(array $elements, FormStateInterface $form_state, array $form) {
+  public function validateMaxNumber(array $elements, FormStateInterface $form_state, array $form): void {
     // Check poems are unique per entry.
     $poem_ids = [];
     foreach (Element::children($elements['entities']) as $delta) {

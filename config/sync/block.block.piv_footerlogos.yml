@@ -1,0 +1,25 @@
+uuid: 69bd3057-cdd6-4965-bddc-e6212bd6351b
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e319699a-3bb9-4c1f-a932-aedf05897383'
+  module:
+    - block_content
+  theme:
+    - piv
+id: piv_footerlogos
+theme: piv
+region: sidebar_first
+weight: -17
+provider: null
+plugin: 'block_content:e319699a-3bb9-4c1f-a932-aedf05897383'
+settings:
+  id: 'block_content:e319699a-3bb9-4c1f-a932-aedf05897383'
+  label: 'Footer Logos'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

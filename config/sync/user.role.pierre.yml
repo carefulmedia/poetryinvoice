@@ -6,6 +6,7 @@ dependencies:
     - node.type.poem
   module:
     - field_permissions
+    - file
     - node
     - system
 id: pierre
@@ -13,9 +14,7 @@ label: Pierre
 weight: 17
 is_admin: null
 permissions:
-  - 'access administration menu'
   - 'access administration pages'
-  - 'access search combine'
+  - 'delete own files'
   - 'edit any poem content'
-  - 'view any unpublished poem content'
   - 'view field_grades'

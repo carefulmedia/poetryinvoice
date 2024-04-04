@@ -12,7 +12,7 @@ dependencies:
   module:
     - address
     - comment
-    - image
+    - svg_image
     - text
     - user
 id: node.venue.default

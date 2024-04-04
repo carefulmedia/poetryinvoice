@@ -4,20 +4,19 @@ status: true
 dependencies:
   module:
     - field_permissions
+    - file
     - system
 id: grandfathered_pir
 label: 'Grandfathered PIR'
 weight: 24
 is_admin: null
 permissions:
-  - 'access administration menu'
   - 'access administration pages'
-  - 'access search combine'
   - 'create field_other_focus'
-  - 'create field_pal_visit_date_and_time'
   - 'create field_poet_incomplete_reason'
   - 'create field_poet_preparation_poet'
   - 'create field_student_engagement_poet'
+  - 'delete own files'
   - 'edit field_expectations_poet'
   - 'edit field_other_focus'
   - 'edit field_poet_focus'
@@ -27,7 +26,6 @@ permissions:
   - 'edit field_visit_completed_poet'
   - 'edit own field_expectations_poet'
   - 'edit own field_other_focus'
-  - 'edit own field_pal_visit_date_and_time'
   - 'edit own field_poet_focus'
   - 'edit own field_poet_incomplete_reason'
   - 'edit own field_poet_preparation_poet'

@@ -259,7 +259,7 @@ content:
             values: {  }
             value_form:
               -
-                value: 'Poet''s visit poem'
+                value: "Poet's visit poem"
             effect: slide
             effect_options:
               fade:

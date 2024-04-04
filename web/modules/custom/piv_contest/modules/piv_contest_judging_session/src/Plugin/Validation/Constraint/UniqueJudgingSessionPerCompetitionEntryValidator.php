@@ -39,7 +39,7 @@ class UniqueJudgingSessionPerCompetitionEntryValidator extends ConstraintValidat
   /**
    * {@inheritdoc}
    */
-  public function validate($entity, Constraint $constraint) {
+  public function validate($entity, Constraint $constraint): void {
     $bundle = $entity->bundle();
 
     if ($bundle !== 'default') {
@@ -83,6 +83,7 @@ class UniqueJudgingSessionPerCompetitionEntryValidator extends ConstraintValidat
     }
 
     $ids = $this->judgingSessionStorage->getQuery()
+      ->accessCheck(FALSE)
       ->condition('field_competition_entries', $ids, 'IN')
       ->execute();
 

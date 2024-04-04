@@ -14,7 +14,7 @@ class PivSearchSubscriber implements EventSubscriberInterface {
   /**
    * Event handler for when a item is indexed on solr.
    */
-  public function postCreateIndexDocument(PostCreateIndexDocumentEvent $event) {
+  public function postCreateIndexDocument(PostCreateIndexDocumentEvent $event): void {
     $document = $event->getSolariumDocument();
     $entity = $event->getSearchApiItem()->getOriginalObject()->getEntity();
     $entity_type = $entity->getEntityTypeId();

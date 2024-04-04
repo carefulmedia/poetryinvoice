@@ -53,7 +53,7 @@ class DefaultScoreForm extends ScoreFormPluginBase {
   /**
    * {@inheritdoc}
    */
-  public function save(ScoreInterface $score, array $values) {
+  public function save(ScoreInterface $score, array $values): void {
     $scores = $values['criteria'] ?? [];
     $scores = array_map(fn ($score) => explode('_', $score)[1] ?? 0, $scores);
     $score->field_scores = $scores;

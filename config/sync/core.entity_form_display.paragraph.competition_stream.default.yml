@@ -21,7 +21,7 @@ third_party_settings:
       children:
         - field_label
         - field_description
-      label: 'Teacher''s UI'
+      label: "Teacher's UI"
       region: content
       parent_name: ''
       weight: 1

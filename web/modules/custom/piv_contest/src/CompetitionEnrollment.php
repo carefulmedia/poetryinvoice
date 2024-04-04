@@ -91,7 +91,7 @@ class CompetitionEnrollment {
   /**
    * Init values for class.
    */
-  public function init(NodeInterface $school, CompetitionInterface $competition, UserInterface $teacher) {
+  public function init(NodeInterface $school, CompetitionInterface $competition, UserInterface $teacher): void {
     $this->school = $school;
     $this->competition = $competition;
     $this->teacher = $teacher;

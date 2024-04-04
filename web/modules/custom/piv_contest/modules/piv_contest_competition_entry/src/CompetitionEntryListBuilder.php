@@ -66,6 +66,7 @@ class CompetitionEntryListBuilder extends EntityListBuilder {
     $build['table'] = parent::render();
 
     $total = $this->getStorage()
+      ->accessCheck(FALSE)
       ->getQuery()
       ->count()
       ->execute();

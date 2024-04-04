@@ -11,7 +11,7 @@ type: 'canonical_entities:node'
 pattern: '/about/news/media-coverage/[node:title]'
 selection_criteria:
   2f5f7592-ef36-4b7c-a295-6a05965be3ca:
-    id: node_type
+    id: 'entity_bundle:node'
     negate: false
     uuid: 2f5f7592-ef36-4b7c-a295-6a05965be3ca
     context_mapping:

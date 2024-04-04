@@ -10,7 +10,7 @@ id: node.student.piv_student_school
 field_name: piv_student_school
 entity_type: node
 bundle: student
-label: 'Student''s School'
+label: "Student's School"
 description: ''
 required: true
 translatable: true

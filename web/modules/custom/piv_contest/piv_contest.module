@@ -93,6 +93,7 @@ function piv_contest_theme_suggestions_alter(array &$suggestions, array $variabl
  */
 function _piv_contest_score_exists_for_score_template_type($bundle) {
   return (bool) \Drupal::entityTypeManager()->getStorage('score')->getQuery()
+    ->accessCheck(FALSE)
     ->condition('score_template.entity:score_template.bundle', $bundle)
     ->execute();
 }
@@ -104,7 +105,10 @@ function _piv_contest_score_exists_for_score_template_type($bundle) {
  */
 function piv_contest_score_template_access(EntityInterface $entity, $operation, AccountInterface $account) {
   if ($operation == 'delete') {
-    $query = \Drupal::entityTypeManager()->getStorage('score')->getQuery();
+    $query = \Drupal::entityTypeManager()
+      ->getStorage('score')
+      ->getQuery()
+      ->accessCheck(FALSE);
     $results = $query->condition('score_template', $entity->id())->execute();
     if ($results) {
       return AccessResult::forbidden();
@@ -164,6 +168,7 @@ function piv_contest_form_competition_default_edit_form_alter(&$form, FormStateI
   // @see \Drupal\piv_contest\Plugin\Validation\Constraint\CompetitionConstraintValidator::validate()
   $competition = $form_state->getFormObject()->getEntity();
   $results = \Drupal::entityTypeManager()->getStorage('score')->getQuery()
+    ->accessCheck(FALSE)
     ->condition('judging_session.entity:judging_session.field_competition', $competition->id())
     ->execute();
   if ($results) {

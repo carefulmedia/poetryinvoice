@@ -12,7 +12,7 @@ dependencies:
     - node.type.school_champion
   module:
     - comment
-    - image
+    - svg_image
     - text
     - user
 id: node.school_champion.default

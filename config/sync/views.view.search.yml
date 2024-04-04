@@ -390,7 +390,7 @@ display:
         options:
           perm: 'administer views'
       cache:
-        type: none
+        type: search_api_none
         options: {  }
       empty: {  }
       sorts: {  }

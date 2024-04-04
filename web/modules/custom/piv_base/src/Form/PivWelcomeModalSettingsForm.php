@@ -116,7 +116,7 @@ class PivWelcomeModalSettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $configs = $this->config('piv_base.welcome_modal_settings');
     $possible_configurations = $this->getPossibleConfigurations();
     foreach ($possible_configurations as $configuration) {

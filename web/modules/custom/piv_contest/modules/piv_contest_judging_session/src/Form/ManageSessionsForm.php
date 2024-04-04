@@ -296,6 +296,7 @@ class ManageSessionsForm extends FormBase {
 
     $already_added = array_column($judging_session->field_competition_entries->getValue(), 'target_id');
     $query = $this->competitionEntryStorage->getQuery()
+      ->accessCheck(FALSE)
       ->condition('field_competition', $competition_id)
       ->condition('field_competition_current_level', $judging_session->field_competition_current_level->value)
       ->condition('field_stream', $stream_id)

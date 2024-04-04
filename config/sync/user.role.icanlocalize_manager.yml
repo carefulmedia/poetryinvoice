@@ -1,11 +1,12 @@
 uuid: 887460ee-cb9a-491c-8382-6caaaff9b556
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - file
 id: icanlocalize_manager
 label: 'icanlocalize manager'
 weight: 11
 is_admin: null
 permissions:
-  - 'access search combine'
-  - 'can manage translation jobs'
+  - 'delete own files'

@@ -11,7 +11,7 @@ type: 'canonical_entities:node'
 pattern: 'enseigner/plans-de-cours/[node:title]'
 selection_criteria:
   694bef2d-39cd-4053-ba94-90a7e2d90284:
-    id: node_type
+    id: 'entity_bundle:node'
     negate: false
     uuid: 694bef2d-39cd-4053-ba94-90a7e2d90284
     context_mapping:

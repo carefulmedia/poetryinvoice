@@ -12,7 +12,7 @@ dependencies:
     - node.type.quote
   module:
     - comment
-    - image
+    - svg_image
     - text
     - user
 id: node.quote.default

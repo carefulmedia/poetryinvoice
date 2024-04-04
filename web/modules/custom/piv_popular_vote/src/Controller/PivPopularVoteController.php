@@ -60,6 +60,7 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
     $competition_entry_storage = $this->entityTypeManager->getStorage('competition_entry');
     $enable_the_voting_ui = $competition->field_enable_the_voting_ui->value == 1;
     $competition_entry_ids = $competition_entry_storage->getQuery()
+      ->accessCheck(FALSE)
       ->condition('field_competition', $competition->id())
       ->condition('field_competition_current_level', $level, '>=')
       ->execute();

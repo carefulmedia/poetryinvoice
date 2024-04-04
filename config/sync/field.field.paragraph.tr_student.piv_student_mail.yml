@@ -10,7 +10,7 @@ field_name: piv_student_mail
 entity_type: paragraph
 bundle: tr_student
 label: Email
-description: 'Can also be a parent/guardian''s email'
+description: "Can also be a parent/guardian's email"
 required: true
 translatable: false
 default_value: {  }

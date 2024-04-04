@@ -3,8 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.basic
-    - core.base_field_override.node.lesson_plan.uid
     - field.field.node.lesson_plan.body
     - field.field.node.lesson_plan.comment_node_lesson_plan
     - field.field.node.lesson_plan.field_activity_description_steps

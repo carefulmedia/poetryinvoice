@@ -53,7 +53,7 @@ class SettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state): void {
     $this->config('piv_poem_password.settings')
       ->set('password', $form_state->getValue('password'))
       ->set('poem_password_description', $form_state->getValue('poem_password_description'))

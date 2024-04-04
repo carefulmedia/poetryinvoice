@@ -14,7 +14,7 @@ dependencies:
     - node.type.student
   module:
     - comment
-    - image
+    - svg_image
     - user
 id: node.student.default
 targetEntityType: node

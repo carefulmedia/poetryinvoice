@@ -10,7 +10,7 @@ field_name: field_teacher_s_involved
 entity_type: node
 bundle: pal_pir_school_visit
 label: 'Other teacher(s) involved'
-description: 'Enter all or a portion of the teacher''s email address, wait for the teacher''s name to appear in a drop down list, then select it.'
+description: "Enter all or a portion of the teacher's email address, wait for the teacher's name to appear in a drop down list, then select it."
 required: false
 translatable: true
 default_value: {  }

@@ -30,7 +30,7 @@ abstract class PivMailPluginBase extends PluginBase implements PivMailInterface 
   /**
    * Set a reference to the plugin manager.
    */
-  public function setPluginManager(PivMailPluginManager $plugin_manager) {
+  public function setPluginManager(PivMailPluginManager $plugin_manager): void {
     $this->pluginManager = $plugin_manager;
   }
 
@@ -59,7 +59,7 @@ abstract class PivMailPluginBase extends PluginBase implements PivMailInterface 
   /**
    * {@inheritdoc}
    */
-  public function setConfiguration(array $configuration) {
+  public function setConfiguration(array $configuration): void {
     $this->configuration = $configuration;
   }
 
@@ -144,14 +144,14 @@ abstract class PivMailPluginBase extends PluginBase implements PivMailInterface 
   /**
    * {@inheritdoc}
    */
-  public function validateConfigurationForm(array &$form, FormStateInterface $form_state) {
+  public function validateConfigurationForm(array &$form, FormStateInterface $form_state): void {
     // Do nothing.
   }
 
   /**
    * {@inheritdoc}
    */
-  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+  public function submitConfigurationForm(array &$form, FormStateInterface $form_state): void {
     // Configurations should be already set.
     if ($this->pluginManager) {
       $this->pluginManager->saveConfigurations($this);
