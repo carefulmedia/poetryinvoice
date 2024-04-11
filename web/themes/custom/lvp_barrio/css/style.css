@@ -600,6 +600,9 @@ summary {
   cursor: pointer;
   padding: 0.2em 0.5em;
 }
+dialog {
+  overflow: visible;
+}
 /**
  * @file
  * Visual styles for Bartik's dropbutton component.
@@ -5085,9 +5088,6 @@ nav.tabs ul .nav-item a:hover {
   font-weight: 700;
   line-height: 24px;
   text-align: left;
-}
-.ui-widget.ui-widget-content {
-  width: 90vw !important;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
