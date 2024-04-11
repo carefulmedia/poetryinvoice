@@ -49,6 +49,10 @@ class CompetitionService {
       return FALSE;
     }
 
+    if (piv_contest_school_is_excluded($school->id())) {
+      return FALSE;
+    }
+
     $now = new DrupalDateTime('now');
     $open_date = $competition->field_open_date->date;
     $closing_date = $competition->field_submission_deadline->date;

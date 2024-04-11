@@ -1,0 +1,32 @@
+uuid: f6722ad6-8419-4309-bb95-6cbc91a87bdd
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.contest_settings
+    - field.field.config_pages.contest_settings.field_excluded_schools
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: config_pages.contest_settings.default
+targetEntityType: config_pages
+bundle: contest_settings
+mode: default
+content:
+  field_excluded_schools:
+    type: entity_reference_autocomplete
+    weight: 0
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  label: true

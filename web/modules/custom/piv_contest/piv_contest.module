@@ -332,3 +332,22 @@ function piv_contest_form_editablefields_form_alter(&$form, $form_state, $form_i
     $form['submit']['#ajax']['disable-refocus'] = TRUE;
   }
 }
+
+/**
+ * Check if school is excluded from contests.
+ *
+ * @see /admin/contest/contest-settings
+ */
+function piv_contest_school_is_excluded($school_id) {
+  if (!is_numeric($school_id)) {
+    return FALSE;
+  }
+
+  $config = config_pages_config('contest_settings');
+  if (!$config) {
+    return FALSE;
+  }
+
+  $schools = array_column($config->field_excluded_schools->getValue(), 'target_id');
+  return in_array($school_id, $schools);
+}
