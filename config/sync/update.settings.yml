@@ -10,4 +10,5 @@ fetch:
 notification:
   emails:
     - david@poetryinvoice.ca
-  threshold: all
+    - support@monarq.ca
+  threshold: security
