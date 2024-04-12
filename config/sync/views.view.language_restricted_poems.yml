@@ -3,8 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.storage.node.field_plain_title
     - node.type.poem
   module:
+    - entity_reference_revisions
     - node
     - options
     - user
@@ -23,15 +25,13 @@ display:
     position: 0
     display_options:
       fields:
-        title:
-          id: title
-          table: node_field_data
-          field: title
+        field_plain_title:
+          id: field_plain_title
+          table: node__field_plain_title
+          field: field_plain_title
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: title
           plugin_id: field
           label: ''
           exclude: false
@@ -53,8 +53,8 @@ display:
             target: ''
             nl2br: false
             max_length: 0
-            word_boundary: false
-            ellipsis: false
+            word_boundary: true
+            ellipsis: true
             more_link: false
             more_link_text: ''
             more_link_path: ''
@@ -109,7 +109,7 @@ display:
             external: false
             replace_spaces: false
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: true
             alt: ''
             rel: ''
             link_class: ''
@@ -123,7 +123,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
+            strip_tags: true
             trim: false
             preserve_tags: ''
             html: false
@@ -373,7 +373,8 @@ display:
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.node.field_plain_title'
   entity_reference_1:
     id: entity_reference_1
     display_title: 'Entity Reference'
@@ -384,17 +385,21 @@ display:
         type: entity_reference
         options:
           search_fields:
-            title: title
+            field_plain_title: field_plain_title
+            uid: '0'
       row:
-        type: entity_reference
+        type: entity_reference_revisions
         options:
           default_field_elements: true
           inline:
+            field_plain_title: field_plain_title
             uid: uid
-            title: title
           separator: ' - '
           hide_empty: false
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -403,4 +408,5 @@ display:
         - url
         - 'user.node_grants:view'
         - user.permissions
-      tags: {  }
+      tags:
+        - 'config:field.storage.node.field_plain_title'

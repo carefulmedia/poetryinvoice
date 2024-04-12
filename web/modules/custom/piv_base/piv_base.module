@@ -148,6 +148,10 @@ function piv_base_node_presave(EntityInterface $entity) {
     // Title is the node created time or current time in case of new node.
     $entity->title = $entity->created->value ?? \Drupal::time()->getCurrentTime();
   }
+
+  if ($entity->hasField('field_plain_title')) {
+    $entity->field_plain_title = trim(strip_tags($entity->label()));
+  }
 }
 
 /**
@@ -358,5 +362,25 @@ function template_preprocess_piv_youtube(&$variables) {
     if ($id) {
       $variables['id'] = $id;
     }
+  }
+}
+
+/**
+ * Resave all poems to populate the field_plain_title.
+ */
+function _piv_base_resave_poems() {
+  $nids = \Drupal::entityQuery('node')
+    ->condition('type', 'poem')
+    ->notExists('field_plain_title')
+    ->execute();
+  if (php_sapi_name() == "cli") {
+    $count = count($nids);
+    print "Updating $count poems.\n";
+  }
+
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  foreach ($nids as $nid) {
+    $node = $storage->load($nid);
+    $node->save();
   }
 }

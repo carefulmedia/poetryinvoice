@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.poem.field_paid_
     - field.field.node.poem.field_password_protected
     - field.field.node.poem.field_pdf_of_original_poem
+    - field.field.node.poem.field_plain_title
     - field.field.node.poem.field_poem_retired
     - field.field.node.poem.field_poem_rights_
     - field.field.node.poem.field_poem_rights_contact
@@ -38,6 +39,7 @@ dependencies:
     - node.type.poem
     - views.view.user_listing_index_pages
   module:
+    - bootstrap_layout_builder
     - entity_print
     - layout_builder
     - layout_builder_restrictions
@@ -54,15 +56,21 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
@@ -76,7 +84,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
-          remove_gutters: 0
+          remove_gutters: '0'
+          context_mapping: {  }
         components:
           c37aa004-e2c1-44b9-aa34-c7666874f3eb:
             uuid: c37aa004-e2c1-44b9-aa34-c7666874f3eb
@@ -114,14 +123,19 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_1'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: {  }
           breakpoints:
             desktop: ''
             tablet: ''
@@ -131,7 +145,8 @@ third_party_settings:
               - col-lg-12
               - col-md-12
               - col-12
-          remove_gutters: 0
+          remove_gutters: '0'
+          context_mapping: {  }
         components:
           af4f2a42-1c3a-4769-a83c-019502949940:
             uuid: af4f2a42-1c3a-4769-a83c-019502949940
@@ -174,15 +189,21 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: poem-extras
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
           breakpoints:
             desktop: blb_col_6_6
             tablet: blb_col_6_6
@@ -196,7 +217,8 @@ third_party_settings:
               - col-lg-6
               - col-md-6
               - col-12
-          remove_gutters: 0
+          remove_gutters: '0'
+          context_mapping: {  }
         components:
           46a1c213-b9b7-4476-8e8b-c5880324af13:
             uuid: 46a1c213-b9b7-4476-8e8b-c5880324af13
@@ -307,14 +329,19 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_1'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
+          regions_attributes:
+            blb_region_col_1: {  }
           breakpoints:
             desktop: ''
             tablet: ''
@@ -324,7 +351,8 @@ third_party_settings:
               - col-lg-12
               - col-md-12
               - col-12
-          remove_gutters: 0
+          remove_gutters: '0'
+          context_mapping: {  }
         components:
           0bab9358-65e8-4476-b5a1-60e46ff60e43:
             uuid: 0bab9358-65e8-4476-b5a1-60e46ff60e43
@@ -476,6 +504,7 @@ hidden:
   field_paid_: true
   field_password_protected: true
   field_pdf_of_original_poem: true
+  field_plain_title: true
   field_poem_author_user: true
   field_poem_retired: true
   field_poem_rights_: true

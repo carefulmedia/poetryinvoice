@@ -23,6 +23,7 @@ dependencies:
     - field.field.node.poem.field_paid_
     - field.field.node.poem.field_password_protected
     - field.field.node.poem.field_pdf_of_original_poem
+    - field.field.node.poem.field_plain_title
     - field.field.node.poem.field_poem_retired
     - field.field.node.poem.field_poem_rights_
     - field.field.node.poem.field_poem_rights_contact
@@ -74,6 +75,7 @@ hidden:
   field_paid_: true
   field_password_protected: true
   field_pdf_of_original_poem: true
+  field_plain_title: true
   field_poem_retired: true
   field_poem_rights_: true
   field_poem_rights_contact: true
