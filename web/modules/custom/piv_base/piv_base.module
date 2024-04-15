@@ -385,6 +385,10 @@ function piv_base_transliterate_string($string) {
  */
 function piv_contest_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
   if ($view->id() == 'language_restricted_poems') {
+    // This view is a entity reference view, code below alters the query on the
+    // search string in a autocomplete to sanitize the values there, ignoring
+    // any non alphanumeric or space character. Views get the searched string
+    // from the route parameters directly (it is the $_GET['q']).
     foreach ($query->where as &$condition_group) {
       foreach ($condition_group['conditions'] as &$condition) {
         if (is_a($condition['field'], 'Drupal\Core\Database\Query\Condition')) {
