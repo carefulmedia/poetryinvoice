@@ -1,0 +1,25 @@
+uuid: 394c67d6-dd9d-4d4d-8139-2c7651d51e87
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.contest_settings
+    - field.field.config_pages.contest_settings.field_excluded_schools
+id: config_pages.contest_settings.default
+targetEntityType: config_pages
+bundle: contest_settings
+mode: default
+content:
+  field_excluded_schools:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

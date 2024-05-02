@@ -1,0 +1,17 @@
+uuid: 0cda7cb2-3b01-44b7-a4d6-360362b1d3b3
+langcode: en
+status: true
+dependencies: {  }
+id: contest_settings
+label: 'Contest Settings'
+token: false
+context:
+  show_warning: true
+  group:
+    language: false
+  fallback:
+    language: ''
+menu:
+  path: /admin/contest/contest-settings
+  weight: 0
+  description: 'Constest general settings.'

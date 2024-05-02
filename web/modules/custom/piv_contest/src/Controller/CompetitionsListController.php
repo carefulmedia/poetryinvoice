@@ -98,7 +98,7 @@ class CompetitionsListController extends ControllerBase {
    */
   public function build(UserInterface $user) {
     $school = $user->field_school->target_id;
-    if (!$school) {
+    if (!$school || piv_contest_school_is_excluded($school)) {
       return ['#markup' => $this->t('No school associated with teacher account.')];
     }
 

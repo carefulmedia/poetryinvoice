@@ -1,0 +1,29 @@
+uuid: 7d39b947-d313-4c61-a8d6-19f7f75c4e68
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.contest_settings
+    - field.storage.config_pages.field_excluded_schools
+    - node.type.school
+id: config_pages.contest_settings.field_excluded_schools
+field_name: field_excluded_schools
+entity_type: config_pages
+bundle: contest_settings
+label: 'Excluded schools'
+description: 'Schools that can''t join contests or create competition entries.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      school: school
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
