@@ -1,0 +1,19 @@
+uuid: e2dd64c1-bde4-4852-9ae9-ce6de4485973
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_plain_title
+    - node.type.poem
+id: node.poem.field_plain_title
+field_name: field_plain_title
+entity_type: node
+bundle: poem
+label: 'Plain title'
+description: 'A copy of the title with stripped html.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

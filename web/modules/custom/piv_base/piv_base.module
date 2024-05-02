@@ -13,6 +13,8 @@ use Drupal\Core\Url;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Render\Markup;
+use Drupal\views\ViewExecutable;
+use Drupal\views\Plugin\views\query\QueryPluginBase;
 
 /**
  * Implements hook_user_format_name_alter().
@@ -147,6 +149,13 @@ function piv_base_node_presave(EntityInterface $entity) {
   if ($entity->bundle() == 'pal_pir_school_visit') {
     // Title is the node created time or current time in case of new node.
     $entity->title = $entity->created->value ?? \Drupal::time()->getCurrentTime();
+  }
+  else if ($entity->bundle() == 'poem') {
+    $entity->title = str_replace("'", "’", $entity->label());
+  }
+
+  if ($entity->hasField('field_plain_title')) {
+    $entity->field_plain_title = trim(piv_base_transliterate_string(strip_tags($entity->label())));
   }
 }
 
@@ -358,5 +367,61 @@ function template_preprocess_piv_youtube(&$variables) {
     if ($id) {
       $variables['id'] = $id;
     }
+  }
+}
+
+/**
+ * Transliterate a string.
+ */
+function piv_base_transliterate_string($string) {
+  // Remove accents, etc.
+  $string = \Drupal::transliteration()->removeDiacritics($string);
+  // Remove everything that is not alphanumeric or space.
+  return preg_replace('/[^A-Za-z0-9 ]/', '', $string);
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function piv_contest_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  if ($view->id() == 'language_restricted_poems') {
+    // This view is a entity reference view, code below alters the query on the
+    // search string in a autocomplete to sanitize the values there, ignoring
+    // any non alphanumeric or space character. Views get the searched string
+    // from the route parameters directly (it is the $_GET['q']).
+    foreach ($query->where as &$condition_group) {
+      foreach ($condition_group['conditions'] as &$condition) {
+        if (is_a($condition['field'], 'Drupal\Core\Database\Query\Condition')) {
+          foreach ($condition['field']->conditions() as &$inner_condition) {
+            if (is_array($inner_condition) && !empty($inner_condition['field'])) {
+              if ($inner_condition['field'] == 'node__field_plain_title.field_plain_title_value') {
+                $q = $inner_condition['value'];
+                $inner_condition['value'] = '%' . trim(piv_base_transliterate_string($q)) . '%';
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Resave all poems to populate the field_plain_title.
+ */
+function _piv_base_resave_poems() {
+  $nids = \Drupal::entityQuery('node')
+    ->condition('type', 'poem')
+    ->notExists('field_plain_title')
+    ->execute();
+  if (php_sapi_name() == "cli") {
+    $count = count($nids);
+    print "Updating $count poems.\n";
+  }
+
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  foreach ($nids as $nid) {
+    $node = $storage->load($nid);
+    $node->save();
   }
 }
