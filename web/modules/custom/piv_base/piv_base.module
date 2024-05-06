@@ -411,6 +411,7 @@ function piv_contest_views_query_alter(ViewExecutable $view, QueryPluginBase $qu
  */
 function _piv_base_resave_poems() {
   $nids = \Drupal::entityQuery('node')
+    ->accessCheck(FALSE)
     ->condition('type', 'poem')
     ->notExists('field_plain_title')
     ->execute();
