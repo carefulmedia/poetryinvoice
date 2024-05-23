@@ -4,6 +4,7 @@ mode: simple
 ignored_config_entities:
   - facebook_pixel.settings
   - google_analytics.settings
+  - 'language.*|*'
   - piv_base.welcome_modal_settings
   - 'piv_canadian_content.*'
   - 'piv_mail.piv_mail.*'
@@ -18,5 +19,3 @@ ignored_config_entities:
   - ~views.view.score_templates
   - ~views.view.scores
   - ~views.view.search
-ignored_config_collections:
-  - 'language.*'
