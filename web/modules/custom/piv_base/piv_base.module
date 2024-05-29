@@ -426,3 +426,14 @@ function _piv_base_resave_poems() {
     $node->save();
   }
 }
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function piv_base_preprocess_block(&$variables) {
+  if ($variables['elements']['#base_plugin_id'] === 'field_block') {
+    if (!empty($variables['label'])) {
+      $variables['label'] = $variables['content'][0]['#title'] ?? $variables['label'];
+    }
+  }
+}
