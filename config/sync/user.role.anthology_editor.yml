@@ -3,10 +3,12 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.full_html
     - node.type.poem
   module:
     - field_permissions
     - file
+    - filter
     - node
     - system
 id: anthology_editor
@@ -18,4 +20,5 @@ permissions:
   - 'delete own files'
   - 'edit any poem content'
   - 'edit own poem content'
+  - 'use text format full_html'
   - 'view field_start_here_poem'

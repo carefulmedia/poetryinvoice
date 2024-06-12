@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.full_html
     - node.type.bulletin_board
     - node.type.competition
     - node.type.event
@@ -18,6 +19,7 @@ dependencies:
   module:
     - field_permissions
     - file
+    - filter
     - locale
     - node
     - system
@@ -69,6 +71,7 @@ permissions:
   - 'edit own venue content'
   - 'edit own writing_prompt content'
   - 'translate interface'
+  - 'use text format full_html'
   - 'view field_variations_for_younger_stu'
   - 'view own unpublished content'
   - 'view the administration theme'
