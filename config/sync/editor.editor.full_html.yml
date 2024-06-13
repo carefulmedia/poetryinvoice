@@ -67,7 +67,7 @@ settings:
         - '<blockquote cite>'
         - '<ul type>'
         - '<ol type>'
-        - '<img class width src alt data-entity-type data-entity-uuid>'
+        - '<img class data-entity-type data-entity-uuid>'
         - '<table class>'
         - '<div id class>'
         - '<iframe allow allowfullscreen frameborder height src title width>'
