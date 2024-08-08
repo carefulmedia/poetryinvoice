@@ -2,10 +2,13 @@ uuid: cd97dc9d-2235-4547-9416-014d838a8715
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.pal_pir_school_visit
   module:
     - contact
     - field_permissions
     - file
+    - node
 id: teacher_fr_
 label: 'Teacher (fr)'
 weight: 3
@@ -13,9 +16,11 @@ is_admin: null
 permissions:
   - 'access user contact forms'
   - 'create field_stage_name'
+  - 'create pal_pir_school_visit content'
   - 'delete own files'
   - 'edit field_stage_name'
   - 'edit own field_stage_name'
+  - 'edit own pal_pir_school_visit content'
   - 'view body'
   - 'view field_bio_trans'
   - 'view field_stage_name'

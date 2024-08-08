@@ -99,3 +99,4 @@ permissions:
   - 'view own field_teacher_present'
   - 'view own field_visit_completed_poet'
   - 'view own field_work_student_poet'
+  - 'view pal_pir_school_visit revisions'
