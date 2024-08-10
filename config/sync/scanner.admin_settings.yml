@@ -1,5 +1,6 @@
 _core:
   default_config_hash: m3e3lR0iNbau3eUO2RZya6iS06zv02m1JJe8X-PZuhk
+word_boundaries: auto
 scanner_mode: true
 scanner_wholeword: true
 scanner_regex: false
@@ -16,8 +17,10 @@ enabled_content_types:
   'node:page': 'node:page'
   'node:poem': 'node:poem'
   'node:quiz': 'node:quiz'
+  'node:video': 'node:video'
   'node:writing_prompt': 'node:writing_prompt'
   'node:writing_workshop': 'node:writing_workshop'
+  'paragraph:micro_interview': 'paragraph:micro_interview'
 fields_of_selected_content_type:
   'node:article:body': 'node:article:body'
   'node:faq:body': 'node:faq:body'
@@ -43,4 +46,3 @@ fields_of_selected_content_type:
   'node:quiz:body': 'node:quiz:body'
   'node:writing_prompt:body': 'node:writing_prompt:body'
   'node:writing_workshop:body': 'node:writing_workshop:body'
-word_boundaries: auto

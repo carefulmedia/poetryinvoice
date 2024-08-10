@@ -6,6 +6,7 @@ dependencies:
     - 'block_content:basic:34828ca2-2c6b-470a-8814-2614f5b8e1a7'
   module:
     - block_content
+    - system
   theme:
     - lvp_barrio
 id: usericonheader
@@ -22,4 +23,8 @@ settings:
   status: true
   info: ''
   view_mode: full
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: /elementary

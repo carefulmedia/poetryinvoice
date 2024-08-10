@@ -1,0 +1,24 @@
+uuid: 8c44c22c-f34c-4eda-98b3-56799a3e89c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - field_permissions
+    - media
+    - node
+third_party_settings:
+  field_permissions:
+    permission_type: public
+id: node.field_k_6_video
+field_name: field_k_6_video
+entity_type: node
+type: entity_reference
+settings:
+  target_type: media
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

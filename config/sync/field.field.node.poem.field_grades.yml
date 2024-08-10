@@ -15,11 +15,7 @@ label: 'Grade levels'
 description: "Enter the grade levels this poem is appropriate for, possibly for a recitation contest at that level.\r\nBy default, a poem is appropriate for all grades."
 required: false
 translatable: true
-default_value:
-  -
-    value: 'Grades 7 & 8 / Sec. 1 & 2'
-  -
-    value: 'Grades 9-12 / Sec. 3-5 / CEGEP 1'
+default_value: {  }
 default_value_callback: ''
 settings: {  }
 field_type: list_string

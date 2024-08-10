@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.poem.field_editor
     - field.field.node.poem.field_epigraph
     - field.field.node.poem.field_grades
+    - field.field.node.poem.field_k_6_video
     - field.field.node.poem.field_mobile_apps_are_allowed
     - field.field.node.poem.field_moods
     - field.field.node.poem.field_new_theme
@@ -88,6 +89,7 @@ hidden:
   field_dive_in_attribution: true
   field_editor: true
   field_grades: true
+  field_k_6_video: true
   field_mobile_apps_are_allowed: true
   field_moods: true
   field_new_theme: true

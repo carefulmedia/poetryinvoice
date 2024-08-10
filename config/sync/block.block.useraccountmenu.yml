@@ -6,6 +6,7 @@ dependencies:
     - system.menu.account
   module:
     - menu_block
+    - system
   theme:
     - lvp_barrio
 id: useraccountmenu
@@ -28,4 +29,8 @@ settings:
   expand_all_items: false
   parent: 'account:'
   suggestion: account
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: /elementary

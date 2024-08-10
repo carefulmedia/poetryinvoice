@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.poem.field_editor
     - field.field.node.poem.field_epigraph
     - field.field.node.poem.field_grades
+    - field.field.node.poem.field_k_6_video
     - field.field.node.poem.field_mobile_apps_are_allowed
     - field.field.node.poem.field_moods
     - field.field.node.poem.field_new_theme
@@ -145,6 +146,16 @@ content:
     weight: 7
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_k_6_video:
+    type: entity_reference_autocomplete
+    weight: 37
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_mobile_apps_are_allowed:
     type: boolean_checkbox
@@ -284,13 +295,13 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 39
+    weight: 40
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 37
+    weight: 38
     region: content
     settings:
       display_label: true
@@ -307,20 +318,20 @@ content:
     settings: {  }
     third_party_settings: {  }
   simple_sitemap_index_now:
-    weight: 130
+    weight: 43
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 40
+    weight: 41
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 38
+    weight: 39
     region: content
     settings:
       display_label: true
@@ -355,7 +366,7 @@ content:
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 41
+    weight: 42
     region: content
     settings: {  }
     third_party_settings: {  }
