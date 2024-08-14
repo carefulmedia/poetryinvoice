@@ -1,23 +1,24 @@
-uuid: 3a25f029-4e58-42b1-b060-b94ff8c1983e
+uuid: 8217ebd7-5605-4ddc-b392-934c5d420aeb
 langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.account
+    - system.menu.k-6-en-menu
   module:
+    - language
     - menu_block
     - system
   theme:
     - lvp_barrio
-id: useraccountmenu
+id: lvp_barrio_k6enmenu
 theme: lvp_barrio
 region: primary_menu
-weight: -20
+weight: -17
 provider: null
-plugin: 'menu_block:account'
+plugin: 'menu_block:k-6-en-menu'
 settings:
-  id: 'menu_block:account'
-  label: 'User account menu'
+  id: 'menu_block:k-6-en-menu'
+  label: 'K-6 En Menu'
   label_display: '0'
   provider: menu_block
   follow: false
@@ -27,10 +28,17 @@ settings:
   level: 1
   depth: 0
   expand_all_items: false
-  parent: 'account:'
-  suggestion: account
+  parent: 'k-6-en-menu:'
+  suggestion: k_6_en_menu
 visibility:
+  language:
+    id: language
+    negate: false
+    context_mapping:
+      language: '@language.current_language_context:language_interface'
+    langcodes:
+      en: en
   request_path:
     id: request_path
-    negate: true
+    negate: false
     pages: "/elementary\r\n/elementary/*\r\n/primaire\r\n/primaire/*"

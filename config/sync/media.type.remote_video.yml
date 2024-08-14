@@ -1,7 +1,12 @@
 uuid: 20c226eb-431e-4c16-90c9-ffab076155a4
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  module:
+    - crop
+third_party_settings:
+  crop:
+    image_field: null
 id: remote_video
 label: 'Remote video'
 description: 'Video hosted on remote service such as Youtube'
@@ -10,7 +15,7 @@ queue_thumbnail_downloads: false
 new_revision: false
 source_configuration:
   source_field: field_media_oembed_video
-  thumbnails_directory: 'public://oembed_thumbnails/[date:custom:Y-m]'
+  thumbnails_directory: 'public://oembed_thumbnails/[date:custom:Y-m]/test'
   providers:
     - YouTube
 field_map: {  }

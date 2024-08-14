@@ -11,7 +11,7 @@ id: node.video.body
 field_name: body
 entity_type: node
 bundle: video
-label: 'Youtube Embed Code'
+label: Body
 description: 'Click on "Source" above and then paste the embed code into this text box'
 required: false
 translatable: true
@@ -24,4 +24,5 @@ default_value_callback: ''
 settings:
   display_summary: true
   required_summary: false
+  allowed_formats: {  }
 field_type: text_with_summary

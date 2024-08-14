@@ -8,19 +8,15 @@ dependencies:
     - field.field.node.video.field_canada_restrict
     - field.field.node.video.field_competition_school
     - field.field.node.video.field_competition_stream
-    - field.field.node.video.field_fca_image
     - field.field.node.video.field_pod_date
     - field.field.node.video.field_poem_retired
     - field.field.node.video.field_poets_plural_user
     - field.field.node.video.field_type_of_video
     - field.field.node.video.field_video
     - field.field.node.video.field_video_caption
-    - field.field.node.video.field_video_image
     - field.field.node.video.field_video_poem
     - field.field.node.video.field_years_in_competition
-    - field.field.node.video.field_yt_video
     - field.field.node.video.layout_builder__layout
-    - image.style.thumbnail
     - node.type.video
   module:
     - datetime
@@ -29,7 +25,6 @@ dependencies:
     - media_library
     - path
     - scheduler
-    - svg_image
     - text
 third_party_settings:
   field_layout:
@@ -80,14 +75,6 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_fca_image:
-    type: image_image
-    weight: 14
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
   field_pod_date:
     type: datetime_default
     weight: 10
@@ -132,14 +119,6 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_video_image:
-    type: image_image
-    weight: 7
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
-    third_party_settings: {  }
   field_video_poem:
     type: entity_reference_autocomplete
     weight: 3
@@ -155,14 +134,6 @@ content:
     weight: 9
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_yt_video:
-    type: string_textfield
-    weight: 26
-    region: content
-    settings:
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   langcode:
     type: language_select
@@ -187,6 +158,16 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 130
     region: content
     settings: {  }
     third_party_settings: {  }

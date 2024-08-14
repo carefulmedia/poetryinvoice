@@ -10,7 +10,7 @@ dependencies:
 id: lvp_barrio_languageswitcher
 theme: lvp_barrio
 region: primary_menu
-weight: -12
+weight: -21
 provider: null
 plugin: 'language_block:language_interface'
 settings:
@@ -22,4 +22,4 @@ visibility:
   request_path:
     id: request_path
     negate: true
-    pages: /elementary
+    pages: "/elementary\r\n/elementary/*\r\n/primaire\r\n/primaire/*"

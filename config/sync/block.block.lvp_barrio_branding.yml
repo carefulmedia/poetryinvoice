@@ -26,4 +26,4 @@ visibility:
   request_path:
     id: request_path
     negate: true
-    pages: /elementary
+    pages: "/elementary\r\n/elementary/*\r\n/primaire\r\n/primaire/*"

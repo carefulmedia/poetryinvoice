@@ -1,25 +1,25 @@
-uuid: e4dea592-202b-43ca-be9b-f56bcb6efc56
+uuid: a7fc44cd-8398-4558-babf-dcf48ef90f70
 langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.main
+    - system.menu.k-6-en-teachers-menu
   module:
     - language
     - menu_block
     - system
   theme:
     - lvp_barrio
-id: mainnavigation
+id: lvp_barrio_k6enteachersmenu
 theme: lvp_barrio
 region: primary_menu
-weight: -19
+weight: -16
 provider: null
-plugin: 'menu_block:main'
+plugin: 'menu_block:k-6-en-teachers-menu'
 settings:
-  id: 'menu_block:main'
-  label: 'EN Main Menu'
-  label_display: '0'
+  id: 'menu_block:k-6-en-teachers-menu'
+  label: 'For Teachers:'
+  label_display: visible
   provider: menu_block
   follow: false
   follow_parent: child
@@ -28,8 +28,8 @@ settings:
   level: 1
   depth: 0
   expand_all_items: false
-  parent: 'main:'
-  suggestion: main
+  parent: 'k-6-en-teachers-menu:'
+  suggestion: k_6_en_teachers_menu
 visibility:
   language:
     id: language
@@ -40,5 +40,5 @@ visibility:
       en: en
   request_path:
     id: request_path
-    negate: true
+    negate: false
     pages: "/elementary\r\n/elementary/*\r\n/primaire\r\n/primaire/*"

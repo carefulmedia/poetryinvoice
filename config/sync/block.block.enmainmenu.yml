@@ -9,7 +9,7 @@ dependencies:
 id: enmainmenu
 theme: lvp_barrio
 region: primary_menu
-weight: -7
+weight: -14
 provider: null
 plugin: 'tb_megamenu_menu_block:main'
 settings:

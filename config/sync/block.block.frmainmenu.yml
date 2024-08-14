@@ -7,12 +7,13 @@ dependencies:
   module:
     - language
     - menu_block
+    - system
   theme:
     - lvp_barrio
 id: frmainmenu
 theme: lvp_barrio
 region: primary_menu
-weight: -9
+weight: -18
 provider: null
 plugin: 'menu_block:fr-main-menu'
 settings:
@@ -37,3 +38,7 @@ visibility:
       language: '@language.current_language_context:language_interface'
     langcodes:
       fr: fr
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/elementary\r\n/elementary/*\r\n/primaire\r\n/primaire/*"
