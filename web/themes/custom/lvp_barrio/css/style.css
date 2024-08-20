@@ -4222,6 +4222,12 @@ dialog.recitation-form .btn-close {
   --grey-dark: #333B42;
   --grey: #73818D;
   --black: #000000;
+  --bluek: #0ebcee;
+  --greenk: #94c947;
+  --yellowk: #ffe450;
+  --pinkk: #f05f98;
+  --purplek: #a587be;
+  --orangek: #f47b29;
 }
 body,
 h1,
@@ -5088,6 +5094,64 @@ nav.tabs ul .nav-item a:hover {
   font-weight: 700;
   line-height: 24px;
   text-align: left;
+}
+.elementary {
+  background: url(../images/watercolour-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.elementary h1.title {
+  font-family: "Matemasie", sans-serif;
+  font-weight: 400;
+  font-style: bold;
+}
+.elementary ul.menu {
+  margin-bottom: 40px;
+}
+.elementary .navbar li {
+  font-weight: 400;
+  font-style: bold;
+  display: block;
+  width: 100%;
+  padding: 0.25rem 1rem;
+  clear: both;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.elementary a {
+  text-decoration: none;
+}
+.elementary .navbar .menu--k-6-en-menu li {
+  font-family: "Matemasie", sans-serif;
+  text-align: center;
+}
+.elementary .navbar .menu--k-6-en-menu li a {
+  font-size: 45px;
+  line-height: 120px;
+  font-weight: 400;
+}
+.elementary .menu--k-6-en-teachers-menu h2 {
+  font-weight: 900;
+}
+.elementary .menu--k-6-en-teachers-menu a {
+  font-size: 24px;
+}
+.elementary ul.menu .watch a {
+  color: var(--bluek);
+}
+.elementary ul.menu .read a {
+  color: var(--purplek);
+}
+.elementary ul.menu .write a {
+  color: var(--greenk);
+}
+.elementary ul.menu .make a {
+  color: var(--orangek);
 }
 
 /*# sourceMappingURL=maps/style.css.map */
