@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - filter.format.full_html
     - media.type.remote_video
     - node.type.bulletin_board
     - node.type.journal_poem
@@ -13,6 +14,7 @@ dependencies:
     - contact
     - field_permissions
     - file
+    - filter
     - form_mode_manager
     - media
     - node
@@ -124,6 +126,7 @@ permissions:
   - 'update paragraph content tr_student'
   - 'use node.default form mode'
   - 'use node.teacher form mode'
+  - 'use text format full_html'
   - 'use user.teacher_edit form mode'
   - 'view body'
   - 'view field_about_me'

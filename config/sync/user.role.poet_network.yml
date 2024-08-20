@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - filter.format.filtered_html
+    - filter.format.full_html
     - node.type.school
     - node.type.writing_prompt
   module:
@@ -148,6 +149,7 @@ permissions:
   - 'update paragraph content publications'
   - 'use node.default form mode'
   - 'use text format filtered_html'
+  - 'use text format full_html'
   - 'use user.poet_network form mode'
   - 'view body'
   - 'view field_classroom'

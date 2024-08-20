@@ -1,0 +1,31 @@
+uuid: 8d5f9f20-7a73-447b-aa1a-db4591057f15
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.header_images_based_on_node_content
+  module:
+    - system
+    - views
+  theme:
+    - lvp_barrio
+id: lvp_barrio_views_block__header_images_based_on_node_9
+theme: lvp_barrio
+region: highlighted
+weight: 0
+provider: null
+plugin: 'views_block:header_images_based_on_node_content-block_9'
+settings:
+  id: 'views_block:header_images_based_on_node_content-block_9'
+  label: ''
+  label_display: '0'
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+  exposed: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/elementary\r\n/elementary/*\r\n/primaire\r\n/primaire/*"
