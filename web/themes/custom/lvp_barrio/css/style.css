@@ -5208,7 +5208,7 @@ nav.tabs ul .nav-item a:hover {
   font-size: 50px;
 }
 .elementary .site-footer {
-  background-color: var(--pinkk);
+  background: none;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
