@@ -5153,5 +5153,26 @@ nav.tabs ul .nav-item a:hover {
 .elementary ul.menu .make a {
   color: var(--orangek);
 }
+.elementary #navbar-main {
+  background: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  z-index: 2;
+}
+.elementary .search-icon svg {
+  display: none;
+}
+.elementary .navbar-toggler-icon {
+  background-image: url("../images/hamburger-temp.png");
+  display: inline-block;
+  width: 3.5em;
+  height: 3.5em;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  color: white;
+  filter: none;
+}
 
 /*# sourceMappingURL=maps/style.css.map */
