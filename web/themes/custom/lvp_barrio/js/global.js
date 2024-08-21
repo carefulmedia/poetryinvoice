@@ -18,9 +18,9 @@
         $('.site-footer').css('background-image', 'url(' + imgSrc + ')');
         $( ".site-footer" ).fadeIn( 1500 );
         // Change logo for k-6
-      // document.querySelector('body').classList.add("testtyyyy");
-      //  if ($("body").hasClass("elementary")) {
-       // }       
+        if ($("body").hasClass("elementary")) {
+          $('.header-logo').attr('src','../images/LVP-Logo---standard.png');
+        }       
        // Assistance for Animate On Scroll issue not working properly
         let scrollRef = 0;
         window.addEventListener('scroll', function() {
