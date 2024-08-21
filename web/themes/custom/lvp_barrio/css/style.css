@@ -5198,6 +5198,15 @@ nav.tabs ul .nav-item a:hover {
 .elementary.watch h1.title {
   color: var(--bluek);
 }
+.elementary.read h1.title {
+  color: var(--purplek);
+}
+.elementary.write h1.title {
+  color: var(--greenk);
+}
+.elementary.make h1.title {
+  color: var(--orangek);
+}
 .elementary h1.title,
 .elementary a.watch,
 .elementary a.read,
