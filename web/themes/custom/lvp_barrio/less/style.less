@@ -791,6 +791,12 @@ div {
                 font-weight: 400;
                 font-style: bold;             
         }
+        h2, h3, h5, h6, h2 a, h3 a {
+            font-family: "Chewy", sans-serif;
+        }
+        h3 {
+            text-transform: none;
+        }
         ul.menu {
             margin-bottom: 40px;
         }
@@ -832,16 +838,16 @@ div {
         }
         
         
-        ul.menu .watch a {
+        ul.menu .watch a, a.watch {
             color: var(--bluek);
         }
-        ul.menu .read a {
+        ul.menu .read a, a.read {
             color: var(--purplek);
         }
-        ul.menu .write a {
+        ul.menu .write a, a.write {
             color: var(--greenk);
         }
-        ul.menu .make a {
+        ul.menu .make a, a.make {
             color: var(--orangek);
         }
         #navbar-main {
@@ -864,5 +870,25 @@ div {
             background-size: 100%;
             color: white;
             filter: none;
+        }
+        .header-logo {
+            height: 8rem;
+        }
+        .header-logo.dark {
+            filter: none;
+        }
+        &.watch {
+            h1.title {
+             color: var(--bluek);
+            } 
+
+        }
+        h1.title, a.watch, a.read, a.write, a.make {
+        backdrop-filter: drop-shadow(2px 4px 6px black);
+        filter: drop-shadow(2px 2px 0px white);
+        font-size: 50px;
+    }
+        .site-footer {
+            background-color: var(--pinkk);
         }
 }

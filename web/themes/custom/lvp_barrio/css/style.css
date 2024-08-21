@@ -5107,6 +5107,17 @@ nav.tabs ul .nav-item a:hover {
   font-weight: 400;
   font-style: bold;
 }
+.elementary h2,
+.elementary h3,
+.elementary h5,
+.elementary h6,
+.elementary h2 a,
+.elementary h3 a {
+  font-family: "Chewy", sans-serif;
+}
+.elementary h3 {
+  text-transform: none;
+}
 .elementary ul.menu {
   margin-bottom: 40px;
 }
@@ -5141,16 +5152,20 @@ nav.tabs ul .nav-item a:hover {
 .elementary .menu--k-6-en-teachers-menu a {
   font-size: 24px;
 }
-.elementary ul.menu .watch a {
+.elementary ul.menu .watch a,
+.elementary a.watch {
   color: var(--bluek);
 }
-.elementary ul.menu .read a {
+.elementary ul.menu .read a,
+.elementary a.read {
   color: var(--purplek);
 }
-.elementary ul.menu .write a {
+.elementary ul.menu .write a,
+.elementary a.write {
   color: var(--greenk);
 }
-.elementary ul.menu .make a {
+.elementary ul.menu .make a,
+.elementary a.make {
   color: var(--orangek);
 }
 .elementary #navbar-main {
@@ -5173,6 +5188,27 @@ nav.tabs ul .nav-item a:hover {
   background-size: 100%;
   color: white;
   filter: none;
+}
+.elementary .header-logo {
+  height: 8rem;
+}
+.elementary .header-logo.dark {
+  filter: none;
+}
+.elementary.watch h1.title {
+  color: var(--bluek);
+}
+.elementary h1.title,
+.elementary a.watch,
+.elementary a.read,
+.elementary a.write,
+.elementary a.make {
+  backdrop-filter: drop-shadow(2px 4px 6px black);
+  filter: drop-shadow(2px 2px 0px white);
+  font-size: 50px;
+}
+.elementary .site-footer {
+  background-color: var(--pinkk);
 }
 
 /*# sourceMappingURL=maps/style.css.map */

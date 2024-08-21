@@ -19,7 +19,12 @@
         $( ".site-footer" ).fadeIn( 1500 );
         // Change logo for k-6
         if ($("body").hasClass("elementary")) {
-          $('.header-logo').attr('src','../images/LVP-Logo---standard.png');
+          if (window.location.href.indexOf("lesvoix") > -1) { 
+              $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/LVP-Logo---standard.png');
+            }
+          else {
+            $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/PIV-Logo---standard.png');
+          }
         }       
        // Assistance for Animate On Scroll issue not working properly
         let scrollRef = 0;
