@@ -5214,7 +5214,9 @@ nav.tabs ul .nav-item a:hover {
 .elementary a.make h2 {
   backdrop-filter: drop-shadow(2px 4px 6px black);
   filter: drop-shadow(2px 2px 0px white);
-  font-size: 50px;
+  font-size: 80px;
+  text-align: center;
+  vertical-align: middle;
 }
 .elementary .site-footer {
   background: none;
@@ -5222,14 +5224,15 @@ nav.tabs ul .nav-item a:hover {
 .elementary .home div {
   display: block;
   clear: both;
+  text-align: center;
+  margin-bottom: 30px;
 }
 .elementary .home img {
   display: inline;
 }
 .elementary .home h2 {
-  margin-left: 20px;
+  margin-left: 60px;
   display: inline;
-  float: right;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
