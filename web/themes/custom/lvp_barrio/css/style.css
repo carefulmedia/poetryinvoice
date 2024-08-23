@@ -5153,19 +5153,19 @@ nav.tabs ul .nav-item a:hover {
   font-size: 24px;
 }
 .elementary ul.menu .watch a,
-.elementary a.watch {
+.elementary a.watch h2 {
   color: var(--bluek);
 }
 .elementary ul.menu .read a,
-.elementary a.read {
+.elementary a.read h2 {
   color: var(--purplek);
 }
 .elementary ul.menu .write a,
-.elementary a.write {
+.elementary a.write h2 {
   color: var(--greenk);
 }
 .elementary ul.menu .make a,
-.elementary a.make {
+.elementary a.make h2 {
   color: var(--orangek);
 }
 .elementary #navbar-main {
@@ -5178,7 +5178,7 @@ nav.tabs ul .nav-item a:hover {
   display: none;
 }
 .elementary .navbar-toggler-icon {
-  background-image: url("../images/hamburger-temp.png");
+  background-image: url("../images/hamburger-k-6.png");
   display: inline-block;
   width: 3.5em;
   height: 3.5em;
@@ -5208,16 +5208,28 @@ nav.tabs ul .nav-item a:hover {
   color: var(--orangek);
 }
 .elementary h1.title,
-.elementary a.watch,
-.elementary a.read,
-.elementary a.write,
-.elementary a.make {
+.elementary a.watch h2,
+.elementary a.read h2,
+.elementary a.write h2,
+.elementary a.make h2 {
   backdrop-filter: drop-shadow(2px 4px 6px black);
   filter: drop-shadow(2px 2px 0px white);
   font-size: 50px;
 }
 .elementary .site-footer {
   background: none;
+}
+.elementary .home div {
+  display: block;
+  clear: both;
+}
+.elementary .home img {
+  display: inline;
+}
+.elementary .home h2 {
+  margin-left: 20px;
+  display: inline;
+  float: right;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
