@@ -15,7 +15,7 @@
               $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/LVP-Logo---standard.png');
             }
           else {
-            $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/PIV-Logo---standard.png');
+            $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/poetry-in-voice-elementary-logo.png');
           }
         }       
         else {

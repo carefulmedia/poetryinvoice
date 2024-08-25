@@ -5096,7 +5096,7 @@ nav.tabs ul .nav-item a:hover {
   text-align: left;
 }
 .elementary {
-  background: url(../images/watercolour-bg.jpg) no-repeat center center fixed;
+  background: url(../images/watercolour-bg-BLUE-min.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -5106,6 +5106,10 @@ nav.tabs ul .nav-item a:hover {
   font-family: "Chewy", sans-serif;
   font-weight: 400;
   font-style: bold;
+}
+.elementary.page-node-37023 #block-pagetitle,
+.elementary.page-node-37026 #block-pagetitle {
+  display: none;
 }
 .elementary h2,
 .elementary h3,
@@ -5188,9 +5192,11 @@ nav.tabs ul .nav-item a:hover {
   background-size: 100%;
   color: white;
   filter: none;
+  backdrop-filter: drop-shadow(2px 4px 6px #C7DFE7);
+  filter: drop-shadow(2px 2px 0px #C7DFE7);
 }
 .elementary .header-logo {
-  height: 8rem;
+  height: 18rem;
 }
 .elementary .header-logo.dark {
   filter: none;
@@ -5198,11 +5204,20 @@ nav.tabs ul .nav-item a:hover {
 .elementary.watch h1.title {
   color: var(--bluek);
 }
+.elementary.read {
+  background: url(../images/watercolour-bg-PURPLE-min.jpg) no-repeat center center fixed;
+}
 .elementary.read h1.title {
   color: var(--purplek);
 }
+.elementary.write {
+  background: url(../images/watercolour-bg-GREEN-min.jpg) no-repeat center center fixed;
+}
 .elementary.write h1.title {
   color: var(--greenk);
+}
+.elementary.make {
+  background: url(../images/watercolour-bg-ORANGE-min.jpg) no-repeat center center fixed;
 }
 .elementary.make h1.title {
   color: var(--orangek);

@@ -780,7 +780,7 @@ div {
 }
 .elementary  {
 
-    background: url(../images/watercolour-bg.jpg) no-repeat center center fixed; 
+    background: url(../images/watercolour-bg-BLUE-min.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -790,6 +790,11 @@ div {
                 font-family: "Chewy", sans-serif;
                 font-weight: 400;
                 font-style: bold;             
+        }
+        &.page-node-37023, &.page-node-37026 {
+            #block-pagetitle {
+                display: none;
+            }
         }
         h2, h3, h5, h6, h2 a, h3 a {
             font-family: "Chewy", sans-serif;
@@ -836,7 +841,9 @@ div {
                 font-size: 24px;
             }
         }
-        
+        .content {
+           // background: rgba(255, 255, 255, 0.3);
+        }
         
         ul.menu .watch a, a.watch h2 {
             color: var(--bluek);
@@ -870,9 +877,11 @@ div {
             background-size: 100%;
             color: white;
             filter: none;
+            backdrop-filter: drop-shadow(2px 4px 6px #C7DFE7);
+            filter: drop-shadow(2px 2px 0px #C7DFE7);
         }
         .header-logo {
-            height: 8rem;
+            height: 18rem;
         }
         .header-logo.dark {
             filter: none;
@@ -887,18 +896,24 @@ div {
             h1.title {
              color: var(--purplek);
             } 
+            background: url(../images/watercolour-bg-PURPLE-min.jpg) no-repeat center center fixed; 
+
 
         }
         &.write {
             h1.title {
              color: var(--greenk);
             } 
+            background: url(../images/watercolour-bg-GREEN-min.jpg) no-repeat center center fixed; 
+
 
         }
         &.make {
             h1.title {
              color: var(--orangek);
             } 
+            background: url(../images/watercolour-bg-ORANGE-min.jpg) no-repeat center center fixed; 
+
 
         }
         
@@ -925,5 +940,6 @@ div {
         margin-left: 60px;
         display: inline;
     }
+
 
 }
