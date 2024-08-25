@@ -9,7 +9,7 @@ dependencies:
 id: dropdownsupermenu
 theme: lvp_barrio
 region: highlighted
-weight: -7
+weight: -12
 provider: null
 plugin: 'block_content:df83bd82-cb93-4c72-a8a2-9c62f166b2d8'
 settings:

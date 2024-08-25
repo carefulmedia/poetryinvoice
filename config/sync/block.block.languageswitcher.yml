@@ -10,7 +10,7 @@ dependencies:
 id: languageswitcher
 theme: lvp_barrio
 region: header
-weight: -13
+weight: -18
 provider: null
 plugin: 'language_block:language_interface'
 settings:

@@ -12,7 +12,7 @@ dependencies:
 id: nodeuserheaderimag
 theme: lvp_barrio
 region: highlighted
-weight: 0
+weight: -13
 provider: null
 plugin: 'block_content:ee7ad6de-dbc8-4f23-aad2-ca06543818f4'
 settings:

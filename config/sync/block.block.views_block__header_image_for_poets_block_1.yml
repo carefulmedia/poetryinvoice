@@ -11,7 +11,7 @@ dependencies:
 id: views_block__header_image_for_poets_block_1
 theme: lvp_barrio
 region: highlighted
-weight: -12
+weight: -19
 provider: null
 plugin: 'views_block:header_image_for_poets-block_1'
 settings:

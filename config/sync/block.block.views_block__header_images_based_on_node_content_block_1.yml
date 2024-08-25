@@ -12,7 +12,7 @@ dependencies:
 id: views_block__header_images_based_on_node_content_block_1
 theme: lvp_barrio
 region: highlighted
-weight: -8
+weight: -15
 provider: null
 plugin: 'views_block:header_images_based_on_node_content-block_1'
 settings:

@@ -11,8 +11,8 @@ dependencies:
     - lvp_barrio
 id: lvp_barrio_views_block__header_images_based_on_node_9
 theme: lvp_barrio
-region: highlighted
-weight: 0
+region: header
+weight: -20
 provider: null
 plugin: 'views_block:header_images_based_on_node_content-block_9'
 settings:
