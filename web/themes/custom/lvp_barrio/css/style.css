@@ -5252,7 +5252,7 @@ nav.tabs ul .nav-item a:hover {
 .elementary .no-blur {
   margin-bottom: 0rem;
 }
-.elementary .no-blur {
+.elementary .navbar .block-block-content {
   width: 70%;
 }
 .elementary.watch h1.title {
