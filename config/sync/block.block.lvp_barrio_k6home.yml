@@ -1,0 +1,30 @@
+uuid: 22925970-7078-43d5-bbca-0f1adc97bfeb
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:cd9317b1-0fef-4894-b90b-1a160c579c33'
+  module:
+    - block_content
+    - system
+  theme:
+    - lvp_barrio
+id: lvp_barrio_k6home
+theme: lvp_barrio
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:cd9317b1-0fef-4894-b90b-1a160c579c33'
+settings:
+  id: 'block_content:cd9317b1-0fef-4894-b90b-1a160c579c33'
+  label: 'K-6 HOME HEADER'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/elementary\r\n/primaire"

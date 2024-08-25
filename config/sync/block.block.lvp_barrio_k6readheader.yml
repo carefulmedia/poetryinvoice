@@ -1,0 +1,30 @@
+uuid: c9413234-1151-46ee-9f33-820e728a880e
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:c308ac78-de4b-4c9a-88dd-c5a857877996'
+  module:
+    - block_content
+    - system
+  theme:
+    - lvp_barrio
+id: lvp_barrio_k6readheader
+theme: lvp_barrio
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:c308ac78-de4b-4c9a-88dd-c5a857877996'
+settings:
+  id: 'block_content:c308ac78-de4b-4c9a-88dd-c5a857877996'
+  label: 'K-6 READ HEADER'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/elementary/read\r\n/elementary/read/*\r\n/elementary/lire\r\n/elementary/lire/*"

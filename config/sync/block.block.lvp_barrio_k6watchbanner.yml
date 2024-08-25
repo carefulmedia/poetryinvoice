@@ -1,0 +1,30 @@
+uuid: 4859e9ca-2012-4362-b0e4-c34affe3171e
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:8c30b22e-3097-4a2c-af5b-951cd50a9dd5'
+  module:
+    - block_content
+    - system
+  theme:
+    - lvp_barrio
+id: lvp_barrio_k6watchbanner
+theme: lvp_barrio
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:8c30b22e-3097-4a2c-af5b-951cd50a9dd5'
+settings:
+  id: 'block_content:8c30b22e-3097-4a2c-af5b-951cd50a9dd5'
+  label: 'K-6 WATCH HEADER'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/elementary/watch\r\n/elementary/watch/*\r\n/primaire/ecouter\r\n/primaire/ecouter/*"
