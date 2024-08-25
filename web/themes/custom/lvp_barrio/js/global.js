@@ -3,7 +3,7 @@
  * Global utilities.
  *
  */
-(function ($, Drupal) {
+ (function ($, Drupal) {
 
   'use strict';
 
@@ -13,9 +13,12 @@
         if ($("body").hasClass("elementary")) {
           if (window.location.href.indexOf("lesvoix") > -1) { 
               $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/LVP-Logo---standard.png');
+              $('.me-auto').attr('href','/primaire');
+
             }
           else {
             $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/poetry-in-voice-elementary-logo.png');
+            $('.me-auto').attr('href','/elementary');
           }
         }       
         else {

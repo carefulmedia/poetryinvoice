@@ -5211,8 +5211,8 @@ nav.tabs ul .nav-item a:hover {
   filter: drop-shadow(5px 6px 0px #C7DFE7);
 }
 .elementary .navbar-toggler-icon {
-  backdrop-filter: drop-shadow(0px 0px 0px #C7DFE7);
-  filter: drop-shadow(0px 0px 0px #C7DFE7);
+  backdrop-filter: drop-shadow(4px 6px 0px #C7DFE7);
+  filter: drop-shadow(4px 6px 0px #C7DFE7);
 }
 .elementary .header-logo {
   height: auto;
@@ -5254,7 +5254,7 @@ nav.tabs ul .nav-item a:hover {
 .elementary a.write h2,
 .elementary a.make h2 {
   backdrop-filter: drop-shadow(2px 4px 6px black);
-  filter: drop-shadow(2px 2px 0px white);
+  filter: drop-shadow(6px 9px 0px white);
   font-size: 6vw;
   text-align: center;
   vertical-align: middle;
