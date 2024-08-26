@@ -5355,8 +5355,29 @@ nav.tabs ul .nav-item a:hover {
     margin-top: 6vw;
   }
 }
+.elementary details,
+.elementary select.form-select {
+  background-image: none;
+  font-family: "Chewy", sans-serif;
+  filter: drop-shadow(0.5vw 0.5vw 0px white);
+  border: 2px solid #000;
+  padding: 0;
+}
+.elementary details {
+  border: 1px solid #000;
+  margin-top: 1em;
+  margin-bottom: 0;
+  background: #fff;
+}
 .elementary .offcanvas-body {
-  padding: 0 2vw !important;
+  padding: 0 3vw !important;
+}
+.elementary .form-row {
+  text-align: center;
+}
+.elementary form {
+  margin-bottom: 0.5vw;
+  margin-top: 4vw;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
