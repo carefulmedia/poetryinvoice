@@ -1,0 +1,30 @@
+uuid: e9ccd1d6-fe38-4767-9fd1-ec6a857b2c26
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:43458c82-bba9-4903-8ae9-19320955c6e9'
+  module:
+    - block_content
+    - system
+  theme:
+    - lvp_barrio
+id: lvp_barrio_k6makeheader
+theme: lvp_barrio
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:43458c82-bba9-4903-8ae9-19320955c6e9'
+settings:
+  id: 'block_content:43458c82-bba9-4903-8ae9-19320955c6e9'
+  label: 'K-6 MAKE HEADER'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/elementary/make\r\n/elementary/make/*\r\n/elementary/creer\r\n/elementary/creer/*"

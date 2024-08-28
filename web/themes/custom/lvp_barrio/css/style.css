@@ -5096,7 +5096,7 @@ nav.tabs ul .nav-item a:hover {
   text-align: left;
 }
 .elementary {
-  background: url(../images/watercolour-bg-BLUE-min.jpg) no-repeat center center fixed;
+  background: url(../images/watercolour-bg-MULTI.jpg) no-repeat center center fixed;
   -webkit-background-size: cover  !important;
   -moz-background-size: cover  !important;
   -o-background-size: cover  !important;
@@ -5254,6 +5254,9 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary .navbar .block-block-content {
   width: 70%;
+}
+.elementary.watch {
+  background: url(../images/watercolour-bg-BLUE-min.jpg) no-repeat center center fixed;
 }
 .elementary.watch h1.title {
   color: var(--bluek);

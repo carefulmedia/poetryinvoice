@@ -1,0 +1,30 @@
+uuid: 22fd4351-be3e-4b6b-af94-62661d2a6948
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:0e5454a0-ea2d-49c5-a1ee-ea0bce1d7ade'
+  module:
+    - block_content
+    - system
+  theme:
+    - lvp_barrio
+id: lvp_barrio_k6writeheader
+theme: lvp_barrio
+region: header
+weight: 0
+provider: null
+plugin: 'block_content:0e5454a0-ea2d-49c5-a1ee-ea0bce1d7ade'
+settings:
+  id: 'block_content:0e5454a0-ea2d-49c5-a1ee-ea0bce1d7ade'
+  label: 'K-6 WRITE HEADER'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/elementary/write\r\n/elementary/write/*\r\n/elementary/ecrire\r\n/elementary/ecrire/*"
