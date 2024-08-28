@@ -5382,11 +5382,11 @@ nav.tabs ul .nav-item a:hover {
   margin-bottom: 0.5vw;
   margin-top: 0vw;
 }
-.elementary .content-index.podcast {
-  filter: drop-shadow(0.5vw 0.5vw 0px black);
-}
 .elementary .podcast {
   background-color: #E36397;
+  height: fit-content;
+  filter: drop-shadow(0.5vw 0.5vw 0px black);
+  min-height: 25vw;
 }
 .elementary .stripe:nth-child(odd) .podcast {
   background-color: #FFF756;
@@ -5394,6 +5394,10 @@ nav.tabs ul .nav-item a:hover {
 .elementary .podcast h3 {
   filter: drop-shadow(0.1vw 0.1vw 0px white);
   font-size: 2vw;
+  line-height: 2vw;
+}
+.elementary .content img {
+  width: 100%;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
