@@ -5388,7 +5388,7 @@ nav.tabs ul .nav-item a:hover {
 .elementary .podcast {
   background-color: #E36397;
 }
-.elementary .col-sm-6:nth-child(odd) .podcast {
+.elementary .stripe:nth-child(odd) .podcast {
   background-color: #FFF756;
 }
 .elementary .podcast h3 {
