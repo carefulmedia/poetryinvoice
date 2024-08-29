@@ -5343,6 +5343,7 @@ nav.tabs ul .nav-item a:hover {
   margin-top: 1em;
   margin-bottom: 2vw;
   background: #fff;
+  color: black;
 }
 .elementary .offcanvas-body {
   padding: 0 3vw !important;
