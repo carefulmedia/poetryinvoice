@@ -12,12 +12,12 @@
         // Change logo for k-6
         if ($("body").hasClass("elementary")) {
           if (window.location.href.indexOf("lesvoix") > -1) { 
-              $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/LVP-Logo---standard.png');
+              $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/LVP-elementary-logo.svg');
               $('.me-auto').attr('href','/primaire');
 
             }
           else {
-            $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/poetry-in-voice-elementary-logo.png');
+            $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/PIV-elementary-logo.svg');
             $('.me-auto').attr('href','/elementary');
           }
         }       
