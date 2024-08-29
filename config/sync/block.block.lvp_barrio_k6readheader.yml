@@ -27,4 +27,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/elementary/read\r\n/elementary/read/*\r\n/elementary/lire\r\n/elementary/lire/*"
+    pages: "/elementary/read\r\n/elementary/read/*\r\n/primaire/lis\r\n/primaire/lis/*"

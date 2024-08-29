@@ -38,6 +38,7 @@ visibility:
       language: '@language.current_language_context:language_interface'
     langcodes:
       en: en
+      fr: fr
   request_path:
     id: request_path
     negate: false

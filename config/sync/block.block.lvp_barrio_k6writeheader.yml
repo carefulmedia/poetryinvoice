@@ -27,4 +27,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/elementary/write\r\n/elementary/write/*\r\n/elementary/ecrire\r\n/elementary/ecrire/*"
+    pages: "/elementary/write\r\n/elementary/write/*\r\n/primaire/ecris\r\n/primaire/ecris/*"

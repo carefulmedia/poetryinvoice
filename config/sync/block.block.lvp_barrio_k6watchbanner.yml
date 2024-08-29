@@ -27,4 +27,4 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: "/elementary/watch\r\n/elementary/watch/*\r\n/primaire/ecouter\r\n/primaire/ecouter/*"
+    pages: "/elementary/watch\r\n/elementary/watch/*\r\n/primaire/regarde\r\n/primaire/regarde/*"
