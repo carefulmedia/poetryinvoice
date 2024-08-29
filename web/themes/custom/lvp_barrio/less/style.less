@@ -758,7 +758,7 @@ div {
 
 
 }
-.elementary  {
+.elementary, .primaire  {
   
     .header {
         position: absolute;
@@ -921,7 +921,7 @@ div {
         .navbar .block-block-content {
             width: 70%;
         }
-        &.watch {
+        &.watch,  &.regarde  {
             h1.title {
              color: var(--bluek);
             } 
@@ -929,7 +929,7 @@ div {
 
 
         }
-        &.read {
+        &.read,  &.lis {
             h1.title {
              color: var(--purplek);
             } 
@@ -937,7 +937,7 @@ div {
 
 
         }
-        &.write {
+        &.write,  &.ecris {
             h1.title {
              color: var(--greenk);
             } 
@@ -945,7 +945,7 @@ div {
 
 
         }
-        &.make {
+        &.make,  &.fabrique {
             h1.title {
              color: var(--orangek);
             } 
@@ -1090,7 +1090,22 @@ div {
             transition: all .4s ease;                   
             }
     
-}
+    }
+    .offcanvas-body .nav-link a, .nav-link a {
+        background: none;
+        text-indent: 0;
+        font-family: 'Chewy';
+        font-size: 3vw;
+        height: fit-content;
+        width: fit-content;
+        color: #FAE14E;
+        background: black;
+        padding: 1vw;
+        border-radius: 50%;
+        position: absolute;
+        left: 1vw;
+        top: 1vw;
+    }
     
 
 }
