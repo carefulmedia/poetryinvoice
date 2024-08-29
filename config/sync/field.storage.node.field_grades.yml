@@ -17,19 +17,19 @@ settings:
   allowed_values:
     -
       value: Kindergarten
-      label: 'Kindergarten to Grade 2'
+      label: 'K - 2'
     -
       value: 'Grades 1-3'
-      label: 'Grades 3 & 4'
+      label: '3 & 4'
     -
       value: 'Grades 4-6'
-      label: 'Grades 5 & 6'
+      label: '5 & 6'
     -
       value: 'Grades 7 & 8 / Sec 1 & 2'
-      label: 'Grades 7-9 / Sec. 1-3'
+      label: '7-9 / Sec. 1-3'
     -
       value: 'Grades 9-12 / Sec 3-5 / CEGEP 1'
-      label: 'Grades 10-12 / Sec. 4 & 5 / CEGEP 1'
+      label: '10-12 / Sec. 4 & 5 / CEGEP 1'
   allowed_values_function: ''
 module: options
 locked: false
