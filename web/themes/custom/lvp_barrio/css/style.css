@@ -4601,64 +4601,10 @@ poem-read__later a:active {
 .lire .dk-bg {
   background: var(--plum-dark);
 }
-.read .area-link:hover .content,
-.lire .area-link:hover .content {
-  background: var(--plum-light);
-  color: var(--plum-dark);
-  height: 100%;
-  transition: all 0.4s ease;
-}
-.read .area-link:hover .content h1,
-.lire .area-link:hover .content h1,
-.read .area-link:hover .content h2,
-.lire .area-link:hover .content h2,
-.read .area-link:hover .content h3,
-.lire .area-link:hover .content h3,
-.read .area-link:hover .content h4,
-.lire .area-link:hover .content h4,
-.read .area-link:hover .content h5,
-.lire .area-link:hover .content h5,
-.read .area-link:hover .content h6,
-.lire .area-link:hover .content h6,
-.read .area-link:hover .content p,
-.lire .area-link:hover .content p,
-.read .area-link:hover .content li,
-.lire .area-link:hover .content li,
-.read .area-link:hover .content a,
-.lire .area-link:hover .content a {
-  color: var(--plum-dark);
-  transition: all 0.4s ease;
-}
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content {
-  background: none;
-  color: var(--plum-dark);
-  height: 100%;
-  transition: all 0.4s ease;
-}
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h1,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h1,
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h2,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h2,
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h3,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h3,
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h4,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h4,
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h5,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h5,
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h6,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content h6,
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content p,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content p,
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content li,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content li,
-.read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content a,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content a {
-  color: var(--plum-dark);
-  transition: all 0.4s ease;
-}
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index {
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index,
+.read .view-display-id-block_15 .area-link:hover .content-index,
+.lire .view-display-id-block_15 .area-link:hover .content-index {
   background: var(--plum-light);
   color: var(--plum-dark);
   height: 100%;
@@ -4666,22 +4612,40 @@ poem-read__later a:active {
 }
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h1,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h1,
+.read .view-display-id-block_15 .area-link:hover .content-index h1,
+.lire .view-display-id-block_15 .area-link:hover .content-index h1,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h2,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h2,
+.read .view-display-id-block_15 .area-link:hover .content-index h2,
+.lire .view-display-id-block_15 .area-link:hover .content-index h2,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h3,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h3,
+.read .view-display-id-block_15 .area-link:hover .content-index h3,
+.lire .view-display-id-block_15 .area-link:hover .content-index h3,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h4,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h4,
+.read .view-display-id-block_15 .area-link:hover .content-index h4,
+.lire .view-display-id-block_15 .area-link:hover .content-index h4,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h5,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h5,
+.read .view-display-id-block_15 .area-link:hover .content-index h5,
+.lire .view-display-id-block_15 .area-link:hover .content-index h5,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h6,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index h6,
+.read .view-display-id-block_15 .area-link:hover .content-index h6,
+.lire .view-display-id-block_15 .area-link:hover .content-index h6,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index p,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index p,
+.read .view-display-id-block_15 .area-link:hover .content-index p,
+.lire .view-display-id-block_15 .area-link:hover .content-index p,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index li,
 .lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index li,
+.read .view-display-id-block_15 .area-link:hover .content-index li,
+.lire .view-display-id-block_15 .area-link:hover .content-index li,
 .read .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index a,
-.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index a {
+.lire .block-views-blockcontent-type-index-pages-block-3 .area-link:hover .content-index a,
+.read .view-display-id-block_15 .area-link:hover .content-index a,
+.lire .view-display-id-block_15 .area-link:hover .content-index a {
   color: var(--plum-dark);
   transition: all 0.4s ease;
 }
@@ -5398,6 +5362,24 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary .podcast img {
   width: 100%;
+}
+.elementary .view-display-id-block_17 .area-link:hover .content-index {
+  background: var(--plum-light);
+  color: var(--plum-dark);
+  height: 100%;
+  transition: all 0.4s ease;
+}
+.elementary .view-display-id-block_17 .area-link:hover .content-index h1,
+.elementary .view-display-id-block_17 .area-link:hover .content-index h2,
+.elementary .view-display-id-block_17 .area-link:hover .content-index h3,
+.elementary .view-display-id-block_17 .area-link:hover .content-index h4,
+.elementary .view-display-id-block_17 .area-link:hover .content-index h5,
+.elementary .view-display-id-block_17 .area-link:hover .content-index h6,
+.elementary .view-display-id-block_17 .area-link:hover .content-index p,
+.elementary .view-display-id-block_17 .area-link:hover .content-index li,
+.elementary .view-display-id-block_17 .area-link:hover .content-index a {
+  color: var(--plum-dark);
+  transition: all 0.4s ease;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
