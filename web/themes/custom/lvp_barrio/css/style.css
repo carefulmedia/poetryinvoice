@@ -5100,7 +5100,7 @@ nav.tabs ul .nav-item a:hover {
   font-style: bold;
   display: block;
   width: 100%;
-  padding: 1vw 0;
+  padding: 0.5vw 0;
   clear: both;
   text-align: inherit;
   text-decoration: none;
@@ -5116,15 +5116,16 @@ nav.tabs ul .nav-item a:hover {
   text-align: center;
 }
 .elementary .navbar .menu--k-6-en-menu li a {
-  font-size: 6vw;
-  line-height: 8vw;
+  font-size: 4vw;
+  line-height: 4vw;
   font-weight: 400;
 }
 .elementary .menu--k-6-en-teachers-menu h2 {
   font-weight: 900;
+  text-align: left;
 }
 .elementary .menu--k-6-en-teachers-menu a {
-  font-size: 3vw;
+  font-size: 2vw;
 }
 .elementary #main-wrapper {
   margin-top: 12vw;
@@ -5208,7 +5209,7 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary .header-logo {
   height: auto;
-  width: 80%;
+  width: 40%;
 }
 .elementary .header-logo.dark {
   filter: none;
@@ -5305,31 +5306,6 @@ nav.tabs ul .nav-item a:hover {
 .elementary .navbar {
   height: fit-content;
 }
-@media (max-width: 867px) {
-  .elementary .no-blur img {
-    height: auto !important;
-  }
-  .elementary .navbar-toggler-icon {
-    background-image: url("../images/hamburger-k-6.svg");
-    display: inline-block;
-    width: 10vw;
-    height: 10vw;
-    vertical-align: middle;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: 100%;
-    color: white;
-    filter: none;
-  }
-  .elementary .btn-close {
-    background: url(../images/xicon.svg) center / 6vw auto no-repeat;
-    opacity: 1;
-    padding: 0;
-    width: 10vw;
-    height: 10vw;
-    margin-top: 6vw;
-  }
-}
 .elementary details,
 .elementary select.form-select {
   background-image: none;
@@ -5347,6 +5323,7 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary .offcanvas-body {
   padding: 0 3vw !important;
+  text-align: center;
 }
 .elementary .form-row {
   text-align: center;
@@ -5405,6 +5382,84 @@ nav.tabs ul .nav-item a:hover {
   position: absolute;
   left: 1vw;
   top: 1vw;
+}
+.elementary .node__content {
+  margin-top: 4vw;
+}
+@media (max-width: 867px) {
+  .elementary .no-blur img {
+    height: auto !important;
+  }
+  .elementary .navbar-toggler-icon {
+    background-image: url("../images/hamburger-k-6.svg");
+    display: inline-block;
+    width: 10vw;
+    height: 10vw;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    color: white;
+    filter: none;
+  }
+  .elementary .btn-close {
+    background: url(../images/xicon.svg) center / 6vw auto no-repeat;
+    opacity: 1;
+    padding: 0;
+    width: 10vw;
+    height: 10vw;
+    margin-top: 6vw;
+  }
+  .elementary .node__content {
+    margin-top: 2vw;
+  }
+  .elementary h1.title,
+  .elementary a.watch h2,
+  .elementary a.read h2,
+  .elementary a.write h2,
+  .elementary a.make h2 {
+    filter: drop-shadow(0.5vw 0.5vw 0px white);
+    font-size: 8vw;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .elementary .navbar li {
+    font-weight: 400;
+    font-style: bold;
+    display: block;
+    width: 100%;
+    padding: 6vw 0;
+    clear: both;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+  }
+  .elementary a {
+    text-decoration: none;
+  }
+  .elementary .navbar .menu--k-6-en-menu li {
+    font-family: "Chewy", sans-serif;
+    text-align: center;
+  }
+  .elementary .navbar .menu--k-6-en-menu li a {
+    font-size: 8vw;
+    line-height: 2vw;
+    font-weight: 400;
+  }
+  .elementary .menu--k-6-en-teachers-menu {
+    margin-top: 4vw;
+  }
+  .elementary .menu--k-6-en-teachers-menu h2 {
+    font-weight: 900;
+  }
+  .elementary .menu--k-6-en-teachers-menu a {
+    font-size: 4vw;
+  }
+  .elementary .menu--k-6-en-teachers-menu li {
+    padding: 0;
+  }
 }
 
 /*# sourceMappingURL=maps/style.css.map */
