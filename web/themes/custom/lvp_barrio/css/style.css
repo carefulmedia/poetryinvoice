@@ -5093,14 +5093,14 @@ nav.tabs ul .nav-item a:hover {
   text-transform: none;
 }
 .elementary ul.menu {
-  margin-bottom: 2vw;
+  margin-bottom: 2rem;
 }
 .elementary .navbar li {
   font-weight: 400;
   font-style: bold;
   display: block;
   width: 100%;
-  padding: 0.5vw 0;
+  padding: 0.5rem 0;
   clear: both;
   text-align: inherit;
   text-decoration: none;
@@ -5116,8 +5116,8 @@ nav.tabs ul .nav-item a:hover {
   text-align: center;
 }
 .elementary .navbar .menu--k-6-en-menu li a {
-  font-size: 4vw;
-  line-height: 4vw;
+  font-size: 4rem;
+  line-height: 4rem;
   font-weight: 400;
 }
 .elementary .menu--k-6-en-teachers-menu h2 {
@@ -5125,10 +5125,10 @@ nav.tabs ul .nav-item a:hover {
   text-align: left;
 }
 .elementary .menu--k-6-en-teachers-menu a {
-  font-size: 2vw;
+  font-size: 2rem;
 }
 .elementary #main-wrapper {
-  margin-top: 12vw;
+  margin-top: 12rem;
 }
 .elementary ul.menu .watch a,
 .elementary a.watch h2 {
@@ -5162,37 +5162,37 @@ nav.tabs ul .nav-item a:hover {
 .elementary .navbar-toggler-icon {
   background-image: url("../images/hamburger-k-6.svg");
   display: inline-block;
-  width: 6vw;
-  height: 6vw;
+  width: 6rem;
+  height: 6rem;
   vertical-align: middle;
   background-repeat: no-repeat;
   background-position: center;
   background-size: 100%;
   color: white;
   filter: none;
-  filter: drop-shadow(0.5vw 0.5vw 0px #000);
+  filter: drop-shadow(0.5rem 0.5rem 0px #000);
   transition: all 0.4s ease;
 }
 .elementary .navbar-toggler-icon:hover,
 .elementary .btn-close:hover {
-  filter: contrast(3.8) drop-shadow(0.5vw 0.5vw 0px #000);
+  filter: contrast(3.8) drop-shadow(0.5rem 0.5rem 0px #000);
   transition: all 0.4s ease;
 }
 .elementary .navbar-toggler-icon:active,
 .elementary .btn-close:active {
-  transform: translateY(0.5vw) translateX(0.5vw);
-  filter: brightness(0.9) drop-shadow(0.1vw 0.1vw 0px #000);
+  transform: translateY(0.5rem) translateX(0.5rem);
+  filter: brightness(0.9) drop-shadow(0.1rem 0.1rem 0px #000);
   border: none;
   transition: all 0.4s ease;
 }
 .elementary .btn-close {
-  background: url(../images/xicon.svg) center / 6vw auto no-repeat;
+  background: url(../images/xicon.svg) center / 6rem auto no-repeat;
   opacity: 1;
   padding: 0;
-  width: 6vw;
-  height: 6vw;
-  margin-top: 6vw;
-  filter: drop-shadow(0.5vw 0.5vw 0px #000);
+  width: 6rem;
+  height: 6rem;
+  margin-top: 6rem;
+  filter: drop-shadow(0.5rem 0.5rem 0px #000);
   transition: all 0.4s ease;
 }
 .elementary .btn-close:focus {
@@ -5257,8 +5257,8 @@ nav.tabs ul .nav-item a:hover {
 .elementary a.read h2,
 .elementary a.write h2,
 .elementary a.make h2 {
-  filter: drop-shadow(0.5vw 0.5vw 0px white);
-  font-size: 6vw;
+  filter: drop-shadow(0.5rem 0.5rem 0px white);
+  font-size: 6rem;
   text-align: center;
   vertical-align: middle;
 }
@@ -5269,14 +5269,14 @@ nav.tabs ul .nav-item a:hover {
   display: block;
   clear: both;
   text-align: center;
-  margin-bottom: 3vw;
+  margin-bottom: 3rem;
 }
 .elementary .home img {
   display: inline;
-  width: 6vw;
+  width: 6rem;
 }
 .elementary .home h2 {
-  margin-left: 3vw;
+  margin-left: 3rem;
   display: inline;
   transition: all 0.8s ease;
 }
@@ -5284,12 +5284,12 @@ nav.tabs ul .nav-item a:hover {
   transition: all 0.8s ease;
 }
 .elementary .home a:hover h2 {
-  filter: contrast(1.2) drop-shadow(0.5vw 0.5vw 0px #000);
+  filter: contrast(1.2) drop-shadow(0.5rem 0.5rem 0px #000);
   transition: all 0.8s ease;
 }
 .elementary .home a:active h2 {
-  transform: translateY(0.5vw) translateX(0.5vw);
-  filter: brightness(0.9) drop-shadow(0.1vw 0.1vw 0px #000);
+  transform: translateY(0.5rem) translateX(0.5rem);
+  filter: brightness(0.9) drop-shadow(0.1rem 0.1rem 0px #000);
   border: none;
   transition: all 0.8s ease;
 }
@@ -5306,45 +5306,48 @@ nav.tabs ul .nav-item a:hover {
 .elementary .navbar {
   height: fit-content;
 }
+.elementary .language-switcher-language-url {
+  border-radius: 50%;
+}
 .elementary details,
 .elementary select.form-select {
   background-image: none;
   font-family: "Chewy", sans-serif;
-  filter: drop-shadow(0.5vw 0.5vw 0px black);
+  filter: drop-shadow(0.5rem 0.5rem 0px black);
   border: 2px solid #000;
   padding: 0;
 }
 .elementary details {
   border: 1px solid #000;
   margin-top: 1em;
-  margin-bottom: 2vw;
+  margin-bottom: 2rem;
   background: #fff;
   color: black;
 }
 .elementary .offcanvas-body {
-  padding: 0 3vw !important;
+  padding: 0 3rem !important;
   text-align: center;
 }
 .elementary .form-row {
   text-align: center;
 }
 .elementary form {
-  margin-bottom: 0.5vw;
-  margin-top: 0vw;
+  margin-bottom: 0.5rem;
+  margin-top: 0rem;
 }
 .elementary .podcast {
   background-color: #E36397;
   height: fit-content;
-  filter: drop-shadow(0.5vw 0.5vw 0px black);
-  min-height: 25vw;
+  filter: drop-shadow(0.5rem 0.5rem 0px black);
+  min-height: 25rem;
 }
 .elementary .stripe:nth-child(odd) .podcast {
   background-color: #FFF756;
 }
 .elementary .podcast h3 {
-  filter: drop-shadow(0.1vw 0.1vw 0px white);
-  font-size: 2vw;
-  line-height: 2vw;
+  filter: drop-shadow(0.1rem 0.1rem 0px white);
+  font-size: 2rem;
+  line-height: 2rem;
 }
 .elementary .podcast img {
   width: 100%;
@@ -5372,19 +5375,19 @@ nav.tabs ul .nav-item a:hover {
   background: none;
   text-indent: 0;
   font-family: 'Chewy';
-  font-size: 3vw;
+  font-size: 3rem;
   height: fit-content;
   width: fit-content;
   color: #FAE14E;
   background: black;
-  padding: 1vw;
+  padding: 1rem;
   border-radius: 50%;
   position: absolute;
-  left: 1vw;
-  top: 1vw;
+  left: 1rem;
+  top: 1rem;
 }
 .elementary .node__content {
-  margin-top: 4vw;
+  margin-top: 4rem;
 }
 @media (max-width: 867px) {
   .elementary .no-blur img {
@@ -5393,33 +5396,41 @@ nav.tabs ul .nav-item a:hover {
   .elementary .navbar-toggler-icon {
     background-image: url("../images/hamburger-k-6.svg");
     display: inline-block;
-    width: 10vw;
-    height: 10vw;
+    width: 2rem;
+    height: 2rem;
     vertical-align: middle;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 100%;
     color: white;
+    filter: drop-shadow(0.25rem 0.25rem 0px #000);
+    transition: all 0.4s ease;
     filter: none;
   }
+  .elementary .navbar-toggler-icon:hover,
+  .elementary .btn-close:hover {
+    filter: contrast(3.8) drop-shadow(0.25rem 0.25rem 0px #000);
+    transition: all 0.4s ease;
+  }
   .elementary .btn-close {
-    background: url(../images/xicon.svg) center / 6vw auto no-repeat;
+    background: url(../images/xicon.svg) center / 2rem auto no-repeat;
     opacity: 1;
     padding: 0;
-    width: 10vw;
-    height: 10vw;
-    margin-top: 6vw;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 2rem;
+    filter: drop-shadow(0.25rem 0.25rem 0px #000);
   }
   .elementary .node__content {
-    margin-top: 2vw;
+    margin-top: 2rem;
   }
   .elementary h1.title,
   .elementary a.watch h2,
   .elementary a.read h2,
   .elementary a.write h2,
   .elementary a.make h2 {
-    filter: drop-shadow(0.5vw 0.5vw 0px white);
-    font-size: 8vw;
+    filter: drop-shadow(0.5rem 0.5rem 0px white);
+    font-size: 8rem;
     text-align: center;
     vertical-align: middle;
   }
@@ -5428,7 +5439,7 @@ nav.tabs ul .nav-item a:hover {
     font-style: bold;
     display: block;
     width: 100%;
-    padding: 6vw 0;
+    padding: 2rem 0 0 0;
     clear: both;
     text-align: inherit;
     text-decoration: none;
@@ -5444,21 +5455,40 @@ nav.tabs ul .nav-item a:hover {
     text-align: center;
   }
   .elementary .navbar .menu--k-6-en-menu li a {
-    font-size: 8vw;
-    line-height: 2vw;
+    font-size: 3rem;
+    line-height: 3rem;
     font-weight: 400;
   }
+  .elementary .offcanvas-body .nav-link a,
+  .elementary .nav-link a {
+    font-size: 1rem;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem;
+  }
+  .elementary .offcanvas-body .nav-link a {
+    left: 0rem;
+  }
+  .elementary .offcanvas-body {
+    padding: 0 1rem !important;
+    text-align: center;
+  }
+  .elementary .header-logo {
+    height: auto;
+    width: 60%;
+    margin-left: 10%;
+  }
   .elementary .menu--k-6-en-teachers-menu {
-    margin-top: 4vw;
+    margin-top: 4rem;
   }
   .elementary .menu--k-6-en-teachers-menu h2 {
     font-weight: 900;
   }
   .elementary .menu--k-6-en-teachers-menu a {
-    font-size: 4vw;
+    font-size: 2rem;
   }
   .elementary .menu--k-6-en-teachers-menu li {
-    padding: 0;
+    padding: 1rem;
   }
 }
 
