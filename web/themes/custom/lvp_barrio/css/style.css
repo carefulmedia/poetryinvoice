@@ -5067,7 +5067,26 @@ nav.tabs ul .nav-item a:hover {
   background-size: cover !important;
 }
 .elementary .header {
-  position: absolute;
+  position: relative;
+}
+.elementary .highlighted {
+  min-height: 0rem;
+}
+.elementary #main {
+  margin-top: 1rem;
+}
+.elementary.node--type-poem #main {
+  background: white;
+  filter: drop-shadow(0.5rem 0.5rem 0px black);
+  border-radius: 2rem;
+  padding: 2rem;
+  margin-bottom: 3rem;
+}
+.elementary.node--type-poem h1.title {
+  margin-top: 2rem;
+  text-align: left;
+  margin-bottom: 2rem;
+  line-height: 6rem;
 }
 .elementary h1.title {
   font-family: "Chewy", sans-serif;
@@ -5091,6 +5110,7 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary h3 {
   text-transform: none;
+  font-size: 2.5rem;
 }
 .elementary ul.menu {
   margin-bottom: 2rem;
@@ -5126,9 +5146,6 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary .menu--k-6-en-teachers-menu a {
   font-size: 2rem;
-}
-.elementary #main-wrapper {
-  margin-top: 12rem;
 }
 .elementary ul.menu .watch a,
 .elementary a.watch h2 {
@@ -5169,17 +5186,18 @@ nav.tabs ul .nav-item a:hover {
   background-position: center;
   background-size: 100%;
   color: white;
-  filter: none;
   filter: drop-shadow(0.5rem 0.5rem 0px #000);
   transition: all 0.4s ease;
 }
 .elementary .navbar-toggler-icon:hover,
-.elementary .btn-close:hover {
+.elementary .btn-close:hover,
+.elementary .print-icon:hover {
   filter: contrast(3.8) drop-shadow(0.5rem 0.5rem 0px #000);
   transition: all 0.4s ease;
 }
 .elementary .navbar-toggler-icon:active,
-.elementary .btn-close:active {
+.elementary .btn-close:active,
+.elementary .print-icon:active {
   transform: translateY(0.5rem) translateX(0.5rem);
   filter: brightness(0.9) drop-shadow(0.1rem 0.1rem 0px #000);
   border: none;
@@ -5287,6 +5305,11 @@ nav.tabs ul .nav-item a:hover {
   filter: contrast(1.2) drop-shadow(0.5rem 0.5rem 0px #000);
   transition: all 0.8s ease;
 }
+.elementary .block-views .author img,
+.elementary .view-taxonomy-term .author img {
+  height: 6rem;
+  width: 6rem;
+}
 .elementary .home a:active h2 {
   transform: translateY(0.5rem) translateX(0.5rem);
   filter: brightness(0.9) drop-shadow(0.1rem 0.1rem 0px #000);
@@ -5319,7 +5342,7 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary details {
   border: 1px solid #000;
-  margin-top: 1em;
+  margin-top: 0em;
   margin-bottom: 2rem;
   background: #fff;
   color: black;
@@ -5387,7 +5410,14 @@ nav.tabs ul .nav-item a:hover {
   top: 1rem;
 }
 .elementary .node__content {
-  margin-top: 4rem;
+  margin-top: 0rem;
+}
+.elementary .print-icon {
+  width: 4rem;
+  filter: drop-shadow(0.5rem 0.5rem 0px black);
+}
+.elementary .masonry-item {
+  filter: drop-shadow(0.5rem 0.5rem 0px black);
 }
 @media (max-width: 867px) {
   .elementary .no-blur img {
@@ -5405,7 +5435,6 @@ nav.tabs ul .nav-item a:hover {
     color: white;
     filter: drop-shadow(0.25rem 0.25rem 0px #000);
     transition: all 0.4s ease;
-    filter: none;
   }
   .elementary .navbar-toggler-icon:hover,
   .elementary .btn-close:hover {
@@ -5489,6 +5518,32 @@ nav.tabs ul .nav-item a:hover {
   }
   .elementary .menu--k-6-en-teachers-menu li {
     padding: 1rem;
+  }
+  .elementary.node--type-poem #main {
+    background: white;
+    filter: drop-shadow(0.5rem 0.5rem 0px black);
+    border-radius: 2rem;
+    padding: 1rem;
+    margin-bottom: 3rem;
+  }
+  .elementary.node--type-poem h1.title {
+    margin-top: 2rem;
+    text-align: left;
+    margin-bottom: 2rem;
+    line-height: 3rem;
+    font-size: 3rem;
+  }
+  .elementary.node--type-poem h3 {
+    font-size: 1.5rem;
+  }
+  .elementary .print-icon {
+    width: 1.5rem;
+    filter: drop-shadow(0.25rem 0.25rem 0px black);
+  }
+  .elementary .block-views .author img,
+  .elementary .view-taxonomy-term .author img {
+    height: 3rem;
+    width: 3rem;
   }
 }
 

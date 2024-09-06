@@ -11,6 +11,7 @@
     attach: function (context, settings) {
         // Change logo for k-6
         if ($("body").hasClass("elementary")) {
+          $('.print-icon').attr('src','/themes/custom/lvp_barrio/images/print-icon.svg');
           if (window.location.href.indexOf("lesvoix") > -1) { 
               $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/LVP-elementary-logo.svg');
               $('.me-auto').attr('href','/primaire');

@@ -762,9 +762,29 @@ div {
   
     .header {
 
-        position: absolute;
+        position: relative;
     }
-    
+    .highlighted {
+        min-height: 0rem;
+    }
+    #main {
+        margin-top: 1rem;;
+    }
+    &.node--type-poem { 
+        #main {
+            background: white;
+            filter: drop-shadow(0.5rem 0.5rem 0px black);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+        h1.title {
+    margin-top: 2rem;
+    text-align: left;
+    margin-bottom: 2rem;
+    line-height: 6rem;
+        }
+    }
     background: url(../images/watercolour-bg-MULTI.jpg) no-repeat center center fixed; 
     -webkit-background-size: cover  !important;
     -moz-background-size: cover  !important;
@@ -786,6 +806,7 @@ div {
         }
         h3 {
             text-transform: none;
+            font-size: 2.5rem;
         }
         ul.menu {
             margin-bottom: 2rem;
@@ -828,9 +849,7 @@ div {
                 font-size: 2rem;
             }
         }
-        #main-wrapper {
-            margin-top: 12rem;
-        }
+
         .content {
            // background: rgba(255, 255, 255, 0.3);
         }
@@ -870,16 +889,15 @@ div {
             background-position: center;
             background-size: 100%;
             color: white;
-            filter: none;
             filter: drop-shadow(0.5rem 0.5rem 0px #000);
             transition: all 0.4s ease;
 
         }
-        .navbar-toggler-icon:hover, .btn-close:hover {
+        .navbar-toggler-icon:hover, .btn-close:hover, .print-icon:hover {
             filter: contrast(3.8) drop-shadow(0.5rem 0.5rem 0px #000);
             transition: all 0.4s ease;
         }
-        .navbar-toggler-icon:active, .btn-close:active {
+        .navbar-toggler-icon:active, .btn-close:active, .print-icon:active {
             transform: translateY(.5rem) translateX(.5rem);
             filter: brightness(.9)  drop-shadow(.1rem .1rem 0px #000);
             border: none;
@@ -918,7 +936,6 @@ div {
         .no-blur {
             margin-bottom: 0rem;
         }
-
 
         .navbar .block-block-content {
             width: 70%;
@@ -989,6 +1006,10 @@ div {
         filter: contrast(1.2) drop-shadow(0.5rem 0.5rem 0px #000);
         transition: all 0.8s ease;
     }
+    .block-views .author img, .view-taxonomy-term .author img {
+        height: 6rem;
+        width: 6rem;;
+    }
     .home a:active h2 {
         transform: translateY(.5rem) translateX(.5rem);
         filter: brightness(.9)  drop-shadow(.1rem .1rem 0px #000);
@@ -1020,7 +1041,7 @@ div {
     }
     details {
         border: 1px solid #000;
-        margin-top: 1em;
+        margin-top: 0em;
         margin-bottom: 2rem;
         background: #fff;
         color: black;
@@ -1085,8 +1106,16 @@ div {
         top: 1rem;
     }
     .node__content {
-        margin-top: 4rem;
+        margin-top: 0rem;
     }
+    .print-icon {
+        width: 4rem;
+        filter: drop-shadow(0.5rem 0.5rem 0px black);
+    }
+    .masonry-item {
+        filter: drop-shadow(0.5rem 0.5rem 0px black);
+    }
+    
     @media (max-width: 867px){
         .no-blur img {
         height: auto !important;
@@ -1103,7 +1132,6 @@ div {
             color: white;
             filter: drop-shadow(0.25rem 0.25rem 0px #000);
             transition: all 0.4s ease;
-            filter: none;
 
         }
          .navbar-toggler-icon:hover, .btn-close:hover {
@@ -1120,6 +1148,7 @@ div {
             filter: drop-shadow(0.25rem 0.25rem 0px #000);
     
         }
+        
         .node__content {
             margin-top: 2rem;
         }
@@ -1189,6 +1218,35 @@ div {
                 padding: 1rem;
             }
         }
+        &.node--type-poem { 
+            #main {
+                background: white;
+                filter: drop-shadow(0.5rem 0.5rem 0px black);
+                border-radius: 2rem;
+                padding: 1rem;
+                margin-bottom: 3rem;
+            }
+            h1.title {
+        margin-top: 2rem;
+        text-align: left;
+        margin-bottom: 2rem;
+        line-height: 3rem;
+        font-size: 3rem;
+
+            }
+            h3 {
+                font-size: 1.5rem;
+            }
+        }
+        .print-icon {
+            width: 1.5rem;
+            filter: drop-shadow(0.25rem 0.25rem 0px black);
+        }
+         .block-views .author img, .view-taxonomy-term .author img {
+            height: 3rem;
+            width: 3rem;
+        }
+
           
     }
 
