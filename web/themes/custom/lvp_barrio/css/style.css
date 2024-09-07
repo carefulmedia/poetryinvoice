@@ -5333,8 +5333,30 @@ nav.tabs ul .nav-item a:hover {
 .elementary .home .content-index.mixtape,
 .elementary .home .content-index.podcast {
   padding: 0;
-  height: 18rem;
+  height: 18em;
   overflow: visible;
+}
+.elementary .view-display-id-block_17 .content-index {
+  padding: 0;
+  height: fit-content;
+  overflow: visible;
+  min-height: 0 !important;
+  border-radius: 2rem;
+}
+.elementary .view-display-id-block_17 .author {
+  padding: 1rem;
+}
+.elementary .view-display-id-block_17 h2 {
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+.elementary .view-display-id-block_17 h3 {
+  font-size: 1.5rem;
+}
+.elementary .view-display-id-block_17 .content {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0 0 2rem 2rem;
 }
 .elementary .block-views .author img,
 .elementary .view-taxonomy-term .author img {
@@ -5373,13 +5395,15 @@ nav.tabs ul .nav-item a:hover {
   margin-bottom: 0.5rem;
   margin-top: 0rem;
 }
-.elementary .podcast {
+.elementary .podcast,
+.elementary .content-index {
   background-color: #E36397;
   height: fit-content;
   filter: drop-shadow(0.5rem 0.5rem 0px black);
   min-height: 25rem;
 }
-.elementary .stripe:nth-child(odd) .podcast {
+.elementary .stripe:nth-child(odd) .podcast,
+.elementary .stripe:nth-child(odd) .content-index {
   background-color: #FFF756;
 }
 .elementary .podcast h3 {
@@ -5434,6 +5458,10 @@ nav.tabs ul .nav-item a:hover {
 .elementary .masonry-item {
   filter: drop-shadow(0.5rem 0.5rem 0px black);
 }
+.elementary .poem-extras,
+.elementary .block-field-blocknodepoemfield-dive-in-attribution {
+  display: none;
+}
 @media (max-width: 867px) {
   .elementary .no-blur img {
     height: auto !important;
@@ -5473,7 +5501,7 @@ nav.tabs ul .nav-item a:hover {
   .elementary a.read h2,
   .elementary a.write h2,
   .elementary a.make h2 {
-    filter: drop-shadow(0.5rem 0.5rem 0px white);
+    filter: drop-shadow(0.25rem 0.25rem 0px white);
     font-size: 3rem;
     text-align: center;
     vertical-align: middle;
@@ -5523,7 +5551,7 @@ nav.tabs ul .nav-item a:hover {
     margin-left: 10%;
   }
   .elementary .menu--k-6-en-teachers-menu {
-    margin-top: 4rem;
+    margin-top: 2rem;
   }
   .elementary .menu--k-6-en-teachers-menu h2 {
     font-weight: 900;
@@ -5532,11 +5560,11 @@ nav.tabs ul .nav-item a:hover {
     font-size: 2rem;
   }
   .elementary .menu--k-6-en-teachers-menu li {
-    padding: 1rem;
+    padding: 0.25rem;
   }
   .elementary.node--type-poem #main {
     background: white;
-    filter: drop-shadow(0.5rem 0.5rem 0px black);
+    filter: drop-shadow(0.25rem 0.25rem 0px black);
     border-radius: 2rem;
     padding: 1rem;
     margin-bottom: 3rem;
@@ -5561,7 +5589,7 @@ nav.tabs ul .nav-item a:hover {
     width: 3rem;
   }
   .elementary .node__content {
-    margin-top: 0rem;
+    margin: 0rem 0.5rem;
   }
   .elementary .home {
     vertical-align: middle;

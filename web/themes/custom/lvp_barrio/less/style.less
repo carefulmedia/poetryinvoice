@@ -1031,10 +1031,36 @@ div {
         }
         .content-index.mixtape, .content-index.podcast {
             padding: 0;
-            height: 18rem;
+            height: 18em;
             overflow: visible;
         }
+
     }
+    .view-display-id-block_17  {
+        .content-index {
+        padding: 0;
+        height: fit-content;
+        overflow: visible;
+        min-height: 0 !important;
+        border-radius: 2rem;
+        }
+        .author {
+            padding: 1rem;
+        }
+        h2 {
+        font-size:  3rem;
+        margin-top: 2rem;
+        }
+        h3 {
+           font-size:  1.5rem;
+        }
+        .content {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0 0 2rem 2rem;
+        }
+    }
+    
     .block-views .author img, .view-taxonomy-term .author img {
         height: fit-content;
         width: 6rem;;
@@ -1073,7 +1099,7 @@ div {
         }
 
 
-    .podcast {
+    .podcast, .content-index {
         background-color: #E36397;
         height: fit-content;
         filter: drop-shadow(0.5rem 0.5rem 0px black);
@@ -1081,7 +1107,7 @@ div {
     } 
     
     .stripe:nth-child(odd) {
-        .podcast {
+        .podcast, .content-index {
         background-color: #FFF756;
         } 
     }
@@ -1129,6 +1155,9 @@ div {
     .masonry-item {
         filter: drop-shadow(0.5rem 0.5rem 0px black);
     }
+    .poem-extras, .block-field-blocknodepoemfield-dive-in-attribution {
+        display: none;
+    }
     
     @media (max-width: 867px){
         .no-blur img {
@@ -1167,7 +1196,7 @@ div {
             margin-top: 2rem;
         }
         h1.title,  a.watch h2, a.read h2,  a.write h2, a.make h2 {
-            filter: drop-shadow(0.5rem 0.5rem 0px white);
+            filter: drop-shadow(0.25rem 0.25rem 0px white);
             font-size: 3rem;
             text-align: center;
             vertical-align: middle;
@@ -1221,7 +1250,7 @@ div {
         }
 
         .menu--k-6-en-teachers-menu {
-            margin-top: 4rem;
+            margin-top: 2rem;
             h2 {
                 font-weight: 900;
             }
@@ -1229,13 +1258,13 @@ div {
                 font-size: 2rem;
             }
             li {
-                padding: 1rem;
+                padding: .25rem;
             }
         }
         &.node--type-poem { 
             #main {
                 background: white;
-                filter: drop-shadow(0.5rem 0.5rem 0px black);
+                filter: drop-shadow(0.25rem 0.25rem 0px black);
                 border-radius: 2rem;
                 padding: 1rem;
                 margin-bottom: 3rem;
@@ -1261,7 +1290,7 @@ div {
             width: 3rem;
         }
         .node__content {
-            margin-top: 0rem;
+            margin: 0rem 0.5rem;
         }
         .home {
             vertical-align: middle;
@@ -1289,6 +1318,7 @@ div {
             }
      
         }
+
 
     }
 
