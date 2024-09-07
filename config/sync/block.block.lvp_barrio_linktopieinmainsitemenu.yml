@@ -1,0 +1,30 @@
+uuid: c9dfa061-ed02-4ba1-8dd8-4cc42bd62998
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:aaac9d59-ca32-4cb1-97d5-0460b23b56c9'
+  module:
+    - block_content
+    - system
+  theme:
+    - lvp_barrio
+id: lvp_barrio_linktopieinmainsitemenu
+theme: lvp_barrio
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'block_content:aaac9d59-ca32-4cb1-97d5-0460b23b56c9'
+settings:
+  id: 'block_content:aaac9d59-ca32-4cb1-97d5-0460b23b56c9'
+  label: 'Link to PIE in main site menu'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/elementary\r\n/elementary/*\r\n/primaire\r\n/primaire/*"
