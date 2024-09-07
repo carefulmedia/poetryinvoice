@@ -5238,6 +5238,7 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary .navbar .block-block-content {
   width: 70%;
+  margin: auto;
 }
 .elementary.watch,
 .elementary.regarde {
@@ -5283,6 +5284,16 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary .site-footer {
   background: none;
+}
+.elementary .teachers {
+  background-color: white;
+  filter: drop-shadow(0.5rem 0.5rem 0px black);
+  border: 2px solid #000;
+  border-radius: 2rem;
+  padding: 2rem;
+  margin: auto;
+  margin-top: 3rem;
+  width: fit-content;
 }
 .elementary .home {
   vertical-align: middle;
@@ -5333,7 +5344,7 @@ nav.tabs ul .nav-item a:hover {
 .elementary .home .content-index.mixtape,
 .elementary .home .content-index.podcast {
   padding: 0;
-  height: 18em;
+  height: 12rem;
   overflow: visible;
 }
 .elementary .view-display-id-block_17 .content-index {
@@ -5400,7 +5411,6 @@ nav.tabs ul .nav-item a:hover {
   background-color: #E36397;
   height: fit-content;
   filter: drop-shadow(0.5rem 0.5rem 0px black);
-  min-height: 25rem;
 }
 .elementary .stripe:nth-child(odd) .podcast,
 .elementary .stripe:nth-child(odd) .content-index {
