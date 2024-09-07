@@ -1002,6 +1002,10 @@ div {
 
 
     }
+    &.read h3 {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
     .home {
         vertical-align: middle;
          img  {
@@ -1128,8 +1132,8 @@ div {
     } 
     
     .stripe:nth-child(odd) {
-        .podcast, .content-index {
-        background-color: #FFF756;
+        .podcast, .content-index, h2 {
+        background-color: #FFF756 !important;
         } 
     }
     .podcast h3 {
@@ -1137,6 +1141,7 @@ div {
     font-size: 2rem;
     line-height: 2rem;
     }
+
     .podcast img {
         width: 100%;
     }
@@ -1179,7 +1184,23 @@ div {
     .poem-extras, .block-field-blocknodepoemfield-dive-in-attribution {
         display: none;
     }
-    
+    &.write {
+        .grid h2 {
+            background: #E36397;
+            padding: 1rem;
+            margin: 0;
+        }
+        .grid .content {
+            padding: 1rem;
+            background-color: white;
+        }
+        .dive-in {
+            background: white;
+            padding: 0
+        }
+
+
+    }
     @media (max-width: 867px){
         .no-blur img {
         height: auto !important;
@@ -1223,18 +1244,7 @@ div {
             text-align: center;
             vertical-align: middle;
         }
-        .write {
-            h2 {
-                background: #E36397;
-                padding: 1rem;
-            }
-            .grid .content {
-                padding: 1rem;
-                background-color: white;
-            }
 
-
-        }
         .navbar li {
             font-weight: 400;
             font-style: bold;   
@@ -1316,7 +1326,7 @@ div {
         font-size: 3rem;
 
             }
-            h3 {
+    h3 {
                 font-size: 1.5rem;
             }
         }

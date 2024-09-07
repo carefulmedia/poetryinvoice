@@ -5302,6 +5302,10 @@ nav.tabs ul .nav-item a:hover {
   margin-top: 3rem;
   width: fit-content;
 }
+.elementary.read h3 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
 .elementary .home {
   vertical-align: middle;
 }
@@ -5421,8 +5425,9 @@ nav.tabs ul .nav-item a:hover {
   filter: drop-shadow(0.5rem 0.5rem 0px black);
 }
 .elementary .stripe:nth-child(odd) .podcast,
-.elementary .stripe:nth-child(odd) .content-index {
-  background-color: #FFF756;
+.elementary .stripe:nth-child(odd) .content-index,
+.elementary .stripe:nth-child(odd) h2 {
+  background-color: #FFF756 !important;
 }
 .elementary .podcast h3 {
   filter: drop-shadow(0.1rem 0.1rem 0px white);
@@ -5480,6 +5485,19 @@ nav.tabs ul .nav-item a:hover {
 .elementary .block-field-blocknodepoemfield-dive-in-attribution {
   display: none;
 }
+.elementary.write .grid h2 {
+  background: #E36397;
+  padding: 1rem;
+  margin: 0;
+}
+.elementary.write .grid .content {
+  padding: 1rem;
+  background-color: white;
+}
+.elementary.write .dive-in {
+  background: white;
+  padding: 0;
+}
 @media (max-width: 867px) {
   .elementary .no-blur img {
     height: auto !important;
@@ -5525,14 +5543,6 @@ nav.tabs ul .nav-item a:hover {
     font-size: 3rem;
     text-align: center;
     vertical-align: middle;
-  }
-  .elementary .write h2 {
-    background: #E36397;
-    padding: 1rem;
-  }
-  .elementary .write .grid .content {
-    padding: 1rem;
-    background-color: white;
   }
   .elementary .navbar li {
     font-weight: 400;
