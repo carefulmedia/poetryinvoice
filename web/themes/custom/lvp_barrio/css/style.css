@@ -5177,9 +5177,13 @@ nav.tabs ul .nav-item a:hover {
 .elementary .search-icon svg {
   display: none;
 }
+.elementary .navbar-toggler {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
 .elementary .navbar-toggler-icon {
   background-image: url("../images/hamburger-k-6.svg");
-  display: inline-block;
   width: 6rem;
   height: 6rem;
   vertical-align: middle;
@@ -5206,11 +5210,14 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary .btn-close {
   background: url(../images/xicon.svg) center / 6rem auto no-repeat;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
   opacity: 1;
   padding: 0;
   width: 6rem;
   height: 6rem;
-  margin-top: 6rem;
+  margin-top: 0rem;
   filter: drop-shadow(0.5rem 0.5rem 0px #000);
   transition: all 0.4s ease;
 }
@@ -5425,8 +5432,7 @@ nav.tabs ul .nav-item a:hover {
   width: 100%;
 }
 .elementary .view-display-id-block_17 .area-link:hover .content-index {
-  background: var(--plum-light);
-  color: var(--plum-dark);
+  background: var(--purplek);
   height: 100%;
   transition: all 0.4s ease;
 }
@@ -5440,6 +5446,7 @@ nav.tabs ul .nav-item a:hover {
 .elementary .view-display-id-block_17 .area-link:hover .content-index li,
 .elementary .view-display-id-block_17 .area-link:hover .content-index a {
   color: var(--plum-dark);
+  filter: drop-shadow(0.25rem 0.25rem 0px white);
   transition: all 0.4s ease;
 }
 .elementary .offcanvas-body .nav-link a,
@@ -5452,7 +5459,7 @@ nav.tabs ul .nav-item a:hover {
   width: fit-content;
   color: #FAE14E;
   background: black;
-  padding: 1rem;
+  padding: 0.75rem 1rem;
   border-radius: 50%;
   position: absolute;
   left: 1rem;
@@ -5478,7 +5485,6 @@ nav.tabs ul .nav-item a:hover {
   }
   .elementary .navbar-toggler-icon {
     background-image: url("../images/hamburger-k-6.svg");
-    display: inline-block;
     width: 2rem;
     height: 2rem;
     vertical-align: middle;
@@ -5500,8 +5506,11 @@ nav.tabs ul .nav-item a:hover {
     padding: 0;
     width: 2rem;
     height: 2rem;
-    margin-top: 2rem;
+    margin-top: 0;
     filter: drop-shadow(0.25rem 0.25rem 0px #000);
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
   }
   .elementary .node__content {
     margin-top: 2rem;
@@ -5541,11 +5550,16 @@ nav.tabs ul .nav-item a:hover {
     line-height: 3rem;
     font-weight: 400;
   }
+  .elementary .navbar-toggler {
+    top: 0.25rem;
+    right: 0.25rem;
+    position: absolute;
+  }
   .elementary .offcanvas-body .nav-link a,
   .elementary .nav-link a {
     font-size: 1rem;
-    top: 1rem;
-    left: 1rem;
+    top: 0.25rem;
+    left: 0.25rem;
     padding: 0.5rem;
   }
   .elementary .offcanvas-body .nav-link a {

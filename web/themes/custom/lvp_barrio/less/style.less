@@ -879,9 +879,13 @@ div {
         .search-icon svg {
             display: none;
         }
+        .navbar-toggler {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
         .navbar-toggler-icon {
             background-image: url("../images/hamburger-k-6.svg");
-            display: inline-block;
             width: 6rem;
             height: 6rem;
             vertical-align: middle;
@@ -905,11 +909,14 @@ div {
           }
         .btn-close {
             background: url(../images/xicon.svg) center / 6rem auto no-repeat;
+            position:absolute;
+            top: 1rem;
+            right: 1rem;
             opacity: 1;
             padding: 0;
             width: 6rem;
             height: 6rem;
-            margin-top: 6rem;
+            margin-top: 0rem;
             filter: drop-shadow(0.5rem 0.5rem 0px #000);
             transition: all 0.4s ease;
 
@@ -1132,13 +1139,13 @@ div {
     .podcast img {
         width: 100%;
     }
-    .view-display-id-block_17 .area-link:hover .content-index, {
-        background: var(--plum-light);
-        color: var(--plum-dark);
+    .view-display-id-block_17 .area-link:hover .content-index {
+        background: var(--purplek);
         height: 100%;
         transition: all .4s ease;
         h1, h2, h3, h4, h5, h6, p, li, a {
             color: var(--plum-dark); 
+            filter: drop-shadow(0.25rem 0.25rem 0px white);
             transition: all .4s ease;                   
             }
     
@@ -1152,7 +1159,7 @@ div {
         width: fit-content;
         color: #FAE14E;
         background: black;
-        padding: 1rem;
+        padding: .75rem 1rem;
         border-radius: 50%;
         position: absolute;
         left: 1rem;
@@ -1178,7 +1185,6 @@ div {
         }
         .navbar-toggler-icon {
             background-image: url("../images/hamburger-k-6.svg");
-            display: inline-block;
             width: 2rem;
             height: 2rem;
             vertical-align: middle;
@@ -1200,9 +1206,11 @@ div {
             padding: 0;
             width: 2rem;
             height: 2rem;
-            margin-top: 2rem;
+            margin-top: 0;
             filter: drop-shadow(0.25rem 0.25rem 0px #000);
-    
+            position:absolute;
+            top: .25rem;
+            right: .25rem;
         }
         
         .node__content {
@@ -1242,11 +1250,16 @@ div {
             }
 
         }
+        .navbar-toggler {
+            top: 0.25rem;
+            right: 0.25rem;
+            position: absolute;
+        }
         .offcanvas-body .nav-link a, .nav-link a {
 
             font-size: 1rem;
-            top: 1rem;
-            left: 1rem;
+            top: .25rem;
+            left: .25rem;
             padding: .5rem;;
         }
         .offcanvas-body .nav-link a {
