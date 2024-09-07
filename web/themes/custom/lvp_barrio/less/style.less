@@ -986,6 +986,8 @@ div {
         vertical-align: middle;
          img  {
             height: fit-content;
+            transition: all 0.8s ease;
+
 
         }
         h2 {
@@ -994,9 +996,7 @@ div {
             transition: all 0.8s ease;
 
         }
-        img {
-            transition: all 0.8s ease;
-        }
+ 
         .content, .image {
             display: inline-flex;
         }
@@ -1168,7 +1168,7 @@ div {
         }
         h1.title,  a.watch h2, a.read h2,  a.write h2, a.make h2 {
             filter: drop-shadow(0.5rem 0.5rem 0px white);
-            font-size: 8rem;
+            font-size: 3rem;
             text-align: center;
             vertical-align: middle;
         }
@@ -1260,8 +1260,36 @@ div {
             height: 3rem;
             width: 3rem;
         }
+        .node__content {
+            margin-top: 0rem;
+        }
+        .home {
+            vertical-align: middle;
+             img  {
+                height: fit-content;
+                transition: all 0.8s ease;
+                width: 5rem;
+            }
+            h2 {
+                margin-left: 0rem;
+                display: inline;
+                transition: all 0.8s ease;
+                font-size: 3rem;
+    
+            }
+            .content {
+                display: block;
+                padding: 0;
+            }
+            .content-index.mixtape, .content-index.podcast {
+                padding: 0;
+                height: 10rem;
+                overflow: visible;
+                margin-bottom: 1rem;
+            }
+     
+        }
 
-          
     }
 
 }

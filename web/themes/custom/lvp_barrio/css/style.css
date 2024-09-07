@@ -5289,13 +5289,11 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary .home img {
   height: fit-content;
+  transition: all 0.8s ease;
 }
 .elementary .home h2 {
   margin-left: 3rem;
   display: inline;
-  transition: all 0.8s ease;
-}
-.elementary .home img {
   transition: all 0.8s ease;
 }
 .elementary .home .content,
@@ -5476,7 +5474,7 @@ nav.tabs ul .nav-item a:hover {
   .elementary a.write h2,
   .elementary a.make h2 {
     filter: drop-shadow(0.5rem 0.5rem 0px white);
-    font-size: 8rem;
+    font-size: 3rem;
     text-align: center;
     vertical-align: middle;
   }
@@ -5561,6 +5559,34 @@ nav.tabs ul .nav-item a:hover {
   .elementary .view-taxonomy-term .author img {
     height: 3rem;
     width: 3rem;
+  }
+  .elementary .node__content {
+    margin-top: 0rem;
+  }
+  .elementary .home {
+    vertical-align: middle;
+  }
+  .elementary .home img {
+    height: fit-content;
+    transition: all 0.8s ease;
+    width: 5rem;
+  }
+  .elementary .home h2 {
+    margin-left: 0rem;
+    display: inline;
+    transition: all 0.8s ease;
+    font-size: 3rem;
+  }
+  .elementary .home .content {
+    display: block;
+    padding: 0;
+  }
+  .elementary .home .content-index.mixtape,
+  .elementary .home .content-index.podcast {
+    padding: 0;
+    height: 10rem;
+    overflow: visible;
+    margin-bottom: 1rem;
   }
 }
 
