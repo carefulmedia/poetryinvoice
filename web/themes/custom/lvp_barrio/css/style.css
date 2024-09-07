@@ -5317,6 +5317,7 @@ nav.tabs ul .nav-item a:hover {
 .elementary .home .content,
 .elementary .home .image {
   display: inline-flex;
+  vertical-align: middle;
 }
 .elementary .home a:hover h2 {
   filter: contrast(1.2) drop-shadow(0.5rem 0.5rem 0px #000);
@@ -5524,6 +5525,14 @@ nav.tabs ul .nav-item a:hover {
     font-size: 3rem;
     text-align: center;
     vertical-align: middle;
+  }
+  .elementary .write h2 {
+    background: #E36397;
+    padding: 1rem;
+  }
+  .elementary .write .grid .content {
+    padding: 1rem;
+    background-color: white;
   }
   .elementary .navbar li {
     font-weight: 400;
