@@ -5067,6 +5067,7 @@ nav.tabs ul .nav-item a:hover {
   background-size: cover !important;
 }
 .elementary .header {
+  height: fit-content;
   position: relative;
 }
 .elementary .highlighted {
@@ -5283,15 +5284,11 @@ nav.tabs ul .nav-item a:hover {
 .elementary .site-footer {
   background: none;
 }
-.elementary .home div {
-  display: block;
-  clear: both;
-  text-align: center;
-  margin-bottom: 3rem;
+.elementary .home {
+  vertical-align: middle;
 }
 .elementary .home img {
-  display: inline;
-  width: 6rem;
+  height: fit-content;
 }
 .elementary .home h2 {
   margin-left: 3rem;
@@ -5301,14 +5298,13 @@ nav.tabs ul .nav-item a:hover {
 .elementary .home img {
   transition: all 0.8s ease;
 }
+.elementary .home .content,
+.elementary .home .image {
+  display: inline-flex;
+}
 .elementary .home a:hover h2 {
   filter: contrast(1.2) drop-shadow(0.5rem 0.5rem 0px #000);
   transition: all 0.8s ease;
-}
-.elementary .block-views .author img,
-.elementary .view-taxonomy-term .author img {
-  height: 6rem;
-  width: 6rem;
 }
 .elementary .home a:active h2 {
   transform: translateY(0.5rem) translateX(0.5rem);
@@ -5319,12 +5315,33 @@ nav.tabs ul .nav-item a:hover {
 .elementary .home a:hover img {
   filter: contrast(1.2);
   transition: all 0.8s ease;
-  transform: scale3d(1.5, 1.5, 1.5);
+  transform: scale3d(1.2, 1.2, 1.2);
 }
 .elementary .home a:active img {
   filter: contrast(1.2);
   transition: all 0.8s ease;
-  transform: scale3d(1.5, 1.5, 1.5);
+  transform: scale3d(1.2, 1.2, 1.2);
+}
+.elementary .home .content-index,
+.elementary .home .col-2-sidebar .block-layout-builder,
+.elementary .home .poem-extras .block-layout-builder .content {
+  filter: none;
+  border-radius: 0px;
+  background: none;
+  overflow: hidden;
+  padding: 1rem;
+  text-align: center;
+}
+.elementary .home .content-index.mixtape,
+.elementary .home .content-index.podcast {
+  padding: 0;
+  height: 18rem;
+  overflow: visible;
+}
+.elementary .block-views .author img,
+.elementary .view-taxonomy-term .author img {
+  height: fit-content;
+  width: 6rem;
 }
 .elementary .navbar {
   height: fit-content;

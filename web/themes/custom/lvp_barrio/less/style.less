@@ -761,7 +761,7 @@ div {
 .elementary  {
   
     .header {
-
+        height: fit-content;
         position: relative;
     }
     .highlighted {
@@ -982,50 +982,64 @@ div {
     .site-footer {
         background: none;
     }
-    .home div {
-        display: block;
-        clear:both;
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-    .home img  {
-        display: inline;
-        width: 6rem;
+    .home {
+        vertical-align: middle;
+         img  {
+            height: fit-content;
 
-    }
-    .home h2 {
-        margin-left: 3rem;
-        display: inline;
-        transition: all 0.8s ease;
+        }
+        h2 {
+            margin-left: 3rem;
+            display: inline;
+            transition: all 0.8s ease;
 
-    }
-    .home img {
-        transition: all 0.8s ease;
-    }
-    .home a:hover h2 {
-        filter: contrast(1.2) drop-shadow(0.5rem 0.5rem 0px #000);
-        transition: all 0.8s ease;
+        }
+        img {
+            transition: all 0.8s ease;
+        }
+        .content, .image {
+            display: inline-flex;
+        }
+        a:hover h2 {
+            filter: contrast(1.2) drop-shadow(0.5rem 0.5rem 0px #000);
+            transition: all 0.8s ease;
+        }
+
+        a:active h2 {
+            transform: translateY(.5rem) translateX(.5rem);
+            filter: brightness(.9)  drop-shadow(.1rem .1rem 0px #000);
+            border: none;
+            transition: all 0.8s ease;
+        }
+        a:hover img {
+            filter: contrast(1.2);
+            transition: all 0.8s ease;
+            transform: scale3d(1.2, 1.2, 1.2);
+        }
+        a:active img {
+            filter: contrast(1.2);
+            transition: all 0.8s ease;
+            transform: scale3d(1.2, 1.2, 1.2);
+        }
+        .content-index, .col-2-sidebar .block-layout-builder, .poem-extras .block-layout-builder .content {
+            filter: none;
+            border-radius: 0px;
+            background: none;
+            overflow: hidden;
+            padding: 1rem;
+            text-align: center;
+        }
+        .content-index.mixtape, .content-index.podcast {
+            padding: 0;
+            height: 18rem;
+            overflow: visible;
+        }
     }
     .block-views .author img, .view-taxonomy-term .author img {
-        height: 6rem;
+        height: fit-content;
         width: 6rem;;
     }
-    .home a:active h2 {
-        transform: translateY(.5rem) translateX(.5rem);
-        filter: brightness(.9)  drop-shadow(.1rem .1rem 0px #000);
-        border: none;
-        transition: all 0.8s ease;
-    }
-    .home a:hover img {
-        filter: contrast(1.2);
-        transition: all 0.8s ease;
-        transform: scale3d(1.5, 1.5, 1.5);
-    }
-    .home a:active img {
-        filter: contrast(1.2);
-        transition: all 0.8s ease;
-        transform: scale3d(1.5, 1.5, 1.5);
-    }
+
     .navbar {
         height: fit-content;
     }
