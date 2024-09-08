@@ -13,7 +13,7 @@ dependencies:
 id: lvp_barrio_k6enmenu
 theme: lvp_barrio
 region: primary_menu
-weight: -20
+weight: -17
 provider: null
 plugin: 'menu_block:k-6-en-menu'
 settings:

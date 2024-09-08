@@ -12,7 +12,7 @@ dependencies:
 id: lvp_barrio_linktopieinmainsitemenu
 theme: lvp_barrio
 region: primary_menu
-weight: -15
+weight: 0
 provider: null
 plugin: 'block_content:aaac9d59-ca32-4cb1-97d5-0460b23b56c9'
 settings:

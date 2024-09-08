@@ -6,13 +6,12 @@ dependencies:
     - 'block_content:basic:da9bca0a-1417-4494-a913-229f4cb102e4'
   module:
     - block_content
-    - system
   theme:
     - lvp_barrio
 id: lvp_barrio_backtomainsitelogo
 theme: lvp_barrio
-region: primary_menu
-weight: -14
+region: secondary_menu
+weight: 0
 provider: null
 plugin: 'block_content:da9bca0a-1417-4494-a913-229f4cb102e4'
 settings:
@@ -23,8 +22,4 @@ settings:
   status: true
   info: ''
   view_mode: full
-visibility:
-  request_path:
-    id: request_path
-    negate: false
-    pages: "/elementary\r\n/elementary/*\r\n/primaire\r\n/primaire/*"
+visibility: {  }

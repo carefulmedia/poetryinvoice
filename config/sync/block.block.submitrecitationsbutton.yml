@@ -12,7 +12,7 @@ dependencies:
 id: submitrecitationsbutton
 theme: lvp_barrio
 region: primary_menu
-weight: -18
+weight: -15
 provider: null
 plugin: 'block_content:9b5f2ea8-2e5e-4700-9d64-652ad1cdb3bc'
 settings:
