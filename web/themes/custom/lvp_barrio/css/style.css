@@ -5378,6 +5378,9 @@ nav.tabs ul .nav-item a:hover {
   padding: 0;
   margin: 0;
 }
+.elementary .search-icon {
+  display: none;
+}
 .elementary .home {
   vertical-align: middle;
 }
@@ -5463,6 +5466,9 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary .language-switcher-language-url {
   border-radius: 50%;
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
 }
 .elementary details,
 .elementary select.form-select {
@@ -5540,9 +5546,6 @@ nav.tabs ul .nav-item a:hover {
   background: black;
   padding: 0.75rem 1rem;
   border-radius: 50%;
-  position: absolute;
-  left: 1rem;
-  top: 1rem;
 }
 .elementary .node__content {
   margin-top: 0rem;
@@ -5629,6 +5632,12 @@ nav.tabs ul .nav-item a:hover {
     margin-left: 1rem;
     font-size: 1rem;
   }
+  .elementary .language-switcher-language-url {
+    border-radius: 50%;
+    position: absolute;
+    top: 0.25rem;
+    left: 0.25rem;
+  }
   .elementary .navbar-toggler-icon {
     background-image: url("../images/hamburger-k-6.svg");
     width: 2rem;
@@ -5707,12 +5716,7 @@ nav.tabs ul .nav-item a:hover {
   .elementary .offcanvas-body .nav-link a,
   .elementary .nav-link a {
     font-size: 1rem;
-    top: 0.25rem;
-    left: 0.25rem;
     padding: 0.5rem;
-  }
-  .elementary .offcanvas-body .nav-link a {
-    left: 0rem;
   }
   .elementary .offcanvas-body {
     padding: 0 1rem !important;

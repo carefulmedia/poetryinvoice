@@ -1083,6 +1083,9 @@ div {
         padding: 0;
         margin: 0;
     }
+    .search-icon {
+        display: none;
+    }
     .home {
         vertical-align: middle;
          img  {
@@ -1174,6 +1177,10 @@ div {
     }
     .language-switcher-language-url {
         border-radius: 50%;
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+    
     }
     details, select.form-select {
         background-image: none;
@@ -1243,11 +1250,8 @@ div {
         width: fit-content;
         color: #FAE14E;
         background: black;
-        padding: .75rem 1rem;
+        padding: 0.75rem 1rem;
         border-radius: 50%;
-        position: absolute;
-        left: 1rem;
-        top: 1rem;
     }
     .node__content {
         margin-top: 0rem;
@@ -1341,6 +1345,13 @@ div {
                 font-size: 1rem;
             }
         }
+        .language-switcher-language-url {
+            border-radius: 50%;
+            position: absolute;
+            top: .25rem;
+            left: .25rem;
+        
+        }
         .navbar-toggler-icon {
             background-image: url("../images/hamburger-k-6.svg");
             width: 2rem;
@@ -1418,15 +1429,10 @@ div {
             position: absolute;
         }
         .offcanvas-body .nav-link a, .nav-link a {
-
             font-size: 1rem;
-            top: .25rem;
-            left: .25rem;
             padding: .5rem;;
         }
-        .offcanvas-body .nav-link a {
-            left: 0rem;
-        }
+
         .offcanvas-body {
             padding: 0 1rem !important;
             text-align: center
