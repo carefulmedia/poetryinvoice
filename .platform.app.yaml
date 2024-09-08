@@ -21,12 +21,14 @@ dependencies:
 relationships:
     database: 'db:mysql'
 
-variables:
-    php:
-        memory_limit: "512M"
-        max_input_vars: 10000
-        assert.active: "off"
-        max_execution_time: 30
+applications:
+    app:
+        variables:
+            php:
+                memory_limit: "512M"
+                max_input_vars: 10000
+                assert.active: "off"
+                max_execution_time: 30
 
 # The size of the persistent disk of the application (in MB).
 disk: 1024
