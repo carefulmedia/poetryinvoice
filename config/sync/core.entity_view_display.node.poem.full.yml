@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - block_content.type.basic
     - core.entity_view_mode.node.full
     - field.field.node.poem.body
     - field.field.node.poem.comment_node_poem
@@ -38,6 +37,7 @@ dependencies:
     - field.field.node.poem.field_terms_and_forms
     - field.field.node.poem.layout_builder__layout
     - node.type.poem
+    - views.view.dive_in_write_anchor
     - views.view.user_listing_index_pages
   module:
     - bootstrap_layout_builder
@@ -371,7 +371,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 2
+            weight: 3
             additional: {  }
           5b1763a9-140a-4892-9504-378ce864c979:
             uuid: 5b1763a9-140a-4892-9504-378ce864c979
@@ -389,7 +389,7 @@ third_party_settings:
                 label: above
                 settings: {  }
                 third_party_settings: {  }
-            weight: 4
+            weight: 5
             additional: {  }
           de55b48a-1ef9-458e-97dc-439d610efc53:
             uuid: de55b48a-1ef9-458e-97dc-439d610efc53
@@ -408,28 +408,14 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 3
-            additional: {  }
-          ed3d9caa-43b4-4cd8-b4cd-57f5e7b64631:
-            uuid: ed3d9caa-43b4-4cd8-b4cd-57f5e7b64631
-            region: blb_region_col_1
-            configuration:
-              id: 'inline_block:basic'
-              label: 'Dive In'
-              label_display: visible
-              provider: layout_builder
-              view_mode: full
-              context_mapping: {  }
-              block_revision_id: 354
-              block_serialized: null
-            weight: 0
+            weight: 4
             additional: {  }
           4dba0e2b-e519-4251-93da-b8b4bbace05d:
             uuid: 4dba0e2b-e519-4251-93da-b8b4bbace05d
             region: blb_region_col_1
             configuration:
               id: 'field_block:node:poem:field_one_line_description'
-              label: 'One line description'
+              label: 'Dive In'
               label_display: '0'
               provider: layout_builder
               context_mapping:
@@ -442,10 +428,24 @@ third_party_settings:
                   link_to_entity: 0
                   wrap_tag: h3
                   wrap_class: ''
-                  wrap_attributes: ''
+                  wrap_attributes: 'name="dive-in"'
                   override_link_label: ''
                   token: ''
                 third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          869d80d8-46d8-41b8-8762-d5d2ff03ce5c:
+            uuid: 869d80d8-46d8-41b8-8762-d5d2ff03ce5c
+            region: blb_region_col_1
+            configuration:
+              id: 'views_block:dive_in_write_anchor-block_1'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+              exposed: {  }
             weight: 1
             additional: {  }
         third_party_settings: {  }

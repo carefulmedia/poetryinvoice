@@ -1,0 +1,8 @@
+uuid: da4f203d-1271-4639-9be2-cfda5aa4842d
+langcode: en
+status: true
+dependencies: {  }
+id: lvp_barrio_sitebranding
+theme: block__clean
+text: ''
+classes: test

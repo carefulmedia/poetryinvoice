@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.base_field_override.node.video.title
     - core.entity_view_mode.node.full
     - field.field.node.video.body
     - field.field.node.video.comment_node_video
@@ -56,7 +57,31 @@ third_party_settings:
                 settings:
                   view_mode: full
                 third_party_settings: {  }
-            weight: 9
+            weight: 10
+            additional: {  }
+          975daf5a-890c-452b-b6c2-cf177bc58f09:
+            uuid: 975daf5a-890c-452b-b6c2-cf177bc58f09
+            region: content
+            configuration:
+              id: 'field_block:node:video:title'
+              label: Title
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_field_formatter
+                label: hidden
+                settings:
+                  link_to_entity: 0
+                  wrap_tag: h1
+                  wrap_class: 'dk-bg content-index'
+                  wrap_attributes: ''
+                  override_link_label: ''
+                  token: ''
+                third_party_settings: {  }
+            weight: 11
             additional: {  }
         third_party_settings: {  }
       -
@@ -64,22 +89,105 @@ third_party_settings:
         layout_settings:
           label: ''
           container_wrapper_classes: ''
-          container_wrapper_attributes: {  }
+          container_wrapper_attributes: null
           container_wrapper:
-            bootstrap_styles: {  }
+            bootstrap_styles:
+              background:
+                background_type: null
+              background_color:
+                class: null
+              background_media:
+                image:
+                  media_id: null
+                video:
+                  media_id: null
+                background_options:
+                  background_position: center
+                  background_repeat: no-repeat
+                  background_attachment: not_fixed
+                  background_size: cover
+              text_color:
+                class: null
+              padding:
+                class: _none
+              padding_left:
+                class: _none
+              padding_top:
+                class: _none
+              padding_right:
+                class: _none
+              padding_bottom:
+                class: _none
+              margin:
+                class: _none
+              margin_left:
+                class: _none
+              margin_top:
+                class: _none
+              margin_right:
+                class: _none
+              margin_bottom:
+                class: _none
+              border:
+                border_style:
+                  class: null
+                border_width:
+                  class: _none
+                border_color:
+                  class: null
+                rounded_corners:
+                  class: _none
+                border_left_style:
+                  class: null
+                border_left_width:
+                  class: _none
+                border_left_color:
+                  class: null
+                border_top_style:
+                  class: null
+                border_top_width:
+                  class: _none
+                border_top_color:
+                  class: null
+                border_right_style:
+                  class: null
+                border_right_width:
+                  class: _none
+                border_right_color:
+                  class: null
+                border_bottom_style:
+                  class: null
+                border_bottom_width:
+                  class: _none
+                border_bottom_color:
+                  class: null
+                rounded_corner_top_left:
+                  class: _none
+                rounded_corner_top_right:
+                  class: _none
+                rounded_corner_bottom_left:
+                  class: _none
+                rounded_corner_bottom_right:
+                  class: _none
+              scroll_effects:
+                class: null
+              text_alignment:
+                class: null
+              box_shadow:
+                class: null
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
-          container: ''
+          container: container
           section_classes: mixtape
-          section_attributes: {  }
+          section_attributes: null
           regions_classes:
-            blb_region_col_1: 'dk-bg content-index'
-            blb_region_col_2: ''
+            blb_region_col_1: ''
+            blb_region_col_2: 'dk-bg content-index'
             blb_region_col_3: ''
           regions_attributes:
-            blb_region_col_1: {  }
-            blb_region_col_2: {  }
-            blb_region_col_3: {  }
+            blb_region_col_1: null
+            blb_region_col_2: null
+            blb_region_col_3: null
           breakpoints:
             desktop: blb_col_4_4_4
             tablet: blb_col_6_3_3
@@ -100,41 +208,9 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          2ba4e56b-21a1-438e-9f43-215181b1543b:
-            uuid: 2ba4e56b-21a1-438e-9f43-215181b1543b
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:video:field_type_of_video'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 2
-            additional: {  }
-          59298afc-3360-4593-ae99-05c656e3d3d1:
-            uuid: 59298afc-3360-4593-ae99-05c656e3d3d1
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:video:field_competition_stream'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: entity_reference_label
-                label: above
-                settings:
-                  link: true
-                third_party_settings: {  }
-            weight: 3
-            additional: {  }
           f802e338-8efb-47bd-b4df-fc1a224fa9dd:
             uuid: f802e338-8efb-47bd-b4df-fc1a224fa9dd
-            region: blb_region_col_1
+            region: blb_region_col_2
             configuration:
               id: 'field_block:node:video:field_competition_school'
               label_display: '0'
@@ -146,26 +222,43 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 1
+            weight: 0
             additional: {  }
-          2c887b01-b419-45db-abb2-04c5757632b8:
-            uuid: 2c887b01-b419-45db-abb2-04c5757632b8
-            region: blb_region_col_1
+          2ba4e56b-21a1-438e-9f43-215181b1543b:
+            uuid: 2ba4e56b-21a1-438e-9f43-215181b1543b
+            region: blb_region_col_2
             configuration:
-              id: 'field_block:node:video:field_years_in_competition'
+              id: 'field_block:node:video:field_type_of_video'
               label_display: '0'
               context_mapping:
                 entity: layout_builder.entity
               formatter:
-                type: list_default
+                type: entity_reference_label
                 label: above
-                settings: {  }
+                settings:
+                  link: true
                 third_party_settings: {  }
-            weight: 0
+            weight: 1
+            additional: {  }
+          59298afc-3360-4593-ae99-05c656e3d3d1:
+            uuid: 59298afc-3360-4593-ae99-05c656e3d3d1
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:video:field_competition_stream'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 2
             additional: {  }
           1679edfd-cfa7-454d-b940-f5b6ab59540b:
             uuid: 1679edfd-cfa7-454d-b940-f5b6ab59540b
-            region: blb_region_col_1
+            region: blb_region_col_2
             configuration:
               id: 'field_block:node:video:field_video_poem'
               label_display: '0'
@@ -177,11 +270,11 @@ third_party_settings:
                 settings:
                   link: true
                 third_party_settings: {  }
-            weight: 4
+            weight: 3
             additional: {  }
           81254218-f5a7-451b-ad27-39ffbdc96a5f:
             uuid: 81254218-f5a7-451b-ad27-39ffbdc96a5f
-            region: blb_region_col_1
+            region: blb_region_col_2
             configuration:
               id: 'field_block:node:video:field_poets_plural_user'
               label_display: '0'
@@ -192,6 +285,21 @@ third_party_settings:
                 label: above
                 settings:
                   link: true
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          2c887b01-b419-45db-abb2-04c5757632b8:
+            uuid: 2c887b01-b419-45db-abb2-04c5757632b8
+            region: blb_region_col_2
+            configuration:
+              id: 'field_block:node:video:field_years_in_competition'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
                 third_party_settings: {  }
             weight: 5
             additional: {  }

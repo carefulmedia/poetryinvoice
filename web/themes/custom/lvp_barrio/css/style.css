@@ -5059,6 +5059,49 @@ nav.tabs ul .nav-item a:hover {
   line-height: 24px;
   text-align: left;
 }
+.field--name-field-media-oembed-video {
+  float: none;
+  clear: both;
+  width: 100%;
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 25px;
+  height: 0;
+}
+.field--name-field-media-oembed-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.block-field-blocknodevideotitle {
+  background: var(--aqua-dark);
+  border-radius: 0px 0 10px 10px;
+  padding: 2rem;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.16));
+}
+.node--type-video .field--name-title {
+  font-family: 'Roboto';
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 47px;
+  text-align: left;
+  font-style: normal;
+  /* background: var(--aqua-dark); */
+  color: white;
+}
+.node--type-video iframe {
+  border-radius: 10px 10px 0 0;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.16));
+}
+.node--type-video .block-page-title-block {
+  display: none;
+}
+.node--type-video .content-index {
+  border-radius: 0 0 10px 10px;
+  filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.16));
+}
 .elementary {
   background: url(../images/watercolour-bg-MULTI.jpg) no-repeat center center fixed;
   -webkit-background-size: cover  !important;
@@ -5128,6 +5171,9 @@ nav.tabs ul .nav-item a:hover {
   white-space: nowrap;
   background-color: transparent;
   border: 0;
+}
+.elementary .menu--k-6-en-menu li {
+  padding: 1.5rem 0;
 }
 .elementary a {
   text-decoration: none;
@@ -5303,8 +5349,34 @@ nav.tabs ul .nav-item a:hover {
   width: fit-content;
 }
 .elementary.read h3 {
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+.elementary.read h2 a {
+  color: var(--purplek);
+  font-size: 3.5rem;
+}
+.elementary .invert {
+  filter: invert(1);
+}
+.elementary .junior-senior h6 {
+  font-family: 'Roboto';
+}
+.elementary .block-block-contentda9bca0a-1417-4494-a913-229f4cb102e4 {
+  position: absolute;
+  text-align: right;
+  right: 4rem;
+  bottom: 4rem;
+}
+.elementary .menu--k-6-en-teachers-menu {
+  position: absolute;
+  text-align: left;
+  left: 4rem;
+  bottom: 4rem;
+}
+.elementary .menu--k-6-en-teachers-menu ul {
+  padding: 0;
+  margin: 0;
 }
 .elementary .home {
   vertical-align: middle;
@@ -5408,8 +5480,9 @@ nav.tabs ul .nav-item a:hover {
   color: black;
 }
 .elementary .offcanvas-body {
-  padding: 0 3rem !important;
+  padding: 0 0rem !important;
   text-align: center;
+  overflow: hidden;
 }
 .elementary .form-row {
   text-align: center;
@@ -5498,9 +5571,63 @@ nav.tabs ul .nav-item a:hover {
   background: white;
   padding: 0;
 }
+.elementary .block-field-blocknodevideotitle {
+  background: white;
+  border-radius: 0px 0 10px 10px;
+  padding: 2rem;
+  filter: drop-shadow(0.5rem 0.5rem 0px black);
+}
+.elementary .node--type-video .field--name-title {
+  font-family: 'Chewy';
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 47px;
+  text-align: left;
+  font-style: normal;
+  /* background: var(--aqua-dark); */
+  color: #E36397;
+}
+.elementary .node--type-video iframe {
+  border-radius: 10px 10px 0 0;
+  filter: drop-shadow(0.5rem 0.5rem 0px black);
+}
+.elementary .node--type-video .block-page-title-block {
+  display: none;
+}
+.elementary .node--type-video .content-index {
+  border-radius: 0 0 10px 10px;
+  filter: drop-shadow(0.5rem 0.5rem 0px black);
+}
+.elementary .node--type-video ._none {
+  display: none;
+}
 @media (max-width: 867px) {
   .elementary .no-blur img {
     height: auto !important;
+  }
+  .elementary .block-block-contentda9bca0a-1417-4494-a913-229f4cb102e4 {
+    position: absolute;
+    text-align: left;
+    left: 1rem;
+    bottom: 1rem;
+  }
+  .elementary .menu--k-6-en-teachers-menu {
+    position: relative;
+    text-align: left;
+    left: auto;
+    bottom: auto;
+  }
+  .elementary .junior-senior {
+    display: inline;
+  }
+  .elementary .junior-senior img {
+    display: inline;
+    width: 4rem;
+  }
+  .elementary .junior-senior h6 {
+    display: inline;
+    margin-left: 1rem;
+    font-size: 1rem;
   }
   .elementary .navbar-toggler-icon {
     background-image: url("../images/hamburger-k-6.svg");
@@ -5530,6 +5657,9 @@ nav.tabs ul .nav-item a:hover {
     position: absolute;
     top: 0.25rem;
     right: 0.25rem;
+  }
+  .elementary ul.menu {
+    margin-bottom: 1rem;
   }
   .elementary .node__content {
     margin-top: 2rem;

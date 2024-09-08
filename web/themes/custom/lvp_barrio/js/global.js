@@ -15,11 +15,14 @@
           if (window.location.href.indexOf("lesvoix") > -1) { 
               $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/LVP-elementary-logo.svg');
               $('.me-auto').attr('href','/primaire');
-
+              $('.dive-in-label').html('Écris');
+              
             }
           else {
             $('.header-logo').attr('src','/themes/custom/lvp_barrio/images/PIV-elementary-logo.svg');
             $('.me-auto').attr('href','/elementary');
+            $('.dive-in-label').html('Write');
+
           }
         }       
         else {

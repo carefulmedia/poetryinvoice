@@ -1,13 +1,719 @@
 header,
 footer,
-.highlighted {
+.highlighted,
+.tabs {
   display: none !important;
+}
+main {
+  padding: 0 m !important;
+  margin: 0 !important;
 }
 body {
   width: 100% !important;
 }
 .views-field-nothing {
   page-break-after: always;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+  filter: none !important;
+}
+h1.title span {
+  color: var(--purplek) !important;
+}
+.elementary {
+  background: url(../images/watercolour-bg-MULTI.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover  !important;
+  -moz-background-size: cover  !important;
+  -o-background-size: cover  !important;
+  background-size: cover !important;
+}
+.elementary .header {
+  height: fit-content;
+  position: relative;
+}
+.elementary .highlighted {
+  min-height: 0rem;
+}
+.elementary #main {
+  margin-top: 1rem;
+}
+.elementary.node--type-poem #main {
+  background: white;
+  filter: none;
+  border-radius: 2rem;
+  padding: 2rem;
+  margin-bottom: 0rem;
+}
+.elementary.node--type-poem h1.title {
+  margin-top: 0rem;
+  text-align: left;
+  margin-bottom: 0rem;
+  line-height: 6rem;
+}
+.elementary h1.title {
+  font-family: "Chewy", sans-serif;
+  font-weight: 400;
+  font-style: bold;
+}
+.elementary.page-node-37023 #block-pagetitle,
+.elementary.page-node-37026 #block-pagetitle,
+.elementary.page-node-37027 #block-pagetitle,
+.elementary.page-node-37028 #block-pagetitle,
+.elementary.page-node-37029 #block-pagetitle {
+  display: none;
+}
+.elementary h2,
+.elementary h3,
+.elementary h5,
+.elementary h6,
+.elementary h2 a,
+.elementary h3 a {
+  font-family: "Chewy", sans-serif;
+}
+.elementary h3 {
+  text-transform: none;
+  font-size: 2.5rem;
+}
+.elementary ul.menu {
+  margin-bottom: 2rem;
+}
+.elementary .navbar li {
+  font-weight: 400;
+  font-style: bold;
+  display: block;
+  width: 100%;
+  padding: 0.5rem 0;
+  clear: both;
+  text-align: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  background-color: transparent;
+  border: 0;
+}
+.elementary .menu--k-6-en-menu li {
+  padding: 1.5rem 0;
+}
+.elementary a {
+  text-decoration: none;
+}
+.elementary .navbar .menu--k-6-en-menu li {
+  font-family: "Chewy", sans-serif;
+  text-align: center;
+}
+.elementary .navbar .menu--k-6-en-menu li a {
+  font-size: 4rem;
+  line-height: 4rem;
+  font-weight: 400;
+}
+.elementary .menu--k-6-en-teachers-menu h2 {
+  font-weight: 900;
+  text-align: left;
+}
+.elementary .menu--k-6-en-teachers-menu a {
+  font-size: 2rem;
+}
+.elementary ul.menu .watch a,
+.elementary a.watch h2 {
+  color: var(--bluek);
+}
+.elementary ul.menu .read a,
+.elementary a.read h2 {
+  color: var(--purplek);
+}
+.elementary ul.menu .write a,
+.elementary a.write h2 {
+  color: var(--greenk);
+}
+.elementary ul.menu .make a,
+.elementary a.make h2 {
+  color: var(--orangek);
+}
+.elementary #navbar-main {
+  background: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  z-index: 2;
+  padding: 0;
+}
+.elementary .navbar {
+  height: fit-content;
+}
+.elementary .search-icon svg {
+  display: none;
+}
+.elementary .navbar-toggler {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+.elementary .navbar-toggler-icon {
+  background-image: url("../images/hamburger-k-6.svg");
+  width: 6rem;
+  height: 6rem;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  color: white;
+  filter: none;
+  transition: all 0.4s ease;
+}
+.elementary .navbar-toggler-icon:hover,
+.elementary .btn-close:hover,
+.elementary .print-icon:hover {
+  filter: none;
+  transition: all 0.4s ease;
+}
+.elementary .navbar-toggler-icon:active,
+.elementary .btn-close:active,
+.elementary .print-icon:active {
+  transform: translateY(0.5rem) translateX(0.5rem);
+  filter: none;
+  border: none;
+  transition: all 0.4s ease;
+}
+.elementary .btn-close {
+  background: url(../images/xicon.svg) center / 6rem auto no-repeat;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  opacity: 1;
+  padding: 0;
+  width: 6rem;
+  height: 6rem;
+  margin-top: 0rem;
+  filter: none;
+  transition: all 0.4s ease;
+}
+.elementary .btn-close:focus {
+  box-shadow: none;
+}
+.elementary .no-blur img:hover {
+  filter: none;
+  transition: all 0.4s ease;
+  width: 101%;
+  max-width: 101%;
+}
+.elementary .no-blur img {
+  transition: all 0.4s ease;
+}
+.elementary .header-logo {
+  height: auto;
+  width: 40%;
+}
+.elementary .header-logo.dark {
+  filter: none;
+}
+.elementary .no-blur {
+  margin-bottom: 0rem;
+}
+.elementary .navbar .block-block-content {
+  width: 70%;
+  margin: auto;
+}
+.elementary.watch,
+.elementary.regarde {
+  background: url(../images/watercolour-bg-BLUE-min.jpg) no-repeat center center fixed;
+}
+.elementary.watch h1.title,
+.elementary.regarde h1.title {
+  color: var(--bluek);
+}
+.elementary.read,
+.elementary.lis {
+  background: url(../images/watercolour-bg-PURPLE-min.jpg) no-repeat center center fixed;
+}
+.elementary.read h1.title,
+.elementary.lis h1.title {
+  color: var(--purplek);
+}
+.elementary.write,
+.elementary.ecris {
+  background: url(../images/watercolour-bg-GREEN-min.jpg) no-repeat center center fixed;
+}
+.elementary.write h1.title,
+.elementary.ecris h1.title {
+  color: var(--greenk);
+}
+.elementary.make,
+.elementary.fabrique {
+  background: url(../images/watercolour-bg-ORANGE-min.jpg) no-repeat center center fixed;
+}
+.elementary.make h1.title,
+.elementary.fabrique h1.title {
+  color: var(--orangek);
+}
+.elementary h1.title,
+.elementary a.watch h2,
+.elementary a.read h2,
+.elementary a.write h2,
+.elementary a.make h2 {
+  filter: none;
+  font-size: 6rem;
+  text-align: center;
+  vertical-align: middle;
+}
+.elementary .site-footer {
+  background: none;
+}
+.elementary .teachers {
+  background-color: white;
+  filter: none;
+  border: 2px solid #000;
+  border-radius: 2rem;
+  padding: 2rem;
+  margin: auto;
+  margin-top: 0rem;
+  width: fit-content;
+}
+.elementary.read h3 {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+}
+.elementary.read h2 a {
+  color: var(--purplek);
+  font-size: 3.5rem;
+}
+.elementary .invert {
+  filter: invert(1);
+}
+.elementary .junior-senior h6 {
+  font-family: 'Roboto';
+}
+.elementary .block-block-contentda9bca0a-1417-4494-a913-229f4cb102e4 {
+  position: absolute;
+  text-align: right;
+  right: 4rem;
+  bottom: 4rem;
+}
+.elementary .menu--k-6-en-teachers-menu {
+  position: absolute;
+  text-align: left;
+  left: 4rem;
+  bottom: 4rem;
+}
+.elementary .menu--k-6-en-teachers-menu ul {
+  padding: 0;
+  margin: 0;
+}
+.elementary .home {
+  vertical-align: middle;
+}
+.elementary .home img {
+  height: fit-content;
+  transition: all 0.8s ease;
+}
+.elementary .home h2 {
+  margin-left: 3rem;
+  display: inline;
+  transition: all 0.8s ease;
+}
+.elementary .home .content,
+.elementary .home .image {
+  display: inline-flex;
+  vertical-align: middle;
+}
+.elementary .home a:hover h2 {
+  filter: none;
+  transition: all 0.8s ease;
+}
+.elementary .home a:active h2 {
+  transform: translateY(0.5rem) translateX(0.5rem);
+  filter: none;
+  border: none;
+  transition: all 0.8s ease;
+}
+.elementary .home a:hover img {
+  filter: contrast(1.2);
+  transition: all 0.8s ease;
+  transform: scale3d(1.2, 1.2, 1.2);
+}
+.elementary .home a:active img {
+  filter: contrast(1.2);
+  transition: all 0.8s ease;
+  transform: scale3d(1.2, 1.2, 1.2);
+}
+.elementary .home .content-index,
+.elementary .home .col-2-sidebar .block-layout-builder,
+.elementary .home .poem-extras .block-layout-builder .content {
+  filter: none;
+  border-radius: 0px;
+  background: none;
+  overflow: hidden;
+  padding: 1rem;
+  text-align: center;
+}
+.elementary .home .content-index.mixtape,
+.elementary .home .content-index.podcast {
+  padding: 0;
+  height: 12rem;
+  overflow: visible;
+}
+.elementary .view-display-id-block_17 .content-index {
+  padding: 0;
+  height: fit-content;
+  overflow: visible;
+  min-height: 0 !important;
+  border-radius: 2rem;
+}
+.elementary .view-display-id-block_17 .author {
+  padding: 1rem;
+}
+.elementary .view-display-id-block_17 h2 {
+  font-size: 3rem;
+  margin-top: 0rem;
+}
+.elementary .view-display-id-block_17 h3 {
+  font-size: 1.5rem;
+}
+.elementary .view-display-id-block_17 .content {
+  background-color: white;
+  padding: 0rem;
+  border-radius: 0 0 2rem 2rem;
+}
+.elementary .block-views .author img,
+.elementary .view-taxonomy-term .author img {
+  height: fit-content;
+  width: 6rem;
+}
+.elementary .navbar {
+  height: fit-content;
+}
+.elementary .language-switcher-language-url {
+  border-radius: 50%;
+}
+.elementary details,
+.elementary select.form-select {
+  background-image: none;
+  font-family: "Chewy", sans-serif;
+  filter: none;
+  border: 2px solid #000;
+  padding: 0;
+}
+.elementary details {
+  border: 1px solid #000;
+  margin-top: 0em;
+  margin-bottom: 2rem;
+  background: #fff;
+  color: black;
+}
+.elementary .offcanvas-body {
+  padding: 0 0rem !important;
+  text-align: center;
+  overflow: hidden;
+}
+.elementary .form-row {
+  text-align: center;
+}
+.elementary form {
+  margin-bottom: 0.5rem;
+  margin-top: 0rem;
+}
+.elementary .podcast,
+.elementary .content-index {
+  background-color: #E36397;
+  height: fit-content;
+  filter: none;
+}
+.elementary .stripe:nth-child(odd) .podcast,
+.elementary .stripe:nth-child(odd) .content-index,
+.elementary .stripe:nth-child(odd) h2 {
+  background-color: #FFF756 !important;
+}
+.elementary .podcast h3 {
+  filter: drop-shadow(0.1rem 0.1rem 0px white);
+  font-size: 2rem;
+  line-height: 2rem;
+}
+.elementary .podcast img {
+  width: 100%;
+}
+.elementary .view-display-id-block_17 .area-link:hover .content-index {
+  background: var(--purplek);
+  height: 100%;
+  transition: all 0.4s ease;
+}
+.elementary .view-display-id-block_17 .area-link:hover .content-index h1,
+.elementary .view-display-id-block_17 .area-link:hover .content-index h2,
+.elementary .view-display-id-block_17 .area-link:hover .content-index h3,
+.elementary .view-display-id-block_17 .area-link:hover .content-index h4,
+.elementary .view-display-id-block_17 .area-link:hover .content-index h5,
+.elementary .view-display-id-block_17 .area-link:hover .content-index h6,
+.elementary .view-display-id-block_17 .area-link:hover .content-index p,
+.elementary .view-display-id-block_17 .area-link:hover .content-index li,
+.elementary .view-display-id-block_17 .area-link:hover .content-index a {
+  color: var(--plum-dark);
+  filter: drop-shadow(0.25rem 0.25rem 0px white);
+  transition: all 0.4s ease;
+}
+.elementary .offcanvas-body .nav-link a,
+.elementary .nav-link a {
+  background: none;
+  text-indent: 0;
+  font-family: 'Chewy';
+  font-size: 3rem;
+  height: fit-content;
+  width: fit-content;
+  color: #FAE14E;
+  background: black;
+  padding: 0.75rem 1rem;
+  border-radius: 50%;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+}
+.elementary .node__content {
+  margin-top: 0rem;
+}
+.elementary .print-icon {
+  width: 4rem;
+  filter: none;
+}
+.elementary .masonry-item {
+  filter: none;
+}
+.elementary .poem-extras,
+.elementary .block-field-blocknodepoemfield-dive-in-attribution {
+  display: none;
+}
+.elementary.write .grid h2 {
+  background: #E36397;
+  padding: 1rem;
+  margin: 0;
+}
+.elementary.write .grid .content {
+  padding: 1rem;
+  background-color: white;
+}
+.elementary.write .dive-in {
+  background: white;
+  padding: 0;
+}
+.elementary .block-field-blocknodevideotitle {
+  background: white;
+  border-radius: 0px 0 10px 10px;
+  padding: 2rem;
+  filter: none;
+}
+.elementary .node--type-video .field--name-title {
+  font-family: 'Chewy';
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 47px;
+  text-align: left;
+  font-style: normal;
+  /* background: var(--aqua-dark); */
+  color: #E36397;
+}
+.elementary .node--type-video iframe {
+  border-radius: 10px 10px 0 0;
+  filter: none;
+}
+.elementary .node--type-video .block-page-title-block {
+  display: none;
+}
+.elementary .node--type-video .content-index {
+  border-radius: 0 0 10px 10px;
+  filter: none;
+}
+.elementary .node--type-video ._none {
+  display: none;
+}
+@media (max-width: 867px) {
+  .elementary .no-blur img {
+    height: auto !important;
+  }
+  .elementary .block-block-contentda9bca0a-1417-4494-a913-229f4cb102e4 {
+    position: absolute;
+    text-align: left;
+    left: 1rem;
+    bottom: 1rem;
+  }
+  .elementary .menu--k-6-en-teachers-menu {
+    position: relative;
+    text-align: left;
+    left: auto;
+    bottom: auto;
+  }
+  .elementary .junior-senior {
+    display: inline;
+  }
+  .elementary .junior-senior img {
+    display: inline;
+    width: 4rem;
+  }
+  .elementary .junior-senior h6 {
+    display: inline;
+    margin-left: 1rem;
+    font-size: 1rem;
+  }
+  .elementary .navbar-toggler-icon {
+    background-image: url("../images/hamburger-k-6.svg");
+    width: 2rem;
+    height: 2rem;
+    vertical-align: middle;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    color: white;
+    filter: none;
+    transition: all 0.4s ease;
+  }
+  .elementary .navbar-toggler-icon:hover,
+  .elementary .btn-close:hover {
+    filter: contrast(3.8) none;
+    transition: all 0.4s ease;
+  }
+  .elementary .btn-close {
+    background: url(../images/xicon.svg) center / 2rem auto no-repeat;
+    opacity: 1;
+    padding: 0;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0;
+    filter: none;
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+  }
+  .elementary ul.menu {
+    margin-bottom: 1rem;
+  }
+  .elementary .node__content {
+    margin-top: 0rem;
+  }
+  .elementary h1.title,
+  .elementary a.watch h2,
+  .elementary a.read h2,
+  .elementary a.write h2,
+  .elementary a.make h2 {
+    filter: drop-shadow(0.25rem 0.25rem 0px white);
+    font-size: 3rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .elementary .navbar li {
+    font-weight: 400;
+    font-style: bold;
+    display: block;
+    width: 100%;
+    padding: 2rem 0 0 0;
+    clear: both;
+    text-align: inherit;
+    text-decoration: none;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+  }
+  .elementary a {
+    text-decoration: none;
+  }
+  .elementary .navbar .menu--k-6-en-menu li {
+    font-family: "Chewy", sans-serif;
+    text-align: center;
+  }
+  .elementary .navbar .menu--k-6-en-menu li a {
+    font-size: 3rem;
+    line-height: 3rem;
+    font-weight: 400;
+  }
+  .elementary .navbar-toggler {
+    top: 0.25rem;
+    right: 0.25rem;
+    position: absolute;
+  }
+  .elementary .offcanvas-body .nav-link a,
+  .elementary .nav-link a {
+    font-size: 1rem;
+    top: 0.25rem;
+    left: 0.25rem;
+    padding: 0.5rem;
+  }
+  .elementary .offcanvas-body .nav-link a {
+    left: 0rem;
+  }
+  .elementary .offcanvas-body {
+    padding: 0 1rem !important;
+    text-align: center;
+  }
+  .elementary .header-logo {
+    height: auto;
+    width: 60%;
+    margin-left: 10%;
+  }
+  .elementary .menu--k-6-en-teachers-menu {
+    margin-top: 2rem;
+  }
+  .elementary .menu--k-6-en-teachers-menu h2 {
+    font-weight: 900;
+  }
+  .elementary .menu--k-6-en-teachers-menu a {
+    font-size: 2rem;
+  }
+  .elementary .menu--k-6-en-teachers-menu li {
+    padding: 0.25rem;
+  }
+  .elementary.node--type-poem #main {
+    background: white;
+    filter: none;
+    border-radius: 2rem;
+    padding: 0rem;
+    margin-bottom: 3rem;
+  }
+  .elementary.node--type-poem h1.title {
+    margin-top: 0rem;
+    text-align: left;
+    margin-bottom: 2rem;
+    line-height: 3rem;
+    font-size: 3rem;
+  }
+  .elementary.node--type-poem h3 {
+    font-size: 1.5rem;
+  }
+  .elementary .print-icon {
+    width: 1.5rem;
+    filter: none;
+  }
+  .elementary .block-views .author img,
+  .elementary .view-taxonomy-term .author img {
+    height: 3rem;
+    width: 3rem;
+  }
+  .elementary .node__content {
+    margin: 0rem 0.5rem;
+  }
+  .elementary .home {
+    vertical-align: middle;
+  }
+  .elementary .home img {
+    height: fit-content;
+    transition: all 0.8s ease;
+    width: 5rem;
+  }
+  .elementary .home h2 {
+    margin-left: 0rem;
+    display: inline;
+    transition: all 0.8s ease;
+    font-size: 3rem;
+  }
+  .elementary .home .content {
+    display: block;
+    padding: 0;
+  }
+  .elementary .home .content-index.mixtape,
+  .elementary .home .content-index.podcast {
+    padding: 0;
+    height: 10rem;
+    overflow: visible;
+    margin-bottom: 1rem;
+  }
 }
 
 /*# sourceMappingURL=maps/print.css.map */

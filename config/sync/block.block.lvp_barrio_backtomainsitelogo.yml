@@ -1,23 +1,23 @@
-uuid: 99a5a07f-dd1e-4b80-ae4a-fb934eb3ca30
+uuid: 30719b32-cff2-47ae-a994-efed9aa6f098
 langcode: en
 status: true
 dependencies:
   content:
-    - 'block_content:basic:9b5f2ea8-2e5e-4700-9d64-652ad1cdb3bc'
+    - 'block_content:basic:da9bca0a-1417-4494-a913-229f4cb102e4'
   module:
     - block_content
     - system
   theme:
     - lvp_barrio
-id: submitrecitationsbutton
+id: lvp_barrio_backtomainsitelogo
 theme: lvp_barrio
 region: primary_menu
-weight: -18
+weight: -14
 provider: null
-plugin: 'block_content:9b5f2ea8-2e5e-4700-9d64-652ad1cdb3bc'
+plugin: 'block_content:da9bca0a-1417-4494-a913-229f4cb102e4'
 settings:
-  id: 'block_content:9b5f2ea8-2e5e-4700-9d64-652ad1cdb3bc'
-  label: 'Support us button'
+  id: 'block_content:da9bca0a-1417-4494-a913-229f4cb102e4'
+  label: 'Back to main site logo '
   label_display: '0'
   provider: block_content
   status: true
@@ -26,5 +26,5 @@ settings:
 visibility:
   request_path:
     id: request_path
-    negate: true
+    negate: false
     pages: "/elementary\r\n/elementary/*\r\n/primaire\r\n/primaire/*"
