@@ -13,7 +13,7 @@ dependencies:
 id: frmainmenu
 theme: lvp_barrio
 region: primary_menu
-weight: -18
+weight: -21
 provider: null
 plugin: 'menu_block:fr-main-menu'
 settings:

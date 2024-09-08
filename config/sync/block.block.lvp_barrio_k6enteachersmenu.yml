@@ -13,7 +13,7 @@ dependencies:
 id: lvp_barrio_k6enteachersmenu
 theme: lvp_barrio
 region: primary_menu
-weight: -16
+weight: -19
 provider: null
 plugin: 'menu_block:k-6-en-teachers-menu'
 settings:

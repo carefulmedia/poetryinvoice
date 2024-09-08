@@ -12,7 +12,7 @@ dependencies:
 id: useraccountmenu
 theme: lvp_barrio
 region: primary_menu
-weight: -20
+weight: -23
 provider: null
 plugin: 'menu_block:account'
 settings:
