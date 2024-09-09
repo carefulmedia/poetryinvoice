@@ -5609,10 +5609,11 @@ nav.tabs ul .nav-item a:hover {
     height: auto !important;
   }
   .elementary .block-block-contentda9bca0a-1417-4494-a913-229f4cb102e4 {
-    position: absolute;
-    left: 1rem;
-    bottom: 6rem;
+    position: relative;
+    left: 0;
+    bottom: 0;
     text-align: left;
+    margin-top: 2rem !important;
   }
   .elementary .menu--k-6-en-teachers-menu {
     position: relative;
@@ -5688,7 +5689,7 @@ nav.tabs ul .nav-item a:hover {
     font-style: bold;
     display: block;
     width: 100%;
-    padding: 2rem 0 0 0;
+    padding: 1.5rem 0 0 0;
     clear: both;
     text-align: inherit;
     text-decoration: none;
