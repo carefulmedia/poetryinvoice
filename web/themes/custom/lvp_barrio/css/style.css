@@ -5504,8 +5504,7 @@ nav.tabs ul .nav-item a:hover {
   filter: drop-shadow(0.5rem 0.5rem 0px black);
 }
 .elementary .stripe:nth-child(odd) .podcast,
-.elementary .stripe:nth-child(odd) .content-index,
-.elementary .stripe:nth-child(odd) h2 {
+.elementary .stripe:nth-child(odd) .content-index {
   background-color: #FFF756 !important;
 }
 .elementary .podcast h3 {
@@ -5517,7 +5516,7 @@ nav.tabs ul .nav-item a:hover {
   width: 100%;
 }
 .elementary .view-display-id-block_17 .area-link:hover .content-index {
-  background: var(--purplek);
+  background: var(--purplek) !important;
   height: 100%;
   transition: all 0.4s ease;
 }
@@ -5527,9 +5526,7 @@ nav.tabs ul .nav-item a:hover {
 .elementary .view-display-id-block_17 .area-link:hover .content-index h4,
 .elementary .view-display-id-block_17 .area-link:hover .content-index h5,
 .elementary .view-display-id-block_17 .area-link:hover .content-index h6,
-.elementary .view-display-id-block_17 .area-link:hover .content-index p,
-.elementary .view-display-id-block_17 .area-link:hover .content-index li,
-.elementary .view-display-id-block_17 .area-link:hover .content-index a {
+.elementary .view-display-id-block_17 .area-link:hover .content-index p {
   color: var(--plum-dark);
   filter: drop-shadow(0.25rem 0.25rem 0px white);
   transition: all 0.4s ease;
