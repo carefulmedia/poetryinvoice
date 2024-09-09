@@ -5102,6 +5102,16 @@ nav.tabs ul .nav-item a:hover {
   border-radius: 0 0 10px 10px;
   filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.16));
 }
+.menu--fr-main-menu .elementary-main-menu {
+  background: url(/themes/custom/lvp_barrio/images/logo_narrow_FR.svg);
+  background-repeat: no-repeat;
+  text-indent: -10000px;
+}
+.elementary-main-menu {
+  background: url(/themes/custom/lvp_barrio/images/logo_narrow_ENG.svg);
+  background-repeat: no-repeat;
+  text-indent: -10000px;
+}
 .elementary {
   background: url(../images/watercolour-bg-MULTI.jpg) no-repeat center center fixed;
   -webkit-background-size: cover  !important;
