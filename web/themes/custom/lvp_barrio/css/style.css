@@ -5488,7 +5488,6 @@ nav.tabs ul .nav-item a:hover {
 .elementary .offcanvas-body {
   padding: 0 0rem !important;
   text-align: center;
-  overflow: hidden;
 }
 .elementary .form-row {
   text-align: center;
@@ -5587,6 +5586,9 @@ nav.tabs ul .nav-item a:hover {
   /* background: var(--aqua-dark); */
   color: #E36397;
 }
+.elementary .navbar .block-block-content.block-block-contentda9bca0a-1417-4494-a913-229f4cb102e4 {
+  width: 100%;
+}
 .elementary .node--type-video iframe {
   border-radius: 10px 10px 0 0;
   filter: drop-shadow(0.5rem 0.5rem 0px black);
@@ -5607,9 +5609,9 @@ nav.tabs ul .nav-item a:hover {
   }
   .elementary .block-block-contentda9bca0a-1417-4494-a913-229f4cb102e4 {
     position: absolute;
-    text-align: left;
     left: 1rem;
-    bottom: 1rem;
+    bottom: 4rem;
+    text-align: left;
   }
   .elementary .menu--k-6-en-teachers-menu {
     position: relative;
@@ -5665,7 +5667,7 @@ nav.tabs ul .nav-item a:hover {
     right: 0.25rem;
   }
   .elementary ul.menu {
-    margin-bottom: 1rem;
+    margin: 0rem;
   }
   .elementary .node__content {
     margin-top: 2rem;
@@ -5725,16 +5727,16 @@ nav.tabs ul .nav-item a:hover {
     margin-left: 10%;
   }
   .elementary .menu--k-6-en-teachers-menu {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   .elementary .menu--k-6-en-teachers-menu h2 {
     font-weight: 900;
   }
   .elementary .menu--k-6-en-teachers-menu a {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
   .elementary .menu--k-6-en-teachers-menu li {
-    padding: 0.25rem;
+    padding: 0 0 0.25rem 0;
   }
   .elementary.node--type-poem #main {
     background: white;
