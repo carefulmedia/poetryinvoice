@@ -5488,6 +5488,7 @@ nav.tabs ul .nav-item a:hover {
 .elementary .offcanvas-body {
   padding: 0 0rem !important;
   text-align: center;
+  overflow: hidden;
 }
 .elementary .form-row {
   text-align: center;
@@ -5610,7 +5611,7 @@ nav.tabs ul .nav-item a:hover {
   .elementary .block-block-contentda9bca0a-1417-4494-a913-229f4cb102e4 {
     position: absolute;
     left: 1rem;
-    bottom: 4rem;
+    bottom: 6rem;
     text-align: left;
   }
   .elementary .menu--k-6-en-teachers-menu {
@@ -5716,10 +5717,12 @@ nav.tabs ul .nav-item a:hover {
   .elementary .nav-link a {
     font-size: 1rem;
     padding: 0.5rem;
+    overflow: hidden;
   }
   .elementary .offcanvas-body {
     padding: 0 1rem !important;
     text-align: center;
+    overflow: hidden;
   }
   .elementary .header-logo {
     height: auto;
