@@ -5507,6 +5507,9 @@ nav.tabs ul .nav-item a:hover {
 .elementary .stripe:nth-child(odd) .content-index {
   background-color: #FFF756 !important;
 }
+.elementary .view-display-id-block_18 .stripe:nth-child(odd) h2 {
+  background-color: #FFF756 !important;
+}
 .elementary .podcast h3 {
   filter: drop-shadow(0.1rem 0.1rem 0px white);
   font-size: 2rem;
@@ -5604,6 +5607,12 @@ nav.tabs ul .nav-item a:hover {
 .elementary .node--type-video ._none {
   display: none;
 }
+.elementary nav.tabs {
+  margin-top: 4rem;
+}
+.elementary .block-layout-builder {
+  margin-bottom: 1rem;
+}
 @media (max-width: 867px) {
   .elementary .no-blur img {
     height: auto !important;
@@ -5680,7 +5689,7 @@ nav.tabs ul .nav-item a:hover {
   .elementary a.write h2,
   .elementary a.make h2 {
     filter: drop-shadow(0.25rem 0.25rem 0px white);
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
     vertical-align: middle;
   }
