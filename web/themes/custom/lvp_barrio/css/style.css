@@ -5102,6 +5102,16 @@ nav.tabs ul .nav-item a:hover {
   border-radius: 0 0 10px 10px;
   filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.16));
 }
+.menu--fr-main-menu .elementary-main-menu {
+  background: url(/themes/custom/lvp_barrio/images/logo_narrow_FR.svg);
+  background-repeat: no-repeat;
+  text-indent: -10000px;
+}
+.elementary-main-menu {
+  background: url(/themes/custom/lvp_barrio/images/logo_narrow_ENG.svg);
+  background-repeat: no-repeat;
+  text-indent: -10000px;
+}
 .elementary {
   background: url(../images/watercolour-bg-MULTI.jpg) no-repeat center center fixed;
   -webkit-background-size: cover  !important;
@@ -5488,6 +5498,7 @@ nav.tabs ul .nav-item a:hover {
 .elementary .offcanvas-body {
   padding: 0 0rem !important;
   text-align: center;
+  overflow: hidden;
 }
 .elementary .form-row {
   text-align: center;
@@ -5504,6 +5515,9 @@ nav.tabs ul .nav-item a:hover {
 }
 .elementary .stripe:nth-child(odd) .podcast,
 .elementary .stripe:nth-child(odd) .content-index {
+  background-color: #FFF756 !important;
+}
+.elementary .view-display-id-block_18 .stripe:nth-child(odd) h2 {
   background-color: #FFF756 !important;
 }
 .elementary .podcast h3 {
@@ -5603,15 +5617,22 @@ nav.tabs ul .nav-item a:hover {
 .elementary .node--type-video ._none {
   display: none;
 }
+.elementary nav.tabs {
+  margin-top: 4rem;
+}
+.elementary .block-layout-builder {
+  margin-bottom: 1rem;
+}
 @media (max-width: 867px) {
   .elementary .no-blur img {
     height: auto !important;
   }
   .elementary .block-block-contentda9bca0a-1417-4494-a913-229f4cb102e4 {
-    position: absolute;
-    left: 1rem;
-    bottom: 4rem;
+    position: relative;
+    left: 0;
+    bottom: 0;
     text-align: left;
+    margin-top: 2rem !important;
   }
   .elementary .menu--k-6-en-teachers-menu {
     position: relative;
@@ -5678,7 +5699,7 @@ nav.tabs ul .nav-item a:hover {
   .elementary a.write h2,
   .elementary a.make h2 {
     filter: drop-shadow(0.25rem 0.25rem 0px white);
-    font-size: 3rem;
+    font-size: 2.5rem;
     text-align: center;
     vertical-align: middle;
   }
@@ -5687,7 +5708,7 @@ nav.tabs ul .nav-item a:hover {
     font-style: bold;
     display: block;
     width: 100%;
-    padding: 2rem 0 0 0;
+    padding: 1.5rem 0 0 0;
     clear: both;
     text-align: inherit;
     text-decoration: none;
@@ -5716,10 +5737,12 @@ nav.tabs ul .nav-item a:hover {
   .elementary .nav-link a {
     font-size: 1rem;
     padding: 0.5rem;
+    overflow: hidden;
   }
   .elementary .offcanvas-body {
     padding: 0 1rem !important;
     text-align: center;
+    overflow: hidden;
   }
   .elementary .header-logo {
     height: auto;

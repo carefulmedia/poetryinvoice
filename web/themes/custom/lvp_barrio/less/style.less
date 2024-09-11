@@ -801,6 +801,17 @@ div {
     filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.16));
 
 }
+.menu--fr-main-menu .elementary-main-menu {
+    background: url(/themes/custom/lvp_barrio/images/logo_narrow_FR.svg);
+    background-repeat: no-repeat;
+    text-indent: -10000px;
+    }
+
+.elementary-main-menu {
+background: url(/themes/custom/lvp_barrio/images/logo_narrow_ENG.svg);
+background-repeat: no-repeat;
+text-indent: -10000px;
+}
 .elementary  {
   
     .header {
@@ -1199,6 +1210,7 @@ div {
     .offcanvas-body {
         padding: 0 0rem !important;
         text-align: center;
+        overflow: hidden;
     }
     .form-row {
         text-align: center;
@@ -1217,6 +1229,11 @@ div {
     
     .stripe:nth-child(odd) {
         .podcast, .content-index {
+        background-color: #FFF756 !important;
+        } 
+    }
+    .view-display-id-block_18 .stripe:nth-child(odd) {
+         h2 {
         background-color: #FFF756 !important;
         } 
     }
@@ -1319,15 +1336,22 @@ div {
     .node--type-video  ._none {
         display: none;
     }
+    nav.tabs {
+        margin-top: 4rem;
+    }
+    .block-layout-builder {
+        margin-bottom: 1rem;
+    }
     @media (max-width: 867px){
         .no-blur img {
         height: auto !important;
         }
         .block-block-contentda9bca0a-1417-4494-a913-229f4cb102e4 {
-            position: absolute;
-            left: 1rem;
-            bottom: 4rem;
+            position: relative;
+            left: 0;
+            bottom: 0;
             text-align: left;
+            margin-top: 2rem !important;
  
         }
         .menu--k-6-en-teachers-menu {
@@ -1393,17 +1417,18 @@ div {
         }
         h1.title,  a.watch h2, a.read h2,  a.write h2, a.make h2 {
             filter: drop-shadow(0.25rem 0.25rem 0px white);
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-align: center;
             vertical-align: middle;
         }
+
 
         .navbar li {
             font-weight: 400;
             font-style: bold;   
             display: block;
             width: 100%;
-            padding: 2rem 0 0 0;
+            padding: 1.5rem 0 0 0;
             clear: both;
             text-align: inherit;
             text-decoration: none;
@@ -1433,12 +1458,14 @@ div {
         }
         .offcanvas-body .nav-link a, .nav-link a {
             font-size: 1rem;
-            padding: .5rem;;
+            padding: .5rem;
+            overflow: hidden;
         }
 
         .offcanvas-body {
             padding: 0 1rem !important;
-            text-align: center
+            text-align: center;
+            overflow: hidden;
         }
         .header-logo {
             height: auto;
