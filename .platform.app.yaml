@@ -180,10 +180,8 @@ crons:
                 if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
                    platform backup:create --yes
                 fi
-    killphp:
-        spec: '*/20 * * * *'
-        commands:
-            start: |
-                if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
-                    curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://poetryinvoice.ca | grep -qv 200 && killall php-fpm8.1-zts
-                fi
+     # Run roulette every hour at minute 0
+    roulette:
+        spec: '0 * * * *'
+        cmd: 'cd web/roulette/cached ; bash generate-cache.sh'
+
