@@ -28,6 +28,10 @@ variables:
         assert.active: "off"
         max_execution_time: 30
 
+resources:
+    base_memory: 512
+    memory_ratio: 512
+
 # The size of the persistent disk of the application (in MB).
 disk: 1024
 
@@ -175,4 +179,11 @@ crons:
             start: |
                 if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
                    platform backup:create --yes
+                fi
+    killphp:
+        spec: '*/20 * * * *'
+        commands:
+            start: |
+                if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
+                    curl -s -o /dev/null -w "%{http_code}" --max-time 10 https://poetryinvoice.ca | grep -qv 200 && killall php-fpm8.1-zts
                 fi
