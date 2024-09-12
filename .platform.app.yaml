@@ -171,7 +171,7 @@ web:
 crons:
     # Run Drupal's cron tasks every 19 minutes.
     drupal:
-        spec: '*/19 * * * *'
+        spec: '0 0 * * *'
         cmd: 'cd web ; drush core-cron'
     backup:
         spec: '0 5 * * *'
@@ -182,6 +182,6 @@ crons:
                 fi
      # Run roulette every hour at minute 0
     roulette:
-        spec: '0 * * * *'
+        spec: '0 0 * * 0'
         cmd: 'cd web/roulette/cached ; bash generate-cache.sh'
 
