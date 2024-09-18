@@ -1,4 +1,4 @@
-uuid: e03b002f-a8d9-4ee4-aec7-c57ffb42b59c
+uuid: 5d900584-768d-46b8-b672-379ae22de6d8
 langcode: en
 status: true
 dependencies:
@@ -13,14 +13,14 @@ dependencies:
     - node.type.video
     - node.type.writing_prompt
     - node.type.writing_workshop
-id: node.page.field_related_content
+id: node.video.field_related_content
 field_name: field_related_content
 entity_type: node
-bundle: page
+bundle: video
 label: 'Related content'
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
