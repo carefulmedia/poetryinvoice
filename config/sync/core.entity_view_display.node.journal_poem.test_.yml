@@ -10,7 +10,9 @@ dependencies:
     - field.field.node.journal_poem.field_banner_title
     - field.field.node.journal_poem.field_email1
     - field.field.node.journal_poem.field_grade
+    - field.field.node.journal_poem.field_i_am_submitting_in_a_secon
     - field.field.node.journal_poem.field_i_consent_to_poetry_in_voi
+    - field.field.node.journal_poem.field_i_identify_as_indigenous
     - field.field.node.journal_poem.field_i_would_like_to_be_conside
     - field.field.node.journal_poem.field_images_insert
     - field.field.node.journal_poem.field_journal_poem_body
@@ -140,7 +142,9 @@ hidden:
   field_acceptance_level: true
   field_email1: true
   field_grade: true
+  field_i_am_submitting_in_a_secon: true
   field_i_consent_to_poetry_in_voi: true
+  field_i_identify_as_indigenous: true
   field_i_would_like_to_be_conside: true
   field_journal_poem_body: true
   field_legal_name: true

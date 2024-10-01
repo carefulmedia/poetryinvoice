@@ -1,0 +1,23 @@
+uuid: 6edb94df-2394-4eec-9de2-5915b021f543
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_i_am_submitting_in_a_secon
+    - node.type.journal_poem
+id: node.journal_poem.field_i_am_submitting_in_a_secon
+field_name: field_i_am_submitting_in_a_secon
+entity_type: node
+bundle: journal_poem
+label: 'I am submitting in my second official language'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

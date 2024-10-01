@@ -10,7 +10,9 @@ dependencies:
     - field.field.node.journal_poem.field_banner_title
     - field.field.node.journal_poem.field_email1
     - field.field.node.journal_poem.field_grade
+    - field.field.node.journal_poem.field_i_am_submitting_in_a_secon
     - field.field.node.journal_poem.field_i_consent_to_poetry_in_voi
+    - field.field.node.journal_poem.field_i_identify_as_indigenous
     - field.field.node.journal_poem.field_i_would_like_to_be_conside
     - field.field.node.journal_poem.field_images_insert
     - field.field.node.journal_poem.field_journal_poem_body
@@ -168,6 +170,42 @@ third_party_settings:
                   format_custom_true: ''
                 third_party_settings: {  }
             weight: 6
+            additional: {  }
+          deb9c04f-d9e7-4d12-ab9f-aa1bda2646e3:
+            uuid: deb9c04f-d9e7-4d12-ab9f-aa1bda2646e3
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_i_identify_as_indigenous'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 7
+            additional: {  }
+          985366d5-b9b8-4f70-bfc0-a9adbeb2dd35:
+            uuid: 985366d5-b9b8-4f70-bfc0-a9adbeb2dd35
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_i_am_submitting_in_a_secon'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 8
             additional: {  }
         third_party_settings: {  }
       -
@@ -507,6 +545,16 @@ content:
     third_party_settings: {  }
     weight: 11
     region: content
+  field_i_am_submitting_in_a_secon:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 114
+    region: main
   field_i_consent_to_poetry_in_voi:
     type: list_default
     label: above
@@ -514,6 +562,16 @@ content:
     third_party_settings: {  }
     weight: 12
     region: content
+  field_i_identify_as_indigenous:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 113
+    region: main
   field_i_would_like_to_be_conside:
     type: boolean
     label: above

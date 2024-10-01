@@ -9,7 +9,9 @@ dependencies:
     - field.field.node.journal_poem.field_banner_title
     - field.field.node.journal_poem.field_email1
     - field.field.node.journal_poem.field_grade
+    - field.field.node.journal_poem.field_i_am_submitting_in_a_secon
     - field.field.node.journal_poem.field_i_consent_to_poetry_in_voi
+    - field.field.node.journal_poem.field_i_identify_as_indigenous
     - field.field.node.journal_poem.field_i_would_like_to_be_conside
     - field.field.node.journal_poem.field_images_insert
     - field.field.node.journal_poem.field_journal_poem_body
@@ -96,9 +98,23 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_i_am_submitting_in_a_secon:
+    type: boolean_checkbox
+    weight: 132
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_i_consent_to_poetry_in_voi:
     type: boolean_checkbox
     weight: 19
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_i_identify_as_indigenous:
+    type: boolean_checkbox
+    weight: 131
     region: content
     settings:
       display_label: true
@@ -401,6 +417,16 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 130
     region: content
     settings: {  }
     third_party_settings: {  }

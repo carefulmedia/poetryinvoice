@@ -53,20 +53,20 @@ class PivWelcomeModalSettingsForm extends ConfigFormBase {
   private function getPossibleConfigurations() {
     return [
       'student' => [
-        'student_k_5_inside' => $this->t('I am a <u>student</u> in grades <u>K-5</u> <u>inside</u> canada'),
-        'student_k_5_outside' => $this->t('I am a <u>student</u> in grades <u>K-5</u> <u>outside</u> canada'),
-        'student_6_8_inside' => $this->t('I am a <u>student</u> in grades <u>6-8</u> <u>inside</u> canada'),
-        'student_6_8_outside' => $this->t('I am a <u>student</u> in grades <u>6-8</u> <u>outside</u> canada'),
-        'student_9_12_inside' => $this->t('I am a <u>student</u> in grades <u>9-12</u> <u>inside</u> canada'),
-        'student_9_12_outside' => $this->t('I am a <u>student</u> in grades <u>9-12</u> <u>outside</u> canada'),
+        'student_k_5_inside' => $this->t('I am a <u>student</u> in grades <u>K-6</u> <u>inside</u> canada'),
+        'student_k_5_outside' => $this->t('I am a <u>student</u> in grades <u>K-6</u> <u>outside</u> canada'),
+        'student_6_8_inside' => $this->t('I am a <u>student</u> in grades <u>7-9</u> <u>inside</u> canada'),
+        'student_6_8_outside' => $this->t('I am a <u>student</u> in grades <u>7-9</u> <u>outside</u> canada'),
+        'student_9_12_inside' => $this->t('I am a <u>student</u> in grades <u>10-12</u> <u>inside</u> canada'),
+        'student_9_12_outside' => $this->t('I am a <u>student</u> in grades <u>10-12</u> <u>outside</u> canada'),
       ],
       'teacher' => [
-        'teacher_k_5_inside' => $this->t('I am a <u>teacher</u> in grades <u>K-5</u> <u>inside</u> canada'),
-        'teacher_k_5_outside' => $this->t('I am a <u>teacher</u> in grades <u>K-5</u> <u>outside</u> canada'),
-        'teacher_6_8_inside' => $this->t('I am a <u>teacher</u> in grades <u>6-8</u> <u>inside</u> canada'),
-        'teacher_6_8_outside' => $this->t('I am a <u>teacher</u> in grades <u>6-8</u> <u>outside</u> canada'),
-        'teacher_9_12_inside' => $this->t('I am a <u>teacher</u> in grades <u>9-12</u> <u>inside</u> canada'),
-        'teacher_9_12_outside' => $this->t('I am a <u>teacher</u> in grades <u>9-12</u> <u>outside</u> canada'),
+        'teacher_k_5_inside' => $this->t('I am a <u>teacher</u> in grades <u>K-6</u> <u>inside</u> canada'),
+        'teacher_k_5_outside' => $this->t('I am a <u>teacher</u> in grades <u>K-6</u> <u>outside</u> canada'),
+        'teacher_6_8_inside' => $this->t('I am a <u>teacher</u> in grades <u>7-9</u> <u>inside</u> canada'),
+        'teacher_6_8_outside' => $this->t('I am a <u>teacher</u> in grades <u>7-9</u> <u>outside</u> canada'),
+        'teacher_9_12_inside' => $this->t('I am a <u>teacher</u> in grades <u>10-12</u> <u>inside</u> canada'),
+        'teacher_9_12_outside' => $this->t('I am a <u>teacher</u> in grades <u>10-12</u> <u>outside</u> canada'),
       ],
       'poet' => [
         'poet_inside' => $this->t('I am a <u>poet</u> <u>inside</u> canada'),

@@ -1,0 +1,23 @@
+uuid: 54065c15-6b6e-4aaa-b6b5-1c9d6987d3c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_i_identify_as_indigenous
+    - node.type.journal_poem
+id: node.journal_poem.field_i_identify_as_indigenous
+field_name: field_i_identify_as_indigenous
+entity_type: node
+bundle: journal_poem
+label: 'I identify as Indigenous'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -130,9 +130,9 @@ class PivWelcomeModal extends FormBase {
         'aria-labelledby' => 'option-2-label',
       ],
       '#options' => [
-        'k_5' => $this->t('K-5'),
-        '6_8' => $this->t('6-8'),
-        '9_12' => $this->t('9-12'),
+        'k_5' => $this->t('K-6'),
+        '6_8' => $this->t('7-9'),
+        '9_12' => $this->t('10-12'),
       ],
     ];
     $form['options_wrapper']['option_3'] = [
