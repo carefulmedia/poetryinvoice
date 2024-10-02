@@ -5062,6 +5062,12 @@ nav.tabs ul .nav-item a:hover {
   line-height: 24px;
   text-align: left;
 }
+html:lang(fr) #feedback {
+  display: none;
+}
+html:lang(en) #sondage {
+  display: none;
+}
 .field--name-field-media-oembed-video {
   float: none;
   clear: both;
