@@ -4399,6 +4399,9 @@ li {
 .block-layout-builder {
   margin-bottom: 40px;
 }
+.form-item--field-other-0-value label {
+  display: none;
+}
 .field--type-entity-reference {
   margin: 0 0;
 }

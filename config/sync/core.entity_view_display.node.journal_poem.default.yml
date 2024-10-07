@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.journal_poem.field_journal_poem_body
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
+    - field.field.node.journal_poem.field_other
     - field.field.node.journal_poem.field_phone
     - field.field.node.journal_poem.field_poem_attachment
     - field.field.node.journal_poem.field_poem_being_responded_to
@@ -32,6 +33,7 @@ dependencies:
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
     - field.field.node.journal_poem.field_teacher
+    - field.field.node.journal_poem.field_what_is_your_gender_identi
     - field.field.node.journal_poem.field_writing_prompt
     - field.field.node.journal_poem.piv_teacher_first_name
     - field.field.node.journal_poem.piv_teacher_last_name
@@ -206,6 +208,37 @@ third_party_settings:
                   format_custom_true: ''
                 third_party_settings: {  }
             weight: 8
+            additional: {  }
+          ba47eab5-da63-49cf-81a5-448c982e5e74:
+            uuid: ba47eab5-da63-49cf-81a5-448c982e5e74
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_what_is_your_gender_identi'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 9
+            additional: {  }
+          7b7d2b62-d20f-44d7-a73e-ee6c37b96f08:
+            uuid: 7b7d2b62-d20f-44d7-a73e-ee6c37b96f08
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_other'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 10
             additional: {  }
         third_party_settings: {  }
       -
@@ -618,6 +651,14 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
+  field_other:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 116
+    region: main
   field_phone:
     type: string
     label: above
@@ -725,6 +766,13 @@ content:
     third_party_settings: {  }
     weight: 5
     region: content
+  field_what_is_your_gender_identi:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 115
+    region: main
   field_writing_prompt:
     type: entity_reference_label
     label: above

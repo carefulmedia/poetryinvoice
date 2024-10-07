@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.journal_poem.field_journal_poem_body
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
+    - field.field.node.journal_poem.field_other
     - field.field.node.journal_poem.field_phone
     - field.field.node.journal_poem.field_poem_attachment
     - field.field.node.journal_poem.field_poem_being_responded_to
@@ -32,6 +33,7 @@ dependencies:
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
     - field.field.node.journal_poem.field_teacher
+    - field.field.node.journal_poem.field_what_is_your_gender_identi
     - field.field.node.journal_poem.field_writing_prompt
     - field.field.node.journal_poem.piv_teacher_first_name
     - field.field.node.journal_poem.piv_teacher_last_name
@@ -300,6 +302,7 @@ hidden:
   field_i_would_like_to_be_conside: true
   field_legal_name: true
   field_legal_name_boolean: true
+  field_other: true
   field_phone: true
   field_poem_attachment: true
   field_poem_being_responded_to: true
@@ -312,6 +315,7 @@ hidden:
   field_student_bio: true
   field_submission_info_confirmed: true
   field_teacher: true
+  field_what_is_your_gender_identi: true
   langcode: true
   links: true
   search_api_excerpt: true
