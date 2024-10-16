@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5f6d96a6acaf60d9a6735af32402a406",
+    "content-hash": "cccb1dd90eec706121853ee10e02fa34",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2596,20 +2596,20 @@
         },
         {
             "name": "drupal/blazy",
-            "version": "2.24.0",
+            "version": "3.0.11",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/blazy.git",
-                "reference": "8.x-2.24"
+                "reference": "3.0.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/blazy-8.x-2.24.zip",
-                "reference": "8.x-2.24",
-                "shasum": "6770d662259341b979e0642ed6ea37228728d573"
+                "url": "https://ftp.drupal.org/files/projects/blazy-3.0.11.zip",
+                "reference": "3.0.11",
+                "shasum": "a68070e36e7471723a0e0ae18050f25a676079d6"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9 || ^10"
+                "drupal/core": ">=9.4"
             },
             "conflict": {
                 "drupal/csp": "<1.12"
@@ -2617,8 +2617,8 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.24",
-                    "datestamp": "1711902155",
+                    "version": "3.0.11",
+                    "datestamp": "1726993776",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8814,27 +8814,27 @@
         },
         {
             "name": "drupal/slick",
-            "version": "2.10.0",
+            "version": "3.0.3",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/slick.git",
-                "reference": "8.x-2.10"
+                "reference": "3.0.3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/slick-8.x-2.10.zip",
-                "reference": "8.x-2.10",
-                "shasum": "818d4aab661d94c06e2047eaa14bd45df589e14b"
+                "url": "https://ftp.drupal.org/files/projects/slick-3.0.3.zip",
+                "reference": "3.0.3",
+                "shasum": "be22330dd9f070521d9dcc01f441d9df7c48a288"
             },
             "require": {
-                "drupal/blazy": "^2.17",
-                "drupal/core": "^8.8 || ^9 || ^10"
+                "drupal/blazy": "^3.0",
+                "drupal/core": ">=9.4"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.10",
-                    "datestamp": "1695019811",
+                    "version": "3.0.3",
+                    "datestamp": "1723362744",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
@@ -8874,27 +8874,27 @@
         },
         {
             "name": "drupal/slick_views",
-            "version": "2.8.0",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/slick_views.git",
-                "reference": "8.x-2.8"
+                "reference": "3.0.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/slick_views-8.x-2.8.zip",
-                "reference": "8.x-2.8",
-                "shasum": "870fd15c77340326d5afda1103c64f43023a7122"
+                "url": "https://ftp.drupal.org/files/projects/slick_views-3.0.2.zip",
+                "reference": "3.0.2",
+                "shasum": "51c35fe412e2f288e1e9f4f0efba46e2745bf068"
             },
             "require": {
-                "drupal/core": "^8.8 || ^9 || ^10",
-                "drupal/slick": "^2.10"
+                "drupal/core": ">=9.4",
+                "drupal/slick": "^3.0"
             },
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-2.8",
-                    "datestamp": "1695019929",
+                    "version": "3.0.2",
+                    "datestamp": "1715947969",
                     "security-coverage": {
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
