@@ -1,0 +1,22 @@
+uuid: b0ace9b0-254c-42b0-887e-3debfc34d88f
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.k_6_make
+id: node.k_6_make.status
+field_name: status
+entity_type: node
+bundle: k_6_make
+label: Published
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

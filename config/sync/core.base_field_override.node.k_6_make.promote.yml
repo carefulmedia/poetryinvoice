@@ -1,0 +1,22 @@
+uuid: ead526bf-1390-474f-9d7e-93c6c7740794
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.k_6_make
+id: node.k_6_make.promote
+field_name: promote
+entity_type: node
+bundle: k_6_make
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

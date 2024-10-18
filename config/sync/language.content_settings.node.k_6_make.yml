@@ -1,0 +1,16 @@
+uuid: 1d8db503-e5ba-44fd-9729-94bebfd36105
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.k_6_make
+  module:
+    - content_translation
+third_party_settings:
+  content_translation:
+    enabled: true
+id: node.k_6_make
+target_entity_type_id: node
+target_bundle: k_6_make
+default_langcode: site_default
+language_alterable: true
