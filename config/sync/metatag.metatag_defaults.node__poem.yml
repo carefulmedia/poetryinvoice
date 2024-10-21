@@ -1,0 +1,9 @@
+uuid: a2032589-78b3-4537-9735-ae20584e4cf6
+langcode: en
+status: true
+dependencies: {  }
+id: node__poem
+label: 'Content: Poem'
+tags:
+  description: "[current-page:title] by [node:author]\r\n[node:summary]"
+  title: '[current-page:title] | [site:name]'

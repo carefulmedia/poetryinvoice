@@ -9,12 +9,15 @@ dependencies:
     - field.field.node.journal_poem.field_banner_title
     - field.field.node.journal_poem.field_email1
     - field.field.node.journal_poem.field_grade
+    - field.field.node.journal_poem.field_i_am_submitting_in_a_secon
     - field.field.node.journal_poem.field_i_consent_to_poetry_in_voi
+    - field.field.node.journal_poem.field_i_identify_as_indigenous
     - field.field.node.journal_poem.field_i_would_like_to_be_conside
     - field.field.node.journal_poem.field_images_insert
     - field.field.node.journal_poem.field_journal_poem_body
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
+    - field.field.node.journal_poem.field_other
     - field.field.node.journal_poem.field_phone
     - field.field.node.journal_poem.field_poem_attachment
     - field.field.node.journal_poem.field_poem_being_responded_to
@@ -29,6 +32,7 @@ dependencies:
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
     - field.field.node.journal_poem.field_teacher
+    - field.field.node.journal_poem.field_what_is_your_gender_identi
     - field.field.node.journal_poem.field_writing_prompt
     - field.field.node.journal_poem.piv_teacher_first_name
     - field.field.node.journal_poem.piv_teacher_last_name
@@ -56,19 +60,19 @@ mode: default
 content:
   created:
     type: datetime_timestamp
-    weight: 27
+    weight: 28
     region: content
     settings: {  }
     third_party_settings: {  }
   field_acceptance_level:
     type: options_select
-    weight: 20
+    weight: 21
     region: content
     settings: {  }
     third_party_settings: {  }
   field_banner_subtitle:
     type: text_textarea
-    weight: 23
+    weight: 24
     region: content
     settings:
       rows: 5
@@ -76,7 +80,7 @@ content:
     third_party_settings: {  }
   field_banner_title:
     type: string_textfield
-    weight: 24
+    weight: 25
     region: content
     settings:
       size: 60
@@ -92,27 +96,41 @@ content:
     third_party_settings: {  }
   field_grade:
     type: options_select
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_i_am_submitting_in_a_secon:
+    type: boolean_checkbox
+    weight: 45
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_i_consent_to_poetry_in_voi:
     type: boolean_checkbox
-    weight: 19
+    weight: 20
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_i_identify_as_indigenous:
+    type: boolean_checkbox
+    weight: 44
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_i_would_like_to_be_conside:
     type: boolean_checkbox
-    weight: 36
+    weight: 37
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_images_insert:
     type: image_image
-    weight: 25
+    weight: 26
     region: content
     settings:
       progress_indicator: throbber
@@ -120,7 +138,7 @@ content:
     third_party_settings: {  }
   field_journal_poem_body:
     type: text_textarea
-    weight: 16
+    weight: 17
     region: content
     settings:
       rows: 5
@@ -158,9 +176,40 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
+  field_other:
+    type: string_textfield
+    weight: 43
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        9d4d14a5-fcb2-47d5-b2ec-b4cadd16852d:
+          entity_type: node
+          bundle: journal_poem
+          dependee: field_what_is_your_gender_identi
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: other
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_phone:
     type: string_textfield
-    weight: 11
+    weight: 12
     region: content
     settings:
       size: 60
@@ -168,7 +217,7 @@ content:
     third_party_settings: {  }
   field_poem_attachment:
     type: file_generic
-    weight: 17
+    weight: 18
     region: content
     settings:
       progress_indicator: throbber
@@ -207,7 +256,7 @@ content:
             selector: ''
   field_poem_reason:
     type: text_textarea
-    weight: 18
+    weight: 19
     region: content
     settings:
       rows: 5
@@ -275,7 +324,7 @@ content:
     third_party_settings: {  }
   field_school_journal:
     type: entity_reference_autocomplete
-    weight: 14
+    weight: 15
     region: content
     settings:
       match_operator: CONTAINS
@@ -285,21 +334,21 @@ content:
     third_party_settings: {  }
   field_selected_for_futureverse:
     type: boolean_checkbox
-    weight: 38
+    weight: 39
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_shortlisted_for_futurevers:
     type: boolean_checkbox
-    weight: 37
+    weight: 38
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_student_bio:
     type: text_textarea
-    weight: 39
+    weight: 40
     region: content
     settings:
       rows: 5
@@ -307,7 +356,7 @@ content:
     third_party_settings: {  }
   field_student_photo:
     type: image_focal_point
-    weight: 22
+    weight: 23
     region: content
     settings:
       progress_indicator: throbber
@@ -317,18 +366,24 @@ content:
     third_party_settings: {  }
   field_submission_info_confirmed:
     type: boolean_checkbox
-    weight: 21
+    weight: 22
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_teacher:
     type: string_textfield
-    weight: 13
+    weight: 14
     region: content
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_what_is_your_gender_identi:
+    type: options_select
+    weight: 42
+    region: content
+    settings: {  }
     third_party_settings: {  }
   field_writing_prompt:
     type: entity_reference_autocomplete
@@ -371,7 +426,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 33
+    weight: 34
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -393,47 +448,57 @@ content:
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 29
+    weight: 30
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 31
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 41
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 34
+    weight: 35
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 32
+    weight: 33
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: 15
+    weight: 16
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 28
+    weight: 29
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 26
+    weight: 27
     region: content
     settings:
       match_operator: CONTAINS
@@ -443,12 +508,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 31
+    weight: 32
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 35
+    weight: 36
     region: content
     settings: {  }
     third_party_settings: {  }

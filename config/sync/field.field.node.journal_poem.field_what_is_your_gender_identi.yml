@@ -1,0 +1,21 @@
+uuid: 17d842f4-2601-4fa0-9805-9bb448ead96b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_what_is_your_gender_identi
+    - node.type.journal_poem
+  module:
+    - options
+id: node.journal_poem.field_what_is_your_gender_identi
+field_name: field_what_is_your_gender_identi
+entity_type: node
+bundle: journal_poem
+label: 'What is your gender identity?'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

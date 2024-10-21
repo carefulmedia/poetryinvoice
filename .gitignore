@@ -55,6 +55,7 @@ development.services.yml
 
 dump
 node_modules
+*--dump.sql
 
 # Roulette
 /web/roulette/cached/data/*.json

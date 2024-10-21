@@ -80,35 +80,36 @@ class CreateAccountForm extends FormBase {
       '#type' => 'email',
       '#title' => $this->t('Email address'),
       '#required' => TRUE,
-      '#weight' => 1,
+      '#weight' => 2,
     ];
     $form['first_name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('First name'),
       '#required' => TRUE,
-      '#weight' => 2,
+      '#weight' => 3,
     ];
     $form['last_name'] = [
       '#type' => 'textfield',
       '#title' => $this->t('Last name'),
       '#required' => TRUE,
-      '#weight' => 3,
+      '#weight' => 4,
     ];
     $form['pass'] = [
       '#type' => 'password_confirm',
       '#size' => 25,
-      '#weight' => 4,
+      '#weight' => 5,
       '#required' => TRUE,
     ];
     $form['account_type'] = [
       '#type' => 'radios',
       '#required' => TRUE,
+      '#description' => t('IMPORTANT: Students should <strong>NOT</strong> create accounts!'),   
       '#title' => $this->t('Account type'),
       '#options' => [
         // @phpcs:ignore
         // 'poet' => $this->t('I am a Canadian poet and would like to join the Poet Network'),
-        'teacher' => $this->t('I work at a Canadian school'),
-        'teacher_not_affiliated' => $this->t('I am in Canada but am not affiliated with a school'),
+        'teacher' => $this->t('I am an educator at a Canadian school'),
+        'teacher_not_affiliated' => $this->t('I am an educator in Canada but am not affiliated with a school'),
         'non_canadian' => $this->t('I work outside of Canada'),
       ],
       '#ajax' => [
@@ -117,7 +118,7 @@ class CreateAccountForm extends FormBase {
         'method' => 'replace',
         'effect' => 'fade',
       ],
-      '#weight' => 5,
+      '#weight' => 1,
     ];
 
     $account_type = $form_state->getValue('account_type') ?? NULL;

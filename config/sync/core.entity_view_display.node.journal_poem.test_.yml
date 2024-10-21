@@ -10,12 +10,15 @@ dependencies:
     - field.field.node.journal_poem.field_banner_title
     - field.field.node.journal_poem.field_email1
     - field.field.node.journal_poem.field_grade
+    - field.field.node.journal_poem.field_i_am_submitting_in_a_secon
     - field.field.node.journal_poem.field_i_consent_to_poetry_in_voi
+    - field.field.node.journal_poem.field_i_identify_as_indigenous
     - field.field.node.journal_poem.field_i_would_like_to_be_conside
     - field.field.node.journal_poem.field_images_insert
     - field.field.node.journal_poem.field_journal_poem_body
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
+    - field.field.node.journal_poem.field_other
     - field.field.node.journal_poem.field_phone
     - field.field.node.journal_poem.field_poem_attachment
     - field.field.node.journal_poem.field_poem_being_responded_to
@@ -30,6 +33,7 @@ dependencies:
     - field.field.node.journal_poem.field_student_photo
     - field.field.node.journal_poem.field_submission_info_confirmed
     - field.field.node.journal_poem.field_teacher
+    - field.field.node.journal_poem.field_what_is_your_gender_identi
     - field.field.node.journal_poem.field_writing_prompt
     - field.field.node.journal_poem.piv_teacher_first_name
     - field.field.node.journal_poem.piv_teacher_last_name
@@ -140,11 +144,14 @@ hidden:
   field_acceptance_level: true
   field_email1: true
   field_grade: true
+  field_i_am_submitting_in_a_secon: true
   field_i_consent_to_poetry_in_voi: true
+  field_i_identify_as_indigenous: true
   field_i_would_like_to_be_conside: true
   field_journal_poem_body: true
   field_legal_name: true
   field_legal_name_boolean: true
+  field_other: true
   field_phone: true
   field_poem_attachment: true
   field_poem_being_responded_to: true
@@ -159,6 +166,7 @@ hidden:
   field_student_photo: true
   field_submission_info_confirmed: true
   field_teacher: true
+  field_what_is_your_gender_identi: true
   field_writing_prompt: true
   langcode: true
   links: true

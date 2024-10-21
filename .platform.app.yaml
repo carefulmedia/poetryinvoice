@@ -28,6 +28,10 @@ variables:
         assert.active: "off"
         max_execution_time: 30
 
+resources:
+    base_memory: 512
+    memory_ratio: 512
+
 # The size of the persistent disk of the application (in MB).
 disk: 1024
 
@@ -167,7 +171,7 @@ web:
 crons:
     # Run Drupal's cron tasks every 19 minutes.
     drupal:
-        spec: '*/19 * * * *'
+        spec: '0 0 * * *'
         cmd: 'cd web ; drush core-cron'
     backup:
         spec: '0 5 * * *'
@@ -176,3 +180,8 @@ crons:
                 if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
                    platform backup:create --yes
                 fi
+     # Run roulette every hour at minute 0
+    roulette:
+        spec: '0 0 * * 0'
+        cmd: 'cd web/roulette/cached ; bash generate-cache.sh'
+

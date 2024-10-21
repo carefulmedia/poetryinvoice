@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.video.field_pod_date
     - field.field.node.video.field_poem_retired
     - field.field.node.video.field_poets_plural_user
+    - field.field.node.video.field_related_content
     - field.field.node.video.field_type_of_video
     - field.field.node.video.field_video
     - field.field.node.video.field_video_caption
@@ -135,6 +136,22 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 6
             additional: {  }
+          8b4d6815-a124-40e0-90ed-cef9dfb0b7e4:
+            uuid: 8b4d6815-a124-40e0-90ed-cef9dfb0b7e4
+            region: content
+            configuration:
+              id: 'field_block:node:video:field_related_content'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 7
+            additional: {  }
         third_party_settings: {  }
 id: node.video.default
 targetEntityType: node
@@ -170,6 +187,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 15
+    region: content
+  field_related_content:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 8
     region: content
   field_video:
     type: media_thumbnail

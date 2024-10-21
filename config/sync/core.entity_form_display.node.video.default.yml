@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.video.field_pod_date
     - field.field.node.video.field_poem_retired
     - field.field.node.video.field_poets_plural_user
+    - field.field.node.video.field_related_content
     - field.field.node.video.field_type_of_video
     - field.field.node.video.field_video
     - field.field.node.video.field_video_caption
@@ -91,6 +92,16 @@ content:
   field_poets_plural_user:
     type: entity_reference_autocomplete
     weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_related_content:
+    type: entity_reference_autocomplete
+    weight: 26
     region: content
     settings:
       match_operator: CONTAINS

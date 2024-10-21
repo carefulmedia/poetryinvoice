@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.video.field_pod_date
     - field.field.node.video.field_poem_retired
     - field.field.node.video.field_poets_plural_user
+    - field.field.node.video.field_related_content
     - field.field.node.video.field_type_of_video
     - field.field.node.video.field_video
     - field.field.node.video.field_video_caption
@@ -20,27 +21,41 @@ dependencies:
     - field.field.node.video.layout_builder__layout
     - node.type.video
   module:
-    - text
+    - layout_builder
+    - layout_builder_restrictions
+    - media
     - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
 id: node.video.teaser
 targetEntityType: node
 bundle: video
 mode: teaser
 content:
-  body:
-    type: text_summary_or_trimmed
+  field_video:
+    type: media_thumbnail
     label: hidden
     settings:
-      trim_length: 600
+      image_link: content
+      image_style: ''
+      image_loading:
+        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: content
-  links:
-    settings: {  }
-    third_party_settings: {  }
-    weight: 100
-    region: content
 hidden:
+  body: true
   comment_node_video: true
   entity_print_view_epub: true
   entity_print_view_pdf: true
@@ -51,11 +66,12 @@ hidden:
   field_pod_date: true
   field_poem_retired: true
   field_poets_plural_user: true
+  field_related_content: true
   field_type_of_video: true
-  field_video: true
   field_video_caption: true
   field_video_poem: true
   field_years_in_competition: true
   langcode: true
   layout_builder__layout: true
+  links: true
   search_api_excerpt: true
