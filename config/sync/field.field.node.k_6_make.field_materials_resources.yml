@@ -1,0 +1,22 @@
+uuid: 791a272b-ab41-4b03-ac98-9b6d8d153457
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_materials_resources
+    - node.type.k_6_make
+  module:
+    - text
+id: node.k_6_make.field_materials_resources
+field_name: field_materials_resources
+entity_type: node
+bundle: k_6_make
+label: 'Materials and Resources'
+description: 'Please list, in point form, the materials and resources required, including printouts if available.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

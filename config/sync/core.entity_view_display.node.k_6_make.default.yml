@@ -1,0 +1,72 @@
+uuid: 4e4eb2e9-afa6-47ee-8773-f68ec9288c49
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.k_6_make.body
+    - field.field.node.k_6_make.field_grades
+    - field.field.node.k_6_make.field_materials_resources
+    - field.field.node.k_6_make.field_poems
+    - field.field.node.k_6_make.field_video
+    - node.type.k_6_make
+  module:
+    - media
+    - options
+    - text
+    - user
+id: node.k_6_make.default
+targetEntityType: node
+bundle: k_6_make
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_grades:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_materials_resources:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_poems:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_video:
+    type: media_thumbnail
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  search_api_excerpt: true
