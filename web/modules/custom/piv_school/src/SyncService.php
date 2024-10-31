@@ -122,6 +122,7 @@ class SyncService {
       'type' => 'school',
       'langcode' => 'en',
       'uid' => 1,
+      'field_allow_poet_visits_school' => 1,
     ]);
   }
 
