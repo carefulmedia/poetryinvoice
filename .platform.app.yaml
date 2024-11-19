@@ -33,7 +33,7 @@ resources:
     memory_ratio: 512
 
 # The size of the persistent disk of the application (in MB).
-disk: 1024
+disk: 512
 
 # The 'mounts' describe writable, persistent filesystem mounts in the application.
 mounts:
