@@ -5144,14 +5144,16 @@ html:lang(en) #sondage {
 .elementary #main {
   margin-top: 1rem;
 }
-.elementary.node--type-poem #main {
+.elementary.node--type-poem #main,
+.elementary.node--type-k-6-make #main {
   background: white;
   filter: drop-shadow(0.5rem 0.5rem 0px black);
   border-radius: 2rem;
   padding: 2rem;
   margin-bottom: 3rem;
 }
-.elementary.node--type-poem h1.title {
+.elementary.node--type-poem h1.title,
+.elementary.node--type-k-6-make h1.title {
   margin-top: 2rem;
   text-align: left;
   margin-bottom: 2rem;
@@ -5776,21 +5778,24 @@ html:lang(en) #sondage {
   .elementary .menu--k-6-en-teachers-menu li {
     padding: 0 0 0.25rem 0;
   }
-  .elementary.node--type-poem #main {
+  .elementary.node--type-poem #main,
+  .elementary.node--type-k-6-make #main {
     background: white;
     filter: drop-shadow(0.25rem 0.25rem 0px black);
     border-radius: 2rem;
     padding: 1rem;
     margin-bottom: 3rem;
   }
-  .elementary.node--type-poem h1.title {
+  .elementary.node--type-poem h1.title,
+  .elementary.node--type-k-6-make h1.title {
     margin-top: 2rem;
     text-align: left;
     margin-bottom: 2rem;
     line-height: 3rem;
     font-size: 3rem;
   }
-  .elementary.node--type-poem h3 {
+  .elementary.node--type-poem h3,
+  .elementary.node--type-k-6-make h3 {
     font-size: 1.5rem;
   }
   .elementary .print-icon {

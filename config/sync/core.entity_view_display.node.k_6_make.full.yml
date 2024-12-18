@@ -11,9 +11,98 @@ dependencies:
     - field.field.node.k_6_make.field_video
     - node.type.k_6_make
   module:
+    - layout_builder
+    - layout_discovery
     - options
     - text
     - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          05177626-bfd1-4d50-9650-f15c327683d9:
+            uuid: 05177626-bfd1-4d50-9650-f15c327683d9
+            region: content
+            configuration:
+              id: 'extra_field_block:node:k_6_make:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 1
+            additional: {  }
+          ea3ed895-df97-42a1-b42a-632f2217f21e:
+            uuid: ea3ed895-df97-42a1-b42a-632f2217f21e
+            region: content
+            configuration:
+              id: 'field_block:node:k_6_make:field_materials_resources'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          eca406d5-5164-4009-ab18-84703de43c75:
+            uuid: eca406d5-5164-4009-ab18-84703de43c75
+            region: content
+            configuration:
+              id: 'field_block:node:k_6_make:field_poems'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          0127028f-8b50-4f89-816b-b5c1223adda2:
+            uuid: 0127028f-8b50-4f89-816b-b5c1223adda2
+            region: content
+            configuration:
+              id: 'field_block:node:k_6_make:field_video'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: full
+                  link: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          1262c65b-6534-44ab-9041-6ff3d92910fd:
+            uuid: 1262c65b-6534-44ab-9041-6ff3d92910fd
+            region: content
+            configuration:
+              id: 'field_block:node:k_6_make:body'
+              label: Body
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+        third_party_settings: {  }
 id: node.k_6_make.full
 targetEntityType: node
 bundle: k_6_make
