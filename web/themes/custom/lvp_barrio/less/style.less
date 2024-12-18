@@ -1076,12 +1076,16 @@ text-indent: -10000px;
 
 
     }
-    &.read h3 {
+    &.read h3, &.make h3 {
         font-size: 1.25rem;
         line-height: 1.5rem;
     }
     &.read h2 a {
         color: var(--purplek);
+        font-size: 3.5rem;
+    }
+    &.make h2 a {
+        color: var(--orangek);
         font-size: 3.5rem;
     }
     .invert {
@@ -1265,7 +1269,7 @@ text-indent: -10000px;
     .podcast img {
         width: 100%;
     }
-    .view-display-id-block_17 .area-link:hover .content-index {
+    .view-display-id-block_17 .area-link:hover .content-index, .view-display-id-block_19 .area-link:hover .content-index {
         background: var(--purplek) !important;
         height: 100%;
         transition: all .4s ease;

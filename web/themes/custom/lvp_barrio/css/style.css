@@ -5375,12 +5375,17 @@ html:lang(en) #sondage {
   margin-top: 3rem;
   width: fit-content;
 }
-.elementary.read h3 {
+.elementary.read h3,
+.elementary.make h3 {
   font-size: 1.25rem;
   line-height: 1.5rem;
 }
 .elementary.read h2 a {
   color: var(--purplek);
+  font-size: 3.5rem;
+}
+.elementary.make h2 a {
+  color: var(--orangek);
   font-size: 3.5rem;
 }
 .elementary .invert {
@@ -5546,18 +5551,26 @@ html:lang(en) #sondage {
 .elementary .podcast img {
   width: 100%;
 }
-.elementary .view-display-id-block_17 .area-link:hover .content-index {
+.elementary .view-display-id-block_17 .area-link:hover .content-index,
+.elementary .view-display-id-block_19 .area-link:hover .content-index {
   background: var(--purplek) !important;
   height: 100%;
   transition: all 0.4s ease;
 }
 .elementary .view-display-id-block_17 .area-link:hover .content-index h1,
+.elementary .view-display-id-block_19 .area-link:hover .content-index h1,
 .elementary .view-display-id-block_17 .area-link:hover .content-index h2,
+.elementary .view-display-id-block_19 .area-link:hover .content-index h2,
 .elementary .view-display-id-block_17 .area-link:hover .content-index h3,
+.elementary .view-display-id-block_19 .area-link:hover .content-index h3,
 .elementary .view-display-id-block_17 .area-link:hover .content-index h4,
+.elementary .view-display-id-block_19 .area-link:hover .content-index h4,
 .elementary .view-display-id-block_17 .area-link:hover .content-index h5,
+.elementary .view-display-id-block_19 .area-link:hover .content-index h5,
 .elementary .view-display-id-block_17 .area-link:hover .content-index h6,
-.elementary .view-display-id-block_17 .area-link:hover .content-index p {
+.elementary .view-display-id-block_19 .area-link:hover .content-index h6,
+.elementary .view-display-id-block_17 .area-link:hover .content-index p,
+.elementary .view-display-id-block_19 .area-link:hover .content-index p {
   color: var(--plum-dark);
   filter: drop-shadow(0.25rem 0.25rem 0px white);
   transition: all 0.4s ease;
