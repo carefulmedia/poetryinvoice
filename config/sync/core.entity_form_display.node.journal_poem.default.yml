@@ -14,10 +14,12 @@ dependencies:
     - field.field.node.journal_poem.field_i_identify_as_indigenous
     - field.field.node.journal_poem.field_i_would_like_to_be_conside
     - field.field.node.journal_poem.field_images_insert
+    - field.field.node.journal_poem.field_interac_email_or_phone_num
     - field.field.node.journal_poem.field_journal_poem_body
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
     - field.field.node.journal_poem.field_other
+    - field.field.node.journal_poem.field_paid_
     - field.field.node.journal_poem.field_phone
     - field.field.node.journal_poem.field_poem_attachment
     - field.field.node.journal_poem.field_poem_being_responded_to
@@ -40,6 +42,7 @@ dependencies:
     - node.type.journal_poem
   module:
     - conditional_fields
+    - field_group
     - field_layout
     - file
     - focal_point
@@ -53,6 +56,22 @@ third_party_settings:
     id: layout_onecol
     settings:
       label: ''
+  field_group:
+    group_journal_poem_payments:
+      children:
+        - field_interac_email_or_phone_num
+        - field_paid_
+      label: 'Journal poem payments'
+      region: content
+      parent_name: ''
+      weight: 46
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
 id: node.journal_poem.default
 targetEntityType: node
 bundle: journal_poem
@@ -136,6 +155,14 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
+  field_interac_email_or_phone_num:
+    type: string_textfield
+    weight: 22
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_journal_poem_body:
     type: text_textarea
     weight: 17
@@ -207,6 +234,13 @@ content:
               slide:
                 speed: '400'
             selector: ''
+  field_paid_:
+    type: boolean_checkbox
+    weight: 23
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_phone:
     type: string_textfield
     weight: 12

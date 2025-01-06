@@ -15,10 +15,12 @@ dependencies:
     - field.field.node.journal_poem.field_i_identify_as_indigenous
     - field.field.node.journal_poem.field_i_would_like_to_be_conside
     - field.field.node.journal_poem.field_images_insert
+    - field.field.node.journal_poem.field_interac_email_or_phone_num
     - field.field.node.journal_poem.field_journal_poem_body
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
     - field.field.node.journal_poem.field_other
+    - field.field.node.journal_poem.field_paid_
     - field.field.node.journal_poem.field_phone
     - field.field.node.journal_poem.field_poem_attachment
     - field.field.node.journal_poem.field_poem_being_responded_to
@@ -239,6 +241,40 @@ third_party_settings:
                   link_to_entity: false
                 third_party_settings: {  }
             weight: 10
+            additional: {  }
+          97a0c9f1-a755-4e90-98f6-bc7b72072318:
+            uuid: 97a0c9f1-a755-4e90-98f6-bc7b72072318
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_paid_'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 11
+            additional: {  }
+          24080b09-0906-46ee-adc1-8d261390ba2c:
+            uuid: 24080b09-0906-46ee-adc1-8d261390ba2c
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_interac_email_or_phone_num'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 12
             additional: {  }
         third_party_settings: {  }
       -
@@ -626,6 +662,14 @@ content:
     third_party_settings: {  }
     weight: 107
     region: content
+  field_interac_email_or_phone_num:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 118
+    region: main
   field_journal_poem_body:
     type: text_default
     label: above
@@ -658,6 +702,16 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 116
+    region: main
+  field_paid_:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 117
     region: main
   field_phone:
     type: string

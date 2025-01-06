@@ -1,4 +1,4 @@
-uuid: 913c2d3a-c929-42c0-8361-a6eaca9358b0
+uuid: 42d79348-a0d8-45bc-b168-23a2de949297
 langcode: en
 status: true
 dependencies:
@@ -7,9 +7,9 @@ dependencies:
     - node
 third_party_settings:
   field_permissions:
-    permission_type: private
-id: node.field_email1
-field_name: field_email1
+    permission_type: public
+id: node.field_mixtape_artist_name_for_pu
+field_name: field_mixtape_artist_name_for_pu
 entity_type: node
 type: string
 settings:

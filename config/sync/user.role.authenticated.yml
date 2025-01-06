@@ -25,7 +25,6 @@ permissions:
   - 'access user profiles'
   - 'cancel account'
   - 'create field_attachments'
-  - 'create field_email1'
   - 'create field_journal_poem_body'
   - 'create field_legal_name'
   - 'create field_legal_name_boolean'

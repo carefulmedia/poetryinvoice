@@ -1,0 +1,23 @@
+uuid: 46c541fb-acf4-4c5b-8aa1-29bb0eaa3e59
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mixtape_art_completed
+    - node.type.writing_prompt
+id: node.writing_prompt.field_mixtape_art_completed
+field_name: field_mixtape_art_completed
+entity_type: node
+bundle: writing_prompt
+label: 'Artwork completed?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

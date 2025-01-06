@@ -15,10 +15,12 @@ dependencies:
     - field.field.node.journal_poem.field_i_identify_as_indigenous
     - field.field.node.journal_poem.field_i_would_like_to_be_conside
     - field.field.node.journal_poem.field_images_insert
+    - field.field.node.journal_poem.field_interac_email_or_phone_num
     - field.field.node.journal_poem.field_journal_poem_body
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
     - field.field.node.journal_poem.field_other
+    - field.field.node.journal_poem.field_paid_
     - field.field.node.journal_poem.field_phone
     - field.field.node.journal_poem.field_poem_attachment
     - field.field.node.journal_poem.field_poem_being_responded_to
@@ -148,10 +150,12 @@ hidden:
   field_i_consent_to_poetry_in_voi: true
   field_i_identify_as_indigenous: true
   field_i_would_like_to_be_conside: true
+  field_interac_email_or_phone_num: true
   field_journal_poem_body: true
   field_legal_name: true
   field_legal_name_boolean: true
   field_other: true
+  field_paid_: true
   field_phone: true
   field_poem_attachment: true
   field_poem_being_responded_to: true

@@ -7,7 +7,11 @@ dependencies:
     - field.field.node.mixtape.body
     - field.field.node.mixtape.field_completed
     - field.field.node.mixtape.field_doodles
+    - field.field.node.mixtape.field_interac_email_or_phone_num
     - field.field.node.mixtape.field_liner_notes_pdf_
+    - field.field.node.mixtape.field_mixtape_art_completed
+    - field.field.node.mixtape.field_mixtape_artist_name_for_pu
+    - field.field.node.mixtape.field_mixtape_artwork_paid
     - field.field.node.mixtape.field_mixtape_background_image
     - field.field.node.mixtape.field_mixtape_image
     - field.field.node.mixtape.field_mixtape_media
@@ -42,7 +46,11 @@ hidden:
   entity_print_view_word_docx: true
   field_completed: true
   field_doodles: true
+  field_interac_email_or_phone_num: true
   field_liner_notes_pdf_: true
+  field_mixtape_art_completed: true
+  field_mixtape_artist_name_for_pu: true
+  field_mixtape_artwork_paid: true
   field_mixtape_background_image: true
   field_mixtape_image: true
   field_mixtape_media: true

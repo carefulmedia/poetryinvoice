@@ -6,7 +6,11 @@ dependencies:
     - field.field.node.mixtape.body
     - field.field.node.mixtape.field_completed
     - field.field.node.mixtape.field_doodles
+    - field.field.node.mixtape.field_interac_email_or_phone_num
     - field.field.node.mixtape.field_liner_notes_pdf_
+    - field.field.node.mixtape.field_mixtape_art_completed
+    - field.field.node.mixtape.field_mixtape_artist_name_for_pu
+    - field.field.node.mixtape.field_mixtape_artwork_paid
     - field.field.node.mixtape.field_mixtape_background_image
     - field.field.node.mixtape.field_mixtape_image
     - field.field.node.mixtape.field_mixtape_media
@@ -229,6 +233,74 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 12
             additional: {  }
+          f39cbec8-3476-4aeb-be7d-eb01f2684ed4:
+            uuid: f39cbec8-3476-4aeb-be7d-eb01f2684ed4
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_mixtape_art_completed'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 13
+            additional: {  }
+          3347016f-b66c-4a11-aba0-63a4a02b732e:
+            uuid: 3347016f-b66c-4a11-aba0-63a4a02b732e
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_mixtape_artwork_paid'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 14
+            additional: {  }
+          93647515-7e3f-48c7-8dc8-499b4d6a4f50:
+            uuid: 93647515-7e3f-48c7-8dc8-499b4d6a4f50
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_mixtape_artist_name_for_pu'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 15
+            additional: {  }
+          49616908-dd07-41a3-99c3-1e9186fbf18c:
+            uuid: 49616908-dd07-41a3-99c3-1e9186fbf18c
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_interac_email_or_phone_num'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 16
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -262,6 +334,14 @@ content:
     third_party_settings: {  }
     weight: 7
     region: content
+  field_interac_email_or_phone_num:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
   field_liner_notes_pdf_:
     type: file_default
     label: above
@@ -269,6 +349,34 @@ content:
       use_description_as_link_text: true
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_mixtape_art_completed:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 11
+    region: content
+  field_mixtape_artist_name_for_pu:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 13
+    region: content
+  field_mixtape_artwork_paid:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 12
     region: content
   field_mixtape_background_image:
     type: image

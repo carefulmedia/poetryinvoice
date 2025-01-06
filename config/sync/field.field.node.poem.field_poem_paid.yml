@@ -1,0 +1,23 @@
+uuid: 530f138b-0f90-4b5c-9449-e5dde22b0fd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poem_paid
+    - node.type.poem
+id: node.poem.field_poem_paid
+field_name: field_poem_paid
+entity_type: node
+bundle: poem
+label: 'Poem paid?'
+description: "Select this if the poem does not need paying as well (poem is in public domain or was free for some other reason)\r\nDe-select this if we need to pay again because the rights expired, but only if we are re-newing of course!"
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -10,8 +10,8 @@ id: node.poem.field_poem_rights_contact
 field_name: field_poem_rights_contact
 entity_type: node
 bundle: poem
-label: 'Poem rights contact'
-description: ''
+label: 'Poem rights contact in our system'
+description: "If you don't find the contact by auto-fill, create a new one here: \r\n\r\nhttps://poetryinvoice.ca/node/add/poem_rights_contact\r\n\r\n** BE SURE TO LEAVE ALL POEM RIGHTS CONTACTS UNPUBLISHED **"
 required: false
 translatable: true
 default_value: {  }
@@ -24,4 +24,6 @@ settings:
     sort:
       field: _none
       direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
 field_type: entity_reference

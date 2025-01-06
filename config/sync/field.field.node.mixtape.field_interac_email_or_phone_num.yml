@@ -1,0 +1,19 @@
+uuid: 90a8a0db-942c-4eba-917e-05c2e08aae08
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_interac_email_or_phone_num
+    - node.type.mixtape
+id: node.mixtape.field_interac_email_or_phone_num
+field_name: field_interac_email_or_phone_num
+entity_type: node
+bundle: mixtape
+label: 'Interac email or phone number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

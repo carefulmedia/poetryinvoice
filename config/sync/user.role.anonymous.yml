@@ -28,7 +28,6 @@ permissions:
   - 'create field_canadian_educator_'
   - 'create field_cv'
   - 'create field_dormant_'
-  - 'create field_email1'
   - 'create field_google_calendar_iframe_cod'
   - 'create field_grades'
   - 'create field_journal_poem_body'

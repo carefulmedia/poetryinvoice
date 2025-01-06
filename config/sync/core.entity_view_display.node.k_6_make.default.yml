@@ -4,8 +4,10 @@ status: true
 dependencies:
   config:
     - field.field.node.k_6_make.body
+    - field.field.node.k_6_make.field_completed
     - field.field.node.k_6_make.field_grades
     - field.field.node.k_6_make.field_materials_resources
+    - field.field.node.k_6_make.field_paid_
     - field.field.node.k_6_make.field_poems
     - field.field.node.k_6_make.field_video
     - node.type.k_6_make
@@ -102,6 +104,39 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
+          03536e10-4c05-434f-bd4e-b0e01217754b:
+            uuid: 03536e10-4c05-434f-bd4e-b0e01217754b
+            region: content
+            configuration:
+              id: 'field_block:node:k_6_make:field_completed'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          93280535-33e7-4626-bcfa-9de391410fea:
+            uuid: 93280535-33e7-4626-bcfa-9de391410fea
+            region: content
+            configuration:
+              id: 'field_block:node:k_6_make:field_paid_'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -124,6 +159,13 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
+  field_completed:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
   field_grades:
     type: list_default
     label: above
@@ -137,6 +179,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_paid_:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 105
     region: content
   field_poems:
     type: entity_reference_label

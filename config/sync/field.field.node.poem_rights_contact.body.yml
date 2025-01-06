@@ -12,7 +12,7 @@ field_name: body
 entity_type: node
 bundle: poem_rights_contact
 label: Notes
-description: ''
+description: 'DO NOT PUBLISH POEM RIGHTS CONTACTS!!!'
 required: false
 translatable: true
 default_value: {  }
@@ -20,4 +20,5 @@ default_value_callback: ''
 settings:
   display_summary: false
   required_summary: false
+  allowed_formats: {  }
 field_type: text_with_summary

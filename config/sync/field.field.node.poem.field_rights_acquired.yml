@@ -1,0 +1,23 @@
+uuid: 653b20df-92b9-46e1-a8d9-e2bcdfd56611
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rights_acquired
+    - node.type.poem
+id: node.poem.field_rights_acquired
+field_name: field_rights_acquired
+entity_type: node
+bundle: poem
+label: 'Rights acquired'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

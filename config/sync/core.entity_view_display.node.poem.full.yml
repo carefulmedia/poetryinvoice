@@ -24,11 +24,13 @@ dependencies:
     - field.field.node.poem.field_password_protected
     - field.field.node.poem.field_pdf_of_original_poem
     - field.field.node.poem.field_plain_title
+    - field.field.node.poem.field_poem_paid
     - field.field.node.poem.field_poem_retired
     - field.field.node.poem.field_poem_rights_
     - field.field.node.poem.field_poem_rights_contact
     - field.field.node.poem.field_poem_thems
     - field.field.node.poem.field_poem_title_for_sorting
+    - field.field.node.poem.field_rights_acquired
     - field.field.node.poem.field_rights_and_permissions_pdf
     - field.field.node.poem.field_rights_expiration
     - field.field.node.poem.field_start_here_image
@@ -545,11 +547,13 @@ hidden:
   field_pdf_of_original_poem: true
   field_plain_title: true
   field_poem_author_user: true
+  field_poem_paid: true
   field_poem_retired: true
   field_poem_rights_: true
   field_poem_rights_contact: true
   field_poem_thems: true
   field_poem_title_for_sorting: true
+  field_rights_acquired: true
   field_rights_and_permissions_pdf: true
   field_rights_expiration: true
   field_start_here_image: true

@@ -5,8 +5,10 @@ dependencies:
   config:
     - core.entity_view_mode.node.full
     - field.field.node.k_6_make.body
+    - field.field.node.k_6_make.field_completed
     - field.field.node.k_6_make.field_grades
     - field.field.node.k_6_make.field_materials_resources
+    - field.field.node.k_6_make.field_paid_
     - field.field.node.k_6_make.field_poems
     - field.field.node.k_6_make.field_video
     - node.type.k_6_make
@@ -149,5 +151,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_completed: true
+  field_paid_: true
   langcode: true
   search_api_excerpt: true
