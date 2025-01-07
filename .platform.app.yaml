@@ -49,6 +49,10 @@ mounts:
     '/web/journal':
       source: local
       source_path: 'journal'
+    # /ptest directory
+    '/web/ptest':
+      source: local
+      source_path: 'ptest'
     # Drupal gets its own dedicated tmp directory. The settings.platformsh.php
     # file will automatically configure Drupal to use this directory.
     '/tmp':
@@ -168,6 +172,13 @@ web:
             index:
               - index.html
               - index.htm
+        # /ptest
+        '/ptest':
+            allow: true
+            expires: 5m
+            root: 'web/ptest'
+            index:
+              - index.html
 crons:
     # Run Drupal's cron tasks every 19 minutes.
     drupal:
