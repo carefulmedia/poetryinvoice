@@ -437,3 +437,12 @@ function piv_base_preprocess_block(&$variables) {
     }
   }
 }
+
+/**
+ * Implements hook_preprocess_image().
+ * 
+ * Make sure images are not lazy loaded.
+ */
+function piv_base_preprocess_image(&$variables) {
+  $variables['attributes']['loading'] = 'eager';
+}
