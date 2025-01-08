@@ -44,7 +44,6 @@ dependencies:
     - views.view.user_listing_index_pages
   module:
     - bootstrap_layout_builder
-    - entity_print
     - layout_builder
     - layout_builder_restrictions
     - options
@@ -103,24 +102,6 @@ third_party_settings:
               views_label: ''
               items_per_page: none
             weight: 1
-            additional: {  }
-          6b21f3c8-2f00-4728-8227-1a49ad7bc7dd:
-            uuid: 6b21f3c8-2f00-4728-8227-1a49ad7bc7dd
-            region: blb_region_col_2
-            configuration:
-              id: print_links
-              label: 'Print Links'
-              label_display: '0'
-              provider: entity_print
-              context_mapping:
-                entity: layout_builder.entity
-              pdf_enabled: true
-              pdf_link_text: PRINT
-              epub_enabled: false
-              epub_link_text: 'View EPub'
-              word_docx_enabled: false
-              word_docx_link_text: 'View Word Document'
-            weight: 0
             additional: {  }
         third_party_settings: {  }
       -
