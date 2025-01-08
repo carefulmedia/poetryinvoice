@@ -157,7 +157,16 @@ web:
                 # Provide a longer TTL (2 weeks) for aggregated CSS and JS files.
                 '^/sites/default/files/(css|js)':
                     expires: 2w
-
+        
+        # Assets not managed by s3.
+        '/sites/default/assets':
+            allow: true
+            expires: 5m
+            root: 'web/sites/default/assets'
+            scripts: false
+            rules:
+                '^/sites/default/assets/(css|js)':
+                    expires: 2w
         # Roulette.
         '/roulette/':
             allow: true

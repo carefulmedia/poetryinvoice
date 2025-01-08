@@ -838,10 +838,13 @@ if (getenv('LANDO') == 'ON') {
   $settings['file_private_path'] = '../private';
 }
 
+// Stream wrapper for custom aggregate. CSS and JS.
+$settings['file_assets_path'] = 'sites/default/assets';
+
 if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
   include $app_root . '/' . $site_path . '/settings.platformsh.php';
 }
 
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-  include $app_root . '/' . $site_path . '/settings.local.php';
+  //include $app_root . '/' . $site_path . '/settings.local.php';
 }

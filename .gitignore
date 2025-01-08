@@ -39,6 +39,7 @@ config/sync/google_analytics.settings.yml
 # Drupal
 #
 /web/sites/default/files
+/web/sites/default/assets
 settings.local.php
 services.local.yml
 development.services.yml
