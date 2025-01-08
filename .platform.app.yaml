@@ -166,6 +166,7 @@ web:
         '/sites/default/assets':
             allow: true
             expires: 5m
+            passthru: '/index.php'
             root: 'web/sites/default/assets'
             scripts: false
             rules:
