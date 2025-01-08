@@ -41,6 +41,10 @@ mounts:
     '/web/sites/default/files':
         source: local
         source_path: 'files'
+    # The default Drupal files directory.
+    '/web/sites/default/assets':
+        source: local
+        source_path: 'assets'
     # Roulette cached data.
     '/web/roulette/cached/data':
         source: local
