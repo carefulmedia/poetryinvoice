@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.writing_prompt.comment_node_writing_prompt
     - field.field.node.writing_prompt.field_completed
     - field.field.node.writing_prompt.field_featured_prompt_starting_d
+    - field.field.node.writing_prompt.field_mixtape_art_completed
+    - field.field.node.writing_prompt.field_mixtape_artwork_paid
     - field.field.node.writing_prompt.field_paid_
     - field.field.node.writing_prompt.field_prompt_image
     - field.field.node.writing_prompt.field_prompt_or_exercise
@@ -44,12 +46,12 @@ third_party_settings:
                 settings:
                   image_link: ''
                   image_style: ''
+                  image_loading:
+                    attribute: lazy
                   svg_attributes:
                     width: null
                     height: null
                   svg_render_as_image: true
-                  image_loading:
-                    attribute: lazy
                 third_party_settings: {  }
             weight: 0
             additional: {  }
@@ -100,6 +102,42 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 1
             additional: {  }
+          ac81d844-1f79-474e-95a7-e274dafc6836:
+            uuid: ac81d844-1f79-474e-95a7-e274dafc6836
+            region: content
+            configuration:
+              id: 'field_block:node:writing_prompt:field_mixtape_art_completed'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          6fbef585-d13f-4c21-ab41-b0d99635064b:
+            uuid: 6fbef585-d13f-4c21-ab41-b0d99635064b
+            region: content
+            configuration:
+              id: 'field_block:node:writing_prompt:field_mixtape_artwork_paid'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -131,18 +169,38 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
+  field_mixtape_art_completed:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_mixtape_artwork_paid:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
   field_prompt_image:
     type: image
     label: hidden
     settings:
       image_link: ''
       image_style: ''
+      image_loading:
+        attribute: lazy
       svg_attributes:
         width: null
         height: null
       svg_render_as_image: true
-      image_loading:
-        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: top

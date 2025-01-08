@@ -11,8 +11,8 @@ id: node.poem.field_poem_rights_
 field_name: field_poem_rights_
 entity_type: node
 bundle: poem
-label: 'Poem rights '
-description: ''
+label: 'Poem rights holder'
+description: 'This should only be left blank for poems in the public domain.'
 required: false
 translatable: true
 default_value: {  }

@@ -1,17 +1,18 @@
-uuid: e174c232-ad93-4411-8aa9-c4c2534987c2
+uuid: 408ed812-5713-4383-bc8d-62c32e6806f4
 langcode: en
 status: true
 dependencies:
   config:
-    - node.type.poem_rights_contact
-id: node.poem_rights_contact.status
-field_name: status
+    - field.storage.node.field_paid_
+    - node.type.journal_poem
+id: node.journal_poem.field_paid_
+field_name: field_paid_
 entity_type: node
-bundle: poem_rights_contact
-label: Published
+bundle: journal_poem
+label: 'Paid?'
 description: ''
 required: false
-translatable: true
+translatable: false
 default_value:
   -
     value: 0

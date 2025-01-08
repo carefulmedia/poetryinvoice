@@ -1,18 +1,18 @@
-uuid: e78611ed-2044-411b-9253-7e2429c81e5b
+uuid: b880d953-a4a6-410a-ab5d-98fc903a3c05
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_contact_person
+    - field.storage.node.field_interac_email_or_phone_num
     - node.type.poem_rights_contact
-id: node.poem_rights_contact.field_contact_person
-field_name: field_contact_person
+id: node.poem_rights_contact.field_interac_email_or_phone_num
+field_name: field_interac_email_or_phone_num
 entity_type: node
 bundle: poem_rights_contact
-label: 'Contact person'
+label: 'Interac email or phone number'
 description: 'DO NOT PUBLISH POEM RIGHTS CONTACTS!!!'
 required: false
-translatable: true
+translatable: false
 default_value: {  }
 default_value_callback: ''
 settings: {  }

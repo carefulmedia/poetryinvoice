@@ -12,7 +12,7 @@ field_name: field_type_of_contact
 entity_type: node
 bundle: poem_rights_contact
 label: 'Type of contact'
-description: ''
+description: 'DO NOT PUBLISH POEM RIGHTS CONTACTS!!!'
 required: false
 translatable: true
 default_value: {  }

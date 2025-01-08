@@ -16,11 +16,11 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: 'Held by poet'
-      label: poet
-    -
       value: 'Held by other'
-      label: other
+      label: 'Poem rights contact'
+    -
+      value: 'Held by poet'
+      label: 'Author of the poem'
   allowed_values_function: ''
 module: options
 locked: false

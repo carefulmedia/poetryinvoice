@@ -1,0 +1,23 @@
+uuid: 22c9cbfa-d657-41b4-bb7c-44598c7c9d68
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mixtape_artwork_paid
+    - node.type.writing_prompt
+id: node.writing_prompt.field_mixtape_artwork_paid
+field_name: field_mixtape_artwork_paid
+entity_type: node
+bundle: writing_prompt
+label: 'Artwork Paid?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

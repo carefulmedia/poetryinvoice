@@ -7,7 +7,11 @@ dependencies:
     - field.field.node.mixtape.body
     - field.field.node.mixtape.field_completed
     - field.field.node.mixtape.field_doodles
+    - field.field.node.mixtape.field_interac_email_or_phone_num
     - field.field.node.mixtape.field_liner_notes_pdf_
+    - field.field.node.mixtape.field_mixtape_art_completed
+    - field.field.node.mixtape.field_mixtape_artist_name_for_pu
+    - field.field.node.mixtape.field_mixtape_artwork_paid
     - field.field.node.mixtape.field_mixtape_background_image
     - field.field.node.mixtape.field_mixtape_image
     - field.field.node.mixtape.field_mixtape_media
@@ -64,8 +68,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
+          remove_gutters: '0'
           context_mapping: {  }
-          remove_gutters: 0
         components:
           e71d46e4-af35-4fa7-995b-5aa498132b00:
             uuid: e71d46e4-af35-4fa7-995b-5aa498132b00
@@ -218,12 +222,12 @@ third_party_settings:
                 settings:
                   image_link: ''
                   image_style: ''
+                  image_loading:
+                    attribute: lazy
                   svg_attributes:
                     width: null
                     height: null
                   svg_render_as_image: true
-                  image_loading:
-                    attribute: lazy
                 third_party_settings: {  }
             weight: 5
             additional: {  }
@@ -279,8 +283,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
+          remove_gutters: '0'
           context_mapping: {  }
-          remove_gutters: 0
         components:
           5358b325-4ea0-428c-a27b-7e1850d6209e:
             uuid: 5358b325-4ea0-428c-a27b-7e1850d6209e
@@ -351,12 +355,12 @@ content:
     settings:
       image_link: ''
       image_style: ''
+      image_loading:
+        attribute: lazy
       svg_attributes:
         width: null
         height: null
       svg_render_as_image: true
-      image_loading:
-        attribute: lazy
     third_party_settings: {  }
     weight: 5
     region: content
@@ -397,6 +401,10 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_completed: true
+  field_interac_email_or_phone_num: true
+  field_mixtape_art_completed: true
+  field_mixtape_artist_name_for_pu: true
+  field_mixtape_artwork_paid: true
   field_mixtape_background_image: true
   field_mixtape_image: true
   field_paid_: true

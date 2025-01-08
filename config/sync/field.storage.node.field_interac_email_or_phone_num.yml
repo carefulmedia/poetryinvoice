@@ -1,4 +1,4 @@
-uuid: 913c2d3a-c929-42c0-8361-a6eaca9358b0
+uuid: daa1f7af-8157-40b8-8694-edcac27142dd
 langcode: en
 status: true
 dependencies:
@@ -8,8 +8,8 @@ dependencies:
 third_party_settings:
   field_permissions:
     permission_type: private
-id: node.field_email1
-field_name: field_email1
+id: node.field_interac_email_or_phone_num
+field_name: field_interac_email_or_phone_num
 entity_type: node
 type: string
 settings:

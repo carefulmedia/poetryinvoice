@@ -6,7 +6,11 @@ dependencies:
     - field.field.node.mixtape.body
     - field.field.node.mixtape.field_completed
     - field.field.node.mixtape.field_doodles
+    - field.field.node.mixtape.field_interac_email_or_phone_num
     - field.field.node.mixtape.field_liner_notes_pdf_
+    - field.field.node.mixtape.field_mixtape_art_completed
+    - field.field.node.mixtape.field_mixtape_artist_name_for_pu
+    - field.field.node.mixtape.field_mixtape_artwork_paid
     - field.field.node.mixtape.field_mixtape_background_image
     - field.field.node.mixtape.field_mixtape_image
     - field.field.node.mixtape.field_mixtape_media
@@ -16,19 +20,53 @@ dependencies:
     - image.style.thumbnail
     - node.type.mixtape
   module:
+    - field_group
     - field_layout
     - file
-    - image
     - layout_discovery
     - media_library
     - path
     - scheduler
+    - svg_image
     - text
 third_party_settings:
   field_layout:
     id: layout_onecol
     settings:
       label: ''
+  field_group:
+    group_mixtape_payment:
+      children:
+        - field_completed
+        - field_paid_
+      label: 'Mixtape editor payment'
+      region: content
+      parent_name: ''
+      weight: 17
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_mixtape_artwork_payment:
+      children:
+        - field_mixtape_artist_name_for_pu
+        - field_interac_email_or_phone_num
+        - field_mixtape_art_completed
+        - field_mixtape_artwork_paid
+      label: 'Mixtape Artwork Payment'
+      region: content
+      parent_name: ''
+      weight: 18
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
 id: node.mixtape.default
 targetEntityType: node
 bundle: mixtape
@@ -46,7 +84,7 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 12
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -58,22 +96,52 @@ content:
     third_party_settings: {  }
   field_doodles:
     type: image_image
-    weight: 9
+    weight: 7
     region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
+  field_interac_email_or_phone_num:
+    type: string_textfield
+    weight: 133
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_liner_notes_pdf_:
     type: file_generic
-    weight: 8
+    weight: 6
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
+  field_mixtape_art_completed:
+    type: boolean_checkbox
+    weight: 134
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_mixtape_artist_name_for_pu:
+    type: string_textfield
+    weight: 132
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mixtape_artwork_paid:
+    type: boolean_checkbox
+    weight: 135
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
   field_mixtape_background_image:
     type: image_image
-    weight: 10
+    weight: 8
     region: content
     settings:
       progress_indicator: throbber
@@ -81,7 +149,7 @@ content:
     third_party_settings: {  }
   field_mixtape_image:
     type: image_image
-    weight: 5
+    weight: 3
     region: content
     settings:
       progress_indicator: throbber
@@ -89,7 +157,7 @@ content:
     third_party_settings: {  }
   field_mixtape_media:
     type: media_library_widget
-    weight: 52
+    weight: 16
     region: content
     settings:
       media_types: {  }
@@ -103,7 +171,7 @@ content:
     third_party_settings: {  }
   field_poems:
     type: entity_reference_autocomplete
-    weight: 7
+    weight: 5
     region: content
     settings:
       match_operator: CONTAINS
@@ -113,7 +181,7 @@ content:
     third_party_settings: {  }
   field_recommended_reading:
     type: text_textarea
-    weight: 6
+    weight: 4
     region: content
     settings:
       rows: 5
@@ -128,33 +196,43 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 15
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 13
+    weight: 12
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 22
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 16
+    weight: 15
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 14
+    weight: 13
     region: content
     settings:
       display_label: true
@@ -169,7 +247,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 11
+    weight: 10
     region: content
     settings:
       match_operator: CONTAINS
@@ -179,12 +257,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 20
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 21
     region: content
     settings: {  }
     third_party_settings: {  }

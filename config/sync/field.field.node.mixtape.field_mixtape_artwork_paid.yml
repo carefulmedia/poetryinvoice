@@ -1,0 +1,23 @@
+uuid: b702c4d5-62a9-4893-b87f-25ae5524110f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mixtape_artwork_paid
+    - node.type.mixtape
+id: node.mixtape.field_mixtape_artwork_paid
+field_name: field_mixtape_artwork_paid
+entity_type: node
+bundle: mixtape
+label: 'Mixtape Artwork Paid?'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

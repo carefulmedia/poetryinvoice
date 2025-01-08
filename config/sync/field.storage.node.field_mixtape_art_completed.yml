@@ -1,4 +1,4 @@
-uuid: 913c2d3a-c929-42c0-8361-a6eaca9358b0
+uuid: 63714ca2-6ca5-4016-a7e9-212e21ac5a02
 langcode: en
 status: true
 dependencies:
@@ -8,14 +8,11 @@ dependencies:
 third_party_settings:
   field_permissions:
     permission_type: private
-id: node.field_email1
-field_name: field_email1
+id: node.field_mixtape_art_completed
+field_name: field_mixtape_art_completed
 entity_type: node
-type: string
-settings:
-  max_length: 255
-  case_sensitive: false
-  is_ascii: false
+type: boolean
+settings: {  }
 module: core
 locked: false
 cardinality: 1

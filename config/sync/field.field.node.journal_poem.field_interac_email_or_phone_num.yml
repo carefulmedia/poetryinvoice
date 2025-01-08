@@ -1,0 +1,19 @@
+uuid: fec1eebd-b798-41e9-bcf9-f11183a3526f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_interac_email_or_phone_num
+    - node.type.journal_poem
+id: node.journal_poem.field_interac_email_or_phone_num
+field_name: field_interac_email_or_phone_num
+entity_type: node
+bundle: journal_poem
+label: 'Interac email or phone number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

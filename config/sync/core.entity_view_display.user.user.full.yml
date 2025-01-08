@@ -69,9 +69,11 @@ dependencies:
     - field.field.user.user.user_picture
     - views.view.all_content_authored
     - views.view.content_by_author_poems_on_their_page
+    - views.view.user_listing_index_pages
     - views.view.user_name_on_user_pages
   module:
     - address
+    - bootstrap_layout_builder
     - entity_reference_revisions
     - layout_builder
     - layout_builder_restrictions
@@ -89,16 +91,23 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_3'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
             blb_region_col_3: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
+            blb_region_col_3: {  }
           breakpoints:
             desktop: blb_col_6_3_3
             tablet: blb_col_6_3_3
@@ -116,22 +125,29 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
-          remove_gutters: 0
+          remove_gutters: '0'
+          context_mapping: {  }
         components: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
@@ -145,7 +161,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
-          remove_gutters: 0
+          remove_gutters: '0'
+          context_mapping: {  }
         components:
           38445bbe-2286-4330-a5df-b796fd08fbeb:
             uuid: 38445bbe-2286-4330-a5df-b796fd08fbeb
@@ -218,15 +235,21 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
           breakpoints:
             desktop: blb_col_9_3
             tablet: blb_col_9_3
@@ -240,7 +263,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
-          remove_gutters: 0
+          remove_gutters: '0'
+          context_mapping: {  }
         components:
           d9114d59-0f58-4ba6-b873-71023eaaefd5:
             uuid: d9114d59-0f58-4ba6-b873-71023eaaefd5
@@ -296,7 +320,7 @@ third_party_settings:
                 settings:
                   view_mode: full
                 third_party_settings: {  }
-            weight: 2
+            weight: 5
             additional: {  }
           b8d3eb72-bec0-4985-a0ea-9047b5f090ef:
             uuid: b8d3eb72-bec0-4985-a0ea-9047b5f090ef
@@ -392,20 +416,63 @@ third_party_settings:
             configuration:
               id: 'views_block:all_content_authored-block_1'
               label: ''
-              label_display: visible
+              label_display: '0'
               provider: views
               context_mapping:
                 uid: layout_builder.entity
               views_label: ''
               items_per_page: none
+              exposed: {  }
+            weight: 2
+            additional: {  }
+          00410944-a5c6-452a-ab5b-be918fb7b144:
+            uuid: 00410944-a5c6-452a-ab5b-be918fb7b144
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:content_by_author_poems_on_their_page-block_2'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+              exposed: {  }
             weight: 3
+            additional: {  }
+          58dceb9e-0aa6-4bcb-82eb-67b22dab6584:
+            uuid: 58dceb9e-0aa6-4bcb-82eb-67b22dab6584
+            region: blb_region_col_2
+            configuration:
+              id: 'views_block:content_by_author_poems_on_their_page-block_3'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+              exposed: {  }
+            weight: 4
             additional: {  }
         third_party_settings: {  }
       -
         layout_id: layout_onecol
         layout_settings:
           label: ''
-        components: {  }
+        components:
+          86ae2d45-be97-4aa1-bb92-4bfdc3879977:
+            uuid: 86ae2d45-be97-4aa1-bb92-4bfdc3879977
+            region: content
+            configuration:
+              id: 'views_block:user_listing_index_pages-block_7'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+              exposed: {  }
+            weight: 0
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }

@@ -12,7 +12,7 @@ field_name: comment_node_poem_rights_conta
 entity_type: node
 bundle: poem_rights_contact
 label: Comments
-description: ''
+description: 'DO NOT PUBLISH POEM RIGHTS CONTACTS!!!'
 required: true
 translatable: true
 default_value:

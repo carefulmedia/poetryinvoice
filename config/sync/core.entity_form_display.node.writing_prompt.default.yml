@@ -7,6 +7,8 @@ dependencies:
     - field.field.node.writing_prompt.comment_node_writing_prompt
     - field.field.node.writing_prompt.field_completed
     - field.field.node.writing_prompt.field_featured_prompt_starting_d
+    - field.field.node.writing_prompt.field_mixtape_art_completed
+    - field.field.node.writing_prompt.field_mixtape_artwork_paid
     - field.field.node.writing_prompt.field_paid_
     - field.field.node.writing_prompt.field_prompt_image
     - field.field.node.writing_prompt.field_prompt_or_exercise
@@ -14,6 +16,7 @@ dependencies:
     - node.type.writing_prompt
   module:
     - datetime
+    - field_group
     - field_layout
     - layout_discovery
     - path
@@ -25,6 +28,37 @@ third_party_settings:
     id: layout_onecol
     settings:
       label: ''
+  field_group:
+    group_payment:
+      children:
+        - field_completed
+        - field_paid_
+      label: Payment
+      region: content
+      parent_name: ''
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_artist_payment:
+      children:
+        - field_mixtape_art_completed
+        - field_mixtape_artwork_paid
+      label: 'Artist Payment'
+      region: content
+      parent_name: ''
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
 id: node.writing_prompt.default
 targetEntityType: node
 bundle: writing_prompt
@@ -54,9 +88,23 @@ content:
     third_party_settings: {  }
   field_featured_prompt_starting_d:
     type: datetime_default
-    weight: 52
+    weight: 18
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_mixtape_art_completed:
+    type: boolean_checkbox
+    weight: 134
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_mixtape_artwork_paid:
+    type: boolean_checkbox
+    weight: 135
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_paid_:
     type: boolean_checkbox
@@ -75,7 +123,7 @@ content:
     third_party_settings: {  }
   field_prompt_or_exercise:
     type: options_select
-    weight: 51
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -88,7 +136,7 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 11
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -101,13 +149,23 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 19
     region: content
     settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 12
+    weight: 13
     region: content
     settings:
       display_label: true
@@ -144,12 +202,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }

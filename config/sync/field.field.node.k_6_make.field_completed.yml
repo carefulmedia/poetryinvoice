@@ -1,0 +1,21 @@
+uuid: d616cde7-671d-4217-b718-4d62cabad1f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_completed
+    - node.type.k_6_make
+  module:
+    - options
+id: node.k_6_make.field_completed
+field_name: field_completed
+entity_type: node
+bundle: k_6_make
+label: 'Completed?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -8,6 +8,8 @@ dependencies:
     - field.field.node.writing_prompt.comment_node_writing_prompt
     - field.field.node.writing_prompt.field_completed
     - field.field.node.writing_prompt.field_featured_prompt_starting_d
+    - field.field.node.writing_prompt.field_mixtape_art_completed
+    - field.field.node.writing_prompt.field_mixtape_artwork_paid
     - field.field.node.writing_prompt.field_paid_
     - field.field.node.writing_prompt.field_prompt_image
     - field.field.node.writing_prompt.field_prompt_or_exercise
@@ -45,12 +47,12 @@ third_party_settings:
                 settings:
                   image_link: ''
                   image_style: ''
+                  image_loading:
+                    attribute: lazy
                   svg_attributes:
                     width: null
                     height: null
                   svg_render_as_image: true
-                  image_loading:
-                    attribute: lazy
                 third_party_settings: {  }
             weight: 0
             additional: {  }
@@ -104,12 +106,12 @@ third_party_settings:
                 settings:
                   image_link: ''
                   image_style: ''
+                  image_loading:
+                    attribute: lazy
                   svg_attributes:
                     width: null
                     height: null
                   svg_render_as_image: true
-                  image_loading:
-                    attribute: lazy
                 third_party_settings: {  }
             weight: 2
             additional: {  }
@@ -145,12 +147,12 @@ content:
     settings:
       image_link: ''
       image_style: ''
+      image_loading:
+        attribute: lazy
       svg_attributes:
         width: null
         height: null
       svg_render_as_image: true
-      image_loading:
-        attribute: lazy
     third_party_settings: {  }
     weight: 0
     region: top
@@ -168,6 +170,8 @@ hidden:
   entity_print_view_word_docx: true
   field_completed: true
   field_featured_prompt_starting_d: true
+  field_mixtape_art_completed: true
+  field_mixtape_artwork_paid: true
   field_paid_: true
   langcode: true
   links: true
