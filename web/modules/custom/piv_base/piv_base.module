@@ -446,3 +446,15 @@ function piv_base_preprocess_block(&$variables) {
 function piv_base_preprocess_image(&$variables) {
   $variables['attributes']['loading'] = 'eager';
 }
+
+/**
+ * Implements hook_library_info_alter().
+ */
+function piv_base_library_info_alter(&$libraries, $extension) {
+  if ($extension == 'bootstrap_barrio') {
+    if (isset($libraries['fontawesome'])) {
+      // Unset and load with custom code in the theme html.html.twig.
+      unset($libraries['fontawesome']);
+    }
+  }
+}
