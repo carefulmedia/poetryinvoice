@@ -15,25 +15,18 @@
 #}
 
 {% set attributes = attributes.addClass('site-branding') %}
-
-
-    {% if language == 'en' %}
-        <a class="me-auto" href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="navbar-brand">
-            <img class="header-logo" src = "/themes/custom/lvp_barrio/PIV-logo.svg" alt="{{ 'Home'|t }}" class="img-fluid d-inline-block align-top" />
-        </a>
-    {% else %}
-        <a class="me-auto" href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="navbar-brand">
-            <img class="header-logo"  src = "/themes/custom/lvp_barrio/LVP-logo.svg" alt="{{ 'Home'|t }}" class="img-fluid d-inline-block align-top" />
-        </a>
-    {% endif %}
-
-
-  {% if site_slogan %}
-    <div class="d-inline-block align-top site-name-slogan">
-      {{ site_slogan }}
-    </div>
-  {% endif %}
-
-
-
+{% if language == 'en' %}
+  <a class="me-auto" href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="navbar-brand">
+    <img class="header-logo" width="133" height="67" src="/themes/custom/lvp_barrio/PIV-logo.svg" alt="{{ 'Home'|t }}" class="img-fluid d-inline-block align-top" />
+  </a>
+{% else %}
+  <a class="me-auto" href="{{ path('<front>') }}" title="{{ 'Home'|t }}" rel="home" class="navbar-brand">
+    <img class="header-logo" width="144" height="67" src="/themes/custom/lvp_barrio/LVP-logo.svg" alt="{{ 'Home'|t }}" class="img-fluid d-inline-block align-top" />
+  </a>
+{% endif %}
+{% if site_slogan %}
+<div class="d-inline-block align-top site-name-slogan">
+  {{ site_slogan }}
+</div>
+{% endif %}
 
