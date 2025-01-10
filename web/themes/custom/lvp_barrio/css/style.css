@@ -2477,14 +2477,32 @@ nav.tabs ul {
 .path-user .field__label {
   font-weight: 700;
 }
+.path-user .block-views-blockall-content-authored-block-1,
+.path-user .block-views-blockcontent-by-author-poems-on-their-page-block-2,
+.path-user .block-views-blockcontent-by-author-poems-on-their-page-block-1 {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  margin-bottom: 4rem;
+}
+.path-user .block-views-blockall-content-authored-block-1 a,
+.path-user .block-views-blockcontent-by-author-poems-on-their-page-block-2 a,
+.path-user .block-views-blockcontent-by-author-poems-on-their-page-block-1 a {
+  color: var(--plum) !important;
+}
+.path-user .block-views-blockall-content-authored-block-1 li,
+.path-user .block-views-blockcontent-by-author-poems-on-their-page-block-2 li,
+.path-user .block-views-blockcontent-by-author-poems-on-their-page-block-1 li {
+  list-style: none;
+}
 .path-user .block-field-blockuseruserfield-micro-interview p {
   font-size: 17px;
   line-height: 30px;
 }
 .path-user .paragraph--type--publications {
-  margin-bottom: 2rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-  padding-bottom: 2rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+}
+.path-user .block-field-blockuseruserfield-publications {
+  margin-top: 30px;
 }
 .path-user .paragraph--type--publications .field__label,
 .path-user .paragraph--type--publications .field__item {
@@ -4556,6 +4574,9 @@ poem-read__later a:active {
 }
 .poem-read__next {
   margin-top: 4rem;
+}
+.block-field-blockuseruserfield-publications {
+  margin-top: 30px;
 }
 .md-bg,
 .dk-bg {
