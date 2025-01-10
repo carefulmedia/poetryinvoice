@@ -42,30 +42,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz@8..144&family=Roboto:wght@400;700;900;1000&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Chewy&family=Matemasie&display=swap" rel="stylesheet">
-    <script type="text/javascript">
-      {% if langcode == 'en' %}</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-M2K65HHJB1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-M2K65HHJB1');
-</script>
-<script  type="text/javascript">
-      {% else %}</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ELSJBZMZJT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-ELSJBZMZJT');
-</script> <script   type="text/javascript">
-      {% endif %}
-    </script>
+    <link href="https://fonts.googleapis.com/css?family=Lora&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chewy&family=Matemasie&display=swap" rel="stylesheet">
+    {# Defer loading fontawesome after dom content loaded. #}
+    <link rel="preload" href="/libraries/fontawesome/all.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="/libraries/fontawesome/all.css"></noscript>
   </head>
   <body{{ attributes.addClass(body_classes) }}>
     <a href="#main-content" class="visually-hidden focusable skip-link">
@@ -75,5 +56,24 @@
     {{ page }}
     {{ page_bottom }}
     <js-bottom-placeholder token="{{ placeholder_token|raw }}">
+    {% if langcode == 'en' %}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-M2K65HHJB1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-M2K65HHJB1');
+    </script>
+    {% else %}
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ELSJBZMZJT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ELSJBZMZJT');
+    </script>
+    {% endif %}
   </body>
 </html>

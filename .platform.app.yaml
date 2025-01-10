@@ -41,6 +41,10 @@ mounts:
     '/web/sites/default/files':
         source: local
         source_path: 'files'
+    # The default Drupal files directory.
+    '/web/sites/default/assets':
+        source: local
+        source_path: 'assets'
     # Roulette cached data.
     '/web/roulette/cached/data':
         source: local
@@ -49,6 +53,10 @@ mounts:
     '/web/journal':
       source: local
       source_path: 'journal'
+    # /ptest directory
+    '/web/ptest':
+      source: local
+      source_path: 'ptest'
     # Drupal gets its own dedicated tmp directory. The settings.platformsh.php
     # file will automatically configure Drupal to use this directory.
     '/tmp':
@@ -153,7 +161,17 @@ web:
                 # Provide a longer TTL (2 weeks) for aggregated CSS and JS files.
                 '^/sites/default/files/(css|js)':
                     expires: 2w
-
+        
+        # Assets not managed by s3.
+        '/sites/default/assets':
+            allow: true
+            expires: 5m
+            passthru: '/index.php'
+            root: 'web/sites/default/assets'
+            scripts: false
+            rules:
+                '^/sites/default/assets/(css|js)':
+                    expires: 2w
         # Roulette.
         '/roulette/':
             allow: true
@@ -168,6 +186,13 @@ web:
             index:
               - index.html
               - index.htm
+        # /ptest
+        '/ptest':
+            allow: true
+            expires: 5m
+            root: 'web/ptest'
+            index:
+              - index.html
 crons:
     # Run Drupal's cron tasks every 19 minutes.
     drupal:
