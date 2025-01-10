@@ -440,11 +440,12 @@ function piv_base_preprocess_block(&$variables) {
 
 /**
  * Implements hook_preprocess_image().
- * 
- * Make sure images are not lazy loaded.
  */
 function piv_base_preprocess_image(&$variables) {
-  $variables['attributes']['loading'] = 'eager';
+  // Slideshow and header images.
+  if ($variables['style_name'] == 'focal_point_2000x800') {
+    $variables['attributes']['loading'] = 'eager';
+  }
 }
 
 /**
