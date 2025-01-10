@@ -2,7 +2,7 @@ _core:
   default_config_hash: VV0HFGFvi0Pou7lakptNvL-oNLy6iIUp5m6b6gf4xos
 credentials_file: ''
 bucket: ''
-region: us-east-1
+region: ca-central-1
 use_cname: false
 domain_root: none
 use_customhost: false
@@ -10,7 +10,7 @@ hostname: ''
 domain: ''
 use_path_style_endpoint: false
 disable_version_sync: false
-cache_control_header: ''
+cache_control_header: 'public, max-age=31536000'
 encryption: ''
 use_https: false
 ignore_cache: false
@@ -28,6 +28,6 @@ cssjs_host: ''
 use_credentials_cache: false
 credentials_cache_dir: ''
 keymodule:
-  access_key_name: ''
   secret_key_name: ''
+  access_key_name: ''
 disable_shared_config_files: false
