@@ -2497,6 +2497,11 @@ nav.tabs ul {
 .path-user .block-views-blockcontent-by-author-poems-on-their-page-block-1 li {
   list-style: none;
 }
+.path-user .block-views-blockall-content-authored-block-1 h2,
+.path-user .block-views-blockcontent-by-author-poems-on-their-page-block-2 h2,
+.path-user .block-views-blockcontent-by-author-poems-on-their-page-block-1 h2 {
+  margin-bottom: 1.5rem;
+}
 .path-user .block-field-blockuseruserfield-micro-interview p {
   font-size: 17px;
   line-height: 30px;
@@ -2519,9 +2524,6 @@ nav.tabs ul {
 }
 .path-user .block-views-blockcontent-by-author-poems-on-their-page-block-1 {
   margin-bottom: 4rem;
-}
-.path-user .block-views-blockcontent-by-author-poems-on-their-page-block-1 .row {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 }
 .path-user .block-field-blockuseruserfield-user-bio {
   border-bottom: 4px dashed rgba(0, 0, 0, 0.4);
