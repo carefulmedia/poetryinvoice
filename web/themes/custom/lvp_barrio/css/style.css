@@ -2346,6 +2346,7 @@ nav.tabs ul {
 .node--view-mode-teaser h2 {
   margin-top: 0;
   padding-top: 0.5em;
+  margin-bottom: 2rem;
 }
 .node--view-mode-teaser h2 a {
   color: #181818;
@@ -2360,6 +2361,9 @@ nav.tabs ul {
   clear: none;
   font-size: 1em;
   line-height: 1.6;
+}
+.node--type-poem .view-footer {
+  display: inline;
 }
 /* Node metadata styles. */
 .node__meta {
@@ -5882,3 +5886,5 @@ html:lang(en) #sondage {
     margin-bottom: 1rem;
   }
 }
+
+/*# sourceMappingURL=maps/style.css.map */
