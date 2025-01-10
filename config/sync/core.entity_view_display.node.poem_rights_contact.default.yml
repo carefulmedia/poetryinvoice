@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.poem_rights_contact.body
     - field.field.node.poem_rights_contact.comment_node_poem_rights_conta
     - field.field.node.poem_rights_contact.field_address
+    - field.field.node.poem_rights_contact.field_banking_information
     - field.field.node.poem_rights_contact.field_contact_person
     - field.field.node.poem_rights_contact.field_email1
     - field.field.node.poem_rights_contact.field_interac_email_or_phone_num
@@ -15,6 +16,7 @@ dependencies:
   module:
     - address
     - comment
+    - file
     - options
     - text
     - user
@@ -45,6 +47,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_banking_information:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 103
     region: content
   field_contact_person:
     type: string

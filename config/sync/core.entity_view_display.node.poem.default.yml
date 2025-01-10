@@ -30,6 +30,7 @@ dependencies:
     - field.field.node.poem.field_poem_thems
     - field.field.node.poem.field_poem_title_for_sorting
     - field.field.node.poem.field_rights_acquired
+    - field.field.node.poem.field_rights_amount
     - field.field.node.poem.field_rights_and_permissions_pdf
     - field.field.node.poem.field_rights_expiration
     - field.field.node.poem.field_start_here_image
@@ -87,6 +88,14 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 103
+    region: content
+  field_rights_amount:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
     region: content
   links:
     settings: {  }

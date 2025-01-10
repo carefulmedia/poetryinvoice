@@ -31,6 +31,7 @@ dependencies:
     - field.field.node.poem.field_poem_thems
     - field.field.node.poem.field_poem_title_for_sorting
     - field.field.node.poem.field_rights_acquired
+    - field.field.node.poem.field_rights_amount
     - field.field.node.poem.field_rights_and_permissions_pdf
     - field.field.node.poem.field_rights_expiration
     - field.field.node.poem.field_start_here_image
@@ -85,6 +86,7 @@ hidden:
   field_poem_thems: true
   field_poem_title_for_sorting: true
   field_rights_acquired: true
+  field_rights_amount: true
   field_rights_and_permissions_pdf: true
   field_rights_expiration: true
   field_start_here_image: true

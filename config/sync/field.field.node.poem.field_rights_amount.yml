@@ -1,0 +1,21 @@
+uuid: 74a93b7c-2e8b-4a13-914e-bacf98c9fe25
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rights_amount
+    - node.type.poem
+id: node.poem.field_rights_amount
+field_name: field_rights_amount
+entity_type: node
+bundle: poem
+label: 'Rights amount'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: $150
+default_value_callback: ''
+settings: {  }
+field_type: string
