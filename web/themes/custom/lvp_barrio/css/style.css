@@ -1863,6 +1863,9 @@ h3.name {
 .view-home-page-slider-fca .views-view-grid .row {
   justify-content: center!important;
 }
+.view-home-page-slider-fca .views-view-grid.row {
+  justify-content: center!important;
+}
 .view-home-page-slider-fca .button {
   float: right;
   margin: 10px;
@@ -5861,3 +5864,5 @@ html:lang(en) #sondage {
     margin-bottom: 1rem;
   }
 }
+
+/*# sourceMappingURL=maps/style.css.map */
