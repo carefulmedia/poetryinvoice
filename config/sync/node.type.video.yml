@@ -13,7 +13,7 @@ third_party_settings:
 name: Video
 type: video
 description: Video
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

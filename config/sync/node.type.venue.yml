@@ -12,7 +12,7 @@ third_party_settings:
 name: Venue
 type: venue
 description: 'This is a Venue content type that can be used for competitions. DO NOT create a Venue if the competition will be in a school. Create and School instead.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

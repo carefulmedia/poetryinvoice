@@ -12,7 +12,7 @@ third_party_settings:
 name: 'Power Points'
 type: power_points
 description: 'Upload all PP presentations here'
-help: ''
+help: null
 new_revision: false
 preview_mode: 1
 display_submitted: true

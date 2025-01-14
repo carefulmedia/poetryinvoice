@@ -7,3 +7,4 @@ chunk: 50
 dependencies:
   config:
     - node.type.team_regionals_entry
+new_content_behavior: 1

@@ -5,7 +5,7 @@ dependencies: {  }
 name: 'Competition session'
 type: competition_session
 description: 'A node type that glues together some competition entries for judging.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: true

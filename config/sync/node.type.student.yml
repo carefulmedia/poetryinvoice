@@ -5,7 +5,7 @@ dependencies: {  }
 name: Student
 type: student
 description: 'A student node type.'
-help: ''
+help: null
 new_revision: false
 preview_mode: 1
 display_submitted: true
