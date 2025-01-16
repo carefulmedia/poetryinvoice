@@ -12,3 +12,9 @@ effects:
     data:
       width: 1280
       height: 720
+  e2e2a980-b59c-4de8-80ef-6e7c2045b3c8:
+    uuid: e2e2a980-b59c-4de8-80ef-6e7c2045b3c8
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

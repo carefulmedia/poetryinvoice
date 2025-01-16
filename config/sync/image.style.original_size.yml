@@ -4,4 +4,10 @@ status: true
 dependencies: {  }
 name: original_size
 label: original_size
-effects: {  }
+effects:
+  99c4ae71-defe-4191-9bf2-8320675fb47d:
+    uuid: 99c4ae71-defe-4191-9bf2-8320675fb47d
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

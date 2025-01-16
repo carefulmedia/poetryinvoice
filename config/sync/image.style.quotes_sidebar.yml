@@ -12,3 +12,9 @@ effects:
     data:
       width: 60
       height: 60
+  0335cfae-eb95-4286-96cf-48c7e3361c60:
+    uuid: 0335cfae-eb95-4286-96cf-48c7e3361c60
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

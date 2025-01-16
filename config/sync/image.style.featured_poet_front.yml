@@ -12,3 +12,9 @@ effects:
     data:
       width: 98
       height: 80
+  9cfc338a-2cab-42ae-892a-013a660ff8a1:
+    uuid: 9cfc338a-2cab-42ae-892a-013a660ff8a1
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp
