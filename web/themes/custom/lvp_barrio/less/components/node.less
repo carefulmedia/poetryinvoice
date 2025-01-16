@@ -7,7 +7,9 @@
   font-size: 1.071em;
   margin-top: 10px;
 }
-
+.elementary .block-views-blockcontent-type-index-pages-block-20 {
+  display: none;
+}
 /* View mode teaser styles. */
 .node--view-mode-teaser {
   border-bottom: 1px solid #d3d7d9;
@@ -17,6 +19,7 @@
 .node--view-mode-teaser h2 {
   margin-top: 0;
   padding-top: 0.5em;
+  margin-bottom: 2rem;
 }
 .node--view-mode-teaser h2 a {
   color: #181818;
@@ -31,6 +34,9 @@
   clear: none;
   font-size: 1em;
   line-height: 1.6;
+}
+.node--type-poem .view-footer {
+  display: inline;
 }
 
 /* Node metadata styles. */
@@ -134,16 +140,32 @@
     .field__label {
     font-weight: 700;    
     }
+    .block-views-blockall-content-authored-block-1, .block-views-blockcontent-by-author-poems-on-their-page-block-2, .block-views-blockcontent-by-author-poems-on-their-page-block-1  {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+      margin-bottom: 4rem;
+      a {
+        color: var(--plum) !important;      }
+      li {
+        list-style: none;
+      }
+      h2 {
+        margin-bottom: 1.5rem;
+      }
+    }
+
+
     .block-field-blockuseruserfield-micro-interview p {
     font-size: 17px;
     line-height: 30px;        
     }
     .paragraph--type--publications {
-    margin-bottom: 2rem;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    padding-bottom: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
 
     }
+    .block-field-blockuseruserfield-publications {
+      margin-top: 30px;
+  } 
     .paragraph--type--publications .field__label, .paragraph--type--publications .field__item {
     display: inline;
     padding-left: 0 !important;
@@ -154,9 +176,7 @@
     .block-views-blockcontent-by-author-poems-on-their-page-block-1 {
     margin-bottom: 4rem;
     }
-    .block-views-blockcontent-by-author-poems-on-their-page-block-1 .row {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
-    }
+
     .block-field-blockuseruserfield-user-bio {
     border-bottom: 4px dashed rgba(0, 0, 0, 0.4);
     padding-bottom: 4rem;

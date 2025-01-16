@@ -30,6 +30,7 @@ dependencies:
     - field.field.node.poem.field_poem_thems
     - field.field.node.poem.field_poem_title_for_sorting
     - field.field.node.poem.field_rights_acquired
+    - field.field.node.poem.field_rights_amount
     - field.field.node.poem.field_rights_and_permissions_pdf
     - field.field.node.poem.field_rights_expiration
     - field.field.node.poem.field_start_here_image
@@ -62,6 +63,7 @@ third_party_settings:
         - field_rights_acquired
         - field_rights_and_permissions_pdf
         - field_rights_expiration
+        - field_rights_amount
         - field_poem_paid
         - field_password_protected
         - field_canada_restrict
@@ -117,14 +119,14 @@ content:
     third_party_settings: {  }
   field_broadsides_are_allowed:
     type: boolean_checkbox
-    weight: 36
+    weight: 37
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_canada_restrict:
     type: boolean_checkbox
-    weight: 35
+    weight: 36
     region: content
     settings:
       display_label: true
@@ -175,7 +177,7 @@ content:
     third_party_settings: {  }
   field_mobile_apps_are_allowed:
     type: boolean_checkbox
-    weight: 37
+    weight: 38
     region: content
     settings:
       display_label: true
@@ -209,7 +211,7 @@ content:
     third_party_settings: {  }
   field_password_protected:
     type: boolean_checkbox
-    weight: 34
+    weight: 35
     region: content
     settings:
       display_label: true
@@ -223,7 +225,7 @@ content:
     third_party_settings: {  }
   field_poem_paid:
     type: boolean_checkbox
-    weight: 33
+    weight: 34
     region: content
     settings:
       display_label: true
@@ -291,6 +293,14 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_rights_amount:
+    type: string_textfield
+    weight: 33
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_rights_and_permissions_pdf:
     type: file_generic
