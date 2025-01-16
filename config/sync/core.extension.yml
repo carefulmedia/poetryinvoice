@@ -1,12 +1,12 @@
 _core:
   default_config_hash: R4IF-ClDHXxblLcG0L7MgsLvfBIMAvi_skumNFQwkDc
 module:
+  auto_entitylabel: -100
   address: 0
   admin_toolbar: 0
   admin_toolbar_tools: 0
   anchor_link: 0
   aos: 0
-  auto_entitylabel: 0
   automated_cron: 0
   ban: 0
   better_exposed_filters: 0
@@ -59,7 +59,6 @@ module:
   file: 0
   filter: 0
   focal_point: 0
-  form_mode_manager: 0
   form_mode_user_roles_assign: 0
   geocoder: 0
   geocoder_address: 0
@@ -86,6 +85,7 @@ module:
   jquery_ui_touch_punch: 0
   language: 0
   layout_builder: 0
+  layout_builder_expose_all_field_blocks: 0
   layout_builder_restrictions: 0
   layout_builder_restrictions_by_region: 0
   layout_discovery: 0
@@ -196,6 +196,7 @@ module:
   masonry_views: 2
   content_translation: 10
   views: 10
+  form_mode_manager: 11
   paragraphs: 11
   minimal: 1000
 theme:

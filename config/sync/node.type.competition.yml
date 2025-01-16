@@ -12,7 +12,7 @@ third_party_settings:
 name: Competition
 type: competition
 description: 'A date content type that is linked to a Views calendar.'
-help: ''
+help: null
 new_revision: true
 preview_mode: 1
 display_submitted: false

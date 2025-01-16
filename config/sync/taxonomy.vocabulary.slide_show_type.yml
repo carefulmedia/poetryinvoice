@@ -4,5 +4,6 @@ status: true
 dependencies: {  }
 name: 'Slide show type'
 vid: slide_show_type
-description: ''
+description: null
 weight: 0
+new_revision: false
