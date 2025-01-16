@@ -1706,10 +1706,10 @@ h3.name {
   color: var(--plum);
 }
 .page-node-27461 .poets {
-  background-image: url('/themes/custom/lvp_barrio/assets/poet_bg.png') !important;
+  background-image: url('/themes/custom/lvp_barrio/assets/poet_bg.webp') !important;
 }
 .page-node-27461 .quizzes {
-  background-image: url('/themes/custom/lvp_barrio/assets/quiz_bg.png') !important;
+  background-image: url('/themes/custom/lvp_barrio/assets/quiz_bg.webp') !important;
 }
 .page-node-27461 .poets .container,
 .page-node-27461 .quizzes .container {

@@ -1,0 +1,7 @@
+views.field.piv_base_header_images:
+  type: views.field.field
+  label: 'Header Images'
+  mapping:
+    example:
+      type: string
+      label: 'Example'

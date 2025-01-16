@@ -1,0 +1,24 @@
+uuid: 63d329c9-7eac-445c-9fee-9a4bb597e22a
+langcode: en
+status: true
+dependencies:
+  config:
+    - image.style.800x320
+    - image.style.focal_point_2000x800
+  theme:
+    - bootstrap_barrio
+id: 2000x800_responsive
+label: '2000x800 Responsive'
+image_style_mappings:
+  -
+    image_mapping_type: image_style
+    image_mapping: focal_point_2000x800
+    breakpoint_id: bootstrap_barrio.extraextra
+    multiplier: 1x
+  -
+    image_mapping_type: image_style
+    image_mapping: 800x320
+    breakpoint_id: bootstrap_barrio.xs
+    multiplier: 1x
+breakpoint_group: bootstrap_barrio
+fallback_image_style: focal_point_2000x800
