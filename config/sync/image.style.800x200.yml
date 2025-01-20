@@ -1,0 +1,23 @@
+uuid: 8a509775-53e6-48ef-8f44-74384897424d
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: 800x200
+label: 800x200
+effects:
+  a61a7530-6550-4706-bb08-84e57578d890:
+    uuid: a61a7530-6550-4706-bb08-84e57578d890
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 800
+      height: 200
+      crop_type: focal_point
+  cfa6063d-7193-400f-8c1c-169cab3196f6:
+    uuid: cfa6063d-7193-400f-8c1c-169cab3196f6
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp
