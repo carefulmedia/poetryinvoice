@@ -478,12 +478,13 @@ function piv_base_preprocess_views_view_fields__home_page_slider_fca__block_1(&$
 }
 
 /**
- * Implements hook_views_data_alter().
+ * Implemebts hook_theme_suggestions_HOOK_alter().
  */
-function piv_base_views_data_alter(array &$data): void {
-  $data['node']['piv_base_header_images']['field'] = [
-    'title' => t('Header Images'),
-    'help' => t('Custom field that render header images from field_image_insert.'),
-    'id' => 'piv_base_header_images',
-  ];
+function piv_base_theme_suggestions_views_view_fields_alter(array &$suggestions, array $variables) {
+  $view = $variables['view'] ?? NULL;
+  if ($view) {
+    $id = $view->id();
+    $display = $view->current_display;
+    $suggestions[] = "views_view_fields__{$id}__{$display}";
+  }
 }
