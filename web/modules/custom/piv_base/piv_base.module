@@ -497,7 +497,7 @@ function piv_base_preprocess_views_view_fields(&$variables) {
   if ($view && $view->id() == 'header_images_based_on_node_content') {
     $variables['is_empty'] = TRUE;
     $node = $variables['row']?->_entity ?? NULL;
-    if ($node && $node?->field_images_insert?->value) {
+    if ($node && $node?->field_images_insert?->entity) {
       $variables['is_empty'] = FALSE;
     }
   }
