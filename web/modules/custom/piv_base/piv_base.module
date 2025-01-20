@@ -478,7 +478,7 @@ function piv_base_preprocess_views_view_fields__home_page_slider_fca__block_1(&$
 }
 
 /**
- * Implemebts hook_theme_suggestions_HOOK_alter().
+ * Implements hook_theme_suggestions_HOOK_alter().
  */
 function piv_base_theme_suggestions_views_view_fields_alter(array &$suggestions, array $variables) {
   $view = $variables['view'] ?? NULL;
@@ -486,5 +486,19 @@ function piv_base_theme_suggestions_views_view_fields_alter(array &$suggestions,
     $id = $view->id();
     $display = $view->current_display;
     $suggestions[] = "views_view_fields__{$id}__{$display}";
+  }
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter().
+ */
+function piv_base_preprocess_views_view_fields(&$variables) {
+  $view = $variables['view'] ?? NULL;
+  if ($view && $view->id() == 'header_images_based_on_node_content') {
+    $variables['is_empty'] = TRUE;
+    $node = $variables['row']?->_entity ?? NULL;
+    if ($node && $node?->field_images_insert?->value) {
+      $variables['is_empty'] = FALSE;
+    }
   }
 }
