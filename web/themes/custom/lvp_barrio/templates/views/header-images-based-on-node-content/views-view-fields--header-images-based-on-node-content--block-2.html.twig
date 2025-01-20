@@ -1,2 +1,6 @@
-<div class="blur">{{ fields.field_images_insert.content }}</div>
-<div class="no-blur">{{ fields.field_images_insert.content }}</div>
+{% if is_empty %}
+  {{ fields.field_images_insert.content }}
+{% else %}
+  <div class="blur">{{ fields.field_images_insert.content }}</div>
+  <div class="no-blur">{{ fields.field_images_insert.content }}</div>
+{% endif %}
