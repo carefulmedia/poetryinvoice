@@ -5,7 +5,7 @@ dependencies:
   module:
     - focal_point
 name: 800x200
-label: 800x200
+label: 'Focal Point 800x200 Scale and Crop'
 effects:
   a61a7530-6550-4706-bb08-84e57578d890:
     uuid: a61a7530-6550-4706-bb08-84e57578d890
