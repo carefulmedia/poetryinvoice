@@ -26,7 +26,6 @@ permissions:
   - 'delete own journal_poem content'
   - 'edit any journal_poem content'
   - 'edit field_acceptance_level'
-  - 'edit field_email1'
   - 'edit field_poem_attachment'
   - 'edit field_submission_info_confirmed'
   - 'edit own field_acceptance_level'

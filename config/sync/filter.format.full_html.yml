@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - blazy
+    - editor
     - linkit
     - media
     - slick
@@ -28,6 +29,12 @@ filters:
         img: img
         iframe: iframe
       use_data_uri: '0'
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: 0
+    settings: {  }
   filter_align:
     id: filter_align
     provider: filter
@@ -52,7 +59,7 @@ filters:
     status: false
     weight: 1
     settings:
-      allowed_html: '<cite> <dl> <dt> <dd> <a hreflang name class> <blockquote cite> <ul type> <ol type> <img class data-entity-type data-entity-uuid> <table class> <div id class> <iframe allow allowfullscreen frameborder height src title width> <p id> <h1 class>'
+      allowed_html: '<cite> <dl> <dt> <dd> <a hreflang name class> <blockquote cite> <ul type> <ol type> <table class> <div id class> <iframe allow allowfullscreen frameborder height src title width> <p id> <h1 class>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -60,6 +67,12 @@ filters:
     provider: filter
     status: true
     weight: 10
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: 15
     settings: {  }
   filter_url:
     id: filter_url
@@ -96,7 +109,9 @@ filters:
         alt: '0'
         title: '0'
       optionset: default
+      by_delta: null
       layout: ''
+      admin_uri: '/admin/config/content/formats/manage/full_html?ajax_form=1&_wrapper_format=drupal_ajax'
       background: false
       box_caption: ''
       box_caption_custom: ''

@@ -67,7 +67,6 @@ settings:
         - '<blockquote cite>'
         - '<ul type>'
         - '<ol type>'
-        - '<img class data-entity-type data-entity-uuid>'
         - '<table class>'
         - '<div id class>'
         - '<iframe allow allowfullscreen frameborder height src title width>'
@@ -79,7 +78,7 @@ settings:
     media_media:
       allow_view_mode_override: false
 image_upload:
-  status: false
+  status: true
   scheme: public
   directory: inline-images
   max_size: ''
