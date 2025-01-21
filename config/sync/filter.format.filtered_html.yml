@@ -4,6 +4,7 @@ status: true
 dependencies:
   module:
     - blazy
+    - editor
     - linkit
     - media
     - slick
@@ -26,6 +27,12 @@ filters:
         img: img
         iframe: iframe
       use_data_uri: '0'
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: 0
+    settings: {  }
   filter_align:
     id: filter_align
     provider: filter
@@ -50,7 +57,7 @@ filters:
     status: true
     weight: 1
     settings:
-      allowed_html: '<a id target rel class hreflang name href data-entity-type data-entity-uuid data-entity-substitution> <br> <p id class="text-align-left text-align-center text-align-right text-align-justify"> <h1 class> <h2 class="text-align-left text-align-center text-align-right text-align-justify"> <h3 class="text-align-left text-align-center text-align-right text-align-justify"> <h4 class="text-align-left text-align-center text-align-right text-align-justify"> <h5 class="text-align-left text-align-center text-align-right text-align-justify"> <h6 class="text-align-left text-align-center text-align-right text-align-justify"> <cite> <dl> <dt> <dd> <blockquote cite> <ul type> <ol type start> <img class width src alt data-entity-type data-entity-uuid height data-caption data-align> <table class> <div id class> <iframe allow allowfullscreen frameborder height src title width> <strong> <em> <u> <code> <s> <sub> <sup> <li> <hr> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption> <drupal-media data-entity-type data-entity-uuid alt data-caption data-align>'
+      allowed_html: '<a id target rel class hreflang name href data-entity-type data-entity-uuid data-entity-substitution> <br> <p id class="text-align-left text-align-center text-align-right text-align-justify"> <h1 class> <h2 class="text-align-left text-align-center text-align-right text-align-justify"> <h3 class="text-align-left text-align-center text-align-right text-align-justify"> <h4 class="text-align-left text-align-center text-align-right text-align-justify"> <h5 class="text-align-left text-align-center text-align-right text-align-justify"> <h6 class="text-align-left text-align-center text-align-right text-align-justify"> <cite> <dl> <dt> <dd> <blockquote cite> <ul type> <ol type start> <table class> <div id class> <iframe allow allowfullscreen frameborder height src title width> <strong> <em> <u> <code> <s> <sub> <sup> <li> <hr> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption> <img src alt height width data-entity-uuid data-entity-type data-caption data-align> <drupal-media data-entity-type data-entity-uuid alt data-caption data-align>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -58,6 +65,12 @@ filters:
     provider: filter
     status: true
     weight: 10
+    settings: {  }
+  filter_image_lazy_load:
+    id: filter_image_lazy_load
+    provider: filter
+    status: true
+    weight: 15
     settings: {  }
   filter_url:
     id: filter_url
@@ -94,7 +107,9 @@ filters:
         alt: '0'
         title: '0'
       optionset: default
+      by_delta: null
       layout: ''
+      admin_uri: '/admin/config/content/formats/manage/filtered_html?ajax_form=1&_wrapper_format=drupal_ajax'
       background: false
       box_caption: ''
       box_caption_custom: ''
