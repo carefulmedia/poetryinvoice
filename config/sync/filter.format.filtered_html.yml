@@ -15,7 +15,7 @@ filters:
   blazy_filter:
     id: blazy_filter
     provider: blazy
-    status: true
+    status: false
     weight: 3
     settings:
       media_switch: ''
