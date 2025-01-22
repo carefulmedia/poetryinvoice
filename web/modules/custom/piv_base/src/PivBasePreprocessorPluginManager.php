@@ -35,10 +35,19 @@ class PivBasePreprocessorPluginManager extends PreprocessorPluginManager {
         $original_value[$i] = $value['target_id'] ?? '';
       }
     }
-
-    $source_postal = $source_value[0]['postal_code'] ?? NULL;
-    $original_postal = $original_value[0]['postal_code'] ?? NULL;
-    return $source_postal == $original_postal;
+    // Only consider keys that exists in the source, thats because the
+    // original values will have empty values not populated by the
+    // script. No fields accept multiple entries.
+    foreach ($original_value[0] as $key => $value) {
+      if (empty($source_value[0][$key])) {
+        continue;
+      }
+      if (strtolower($source_value[0][$key]) != strtolower($value ?? "")) {
+        return FALSE;
+      }
+    }
+    return TRUE;
   }
 
 }
+
