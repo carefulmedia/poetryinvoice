@@ -1,0 +1,14 @@
+diff --git a/src/FocalPointEffectBase.php b/src/FocalPointEffectBase.php
+index 8b29284..9cac971 100644
+--- a/src/FocalPointEffectBase.php
++++ b/src/FocalPointEffectBase.php
+@@ -198,7 +198,8 @@ abstract class FocalPointEffectBase extends ResizeImageEffect implements Contain
+   public function getCrop(ImageInterface $image): CropInterface {
+     $crop_type = $this->focalPointConfig->get('crop_type');
+ 
+-    if ($crop = Crop::findCrop($image->getSource(), $crop_type)) {
++    $source = str_replace('://./', '://', $image->getSource());
++    if ($crop = Crop::findCrop($source, $crop_type)) {
+       // An existing crop has been found; set the size.
+       $crop->setSize($this->configuration['width'], $this->configuration['height']);
+     }

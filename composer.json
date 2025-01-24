@@ -184,6 +184,11 @@
         }
     },
     "extra": {
+        "patches": {
+            "drupal/focal_point": {
+                "Focal point not working with convert": "patches/focal_point-fixing-focal-point-work-with-convert.patch"
+            }
+        },
         "merge-plugin": {
             "include": [
                 "web/modules/contrib/masonry/composer.libraries.json",
@@ -262,6 +267,6 @@
         ]
     },
     "require-dev": {
-        "kint-php/kint": "^4.1"
+        "kint-php/kint": "^6.0"
     }
 }
