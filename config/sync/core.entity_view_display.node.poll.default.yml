@@ -5,9 +5,11 @@ dependencies:
   config:
     - core.entity_view_display.comment.comment_node_poll.default
     - field.field.node.poll.comment_node_poll
+    - field.field.node.poll.field_metatags
     - node.type.poll
   module:
     - comment
+    - metatag
     - user
 id: node.poll.default
 targetEntityType: node
@@ -22,6 +24,13 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   links:
     settings: {  }

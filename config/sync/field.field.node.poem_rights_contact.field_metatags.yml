@@ -1,0 +1,21 @@
+uuid: 5e2f7991-b30a-4336-8867-da090e421b42
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.poem_rights_contact
+  module:
+    - metatag
+id: node.poem_rights_contact.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: poem_rights_contact
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

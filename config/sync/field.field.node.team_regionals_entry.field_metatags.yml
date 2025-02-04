@@ -1,0 +1,21 @@
+uuid: 1a67a1a4-3699-4f49-8737-7195db5c5ac4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.team_regionals_entry
+  module:
+    - metatag
+id: node.team_regionals_entry.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: team_regionals_entry
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

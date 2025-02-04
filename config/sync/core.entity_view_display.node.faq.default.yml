@@ -7,10 +7,12 @@ dependencies:
     - field.field.node.faq.body
     - field.field.node.faq.comment_node_faq
     - field.field.node.faq.field_fca_image
+    - field.field.node.faq.field_metatags
     - field.field.node.faq.field_subtitle
     - node.type.faq
   module:
     - comment
+    - metatag
     - svg_image
     - text
     - user
@@ -45,6 +47,13 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_subtitle:
     type: string

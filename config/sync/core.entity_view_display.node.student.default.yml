@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_display.comment.comment_node_student.default
     - field.field.node.student.comment_node_student
+    - field.field.node.student.field_metatags
     - field.field.node.student.field_photo
     - field.field.node.student.piv_student_first_name
     - field.field.node.student.piv_student_grade
@@ -14,6 +15,7 @@ dependencies:
     - node.type.student
   module:
     - comment
+    - metatag
     - svg_image
     - user
 id: node.student.default
@@ -29,6 +31,13 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_photo:
     type: image

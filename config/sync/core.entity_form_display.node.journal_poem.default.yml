@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.journal_poem.field_journal_poem_body
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
+    - field.field.node.journal_poem.field_metatags
     - field.field.node.journal_poem.field_other
     - field.field.node.journal_poem.field_paid_
     - field.field.node.journal_poem.field_phone
@@ -47,6 +48,7 @@ dependencies:
     - file
     - focal_point
     - layout_discovery
+    - metatag
     - path
     - scheduler
     - svg_image
@@ -202,6 +204,14 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_other:
     type: string_textfield

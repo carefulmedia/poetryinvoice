@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.press_release.body
     - field.field.node.press_release.comment_node_press_release
     - field.field.node.press_release.field_images_insert
+    - field.field.node.press_release.field_metatags
     - node.type.press_release
   module:
     - text
@@ -35,5 +36,6 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_images_insert: true
+  field_metatags: true
   langcode: true
   search_api_excerpt: true

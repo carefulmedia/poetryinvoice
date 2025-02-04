@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.student.comment_node_student
+    - field.field.node.student.field_metatags
     - field.field.node.student.field_photo
     - field.field.node.student.piv_student_first_name
     - field.field.node.student.piv_student_grade
@@ -29,6 +30,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_metatags: true
   field_photo: true
   langcode: true
   piv_student_first_name: true

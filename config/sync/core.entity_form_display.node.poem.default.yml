@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.poem.field_editor
     - field.field.node.poem.field_epigraph
     - field.field.node.poem.field_grades
+    - field.field.node.poem.field_metatags
     - field.field.node.poem.field_mobile_apps_are_allowed
     - field.field.node.poem.field_moods
     - field.field.node.poem.field_new_theme
@@ -46,6 +47,7 @@ dependencies:
     - field_layout
     - file
     - layout_discovery
+    - metatag
     - path
     - scheduler
     - svg_image
@@ -174,6 +176,14 @@ content:
     weight: 8
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_mobile_apps_are_allowed:
     type: boolean_checkbox

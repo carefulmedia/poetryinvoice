@@ -5,15 +5,18 @@ dependencies:
   config:
     - field.field.node.slideshow_image.body
     - field.field.node.slideshow_image.comment_node_slideshow_image
+    - field.field.node.slideshow_image.field_metatags
     - field.field.node.slideshow_image.field_slideshow_image
     - field.field.node.slideshow_image.field_slideshow_type
     - image.style.thumbnail
     - node.type.slideshow_image
   module:
     - field_layout
-    - image
     - layout_discovery
+    - metatag
     - path
+    - scheduler
+    - svg_image
     - text
 third_party_settings:
   field_layout:
@@ -40,6 +43,14 @@ content:
     weight: 6
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_slideshow_image:
     type: image_image
@@ -82,6 +93,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

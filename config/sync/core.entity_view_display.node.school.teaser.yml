@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.school.field_grades_of_school
     - field.field.node.school.field_job_title
     - field.field.node.school.field_language_school
+    - field.field.node.school.field_metatags
     - field.field.node.school.field_not_competing_this_year
     - field.field.node.school.field_number_of_students
     - field.field.node.school.field_pa
@@ -61,6 +62,7 @@ hidden:
   field_grades_of_school: true
   field_job_title: true
   field_language_school: true
+  field_metatags: true
   field_not_competing_this_year: true
   field_number_of_students: true
   field_pa: true

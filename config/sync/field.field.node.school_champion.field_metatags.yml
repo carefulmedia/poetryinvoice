@@ -1,0 +1,21 @@
+uuid: f1afefe6-d0c0-4f75-ab04-97120b426d45
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.school_champion
+  module:
+    - metatag
+id: node.school_champion.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: school_champion
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

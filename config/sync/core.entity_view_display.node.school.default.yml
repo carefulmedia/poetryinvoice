@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.school.field_grades_of_school
     - field.field.node.school.field_job_title
     - field.field.node.school.field_language_school
+    - field.field.node.school.field_metatags
     - field.field.node.school.field_not_competing_this_year
     - field.field.node.school.field_number_of_students
     - field.field.node.school.field_pa
@@ -35,6 +36,7 @@ dependencies:
     - address
     - comment
     - geolocation
+    - metatag
     - user
 id: node.school.default
 targetEntityType: node
@@ -63,6 +65,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 105
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 106
     region: content
   field_pa:
     type: entity_reference_label

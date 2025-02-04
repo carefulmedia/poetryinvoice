@@ -1,0 +1,21 @@
+uuid: f61a460c-d5d4-4b90-9800-36877e89c8d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.bulletin_board
+  module:
+    - metatag
+id: node.bulletin_board.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: bulletin_board
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

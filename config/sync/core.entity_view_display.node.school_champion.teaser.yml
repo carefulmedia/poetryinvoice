@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.school_champion.body
     - field.field.node.school_champion.comment_node_school_champion
     - field.field.node.school_champion.field_images_insert
+    - field.field.node.school_champion.field_metatags
     - field.field.node.school_champion.field_source
     - field.field.node.school_champion.field_story_link
     - node.type.school_champion
@@ -37,6 +38,7 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_images_insert: true
+  field_metatags: true
   field_source: true
   field_story_link: true
   langcode: true

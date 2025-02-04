@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.writing_prompt.comment_node_writing_prompt
     - field.field.node.writing_prompt.field_completed
     - field.field.node.writing_prompt.field_featured_prompt_starting_d
+    - field.field.node.writing_prompt.field_metatags
     - field.field.node.writing_prompt.field_mixtape_art_completed
     - field.field.node.writing_prompt.field_mixtape_artwork_paid
     - field.field.node.writing_prompt.field_paid_
@@ -18,6 +19,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_discovery
+    - metatag
     - options
     - svg_image
     - text
@@ -138,6 +140,21 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 3
             additional: {  }
+          9f95e6c0-99d1-4b30-84b2-d2e610e6e21e:
+            uuid: 9f95e6c0-99d1-4b30-84b2-d2e610e6e21e
+            region: content
+            configuration:
+              id: 'field_block:node:writing_prompt:field_metatags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: metatag_empty_formatter
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -168,6 +185,13 @@ content:
       format_type: medium
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
     region: content
   field_mixtape_art_completed:
     type: boolean

@@ -8,4 +8,5 @@ id: global
 label: Global
 tags:
   canonical_url: '[current-page:url]'
+  description: 'Poetry In Voice/Les voix de la poésie is a registered charity that wants all Canadians to speak poetry. To achieve this, we are striving to become the essential resource for teaching and learning poetry in Canada — and beyond.  We provide educators with engaging content and experiences, in English and French, to inspire their students to read, recite, and write poetry.'
   title: '[current-page:title] | [site:name]'

@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.event.comment_node_event
     - field.field.node.event.field_address
     - field.field.node.event.field_date
+    - field.field.node.event.field_metatags
     - field.field.node.event.field_piv_event
     - field.field.node.event.field_story_link
     - node.type.event
@@ -39,6 +40,7 @@ hidden:
   entity_print_view_word_docx: true
   field_address: true
   field_date: true
+  field_metatags: true
   field_piv_event: true
   field_story_link: true
   langcode: true

@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.video.field_canada_restrict
     - field.field.node.video.field_competition_school
     - field.field.node.video.field_competition_stream
+    - field.field.node.video.field_metatags
     - field.field.node.video.field_pod_date
     - field.field.node.video.field_poem_retired
     - field.field.node.video.field_poets_plural_user
@@ -63,6 +64,7 @@ hidden:
   field_canada_restrict: true
   field_competition_school: true
   field_competition_stream: true
+  field_metatags: true
   field_pod_date: true
   field_poem_retired: true
   field_poets_plural_user: true

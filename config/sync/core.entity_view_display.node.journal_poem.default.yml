@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.journal_poem.field_journal_poem_body
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
+    - field.field.node.journal_poem.field_metatags
     - field.field.node.journal_poem.field_other
     - field.field.node.journal_poem.field_paid_
     - field.field.node.journal_poem.field_phone
@@ -51,6 +52,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_discovery
+    - metatag
     - options
     - svg_image
     - text
@@ -275,6 +277,21 @@ third_party_settings:
                   link_to_entity: false
                 third_party_settings: {  }
             weight: 12
+            additional: {  }
+          94820ef7-2dc5-42bf-93ef-0e80eb3ec963:
+            uuid: 94820ef7-2dc5-42bf-93ef-0e80eb3ec963
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_metatags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: metatag_empty_formatter
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 13
             additional: {  }
         third_party_settings: {  }
       -
@@ -695,6 +712,13 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 119
+    region: main
   field_other:
     type: string
     label: above

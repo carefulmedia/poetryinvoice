@@ -6,6 +6,7 @@ dependencies:
     - field.field.node.team_regionals_entry.comment_node_team_regionals_en
     - field.field.node.team_regionals_entry.field_contest_association
     - field.field.node.team_regionals_entry.field_language_stream
+    - field.field.node.team_regionals_entry.field_metatags
     - field.field.node.team_regionals_entry.field_place_team_regional
     - field.field.node.team_regionals_entry.field_tr_student
     - node.type.team_regionals_entry
@@ -13,6 +14,7 @@ dependencies:
     - comment
     - field_layout
     - layout_discovery
+    - metatag
     - paragraphs
     - path
     - scheduler
@@ -50,6 +52,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_place_team_regional:
     type: options_select
     weight: 4
@@ -84,6 +94,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

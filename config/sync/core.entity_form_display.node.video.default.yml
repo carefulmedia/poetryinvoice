@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.video.field_canada_restrict
     - field.field.node.video.field_competition_school
     - field.field.node.video.field_competition_stream
+    - field.field.node.video.field_metatags
     - field.field.node.video.field_pod_date
     - field.field.node.video.field_poem_retired
     - field.field.node.video.field_poets_plural_user
@@ -24,6 +25,7 @@ dependencies:
     - field_layout
     - layout_discovery
     - media_library
+    - metatag
     - path
     - scheduler
     - text
@@ -75,6 +77,14 @@ content:
     weight: 12
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_pod_date:
     type: datetime_default

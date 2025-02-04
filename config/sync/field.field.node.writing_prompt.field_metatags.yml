@@ -1,0 +1,21 @@
+uuid: c079dba9-53cf-48ec-95d0-01ad98ff929e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.writing_prompt
+  module:
+    - metatag
+id: node.writing_prompt.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: writing_prompt
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

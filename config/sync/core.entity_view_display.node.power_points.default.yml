@@ -6,11 +6,13 @@ dependencies:
     - core.entity_view_display.comment.comment_node_power_points.default
     - field.field.node.power_points.body
     - field.field.node.power_points.comment_node_power_points
+    - field.field.node.power_points.field_metatags
     - field.field.node.power_points.field_pp_file
     - node.type.power_points
   module:
     - comment
     - file
+    - metatag
     - text
     - user
 id: node.power_points.default
@@ -33,6 +35,13 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_pp_file:
     type: file_default

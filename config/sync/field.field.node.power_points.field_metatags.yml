@@ -1,0 +1,21 @@
+uuid: 38bbc33a-508f-4cbb-a9de-2c0786f96333
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.power_points
+  module:
+    - metatag
+id: node.power_points.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: power_points
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.student.comment_node_student
+    - field.field.node.student.field_metatags
     - field.field.node.student.field_photo
     - field.field.node.student.piv_student_first_name
     - field.field.node.student.piv_student_grade
@@ -14,9 +15,11 @@ dependencies:
     - node.type.student
   module:
     - field_layout
-    - image
     - layout_discovery
+    - metatag
     - path
+    - scheduler
+    - svg_image
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -32,6 +35,14 @@ content:
     weight: 9
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_photo:
     type: image_image
@@ -106,6 +117,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

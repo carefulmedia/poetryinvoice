@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.article.comment
     - field.field.node.article.comment_node_article
     - field.field.node.article.field_image
+    - field.field.node.article.field_metatags
     - field.field.node.article.field_tags
     - field.field.node.article.layout_builder__layout
     - image.style.large
@@ -59,8 +60,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
+          remove_gutters: '0'
           context_mapping: {  }
-          remove_gutters: 0
         components:
           b8958451-ecf4-4151-92c4-7a58e4f70ba1:
             uuid: b8958451-ecf4-4151-92c4-7a58e4f70ba1
@@ -79,12 +80,12 @@ third_party_settings:
                 settings:
                   image_link: ''
                   image_style: ''
+                  image_loading:
+                    attribute: lazy
                   svg_attributes:
                     width: null
                     height: null
                   svg_render_as_image: true
-                  image_loading:
-                    attribute: lazy
                 third_party_settings: {  }
             weight: 0
             additional: {  }
@@ -121,8 +122,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
+          remove_gutters: '0'
           context_mapping: {  }
-          remove_gutters: 0
         components:
           dc162151-5dec-4ab1-b589-1cd5c72756f3:
             uuid: dc162151-5dec-4ab1-b589-1cd5c72756f3
@@ -193,12 +194,12 @@ content:
     settings:
       image_link: ''
       image_style: large
+      image_loading:
+        attribute: lazy
       svg_attributes:
         width: null
         height: null
       svg_render_as_image: true
-      image_loading:
-        attribute: lazy
     third_party_settings: {  }
     weight: 2
     region: content
@@ -219,6 +220,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_metatags: true
   langcode: true
   layout_builder__layout: true
   search_api_excerpt: true

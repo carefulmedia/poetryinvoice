@@ -8,15 +8,18 @@ dependencies:
     - field.field.node.writing_workshop.field_banner_subtitle
     - field.field.node.writing_workshop.field_banner_title
     - field.field.node.writing_workshop.field_images_insert
+    - field.field.node.writing_workshop.field_metatags
     - field.field.node.writing_workshop.field_preface
     - field.field.node.writing_workshop.field_suffix
     - image.style.thumbnail
     - node.type.writing_workshop
   module:
     - field_layout
-    - image
     - layout_discovery
+    - metatag
     - path
+    - scheduler
+    - svg_image
     - text
 third_party_settings:
   field_layout:
@@ -68,6 +71,14 @@ content:
       progress_indicator: throbber
       preview_image_style: thumbnail
     third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_preface:
     type: text_textarea
     weight: 5
@@ -107,6 +118,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

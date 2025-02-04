@@ -6,9 +6,11 @@ dependencies:
     - field.field.node.quiz.body
     - field.field.node.quiz.field_completed
     - field.field.node.quiz.field_image
+    - field.field.node.quiz.field_metatags
     - field.field.node.quiz.field_paid_
     - node.type.quiz
   module:
+    - metatag
     - options
     - text
     - user
@@ -30,6 +32,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_paid_:
     type: boolean

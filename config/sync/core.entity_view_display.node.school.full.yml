@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.school.field_grades_of_school
     - field.field.node.school.field_job_title
     - field.field.node.school.field_language_school
+    - field.field.node.school.field_metatags
     - field.field.node.school.field_not_competing_this_year
     - field.field.node.school.field_number_of_students
     - field.field.node.school.field_pa
@@ -127,12 +128,12 @@ third_party_settings:
                 settings:
                   image_link: ''
                   image_style: ''
+                  image_loading:
+                    attribute: lazy
                   svg_attributes:
                     width: null
                     height: null
                   svg_render_as_image: true
-                  image_loading:
-                    attribute: lazy
                 third_party_settings: {  }
             weight: 4
             additional: {  }
@@ -230,12 +231,12 @@ content:
     settings:
       image_link: ''
       image_style: ''
+      image_loading:
+        attribute: lazy
       svg_attributes:
         width: null
         height: null
       svg_render_as_image: true
-      image_loading:
-        attribute: lazy
     third_party_settings: {  }
     weight: 4
     region: content
@@ -262,6 +263,7 @@ hidden:
   field_do_not_contact_again: true
   field_geolocation: true
   field_job_title: true
+  field_metatags: true
   field_not_competing_this_year: true
   field_pa: true
   field_school_district_type1: true

@@ -6,9 +6,11 @@ dependencies:
     - core.entity_view_display.comment.comment_node_judge_page.default
     - field.field.node.judge_page.body
     - field.field.node.judge_page.comment_node_judge_page
+    - field.field.node.judge_page.field_metatags
     - node.type.judge_page
   module:
     - comment
+    - metatag
     - text
     - user
 id: node.judge_page.default
@@ -31,6 +33,13 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   links:
     settings: {  }

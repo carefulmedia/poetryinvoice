@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.quiz.body
     - field.field.node.quiz.field_completed
     - field.field.node.quiz.field_image
+    - field.field.node.quiz.field_metatags
     - field.field.node.quiz.field_paid_
     - node.type.quiz
   module:
@@ -36,6 +37,7 @@ hidden:
   entity_print_view_word_docx: true
   field_completed: true
   field_image: true
+  field_metatags: true
   field_paid_: true
   langcode: true
   search_api_excerpt: true

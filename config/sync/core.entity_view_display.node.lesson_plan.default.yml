@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.lesson_plan.field_learning_objectives
     - field.field.node.lesson_plan.field_lesson_objectives
     - field.field.node.lesson_plan.field_materials_resources
+    - field.field.node.lesson_plan.field_metatags
     - field.field.node.lesson_plan.field_paid_
     - field.field.node.lesson_plan.field_periods
     - field.field.node.lesson_plan.field_poets_plural_user
@@ -28,6 +29,7 @@ dependencies:
   module:
     - file
     - layout_builder
+    - metatag
     - options
     - text
     - user
@@ -104,6 +106,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
     region: content
   field_periods:
     type: string

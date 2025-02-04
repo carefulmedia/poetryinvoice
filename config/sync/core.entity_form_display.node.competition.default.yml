@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.competition.field_judges
     - field.field.node.competition.field_language_stream
     - field.field.node.competition.field_level
+    - field.field.node.competition.field_metatags
     - field.field.node.competition.field_submission_deadline
     - field.field.node.competition.field_winners_announced
     - field.field.node.competition.field_years_in_competition
@@ -19,7 +20,9 @@ dependencies:
     - field_layout
     - inline_entity_form
     - layout_discovery
+    - metatag
     - path
+    - scheduler
     - text
 third_party_settings:
   field_layout:
@@ -96,6 +99,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_submission_deadline:
     type: datetime_default
     weight: 4
@@ -137,6 +148,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

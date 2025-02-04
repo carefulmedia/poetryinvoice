@@ -7,12 +7,14 @@ dependencies:
     - field.field.node.team_regionals_entry.comment_node_team_regionals_en
     - field.field.node.team_regionals_entry.field_contest_association
     - field.field.node.team_regionals_entry.field_language_stream
+    - field.field.node.team_regionals_entry.field_metatags
     - field.field.node.team_regionals_entry.field_place_team_regional
     - field.field.node.team_regionals_entry.field_tr_student
     - node.type.team_regionals_entry
   module:
     - comment
     - entity_reference_revisions
+    - metatag
     - options
     - user
 id: node.team_regionals_entry.default
@@ -43,6 +45,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_place_team_regional:
     type: list_default

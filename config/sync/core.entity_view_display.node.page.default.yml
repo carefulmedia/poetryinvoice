@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.page.field_files
     - field.field.node.page.field_hero_hashtag
     - field.field.node.page.field_images_insert
+    - field.field.node.page.field_metatags
     - field.field.node.page.field_related_content
     - field.field.node.page.field_right_sidebar_lower
     - field.field.node.page.field_tags
@@ -20,6 +21,7 @@ dependencies:
     - file
     - layout_builder
     - layout_builder_restrictions
+    - metatag
     - svg_image
     - text
     - user
@@ -85,6 +87,13 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 9
     region: content
   field_related_content:
     type: entity_reference_label

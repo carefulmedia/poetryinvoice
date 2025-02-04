@@ -1,0 +1,21 @@
+uuid: 1011d477-5e38-46dc-a26b-e6d865a2db2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.media_coverage
+  module:
+    - metatag
+id: node.media_coverage.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: media_coverage
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

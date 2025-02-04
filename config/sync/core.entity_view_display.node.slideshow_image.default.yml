@@ -6,11 +6,13 @@ dependencies:
     - core.entity_view_display.comment.comment_node_slideshow_image.default
     - field.field.node.slideshow_image.body
     - field.field.node.slideshow_image.comment_node_slideshow_image
+    - field.field.node.slideshow_image.field_metatags
     - field.field.node.slideshow_image.field_slideshow_image
     - field.field.node.slideshow_image.field_slideshow_type
     - node.type.slideshow_image
   module:
     - comment
+    - metatag
     - svg_image
     - text
     - user
@@ -34,6 +36,13 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_slideshow_image:
     type: image

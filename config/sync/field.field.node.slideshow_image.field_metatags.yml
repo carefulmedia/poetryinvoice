@@ -1,0 +1,21 @@
+uuid: 69d3a0e3-4a18-49dc-b794-e13e908bd65b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.slideshow_image
+  module:
+    - metatag
+id: node.slideshow_image.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: slideshow_image
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

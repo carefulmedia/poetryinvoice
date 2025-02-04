@@ -1,0 +1,21 @@
+uuid: 88b201e2-32a3-4901-91df-4f260d934c07
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.venue
+  module:
+    - metatag
+id: node.venue.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: venue
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.page.field_files
     - field.field.node.page.field_hero_hashtag
     - field.field.node.page.field_images_insert
+    - field.field.node.page.field_metatags
     - field.field.node.page.field_related_content
     - field.field.node.page.field_right_sidebar_lower
     - field.field.node.page.field_tags
@@ -62,8 +63,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
+          remove_gutters: '0'
           context_mapping: {  }
-          remove_gutters: 0
         components:
           ada44985-bf02-4c19-95e9-c3653555e54e:
             uuid: ada44985-bf02-4c19-95e9-c3653555e54e
@@ -153,8 +154,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
+          remove_gutters: '0'
           context_mapping: {  }
-          remove_gutters: 0
         components:
           7e2de188-b47c-4438-be06-85e79de55147:
             uuid: 7e2de188-b47c-4438-be06-85e79de55147
@@ -295,6 +296,7 @@ hidden:
   field_banner_title: true
   field_body_lower: true
   field_hero_hashtag: true
+  field_metatags: true
   field_related_content: true
   field_right_sidebar_lower: true
   field_tags: true

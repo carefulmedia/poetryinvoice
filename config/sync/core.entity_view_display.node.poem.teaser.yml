@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.poem.field_editor
     - field.field.node.poem.field_epigraph
     - field.field.node.poem.field_grades
+    - field.field.node.poem.field_metatags
     - field.field.node.poem.field_mobile_apps_are_allowed
     - field.field.node.poem.field_moods
     - field.field.node.poem.field_new_theme
@@ -71,6 +72,7 @@ hidden:
   field_editor: true
   field_epigraph: true
   field_grades: true
+  field_metatags: true
   field_mobile_apps_are_allowed: true
   field_moods: true
   field_new_theme: true

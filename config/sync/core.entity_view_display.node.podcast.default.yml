@@ -5,10 +5,12 @@ dependencies:
   config:
     - field.field.node.podcast.body
     - field.field.node.podcast.field_images_insert
+    - field.field.node.podcast.field_metatags
     - field.field.node.podcast.field_poet_s_in_podcast
     - field.field.node.podcast.field_soundcloud
     - node.type.podcast
   module:
+    - metatag
     - text
     - user
 id: node.podcast.default
@@ -22,6 +24,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
     region: content
   field_poet_s_in_podcast:
     type: entity_reference_label

@@ -1,0 +1,21 @@
+uuid: 4380b9f1-e527-4113-a950-5dcbb6bc8c37
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.competition
+  module:
+    - metatag
+id: node.competition.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: competition
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

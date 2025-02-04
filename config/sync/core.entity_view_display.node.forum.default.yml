@@ -6,10 +6,12 @@ dependencies:
     - core.entity_view_display.comment.comment_forum.default
     - field.field.node.forum.body
     - field.field.node.forum.comment_forum
+    - field.field.node.forum.field_metatags
     - field.field.node.forum.taxonomy_forums
     - node.type.forum
   module:
     - comment
+    - metatag
     - text
     - user
 id: node.forum.default
@@ -32,6 +34,13 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   links:
     settings: {  }

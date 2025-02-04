@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.podcast.body
     - field.field.node.podcast.field_images_insert
+    - field.field.node.podcast.field_metatags
     - field.field.node.podcast.field_poet_s_in_podcast
     - field.field.node.podcast.field_soundcloud
     - image.style.focal_point_700_x_
@@ -14,6 +15,7 @@ dependencies:
     - focal_point
     - layout_discovery
     - media_library
+    - metatag
     - path
     - scheduler
     - text
@@ -52,6 +54,14 @@ content:
       preview_image_style: focal_point_700_x_
       preview_link: true
       offsets: '50,50'
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_poet_s_in_podcast:
     type: entity_reference_autocomplete
@@ -93,6 +103,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

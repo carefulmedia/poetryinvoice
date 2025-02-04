@@ -1,0 +1,21 @@
+uuid: 54d74f5f-b82a-408c-b3fd-ae5ae78ce0b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.judge_page
+  module:
+    - metatag
+id: node.judge_page.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: judge_page
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

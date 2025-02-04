@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.lesson_plan.field_learning_objectives
     - field.field.node.lesson_plan.field_lesson_objectives
     - field.field.node.lesson_plan.field_materials_resources
+    - field.field.node.lesson_plan.field_metatags
     - field.field.node.lesson_plan.field_paid_
     - field.field.node.lesson_plan.field_periods
     - field.field.node.lesson_plan.field_poets_plural_user
@@ -29,6 +30,7 @@ dependencies:
     - field_layout
     - file
     - layout_discovery
+    - metatag
     - path
     - scheduler
     - text
@@ -139,6 +141,14 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_paid_:
     type: boolean_checkbox
     weight: 21
@@ -228,6 +238,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

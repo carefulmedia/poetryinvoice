@@ -7,11 +7,13 @@ dependencies:
     - field.field.node.venue.body
     - field.field.node.venue.comment_node_venue
     - field.field.node.venue.field_address
+    - field.field.node.venue.field_metatags
     - field.field.node.venue.field_school_image
     - node.type.venue
   module:
     - address
     - comment
+    - metatag
     - svg_image
     - text
     - user
@@ -42,6 +44,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
     region: content
   field_school_image:
     type: image

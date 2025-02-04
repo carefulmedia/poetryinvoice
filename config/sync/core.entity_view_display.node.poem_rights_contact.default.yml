@@ -11,12 +11,14 @@ dependencies:
     - field.field.node.poem_rights_contact.field_contact_person
     - field.field.node.poem_rights_contact.field_email1
     - field.field.node.poem_rights_contact.field_interac_email_or_phone_num
+    - field.field.node.poem_rights_contact.field_metatags
     - field.field.node.poem_rights_contact.field_type_of_contact
     - node.type.poem_rights_contact
   module:
     - address
     - comment
     - file
+    - metatag
     - options
     - text
     - user
@@ -79,6 +81,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 102
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
     region: content
   field_type_of_contact:
     type: list_default

@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.video.field_canada_restrict
     - field.field.node.video.field_competition_school
     - field.field.node.video.field_competition_stream
+    - field.field.node.video.field_metatags
     - field.field.node.video.field_pod_date
     - field.field.node.video.field_poem_retired
     - field.field.node.video.field_poets_plural_user
@@ -26,6 +27,7 @@ dependencies:
     - layout_builder
     - layout_discovery
     - media
+    - metatag
     - text
     - user
 third_party_settings:
@@ -152,6 +154,21 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 7
             additional: {  }
+          bcbba7b8-9019-406f-9acf-85c6c6d3bcf3:
+            uuid: bcbba7b8-9019-406f-9acf-85c6c6d3bcf3
+            region: content
+            configuration:
+              id: 'field_block:node:video:field_metatags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: metatag_empty_formatter
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 8
+            additional: {  }
         third_party_settings: {  }
 id: node.video.default
 targetEntityType: node
@@ -166,6 +183,13 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
     region: content
   field_poem_retired:
     type: editablefields_formatter

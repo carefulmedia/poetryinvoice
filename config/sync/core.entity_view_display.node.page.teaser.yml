@@ -12,6 +12,7 @@ dependencies:
     - field.field.node.page.field_files
     - field.field.node.page.field_hero_hashtag
     - field.field.node.page.field_images_insert
+    - field.field.node.page.field_metatags
     - field.field.node.page.field_related_content
     - field.field.node.page.field_right_sidebar_lower
     - field.field.node.page.field_tags
@@ -77,8 +78,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
+          remove_gutters: '0'
           context_mapping: {  }
-          remove_gutters: 0
         components:
           c77fe7a6-f1a3-4599-83b6-cd9e29c23a64:
             uuid: c77fe7a6-f1a3-4599-83b6-cd9e29c23a64
@@ -166,6 +167,7 @@ hidden:
   field_files: true
   field_hero_hashtag: true
   field_images_insert: true
+  field_metatags: true
   field_related_content: true
   field_right_sidebar_lower: true
   field_tags: true

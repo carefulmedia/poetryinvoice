@@ -1,0 +1,21 @@
+uuid: 190d4f18-c810-4894-ae26-026352fcd272
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.faq
+  module:
+    - metatag
+id: node.faq.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: faq
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

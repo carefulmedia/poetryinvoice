@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.bulletin_board.body
     - field.field.node.bulletin_board.comment_node_bulletin_board
     - field.field.node.bulletin_board.field_file_under
+    - field.field.node.bulletin_board.field_metatags
     - field.field.node.bulletin_board.field_other_description
     - node.type.bulletin_board
   module:
@@ -36,6 +37,7 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_file_under: true
+  field_metatags: true
   field_other_description: true
   langcode: true
   search_api_excerpt: true

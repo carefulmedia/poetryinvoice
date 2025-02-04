@@ -1,0 +1,21 @@
+uuid: 97d06751-8a74-4ccc-94b3-3c22a08b151a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.poem
+  module:
+    - metatag
+id: node.poem.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: poem
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.pal_pir_school_visit.field_heritage_canada_question
     - field.field.node.pal_pir_school_visit.field_hold
     - field.field.node.pal_pir_school_visit.field_in_person_or_teleconferenc
+    - field.field.node.pal_pir_school_visit.field_metatags
     - field.field.node.pal_pir_school_visit.field_notes
     - field.field.node.pal_pir_school_visit.field_other_time_options
     - field.field.node.pal_pir_school_visit.field_paid_
@@ -41,6 +42,7 @@ dependencies:
     - field_layout
     - inline_entity_form
     - layout_discovery
+    - metatag
     - paragraphs
     - path
     - scheduler
@@ -286,6 +288,14 @@ content:
               slide:
                 speed: '400'
             selector: ''
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_notes:
     type: string_textarea
     weight: 12
@@ -530,6 +540,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

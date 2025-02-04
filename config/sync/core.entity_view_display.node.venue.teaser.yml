@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.venue.body
     - field.field.node.venue.comment_node_venue
     - field.field.node.venue.field_address
+    - field.field.node.venue.field_metatags
     - field.field.node.venue.field_school_image
     - node.type.venue
   module:
@@ -36,6 +37,7 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_address: true
+  field_metatags: true
   field_school_image: true
   langcode: true
   search_api_excerpt: true

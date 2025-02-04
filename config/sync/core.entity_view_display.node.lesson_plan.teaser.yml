@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.lesson_plan.field_learning_objectives
     - field.field.node.lesson_plan.field_lesson_objectives
     - field.field.node.lesson_plan.field_materials_resources
+    - field.field.node.lesson_plan.field_metatags
     - field.field.node.lesson_plan.field_paid_
     - field.field.node.lesson_plan.field_periods
     - field.field.node.lesson_plan.field_poets_plural_user
@@ -63,6 +64,7 @@ hidden:
   field_learning_objectives: true
   field_lesson_objectives: true
   field_materials_resources: true
+  field_metatags: true
   field_paid_: true
   field_periods: true
   field_poets_plural_user: true

@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - field.field.node.competition_session.comment_node_competition_sessi
+    - field.field.node.competition_session.field_metatags
     - field.field.node.competition_session.field_multi_judge_session_id
     - field.field.node.competition_session.field_session_year
     - field.field.node.competition_session.piv_entry_level
@@ -17,7 +18,9 @@ dependencies:
   module:
     - field_layout
     - layout_discovery
+    - metatag
     - path
+    - scheduler
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -33,6 +36,14 @@ content:
     weight: 9
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_multi_judge_session_id:
     type: number
@@ -105,6 +116,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

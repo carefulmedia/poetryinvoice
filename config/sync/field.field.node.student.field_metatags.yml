@@ -1,0 +1,21 @@
+uuid: 9125c875-d8fd-4353-9b12-42eac9a075a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.student
+  module:
+    - metatag
+id: node.student.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: student
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

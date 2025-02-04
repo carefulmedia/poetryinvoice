@@ -7,11 +7,13 @@ dependencies:
     - field.field.node.quote.body
     - field.field.node.quote.comment_node_quote
     - field.field.node.quote.field_by_line
+    - field.field.node.quote.field_metatags
     - field.field.node.quote.field_quote_photo
     - image.style.home_page_700x250
     - node.type.quote
   module:
     - comment
+    - metatag
     - svg_image
     - text
     - user
@@ -43,6 +45,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_quote_photo:
     type: image

@@ -18,6 +18,7 @@ dependencies:
     - field.field.node.lesson_plan.field_learning_objectives
     - field.field.node.lesson_plan.field_lesson_objectives
     - field.field.node.lesson_plan.field_materials_resources
+    - field.field.node.lesson_plan.field_metatags
     - field.field.node.lesson_plan.field_paid_
     - field.field.node.lesson_plan.field_periods
     - field.field.node.lesson_plan.field_poets_plural_user
@@ -380,6 +381,7 @@ third_party_settings:
               provider: layout_builder
               view_mode: full
               context_mapping: {  }
+              block_id: null
               block_revision_id: 134
               block_serialized: null
             weight: 8
@@ -525,6 +527,7 @@ hidden:
   field_commissioned_: true
   field_completed: true
   field_copyright: true
+  field_metatags: true
   field_paid_: true
   field_suggest_a_new_folder_to_fi: true
   langcode: true

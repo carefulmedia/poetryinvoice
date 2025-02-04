@@ -7,11 +7,13 @@ dependencies:
     - field.field.node.media_coverage.body
     - field.field.node.media_coverage.comment_node_media_coverage
     - field.field.node.media_coverage.field_images_insert
+    - field.field.node.media_coverage.field_metatags
     - field.field.node.media_coverage.field_source
     - field.field.node.media_coverage.field_story_link
     - node.type.media_coverage
   module:
     - comment
+    - metatag
     - text
     - user
 id: node.media_coverage.default
@@ -34,6 +36,13 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_source:
     type: string

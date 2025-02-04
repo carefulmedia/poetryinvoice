@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.mixtape.field_doodles
     - field.field.node.mixtape.field_interac_email_or_phone_num
     - field.field.node.mixtape.field_liner_notes_pdf_
+    - field.field.node.mixtape.field_metatags
     - field.field.node.mixtape.field_mixtape_art_completed
     - field.field.node.mixtape.field_mixtape_artist_name_for_pu
     - field.field.node.mixtape.field_mixtape_artwork_paid
@@ -48,6 +49,7 @@ hidden:
   field_doodles: true
   field_interac_email_or_phone_num: true
   field_liner_notes_pdf_: true
+  field_metatags: true
   field_mixtape_art_completed: true
   field_mixtape_artist_name_for_pu: true
   field_mixtape_artwork_paid: true

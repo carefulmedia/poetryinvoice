@@ -9,11 +9,13 @@ dependencies:
     - field.field.node.writing_workshop.field_banner_subtitle
     - field.field.node.writing_workshop.field_banner_title
     - field.field.node.writing_workshop.field_images_insert
+    - field.field.node.writing_workshop.field_metatags
     - field.field.node.writing_workshop.field_preface
     - field.field.node.writing_workshop.field_suffix
     - node.type.writing_workshop
   module:
     - comment
+    - metatag
     - text
     - user
 id: node.writing_workshop.default
@@ -44,6 +46,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
     region: content
   field_preface:
     type: text_default

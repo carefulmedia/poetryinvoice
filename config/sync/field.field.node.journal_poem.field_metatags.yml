@@ -1,0 +1,21 @@
+uuid: 6f6f341f-8b67-485a-8cde-015692630099
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.journal_poem
+  module:
+    - metatag
+id: node.journal_poem.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: journal_poem
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

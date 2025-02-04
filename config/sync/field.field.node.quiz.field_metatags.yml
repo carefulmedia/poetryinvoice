@@ -1,0 +1,21 @@
+uuid: 1e2a9507-5770-4302-92e7-1d051ca4fb72
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.quiz
+  module:
+    - metatag
+id: node.quiz.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: quiz
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

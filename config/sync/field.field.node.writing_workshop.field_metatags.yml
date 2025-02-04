@@ -1,0 +1,21 @@
+uuid: 650a8e40-02e1-47c7-8cd4-e526f808a7c4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.writing_workshop
+  module:
+    - metatag
+id: node.writing_workshop.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: writing_workshop
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

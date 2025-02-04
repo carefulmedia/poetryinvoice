@@ -1,0 +1,21 @@
+uuid: 8a658112-a3b3-49e0-b8e5-4d256e4e674e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.fca
+  module:
+    - metatag
+id: node.fca.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: fca
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

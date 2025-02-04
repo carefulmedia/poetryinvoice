@@ -1,0 +1,21 @@
+uuid: 47d0b074-1342-402a-966e-420c7741e5ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.pal_pir_school_visit
+  module:
+    - metatag
+id: node.pal_pir_school_visit.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: pal_pir_school_visit
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

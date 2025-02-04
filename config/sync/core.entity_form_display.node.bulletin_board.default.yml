@@ -6,12 +6,15 @@ dependencies:
     - field.field.node.bulletin_board.body
     - field.field.node.bulletin_board.comment_node_bulletin_board
     - field.field.node.bulletin_board.field_file_under
+    - field.field.node.bulletin_board.field_metatags
     - field.field.node.bulletin_board.field_other_description
     - node.type.bulletin_board
   module:
     - field_layout
     - layout_discovery
+    - metatag
     - path
+    - scheduler
     - text
 third_party_settings:
   field_layout:
@@ -45,6 +48,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_other_description:
     type: string_textfield
     weight: 4
@@ -76,6 +87,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

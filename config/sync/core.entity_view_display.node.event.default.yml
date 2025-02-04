@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.event.comment_node_event
     - field.field.node.event.field_address
     - field.field.node.event.field_date
+    - field.field.node.event.field_metatags
     - field.field.node.event.field_piv_event
     - field.field.node.event.field_story_link
     - node.type.event
@@ -15,6 +16,7 @@ dependencies:
     - address
     - comment
     - datetime
+    - metatag
     - text
     - user
 id: node.event.default
@@ -53,6 +55,13 @@ content:
       format_type: long
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
     region: content
   links:
     settings: {  }

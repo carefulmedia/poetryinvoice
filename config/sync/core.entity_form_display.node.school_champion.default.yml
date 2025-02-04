@@ -6,15 +6,18 @@ dependencies:
     - field.field.node.school_champion.body
     - field.field.node.school_champion.comment_node_school_champion
     - field.field.node.school_champion.field_images_insert
+    - field.field.node.school_champion.field_metatags
     - field.field.node.school_champion.field_source
     - field.field.node.school_champion.field_story_link
     - image.style.thumbnail
     - node.type.school_champion
   module:
     - field_layout
-    - image
     - layout_discovery
+    - metatag
     - path
+    - scheduler
+    - svg_image
     - text
 third_party_settings:
   field_layout:
@@ -49,6 +52,14 @@ content:
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_source:
     type: string_textfield
@@ -89,6 +100,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

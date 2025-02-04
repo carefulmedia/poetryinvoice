@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.mixtape.field_doodles
     - field.field.node.mixtape.field_interac_email_or_phone_num
     - field.field.node.mixtape.field_liner_notes_pdf_
+    - field.field.node.mixtape.field_metatags
     - field.field.node.mixtape.field_mixtape_art_completed
     - field.field.node.mixtape.field_mixtape_artist_name_for_pu
     - field.field.node.mixtape.field_mixtape_artwork_paid
@@ -25,6 +26,7 @@ dependencies:
     - file
     - layout_discovery
     - media_library
+    - metatag
     - path
     - scheduler
     - svg_image
@@ -116,6 +118,14 @@ content:
     region: content
     settings:
       progress_indicator: throbber
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
     third_party_settings: {  }
   field_mixtape_art_completed:
     type: boolean_checkbox

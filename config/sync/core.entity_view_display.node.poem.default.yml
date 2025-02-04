@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.poem.field_editor
     - field.field.node.poem.field_epigraph
     - field.field.node.poem.field_grades
+    - field.field.node.poem.field_metatags
     - field.field.node.poem.field_mobile_apps_are_allowed
     - field.field.node.poem.field_moods
     - field.field.node.poem.field_new_theme
@@ -42,6 +43,7 @@ dependencies:
   module:
     - layout_builder
     - layout_builder_restrictions
+    - metatag
     - user
 third_party_settings:
   layout_builder:
@@ -61,6 +63,13 @@ targetEntityType: node
 bundle: poem
 mode: default
 content:
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
   field_plain_title:
     type: string
     label: above

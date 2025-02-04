@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.podcast.body
     - field.field.node.podcast.field_images_insert
+    - field.field.node.podcast.field_metatags
     - field.field.node.podcast.field_poet_s_in_podcast
     - field.field.node.podcast.field_soundcloud
     - node.type.podcast
@@ -35,6 +36,7 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_images_insert: true
+  field_metatags: true
   field_poet_s_in_podcast: true
   field_soundcloud: true
   langcode: true

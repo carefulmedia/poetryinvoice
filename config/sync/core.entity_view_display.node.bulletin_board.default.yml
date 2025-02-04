@@ -7,10 +7,12 @@ dependencies:
     - field.field.node.bulletin_board.body
     - field.field.node.bulletin_board.comment_node_bulletin_board
     - field.field.node.bulletin_board.field_file_under
+    - field.field.node.bulletin_board.field_metatags
     - field.field.node.bulletin_board.field_other_description
     - node.type.bulletin_board
   module:
     - comment
+    - metatag
     - options
     - text
     - user
@@ -41,6 +43,13 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 1
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_other_description:
     type: string

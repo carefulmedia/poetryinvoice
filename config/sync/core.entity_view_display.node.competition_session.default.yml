@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_display.comment.comment_node_competition_sessi.default
     - field.field.node.competition_session.comment_node_competition_sessi
+    - field.field.node.competition_session.field_metatags
     - field.field.node.competition_session.field_multi_judge_session_id
     - field.field.node.competition_session.field_session_year
     - field.field.node.competition_session.piv_entry_level
@@ -17,6 +18,7 @@ dependencies:
     - node.type.competition_session
   module:
     - comment
+    - metatag
     - options
     - user
 id: node.competition_session.default
@@ -32,6 +34,13 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_multi_judge_session_id:
     type: number_integer

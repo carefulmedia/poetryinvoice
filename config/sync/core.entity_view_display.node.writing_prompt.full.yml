@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.writing_prompt.comment_node_writing_prompt
     - field.field.node.writing_prompt.field_completed
     - field.field.node.writing_prompt.field_featured_prompt_starting_d
+    - field.field.node.writing_prompt.field_metatags
     - field.field.node.writing_prompt.field_mixtape_art_completed
     - field.field.node.writing_prompt.field_mixtape_artwork_paid
     - field.field.node.writing_prompt.field_paid_
@@ -170,6 +171,7 @@ hidden:
   entity_print_view_word_docx: true
   field_completed: true
   field_featured_prompt_starting_d: true
+  field_metatags: true
   field_mixtape_art_completed: true
   field_mixtape_artwork_paid: true
   field_paid_: true

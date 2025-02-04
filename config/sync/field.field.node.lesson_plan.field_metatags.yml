@@ -1,0 +1,21 @@
+uuid: 0b7cfd7e-daa6-4aa7-9e86-aba3e609e230
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.lesson_plan
+  module:
+    - metatag
+id: node.lesson_plan.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: lesson_plan
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

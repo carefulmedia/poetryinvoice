@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.competition_entry.comment_node_competition_entry
     - field.field.node.competition_entry.field_contest
     - field.field.node.competition_entry.field_contest_place
+    - field.field.node.competition_entry.field_metatags
     - field.field.node.competition_entry.field_nf_video
     - field.field.node.competition_entry.field_recitation_order_round_1
     - field.field.node.competition_entry.field_years_in_competition
@@ -34,6 +35,7 @@ hidden:
   entity_print_view_word_docx: true
   field_contest: true
   field_contest_place: true
+  field_metatags: true
   field_nf_video: true
   field_recitation_order_round_1: true
   field_years_in_competition: true

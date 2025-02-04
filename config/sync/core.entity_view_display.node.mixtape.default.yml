@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.mixtape.field_doodles
     - field.field.node.mixtape.field_interac_email_or_phone_num
     - field.field.node.mixtape.field_liner_notes_pdf_
+    - field.field.node.mixtape.field_metatags
     - field.field.node.mixtape.field_mixtape_art_completed
     - field.field.node.mixtape.field_mixtape_artist_name_for_pu
     - field.field.node.mixtape.field_mixtape_artwork_paid
@@ -23,6 +24,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - layout_discovery
+    - metatag
     - svg_image
     - text
     - user
@@ -301,6 +303,21 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 16
             additional: {  }
+          9a7c7b56-2848-45b1-9d2d-04b05000e48c:
+            uuid: 9a7c7b56-2848-45b1-9d2d-04b05000e48c
+            region: content
+            configuration:
+              id: 'field_block:node:mixtape:field_metatags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: metatag_empty_formatter
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 17
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -349,6 +366,13 @@ content:
       use_description_as_link_text: true
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 103
     region: content
   field_mixtape_art_completed:
     type: boolean

@@ -8,10 +8,12 @@ dependencies:
     - field.field.node.fca.field_fca_image
     - field.field.node.fca.field_fca_order
     - field.field.node.fca.field_fca_url
+    - field.field.node.fca.field_metatags
     - field.field.node.fca.field_subtitle
     - node.type.fca
   module:
     - comment
+    - metatag
     - options
     - svg_image
     - user
@@ -54,6 +56,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
     region: content
   field_subtitle:
     type: string

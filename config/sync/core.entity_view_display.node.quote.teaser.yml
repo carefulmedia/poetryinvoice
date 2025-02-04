@@ -7,6 +7,7 @@ dependencies:
     - field.field.node.quote.body
     - field.field.node.quote.comment_node_quote
     - field.field.node.quote.field_by_line
+    - field.field.node.quote.field_metatags
     - field.field.node.quote.field_quote_photo
     - node.type.quote
   module:
@@ -43,6 +44,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_metatags: true
   field_quote_photo: true
   langcode: true
   search_api_excerpt: true

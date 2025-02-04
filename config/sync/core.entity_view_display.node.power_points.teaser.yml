@@ -6,6 +6,7 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.power_points.body
     - field.field.node.power_points.comment_node_power_points
+    - field.field.node.power_points.field_metatags
     - field.field.node.power_points.field_pp_file
     - node.type.power_points
   module:
@@ -34,6 +35,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_metatags: true
   field_pp_file: true
   langcode: true
   search_api_excerpt: true

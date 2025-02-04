@@ -11,6 +11,7 @@ dependencies:
     - field.field.node.page.field_files
     - field.field.node.page.field_hero_hashtag
     - field.field.node.page.field_images_insert
+    - field.field.node.page.field_metatags
     - field.field.node.page.field_related_content
     - field.field.node.page.field_right_sidebar_lower
     - field.field.node.page.field_tags
@@ -22,6 +23,7 @@ dependencies:
     - file
     - focal_point
     - layout_discovery
+    - metatag
     - path
     - scheduler
     - text
@@ -94,6 +96,14 @@ content:
       preview_link: true
       offsets: '50,50'
     third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_related_content:
     type: entity_reference_autocomplete
     weight: 26
@@ -145,6 +155,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

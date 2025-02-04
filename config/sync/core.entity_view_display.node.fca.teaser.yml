@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.fca.field_fca_image
     - field.field.node.fca.field_fca_order
     - field.field.node.fca.field_fca_url
+    - field.field.node.fca.field_metatags
     - field.field.node.fca.field_subtitle
     - node.type.fca
   module:
@@ -30,6 +31,7 @@ hidden:
   field_fca_image: true
   field_fca_order: true
   field_fca_url: true
+  field_metatags: true
   field_subtitle: true
   langcode: true
   search_api_excerpt: true

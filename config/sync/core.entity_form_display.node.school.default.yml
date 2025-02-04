@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.school.field_grades_of_school
     - field.field.node.school.field_job_title
     - field.field.node.school.field_language_school
+    - field.field.node.school.field_metatags
     - field.field.node.school.field_not_competing_this_year
     - field.field.node.school.field_number_of_students
     - field.field.node.school.field_pa
@@ -37,6 +38,7 @@ dependencies:
     - geolocation
     - inline_entity_form
     - layout_discovery
+    - metatag
     - path
     - scheduler
     - svg_image
@@ -157,6 +159,14 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 51
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
   field_not_competing_this_year:
     type: boolean_checkbox
     weight: 19
@@ -267,6 +277,11 @@ content:
   publish_on:
     type: datetime_timestamp_no_default
     weight: 31
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }

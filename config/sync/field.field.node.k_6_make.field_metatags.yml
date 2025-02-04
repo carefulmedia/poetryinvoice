@@ -1,0 +1,21 @@
+uuid: f7e1dcf2-0eec-44bd-b377-26363a5b5aa1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.k_6_make
+  module:
+    - metatag
+id: node.k_6_make.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: k_6_make
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag
