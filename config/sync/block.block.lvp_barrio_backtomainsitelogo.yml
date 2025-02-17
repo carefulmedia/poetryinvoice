@@ -12,7 +12,7 @@ dependencies:
 id: lvp_barrio_backtomainsitelogo
 theme: lvp_barrio
 region: primary_menu
-weight: -14
+weight: -17
 provider: null
 plugin: 'block_content:da9bca0a-1417-4494-a913-229f4cb102e4'
 settings:

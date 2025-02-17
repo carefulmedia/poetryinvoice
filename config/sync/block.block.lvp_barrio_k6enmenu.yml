@@ -13,7 +13,7 @@ dependencies:
 id: lvp_barrio_k6enmenu
 theme: lvp_barrio
 region: primary_menu
-weight: -20
+weight: -19
 provider: null
 plugin: 'menu_block:k-6-en-menu'
 settings:
@@ -29,7 +29,9 @@ settings:
   depth: 0
   expand_all_items: false
   parent: 'k-6-en-menu:'
+  render_parent: false
   suggestion: k_6_en_menu
+  hide_on_nonactive: false
 visibility:
   language:
     id: language

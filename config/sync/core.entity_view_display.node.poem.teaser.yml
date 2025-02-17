@@ -55,6 +55,21 @@ content:
     settings:
       trim_length: 300
     third_party_settings: {  }
+    weight: 2
+    region: content
+  field_epigraph:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_plain_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: true
+    third_party_settings: {  }
     weight: 0
     region: content
 hidden:
@@ -70,7 +85,6 @@ hidden:
   field_dive_in: true
   field_dive_in_attribution: true
   field_editor: true
-  field_epigraph: true
   field_grades: true
   field_metatags: true
   field_mobile_apps_are_allowed: true
@@ -80,7 +94,6 @@ hidden:
   field_paid_: true
   field_password_protected: true
   field_pdf_of_original_poem: true
-  field_plain_title: true
   field_poem_paid: true
   field_poem_retired: true
   field_poem_rights_: true
