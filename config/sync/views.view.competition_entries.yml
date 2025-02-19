@@ -2986,7 +2986,7 @@ display:
           value:
             min: ''
             max: ''
-            value: '2'
+            value: '4'
           group: 1
           exposed: false
           expose:
