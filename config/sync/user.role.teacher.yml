@@ -62,7 +62,6 @@ permissions:
   - 'create field_visit_completed_teacher'
   - 'create field_work_student_teacher'
   - 'create journal_poem content'
-  - 'create pal_pir_school_visit content'
   - 'create paragraph content tr_student'
   - 'create piv_release_form'
   - 'create piv_student_mail'
