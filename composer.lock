@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4ba4b55ed958278d527878cbdbb2dbcc",
+    "content-hash": "06441ef8278c92577c946aa17015acee",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3990,16 +3990,16 @@
         },
         {
             "name": "drupal/core",
-            "version": "10.3.9",
+            "version": "10.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/drupal/core.git",
-                "reference": "42a6516491b4793158542a2326dc6ad1fe2aa5bd"
+                "reference": "42cc4288fe6c5f34654d7fecaff0b810870f0faf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/drupal/core/zipball/42a6516491b4793158542a2326dc6ad1fe2aa5bd",
-                "reference": "42a6516491b4793158542a2326dc6ad1fe2aa5bd",
+                "url": "https://api.github.com/repos/drupal/core/zipball/42cc4288fe6c5f34654d7fecaff0b810870f0faf",
+                "reference": "42cc4288fe6c5f34654d7fecaff0b810870f0faf",
                 "shasum": ""
             },
             "require": {
@@ -4148,9 +4148,9 @@
             ],
             "description": "Drupal is an open source content management platform powering millions of websites and applications.",
             "support": {
-                "source": "https://github.com/drupal/core/tree/10.3.9"
+                "source": "https://github.com/drupal/core/tree/10.3.13"
             },
-            "time": "2024-11-20T17:59:45+00:00"
+            "time": "2025-02-18T22:54:01+00:00"
         },
         {
             "name": "drupal/core-composer-scaffold",
@@ -17376,7 +17376,7 @@
     },
     "prefer-stable": true,
     "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "platform": {},
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }
