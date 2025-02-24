@@ -1124,6 +1124,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 300
           total_pages: null
           id: 0
@@ -1141,7 +1142,6 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
-          pagination_heading_level: h4
       exposed_form:
         type: basic
         options:
@@ -2986,7 +2986,7 @@ display:
           value:
             min: ''
             max: ''
-            value: '2'
+            value: '4'
           group: 1
           exposed: false
           expose:
@@ -4876,7 +4876,7 @@ display:
           value:
             min: '2023-01-01'
             max: '2023-04-07'
-            value: '2024-01-01'
+            value: '2025-01-01'
             type: date
           group: 1
           exposed: true
