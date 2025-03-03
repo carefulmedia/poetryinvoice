@@ -8,6 +8,9 @@ use Drupal\piv_contest_competition\Entity\Competition;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\media\OEmbed\UrlResolverInterface;
+use Drupal\Component\Utility\UrlHelper;
+use Drupal\media\Plugin\Validation\Constraint\OEmbedResourceConstraint;
+use Drupal\media\OEmbed\ResourceFetcher;
 
 /**
  * Provides a PIV Contest Recitation form.
@@ -29,11 +32,19 @@ class MultipleRecitationsForm extends FormBase {
   protected $urlResolver;
 
   /**
+   * The oEmbed resource fetcher service.
+   *
+   * @var \Drupal\media\OEmbed\ResourceFetcher
+   */
+  protected $resourceFetcher;
+
+  /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, UrlResolverInterface $url_resolver) {
+  public function __construct(EntityTypeManagerInterface $entity_type_manager, UrlResolverInterface $url_resolver, ResourceFetcher $resource_fetcher) {
     $this->entityTypeManager = $entity_type_manager;
     $this->urlResolver = $url_resolver;
+    $this->resourceFetcher = $resource_fetcher;
   }
 
   /**
@@ -42,7 +53,8 @@ class MultipleRecitationsForm extends FormBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('entity_type.manager'),
-      $container->get('media.oembed.url_resolver')
+      $container->get('media.oembed.url_resolver'),
+      $container->get('media.oembed.resource_fetcher')
     );
   }
 
@@ -263,8 +275,8 @@ class MultipleRecitationsForm extends FormBase {
       $embedded_video = $media_entity
         ? $media_entity->field_media_oembed_video->view('oembed')
         : NULL;
+      $label = $this->t('Watch video');
       if (isset($embedded_video[0])) {
-        $label = $this->t('Watch video');
         $video = [
           'open_modal' => [
             '#markup' => "<a href='#' class='recitation-open-modal'>{$label}</a>",
@@ -282,6 +294,16 @@ class MultipleRecitationsForm extends FormBase {
               '#markup' => '<div class="btn-close close-modal"></div>',
             ],
             'video' => $embedded_video,
+          ],
+        ];
+      }
+      // Video is not embeddable but there is a value.
+      else if (!empty($media_entity->field_media_oembed_video->value)) {
+        $video = [
+          'error' => [
+            '#markup' => $this->t("Fix video"),
+            '#prefix' => '<span class="alert alert-danger">',
+            '#suffix' => '</span>',
           ],
         ];
       }
@@ -363,6 +385,19 @@ class MultipleRecitationsForm extends FormBase {
           $source = $media->getSource();
           if (!in_array($provider->getName(), $source->getProviders(), TRUE)) {
             $form_state->setErrorByName($field_name, $error_message);
+          }
+          else {
+            // Test media earlier than the form submit to prevent saving
+            // invalid values, if failure it will thrown an exception,
+            // otherwise it will cache the results already.
+            try {
+              $resource_url = $this->urlResolver->getResourceUrl($url, 960, 720);
+              $resource = $this->resourceFetcher->fetchResource($resource_url);
+            }
+            catch (\Exception $e) {
+              $error_message = $this->t("Your recitation could not be saved because the video url is not correct or not embedable. Please update the permissions to the video in YouTube");
+              $form_state->setErrorByName($field_name, $error_message);
+            }
           }
         }
         catch (\Exception $e) {
