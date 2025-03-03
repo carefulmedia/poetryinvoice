@@ -130,6 +130,11 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 130
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
     weight: 30
