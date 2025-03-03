@@ -3,8 +3,6 @@ _core:
 module:
   auto_entitylabel: -100
   address: 0
-  admin_toolbar: 0
-  admin_toolbar_tools: 0
   anchor_link: 0
   aos: 0
   automated_cron: 0
@@ -69,7 +67,6 @@ module:
   geolocation_geofield: 0
   geolocation_geometry: 0
   geolocation_google_maps: 0
-  gin_toolbar: 0
   help: 0
   history: 0
   html_titles: 0

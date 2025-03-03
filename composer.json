@@ -187,6 +187,9 @@
         "patches": {
             "drupal/focal_point": {
                 "Focal point not working with convert": "patches/focal_point-fixing-focal-point-work-with-convert.patch"
+            },
+            "drupal/owlcarousel": {
+                "Undefined array key 'url'": "https://www.drupal.org/files/issues/2025-02-27/owlcarousel--missing-license-url-3509437-2.patch"
             }
         },
         "merge-plugin": {

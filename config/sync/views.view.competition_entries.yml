@@ -3301,6 +3301,69 @@ display:
           action_title: Action
           include_exclude: exclude
           selected_actions: {  }
+        field_student_last_name:
+          id: field_student_last_name
+          table: competition_entry__field_student_last_name
+          field: field_student_last_name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Student last name'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         id:
           id: id
           table: competition_entry_field_data
@@ -4520,6 +4583,77 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_validated:
+          id: field_validated
+          table: competition_entry__field_validated
+          field: field_validated
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Validated
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: editablefields_formatter
+          settings:
+            form_mode: default
+            behaviour: inline
+            bypass_access: 0
+            fallback_access: 0
+            display_mode_access: default
+            fallback_edit: 0
+            display_mode_edit: default
+            fields_ajax_trigger: ''
+            fields_ajax_trigger_event: change
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       filters:
         title:
           id: title
@@ -4804,7 +4938,7 @@ display:
           exposed: true
           expose:
             operator_id: field_address_administrative_area_op
-            label: 'Address (field_address:administrative_area)'
+            label: Address
             description: ''
             use_operator: true
             operator: field_address_administrative_area_op
@@ -4993,6 +5127,8 @@ display:
         - 'config:field.storage.competition_entry.field_release_form'
         - 'config:field.storage.competition_entry.field_stream'
         - 'config:field.storage.competition_entry.field_student_grade'
+        - 'config:field.storage.competition_entry.field_student_last_name'
+        - 'config:field.storage.competition_entry.field_validated'
         - 'config:field.storage.user.piv_teacher_first_name'
   page_2:
     id: page_2
@@ -7196,7 +7332,7 @@ display:
           value:
             min: ''
             max: ''
-            value: '2024-01-01'
+            value: '2025-01-01'
             type: date
           group: 1
           exposed: false

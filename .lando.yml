@@ -12,6 +12,15 @@ proxy:
   solr:
     - solr.piv9.lndo.site:8983
 services:
+  appserver:
+    build_as_root:
+      - apt update && apt install zlib1g-dev
+      - 'mkdir -p /usr/src/php/ext && cd /usr/src/php/ext && git clone https://github.com/NoiseByNorthwest/php-spx.git spx && cd spx/ && git checkout release/latest'
+      - 'cd /usr/src/php/ext/spx && phpize && ./configure'
+      - docker-php-ext-install spx
+      - echo 'spx.http_enabled=1' >> /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
+      - echo 'spx.http_key="dev"' >> /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
+      - echo 'spx.http_ip_whitelist="*"' >> /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
   pma:
     type: phpmyadmin
   # The Drupal 7 database to use as migrate source.
