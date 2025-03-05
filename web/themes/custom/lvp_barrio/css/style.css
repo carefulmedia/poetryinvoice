@@ -5109,10 +5109,14 @@ html:lang(en) #sondage {
   float: none;
   clear: both;
   width: 960px;
-  max-width: 100%;
+  width: 100%;
   position: relative;
   padding-bottom: 56.25%;
   height: 0;
+}
+dialog .field--name-field-media-oembed-video {
+  width: 960px;
+  max-width: 100%;
 }
 .field--name-field-media-oembed-video iframe {
   position: absolute;
