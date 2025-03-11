@@ -1458,26 +1458,39 @@ display:
           row_class: ''
           default_row_class: true
           columns:
-            field_place: field_place
-            field_student_name: field_student_name
+            counter: counter
+            contest_bulk_form: contest_bulk_form
             field_student_last_name: field_student_last_name
-            field_student_stage_name: field_student_stage_name
+            id: id
             title: title
-            field_address_locality: field_address_locality
-            field_address_administrative_area: field_address_administrative_area
+            status: status
+            uid: uid
+            created: created
+            changed: changed
+            operations: operations
+            field_release_form: field_release_form
+            field_complete: field_complete
+            uid_1: uid_1
+            id_1: id_1
+            nothing: nothing
+            preferred_langcode: preferred_langcode
+            piv_teacher_first_name: piv_teacher_first_name
+            mail: mail
             field_stream: field_stream
-          default: field_place
+            field_student_grade: field_student_grade
+            field_location_locality: field_location_locality
+            access: access
+            field_validated: field_validated
+          default: '-1'
           info:
-            field_place:
+            counter:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_student_name:
-              sortable: false
-              default_sort_order: asc
+            contest_bulk_form:
               align: ''
               separator: ''
               empty_column: false
@@ -1489,7 +1502,7 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_student_stage_name:
+            id:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1503,14 +1516,87 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_address_locality:
+            status:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_address_administrative_area:
+            uid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            created:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            changed:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            operations:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_release_form:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_complete:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            uid_1:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            id_1:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nothing:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            preferred_langcode:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            piv_teacher_first_name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            mail:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1518,6 +1604,34 @@ display:
               empty_column: false
               responsive: ''
             field_stream:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_student_grade:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_location_locality:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            access:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_validated:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -4654,6 +4768,56 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_address_administrative_area:
+          id: field_address_administrative_area
+          table: node__field_address
+          field: field_address_administrative_area
+          relationship: field_school
+          group_type: group
+          admin_label: ''
+          plugin_id: subdivision
+          label: 'Address (field_address:administrative_area)'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
       filters:
         title:
           id: title
@@ -7330,8 +7494,8 @@ display:
           plugin_id: date
           operator: '>'
           value:
-            min: ''
-            max: ''
+            min: '2024-01-16'
+            max: '2025-01-21'
             value: '2025-01-01'
             type: date
           group: 1
