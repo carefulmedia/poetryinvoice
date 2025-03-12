@@ -23,14 +23,12 @@ dependencies:
     - field.field.node.school.field_pa
     - field.field.node.school.field_school_board
     - field.field.node.school.field_school_district_type1
-    - field.field.node.school.field_school_image
     - field.field.node.school.field_school_phone
     - field.field.node.school.field_special_subjects
     - field.field.node.school.field_story_link
     - field.field.node.school.field_talked_to
     - field.field.node.school.field_type_of_school
     - field.field.node.school.field_years_in_competition
-    - image.style.thumbnail
     - node.type.school
   module:
     - address
@@ -41,7 +39,6 @@ dependencies:
     - metatag
     - path
     - scheduler
-    - svg_image
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -101,6 +98,7 @@ content:
       collapsible: false
       collapsed: false
       revision: false
+      removed_reference: optional
     third_party_settings: {  }
   field_contact_email:
     type: string_textfield
@@ -202,14 +200,6 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
-  field_school_image:
-    type: image_image
-    weight: 4
-    region: content
-    settings:
-      progress_indicator: throbber
-      preview_image_style: thumbnail
     third_party_settings: {  }
   field_school_phone:
     type: string_textfield
