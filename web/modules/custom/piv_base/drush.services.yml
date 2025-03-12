@@ -1,0 +1,6 @@
+services:
+  piv_base.commands:
+    class: \Drupal\piv_base\Commands\PivBaseCommands
+    tags:
+      - { name: drush.command }
+    arguments: ['@entity_type.manager', '@queue']
