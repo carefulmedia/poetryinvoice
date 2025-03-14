@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Render\Element;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\piv_contest_score\Entity\Score;
 
 /**
  * Implements hook_theme().
@@ -32,5 +34,19 @@ function piv_contest_score_theme() {
 function template_preprocess_score(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function piv_contest_score_entity_presave(EntityInterface $entity) {
+  if ($entity instanceof Score && $entity->bundle() == 'accuracy_live_competition') {
+    $inaccuracy = $entity->field_inaccuracy_deduction->value ?? 0;
+    $prompt = $entity->field_prompt_deduction->value ?? 0;
+    // Maximum deduction is 7 and minimum is 0.
+    $total_deduction = $inaccuracy + $prompt;
+    $total_deduction = max(0, min($total_deduction, 7));
+    $entity->field_final_accuracy_score = 8 - $total_deduction;
   }
 }
