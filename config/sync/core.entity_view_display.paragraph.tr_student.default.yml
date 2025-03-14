@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.tr_student.field_legal_name
     - field.field.paragraph.tr_student.field_poem
     - field.field.paragraph.tr_student.field_recitation_order
+    - field.field.paragraph.tr_student.field_scores_ref
     - field.field.paragraph.tr_student.field_stage_name
     - field.field.paragraph.tr_student.field_student_name_1
     - field.field.paragraph.tr_student.piv_release_form
@@ -33,6 +34,14 @@ content:
       link: true
     third_party_settings: {  }
     weight: 4
+    region: content
+  field_scores_ref:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
     region: content
   field_stage_name:
     type: boolean

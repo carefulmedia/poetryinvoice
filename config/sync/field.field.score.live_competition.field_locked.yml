@@ -1,0 +1,21 @@
+uuid: 10819928-a544-49ae-8911-b9e61d967710
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.score.field_locked
+    - piv_contest_score.score_type.live_competition
+id: score.live_competition.field_locked
+field_name: field_locked
+entity_type: score
+bundle: live_competition
+label: Locked
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

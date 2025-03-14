@@ -1,0 +1,125 @@
+uuid: b1fa34c0-d2e7-40aa-8ed8-ff9bdddb3c53
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.score.live_competition.field_competition
+    - field.field.score.live_competition.field_locked
+    - field.field.score.live_competition.field_scores
+    - piv_contest_score.score_type.live_competition
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: score.live_competition.default
+targetEntityType: score
+bundle: live_competition
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 40
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_competition:
+    type: entity_reference_autocomplete
+    weight: 41
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_locked:
+    type: boolean_checkbox
+    weight: 42
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_scores:
+    type: number
+    weight: 22
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  judge:
+    type: entity_reference_autocomplete
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  judging_session:
+    type: entity_reference_autocomplete
+    weight: 35
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 2
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  recitation:
+    type: entity_reference_autocomplete
+    weight: 30
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  score_template:
+    type: entity_reference_autocomplete
+    weight: 25
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: false
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 15
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

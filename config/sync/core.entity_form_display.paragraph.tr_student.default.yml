@@ -6,6 +6,7 @@ dependencies:
     - field.field.paragraph.tr_student.field_legal_name
     - field.field.paragraph.tr_student.field_poem
     - field.field.paragraph.tr_student.field_recitation_order
+    - field.field.paragraph.tr_student.field_scores_ref
     - field.field.paragraph.tr_student.field_stage_name
     - field.field.paragraph.tr_student.field_student_name_1
     - field.field.paragraph.tr_student.piv_release_form
@@ -82,4 +83,5 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_scores_ref: true
   status: true
