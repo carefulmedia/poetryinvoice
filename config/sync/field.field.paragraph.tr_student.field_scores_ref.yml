@@ -1,0 +1,29 @@
+uuid: 52f1d765-22c9-4f9b-b560-147e38900240
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_scores_ref
+    - paragraphs.paragraphs_type.tr_student
+    - piv_contest_score.score_type.live_competition
+id: paragraph.tr_student.field_scores_ref
+field_name: field_scores_ref
+entity_type: paragraph
+bundle: tr_student
+label: Scores
+description: 'References to a score entities.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:score'
+  handler_settings:
+    target_bundles:
+      live_competition: live_competition
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

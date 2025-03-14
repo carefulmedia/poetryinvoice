@@ -1,0 +1,25 @@
+uuid: f0dd5f67-c07c-4538-843f-46ad3c256d6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_active_round
+    - node.type.competition
+id: node.competition.field_active_round
+field_name: field_active_round
+entity_type: node
+bundle: competition
+label: 'Active round'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
