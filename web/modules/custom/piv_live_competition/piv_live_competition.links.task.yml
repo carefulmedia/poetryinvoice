@@ -1,0 +1,5 @@
+piv_live_competition.live_competitions_list:
+  route_name: piv_live_competition.live_competition_list
+  base_route: entity.user.canonical
+  title: 'Live Competitions'
+  weight: 110

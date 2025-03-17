@@ -1,0 +1,7 @@
+name: 'PIV Live Competition'
+type: module
+description: 'Live competition related code.'
+package: PIV
+core_version_requirement: ^10 || ^11
+dependencies:
+  - piv_contest:piv_contest

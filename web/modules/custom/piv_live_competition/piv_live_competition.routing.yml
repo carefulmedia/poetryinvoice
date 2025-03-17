@@ -1,0 +1,28 @@
+piv_live_competition.score:
+  path: '/live-competition-scoring/{node}/{user}/{recitation}'
+  defaults:
+    _title: 'Live Competition Scoring'
+    _controller: '\Drupal\piv_live_competition\Controller\ScoreController'
+    recitation: null
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Controller\ScoreController::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+      user:
+        type: entity:user
+      recitation:
+        type: entity:paragraph
+        bundle:
+          - tr_student
+
+piv_live_competition.live_competition_list:
+  path: '/user/{user}/live-competitions'
+  defaults:
+    _title: 'Live Competitions'
+    _controller: '\Drupal\piv_live_competition\Controller\LiveCompetitionsListController'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Controller\LiveCompetitionsListController::access'
