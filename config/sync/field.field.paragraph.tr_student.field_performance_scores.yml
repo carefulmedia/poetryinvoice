@@ -1,0 +1,29 @@
+uuid: 9dc9966e-327a-4090-baa7-fd3541733c44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_performance_scores
+    - paragraphs.paragraphs_type.tr_student
+    - piv_contest_score.score_type.live_competition
+id: paragraph.tr_student.field_performance_scores
+field_name: field_performance_scores
+entity_type: paragraph
+bundle: tr_student
+label: 'Performance Scores'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:score'
+  handler_settings:
+    target_bundles:
+      live_competition: live_competition
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
