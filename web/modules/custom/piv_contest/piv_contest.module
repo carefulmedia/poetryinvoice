@@ -358,13 +358,24 @@ function piv_contest_school_is_excluded($school_id) {
 }
 
 /**
+ * Helper function to hide fields on score entities.
+ */
+function _piv_contest_hide_score_fields(&$form, $bundle) {
+  if (in_array($bundle, ['live_competition', 'accuracy_live_competition'])) {
+    $form['judging_session']['#access'] = FALSE;
+    $form['recitation']['#access'] = FALSE;
+  }
+  if ($bundle == 'accuracy_live_competition') {
+    $form['score_template']['#access'] = FALSE;
+  }
+}
+
+/**
  * Implements hook_inline_entity_form_entity_form_alter().
  */
 function piv_contest_inline_entity_form_entity_form_alter(array &$entity_form, FormStateInterface &$form_state) {
-  if ($entity_form['#entity_type'] == 'score'
-  && in_array($entity_form['#bundle'], ['live_competition', 'accuracy_live_competition'])) {
-    $entity_form['judging_session']['#access'] = FALSE;
-    $entity_form['recitation']['#access'] = FALSE;
+  if ($entity_form['#entity_type'] == 'score') {
+    _piv_contest_hide_score_fields($entity_form, $entity_form['#bundle']);
   }
 }
 
@@ -373,8 +384,5 @@ function piv_contest_inline_entity_form_entity_form_alter(array &$entity_form, F
  */
 function piv_contest_form_score_form_alter(&$form, FormStateInterface $form_state) {
   $bundle = $form_state->getFormObject()->getEntity()->bundle();
-  if (in_array($bundle, ['live_competition', 'accuracy_live_competition'])) {
-    $form['judging_session']['#access'] = FALSE;
-    $form['recitation']['#access'] = FALSE;
-  }
+  _piv_contest_hide_score_fields($form, $bundle);
 }
