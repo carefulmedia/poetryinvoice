@@ -23,7 +23,8 @@ final class LiveCompetitionsListController extends ControllerBase {
     $query->condition('type', 'competition');
     $judge_group = $query->orConditionGroup()
       ->condition('field_accuracy_judge_fr', $user_id, 'IN')
-      ->condition('field_accuracy_judge_en', $user_id, 'IN');
+      ->condition('field_accuracy_judge_en', $user_id, 'IN')
+      ->condition('field_judges.entity:paragraph.field_judge', $user_id);
     return $query->condition($judge_group)
       ->accessCheck(TRUE)
       ->execute();
