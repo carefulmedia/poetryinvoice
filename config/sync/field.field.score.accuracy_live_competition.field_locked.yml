@@ -1,0 +1,21 @@
+uuid: 15b513f2-f734-43b6-9d37-c3c45a106b74
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.score.field_locked
+    - piv_contest_score.score_type.accuracy_live_competition
+id: score.accuracy_live_competition.field_locked
+field_name: field_locked
+entity_type: score
+bundle: accuracy_live_competition
+label: Locked
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
