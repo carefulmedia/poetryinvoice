@@ -24,17 +24,8 @@ final class ScoreForm extends FormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state): array {
     $form['message'] = [
-      '#type' => 'textarea',
-      '#title' => $this->t('Message'),
-      '#required' => TRUE,
-    ];
-
-    $form['actions'] = [
-      '#type' => 'actions',
-      'submit' => [
-        '#type' => 'submit',
-        '#value' => $this->t('Send'),
-      ],
+      '#markup' => '“Live Competition Judging Interface“',
+      '#title' => $this->t('PIV-612 default stub'),
     ];
 
     return $form;
