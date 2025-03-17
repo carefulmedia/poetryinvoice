@@ -6,12 +6,16 @@ dependencies:
     - core.entity_view_mode.node.teaser
     - field.field.node.competition.body
     - field.field.node.competition.comment_node_competition
+    - field.field.node.competition.field_accuracy_judge_en
+    - field.field.node.competition.field_accuracy_judge_fr
+    - field.field.node.competition.field_active_round
     - field.field.node.competition.field_competition_school
     - field.field.node.competition.field_host_teacher
     - field.field.node.competition.field_judges
     - field.field.node.competition.field_language_stream
     - field.field.node.competition.field_level
     - field.field.node.competition.field_metatags
+    - field.field.node.competition.field_score_template
     - field.field.node.competition.field_submission_deadline
     - field.field.node.competition.field_winners_announced
     - field.field.node.competition.field_years_in_competition
@@ -42,12 +46,16 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_accuracy_judge_en: true
+  field_accuracy_judge_fr: true
+  field_active_round: true
   field_competition_school: true
   field_host_teacher: true
   field_judges: true
   field_language_stream: true
   field_level: true
   field_metatags: true
+  field_score_template: true
   field_submission_deadline: true
   field_winners_announced: true
   field_years_in_competition: true

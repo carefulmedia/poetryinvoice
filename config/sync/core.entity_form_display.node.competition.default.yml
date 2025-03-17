@@ -5,17 +5,22 @@ dependencies:
   config:
     - field.field.node.competition.body
     - field.field.node.competition.comment_node_competition
+    - field.field.node.competition.field_accuracy_judge_en
+    - field.field.node.competition.field_accuracy_judge_fr
+    - field.field.node.competition.field_active_round
     - field.field.node.competition.field_competition_school
     - field.field.node.competition.field_host_teacher
     - field.field.node.competition.field_judges
     - field.field.node.competition.field_language_stream
     - field.field.node.competition.field_level
     - field.field.node.competition.field_metatags
+    - field.field.node.competition.field_score_template
     - field.field.node.competition.field_submission_deadline
     - field.field.node.competition.field_winners_announced
     - field.field.node.competition.field_years_in_competition
     - node.type.competition
   module:
+    - chosen_field
     - datetime
     - field_layout
     - inline_entity_form
@@ -46,9 +51,28 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_accuracy_judge_en:
+    type: chosen_select
     weight: 12
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_accuracy_judge_fr:
+    type: chosen_select
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_active_round:
+    type: number
+    weight: 14
+    region: content
+    settings:
+      placeholder: ''
     third_party_settings: {  }
   field_competition_school:
     type: entity_reference_autocomplete
@@ -86,6 +110,7 @@ content:
       collapsible: false
       collapsed: false
       revision: false
+      removed_reference: optional
     third_party_settings: {  }
   field_language_stream:
     type: options_buttons
@@ -101,11 +126,21 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 51
+    weight: 26
     region: content
     settings:
       sidebar: true
       use_details: true
+    third_party_settings: {  }
+  field_score_template:
+    type: entity_reference_autocomplete
+    weight: 13
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   field_submission_deadline:
     type: datetime_default
@@ -134,25 +169,25 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 15
+    weight: 20
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 13
+    weight: 18
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 23
     region: content
     settings: {  }
     third_party_settings: {  }
   simple_sitemap:
-    weight: 10
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -163,14 +198,14 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 16
+    weight: 21
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 14
+    weight: 19
     region: content
     settings:
       display_label: true
@@ -184,13 +219,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   translation:
-    weight: 17
+    weight: 22
     region: content
     settings: {  }
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 11
+    weight: 16
     region: content
     settings:
       match_operator: CONTAINS
@@ -200,12 +235,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 24
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 25
     region: content
     settings: {  }
     third_party_settings: {  }
