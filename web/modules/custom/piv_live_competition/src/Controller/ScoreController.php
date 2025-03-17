@@ -25,9 +25,37 @@ final class ScoreController extends ControllerBase {
    * is already checked in the routing file.
    */
   public function access(AccountInterface $account, NodeInterface $node, UserInterface $user, ?Paragraph $recitation = NULL) {
+    // Merge all judge ids in an array.
     $judges_fr = array_column($node->field_accuracy_judge_fr->getValue(), 'target_id');
     $judges_en = array_column($node->field_accuracy_judge_en->getValue(), 'target_id');
-    return AccessResult::allowedIf(in_array($user->id(), array_merge($judges_en, $judges_fr)));
+    $performance_judges = [];
+    foreach ($node->field_judges->referencedEntities() as $judge_paragraph) {
+      if ($judge_paragraph->hasField('field_judge')) {
+        $performance_judges[] = $judge_paragraph->field_judge->target_id;
+      }
+    }
+    $all_judges = array_merge($performance_judges, $judges_en, $judges_fr);
+    $user_is_judge = in_array($user->id(), $all_judges);
+
+    // Check if the recitation references the competition node from the
+    // url.
+    $recitation_is_valid = TRUE;
+    if ($recitation) {
+      // Controller already check the paragraph type, just check the
+      // reference field.
+      if ($recitation->field_contest_association->target_id != $node->id()) {
+        $recitation_is_valid = FALSE;
+      }
+    }
+
+    // The current logged in user accessing that url is the same from
+    // the "user" parameter in the url. The user is not trying to access
+    // the live-competition url for another user.
+    $user_is_accessing_own_page = $account->id() === $user->id();
+    return AccessResult::allowedIf($user_is_accessing_own_page && $recitation_is_valid && $user_is_judge)
+      ->cachePerUser()
+      ->addCacheableDependency($node)
+      ->addCacheableDependency($user);
   }
 
   /**

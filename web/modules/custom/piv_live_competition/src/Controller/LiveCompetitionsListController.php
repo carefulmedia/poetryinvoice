@@ -8,6 +8,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Access\AccessResult;
 use Drupal\User\UserInterface;
 use Drupal\Core\Url;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -31,9 +32,12 @@ final class LiveCompetitionsListController extends ControllerBase {
   /**
    * Check if there is a competition where this user is assigned to.
    */
-  public function access(UserInterface $user) {
+  public function access(AccountInterface $account, UserInterface $user) {
     $total = count($this->getCompetitionIds($user->id()));
-    return AccessResult::allowedIf($total > 0);
+    return AccessResult::allowedIf($total > 0 && $account->id() === $user->id())
+      ->cachePerUser()
+      ->addCacheableDependency($user)
+      ->addCacheTags(['node_list:competition']);
   }
 
   /**
