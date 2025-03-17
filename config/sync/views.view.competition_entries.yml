@@ -1450,11 +1450,7 @@ display:
       style:
         type: table
         options:
-          grouping:
-            -
-              field: field_stream
-              rendered: true
-              rendered_strip: false
+          grouping: {  }
           row_class: ''
           default_row_class: true
           columns:
@@ -1462,11 +1458,23 @@ display:
             field_student_name: field_student_name
             field_student_last_name: field_student_last_name
             field_student_stage_name: field_student_stage_name
+            field_student_email: field_student_email
+            piv_teacher_first_name: piv_teacher_first_name
+            piv_teacher_last_name: piv_teacher_last_name
+            mail: mail
+            id: id
+            field_recitations_1: field_recitations_1
+            field_recitations: field_recitations
+            uid: uid
+            field_competition: field_competition
+            field_stream: field_stream
             title: title
             field_address_locality: field_address_locality
             field_address_administrative_area: field_address_administrative_area
-            field_stream: field_stream
-          default: field_place
+            nothing: nothing
+            edit_competition_entry: edit_competition_entry
+            field_student_grade: field_student_grade
+          default: '-1'
           info:
             field_place:
               sortable: false
@@ -1496,6 +1504,72 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
+            field_student_email:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            piv_teacher_first_name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            piv_teacher_last_name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            mail:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            id:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_recitations_1:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_recitations:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            uid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_competition:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_stream:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
             title:
               sortable: false
               default_sort_order: asc
@@ -1517,7 +1591,19 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_stream:
+            nothing:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            edit_competition_entry:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_student_grade:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -4654,6 +4740,56 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_address_administrative_area:
+          id: field_address_administrative_area
+          table: node__field_address
+          field: field_address_administrative_area
+          relationship: field_school
+          group_type: group
+          admin_label: ''
+          plugin_id: subdivision
+          label: 'Address (field_address:administrative_area)'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          display_name: true
       filters:
         title:
           id: title
@@ -7330,8 +7466,8 @@ display:
           plugin_id: date
           operator: '>'
           value:
-            min: ''
-            max: ''
+            min: '2024-01-16'
+            max: '2025-01-21'
             value: '2025-01-01'
             type: date
           group: 1
@@ -7815,6 +7951,69 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        piv_teacher_last_name:
+          id: piv_teacher_last_name
+          table: user__piv_teacher_last_name
+          field: piv_teacher_last_name
+          relationship: uid
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Teacher last name'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         mail:
           id: mail
           table: users_field_data
@@ -8208,7 +8407,7 @@ display:
           admin_label: ''
           plugin_id: field
           label: Stream
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -8899,6 +9098,7 @@ display:
         - 'config:field.storage.competition_entry.field_student_name'
         - 'config:field.storage.competition_entry.field_student_stage_name'
         - 'config:field.storage.user.piv_teacher_first_name'
+        - 'config:field.storage.user.piv_teacher_last_name'
   page_5:
     id: page_5
     display_title: 'Student information one line'
@@ -9223,6 +9423,134 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        id:
+          id: id
+          table: competition_entry_field_data
+          field: id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: competition_entry
+          entity_field: id
+          plugin_id: field
+          label: ID
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: true
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_competition:
+          id: field_competition
+          table: competition_entry__field_competition
+          field: field_competition
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Competition
+          exclude: true
+          alter:
+            alter_text: true
+            text: '{{ field_competition__target_id }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_entity_id
+          settings: {  }
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         field_address_locality:
           id: field_address_locality
           table: node__field_address
@@ -9285,14 +9613,14 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: '<a href="/peoples-choice/#urlencode{{ field_student_stage_name }}">{{ field_student_stage_name }} from {{ title }}, {{ field_address_locality }}, {{ field_address_administrative_area }}</a> '
+            text: '{{ field_student_stage_name }}, {{ title }}, {{ field_address_locality }}, {{ field_address_administrative_area }}'
             make_link: false
             path: ''
             absolute: false
             external: false
             replace_spaces: false
             path_case: none
-            trim_whitespace: false
+            trim_whitespace: true
             alt: ''
             rel: ''
             link_class: ''
@@ -9332,7 +9660,7 @@ display:
           admin_label: ''
           plugin_id: field
           label: Stream
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -9494,7 +9822,7 @@ display:
           value:
             min: ''
             max: ''
-            value: '2'
+            value: '5'
           group: 1
           exposed: true
           expose:
@@ -9684,6 +10012,7 @@ display:
         - 'url.query_args:sort_order'
         - user.permissions
       tags:
+        - 'config:field.storage.competition_entry.field_competition'
         - 'config:field.storage.competition_entry.field_place'
         - 'config:field.storage.competition_entry.field_stream'
         - 'config:field.storage.competition_entry.field_student_last_name'
@@ -9697,6 +10026,68 @@ display:
     display_options:
       title: 'Student information winner grid'
       fields:
+        field_place:
+          id: field_place
+          table: competition_entry__field_place
+          field: field_place
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '{{ field_place }} PLACE'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: h4
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         field_recitations:
           id: field_recitations
           table: competition_entry__field_recitations
@@ -9814,68 +10205,6 @@ display:
           settings:
             view_mode: stream_label
           group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_place:
-          id: field_place
-          table: competition_entry__field_place
-          field: field_place
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: list_default
-          settings: {  }
-          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -10255,9 +10584,9 @@ display:
           plugin_id: standard
           order: ASC
           expose:
-            label: 'Student last name'
-            field_identifier: field_student_last_name_value
-          exposed: true
+            label: ''
+            field_identifier: ''
+          exposed: false
         field_place_value:
           id: field_place_value
           table: competition_entry__field_place
@@ -10487,16 +10816,17 @@ display:
         groups:
           1: AND
       style:
-        type: grid
+        type: grid_responsive
         options:
-          grouping: {  }
+          grouping:
+            -
+              field: field_stream
+              rendered: true
+              rendered_strip: false
           columns: 3
-          automatic_width: true
+          cell_min_width: 100
+          grid_gutter: 10
           alignment: horizontal
-          row_class_custom: ''
-          row_class_default: true
-          col_class_custom: ''
-          col_class_default: true
       row:
         type: fields
         options: {  }
@@ -10573,258 +10903,6 @@ display:
     display_options:
       title: Facewall
       fields:
-        field_student_name:
-          id: field_student_name
-          table: competition_entry__field_student_name
-          field: field_student_name
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_student_last_name:
-          id: field_student_last_name
-          table: competition_entry__field_student_last_name
-          field: field_student_last_name
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_student_stage_name:
-          id: field_student_stage_name
-          table: competition_entry__field_student_stage_name
-          field: field_student_stage_name
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: true
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: h1
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: '{{ field_student_name }} {{ field_student_last_name }}'
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_stream:
-          id: field_stream
-          table: competition_entry__field_stream
-          field: field_stream
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: Stream
-          exclude: true
-          alter:
-            alter_text: true
-            text: '{{ field_stream }} '
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_revisions_entity_view
-          settings:
-            view_mode: stream_label
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         field_recitations:
           id: field_recitations
           table: competition_entry__field_recitations
@@ -10888,190 +10966,12 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: field_school
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: title
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: h3
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_address_locality:
-          id: field_address_locality
-          table: node__field_address
-          field: field_address_locality
-          relationship: field_school
-          group_type: group
-          admin_label: ''
-          plugin_id: subdivision
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          display_name: true
-        field_address_administrative_area:
-          id: field_address_administrative_area
-          table: node__field_address
-          field: field_address_administrative_area
-          relationship: field_school
-          group_type: group
-          admin_label: ''
-          plugin_id: subdivision
-          label: ''
-          exclude: true
-          alter:
-            alter_text: true
-            text: '{{ field_address_locality }}, {{ field_address_administrative_area }}'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: h3
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          display_name: false
       access:
         type: role
         options:
           role:
             administrator: administrator
       sorts:
-        field_student_last_name_value:
-          id: field_student_last_name_value
-          table: competition_entry__field_student_last_name
-          field: field_student_last_name_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: standard
-          order: ASC
-          expose:
-            label: 'Student last name'
-            field_identifier: field_student_last_name_value
-          exposed: true
         field_place_value:
           id: field_place_value
           table: competition_entry__field_place
@@ -11374,10 +11274,6 @@ display:
         - user.roles
       tags:
         - 'config:field.storage.competition_entry.field_recitations'
-        - 'config:field.storage.competition_entry.field_stream'
-        - 'config:field.storage.competition_entry.field_student_last_name'
-        - 'config:field.storage.competition_entry.field_student_name'
-        - 'config:field.storage.competition_entry.field_student_stage_name'
   page_9:
     id: page_9
     display_title: 'Certificate information'

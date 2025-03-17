@@ -95,17 +95,17 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
         }
       }
       $school ? $school->field_address->view() : NULL;
-      $student_name = strip_tags(piv_popular_vote_get_student_name($competition_entry->id()));
-      $encoded_student_name = urlencode($student_name);
+      $competition_entry_id = $competition_entry->id();
+      $student_name = strip_tags(piv_popular_vote_get_student_name($competition_entry_id));
       $build['recitations'][$recitation->id()] = [
         '#type' => 'container',
         'anchor' => [
-          '#markup' => "<a name='{$encoded_student_name}'></a>",
+          '#markup' => "<a name='{$competition_entry_id}'></a>",
         ],
         'header' => [
           '#type' => 'container',
           'student' => [
-            '#markup' => "{$student_name} <a href='{$encoded_student_name}'></a>",
+            '#markup' => "{$student_name} <a href='{$competition_entry_id}'></a>",
           ],
           'school_address' => [
             '#markup' => $school_address,
@@ -119,7 +119,7 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
           '#type' => 'link',
           '#url' => Url::fromRoute('piv_popular_vote.popular_vote', [
             'competition' => $competition->id(),
-            'competition_entry' => $competition_entry->id(),
+            'competition_entry' => $competition_entry_id,
           ]),
           '#attributes' => [
             'class' => ['use-ajax', 'button'],

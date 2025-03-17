@@ -1,0 +1,23 @@
+uuid: 7b8ea60f-5a9f-429a-b094-0df5228fbe8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.score.field_prompt_deduction
+    - piv_contest_score.score_type.accuracy_live_competition
+id: score.accuracy_live_competition.field_prompt_deduction
+field_name: field_prompt_deduction
+entity_type: score
+bundle: accuracy_live_competition
+label: 'Prompt deduction'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 0
+  max: 8
+  prefix: ''
+  suffix: ''
+field_type: integer

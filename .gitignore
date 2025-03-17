@@ -62,3 +62,4 @@ node_modules
 /web/roulette/cached/data/*.json
 
 /web/modules/custom/piv_school/src/csv
+.vscode

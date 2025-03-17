@@ -50,4 +50,3 @@ class PivBasePreprocessorPluginManager extends PreprocessorPluginManager {
   }
 
 }
-

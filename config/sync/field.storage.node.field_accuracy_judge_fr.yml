@@ -1,0 +1,20 @@
+uuid: 7d05a153-103a-4480-90ae-51f310230f70
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - user
+id: node.field_accuracy_judge_fr
+field_name: field_accuracy_judge_fr
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

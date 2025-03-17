@@ -24,7 +24,6 @@ dependencies:
     - field.field.node.school.field_pa
     - field.field.node.school.field_school_board
     - field.field.node.school.field_school_district_type1
-    - field.field.node.school.field_school_image
     - field.field.node.school.field_school_phone
     - field.field.node.school.field_special_subjects
     - field.field.node.school.field_story_link
@@ -68,7 +67,6 @@ hidden:
   field_pa: true
   field_school_board: true
   field_school_district_type1: true
-  field_school_image: true
   field_school_phone: true
   field_special_subjects: true
   field_story_link: true

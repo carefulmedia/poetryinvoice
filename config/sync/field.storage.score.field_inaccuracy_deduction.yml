@@ -1,0 +1,20 @@
+uuid: 7a256d4d-437c-463f-a7e9-415d8369202e
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_score
+id: score.field_inaccuracy_deduction
+field_name: field_inaccuracy_deduction
+entity_type: score
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

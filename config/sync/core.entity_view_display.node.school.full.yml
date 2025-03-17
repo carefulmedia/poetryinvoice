@@ -24,7 +24,6 @@ dependencies:
     - field.field.node.school.field_pa
     - field.field.node.school.field_school_board
     - field.field.node.school.field_school_district_type1
-    - field.field.node.school.field_school_image
     - field.field.node.school.field_school_phone
     - field.field.node.school.field_special_subjects
     - field.field.node.school.field_story_link
@@ -38,7 +37,6 @@ dependencies:
     - layout_builder
     - layout_discovery
     - options
-    - svg_image
     - user
     - views
 third_party_settings:
@@ -113,29 +111,6 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             weight: 3
-            additional: {  }
-          4c4a5411-b320-4166-80ae-e51ff9dfdffd:
-            uuid: 4c4a5411-b320-4166-80ae-e51ff9dfdffd
-            region: content
-            configuration:
-              id: 'field_block:node:school:field_school_image'
-              label_display: '0'
-              context_mapping:
-                entity: layout_builder.entity
-              formatter:
-                type: image
-                label: above
-                settings:
-                  image_link: ''
-                  image_style: ''
-                  image_loading:
-                    attribute: lazy
-                  svg_attributes:
-                    width: null
-                    height: null
-                  svg_render_as_image: true
-                third_party_settings: {  }
-            weight: 4
             additional: {  }
           e509ddf6-03b7-49d8-b0f5-791834c15c44:
             uuid: e509ddf6-03b7-49d8-b0f5-791834c15c44
@@ -224,21 +199,6 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 6
-    region: content
-  field_school_image:
-    type: image
-    label: above
-    settings:
-      image_link: ''
-      image_style: ''
-      image_loading:
-        attribute: lazy
-      svg_attributes:
-        width: null
-        height: null
-      svg_render_as_image: true
-    third_party_settings: {  }
-    weight: 4
     region: content
   field_story_link:
     type: string

@@ -17,7 +17,7 @@ use Drupal\Core\Field\Plugin\Field\FieldFormatter\StringFormatter;
  * )
  */
 class StripTagsFormatter extends StringFormatter {
-  
+
   /**
    * {@inheritdoc}
    */
