@@ -1,0 +1,29 @@
+uuid: 10c40ed8-33c2-4b5f-8c20-8be8578d611d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.score.field_competition
+    - node.type.competition
+    - piv_contest_score.score_type.live_competition
+id: score.live_competition.field_competition
+field_name: field_competition
+entity_type: score
+bundle: live_competition
+label: Competition
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      competition: competition
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
