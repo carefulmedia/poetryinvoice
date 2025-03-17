@@ -356,3 +356,33 @@ function piv_contest_school_is_excluded($school_id) {
   $schools = array_column($config->field_excluded_schools->getValue(), 'target_id');
   return in_array($school_id, $schools);
 }
+
+/**
+ * Helper function to hide fields on score entities.
+ */
+function _piv_contest_hide_score_fields(&$form, $bundle) {
+  if (in_array($bundle, ['live_competition', 'accuracy_live_competition'])) {
+    $form['judging_session']['#access'] = FALSE;
+    $form['recitation']['#access'] = FALSE;
+  }
+  if ($bundle == 'accuracy_live_competition') {
+    $form['score_template']['#access'] = FALSE;
+  }
+}
+
+/**
+ * Implements hook_inline_entity_form_entity_form_alter().
+ */
+function piv_contest_inline_entity_form_entity_form_alter(array &$entity_form, FormStateInterface &$form_state) {
+  if ($entity_form['#entity_type'] == 'score') {
+    _piv_contest_hide_score_fields($entity_form, $entity_form['#bundle']);
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function piv_contest_form_score_form_alter(&$form, FormStateInterface $form_state) {
+  $bundle = $form_state->getFormObject()->getEntity()->bundle();
+  _piv_contest_hide_score_fields($form, $bundle);
+}
