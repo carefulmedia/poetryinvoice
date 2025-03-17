@@ -8,7 +8,7 @@ dependencies:
     - piv_contest_score
 third_party_settings:
   field_permissions:
-    permission_type: private
+    permission_type: custom
 id: paragraph.field_performance_scores
 field_name: field_performance_scores
 entity_type: paragraph
