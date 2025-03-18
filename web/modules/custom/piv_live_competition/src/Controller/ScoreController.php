@@ -10,11 +10,30 @@ use Drupal\User\UserInterface;
 use Drupal\paragraphs\Entity\Paragraph;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Cache\CacheBackendInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Url;
 
 /**
  * Returns responses for PIV Live Competition routes.
  */
 final class ScoreController extends ControllerBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct(
+    protected readonly CacheBackendInterface $cache,
+  ) {}
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('cache.default')
+    );
+  }
 
   /**
    * Custom access checks.
@@ -43,7 +62,7 @@ final class ScoreController extends ControllerBase {
     if ($recitation) {
       // Controller already check the paragraph type, just check the
       // reference field.
-      if ($recitation->field_contest_association->target_id != $node->id()) {
+      if ($recitation->getParentEntity()?->field_contest_association->target_id != $node->id()) {
         $recitation_is_valid = FALSE;
       }
     }
@@ -59,13 +78,145 @@ final class ScoreController extends ControllerBase {
   }
 
   /**
+   * Get a list of recitations in the correct sort order.
+   */
+  private function getRecitationsInOrder($node) {
+    $cid = "piv_live_competition:recitations_in_order:{$node->id()}";
+    if ($cache = $this->cache->get($cid)) {
+      return $cache->data;
+    }
+
+    $team_regionals = $this->entityTypeManager()->getStorage('node')
+      ->loadByProperties([
+        'type' => 'team_regionals_entry',
+        'field_contest_association' => $node->id(),
+      ]);
+    $entries = [];
+    foreach ($team_regionals as $team_regional) {
+      $entries = array_merge($entries, $team_regional->field_tr_student->referencedEntities());
+    }
+
+    // Sort by order, if its the same value then use the id, if no value
+    // is set then its infinite (push to last).
+    usort($entries, function ($a, $b) {
+      $a_order = $a->field_recitation_order->value ?? INF;
+      $b_order = $b->field_recitation_order->value ?? INF;
+      if ($a_order == $b_order) {
+        return $a->id() <=> $b->id();
+      }
+      return $a_order <=> $b_order;
+    });
+
+    $tags = ['paragraph_list:tr_student'];
+    $this->cache->set($cid, $entries, CacheBackendInterface::CACHE_PERMANENT, $tags);
+    return $entries;
+  }
+
+  /**
+   * Get key by id from the sorted recitation list.
+   */
+  private function getKeyById($recitations, $id) {
+    foreach ($recitations as $delta => $recitation) {
+      if ($recitation->id() == $id) {
+        return $delta;
+      }
+    }
+    return 0;
+  }
+
+  /**
    * Builds the response.
    */
   public function __invoke(NodeInterface $node, UserInterface $user, ?Paragraph $recitation = NULL): array {
-    $form = $this->formBuilder()
+    $recitations = $this->getRecitationsInOrder($node);
+    if (!$recitation) {
+      $recitation = count($recitations) ? reset($recitations) : NULL;
+    }
+    $build = [];
+
+    if (!$recitation) {
+      $build['empty'] = [
+        '#markup' => $this->t('No recitations for this competition yet.'),
+      ];
+      return $build;
+    }
+
+    $student_name = $recitation->field_stage_name->value == 1 && !empty($recitation->field_student_name_1)
+      ? $recitation->field_student_name_1->value
+      : $recitation->field_legal_name->value;
+
+    $poem_name = $recitation->field_poem?->entity->label();
+    $build['student_name'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'h2',
+      '#value' => $student_name,
+    ];
+    $build['poem'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'h3',
+      '#value' => $poem_name,
+    ];
+
+    // Key starts at 0.
+    $key = $this->getKeyById($recitations, $recitation->id());
+    $total = count($recitations);
+    $build['progress'] = [
+      '#type' => 'inline_template',
+      '#template' => '<div>{{ position }}/{{ total }}</div>',
+      '#context' => [
+        'position' => $key + 1,
+        'total' => $total,
+      ],
+    ];
+
+    $build['form'] = $this->formBuilder()
       ->getForm('Drupal\piv_live_competition\Form\ScoreForm');
 
-    $build['form'] = $form;
+    $build['navigation'] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['score-controller__navigation'],
+      ],
+    ];
+    $previous_recitation = $recitations[$key - 1] ?? NULL;
+    if ($previous_recitation) {
+      // Previous.
+      $build['navigation']['previous'] = [
+        '#type' => 'link',
+        '#url' => Url::fromRoute('piv_live_competition.score', [
+          'node' => $node->id(),
+          'user' => $user->id(),
+          'recitation' => $previous_recitation->id(),
+        ]),
+        '#title' => $this->t('Previous'),
+        '#attributes' => [
+          'class' => [
+            'button',
+            'score-controller__navigation__previous',
+          ],
+        ],
+      ];
+    }
+
+    $next_recitation = $recitations[$key + 1] ?? NULL;
+    if ($key < $total - 1) {
+      // Next.
+      $build['navigation']['next'] = [
+        '#type' => 'link',
+        '#url' => Url::fromRoute('piv_live_competition.score', [
+          'node' => $node->id(),
+          'user' => $user->id(),
+          'recitation' => $next_recitation->id(),
+        ]),
+        '#title' => $this->t('Next'),
+        '#attributes' => [
+          'class' => [
+            'button',
+            'score-controller__navigation__next',
+          ],
+        ],
+      ];
+    }
     return $build;
   }
 
