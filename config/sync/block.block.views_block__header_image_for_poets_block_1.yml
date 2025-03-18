@@ -5,6 +5,7 @@ dependencies:
   config:
     - views.view.header_image_for_poets
   module:
+    - system
     - views
   theme:
     - lvp_barrio
@@ -23,4 +24,8 @@ settings:
   views_label: ''
   items_per_page: none
   exposed: {  }
-visibility: {  }
+visibility:
+  request_path:
+    id: request_path
+    negate: true
+    pages: '/live-competition-scoring/*'

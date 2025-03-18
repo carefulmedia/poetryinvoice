@@ -2052,6 +2052,15 @@ h3.name {
 .list-group__description {
   margin: 0 0 10px;
 }
+.score-controller__navigation {
+  display: flex;
+}
+.score-controller__navigation__next {
+  margin-left: auto;
+}
+.score-controller__navigation__previous {
+  margin-right: auto;
+}
 /**
  * @file
  * Enables Bootstrap 4 multi-level flyout
