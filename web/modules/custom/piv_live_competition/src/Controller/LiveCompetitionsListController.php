@@ -21,6 +21,7 @@ final class LiveCompetitionsListController extends ControllerBase {
   private function getCompetitionIds($user_id) {
     $query = $this->entityTypeManager()->getStorage('node')->getQuery();
     $query->condition('type', 'competition');
+    $query->sort('created', 'DESC');
     $judge_group = $query->orConditionGroup()
       ->condition('field_accuracy_judge_fr', $user_id, 'IN')
       ->condition('field_accuracy_judge_en', $user_id, 'IN')
