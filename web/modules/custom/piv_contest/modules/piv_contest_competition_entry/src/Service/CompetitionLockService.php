@@ -31,7 +31,7 @@ class CompetitionLockService {
     // If competition is not active then it's locked.
     $competition = $competition_entry->field_competition->entity;
     if (!$competition) {
-      return false;
+      return FALSE;
     }
 
     if (!$competition->field_active->value) {

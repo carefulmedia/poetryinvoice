@@ -8,8 +8,6 @@ use Drupal\piv_contest_competition\Entity\Competition;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\media\OEmbed\UrlResolverInterface;
-use Drupal\Component\Utility\UrlHelper;
-use Drupal\media\Plugin\Validation\Constraint\OEmbedResourceConstraint;
 use Drupal\media\OEmbed\ResourceFetcher;
 
 /**
@@ -88,7 +86,7 @@ class MultipleRecitationsForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, Competition $competition = NULL, $competition_entry = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?Competition $competition = NULL, $competition_entry = NULL) {
     $form_state->set('competition', $competition);
     $form_state->set('competition_entry', $competition_entry);
     $form['#attributes']['autocomplete'] = 'off';
@@ -298,7 +296,7 @@ class MultipleRecitationsForm extends FormBase {
         ];
       }
       // Video is not embeddable but there is a value.
-      else if (!empty($media_entity->field_media_oembed_video->value)) {
+      elseif (!empty($media_entity->field_media_oembed_video->value)) {
         $video = [
           'error' => [
             '#markup' => $this->t("Fix video"),

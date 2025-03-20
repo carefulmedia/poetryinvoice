@@ -56,4 +56,5 @@ class ContestViewsData extends EntityViewsData {
 
     return $data;
   }
+
 }

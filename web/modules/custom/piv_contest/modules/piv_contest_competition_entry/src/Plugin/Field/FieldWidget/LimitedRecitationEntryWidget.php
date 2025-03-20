@@ -69,7 +69,7 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
     ModuleHandlerInterface $module_handler,
     SelectionPluginManagerInterface $selection_manager,
     RouteMatchInterface $routeMatch,
-    TranslationManager $translationManager
+    TranslationManager $translationManager,
   ) {
     parent::__construct(
       $plugin_id,
