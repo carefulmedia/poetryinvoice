@@ -51,7 +51,9 @@
           }
           
           // Set background image of parent block to this image URL.
-          $('.site-footer').css('background-image', 'url(' + imgSrc + ')');
+          if (imgSrc) {
+            $('.site-footer').css('background-image', 'url(' + imgSrc + ')');
+          }
           $( ".site-footer" ).fadeIn( 1500 );
         }
        // Assistance for Animate On Scroll issue not working properly

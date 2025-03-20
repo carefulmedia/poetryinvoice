@@ -14,6 +14,7 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Url;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Drupal\piv_live_competition\Helper;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -25,6 +26,7 @@ final class ScoreController extends ControllerBase {
    */
   public function __construct(
     protected readonly CacheBackendInterface $cache,
+    protected readonly Helper $helper,
   ) {}
 
   /**
@@ -32,7 +34,8 @@ final class ScoreController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('cache.default')
+      $container->get('cache.default'),
+      $container->get('piv_live_competition.helper')
     );
   }
 
@@ -79,50 +82,6 @@ final class ScoreController extends ControllerBase {
   }
 
   /**
-   * Get student name from recitation.
-   */
-  private function getStudentName($recitation) {
-    return $recitation->field_stage_name->value == 1 && !empty($recitation->field_student_name_1)
-      ? $recitation->field_student_name_1->value
-      : $recitation->field_legal_name->value;
-  }
-
-  /**
-   * Get a list of recitations in the correct sort order.
-   */
-  private function getRecitationsInOrder($node) {
-    $cid = "piv_live_competition:recitations_in_order:{$node->id()}";
-    if ($cache = $this->cache->get($cid)) {
-      return $cache->data;
-    }
-
-    $team_regionals = $this->entityTypeManager()->getStorage('node')
-      ->loadByProperties([
-        'type' => 'team_regionals_entry',
-        'field_contest_association' => $node->id(),
-      ]);
-    $entries = [];
-    foreach ($team_regionals as $team_regional) {
-      $entries = array_merge($entries, $team_regional->field_tr_student->referencedEntities());
-    }
-
-    // Sort by order, if its the same value then use the id, if no value
-    // is set then its infinite (push to last).
-    usort($entries, function ($a, $b) {
-      $a_order = $a->field_recitation_order->value ?? INF;
-      $b_order = $b->field_recitation_order->value ?? INF;
-      if ($a_order == $b_order) {
-        return $a->id() <=> $b->id();
-      }
-      return $a_order <=> $b_order;
-    });
-
-    $tags = ['paragraph_list:tr_student'];
-    $this->cache->set($cid, $entries, CacheBackendInterface::CACHE_PERMANENT, $tags);
-    return $entries;
-  }
-
-  /**
    * Return a score entity.
    *
    * Load from the recitation or create new, $type is 'accuracy' or
@@ -138,7 +97,8 @@ final class ScoreController extends ControllerBase {
         return $score;
       }
     }
-    $student_name = $this->getStudentName($recitation);
+
+    $student_name = $this->helper->getStudentName($recitation);
     $judge_name = $user->getDisplayName();
     $competition = $node->label();
     return $this->entityTypeManager()->getStorage('score')->create([
@@ -175,7 +135,7 @@ final class ScoreController extends ControllerBase {
     }
 
     $build = [];
-    $recitations = $this->getRecitationsInOrder($node);
+    $recitations = $this->helper->getRecitationsInOrder($node);
     if (!$recitation) {
       $recitation = count($recitations) ? reset($recitations) : NULL;
     }
@@ -198,7 +158,7 @@ final class ScoreController extends ControllerBase {
     // Load or create new score entity.
     $score_entity = $this->getScoreEntity($node, $user, $recitation, $judge_type);
     $is_locked = $score_entity->field_locked->value == 1;
-    $student_name = $this->getStudentName($recitation);
+    $student_name = $this->helper->getStudentName($recitation);
     $poem_name = $recitation->field_poem?->entity->label();
     $build['student_name'] = [
       '#type' => 'html_tag',
