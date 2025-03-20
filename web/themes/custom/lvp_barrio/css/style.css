@@ -2054,6 +2054,7 @@ h3.name {
 }
 .score-controller__navigation {
   display: flex;
+  align-items: start;
 }
 .score-controller__navigation__next {
   margin-left: auto;

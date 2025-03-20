@@ -85,7 +85,7 @@ class CompetitionProgressForm extends FormBase {
   /**
    * Build the form.
    */
-  public function buildForm(array $form, FormStateInterface $form_state, Competition $competition = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?Competition $competition = NULL) {
     $form_state->set('competition', $competition);
 
     $form['#prefix'] = '<div id="competition-progress">';

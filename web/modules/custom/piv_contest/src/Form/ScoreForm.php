@@ -57,7 +57,7 @@ class ScoreForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, RecitationInterface $recitation = NULL, JudgingSessionInterface $judging_session = NULL, Url $destination = NULL, $message = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?RecitationInterface $recitation = NULL, ?JudgingSessionInterface $judging_session = NULL, ?Url $destination = NULL, $message = NULL) {
     if (!$recitation || !$judging_session) {
       throw new NotFoundHttpException();
     }

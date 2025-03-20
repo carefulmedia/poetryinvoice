@@ -81,7 +81,7 @@ class CompetitionEnrollment {
   public function __construct(
     EntityTypeManagerInterface $entity_type_manager,
     CompetitionLockService $lockService,
-    LanguageManagerInterface $language_manager
+    LanguageManagerInterface $language_manager,
   ) {
     $this->entityTypeManager = $entity_type_manager;
     $this->lockService = $lockService;
@@ -181,8 +181,8 @@ class CompetitionEnrollment {
             '#value' => $criteria,
             '#attributes' => [
               'class' => in_array($criteria, $missing_criteria)
-              ? ['criteria-is-missing']
-              : ['criteria-is-met'],
+                ? ['criteria-is-missing']
+                : ['criteria-is-met'],
             ],
           ];
         }
