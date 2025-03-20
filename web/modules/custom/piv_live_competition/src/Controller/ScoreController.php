@@ -13,6 +13,7 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Url;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -78,6 +79,15 @@ final class ScoreController extends ControllerBase {
   }
 
   /**
+   * Get student name from recitation.
+   */
+  private function getStudentName($recitation) {
+    return $recitation->field_stage_name->value == 1 && !empty($recitation->field_student_name_1)
+      ? $recitation->field_student_name_1->value
+      : $recitation->field_legal_name->value;
+  }
+
+  /**
    * Get a list of recitations in the correct sort order.
    */
   private function getRecitationsInOrder($node) {
@@ -113,6 +123,36 @@ final class ScoreController extends ControllerBase {
   }
 
   /**
+   * Return a score entity.
+   *
+   * Load from the recitation or create new, $type is 'accuracy' or
+   * 'performance'.
+   */
+  private function getScoreEntity($node, $user, $recitation, $type) {
+    // Load a score entity or create a new one.
+    $field = $type == 'performance'
+      ? 'field_performance_scores'
+      : 'field_accuracy_scores';
+    foreach ($recitation->{$field}->referencedEntities() as $score) {
+      if ($score->judge->target_id == $user->id()) {
+        return $score;
+      }
+    }
+    $student_name = $this->getStudentName($recitation);
+    $judge_name = $user->getDisplayName();
+    $competition = $node->label();
+    return $this->entityTypeManager()->getStorage('score')->create([
+      'judge' => $user->id(),
+      'bundle' => $type == 'performance'
+        ? 'live_competition'
+        : 'accuracy_live_competition',
+      'score_template' => $node->field_score_template->target_id,
+      'field_competition' => $node->id(),
+      'title' => "{$competition}: {$judge_name} judging {$student_name}",
+    ]);
+  }
+
+  /**
    * Get key by id from the sorted recitation list.
    */
   private function getKeyById($recitations, $id) {
@@ -128,11 +168,17 @@ final class ScoreController extends ControllerBase {
    * Builds the response.
    */
   public function __invoke(NodeInterface $node, UserInterface $user, ?Paragraph $recitation = NULL): array {
+    $score_template = $node->field_score_template->entity;
+    if (!$score_template) {
+      // This field is required.
+      throw new NotFoundHttpException();
+    }
+
+    $build = [];
     $recitations = $this->getRecitationsInOrder($node);
     if (!$recitation) {
       $recitation = count($recitations) ? reset($recitations) : NULL;
     }
-    $build = [];
 
     if (!$recitation) {
       $build['empty'] = [
@@ -141,10 +187,18 @@ final class ScoreController extends ControllerBase {
       return $build;
     }
 
-    $student_name = $recitation->field_stage_name->value == 1 && !empty($recitation->field_student_name_1)
-      ? $recitation->field_student_name_1->value
-      : $recitation->field_legal_name->value;
+    // Check if user is an accuracy judge, otherwise it is a performance
+    // judge.
+    $judges_fr = array_column($node->field_accuracy_judge_fr->getValue(), 'target_id');
+    $judges_en = array_column($node->field_accuracy_judge_en->getValue(), 'target_id');
+    $judge_type = in_array($user->id(), array_merge($judges_fr, $judges_en))
+      ? 'accuracy'
+      : 'performance';
 
+    // Load or create new score entity.
+    $score_entity = $this->getScoreEntity($node, $user, $recitation, $judge_type);
+    $is_locked = $score_entity->field_locked->value == 1;
+    $student_name = $this->getStudentName($recitation);
     $poem_name = $recitation->field_poem?->entity->label();
     $build['student_name'] = [
       '#type' => 'html_tag',
@@ -156,6 +210,7 @@ final class ScoreController extends ControllerBase {
       '#tag' => 'h3',
       '#value' => $poem_name,
     ];
+    $build['epigraph'] = $recitation->field_poem?->entity->field_epigraph?->view(['label' => 'hidden']);
 
     // Key starts at 0.
     $key = $this->getKeyById($recitations, $recitation->id());
@@ -169,54 +224,40 @@ final class ScoreController extends ControllerBase {
       ],
     ];
 
-    $build['form'] = $this->formBuilder()
-      ->getForm('Drupal\piv_live_competition\Form\ScoreForm');
-
-    $build['navigation'] = [
-      '#type' => 'container',
-      '#attributes' => [
-        'class' => ['score-controller__navigation'],
-      ],
+    $build['padlock'] = [
+      '#markup' => $is_locked
+        ? '<svg width="20px" height="20px" fill="#000000" version="1.1" viewBox="0 0 330 330" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="m65 330h200c8.284 0 15-6.716 15-15v-170c0-8.284-6.716-15-15-15h-15v-45c0-46.869-38.131-85-85-85s-85 38.131-85 85v45h-15c-8.284 0-15 6.716-15 15v170c0 8.284 6.716 15 15 15zm45-245c0-30.327 24.673-55 55-55s55 24.673 55 55v45h-110z"/></svg>'
+        : '<svg width="20px" height="20px" fill="#000000" version="1.1" viewBox="0 0 330 330" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="m15 160c8.284 0 15-6.716 15-15v-60c0-30.327 24.673-55 55-55s55 24.673 55 55v45h-25c-8.284 0-15 6.716-15 15v170c0 8.284 6.716 15 15 15h200c8.284 0 15-6.716 15-15v-170c0-8.284-6.716-15-15-15h-145v-45c0-46.869-38.131-85-85-85s-85 38.131-85 85v60c0 8.284 6.716 15 15 15z"/></svg>',
+      '#allowed_tags' => ['svg', 'path'],
     ];
+
     $previous_recitation = $recitations[$key - 1] ?? NULL;
-    if ($previous_recitation) {
-      // Previous.
-      $build['navigation']['previous'] = [
-        '#type' => 'link',
-        '#url' => Url::fromRoute('piv_live_competition.score', [
-          'node' => $node->id(),
-          'user' => $user->id(),
-          'recitation' => $previous_recitation->id(),
-        ]),
-        '#title' => $this->t('Previous'),
-        '#attributes' => [
-          'class' => [
-            'button',
-            'score-controller__navigation__previous',
-          ],
-        ],
-      ];
-    }
+    $previous = $previous_recitation
+      ? Url::fromRoute('piv_live_competition.score', [
+        'node' => $node->id(),
+        'user' => $user->id(),
+        'recitation' => $previous_recitation->id(),
+      ])
+      : NULL;
 
     $next_recitation = $recitations[$key + 1] ?? NULL;
-    if ($key < $total - 1) {
-      // Next.
-      $build['navigation']['next'] = [
-        '#type' => 'link',
-        '#url' => Url::fromRoute('piv_live_competition.score', [
-          'node' => $node->id(),
-          'user' => $user->id(),
-          'recitation' => $next_recitation->id(),
-        ]),
-        '#title' => $this->t('Next'),
-        '#attributes' => [
-          'class' => [
-            'button',
-            'score-controller__navigation__next',
-          ],
-        ],
-      ];
+    $next = $next_recitation
+      ? Url::fromRoute('piv_live_competition.score', [
+        'node' => $node->id(),
+        'user' => $user->id(),
+        'recitation' => $next_recitation->id(),
+      ])
+      : NULL;
+
+    if ($judge_type == 'accuracy') {
+      // Accuracy judge.
+      return ['#markup' => 'Accuracy judge form.'];
     }
+    else {
+      $build['form'] = $this->formBuilder()
+        ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity, $previous, $next);
+    }
+
     return $build;
   }
 

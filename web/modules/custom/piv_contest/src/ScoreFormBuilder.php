@@ -55,7 +55,7 @@ class ScoreFormBuilder {
   /**
    * Get the plugin instance given a score_template.
    */
-  private function getInstance(ScoreTemplateInterface $score_template) {
+  public function getInstance(ScoreTemplateInterface $score_template) {
     $bundle = $score_template->bundle();
     $definitions = $this->pluginManagerScoreForm->getDefinitions();
     if (!$definitions[$bundle]) {
@@ -68,9 +68,9 @@ class ScoreFormBuilder {
   /**
    * Build a form given a score template.
    */
-  public function getForm(ScoreTemplateInterface $score_template) {
+  public function getForm(ScoreTemplateInterface $score_template, ?array $default_values = []) {
     $instance = $this->getInstance($score_template);
-    return $instance->form($score_template, $this->currentLanguage);
+    return $instance->form($score_template, $this->currentLanguage, $default_values);
   }
 
   /**

@@ -85,7 +85,7 @@ class CompetitionEntryController extends ControllerBase {
   /**
    * Verify access to add entry.
    */
-  public function accessAdd(UserInterface $user, CompetitionInterface $competition, ParagraphInterface $stream = NULL) {
+  public function accessAdd(UserInterface $user, CompetitionInterface $competition, ?ParagraphInterface $stream = NULL) {
     $school = $user->field_school->entity;
     if (!$school) {
       return AccessResult::forbidden();
