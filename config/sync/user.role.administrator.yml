@@ -41,6 +41,7 @@ dependencies:
     - piv_contest_competition
     - piv_contest_competition_entry
     - piv_contest_judging_session
+    - piv_live_competition
     - piv_poem_password
     - realname
     - redirect
@@ -61,6 +62,7 @@ is_admin: true
 permissions:
   - 'access administration pages'
   - 'access comments'
+  - 'access competition recitations list'
   - 'access content'
   - 'access content overview'
   - 'access contextual links'
