@@ -3,3 +3,9 @@ piv_live_competition.live_competitions_list:
   base_route: entity.user.canonical
   title: 'Live Competitions'
   weight: 110
+
+piv_live_competition.recitations_list:
+  route_name: piv_live_competition.recitations_list
+  base_route: entity.node.canonical
+  title: 'Recitations List'
+  weight: 0
