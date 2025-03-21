@@ -57,6 +57,7 @@ final class PerformanceScoreForm extends FormBase {
       return $form;
     }
 
+    $form['#attributes']['#class'][] = 'piv-contest-score';
     $is_locked = $score_entity->field_locked->value == 1;
     $is_new = $score_entity->isNew();
 
