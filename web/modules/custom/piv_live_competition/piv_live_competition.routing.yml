@@ -26,3 +26,17 @@ piv_live_competition.live_competition_list:
     _controller: '\Drupal\piv_live_competition\Controller\LiveCompetitionsListController'
   requirements:
     _custom_access: '\Drupal\piv_live_competition\Controller\LiveCompetitionsListController::access'
+
+piv_live_competition.recitations_list:
+  path: '/node/{node}/recitations'
+  defaults:
+    _title: 'Recitations List'
+    _form: 'Drupal\piv_live_competition\Form\RecitationsListForm'
+  requirements:
+    _permission: 'access competition recitations list'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
