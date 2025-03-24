@@ -1,0 +1,27 @@
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      {% for i, label in form.labels %}
+        {% if i|first != '#' %}
+          <th>{{ label }}</th>
+        {% endif %}
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for i, criterion in form.criteria %}
+      {% if i|first != '#' %}
+        <tr class="mobile"><td class="mobile-title" colspan="5">{{ criterion['#title'] }}</td></tr>
+        <tr class="desktop">
+          <td class="desktop-title">{{ criterion['#title'] }}</td>
+          {% for j, option in criterion %}
+            {% if j|first != '#' %}
+              <td class="option">{{ option }}</td>
+            {% endif %}
+          {% endfor %} 
+        </tr>
+      {% endif %}
+    {% endfor %}
+  </tbody>
+</table>
