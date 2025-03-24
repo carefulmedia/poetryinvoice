@@ -81,6 +81,7 @@ final class PerformanceScoreForm extends FormBase {
       '#type' => 'container',
       '#tree' => TRUE,
     ] + $this->scoreFormBuilder->getForm($score_template, $values);
+    $form['score_template_form']['#theme'] = 'recitation_score_form_default__live_competition';
     // Disable if locked.
     if ($is_locked) {
       foreach ($form['score_template_form']['criteria'] as &$criteria) {

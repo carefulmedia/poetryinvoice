@@ -12,11 +12,12 @@
   <tbody>
     {% for i, criterion in form.criteria %}
       {% if i|first != '#' %}
-        <tr>
-          <td>{{ criterion['#title'] }}</td>
+        <tr class="mobile"><td class="mobile-title" colspan="5">{{ criterion['#title'] }}</td></tr>
+        <tr class="desktop">
+          <td class="desktop-title">{{ criterion['#title'] }}</td>
           {% for j, option in criterion %}
             {% if j|first != '#' %}
-              <td>{{ option }}</td>
+              <td class="option">{{ option }}</td>
             {% endif %}
           {% endfor %} 
         </tr>
