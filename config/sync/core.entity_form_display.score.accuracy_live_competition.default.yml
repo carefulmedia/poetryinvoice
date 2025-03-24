@@ -4,10 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.score.accuracy_live_competition.field_competition
-    - field.field.score.accuracy_live_competition.field_final_accuracy_score
-    - field.field.score.accuracy_live_competition.field_inaccuracy_deduction
     - field.field.score.accuracy_live_competition.field_locked
-    - field.field.score.accuracy_live_competition.field_prompt_deduction
+    - field.field.score.accuracy_live_competition.field_scores
     - piv_contest_score.score_type.accuracy_live_competition
   module:
     - field_layout
@@ -38,20 +36,6 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
-  field_final_accuracy_score:
-    type: number
-    weight: 13
-    region: content
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
-  field_inaccuracy_deduction:
-    type: number
-    weight: 12
-    region: content
-    settings:
-      placeholder: ''
-    third_party_settings: {  }
   field_locked:
     type: boolean_checkbox
     weight: 10
@@ -59,9 +43,9 @@ content:
     settings:
       display_label: true
     third_party_settings: {  }
-  field_prompt_deduction:
+  field_scores:
     type: number
-    weight: 11
+    weight: 22
     region: content
     settings:
       placeholder: ''

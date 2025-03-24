@@ -4,10 +4,8 @@ status: true
 dependencies:
   config:
     - field.field.score.accuracy_live_competition.field_competition
-    - field.field.score.accuracy_live_competition.field_final_accuracy_score
-    - field.field.score.accuracy_live_competition.field_inaccuracy_deduction
     - field.field.score.accuracy_live_competition.field_locked
-    - field.field.score.accuracy_live_competition.field_prompt_deduction
+    - field.field.score.accuracy_live_competition.field_scores
     - piv_contest_score.score_type.accuracy_live_competition
   module:
     - user
@@ -43,24 +41,6 @@ content:
     third_party_settings: {  }
     weight: 41
     region: content
-  field_final_accuracy_score:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 45
-    region: content
-  field_inaccuracy_deduction:
-    type: number_integer
-    label: above
-    settings:
-      thousand_separator: ''
-      prefix_suffix: true
-    third_party_settings: {  }
-    weight: 43
-    region: content
   field_locked:
     type: boolean
     label: above
@@ -71,14 +51,14 @@ content:
     third_party_settings: {  }
     weight: 42
     region: content
-  field_prompt_deduction:
+  field_scores:
     type: number_integer
     label: above
     settings:
       thousand_separator: ''
       prefix_suffix: true
     third_party_settings: {  }
-    weight: 44
+    weight: 22
     region: content
   judge:
     type: user_name
