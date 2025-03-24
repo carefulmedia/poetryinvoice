@@ -172,7 +172,9 @@ final class ScoreController extends ControllerBase {
       '#value' => $poem_name,
     ];
     $build['epigraph'] = $recitation->field_poem?->entity->field_epigraph?->view(['label' => 'hidden']);
-    $build['poem_content'] = $recitation->field_poem?->entity->body?->view(['label' => 'hidden']);
+    if ($judge_type == 'accuracy') {
+      $build['poem_content'] = $recitation->field_poem?->entity->body?->view(['label' => 'hidden']);
+    }
 
     // Key starts at 0.
     $key = $this->getKeyById($recitations, $recitation->id());
