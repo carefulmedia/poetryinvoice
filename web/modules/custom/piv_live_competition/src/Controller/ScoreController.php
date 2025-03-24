@@ -101,6 +101,7 @@ final class ScoreController extends ControllerBase {
     $student_name = $this->helper->getStudentName($recitation);
     $judge_name = $user->getDisplayName();
     $competition = $node->label();
+    $suffix = $type == 'performance' ? '' : ' (accuracy)';
     return $this->entityTypeManager()->getStorage('score')->create([
       'judge' => $user->id(),
       'bundle' => $type == 'performance'
@@ -108,7 +109,7 @@ final class ScoreController extends ControllerBase {
         : 'accuracy_live_competition',
       'score_template' => $node->field_score_template->target_id,
       'field_competition' => $node->id(),
-      'title' => "{$competition}: {$judge_name} judging {$student_name}",
+      'title' => "{$competition}: {$judge_name} judging {$student_name}{$suffix}",
     ]);
   }
 
@@ -171,6 +172,7 @@ final class ScoreController extends ControllerBase {
       '#value' => $poem_name,
     ];
     $build['epigraph'] = $recitation->field_poem?->entity->field_epigraph?->view(['label' => 'hidden']);
+    $build['poem_content'] = $recitation->field_poem?->entity->body?->view(['label' => 'hidden']);
 
     // Key starts at 0.
     $key = $this->getKeyById($recitations, $recitation->id());
@@ -211,7 +213,8 @@ final class ScoreController extends ControllerBase {
 
     if ($judge_type == 'accuracy') {
       // Accuracy judge.
-      return ['#markup' => 'Accuracy judge form.'];
+      $build['form'] = $this->formBuilder()
+        ->getForm('Drupal\piv_live_competition\Form\AccuracyScoreForm', $recitation, $score_entity, $previous, $next);
     }
     else {
       $build['form'] = $this->formBuilder()

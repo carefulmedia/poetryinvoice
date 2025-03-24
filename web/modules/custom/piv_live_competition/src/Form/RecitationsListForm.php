@@ -53,6 +53,7 @@ final class RecitationsListForm extends FormBase {
         'school' => $this->t('School'),
         'order' => $this->t('Order'),
         'performance_scores' => $this->t('Performance scores'),
+        'accuracy_scores' => $this->t('Accuracy scores'),
       ],
       '#rows' => [],
       '#empty' => $this->t('No recitations for this competition yet.'),
@@ -69,6 +70,16 @@ final class RecitationsListForm extends FormBase {
         ];
         $performance_scores[] = $link;
       }
+      $accuracy_scores = [];
+      foreach ($recitation->field_accuracy_scores->referencedEntities() as $score) {
+        $label = $score->judge->entity?->getDisplayName() ?? $score->label();
+        $link = $score->toLink($label, 'edit-form')->toRenderable() + [
+          '#suffix' => '<br>',
+          '#prefix' => '· ',
+          '#attributes' => ['target' => '_blank'],
+        ];
+        $accuracy_scores[] = $link;
+      }
 
       $team_regional_entry = $recitation->getParentEntity();
       $school = $team_regional_entry
@@ -83,6 +94,7 @@ final class RecitationsListForm extends FormBase {
         'school' => ['#markup' => $school],
         'order' => ['#markup' => $recitation->field_recitation_order->value],
         'performance_scores' => $performance_scores,
+        'accuracy_scores' => $accuracy_scores,
       ];
     }
 
