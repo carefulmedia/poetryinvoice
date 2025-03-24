@@ -1,7 +1,7 @@
 name: piv9
 recipe: drupal9
 config:
-  php: 8.2
+  php: 8.3
   webroot: web
   xdebug: true
 
