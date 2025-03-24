@@ -9,3 +9,9 @@ piv_live_competition.recitations_list:
   base_route: entity.node.canonical
   title: 'Recitations List'
   weight: 0
+
+piv_live_competition.monitor_dashboard:
+  route_name: piv_live_competition.monitor_dashboard
+  base_route: entity.node.canonical
+  title: 'Monitor Competition'
+  weight: 1
