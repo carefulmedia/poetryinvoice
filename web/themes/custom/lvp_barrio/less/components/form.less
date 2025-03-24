@@ -415,8 +415,10 @@ form {
       thead tr th:first-child {
         display: none;
       }
-      thead tr th {
+      thead tr th div {
         writing-mode: vertical-rl;
+        vertical-align: middle;
+        width: 70%;
         height: 9rem;
         font-size: 15px;
       }
@@ -467,10 +469,20 @@ form {
       }
     }
   }
+  @media (min-width: 768px) {
+    table {
+      thead tr th div {
+        width: 60%;
+      }
+    }
+  }
   @media (min-width: 960px) {
     table {
       thead tr th:first-child {
         display: table-cell;
+      }
+      thead tr th div {
+        width: 100%;
       }
       tbody {
         .mobile .mobile-title {
