@@ -7,14 +7,14 @@ namespace Drupal\piv_live_competition\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Node\NodeInterface;
 use Drupal\User\UserInterface;
-use Drupal\paragraphs\Entity\Paragraph;
+use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Cache\CacheBackendInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\Core\Url;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Drupal\piv_live_competition\Helper;
+use Drupal\piv_contest_score\ScoreInterface;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -47,7 +47,7 @@ final class ScoreController extends ControllerBase {
    * is assigned as a judge to the node in the route. Recitation also
    * is already checked in the routing file.
    */
-  public function access(AccountInterface $account, NodeInterface $node, UserInterface $user, ?Paragraph $recitation = NULL) {
+  public function access(AccountInterface $account, NodeInterface $node, UserInterface $user) {
     // Merge all judge ids in an array.
     $judges_fr = array_column($node->field_accuracy_judge_fr->getValue(), 'target_id');
     $judges_en = array_column($node->field_accuracy_judge_en->getValue(), 'target_id');
@@ -60,25 +60,38 @@ final class ScoreController extends ControllerBase {
     $all_judges = array_merge($performance_judges, $judges_en, $judges_fr);
     $user_is_judge = in_array($user->id(), $all_judges);
 
-    // Check if the recitation references the competition node from the
-    // url.
-    $recitation_is_valid = TRUE;
-    if ($recitation) {
-      // Controller already check the paragraph type, just check the
-      // reference field.
-      if ($recitation->getParentEntity()?->field_contest_association->target_id != $node->id()) {
-        $recitation_is_valid = FALSE;
-      }
-    }
-
     // The current logged in user accessing that url is the same from
     // the "user" parameter in the url. The user is not trying to access
     // the live-competition url for another user.
     $user_is_accessing_own_page = $account->id() === $user->id();
-    return AccessResult::allowedIf($user_is_accessing_own_page && $recitation_is_valid && $user_is_judge)
+    return AccessResult::allowedIf($user_is_accessing_own_page && $user_is_judge)
       ->cachePerUser()
       ->addCacheableDependency($node)
       ->addCacheableDependency($user);
+  }
+
+  /**
+   * Get the next recitation this user can score.
+   */
+  private function getNextRecitation(NodeInterface $node, UserInterface $user, string $type) : ?ParagraphInterface {
+    $recitations = $this->helper->getRecitationsInOrder($node);
+    $field = $type == 'performance'
+      ? 'field_performance_scores'
+      : 'field_accuracy_scores';
+    // Iterate in all recitations in order, check for a recitation with
+    // no score where this user is the judge.
+    foreach ($recitations as $recitation) {
+      foreach ($recitation->{$field}->referencedEntities() as $score) {
+        if ($score->judge->target_id == $user->id()) {
+          // Check next recitation.
+          continue 2;
+        }
+      }
+      // Checked all scores on this recitation and nothing was found, so
+      // this is a recitation with no score.
+      return $recitation;
+    }
+    return NULL;
   }
 
   /**
@@ -87,7 +100,7 @@ final class ScoreController extends ControllerBase {
    * Load from the recitation or create new, $type is 'accuracy' or
    * 'performance'.
    */
-  private function getScoreEntity($node, $user, $recitation, $type) {
+  private function getScoreEntity(NodeInterface $node, UserInterface $user, ParagraphInterface $recitation, string $type) : ScoreInterface {
     // Load a score entity or create a new one.
     $field = $type == 'performance'
       ? 'field_performance_scores'
@@ -128,7 +141,7 @@ final class ScoreController extends ControllerBase {
   /**
    * Builds the response.
    */
-  public function __invoke(NodeInterface $node, UserInterface $user, ?Paragraph $recitation = NULL): array {
+  public function __invoke(NodeInterface $node, UserInterface $user) : mixed {
     $score_template = $node->field_score_template->entity;
     if (!$score_template) {
       // This field is required.
@@ -136,18 +149,6 @@ final class ScoreController extends ControllerBase {
     }
 
     $build = [];
-    $recitations = $this->helper->getRecitationsInOrder($node);
-    if (!$recitation) {
-      $recitation = count($recitations) ? reset($recitations) : NULL;
-    }
-
-    if (!$recitation) {
-      $build['empty'] = [
-        '#markup' => $this->t('No recitations for this competition yet.'),
-      ];
-      return $build;
-    }
-
     // Check if user is an accuracy judge, otherwise it is a performance
     // judge.
     $judges_fr = array_column($node->field_accuracy_judge_fr->getValue(), 'target_id');
@@ -155,6 +156,13 @@ final class ScoreController extends ControllerBase {
     $judge_type = in_array($user->id(), array_merge($judges_fr, $judges_en))
       ? 'accuracy'
       : 'performance';
+    $recitation = $this->getNextRecitation($node, $user, $judge_type);
+    if (!$recitation) {
+      $this->messenger()->addMessage('There are no more recitations to judge.');
+      return $this->redirect('piv_live_competition.live_competition_list', [
+        'user' => $user->id(),
+      ]);
+    }
 
     // Load or create new score entity.
     $score_entity = $this->getScoreEntity($node, $user, $recitation, $judge_type);
@@ -177,6 +185,7 @@ final class ScoreController extends ControllerBase {
     }
 
     // Key starts at 0.
+    $recitations = $this->helper->getRecitationsInOrder($node);
     $key = $this->getKeyById($recitations, $recitation->id());
     $total = count($recitations);
     $build['progress'] = [
@@ -195,32 +204,14 @@ final class ScoreController extends ControllerBase {
       '#allowed_tags' => ['svg', 'path'],
     ];
 
-    $previous_recitation = $recitations[$key - 1] ?? NULL;
-    $previous = $previous_recitation
-      ? Url::fromRoute('piv_live_competition.score', [
-        'node' => $node->id(),
-        'user' => $user->id(),
-        'recitation' => $previous_recitation->id(),
-      ])
-      : NULL;
-
-    $next_recitation = $recitations[$key + 1] ?? NULL;
-    $next = $next_recitation
-      ? Url::fromRoute('piv_live_competition.score', [
-        'node' => $node->id(),
-        'user' => $user->id(),
-        'recitation' => $next_recitation->id(),
-      ])
-      : NULL;
-
     if ($judge_type == 'accuracy') {
       // Accuracy judge.
       $build['form'] = $this->formBuilder()
-        ->getForm('Drupal\piv_live_competition\Form\AccuracyScoreForm', $recitation, $score_entity, $previous, $next);
+        ->getForm('Drupal\piv_live_competition\Form\AccuracyScoreForm', $recitation, $score_entity);
     }
     else {
       $build['form'] = $this->formBuilder()
-        ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity, $previous, $next);
+        ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity);
     }
 
     return $build;
