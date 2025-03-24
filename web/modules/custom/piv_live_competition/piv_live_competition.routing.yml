@@ -40,3 +40,17 @@ piv_live_competition.recitations_list:
         type: entity:node
         bundle:
           - competition
+
+piv_live_competition.monitor_dashboard:
+  path: '/monitor-dashboard/{node}'
+  defaults:
+    _title: 'Monitor Dashboard'
+    _controller: '\Drupal\piv_live_competition\Controller\MonitorDashboardController'
+  requirements:
+    _permission: 'access monitor dashboard'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
