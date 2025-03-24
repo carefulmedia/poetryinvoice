@@ -7,7 +7,6 @@ namespace Drupal\piv_live_competition\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\piv_contest_score\ScoreInterface;
-use Drupal\Core\Url;
 use Drupal\Paragraphs\ParagraphInterface;
 
 /**
@@ -30,8 +29,6 @@ final class AccuracyScoreForm extends FormBase {
     FormStateInterface $form_state,
     ?ParagraphInterface $recitation = NULL,
     ?ScoreInterface $score_entity = NULL,
-    ?Url $previous = NULL,
-    ?Url $next = NULL,
   ): array {
 
     $form['#attributes']['class'][] = 'piv-contest-score';
@@ -64,50 +61,21 @@ final class AccuracyScoreForm extends FormBase {
       ],
     ];
 
-    // Previous can be null if on first item.
-    if ($previous) {
-      $form['navigation']['previous'] = [
-        '#type' => 'link',
-        '#url' => $previous,
-        '#title' => $this->t('Previous'),
-        '#attributes' => [
-          'class' => [
-            'button',
-            'score-controller__navigation__previous',
-          ],
-        ],
-      ];
-    }
-
-    $form['navigation']['next'] = [
+    $form['navigation'] = [
       '#type' => 'container',
+      '#attributes' => [
+        'class' => ['score-controller__navigation'],
+      ],
+    ];
+    $form['navigation']['submit'] = [
+      '#type' => 'submit',
+      '#value' => $is_new ? $this->t('Submit score') : $this->t('Update score'),
       '#attributes' => [
         'class' => [
           'score-controller__navigation__next',
         ],
       ],
     ];
-
-    // Next will only be displayed if the score is saved and locked.
-    if (!$is_new && $next) {
-      // Next.
-      $form['navigation']['next']['next'] = [
-        '#type' => 'link',
-        '#url' => $next,
-        '#title' => $this->t('Next'),
-        '#attributes' => [
-          'class' => [
-            'button',
-          ],
-        ],
-      ];
-    }
-    if (!$is_locked) {
-      $form['navigation']['next']['submit'] = [
-        '#type' => 'submit',
-        '#value' => $is_new ? $this->t('Submit score') : $this->t('Update score'),
-      ];
-    }
     return $form;
   }
 
