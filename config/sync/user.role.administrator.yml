@@ -66,6 +66,7 @@ permissions:
   - 'access content'
   - 'access content overview'
   - 'access contextual links'
+  - 'access monitor dashboard'
   - 'access private fields'
   - 'access site in maintenance mode'
   - 'access site reports'
