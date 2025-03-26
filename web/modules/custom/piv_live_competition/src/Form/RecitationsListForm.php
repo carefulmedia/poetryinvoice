@@ -102,6 +102,15 @@ final class RecitationsListForm extends FormBase {
   }
 
   /**
+   * Return a generated title.
+   */
+  public function title(NodeInterface $node) {
+    return $this->t('Recitations List - @label', [
+      '@label' => $node->label(),
+    ]);
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {}
