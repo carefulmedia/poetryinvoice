@@ -178,13 +178,14 @@ final class MonitorDashboardController extends ControllerBase {
       ];
     }
     $build['table'] = [
-      '#prefix' => '<div id="monitor-dashboard-table">',
+      '#prefix' => '<div id="monitor-dashboard-wrapper">',
       '#suffix' => '</div>',
       '#type' => 'table',
       '#header' => array_merge([$this->t('Student')], $header),
       '#rows' => $rows,
       '#attributes' => [
         'class' => ['monitor-dashboard'],
+        'id' => ['monitor-dashboard-table'],
       ],
       '#attached' => [
         'library' => ['piv_live_competition/auto-reload'],
