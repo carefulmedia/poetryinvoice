@@ -2134,6 +2134,36 @@ h3.name {
 .score-controller__navigation__previous {
   margin-right: auto;
 }
+table.monitor-dashboard {
+  table-layout: fixed;
+}
+table.monitor-dashboard tr.active-round td:first-child {
+  background: #28a745;
+}
+table.monitor-dashboard tr.active-incomplete-round td:first-child {
+  background: #ff8800;
+}
+table.monitor-dashboard td {
+  text-align: center;
+}
+table.monitor-dashboard td.disabled {
+  background: #aaaaaa;
+}
+table.monitor-dashboard span.score-icon {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 2px solid #000000;
+  font-size: 19px;
+  color: #ffffff;
+}
+table.monitor-dashboard span.score-complete {
+  background: #28a745;
+}
+table.monitor-dashboard span.score-incomplete {
+  background: #ff8800;
+}
 /**
  * @file
  * Enables Bootstrap 4 multi-level flyout
@@ -5990,5 +6020,3 @@ dialog .field--name-field-media-oembed-video {
     margin-bottom: 1rem;
   }
 }
-
-/*# sourceMappingURL=maps/style.css.map */
