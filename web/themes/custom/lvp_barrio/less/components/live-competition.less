@@ -9,3 +9,35 @@
     margin-right: auto;
   }
 }
+
+table.monitor-dashboard {
+  table-layout: fixed;
+
+  tr.active-round td:first-child {
+    background: #28a745;
+  }
+  tr.active-incomplete-round td:first-child {
+    background: #ff8800;
+  }
+  td {
+    text-align: center;
+  }
+  td.disabled {
+    background: #aaaaaa;
+  }
+  span.score-icon {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    font-size: 19px;
+    color: #ffffff;
+  }
+  span.score-complete {
+    background: #28a745;
+  }
+  span.score-incomplete {
+    background: #ff8800;
+  }
+}

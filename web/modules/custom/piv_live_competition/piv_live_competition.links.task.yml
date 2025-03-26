@@ -13,5 +13,5 @@ piv_live_competition.recitations_list:
 piv_live_competition.monitor_dashboard:
   route_name: piv_live_competition.monitor_dashboard
   base_route: entity.node.canonical
-  title: 'Monitor Competition'
+  title: 'Monitor Dashboard'
   weight: 1

@@ -30,7 +30,7 @@ piv_live_competition.live_competition_list:
 piv_live_competition.recitations_list:
   path: '/node/{node}/recitations'
   defaults:
-    _title: 'Recitations List'
+    _title_callback: 'Drupal\piv_live_competition\Form\RecitationsListForm::title'
     _form: 'Drupal\piv_live_competition\Form\RecitationsListForm'
   requirements:
     _permission: 'access competition recitations list'
@@ -44,7 +44,7 @@ piv_live_competition.recitations_list:
 piv_live_competition.monitor_dashboard:
   path: '/monitor-dashboard/{node}'
   defaults:
-    _title: 'Monitor Dashboard'
+    _title_callback: 'Drupal\piv_live_competition\Controller\MonitorDashboardController::title'
     _controller: '\Drupal\piv_live_competition\Controller\MonitorDashboardController'
   requirements:
     _permission: 'access monitor dashboard'
