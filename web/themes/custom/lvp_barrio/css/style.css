@@ -2164,6 +2164,18 @@ table.monitor-dashboard span.score-complete {
 table.monitor-dashboard span.score-incomplete {
   background: #ff8800;
 }
+#monitor-dashboard-wrapper {
+  position: relative;
+}
+#monitor-dashboard-wrapper .ajax-progress-throbber {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+}
 /**
  * @file
  * Enables Bootstrap 4 multi-level flyout
