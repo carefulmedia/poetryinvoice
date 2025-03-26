@@ -2923,6 +2923,9 @@ nav.tabs ul {
   border-top: none;
   margin-bottom: 3rem;
 }
+.node--type-competition .main-content .block-page-title-block .title {
+  margin-top: 2rem;
+}
 .node-preview-container {
   background: #d1e8f5;
   background-image: -webkit-linear-gradient(top, #d1e8f5, #d3e8f4);
