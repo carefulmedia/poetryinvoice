@@ -1,0 +1,7 @@
+auto-reload:
+  js:
+    js/auto-reload.js: {}
+  dependencies:
+    - core/drupalSettings
+    - core/once
+    - core/ajax

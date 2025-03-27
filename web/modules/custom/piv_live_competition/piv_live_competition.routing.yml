@@ -50,3 +50,17 @@ piv_live_competition.monitor_dashboard:
         type: entity:node
         bundle:
           - competition
+
+piv_live_competition.monitor_dashboard_table:
+  path: '/monitor-dashboard/{node}/table'
+  defaults:
+    _title_callback: 'Drupal\piv_live_competition\Controller\MonitorDashboardController::title'
+    _controller: '\Drupal\piv_live_competition\Controller\MonitorDashboardController::table'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
