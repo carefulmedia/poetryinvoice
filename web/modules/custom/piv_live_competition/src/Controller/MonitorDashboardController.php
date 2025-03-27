@@ -8,6 +8,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\piv_live_competition\Helper;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -64,7 +65,7 @@ final class MonitorDashboardController extends ControllerBase {
   /**
    * Builds the response.
    */
-  public function __invoke(NodeInterface $node): array {
+  public function __invoke(Request $request, NodeInterface $node): array {
     $active_round = $node->field_active_round->value;
     $target_svg = '<svg width="20px" height="20px" fill="#FFFFFF" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M31 15h-3.045c-0.481-5.829-5.127-10.47-10.955-10.952v-3.048c0-0.552-0.448-1-1-1s-1 0.448-1 1v3.048c-5.828 0.482-10.474 5.123-10.956 10.952h-3.045c-0.552 0-1 0.448-1 1s0.448 1 1 1h3.045c0.481 5.828 5.128 10.47 10.956 10.952v3.048c0 0.552 0.448 1 1 1s1-0.448 1-1v-3.048c5.828-0.482 10.474-5.123 10.955-10.952h3.045c0.552 0 1-0.448 1-1s-0.448-1-1-1zM15 6.050v8.95h-8.951c0.469-4.725 4.226-8.482 8.951-8.95zM6.048 17h8.951v8.95c-4.725-0.469-8.482-4.226-8.951-8.95zM17 25.951v-8.951h8.951c-0.469 4.725-4.226 8.482-8.951 8.95zM17 15v-8.95c4.725 0.469 8.483 4.226 8.951 8.95z"/></svg>';
     [$performance_en, $performance_fr, $accuracy_en, $accuracy_fr] = $this->getJudges($node);
@@ -174,9 +175,7 @@ final class MonitorDashboardController extends ControllerBase {
         'class' => $row_class,
       ];
     }
-    $build['table'] = [
-      '#prefix' => '<div id="monitor-dashboard-wrapper">',
-      '#suffix' => '</div>',
+    $table = [
       '#type' => 'table',
       '#header' => array_merge([$this->t('Student')], $header),
       '#rows' => $rows,
@@ -189,7 +188,37 @@ final class MonitorDashboardController extends ControllerBase {
       ],
     ];
 
+    // Return table only on ajax calls.
+    if ($request->isXmlHttpRequest()) {
+      return $table;
+    }
+
+    // Otherwise, create 2 wrappers, one to wrap the table for ajax and
+    // another to wrap it all and the cloned table too.
+    $build['wrapper'] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'id' => ['monitor-dashboard-wrapper'],
+      ],
+    ];
+    $build['wrapper']['table'] = [
+      '#type' => 'container',
+      '#attributes' => [
+        'id' => ['monitor-dashboard-table-wrapper'],
+      ],
+    ];
+    $build['wrapper']['table']['table'] = $table;
     return $build;
+  }
+
+  /**
+   * Return the table only.
+   */
+  public function table(Request $request, NodeInterface $node): array {
+    if (!$request->isXmlHttpRequest()) {
+      return [];
+    }
+    return $this($request, $node);
   }
 
   /**

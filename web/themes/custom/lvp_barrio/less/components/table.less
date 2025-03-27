@@ -13,21 +13,22 @@ table {
 table table {
   font-size: 1em;
 }
-tr {
+tbody tr {
   border-bottom: 1px solid #ccc;
   padding: 0.1em 0.6em;
   background: #efefef;
-  background: rgba(0, 0, 0, 0.063);
 }
 thead > tr {
   border-bottom: 1px solid #000;
 }
-thead {
+thead, thead tr, thead th {
   background: #000;
+  &:hover {
+    background: #222;
+  }
 }
-tr.odd {
+tbody tr.odd {
   background: #e4e4e4;
-  background: rgba(0, 0, 0, 0.105);
 }
 table tr th {
   background: #757575;
