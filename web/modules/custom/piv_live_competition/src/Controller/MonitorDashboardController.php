@@ -124,8 +124,7 @@ final class MonitorDashboardController extends ControllerBase {
       // Check if this row round is bigger than active round.
       $is_future_round = ($delta + 1) > $active_round;
 
-      // Count of judges disabled.
-      $total_disabled = 0;
+      $has_incomplete = FALSE;
       foreach (array_keys($header) as $judge_id) {
         $cell = [];
         // If judge is not a judge for the english language, make cell
@@ -134,14 +133,12 @@ final class MonitorDashboardController extends ControllerBase {
         if ($recitation_langcode == 'en') {
           if (!array_key_exists($judge_id, $performance_en) && !array_key_exists($judge_id, $accuracy_en)) {
             $disabled = TRUE;
-            $total_disabled++;
           }
         }
         // Same for french.
         elseif ($recitation_langcode == 'fr') {
           if (!array_key_exists($judge_id, $performance_fr) && !array_key_exists($judge_id, $accuracy_fr)) {
             $disabled = TRUE;
-            $total_disabled++;
           }
         }
 
@@ -160,6 +157,7 @@ final class MonitorDashboardController extends ControllerBase {
             }
             else {
               $cell['data'] = $icon_incomplete;
+              $has_incomplete = TRUE;
             }
           }
         }
@@ -167,10 +165,9 @@ final class MonitorDashboardController extends ControllerBase {
       }
 
       if ($is_active_round) {
-        $all_scored = $total_disabled + count($judges_that_scored_this_recitation) == count($header);
-        $row_class = $all_scored
-          ? ['active-round']
-          : ['active-incomplete-round'];
+        $row_class = $has_incomplete
+          ? ['active-incomplete-round']
+          : ['active-round'];
       }
       $rows[] = [
         'data' => $row,
