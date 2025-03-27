@@ -1,5 +1,5 @@
 piv_live_competition.score:
-  path: '/live-competition-scoring/{node}/{user}/{recitation}'
+  path: '/live-competition-scoring/{node}/{user}'
   defaults:
     _title: 'Live Competition Scoring'
     _controller: '\Drupal\piv_live_competition\Controller\ScoreController'
@@ -14,10 +14,6 @@ piv_live_competition.score:
           - competition
       user:
         type: entity:user
-      recitation:
-        type: entity:paragraph
-        bundle:
-          - tr_student
 
 piv_live_competition.live_competition_list:
   path: '/user/{user}/live-competitions'
