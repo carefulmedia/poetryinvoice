@@ -212,16 +212,6 @@ final class MonitorDashboardController extends ControllerBase {
   }
 
   /**
-   * Return the table only.
-   */
-  public function table(Request $request, NodeInterface $node): array {
-    if (!$request->isXmlHttpRequest()) {
-      return [];
-    }
-    return $this($request, $node);
-  }
-
-  /**
    * Return a generated title.
    */
   public function title(NodeInterface $node) {

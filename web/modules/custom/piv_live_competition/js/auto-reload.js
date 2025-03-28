@@ -25,7 +25,8 @@
           // wrapper, which is not returned from ajax calls in this
           // case.
           let ajax = Drupal.ajax({
-            url: Drupal.url(drupalSettings.path.currentPath + '/table'),
+            httpMethod: 'GET',
+            url: Drupal.url(drupalSettings.path.currentPath),
             wrapper: 'monitor-dashboard-table-wrapper',
             method: 'html',
             effect: 'fade',
