@@ -10,7 +10,21 @@
   }
 }
 
-table.monitor-dashboard {
+.monitor-dashboard {
+  button.form-submit,
+  button#edit-submit {
+    background: #28a745;
+    &.incomplete-round {
+      background: #ff8800;
+    }
+  }
+  form {
+    margin-bottom: 0;
+  }
+}
+
+.monitor-dashboard table {
+  width: 100%;
   table-layout: fixed;
 
   tr.active-round td:first-child {
@@ -44,13 +58,4 @@ table.monitor-dashboard {
 
 #monitor-dashboard-wrapper {
   position: relative;
-  .ajax-progress-throbber {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background: rgba(255, 255, 255, 0.95);
-    padding: 10px;
-    border-radius: 10px;
-    transform: translate(-50%, -50%);
-  }
 }

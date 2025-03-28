@@ -5,7 +5,7 @@
   Drupal.behaviors.pivLiveCompetitionAutoReload = {
     attach: function(context, settings) {
 
-      once('auto-reload', '.monitor-dashboard', context).forEach(function() {
+      once('auto-reload', '.monitor-dashboard', context).forEach(function(el) {
         const reload = () => {
           const animation_time = 1000;
 
@@ -15,10 +15,10 @@
           const wrapper = $('#monitor-dashboard-wrapper');
           wrapper.css('min-height', wrapper.height());
 
-          // Clone the content.
-          const clone = $('#monitor-dashboard-table-wrapper > .table-responsive')
-            .css('position', 'absolute');
-          clone.parent().before(clone);
+          // Clone the content, the "once" is already processing what
+          // we want to clone.
+          const clone = $(el).css('position', 'absolute');
+          wrapper.prepend(clone);
           setTimeout(() => { clone.remove(); }, animation_time * 1.1);
 
           // Using the html method prevents us from replacing the
@@ -28,10 +28,9 @@
             httpMethod: 'GET',
             url: Drupal.url(drupalSettings.path.currentPath),
             wrapper: 'monitor-dashboard-table-wrapper',
-            method: 'html',
+            method: 'replaceWith',
             effect: 'fade',
             speed: animation_time,
-            progress: { type: 'throbber', message: 'reloading' },
           });
           ajax.execute();
         };

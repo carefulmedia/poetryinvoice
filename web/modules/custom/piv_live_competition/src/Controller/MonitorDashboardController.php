@@ -97,6 +97,7 @@ final class MonitorDashboardController extends ControllerBase {
     // Students.
     $recitations = $this->helper->getRecitationsInOrder($node);
     $rows = [];
+    $has_incomplete = FALSE;
     foreach ($recitations as $delta => $recitation) {
       // Get the id of all judges that scored this recitation, doesn't
       // matter the language.
@@ -125,7 +126,6 @@ final class MonitorDashboardController extends ControllerBase {
       // Check if this row round is bigger than active round.
       $is_future_round = ($delta + 1) > $active_round;
 
-      $has_incomplete = FALSE;
       foreach (array_keys($header) as $judge_id) {
         $cell = [];
         // If judge is not a judge for the english language, make cell
@@ -158,7 +158,9 @@ final class MonitorDashboardController extends ControllerBase {
             }
             else {
               $cell['data'] = $icon_incomplete;
-              $has_incomplete = TRUE;
+              if ($is_active_round) {
+                $has_incomplete = TRUE;
+              }
             }
           }
         }
@@ -175,40 +177,40 @@ final class MonitorDashboardController extends ControllerBase {
         'class' => $row_class,
       ];
     }
-    $table = [
+    // The main build, the button and the table.
+    $build = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['monitor-dashboard'],
+      ],
+      '#prefix' => "<div id='monitor-dashboard-table-wrapper'>",
+      '#suffix' => "</div>",
+    ];
+    $build['form'] = $this->formBuilder()
+      ->getForm('Drupal\piv_live_competition\Form\LiveCompetitionAdvanceRoundForm', $node, $has_incomplete);
+    $build['table'] = [
       '#type' => 'table',
       '#header' => array_merge([$this->t('Student')], $header),
       '#rows' => $rows,
-      '#attributes' => [
-        'class' => ['monitor-dashboard'],
-        'id' => ['monitor-dashboard-table'],
-      ],
-      '#attached' => [
-        'library' => ['piv_live_competition/auto-reload'],
-      ],
     ];
 
-    // Return table only on ajax calls.
+    // Return main content only on ajax calls.
     if ($request->isXmlHttpRequest()) {
-      return $table;
+      return $build;
     }
 
-    // Otherwise, create 2 wrappers, one to wrap the table for ajax and
-    // another to wrap it all and the cloned table too.
-    $build['wrapper'] = [
+    // Otherwise, return a wrapper for the table and clone.
+    $wrapper = [
       '#type' => 'container',
       '#attributes' => [
         'id' => ['monitor-dashboard-wrapper'],
       ],
-    ];
-    $build['wrapper']['table'] = [
-      '#type' => 'container',
-      '#attributes' => [
-        'id' => ['monitor-dashboard-table-wrapper'],
+      '#attached' => [
+        'library' => ['piv_live_competition/auto-reload'],
       ],
+      0 => $build,
     ];
-    $build['wrapper']['table']['table'] = $table;
-    return $build;
+    return $wrapper;
   }
 
   /**

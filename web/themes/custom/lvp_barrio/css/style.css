@@ -2134,22 +2134,34 @@ h3.name {
 .score-controller__navigation__previous {
   margin-right: auto;
 }
-table.monitor-dashboard {
-  table-layout: fixed;
-}
-table.monitor-dashboard tr.active-round td:first-child {
+.monitor-dashboard button.form-submit,
+.monitor-dashboard button#edit-submit {
   background: #28a745;
 }
-table.monitor-dashboard tr.active-incomplete-round td:first-child {
+.monitor-dashboard button.form-submit.incomplete-round,
+.monitor-dashboard button#edit-submit.incomplete-round {
   background: #ff8800;
 }
-table.monitor-dashboard td {
+.monitor-dashboard form {
+  margin-bottom: 0;
+}
+.monitor-dashboard table {
+  width: 100%;
+  table-layout: fixed;
+}
+.monitor-dashboard table tr.active-round td:first-child {
+  background: #28a745;
+}
+.monitor-dashboard table tr.active-incomplete-round td:first-child {
+  background: #ff8800;
+}
+.monitor-dashboard table td {
   text-align: center;
 }
-table.monitor-dashboard td.disabled {
+.monitor-dashboard table td.disabled {
   background: #aaaaaa;
 }
-table.monitor-dashboard span.score-icon {
+.monitor-dashboard table span.score-icon {
   display: inline-block;
   height: 30px;
   width: 30px;
@@ -2158,23 +2170,14 @@ table.monitor-dashboard span.score-icon {
   font-size: 19px;
   color: #ffffff;
 }
-table.monitor-dashboard span.score-complete {
+.monitor-dashboard table span.score-complete {
   background: #28a745;
 }
-table.monitor-dashboard span.score-incomplete {
+.monitor-dashboard table span.score-incomplete {
   background: #ff8800;
 }
 #monitor-dashboard-wrapper {
   position: relative;
-}
-#monitor-dashboard-wrapper .ajax-progress-throbber {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  padding: 10px;
-  border-radius: 10px;
-  transform: translate(-50%, -50%);
 }
 /**
  * @file
