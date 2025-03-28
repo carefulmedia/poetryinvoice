@@ -78,9 +78,16 @@ final class ScoreController extends ControllerBase {
     $field = $type == 'performance'
       ? 'field_performance_scores'
       : 'field_accuracy_scores';
+
+    $active_round = $node->field_active_round->value ?? NULL;
     // Iterate in all recitations in order, check for a recitation with
     // no score where this user is the judge.
-    foreach ($recitations as $recitation) {
+    foreach ($recitations as $delta => $recitation) {
+      $round = $delta + 1;
+      // Return active round recitation at most, even if complete.
+      if ($active_round !== NULL && $active_round == $round) {
+        return $recitation;
+      }
       foreach ($recitation->{$field}->referencedEntities() as $score) {
         if ($score->judge->target_id == $user->id()) {
           // Check next recitation.
