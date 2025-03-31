@@ -5,3 +5,12 @@ auto-reload:
     - core/drupalSettings
     - core/once
     - core/ajax
+    - core/jquery
+    
+score-form:
+  js:
+    js/score-form.js: {}
+  dependencies:
+    - core/drupalSettings
+    - core/once
+    - core/jquery

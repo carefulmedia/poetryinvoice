@@ -11,6 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\piv_contest\ScoreFormBuilder;
 use Drupal\piv_contest_score_template\ScoreTemplateInterface;
 use Drupal\Paragraphs\ParagraphInterface;
+use Drupal\Core\Url;
 
 /**
  * Provides a PIV Live Competition form.
@@ -49,6 +50,7 @@ final class PerformanceScoreForm extends FormBase {
     ?ParagraphInterface $recitation = NULL,
     ?ScoreTemplateInterface $score_template = NULL,
     ?ScoreInterface $score_entity = NULL,
+    bool $can_score_next_recitation = FALSE,
   ): array {
     if (!$score_template) {
       return $form;
@@ -92,15 +94,39 @@ final class PerformanceScoreForm extends FormBase {
         'class' => ['score-controller__navigation'],
       ],
     ];
-    $form['navigation']['submit'] = [
-      '#type' => 'submit',
-      '#value' => $is_new ? $this->t('Submit score') : $this->t('Update score'),
-      '#attributes' => [
-        'class' => [
-          'score-controller__navigation__next',
+
+    // Display the submit button if can submit, otherwise a link to
+    // refresh the page.
+    if ($is_new) {
+      $form['navigation']['submit'] = [
+        '#type' => 'submit',
+        '#value' => $this->t('Submit score'),
+        '#attributes' => [
+          'class' => [
+            'score-controller__navigation__next',
+          ],
         ],
-      ],
-    ];
+      ];
+    }
+    else {
+      $label = $can_score_next_recitation
+        ? $this->t('Next poem')
+        : $this->t('Waiting for next poem');
+      $form['navigation']['next'] = [
+        '#type' => 'link',
+        '#url' => Url::fromRoute('<current>'),
+        '#title' => $label,
+        '#attributes' => [
+          'class' => [
+            'button',
+            'score-controller__navigation__next',
+          ],
+        ],
+      ];
+      if (!$can_score_next_recitation) {
+        $form['navigation']['next']['#attributes']['class'][] = 'is-disabled';
+      }
+    }
     return $form;
   }
 

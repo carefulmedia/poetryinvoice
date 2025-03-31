@@ -15,6 +15,21 @@ piv_live_competition.score:
       user:
         type: entity:user
 
+piv_live_competition.api_round:
+  path: '/api/live-competition-round/{node}'
+  defaults:
+    _title: 'Live Competition Round'
+    _controller: '\Drupal\piv_live_competition\Controller\ScoreController::activeRound'
+    recitation: null
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+
 piv_live_competition.live_competition_list:
   path: '/user/{user}/live-competitions'
   defaults:

@@ -15,6 +15,8 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Drupal\piv_live_competition\Helper;
 use Drupal\piv_contest_score\ScoreInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Drupal\Core\Url;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -146,6 +148,15 @@ final class ScoreController extends ControllerBase {
   }
 
   /**
+   * Return the active round as a json response.
+   */
+  public function activeRound(NodeInterface $node) {
+    return new JsonResponse([
+      'active_round' => $node->field_active_round->value ?? 0,
+    ]);
+  }
+
+  /**
    * Builds the response.
    */
   public function __invoke(NodeInterface $node, UserInterface $user) : mixed {
@@ -155,7 +166,11 @@ final class ScoreController extends ControllerBase {
       throw new NotFoundHttpException();
     }
 
-    $build = [];
+    $active_round = $node->field_active_round->value ?? 0;
+    if ($active_round <= 0) {
+      return ['#markup' => 'Waiting for the first round to be activated'];
+    }
+
     // Check if user is an accuracy judge, otherwise it is a performance
     // judge.
     $judges_fr = array_column($node->field_accuracy_judge_fr->getValue(), 'target_id');
@@ -170,6 +185,26 @@ final class ScoreController extends ControllerBase {
         'user' => $user->id(),
       ]);
     }
+
+    // Key starts at 0.
+    $recitations = $this->helper->getRecitationsInOrder($node);
+    $key = $this->getKeyById($recitations, $recitation->id());
+    // This recitation's round.
+    $round = $key + 1;
+
+    $build = [
+      '#type' => 'container',
+      '#attributes' => [
+        'class' => ['score-wrapper'],
+        'data-endpoint' => Url::fromRoute('piv_live_competition.api_round', [
+          'node' => $node->id(),
+        ])->toString(),
+        'data-round' => $round,
+      ],
+      '#attached' => [
+        'library' => ['piv_live_competition/score-form'],
+      ],
+    ];
 
     // Load or create new score entity.
     $score_entity = $this->getScoreEntity($node, $user, $recitation, $judge_type);
@@ -191,15 +226,12 @@ final class ScoreController extends ControllerBase {
       $build['poem_content'] = $recitation->field_poem?->entity->body?->view(['label' => 'hidden']);
     }
 
-    // Key starts at 0.
-    $recitations = $this->helper->getRecitationsInOrder($node);
-    $key = $this->getKeyById($recitations, $recitation->id());
     $total = count($recitations);
     $build['progress'] = [
       '#type' => 'inline_template',
-      '#template' => '<div>{{ position }}/{{ total }}</div>',
+      '#template' => '<div>{{ round }}/{{ total }}</div>',
       '#context' => [
-        'position' => $key + 1,
+        'round' => $round,
         'total' => $total,
       ],
     ];
@@ -211,14 +243,15 @@ final class ScoreController extends ControllerBase {
       '#allowed_tags' => ['svg', 'path'],
     ];
 
+    $can_score_next_recitation = $round < $active_round;
     if ($judge_type == 'accuracy') {
       // Accuracy judge.
       $build['form'] = $this->formBuilder()
-        ->getForm('Drupal\piv_live_competition\Form\AccuracyScoreForm', $recitation, $score_entity);
+        ->getForm('Drupal\piv_live_competition\Form\AccuracyScoreForm', $recitation, $score_entity, $can_score_next_recitation);
     }
     else {
       $build['form'] = $this->formBuilder()
-        ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity);
+        ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity, $can_score_next_recitation);
     }
 
     return $build;

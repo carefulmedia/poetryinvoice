@@ -120,12 +120,13 @@ final class MonitorDashboardController extends ControllerBase {
       $student_name = $this->helper->getStudentName($recitation);
       $row = [$student_name];
 
-      // Iterate on all judges by the id.
       $recitation_langcode = $recitation->field_poem->entity?->langcode->value ?? 'en';
 
-      // Check if this row round is bigger than active round.
+      // Check if this row round is in the future compared to active
+      // round.
       $is_future_round = ($delta + 1) > $active_round;
 
+      // Iterate on all judges by the id.
       foreach (array_keys($header) as $judge_id) {
         $cell = [];
         // If judge is not a judge for the english language, make cell
