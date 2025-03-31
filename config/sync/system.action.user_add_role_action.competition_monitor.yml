@@ -1,0 +1,14 @@
+uuid: f048f6c6-766d-41f4-b033-fd080c1e210c
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.competition_monitor
+  module:
+    - user
+id: user_add_role_action.competition_monitor
+label: 'Add the Competition monitor role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: competition_monitor
