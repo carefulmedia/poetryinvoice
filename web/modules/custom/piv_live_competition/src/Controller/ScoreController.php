@@ -75,7 +75,7 @@ final class ScoreController extends ControllerBase {
   /**
    * Get the next recitation this user can score.
    */
-  private function getNextRecitation(NodeInterface $node, UserInterface $user, string $type) : ?ParagraphInterface {
+  private function getNextRecitation(NodeInterface $node, UserInterface $user, string $type, array $languages) : ?ParagraphInterface {
     $recitations = $this->helper->getRecitationsInOrder($node);
     $field = $type == 'performance'
       ? 'field_performance_scores'
@@ -85,10 +85,17 @@ final class ScoreController extends ControllerBase {
     // Iterate in all recitations in order, check for a recitation with
     // no score where this user is the judge.
     foreach ($recitations as $delta => $recitation) {
+      $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
+
       $round = $delta + 1;
-      // Return active round recitation at most, even if complete.
+      // Return active round recitation at most, even if complete or not
+      // correct language.
       if ($active_round !== NULL && $active_round == $round) {
         return $recitation;
+      }
+      // Skip recitation not in the correct language.
+      if (!in_array($recitation_language, $languages)) {
+        continue;
       }
       foreach ($recitation->{$field}->referencedEntities() as $score) {
         if ($score->judge->target_id == $user->id()) {
@@ -178,7 +185,21 @@ final class ScoreController extends ControllerBase {
     $judge_type = in_array($user->id(), array_merge($judges_fr, $judges_en))
       ? 'accuracy'
       : 'performance';
-    $recitation = $this->getNextRecitation($node, $user, $judge_type);
+
+    $judge_languages = [];
+    if ($judge_type == 'accuracy') {
+      if (in_array($user->id(), $judges_fr)) {
+        $judge_languages[] = 'fr';
+      }
+      if (in_array($user->id(), $judges_en)) {
+        $judge_languages[] = 'en';
+      }
+    }
+    else {
+      $judge_languages[] = $user->preferred_langcode->value ?? 'en';
+    }
+
+    $recitation = $this->getNextRecitation($node, $user, $judge_type, $judge_languages);
     if (!$recitation) {
       $this->messenger()->addMessage('There are no more recitations to judge.');
       return $this->redirect('piv_live_competition.live_competition_list', [
@@ -243,15 +264,32 @@ final class ScoreController extends ControllerBase {
       '#allowed_tags' => ['svg', 'path'],
     ];
 
-    $can_score_next_recitation = $round < $active_round;
-    if ($judge_type == 'accuracy') {
-      // Accuracy judge.
-      $build['form'] = $this->formBuilder()
-        ->getForm('Drupal\piv_live_competition\Form\AccuracyScoreForm', $recitation, $score_entity, $can_score_next_recitation);
+    $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
+    if (!in_array($recitation_language, $judge_languages)) {
+      // We only get there if the judge can't score the next recitation
+      // yet and the only current recitation is not for the correct
+      // language.
+      $language_label = in_array('en', $judge_languages)
+        ? $this->t('English')
+        : $this->t('French');
+      $build['form'] = [
+        '#type' => 'item',
+        '#markup' => $this->t('Waiting for the next @language recitation...', [
+          '@language' => $language_label,
+        ]),
+      ];
     }
     else {
-      $build['form'] = $this->formBuilder()
-        ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity, $can_score_next_recitation);
+      $can_score_next_recitation = $round < $active_round;
+      if ($judge_type == 'accuracy') {
+        // Accuracy judge.
+        $build['form'] = $this->formBuilder()
+          ->getForm('Drupal\piv_live_competition\Form\AccuracyScoreForm', $recitation, $score_entity, $can_score_next_recitation);
+      }
+      else {
+        $build['form'] = $this->formBuilder()
+          ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity, $can_score_next_recitation);
+      }
     }
 
     return $build;
