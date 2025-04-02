@@ -9,6 +9,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\User\UserInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Datetime\DrupalDateTime;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -19,13 +20,19 @@ final class LiveCompetitionsListController extends ControllerBase {
    * Get the competitions for user id.
    */
   private function getCompetitionIds($user_id) {
+    // Calculate yesterday's date in "Y-m-d" format.
+    $yesterday = new DrupalDateTime('yesterday');
+    $yesterday_formatted = $yesterday->format('Y-m-d\T00:00:00');
+
     $query = $this->entityTypeManager()->getStorage('node')->getQuery();
-    $query->condition('type', 'competition');
+    $query->condition('type', 'competition')
+      ->condition('field_winners_announced', $yesterday_formatted, '>');
     $query->sort('created', 'DESC');
     $judge_group = $query->orConditionGroup()
       ->condition('field_accuracy_judge_fr', $user_id, 'IN')
       ->condition('field_accuracy_judge_en', $user_id, 'IN')
       ->condition('field_judges.entity:paragraph.field_judge', $user_id);
+
     return $query->condition($judge_group)
       ->accessCheck(TRUE)
       ->execute();
