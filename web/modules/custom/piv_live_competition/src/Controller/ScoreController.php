@@ -264,6 +264,7 @@ final class ScoreController extends ControllerBase {
       '#allowed_tags' => ['svg', 'path'],
     ];
 
+    $can_score_next_recitation = $round < $active_round;
     $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
     if (!in_array($recitation_language, $judge_languages)) {
       // We only get there if the judge can't score the next recitation
@@ -272,15 +273,19 @@ final class ScoreController extends ControllerBase {
       $language_label = in_array('en', $judge_languages)
         ? $this->t('English')
         : $this->t('French');
-      $build['form'] = [
-        '#type' => 'item',
-        '#markup' => $this->t('Waiting for the next @language recitation...', [
-          '@language' => $language_label,
-        ]),
+      $message = [
+        '#type' => 'fieldset',
+        'message' => [
+          '#type' => 'item',
+          '#markup' => $this->t('Waiting for the next @language recitation...', [
+            '@language' => $language_label,
+          ]),
+        ],
       ];
+      $build['form'] = $this->formBuilder()
+        ->getForm('Drupal\piv_live_competition\Form\BlankScoreForm', $can_score_next_recitation, $message);
     }
     else {
-      $can_score_next_recitation = $round < $active_round;
       if ($judge_type == 'accuracy') {
         // Accuracy judge.
         $build['form'] = $this->formBuilder()

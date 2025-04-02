@@ -63,13 +63,6 @@ final class AccuracyScoreForm extends FormBase {
       ],
     ];
 
-    $form['navigation'] = [
-      '#type' => 'container',
-      '#attributes' => [
-        'class' => ['score-controller__navigation'],
-      ],
-    ];
-
     // Display the submit button if can submit, otherwise a link to
     // refresh the page.
     if ($is_new) {
