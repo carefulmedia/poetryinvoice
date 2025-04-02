@@ -26,7 +26,8 @@ final class LiveCompetitionsListController extends ControllerBase {
 
     $query = $this->entityTypeManager()->getStorage('node')->getQuery();
     $query->condition('type', 'competition')
-      ->condition('field_winners_announced', $yesterday_formatted, '>');
+      ->condition('field_winners_announced', $yesterday_formatted, '>')
+      ->condition('field_active_round', 0, '>');
     $query->sort('created', 'DESC');
     $judge_group = $query->orConditionGroup()
       ->condition('field_accuracy_judge_fr', $user_id, 'IN')
