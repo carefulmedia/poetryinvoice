@@ -10,4 +10,5 @@ weight: 28
 is_admin: null
 permissions:
   - 'access competition recitations list'
+  - 'access live competition score result table'
   - 'access monitor dashboard'

@@ -14,4 +14,10 @@ piv_live_competition.monitor_dashboard:
   route_name: piv_live_competition.monitor_dashboard
   base_route: entity.node.canonical
   title: 'Monitor Dashboard'
-  weight: 1
+  weight: 0
+
+piv_live_competition.live_competition_score_results_table:
+  route_name: piv_live_competition.live_competition_score_results_table
+  base_route: entity.node.canonical
+  title: 'Scores Table'
+  weight: 0

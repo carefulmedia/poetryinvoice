@@ -65,3 +65,17 @@ piv_live_competition.monitor_dashboard:
         type: entity:node
         bundle:
           - competition
+
+piv_live_competition.live_competition_score_results_table:
+  path: '/live-competition-score/{node}'
+  defaults:
+    _title_callback: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController::title'
+    _controller: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController'
+  requirements:
+    _permission: 'access live competition score result table'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition

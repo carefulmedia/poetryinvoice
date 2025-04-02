@@ -15,6 +15,37 @@ use Drupal\paragraphs\ParagraphInterface;
 final class Helper {
 
   /**
+   * Get judges in order, keyed by id.
+   */
+  public function getJudges(NodeInterface $node): array {
+    // Performance judges are added to arrays keyed by language.
+    $performance_judges = ['en' => [], 'fr' => []];
+    foreach ($node->field_judges->referencedEntities() as $judge_paragraph) {
+      if (!($judge = $judge_paragraph->field_judge->entity)) {
+        continue;
+      }
+      $lang_id = $judge->preferred_langcode->value;
+      $performance_judges[$lang_id][$judge->id()] = $judge;
+    }
+
+    // Return an array of entities keyed by id.
+    $keyed = function ($entities) : array {
+      $map = [];
+      foreach ($entities as $entity) {
+        $map[$entity->id()] = $entity;
+      }
+      return $map;
+    };
+
+    return [
+      $performance_judges['en'],
+      $performance_judges['fr'],
+      $keyed($node->field_accuracy_judge_en->referencedEntities()),
+      $keyed($node->field_accuracy_judge_fr->referencedEntities()),
+    ];
+  }
+
+  /**
    * Constructs a Helper object.
    */
   public function __construct(

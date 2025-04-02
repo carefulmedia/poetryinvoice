@@ -32,43 +32,12 @@ final class MonitorDashboardController extends ControllerBase {
   }
 
   /**
-   * Get judges in order, keyed by id.
-   */
-  private function getJudges(NodeInterface $node): array {
-    // Performance judges are added to arrays keyed by language.
-    $performance_judges = ['en' => [], 'fr' => []];
-    foreach ($node->field_judges->referencedEntities() as $judge_paragraph) {
-      if (!($judge = $judge_paragraph->field_judge->entity)) {
-        continue;
-      }
-      $lang_id = $judge->preferred_langcode->value;
-      $performance_judges[$lang_id][$judge->id()] = $judge;
-    }
-
-    // Return an array of entities keyed by id.
-    $keyed = function ($entities) : array {
-      $map = [];
-      foreach ($entities as $entity) {
-        $map[$entity->id()] = $entity;
-      }
-      return $map;
-    };
-
-    return [
-      $performance_judges['en'],
-      $performance_judges['fr'],
-      $keyed($node->field_accuracy_judge_en->referencedEntities()),
-      $keyed($node->field_accuracy_judge_fr->referencedEntities()),
-    ];
-  }
-
-  /**
    * Builds the response.
    */
   public function __invoke(Request $request, NodeInterface $node): array {
     $active_round = $node->field_active_round->value;
     $target_svg = '<svg width="20px" height="20px" fill="#FFFFFF" version="1.1" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><path d="M31 15h-3.045c-0.481-5.829-5.127-10.47-10.955-10.952v-3.048c0-0.552-0.448-1-1-1s-1 0.448-1 1v3.048c-5.828 0.482-10.474 5.123-10.956 10.952h-3.045c-0.552 0-1 0.448-1 1s0.448 1 1 1h3.045c0.481 5.828 5.128 10.47 10.956 10.952v3.048c0 0.552 0.448 1 1 1s1-0.448 1-1v-3.048c5.828-0.482 10.474-5.123 10.955-10.952h3.045c0.552 0 1-0.448 1-1s-0.448-1-1-1zM15 6.050v8.95h-8.951c0.469-4.725 4.226-8.482 8.951-8.95zM6.048 17h8.951v8.95c-4.725-0.469-8.482-4.226-8.951-8.95zM17 25.951v-8.951h8.951c-0.469 4.725-4.226 8.482-8.951 8.95zM17 15v-8.95c4.725 0.469 8.483 4.226 8.951 8.95z"/></svg>';
-    [$performance_en, $performance_fr, $accuracy_en, $accuracy_fr] = $this->getJudges($node);
+    [$performance_en, $performance_fr, $accuracy_en, $accuracy_fr] = $this->helper->getJudges($node);
 
     // Icons.
     $icon_complete = [
