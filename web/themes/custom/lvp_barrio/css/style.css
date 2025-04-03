@@ -6061,3 +6061,12 @@ dialog .field--name-field-media-oembed-video {
     margin-bottom: 1rem;
   }
 }
+.lvp-barrio .messages {
+  background-color: unset;
+  border-width: 0;
+  padding-inline: 0;
+  padding-block: 0;
+}
+.lvp-barrio .messages__content {
+  margin-inline-start: 0;
+}
