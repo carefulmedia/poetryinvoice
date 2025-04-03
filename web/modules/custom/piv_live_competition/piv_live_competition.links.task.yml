@@ -19,5 +19,5 @@ piv_live_competition.monitor_dashboard:
 piv_live_competition.live_competition_score_results_table:
   route_name: piv_live_competition.live_competition_score_results_table
   base_route: entity.node.canonical
-  title: 'Scores Table'
+  title: 'Scores Results'
   weight: 0
