@@ -212,6 +212,7 @@ final class ScoreController extends ControllerBase {
     $key = $this->getKeyById($recitations, $recitation->id());
     // This recitation's round.
     $round = $key + 1;
+    $is_last_recitation = $round == count($recitations);
 
     $build = [
       '#type' => 'container',
@@ -264,6 +265,10 @@ final class ScoreController extends ControllerBase {
       '#allowed_tags' => ['svg', 'path'],
     ];
 
+    $build['messages_wrapper'] = [
+      '#markup' => '<div data-drupal-messages></div>',
+    ];
+
     $can_score_next_recitation = $round < $active_round;
     $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
     if (!in_array($recitation_language, $judge_languages)) {
@@ -292,14 +297,45 @@ final class ScoreController extends ControllerBase {
       if ($judge_type == 'accuracy') {
         // Accuracy judge.
         $build['form'] = $this->formBuilder()
-          ->getForm('Drupal\piv_live_competition\Form\AccuracyScoreForm', $recitation, $score_entity, $can_score_next_recitation);
+          ->getForm('Drupal\piv_live_competition\Form\AccuracyScoreForm', $recitation, $score_entity, $can_score_next_recitation, $is_last_recitation);
       }
       else {
         $build['form'] = $this->formBuilder()
-          ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity, $can_score_next_recitation);
+          ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity, $can_score_next_recitation, $is_last_recitation);
       }
     }
-
+    // Replace the "next" button if this is the last recitation and its
+    // submitted already.
+    if ($is_last_recitation && !$score_entity->isNew()) {
+      $build['form']['navigation'] = [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => ['score-controller__navigation'],
+        ],
+      ];
+      $build['form']['navigation']['back_wrapper'] = [
+        '#type' => 'container',
+        '#attributes' => [
+          'class' => [
+            'score-controller__navigation__next',
+          ],
+        ],
+      ];
+      $build['form']['navigation']['back_wrapper']['link'] = [
+        '#prefix' => '<div>' . $this->t('Judging complete') . '</div>',
+        '#type' => 'link',
+        '#url' => Url::fromRoute('piv_live_competition.live_competition_list', [
+          'user' => $this->currentUser()->id(),
+        ]),
+        '#title' => $this->t('Back to competitions'),
+        '#attributes' => [
+          'class' => [
+            'button',
+            'score-controller__navigation__next',
+          ],
+        ],
+      ];
+    }
     return $build;
   }
 
