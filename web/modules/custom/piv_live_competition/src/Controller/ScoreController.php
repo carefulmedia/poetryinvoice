@@ -282,6 +282,9 @@ final class ScoreController extends ControllerBase {
           ]),
         ],
       ];
+      // Do not print the poem.
+      unset($build['epigraph']);
+      unset($build['poem_content']);
       $build['form'] = $this->formBuilder()
         ->getForm('Drupal\piv_live_competition\Form\BlankScoreForm', $can_score_next_recitation, $message);
     }

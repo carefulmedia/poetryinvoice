@@ -47,6 +47,11 @@ final class AccuracyScoreForm extends FormBase {
       '#value' => $score_entity,
     ];
 
+    $form['can_score_next_recitation'] = [
+      '#type' => 'value',
+      '#value' => $can_score_next_recitation,
+    ];
+
     $form['score'] = [
       '#type' => 'radios',
       '#options' => array_combine(range(1, 8), range(1, 8)),
@@ -114,6 +119,12 @@ final class AccuracyScoreForm extends FormBase {
     $is_new = $score_entity->isNew();
     $score_entity->field_scores = $score_value;
     $score_entity->save();
+
+    $can_score_next_recitation = $form_state->getValue('can_score_next_recitation', TRUE);
+    if (!$can_score_next_recitation) {
+      $this->messenger()
+        ->addMessage($this->t('Your score for this recitation has been saved. Please get ready to score the next recitation once the next round begins!'));
+    }
 
     if ($is_new) {
       $recitation->field_accuracy_scores->appendItem($score_entity->id());

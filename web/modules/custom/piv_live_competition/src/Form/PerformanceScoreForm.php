@@ -75,6 +75,11 @@ final class PerformanceScoreForm extends FormBase {
       '#value' => $score_entity,
     ];
 
+    $form['can_score_next_recitation'] = [
+      '#type' => 'value',
+      '#value' => $can_score_next_recitation,
+    ];
+
     $values = array_column($score_entity?->field_scores->getValue() ?? [], 'value');
     $form['score_template_form'] = [
       '#type' => 'container',
@@ -150,6 +155,12 @@ final class PerformanceScoreForm extends FormBase {
     $score_entity->field_locked = 1;
     $is_new = $score_entity->isNew();
     $score_entity->save();
+
+    $can_score_next_recitation = $form_state->getValue('can_score_next_recitation', TRUE);
+    if (!$can_score_next_recitation) {
+      $this->messenger()
+        ->addMessage($this->t('Your score for this recitation has been saved. Please get ready to score the next recitation once the next round begins!'));
+    }
 
     if ($is_new) {
       $recitation->field_performance_scores->appendItem($score_entity->id());
