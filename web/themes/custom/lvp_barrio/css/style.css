@@ -1500,7 +1500,6 @@ h3.name {
 }
 .header {
   position: fixed;
-  top: 0;
   width: 100%;
   z-index: 400;
 }
@@ -6069,4 +6068,10 @@ dialog .field--name-field-media-oembed-video {
 }
 .lvp-barrio .messages__content {
   margin-inline-start: 0;
+}
+#page-wrapper {
+  margin-top: 64px;
+}
+#page-wrapper .highlighted {
+  margin-top: -64px;
 }
