@@ -98,3 +98,10 @@ msgstr "Résultats - @label"
 
 msgid "Live competitions"
 msgstr "Compétitions en direct"
+
+msgid "Live Competition Scoring"
+msgstr "Pointage en direct"
+
+msgid "Live Competition Round"
+msgstr "Manche en direct"
+
