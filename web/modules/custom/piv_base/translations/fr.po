@@ -17,3 +17,84 @@ msgstr "Votre récitation n'a pas pu être enregistrée car l'URL de la vidéo n
 
 msgid "Fix video"
 msgstr "Corriger"
+
+msgid "Start round @round"
+msgstr "Commencer la manche @round"
+
+msgid "<b>Last round.</b>"
+msgstr "<b>Dernière manche.</b>"
+
+msgid "Waiting for next poem"
+msgstr "En attente du prochain poème"
+
+msgid "The form has become outdated. Please reload the page."
+msgstr "Le formulaire est expiré. Veuillez rafraîchir la page."
+
+msgid "Accuracy score"
+msgstr "Notes de précision"
+
+msgid "Submit score"
+msgstr "Soumettre"
+
+msgid "Next poem"
+msgstr "Poème suivant"
+
+msgid "Team Regional Entry"
+msgstr "Inscription en équipe"
+
+msgid "Student"
+msgstr "Étudiant"
+
+msgid "Poem"
+msgstr "Poème"
+
+msgid "School"
+msgstr "École"
+
+msgid "Order"
+msgstr "Ordre"
+
+msgid "Performance scores"
+msgstr "Notes de performance"
+
+msgid "Accuracy scores"
+msgstr "Notes de précision"
+
+msgid "No recitations for this competition yet."
+msgstr "Il n'y a pas encore de récitations pour cette compétition."
+
+msgid "Recitations List - @label"
+msgstr "Liste des récitations - @label"
+
+msgid "Waiting for the next @language recitation..."
+msgstr "En attente de la prochaine récitation en @language..."
+
+msgid "Monitor Dashboard - @label"
+msgstr "Tableau de bord du moniteur - @label"
+
+msgid "Final results"
+msgstr "Résultats finaux"
+
+msgid "Score"
+msgstr "Note"
+
+msgid "Recitation"
+msgstr "Récitation"
+
+msgid "Accuracy"
+msgstr "Précision"
+
+msgid "Overall Performance"
+msgstr "Performance globale"
+
+msgid "Best Poem"
+msgstr "Meilleur poème"
+
+msgid "Rank"
+msgstr "Rang"
+
+msgid "Score Results - @label"
+msgstr "Résultats - @label"
+
+msgid "Live competitions"
+msgstr "Compétitions en direct"
