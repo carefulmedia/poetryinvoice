@@ -111,6 +111,16 @@ final class ScoreController extends ControllerBase {
   }
 
   /**
+   * Get all scores for this competition created by this user.
+   */
+  private function getScores(NodeInterface $node, UserInterface $user) {
+    return $this->entityTypeManager()->getStorage('score')->loadByProperties([
+      'judge' => $user->id(),
+      'field_competition' => $node->id(),
+    ]);
+  }
+  
+  /**
    * Return a score entity.
    *
    * Load from the recitation or create new, $type is 'accuracy' or
@@ -233,22 +243,32 @@ final class ScoreController extends ControllerBase {
     $is_locked = $score_entity->field_locked->value == 1;
     $student_name = $this->helper->getStudentName($recitation);
     $poem_name = $recitation->field_poem?->entity->label();
-    $build['student_name'] = [
-      '#type' => 'html_tag',
-      '#tag' => 'h2',
-      '#value' => $student_name,
-    ];
     $build['poem'] = [
       '#type' => 'html_tag',
-      '#tag' => 'h3',
+      '#tag' => 'h2',
       '#value' => $poem_name,
+    ];
+    $build['student_name'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'h3',
+      '#value' => $student_name,
     ];
     $build['epigraph'] = $recitation->field_poem?->entity->field_epigraph?->view(['label' => 'hidden']);
     if ($judge_type == 'accuracy') {
       $build['poem_content'] = $recitation->field_poem?->entity->body?->view(['label' => 'hidden']);
     }
 
-    $total = count($recitations);
+    // Count only the recitations that this judge can judge based on the
+    // language.
+    $total = 0;
+    foreach ($recitations as $r) {
+      $recitation_language = $r->field_poem?->entity->langcode->value ?? 'en';      
+      if (in_array($recitation_language, $judge_languages)) {
+        $total++;
+      }
+    }
+    // Round is the number of scores already created.
+    $round = count($this->getScores($node, $user)) + 1;
     $build['progress'] = [
       '#type' => 'inline_template',
       '#template' => '<div>{{ round }}/{{ total }}</div>',
