@@ -119,7 +119,7 @@ final class ScoreController extends ControllerBase {
       'field_competition' => $node->id(),
     ]);
   }
-  
+
   /**
    * Return a score entity.
    *
@@ -233,9 +233,6 @@ final class ScoreController extends ControllerBase {
         ])->toString(),
         'data-round' => $round,
       ],
-      '#attached' => [
-        'library' => ['piv_live_competition/score-form'],
-      ],
     ];
 
     // Load or create new score entity.
@@ -254,19 +251,31 @@ final class ScoreController extends ControllerBase {
       '#value' => $student_name,
     ];
     $build['epigraph'] = $recitation->field_poem?->entity->field_epigraph?->view(['label' => 'hidden']);
-    if ($judge_type == 'accuracy') {
+    if ($judge_type == 'accuracy' && !$is_locked) {
       $build['poem_content'] = $recitation->field_poem?->entity->body?->view(['label' => 'hidden']);
     }
 
     // Count only the recitations that this judge can judge based on the
     // language.
     $total = 0;
-    foreach ($recitations as $r) {
-      $recitation_language = $r->field_poem?->entity->langcode->value ?? 'en';      
+    // We can score the next recitation if the recitation in the foreach
+    // iteration is beyond the active round and we can score it.
+    $can_score_next_recitation = FALSE;
+    foreach ($recitations as $i => $r) {
+      $recitation_language = $r->field_poem?->entity->langcode->value ?? 'en';
       if (in_array($recitation_language, $judge_languages)) {
         $total++;
+        if ($i >= $round && $i < $active_round) {
+          $can_score_next_recitation = TRUE;
+        }
       }
     }
+
+    if ($is_locked) {
+      $build['#attributes']['class'][] = 'is-locked';
+      $build['#attached']['library'] = ['piv_live_competition/score-form'];
+    }
+
     // Round is the number of scores already created.
     $round = count($this->getScores($node, $user)) + 1;
     $build['progress'] = [
@@ -289,9 +298,9 @@ final class ScoreController extends ControllerBase {
       '#markup' => '<div data-drupal-messages></div>',
     ];
 
-    $can_score_next_recitation = $round < $active_round;
     $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
     if (!in_array($recitation_language, $judge_languages)) {
+      $build['#attached']['library'] = ['piv_live_competition/score-form'];
       // We only get there if the judge can't score the next recitation
       // yet and the only current recitation is not for the correct
       // language.

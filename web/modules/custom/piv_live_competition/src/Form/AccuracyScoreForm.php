@@ -53,14 +53,16 @@ final class AccuracyScoreForm extends FormBase {
       '#value' => !$can_score_next_recitation && !$is_last_recitation,
     ];
 
-    $form['score'] = [
-      '#type' => 'radios',
-      '#options' => array_combine(range(1, 8), range(1, 8)),
-      '#required' => TRUE,
-      '#default_value' => $score_entity->field_scores->value ?? NULL,
-      '#title' => $this->t('Accuracy score'),
-      '#disabled' => $is_locked,
-    ];
+    if (!$is_locked) {
+      $form['score'] = [
+        '#type' => 'radios',
+        '#options' => array_combine(range(1, 8), range(1, 8)),
+        '#required' => TRUE,
+        '#default_value' => $score_entity->field_scores->value ?? NULL,
+        '#title' => $this->t('Accuracy score'),
+        '#disabled' => $is_locked,
+      ];
+    }
 
     $form['navigation'] = [
       '#type' => 'container',
