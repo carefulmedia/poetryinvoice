@@ -25,7 +25,7 @@
             const active_round = data?.active_round || 0;
             if (active_round > round) {
               enable_button(el);
-              location.reload();
+              location.replace(location.href);
               clearInterval(timer);
             }
           });

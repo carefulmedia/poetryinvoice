@@ -3,7 +3,6 @@ piv_live_competition.score:
   defaults:
     _title: 'Live Competition Scoring'
     _controller: '\Drupal\piv_live_competition\Controller\ScoreController'
-    recitation: null
   requirements:
     _custom_access: '\Drupal\piv_live_competition\Controller\ScoreController::access'
   options:
@@ -20,7 +19,6 @@ piv_live_competition.api_round:
   defaults:
     _title: 'Live Competition Round'
     _controller: '\Drupal\piv_live_competition\Controller\ScoreController::activeRound'
-    recitation: null
   requirements:
     _permission: 'access content'
   options:
@@ -67,10 +65,11 @@ piv_live_competition.monitor_dashboard:
           - competition
 
 piv_live_competition.live_competition_score_results_table:
-  path: '/live-competition-score/{node}'
+  path: '/live-competition-score/{node}/{stream}'
   defaults:
     _title_callback: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController::title'
     _controller: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController'
+    stream: 0
   requirements:
     _permission: 'access live competition score result table'
   options:
