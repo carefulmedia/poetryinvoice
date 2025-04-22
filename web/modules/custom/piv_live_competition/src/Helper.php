@@ -8,6 +8,7 @@ use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
+use Drupal\Core\Entity\EntityFieldManagerInterface;
 
 /**
  * Helper class for Live Competitions ('competition' nodes).
@@ -51,7 +52,21 @@ final class Helper {
   public function __construct(
     private readonly CacheBackendInterface $cacheDefault,
     private readonly EntityTypeManagerInterface $entityTypeManager,
+    private readonly EntityFieldManagerInterface $entityFieldManager,
   ) {}
+
+  /**
+   * Get the options from the Language Stream field.
+   */
+  public function getStreams() {
+    // Get all existing streams based on the options set on
+    // "Language Stream (for finals))" field.
+    $field_language_stream = $this->entityFieldManager
+      ->getFieldStorageDefinitions('node')['field_language_stream'];
+    $streams = $field_language_stream->getSetting('allowed_values');
+    $streams['_none'] = '- None -';
+    return $streams;
+  }
 
   /**
    * Get a list of recitations in the correct sort order.

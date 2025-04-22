@@ -2200,6 +2200,22 @@ table tbody tr.rank-tie-7 {
 #monitor-dashboard-wrapper {
   position: relative;
 }
+.score-wrapper .button.is-disabled {
+  background-color: #c53d27;
+  color: #85201a;
+}
+body.score-form-is-locked .lvp-barrio {
+  background-color: #222;
+}
+body.score-form-is-locked h1,
+body.score-form-is-locked h2,
+body.score-form-is-locked h3,
+body.score-form-is-locked .lvp-barrio {
+  color: #ccc;
+}
+body.score-form-is-locked path {
+  fill: #ccc;
+}
 /**
  * @file
  * Enables Bootstrap 4 multi-level flyout
