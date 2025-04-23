@@ -86,15 +86,22 @@ final class ScoreController extends ControllerBase {
     // no score where this user is the judge.
     foreach ($recitations as $delta => $recitation) {
       $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
+      $can_judge_language = in_array($recitation_language, $languages);
+      if ($can_judge_language) {
+        $last_valid_recitation = $recitation;
+      }
 
       $round = $delta + 1;
       // Return active round recitation at most, even if complete or not
       // correct language.
       if ($active_round !== NULL && $active_round == $round) {
+        if (!$can_judge_language) {
+          return $last_valid_recitation;
+        }
         return $recitation;
       }
       // Skip recitation not in the correct language.
-      if (!in_array($recitation_language, $languages)) {
+      if (!$can_judge_language) {
         continue;
       }
       foreach ($recitation->{$field}->referencedEntities() as $score) {
@@ -230,7 +237,6 @@ final class ScoreController extends ControllerBase {
     $key = $this->getKeyById($recitations, $recitation->id());
     // This recitation's round.
     $round = $key + 1;
-    $is_last_recitation = $round == count($recitations);
 
     $build = [
       '#type' => 'container',
@@ -290,8 +296,9 @@ final class ScoreController extends ControllerBase {
     $can_judge_language = in_array($recitation_language, $judge_languages);
 
     // Round is the number of scores already created.
+    $round = count($this->getScores($node, $user)) + ($is_locked ? 0 : 1);
+    $is_last_recitation = $round >= $total;
     if ($can_judge_language) {
-      $round = count($this->getScores($node, $user)) + ($is_locked ? 0 : 1);
       $build['progress'] = [
         '#type' => 'inline_template',
         '#template' => '<div>{{ round }}/{{ total }}</div>',
@@ -342,7 +349,7 @@ final class ScoreController extends ControllerBase {
     }
     // Replace the "next" button if this is the last recitation and its
     // submitted already.
-    if ($is_last_recitation && !$score_entity->isNew()) {
+    if ($is_last_recitation && (!$score_entity->isNew() || !$can_judge_language)) {
       $build['form']['navigation'] = [
         '#type' => 'container',
         '#attributes' => [
