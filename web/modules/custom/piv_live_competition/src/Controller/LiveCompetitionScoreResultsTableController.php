@@ -8,6 +8,8 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\NodeInterface;
 use Drupal\piv_live_competition\Helper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
 
 /**
  * Score results for live competitions.
@@ -355,6 +357,25 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
     return $this->t('Score Results - @label', [
       '@label' => $node->label(),
     ]);
+  }
+
+  /**
+   * Custom access.
+   */
+  public function access(AccountInterface $account, NodeInterface $node, string $stream) {
+    $nodes = $this->entityTypeManager()->getStorage('node')
+      ->loadByProperties([
+        'field_contest_association' => $node->id(),
+      ]);
+    $streams = array_map(function ($n) {
+      return $n->field_language_stream->value ?? NULL;
+    }, $nodes);
+    $stream_is_valid = in_array($stream, $streams);
+    $permission = $account->hasPermission('access live competition score result table');
+    return AccessResult::allowedIf($permission && $stream_is_valid)
+      ->cachePerUser()
+      ->addCacheableDependency($account)
+      ->addCacheTags(['node_list:team_regionals_entry']);
   }
 
 }
