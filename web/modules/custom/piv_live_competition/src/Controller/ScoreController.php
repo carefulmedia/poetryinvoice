@@ -271,11 +271,6 @@ final class ScoreController extends ControllerBase {
       }
     }
 
-    if ($is_locked) {
-      $build['#attributes']['class'][] = 'is-locked';
-      $build['#attached']['library'] = ['piv_live_competition/score-form'];
-    }
-
     // Round is the number of scores already created.
     $round = count($this->getScores($node, $user)) + 1;
     $build['progress'] = [
@@ -299,28 +294,15 @@ final class ScoreController extends ControllerBase {
     ];
 
     $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
-    if (!in_array($recitation_language, $judge_languages)) {
+    if ($is_locked || !$score_entity->isNew() || !in_array($recitation_language, $judge_languages)) {
+      $build['#attributes']['class'][] = 'is-locked';
       $build['#attached']['library'] = ['piv_live_competition/score-form'];
-      // We only get there if the judge can't score the next recitation
-      // yet and the only current recitation is not for the correct
-      // language.
-      $language_label = in_array('en', $judge_languages)
-        ? $this->t('English')
-        : $this->t('French');
-      $message = [
-        '#type' => 'fieldset',
-        'message' => [
-          '#type' => 'item',
-          '#markup' => $this->t('Waiting for the next @language recitation...', [
-            '@language' => $language_label,
-          ]),
-        ],
-      ];
       // Do not print the poem.
       unset($build['epigraph']);
       unset($build['poem_content']);
+      $message = [];
       $build['form'] = $this->formBuilder()
-        ->getForm('Drupal\piv_live_competition\Form\BlankScoreForm', $can_score_next_recitation, $message);
+        ->getForm('Drupal\piv_live_competition\Form\WaitingPageForm', $can_score_next_recitation, $message);
     }
     else {
       if ($judge_type == 'accuracy') {
