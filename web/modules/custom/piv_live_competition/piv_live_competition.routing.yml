@@ -1,7 +1,7 @@
 piv_live_competition.score:
   path: '/live-competition-scoring/{node}/{user}'
   defaults:
-    _title: 'Live Competition Scoring'
+    _title_callback: '\Drupal\piv_live_competition\Controller\ScoreController::title'
     _controller: '\Drupal\piv_live_competition\Controller\ScoreController'
   requirements:
     _custom_access: '\Drupal\piv_live_competition\Controller\ScoreController::access'
