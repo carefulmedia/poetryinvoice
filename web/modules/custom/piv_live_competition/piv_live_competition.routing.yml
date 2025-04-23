@@ -71,7 +71,7 @@ piv_live_competition.live_competition_score_results_table:
     _controller: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController'
     stream: 0
   requirements:
-    _permission: 'access live competition score result table'
+    _custom_access: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController::access'
   options:
     parameters:
       node:

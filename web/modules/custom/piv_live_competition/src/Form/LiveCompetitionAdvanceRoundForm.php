@@ -67,7 +67,7 @@ final class LiveCompetitionAdvanceRoundForm extends FormBase {
       ];
       $form['submit'] = [
         '#type' => 'submit',
-        '#value' => $this->t('Start round @round', [
+        '#value' => $this->t('Start recitation @round', [
           '@round' => $current_round + 1,
         ]),
       ];

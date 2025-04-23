@@ -21,6 +21,9 @@ msgstr "Corriger"
 msgid "Start round @round"
 msgstr "Commencer la manche @round"
 
+msgid "Start recitation @round"
+msgstr "Commencer la récitation @round"
+
 msgid "<b>Last round.</b>"
 msgstr "<b>Dernière manche.</b>"
 

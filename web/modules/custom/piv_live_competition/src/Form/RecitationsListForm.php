@@ -42,12 +42,14 @@ final class RecitationsListForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, ?NodeInterface $node = NULL): array {
+    $streams = $this->helper->getStreams();
     // This is a form but there is no filtering (yet).
     $recitations = $node ? $this->helper->getRecitationsInOrder($node) : [];
     $form['table'] = [
       '#type' => 'table',
       '#header' => [
         'team_regional_entry' => $this->t('Team Regional Entry'),
+        'stream' => $this->t('Stream'),
         'student' => $this->t('Student'),
         'poem' => $this->t('Poem'),
         'school' => $this->t('School'),
@@ -82,13 +84,15 @@ final class RecitationsListForm extends FormBase {
       }
 
       $team_regional_entry = $recitation->getParentEntity();
+      $stream = $team_regional_entry->field_language_stream->value;
       $school = $team_regional_entry
         ? $team_regional_entry->getOwner()?->field_school->entity?->label()
         : '';
       $form['table'][] = [
         'team_regional_entry' => $team_regional_entry
-          ? $team_regional_entry->toLink(NULL, 'edit-form')->toRenderable() :
-        '',
+          ? $team_regional_entry->toLink(NULL, 'edit-form')->toRenderable()
+          : '',
+        'stream' => ['#markup' => $streams[$stream] ?? $this->t('- None -')],
         'student' => ['#markup' => $this->helper->getStudentName($recitation)],
         'poem' => ['#markup' => $recitation->field_poem->entity?->label()],
         'school' => ['#markup' => $school],
