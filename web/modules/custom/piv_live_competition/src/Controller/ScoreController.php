@@ -84,25 +84,17 @@ final class ScoreController extends ControllerBase {
     $active_round = $node->field_active_round->value ?? NULL;
     // Iterate in all recitations in order, check for a recitation with
     // no score where this user is the judge.
-    $last_valid_recitation = NULL;
     foreach ($recitations as $delta => $recitation) {
       $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
-      $can_judge_language = in_array($recitation_language, $languages);
-      if ($can_judge_language) {
-        $last_valid_recitation = $recitation;
-      }
 
       $round = $delta + 1;
       // Return active round recitation at most, even if complete or not
       // correct language.
       if ($active_round !== NULL && $active_round == $round) {
-        if (!$can_judge_language && $last_valid_recitation) {
-          return $last_valid_recitation;
-        }
         return $recitation;
       }
       // Skip recitation not in the correct language.
-      if (!$can_judge_language) {
+      if (!in_array($recitation_language, $languages)) {
         continue;
       }
       foreach ($recitation->{$field}->referencedEntities() as $score) {
