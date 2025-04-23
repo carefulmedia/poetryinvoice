@@ -163,9 +163,15 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       '#type' => 'html_tag',
       '#tag' => 'h3',
       '#value' => $this->t('Final results'),
+      '#attributes' => [
+        'class' => ['final-results'],
+      ],
     ];
     $build['aggregated_table'] = [
       '#type' => 'table',
+      '#attributes' => [
+        'class' => ['final-results'],
+      ],
       '#header' => [
         'school' => $this->t('School'),
         'score' => $this->t('Score'),
