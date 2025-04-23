@@ -69,7 +69,7 @@ piv_live_competition.live_competition_score_results_table:
   defaults:
     _title_callback: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController::title'
     _controller: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController'
-    stream: 0
+    stream: null
   requirements:
     _custom_access: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController::access'
   options:
