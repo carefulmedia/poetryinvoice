@@ -35,7 +35,22 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
   /**
    * Builds the response.
    */
-  public function __invoke(NodeInterface $node, string $stream): array {
+  public function __invoke(NodeInterface $node, ?string $stream = NULL): mixed {
+    if ($stream === NULL) {
+      $nodes = $this->entityTypeManager()->getStorage('node')
+        ->loadByProperties([
+          'field_contest_association' => $node->id(),
+        ]);
+      $streams = array_unique(array_filter(array_map(function ($n) {
+        return $n->field_language_stream->value ?? NULL;
+      }, $nodes)));
+      $stream = $streams ? min($streams) : '_none';
+      return $this->redirect('piv_live_competition.live_competition_score_results_table', [
+        'node' => $node->id(),
+        'stream' => $stream,
+      ]);
+    }
+
     $build = [];
 
     $streams = $this->helper->getStreams();
@@ -362,17 +377,19 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
   /**
    * Custom access.
    */
-  public function access(AccountInterface $account, NodeInterface $node, string $stream) {
+  public function access(AccountInterface $account, NodeInterface $node, ?string $stream = NULL) {
     $nodes = $this->entityTypeManager()->getStorage('node')
       ->loadByProperties([
         'field_contest_association' => $node->id(),
       ]);
     $streams = array_map(function ($n) {
-      return $n->field_language_stream->value ?? NULL;
+      return $n->field_language_stream->value ?? '_none';
     }, $nodes);
     $stream_is_valid = in_array($stream, $streams);
     $permission = $account->hasPermission('access live competition score result table');
-    return AccessResult::allowedIf($permission && $stream_is_valid)
+    // If stream is null the page will redirect to the first valid
+    // stream.
+    return AccessResult::allowedIf($stream === NULL || ($permission && $stream_is_valid))
       ->cachePerUser()
       ->addCacheableDependency($account)
       ->addCacheTags(['node_list:team_regionals_entry']);
