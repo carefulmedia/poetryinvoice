@@ -290,7 +290,7 @@ final class ScoreController extends ControllerBase {
 
     // Round is the number of scores already created.
     $round = count($this->getScores($node, $user)) + ($is_locked ? 0 : 1);
-    $is_last_recitation = $round >= $total;
+    $is_last_recitation = $can_judge_language ? $round == $total : $round > $total;
     if ($can_judge_language) {
       $build['progress'] = [
         '#type' => 'inline_template',
