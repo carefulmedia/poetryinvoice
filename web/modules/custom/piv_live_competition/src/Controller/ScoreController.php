@@ -174,20 +174,9 @@ final class ScoreController extends ControllerBase {
   }
 
   /**
-   * Builds the response.
+   * Return the Judge Type and Languages.
    */
-  public function __invoke(NodeInterface $node, UserInterface $user) : mixed {
-    $score_template = $node->field_score_template->entity;
-    if (!$score_template) {
-      // This field is required.
-      throw new NotFoundHttpException();
-    }
-
-    $active_round = $node->field_active_round->value ?? 0;
-    if ($active_round <= 0) {
-      return ['#markup' => 'Waiting for the first round to be activated'];
-    }
-
+  private function getJudgeTypeAndLanguages(NodeInterface $node, UserInterface $user) {
     // Check if user is an accuracy judge, otherwise it is a performance
     // judge.
     $judges_fr = array_column($node->field_accuracy_judge_fr->getValue(), 'target_id');
@@ -209,6 +198,25 @@ final class ScoreController extends ControllerBase {
       $judge_languages[] = $user->preferred_langcode->value ?? 'en';
     }
 
+    return [$judge_type, $judge_languages];
+  }
+
+  /**
+   * Builds the response.
+   */
+  public function __invoke(NodeInterface $node, UserInterface $user) : mixed {
+    $score_template = $node->field_score_template->entity;
+    if (!$score_template) {
+      // This field is required.
+      throw new NotFoundHttpException();
+    }
+
+    $active_round = $node->field_active_round->value ?? 0;
+    if ($active_round <= 0) {
+      return ['#markup' => 'Waiting for the first round to be activated'];
+    }
+
+    [$judge_type, $judge_languages] = $this->getJudgeTypeAndLanguages($node, $user);
     $recitation = $this->getNextRecitation($node, $user, $judge_type, $judge_languages);
     if (!$recitation) {
       $this->messenger()->addMessage('There are no more recitations to judge.');
@@ -238,17 +246,24 @@ final class ScoreController extends ControllerBase {
     // Load or create new score entity.
     $score_entity = $this->getScoreEntity($node, $user, $recitation, $judge_type);
     $is_locked = $score_entity->field_locked->value == 1;
-    $student_name = $this->helper->getStudentName($recitation);
+    $poet = $recitation->field_poem?->entity->getOwner()?->getDisplayName();
     $poem_name = $recitation->field_poem?->entity->label();
+    $build['school'] = [
+      '#type' => 'inline_template',
+      '#template' => '<p>{{ school }}</p>',
+      '#context' => [
+        'school' => $node->getOwner()?->field_school->entity?->label(),
+      ],
+    ];
     $build['poem'] = [
       '#type' => 'html_tag',
       '#tag' => 'h2',
       '#value' => $poem_name,
     ];
-    $build['student_name'] = [
+    $build['poet'] = [
       '#type' => 'html_tag',
       '#tag' => 'h3',
-      '#value' => $student_name,
+      '#value' => $poet,
     ];
     $build['epigraph'] = $recitation->field_poem?->entity->field_epigraph?->view(['label' => 'hidden']);
     if ($judge_type == 'accuracy' && !$is_locked) {
@@ -271,16 +286,27 @@ final class ScoreController extends ControllerBase {
       }
     }
 
+    $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
+    $can_judge_language = in_array($recitation_language, $judge_languages);
+
     // Round is the number of scores already created.
-    $round = count($this->getScores($node, $user)) + 1;
-    $build['progress'] = [
-      '#type' => 'inline_template',
-      '#template' => '<div>{{ round }}/{{ total }}</div>',
-      '#context' => [
-        'round' => $round,
-        'total' => $total,
-      ],
-    ];
+    if ($can_judge_language) {
+      $round = count($this->getScores($node, $user)) + ($is_locked ? 0 : 1);
+      $build['progress'] = [
+        '#type' => 'inline_template',
+        '#template' => '<div>{{ round }}/{{ total }}</div>',
+        '#context' => [
+          'round' => $round,
+          'total' => $total,
+        ],
+      ];
+    }
+    else {
+      $build['progress'] = [
+        '#type' => 'inline_template',
+        '#template' => '<div>{{ "Currently reciting"|t }}</div>',
+      ];
+    }
 
     $build['padlock'] = [
       '#markup' => $is_locked
@@ -293,8 +319,7 @@ final class ScoreController extends ControllerBase {
       '#markup' => '<div data-drupal-messages></div>',
     ];
 
-    $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
-    if ($is_locked || !$score_entity->isNew() || !in_array($recitation_language, $judge_languages)) {
+    if ($is_locked || !$score_entity->isNew() || !$can_judge_language) {
       $build['#attributes']['class'][] = 'is-locked';
       $build['#attached']['library'] = ['piv_live_competition/score-form'];
       // Do not print the poem.
@@ -348,6 +373,17 @@ final class ScoreController extends ControllerBase {
       ];
     }
     return $build;
+  }
+
+  /**
+   * Return a generated title.
+   */
+  public function title(NodeInterface $node, UserInterface $user) {
+    [$judge_type, $judge_languages] = $this->getJudgeTypeAndLanguages($node, $user);
+    $recitation = $this->getNextRecitation($node, $user, $judge_type, $judge_languages);
+    return $recitation
+      ? $this->helper->getStudentName($recitation)
+      : $this->t('Live Competition Scoring');
   }
 
 }
