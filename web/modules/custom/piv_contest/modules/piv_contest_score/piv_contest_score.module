@@ -6,6 +6,8 @@
  */
 
 use Drupal\Core\Render\Element;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\piv_contest_score\Entity\Score;
 
 /**
  * Implements hook_theme().

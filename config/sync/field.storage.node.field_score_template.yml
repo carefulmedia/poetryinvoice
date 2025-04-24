@@ -1,0 +1,20 @@
+uuid: 99f862cf-3b1e-419b-8c6e-44a250dba7d0
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - piv_contest_score_template
+id: node.field_score_template
+field_name: field_score_template
+entity_type: node
+type: entity_reference
+settings:
+  target_type: score_template
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

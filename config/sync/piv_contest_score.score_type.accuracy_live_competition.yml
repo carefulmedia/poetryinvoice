@@ -1,0 +1,6 @@
+uuid: 282d5693-b65c-4709-91bf-845d3a4ca81d
+langcode: en
+status: true
+dependencies: {  }
+id: accuracy_live_competition
+label: 'Accuracy Live Competition'

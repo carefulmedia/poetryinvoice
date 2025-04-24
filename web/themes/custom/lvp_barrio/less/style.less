@@ -32,6 +32,7 @@
 @import "components/indented";
 @import "components/item-list";
 @import "components/list-group";
+@import "components/live-competition";
 @import "components/navigation";
 @import "components/node";
 @import "components/node-preview";
@@ -387,17 +388,23 @@ transition: all .4s ease;}
 .recitation-judging__video .media-oembed-content {
     width: 100%;
 }
+.piv-contest-score .form-check {
+    display: flex;
+}
 .piv-contest-score .form-check-input[type="radio"] {
     border-radius: 50%;
     display: block;
     width: 40px;
     height: 40px;
+    cursor: pointer;
 }
 .piv-contest-score label {
-    display: inline-block;
+    display: block;
     font-size: 30px;
     margin-left: 10px;
     padding: 0;
+    flex: 1;
+    cursor: pointer;
 }
 .poem-read__next {
     margin-top: 4rem;
@@ -1587,4 +1594,17 @@ text-indent: -10000px;
 
     }
 
+}
+
+// Override the messages.
+.lvp-barrio {
+  .messages {
+    background-color: unset;
+    border-width: 0;
+    padding-inline: 0;
+    padding-block: 0;
+    &__content {
+      margin-inline-start: 0;
+    }
+  }
 }

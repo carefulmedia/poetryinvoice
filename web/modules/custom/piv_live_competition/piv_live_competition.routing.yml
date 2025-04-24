@@ -1,0 +1,80 @@
+piv_live_competition.score:
+  path: '/live-competition-scoring/{node}/{user}'
+  defaults:
+    _title_callback: '\Drupal\piv_live_competition\Controller\ScoreController::title'
+    _controller: '\Drupal\piv_live_competition\Controller\ScoreController'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Controller\ScoreController::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+      user:
+        type: entity:user
+
+piv_live_competition.api_round:
+  path: '/api/live-competition-round/{node}'
+  defaults:
+    _title: 'Live Competition Round'
+    _controller: '\Drupal\piv_live_competition\Controller\ScoreController::activeRound'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+
+piv_live_competition.live_competition_list:
+  path: '/user/{user}/live-competitions'
+  defaults:
+    _title: 'Live Competitions'
+    _controller: '\Drupal\piv_live_competition\Controller\LiveCompetitionsListController'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Controller\LiveCompetitionsListController::access'
+
+piv_live_competition.recitations_list:
+  path: '/node/{node}/recitations'
+  defaults:
+    _title_callback: 'Drupal\piv_live_competition\Form\RecitationsListForm::title'
+    _form: 'Drupal\piv_live_competition\Form\RecitationsListForm'
+  requirements:
+    _permission: 'access competition recitations list'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+
+piv_live_competition.monitor_dashboard:
+  path: '/monitor-dashboard/{node}'
+  defaults:
+    _title_callback: 'Drupal\piv_live_competition\Controller\MonitorDashboardController::title'
+    _controller: '\Drupal\piv_live_competition\Controller\MonitorDashboardController'
+  requirements:
+    _permission: 'access monitor dashboard'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+
+piv_live_competition.live_competition_score_results_table:
+  path: '/live-competition-score/{node}/{stream}'
+  defaults:
+    _title_callback: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController::title'
+    _controller: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController'
+    stream: null
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition

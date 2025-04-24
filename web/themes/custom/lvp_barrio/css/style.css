@@ -1222,6 +1222,78 @@ form {
 .form-item__label.option {
   font-weight: bold;
 }
+@media (min-width: 0px) and (max-width: 959px) {
+  .piv-live-competition-score table thead tr th:first-child {
+    display: none;
+  }
+  .piv-live-competition-score table thead tr th div {
+    writing-mode: vertical-rl;
+    vertical-align: middle;
+    width: 70%;
+    height: 9rem;
+    font-size: 15px;
+  }
+  .piv-live-competition-score table tbody .mobile .mobile-title {
+    font-size: 15px;
+    font-weight: bold;
+  }
+  .piv-live-competition-score table tbody .desktop .desktop-title {
+    display: none;
+    padding-top: 6px;
+  }
+  .piv-live-competition-score table tbody .option .radio {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+  }
+  .piv-live-competition-score table tbody .option .radio .form-check-input {
+    width: 25px;
+    height: 25px;
+    margin-left: 0;
+  }
+  .piv-live-competition-score table tbody .option .radio .form-check-label {
+    margin-left: 0;
+    font-size: 20px;
+  }
+  .piv-live-competition-score .score-controller__navigation {
+    flex-direction: column;
+    align-items: center;
+  }
+  .piv-live-competition-score .score-controller__navigation .score-controller__navigation__previous {
+    margin-right: unset;
+    width: 100%;
+  }
+  .piv-live-competition-score .score-controller__navigation .score-controller__navigation__next {
+    margin-left: unset;
+    width: 100%;
+  }
+  .piv-live-competition-score .score-controller__navigation .score-controller__navigation__next a {
+    width: 100%;
+  }
+  .piv-live-competition-score .score-controller__navigation .score-controller__navigation__next .button {
+    width: 100%;
+  }
+}
+@media (min-width: 768px) {
+  .piv-live-competition-score table thead tr th div {
+    width: 60%;
+  }
+}
+@media (min-width: 960px) {
+  .piv-live-competition-score table thead tr th:first-child {
+    display: table-cell;
+  }
+  .piv-live-competition-score table thead tr th div {
+    width: 100%;
+  }
+  .piv-live-competition-score table tbody .mobile .mobile-title {
+    display: none;
+  }
+  .piv-live-competition-score table tbody .desktop .desktop-title {
+    display: table-cell;
+  }
+}
 /**
  * @file
  * Styling for the Forum module.
@@ -2052,6 +2124,121 @@ h3.name {
 .list-group__description {
   margin: 0 0 10px;
 }
+.score-controller__navigation {
+  display: flex;
+  align-items: start;
+}
+.score-controller__navigation__next {
+  margin-left: auto;
+}
+.score-controller__navigation__previous {
+  margin-right: auto;
+}
+.monitor-dashboard button.form-submit,
+.monitor-dashboard button#edit-submit {
+  background: #28a745;
+}
+.monitor-dashboard button.form-submit.incomplete-round,
+.monitor-dashboard button#edit-submit.incomplete-round {
+  background: #ff8800;
+}
+.monitor-dashboard form {
+  margin-bottom: 0;
+}
+.monitor-dashboard table {
+  width: 100%;
+  table-layout: fixed;
+}
+.monitor-dashboard table tr.active-round td:first-child {
+  background: #28a745;
+}
+.monitor-dashboard table tr.active-incomplete-round td:first-child {
+  background: #ff8800;
+}
+.monitor-dashboard table td {
+  text-align: center;
+}
+.monitor-dashboard table td.disabled {
+  background: #aaaaaa;
+}
+.monitor-dashboard table span.score-icon {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  border: 2px solid #000000;
+  font-size: 19px;
+  color: #ffffff;
+}
+.monitor-dashboard table span.score-complete {
+  background: #28a745;
+}
+.monitor-dashboard table span.score-incomplete {
+  background: #ff8800;
+}
+.monitor-dashboard table tbody tr.odd,
+.monitor-dashboard table tbody tr {
+  background-color: #efefef;
+}
+.monitor-dashboard table.table > :not(caption) > * > * {
+  box-shadow: none;
+}
+table tbody tr.rank-tie-1 {
+  background: #f46d43;
+}
+table tbody tr.rank-tie-2 {
+  background: #fdae61;
+}
+table tbody tr.rank-tie-3 {
+  background: #fee08b;
+}
+table tbody tr.rank-tie-4 {
+  background: #e6f598;
+}
+table tbody tr.rank-tie-5 {
+  background: #abdda4;
+}
+table tbody tr.rank-tie-6 {
+  background: #66c2a5;
+}
+table tbody tr.rank-tie-7 {
+  background: #3288bd;
+}
+#monitor-dashboard-wrapper {
+  position: relative;
+}
+.score-wrapper .button.is-disabled {
+  background-color: #c53d27;
+  color: #85201a;
+}
+body.score-form-is-locked .lvp-barrio {
+  background-color: #222;
+}
+body.score-form-is-locked h1,
+body.score-form-is-locked h2,
+body.score-form-is-locked h3,
+body.score-form-is-locked .lvp-barrio {
+  color: #ccc;
+}
+body.score-form-is-locked path {
+  fill: #ccc;
+}
+.path-live-competition-score h2 {
+  padding: 20px 0;
+}
+h3.final-results {
+  color: var(--color-blue-600);
+}
+table.final-results {
+  margin-bottom: 3rem;
+}
+table.final-results thead tr {
+  background-color: var(--color-blue-600);
+}
+table.final-results tbody tr,
+table.final-results tbody tr.odd {
+  background-color: var(--color-blue-050);
+}
 /**
  * @file
  * Enables Bootstrap 4 multi-level flyout
@@ -2841,6 +3028,9 @@ nav.tabs ul {
   border-top: none;
   margin-bottom: 3rem;
 }
+.node--type-competition .main-content .block-page-title-block .title {
+  margin-top: 2rem;
+}
 .node-preview-container {
   background: #d1e8f5;
   background-image: -webkit-linear-gradient(top, #d1e8f5, #d3e8f4);
@@ -3605,21 +3795,26 @@ table {
 table table {
   font-size: 1em;
 }
-tr {
+tbody tr {
   border-bottom: 1px solid #ccc;
   padding: 0.1em 0.6em;
   background: #efefef;
-  background: rgba(0, 0, 0, 0.063);
 }
 thead > tr {
   border-bottom: 1px solid #000;
 }
-thead {
+thead,
+thead tr,
+thead th {
   background: #000;
 }
-tr.odd {
+thead:hover,
+thead tr:hover,
+thead th:hover {
+  background: #222;
+}
+tbody tr.odd {
   background: #e4e4e4;
-  background: rgba(0, 0, 0, 0.105);
 }
 table tr th {
   background: #757575;
@@ -4573,17 +4768,23 @@ poem-read__later a:active {
 .recitation-judging__video .media-oembed-content {
   width: 100%;
 }
+.piv-contest-score .form-check {
+  display: flex;
+}
 .piv-contest-score .form-check-input[type="radio"] {
   border-radius: 50%;
   display: block;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 .piv-contest-score label {
-  display: inline-block;
+  display: block;
   font-size: 30px;
   margin-left: 10px;
   padding: 0;
+  flex: 1;
+  cursor: pointer;
 }
 .poem-read__next {
   margin-top: 4rem;
@@ -5898,4 +6099,13 @@ dialog .field--name-field-media-oembed-video {
     overflow: visible;
     margin-bottom: 1rem;
   }
+}
+.lvp-barrio .messages {
+  background-color: unset;
+  border-width: 0;
+  padding-inline: 0;
+  padding-block: 0;
+}
+.lvp-barrio .messages__content {
+  margin-inline-start: 0;
 }

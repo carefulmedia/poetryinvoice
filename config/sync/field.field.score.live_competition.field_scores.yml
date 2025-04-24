@@ -1,0 +1,23 @@
+uuid: 329237f3-8200-436c-99cd-a93bd71b7c7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.score.field_scores
+    - piv_contest_score.score_type.live_competition
+id: score.live_competition.field_scores
+field_name: field_scores
+entity_type: score
+bundle: live_competition
+label: Scores
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

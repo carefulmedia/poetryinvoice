@@ -1,0 +1,23 @@
+uuid: 3c2f174d-aabc-4f2b-8020-f9cd0781dc59
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.score.field_scores
+    - piv_contest_score.score_type.accuracy_live_competition
+id: score.accuracy_live_competition.field_scores
+field_name: field_scores
+entity_type: score
+bundle: accuracy_live_competition
+label: Scores
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

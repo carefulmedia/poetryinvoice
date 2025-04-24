@@ -1,0 +1,6 @@
+uuid: 38f5990b-c156-439e-9bde-cdae11a11991
+langcode: en
+status: true
+dependencies: {  }
+id: live_competition
+label: 'Live Competition'

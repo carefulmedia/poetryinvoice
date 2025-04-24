@@ -1,0 +1,14 @@
+uuid: c102d273-938e-429e-8cb6-1535cef9cab1
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.competition_monitor
+  module:
+    - user
+id: user_remove_role_action.competition_monitor
+label: 'Remove the Competition monitor role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: competition_monitor

@@ -418,7 +418,7 @@ class JudgingSessionController extends ControllerBase {
       $destination = $start_judging_url;
       $message = $this->t('Thank you for completing this session. If you have other sessions ready to judge below, you may begin them now. We may assign you more sessions for the next judging period, and we will email you when they are ready.');
     }
-    else if ($recitation_data['last_of_round']) {
+    elseif ($recitation_data['last_of_round']) {
       $destination = $start_judging_url;
       $message = $this->t('Thank you for completing this round. Please take a few moments before beginning the next round of this session.');
     }

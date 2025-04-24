@@ -1,0 +1,28 @@
+piv_live_competition.live_competitions_list:
+  route_name: piv_live_competition.live_competition_list
+  base_route: entity.user.canonical
+  title: 'Live Competitions'
+  weight: 110
+
+piv_live_competition.recitations_list:
+  route_name: piv_live_competition.recitations_list
+  base_route: entity.node.canonical
+  title: 'Recitations List'
+  weight: 0
+
+piv_live_competition.monitor_dashboard:
+  route_name: piv_live_competition.monitor_dashboard
+  base_route: entity.node.canonical
+  title: 'Monitor Dashboard'
+  weight: 0
+
+piv_live_competition.live_competition_score_results_table:
+  route_name: piv_live_competition.live_competition_score_results_table
+  base_route: entity.node.canonical
+  title: 'Scores Results'
+  weight: 0
+
+piv_live_competition.live_competition_score_results_table_stream:
+  deriver: 'Drupal\piv_live_competition\Plugin\Derivative\DynamicScoreResultsTableLocalTasks'
+  weight: 100
+  parent_id: piv_live_competition.live_competition_score_results_table

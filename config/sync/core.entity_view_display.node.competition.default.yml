@@ -6,12 +6,16 @@ dependencies:
     - core.entity_view_display.comment.comment_node_competition.default
     - field.field.node.competition.body
     - field.field.node.competition.comment_node_competition
+    - field.field.node.competition.field_accuracy_judge_en
+    - field.field.node.competition.field_accuracy_judge_fr
+    - field.field.node.competition.field_active_round
     - field.field.node.competition.field_competition_school
     - field.field.node.competition.field_host_teacher
     - field.field.node.competition.field_judges
     - field.field.node.competition.field_language_stream
     - field.field.node.competition.field_level
     - field.field.node.competition.field_metatags
+    - field.field.node.competition.field_score_template
     - field.field.node.competition.field_submission_deadline
     - field.field.node.competition.field_winners_announced
     - field.field.node.competition.field_years_in_competition
@@ -44,6 +48,31 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_accuracy_judge_en:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_accuracy_judge_fr:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_active_round:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 105
     region: content
   field_host_teacher:
     type: entity_reference_label
@@ -82,6 +111,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_score_template:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
     region: content
   field_submission_deadline:
     type: datetime_default

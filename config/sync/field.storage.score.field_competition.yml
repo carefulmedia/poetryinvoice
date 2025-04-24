@@ -1,0 +1,20 @@
+uuid: e02c2cce-7be5-4fcc-8612-a4f520f3bc8a
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - piv_contest_score
+id: score.field_competition
+field_name: field_competition
+entity_type: score
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

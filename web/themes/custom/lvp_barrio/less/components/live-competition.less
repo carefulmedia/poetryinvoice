@@ -1,0 +1,113 @@
+.score-controller__navigation {
+  display: flex;
+  align-items: start;
+
+  &__next {
+    margin-left: auto;
+  }
+  &__previous {
+    margin-right: auto;
+  }
+}
+
+.monitor-dashboard {
+  button.form-submit,
+  button#edit-submit {
+    background: #28a745;
+    &.incomplete-round {
+      background: #ff8800;
+    }
+  }
+  form {
+    margin-bottom: 0;
+  }
+}
+
+.monitor-dashboard table {
+  width: 100%;
+  table-layout: fixed;
+
+  tr.active-round td:first-child {
+    background: #28a745;
+  }
+  tr.active-incomplete-round td:first-child {
+    background: #ff8800;
+  }
+  td {
+    text-align: center;
+  }
+  td.disabled {
+    background: #aaaaaa;
+  }
+  span.score-icon {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 2px solid #000000;
+    font-size: 19px;
+    color: #ffffff;
+  }
+  span.score-complete {
+    background: #28a745;
+  }
+  span.score-incomplete {
+    background: #ff8800;
+  }
+  tbody tr.odd, tbody tr {
+    background-color: #efefef;
+  }
+  &.table > :not(caption) > * > * {
+    box-shadow: none;
+  }
+}
+
+table tbody {
+  tr.rank-tie-1 { background: #f46d43; }
+  tr.rank-tie-2 { background: #fdae61; }
+  tr.rank-tie-3 { background: #fee08b; }
+  tr.rank-tie-4 { background: #e6f598; }
+  tr.rank-tie-5 { background: #abdda4; }
+  tr.rank-tie-6 { background: #66c2a5; }
+  tr.rank-tie-7 { background: #3288bd; }
+}
+
+
+#monitor-dashboard-wrapper {
+  position: relative;
+}
+
+// Override disabled button color.
+.score-wrapper .button.is-disabled {
+  background-color: #c53d27;
+  color: #85201a;
+}
+
+body.score-form-is-locked {
+  .lvp-barrio {
+    background-color: #222;
+  }
+  h1, h2, h3, .lvp-barrio {
+    color: #ccc;
+  }
+  path {
+    fill: #ccc;
+  }
+}
+.path-live-competition-score h2 {
+  padding: 20px 0;
+}
+
+// Score results.
+h3.final-results {
+  color: var(--color-blue-600);
+}
+table.final-results {
+  margin-bottom: 3rem;
+  thead tr {
+    background-color: var(--color-blue-600);
+  }
+  tbody tr, tbody tr.odd {
+    background-color: var(--color-blue-050);
+  }
+}
