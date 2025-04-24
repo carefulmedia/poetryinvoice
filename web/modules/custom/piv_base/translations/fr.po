@@ -21,6 +21,9 @@ msgstr "Corriger"
 msgid "Start round @round"
 msgstr "Commencer la manche @round"
 
+msgid "Start recitation @round"
+msgstr "Commencer la récitation @round"
+
 msgid "<b>Last round.</b>"
 msgstr "<b>Dernière manche.</b>"
 
@@ -105,3 +108,8 @@ msgstr "Pointage en direct"
 msgid "Live Competition Round"
 msgstr "Manche en direct"
 
+msgid "Your score for this recitation has been saved. Please get ready to score the next recitation once the next round begins!"
+msgstr "Votre note pour cette récitation a été enregistrée. Préparez-vous à noter la prochaine récitation dès le début du prochain tour !"
+
+msgid "Currently reciting"
+msgstr "Récital en cours"

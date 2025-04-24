@@ -2176,6 +2176,13 @@ h3.name {
 .monitor-dashboard table span.score-incomplete {
   background: #ff8800;
 }
+.monitor-dashboard table tbody tr.odd,
+.monitor-dashboard table tbody tr {
+  background-color: #efefef;
+}
+.monitor-dashboard table.table > :not(caption) > * > * {
+  box-shadow: none;
+}
 table tbody tr.rank-tie-1 {
   background: #f46d43;
 }
@@ -2199,6 +2206,38 @@ table tbody tr.rank-tie-7 {
 }
 #monitor-dashboard-wrapper {
   position: relative;
+}
+.score-wrapper .button.is-disabled {
+  background-color: #c53d27;
+  color: #85201a;
+}
+body.score-form-is-locked .lvp-barrio {
+  background-color: #222;
+}
+body.score-form-is-locked h1,
+body.score-form-is-locked h2,
+body.score-form-is-locked h3,
+body.score-form-is-locked .lvp-barrio {
+  color: #ccc;
+}
+body.score-form-is-locked path {
+  fill: #ccc;
+}
+.path-live-competition-score h2 {
+  padding: 20px 0;
+}
+h3.final-results {
+  color: var(--color-blue-600);
+}
+table.final-results {
+  margin-bottom: 3rem;
+}
+table.final-results thead tr {
+  background-color: var(--color-blue-600);
+}
+table.final-results tbody tr,
+table.final-results tbody tr.odd {
+  background-color: var(--color-blue-050);
 }
 /**
  * @file

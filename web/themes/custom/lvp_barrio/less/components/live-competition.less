@@ -54,6 +54,12 @@
   span.score-incomplete {
     background: #ff8800;
   }
+  tbody tr.odd, tbody tr {
+    background-color: #efefef;
+  }
+  &.table > :not(caption) > * > * {
+    box-shadow: none;
+  }
 }
 
 table tbody {
@@ -69,4 +75,39 @@ table tbody {
 
 #monitor-dashboard-wrapper {
   position: relative;
+}
+
+// Override disabled button color.
+.score-wrapper .button.is-disabled {
+  background-color: #c53d27;
+  color: #85201a;
+}
+
+body.score-form-is-locked {
+  .lvp-barrio {
+    background-color: #222;
+  }
+  h1, h2, h3, .lvp-barrio {
+    color: #ccc;
+  }
+  path {
+    fill: #ccc;
+  }
+}
+.path-live-competition-score h2 {
+  padding: 20px 0;
+}
+
+// Score results.
+h3.final-results {
+  color: var(--color-blue-600);
+}
+table.final-results {
+  margin-bottom: 3rem;
+  thead tr {
+    background-color: var(--color-blue-600);
+  }
+  tbody tr, tbody tr.odd {
+    background-color: var(--color-blue-050);
+  }
 }

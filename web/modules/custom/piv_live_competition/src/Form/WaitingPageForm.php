@@ -11,7 +11,7 @@ use Drupal\Core\Url;
 /**
  * Provides a PIV Live Competition form.
  */
-final class BlankScoreForm extends FormBase {
+final class WaitingPageForm extends FormBase {
 
   /**
    * {@inheritdoc}

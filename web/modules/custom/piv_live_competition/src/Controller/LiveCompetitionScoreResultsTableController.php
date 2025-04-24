@@ -8,6 +8,8 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\NodeInterface;
 use Drupal\piv_live_competition\Helper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
 
 /**
  * Score results for live competitions.
@@ -33,25 +35,29 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
   /**
    * Builds the response.
    */
-  public function __invoke(NodeInterface $node): array {
+  public function __invoke(NodeInterface $node, ?string $stream = NULL): mixed {
+    if ($stream === NULL) {
+      $nodes = $this->entityTypeManager()->getStorage('node')
+        ->loadByProperties([
+          'field_contest_association' => $node->id(),
+        ]);
+      $streams = array_unique(array_filter(array_map(function ($n) {
+        return $n->field_language_stream->value ?? NULL;
+      }, $nodes)));
+      $stream = $streams ? min($streams) : '_none';
+      return $this->redirect('piv_live_competition.live_competition_score_results_table', [
+        'node' => $node->id(),
+        'stream' => $stream,
+      ]);
+    }
+
     $build = [];
 
-    $build['title'] = [
+    $streams = $this->helper->getStreams();
+    $build['stream'] = [
       '#type' => 'html_tag',
-      '#tag' => 'h3',
-      '#value' => $this->t('Final results'),
-    ];
-    $build['aggregated_table'] = [
-      '#type' => 'table',
-      '#header' => [
-        'school' => $this->t('School'),
-        'score' => $this->t('Score'),
-        'recitation' => $this->t('Recitation'),
-        'accuracy' => $this->t('Accuracy'),
-        'overall' => $this->t('Overall Performance'),
-        'best_poem' => $this->t('Best Poem'),
-        'rank' => $this->t('Rank'),
-      ],
+      '#tag' => 'h2',
+      '#value' => $streams[$stream] ?? '- None -',
     ];
 
     // Model for judge table.
@@ -74,11 +80,24 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
     ];
 
     $rows = [];
-    $team_regional_entries = $this->entityTypeManager()->getStorage('node')
-      ->loadByProperties([
-        'type' => 'team_regionals_entry',
-        'field_contest_association' => $node->id(),
-      ]);
+
+    $query = $this->entityTypeManager()
+      ->getStorage('node')
+      ->getQuery()
+      ->condition('type', 'team_regionals_entry')
+      ->condition('field_contest_association', $node->id())
+      ->accessCheck(FALSE);
+    if ($stream !== '_none') {
+      $query->condition('field_language_stream', $stream);
+    }
+    else {
+      $query->notExists('field_language_stream');
+    }
+    $team_regional_ids = $query->execute();
+    $team_regional_entries = $team_regional_ids
+      ? $this->entityTypeManager()->getStorage('node')->loadMultiple($team_regional_ids)
+      : [];
+
     $user_storage = $this->entityTypeManager()->getStorage('user');
 
     // Accuracy scores values keyes by regional entry.
@@ -89,6 +108,8 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
     $best_poem_overall_score = [];
     // Raw data for the tables rows, keyed by judge.
     $rows = [];
+    // Map students per school.
+    $students_map = [];
 
     foreach ($team_regional_entries as $team_regional_entry) {
       $tr_id = $team_regional_entry->id();
@@ -104,6 +125,13 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
             'overall' => 0,
           ];
         }
+
+        $school_id = $team_regional_entry->getOwner()?->field_school->target_id;
+        if (empty($students_map[$school_id])) {
+          $students_map[$school_id] = [];
+        }
+        $students_map[$school_id][] = $this->helper->getStudentName($student_entry);
+
         // Accuracy are added to the regional entries in the judges
         // tables. There are tables for performance judges only.
         foreach ($student_entry->field_accuracy_scores->referencedEntities() as $score) {
@@ -126,6 +154,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
               'overall' => 0,
               'rank' => 0,
               '#team_regional_entry_id' => $tr_id,
+              '#school_id' => $school_id,
             ];
           }
           $total_score = array_sum(array_column($score->field_scores->getValue(), 'value'));
@@ -141,6 +170,35 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         }
       }
     }
+
+    if (!$rows) {
+      $build['empty'] = ['#markup' => 'No scores for this stream'];
+      return $build;
+    }
+
+    $build['title'] = [
+      '#type' => 'html_tag',
+      '#tag' => 'h3',
+      '#value' => $this->t('Final results'),
+      '#attributes' => [
+        'class' => ['final-results'],
+      ],
+    ];
+    $build['aggregated_table'] = [
+      '#type' => 'table',
+      '#attributes' => [
+        'class' => ['final-results'],
+      ],
+      '#header' => [
+        'school' => $this->t('School'),
+        'score' => $this->t('Score'),
+        'recitation' => $this->t('Recitation'),
+        'accuracy' => $this->t('Accuracy'),
+        'overall' => $this->t('Overall Performance'),
+        'best_poem' => $this->t('Best Poem'),
+        'rank' => $this->t('Rank'),
+      ],
+    ];
 
     // Add accuracy scores.
     foreach ($rows as $judge_id => $judge_rows) {
@@ -289,6 +347,9 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         $build['aggregated_table'][$i - 1]['#attributes']['class'] = $classes;
       }
       $last_rank = $row['rank'];
+      $school_id = $row['#school_id'];
+      $students = '<br><i>' . implode(', ', array_unique($students_map[$school_id])) . '</i>';
+      $row['school']['#markup'] .= $students;
       $build['aggregated_table'][] = [
         '#attributes' => ['class' => $classes],
         'school' => $row['school'],
@@ -311,6 +372,27 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
     return $this->t('Score Results - @label', [
       '@label' => $node->label(),
     ]);
+  }
+
+  /**
+   * Custom access.
+   */
+  public function access(AccountInterface $account, NodeInterface $node, ?string $stream = NULL) {
+    $nodes = $this->entityTypeManager()->getStorage('node')
+      ->loadByProperties([
+        'field_contest_association' => $node->id(),
+      ]);
+    $streams = array_map(function ($n) {
+      return $n->field_language_stream->value ?? '_none';
+    }, $nodes);
+    $stream_is_valid = in_array($stream, $streams);
+    $permission = $account->hasPermission('access live competition score result table');
+    // If stream is null the page will redirect to the first valid
+    // stream.
+    return AccessResult::allowedIf($stream === NULL || ($permission && $stream_is_valid))
+      ->cachePerUser()
+      ->addCacheableDependency($account)
+      ->addCacheTags(['node_list:team_regionals_entry']);
   }
 
 }
