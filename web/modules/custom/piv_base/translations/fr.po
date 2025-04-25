@@ -102,7 +102,7 @@ msgstr "Rang"
 msgid "Score Results - @label"
 msgstr "Résultats - @label"
 
-msgid "Live competitions"
+msgid "Live Competitions"
 msgstr "Compétitions en direct"
 
 msgid "Live Competition Scoring"
