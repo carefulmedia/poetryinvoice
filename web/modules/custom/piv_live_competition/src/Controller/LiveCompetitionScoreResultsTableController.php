@@ -348,8 +348,8 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       }
       $last_rank = $row['rank'];
       $school_id = $row['#school_id'];
-      $students = '<br><i>' . implode(', ', array_unique($students_map[$school_id])) . '</i>';
-      $row['school']['#markup'] .= $students;
+      $students = implode(', ', array_unique($students_map[$school_id])) . '<br>';
+      $row['school']['#markup'] = "$students <i>{$row['school']['#markup']}</i>";
       $build['aggregated_table'][] = [
         '#attributes' => ['class' => $classes],
         'school' => $row['school'],
