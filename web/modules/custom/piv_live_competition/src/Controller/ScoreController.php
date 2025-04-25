@@ -318,6 +318,11 @@ final class ScoreController extends ControllerBase {
       unset($build['epigraph']);
       unset($build['poem_content']);
       $message = [];
+      $message = $is_last_recitation
+        ? ['#markup' => $this->t('Thank you for judging the @label contest! Results will be announced soon.', [
+            '@label' => $node->label(),
+          ])]
+        : [];
       $build['form'] = $this->formBuilder()
         ->getForm('Drupal\piv_live_competition\Form\WaitingPageForm', $can_score_next_recitation, $message);
     }
@@ -332,37 +337,9 @@ final class ScoreController extends ControllerBase {
           ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity, $can_score_next_recitation, $is_last_recitation);
       }
     }
-    // Replace the "next" button if this is the last recitation and its
-    // submitted already.
+    // Last recitation and already submitted (complete).
     if ($is_last_recitation && (!$score_entity->isNew() || !$can_judge_language)) {
-      $build['form']['navigation'] = [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => ['score-controller__navigation'],
-        ],
-      ];
-      $build['form']['navigation']['back_wrapper'] = [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => [
-            'score-controller__navigation__next',
-          ],
-        ],
-      ];
-      $build['form']['navigation']['back_wrapper']['link'] = [
-        '#prefix' => '<div>' . $this->t('Judging complete') . '</div>',
-        '#type' => 'link',
-        '#url' => Url::fromRoute('piv_live_competition.live_competition_list', [
-          'user' => $this->currentUser()->id(),
-        ]),
-        '#title' => $this->t('Back to competitions'),
-        '#attributes' => [
-          'class' => [
-            'button',
-            'score-controller__navigation__next',
-          ],
-        ],
-      ];
+      unset($build['form']['navigation']);
     }
     return $build;
   }
