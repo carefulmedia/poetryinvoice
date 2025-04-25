@@ -30,6 +30,9 @@ msgstr "<b>Dernière manche.</b>"
 msgid "Waiting for next poem"
 msgstr "En attente du prochain poème"
 
+msgid "Waiting for next recitation"
+msgstr "En attente du prochain récital"
+
 msgid "The form has become outdated. Please reload the page."
 msgstr "Le formulaire est expiré. Veuillez rafraîchir la page."
 

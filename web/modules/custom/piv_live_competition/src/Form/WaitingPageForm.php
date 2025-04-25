@@ -41,19 +41,14 @@ final class WaitingPageForm extends FormBase {
     ];
 
     $form['navigation']['next'] = [
-      '#type' => 'link',
-      '#url' => Url::fromRoute('<current>'),
-      '#title' => $this->t('Waiting for next poem'),
+      '#type' => 'html_tag',
+      '#tag' => 'div',
+      '#value' => $this->t('Waiting for next recitation'),
       '#attributes' => [
-        'class' => [
-          'button',
-          'score-controller__navigation__next',
-        ],
+        'class' => ['h1', 'text-danger'],
       ],
     ];
-    if (!$can_score_next_recitation) {
-      $form['navigation']['next']['#attributes']['class'][] = 'is-disabled';
-    }
+    
     return $form;
   }
 
