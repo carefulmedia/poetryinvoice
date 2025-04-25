@@ -211,11 +211,6 @@ final class ScoreController extends ControllerBase {
       throw new NotFoundHttpException();
     }
 
-    $active_round = $node->field_active_round->value ?? 0;
-    if ($active_round <= 0) {
-      return ['#markup' => 'Waiting for the first round to be activated'];
-    }
-
     [$judge_type, $judge_languages] = $this->getJudgeTypeAndLanguages($node, $user);
     $recitation = $this->getNextRecitation($node, $user, $judge_type, $judge_languages);
     if (!$recitation) {
@@ -241,6 +236,18 @@ final class ScoreController extends ControllerBase {
         'data-round' => $round,
       ],
     ];
+
+    $active_round = $node->field_active_round->value ?? 0;
+    if ($active_round <= 0) {
+      $build['#attributes']['data-round'] = $active_round;
+      $build['message'] = [
+        '#markup' => 'You will be able to start judging once the contest has begun.',
+        '#attached' => [
+          'library' => ['piv_live_competition/score-form'],
+        ],
+      ];
+      return $build;
+    }
 
     // Load or create new score entity.
     $score_entity = $this->getScoreEntity($node, $user, $recitation, $judge_type);
@@ -319,9 +326,11 @@ final class ScoreController extends ControllerBase {
       unset($build['poem_content']);
       $message = [];
       $message = $is_last_recitation
-        ? ['#markup' => $this->t('Thank you for judging the @label contest! Results will be announced soon.', [
+        ? [
+          '#markup' => $this->t('Thank you for judging the @label contest! Results will be announced soon.', [
             '@label' => $node->label(),
-          ])]
+          ]),
+        ]
         : [];
       $build['form'] = $this->formBuilder()
         ->getForm('Drupal\piv_live_competition\Form\WaitingPageForm', $can_score_next_recitation, $message);
