@@ -2921,6 +2921,7 @@ nav.tabs ul {
 .contest-photos table td {
   display: block;
   width: 100%;
+  height: auto;
 }
 .winner-index table td:hover img,
 .winner-table table td:hover img,
