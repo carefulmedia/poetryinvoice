@@ -162,6 +162,7 @@ final class MonitorDashboardController extends ControllerBase {
       '#type' => 'table',
       '#header' => array_merge([$this->t('Student')], $header),
       '#rows' => $rows,
+      '#sticky' => TRUE,
     ];
 
     // Return main content only on ajax calls.
