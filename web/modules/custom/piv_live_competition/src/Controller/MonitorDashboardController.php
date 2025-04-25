@@ -164,6 +164,9 @@ final class MonitorDashboardController extends ControllerBase {
       '#rows' => $rows,
       '#sticky' => TRUE,
     ];
+    // This is a copy of the buttom to next recitation.
+    $build['form_bottom'] = $this->formBuilder()
+      ->getForm('Drupal\piv_live_competition\Form\LiveCompetitionAdvanceRoundForm', $node, $has_incomplete);
 
     // Return main content only on ajax calls.
     if ($request->isXmlHttpRequest()) {
