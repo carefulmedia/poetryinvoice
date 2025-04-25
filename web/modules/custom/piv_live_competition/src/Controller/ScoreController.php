@@ -307,14 +307,6 @@ final class ScoreController extends ControllerBase {
         '#template' => '<div>{{ "Currently reciting"|t }}</div>',
       ];
     }
-
-    $build['padlock'] = [
-      '#markup' => $is_locked
-        ? '<svg width="20px" height="20px" fill="#000000" version="1.1" viewBox="0 0 330 330" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="m65 330h200c8.284 0 15-6.716 15-15v-170c0-8.284-6.716-15-15-15h-15v-45c0-46.869-38.131-85-85-85s-85 38.131-85 85v45h-15c-8.284 0-15 6.716-15 15v170c0 8.284 6.716 15 15 15zm45-245c0-30.327 24.673-55 55-55s55 24.673 55 55v45h-110z"/></svg>'
-        : '<svg width="20px" height="20px" fill="#000000" version="1.1" viewBox="0 0 330 330" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"><path d="m15 160c8.284 0 15-6.716 15-15v-60c0-30.327 24.673-55 55-55s55 24.673 55 55v45h-25c-8.284 0-15 6.716-15 15v170c0 8.284 6.716 15 15 15h200c8.284 0 15-6.716 15-15v-170c0-8.284-6.716-15-15-15h-145v-45c0-46.869-38.131-85-85-85s-85 38.131-85 85v60c0 8.284 6.716 15 15 15z"/></svg>',
-      '#allowed_tags' => ['svg', 'path'],
-    ];
-
     $build['messages_wrapper'] = [
       '#markup' => '<div data-drupal-messages></div>',
     ];
@@ -326,6 +318,11 @@ final class ScoreController extends ControllerBase {
       unset($build['epigraph']);
       unset($build['poem_content']);
       $message = [];
+      $message = $is_last_recitation
+        ? ['#markup' => $this->t('Thank you for judging the @label contest! Results will be announced soon.', [
+            '@label' => $node->label(),
+          ])]
+        : [];
       $build['form'] = $this->formBuilder()
         ->getForm('Drupal\piv_live_competition\Form\WaitingPageForm', $can_score_next_recitation, $message);
     }
@@ -340,37 +337,9 @@ final class ScoreController extends ControllerBase {
           ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity, $can_score_next_recitation, $is_last_recitation);
       }
     }
-    // Replace the "next" button if this is the last recitation and its
-    // submitted already.
+    // Last recitation and already submitted (complete).
     if ($is_last_recitation && (!$score_entity->isNew() || !$can_judge_language)) {
-      $build['form']['navigation'] = [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => ['score-controller__navigation'],
-        ],
-      ];
-      $build['form']['navigation']['back_wrapper'] = [
-        '#type' => 'container',
-        '#attributes' => [
-          'class' => [
-            'score-controller__navigation__next',
-          ],
-        ],
-      ];
-      $build['form']['navigation']['back_wrapper']['link'] = [
-        '#prefix' => '<div>' . $this->t('Judging complete') . '</div>',
-        '#type' => 'link',
-        '#url' => Url::fromRoute('piv_live_competition.live_competition_list', [
-          'user' => $this->currentUser()->id(),
-        ]),
-        '#title' => $this->t('Back to competitions'),
-        '#attributes' => [
-          'class' => [
-            'button',
-            'score-controller__navigation__next',
-          ],
-        ],
-      ];
+      unset($build['form']['navigation']);
     }
     return $build;
   }
