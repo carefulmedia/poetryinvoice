@@ -119,3 +119,6 @@ msgstr "Récital en cours"
 
 msgid "Thank you for judging the @label contest! Results will be announced soon."
 msgstr "Merci d’avoir complété le concours @label ! Les résulats seront bientôt annoncés."
+
+msgid "You will be able to start judging once the contest has begun."
+msgstr "Vous allez pouvoir commencer dès le premier récital."

@@ -6,7 +6,6 @@ namespace Drupal\piv_live_competition\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
-use Drupal\Core\Url;
 
 /**
  * Provides a PIV Live Competition form.
@@ -48,7 +47,7 @@ final class WaitingPageForm extends FormBase {
         'class' => ['h1', 'text-danger'],
       ],
     ];
-    
+
     return $form;
   }
 

@@ -2239,6 +2239,9 @@ table.final-results tbody tr,
 table.final-results tbody tr.odd {
   background-color: var(--color-blue-050);
 }
+#monitor-dashboard-wrapper .table-responsive {
+  overflow-x: initial;
+}
 /**
  * @file
  * Enables Bootstrap 4 multi-level flyout
@@ -2918,6 +2921,7 @@ nav.tabs ul {
 .contest-photos table td {
   display: block;
   width: 100%;
+  height: auto;
 }
 .winner-index table td:hover img,
 .winner-table table td:hover img,
