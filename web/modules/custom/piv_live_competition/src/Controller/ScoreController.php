@@ -241,7 +241,7 @@ final class ScoreController extends ControllerBase {
     if ($active_round <= 0) {
       $build['#attributes']['data-round'] = $active_round;
       $build['message'] = [
-        '#markup' => 'You will be able to start judging once the contest has begun.',
+        '#markup' => $this->t('You will be able to start judging once the contest has begun.'),
         '#attached' => [
           'library' => ['piv_live_competition/score-form'],
         ],
