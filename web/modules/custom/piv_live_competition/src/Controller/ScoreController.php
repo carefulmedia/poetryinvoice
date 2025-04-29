@@ -327,7 +327,7 @@ final class ScoreController extends ControllerBase {
       $message = [];
       $message = $is_last_recitation
         ? [
-          '#markup' => $this->t('Thank you for judging the @label contest! Results will be announced soon.', [
+          '#markup' => $this->t('Thank you for judging the @label! Results will be announced soon.', [
             '@label' => $node->label(),
           ]),
         ]
