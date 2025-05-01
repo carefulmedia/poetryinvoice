@@ -19,7 +19,7 @@ final class LiveCompetitionsListController extends ControllerBase {
   /**
    * Get the competitions for user id.
    */
-  private function getCompetitionIds($user_id) {
+  public function getCompetitionIds($user_id) {
     // Calculate yesterday's date in "Y-m-d" format.
     $yesterday = new DrupalDateTime('yesterday');
     $yesterday_formatted = $yesterday->format('Y-m-d\T00:00:00');
@@ -28,7 +28,7 @@ final class LiveCompetitionsListController extends ControllerBase {
     $query->condition('type', 'competition')
       ->condition('field_winners_announced', $yesterday_formatted, '>')
       ->condition('field_active_round', 0, '>=');
-    $query->sort('created', 'DESC');
+    $query->sort('field_winners_announced', 'ASC');
     $judge_group = $query->orConditionGroup()
       ->condition('field_accuracy_judge_fr', $user_id, 'IN')
       ->condition('field_accuracy_judge_en', $user_id, 'IN')

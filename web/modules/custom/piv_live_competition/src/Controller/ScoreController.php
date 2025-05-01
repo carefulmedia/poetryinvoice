@@ -17,6 +17,8 @@ use Drupal\piv_live_competition\Helper;
 use Drupal\piv_contest_score\ScoreInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Drupal\Core\Url;
+use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\Core\DependencyInjection\ClassResolverInterface;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -29,6 +31,7 @@ final class ScoreController extends ControllerBase {
   public function __construct(
     protected readonly CacheBackendInterface $cache,
     protected readonly Helper $helper,
+    protected readonly ClassResolverInterface $classResolver,
   ) {}
 
   /**
@@ -37,7 +40,8 @@ final class ScoreController extends ControllerBase {
   public static function create(ContainerInterface $container) {
     return new static(
       $container->get('cache.default'),
-      $container->get('piv_live_competition.helper')
+      $container->get('piv_live_competition.helper'),
+      $container->get('class_resolver'),
     );
   }
 
@@ -49,7 +53,15 @@ final class ScoreController extends ControllerBase {
    * is assigned as a judge to the node in the route. Recitation also
    * is already checked in the routing file.
    */
-  public function access(AccountInterface $account, NodeInterface $node, UserInterface $user) {
+  public function access(AccountInterface $account, ?NodeInterface $node = NULL, ?UserInterface $user = NULL) {
+    if (!$node || !$user) {
+      $list_controller = $this->classResolver
+        ->getInstanceFromDefinition(LiveCompetitionsListController::class);
+      $competition_ids = $list_controller->getCompetitionIds($account->id());
+      return AccessResult::allowedIf(count($competition_ids) > 0)
+        ->cachePerUser()
+        ->addCacheContexts(['url']);
+    }
     // Merge all judge ids in an array.
     $judges_fr = array_column($node->field_accuracy_judge_fr->getValue(), 'target_id');
     $judges_en = array_column($node->field_accuracy_judge_en->getValue(), 'target_id');
@@ -108,6 +120,32 @@ final class ScoreController extends ControllerBase {
       return $recitation;
     }
     return NULL;
+  }
+
+  /**
+   * Redirect from /live-competition-scoring.
+   */
+  public function alias() {
+    $user_id = $this->currentUser()->getId();
+
+    // Calculate yesterday's date in "Y-m-d" format.
+    $yesterday = new DrupalDateTime('yesterday');
+    $yesterday_formatted = $yesterday->format('Y-m-d\T00:00:00');
+
+    $query = $this->entityTypeManager()->getStorage('node')->getQuery();
+    $query->condition('type', 'competition')
+      ->condition('field_winners_announced', $yesterday_formatted, '>')
+      ->condition('field_active_round', 0, '>=');
+    $query->sort('field_winners_announced', 'ASC');
+    $judge_group = $query->orConditionGroup()
+      ->condition('field_accuracy_judge_fr', $user_id, 'IN')
+      ->condition('field_accuracy_judge_en', $user_id, 'IN')
+      ->condition('field_judges.entity:paragraph.field_judge', $user_id);
+
+    $ids = $query->condition($judge_group)
+      ->accessCheck(TRUE)
+      ->execute();
+    return ['#markup' => print_r($ids)];
   }
 
   /**
@@ -204,7 +242,26 @@ final class ScoreController extends ControllerBase {
   /**
    * Builds the response.
    */
-  public function __invoke(NodeInterface $node, UserInterface $user) : mixed {
+  public function __invoke(?NodeInterface $node = NULL, ?UserInterface $user = NULL) : mixed {
+    if (!$node || !$user) {
+      $user_id = $this->currentUser()->id();
+      if (!$user_id) {
+        throw new NotFoundHttpException();
+      }
+
+      $list_controller = $this->classResolver
+        ->getInstanceFromDefinition(LiveCompetitionsListController::class);
+      $competition_ids = $list_controller->getCompetitionIds($user_id);
+      if (!$competition_ids) {
+        throw new NotFoundHttpException();
+      }
+
+      $competition_id = reset($competition_ids);
+      return $this->redirect('piv_live_competition.score', [
+        'node' => $competition_id,
+        'user' => $user_id,
+      ]);
+    }
     $score_template = $node->field_score_template->entity;
     if (!$score_template) {
       // This field is required.
