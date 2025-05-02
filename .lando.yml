@@ -21,6 +21,8 @@ services:
       - echo 'spx.http_enabled=1' >> /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
       - echo 'spx.http_key="dev"' >> /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
       - echo 'spx.http_ip_whitelist="*"' >> /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
+      - chmod 666 /tmp/xdebug.log
+
   pma:
     type: phpmyadmin
   # The Drupal 7 database to use as migrate source.
