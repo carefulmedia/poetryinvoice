@@ -81,7 +81,7 @@ final class ScoreController extends ControllerBase {
       ? 'field_performance_scores'
       : 'field_accuracy_scores';
 
-    $active_round = $node->field_active_round->value ?? NULL;
+    $active_round = $node->field_active_round->value ?? 0;
     // Iterate in all recitations in order, check for a recitation with
     // no score where this user is the judge.
     foreach ($recitations as $delta => $recitation) {
@@ -240,8 +240,14 @@ final class ScoreController extends ControllerBase {
     $active_round = $node->field_active_round->value ?? 0;
     if ($active_round <= 0) {
       $build['#attributes']['data-round'] = $active_round;
+      $build['#attributes']['class'][] = 'is-locked';
       $build['message'] = [
-        '#markup' => $this->t('You will be able to start judging once the contest has begun.'),
+        '#type' => 'html_tag',
+        '#tag' => 'div',
+        '#value' => $this->t('You will be able to start judging once the contest has begun.'),
+        '#attributes' => [
+          'class' => ['h1', 'text-danger'],
+        ],
         '#attached' => [
           'library' => ['piv_live_competition/score-form'],
         ],
@@ -357,11 +363,15 @@ final class ScoreController extends ControllerBase {
    * Return a generated title.
    */
   public function title(NodeInterface $node, UserInterface $user) {
+    $active_round = $node->field_active_round->value ?? 0;
+    if ($active_round <= 0) {
+      return $node->label();
+    }
     [$judge_type, $judge_languages] = $this->getJudgeTypeAndLanguages($node, $user);
     $recitation = $this->getNextRecitation($node, $user, $judge_type, $judge_languages);
     return $recitation
       ? $this->helper->getStudentName($recitation)
-      : $this->t('Live Competition Scoring');
+      : $node->label();
   }
 
 }
