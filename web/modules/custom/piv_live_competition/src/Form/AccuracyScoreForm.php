@@ -126,7 +126,7 @@ final class AccuracyScoreForm extends FormBase {
     $show_message = $form_state->getValue('show_message', TRUE);
     if ($show_message) {
       $this->messenger()
-        ->addMessage($this->t('Your score for this recitation has been saved. Please get ready to score the next recitation once the next round begins!'));
+        ->addMessage($this->t('Your score for this recitation has been saved.'));
     }
 
     if ($is_new) {
