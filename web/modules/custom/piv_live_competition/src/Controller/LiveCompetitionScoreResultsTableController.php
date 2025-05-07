@@ -358,7 +358,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       $tr_id = $row['#tr_id'];
       if (isset($ties[$tr_id])) {
         $classes[] = 'rank-tie-' . $ties[$tr_id];
-        $build['aggregated_table'][$i - 1]['#attributes']['class'] = $classes;
+        $build['aggregated_table'][$i]['#attributes']['class'] = $classes;
       }
       $last_rank = $row['rank'];
       $school_id = $row['#school_id'];
