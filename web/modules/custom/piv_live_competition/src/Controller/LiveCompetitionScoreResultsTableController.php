@@ -277,11 +277,11 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         $build[$judge_id]['table'][] = [
           '#attributes' => ['class' => $classes],
           'school' => $row['school'],
-          'score' => ['#markup' => $row['score']],
-          'recitation' => ['#markup' => $row['recitation']],
-          'accuracy' => ['#markup' => $row['accuracy']],
-          'overall' => ['#markup' => $row['overall']],
           'rank' => ['#markup' => $rank],
+          'score' => ['#markup' => $row['score']],
+          'overall' => ['#markup' => $row['overall']],
+          'accuracy' => ['#markup' => $row['accuracy']],
+          'recitation' => ['#markup' => $row['recitation']],
         ];
         $last_score = $row['score'];
         $last_rank = $rank;
@@ -314,7 +314,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         }
       }
     }
-    // Sort each judge table, no best poem or best poem overall.
+    // Sort aggregated tables.
     usort($aggregated_rows, function ($a, $b) {
       if ($a['rank'] != $b['rank']) {
         return $a['rank'] <=> $b['rank'];
@@ -353,12 +353,12 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       $build['aggregated_table'][] = [
         '#attributes' => ['class' => $classes],
         'school' => $row['school'],
-        'score' => ['#markup' => $row['score']],
-        'recitation' => ['#markup' => $row['recitation']],
-        'accuracy' => ['#markup' => $row['accuracy']],
-        'overall' => ['#markup' => $row['overall']],
-        'best_poem' => ['#markup' => $row['best_poem']],
         'rank' => ['#markup' => $row['rank']],
+        'score' => ['#markup' => $row['score']],
+        'overall' => ['#markup' => $row['overall']],
+        'accuracy' => ['#markup' => $row['accuracy']],
+        'recitation' => ['#markup' => $row['recitation']],
+        'best_poem' => ['#markup' => $row['best_poem']],
       ];
     }
 
