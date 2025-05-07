@@ -197,6 +197,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         'accuracy' => $this->t('Accuracy'),
         'recitation' => $this->t('Recitation'),
         'best_poem' => $this->t('Best Poem'),
+        'best_poem_overall' => $this->t('Highest Overall'),
       ],
     ];
 
@@ -296,6 +297,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         $tr_id = $row['#team_regional_entry_id'];
         if (empty($aggregated_rows[$tr_id])) {
           $aggregated_rows[$tr_id] = $row;
+          $aggregated_rows[$tr_id]['#tr_id'] = $tr_id;
         }
         else {
           $aggregated_rows[$tr_id]['score'] += $row['score'];
@@ -315,7 +317,9 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       }
     }
     // Sort aggregated tables.
-    usort($aggregated_rows, function ($a, $b) {
+    $ties = [];
+    $tie = 1;
+    usort($aggregated_rows, function ($a, $b) use (&$ties, &$tie) {
       if ($a['rank'] != $b['rank']) {
         return $a['rank'] <=> $b['rank'];
       }
@@ -334,16 +338,26 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       if ($a['#best_overall'] != $b['#best_overall']) {
         return $b['#best_overall'] <=> $a['#best_overall'];
       }
+      // It is a tie.
+      $a_id = $a['#tr_id'];
+      $b_id = $b['#tr_id'];
+      if (isset($ties[$a_id])) {
+        $ties[$b_id] = $ties[$a_id];
+      }
+      else {
+        $ties[$a_id] = $tie;
+        $ties[$b_id] = $tie;
+        $tie++;
+      }
       return 0;
     });
 
     $last_rank = 0;
-    $tie = [];
     foreach ($aggregated_rows as $i => $row) {
       $classes = [];
-      if ($row['rank'] == $last_rank) {
-        $tie[$last_rank] = TRUE;
-        $classes[] = 'rank-tie-' . count($tie);
+      $tr_id = $row['#tr_id'];
+      if (isset($ties[$tr_id])) {
+        $classes[] = 'rank-tie-' . $ties[$tr_id];
         $build['aggregated_table'][$i - 1]['#attributes']['class'] = $classes;
       }
       $last_rank = $row['rank'];
@@ -359,6 +373,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         'accuracy' => ['#markup' => $row['accuracy']],
         'recitation' => ['#markup' => $row['recitation']],
         'best_poem' => ['#markup' => $row['best_poem']],
+        'best_poem_overall' => ['#markup' => $row['#best_overall']],
       ];
     }
 
