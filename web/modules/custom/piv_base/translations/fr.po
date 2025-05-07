@@ -91,7 +91,7 @@ msgid "Accuracy"
 msgstr "Précision"
 
 msgid "Overall Performance"
-msgstr "Performance globale"
+msgstr "Impression générale"
 
 msgid "Best Poem"
 msgstr "Meilleur poème"
@@ -122,3 +122,6 @@ msgstr "Merci d’avoir complété le concours @label ! Les résulats seront bie
 
 msgid "You will be able to start judging once the contest has begun."
 msgstr "Vous pourrez commencer l'évaluation une fois que le concours aura commencé."
+
+msgid "Highest Overall"
+msgstr "Meilleur général"
