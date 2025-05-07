@@ -65,16 +65,16 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       '#type' => 'table',
       '#header' => [
         'school' => $this->t('School'),
-        // Total all entries performance + accuracy.
-        'score' => $this->t('Score'),
-        // Total all performance.
-        'recitation' => $this->t('Recitation'),
-        // Total all accuracy.
-        'accuracy' => $this->t('Accuracy'),
-        // Total all entries just the "Overall performance" score.
-        'overall' => $this->t('Overall Performance'),
         // Rank value among all schools.
         'rank' => $this->t('Rank'),
+        // Total all entries performance + accuracy.
+        'score' => $this->t('Score'),
+        // Total all entries just the "Overall performance" score.
+        'overall' => $this->t('Overall Performance'),
+        // Total all accuracy.
+        'accuracy' => $this->t('Accuracy'),
+        // Total all performance.
+        'recitation' => $this->t('Recitation'),
       ],
       '#rows' => [],
     ];
@@ -191,12 +191,12 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       ],
       '#header' => [
         'school' => $this->t('School'),
-        'score' => $this->t('Score'),
-        'recitation' => $this->t('Recitation'),
-        'accuracy' => $this->t('Accuracy'),
-        'overall' => $this->t('Overall Performance'),
-        'best_poem' => $this->t('Best Poem'),
         'rank' => $this->t('Rank'),
+        'score' => $this->t('Score'),
+        'overall' => $this->t('Overall Performance'),
+        'accuracy' => $this->t('Accuracy'),
+        'recitation' => $this->t('Recitation'),
+        'best_poem' => $this->t('Best Poem'),
       ],
     ];
 
@@ -348,8 +348,8 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       }
       $last_rank = $row['rank'];
       $school_id = $row['#school_id'];
-      $students = '<br><i>' . implode(', ', array_unique($students_map[$school_id])) . '</i>';
-      $row['school']['#markup'] .= $students;
+      $students = implode(', ', array_unique($students_map[$school_id])) . '<br>';
+      $row['school']['#markup'] = "$students <i>{$row['school']['#markup']}</i>";
       $build['aggregated_table'][] = [
         '#attributes' => ['class' => $classes],
         'school' => $row['school'],

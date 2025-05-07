@@ -30,6 +30,9 @@ msgstr "<b>Dernière manche.</b>"
 msgid "Waiting for next poem"
 msgstr "En attente du prochain poème"
 
+msgid "Waiting for next recitation"
+msgstr "En attente du prochain récital"
+
 msgid "The form has become outdated. Please reload the page."
 msgstr "Le formulaire est expiré. Veuillez rafraîchir la page."
 
@@ -99,7 +102,7 @@ msgstr "Rang"
 msgid "Score Results - @label"
 msgstr "Résultats - @label"
 
-msgid "Live competitions"
+msgid "Live Competitions"
 msgstr "Compétitions en direct"
 
 msgid "Live Competition Scoring"
@@ -108,8 +111,14 @@ msgstr "Pointage en direct"
 msgid "Live Competition Round"
 msgstr "Manche en direct"
 
-msgid "Your score for this recitation has been saved. Please get ready to score the next recitation once the next round begins!"
-msgstr "Votre note pour cette récitation a été enregistrée. Préparez-vous à noter la prochaine récitation dès le début du prochain tour !"
+msgid "Your score for this recitation has been saved."
+msgstr "Votre note pour cette récitation a été enregistrée."
 
 msgid "Currently reciting"
 msgstr "Récital en cours"
+
+msgid "Thank you for judging the @label! Results will be announced soon."
+msgstr "Merci d’avoir complété le concours @label ! Les résulats seront bientôt annoncés."
+
+msgid "You will be able to start judging once the contest has begun."
+msgstr "Vous pourrez commencer l'évaluation une fois que le concours aura commencé."

@@ -8,11 +8,11 @@ dependencies:
     - content_translation
 third_party_settings:
   content_translation:
-    enabled: true
+    enabled: false
     bundle_settings:
       untranslatable_fields_hide: '0'
 id: node.competition
 target_entity_type_id: node
 target_bundle: competition
 default_langcode: site_default
-language_alterable: true
+language_alterable: false
