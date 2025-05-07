@@ -5,7 +5,7 @@ dependencies:
   module:
     - piv_live_competition
 id: competition_monitor
-label: 'Competition monitor'
+label: 'Live Competition Monitor'
 weight: 28
 is_admin: null
 permissions:
