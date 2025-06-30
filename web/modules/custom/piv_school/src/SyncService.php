@@ -80,7 +80,9 @@ class SyncService {
         $ignored++;
         continue;
       }
-      $rows[] = array_combine($keys, $row);
+      if (count($keys) == count($row)) {
+        $rows[] = array_combine($keys, $row);
+      }
     }
 
     $valid = $total - $ignored;
