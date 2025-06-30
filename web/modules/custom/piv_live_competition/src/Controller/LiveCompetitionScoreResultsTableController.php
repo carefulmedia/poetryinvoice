@@ -51,6 +51,10 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       ]);
     }
 
+    // Accuracy judges ids.
+    $judges_fr = array_column($node->field_accuracy_judge_fr->getValue(), 'target_id');
+    $judges_en = array_column($node->field_accuracy_judge_en->getValue(), 'target_id');
+
     $build = [];
 
     $streams = $this->helper->getStreams();
@@ -113,7 +117,8 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
 
     foreach ($team_regional_entries as $team_regional_entry) {
       $tr_id = $team_regional_entry->id();
-      $accuracy_scores[$tr_id] = 0;
+      $accuracy_scores[$tr_id]['en'] = 0;
+      $accuracy_scores[$tr_id]['fr'] = 0;
       if (empty($poems[$tr_id])) {
         $poems[$tr_id] = [];
       }
@@ -136,8 +141,9 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         // tables. There are tables for performance judges only.
         foreach ($student_entry->field_accuracy_scores->referencedEntities() as $score) {
           $judge_id = $score->judge->target_id;
+          $langcode = in_array($judge_id, $judges_fr) ? 'fr' : 'en';
           $total_score = $score->field_scores?->value ?? 0;
-          $accuracy_scores[$tr_id] += $total_score;
+          $accuracy_scores[$tr_id][$langcode] += $total_score;
           $poems[$tr_id][$student_entry_id]['score'] += $total_score;
         }
         // Iterate on the performance judges to create a table for each.
@@ -197,13 +203,22 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         'accuracy' => $this->t('Accuracy'),
         'recitation' => $this->t('Recitation'),
         'best_poem' => $this->t('Best Poem'),
+        'best_poem_overall' => $this->t('Highest Overall'),
       ],
     ];
 
     // Add accuracy scores.
+    $user_storage = $this->entityTypeManager()->getStorage('user');
     foreach ($rows as $judge_id => $judge_rows) {
       foreach ($judge_rows as $tr_id => $row) {
-        $rows[$judge_id][$tr_id]['accuracy'] = $accuracy_scores[$tr_id];
+        // This is a performance judge, the language they judge is set
+        // on the user preferred language.
+        $judge = $user_storage->load($judge_id);
+        if (!$judge) {
+          continue;
+        }
+        $langcode = $judge->preferred_langcode->value ?? 'en';
+        $rows[$judge_id][$tr_id]['accuracy'] = $accuracy_scores[$tr_id][$langcode];
         $rows[$judge_id][$tr_id]['score'] += $rows[$judge_id][$tr_id]['accuracy'];
       }
     }
@@ -277,11 +292,11 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         $build[$judge_id]['table'][] = [
           '#attributes' => ['class' => $classes],
           'school' => $row['school'],
-          'score' => ['#markup' => $row['score']],
-          'recitation' => ['#markup' => $row['recitation']],
-          'accuracy' => ['#markup' => $row['accuracy']],
-          'overall' => ['#markup' => $row['overall']],
           'rank' => ['#markup' => $rank],
+          'score' => ['#markup' => $row['score']],
+          'overall' => ['#markup' => $row['overall']],
+          'accuracy' => ['#markup' => $row['accuracy']],
+          'recitation' => ['#markup' => $row['recitation']],
         ];
         $last_score = $row['score'];
         $last_rank = $rank;
@@ -296,6 +311,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         $tr_id = $row['#team_regional_entry_id'];
         if (empty($aggregated_rows[$tr_id])) {
           $aggregated_rows[$tr_id] = $row;
+          $aggregated_rows[$tr_id]['#tr_id'] = $tr_id;
         }
         else {
           $aggregated_rows[$tr_id]['score'] += $row['score'];
@@ -314,8 +330,10 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         }
       }
     }
-    // Sort each judge table, no best poem or best poem overall.
-    usort($aggregated_rows, function ($a, $b) {
+    // Sort aggregated tables.
+    $ties = [];
+    $tie = 1;
+    usort($aggregated_rows, function ($a, $b) use (&$ties, &$tie) {
       if ($a['rank'] != $b['rank']) {
         return $a['rank'] <=> $b['rank'];
       }
@@ -334,17 +352,27 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       if ($a['#best_overall'] != $b['#best_overall']) {
         return $b['#best_overall'] <=> $a['#best_overall'];
       }
+      // It is a tie.
+      $a_id = $a['#tr_id'];
+      $b_id = $b['#tr_id'];
+      if (isset($ties[$a_id])) {
+        $ties[$b_id] = $ties[$a_id];
+      }
+      else {
+        $ties[$a_id] = $tie;
+        $ties[$b_id] = $tie;
+        $tie++;
+      }
       return 0;
     });
 
     $last_rank = 0;
-    $tie = [];
     foreach ($aggregated_rows as $i => $row) {
       $classes = [];
-      if ($row['rank'] == $last_rank) {
-        $tie[$last_rank] = TRUE;
-        $classes[] = 'rank-tie-' . count($tie);
-        $build['aggregated_table'][$i - 1]['#attributes']['class'] = $classes;
+      $tr_id = $row['#tr_id'];
+      if (isset($ties[$tr_id])) {
+        $classes[] = 'rank-tie-' . $ties[$tr_id];
+        $build['aggregated_table'][$i]['#attributes']['class'] = $classes;
       }
       $last_rank = $row['rank'];
       $school_id = $row['#school_id'];
@@ -353,12 +381,13 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       $build['aggregated_table'][] = [
         '#attributes' => ['class' => $classes],
         'school' => $row['school'],
-        'score' => ['#markup' => $row['score']],
-        'recitation' => ['#markup' => $row['recitation']],
-        'accuracy' => ['#markup' => $row['accuracy']],
-        'overall' => ['#markup' => $row['overall']],
-        'best_poem' => ['#markup' => $row['best_poem']],
         'rank' => ['#markup' => $row['rank']],
+        'score' => ['#markup' => $row['score']],
+        'overall' => ['#markup' => $row['overall']],
+        'accuracy' => ['#markup' => $row['accuracy']],
+        'recitation' => ['#markup' => $row['recitation']],
+        'best_poem' => ['#markup' => $row['best_poem']],
+        'best_poem_overall' => ['#markup' => $row['#best_overall']],
       ];
     }
 

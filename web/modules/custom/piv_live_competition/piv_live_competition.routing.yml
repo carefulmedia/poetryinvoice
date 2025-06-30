@@ -3,6 +3,8 @@ piv_live_competition.score:
   defaults:
     _title_callback: '\Drupal\piv_live_competition\Controller\ScoreController::title'
     _controller: '\Drupal\piv_live_competition\Controller\ScoreController'
+    node: null
+    user: null
   requirements:
     _custom_access: '\Drupal\piv_live_competition\Controller\ScoreController::access'
   options:
