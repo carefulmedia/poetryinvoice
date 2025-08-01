@@ -9,7 +9,7 @@ id: node.poem.field_poem_retired
 field_name: field_poem_retired
 entity_type: node
 bundle: poem
-label: 'Poem archived'
+label: 'Poem not to be recited'
 description: ''
 required: false
 translatable: true
@@ -18,6 +18,6 @@ default_value:
     value: 0
 default_value_callback: ''
 settings:
-  on_label: ''
-  off_label: ''
+  on_label: 'Not to be recited but can be read'
+  off_label: 'Can be recited'
 field_type: boolean
