@@ -46,6 +46,7 @@ dependencies:
     - views.view.user_listing_index_pages
   module:
     - bootstrap_layout_builder
+    - bootstrap_layouts
     - layout_builder
     - layout_builder_restrictions
     - options
@@ -57,6 +58,47 @@ third_party_settings:
     enabled: true
     allow_custom: true
     sections:
+      -
+        layout_id: bs_1col
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+          layout:
+            wrapper: div
+            classes:
+              row: row
+            add_layout_class: 1
+            attributes: ''
+          regions:
+            main:
+              wrapper: div
+              classes:
+                col-sm-12: col-sm-12
+              add_region_classes: 1
+              attributes: ''
+        components:
+          7d6b34a7-6fb2-4316-badb-1a437767b8db:
+            uuid: 7d6b34a7-6fb2-4316-badb-1a437767b8db
+            region: main
+            configuration:
+              id: 'field_block:node:poem:field_poem_retired'
+              label: 'Poem not to be recited'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: boolean
+                label: hidden
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_2'
         layout_settings:

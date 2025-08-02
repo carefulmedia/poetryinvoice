@@ -84,6 +84,7 @@ permissions:
   - 'view field_photo_credit'
   - 'view field_place'
   - 'view field_place_team_regional'
+  - 'view field_poem_retired'
   - 'view field_poem_thems'
   - 'view field_poem_title'
   - 'view field_prompt_image'

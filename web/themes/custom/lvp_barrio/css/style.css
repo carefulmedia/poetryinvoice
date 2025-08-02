@@ -3056,6 +3056,22 @@ nav.tabs ul {
 .node--type-competition .main-content .block-page-title-block .title {
   margin-top: 2rem;
 }
+.block-field-blocknodepoemfield-poem-retired div div div {
+  background-color: yellow;
+  border: 1px solid;
+  padding: 10px;
+  font-size: 1.5em;
+  filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
+  border-radius: 10px;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+.block-field-blocknodepoemfield-poem-retired a {
+  text-decoration: underline !important;
+}
+.block-layout-builder.block-field-blocknodepoemfield-poem-retired {
+  margin-bottom: 0;
+}
 .node-preview-container {
   background: #d1e8f5;
   background-image: -webkit-linear-gradient(top, #d1e8f5, #d3e8f4);
@@ -6133,6 +6149,9 @@ dialog .field--name-field-media-oembed-video {
 }
 .lvp-barrio .messages__content {
   margin-inline-start: 0;
+}
+p a {
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=maps/style.css.map */
