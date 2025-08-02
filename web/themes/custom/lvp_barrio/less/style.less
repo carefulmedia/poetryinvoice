@@ -1619,9 +1619,15 @@ p a {
     margin-bottom: 40px;
 }
 .views-field-field-roulette-image {
-    border-radius: 50%;
+    border-radius: 10px;
 }
 .views-field-field-roulette-image:hover {
-    background-color: white;
+    background-color: black !important;
+    transition-duration: 1s;
+
+}
+.views-field-field-roulette-image:hover a {
+    filter: invert(1);
+    transition-duration: 1s;
 
 }
