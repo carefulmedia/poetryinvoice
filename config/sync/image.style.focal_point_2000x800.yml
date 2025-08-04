@@ -5,7 +5,7 @@ dependencies:
   module:
     - focal_point
 name: focal_point_2000x800
-label: 'Focal point 2000x800'
+label: 'Focal point 2000x1125'
 effects:
   d70724a8-27f3-43fa-b0ec-13e9ae37f093:
     uuid: d70724a8-27f3-43fa-b0ec-13e9ae37f093
@@ -13,7 +13,7 @@ effects:
     weight: 1
     data:
       width: 2000
-      height: 800
+      height: 1125
       crop_type: focal_point
   02b013dc-eb33-4242-87f8-9fcd7db808ff:
     uuid: 02b013dc-eb33-4242-87f8-9fcd7db808ff
