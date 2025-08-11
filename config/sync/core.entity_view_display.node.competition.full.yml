@@ -1,9 +1,10 @@
-uuid: 6b1ac7f6-8eeb-4b88-bb08-b4e5c4efd8f2
+uuid: 2211f87e-4be1-4a6c-9cf3-be01b9f72a8f
 langcode: en
 status: true
 dependencies:
   config:
     - core.entity_view_display.comment.comment_node_competition.default
+    - core.entity_view_mode.node.full
     - field.field.node.competition.body
     - field.field.node.competition.comment_node_competition
     - field.field.node.competition.field_accuracy_judge_en
@@ -23,11 +24,11 @@ dependencies:
   module:
     - comment
     - datetime
-    - entity_reference_revisions
     - layout_builder
     - layout_discovery
     - metatag
     - options
+    - paragraphs
     - text
     - user
 third_party_settings:
@@ -40,8 +41,8 @@ third_party_settings:
         layout_settings:
           label: ''
         components:
-          e6569ffa-8d87-4ef2-9500-a6641f0c32db:
-            uuid: e6569ffa-8d87-4ef2-9500-a6641f0c32db
+          e35f172f-ea73-460f-acaf-0fe16d8e1dcb:
+            uuid: e35f172f-ea73-460f-acaf-0fe16d8e1dcb
             region: content
             configuration:
               id: 'field_block:node:competition:body'
@@ -55,25 +56,27 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 0
             additional: {  }
-          e1921094-009d-4588-acaf-4cf777560bf4:
-            uuid: e1921094-009d-4588-acaf-4cf777560bf4
+          f0ddc918-1eae-457f-8bab-b701ac7fb9c5:
+            uuid: f0ddc918-1eae-457f-8bab-b701ac7fb9c5
             region: content
             configuration:
               id: 'field_block:node:competition:field_judges'
+              label: Judges
               label_display: '0'
+              provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
+                view_mode: view_mode
               formatter:
                 type: entity_reference_revisions_entity_view
                 label: above
                 settings:
-                  view_mode: full
-                  link: ''
+                  view_mode: judges
                 third_party_settings: {  }
             weight: 1
             additional: {  }
-          040e0286-6da0-4900-8b77-cde640cc8a2a:
-            uuid: 040e0286-6da0-4900-8b77-cde640cc8a2a
+          69bc4afb-440e-4405-ad05-d60a8ce6276c:
+            uuid: 69bc4afb-440e-4405-ad05-d60a8ce6276c
             region: content
             configuration:
               id: 'field_block:node:competition:field_years_in_competition'
@@ -87,8 +90,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 2
             additional: {  }
-          77e967aa-2b31-4e67-b671-3c79d827382d:
-            uuid: 77e967aa-2b31-4e67-b671-3c79d827382d
+          88d0bace-aec9-4291-be7d-0c819600bc6a:
+            uuid: 88d0bace-aec9-4291-be7d-0c819600bc6a
             region: content
             configuration:
               id: 'field_block:node:competition:field_level'
@@ -102,8 +105,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 3
             additional: {  }
-          12d8b289-44bf-418e-9fec-34393663c059:
-            uuid: 12d8b289-44bf-418e-9fec-34393663c059
+          583c0664-edd4-44a3-9d1e-228e04cdcd32:
+            uuid: 583c0664-edd4-44a3-9d1e-228e04cdcd32
             region: content
             configuration:
               id: 'field_block:node:competition:field_language_stream'
@@ -117,8 +120,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 4
             additional: {  }
-          44a44a5b-dbff-4a3d-beed-514a66f17838:
-            uuid: 44a44a5b-dbff-4a3d-beed-514a66f17838
+          55a25106-9bdc-49c1-9741-70037f63b338:
+            uuid: 55a25106-9bdc-49c1-9741-70037f63b338
             region: content
             configuration:
               id: 'field_block:node:competition:field_submission_deadline'
@@ -134,8 +137,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 5
             additional: {  }
-          ced77b01-6f7d-43fd-9603-92a4a8ba0788:
-            uuid: ced77b01-6f7d-43fd-9603-92a4a8ba0788
+          c0f0aa4f-2ff1-4acc-8746-6e9d5ffc551b:
+            uuid: c0f0aa4f-2ff1-4acc-8746-6e9d5ffc551b
             region: content
             configuration:
               id: 'field_block:node:competition:field_winners_announced'
@@ -151,8 +154,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 6
             additional: {  }
-          0a35f605-7e1c-4935-a230-27ab64904268:
-            uuid: 0a35f605-7e1c-4935-a230-27ab64904268
+          d75a1d14-607b-4622-8088-9df2c68b54e7:
+            uuid: d75a1d14-607b-4622-8088-9df2c68b54e7
             region: content
             configuration:
               id: 'field_block:node:competition:field_host_teacher'
@@ -167,8 +170,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 7
             additional: {  }
-          07ff7b46-b85f-44df-803e-41d83b1915a7:
-            uuid: 07ff7b46-b85f-44df-803e-41d83b1915a7
+          8a63804c-d14e-49d2-aa19-010880433f83:
+            uuid: 8a63804c-d14e-49d2-aa19-010880433f83
             region: content
             configuration:
               id: 'field_block:node:competition:comment_node_competition'
@@ -184,8 +187,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 8
             additional: {  }
-          00ee5697-3c67-45da-9d71-84d4644647b8:
-            uuid: 00ee5697-3c67-45da-9d71-84d4644647b8
+          769ff8f7-f045-4c46-9715-69d7083b9ed5:
+            uuid: 769ff8f7-f045-4c46-9715-69d7083b9ed5
             region: content
             configuration:
               id: 'extra_field_block:node:competition:links'
@@ -194,8 +197,8 @@ third_party_settings:
                 entity: layout_builder.entity
             weight: 9
             additional: {  }
-          adfcae4a-2c54-4cd2-8567-18a81a87ba8a:
-            uuid: adfcae4a-2c54-4cd2-8567-18a81a87ba8a
+          f38f20b8-4ed4-4f85-a9b2-feccfc748ef4:
+            uuid: f38f20b8-4ed4-4f85-a9b2-feccfc748ef4
             region: content
             configuration:
               id: 'field_block:node:competition:field_metatags'
@@ -209,8 +212,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 10
             additional: {  }
-          ad5473f1-d2ba-4f99-9ec4-ff9e291e50c2:
-            uuid: ad5473f1-d2ba-4f99-9ec4-ff9e291e50c2
+          e425ba68-76c8-40b0-a173-bd443a27c313:
+            uuid: e425ba68-76c8-40b0-a173-bd443a27c313
             region: content
             configuration:
               id: 'field_block:node:competition:field_accuracy_judge_fr'
@@ -225,8 +228,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 11
             additional: {  }
-          b5b175c9-3bb9-435a-b59e-c5f058abee2c:
-            uuid: b5b175c9-3bb9-435a-b59e-c5f058abee2c
+          da1efba3-1bdd-4482-9c23-54fc190d75f4:
+            uuid: da1efba3-1bdd-4482-9c23-54fc190d75f4
             region: content
             configuration:
               id: 'field_block:node:competition:field_accuracy_judge_en'
@@ -241,8 +244,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 12
             additional: {  }
-          e677c680-1801-4b8c-b2fe-c3ec1e7422c5:
-            uuid: e677c680-1801-4b8c-b2fe-c3ec1e7422c5
+          39422c5b-c3e7-4655-a4ee-484e1a5b5e93:
+            uuid: 39422c5b-c3e7-4655-a4ee-484e1a5b5e93
             region: content
             configuration:
               id: 'field_block:node:competition:field_score_template'
@@ -257,8 +260,8 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 13
             additional: {  }
-          59714c51-54c6-4b05-9995-6a712c33890c:
-            uuid: 59714c51-54c6-4b05-9995-6a712c33890c
+          51e2bfbb-cf5e-4b2e-bfb7-c8669fdb9b2d:
+            uuid: 51e2bfbb-cf5e-4b2e-bfb7-c8669fdb9b2d
             region: content
             configuration:
               id: 'field_block:node:competition:field_active_round'
@@ -275,10 +278,10 @@ third_party_settings:
             weight: 14
             additional: {  }
         third_party_settings: {  }
-id: node.competition.default
+id: node.competition.full
 targetEntityType: node
 bundle: competition
-mode: default
+mode: full
 content:
   body:
     type: text_default
@@ -330,11 +333,9 @@ content:
     weight: 11
     region: content
   field_judges:
-    type: entity_reference_revisions_entity_view
+    type: paragraph_summary
     label: above
-    settings:
-      view_mode: full
-      link: ''
+    settings: {  }
     third_party_settings: {  }
     weight: 5
     region: content

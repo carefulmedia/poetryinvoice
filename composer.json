@@ -61,6 +61,7 @@
         "drupal/bootstrap_styles": "^1.0",
         "drupal/captcha": "^2",
         "drupal/chosen": "^3.0",
+        "drupal/ckeditor_indentblock": "^1.1",
         "drupal/classy": "^1.0",
         "drupal/coder": "^8.3",
         "drupal/components": "^3.0@beta",

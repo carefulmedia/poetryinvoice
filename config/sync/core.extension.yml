@@ -24,6 +24,7 @@ module:
   chosen_field: 0
   chosen_lib: 0
   ckeditor5: 0
+  ckeditor_indentblock: 0
   comment: 0
   components: 0
   conditional_fields: 0

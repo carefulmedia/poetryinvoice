@@ -1,0 +1,39 @@
+uuid: d55bec79-1f99-45a8-8fce-aafc60ec1272
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.judges
+    - field.field.paragraph.judges.field_completed
+    - field.field.paragraph.judges.field_confirmed_
+    - field.field.paragraph.judges.field_judge
+    - field.field.paragraph.judges.field_paid_
+    - paragraphs.paragraphs_type.judges
+  module:
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: paragraph.judges.judges
+targetEntityType: paragraph
+bundle: judges
+mode: judges
+content:
+  field_judge:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: judge_pages
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_completed: true
+  field_confirmed_: true
+  field_paid_: true
+  search_api_excerpt: true

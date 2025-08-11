@@ -1,0 +1,11 @@
+uuid: 6c3c67a9-601c-4e0c-bb5a-f31c4f2581bf
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: user.judge_pages
+label: 'Judge pages'
+description: ''
+targetEntityType: user
+cache: true

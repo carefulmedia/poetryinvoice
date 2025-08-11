@@ -1,0 +1,243 @@
+uuid: e39ee072-52f9-4447-a5f8-0d92e2c6c3eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.user.judge_pages
+    - field.field.user.user.field_about_me
+    - field.field.user.user.field_additional_email
+    - field.field.user.user.field_address
+    - field.field.user.user.field_bilingual
+    - field.field.user.user.field_bio_completed_
+    - field.field.user.user.field_bio_not_by_author_paid_
+    - field.field.user.user.field_bio_trans
+    - field.field.user.user.field_bio_written_by
+    - field.field.user.user.field_canadian_educator_
+    - field.field.user.user.field_cheque_made_to
+    - field.field.user.user.field_communication_log
+    - field.field.user.user.field_completed
+    - field.field.user.user.field_cv
+    - field.field.user.user.field_deceased_poet
+    - field.field.user.user.field_dormant_
+    - field.field.user.user.field_elementary
+    - field.field.user.user.field_french_signature
+    - field.field.user.user.field_gg_finalist
+    - field.field.user.user.field_google_calendar_iframe_cod
+    - field.field.user.user.field_griffin_finalist
+    - field.field.user.user.field_gst_hst_
+    - field.field.user.user.field_i_am_interested_in_doing_i
+    - field.field.user.user.field_i_am_interested_in_judging
+    - field.field.user.user.field_i_am_interested_in_partici
+    - field.field.user.user.field_i_am_interested_in_writing
+    - field.field.user.user.field_i_have_completed_my_profil
+    - field.field.user.user.field_indigenous_identifying
+    - field.field.user.user.field_judging
+    - field.field.user.user.field_lifespan
+    - field.field.user.user.field_micro_interview
+    - field.field.user.user.field_my_favourite_poem_and_or_p
+    - field.field.user.user.field_my_role_at_school_organiza
+    - field.field.user.user.field_non_school_organization
+    - field.field.user.user.field_not_a_teacher_
+    - field.field.user.user.field_one_line_bio
+    - field.field.user.user.field_paid_
+    - field.field.user.user.field_peer_support
+    - field.field.user.user.field_phone
+    - field.field.user.user.field_photo_credit
+    - field.field.user.user.field_poem_languages
+    - field.field.user.user.field_poet_in_class
+    - field.field.user.user.field_poet_laureate
+    - field.field.user.user.field_poet_notes
+    - field.field.user.user.field_poetry_is_
+    - field.field.user.user.field_pst_qst_
+    - field.field.user.user.field_publications
+    - field.field.user.user.field_ready_for_proofing
+    - field.field.user.user.field_school
+    - field.field.user.user.field_sign_up_date3
+    - field.field.user.user.field_signature
+    - field.field.user.user.field_social_links
+    - field.field.user.user.field_teacher_confirmation
+    - field.field.user.user.field_user_bio
+    - field.field.user.user.field_virtual_visits
+    - field.field.user.user.field_welcome_modal_settings
+    - field.field.user.user.field_what_grades_do_you_teach
+    - field.field.user.user.field_what_subjects_do_you_teach
+    - field.field.user.user.field_writing_content
+    - field.field.user.user.field_years_in_competition
+    - field.field.user.user.piv_teacher_first_name
+    - field.field.user.user.piv_teacher_last_name
+    - field.field.user.user.piv_teacher_profile_origin
+    - field.field.user.user.user_picture
+  module:
+    - address
+    - entity_reference_revisions
+    - layout_builder
+    - layout_builder_restrictions
+    - social_link_field
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+_core:
+  default_config_hash: V51QPCKkgNREKtSmB9Iu2wmAMEpktVpnzklWaZV8UYo
+id: user.user.judge_pages
+targetEntityType: user
+bundle: user
+mode: judge_pages
+content:
+  field_address:
+    type: address_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_bilingual:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 8
+    region: blb_region_col_1
+  field_indigenous_identifying:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 9
+    region: blb_region_col_1
+  field_lifespan:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_micro_interview:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: full
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_photo_credit:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_publications:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_social_links:
+    type: font_awesome
+    label: above
+    settings:
+      icon_type: common
+      orientation: vertical
+      new_tab: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_user_bio:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_welcome_modal_settings:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: blb_region_col_1
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  field_about_me: true
+  field_additional_email: true
+  field_bio_completed_: true
+  field_bio_not_by_author_paid_: true
+  field_bio_trans: true
+  field_bio_written_by: true
+  field_canadian_educator_: true
+  field_cheque_made_to: true
+  field_communication_log: true
+  field_completed: true
+  field_cv: true
+  field_deceased_poet: true
+  field_dormant_: true
+  field_elementary: true
+  field_french_signature: true
+  field_gg_finalist: true
+  field_google_calendar_iframe_cod: true
+  field_griffin_finalist: true
+  field_gst_hst_: true
+  field_i_am_interested_in_doing_i: true
+  field_i_am_interested_in_judging: true
+  field_i_am_interested_in_partici: true
+  field_i_am_interested_in_writing: true
+  field_i_have_completed_my_profil: true
+  field_judging: true
+  field_my_favourite_poem_and_or_p: true
+  field_my_role_at_school_organiza: true
+  field_non_school_organization: true
+  field_not_a_teacher_: true
+  field_one_line_bio: true
+  field_paid_: true
+  field_peer_support: true
+  field_phone: true
+  field_poem_languages: true
+  field_poet_in_class: true
+  field_poet_laureate: true
+  field_poet_notes: true
+  field_poetry_is_: true
+  field_pst_qst_: true
+  field_ready_for_proofing: true
+  field_school: true
+  field_sign_up_date3: true
+  field_signature: true
+  field_teacher_confirmation: true
+  field_virtual_visits: true
+  field_what_grades_do_you_teach: true
+  field_what_subjects_do_you_teach: true
+  field_writing_content: true
+  field_years_in_competition: true
+  langcode: true
+  member_for: true
+  piv_teacher_first_name: true
+  piv_teacher_last_name: true
+  piv_teacher_profile_origin: true
+  realname: true
+  search_api_excerpt: true
+  user_picture: true

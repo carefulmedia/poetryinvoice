@@ -109,7 +109,6 @@ filters:
         alt: '0'
         title: '0'
       optionset: default
-      by_delta: null
       layout: ''
       admin_uri: '/admin/config/content/formats/manage/full_html?ajax_form=1&_wrapper_format=drupal_ajax'
       background: false

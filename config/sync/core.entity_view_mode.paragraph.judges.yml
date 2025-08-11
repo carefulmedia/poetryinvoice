@@ -1,0 +1,11 @@
+uuid: 3c9f8088-6a6c-42f1-8066-c35e375d1a05
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.judges
+label: Judges
+description: ''
+targetEntityType: paragraph
+cache: true
