@@ -3004,7 +3004,8 @@ nav.tabs ul {
 #edit-recitations-0-operations-form-submit:hover {
   color: var(--mint);
 }
-.node--type-poem .block-field-blocknodepoembody p.rteindent1 {
+.node--type-poem .block-field-blocknodepoembody p.rteindent1,
+.node--type-poem .block-field-blocknodepoembody p.Indent1 {
   margin-left: 23px !important;
 }
 .node--type-poem .block-field-blocknodepoembody p.rteindent2 {
@@ -3064,7 +3065,7 @@ nav.tabs ul {
   filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.16));
   border-radius: 10px;
   margin-bottom: 40px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 .block-field-blocknodepoemfield-poem-retired a {
   text-decoration: underline !important;

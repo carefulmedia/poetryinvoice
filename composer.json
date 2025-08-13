@@ -156,7 +156,7 @@
         "drupal/views_random_seed": "^1.2",
         "drupal/views_slideshow": "^5.0",
         "drupal/votingapi": "^3.0@beta",
-        "drush/drush": "^12",
+        "drush/drush": "^13",
         "ganlanyuan/tiny-slider": "^2.9",
         "geocoder-php/google-maps-provider": "^4.7",
         "jaybizzle/crawler-detect": "^1.2",
