@@ -1,14 +1,14 @@
-uuid: 938d4836-c0e7-4dad-8c9b-f625bc18c9dc
+uuid: 6244f3ef-452d-4114-8713-232dc65243ff
 langcode: en
 status: true
 dependencies:
   config:
     - field.storage.node.field_mixtape_artist_name_for_pu
-    - node.type.mixtape
-id: node.mixtape.field_mixtape_artist_name_for_pu
+    - node.type.writing_prompt
+id: node.writing_prompt.field_mixtape_artist_name_for_pu
 field_name: field_mixtape_artist_name_for_pu
 entity_type: node
-bundle: mixtape
+bundle: writing_prompt
 label: 'Artist Name (for publication)'
 description: ''
 required: false

@@ -11,8 +11,8 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
-  - 'create field_poem_retired'
-  - 'edit field_poem_retired'
-  - 'edit own field_poem_retired'
-  - 'view field_poem_retired'
-  - 'view own field_poem_retired'
+  - 'create field_mixtape_artist_name_for_pu'
+  - 'edit field_mixtape_artist_name_for_pu'
+  - 'edit own field_mixtape_artist_name_for_pu'
+  - 'view field_mixtape_artist_name_for_pu'
+  - 'view own field_mixtape_artist_name_for_pu'

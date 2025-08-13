@@ -1,0 +1,19 @@
+uuid: f1c6b7a3-fe08-4f22-b603-7ac6190af557
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_interac_email_or_phone_num
+    - node.type.writing_prompt
+id: node.writing_prompt.field_interac_email_or_phone_num
+field_name: field_interac_email_or_phone_num
+entity_type: node
+bundle: writing_prompt
+label: 'Artist Interac email or phone number'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

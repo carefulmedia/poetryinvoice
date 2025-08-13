@@ -7,8 +7,10 @@ dependencies:
     - field.field.node.writing_prompt.comment_node_writing_prompt
     - field.field.node.writing_prompt.field_completed
     - field.field.node.writing_prompt.field_featured_prompt_starting_d
+    - field.field.node.writing_prompt.field_interac_email_or_phone_num
     - field.field.node.writing_prompt.field_metatags
     - field.field.node.writing_prompt.field_mixtape_art_completed
+    - field.field.node.writing_prompt.field_mixtape_artist_name_for_pu
     - field.field.node.writing_prompt.field_mixtape_artwork_paid
     - field.field.node.writing_prompt.field_paid_
     - field.field.node.writing_prompt.field_prompt_image
@@ -155,6 +157,38 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 4
             additional: {  }
+          ba73fa4f-448b-44cf-a1f4-0bf348313e5d:
+            uuid: ba73fa4f-448b-44cf-a1f4-0bf348313e5d
+            region: content
+            configuration:
+              id: 'field_block:node:writing_prompt:field_mixtape_artist_name_for_pu'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          2efe7c30-6aba-430b-bd0f-e4d3c18bd0a1:
+            uuid: 2efe7c30-6aba-430b-bd0f-e4d3c18bd0a1
+            region: content
+            configuration:
+              id: 'field_block:node:writing_prompt:field_interac_email_or_phone_num'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
@@ -186,6 +220,14 @@ content:
     third_party_settings: {  }
     weight: 4
     region: content
+  field_interac_email_or_phone_num:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
   field_metatags:
     type: metatag_empty_formatter
     label: above
@@ -202,6 +244,14 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 5
+    region: content
+  field_mixtape_artist_name_for_pu:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
     region: content
   field_mixtape_artwork_paid:
     type: boolean
