@@ -587,15 +587,15 @@ h4.poet {
 .heart {
     display: none;
 }
-#poem p.rteindent1
+#poem p.rteindent1, #poem p.Indent1
 {margin-left: 23px !important;}
-#poem p.rteindent2
+#poem p.rteindent2, #poem p.Indent1
 {margin-left: 46px !important;}
-#poem p.rteindent3
-{margin-left: 69px !important;}
-#poem p.rteindent4
+#poem p.rteindent3, #poem p.Indent1
 {margin-left: 53px !important;}
-#poem p.rteindent5
+#poem p.rteindent4, #poem p.Indent1
+{margin-left:69px !important;}
+#poem p.rteindent5, #poem p.Indent1
 {margin-left: 163px !important;}
 
 #poem p.interval {

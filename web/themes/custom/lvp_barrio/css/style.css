@@ -3008,16 +3008,20 @@ nav.tabs ul {
 .node--type-poem .block-field-blocknodepoembody p.Indent1 {
   margin-left: 23px !important;
 }
-.node--type-poem .block-field-blocknodepoembody p.rteindent2 {
+.node--type-poem .block-field-blocknodepoembody p.rteindent2,
+.node--type-poem .block-field-blocknodepoembody p.Indent2 {
   margin-left: 46px !important;
 }
-.node--type-poem .block-field-blocknodepoembody p.rteindent3 {
+.node--type-poem .block-field-blocknodepoembody p.rteindent3,
+.node--type-poem .block-field-blocknodepoembody p.Indent3 {
   margin-left: 69px !important;
 }
-.node--type-poem .block-field-blocknodepoembody p.rteindent4 {
+.node--type-poem .block-field-blocknodepoembody p.rteindent4,
+.node--type-poem .block-field-blocknodepoembody p.Indent4 {
   margin-left: 53px !important;
 }
-.node--type-poem .block-field-blocknodepoembody p.rteindent5 {
+.node--type-poem .block-field-blocknodepoembody p.rteindent5,
+.node--type-poem .block-field-blocknodepoembody p.Indent5 {
   margin-left: 163px !important;
 }
 .node--type-poem .block-field-blocknodepoembody p.interval {
