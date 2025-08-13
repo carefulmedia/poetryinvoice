@@ -90,7 +90,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 3
+            weight: 4
             additional: {  }
           97bfd5af-4091-4aa1-a741-5656ebaf095a:
             uuid: 97bfd5af-4091-4aa1-a741-5656ebaf095a
@@ -130,6 +130,25 @@ third_party_settings:
               views_label: ''
               items_per_page: none
             weight: 0
+            additional: {  }
+          3c80b8d8-0148-4f9d-8e36-3569b1f05077:
+            uuid: 3c80b8d8-0148-4f9d-8e36-3569b1f05077
+            region: content
+            configuration:
+              id: 'field_block:node:writing_prompt:field_mixtape_artist_name_for_pu'
+              label: 'Artwork by'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: string
+                label: inline
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 3
             additional: {  }
         third_party_settings: {  }
 id: node.writing_prompt.full

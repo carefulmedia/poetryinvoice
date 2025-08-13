@@ -3077,6 +3077,13 @@ nav.tabs ul {
 .block-layout-builder.block-field-blocknodepoemfield-poem-retired {
   margin-bottom: 0;
 }
+.views-field views-field-field-mixtape-artist-name-for-pu {
+  position: absolute;
+  right: 10px;
+}
+.views-field views-field-field-mixtape-artist-name-for-pu .field-content {
+  display: inline;
+}
 .node-preview-container {
   background: #d1e8f5;
   background-image: -webkit-linear-gradient(top, #d1e8f5, #d3e8f4);

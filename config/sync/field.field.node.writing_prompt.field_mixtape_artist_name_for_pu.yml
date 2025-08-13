@@ -9,7 +9,7 @@ id: node.writing_prompt.field_mixtape_artist_name_for_pu
 field_name: field_mixtape_artist_name_for_pu
 entity_type: node
 bundle: writing_prompt
-label: 'Artist Name (for publication)'
+label: 'Artwork by'
 description: ''
 required: false
 translatable: false
