@@ -34,6 +34,7 @@ dependencies:
     - field.field.node.poem.field_rights_amount
     - field.field.node.poem.field_rights_and_permissions_pdf
     - field.field.node.poem.field_rights_expiration
+    - field.field.node.poem.field_rights_invoice_or_pdf_of_a
     - field.field.node.poem.field_start_here_image
     - field.field.node.poem.field_start_here_poem
     - field.field.node.poem.field_start_here_video
@@ -41,6 +42,7 @@ dependencies:
     - field.field.node.poem.layout_builder__layout
     - node.type.poem
   module:
+    - file
     - layout_builder
     - layout_builder_restrictions
     - metatag
@@ -105,6 +107,14 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 104
+    region: content
+  field_rights_invoice_or_pdf_of_a:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 106
     region: content
   links:
     settings: {  }

@@ -1,0 +1,27 @@
+uuid: f6a08cf2-5d6e-45f3-adff-1c05542dab50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rights_invoice_or_pdf_of_a
+    - node.type.poem
+  module:
+    - file
+id: node.poem.field_rights_invoice_or_pdf_of_a
+field_name: field_rights_invoice_or_pdf_of_a
+entity_type: node
+bundle: poem
+label: 'Rights invoice or PDF of agreement in email exchange'
+description: 'This is an optional field. Sometimes the invoice is bundled with the contract, or both are in the email exchange. If that is the case, you can simply upload the Right agreement document'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt pdf'
+  max_filesize: ''
+  description_field: false
+field_type: file
