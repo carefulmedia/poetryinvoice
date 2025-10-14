@@ -104,14 +104,10 @@ content:
       display_label: true
     third_party_settings: {  }
   field_file_under_:
-    type: entity_reference_autocomplete
+    type: options_buttons
     weight: 14
     region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
   field_grades:
     type: options_buttons

@@ -11,8 +11,8 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
-  - 'create field_rights_invoice_or_pdf_of_a'
-  - 'edit field_rights_invoice_or_pdf_of_a'
-  - 'edit own field_rights_invoice_or_pdf_of_a'
-  - 'view field_rights_invoice_or_pdf_of_a'
-  - 'view own field_rights_invoice_or_pdf_of_a'
+  - 'create field_poem_attachment'
+  - 'edit field_poem_attachment'
+  - 'edit own field_poem_attachment'
+  - 'view field_poem_attachment'
+  - 'view own field_poem_attachment'
