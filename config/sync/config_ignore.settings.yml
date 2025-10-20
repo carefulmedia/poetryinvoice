@@ -11,11 +11,14 @@ ignored_config_entities:
   - piv_poem_password.settings
   - reroute_email.settings
   - 'views.view.*'
+  - ~views.view.commom_poetic_terms_and_forms_by_language
   - ~views.view.competition_entries
   - ~views.view.competitions
   - ~views.view.judging_sessions
   - ~views.view.language_restricted_poems
+  - ~views.view.moods_by_language
   - ~views.view.recitations
   - ~views.view.score_templates
   - ~views.view.scores
   - ~views.view.search
+  - ~views.view.tags_by_language
