@@ -1,0 +1,5 @@
+name: 'PIV Futureverse'
+type: module
+description: 'Futureverse related functionalities, Poem Month/Years, etc.'
+package: PIV
+core_version_requirement: ^10 || ^11

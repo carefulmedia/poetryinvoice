@@ -1,0 +1,23 @@
+entity.journal_year.settings:
+  title: 'Journal Year'
+  description: 'Configure a Journal Year entity type.'
+  route_name:  entity.journal_year.settings
+  parent: system.admin_structure
+
+entity.journal_year.collection:
+  title: 'Journal Years'
+  description: 'List of journal years.'
+  route_name: entity.journal_year.collection
+  parent: system.admin_content
+
+entity.journal_month.settings:
+  title: 'Journal Month'
+  description: 'Configure a Journal Month entity type.'
+  route_name:  entity.journal_month.settings
+  parent: system.admin_structure
+
+entity.journal_month.collection:
+  title: 'Journal Months'
+  description: 'List of journal months.'
+  route_name: entity.journal_month.collection
+  parent: system.admin_content

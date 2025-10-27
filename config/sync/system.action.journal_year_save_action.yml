@@ -1,0 +1,13 @@
+uuid: 99510fa5-c646-419b-adc2-a33aa34c988d
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+_core:
+  default_config_hash: _dn2uMRB81-gUUbHE95-_k46ugdJT4CoOfg10zSvkxU
+id: journal_year_save_action
+label: 'Save journal years'
+type: journal_year
+plugin: 'entity:save_action:journal_year'
+configuration: {  }

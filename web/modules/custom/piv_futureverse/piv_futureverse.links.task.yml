@@ -1,0 +1,19 @@
+entity.journal_year.settings:
+  title: 'Settings'
+  route_name: entity.journal_year.settings
+  base_route: entity.journal_year.settings
+entity.journal_year.collection:
+  title: 'Journal Years'
+  route_name: entity.journal_year.collection
+  base_route: system.admin_content
+  weight: 10
+
+entity.journal_month.settings:
+  title: 'Settings'
+  route_name: entity.journal_month.settings
+  base_route: entity.journal_month.settings
+entity.journal_month.collection:
+  title: 'Journal Months'
+  route_name: entity.journal_month.collection
+  base_route: system.admin_content
+  weight: 10

@@ -1,0 +1,15 @@
+entity.journal_year.settings:
+  path: 'admin/structure/journal-year'
+  defaults:
+    _form: '\Drupal\piv_futureverse\Form\JournalYearSettingsForm'
+    _title: 'Journal Year'
+  requirements:
+    _permission: 'administer journal_year'
+
+entity.journal_month.settings:
+  path: 'admin/structure/journal-month'
+  defaults:
+    _form: '\Drupal\piv_futureverse\Form\JournalMonthSettingsForm'
+    _title: 'Journal Month'
+  requirements:
+    _permission: 'administer journal_month'

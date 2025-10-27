@@ -1,0 +1,19 @@
+uuid: ae62e976-8264-4d9b-9af5-675e48b0e957
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: journal_year.field_journal_months
+field_name: field_journal_months
+entity_type: journal_year
+type: entity_reference
+settings:
+  target_type: journal_month
+module: core
+locked: false
+cardinality: 12
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

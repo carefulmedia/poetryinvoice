@@ -1,0 +1,73 @@
+<?php
+
+/**
+ * @file
+ * Futureverse+ hooks and functionalities.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\piv_futureverse\JournalHelper;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInterface $form_state) {
+  $form['#attached']['library'][] = 'piv_futureverse/admin';
+}
+
+/**
+ * Implements hook_entity_insert().
+ *
+ * Assign a journal poem to the current futureverse+ journal month if
+ * one exists.
+ */
+function piv_futureverse_entity_insert(EntityInterface $entity) : void {
+  if ($entity->getEntityTypeId() != 'node') {
+    return;
+  }
+
+  if ($entity->bundle() != 'journal_poem') {
+    return;
+  }
+
+  $months = JournalHelper::getJournalMonths();
+  if (!$months) {
+    return;
+  }
+
+  $month = reset($months);
+  $month->field_journal_poems[] = $entity->id();
+  $month->save();
+}
+
+/**
+ * Implements hook_inline_entity_form_table_fields_alter().
+ */
+function piv_futureverse_inline_entity_form_table_fields_alter(array &$fields, array $context) {
+  if ($context['parent_entity_type'] == 'journal_year' && $context['field_name'] == 'field_journal_months') {
+    // Display date on inline table when editing a journal year.
+    $fields['field_start_date'] = [
+      'type' => 'field',
+      'label' => t('Start Date'),
+      'weight' => 10,
+      'display_options' => [
+        'type' => 'datetime_default',
+        'settings' => [
+          'format_type' => 'html_date',
+        ],
+      ],
+    ];
+    $fields['field_end_date'] = [
+      'type' => 'field',
+      'label' => t('End Date'),
+      'weight' => 11,
+      'display_options' => [
+        'type' => 'datetime_default',
+        'settings' => [
+          'format_type' => 'html_date',
+        ],
+      ],
+    ];
+  }
+}

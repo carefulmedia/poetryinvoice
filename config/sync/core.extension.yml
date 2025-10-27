@@ -130,6 +130,7 @@ module:
   piv_contest_score: 0
   piv_contest_score_template: 0
   piv_field: 0
+  piv_futureverse: 0
   piv_live_competition: 0
   piv_mail: 0
   piv_pathauto: 0
