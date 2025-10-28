@@ -40,6 +40,7 @@ permissions:
   - 'edit own field_teacher_preparation_teache'
   - 'edit own piv_teacher_first_name'
   - 'edit own piv_teacher_last_name'
+  - 'use node.default form mode'
   - 'use user.default form mode'
   - 'view body'
   - 'view field_2_column_poem'
@@ -131,4 +132,5 @@ permissions:
   - 'view paragraph content tr_student'
   - 'view piv_teacher_first_name'
   - 'view piv_teacher_last_name'
+  - 'view the administration theme'
   - 'view user_picture'

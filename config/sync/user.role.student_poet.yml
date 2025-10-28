@@ -1,0 +1,13 @@
+uuid: 722938f4-5206-4a7d-bc1d-d2693a19f278
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.journal_poem
+  module:
+    - node
+id: student_poet
+label: 'Student poet'
+weight: 29
+is_admin: null
+permissions: {  }
