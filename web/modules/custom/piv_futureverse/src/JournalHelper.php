@@ -29,4 +29,16 @@ class JournalHelper {
     return $ids ? $storage->loadMultiple($ids) : [];
   }
 
+  /**
+   * Get the monthly prize winner.
+   */
+  public static function getMonthlyPrizeWinner(JournalMonthInterface $journal_month) : array {
+    // There should be only one winner, but in theory multiple can be
+    // made winners.
+    $poems = $journal_month->field_journal_poems->referencedEntities();
+    return array_filter($poems, function ($poem) {
+      return $poem->field_acceptance_level->value == 'Monthly prize winner';
+    });
+  }
+
 }

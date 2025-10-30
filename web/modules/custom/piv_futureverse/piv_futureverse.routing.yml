@@ -13,3 +13,15 @@ entity.journal_month.settings:
     _title: 'Journal Month'
   requirements:
     _permission: 'administer journal_month'
+
+piv_futureverse.journal_notifications_confirm:
+  path: 'admin/journal-notifications/{op}/{journal_month}'
+  defaults:
+    _title: 'Journal Notifications Confirm'
+    _form: 'Drupal\piv_futureverse\Form\JournalNotificationsConfirmForm'
+  requirements:
+    _permission: 'manage journal year'
+  options:
+    parameters:
+      journal_month:
+        type: entity:journal_month

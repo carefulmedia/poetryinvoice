@@ -1,3 +1,7 @@
+manage journal year:
+  title: 'Manage journal year'
+  description: 'Create and edit journal years and months, send notifications, configure notifications.'
+
 administer journal_year:
   title: 'Administer journal years'
   restrict access: true

@@ -27,7 +27,7 @@ class JournalMonthListAccess {
     if ($account->id() === '1') {
       return AccessResult::allowed()->cachePerUser();
     }
-    
+
     return AccessResult::forbidden()->cachePerUser();
   }
 
