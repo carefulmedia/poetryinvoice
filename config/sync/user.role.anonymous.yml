@@ -42,7 +42,6 @@ permissions:
   - 'create field_teacher_confirmation'
   - 'create journal_poem content'
   - 'create piv_teacher_profile_origin'
-  - 'edit field_grades'
   - 'edit own field_grades'
   - 'entity print access type paragraph'
   - 'use node.default form mode'

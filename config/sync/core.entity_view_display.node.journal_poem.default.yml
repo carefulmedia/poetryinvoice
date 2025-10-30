@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
     - field.field.node.journal_poem.field_metatags
+    - field.field.node.journal_poem.field_no_artificial_intelligence
     - field.field.node.journal_poem.field_other
     - field.field.node.journal_poem.field_paid_
     - field.field.node.journal_poem.field_phone
@@ -292,6 +293,24 @@ third_party_settings:
                 settings: {  }
                 third_party_settings: {  }
             weight: 13
+            additional: {  }
+          d2d29660-79a6-4352-8856-25dab3f32e9f:
+            uuid: d2d29660-79a6-4352-8856-25dab3f32e9f
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_no_artificial_intelligence'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 14
             additional: {  }
         third_party_settings: {  }
       -
@@ -718,6 +737,16 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 119
+    region: main
+  field_no_artificial_intelligence:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 120
     region: main
   field_other:
     type: string
