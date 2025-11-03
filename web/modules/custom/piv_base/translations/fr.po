@@ -125,3 +125,9 @@ msgstr "Vous pourrez commencer l'évaluation une fois que le concours aura comme
 
 msgid "Highest Overall"
 msgstr "Meilleur général"
+
+msgid "You will only be able to use this link once to provide your information."
+msgstr "Ce lien ne peut être utilisé qu’une seule fois pour mettre votre information à jour."
+
+msgid "Click here to update your bio"
+msgstr "Cliquez ici pour mettre à jour votre bio"

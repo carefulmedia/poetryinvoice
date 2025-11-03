@@ -17,3 +17,13 @@ entity.journal_month.collection:
   route_name: entity.journal_month.collection
   base_route: system.admin_content
   weight: 10
+
+entity.poet_bio.settings:
+  title: 'Settings'
+  route_name: entity.poet_bio.settings
+  base_route: entity.poet_bio.settings
+entity.poet_bio.collection:
+  title: 'Poet Bios'
+  route_name: entity.poet_bio.collection
+  base_route: system.admin_content
+  weight: 10

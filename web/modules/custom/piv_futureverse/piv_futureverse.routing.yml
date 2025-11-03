@@ -25,3 +25,20 @@ piv_futureverse.journal_notifications_confirm:
     parameters:
       journal_month:
         type: entity:journal_month
+
+entity.poet_bio.settings:
+  path: 'admin/structure/poet-bio'
+  defaults:
+    _form: '\Drupal\piv_futureverse\Form\PoetBioSettingsForm'
+    _title: 'Poet Bio'
+  requirements:
+    _permission: 'administer poet_bio'
+
+piv_futureverse.poet_bio_enrichment:
+  path: '/bio/{hash}'
+  defaults:
+    _controller: '\Drupal\piv_futureverse\Controller\PoetBioEnrichmentController'
+    _title: 'Poet Bio Enrichment'
+  requirements:
+    _permission: 'create poet_bio entities'
+    _custom_access: '\Drupal\piv_futureverse\Controller\PoetBioEnrichmentController::access'

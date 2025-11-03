@@ -1,0 +1,38 @@
+uuid: eaf172fc-7612-4f61-a7fa-00759ec420d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.poet_bio.field_address
+  module:
+    - address
+    - piv_futureverse
+id: poet_bio.poet_bio.field_address
+field_name: field_address
+entity_type: poet_bio
+bundle: poet_bio
+label: Address
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries:
+    CA: CA
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: hidden
+  fields: {  }
+field_type: address

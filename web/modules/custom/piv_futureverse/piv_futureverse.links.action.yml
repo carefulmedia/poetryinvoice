@@ -10,3 +10,9 @@ journal_year.add_form:
 #  route_name: entity.journal_month.add_form
 #  appears_on:
 #    - entity.journal_month.collection
+
+poet_bio.add_form:
+  title: 'Add poet bio'
+  route_name: entity.poet_bio.add_form
+  appears_on:
+    - entity.poet_bio.collection

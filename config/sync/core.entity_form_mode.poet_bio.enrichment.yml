@@ -1,0 +1,11 @@
+uuid: 54349eb8-f854-4622-84bb-fc79b68274a1
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: poet_bio.enrichment
+label: Enrichment
+description: 'A form populated by the student to enrich their profile.'
+targetEntityType: poet_bio
+cache: true

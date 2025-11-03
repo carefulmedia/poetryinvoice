@@ -25,3 +25,15 @@ delete journal_month:
   title: 'Delete journal month'
 create journal_month:
   title: 'Create journal month'
+
+administer poet_bio:
+  title: 'Administer poet bios'
+  restrict access: true
+view poet_bio:
+  title: 'View poet bio'
+edit poet_bio:
+  title: 'Edit poet bio'
+delete poet_bio:
+  title: 'Delete poet bio'
+create poet_bio:
+  title: 'Create poet bio'

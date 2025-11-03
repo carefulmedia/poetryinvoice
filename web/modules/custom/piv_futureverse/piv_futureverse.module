@@ -135,15 +135,21 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
       '#type' => 'fieldset',
     ];
 
-    $winner_labels = array_map(function ($poem) {
-      return "{$poem->label()} ({$poem->field_email1->value})";
-    }, $winner_poems);
     $entity_form['monthly_prize_winner']['winner'] = [
       '#type' => 'item',
       '#markup' => t('Winner: @winner', [
-        '@winner' => $winner_labels ? implode(', ', $winner_labels) : t('none'),
+        '@winner' => count($winner_poems) ? '' : t('none'),
       ]),
     ];
+    foreach ($winner_poems as $poem) {
+      $entity_form['monthly_prize_winner']['winner'][] = [
+        'link' => $poem->toLink(NULL, 'edit-form')->toRenderable(),
+        'mail' => [
+          '#markup' => " ({$poem->field_email1->value}) ",
+        ],
+      ];
+    }
+
     $entity_form['monthly_prize_winner']['send_notifications'] = [
       '#type' => 'link',
       '#title' => $send_label,
@@ -169,5 +175,14 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
         ],
       ];
     }
+  }
+}
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function piv_futureverse_entity_type_build(array &$entity_types) {
+  if (isset($entity_types['poet_bio'])) {
+    $entity_types['poet_bio']->setFormClass('enrichment', 'Drupal\piv_futureverse\Form\PoetBioForm');
   }
 }

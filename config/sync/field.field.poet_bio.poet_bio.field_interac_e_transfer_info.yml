@@ -1,0 +1,20 @@
+uuid: 13df0f32-6fa0-4ee2-bc15-95616a558bd8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.poet_bio.field_interac_e_transfer_info
+  module:
+    - piv_futureverse
+id: poet_bio.poet_bio.field_interac_e_transfer_info
+field_name: field_interac_e_transfer_info
+entity_type: poet_bio
+bundle: poet_bio
+label: 'Interac e-transfer information'
+description: 'E-mail or phone number.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -21,3 +21,15 @@ entity.journal_month.collection:
   description: 'List of journal months.'
   route_name: entity.journal_month.collection
   parent: system.admin_content
+
+entity.poet_bio.settings:
+  title: 'Poet Bio'
+  description: 'Configure a Poet Bio entity type.'
+  route_name:  entity.poet_bio.settings
+  parent: system.admin_structure
+
+entity.poet_bio.collection:
+  title: 'Poet Bios'
+  description: 'List of poet bios.'
+  route_name: entity.poet_bio.collection
+  parent: system.admin_content

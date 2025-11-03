@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Drupal\piv_futureverse;
 
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\node\NodeInterface;
 
 /**
  * Helper functions for journal functionalities.
@@ -39,6 +40,26 @@ class JournalHelper {
     return array_filter($poems, function ($poem) {
       return $poem->field_acceptance_level->value == 'Monthly prize winner';
     });
+  }
+
+  /**
+   * Given a poem, return the journal month.
+   *
+   * Journal Poems are nodes.
+   */
+  public static function getJournalMonthFromPoem(NodeInterface $node) {
+    $journal_months = \Drupal::entityTypeManager()->getStorage('journal_month')
+      ->loadByProperties(['field_journal_poems' => $node->id()]);
+    return $journal_months ? end($journal_months) : NULL;
+  }
+
+  /**
+   * Given a journal month, return the journal year.
+   */
+  public static function getJournalYearFromJournalMonth(JournalMonthInterface $journal_month) {
+    $journal_years = \Drupal::entityTypeManager()->getStorage('journal_year')
+      ->loadByProperties(['field_journal_months' => $journal_month->id()]);
+    return $journal_years ? end($journal_years) : NULL;
   }
 
 }

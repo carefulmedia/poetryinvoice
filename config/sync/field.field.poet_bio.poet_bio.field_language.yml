@@ -1,0 +1,24 @@
+uuid: 460df96a-bcd5-420c-ab70-7db6b76e40e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.poet_bio.field_language
+  module:
+    - piv_futureverse
+id: poet_bio.poet_bio.field_language
+field_name: field_language
+entity_type: poet_bio
+bundle: poet_bio
+label: Language
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:configurable_language'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

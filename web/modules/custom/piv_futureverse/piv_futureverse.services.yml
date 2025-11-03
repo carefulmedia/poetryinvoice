@@ -1,0 +1,4 @@
+services:
+  piv_futureverse.bio_enrichment:
+    class: Drupal\piv_futureverse\BioEnrichment
+    arguments: ['@keyvalue.expirable', '@entity_type.manager']

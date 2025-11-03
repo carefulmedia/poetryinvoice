@@ -1,0 +1,20 @@
+uuid: 0e0dc8dc-f823-4c2e-b054-104d59c6db51
+langcode: en
+status: true
+dependencies:
+  module:
+    - language
+    - piv_futureverse
+id: poet_bio.field_language
+field_name: field_language
+entity_type: poet_bio
+type: entity_reference
+settings:
+  target_type: configurable_language
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
