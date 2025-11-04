@@ -31,22 +31,26 @@ class JournalHelper {
   }
 
   /**
-   * Get all accepted poems in a year.
-   *
-   * A user can have multiple accepted poems, we group them by the
-   * email.
+   * Get poems grouped by email given acceptance.
    */
-  public static function getPoemsAcceptedGroupedByEmail(JournalYearInterface $journal_year) : array {
-    $accepted = [];
+  public static function getPoemsByAcceptanceGroupedByEmail(JournalYearInterface $journal_year, $acceptance_level, $reverse = FALSE) : array {
+    if (is_scalar($acceptance_level)) {
+      $acceptance_level = [$acceptance_level];
+    }
+    $poems = [];
     foreach ($journal_year->field_journal_months->referencedEntities() as $journal_month) {
       foreach ($journal_month->field_journal_poems->referencedEntities() as $poem) {
-        if ($poem->field_acceptance_level->value == 'Accepted') {
+        $valid = $reverse
+          ? !in_array($poem->field_acceptance_level->value, $acceptance_level)
+          : in_array($poem->field_acceptance_level->value, $acceptance_level);
+
+        if ($valid) {
           $email = $poem->field_email1->value;
-          $accepted[$email][] = $poem;
+          $poems[$email][] = $poem;
         }
       }
     }
-    return $accepted;
+    return $poems;
   }
 
   /**
@@ -59,6 +63,19 @@ class JournalHelper {
     return array_filter($poems, function ($poem) {
       return $poem->field_acceptance_level->value == 'Monthly prize winner';
     });
+  }
+
+  /**
+   * Get non accepted poems.
+   *
+   * This excludes poems that were not accepted but where another poem
+   * by the same owner was accepted.
+   */
+  public static function getNotAcceptedPoemsGroupedByEmail(JournalYearInterface $journal_year) : array {
+    $accepted_poems = self::getPoemsByAcceptanceGroupedByEmail($journal_year, ['Accepted', 'Monthly prize winner']);
+    // Reversed filter.
+    $not_accepted_poems = self::getPoemsByAcceptanceGroupedByEmail($journal_year, ['Accepted', 'Monthly prize winner'], TRUE);
+    return array_diff_key($not_accepted_poems, $accepted_poems);
   }
 
   /**
