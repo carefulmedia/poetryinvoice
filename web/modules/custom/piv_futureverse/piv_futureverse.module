@@ -120,8 +120,9 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
       return;
     }
 
-    // Add links to send monthly prize winner notification.
     $key_value = \Drupal::keyValue('journal_month_notifications');
+
+    // Add links to send monthly prize winner notification.
     $key = 'monthly_prize_winner_' . $journal_month->id();
     $value = $key_value->get($key, ['poems' => []]);
     $poems_already_sent = $value['poems'] ?? [];
@@ -135,18 +136,20 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
       ? t('Resend monthly prize winner notification')
       : t('Send monthly prize winner notification');
 
-    $entity_form['monthly_prize_winner'] = [
+    $entity_form['monthly_prize'] = [
       '#type' => 'fieldset',
+      'winners' => ['#type' => 'container'],
+      'losers' => ['#type' => 'container'],
     ];
 
-    $entity_form['monthly_prize_winner']['winner'] = [
+    $entity_form['monthly_prize']['winners']['winner'] = [
       '#type' => 'item',
       '#markup' => t('Winner: @winner', [
         '@winner' => count($winner_poems) ? '' : t('none'),
       ]),
     ];
     foreach ($winner_poems as $poem) {
-      $entity_form['monthly_prize_winner']['winner'][] = [
+      $entity_form['monthly_prize']['winners']['winner'][] = [
         'link' => $poem->toLink(NULL, 'edit-form')->toRenderable(),
         'mail' => [
           '#markup' => " ({$poem->field_email1->value}) ",
@@ -154,7 +157,7 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
       ];
     }
 
-    $entity_form['monthly_prize_winner']['send_notifications'] = [
+    $entity_form['monthly_prize']['winners']['send_notifications'] = [
       '#type' => 'link',
       '#title' => $send_label,
       '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
@@ -167,7 +170,7 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
     ];
     if (count($poems_already_sent) && count($poems_to_send)) {
       // Update only send the ones that are missing if there are any.
-      $entity_form['monthly_prize_winner']['update_notifications'] = [
+      $entity_form['monthly_prize']['winners']['update_notifications'] = [
         '#type' => 'link',
         '#title' => t('Update monthly prize winner notification'),
         '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
@@ -179,6 +182,46 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
         ],
       ];
     }
+
+    // Monthly prize losers.
+    $key = 'monthly_prize_losers_' . $journal_month->id();
+    $value = $key_value->get($key, ['poems' => []]);
+    $poems_already_sent = $value['poems'] ?? [];
+    $loser_poems = JournalHelper::getMonthlyPrizeLosersUniqueEmail($journal_month);
+    $loser_poem_ids = array_map(fn($jm) => $jm->id(), $loser_poems);
+    $poems_to_send = array_diff($loser_poem_ids, $poems_already_sent);
+
+    // Send/resend.
+    $send_label = count($poems_already_sent)
+      ? t('Resend monthly prize losers notification')
+      : t('Send monthly prize losers notification');
+
+    $entity_form['monthly_prize']['losers']['send_notifications'] = [
+      '#type' => 'link',
+      '#title' => $send_label,
+      '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+        'op' => 'monthly_prize_losers:send',
+        'journal_month' => $journal_month->id(),
+      ]),
+      '#attributes' => [
+        'class' => ['button'],
+      ],
+    ];
+    if (count($poems_already_sent) && count($poems_to_send)) {
+      // Update only send the ones that are missing if there are any.
+      $entity_form['monthly_prize']['losers']['update_notifications'] = [
+        '#type' => 'link',
+        '#title' => t('Update monthly prize losers notification'),
+        '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+          'op' => 'monthly_prize_losers:update',
+          'journal_month' => $journal_month->id(),
+        ]),
+        '#attributes' => [
+          'class' => ['button'],
+        ],
+      ];
+    }
+
   }
 }
 

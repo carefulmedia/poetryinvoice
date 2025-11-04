@@ -52,7 +52,12 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
   public function getQuestion(): TranslatableMarkup {
     $op = $this->op;
     if (str_starts_with($op, 'monthly_prize_winner:')) {
-      return $this->t('Are you sure you want to send the monthly prize winner notifications for <em>@title</em>?', [
+      return $this->t('Are you sure you want to send the monthly prize <em>winner</em> notifications for <em>@title</em>?', [
+        '@title' => $this->journalMonth->label(),
+      ]);
+    }
+    elseif (str_starts_with($op, 'monthly_prize_losers:')) {
+      return $this->t('Are you sure you want to send the monthly prize <em>losers</em> notifications for <em>@title</em>?', [
         '@title' => $this->journalMonth->label(),
       ]);
     }
@@ -88,17 +93,29 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
     $this->messenger()->addStatus($this->t('Done!'));
 
     $op = $this->op;
-    if (str_starts_with($op, 'monthly_prize_winner:')) {
+    if (str_starts_with($op, 'monthly_prize_winner:') || str_starts_with($op, 'monthly_prize_losers:')) {
       // Data holds an array of poem ids.
-      $key = 'monthly_prize_winner_' . $journal_month->id();
+      $key = NULL;
+      if (str_starts_with($op, 'monthly_prize_winner:')) {
+        $key = 'monthly_prize_winner_' . $journal_month->id();
+      }
+      elseif (str_starts_with($op, 'monthly_prize_losers:')) {
+        $key = 'monthly_prize_losers_' . $journal_month->id();
+      }
       $value = $key_value->get($key, ['poems' => []]);
 
       // If operation is send, just send to everyone. If operation is
       // update, then only send to whoever didn't receive it yet.
       $poems_to_send = [];
-      $winner_poems = JournalHelper::getMonthlyPrizeWinner($journal_month);
-      $poems_to_send = array_map(fn($w) => $w->id(), $winner_poems);
-      if ($op == 'monthly_prize_winner:update') {
+      $poems = [];
+      if (str_starts_with($op, 'monthly_prize_winner:')) {
+        $poems = JournalHelper::getMonthlyPrizeWinner($journal_month);
+      }
+      elseif (str_starts_with($op, 'monthly_prize_losers:')) {
+        $poems = JournalHelper::getMonthlyPrizeLosersUniqueEmail($journal_month);
+      }
+      $poems_to_send = array_map(fn($w) => $w->id(), $poems);
+      if (str_ends_with($op, ':update')) {
         $poems_already_sent = $value['poems'] ?? [];
         $poems_to_send = array_diff($poems_to_send, $poems_already_sent);
       }
@@ -128,9 +145,16 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
    * Send the notification.
    */
   public static function sendNotification($op, $data, &$context): void {
-    if (str_starts_with($op, 'monthly_prize_winner:')) {
+    if (str_starts_with($op, 'monthly_prize_winner:') || str_starts_with($op, 'monthly_prize_losers:')) {
       $key_value = \Drupal::keyValue('journal_month_notifications');
-      $key = 'monthly_prize_winner_' . $data['journal_month_id'];
+      $key = NULL;
+      if (str_starts_with($op, 'monthly_prize_winner:')) {
+        $key = 'monthly_prize_winner_' . $data['journal_month_id'];
+      }
+      elseif (str_starts_with($op, 'monthly_prize_losers:')) {
+        $key = 'monthly_prize_losers_' . $data['journal_month_id'];
+      }
+
       $value = $key_value->get($key, ['poems' => []]);
       $poem = \Drupal::entityTypeManager()->getStorage('node')->load($data['poem_id']);
       if (!$poem) {
@@ -142,7 +166,13 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
         ->addSource('journal_poem', $poem)
         ->addSource('user', $poem->getOwner());
 
-      $results = piv_mail_send_mail('journal_poem_monthly_prize_winner', $poem->langcode->value, $replacements_service);
+      $results = FALSE;
+      if (str_starts_with($op, 'monthly_prize_winner:')) {
+        $results = piv_mail_send_mail('journal_poem_monthly_prize_winner', $poem->langcode->value, $replacements_service);
+      }
+      elseif (str_starts_with($op, 'monthly_prize_losers:')) {
+        $results = piv_mail_send_mail('journal_poem_monthly_prize_losers', $poem->langcode->value, $replacements_service);
+      }
       if ($results !== FALSE) {
         $value['poems'][] = $data['poem_id'];
         $context['results'][$data['poem_id']] = $data['poem_id'];
