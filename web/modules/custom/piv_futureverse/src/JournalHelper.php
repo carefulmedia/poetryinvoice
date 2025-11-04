@@ -31,6 +31,25 @@ class JournalHelper {
   }
 
   /**
+   * Get all accepted poems in a year.
+   *
+   * A user can have multiple accepted poems, we group them by the
+   * email.
+   */
+  public static function getPoemsAcceptedGroupedByEmail(JournalYearInterface $journal_year) : array {
+    $accepted = [];
+    foreach ($journal_year->field_journal_months->referencedEntities() as $journal_month) {
+      foreach ($journal_month->field_journal_poems->referencedEntities() as $poem) {
+        if ($poem->field_acceptance_level->value == 'Accepted') {
+          $email = $poem->field_email1->value;
+          $accepted[$email][] = $poem;
+        }
+      }
+    }
+    return $accepted;
+  }
+
+  /**
    * Get the monthly prize winner.
    */
   public static function getMonthlyPrizeWinner(JournalMonthInterface $journal_month) : array {
@@ -61,17 +80,21 @@ class JournalHelper {
    * multiple e-mails to the same recipient.
    */
   public static function getMonthlyPrizeLosersUniqueEmail(JournalMonthInterface $journal_month) : array {
-    // There should be only one winner, but in theory multiple can be
-    // made winners.
     $losers = self::getMonthlyPrizeLosers($journal_month);
     // To guarantee that it's always the same poems returned, sort them
     // by id.
-    usort($losers, function($a, $b) { return $a->id() <=> $b->id(); });
+    usort($losers, function ($a, $b) {
+      return $a->id() <=> $b->id();
+    });
+
+    // Get all winners emails to prevent sending a loser email to them.
+    $winners = self::getMonthlyPrizeWinner($journal_month);
+    $winner_emails = array_map(fn($w) => $w->field_email1->value, $winners);
 
     $poems = [];
     foreach ($losers as $loser) {
       $email = $loser->field_email1->value ?? NULL;
-      if (!$email || array_key_exists($email, $poems)) {
+      if (!$email || in_array($email, $winner_emails) || array_key_exists($email, $poems)) {
         continue;
       }
       $poems[$email] = $loser;

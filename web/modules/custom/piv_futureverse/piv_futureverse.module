@@ -15,6 +15,55 @@ use Drupal\Core\Url;
  */
 function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInterface $form_state) {
   $form['#attached']['library'][] = 'piv_futureverse/admin';
+
+  $journal_year = $form_state->getFormObject()->getEntity();
+
+  // Voices/voix anthology notifications.
+  $key_value = \Drupal::keyValue('journal_notifications');
+  $key = 'accepted_to_voices_' . $journal_year->id();
+  $value = $key_value->get($key, ['emails' => []]);
+  $already_sent = $value['emails'] ?? [];
+  $accepted_poems = JournalHelper::getPoemsAcceptedGroupedByEmail($journal_year);
+  // Index/save per email.
+  $emails = array_keys($accepted_poems);
+  $to_send = array_diff($emails, $already_sent);
+
+  $form['field_journal_months']['notifications'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Notifications'),
+    '#weight' => -100,
+  ];
+  // The notifications confirm form accepts journal months as
+  // parameters, send the first one and get the journal year from that.
+  $first_journal_month_id = $journal_year->field_journal_months->target_id;
+  $send_label = count($already_sent)
+    ? t('Resend accepted to voices/voix notifications')
+    : t('Send accepted to voices/voix notifications');
+  $form['field_journal_months']['notifications']['send_notifications'] = [
+    '#type' => 'link',
+    '#title' => $send_label,
+    '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+      'op' => 'accepted_to_voices:send',
+      'journal_month' => $first_journal_month_id,
+    ]),
+    '#attributes' => [
+      'class' => ['button'],
+    ],
+  ];
+  if (count($already_sent) && count($to_send)) {
+    // Update only send the ones that are missing if there are any.
+    $entity_form['field_journal_months']['notifications']['update_notifications'] = [
+      '#type' => 'link',
+      '#title' => t('Update accepted to voices/voix notifications'),
+      '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+        'op' => 'accepted_to_voices:update',
+        'journal_month' => $first_journal_month_id,
+      ]),
+      '#attributes' => [
+        'class' => ['button'],
+      ],
+    ];
+  }
 }
 
 /**
@@ -120,7 +169,7 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
       return;
     }
 
-    $key_value = \Drupal::keyValue('journal_month_notifications');
+    $key_value = \Drupal::keyValue('journal_notifications');
 
     // Add links to send monthly prize winner notification.
     $key = 'monthly_prize_winner_' . $journal_month->id();
