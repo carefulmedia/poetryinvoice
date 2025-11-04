@@ -69,6 +69,9 @@ class ReplacementsService {
       'journal_poem_first_name',
       'link_to_bio_enrichment',
     ],
+    'poet_bio' => [
+      'link_to_poet_bio',
+    ],
   ];
 
   /**
@@ -382,6 +385,13 @@ class ReplacementsService {
           $html .= $link;
           $html .= '</p>';
           return $html;
+        
+        case 'link_to_poet_bio':
+          $langcode = $sources['poet_bio']->field_language->target_id;
+          return $sources['poet_bio']->toLink('Link to poet bio', 'edit-form', [
+            'absolute' => TRUE,
+            'language' => $sources['poet_bio']->field_language->entity,
+          ])->toString();
       }
     }
     catch (\Exception $e) {

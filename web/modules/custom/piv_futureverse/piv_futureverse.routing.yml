@@ -40,5 +40,4 @@ piv_futureverse.poet_bio_enrichment:
     _controller: '\Drupal\piv_futureverse\Controller\PoetBioEnrichmentController'
     _title: 'Poet Bio Enrichment'
   requirements:
-    _permission: 'create poet_bio entities'
     _custom_access: '\Drupal\piv_futureverse\Controller\PoetBioEnrichmentController::access'

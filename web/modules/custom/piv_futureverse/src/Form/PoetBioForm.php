@@ -39,7 +39,9 @@ final class PoetBioForm extends ContentEntityForm {
         throw new \LogicException('Could not save the entity.');
     }
 
-    $form_state->setRedirectUrl($this->entity->toUrl('collection'));
+    if (!$form_state->getRedirect()) {
+      $form_state->setRedirectUrl($this->entity->toUrl('collection'));
+    }
 
     return $result;
   }

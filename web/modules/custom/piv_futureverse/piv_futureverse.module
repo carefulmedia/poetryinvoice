@@ -21,54 +21,58 @@ function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInt
  * Implements hook_entity_insert().
  */
 function piv_futureverse_entity_insert(EntityInterface $entity) : void {
-  if ($entity->getEntityTypeId() != 'node') {
-    return;
-  }
-
-  if ($entity->bundle() != 'journal_poem') {
-    return;
-  }
-
   // Assign a journal poem to the current futureverse+ journal month if
   // one exists.
-  $months = JournalHelper::getJournalMonths();
-  if ($months) {
-    $month = reset($months);
-    $month->field_journal_poems[] = $entity->id();
-    $month->save();
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'journal_poem') {
+    $months = JournalHelper::getJournalMonths();
+    if ($months) {
+      $month = reset($months);
+      $month->field_journal_poems[] = $entity->id();
+      $month->save();
+    }
+
+    $current_user = \Drupal::currentUser();
+    if ($current_user->isAnonymous()) {
+      // Create or load the user based on the email and set the user as
+      // the owner of this journal_poem.
+      $email = $entity->field_email1->value;
+      $user_storage = \Drupal::entityTypeManager()->getStorage('user');
+      $users = $email
+        ? $user_storage->loadByProperties(['mail' => $email])
+        : [];
+      $user = NULL;
+      if ($users) {
+        $user = reset($users);
+      }
+      else {
+        $langcode = \Drupal::languageManager()
+          ->getCurrentLanguage()->getId();
+        $user = $user_storage->create([
+          'name' => $email,
+          'mail' => $email,
+          'preferred_langcode' => $langcode,
+          'langcode' => $langcode,
+          'piv_teacher_first_name' => $entity->piv_teacher_first_name->value,
+          'piv_teacher_last_name' => $entity->piv_teacher_last_name->value,
+          'roles' => ['student_poet'],
+          'status' => 1,
+        ]);
+        $user->save();
+      }
+      $entity->setOwner($user)->save();
+    }
   }
 
-  $current_user = \Drupal::currentUser();
-  if ($current_user->isAnonymous()) {
-    // Create or load the user based on the email and set the user as
-    // the owner of this journal_poem.
-    $email = $entity->field_email1->value;
-    $user_storage = \Drupal::entityTypeManager()->getStorage('user');
-    $users = $email
-      ? $user_storage->loadByProperties(['mail' => $email])
-      : [];
-    $user = NULL;
-    if ($users) {
-      $user = reset($users);
-    }
-    else {
-      $langcode = \Drupal::languageManager()
-        ->getCurrentLanguage()->getId();
-      $user = $user_storage->create([
-        'name' => $email,
-        'mail' => $email,
-        'preferred_langcode' => $langcode,
-        'langcode' => $langcode,
-        'piv_teacher_first_name' => $entity->piv_teacher_first_name->value,
-        'piv_teacher_last_name' => $entity->piv_teacher_last_name->value,
-        'roles' => ['student_poet'],
-        'status' => 1,
-      ]);
-      $user->save();
-    }
-    $entity->setOwner($user)->save();
-  }
+  // Send an email to admin when a Poet Bio is created.
+  if ($entity->getEntityTypeId() == 'poet_bio') {
+    $replacements_service = \Drupal::service('piv_mail.replacements_service');
+    $replacements_service
+      ->addSource('poet_bio', $entity)
+      ->addSource('user', $entity->getOwner());
+    $langcode = $entity->field_language->target_id;
+    piv_mail_send_mail('journal_poem_bio_created', $langcode, $replacements_service);
 
+  }
 }
 
 /**

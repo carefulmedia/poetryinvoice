@@ -8,6 +8,7 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\piv_futureverse\BioEnrichment;
 use Drupal\Core\Access\AccessResult;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\Core\Url;
 
 /**
  * Controller for poet bio enrichment form.
@@ -82,7 +83,10 @@ final class PoetBioEnrichmentController extends ControllerBase {
       'uid' => $uid,
     ]);
 
-    return $this->entityFormBuilder()->getForm($poet_bio, 'enrichment');
+    $front = Url::fromRoute('<front>');
+    return $this->entityFormBuilder()->getForm($poet_bio, 'enrichment', [
+      'redirect' => $front,
+    ]);
   }
 
 }
