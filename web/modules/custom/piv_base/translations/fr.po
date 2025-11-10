@@ -125,3 +125,30 @@ msgstr "Vous pourrez commencer l'évaluation une fois que le concours aura comme
 
 msgid "Highest Overall"
 msgstr "Meilleur général"
+
+msgid "log in"
+msgstr "se connecter"
+
+msgid "To view this page"
+msgstr "Pour afficher cette page"
+
+msgid "to your teacher or"
+msgstr "à votre professeur ou"
+
+msgid "Poet Network"
+msgstr "Réseau de poètes"
+
+msgid "account"
+msgstr "compte"
+
+msgid "Don\'t have an account yet"
+msgstr "Vous n'avez pas encore de compte"
+
+msgid "Apply for your account today"
+msgstr "Demandez votre compte dès aujourd'hui"
+
+msgid "It\'s free to join us and requires no commitment"
+msgstr "L'inscription est gratuite et sans engagement"
+
+msgid "Login Required"
+msgstr "Connexion requise"
