@@ -12,7 +12,6 @@ is_admin: null
 permissions:
   - 'create field_grades'
   - 'delete own files'
-  - 'edit field_grades'
   - 'edit own field_grades'
   - 'view body'
   - 'view field_grades'
