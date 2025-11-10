@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.futureverse_application.student.field_email
     - field.field.futureverse_application.student.field_first_name
     - field.field.futureverse_application.student.field_how_has_your_community_sha
     - field.field.futureverse_application.student.field_i_am_submitting_in_a_secon
@@ -41,6 +42,13 @@ content:
         refresh: 60
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
     region: content
   field_first_name:
     type: string

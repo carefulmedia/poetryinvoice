@@ -26,6 +26,13 @@ function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInt
     return;
   }
 
+  // The notifications confirm form accepts journal months as
+  // parameters, send the first one and get the journal year from that.
+  $first_journal_month_id = $journal_year->field_journal_months->target_id ?? NULL;
+  if (!$first_journal_month_id) {
+    return;
+  }
+
   // Voices/voix anthology notifications.
   $key_value = \Drupal::keyValue('journal_notifications');
   $key = 'accepted_to_voices_' . $journal_year->id();
@@ -43,9 +50,6 @@ function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInt
     'accepted' => ['#type' => 'container'],
     'notaccepted' => ['#type' => 'container'],
   ];
-  // The notifications confirm form accepts journal months as
-  // parameters, send the first one and get the journal year from that.
-  $first_journal_month_id = $journal_year->field_journal_months->target_id;
   $send_label = count($already_sent)
     ? t('Resend accepted to voices/voix notifications')
     : t('Send accepted to voices/voix notifications');
@@ -105,6 +109,44 @@ function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInt
       '#title' => t('Update not accepted to voices/voix notifications'),
       '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
         'op' => 'not_accepted_to_voices:update',
+        'journal_month' => $first_journal_month_id,
+      ]),
+      '#attributes' => [
+        'class' => ['button'],
+      ],
+    ];
+  }
+
+  // Futureverse, "Yes" or "Monthly prize winner" acceptance level.
+  $key = 'futureverse_invitations_' . $journal_year->id();
+  $value = $key_value->get($key, ['emails' => []]);
+  $already_sent = $value['emails'] ?? [];
+  $to_invite_poems = JournalHelper::getPoemsByAcceptanceGroupedByEmail($journal_year, ['Yes', 'Monthly prize winner']);
+  // Index/save per email.
+  $emails = array_keys($to_invite_poems);
+  $to_send = array_diff($emails, $already_sent);
+  $send_label = count($already_sent)
+    ? t('Resend futureverse invitations')
+    : t('Send futureverse invitations');
+
+  $form['field_journal_months']['notifications']['futureverse']['send_notifications'] = [
+    '#type' => 'link',
+    '#title' => $send_label,
+    '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+      'op' => 'futureverse_invitations:send',
+      'journal_month' => $first_journal_month_id,
+    ]),
+    '#attributes' => [
+      'class' => ['button'],
+    ],
+  ];
+  if (count($already_sent) && count($to_send)) {
+    // Update only send the ones that are missing if there are any.
+    $entity_form['field_journal_months']['notifications']['futureverse']['update_notifications'] = [
+      '#type' => 'link',
+      '#title' => t('Update futureverse invitations'),
+      '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+        'op' => 'futureverse_invitations:update',
         'journal_month' => $first_journal_month_id,
       ]),
       '#attributes' => [
@@ -206,7 +248,6 @@ function piv_futureverse_entity_insert(EntityInterface $entity) : void {
     if ($current_user->isAnonymous()) {
       // Create or load the user based on the email and set the user as
       // the owner of this journal_poem.
-      $email = $entity->field_email1->value;
       $user = piv_futureverse_find_or_create_student_poet($entity->field_email1->value, $entity->piv_teacher_first_name->value, $entity->piv_teacher_last_name->value);
       if ($user) {
         $entity->setOwner($user)->save();
@@ -229,7 +270,6 @@ function piv_futureverse_entity_insert(EntityInterface $entity) : void {
       $entity->setOwner($user)->save();
     }
   }
-  return;
 }
 
 /**
@@ -511,13 +551,4 @@ function piv_futureverse_futureverse_application_presave(EntityInterface $entity
       $paragraph->save();
     }
   }
-}
-
-/**
- *
- */
-function piv_futureverse_preprocess_page($a) {
-  $s = \Drupal::service('piv_futureverse.futureverse_once_url_generator');
-  $a = $s->generateUrl('student', 39413);
-  // dump($a->toString());
 }

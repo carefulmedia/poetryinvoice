@@ -104,13 +104,14 @@ final class FutureverseApplicationController extends ControllerBase {
         'field_last_name' => $journal_poem->piv_teacher_last_name->value,
         'field_legal_name' => $journal_poem->field_legal_name->value,
         'field_legal_name_boolean' => $journal_poem->field_legal_name_boolean->value,
+        'field_email' => $journal_poem->field_email1->value,
         'uid' => $uid,
       ]);
       $futureverse_application->field_journal_year = $journal_year->id();
     }
 
     $front = Url::fromRoute('<front>');
-    return $this->entityFormBuilder()->getForm($futureverse_application, 'edit', [
+    return $this->entityFormBuilder()->getForm($futureverse_application, 'student', [
       'redirect' => $front,
     ]);
   }

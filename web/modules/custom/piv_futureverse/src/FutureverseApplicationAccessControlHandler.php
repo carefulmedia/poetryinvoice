@@ -10,7 +10,7 @@ use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
 
 /**
- * Defines the access control handler for the futureverse application entity type.
+ * Defines the access control handler for futureverse application entity type.
  *
  * phpcs:disable Drupal.Arrays.Array.LongLineDeclaration
  *

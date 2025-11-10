@@ -4,6 +4,7 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.futureverse_application.student
+    - field.field.futureverse_application.student.field_email
     - field.field.futureverse_application.student.field_first_name
     - field.field.futureverse_application.student.field_how_has_your_community_sha
     - field.field.futureverse_application.student.field_i_am_submitting_in_a_secon
@@ -137,6 +138,7 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_email: true
   field_journal_year: true
   label: true
   status: true

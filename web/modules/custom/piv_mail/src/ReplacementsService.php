@@ -68,6 +68,7 @@ class ReplacementsService {
     'journal_poem' => [
       'journal_poem_first_name',
       'link_to_bio_enrichment',
+      'link_to_futureverse_application',
     ],
     'poet_bio' => [
       'link_to_poet_bio',
@@ -372,6 +373,33 @@ class ReplacementsService {
           }
           $language = $sources['journal_poem']->language();
           $text = $this->t('Click here to update your bio', [], [
+            'langcode' => $language->getId(),
+          ]);
+          $link = Link::fromTextAndUrl($text, $url)
+            ->toString()
+            ->getGeneratedLink();
+          $html = '<p>';
+          $html .= $this->t('You will only be able to use this link once to provide your information.', [], [
+            'langcode' => $language->getId(),
+          ]);
+          $html .= '<br>';
+          $html .= $link;
+          $html .= '</p>';
+          return $html;
+        
+        case 'link_to_futureverse_application':
+          $bio_service = \Drupal::service('piv_futureverse.futureverse_once_url_generator'); // @phpcs:ignore
+          $journal_poem_id = $sources['journal_poem']->id();
+          if ($bio_service->exists('student', $journal_poem_id)) {
+            return '';
+          }
+
+          $url = $bio_service->generateUrl('student', $journal_poem_id);
+          if (!$url) {
+            return '';
+          }
+          $language = $sources['journal_poem']->language();
+          $text = $this->t('Click here to complete your Futureverse application', [], [
             'langcode' => $language->getId(),
           ]);
           $link = Link::fromTextAndUrl($text, $url)

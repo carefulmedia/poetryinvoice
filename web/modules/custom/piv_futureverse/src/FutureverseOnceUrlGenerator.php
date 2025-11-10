@@ -28,35 +28,34 @@ final class FutureverseOnceUrlGenerator extends OnceUrlGenerator {
   /**
    * Check if a bio was already created.
    */
-  /*public function exists(int $journal_poem_id) {
-  $journal_poem = $this->entityTypeManager
-  ->getStorage('node')
-  ->load($journal_poem_id);
+  public function exists(string $bundle, int $journal_poem_id) {
+    $journal_poem = $this->entityTypeManager
+      ->getStorage('node')
+      ->load($journal_poem_id);
 
-  if (!$journal_poem) {
-  return FALSE;
+    if (!$journal_poem) {
+      return FALSE;
+    }
+
+    $journal_month = JournalHelper::getJournalMonthFromPoem($journal_poem);
+    if (!$journal_month) {
+      return FALSE;
+    }
+
+    $journal_year = JournalHelper::getJournalYearFromJournalMonth($journal_month);
+    if (!$journal_year) {
+      return FALSE;
+    }
+
+    $entries = $this->entityTypeManager
+      ->getStorage('futureverse_application')
+      ->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('field_journal_year', $journal_year->id())
+      ->condition('uid', $journal_poem->uid->target_id)
+      ->execute();
+    return count($entries) > 0;
   }
-
-  $journal_month = JournalHelper::getJournalMonthFromPoem($journal_poem);
-  if (!$journal_month) {
-  return FALSE;
-  }
-
-  $journal_year = JournalHelper::getJournalYearFromJournalMonth($journal_month);
-  if (!$journal_year) {
-  return FALSE;
-  }
-
-  $entries = $this->entityTypeManager
-  ->getStorage('poet_bio')
-  ->getQuery()
-  ->accessCheck(FALSE)
-  ->condition('field_journal_year', $journal_year->id())
-  ->condition('field_language', $journal_poem->langcode->value)
-  ->condition('uid', $journal_poem->uid->target_id)
-  ->execute();
-  return count($entries) > 0;
-  }*/
 
   /**
    * Generate the once form url.

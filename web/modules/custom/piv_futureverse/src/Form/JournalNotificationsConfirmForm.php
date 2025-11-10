@@ -67,6 +67,9 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
     elseif (str_starts_with($op, 'not_accepted_to_voices:')) {
       return $this->t('Are you sure you want to send the <em>not accepted</em> to the Voices/Voix anthology notifications?');
     }
+    elseif (str_starts_with($op, 'futureverse_invitations:')) {
+      return $this->t('Are you sure you want to send the <em>futureverse invitations</em> notifications?');
+    }
 
     return $this->t('Invalid operation.');
   }
@@ -141,7 +144,7 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
       ];
       batch_set($batch);
     }
-    if (str_starts_with($op, 'accepted_to_voices:') || str_starts_with($op, 'not_accepted_to_voices:')) {
+    elseif (str_starts_with($op, 'accepted_to_voices:') || str_starts_with($op, 'not_accepted_to_voices:')) {
       $journal_year = JournalHelper::getJournalYearFromJournalMonth($journal_month);
       if (!$journal_year) {
         return;
@@ -167,6 +170,49 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
         // Not accepted also excludes the monthly prize winners.
         $poems = JournalHelper::getNotAcceptedPoemsGroupedByEmail($journal_year);
       }
+
+      $to_send = array_keys($poems);
+      if (str_ends_with($op, ':update')) {
+        // List of emails.
+        $already_sent = $value['emails'] ?? [];
+        $to_send = array_diff($to_send, $already_sent);
+      }
+
+      // Create a batch operation to send the emails.
+      $operations = [];
+      foreach ($to_send as $email) {
+        $poem = reset($poems[$email]);
+        $data = [
+          'poem_id' => $poem->id(),
+          'journal_year_id' => $journal_year->id(),
+        ];
+        $operations[] = [
+          [static::class, 'sendNotification'],
+          [$op, $data],
+        ];
+      }
+      $batch = [
+        'operations' => $operations,
+        'finished' => [static::class, 'finishBatch'],
+        'title' => 'Sending emails...',
+      ];
+      batch_set($batch);
+    }
+    elseif (str_starts_with($op, 'futureverse_invitations:')) {
+      $journal_year = JournalHelper::getJournalYearFromJournalMonth($journal_month);
+      if (!$journal_year) {
+        return;
+      }
+
+      $key = 'futureverse_invitations_' . $journal_year->id();
+      $value = $key_value->get($key, ['emails' => []]);
+
+      // If operation is send, just send to everyone. If operation is
+      // update, then only send to whoever didn't receive it yet.
+      $poems = JournalHelper::getPoemsByAcceptanceGroupedByEmail($journal_year, [
+        'Yes',
+        'Monthly prize winner',
+      ]);
 
       $to_send = array_keys($poems);
       if (str_ends_with($op, ':update')) {
@@ -232,10 +278,10 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
       if ($results !== FALSE) {
         $value['poems'][] = $data['poem_id'];
         $context['results'][$data['poem_id']] = $data['poem_id'];
-        $key_value->set($key, $value);
+        $key_value->set($key, array_unique($value));
       }
     }
-    if (str_starts_with($op, 'accepted_to_voices:') || str_starts_with($op, 'not_accepted_to_voices:')) {
+    elseif (str_starts_with($op, 'accepted_to_voices:') || str_starts_with($op, 'not_accepted_to_voices:')) {
       $key = NULL;
       if (str_starts_with($op, 'accepted_to_voices:')) {
         $key = 'accepted_to_voices_' . $data['journal_year_id'];
@@ -244,7 +290,7 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
         $key = 'not_accepted_to_voices_' . $data['journal_year_id'];
       }
 
-      $value = $key_value->get($key, ['poems' => []]);
+      $value = $key_value->get($key, ['emails' => []]);
       $poem = \Drupal::entityTypeManager()->getStorage('node')->load($data['poem_id']);
       if (!$poem) {
         return;
@@ -263,9 +309,31 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
       }
 
       if ($results !== FALSE) {
-        $value['emails'][] = $data['poem_id'];
+        $value['emails'][] = $poem->field_email1->value;
         $context['results'][$data['poem_id']] = $data['poem_id'];
-        $key_value->set($key, $value);
+        $key_value->set($key, array_unique($value));
+      }
+    }
+    elseif (str_starts_with($op, 'futureverse_invitations:')) {
+      $key = 'futureverse_invitations_' . $data['journal_year_id'];
+      $value = $key_value->get($key, ['emails' => []]);
+
+      $poem = \Drupal::entityTypeManager()->getStorage('node')->load($data['poem_id']);
+      if (!$poem) {
+        return;
+      }
+
+      $replacements_service = \Drupal::service('piv_mail.replacements_service');
+      $replacements_service
+        ->addSource('journal_poem', $poem)
+        ->addSource('user', $poem->getOwner());
+
+      $results = piv_mail_send_mail('journal_poem_futureverse_invitation', $poem->langcode->value, $replacements_service);
+
+      if ($results !== FALSE) {
+        $value['emails'][] = $poem->field_email1->value;
+        $context['results'][$data['poem_id']] = $data['poem_id'];
+        $key_value->set($key, array_unique($value));
       }
     }
   }
