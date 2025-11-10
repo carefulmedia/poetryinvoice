@@ -127,28 +127,7 @@ msgid "Highest Overall"
 msgstr "Meilleur général"
 
 msgid "log in"
-msgstr "se connecter"
+msgstr "connectez-vous"
 
-msgid "To view this page"
-msgstr "Pour afficher cette page"
-
-msgid "to your teacher or"
-msgstr "à votre professeur ou"
-
-msgid "Poet Network"
-msgstr "Réseau de poètes"
-
-msgid "account"
-msgstr "compte"
-
-msgid "Don\'t have an account yet"
-msgstr "Vous n'avez pas encore de compte"
-
-msgid "Apply for your account today"
-msgstr "Demandez votre compte dès aujourd'hui"
-
-msgid "It\'s free to join us and requires no commitment"
-msgstr "L'inscription est gratuite et sans engagement"
-
-msgid "Login Required"
-msgstr "Connexion requise"
+msgid "<p>To view this page, <strong>{{ login }}</strong> to your teacher or <a href='/about/poet-network'>Poet Network</a> account.</p><p>Don't have an account yet? <strong><a href='/create-account'>Apply for your account today</a></strong>. It's free to join us and requires no commitment .</p>"
+msgstr "<p>Pour consulter cette page, <strong>{{ login }}</strong> à votre compte d’enseignant ou à votre compte du <a href='/propos/reseau-poetes'>Réseau de poètes</a>.</p><p>Vous n’avez pas encore de compte? <strong><a href='/creer-un-compte'>Faites une demande dès aujourd’hui</a></strong>. L’inscription est gratuite et ne vous engage à rien.</p>"

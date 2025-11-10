@@ -24,9 +24,12 @@ class LoginRequiredController extends ControllerBase {
         'query' => ['destination' => $request->getRequestUri()],
       ]),
     ];
+
+    $template_string = "<p>To view this page, <strong>{{ login }}</strong> to your teacher or <a href='/about/poet-network'>Poet Network</a> account.</p><p>Don't have an account yet? <strong><a href='/create-account'>Apply for your account today</a></strong>. It's free to join us and requires no commitment .</p>";
+
     $build['content'] = [
       '#type' => 'inline_template',
-      '#template' => "<p>{{ 'To view this page'|t }}, <strong>{{ login }}</strong> {{ 'to your teacher or'|t }} <a href='/about/poet-network'>{{ 'Poet Network'|t }}</a> {{ 'account'|t }}.</p><p>{{ 'Don\'t have an account yet'|t }}? <strong><a href='/create-account'>{{ 'Apply for your account today'|t }}</a></strong>. {{ 'It\'s free to join us and requires no commitment'|t }} .</p>",
+      '#template' => $this->t($template_string),
       '#context' => ['login' => $login],
     ];
     return $build;
