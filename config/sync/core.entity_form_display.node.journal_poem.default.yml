@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
     - field.field.node.journal_poem.field_metatags
+    - field.field.node.journal_poem.field_no_artificial_intelligence
     - field.field.node.journal_poem.field_other
     - field.field.node.journal_poem.field_paid_
     - field.field.node.journal_poem.field_phone
@@ -66,7 +67,7 @@ third_party_settings:
       label: 'Journal poem payments'
       region: content
       parent_name: ''
-      weight: 46
+      weight: 47
       format_type: fieldset
       format_settings:
         classes: ''
@@ -207,11 +208,18 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 51
+    weight: 48
     region: content
     settings:
       sidebar: true
       use_details: true
+    third_party_settings: {  }
+  field_no_artificial_intelligence:
+    type: boolean_checkbox
+    weight: 46
+    region: content
+    settings:
+      display_label: true
     third_party_settings: {  }
   field_other:
     type: string_textfield

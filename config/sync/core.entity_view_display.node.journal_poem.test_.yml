@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.journal_poem.field_legal_name
     - field.field.node.journal_poem.field_legal_name_boolean
     - field.field.node.journal_poem.field_metatags
+    - field.field.node.journal_poem.field_no_artificial_intelligence
     - field.field.node.journal_poem.field_other
     - field.field.node.journal_poem.field_paid_
     - field.field.node.journal_poem.field_phone
@@ -156,6 +157,7 @@ hidden:
   field_legal_name: true
   field_legal_name_boolean: true
   field_metatags: true
+  field_no_artificial_intelligence: true
   field_other: true
   field_paid_: true
   field_phone: true
