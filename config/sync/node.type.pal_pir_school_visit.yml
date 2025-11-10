@@ -26,6 +26,6 @@ name: 'Poet School Visit'
 type: pal_pir_school_visit
 description: null
 help: null
-new_revision: false
+new_revision: true
 preview_mode: 1
 display_submitted: true

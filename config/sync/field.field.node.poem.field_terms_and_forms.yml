@@ -5,7 +5,6 @@ dependencies:
   config:
     - field.storage.node.field_terms_and_forms
     - node.type.poem
-    - taxonomy.vocabulary.poetic_terms
 id: node.poem.field_terms_and_forms
 field_name: field_terms_and_forms
 entity_type: node
@@ -17,13 +16,10 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:taxonomy_term'
+  handler: views
   handler_settings:
-    target_bundles:
-      poetic_terms: poetic_terms
-    sort:
-      field: name
-      direction: asc
-    auto_create: false
-    auto_create_bundle: ''
+    view:
+      view_name: commom_poetic_terms_and_forms_by_language
+      display_name: entity_reference_1
+      arguments: {  }
 field_type: entity_reference

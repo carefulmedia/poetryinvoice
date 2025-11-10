@@ -35,6 +35,7 @@ dependencies:
     - field.field.node.poem.field_rights_amount
     - field.field.node.poem.field_rights_and_permissions_pdf
     - field.field.node.poem.field_rights_expiration
+    - field.field.node.poem.field_rights_invoice_or_pdf_of_a
     - field.field.node.poem.field_start_here_image
     - field.field.node.poem.field_start_here_poem
     - field.field.node.poem.field_start_here_video
@@ -90,6 +91,7 @@ hidden:
   field_rights_amount: true
   field_rights_and_permissions_pdf: true
   field_rights_expiration: true
+  field_rights_invoice_or_pdf_of_a: true
   field_start_here_image: true
   field_start_here_poem: true
   field_start_here_video: true

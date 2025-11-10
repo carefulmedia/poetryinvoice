@@ -11,8 +11,18 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
+  - 'create field_poem_attachment'
+  - 'edit field_poem_attachment'
+  - 'edit own field_poem_attachment'
+  - 'view field_poem_attachment'
+  - 'view own field_poem_attachment'
   - 'create field_mixtape_artist_name_for_pu'
   - 'edit field_mixtape_artist_name_for_pu'
   - 'edit own field_mixtape_artist_name_for_pu'
   - 'view field_mixtape_artist_name_for_pu'
   - 'view own field_mixtape_artist_name_for_pu'
+  - 'create field_metatags'
+  - 'edit field_metatags'
+  - 'edit own field_metatags'
+  - 'view field_metatags'
+  - 'view own field_metatags'

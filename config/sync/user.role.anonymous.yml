@@ -124,7 +124,6 @@ permissions:
   - 'view media'
   - 'view own field_grades'
   - 'view own field_mixtape_artist_name_for_pu'
-  - 'view own field_poem_attachment'
   - 'view own field_school'
   - 'view own field_school_image'
   - 'view own field_story_link'
