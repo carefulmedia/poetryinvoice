@@ -31,3 +31,7 @@ form_modes:
   poet_bio:
     to_exclude:
       enrichment: enrichment
+  futureverse_application:
+    to_exclude:
+      invitation: invitation
+      student: student

@@ -27,3 +27,17 @@ entity.poet_bio.collection:
   route_name: entity.poet_bio.collection
   base_route: system.admin_content
   weight: 10
+
+entity.futureverse_application.collection:
+  title: 'Futureverse Applications'
+  route_name: entity.futureverse_application.collection
+  base_route: system.admin_content
+  weight: 10
+entity.futureverse_application_type.edit_form:
+  title: 'Edit'
+  route_name: entity.futureverse_application_type.edit_form
+  base_route: entity.futureverse_application_type.edit_form
+entity.futureverse_application_type.collection:
+  title: 'List'
+  route_name: entity.futureverse_application_type.collection
+  base_route: entity.futureverse_application_type.collection

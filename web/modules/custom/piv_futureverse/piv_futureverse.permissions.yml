@@ -37,3 +37,16 @@ delete poet_bio:
   title: 'Delete poet bio'
 create poet_bio:
   title: 'Create poet bio'
+
+administer futureverse_application types:
+  title: 'Administer futureverse application types'
+  description: 'Maintain the types of futureverse application entity.'
+  restrict access: true
+view futureverse_application:
+  title: 'View futureverse application'
+edit futureverse_application:
+  title: 'Edit futureverse application'
+delete futureverse_application:
+  title: 'Delete futureverse application'
+create futureverse_application:
+  title: 'Create futureverse application'

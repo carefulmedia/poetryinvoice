@@ -5,10 +5,15 @@
  * Futureverse+ hooks and functionalities.
  */
 
+use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\piv_futureverse\JournalHelper;
 use Drupal\Core\Url;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
@@ -16,7 +21,10 @@ use Drupal\Core\Url;
 function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInterface $form_state) {
   $form['#attached']['library'][] = 'piv_futureverse/admin';
 
-  $journal_year = $form_state->getFormObject()->getEntity();
+  $journal_year = $form_state->getFormObject()?->getEntity() ?? NULL;
+  if (!$journal_year || $journal_year->isNew()) {
+    return;
+  }
 
   // Voices/voix anthology notifications.
   $key_value = \Drupal::keyValue('journal_notifications');
@@ -107,6 +115,80 @@ function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInt
 }
 
 /**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function piv_futureverse_form_futureverse_application_native_student_add_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['instructions'] = [
+    '#markup' => t('Provide an email for the native student. After saving you will have the option to send a notification to that e-mail for the student to complete the form.'),
+  ];
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function piv_futureverse_form_futureverse_application_native_student_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $entity = $form_state->getFormObject()?->getEntity() ?? NULL;
+  if ($entity && array_key_exists('field_once_link_enabled', $form)) {
+    $form['field_once_link_enabled']['#type'] = 'fieldset';
+    $url = \Drupal::service('piv_futureverse.futureverse_once_url_generator')
+      ->generateUrl('native_student', $entity->id());
+    $form['field_once_link_enabled']['instructions'] = [
+      '#markup' => t('With the checkbox above enabled, a user can use this url to edit this content: <pre>@url</pre>', [
+        '@url' => $url->toString(),
+      ]),
+    ];
+  }
+}
+
+/**
+ * Find user by email or create new.
+ *
+ * Also updates the user name if its empty and one is provided.
+ */
+function piv_futureverse_find_or_create_student_poet($email, $first_name, $last_name) {
+  if (!$email) {
+    return NULL;
+  }
+  $user_storage = \Drupal::entityTypeManager()
+    ->getStorage('user');
+  $users = $email
+    ? $user_storage->loadByProperties(['mail' => $email])
+    : [];
+
+  if (count($users)) {
+    $user = reset($users);
+    $need_save = FALSE;
+    if ($user->piv_teacher_first_name->isEmpty() && $first_name) {
+      $user->piv_teacher_first_name = $first_name;
+      $need_save = TRUE;
+    }
+    if ($user->piv_teacher_last_name->isEmpty() && $last_name) {
+      $user->piv_teacher_last_name = $last_name;
+      $need_save = TRUE;
+    }
+    if ($need_save) {
+      $user->save();
+    }
+    return $user;
+  }
+
+  $langcode = \Drupal::languageManager()
+    ->getCurrentLanguage()->getId();
+  $user = $user_storage->create([
+    'name' => $email,
+    'mail' => $email,
+    'preferred_langcode' => $langcode,
+    'langcode' => $langcode,
+    'piv_teacher_first_name' => $first_name,
+    'piv_teacher_last_name' => $last_name,
+    'roles' => ['student_poet'],
+    'status' => 1,
+  ]);
+  $user->save();
+  return $user;
+}
+
+/**
  * Implements hook_entity_insert().
  */
 function piv_futureverse_entity_insert(EntityInterface $entity) : void {
@@ -125,42 +207,43 @@ function piv_futureverse_entity_insert(EntityInterface $entity) : void {
       // Create or load the user based on the email and set the user as
       // the owner of this journal_poem.
       $email = $entity->field_email1->value;
-      $user_storage = \Drupal::entityTypeManager()->getStorage('user');
-      $users = $email
-        ? $user_storage->loadByProperties(['mail' => $email])
-        : [];
-      $user = NULL;
-      if ($users) {
-        $user = reset($users);
+      $user = piv_futureverse_find_or_create_student_poet($entity->field_email1->value, $entity->piv_teacher_first_name->value, $entity->piv_teacher_last_name->value);
+      if ($user) {
+        $entity->setOwner($user)->save();
       }
-      else {
-        $langcode = \Drupal::languageManager()
-          ->getCurrentLanguage()->getId();
-        $user = $user_storage->create([
-          'name' => $email,
-          'mail' => $email,
-          'preferred_langcode' => $langcode,
-          'langcode' => $langcode,
-          'piv_teacher_first_name' => $entity->piv_teacher_first_name->value,
-          'piv_teacher_last_name' => $entity->piv_teacher_last_name->value,
-          'roles' => ['student_poet'],
-          'status' => 1,
-        ]);
-        $user->save();
-      }
-      $entity->setOwner($user)->save();
     }
   }
-
-  // Send an email to admin when a Poet Bio is created.
-  if ($entity->getEntityTypeId() == 'poet_bio') {
+  elseif ($entity->getEntityTypeId() == 'poet_bio') {
+    // Send an email to admin when a Poet Bio is created.
     $replacements_service = \Drupal::service('piv_mail.replacements_service');
     $replacements_service
       ->addSource('poet_bio', $entity)
       ->addSource('user', $entity->getOwner());
     $langcode = $entity->field_language->target_id;
     piv_mail_send_mail('journal_poem_bio_created', $langcode, $replacements_service);
+  }
+  elseif ($entity->getEntityTypeId() == 'futureverse_application') {
+    // Create or assign the user based on the email provided.
+    $user = piv_futureverse_find_or_create_student_poet($entity->field_email->value, $entity->field_first_name->value, $entity->field_last_name->value);
+    if ($user) {
+      $entity->setOwner($user)->save();
+    }
+  }
+  return;
+}
 
+/**
+ * Implements hook_ENTITY_TYPE_create().
+ */
+function piv_futureverse_futureverse_application_create(EntityInterface $entity) : void {
+  // Assign the current journal year to the futureverse_application.
+  $months = JournalHelper::getJournalMonths();
+  if ($months) {
+    $month = reset($months);
+    $journal_year = JournalHelper::getJournalYearFromJournalMonth($month);
+    if ($journal_year) {
+      $entity->field_journal_year = $journal_year->id();
+    }
   }
 }
 
@@ -315,10 +398,126 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
 }
 
 /**
+ * Implements hook_entity_form_display_alter().
+ */
+function piv_futureverse_entity_form_display_alter(EntityFormDisplayInterface &$form_display, array $context) {
+  if ($context['entity_type'] == 'futureverse_application' && $context['bundle'] == 'native_student' && $context['form_mode'] == 'add') {
+    // Use invitation form mode for new entities.
+    $entity_type_manager = \Drupal::entityTypeManager();
+    $storage = $entity_type_manager->getStorage('entity_form_display');
+    $invitation_display = $storage->load('futureverse_application.native_student.invitation');
+    if ($invitation_display) {
+      $form_display = $invitation_display;
+    }
+  }
+}
+
+/**
  * Implements hook_entity_type_build().
  */
 function piv_futureverse_entity_type_build(array &$entity_types) {
   if (isset($entity_types['poet_bio'])) {
     $entity_types['poet_bio']->setFormClass('enrichment', 'Drupal\piv_futureverse\Form\PoetBioForm');
   }
+  if (isset($entity_types['futureverse_application'])) {
+    $entity_types['futureverse_application']->setFormClass('student', 'Drupal\piv_futureverse\Form\FutureverseApplicationForm');
+  }
+}
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function piv_futureverse_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, ?FieldItemListInterface $items = NULL) {
+  // Override field permissions so anyone can edit the journal poem
+  // fields if we are on the "once link" form.
+  if ($items && $operation === 'edit') {
+    $route_name = \Drupal::routeMatch()->getRouteName();
+    if ($route_name == 'piv_futureverse.futureverse_application') {
+      $entity = $items->getEntity();
+      if ($entity && $entity->bundle() === 'journal_poem') {
+        return AccessResult::allowed();
+      }
+    }
+  }
+  // We disable the field_permissions implementation and manually call
+  // it here only if our hook doesn't handle it.
+  if (function_exists('field_permissions_entity_field_access')) {
+    return field_permissions_entity_field_access($operation, $field_definition, $account, $items);
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function piv_futureverse_module_implements_alter(&$implementations, $hook) {
+  if ($hook === 'entity_field_access') {
+    // Ensure our hook runs first, before field_permissions.
+    $group = $implementations['piv_futureverse'];
+    unset($implementations['piv_futureverse']);
+    $implementations = ['piv_futureverse' => $group] + $implementations;
+    unset($implementations['field_permissions']);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_ID_presave().
+ */
+function piv_futureverse_futureverse_application_presave(EntityInterface $entity) {
+  // Auto set a label to futureverse applications based on student name
+  // or email. When creating a student native invitation no name is
+  // provided, in that case the email will be used. There is no email
+  // field for non native futureverse application.
+  $first_name = $entity->field_first_name->value ?? NULL;
+  $last_name = $entity->field_last_name->value ?? NULL;
+  $email = $entity->hasField('field_email') ? $entity->field_email->value ?? NULL : '';
+  if ($first_name || $last_name) {
+    $entity->label = trim("$first_name $last_name");
+  }
+  elseif ($email) {
+    $entity->label = trim($email);
+  }
+
+  // Iterate on the poem paragraphs to create the journal poems.
+  // Needs to run here since paragraphs are saved before the parent
+  // entity is saved, and the poem needs data from the futureverse
+  // application entity which will be empty on first paragraph save.
+  if ($entity->bundle() == 'native_student' && $entity->hasField('field_poem_stub')) {
+    foreach ($entity->field_poem_stub->referencedEntities() as $paragraph) {
+      if ($paragraph->bundle() != 'poem') {
+        continue;
+      }
+      if ($paragraph->field_poem_node->entity) {
+        continue;
+      }
+      $user = piv_futureverse_find_or_create_student_poet($entity->field_email->value, $entity->field_first_name->value, $entity->field_last_name->value);
+      $journal_poem = \Drupal::entityTypeManager()->getStorage('node')->create([
+        'type' => 'journal_poem',
+        'title' => $paragraph->field_title->value,
+        'field_poem_reason' => $paragraph->field_tell_us_in_a_few_sentences->getValue(),
+        'field_poem_attachment' => $paragraph->field_poem_attachment->target_id,
+        'field_journal_poem_body' => $paragraph->field_poem_text->value,
+        'field_email1' => $entity->field_email->value,
+        'piv_teacher_first_name' => $entity->field_first_name->value,
+        'field_legal_name' => $entity->field_legal_name->value,
+        'piv_teacher_first_name' => $entity->field_last_name->value,
+        'field_phone' => $entity->field_phone->value,
+        'field_teacher' => $entity->field_teacher_name->value,
+        'field_legal_name_boolean' => $entity->field_legal_name_boolean->value,
+        'uid' => $user ? $user->id() : 0,
+      ]);
+      $journal_poem->save();
+      $paragraph->field_poem_node = $journal_poem->id();
+      $paragraph->save();
+    }
+  }
+}
+
+/**
+ *
+ */
+function piv_futureverse_preprocess_page($a) {
+  $s = \Drupal::service('piv_futureverse.futureverse_once_url_generator');
+  $a = $s->generateUrl('student', 39413);
+  // dump($a->toString());
 }

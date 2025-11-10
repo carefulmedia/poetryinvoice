@@ -1,0 +1,19 @@
+uuid: 3313c37e-1b91-477f-968d-27db80110a4d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_parent_guardian_email
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_parent_guardian_email
+field_name: field_parent_guardian_email
+entity_type: futureverse_application
+bundle: student
+label: 'Parent/Guardian Email'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

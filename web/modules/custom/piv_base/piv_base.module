@@ -195,6 +195,18 @@ function piv_base_entity_create_access(AccountInterface $account, array $context
 }
 
 /**
+ * Implements hook_node_access().
+ */
+function piv_base_node_access(\Drupal\node\NodeInterface $node, $op, AccountInterface $account) {
+  // Allow all users to edit journal_poem nodes.
+  if ($node->bundle() == 'journal_poem' && $op == 'update') {
+    return AccessResult::allowed();
+  }
+
+  return AccessResult::neutral();
+}
+
+/**
  * Implements hook_theme().
  */
 function piv_base_theme($existing, $type, $theme, $path) {

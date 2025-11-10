@@ -35,9 +35,17 @@ entity.poet_bio.settings:
     _permission: 'administer poet_bio'
 
 piv_futureverse.poet_bio_enrichment:
-  path: '/bio/{hash}'
+  path: '/f/bio/{hash}'
   defaults:
     _controller: '\Drupal\piv_futureverse\Controller\PoetBioEnrichmentController'
     _title: 'Poet Bio Enrichment'
   requirements:
     _custom_access: '\Drupal\piv_futureverse\Controller\PoetBioEnrichmentController::access'
+
+piv_futureverse.futureverse_application:
+  path: '/f/futureverse/{hash}'
+  defaults:
+    _controller: '\Drupal\piv_futureverse\Controller\FutureverseApplicationController'
+    _title: 'Futureverse Application'
+  requirements:
+    _custom_access: '\Drupal\piv_futureverse\Controller\FutureverseApplicationController::access'

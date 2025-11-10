@@ -1,0 +1,38 @@
+uuid: 9cf9f799-b238-4a0a-9fae-27836514ea14
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_full_mailing_address
+    - piv_futureverse.futureverse_application_type.native_student
+  module:
+    - address
+id: futureverse_application.native_student.field_full_mailing_address
+field_name: field_full_mailing_address
+entity_type: futureverse_application
+bundle: native_student
+label: 'Full mailing address'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  available_countries:
+    CA: CA
+  langcode_override: ''
+  field_overrides:
+    givenName:
+      override: hidden
+    additionalName:
+      override: hidden
+    familyName:
+      override: hidden
+    organization:
+      override: hidden
+    sortingCode:
+      override: hidden
+    dependentLocality:
+      override: optional
+  fields: {  }
+field_type: address

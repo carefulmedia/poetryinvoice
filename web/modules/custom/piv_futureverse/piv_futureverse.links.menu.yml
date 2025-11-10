@@ -33,3 +33,15 @@ entity.poet_bio.collection:
   description: 'List of poet bios.'
   route_name: entity.poet_bio.collection
   parent: system.admin_content
+
+entity.futureverse_application_type.collection:
+  title: 'Futureverse Application types'
+  description: 'Manage and CRUD actions on Futureverse Application type.'
+  parent: system.admin_structure
+  route_name: entity.futureverse_application_type.collection
+
+entity.futureverse_application.collection:
+  title: 'Futureverse Applications'
+  description: 'List of futureverse applications.'
+  route_name: entity.futureverse_application.collection
+  parent: system.admin_content

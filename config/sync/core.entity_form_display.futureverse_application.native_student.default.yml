@@ -1,0 +1,219 @@
+uuid: 5897374d-d769-4213-a15c-1305d4f89b5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.futureverse_application.native_student.field_do_you_identify_as_indigen
+    - field.field.futureverse_application.native_student.field_email
+    - field.field.futureverse_application.native_student.field_first_name
+    - field.field.futureverse_application.native_student.field_full_mailing_address
+    - field.field.futureverse_application.native_student.field_how_has_your_community_sha
+    - field.field.futureverse_application.native_student.field_is_there_anything_else_we
+    - field.field.futureverse_application.native_student.field_journal_year
+    - field.field.futureverse_application.native_student.field_last_name
+    - field.field.futureverse_application.native_student.field_legal_name
+    - field.field.futureverse_application.native_student.field_legal_name_boolean
+    - field.field.futureverse_application.native_student.field_once_link_enabled
+    - field.field.futureverse_application.native_student.field_phone
+    - field.field.futureverse_application.native_student.field_please_tell_us_a_bit_about
+    - field.field.futureverse_application.native_student.field_poem_stub
+    - field.field.futureverse_application.native_student.field_school
+    - field.field.futureverse_application.native_student.field_teacher_name
+    - field.field.futureverse_application.native_student.field_tell_us_about_your_writing
+    - field.field.futureverse_application.native_student.field_what_are_some_issues_you_c
+    - piv_futureverse.futureverse_application_type.native_student
+  module:
+    - address
+    - field_layout
+    - layout_discovery
+    - paragraphs
+    - telephone
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: futureverse_application.native_student.default
+targetEntityType: futureverse_application
+bundle: native_student
+mode: default
+content:
+  field_do_you_identify_as_indigen:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_email:
+    type: email_default
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_first_name:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_full_mailing_address:
+    type: address_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_how_has_your_community_sha:
+    type: string_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_is_there_anything_else_we:
+    type: string_textarea
+    weight: 16
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_journal_year:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_last_name:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_legal_name:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        4d16c4e3-ff55-4f06-b0ec-a2ee57903118:
+          entity_type: futureverse_application
+          bundle: student
+          dependee: field_legal_name_boolean
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: show
+            effect_options: {  }
+            selector: ''
+  field_legal_name_boolean:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_once_link_enabled:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_phone:
+    type: telephone_default
+    weight: 13
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_please_tell_us_a_bit_about:
+    type: string_textarea
+    weight: 14
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_poem_stub:
+    type: paragraphs
+    weight: 19
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: button
+      form_display_mode: default
+      default_paragraph_type: poem
+      features:
+        add_above: '0'
+        collapse_edit_all: '0'
+        convert: '0'
+        duplicate: '0'
+    third_party_settings: {  }
+  field_school:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_teacher_name:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_tell_us_about_your_writing:
+    type: string_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_what_are_some_issues_you_c:
+    type: string_textarea
+    weight: 15
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 18
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  label: true
+  uid: true

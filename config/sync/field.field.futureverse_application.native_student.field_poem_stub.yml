@@ -1,0 +1,88 @@
+uuid: 423729df-9b56-471e-88a9-96fbf1764a7e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_poem_stub
+    - paragraphs.paragraphs_type.poem
+    - piv_futureverse.futureverse_application_type.native_student
+  module:
+    - entity_reference_revisions
+id: futureverse_application.native_student.field_poem_stub
+field_name: field_poem_stub
+entity_type: futureverse_application
+bundle: native_student
+label: Poems
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      poem: poem
+    negate: 0
+    target_bundles_drag_drop:
+      action_item:
+        weight: 22
+        enabled: false
+      communication_log:
+        weight: 23
+        enabled: false
+      competition_stream:
+        weight: 24
+        enabled: false
+      embedded_journal_poem:
+        weight: 21
+        enabled: false
+      judges:
+        weight: 25
+        enabled: false
+      lead_teacher_has_yet_to_si:
+        weight: 26
+        enabled: false
+      micro_interview:
+        weight: 27
+        enabled: false
+      poem:
+        weight: 28
+        enabled: true
+      poet_laureate:
+        weight: 29
+        enabled: false
+      poet_questionnaire:
+        weight: 30
+        enabled: false
+      publications:
+        weight: 31
+        enabled: false
+      score_template_criteria:
+        weight: 32
+        enabled: false
+      start_here_page_links_and_replac:
+        weight: 33
+        enabled: false
+      teacher_leads_tracking:
+        weight: 34
+        enabled: false
+      teacher_questionnaire:
+        weight: 35
+        enabled: false
+      teacher_tracking:
+        weight: 36
+        enabled: false
+      this_teacher_signed_up_for:
+        weight: 37
+        enabled: false
+      tr_student:
+        weight: 38
+        enabled: false
+      types_of_support_requested:
+        weight: 39
+        enabled: false
+      visit_date_and_times:
+        weight: 40
+        enabled: false
+field_type: entity_reference_revisions

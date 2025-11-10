@@ -1,0 +1,21 @@
+uuid: 505b3a50-c15c-4b55-b92b-87d7b20acb36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_phone
+    - piv_futureverse.futureverse_application_type.native_student
+  module:
+    - telephone
+id: futureverse_application.native_student.field_phone
+field_name: field_phone
+entity_type: futureverse_application
+bundle: native_student
+label: 'Best phone number to reach you'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

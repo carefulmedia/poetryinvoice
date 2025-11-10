@@ -13,21 +13,14 @@ use Drupal\Core\Site\Settings;
 /**
  * Bio Enrichment service.
  */
-final class BioEnrichment {
-
-  /**
-   * Key Value store.
-   *
-   * @var \Drupal\Core\KeyValueStore\KeyValueExpirableFactoryInterface
-   */
-  protected $keyValueStore;
+final class BioEnrichmentOnceUrlGenerator extends OnceUrlGenerator {
 
   /**
    * Constructs a BioEnrichment object.
    */
   public function __construct(
-    private readonly KeyValueExpirableFactoryInterface $keyValue,
-    private readonly EntityTypeManagerInterface $entityTypeManager,
+    protected readonly KeyValueExpirableFactoryInterface $keyValue,
+    protected readonly EntityTypeManagerInterface $entityTypeManager,
   ) {
     $this->keyValueStore = $keyValue->get('piv_futureverse_bio_urls');
   }
@@ -114,41 +107,6 @@ final class BioEnrichment {
       'language' => $journal_poem->language(),
       'absolute' => TRUE,
     ]);
-  }
-
-  /**
-   * Load related entities given the journal poem id.
-   *
-   * This return an array with the Journal Poem, Journal Month and the
-   * Journal Year.
-   */
-  public function entitiesFromJournalPoemId($journal_poem_id): array {
-    $journal_poem = $this->entityTypeManager
-      ->getStorage('node')
-      ->load($journal_poem_id);
-
-    if (!$journal_poem) {
-      return [NULL, NULL, NULL];
-    }
-
-    $journal_month = JournalHelper::getJournalMonthFromPoem($journal_poem);
-    if (!$journal_month) {
-      return [$journal_poem, NULL, NULL];
-    }
-
-    $journal_year = JournalHelper::getJournalYearFromJournalMonth($journal_month);
-    if (!$journal_year) {
-      return [$journal_poem, $journal_month, NULL];
-    }
-
-    return [$journal_poem, $journal_month, $journal_year];
-  }
-
-  /**
-   * Return data given hash.
-   */
-  public function dataFromHash($hash) {
-    return $this->keyValueStore->get($hash);
   }
 
 }

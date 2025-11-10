@@ -1,4 +1,10 @@
 services:
   piv_futureverse.bio_enrichment:
-    class: Drupal\piv_futureverse\BioEnrichment
+    class: Drupal\piv_futureverse\BioEnrichmentOnceUrlGenerator
+    arguments: ['@keyvalue.expirable', '@entity_type.manager']
+
+  # Similar to the bio enrichment but for futureverse applications, it
+  # is done separate because of the particularities for native students.
+  piv_futureverse.futureverse_once_url_generator:
+    class: Drupal\piv_futureverse\FutureverseOnceUrlGenerator
     arguments: ['@keyvalue.expirable', '@entity_type.manager']

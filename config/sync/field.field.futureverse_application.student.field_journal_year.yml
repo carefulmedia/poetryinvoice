@@ -1,0 +1,26 @@
+uuid: c7068738-d8d7-446d-b1ac-3e6f7c8ed936
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_journal_year
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_journal_year
+field_name: field_journal_year
+entity_type: futureverse_application
+bundle: student
+label: 'Journal Year'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:journal_year'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference
