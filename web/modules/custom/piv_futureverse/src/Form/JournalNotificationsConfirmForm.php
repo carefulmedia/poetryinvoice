@@ -70,6 +70,9 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
     elseif (str_starts_with($op, 'futureverse_invitations:')) {
       return $this->t('Are you sure you want to send the <em>futureverse invitations</em> notifications?');
     }
+    elseif (str_starts_with($op, 'futureverse_shortlisted:')) {
+      return $this->t('Are you sure you want to send the <em>futureverse shortlisted</em> notifications?');
+    }
 
     return $this->t('Invalid operation.');
   }
@@ -98,6 +101,7 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
     $this->messenger()->addStatus($this->t('Done!'));
 
     $op = $this->op;
+    $operations = [];
     if (str_starts_with($op, 'monthly_prize_winner:') || str_starts_with($op, 'monthly_prize_losers:')) {
       // Data holds an array of poem ids.
       $key = NULL;
@@ -126,7 +130,6 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
       }
 
       // Create a batch operation to send the emails.
-      $operations = [];
       foreach ($poems_to_send as $poem_to_send) {
         $data = [
           'poem_id' => $poem_to_send,
@@ -137,12 +140,6 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
           [$op, $data],
         ];
       }
-      $batch = [
-        'operations' => $operations,
-        'finished' => [static::class, 'finishBatch'],
-        'title' => 'Sending emails...',
-      ];
-      batch_set($batch);
     }
     elseif (str_starts_with($op, 'accepted_to_voices:') || str_starts_with($op, 'not_accepted_to_voices:')) {
       $journal_year = JournalHelper::getJournalYearFromJournalMonth($journal_month);
@@ -179,7 +176,6 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
       }
 
       // Create a batch operation to send the emails.
-      $operations = [];
       foreach ($to_send as $email) {
         $poem = reset($poems[$email]);
         $data = [
@@ -191,12 +187,6 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
           [$op, $data],
         ];
       }
-      $batch = [
-        'operations' => $operations,
-        'finished' => [static::class, 'finishBatch'],
-        'title' => 'Sending emails...',
-      ];
-      batch_set($batch);
     }
     elseif (str_starts_with($op, 'futureverse_invitations:')) {
       $journal_year = JournalHelper::getJournalYearFromJournalMonth($journal_month);
@@ -222,7 +212,6 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
       }
 
       // Create a batch operation to send the emails.
-      $operations = [];
       foreach ($to_send as $email) {
         $poem = reset($poems[$email]);
         $data = [
@@ -234,13 +223,48 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
           [$op, $data],
         ];
       }
-      $batch = [
-        'operations' => $operations,
-        'finished' => [static::class, 'finishBatch'],
-        'title' => 'Sending emails...',
-      ];
-      batch_set($batch);
     }
+    // Futureverse shortlisted.
+    elseif (str_starts_with($op, 'futureverse_shortlisted:')) {
+      $journal_year = JournalHelper::getJournalYearFromJournalMonth($journal_month);
+      if (!$journal_year) {
+        return;
+      }
+
+      $key = 'futureverse_shortlisted_' . $journal_year->id();
+      $value = $key_value->get($key, ['emails' => []]);
+
+      // If operation is send, just send to everyone. If operation is
+      // update, then only send to whoever didn't receive it yet.
+      $poems = JournalHelper::getFutureverseShortlistedPoemsGroupedByEmail($journal_year);
+
+      $to_send = array_keys($poems);
+      if (str_ends_with($op, ':update')) {
+        // List of emails.
+        $already_sent = $value['emails'] ?? [];
+        $to_send = array_diff($to_send, $already_sent);
+      }
+
+      // Create a batch operation to send the emails.
+      foreach ($to_send as $email) {
+        $poem = reset($poems[$email]);
+        $data = [
+          'poem_id' => $poem->id(),
+          'journal_year_id' => $journal_year->id(),
+        ];
+        $operations[] = [
+          [static::class, 'sendNotification'],
+          [$op, $data],
+        ];
+      }
+    }
+
+    $batch = [
+      'operations' => $operations,
+      'finished' => [static::class, 'finishBatch'],
+      'title' => 'Sending emails...',
+    ];
+    batch_set($batch);
   }
 
   /**
@@ -329,6 +353,28 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
         ->addSource('user', $poem->getOwner());
 
       $results = piv_mail_send_mail('journal_poem_futureverse_invitation', $poem->langcode->value, $replacements_service);
+
+      if ($results !== FALSE) {
+        $value['emails'][] = $poem->field_email1->value;
+        $context['results'][$data['poem_id']] = $data['poem_id'];
+        $key_value->set($key, array_unique($value));
+      }
+    }
+    elseif (str_starts_with($op, 'futureverse_shortlisted:')) {
+      $key = 'futureverse_shortlisted_' . $data['journal_year_id'];
+      $value = $key_value->get($key, ['emails' => []]);
+
+      $poem = \Drupal::entityTypeManager()->getStorage('node')->load($data['poem_id']);
+      if (!$poem) {
+        return;
+      }
+
+      $replacements_service = \Drupal::service('piv_mail.replacements_service');
+      $replacements_service
+        ->addSource('journal_poem', $poem)
+        ->addSource('user', $poem->getOwner());
+
+      $results = piv_mail_send_mail('journal_poem_futureverse_shortlisted', $poem->langcode->value, $replacements_service);
 
       if ($results !== FALSE) {
         $value['emails'][] = $poem->field_email1->value;

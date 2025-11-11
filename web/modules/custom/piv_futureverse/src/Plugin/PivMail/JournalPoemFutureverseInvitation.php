@@ -10,7 +10,7 @@ use Drupal\piv_mail\PivMailPluginBase;
  * @PivMail(
  *   id = "journal_poem_futureverse_invitation",
  *   label = @Translation("Journal Poem: Futureverse invitation"),
- *   description = @Translation("Send an email all poems in a year with acceptance level of Yes or Monthly prize winner."),
+ *   description = @Translation("Send an email to all poems in a year with acceptance level of Yes or Monthly prize winner."),
  *   sources = {"user", "journal_poem"}
  * )
  */

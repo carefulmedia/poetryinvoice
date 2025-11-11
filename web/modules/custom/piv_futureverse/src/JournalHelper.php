@@ -54,6 +54,22 @@ class JournalHelper {
   }
 
   /**
+   * Return the shortlisted for futureverse poems.
+   */
+  public static function getFutureverseShortlistedPoemsGroupedByEmail(JournalYearInterface $journal_year) {
+    $poems = [];
+    foreach ($journal_year->field_journal_months->referencedEntities() as $journal_month) {
+      foreach ($journal_month->field_journal_poems->referencedEntities() as $poem) {
+        if (!empty($poem->field_shortlisted_for_futurevers->value)) {
+          $email = $poem->field_email1->value;
+          $poems[$email][] = $poem;
+        }
+      }
+    }
+    return $poems;
+  }
+
+  /**
    * Get the monthly prize winner.
    */
   public static function getMonthlyPrizeWinner(JournalMonthInterface $journal_month) : array {
