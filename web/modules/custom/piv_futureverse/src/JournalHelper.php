@@ -155,4 +155,25 @@ class JournalHelper {
     return $journal_years ? end($journal_years) : NULL;
   }
 
+  /**
+   * Return a poet bio given a journal poem node.
+   */
+  public static function getPoetBioByPoem(NodeInterface $node) {
+    $entity_type_manager = \Drupal::entityTypeManager();
+    $langcode = $node->langcode->value;
+    $journal_year = $entity_type_manager->getStorage('journal_year')
+      ->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('field_journal_months.entity.field_journal_poems.target_id', $node->id())
+      ->execute();
+    if (!$journal_year) {
+      return NULL;
+    }
+    $poet_bio = $entity_type_manager->getStorage('poet_bio')->loadByProperties([
+      'field_journal_year' => $journal_year,
+      'field_language' => $langcode,
+    ]);
+    return $poet_bio ? reset($poet_bio) : NULL;
+  }
+
 }

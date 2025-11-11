@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Drupal\piv_futureverse\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\piv_futureverse\BioEnrichment;
+use Drupal\piv_futureverse\BioEnrichmentOnceUrlGenerator;
 use Drupal\Core\Access\AccessResult;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Url;
@@ -19,7 +19,7 @@ final class PoetBioEnrichmentController extends ControllerBase {
    * Constructs a PoetBioEnrichmentController object.
    */
   public function __construct(
-    protected BioEnrichment $bioEnrichment,
+    protected BioEnrichmentOnceUrlGenerator $bioEnrichment,
   ) {}
 
   /**
@@ -76,7 +76,7 @@ final class PoetBioEnrichmentController extends ControllerBase {
       'field_language' => $journal_poem->langcode->value,
       'field_journal_year' => $journal_year->id(),
       'field_grade' => $journal_poem->field_grade->value,
-      'field_profile_picture' => $journal_poem->field_student_photo->target_id,
+      'field_profile_picture' => $journal_poem->field_student_photo->getValue(),
       'field_school' => $journal_poem->field_school_journal->target_id,
       'field_interac_e_transfer_info' => $journal_poem->field_interac_email_or_phone_num->value,
       'field_address' => $address,

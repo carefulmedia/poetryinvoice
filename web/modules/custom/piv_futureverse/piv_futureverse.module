@@ -14,6 +14,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\views\ViewExecutable;
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
@@ -589,6 +590,29 @@ function piv_futureverse_futureverse_application_presave(EntityInterface $entity
       $journal_poem->save();
       $paragraph->field_poem_node = $journal_poem->id();
       $paragraph->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function piv_futureverse_views_pre_render(ViewExecutable $view) {
+  if (($view->id() == 'journal_poem_sidebar' && $view->current_display == 'block_1')
+  || ($view->id() == 'monthly_student_poem_winners' && $view->current_display == 'block_1')
+  || ($view->id() == 'futureverse_shortlist_and_longlist' && $view->current_display == 'block_4')
+  || ($view->id() == 'futureverse_shortlist_and_longlist' && $view->current_display == 'block_5')) {
+    foreach ($view->result as $row) {
+      $entity = &$row->_entity ?? NULL;
+      if (is_a($entity, 'Drupal\node\Entity\Node')) {
+        // Replace views values with poet bio values when possible.
+        $poet_bio = JournalHelper::getPoetBioByPoem($entity);
+        if ($poet_bio) {
+          $entity->field_student_photo = $poet_bio->field_profile_picture->getValue();
+          $entity->field_grade = $poet_bio->field_grade->getValue();
+          $entity->field_school_journal = $poet_bio->field_school->getValue();
+        }
+      }
     }
   }
 }
