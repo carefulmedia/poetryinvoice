@@ -45,3 +45,28 @@ entity.futureverse_application.collection:
   description: 'List of futureverse applications.'
   route_name: entity.futureverse_application.collection
   parent: system.admin_content
+
+# Links for the Voices/Voix submenu, some are duplicated.  
+piv_futureverse.journal_year.collection:
+  title: 'Journal Years'
+  route_name: entity.journal_year.collection
+  parent: views_view:views.voices_voix.page_1
+  weight: 100
+
+piv_futureverse.journal_poems:
+  title: 'Journal Poems'
+  route_name: piv_futureverse.journal_poems
+  parent: views_view:views.voices_voix.page_1
+  weight: 101
+  
+piv_futureverse.poet_bio.collection:
+  title: 'Poet Bios'
+  route_name: entity.poet_bio.collection
+  parent: views_view:views.voices_voix.page_1
+  weight: 102
+
+piv_futureverse.futureverse_application.collection:
+  title: 'Futureverse Applications'
+  route_name: entity.futureverse_application.collection
+  parent: views_view:views.voices_voix.page_1
+  weight: 103
