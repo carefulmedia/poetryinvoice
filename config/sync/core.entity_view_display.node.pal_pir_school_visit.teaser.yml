@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.pal_pir_school_visit.field_date_and_start_time
     - field.field.node.pal_pir_school_visit.field_do_you_have_any_poet_prefe
     - field.field.node.pal_pir_school_visit.field_funding_source
+    - field.field.node.pal_pir_school_visit.field_grades
     - field.field.node.pal_pir_school_visit.field_heritage_canada_follow_up_
     - field.field.node.pal_pir_school_visit.field_heritage_canada_question
     - field.field.node.pal_pir_school_visit.field_hold
@@ -62,6 +63,7 @@ hidden:
   field_date_and_start_time: true
   field_do_you_have_any_poet_prefe: true
   field_funding_source: true
+  field_grades: true
   field_heritage_canada_follow_up_: true
   field_heritage_canada_question: true
   field_hold: true

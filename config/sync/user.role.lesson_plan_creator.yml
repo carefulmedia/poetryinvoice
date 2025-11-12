@@ -25,6 +25,7 @@ permissions:
   - 'create field_variations_for_younger_stu'
   - 'create field_video_poem'
   - 'delete own files'
+  - 'edit field_grades'
   - 'edit own body'
   - 'edit own field_about_me'
   - 'edit own field_activity_description_steps'
