@@ -41,3 +41,9 @@ entity.futureverse_application_type.collection:
   title: 'List'
   route_name: entity.futureverse_application_type.collection
   base_route: entity.futureverse_application_type.collection
+
+user.my_poems:
+  route_name: piv_futureverse.my_poems
+  title: 'My Poems'
+  base_route: entity.user.canonical
+  weight: 20

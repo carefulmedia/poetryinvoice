@@ -49,3 +49,15 @@ piv_futureverse.futureverse_application:
     _title: 'Futureverse Application'
   requirements:
     _custom_access: '\Drupal\piv_futureverse\Controller\FutureverseApplicationController::access'
+
+piv_futureverse.my_poems:
+  path: '/user/{user}/my-poems'
+  defaults:
+    _controller: '\Drupal\piv_futureverse\Controller\MyPoemsController'
+    _title: 'My Poems'
+  requirements:
+    _custom_access: '\Drupal\piv_futureverse\Controller\MyPoemsController::access'
+  options:
+    parameters:
+      user:
+        type: entity:user
