@@ -2,3 +2,10 @@ admin:
   css:
     component:
       css/admin.css: {}
+
+journal_filter:
+  css:
+    component:
+      css/admin.css: {}
+  js:
+    js/journal-filter.js: {}

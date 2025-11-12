@@ -61,3 +61,11 @@ piv_futureverse.my_poems:
     parameters:
       user:
         type: entity:user
+
+piv_futureverse.journal_poems:
+  path: 'admin/voices-voix/journal-poems'
+  defaults:
+    _controller: '\Drupal\piv_futureverse\Controller\JournalPoemsController'
+    _title: 'Journal Poems'
+  requirements:
+    _permission: 'manage journal year'
