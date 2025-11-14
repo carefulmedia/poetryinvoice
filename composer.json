@@ -98,7 +98,7 @@
         "drupal/jquery_ui": "^1.4",
         "drupal/jsonapi_views": "^1.0",
         "drupal/layout_builder_restrictions": "^2.13",
-        "drupal/linkit": "^6.0@beta",
+        "drupal/linkit": "^7.0",
         "drupal/mail_login": "^4.2",
         "drupal/mailsystem": "^4.3",
         "drupal/masonry": "^4.1",
