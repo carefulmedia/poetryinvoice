@@ -1,9 +1,17 @@
-@northernco/ckeditor5-anchor-drupal
+CKEditor5 Anchor Drupal
 ===================================
 
 This package implements the anchor feature for CKEditor 5. It allows inserting anchor elements (ID field) into the edited content and offers the UI to create and edit them.
 
-This is a Drupal-adapted fork of [the original plugin by bvedad](https://github.com/bvedad/ckeditor5-anchor). 
+This is a Drupal-adapted fork of [the original plugin by Northern Commerce](https://github.com/northernco/ckeditor5-anchor-drupal).
+
+Packaged to be used with composer directly in Drupal, and maintained and supported for the [CKEditor Anchor Link](https://www.drupal.org/project/anchor_link) module. 
+
+
+## Install with Composer
+```
+composer require vardot/ckeditor5-anchor-drupal:~2.0
+```
 
 ## Table of contents
 
@@ -165,6 +173,7 @@ npm run translations:upload -- --transifex [API URL]
 
 ## License
 
+The `vardot/ckeditor5-anchor-drupal` package is available under [MIT license](https://opensource.org/licenses/MIT).
 The `@northernco/ckeditor5-anchor-drupal` package is available under [MIT license](https://opensource.org/licenses/MIT).
 
 However, it is the default license of packages created by the [ckeditor5-package-generator](https://www.npmjs.com/package/ckeditor5-package-generator) package and it can be changed.
