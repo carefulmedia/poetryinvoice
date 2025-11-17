@@ -90,6 +90,59 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
   }
 
   /**
+   * Generate operations for the reminders.
+   *
+   * This is in a separate task so it can be used by cron operations.
+   */
+  public static function getReminderOperations($op, $journal_year) {
+    $operations = [];
+
+    // Helper function to set the operations.
+    $set_operations = function ($poem_id, $journal_year) use ($op, &$operations) {
+      $data = [
+        'poem_id' => $poem_id,
+        'journal_year_id' => $journal_year,
+      ];
+      $operations[] = [
+        [static::class, 'sendNotification'],
+        [$op, $data],
+      ];
+    };
+
+    if ($op == 'monthly_prize_winner:reminder' || $op == 'accepted_to_voices:reminder') {
+      $criteria = $op == 'monthly_prize_winner:reminder' ? 'Monthly prize winner' : 'Accepted';
+      $poems_by_email = JournalHelper::getPoemsByAcceptanceGroupedByEmailWithoutPoetBio($journal_year, $criteria);
+      foreach ($poems_by_email as $poems_by_language) {
+        foreach ($poems_by_language as $poems) {
+          $poem = reset($poems);
+          $set_operations($poem->id(), $journal_year->id());
+        }
+      }
+    }
+    elseif ($op == 'futureverse_invitations:reminder') {
+      $poems = JournalHelper::getPoemsByAcceptanceGroupedByEmailWithoutFutureverseApplication($journal_year, [
+        'Yes',
+        'Monthly prize winner',
+      ]);
+      // Create a batch operation to send the emails.
+      foreach ($poems as $poem) {
+        $poem = reset($poem);
+        $set_operations($poem->id(), $journal_year->id());
+      }
+    }
+    elseif ($op == 'futureverse_shortlisted:reminder') {
+      // TRUE as the last parameter is to get shortlisted only.
+      $poems = JournalHelper::getFutureverseShortlistedPoemsGroupedByEmailWithoutPoetBio($journal_year);
+      // Create a batch operation to send the emails.
+      foreach ($poems as $poem) {
+        $poem = reset($poem);
+        $set_operations($poem->id(), $journal_year->id());
+      }
+    }
+    return $operations;
+  }
+
+  /**
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
@@ -102,7 +155,15 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
 
     $op = $this->op;
     $operations = [];
-    if (str_starts_with($op, 'monthly_prize_winner:') || str_starts_with($op, 'monthly_prize_losers:')) {
+
+    if (str_ends_with($op, ':reminder')) {
+      $journal_year = JournalHelper::getJournalYearFromJournalMonth($journal_month);
+      if (!$journal_year) {
+        return;
+      }
+      $operations = self::getReminderOperations($op, $journal_year);
+    }
+    elseif (str_starts_with($op, 'monthly_prize_winner:') || str_starts_with($op, 'monthly_prize_losers:')) {
       // Data holds an array of poem ids.
       $key = NULL;
       if (str_starts_with($op, 'monthly_prize_winner:')) {
@@ -272,7 +333,38 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
    */
   public static function sendNotification($op, $data, &$context): void {
     $key_value = \Drupal::keyValue('journal_notifications');
-    if (str_starts_with($op, 'monthly_prize_winner:') || str_starts_with($op, 'monthly_prize_losers:')) {
+    if (str_ends_with($op, ':reminder')) {
+      $key = implode('_', [$op, $data['journal_year_id']]);
+      $poem = \Drupal::entityTypeManager()
+        ->getStorage('node')
+        ->load($data['poem_id']);
+      if (!$poem) {
+        return;
+      }
+
+      $replacements_service = \Drupal::service('piv_mail.replacements_service');
+      $replacements_service
+        ->addSource('journal_poem', $poem)
+        ->addSource('user', $poem->getOwner());
+
+      $map = [
+        'monthly_prize_winner:reminder' => 'journal_poem_monthly_prize_winner',
+        'accepted_to_voices:reminder' => 'journal_poem_accepted_voices_anthology',
+        'futureverse_invitations:reminder' => 'journal_poem_futureverse_invitation',
+        'futureverse_shortlisted:reminder' => 'journal_poem_futureverse_shortlisted',
+      ];
+      if (array_key_exists($op, $map)) {
+        $results = piv_mail_send_mail($map[$op], $poem->langcode->value, $replacements_service, NULL, FALSE, FALSE, TRUE);
+        if ($results !== FALSE) {
+          $context['results'][$data['poem_id']] = $data['poem_id'];
+          $request_time = \Drupal::time()->getCurrentTime();
+          // For reminders we only care about saving the last time
+          // emails were sent.
+          $key_value->set($key, $request_time);
+        }
+      }
+    }
+    elseif (str_starts_with($op, 'monthly_prize_winner:') || str_starts_with($op, 'monthly_prize_losers:')) {
       $key = NULL;
       if (str_starts_with($op, 'monthly_prize_winner:')) {
         $key = 'monthly_prize_winner_' . $data['journal_month_id'];
@@ -301,8 +393,15 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
       }
       if ($results !== FALSE) {
         $value['poems'][] = $data['poem_id'];
+        $value['poems'] = array_unique($value['poems']);
         $context['results'][$data['poem_id']] = $data['poem_id'];
-        $key_value->set($key, array_unique($value));
+        $key_value->set($key, $value);
+
+        // Set time for reminders.
+        if (str_starts_with($op, 'monthly_prize_winner:')) {
+          $request_time = \Drupal::time()->getCurrentTime();
+          $key_value->set('monthly_prize_winner:reminder_' . $data['journal_month_id'], $request_time);
+        }
       }
     }
     elseif (str_starts_with($op, 'accepted_to_voices:') || str_starts_with($op, 'not_accepted_to_voices:')) {
@@ -334,8 +433,15 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
 
       if ($results !== FALSE) {
         $value['emails'][] = $poem->field_email1->value;
+        $value['emails'] = array_unique($value['emails']);
         $context['results'][$data['poem_id']] = $data['poem_id'];
-        $key_value->set($key, array_unique($value));
+        $key_value->set($key, $value);
+
+        if (str_starts_with($op, 'accepted_to_voices:')) {
+          // Set time for reminders.
+          $request_time = \Drupal::time()->getCurrentTime();
+          $key_value->set('accepted_to_voices:reminder_' . $data['journal_year_id'], $request_time);
+        }
       }
     }
     elseif (str_starts_with($op, 'futureverse_invitations:')) {
@@ -356,8 +462,13 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
 
       if ($results !== FALSE) {
         $value['emails'][] = $poem->field_email1->value;
+        $value['emails'] = array_unique($value['emails']);
         $context['results'][$data['poem_id']] = $data['poem_id'];
-        $key_value->set($key, array_unique($value));
+        $key_value->set($key, $value);
+
+        // Set time for reminders.
+        $request_time = \Drupal::time()->getCurrentTime();
+        $key_value->set('futureverse_invitations:reminder_' . $data['journal_year_id'], $request_time);
       }
     }
     elseif (str_starts_with($op, 'futureverse_shortlisted:')) {
@@ -378,8 +489,12 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
 
       if ($results !== FALSE) {
         $value['emails'][] = $poem->field_email1->value;
+        $value['emails'] = array_unique($value['emails']);
         $context['results'][$data['poem_id']] = $data['poem_id'];
-        $key_value->set($key, array_unique($value));
+        $key_value->set($key, $value);
+        // Set time for reminders.
+        $request_time = \Drupal::time()->getCurrentTime();
+        $key_value->set('futureverse_shortlisted:reminder_' . $data['journal_year_id'], $request_time);
       }
     }
   }

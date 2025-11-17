@@ -3,8 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.journal_year.journal_year.field_futureverse_shortlist_date
     - field.field.journal_year.journal_year.field_journal_months
   module:
+    - datetime
     - field_layout
     - inline_entity_form
     - layout_discovery
@@ -19,9 +21,15 @@ targetEntityType: journal_year
 bundle: journal_year
 mode: default
 content:
+  field_futureverse_shortlist_date:
+    type: datetime_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_journal_months:
     type: inline_entity_form_complex
-    weight: 1
+    weight: 2
     region: content
     settings:
       form_mode: default
@@ -47,14 +55,14 @@ content:
     third_party_settings: {  }
   langcode:
     type: language_select
-    weight: 3
+    weight: 4
     region: content
     settings:
       include_locked: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 2
+    weight: 3
     region: content
     settings:
       display_label: false

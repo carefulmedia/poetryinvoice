@@ -54,6 +54,104 @@ class JournalHelper {
   }
 
   /**
+   * Get poems grouped by email given acceptance.
+   */
+  public static function getPoemsByAcceptanceGroupedByEmailWithoutPoetBio(JournalYearInterface $journal_year, $acceptance_level) : array {
+    if (is_scalar($acceptance_level)) {
+      $acceptance_level = [$acceptance_level];
+    }
+
+    $poems = [];
+    foreach ($journal_year->field_journal_months->referencedEntities() as $journal_month) {
+      foreach ($journal_month->field_journal_poems->referencedEntities() as $poem) {
+        if (!in_array($poem->field_acceptance_level->value, $acceptance_level)) {
+          continue;
+        }
+        // Check if there is a poet bio.
+        $langcode = $poem->langcode->value;
+        if (self::hasPoetBio($journal_year, $poem)) {
+          continue;
+        }
+        $email = $poem->field_email1->value;
+        $poems[$email][$langcode][] = $poem;
+      }
+    }
+    return $poems;
+  }
+
+  /**
+   * Check if there is a futureverse application for poem for year.
+   */
+  public static function hasFutureverseApplication($journal_year, $poem) {
+    // Check if there is a futureverse_application.
+    $futureverse_application_storage = \Drupal::entityTypeManager()->getStorage('futureverse_application');
+    $futureverse_applications = $futureverse_application_storage->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('field_journal_year', $journal_year->id())
+      ->condition('uid', $poem->uid->target_id)
+      ->condition('bundle', 'student')
+      ->execute();
+    return count($futureverse_applications) > 0;
+  }
+
+  /**
+   * Check if there is a poet bio for poem for year.
+   */
+  public static function hasPoetBio($journal_year, $poem) {
+    $poet_bio_storage = \Drupal::entityTypeManager()
+      ->getStorage('poet_bio');
+    // Check if there is a poet bio.
+    $langcode = $poem->langcode->value;
+    $poet_bios = $poet_bio_storage->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('field_journal_year', $journal_year->id())
+      ->condition('field_language', $langcode)
+      ->condition('uid', $poem->uid->target_id)
+      ->execute();
+    return count($poet_bios) > 0;
+  }
+
+  /**
+   * Get poems grouped by email given acceptance.
+   */
+  public static function getPoemsByAcceptanceGroupedByEmailWithoutFutureverseApplication(JournalYearInterface $journal_year, $acceptance_level) : array {
+    if (is_scalar($acceptance_level)) {
+      $acceptance_level = [$acceptance_level];
+    }
+
+    $poems = [];
+    foreach ($journal_year->field_journal_months->referencedEntities() as $journal_month) {
+      foreach ($journal_month->field_journal_poems->referencedEntities() as $poem) {
+        if (!in_array($poem->field_acceptance_level->value, $acceptance_level)) {
+          continue;
+        }
+        if (!self::hasFutureverseApplication($journal_year, $poem)) {
+          $email = $poem->field_email1->value;
+          $poems[$email][] = $poem;
+        }
+      }
+    }
+    return $poems;
+  }
+
+  /**
+   * Return the shortlisted for futureverse poems.
+   */
+  public static function getFutureverseShortlistedPoemsGroupedByEmailWithoutPoetBio(JournalYearInterface $journal_year) {
+    $poems = [];
+    foreach ($journal_year->field_journal_months->referencedEntities() as $journal_month) {
+      foreach ($journal_month->field_journal_poems->referencedEntities() as $poem) {
+        if (!empty($poem->field_shortlisted_for_futurevers->value)) {
+
+          $email = $poem->field_email1->value;
+          $poems[$email][] = $poem;
+        }
+      }
+    }
+    return $poems;
+  }
+
+  /**
    * Return the shortlisted for futureverse poems.
    */
   public static function getFutureverseShortlistedPoemsGroupedByEmail(JournalYearInterface $journal_year) {

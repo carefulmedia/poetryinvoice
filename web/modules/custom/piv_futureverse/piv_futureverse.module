@@ -67,17 +67,32 @@ function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInt
       'class' => ['button'],
     ],
   ];
-  if (count($already_sent) && count($to_send)) {
-    // Update only send the ones that are missing if there are any.
-    $entity_form['field_journal_months']['notifications']['accepted']['update_notifications'] = [
+  if (count($already_sent)) {
+    if (count($to_send)) {
+      // Update only send the ones that are missing if there are any.
+      $form['field_journal_months']['notifications']['accepted']['update_notifications'] = [
+        '#type' => 'link',
+        '#title' => t('Update accepted to voices/voix notifications'),
+        '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+          'op' => 'accepted_to_voices:update',
+          'journal_month' => $first_journal_month_id,
+        ]),
+        '#attributes' => [
+          'class' => ['button'],
+        ],
+      ];
+    }
+    // Reminder sent to anyone without a poet_bio or
+    // futureverse_application.
+    $form['field_journal_months']['notifications']['accepted']['reminder_notifications'] = [
       '#type' => 'link',
-      '#title' => t('Update accepted to voices/voix notifications'),
+      '#title' => t('Reminder to create poet bio for "accepted to voices/voix"'),
       '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
-        'op' => 'accepted_to_voices:update',
+        'op' => 'accepted_to_voices:reminder',
         'journal_month' => $first_journal_month_id,
       ]),
       '#attributes' => [
-        'class' => ['button'],
+        'class' => ['button', 'action-link--icon-trash', 'action-link--danger'],
       ],
     ];
   }
@@ -107,7 +122,7 @@ function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInt
   ];
   if (count($already_sent) && count($to_send)) {
     // Update only send the ones that are missing if there are any.
-    $entity_form['field_journal_months']['notifications']['notaccepted']['update_notifications'] = [
+    $form['field_journal_months']['notifications']['notaccepted']['update_notifications'] = [
       '#type' => 'link',
       '#title' => t('Update not accepted to voices/voix notifications'),
       '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
@@ -143,17 +158,30 @@ function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInt
       'class' => ['button'],
     ],
   ];
-  if (count($already_sent) && count($to_send)) {
-    // Update only send the ones that are missing if there are any.
-    $entity_form['field_journal_months']['notifications']['futureverse']['update_notifications'] = [
+  if (count($already_sent)) {
+    if (count($to_send)) {
+      // Update only send the ones that are missing if there are any.
+      $form['field_journal_months']['notifications']['futureverse']['update_notifications'] = [
+        '#type' => 'link',
+        '#title' => t('Update futureverse invitations'),
+        '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+          'op' => 'futureverse_invitations:update',
+          'journal_month' => $first_journal_month_id,
+        ]),
+        '#attributes' => [
+          'class' => ['button'],
+        ],
+      ];
+    }
+    $form['field_journal_months']['notifications']['futureverse']['reminder_notifications'] = [
       '#type' => 'link',
-      '#title' => t('Update futureverse invitations'),
+      '#title' => t('Reminder to create futureverse application for futureverse invitations'),
       '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
-        'op' => 'futureverse_invitations:update',
+        'op' => 'futureverse_invitations:reminder',
         'journal_month' => $first_journal_month_id,
       ]),
       '#attributes' => [
-        'class' => ['button'],
+        'class' => ['button', 'action-link--icon-trash', 'action-link--danger'],
       ],
     ];
   }
@@ -181,17 +209,30 @@ function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInt
       'class' => ['button'],
     ],
   ];
-  if (count($already_sent) && count($to_send)) {
-    // Update only send the ones that are missing if there are any.
-    $entity_form['field_journal_months']['notifications']['futureverse_shortlisted']['update_notifications'] = [
+  if (count($already_sent)) {
+    if (count($to_send)) {
+      // Update only send the ones that are missing if there are any.
+      $form['field_journal_months']['notifications']['futureverse_shortlisted']['update_notifications'] = [
+        '#type' => 'link',
+        '#title' => t('Update futureverse shortlisted notification'),
+        '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+          'op' => 'futureverse_shortlisted:update',
+          'journal_month' => $first_journal_month_id,
+        ]),
+        '#attributes' => [
+          'class' => ['button'],
+        ],
+      ];
+    }
+    $form['field_journal_months']['notifications']['futureverse_shortlisted']['reminder_notifications'] = [
       '#type' => 'link',
-      '#title' => t('Update futureverse shortlisted notification'),
+      '#title' => t('Reminder to create futureverse applications for futureverse shortlisted notification'),
       '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
-        'op' => 'futureverse_shortlisted:update',
+        'op' => 'futureverse_shortlisted:reminder',
         'journal_month' => $first_journal_month_id,
       ]),
       '#attributes' => [
-        'class' => ['button'],
+        'class' => ['button', 'action-link--icon-trash', 'action-link--danger'],
       ],
     ];
   }
@@ -421,17 +462,32 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
         'class' => ['button'],
       ],
     ];
-    if (count($poems_already_sent) && count($poems_to_send)) {
-      // Update only send the ones that are missing if there are any.
-      $entity_form['monthly_prize']['winners']['update_notifications'] = [
+    if (count($poems_already_sent)) {
+      if (count($poems_to_send)) {
+        // Update only send the ones that are missing if there are any.
+        $entity_form['monthly_prize']['winners']['update_notifications'] = [
+          '#type' => 'link',
+          '#title' => t('Update monthly prize winner notification'),
+          '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+            'op' => 'monthly_prize_winner:update',
+            'journal_month' => $journal_month->id(),
+          ]),
+          '#attributes' => [
+            'class' => ['button'],
+          ],
+        ];
+      }
+
+      // Reminder sent to anyone without a poet_bio.
+      $entity_form['monthly_prize']['winners']['reminder_notifications'] = [
         '#type' => 'link',
-        '#title' => t('Update monthly prize winner notification'),
+        '#title' => t('Reminder to create poet bio for "monthly prize winners"'),
         '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
-          'op' => 'monthly_prize_winner:update',
+          'op' => 'monthly_prize_winner:reminder',
           'journal_month' => $journal_month->id(),
         ]),
         '#attributes' => [
-          'class' => ['button'],
+          'class' => ['button', 'action-link--icon-trash', 'action-link--danger'],
         ],
       ];
     }
@@ -615,4 +671,12 @@ function piv_futureverse_views_pre_render(ViewExecutable $view) {
       }
     }
   }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function piv_futureverse_cron() {
+  \Drupal::service('piv_futureverse.notification_reminders')
+    ->process();
 }

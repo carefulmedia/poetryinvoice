@@ -2,8 +2,6 @@
 
 namespace Drupal\piv_futureverse\Plugin\PivMail;
 
-use Drupal\piv_mail\PivMailPluginBase;
-
 /**
  * Plugin implementation of the piv_mail.
  *
@@ -14,4 +12,4 @@ use Drupal\piv_mail\PivMailPluginBase;
  *   sources = {"user", "journal_poem"}
  * )
  */
-class JournalPoemMonthlyPrizeWinner extends PivMailPluginBase {}
+class JournalPoemMonthlyPrizeWinner extends JournalPoemAcceptedVoicesAnthology {}

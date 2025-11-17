@@ -8,3 +8,7 @@ services:
   piv_futureverse.futureverse_once_url_generator:
     class: Drupal\piv_futureverse\FutureverseOnceUrlGenerator
     arguments: ['@keyvalue.expirable', '@entity_type.manager']
+
+  piv_futureverse.notification_reminders:
+    class: Drupal\piv_futureverse\NotificationReminders
+    arguments: ['@keyvalue', '@entity_type.manager', '@plugin.manager.piv_mail', '@datetime.time']

@@ -267,7 +267,7 @@ function piv_mail_mail($key, &$message, $params) {
  * Return TRUE if a email was sent, FALSE if fail or if the email was put in
  * the queue.
  */
-function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL, $send_date = FALSE, $queue_key = FALSE) {
+function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL, $send_date = FALSE, $queue_key = FALSE, $is_reminder = FALSE) {
   $mail_manager = \Drupal::service('plugin.manager.mail');
   $piv_mail_manager = \Drupal::service('plugin.manager.piv_mail');
   if ($piv_mail_manager->hasDefinition($key)) {
@@ -300,6 +300,10 @@ function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL
       $body = $replacements_service->replace($body);
       $subject = $configurations[$langcode]['subject'] ?? NULL;
       $subject = $replacements_service->replace($subject);
+      if ($is_reminder) {
+        $reminder = $langcode == 'en' ? 'REMINDER' : 'RAPPEL';
+        $subject = "($reminder) $subject";
+      }
       // Calculate $to.
       // In some plugins the "to_more" is hardcoded by overriding the settings
       // in the plugin constructor.

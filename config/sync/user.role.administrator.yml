@@ -11,8 +11,8 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
-  - 'create field_poem_stub'
-  - 'edit field_poem_stub'
-  - 'edit own field_poem_stub'
-  - 'view field_poem_stub'
-  - 'view own field_poem_stub'
+  - 'create field_poem_attachment'
+  - 'edit field_poem_attachment'
+  - 'edit own field_poem_attachment'
+  - 'view field_poem_attachment'
+  - 'view own field_poem_attachment'

@@ -3,8 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.journal_year.journal_year.field_futureverse_shortlist_date
     - field.field.journal_year.journal_year.field_journal_months
   module:
+    - datetime
     - piv_futureverse
     - user
 id: journal_year.journal_year.default
@@ -30,6 +32,15 @@ content:
         refresh: 60
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_futureverse_shortlist_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 22
     region: content
   field_journal_months:
     type: entity_reference_label
