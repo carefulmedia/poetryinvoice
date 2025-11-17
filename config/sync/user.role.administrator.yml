@@ -16,3 +16,8 @@ permissions:
   - 'edit own field_poem_attachment'
   - 'view field_poem_attachment'
   - 'view own field_poem_attachment'
+  - 'create field_grades'
+  - 'edit field_grades'
+  - 'edit own field_grades'
+  - 'view field_grades'
+  - 'view own field_grades'

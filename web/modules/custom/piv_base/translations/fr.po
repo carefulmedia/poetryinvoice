@@ -131,3 +131,12 @@ msgstr "Ce lien ne peut être utilisé qu’une seule fois pour mettre votre inf
 
 msgid "Click here to update your bio"
 msgstr "Cliquez ici pour mettre à jour votre bio"
+
+msgid "log in"
+msgstr "connectez-vous"
+
+msgid "<p>To view this page, <strong>{{ login }}</strong> to your teacher or <a href='/about/poet-network'>Poet Network</a> account.</p><p>Don't have an account yet? <strong><a href='/create-account'>Apply for your account today</a></strong>. It's free to join us and requires no commitment .</p>"
+msgstr "<p>Pour consulter cette page, <strong>{{ login }}</strong> à votre compte d’enseignant ou à votre compte du <a href='/propos/reseau-poetes'>Réseau de poètes</a>.</p><p>Vous n’avez pas encore de compte? <strong><a href='/creer-un-compte'>Faites une demande dès aujourd’hui</a></strong>. L’inscription est gratuite et ne vous engage à rien.</p>"
+
+msgid "Login Required"
+msgstr "Connexion requise"

@@ -1,0 +1,21 @@
+uuid: 1261bd76-d261-4ac6-9c16-16e8f36cf7e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_no_artificial_intelligence
+    - node.type.journal_poem
+id: node.journal_poem.field_no_artificial_intelligence
+field_name: field_no_artificial_intelligence
+entity_type: node
+bundle: journal_poem
+label: 'I confirm that the submitted poem was written without the help of artificial intelligence.'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

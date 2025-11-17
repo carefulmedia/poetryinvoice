@@ -76,7 +76,6 @@ permissions:
   - 'delete paragraph content this_teacher_signed_up_for'
   - 'delete paragraph content tr_student'
   - 'edit competition entry for own school'
-  - 'edit field_grades'
   - 'edit field_poem'
   - 'edit field_student_name_1'
   - 'edit own bulletin_board content'
