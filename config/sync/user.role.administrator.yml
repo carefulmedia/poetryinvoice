@@ -11,13 +11,13 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
-  - 'create field_poem_attachment'
-  - 'edit field_poem_attachment'
-  - 'edit own field_poem_attachment'
-  - 'view field_poem_attachment'
-  - 'view own field_poem_attachment'
   - 'create field_grades'
+  - 'create field_poem_attachment'
   - 'edit field_grades'
+  - 'edit field_poem_attachment'
   - 'edit own field_grades'
+  - 'edit own field_poem_attachment'
   - 'view field_grades'
+  - 'view field_poem_attachment'
   - 'view own field_grades'
+  - 'view own field_poem_attachment'
