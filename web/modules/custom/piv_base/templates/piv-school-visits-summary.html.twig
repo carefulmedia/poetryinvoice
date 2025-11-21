@@ -1,0 +1,49 @@
+{#
+/**
+ * @file
+ * Template for School Visits Summary report.
+ *
+ * Available variables:
+ * - data: Array of aggregated visit data with keys:
+ *   - language: The language label (English/French)
+ *   - province: The province name
+ *   - total_requests: Number of visit requests
+ *   - total_booked: Number of booked visits
+ * - filters: Array of applied filters
+ */
+#}
+
+{{ attach_library('piv_base/school_visits_summary') }}
+<div class="school-visits-summary">
+  {% if data is not empty %}
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>{{ 'Language'|t }}</th>
+          <th>{{ 'Location (Province)'|t }}</th>
+          <th>{{ 'Requests'|t }}</th>
+          <th>{{ 'Booked'|t }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in data %}
+          <tr>
+            <td data-label="{{ 'Language'|t }}">{{ row.language }}</td>
+            <td data-label="{{ 'Location (Province)'|t }}">{{ row.province }}</td>
+            <td data-label="{{ 'Requests'|t }}">{{ row.total_requests }}</td>
+            <td data-label="{{ 'Booked'|t }}">{{ row.total_booked }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="2">{{ 'Total'|t }}</th>
+          <th>{{ data|reduce((sum, row) => sum + row.total_requests, 0) }}</th>
+          <th>{{ data|reduce((sum, row) => sum + row.total_booked, 0) }}</th>
+        </tr>
+      </tfoot>
+    </table>
+  {% else %}
+    <p class="no-results">{{ 'No school visits found matching the selected criteria.'|t }}</p>
+  {% endif %}
+</div>
