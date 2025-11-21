@@ -1,0 +1,166 @@
+.school-visits-summary h1 {
+  margin-bottom: 2rem;
+}
+
+.school-visits-filter-form {
+  background: #f5f5f5;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.school-visits-filter-form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.school-visits-filter-form .fieldset-legend {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.date-range-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .date-range-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.school-visits-filter-form .form-item {
+  margin-bottom: 1rem;
+}
+
+.school-visits-filter-form .form-checkboxes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.school-visits-filter-form .form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.summary-table thead {
+  background: #0071b9;
+  color: white;
+}
+
+.summary-table th,
+.summary-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.summary-table th {
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.875rem;
+  letter-spacing: 0.5px;
+}
+
+.summary-table tbody tr:hover {
+  background: #f9f9f9;
+}
+
+.summary-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.summary-table tfoot {
+  background: #f5f5f5;
+  font-weight: 600;
+}
+
+.summary-table tfoot th,
+.summary-table tfoot td {
+  border-bottom: none;
+  border-top: 2px solid #0071b9;
+}
+
+.summary-table td:nth-child(3),
+.summary-table td:nth-child(4),
+.summary-table th:nth-child(3),
+.summary-table th:nth-child(4) {
+  text-align: center;
+}
+
+.no-results {
+  padding: 2rem;
+  text-align: center;
+  background: #f9f9f9;
+  border-radius: 8px;
+  color: #666;
+  font-style: italic;
+}
+
+@media (max-width: 768px) {
+  .summary-table {
+    font-size: 0.875rem;
+  }
+
+  .summary-table th,
+  .summary-table td {
+    padding: 0.75rem 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .summary-table thead {
+    display: none;
+  }
+
+  .summary-table,
+  .summary-table tbody,
+  .summary-table tr,
+  .summary-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .summary-table tr {
+    margin-bottom: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .summary-table td {
+    text-align: right;
+    padding: 0.75rem;
+    position: relative;
+    padding-left: 50%;
+  }
+
+  .summary-table td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0.75rem;
+    font-weight: 600;
+    text-align: left;
+  }
+
+  .summary-table tfoot {
+    display: none;
+  }
+}
