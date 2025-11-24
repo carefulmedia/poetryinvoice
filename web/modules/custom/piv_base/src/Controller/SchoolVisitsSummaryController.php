@@ -74,8 +74,13 @@ class SchoolVisitsSummaryController extends ControllerBase {
     // Get filter parameters from query string.
     // Use all() to get the entire query bag, then access grades as array.
     $query_params = $request->query->all();
+
+    // Default language to current site language if not specified
+    $current_language = $this->languageManager()->getCurrentLanguage()->getId();
+    $language_filter = $request->query->get('language', $current_language);
     
     $filters = [
+      'language' => $language_filter,
       'date_from' => $request->query->get('date_from'),
       'date_to' => $request->query->get('date_to'),
       'grades' => isset($query_params['grades']) && is_array($query_params['grades']) 
@@ -123,6 +128,10 @@ class SchoolVisitsSummaryController extends ControllerBase {
     // Join to get the booked status field.
     $query->leftJoin('node__field_booked_', 'fb', 'n.nid = fb.entity_id AND fb.deleted = 0');
     $query->addExpression('SUM(CASE WHEN fb.field_booked__value = 1 THEN 1 ELSE 0 END)', 'total_booked');
+
+    // Join to get the paid status field.
+    $query->leftJoin('node__field_paid_', 'fp', 'n.nid = fp.entity_id AND fp.deleted = 0');
+    $query->addExpression('SUM(CASE WHEN fp.field_paid__value = 1 THEN 1 ELSE 0 END)', 'total_paid');
     
     // Join to get the user (teacher) who created the visit.
     $query->leftJoin('users_field_data', 'u', 'n.uid = u.uid');
@@ -140,6 +149,11 @@ class SchoolVisitsSummaryController extends ControllerBase {
     // Base conditions.
     $query->condition('n.type', 'pal_pir_school_visit');
     $query->condition('n.status', 1);
+
+    // Apply language filter.
+    if (!empty($filters['language']) && $filters['language'] !== 'all') {
+      $query->condition('n.langcode', $filters['language']);
+    }
     
     // Apply date range filter.
     if (!empty($filters['date_from'])) {
@@ -179,6 +193,7 @@ class SchoolVisitsSummaryController extends ControllerBase {
         'province' => $this->formatProvince($row->province),
         'total_requests' => (int) $row->total_requests,
         'total_booked' => (int) $row->total_booked,
+        'total_paid' => (int) $row->total_paid,
       ];
     }
     

@@ -23,6 +23,7 @@
           <th>{{ 'Location (Province)'|t }}</th>
           <th>{{ 'Requests'|t }}</th>
           <th>{{ 'Booked'|t }}</th>
+          <th>{{ 'Paid'|t }}</th>
         </tr>
       </thead>
       <tbody>
@@ -32,6 +33,7 @@
             <td data-label="{{ 'Location (Province)'|t }}">{{ row.province }}</td>
             <td data-label="{{ 'Requests'|t }}">{{ row.total_requests }}</td>
             <td data-label="{{ 'Booked'|t }}">{{ row.total_booked }}</td>
+            <td data-label="{{ 'Paid'|t }}">{{ row.total_paid }}</td>
           </tr>
         {% endfor %}
       </tbody>
@@ -40,6 +42,7 @@
           <th colspan="2">{{ 'Total'|t }}</th>
           <th>{{ data|reduce((sum, row) => sum + row.total_requests, 0) }}</th>
           <th>{{ data|reduce((sum, row) => sum + row.total_booked, 0) }}</th>
+          <th>{{ data|reduce((sum, row) => sum + row.total_paid, 0) }}</th>
         </tr>
       </tfoot>
     </table>

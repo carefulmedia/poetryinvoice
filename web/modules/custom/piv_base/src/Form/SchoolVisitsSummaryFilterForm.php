@@ -71,12 +71,28 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
       ? $query_params['grades'] 
       : [];
 
+    $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+    $language_filter = $request->query->get('language', $current_language);
+
     $form['#attributes'] = ['class' => ['school-visits-filter-form']];
 
     $form['filters'] = [
       '#type' => 'fieldset',
       '#title' => $this->t('Filters'),
       '#collapsible' => FALSE,
+    ];
+
+    // Language filter
+    $form['filters']['language'] = [
+      '#type' => 'radios',
+      '#title' => $this->t('Language'),
+      '#options' => [
+        'all' => $this->t('All'),
+        'en' => $this->t('English'),
+        'fr' => $this->t('French'),
+      ],
+      '#default_value' => $language_filter,
+      '#required' => TRUE,
     ];
 
     // Date range filters.
@@ -154,9 +170,14 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
     $date_from = $form_state->getValue('date_from');
     $date_to = $form_state->getValue('date_to');
     $grades = array_filter($form_state->getValue('grades'));
+    $language = $form_state->getValue('language');
 
     // Build query parameters.
     $query_params = [];
+
+    if (!empty($language)) {
+      $query_params['language'] = $language;
+    }
 
     if (!empty($date_from)) {
       $query_params['date_from'] = $date_from;
