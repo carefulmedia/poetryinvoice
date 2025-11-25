@@ -10,6 +10,7 @@ dependencies:
     - file
     - node
     - piv_futureverse
+    - system
     - toolbar
 id: journal_editor
 label: 'Journal editor'
@@ -40,6 +41,7 @@ permissions:
   - 'edit own field_once_link_enabled'
   - 'edit own field_submission_info_confirmed'
   - 'edit own journal_poem content'
+  - 'manage journal year'
   - 'use editablefields'
   - 'view field_acceptance_level'
   - 'view field_journal_year'
@@ -49,3 +51,4 @@ permissions:
   - 'view own field_journal_year'
   - 'view own field_once_link_enabled'
   - 'view own field_submission_info_confirmed'
+  - 'view the administration theme'
