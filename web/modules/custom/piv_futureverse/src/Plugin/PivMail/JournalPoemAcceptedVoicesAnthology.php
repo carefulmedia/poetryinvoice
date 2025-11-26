@@ -30,7 +30,7 @@ class JournalPoemAcceptedVoicesAnthology extends PivMailPluginBase {
       '#type' => 'number',
       '#title' => $this->t('Reminder interval in days.'),
       '#weight' => -1,
-      '#description' => $this->t('Same value for all languages. Set to 0 to disable reminders, these are sent only after the notifications are sent first. A [REMINDER] will be added to the subject.'),
+      '#description' => $this->t('Same value for all languages. Set to 0 to disable reminders, these are sent only after the notifications are sent first. A "REMINDER:" will be added to the subject.'),
       '#default_value' => $configurations['reminder_interval_days'] ?? 0,
       '#step' => 1,
       '#disabled' => $langcode != 'en',

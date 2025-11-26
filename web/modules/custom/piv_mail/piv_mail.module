@@ -301,8 +301,8 @@ function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL
       $subject = $configurations[$langcode]['subject'] ?? NULL;
       $subject = $replacements_service->replace($subject);
       if ($is_reminder) {
-        $reminder = $langcode == 'en' ? 'REMINDER' : 'RAPPEL';
-        $subject = "($reminder) $subject";
+        $reminder = $langcode == 'en' ? 'REMINDER:' : 'RAPPEL:';
+        $subject = "$reminder $subject";
       }
       // Calculate $to.
       // In some plugins the "to_more" is hardcoded by overriding the settings

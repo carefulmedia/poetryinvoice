@@ -22,7 +22,7 @@ final class NotificationReminders {
    *
    * @var \Drupal\Core\KeyValueStore\KeyValueStoreInterface
    */
-  private KeyValueStoreInterface $reminders;
+  private KeyValueStoreInterface $journalNotificationsCollection;
 
   /**
    * Constructs a NotificationReminders object.
@@ -33,7 +33,7 @@ final class NotificationReminders {
     private readonly PivMailPluginManager $pivMailPluginManager,
     private readonly TimeInterface $time,
   ) {
-    $this->reminders = $this->keyValueFactory
+    $this->journalNotificationsCollection = $this->keyValueFactory
       ->get('journal_notifications');
   }
 
@@ -75,24 +75,29 @@ final class NotificationReminders {
       unset($map['futureverse_shortlisted:reminder']);
     }
 
+    $journal_notifications = $this->keyValueFactory
+      ->get('journal_notifications');
+    $journal_reminders = $this->keyValueFactory
+      ->get('journal_reminders_' . $journal_year->id());
+
+    $context = [];
     foreach ($map as $op => $id) {
       $instance = $this->pivMailPluginManager->createInstance($id);
-      $key = "{$op}_{$journal_year->id()}";
 
       // Reminders should only be sent if at least one email was sent
       // already manually.
-      $sent_key = str_replace(':reminder', '', $key);
-      $values = $this->reminders->get($sent_key, []);
+      $sent_key = str_replace(':reminder', '', "{$op}_{$journal_year->id()}");
+      $values = $journal_notifications->get($sent_key, []);
       $count = count($values['emails'] ?? $values['poems'] ?? []);
       if (!$count) {
         continue;
       }
 
-      if ($this->shouldSendReminders($instance, $key, 'en')) {
-        $operations = JournalNotificationsConfirmForm::getReminderOperations($op, $journal_year);
-        $context = [];
-        foreach ($operations as $operation) {
-          [$o, $d] = $operation[1];
+      $operations = JournalNotificationsConfirmForm::getReminderOperations($op, $journal_year);
+      foreach ($operations as $operation) {
+        [$o, $d] = $operation[1];
+        $key = "{$op}:{$d['uid']}";
+        if ($this->shouldSendReminders($instance, $key, $journal_reminders)) {
           JournalNotificationsConfirmForm::sendNotification($o, $d, $context);
         }
       }
@@ -102,19 +107,19 @@ final class NotificationReminders {
   /**
    * Check if its in time to send reminder.
    */
-  private function shouldSendReminders($instance, $key, $language) {
+  private function shouldSendReminders($instance, $key, $journal_reminders) {
     if (!$instance) {
       return FALSE;
     }
 
-    $interval = $instance->getConfiguration()[$language]['reminder_interval_days'] ?? 0;
+    $interval = $instance->getConfiguration()['en']['reminder_interval_days'] ?? 0;
     if ($interval == 0) {
       return FALSE;
     }
 
     // Convert interval to seconds.
     $interval = $interval * 86400;
-    $last_sent = $this->reminders->get($key, 0);
+    $last_sent = $journal_reminders->get($key, 0);
     $now = $this->time->getCurrentTime();
     return $last_sent + $interval < $now;
   }
