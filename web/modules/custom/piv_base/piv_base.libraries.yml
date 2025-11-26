@@ -26,10 +26,3 @@ redirect_after_login:
   dependencies:
     - core/jquery
     - core/once
-
-school_visits_summary:
-  css:
-    theme:
-      css/school-visits-summary.css: {}
-  dependencies:
-    - core/drupal

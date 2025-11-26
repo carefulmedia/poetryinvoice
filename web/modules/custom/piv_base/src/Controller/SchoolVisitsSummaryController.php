@@ -74,15 +74,18 @@ class SchoolVisitsSummaryController extends ControllerBase {
     // Get filter parameters from query string.
     // Use all() to get the entire query bag, then access grades as array.
     $query_params = $request->query->all();
-
+    
     // Default language to current site language if not specified
     $current_language = $this->languageManager()->getCurrentLanguage()->getId();
     $language_filter = $request->query->get('language', $current_language);
     
+    // Calculate default date range: August 1st (past) to June 30th (future)
+    $default_dates = $this->getDefaultDateRange();
+    
     $filters = [
       'language' => $language_filter,
-      'date_from' => $request->query->get('date_from'),
-      'date_to' => $request->query->get('date_to'),
+      'date_from' => $request->query->get('date_from', $default_dates['date_from']),
+      'date_to' => $request->query->get('date_to', $default_dates['date_to']),
       'grades' => isset($query_params['grades']) && is_array($query_params['grades']) 
         ? $query_params['grades'] 
         : [],
@@ -112,6 +115,36 @@ class SchoolVisitsSummaryController extends ControllerBase {
   }
 
   /**
+   * Calculates the default date range for the school year.
+   *
+   * Returns the most recent August 1st in the past and the next June 30th.
+   *
+   * @return array
+   *   Array with 'date_from' and 'date_to' in Y-m-d format.
+   */
+  protected function getDefaultDateRange() {
+    $now = new \DateTime();
+    $current_year = (int) $now->format('Y');
+    $current_month = (int) $now->format('n');
+    
+    // If we're in January-July, the school year started last August
+    // If we're in August-December, the school year started this August
+    if ($current_month < 8) {
+      $start_year = $current_year - 1;
+      $end_year = $current_year;
+    }
+    else {
+      $start_year = $current_year;
+      $end_year = $current_year + 1;
+    }
+    
+    return [
+      'date_from' => $start_year . '-08-01',
+      'date_to' => $end_year . '-06-30',
+    ];
+  }
+
+  /**
    * Gets aggregated summary data for school visits.
    *
    * @param array $filters
@@ -121,17 +154,42 @@ class SchoolVisitsSummaryController extends ControllerBase {
    *   Array of summary data grouped by language and province.
    */
   protected function getSummaryData(array $filters) {
+    // Build the query using Database API for better performance.
     $query = $this->database->select('node_field_data', 'n');
     $query->addField('n', 'langcode', 'language');
-    $query->addExpression('COUNT(n.nid)', 'total_requests');
+    
+    // Join to get the visit type field (in_person vs virtual).
+    // Field: field_in_person_or_teleconferenc
+    // Values: 1 = In person ($500), 2 = Virtual ($250)
+    $query->leftJoin('node__field_in_person_or_teleconferenc', 'vt', 'n.nid = vt.entity_id AND vt.deleted = 0');
+    
+    // Count requests: in_person (1) = 2, virtual (2) or null = 1
+    $query->addExpression(
+      "SUM(CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END)",
+      'total_requests'
+    );
     
     // Join to get the booked status field.
     $query->leftJoin('node__field_booked_', 'fb', 'n.nid = fb.entity_id AND fb.deleted = 0');
-    $query->addExpression('SUM(CASE WHEN fb.field_booked__value = 1 THEN 1 ELSE 0 END)', 'total_booked');
-
+    
+    // Count booked: only count if booked=1, and in_person (1) = 2, virtual (2) = 1
+    $query->addExpression(
+      "SUM(CASE WHEN fb.field_booked__value = 1 THEN " .
+      "  CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END " .
+      "ELSE 0 END)",
+      'total_booked'
+    );
+    
     // Join to get the paid status field.
     $query->leftJoin('node__field_paid_', 'fp', 'n.nid = fp.entity_id AND fp.deleted = 0');
-    $query->addExpression('SUM(CASE WHEN fp.field_paid__value = 1 THEN 1 ELSE 0 END)', 'total_paid');
+    
+    // Count paid: only count if paid=1, and in_person (1) = 2, virtual (2) = 1
+    $query->addExpression(
+      "SUM(CASE WHEN fp.field_paid__value = 1 THEN " .
+      "  CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END " .
+      "ELSE 0 END)",
+      'total_paid'
+    );
     
     // Join to get the user (teacher) who created the visit.
     $query->leftJoin('users_field_data', 'u', 'n.uid = u.uid');
@@ -149,7 +207,7 @@ class SchoolVisitsSummaryController extends ControllerBase {
     // Base conditions.
     $query->condition('n.type', 'pal_pir_school_visit');
     $query->condition('n.status', 1);
-
+    
     // Apply language filter.
     if (!empty($filters['language']) && $filters['language'] !== 'all') {
       $query->condition('n.langcode', $filters['language']);

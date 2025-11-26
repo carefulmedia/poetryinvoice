@@ -63,10 +63,13 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
   public function buildForm(array $form, FormStateInterface $form_state) {
     $request = $this->requestStack->getCurrentRequest();
     $query_params = $request->query->all();
+
+    // Calculate default date range if not provided
+    $default_dates = $this->getDefaultDateRange();
     
     // Get current filter values from query parameters.
-    $date_from = $request->query->get('date_from');
-    $date_to = $request->query->get('date_to');
+    $date_from = $request->query->get('date_from', $default_dates['date_from']);
+    $date_to = $request->query->get('date_to', $default_dates['date_to']);
     $grades = isset($query_params['grades']) && is_array($query_params['grades']) 
       ? $query_params['grades'] 
       : [];
@@ -240,6 +243,36 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
       'Grades 4-6' => $this->t('5 & 6'),
       'Grades 7 & 8 / Sec 1 & 2' => $this->t('7-9 / Sec. 1-3'),
       'Grades 9-12 / Sec 3-5 / CEGEP 1' => $this->t('10-12 / Sec. 4 & 5 / CEGEP 1'),
+    ];
+  }
+
+   /**
+   * Calculates the default date range for the school year.
+   *
+   * Returns the most recent August 1st in the past and the next June 30th.
+   *
+   * @return array
+   *   Array with 'date_from' and 'date_to' in Y-m-d format.
+   */
+  protected function getDefaultDateRange() {
+    $now = new \DateTime();
+    $current_year = (int) $now->format('Y');
+    $current_month = (int) $now->format('n');
+    
+    // If we're in January-July, the school year started last August
+    // If we're in August-December, the school year started this August
+    if ($current_month < 8) {
+      $start_year = $current_year - 1;
+      $end_year = $current_year;
+    }
+    else {
+      $start_year = $current_year;
+      $end_year = $current_year + 1;
+    }
+    
+    return [
+      'date_from' => $start_year . '-08-01',
+      'date_to' => $end_year . '-06-30',
     ];
   }
 
