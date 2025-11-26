@@ -167,25 +167,6 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
   public function validateForm(array &$form, FormStateInterface $form_state) {
     $date_from = $form_state->getValue('date_from');
     $date_to = $form_state->getValue('date_to');
-    $language = $form_state->getValue('language');
-    $grades = $form_state->getValue('grades');
-
-    // Validate language field.
-    if (empty($language)) {
-      $form_state->setErrorByName('language', $this->t('Please select a language filter.'));
-    }
-    elseif (!in_array($language, ['all', 'en', 'fr'])) {
-      $form_state->setErrorByName('language', $this->t('Invalid language selection.'));
-    }
-
-    // Validate date fields.
-    if (!empty($date_from) && strtotime($date_from) === FALSE) {
-      $form_state->setErrorByName('date_from', $this->t('Invalid "From Date" format.'));
-    }
-
-    if (!empty($date_to) && strtotime($date_to) === FALSE) {
-      $form_state->setErrorByName('date_to', $this->t('Invalid "To Date" format.'));
-    }
 
     // Validate that 'from' date is not after 'to' date.
     if (!empty($date_from) && !empty($date_to)) {
@@ -194,17 +175,6 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
 
       if ($from_timestamp !== FALSE && $to_timestamp !== FALSE && $from_timestamp > $to_timestamp) {
         $form_state->setErrorByName('date_from', $this->t('The "From Date" must be before or equal to the "To Date".'));
-      }
-    }
-
-    // Validate grades (if provided).
-    if (!empty($grades) && is_array($grades)) {
-      $valid_grades = array_keys($this->getGradeOptions());
-      foreach (array_filter($grades) as $grade) {
-        if (!in_array($grade, $valid_grades)) {
-          $form_state->setErrorByName('grades', $this->t('Invalid grade selection: @grade', ['@grade' => $grade]));
-          break;
-        }
       }
     }
   }
@@ -319,8 +289,9 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
    *   A render array with the results.
    */
   protected function buildResults(FormStateInterface $form_state) {
+    $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
     $filters = [
-      'language' => $form_state->getValue('language'),
+      'language' => $form_state->getValue('language') ?? $current_language,
       'date_from' => $form_state->getValue('date_from'),
       'date_to' => $form_state->getValue('date_to'),
       'grades' => array_filter($form_state->getValue('grades', [])),
@@ -460,8 +431,8 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
    */
   protected function formatLanguage($langcode) {
     $languages = [
-      'en' => 'English',
-      'fr' => 'French',
+      'en' => $this->t('English'),
+      'fr' => $this->t('French'),
     ];
     return $languages[$langcode] ?? $langcode;
   }
@@ -482,19 +453,19 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
 
     // Canadian provinces mapping.
     $provinces = [
-      'AB' => 'Alberta',
-      'BC' => 'British Columbia',
-      'MB' => 'Manitoba',
-      'NB' => 'New Brunswick',
-      'NL' => 'Newfoundland and Labrador',
-      'NS' => 'Nova Scotia',
-      'NT' => 'Northwest Territories',
-      'NU' => 'Nunavut',
-      'ON' => 'Ontario',
-      'PE' => 'Prince Edward Island',
-      'QC' => 'Quebec',
-      'SK' => 'Saskatchewan',
-      'YT' => 'Yukon',
+      'AB' => $this->t('Alberta'),
+      'BC' => $this->t('British Columbia'),
+      'MB' => $this->t('Manitoba'),
+      'NB' => $this->t('New Brunswick'),
+      'NL' => $this->t('Newfoundland and Labrador'),
+      'NS' => $this->t('Nova Scotia'),
+      'NT' => $this->t('Northwest Territories'),
+      'NU' => $this->t('Nunavut'),
+      'ON' => $this->t('Ontario'),
+      'PE' => $this->t('Prince Edward Island'),
+      'QC' => $this->t('Quebec'),
+      'SK' => $this->t('Saskatchewan'),
+      'YT' => $this->t('Yukon'),
     ];
 
     return $provinces[$province_code] ?? $province_code;
