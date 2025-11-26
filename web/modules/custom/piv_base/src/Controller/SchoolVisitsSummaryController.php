@@ -44,7 +44,7 @@ class SchoolVisitsSummaryController extends ControllerBase {
    *   A render array.
    */
   public function build() {
-    // Build the filter form which also handles displaying results
+    // Build the filter form which also handles displaying results.
     $form = $this->formBuilder->getForm('Drupal\piv_base\Form\SchoolVisitsSummaryFilterForm');
 
     $build = [
