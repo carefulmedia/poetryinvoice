@@ -57,9 +57,9 @@ piv_base.google_search_fr:
     _permission: 'access content'
   
 piv_base.school_visit_summary:
-  path: '/school-visits-summary'
+  path: '/admin/school-visits-summary'
   defaults:
     _title: 'School Visits Summary'
     _controller: '\Drupal\piv_base\Controller\SchoolVisitsSummaryController::build'
   requirements:
-    _permission: 'access content'
+    _permission: 'access administration pages'
