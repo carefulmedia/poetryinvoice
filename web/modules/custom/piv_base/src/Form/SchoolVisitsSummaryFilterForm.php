@@ -319,62 +319,40 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
     // Build the query using Database API for better performance.
     $query = $this->database->select('node_field_data', 'n');
     $query->addField('n', 'langcode', 'language');
-
+    
     // Join to get the visit type field (in_person vs virtual).
     // Field: field_in_person_or_teleconferenc
     // Values: 1 = In person ($500), 2 = Virtual ($250)
     $query->leftJoin('node__field_in_person_or_teleconferenc', 'vt', 'n.nid = vt.entity_id AND vt.deleted = 0');
-
-    // Count requests: in_person (1) = 2, virtual (2) or null = 1.
-    $query->addExpression(
-      "SUM(CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END)",
-      'total_requests'
-    );
-
+    
     // Join to get the booked status field.
     $query->leftJoin('node__field_booked_', 'fb', 'n.nid = fb.entity_id AND fb.deleted = 0');
-
-    // Count booked: only count if booked=1, and in_person (1) = 2, virtual (2) = 1.
-    $query->addExpression(
-      "SUM(CASE WHEN fb.field_booked__value = 1 THEN " .
-      "  CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END " .
-      "ELSE 0 END)",
-      'total_booked'
-    );
-
+    
     // Join to get the paid status field.
     $query->leftJoin('node__field_paid_', 'fp', 'n.nid = fp.entity_id AND fp.deleted = 0');
-
-    // Count paid: only count if paid=1, and in_person (1) = 2, virtual (2) = 1.
-    $query->addExpression(
-      "SUM(CASE WHEN fp.field_paid__value = 1 THEN " .
-      "  CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END " .
-      "ELSE 0 END)",
-      'total_paid'
-    );
-
+    
     // Join to get the user (teacher) who created the visit.
     $query->leftJoin('users_field_data', 'u', 'n.uid = u.uid');
-
+    
     // Join to get the school reference from the user.
     $query->leftJoin('user__field_school', 'us', 'u.uid = us.entity_id AND us.deleted = 0');
-
+    
     // Join to get the school node.
     $query->leftJoin('node_field_data', 'school', 'us.field_school_target_id = school.nid');
-
+    
     // Join to get the school's address.
     $query->leftJoin('node__field_address', 'addr', 'school.nid = addr.entity_id AND addr.deleted = 0');
     $query->addField('addr', 'field_address_administrative_area', 'province');
-
+    
     // Base conditions.
     $query->condition('n.type', 'pal_pir_school_visit');
     $query->condition('n.status', 1);
-
+    
     // Apply language filter.
     if (!empty($filters['language']) && $filters['language'] !== 'all') {
       $query->condition('n.langcode', $filters['language']);
     }
-
+    
     // Apply date range filter.
     if (!empty($filters['date_from'])) {
       $date_from = strtotime($filters['date_from'] . ' 00:00:00');
@@ -388,23 +366,58 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
         $query->condition('n.created', $date_to, '<=');
       }
     }
-
+    
     // Apply grades filter if provided.
+    // IMPORTANT: This needs to be a subquery to avoid duplicate counting
     if (!empty($filters['grades']) && is_array($filters['grades'])) {
-      $query->leftJoin('node__field_grades', 'g', 'n.nid = g.entity_id AND g.deleted = 0');
-      $query->condition('g.field_grades_value', array_values($filters['grades']), 'IN');
+      $grades_filter = array_values(array_filter($filters['grades']));
+      if (!empty($grades_filter)) {
+        // Create a subquery to get node IDs that match the grade filter
+        $subquery = $this->database->select('node__field_grades', 'g');
+        $subquery->addField('g', 'entity_id');
+        $subquery->condition('g.deleted', 0);
+        $subquery->condition('g.field_grades_value', $grades_filter, 'IN');
+        $subquery->distinct();
+        
+        // Use the subquery in a WHERE IN condition
+        $query->condition('n.nid', $subquery, 'IN');
+      }
     }
-
-    // Group by language and province.
+    
+    // Group by language and province FIRST (before adding aggregate expressions)
     $query->groupBy('n.langcode');
     $query->groupBy('addr.field_address_administrative_area');
-
+    
+    // Now add the aggregate expressions
+    // Count requests: in_person (1) = 2, virtual (2) or null = 1
+    // Use COUNT(DISTINCT n.nid) to avoid counting same visit multiple times
+    $query->addExpression(
+      "SUM(DISTINCT CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END)",
+      'total_requests'
+    );
+    
+    // Count booked: only count if booked=1, and in_person (1) = 2, virtual (2) = 1
+    $query->addExpression(
+      "SUM(DISTINCT CASE WHEN fb.field_booked__value = 1 THEN " .
+      "  CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END " .
+      "ELSE 0 END)",
+      'total_booked'
+    );
+    
+    // Count paid: only count if paid=1, and in_person (1) = 2, virtual (2) = 1
+    $query->addExpression(
+      "SUM(DISTINCT CASE WHEN fp.field_paid__value = 1 THEN " .
+      "  CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END " .
+      "ELSE 0 END)",
+      'total_paid'
+    );
+    
     // Order by language and province.
     $query->orderBy('n.langcode', 'ASC');
     $query->orderBy('addr.field_address_administrative_area', 'ASC');
-
+    
     $results = $query->execute()->fetchAll();
-
+    
     // Format the results.
     $formatted_data = [];
     foreach ($results as $row) {
@@ -416,7 +429,7 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
         'total_paid' => (int) $row->total_paid,
       ];
     }
-
+    
     return $formatted_data;
   }
 
