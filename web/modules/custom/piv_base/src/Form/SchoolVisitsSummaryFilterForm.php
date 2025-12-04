@@ -7,6 +7,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Database\Connection;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\node\NodeInterface;
 
 /**
  * Filter form for School Visits Summary.
@@ -221,32 +222,20 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
    *   An array of grade options.
    */
   protected function getGradeOptions() {
-    try {
-      $field_definitions = $this->entityFieldManager
-        ->getFieldDefinitions('node', 'pal_pir_school_visit');
+    $field_definitions = $this->entityFieldManager
+      ->getFieldDefinitions('node', 'pal_pir_school_visit');
 
-      if (isset($field_definitions['field_grades'])) {
-        $field_storage = $field_definitions['field_grades']->getFieldStorageDefinition();
-        $settings = $field_storage->getSettings();
+    if (isset($field_definitions['field_grades'])) {
+      $field_storage = $field_definitions['field_grades']->getFieldStorageDefinition();
+      $settings = $field_storage->getSettings();
 
-        // Check if it's a list field with allowed values.
-        if (isset($settings['allowed_values']) && !empty($settings['allowed_values'])) {
-          return $settings['allowed_values'];
-        }
+      // Check if it's a list field with allowed values.
+      if (isset($settings['allowed_values']) && !empty($settings['allowed_values'])) {
+        return $settings['allowed_values'];
       }
     }
-    catch (\Exception $e) {
-      \Drupal::logger('piv_base')->error('Error loading grade options: @message', ['@message' => $e->getMessage()]);
-    }
 
-    // Fallback: Default grade options if field config is not available.
-    return [
-      'Kindergarten' => $this->t('K - 2'),
-      'Grades 1-3' => $this->t('3 & 4'),
-      'Grades 4-6' => $this->t('5 & 6'),
-      'Grades 7 & 8 / Sec 1 & 2' => $this->t('7-9 / Sec. 1-3'),
-      'Grades 9-12 / Sec 3-5 / CEGEP 1' => $this->t('10-12 / Sec. 4 & 5 / CEGEP 1'),
-    ];
+    return [];
   }
 
   /**
@@ -289,14 +278,12 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
    *   A render array with the results.
    */
   protected function buildResults(FormStateInterface $form_state) {
-    $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
     $filters = [
-      'language' => $form_state->getValue('language') ?? $current_language,
+      'language' => $form_state->getValue('language'),
       'date_from' => $form_state->getValue('date_from'),
       'date_to' => $form_state->getValue('date_to'),
       'grades' => array_filter($form_state->getValue('grades', [])),
     ];
-
     $summary_data = $this->getSummaryData($filters);
 
     return [
@@ -316,121 +303,92 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
    *   Array of summary data grouped by language and province.
    */
   protected function getSummaryData(array $filters) {
-    // Build the query using Database API for better performance.
-    $query = $this->database->select('node_field_data', 'n');
-    $query->addField('n', 'langcode', 'language');
-    
-    // Join to get the visit type field (in_person vs virtual).
-    // Field: field_in_person_or_teleconferenc
-    // Values: 1 = In person ($500), 2 = Virtual ($250)
-    $query->leftJoin('node__field_in_person_or_teleconferenc', 'vt', 'n.nid = vt.entity_id AND vt.deleted = 0');
-    
-    // Join to get the booked status field.
-    $query->leftJoin('node__field_booked_', 'fb', 'n.nid = fb.entity_id AND fb.deleted = 0');
-    
-    // Join to get the paid status field.
-    $query->leftJoin('node__field_paid_', 'fp', 'n.nid = fp.entity_id AND fp.deleted = 0');
-    
-    // Join to get the user (teacher) who created the visit.
-    $query->leftJoin('users_field_data', 'u', 'n.uid = u.uid');
-    
-    // Join to get the school reference from the user.
-    $query->leftJoin('user__field_school', 'us', 'u.uid = us.entity_id AND us.deleted = 0');
-    
-    // Join to get the school node.
-    $query->leftJoin('node_field_data', 'school', 'us.field_school_target_id = school.nid');
-    
-    // Join to get the school's address.
-    $query->leftJoin('node__field_address', 'addr', 'school.nid = addr.entity_id AND addr.deleted = 0');
-    $query->addField('addr', 'field_address_administrative_area', 'province');
-    
-    // Base conditions.
-    $query->condition('n.type', 'pal_pir_school_visit');
-    $query->condition('n.status', 1);
-    
-    // Apply language filter.
+    $query = $this->database
+      ->select('node_field_data', 'n')
+      ->condition('n.type', 'pal_pir_school_visit')
+      ->condition('n.status', NodeInterface::PUBLISHED);
+
+    // Filter by language.
     if (!empty($filters['language']) && $filters['language'] !== 'all') {
       $query->condition('n.langcode', $filters['language']);
     }
-    
-    // Apply date range filter.
+
+    // Filter by grades using a subquery.
+    $grades = array_values(array_filter($filters['grades']));
+    if ($grades) {
+      $subquery = $this->database->select('node__field_grades', 'g');
+      $subquery->addField('g', 'entity_id');
+      $subquery->condition('g.deleted', 0);
+      $subquery->condition('g.field_grades_value', $grades, 'IN');
+      $subquery->distinct();
+      $query->condition('n.nid', $subquery, 'IN');
+    }
+
+    // Filter by date.
     if (!empty($filters['date_from'])) {
       $date_from = strtotime($filters['date_from'] . ' 00:00:00');
-      if ($date_from !== FALSE) {
+      if ($date_from) {
         $query->condition('n.created', $date_from, '>=');
       }
     }
     if (!empty($filters['date_to'])) {
       $date_to = strtotime($filters['date_to'] . ' 23:59:59');
-      if ($date_to !== FALSE) {
+      if ($date_to) {
         $query->condition('n.created', $date_to, '<=');
       }
     }
-    
-    // Apply grades filter if provided.
-    // IMPORTANT: This needs to be a subquery to avoid duplicate counting
-    if (!empty($filters['grades']) && is_array($filters['grades'])) {
-      $grades_filter = array_values(array_filter($filters['grades']));
-      if (!empty($grades_filter)) {
-        // Create a subquery to get node IDs that match the grade filter
-        $subquery = $this->database->select('node__field_grades', 'g');
-        $subquery->addField('g', 'entity_id');
-        $subquery->condition('g.deleted', 0);
-        $subquery->condition('g.field_grades_value', $grades_filter, 'IN');
-        $subquery->distinct();
-        
-        // Use the subquery in a WHERE IN condition
-        $query->condition('n.nid', $subquery, 'IN');
+
+    // Join on node visit fields.
+    $query->leftJoin('node__field_booked_', 'fb', 'n.nid = fb.entity_id AND fb.deleted = 0');
+    $query->leftJoin('node__field_paid_', 'fp', 'n.nid = fp.entity_id AND fp.deleted = 0');
+    $query->leftJoin('node__field_in_person_or_teleconferenc', 'vt', 'n.nid = vt.entity_id AND vt.deleted = 0');
+
+    // Join on the user school to get the provice.
+    $query->leftJoin('users_field_data', 'u', 'n.uid = u.uid');
+    $query->leftJoin('user__field_school', 'us', 'u.uid = us.entity_id AND us.deleted = 0');
+    $query->leftJoin('node_field_data', 'school', 'us.field_school_target_id = school.nid');
+    $query->leftJoin('node__field_address', 'addr', 'school.nid = addr.entity_id AND addr.deleted = 0');
+
+    $query->addField('n', 'langcode', 'language');
+    $query->addField('fb', 'field_booked__value', 'booked');
+    $query->addField('fp', 'field_paid__value', 'paid');
+    // In person visits counts as 2, if there is no value set then the
+    // default is to be in person.
+    $query->addExpression('CASE WHEN vt.field_in_person_or_teleconferenc_value = 2 THEN 1 ELSE 2 END', 'visit_value');
+    $query->addField('addr', 'field_address_administrative_area', 'province');
+
+    $results = $query->execute()->fetchAll();
+    $totals = ['en' => [], 'fr' => []];
+    foreach ($results as $r) {
+      if (!$r->language || !isset($totals[$r->language])) {
+        continue;
+      }
+      if (empty($totals[$r->language][$r->province])) {
+        $totals[$r->language][$r->province] = [
+          'language' => $this->formatLanguage($r->language),
+          'province' => $this->formatProvince($r->province),
+          'total_requests' => 0,
+          'total_booked' => 0,
+          'total_paid' => 0,
+        ];
+      }
+      $totals[$r->language][$r->province]['total_requests'] += $r->visit_value;
+      if ($r->booked == 1) {
+        $totals[$r->language][$r->province]['total_booked'] += $r->visit_value;
+      }
+      if ($r->paid == 1) {
+        $totals[$r->language][$r->province]['total_paid'] += $r->visit_value;
       }
     }
-    
-    // Group by language and province FIRST (before adding aggregate expressions)
-    $query->groupBy('n.langcode');
-    $query->groupBy('addr.field_address_administrative_area');
-    
-    // Now add the aggregate expressions
-    // Count requests: in_person (1) = 2, virtual (2) or null = 1
-    // Use COUNT(DISTINCT n.nid) to avoid counting same visit multiple times
-    $query->addExpression(
-      "SUM(DISTINCT CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END)",
-      'total_requests'
-    );
-    
-    // Count booked: only count if booked=1, and in_person (1) = 2, virtual (2) = 1
-    $query->addExpression(
-      "SUM(DISTINCT CASE WHEN fb.field_booked__value = 1 THEN " .
-      "  CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END " .
-      "ELSE 0 END)",
-      'total_booked'
-    );
-    
-    // Count paid: only count if paid=1, and in_person (1) = 2, virtual (2) = 1
-    $query->addExpression(
-      "SUM(DISTINCT CASE WHEN fp.field_paid__value = 1 THEN " .
-      "  CASE WHEN vt.field_in_person_or_teleconferenc_value = 1 THEN 2 ELSE 1 END " .
-      "ELSE 0 END)",
-      'total_paid'
-    );
-    
-    // Order by language and province.
-    $query->orderBy('n.langcode', 'ASC');
-    $query->orderBy('addr.field_address_administrative_area', 'ASC');
-    
-    $results = $query->execute()->fetchAll();
-    
-    // Format the results.
-    $formatted_data = [];
-    foreach ($results as $row) {
-      $formatted_data[] = [
-        'language' => $this->formatLanguage($row->language),
-        'province' => $this->formatProvince($row->province),
-        'total_requests' => (int) $row->total_requests,
-        'total_booked' => (int) $row->total_booked,
-        'total_paid' => (int) $row->total_paid,
-      ];
+
+    // Flat the array.
+    $rows = [];
+    foreach ($totals as $languages) {
+      foreach ($languages as $provinces) {
+        $rows[] = $provinces;
+      }
     }
-    
-    return $formatted_data;
+    return $rows;
   }
 
   /**
