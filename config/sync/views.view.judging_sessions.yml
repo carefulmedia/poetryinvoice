@@ -81,7 +81,6 @@ display:
           buttons: false
           action_title: Action
           clear_on_exposed: true
-          force_selection_info: false
           selected_actions:
             -
               action_id: views_bulk_edit
@@ -89,6 +88,7 @@ display:
                 add_confirmation: false
                 message_override: ''
                 get_bundles_from_results: true
+          force_selection_info: false
         id:
           id: id
           table: judging_session_field_data
