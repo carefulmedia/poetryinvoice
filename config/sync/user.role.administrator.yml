@@ -11,8 +11,8 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
-  - 'create field_grades'
-  - 'edit field_grades'
-  - 'edit own field_grades'
-  - 'view field_grades'
-  - 'view own field_grades'
+  - 'create field_bonus_prize_winner'
+  - 'edit field_bonus_prize_winner'
+  - 'edit own field_bonus_prize_winner'
+  - 'view field_bonus_prize_winner'
+  - 'view own field_bonus_prize_winner'

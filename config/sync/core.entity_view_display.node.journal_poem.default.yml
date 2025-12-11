@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.journal_poem.field_acceptance_level
     - field.field.node.journal_poem.field_banner_subtitle
     - field.field.node.journal_poem.field_banner_title
+    - field.field.node.journal_poem.field_bonus_prize_winner
     - field.field.node.journal_poem.field_email1
     - field.field.node.journal_poem.field_grade
     - field.field.node.journal_poem.field_i_am_submitting_in_a_secon
@@ -311,6 +312,24 @@ third_party_settings:
                   format_custom_true: ''
                 third_party_settings: {  }
             weight: 14
+            additional: {  }
+          981869bd-179c-4908-9455-63fd6d6c9f67:
+            uuid: 981869bd-179c-4908-9455-63fd6d6c9f67
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_bonus_prize_winner'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 15
             additional: {  }
         third_party_settings: {  }
       -
@@ -635,6 +654,16 @@ content:
     third_party_settings: {  }
     weight: 106
     region: content
+  field_bonus_prize_winner:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 121
+    region: main
   field_email1:
     type: string
     label: above

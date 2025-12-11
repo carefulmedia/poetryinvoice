@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.journal_poem.field_acceptance_level
     - field.field.node.journal_poem.field_banner_subtitle
     - field.field.node.journal_poem.field_banner_title
+    - field.field.node.journal_poem.field_bonus_prize_winner
     - field.field.node.journal_poem.field_email1
     - field.field.node.journal_poem.field_grade
     - field.field.node.journal_poem.field_i_am_submitting_in_a_secon
@@ -146,6 +147,7 @@ hidden:
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
   field_acceptance_level: true
+  field_bonus_prize_winner: true
   field_email1: true
   field_grade: true
   field_i_am_submitting_in_a_secon: true
