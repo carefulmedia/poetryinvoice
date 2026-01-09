@@ -1,0 +1,5 @@
+services:
+  piv_school.commands:
+    class: Drupal\piv_school\Commands\SchoolSyncCommands
+    tags:
+      - { name: drush.command }

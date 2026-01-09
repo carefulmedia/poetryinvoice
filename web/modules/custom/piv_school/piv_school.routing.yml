@@ -1,7 +1,7 @@
 piv_school.admin_settings:
   path: /admin/config/services/piv-school
   defaults:
-    _title: 'PIV Scholl Settings'
+    _title: 'PIV School Settings'
     _form: \Drupal\piv_school\Form\SchoolSettingsForm
   requirements:
     _permission: 'administer site configuration'
