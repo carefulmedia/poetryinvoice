@@ -22,7 +22,7 @@ third_party_settings:
     unpublish_enable: false
     unpublish_required: false
     unpublish_revision: false
-name: Competition
+name: 'Live Competition'
 type: competition
 description: 'A date content type that is linked to a Views calendar.'
 help: null

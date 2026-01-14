@@ -11,8 +11,8 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
-  - 'create field_bonus_prize_winner'
-  - 'edit field_bonus_prize_winner'
-  - 'edit own field_bonus_prize_winner'
-  - 'view field_bonus_prize_winner'
-  - 'view own field_bonus_prize_winner'
+  - 'create field_iva_finalist'
+  - 'edit field_iva_finalist'
+  - 'edit own field_iva_finalist'
+  - 'view field_iva_finalist'
+  - 'view own field_iva_finalist'

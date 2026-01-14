@@ -30,6 +30,7 @@ dependencies:
     - field.field.user.user.field_i_am_interested_in_writing
     - field.field.user.user.field_i_have_completed_my_profil
     - field.field.user.user.field_indigenous_identifying
+    - field.field.user.user.field_iva_finalist
     - field.field.user.user.field_judging
     - field.field.user.user.field_lifespan
     - field.field.user.user.field_micro_interview
@@ -68,6 +69,7 @@ dependencies:
     - field.field.user.user.user_picture
   module:
     - address
+    - bootstrap_layout_builder
     - entity_reference_revisions
     - layout_builder
     - layout_builder_restrictions
@@ -83,16 +85,23 @@ third_party_settings:
         layout_id: 'bootstrap_layout_builder:blb_col_3'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
             blb_region_col_3: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
+            blb_region_col_3: {  }
           breakpoints:
             desktop: blb_col_6_3_3
             tablet: blb_col_6_3_3
@@ -110,7 +119,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
-          remove_gutters: 0
+          remove_gutters: '0'
+          context_mapping: {  }
         components:
           0c641eb4-112e-4343-bd02-540df2ae870a:
             uuid: 0c641eb4-112e-4343-bd02-540df2ae870a
@@ -256,21 +266,46 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 6
             additional: {  }
+          e8046aee-4e54-40a1-96bc-52d7e5de0ef9:
+            uuid: e8046aee-4e54-40a1-96bc-52d7e5de0ef9
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:user:user:field_iva_finalist'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: boolean
+                label: above
+                settings:
+                  format: default
+                  format_custom_false: ''
+                  format_custom_true: ''
+                third_party_settings: {  }
+            weight: 7
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_3'
         layout_settings:
           label: ''
-          context_mapping: {  }
           container_wrapper_classes: ''
+          container_wrapper_attributes: {  }
+          container_wrapper:
+            bootstrap_styles: {  }
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: ''
           section_classes: ''
+          section_attributes: {  }
           regions_classes:
             blb_region_col_1: ''
             blb_region_col_2: ''
             blb_region_col_3: ''
+          regions_attributes:
+            blb_region_col_1: {  }
+            blb_region_col_2: {  }
+            blb_region_col_3: {  }
           breakpoints:
             desktop: blb_col_6_3_3
             tablet: blb_col_6_3_3
@@ -288,7 +323,8 @@ third_party_settings:
               - col-lg-3
               - col-md-3
               - col-12
-          remove_gutters: 0
+          remove_gutters: '0'
+          context_mapping: {  }
         components:
           64392757-da9e-4919-a034-451538c166b3:
             uuid: 64392757-da9e-4919-a034-451538c166b3
@@ -370,6 +406,16 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 9
+    region: blb_region_col_1
+  field_iva_finalist:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 10
     region: blb_region_col_1
   field_lifespan:
     type: string

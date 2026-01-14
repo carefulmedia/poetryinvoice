@@ -30,6 +30,7 @@ dependencies:
     - field.field.user.user.field_i_am_interested_in_writing
     - field.field.user.user.field_i_have_completed_my_profil
     - field.field.user.user.field_indigenous_identifying
+    - field.field.user.user.field_iva_finalist
     - field.field.user.user.field_judging
     - field.field.user.user.field_lifespan
     - field.field.user.user.field_micro_interview
@@ -112,6 +113,13 @@ content:
   field_indigenous_identifying:
     type: boolean_checkbox
     weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_iva_finalist:
+    type: boolean_checkbox
+    weight: 10
     region: content
     settings:
       display_label: true
