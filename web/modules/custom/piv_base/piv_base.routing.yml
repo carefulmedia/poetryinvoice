@@ -55,3 +55,11 @@ piv_base.google_search_fr:
     route_language: 'fr'
   requirements:
     _permission: 'access content'
+  
+piv_base.school_visit_summary:
+  path: '/admin/pic-pal/school-visits-stats-by-province'
+  defaults:
+    _title: 'School Visits Stats By Province'
+    _controller: '\Drupal\piv_base\Controller\SchoolVisitsSummaryController::build'
+  requirements:
+    _permission: 'access administration pages'

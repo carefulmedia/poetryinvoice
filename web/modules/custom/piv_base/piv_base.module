@@ -233,6 +233,12 @@ function piv_base_theme($existing, $type, $theme, $path) {
         'id' => NULL,
       ],
     ],
+    'piv_school_visits_summary' => [
+      'variables' => [
+        'data' => [],
+        'filters' => [],
+      ],
+    ],
   ];
 }
 

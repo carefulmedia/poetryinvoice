@@ -4,3 +4,10 @@ piv_base.welcome_modal_settings:
   parent: system.admin_config_system
   route_name: piv_base.welcome_modal_settings
   weight: 10
+piv_base.school_visits:
+  title: 'School Visits Stats By Province'
+  description: 'A summary of school visits.'
+  parent: 'views_view:views.school_visits.page_10'
+  menu_name: admin
+  route_name: piv_base.school_visit_summary
+  weight: 100
