@@ -681,11 +681,14 @@ function piv_futureverse_futureverse_application_presave(EntityInterface $entity
         'field_email1' => $entity->field_email->value,
         'piv_teacher_first_name' => $entity->field_first_name->value,
         'field_legal_name' => $entity->field_legal_name->value,
-        'piv_teacher_first_name' => $entity->field_last_name->value,
+        'piv_teacher_last_name' => $entity->field_last_name->value,
         'field_phone' => $entity->field_phone->value,
         'field_teacher' => $entity->field_teacher_name->value,
         'field_legal_name_boolean' => $entity->field_legal_name_boolean->value,
+        // Field below is required in the entity.
+        'field_no_artificial_intelligence' => 1,
         'uid' => $user ? $user->id() : 0,
+        'school' => $entity->field_school->target_id,
       ]);
       $journal_poem->save();
       $paragraph->field_poem_node = ['target_id' => $journal_poem->id()];

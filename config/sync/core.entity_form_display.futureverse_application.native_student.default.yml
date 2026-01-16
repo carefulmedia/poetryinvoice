@@ -13,6 +13,7 @@ dependencies:
     - field.field.futureverse_application.native_student.field_last_name
     - field.field.futureverse_application.native_student.field_legal_name
     - field.field.futureverse_application.native_student.field_legal_name_boolean
+    - field.field.futureverse_application.native_student.field_no_artificial_intelligence
     - field.field.futureverse_application.native_student.field_once_link_enabled
     - field.field.futureverse_application.native_student.field_phone
     - field.field.futureverse_application.native_student.field_please_tell_us_a_bit_about
@@ -126,6 +127,13 @@ content:
   field_legal_name_boolean:
     type: boolean_checkbox
     weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_no_artificial_intelligence:
+    type: boolean_checkbox
+    weight: 20
     region: content
     settings:
       display_label: true
