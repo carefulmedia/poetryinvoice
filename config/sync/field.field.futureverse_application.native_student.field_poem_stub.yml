@@ -34,9 +34,6 @@ settings:
       competition_stream:
         weight: 24
         enabled: false
-      embedded_journal_poem:
-        weight: 21
-        enabled: false
       judges:
         weight: 25
         enabled: false

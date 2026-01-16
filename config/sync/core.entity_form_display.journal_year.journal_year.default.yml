@@ -3,6 +3,7 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.journal_month.no_poems
     - field.field.journal_year.journal_year.field_futureverse_shortlist_date
     - field.field.journal_year.journal_year.field_journal_months
   module:
@@ -32,7 +33,7 @@ content:
     weight: 2
     region: content
     settings:
-      form_mode: default
+      form_mode: no_poems
       override_labels: false
       label_singular: ''
       label_plural: ''

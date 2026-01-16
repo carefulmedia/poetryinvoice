@@ -322,7 +322,7 @@ function piv_futureverse_entity_insert(EntityInterface $entity) : void {
     $months = JournalHelper::getJournalMonths();
     if ($months) {
       $month = reset($months);
-      $month->field_journal_poems[] = $entity->id();
+      $month->field_journal_poems[] = ['target_id' => $entity->id()];
       $month->save();
     }
 
@@ -531,6 +531,13 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
       ];
     }
 
+    $link = $journal_month
+      ->toLink('Edit journal poems')
+      ->toRenderable();
+    $entity_form['edit_journal_poems'] = [
+      '#weight' => 0,
+    ] + $link;
+    $entity_form['edit_journal_poems']['#attributes']['class'][] = 'button';
   }
 }
 
@@ -571,7 +578,7 @@ function piv_futureverse_entity_field_access($operation, FieldDefinitionInterfac
     $route_name = \Drupal::routeMatch()->getRouteName();
     if ($route_name == 'piv_futureverse.futureverse_application') {
       $entity = $items->getEntity();
-      if ($entity && $entity->bundle() === 'journal_poem') {
+      if ($entity && $entity->bundle() === 'native_student') {
         return AccessResult::allowed();
       }
     }
@@ -585,15 +592,52 @@ function piv_futureverse_entity_field_access($operation, FieldDefinitionInterfac
 }
 
 /**
+ * Implements hook_paragraph_entity_access().
+ */
+function piv_futureverse_paragraph_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  // Allow paragraph update operations when on the futureverse application route.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name == 'piv_futureverse.futureverse_application') {
+    if ($entity->bundle() == 'poem' && $operation == 'update') {
+      return AccessResult::allowed();
+    }
+  }
+  if (function_exists('paragraphs_type_permissions_paragraph_access')) {
+    return paragraphs_type_permissions_paragraph_access($entity, $operation, $account);
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_paragraph_create_access().
+ */
+function piv_futureverse_paragraph_create_access(AccountInterface $account, array $context, $entity_bundle) {
+  // Allow paragraph creation when on the futureverse application route.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name == 'piv_futureverse.futureverse_application') {
+    if ($entity_bundle == 'poem') {
+      return AccessResult::allowed();
+    }
+  }
+  if (function_exists('paragraphs_type_permissions_paragraph_create_access')) {
+    return paragraphs_type_permissions_paragraph_create_access($account, $context, $entity_bundle);
+  }
+  return AccessResult::neutral();
+}
+
+/**
  * Implements hook_module_implements_alter().
  */
 function piv_futureverse_module_implements_alter(&$implementations, $hook) {
   if ($hook === 'entity_field_access') {
-    // Ensure our hook runs first, before field_permissions.
-    $group = $implementations['piv_futureverse'];
-    unset($implementations['piv_futureverse']);
-    $implementations = ['piv_futureverse' => $group] + $implementations;
+    // Disable fields permissions here, our custom functions call it
+    // manually as required.
     unset($implementations['field_permissions']);
+  }
+  if (in_array($hook, ['paragraph_access', 'paragraph_create_access'])) {
+    // Disable paragraphs_type_permissions on futureverse routes, these
+    // are then called manually.
+    unset($implementations['paragraphs_type_permissions']);
   }
 }
 
@@ -644,7 +688,7 @@ function piv_futureverse_futureverse_application_presave(EntityInterface $entity
         'uid' => $user ? $user->id() : 0,
       ]);
       $journal_poem->save();
-      $paragraph->field_poem_node = $journal_poem->id();
+      $paragraph->field_poem_node = ['target_id' => $journal_poem->id()];
       $paragraph->save();
     }
   }

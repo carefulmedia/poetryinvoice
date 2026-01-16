@@ -41,6 +41,8 @@ piv_futureverse.poet_bio_enrichment:
     _title: 'Poet Bio Enrichment'
   requirements:
     _custom_access: '\Drupal\piv_futureverse\Controller\PoetBioEnrichmentController::access'
+  options:
+    _admin_route: TRUE
 
 piv_futureverse.futureverse_application:
   path: '/f/futureverse/{hash}'
@@ -49,7 +51,9 @@ piv_futureverse.futureverse_application:
     _title: 'Futureverse Application'
   requirements:
     _custom_access: '\Drupal\piv_futureverse\Controller\FutureverseApplicationController::access'
-
+  options:
+    _admin_route: TRUE
+    
 piv_futureverse.my_poems:
   path: '/user/{user}/my-poems'
   defaults:

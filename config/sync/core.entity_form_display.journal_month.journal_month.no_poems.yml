@@ -1,8 +1,9 @@
-uuid: 1569ed0a-6e13-44fe-89c9-e088f32e1d8d
+uuid: a801752a-06b6-4986-8a50-799525c6517d
 langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_form_mode.journal_month.no_poems
     - field.field.journal_month.journal_month.field_end_date
     - field.field.journal_month.journal_month.field_journal_poems
     - field.field.journal_month.journal_month.field_start_date
@@ -34,26 +35,16 @@ third_party_settings:
         label_as_html: false
         description: 'Dates are inclusive. An end date set to January 31 will match poems created on January 31 until midnight.'
         required_fields: true
-id: journal_month.journal_month.default
+id: journal_month.journal_month.no_poems
 targetEntityType: journal_month
 bundle: journal_month
-mode: default
+mode: no_poems
 content:
   field_end_date:
     type: datetime_default
     weight: 4
     region: content
     settings: {  }
-    third_party_settings: {  }
-  field_journal_poems:
-    type: entity_reference_autocomplete
-    weight: 3
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
     third_party_settings: {  }
   field_start_date:
     type: datetime_default
@@ -78,5 +69,6 @@ content:
     third_party_settings: {  }
 hidden:
   created: true
+  field_journal_poems: true
   status: true
   uid: true
