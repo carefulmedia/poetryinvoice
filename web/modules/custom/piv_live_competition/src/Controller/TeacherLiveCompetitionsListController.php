@@ -372,7 +372,7 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
     // Build "No Invitation" section.
     if (!empty($grouped_data['no_invitation'])) {
       $build['no_invitation_title'] = [
-        '#markup' => '<h2>' . $this->t('No Invitation') . '</h2>',
+        '#markup' => '<h2>' . $this->t('Open to all schools') . '</h2>',
       ];
 
       foreach ($grouped_data['no_invitation'] as $competition_data) {
