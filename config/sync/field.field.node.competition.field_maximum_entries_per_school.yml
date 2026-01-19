@@ -1,0 +1,23 @@
+uuid: 04159544-4147-4c63-8b8e-8ccdbacab64e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_maximum_entries_per_school
+    - node.type.competition
+id: node.competition.field_maximum_entries_per_school
+field_name: field_maximum_entries_per_school
+entity_type: node
+bundle: competition
+label: 'Maximum Entries Per School'
+description: 'Enter the maximum number of entries any given school can create for this competition. Leaving this empty will allow an unlimited number of entries per school.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

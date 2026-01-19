@@ -11,9 +11,11 @@ dependencies:
     - field.field.node.competition.field_active_round
     - field.field.node.competition.field_competition_school
     - field.field.node.competition.field_host_teacher
+    - field.field.node.competition.field_invited_schools
     - field.field.node.competition.field_judges
     - field.field.node.competition.field_language_stream
     - field.field.node.competition.field_level
+    - field.field.node.competition.field_maximum_entries_per_school
     - field.field.node.competition.field_metatags
     - field.field.node.competition.field_score_template
     - field.field.node.competition.field_submission_deadline
@@ -51,9 +53,11 @@ hidden:
   field_active_round: true
   field_competition_school: true
   field_host_teacher: true
+  field_invited_schools: true
   field_judges: true
   field_language_stream: true
   field_level: true
+  field_maximum_entries_per_school: true
   field_metatags: true
   field_score_template: true
   field_submission_deadline: true

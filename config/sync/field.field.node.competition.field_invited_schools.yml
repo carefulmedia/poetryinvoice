@@ -1,0 +1,29 @@
+uuid: c3fcd41b-4ecb-4d5b-9dd9-208fc5a4586e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_invited_schools
+    - node.type.competition
+    - node.type.school
+id: node.competition.field_invited_schools
+field_name: field_invited_schools
+entity_type: node
+bundle: competition
+label: 'Invited Schools'
+description: 'Select schools that should be invited to this competition. If there are schools invited, only teachers from the invited schools will be able to create entries for this competition.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      school: school
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
