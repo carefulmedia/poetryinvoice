@@ -97,11 +97,14 @@ function piv_base_preprocess_menu_local_tasks(&$variables) {
  * Implements hook_form_BASE_FORM_ID_alter().
  */
 function piv_base_form_user_form_alter(&$form, FormStateInterface $form_state) {
-  // Prevent users from removing the judge role.
-  if (isset($form['account']['roles']) && isset($form['account']['roles']['#options']['judge'])) {
-    if (in_array('judge', $form['account']['roles']['#default_value'])) {
-      $form['account']['roles']['judge']['#disabled'] = TRUE;
-    }
+  // Prevent non-admin users from removing the judge role.
+  $current_user = \Drupal::currentUser();
+  if (
+    isset($form['account']['roles']['#options']['judge'])
+    && in_array('judge', $form['account']['roles']['#default_value'], TRUE)
+    && !$current_user->hasRole('administrator')
+  ) {
+    $form['account']['roles']['judge']['#disabled'] = TRUE;
   }
 }
 
