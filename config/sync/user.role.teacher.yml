@@ -75,6 +75,7 @@ permissions:
   - 'delete own files'
   - 'delete own recitation'
   - 'delete own remote_video media'
+  - 'delete own team_regionals_entry content'
   - 'delete paragraph content this_teacher_signed_up_for'
   - 'delete paragraph content tr_student'
   - 'edit competition entry for own school'

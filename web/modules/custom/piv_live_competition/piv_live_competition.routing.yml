@@ -38,6 +38,18 @@ piv_live_competition.live_competition_list:
   requirements:
     _custom_access: '\Drupal\piv_live_competition\Controller\LiveCompetitionsListController::access'
 
+piv_live_competition.teacher_live_competition_list:
+  path: '/user/{user}/teacher-live-competitions'
+  defaults:
+    _title: 'Teacher Live Competitions'
+    _controller: '\Drupal\piv_live_competition\Controller\TeacherLiveCompetitionsListController'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Controller\TeacherLiveCompetitionsListController::access'
+  options:
+    parameters:
+      user:
+        type: entity:user
+
 piv_live_competition.recitations_list:
   path: '/node/{node}/recitations'
   defaults:

@@ -6207,4 +6207,8 @@ p a {
   transition-duration: 1s;
 }
 
+.error-text {
+  color: #a51b00;
+}
+
 /*# sourceMappingURL=maps/style.css.map */
