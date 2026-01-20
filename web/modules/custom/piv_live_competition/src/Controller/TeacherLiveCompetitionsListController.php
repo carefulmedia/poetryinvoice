@@ -6,6 +6,7 @@ namespace Drupal\piv_live_competition\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Access\AccessResult;
+use Drupal\datetime\Plugin\Field\FieldType\DateTimeItemInterface;
 use Drupal\node\NodeInterface;
 use Drupal\User\UserInterface;
 use Drupal\Core\Url;
@@ -18,14 +19,15 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
    * Get live competitions and entries for a teacher's school.
    */
   public function getCompetitionsAndEntries($teacher_school_id): array {
-    $yesterday = new DrupalDateTime('yesterday');
-    $yesterday_formatted = $yesterday->format('Y-m-d\T00:00:00');
+    $now = new DrupalDateTime('now');
+    $now->setTimezone(new \DateTimeZone('UTC'));
+    $now_formatted = $now->format(DateTimeItemInterface::DATETIME_STORAGE_FORMAT);
 
     $competition_query = $this->entityTypeManager()->getStorage('node')->getQuery();
     $competition_ids = $competition_query->condition('type', 'competition')
-      ->condition('field_winners_announced', $yesterday_formatted, '>')
+      ->condition('field_submission_deadline', $now_formatted, '>')
       ->condition('field_active_round', 0)
-      ->sort('field_winners_announced')
+      ->sort('field_submission_deadline')
       ->accessCheck(TRUE)
       ->execute();
 
@@ -209,18 +211,20 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
       ]);
 
       // Add Edit/Delete links.
-      $entry_markup .= ' [';
-      if ($entry->access('update')) {
-        $entry_markup .= '<a href="' . $edit_url->toString() . '">' . $this->t('Edit') . '</a>';
-      }
-
-      if ($entry->access('delete')) {
+      if ($entry->access('update') || $entry->access('delete')) {
+        $entry_markup .= ' [';
         if ($entry->access('update')) {
-          $entry_markup .= ' | ';
+          $entry_markup .= '<a href="' . $edit_url->toString() . '">' . $this->t('Edit') . '</a>';
         }
-        $entry_markup .= '<a href="' . $delete_url->toString() . '">' . $this->t('Delete') . '</a>';
+
+        if ($entry->access('delete')) {
+          if ($entry->access('update')) {
+            $entry_markup .= ' | ';
+          }
+          $entry_markup .= '<a href="' . $delete_url->toString() . '">' . $this->t('Delete') . '</a>';
+        }
+        $entry_markup .= ']';
       }
-      $entry_markup .= ']';
     }
 
     return ['#markup' => $entry_markup];
@@ -283,10 +287,6 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
     $is_editable = $this->isCompetitionEditable($competition);
     $max_info = $this->getMaxEntriesInfo($competition, count($entries));
 
-    $competition_url = Url::fromRoute('piv_live_competition.live_competition_score_results_table', [
-      'node' => $competition_id,
-    ]);
-
     $build = [
       '#type' => 'container',
       '#attributes' => ['class' => ['competition-group']],
@@ -294,9 +294,7 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
     ];
 
     $build['title'] = [
-      '#type' => 'link',
-      '#title' => $competition->label(),
-      '#url' => $competition_url,
+      '#markup' => $competition->label(),
       '#prefix' => '<h3>',
       '#suffix' => '</h3>',
     ];

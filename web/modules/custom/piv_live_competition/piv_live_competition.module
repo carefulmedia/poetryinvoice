@@ -18,6 +18,8 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 // Error message constants.
 const PIV_LIVE_COMPETITION_ERROR_ALREADY_STARTED = 'This competition has already begun. You cannot add new entries to it.';
+const PIV_LIVE_COMPETITION_ERROR_CLOSING_DATE_PASSED = 'This competition\'s closing date has passed. You cannot add new entries to it.';
+
 const PIV_LIVE_COMPETITION_ERROR_MAX_ENTRIES = 'Your school has reached the maximum number of entries (%s) for this competition.';
 const PIV_LIVE_COMPETITION_ERROR_NO_SCHOOL = 'You must be assigned to a school to create entries for this competition.';
 const PIV_LIVE_COMPETITION_ERROR_NOT_INVITED = 'You can only create entries for competitions your school is invited to.';
@@ -58,6 +60,11 @@ function piv_live_competition_node_access(
     return AccessResult::neutral();
   }
 
+  // If the competition closing date has passed, we should deny access.
+  if (_piv_live_competition_has_competition_closing_date_passed($competition)) {
+    return AccessResult::forbidden();
+  }
+
   // If the competition has started, we should deny access.
   if (_piv_live_competition_has_competition_started($competition)) {
     return AccessResult::forbidden();
@@ -89,6 +96,11 @@ function piv_live_competition_node_presave(NodeInterface $node): void {
   // Validations only happen if a contest is associated.
   if (!$node->get('field_contest_association')->isEmpty()) {
     $competition = $node->get('field_contest_association')->entity;
+
+    // Validate competition closing date hasn't passed.
+    if (_piv_live_competition_has_competition_closing_date_passed($competition)) {
+      throw new \RuntimeException(PIV_LIVE_COMPETITION_ERROR_CLOSING_DATE_PASSED);
+    }
 
     // Validate competition hasn't started.
     if (_piv_live_competition_has_competition_started($competition)) {
@@ -148,6 +160,11 @@ function piv_live_competition_form_alter(&$form, FormStateInterface $form_state,
     $teacher_school = _piv_live_competition_get_teacher_school($account);
     if (!$teacher_school) {
       throw new AccessDeniedHttpException(PIV_LIVE_COMPETITION_ERROR_NO_SCHOOL);
+    }
+
+    // Validate competition closing date hasn't passed.
+    if (_piv_live_competition_has_competition_closing_date_passed($competition_node)) {
+      throw new AccessDeniedHttpException(PIV_LIVE_COMPETITION_ERROR_CLOSING_DATE_PASSED);
     }
 
     // Validate competition hasn't started.
@@ -223,6 +240,12 @@ function _piv_live_competition_validate_competition_access(&$form, FormStateInte
     return;
   }
 
+  // Closing date check.
+  if (_piv_live_competition_has_competition_closing_date_passed($competition_node)) {
+    $form_state->setErrorByName('field_contest_association', t(PIV_LIVE_COMPETITION_ERROR_CLOSING_DATE_PASSED));
+    return;
+  }
+
   // Active round check.
   if (_piv_live_competition_has_competition_started($competition_node)) {
     $form_state->setErrorByName('field_contest_association', t(PIV_LIVE_COMPETITION_ERROR_ALREADY_STARTED));
@@ -259,6 +282,28 @@ function _piv_live_competition_validate_competition_access(&$form, FormStateInte
  */
 function _piv_live_competition_has_competition_started(NodeInterface $competition): bool {
   return (int) $competition->get('field_active_round')->value !== 0;
+}
+
+/**
+ * Helper function to check if competition closing date has passed.
+ *
+ * @param \Drupal\node\NodeInterface $competition
+ *   The competition node.
+ *
+ * @return bool
+ *   TRUE if competition closing date has passed, FALSE otherwise.
+ */
+function _piv_live_competition_has_competition_closing_date_passed(NodeInterface $competition): bool {
+  if ($competition->get('field_submission_deadline')->isEmpty()) {
+    return FALSE;
+  }
+
+  $deadline = $competition->get('field_submission_deadline')->date;
+  if (!$deadline) {
+    return FALSE;
+  }
+
+  return $deadline->getTimestamp() < \Drupal::time()->getRequestTime();
 }
 
 /**
