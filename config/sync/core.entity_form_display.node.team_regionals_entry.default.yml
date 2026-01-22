@@ -8,6 +8,7 @@ dependencies:
     - field.field.node.team_regionals_entry.field_language_stream
     - field.field.node.team_regionals_entry.field_metatags
     - field.field.node.team_regionals_entry.field_place_team_regional
+    - field.field.node.team_regionals_entry.field_team_label
     - field.field.node.team_regionals_entry.field_tr_student
     - node.type.team_regionals_entry
   module:
@@ -30,7 +31,7 @@ mode: default
 content:
   comment_node_team_regionals_en:
     type: comment_default
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -42,19 +43,19 @@ content:
     third_party_settings: {  }
   field_contest_association:
     type: options_select
-    weight: 2
+    weight: 1
     region: content
     settings: {  }
     third_party_settings: {  }
   field_language_stream:
     type: options_select
-    weight: 51
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 51
+    weight: 18
     region: content
     settings:
       sidebar: true
@@ -66,9 +67,17 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_team_label:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_tr_student:
     type: entity_reference_paragraphs
-    weight: 3
+    weight: 2
     region: content
     settings:
       title: Paragraph
@@ -93,12 +102,12 @@ content:
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   simple_sitemap:
-    weight: 10
+    weight: 11
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -109,7 +118,7 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 11
+    weight: 12
     region: content
     settings:
       display_label: true
@@ -146,12 +155,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 30
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }

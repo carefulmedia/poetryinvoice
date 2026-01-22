@@ -1,0 +1,19 @@
+uuid: e35e07cc-d031-49b8-83bd-f0610109d98c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_team_label
+    - node.type.team_regionals_entry
+id: node.team_regionals_entry.field_team_label
+field_name: field_team_label
+entity_type: node
+bundle: team_regionals_entry
+label: 'Team Label'
+description: 'Team label for this entry. This field is populated automatically by checking how many entries exist for the school that owns this entry.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

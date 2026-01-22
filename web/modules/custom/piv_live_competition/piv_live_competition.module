@@ -74,6 +74,33 @@ function piv_live_competition_node_access(
 }
 
 /**
+ * Implements hook_ENTITY_TYPE_insert().
+ */
+function piv_live_competition_node_insert(NodeInterface $node): void {
+  if ($node->bundle() === 'team_regionals_entry') {
+    _piv_live_competition_update_team_labels($node);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function piv_live_competition_node_update(NodeInterface $node): void {
+  if ($node->bundle() === 'team_regionals_entry') {
+    _piv_live_competition_update_team_labels($node);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_delete().
+ */
+function piv_live_competition_node_delete(NodeInterface $node): void {
+  if ($node->bundle() === 'team_regionals_entry') {
+    _piv_live_competition_update_team_labels($node);
+  }
+}
+
+/**
  * Implements hook_ENTITY_TYPE_presave() for node entities.
  *
  * We add custom validation logic to make sure 'team_regionals_entry' nodes can be created.
@@ -580,4 +607,104 @@ function _piv_live_competition_count_school_entries(int $competition_id, int $sc
   }
 
   return (int) $entry_query->count()->execute();
+}
+
+/**
+ * Update team labels for all team_regionals_entry nodes from the same school and contest.
+ *
+ * @param \Drupal\node\NodeInterface $node
+ *   The team_regionals_entry node that triggered the update.
+ */
+function _piv_live_competition_update_team_labels(NodeInterface $node): void {
+  try {
+    // Prevent recursive updates.
+    $updating = &drupal_static(__FUNCTION__, FALSE);
+    if ($updating) {
+      return;
+    }
+    $updating = TRUE;
+
+    // Get the school from the node author.
+    $author = $node->get('uid')->entity;
+    if (!$author || !$author->hasField('field_school') || $author->field_school->isEmpty()) {
+      $updating = FALSE;
+      return;
+    }
+
+    $school_id = $author->field_school->target_id;
+    if (!$school_id) {
+      $updating = FALSE;
+      return;
+    }
+
+    // Get the contest association from the entry.
+    if (!$node->hasField('field_contest_association') || $node->get('field_contest_association')->isEmpty()) {
+      $updating = FALSE;
+      return;
+    }
+
+    $contest_id = $node->get('field_contest_association')->target_id;
+    if (!$contest_id) {
+      $updating = FALSE;
+      return;
+    }
+
+    // Find all team_regionals_entry nodes from the same contest and school.
+    // Use database query to join user school field for efficient filtering.
+    $database = \Drupal::database();
+    $query = $database->select('node_field_data', 'n');
+    $query->innerJoin('node__field_contest_association', 'ca', 'n.nid = ca.entity_id AND ca.deleted = 0');
+    $query->innerJoin('user__field_school', 's', 'n.uid = s.entity_id AND s.deleted = 0');
+    $query->fields('n', ['nid'])
+      ->condition('n.type', 'team_regionals_entry')
+      ->condition('n.status', 1)
+      ->condition('ca.field_contest_association_target_id', $contest_id)
+      ->condition('s.field_school_target_id', $school_id)
+      ->orderBy('n.created');
+
+    $nids = $query->execute()->fetchCol();
+
+    if (empty($nids)) {
+      $updating = FALSE;
+      return;
+    }
+
+    // Load all matching nodes.
+    $entry_nodes = \Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids);
+
+    // Get the school name.
+    $school = \Drupal::entityTypeManager()->getStorage('node')->load($school_id);
+    $school_name = $school ? $school->label() : '';
+
+    if (!$school_name) {
+      $updating = FALSE;
+      return;
+    }
+
+    // Update team labels based on count.
+    $count = count($entry_nodes);
+    $team_number = 1;
+
+    foreach ($entry_nodes as $entry_node) {
+      if ($count === 1) {
+        // Only one entry, set label as just the school name.
+        if ($entry_node->hasField('field_team_label')) {
+          $entry_node->set('field_team_label', $school_name);
+          $entry_node->save();
+        }
+      } else {
+        // Multiple entries, set team label with school name and number.
+        if ($entry_node->hasField('field_team_label')) {
+          $entry_node->set('field_team_label', $school_name . ' Team ' . $team_number);
+          $entry_node->save();
+        }
+        $team_number++;
+      }
+    }
+
+    $updating = FALSE;
+  }
+  catch(\Exception $e) {
+    \Drupal::logger('piv_live_competition')->error('Could not update team labels for live competition entry: ' . $e->getMessage());
+  }
 }
