@@ -626,12 +626,12 @@ function _piv_live_competition_update_team_labels(NodeInterface $node): void {
 
     // Get the school from the node author.
     $author = $node->get('uid')->entity;
-    if (!$author || !$author->hasField('field_school') || $author->field_school->isEmpty()) {
+    if (!$author || !$author->hasField('field_school') || $author->get('field_school')->isEmpty()) {
       $updating = FALSE;
       return;
     }
 
-    $school_id = $author->field_school->target_id;
+    $school_id = $author->get('field_school')->target_id;
     if (!$school_id) {
       $updating = FALSE;
       return;
