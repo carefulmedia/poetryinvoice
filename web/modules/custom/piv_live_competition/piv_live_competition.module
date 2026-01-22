@@ -189,8 +189,19 @@ function piv_live_competition_form_alter(&$form, FormStateInterface $form_state,
       throw new AccessDeniedHttpException(PIV_LIVE_COMPETITION_ERROR_NOT_INVITED);
     }
 
-    // If all is good with the prefill, we can hide the field to make sure it isn't changed.
-    $form['field_contest_association']['widget']['#disabled'] = TRUE;
+    // If all is good with the prefill, hide the field to prevent changes.
+    // We use display:none to keep it functional but hidden from users.
+    // #access prevents submission of the form value.
+    // #disable causes issues with submission when AJAX rebuilds the form.
+    $form['field_contest_association']['#attributes']['style'] = 'display: none;';
+
+    // Add a message showing which competition this entry is for to make it clear to the user.
+    $competition_label = $competition_node->label();
+    $form['field_contest_association_message'] = [
+      '#type' => 'markup',
+      '#markup' => '<div class="contest-association-message">Creating entry for: <strong>' . $competition_label . '</strong></div>',
+      '#weight' => -100,
+    ];
   }
 
   // Filter the competition options for teachers based on invited schools.

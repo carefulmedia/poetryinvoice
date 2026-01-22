@@ -192,10 +192,43 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
   }
 
   /**
+   * Helper method to get teacher display name.
+   *
+   * This will return us the first and last name of the teacher if found.
+   * If not, we'll return the username and email.
+   * If the username is the same as the email, we simply return the email.
+   */
+  private function getTeacherDisplayName(UserInterface $teacher): string {
+    $first_name = '';
+    $last_name = '';
+
+    if ($teacher->hasField('field_first_name') && !$teacher->get('field_first_name')->isEmpty()) {
+      $first_name = $teacher->get('field_first_name')->value;
+    }
+    if ($teacher->hasField('field_last_name') && !$teacher->get('field_last_name')->isEmpty()) {
+      $last_name = $teacher->get('field_last_name')->value;
+    }
+
+    if (!empty($first_name) && !empty($last_name)) {
+      return trim($first_name . ' ' . $last_name);
+    }
+
+    $username = $teacher->getAccountName();
+    $email = $teacher->getEmail();
+
+    if ($username === $email) {
+      return $email;
+    }
+
+    return trim($username . ' ' . $email);
+  }
+
+  /**
    * Helper method to build entry item markup.
    */
   private function buildEntryItem(NodeInterface $entry, bool $is_editable, int $index): array {
-    $entry_markup = $entry->label() . ' #' . $index + 1;
+    $entry_title = $entry->label() . ' #' . $index + 1;
+    $links_markup = '';
 
     if ($is_editable) {
       $current_path = \Drupal::request()->getRequestUri();
@@ -212,20 +245,30 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
 
       // Add Edit/Delete links.
       if ($entry->access('update') || $entry->access('delete')) {
-        $entry_markup .= ' [';
+        $links_markup .= ' [';
         if ($entry->access('update')) {
-          $entry_markup .= '<a href="' . $edit_url->toString() . '">' . $this->t('Edit') . '</a>';
+          $links_markup .= '<a href="' . $edit_url->toString() . '">' . $this->t('Edit') . '</a>';
         }
 
         if ($entry->access('delete')) {
           if ($entry->access('update')) {
-            $entry_markup .= ' | ';
+            $links_markup .= ' | ';
           }
-          $entry_markup .= '<a href="' . $delete_url->toString() . '">' . $this->t('Delete') . '</a>';
+          $links_markup .= '<a href="' . $delete_url->toString() . '">' . $this->t('Delete') . '</a>';
         }
-        $entry_markup .= ']';
+        $links_markup .= ']';
       }
     }
+
+    // Build teacher author information.
+    $teacher_markup = '';
+    $author = $entry->getOwner();
+    if ($author) {
+      $teacher_name = $this->getTeacherDisplayName($author);
+      $teacher_markup = '<br><em>' . $this->t('Created by: ') . $teacher_name . '</em>';
+    }
+
+    $entry_markup = $entry_title . $links_markup . $teacher_markup;
 
     return ['#markup' => $entry_markup];
   }
