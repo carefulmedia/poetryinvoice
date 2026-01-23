@@ -11,8 +11,8 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
-  - 'create field_grades'
-  - 'edit field_grades'
-  - 'edit own field_grades'
-  - 'view field_grades'
-  - 'view own field_grades'
+  - 'create field_iva_finalist'
+  - 'edit field_iva_finalist'
+  - 'edit own field_iva_finalist'
+  - 'view field_iva_finalist'
+  - 'view own field_iva_finalist'

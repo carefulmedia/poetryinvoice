@@ -1,0 +1,22 @@
+uuid: df73cee6-b1d2-4a2a-bcee-bb170e7fae06
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.user.field_iva_finalist
+  module:
+    - user
+id: user.user.field_iva_finalist
+field_name: field_iva_finalist
+entity_type: user
+bundle: user
+label: 'IVA Finalist'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
