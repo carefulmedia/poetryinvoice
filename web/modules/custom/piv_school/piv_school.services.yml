@@ -5,3 +5,6 @@ services:
   piv_school.sync:
     class: Drupal\piv_school\SyncService
     arguments: [ '@entity_type.manager', '@state', '@logger.channel.piv_school' ]
+  piv_school.allow_poet_visits:
+    class: Drupal\piv_school\SyncService
+    arguments: [ '@entity_type.manager', '@state', '@logger.channel.piv_school' ]
