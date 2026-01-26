@@ -152,8 +152,9 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
           // Init the row.
           if (empty($rows[$judge_id][$tr_id])) {
             $school = $team_regional_entry->getOwner()?->field_school->entity?->label();
+            $school_label = $team_regional_entry->field_team_label?->value ?? $school;
             $rows[$judge_id][$tr_id] = [
-              'school' => ['#markup' => $school],
+              'school' => ['#markup' => $school_label],
               'score' => 0,
               'recitation' => 0,
               'accuracy' => 0,
