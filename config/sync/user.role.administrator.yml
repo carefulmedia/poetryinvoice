@@ -11,8 +11,8 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
-  - 'create field_team_label'
-  - 'edit field_team_label'
-  - 'edit own field_team_label'
-  - 'view field_team_label'
-  - 'view own field_team_label'
+  - 'create field_judge'
+  - 'edit field_judge'
+  - 'edit own field_judge'
+  - 'view field_judge'
+  - 'view own field_judge'

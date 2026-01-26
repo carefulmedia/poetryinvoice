@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Drupal\piv_live_competition\Form;
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\piv_live_competition\Helper;
 use Drupal\node\NodeInterface;
@@ -29,6 +32,18 @@ final class RecitationsListForm extends FormBase {
     return new static(
       $container->get('piv_live_competition.helper')
     );
+  }
+
+  /**
+   * Custom access.
+   */
+  public function access(AccountInterface $account, NodeInterface $node, ?string $stream = NULL): AccessResultInterface {
+    $is_competition_admin = !$node->get('field_live_competition_admin')->isEmpty()
+      && $node->get('field_live_competition_admin')->entity->id() === $account->id();
+    $permission = $account->hasPermission('access competition recitations list');
+    return AccessResult::allowedIf($permission || $is_competition_admin)
+      ->cachePerUser()
+      ->addCacheableDependency($account);
   }
 
   /**

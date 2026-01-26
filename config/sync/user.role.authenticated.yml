@@ -6,12 +6,16 @@ dependencies:
     - node.type.journal_poem
   module:
     - contact
+    - content_translation
     - field_permissions
     - file
     - form_mode_manager
     - media
     - node
+    - paragraphs
     - paragraphs_type_permissions
+    - piv_contest_score
+    - piv_contest_score_template
     - system
 _core:
   default_config_hash: btW6TFHajhy7Eo6YUvdFiPh4TcPggo8GBXYctjV6zag
@@ -31,15 +35,26 @@ permissions:
   - 'create field_poem_attachment'
   - 'create field_pronouns'
   - 'create journal_poem content'
+  - 'create paragraph content judges'
+  - 'create paragraph content tr_student'
   - 'create piv_teacher_first_name'
   - 'create piv_teacher_last_name'
+  - 'create score'
   - 'delete own files'
+  - 'delete paragraph content judges'
+  - 'delete paragraph content tr_student'
+  - 'delete score'
   - 'edit field_attachments'
   - 'edit field_teacher_preparation_teache'
   - 'edit own field_attachments'
   - 'edit own field_teacher_preparation_teache'
   - 'edit own piv_teacher_first_name'
   - 'edit own piv_teacher_last_name'
+  - 'edit score'
+  - 'translate paragraph'
+  - 'update paragraph content judges'
+  - 'update paragraph content tr_student'
+  - 'use node.default form mode'
   - 'use user.default form mode'
   - 'view body'
   - 'view field_2_column_poem'
@@ -65,7 +80,6 @@ permissions:
   - 'view field_images_insert'
   - 'view field_intro_text'
   - 'view field_journal_poem_body'
-  - 'view field_judge'
   - 'view field_lesson_objectives'
   - 'view field_lifespan'
   - 'view field_materials_resources'
@@ -131,4 +145,7 @@ permissions:
   - 'view paragraph content tr_student'
   - 'view piv_teacher_first_name'
   - 'view piv_teacher_last_name'
+  - 'view score'
+  - 'view score template'
+  - 'view the administration theme'
   - 'view user_picture'

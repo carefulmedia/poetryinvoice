@@ -14,6 +14,7 @@ dependencies:
     - field.field.node.competition.field_judges
     - field.field.node.competition.field_language_stream
     - field.field.node.competition.field_level
+    - field.field.node.competition.field_live_competition_admin
     - field.field.node.competition.field_maximum_entries_per_school
     - field.field.node.competition.field_metatags
     - field.field.node.competition.field_score_template
@@ -53,7 +54,7 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 19
+    weight: 20
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -136,6 +137,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_live_competition_admin:
+    type: entity_reference_autocomplete
+    weight: 17
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_maximum_entries_per_school:
     type: number
     weight: 4
@@ -145,7 +156,7 @@ content:
     third_party_settings: {  }
   field_metatags:
     type: metatag_firehose
-    weight: 27
+    weight: 28
     region: content
     settings:
       sidebar: true
@@ -188,25 +199,25 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 22
+    weight: 23
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 20
+    weight: 21
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 24
+    weight: 25
     region: content
     settings: {  }
     third_party_settings: {  }
   simple_sitemap:
-    weight: 17
+    weight: 18
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -217,14 +228,14 @@ content:
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 23
+    weight: 24
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 21
+    weight: 22
     region: content
     settings:
       display_label: true
@@ -244,7 +255,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 18
+    weight: 19
     region: content
     settings:
       match_operator: CONTAINS
@@ -254,12 +265,12 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 25
+    weight: 26
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 26
+    weight: 27
     region: content
     settings: {  }
     third_party_settings: {  }

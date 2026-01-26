@@ -15,6 +15,7 @@ dependencies:
     - field.field.node.competition.field_judges
     - field.field.node.competition.field_language_stream
     - field.field.node.competition.field_level
+    - field.field.node.competition.field_live_competition_admin
     - field.field.node.competition.field_maximum_entries_per_school
     - field.field.node.competition.field_metatags
     - field.field.node.competition.field_score_template
@@ -57,6 +58,7 @@ hidden:
   field_judges: true
   field_language_stream: true
   field_level: true
+  field_live_competition_admin: true
   field_maximum_entries_per_school: true
   field_metatags: true
   field_score_template: true

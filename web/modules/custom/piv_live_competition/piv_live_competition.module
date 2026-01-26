@@ -11,6 +11,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Render\Element;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -39,11 +40,55 @@ function piv_live_competition_node_access(
   $operation,
   AccountInterface $account,
 ): AccessResultInterface {
-  // Check the entity bundle.
-  if ($entity->bundle() !== 'team_regionals_entry') {
+  // Run access logic for 'competition' nodes.
+  if ($entity->bundle() === 'competition') {
+    return _piv_live_competition_node__competition_access($entity, $operation, $account);
+  }
+
+  // Run access logic for 'team_regionals_entry' nodes.
+  if ($entity->bundle() === 'team_regionals_entry') {
+    return _piv_live_competition_node__team_regionals_entry_access($entity, $operation, $account);
+  }
+
+  return AccessResult::neutral();
+}
+
+/**
+ * Access hook logic for competition nodes.
+ */
+function _piv_live_competition_node__competition_access(
+  EntityInterface $entity,
+  $operation,
+  AccountInterface $account,
+): AccessResultInterface {
+  // Only act on the update operation.
+  if ($operation !== 'update') {
     return AccessResult::neutral();
   }
 
+  // Get the competition's administrator if any.
+  $competition_admin_id = $entity->get('field_live_competition_admin')?->target_id;
+
+  if (empty($competition_admin_id)) {
+    return AccessResult::neutral();
+  }
+
+  // If the competition has an admin and that admin is the current user, they should have access to edit the node.
+  if ($competition_admin_id === $account->id()) {
+    return AccessResult::allowed();
+  }
+
+  return AccessResult::neutral();
+}
+
+/**
+ * Access hook logic for team regionals nodes.
+ */
+function _piv_live_competition_node__team_regionals_entry_access(
+  EntityInterface $entity,
+  $operation,
+  AccountInterface $account,
+): AccessResultInterface {
   // Only act on edit/delete operations.
   if (!in_array($operation, ['update', 'delete'])) {
     return AccessResult::neutral();
@@ -58,6 +103,18 @@ function piv_live_competition_node_access(
   $competition = $entity->get('field_contest_association')->entity;
   if (!$competition || $competition->bundle() !== 'competition') {
     return AccessResult::neutral();
+  }
+
+  // If the user is set as the competition admin, they should be able to edit the entry.
+  // We currently do this grant before checking if the competition is started / closing date is passed.
+  // We can move this check if the competition admin should not be able to edit entries when the competition is started.
+  if (
+    $operation === 'update'
+    && $competition->hasField('field_live_competition_admin')
+    && !$competition->get('field_live_competition_admin')->isEmpty()
+    && $competition->get('field_live_competition_admin')->target_id === $account->id()
+  ) {
+    return AccessResult::allowed();
   }
 
   // If the competition closing date has passed, we should deny access.
@@ -158,11 +215,59 @@ function piv_live_competition_node_presave(NodeInterface $node): void {
  * @see \hook_form_alter()
  */
 function piv_live_competition_form_alter(&$form, FormStateInterface $form_state, $form_id): void {
-  if (!in_array($form_id, ['node_team_regionals_entry_form', 'node_team_regionals_entry_edit_form'])) {
-    return;
+  if ($form_id === 'node_competition_edit_form') {
+    _piv_live_competition_alter_competition_form($form, $form_state);
   }
 
+  if (in_array($form_id, ['node_team_regionals_entry_form', 'node_team_regionals_entry_edit_form'])) {
+    _piv_live_competition_alter_entry_form($form, $form_state);
+  }
+}
+
+/**
+ * Alterations for competition edit form.
+ */
+function _piv_live_competition_alter_competition_form(&$form, FormStateInterface $form_state): void {
+  $competition_node = $form_state->getFormObject()->getEntity();
+  $competition_admin = $competition_node->get('field_live_competition_admin')->entity;
+  $current_user = \Drupal::currentUser()->getAccount();
+
+  // If the current user is the admin of the competition, we should show certain fields that are hidden by permissions.
+  if ($competition_admin->id() === $current_user->id()) {
+    // We also hide the competition admin field since it makes sense.
+    $form['field_live_competition_admin']['#access'] = FALSE;
+
+    // Show fields that are normally hidden by permissions.
+    $form['field_years_in_competition']['#access'] = TRUE;
+    $form['field_language_stream']['#access'] = TRUE;
+    $form['field_submission_deadline']['#access'] = TRUE;
+    $form['field_winners_announced']['#access'] = TRUE;
+    $form['body']['#access'] = TRUE;
+  }
+}
+
+/**
+ * Alterations for entry create/edit form.
+ */
+function _piv_live_competition_alter_entry_form(&$form, $form_state): void {
   $account = \Drupal::currentUser();
+
+  // Allow competition admins to edit all fields on the entry.
+  // We grant access to fields that are hidden via field permissions.
+  $entry_node = $form_state->getFormObject()->getEntity();
+  $competition_node = $entry_node?->get('field_contest_association')->entity;
+  $competition_admin = $competition_node?->get('field_live_competition_admin')?->entity;
+  if (
+    $entry_node
+    && $competition_node
+    && $competition_admin
+    && $account->id() === $competition_admin->id()
+  ) {
+    $form['field_contest_association']['#access'] = TRUE;
+    $form['field_language_stream']['#access'] = TRUE;
+    $form['field_place_team_regional']['#access'] = TRUE;
+    $form['field_tr_student']['#access'] = TRUE;
+  }
 
   // Don't apply to admins.
   if ($account->hasRole('administrator')) {
@@ -254,6 +359,104 @@ function piv_live_competition_form_alter(&$form, FormStateInterface $form_state,
   }
 
   $form['#validate'][] = '_piv_live_competition_validate_competition_access';
+}
+
+/**
+ * Implements hook_inline_entity_form_entity_form_alter().
+ *
+ * Alter widget forms for inline entity forms complex widget.
+ * We want to grant access to certain fields for live competition admins.
+ * Since they don't have a specific role, we do it this way.
+ *
+ * @see hook_inline_entity_form_entity_form_alter()
+ */
+function piv_live_competition_inline_entity_form_entity_form_alter(
+  &$entity_form,
+  &$form_state,
+): void {
+  if ($entity_form['#entity_type'] === 'paragraph' && $entity_form['#bundle'] === 'judges') {
+    $parent_competition = $form_state->getFormObject()->getEntity();
+    $competition_admin = $parent_competition?->get('field_live_competition_admin')?->entity;
+    $account = \Drupal::currentUser();
+    if (
+      $parent_competition
+      && $competition_admin
+      && $account->id() === $competition_admin->id()
+    ) {
+      _piv_live_competition_access_all_fields_in_form($entity_form);
+    }
+  }
+
+  if ($entity_form['#entity_type'] === 'score') {
+    $parent_entry = $form_state->getFormObject()->getEntity();
+    $parent_competition = $parent_entry?->get('field_contest_association')?->entity;
+    $competition_admin = $parent_competition?->get('field_live_competition_admin')?->entity;
+    $account = \Drupal::currentUser();
+    if (
+      $parent_competition
+      && $competition_admin
+      && $account->id() === $competition_admin->id()
+    ) {
+      _piv_live_competition_access_all_fields_in_form($entity_form);
+    }
+  }
+}
+
+/**
+ * Implements hook_field_widget_WIDGET_TYPE_form_alter().
+ *
+ * Alter widget forms for paragraphs classic widget.
+ * We want to grant access to certain fields for live competition admins.
+ * Since they don't have a specific role, we do it this way.
+ *
+ * @see hook_field_widget_complete_WIDGET_TYPE_form_alter()
+ */
+function piv_live_competition_field_widget_complete_entity_reference_paragraphs_form_alter(
+  &$element,
+  &$form_state,
+  $context,
+): void {
+  if ($element['widget']['#field_name'] !== 'field_tr_student') {
+    return;
+  }
+
+  // Allow competition admins to edit all fields on the entry.
+  // We grant access to fields that are hidden via field permissions.
+  $account = \Drupal::currentUser();
+  $parent_node = $form_state->getFormObject()->getEntity();
+  $competition_node = $parent_node->bundle() === 'competition' ?
+    $parent_node
+    : $parent_node?->get('field_contest_association')->entity;
+  $competition_admin = $competition_node?->get('field_live_competition_admin')?->entity;
+  if (
+    $competition_node
+    && $competition_admin
+    && $account->id() === $competition_admin->id()
+  ) {
+    foreach (Element::children($element['widget']) as $index) {
+      if (!is_numeric($index)) {
+        continue;
+      }
+      _piv_live_competition_access_all_fields_in_form($element['widget'][$index]['subform']);
+    }
+  }
+}
+
+/**
+ * Helper function to set #access of all fields in a form to TRUE.
+ */
+function _piv_live_competition_access_all_fields_in_form(array &$form, array $exclusions = []): void {
+  foreach ($form as $field_name => $field_element) {
+    if (
+      !in_array($field_name, $exclusions, TRUE)
+      && (
+        str_starts_with($field_name, 'field_')
+        || str_starts_with($field_name, 'piv_')
+      )
+    ) {
+      $form[$field_name]['#access'] = TRUE;
+    }
+  }
 }
 
 /**

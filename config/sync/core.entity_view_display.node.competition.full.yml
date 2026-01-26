@@ -16,6 +16,7 @@ dependencies:
     - field.field.node.competition.field_judges
     - field.field.node.competition.field_language_stream
     - field.field.node.competition.field_level
+    - field.field.node.competition.field_live_competition_admin
     - field.field.node.competition.field_maximum_entries_per_school
     - field.field.node.competition.field_metatags
     - field.field.node.competition.field_score_template
@@ -406,6 +407,7 @@ hidden:
   entity_print_view_word_docx: true
   field_competition_school: true
   field_invited_schools: true
+  field_live_competition_admin: true
   field_maximum_entries_per_school: true
   langcode: true
   search_api_excerpt: true

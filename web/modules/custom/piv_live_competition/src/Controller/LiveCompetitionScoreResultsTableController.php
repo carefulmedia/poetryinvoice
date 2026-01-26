@@ -422,10 +422,12 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       return $n->field_language_stream->value ?? '_none';
     }, $nodes);
     $stream_is_valid = in_array($stream, $streams);
+    $is_competition_admin = !$node->get('field_live_competition_admin')->isEmpty()
+      && $node->get('field_live_competition_admin')->entity->id() === $account->id();
     $permission = $account->hasPermission('access live competition score result table');
     // If stream is null the page will redirect to the first valid
     // stream.
-    return AccessResult::allowedIf($stream === NULL || ($permission && $stream_is_valid))
+    return AccessResult::allowedIf($stream === NULL || (($permission || $is_competition_admin) && $stream_is_valid))
       ->cachePerUser()
       ->addCacheableDependency($account)
       ->addCacheTags(['node_list:team_regionals_entry']);
