@@ -85,9 +85,10 @@ final class RecitationsListForm extends FormBase {
 
       $team_regional_entry = $recitation->getParentEntity();
       $stream = $team_regional_entry->field_language_stream->value;
-      $school = $team_regional_entry
-        ? $team_regional_entry->getOwner()?->field_school->entity?->label()
+      $school_label = $team_regional_entry ?
+        $team_regional_entry->field_team_label?->value ?? $team_regional_entry->getOwner()?->field_school->entity?->label()
         : '';
+      $school = $school_label;
       $form['table'][] = [
         'team_regional_entry' => $team_regional_entry
           ? $team_regional_entry->toLink(NULL, 'edit-form')->toRenderable()
