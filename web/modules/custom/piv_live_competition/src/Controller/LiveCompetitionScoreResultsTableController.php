@@ -116,6 +116,12 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
     $students_map = [];
 
     foreach ($team_regional_entries as $team_regional_entry) {
+      // Ensure our entry is translated to the current language.
+      $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      if ($team_regional_entry->hasTranslation($current_language)) {
+        $team_regional_entry = $team_regional_entry->getTranslation($current_language);
+      }
+
       $tr_id = $team_regional_entry->id();
       $accuracy_scores[$tr_id]['en'] = 0;
       $accuracy_scores[$tr_id]['fr'] = 0;
