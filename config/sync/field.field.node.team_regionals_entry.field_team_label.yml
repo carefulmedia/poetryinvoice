@@ -12,7 +12,7 @@ bundle: team_regionals_entry
 label: 'Team Label'
 description: 'Team label for this entry. This field is populated automatically by checking how many entries exist for the school that owns this entry.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings: {  }
