@@ -686,19 +686,48 @@ function _piv_live_competition_update_team_labels(NodeInterface $node): void {
     $team_number = 1;
 
     foreach ($entry_nodes as $entry_node) {
+      // Prepare the labels for both languages.
       if ($count === 1) {
         // Only one entry, set label as just the school name.
-        if ($entry_node->hasField('field_team_label')) {
-          $entry_node->set('field_team_label', $school_name);
-          $entry_node->save();
-        }
+        $label_en = $school_name;
+        $label_fr = $school_name;
       } else {
         // Multiple entries, set team label with school name and number.
-        if ($entry_node->hasField('field_team_label')) {
-          $entry_node->set('field_team_label', $school_name . ' Team ' . $team_number);
+        $label_en = $school_name . ' Team ' . $team_number;
+        $label_fr = $school_name . ' Équipe ' . $team_number;
+        $team_number++;
+      }
+
+      if ($entry_node->hasField('field_team_label')) {
+        // Update English version.
+        if ($entry_node->hasTranslation('en')) {
+          $translation_en = $entry_node->getTranslation('en');
+          $translation_en->set('field_team_label', $label_en);
+          $translation_en->save();
+        } else {
+          $entry_node->set('field_team_label', $label_en);
           $entry_node->save();
         }
-        $team_number++;
+
+        // Update French version.
+        if ($entry_node->hasTranslation('fr')) {
+          $translation_fr = $entry_node->getTranslation('fr');
+          $translation_fr->set('field_team_label', $label_fr);
+          $translation_fr->save();
+        } else {
+          // Create French translation if it doesn't exist.
+          try {
+            $translation_fr = $entry_node->addTranslation('fr', $entry_node->toArray());
+            $translation_fr->set('field_team_label', $label_fr);
+            $translation_fr->save();
+          } catch (\Exception $e) {
+            // If translation creation fails, just log it and continue.
+            \Drupal::logger('piv_live_competition')->warning('Could not create French translation for entry @nid: @message', [
+              '@nid' => $entry_node->id(),
+              '@message' => $e->getMessage(),
+            ]);
+          }
+        }
       }
     }
 
