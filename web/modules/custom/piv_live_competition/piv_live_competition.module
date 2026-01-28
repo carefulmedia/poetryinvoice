@@ -233,7 +233,7 @@ function _piv_live_competition_alter_competition_form(&$form, FormStateInterface
   $current_user = \Drupal::currentUser()->getAccount();
 
   // If the current user is the admin of the competition, we should show certain fields that are hidden by permissions.
-  if ($competition_admin->id() === $current_user->id()) {
+  if ($competition_admin && $competition_admin->id() === $current_user->id()) {
     // We also hide the competition admin field since it makes sense.
     $form['field_live_competition_admin']['#access'] = FALSE;
 
