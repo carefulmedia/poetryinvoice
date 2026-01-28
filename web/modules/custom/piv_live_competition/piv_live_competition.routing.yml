@@ -56,7 +56,7 @@ piv_live_competition.recitations_list:
     _title_callback: 'Drupal\piv_live_competition\Form\RecitationsListForm::title'
     _form: 'Drupal\piv_live_competition\Form\RecitationsListForm'
   requirements:
-    _permission: 'access competition recitations list'
+    _custom_access: '\Drupal\piv_live_competition\Form\RecitationsListForm::access'
   options:
     parameters:
       node:
@@ -70,7 +70,7 @@ piv_live_competition.monitor_dashboard:
     _title_callback: 'Drupal\piv_live_competition\Controller\MonitorDashboardController::title'
     _controller: '\Drupal\piv_live_competition\Controller\MonitorDashboardController'
   requirements:
-    _permission: 'access monitor dashboard'
+    _custom_access: '\Drupal\piv_live_competition\Controller\MonitorDashboardController::access'
   options:
     parameters:
       node:
@@ -92,3 +92,16 @@ piv_live_competition.live_competition_score_results_table:
         type: entity:node
         bundle:
           - competition
+
+piv_live_competition.yearly_results:
+  path: '/live-competitions/yearly-results/{year}'
+  defaults:
+    _title_callback: '\Drupal\piv_live_competition\Controller\YearlyResultsController::title'
+    _controller: '\Drupal\piv_live_competition\Controller\YearlyResultsController'
+  requirements:
+    _permission: 'access content'
+    year: '\d{4}'
+  options:
+    parameters:
+      year:
+        type: string

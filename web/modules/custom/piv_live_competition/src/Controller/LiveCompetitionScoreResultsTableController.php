@@ -7,6 +7,7 @@ namespace Drupal\piv_live_competition\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\NodeInterface;
 use Drupal\piv_live_competition\Helper;
+use Drupal\piv_live_competition\LiveCompetitionScoreService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
@@ -21,6 +22,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
    */
   public function __construct(
     protected readonly Helper $helper,
+    protected readonly LiveCompetitionScoreService $scoreService,
   ) {}
 
   /**
@@ -28,7 +30,8 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('piv_live_competition.helper')
+      $container->get('piv_live_competition.helper'),
+      $container->get('piv_live_competition.score_service')
     );
   }
 
@@ -116,6 +119,12 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
     $students_map = [];
 
     foreach ($team_regional_entries as $team_regional_entry) {
+      // Ensure our entry is translated to the current language.
+      $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      if ($team_regional_entry->hasTranslation($current_language)) {
+        $team_regional_entry = $team_regional_entry->getTranslation($current_language);
+      }
+
       $tr_id = $team_regional_entry->id();
       $accuracy_scores[$tr_id]['en'] = 0;
       $accuracy_scores[$tr_id]['fr'] = 0;
@@ -416,10 +425,12 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       return $n->field_language_stream->value ?? '_none';
     }, $nodes);
     $stream_is_valid = in_array($stream, $streams);
+    $is_competition_admin = !$node->get('field_live_competition_admin')->isEmpty()
+      && $node->get('field_live_competition_admin')->entity->id() === $account->id();
     $permission = $account->hasPermission('access live competition score result table');
     // If stream is null the page will redirect to the first valid
     // stream.
-    return AccessResult::allowedIf($stream === NULL || ($permission && $stream_is_valid))
+    return AccessResult::allowedIf($stream === NULL || (($permission || $is_competition_admin) && $stream_is_valid))
       ->cachePerUser()
       ->addCacheableDependency($account)
       ->addCacheTags(['node_list:team_regionals_entry']);

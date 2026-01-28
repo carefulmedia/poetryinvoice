@@ -1,0 +1,88 @@
+{#
+/**
+ * @file
+ * Template for displaying yearly live competition results.
+ *
+ * Available variables:
+ * - year: The year being displayed.
+ * - competitions: Array of competition data, each containing:
+ *   - name: Competition title
+ *   - host_school: Host school name
+ *   - contest_date: Formatted date string
+ *   - streams: Array of language stream results, each containing:
+ *     - language: Language name
+ *     - judges: Array of judge names
+ *     - placements: Array of top 3-4 placements, each containing:
+ *       - rank: Placement rank (1, 2, 3, or 4)
+ *       - school_name: School name with team label
+ *       - reciters: Array of student names
+ *     - participating_schools: Array of remaining school names
+ */
+#}
+
+<div class="live-competition-yearly-results">
+  {% if competitions is empty %}
+    <p>{{ 'No competitions found for @year.'|t({'@year': year}) }}</p>
+  {% else %}
+    {% for competition in competitions %}
+      <div class="competition-results">
+        <h2>{{ competition.name }}</h2>
+
+        <div class="competition-meta">
+          <p>
+            <strong>{{ 'Host School:'|t }}</strong> {{ competition.host_school }}<br>
+            <strong>{{ 'Date:'|t }}</strong> {{ competition.contest_date }}<br>
+            <strong>{{ 'Contest Language:'|t }}</strong> {{ competition.contest_language_stream }}
+          </p>
+        </div>
+
+        {% for stream_result in competition.streams %}
+          <div class="stream-results">
+            {% if competition.streams|length > 1 %}
+              <p>{{ stream_result.language }}</p>
+            {% endif %}
+
+            {% if stream_result.judges is not empty %}
+              <div class="judges">
+                <strong>{{ 'Judges:'|t }}</strong>
+                {{ stream_result.judges|join(', ') }}
+              </div>
+            {% endif %}
+
+            <div class="placements">
+              {% for placement in stream_result.placements %}
+                <div class="placement placement-{{ placement.rank }}">
+                  <strong>
+                    {% if placement.rank == 1 %}
+                      {{ '1st Place:'|t }}
+                    {% elseif placement.rank == 2 %}
+                      {{ '2nd Place:'|t }}
+                    {% elseif placement.rank == 3 %}
+                      {{ '3rd Place:'|t }}
+                    {% elseif placement.rank == 4 %}
+                      {{ '4th Place:'|t }}
+                    {% endif %}
+                  </strong>
+                  {{ placement.school_name }}{% if placement.reciters is not empty %} ({{ placement.reciters|join(', ') }}){% endif %}
+                </div>
+              {% endfor %}
+              <br>
+            </div>
+
+            {% if stream_result.participating_schools is not empty %}
+              <div class="participating-schools">
+                <h4>{{ 'Participating Schools:'|t }}</h4>
+                <ul>
+                  {% for school in stream_result.participating_schools %}
+                    <li>{{ school }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+      <hr>
+    {% endfor %}
+  {% endif %}
+</div>
