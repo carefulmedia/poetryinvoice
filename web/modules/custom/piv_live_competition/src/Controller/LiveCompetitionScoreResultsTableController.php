@@ -7,6 +7,7 @@ namespace Drupal\piv_live_competition\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\NodeInterface;
 use Drupal\piv_live_competition\Helper;
+use Drupal\piv_live_competition\LiveCompetitionScoreService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
@@ -21,6 +22,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
    */
   public function __construct(
     protected readonly Helper $helper,
+    protected readonly LiveCompetitionScoreService $scoreService,
   ) {}
 
   /**
@@ -28,7 +30,8 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('piv_live_competition.helper')
+      $container->get('piv_live_competition.helper'),
+      $container->get('piv_live_competition.score_service')
     );
   }
 

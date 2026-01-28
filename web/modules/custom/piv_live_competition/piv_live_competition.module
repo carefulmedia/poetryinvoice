@@ -940,3 +940,18 @@ function _piv_live_competition_update_team_labels(NodeInterface $node): void {
     \Drupal::logger('piv_live_competition')->error('Could not update team labels for live competition entry: ' . $e->getMessage());
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function piv_live_competition_theme() {
+  return [
+    'piv_live_competition_yearly_results' => [
+      'variables' => [
+        'year' => NULL,
+        'competitions' => [],
+      ],
+      'template' => 'piv-live-competition-yearly-results',
+    ],
+  ];
+}
