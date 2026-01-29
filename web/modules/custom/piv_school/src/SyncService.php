@@ -262,12 +262,13 @@ class SyncService {
 
     try {
       $node_storage = $this->entityManager->getStorage('node');
-      
+
       // Query all School nodes.
       $query = $node_storage->getQuery()
         ->condition('type', 'school')
+        ->condition('field_allow_poet_visits_school', 0)
         ->accessCheck(FALSE);
-      
+
       $nids = $query->execute();
       $results['total'] = count($nids);
 
@@ -279,10 +280,10 @@ class SyncService {
       $this->logger->info('Found @count School nodes to update.', ['@count' => $results['total']]);
 
       $batches = array_chunk($nids, $batch_size);
-      
+
       foreach ($batches as $batch) {
         $nodes = $node_storage->loadMultiple($batch);
-        
+
         foreach ($nodes as $node) {
           try {
             $node->set('field_allow_poet_visits_school', TRUE);
@@ -297,7 +298,7 @@ class SyncService {
             ]);
           }
         }
-        
+
         $node_storage->resetCache($batch);
       }
 
