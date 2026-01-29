@@ -248,4 +248,70 @@ class SyncService {
     \Drupal::messenger()->addMessage($message);
   }
 
+  /**
+   * Updates all nodes to allow for poet visits.
+   */
+  public function updateNodesToAllowPoetVisits() {
+    $batch_size = 50;
+
+    $results = [
+      'success' => 0,
+      'failed' => 0,
+      'total' => 0,
+    ];
+
+    try {
+      $node_storage = $this->entityManager->getStorage('node');
+      
+      // Query all School nodes.
+      $query = $node_storage->getQuery()
+        ->condition('type', 'school')
+        ->accessCheck(FALSE);
+      
+      $nids = $query->execute();
+      $results['total'] = count($nids);
+
+      if (empty($nids)) {
+        $this->logger->info('No School nodes found to update.');
+        return $results;
+      }
+
+      $this->logger->info('Found @count School nodes to update.', ['@count' => $results['total']]);
+
+      $batches = array_chunk($nids, $batch_size);
+      
+      foreach ($batches as $batch) {
+        $nodes = $node_storage->loadMultiple($batch);
+        
+        foreach ($nodes as $node) {
+          try {
+            $node->set('field_allow_poet_visits_school', TRUE);
+            $node->save();
+            $results['success']++;
+          }
+          catch (\Exception $e) {
+            $results['failed']++;
+            $this->logger->error('Failed to update node @nid: @message', [
+              '@nid' => $node->id(),
+              '@message' => $e->getMessage(),
+            ]);
+          }
+        }
+        
+        $node_storage->resetCache($batch);
+      }
+
+      $this->logger->info('Updated @success of @total School nodes. @failed failed.', [
+        '@success' => $results['success'],
+        '@total' => $results['total'],
+        '@failed' => $results['failed'],
+      ]);
+    }
+    catch (\Exception $e) {
+      $this->logger->error('Error during bulk update: @message', ['@message' => $e->getMessage()]);
+    }
+
+    return $results;
+  }
+
 }
