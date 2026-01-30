@@ -101,9 +101,17 @@ final class MonitorDashboardController extends ControllerBase {
       // Check if active round.
       $is_active_round = (($delta + 1) == $active_round);
 
-      // Student name on the first column.
+      // Student name and school on the first column.
       $student_name = $this->helper->getStudentName($recitation);
-      $row = [$student_name];
+
+      // Get team label from parent team regional entry.
+      $team_regional_entry = $recitation->getParentEntity();
+      $school = $team_regional_entry?->getOwner()?->field_school->entity?->label() ?? '';
+      $team_label = $team_regional_entry?->field_team_label?->value ?? $school;
+
+      // Combine student name and team label.
+      $student_and_school = $student_name . ($team_label ? '<br><i>' . $team_label . '</i>' : '');
+      $row = [['data' => ['#markup' => $student_and_school]]];
 
       $recitation_langcode = $recitation->field_poem->entity?->langcode->value ?? 'en';
 
@@ -176,7 +184,7 @@ final class MonitorDashboardController extends ControllerBase {
       ->getForm('Drupal\piv_live_competition\Form\LiveCompetitionAdvanceRoundForm', $node, $has_incomplete);
     $build['table'] = [
       '#type' => 'table',
-      '#header' => array_merge([$this->t('Student')], $header),
+      '#header' => array_merge([$this->t('Student & School')], $header),
       '#rows' => $rows,
       '#sticky' => TRUE,
     ];
