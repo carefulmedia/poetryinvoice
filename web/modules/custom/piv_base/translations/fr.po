@@ -159,5 +159,14 @@ msgstr "Jury"
 msgid "Bilingual"
 msgstr "Bilingue"
 
+msgid "Individual Contests"
+msgstr "Concours individuels"
+
+msgid "Team Regionals"
+msgstr "Concours en équipe"
+
+msgid "No active competitions"
+msgstr "Aucun concours actif"
+
 msgid "Team Regionals Results - @year"
 msgstr "Résultats des concours régionaux en équipe - @year"

@@ -28,7 +28,7 @@ system.admin_contest_config:
 piv_content.competitions_list:
   path: '/user/{user}/competitions'
   defaults:
-    _title: 'Competitions'
+    _title: 'Individual Contests'
     _controller: '\Drupal\piv_contest\Controller\CompetitionsListController::build'
   requirements:
     _custom_access: '\Drupal\piv_contest\Controller\CompetitionsListController::access'
