@@ -8,7 +8,7 @@ piv_live_competition.live_competitions_list:
 piv_live_competition.teacher_live_competitions_list:
   route_name: piv_live_competition.teacher_live_competition_list
   base_route: entity.user.canonical
-  title: Live Competitions (Teacher)
+  title: Team Regionals
   weight: 3
 
 piv_live_competition.recitations_list:
