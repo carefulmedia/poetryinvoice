@@ -5,3 +5,6 @@ package: PIV
 core_version_requirement: ^9 || ^10
 dependencies:
   - reroute_email:reroute_email
+
+'interface translation project': piv_base
+'interface translation server pattern': modules/custom/piv_base/translations/%language.po

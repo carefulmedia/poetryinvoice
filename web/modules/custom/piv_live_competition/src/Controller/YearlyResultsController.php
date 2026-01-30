@@ -138,12 +138,12 @@ final class YearlyResultsController extends ControllerBase {
 
         $placements = $this->scoreService->getTopPlacements(
           $results['standings'],
-          $results['total_schools']
+          $results['total_entries']
         );
 
         $participating = $this->scoreService->getParticipatingSchools(
           $results['standings'],
-          $results['total_schools']
+          $results['total_entries']
         );
 
         // Build placements array with placement positions (1st, 2nd, 3rd, 4th).
@@ -195,7 +195,7 @@ final class YearlyResultsController extends ControllerBase {
    * Returns a generated title.
    */
   public function title(string $year): TranslatableMarkup {
-    return $this->t('Live Competition Results - @year', ['@year' => $year]);
+    return $this->t('Team Regionals Results - @year', ['@year' => $year]);
   }
 
 }

@@ -134,3 +134,30 @@ msgstr "<p>Pour consulter cette page, <strong>{{ login }}</strong> à votre comp
 
 msgid "Login Required"
 msgstr "Connexion requise"
+
+msgid "Host School"
+msgstr "École hôte"
+
+msgid "Contest Language"
+msgstr "Langue du concours"
+
+msgid "1st Place"
+msgstr "1re place"
+
+msgid "2nd Place"
+msgstr "2e place"
+
+msgid "3rd Place"
+msgstr "3e place"
+
+msgid "4th Place"
+msgstr "4e place"
+
+msgid "Judges"
+msgstr "Jury"
+
+msgid "Bilingual"
+msgstr "Bilingue"
+
+msgid "Team Regionals Results - @year"
+msgstr "Résultats des concours régionaux en équipe - @year"

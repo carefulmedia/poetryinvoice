@@ -44,9 +44,14 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         ->loadByProperties([
           'field_contest_association' => $node->id(),
         ]);
-      $streams = array_unique(array_filter(array_map(function ($n) {
-        return $n->field_language_stream->value ?? NULL;
-      }, $nodes)));
+      $streams = array_unique(
+        array_filter(
+          array_map(static function ($n) {
+            return $n->field_language_stream->value ?? NULL;
+          }, $nodes),
+          static fn ($v) => $v !== NULL,
+        ),
+      );
       $stream = $streams ? min($streams) : '_none';
       return $this->redirect('piv_live_competition.live_competition_score_results_table', [
         'node' => $node->id(),
@@ -115,7 +120,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
     $best_poem_overall_score = [];
     // Raw data for the tables rows, keyed by judge.
     $rows = [];
-    // Map students per school.
+    // Map students per team regional entry (NOT per school).
     $students_map = [];
 
     foreach ($team_regional_entries as $team_regional_entry) {
@@ -131,6 +136,10 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       if (empty($poems[$tr_id])) {
         $poems[$tr_id] = [];
       }
+
+      // Get school ID once per entry.
+      $school_id = $team_regional_entry->getOwner()?->field_school->target_id;
+
       foreach ($team_regional_entry->field_tr_student->referencedEntities() as $student_entry) {
         $student_entry_id = $student_entry->id();
         if (empty($poems[$tr_id][$student_entry_id])) {
@@ -140,11 +149,11 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
           ];
         }
 
-        $school_id = $team_regional_entry->getOwner()?->field_school->target_id;
-        if (empty($students_map[$school_id])) {
-          $students_map[$school_id] = [];
+        // Map students by team regional entry ID, not by school ID.
+        if (empty($students_map[$tr_id])) {
+          $students_map[$tr_id] = [];
         }
-        $students_map[$school_id][] = $this->helper->getStudentName($student_entry);
+        $students_map[$tr_id][] = $this->helper->getStudentName($student_entry);
 
         // Accuracy are added to the regional entries in the judges
         // tables. There are tables for performance judges only.
@@ -385,8 +394,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         $build['aggregated_table'][$i]['#attributes']['class'] = $classes;
       }
       $last_rank = $row['rank'];
-      $school_id = $row['#school_id'];
-      $students = implode(', ', array_unique($students_map[$school_id])) . '<br>';
+      $students = implode(', ', array_unique($students_map[$tr_id] ?? [])) . '<br>';
       $row['school']['#markup'] = "$students <i>{$row['school']['#markup']}</i>";
       $build['aggregated_table'][] = [
         '#attributes' => ['class' => $classes],
