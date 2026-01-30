@@ -94,7 +94,7 @@ piv_live_competition.live_competition_score_results_table:
           - competition
 
 piv_live_competition.yearly_results:
-  path: '/live-competitions/yearly-results/{year}'
+  path: '/team-regionals-results/{year}'
   defaults:
     _title_callback: '\Drupal\piv_live_competition\Controller\YearlyResultsController::title'
     _controller: '\Drupal\piv_live_competition\Controller\YearlyResultsController'

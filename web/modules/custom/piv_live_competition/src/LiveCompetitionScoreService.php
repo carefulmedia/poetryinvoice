@@ -77,7 +77,7 @@ final class LiveCompetitionScoreService {
     // Raw data for the tables rows, keyed by judge.
     $rows = [];
 
-    // Map students per school.
+    // Map students per team regional entry (NOT per school).
     $students_map = [];
 
     foreach ($team_regional_entries as $team_regional_entry) {
@@ -94,6 +94,9 @@ final class LiveCompetitionScoreService {
         $poems[$tr_id] = [];
       }
 
+      // Get school ID once per entry.
+      $school_id = $team_regional_entry->getOwner()?->field_school->target_id;
+
       foreach ($team_regional_entry->field_tr_student->referencedEntities() as $student_entry) {
         $student_entry_id = $student_entry->id();
         if (empty($poems[$tr_id][$student_entry_id])) {
@@ -103,11 +106,11 @@ final class LiveCompetitionScoreService {
           ];
         }
 
-        $school_id = $team_regional_entry->getOwner()?->field_school->target_id;
-        if (empty($students_map[$school_id])) {
-          $students_map[$school_id] = [];
+        // Map students by team regional entry ID, not by school ID.
+        if (empty($students_map[$tr_id])) {
+          $students_map[$tr_id] = [];
         }
-        $students_map[$school_id][] = $this->helper->getStudentName($student_entry);
+        $students_map[$tr_id][] = $this->helper->getStudentName($student_entry);
 
         // Accuracy scores.
         foreach ($student_entry->field_accuracy_scores->referencedEntities() as $score) {
@@ -146,6 +149,7 @@ final class LiveCompetitionScoreService {
               'rank' => 0,
               '#team_regional_entry_id' => $tr_id,
               '#school_id' => $school_id,
+              '#school_name' => $school,
             ];
           }
 
@@ -167,7 +171,7 @@ final class LiveCompetitionScoreService {
     if (!$rows) {
       return [
         'standings' => [],
-        'total_schools' => 0,
+        'total_entries' => 0,
       ];
     }
 
@@ -316,9 +320,11 @@ final class LiveCompetitionScoreService {
 
       $standings[] = [
         'rank' => $row['rank'],
+        'tr_id' => $tr_id,
         'school_id' => $school_id,
         'school_name' => $row['school'],
-        'reciters' => array_unique($students_map[$school_id]),
+        'school_name_plain' => $row['#school_name'],
+        'reciters' => array_unique($students_map[$tr_id] ?? []),
         'score' => $row['score'],
         'overall' => $row['overall'],
         'accuracy' => $row['accuracy'],
@@ -329,16 +335,12 @@ final class LiveCompetitionScoreService {
       ];
     }
 
-    // Count unique schools.
-    $unique_schools = [];
-    foreach ($standings as $standing) {
-      $unique_schools[$standing['school_id']] = TRUE;
-    }
-    $total_schools = count($unique_schools);
+    // Count total entries (teams).
+    $total_entries = count($standings);
 
     return [
       'standings' => $standings,
-      'total_schools' => $total_schools,
+      'total_entries' => $total_entries,
     ];
   }
 
@@ -347,88 +349,40 @@ final class LiveCompetitionScoreService {
    *
    * @param array $standings
    *   Array of standings from calculateCompetitionResults().
-   * @param int $total_schools
-   *   Total number of unique schools.
+   * @param int $total_entries
+   *   Total number of entries (teams).
    *
    * @return array
-   *   Array of top placements (unique schools only - best team per school).
+   *   Array of top placements (top 3 or 4 entries).
    */
-  public function getTopPlacements(array $standings, int $total_schools): array {
-    // Top 4 if exactly 4 schools, otherwise top 3.
-    $target_placement_count = $total_schools === 4 ? 4 : 3;
+  public function getTopPlacements(array $standings, int $total_entries): array {
+    // Top 4 if exactly 4 entries, otherwise top 3.
+    $target_placement_count = $total_entries === 4 ? 4 : 3;
 
-    // Get top N unique schools (if school has multiple teams, only take the first/best).
-    $seen_schools = [];
-    $placements = [];
-
-    foreach ($standings as $standing) {
-      $school_id = $standing['school_id'];
-
-      // Skip if we've already included this school.
-      if (isset($seen_schools[$school_id])) {
-        continue;
-      }
-
-      $seen_schools[$school_id] = TRUE;
-      $placements[] = $standing;
-
-      // Stop once we have enough unique schools.
-      if (count($placements) >= $target_placement_count) {
-        break;
-      }
-    }
-
-    return $placements;
+    return array_slice($standings, 0, $target_placement_count);
   }
 
   /**
-   * Get participating schools (not in top placements).
+   * Get participating entries (not in top placements).
    *
    * @param array $standings
    *   Array of standings from calculateCompetitionResults().
-   * @param int $total_schools
-   *   Total number of unique schools.
+   * @param int $total_entries
+   *   Total number of entries (teams).
    *
    * @return array
-   *   Array of remaining unique school names.
+   *   Array of remaining school names (plain, without team labels).
    */
-  public function getParticipatingSchools(array $standings, int $total_schools): array {
-    // Determine how many unique schools are in top placements.
-    $target_placement_count = $total_schools === 4 ? 4 : 3;
+  public function getParticipatingSchools(array $standings, int $total_entries): array {
+    // Determine how many entries are in top placements.
+    $target_placement_count = $total_entries === 4 ? 4 : 3;
 
-    // Collect schools already in top placements.
-    $seen_schools = [];
-    $placement_count = 0;
+    // Collect remaining entries after top placements.
+    $participating = array_slice($standings, $target_placement_count);
 
-    foreach ($standings as $standing) {
-      $school_id = $standing['school_id'];
-
-      if (!isset($seen_schools[$school_id])) {
-        $seen_schools[$school_id] = TRUE;
-        $placement_count++;
-
-        if ($placement_count >= $target_placement_count) {
-          break;
-        }
-      }
-    }
-
-    // Now collect remaining unique schools.
-    $participating = [];
-    foreach ($standings as $standing) {
-      $school_id = $standing['school_id'];
-
-      // Skip if already counted in placements.
-      if (isset($seen_schools[$school_id])) {
-        continue;
-      }
-
-      // Add school and mark as seen.
-      $seen_schools[$school_id] = TRUE;
-      $participating[] = $standing['school_name'];
-    }
-
-    return $participating;
+    // Use plain school names (without team labels) and remove duplicates.
+    $school_names = array_map(static fn($s) => $s['school_name_plain'], $participating);
+    return array_values(array_unique($school_names));
   }
 
 }

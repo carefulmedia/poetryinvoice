@@ -30,9 +30,9 @@
 
         <div class="competition-meta">
           <p>
-            <strong>{{ 'Host School:'|t }}</strong> {{ competition.host_school }}<br>
-            <strong>{{ 'Date:'|t }}</strong> {{ competition.contest_date }}<br>
-            <strong>{{ 'Contest Language:'|t }}</strong> {{ competition.contest_language_stream }}
+            <strong>{{ 'Host School'|t }}:</strong> {{ competition.host_school }}<br>
+            <strong>{{ 'Date'|t }}:</strong> {{ competition.contest_date }}<br>
+            <strong>{{ 'Contest Language'|t }}:</strong> {{ competition.contest_language_stream }}
           </p>
         </div>
 
@@ -44,7 +44,7 @@
 
             {% if stream_result.judges is not empty %}
               <div class="judges">
-                <strong>{{ 'Judges:'|t }}</strong>
+                <strong>{{ 'Judges'|t }}:</strong>
                 {{ stream_result.judges|join(', ') }}
               </div>
             {% endif %}
@@ -54,13 +54,13 @@
                 <div class="placement placement-{{ placement.rank }}">
                   <strong>
                     {% if placement.rank == 1 %}
-                      {{ '1st Place:'|t }}
+                      {{ '1st Place'|t }}:
                     {% elseif placement.rank == 2 %}
-                      {{ '2nd Place:'|t }}
+                      {{ '2nd Place'|t }}:
                     {% elseif placement.rank == 3 %}
-                      {{ '3rd Place:'|t }}
+                      {{ '3rd Place'|t }}:
                     {% elseif placement.rank == 4 %}
-                      {{ '4th Place:'|t }}
+                      {{ '4th Place'|t }}:
                     {% endif %}
                   </strong>
                   {{ placement.school_name }}{% if placement.reciters is not empty %} ({{ placement.reciters|join(', ') }}){% endif %}
