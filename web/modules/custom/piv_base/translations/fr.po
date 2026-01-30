@@ -170,3 +170,6 @@ msgstr "Aucun concours actif"
 
 msgid "Team Regionals Results - @year"
 msgstr "Résultats des concours régionaux en équipe - @year"
+
+msgid "Student & School"
+msgstr "Étudiant & École"
