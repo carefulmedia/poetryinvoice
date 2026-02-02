@@ -15,4 +15,4 @@ id: node.competition
 target_entity_type_id: node
 target_bundle: competition
 default_langcode: site_default
-language_alterable: false
+language_alterable: true
