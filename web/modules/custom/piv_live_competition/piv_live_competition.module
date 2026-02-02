@@ -66,7 +66,12 @@ function _piv_live_competition_preprocess_page__handle_competition_banner(&$vari
   $route_name = \Drupal::routeMatch()->getRouteName();
 
   // Don't show banner on scoring or monitor dashboard routes.
-  if (in_array($route_name, ['piv_live_competition.score', 'piv_live_competition.monitor_dashboard'])) {
+  if (in_array($route_name, [
+    'piv_live_competition.score',
+    'piv_live_competition.monitor_dashboard',
+    'piv_live_competition.live_competition_score_results_table',
+    'piv_live_competition.recitations_list',
+  ])) {
     return;
   }
 
