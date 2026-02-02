@@ -6,7 +6,7 @@ auto-reload:
     - core/once
     - core/ajax
     - core/jquery
-    
+
 score-form:
   js:
     js/score-form.js: {}
@@ -14,3 +14,8 @@ score-form:
     - core/drupalSettings
     - core/once
     - core/jquery
+
+competition_banner:
+  css:
+    theme:
+      css/competition-banner.css: {}

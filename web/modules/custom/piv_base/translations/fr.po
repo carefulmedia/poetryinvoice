@@ -173,3 +173,15 @@ msgstr "Résultats des concours régionaux en équipe - @year"
 
 msgid "Student & School"
 msgstr "Étudiant & École"
+
+msgid "Back to judging interface for"
+msgstr "Retour à l'interface d'évaluation pour"
+
+msgid "Go to Judging"
+msgstr "Aller à l'évaluation"
+
+msgid "Back to Monitor Dashboard interface for"
+msgstr "Retour à l’interface du tableau de bord pour"
+
+msgid "Go to Dashboard"
+msgstr "Aller au tableau de bord"
