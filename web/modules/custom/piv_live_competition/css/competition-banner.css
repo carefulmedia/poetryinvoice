@@ -1,0 +1,97 @@
+/**
+ * Competition Banner Styles
+ */
+
+.competition-banner {
+  position: fixed;
+  top: 4rem; /* Position below the fixed header (header height is 4rem) */
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 300; /* Below header (z-index: 400) but above content */
+  padding: 12px 0;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.competition-banner--judge {
+  background: linear-gradient(135deg, #2d8659 0%, #1e6b45 100%);
+}
+
+.competition-banner--admin {
+  background: linear-gradient(135deg, #2d8659 0%, #1e6b45 100%);
+}
+
+.competition-banner__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.competition-banner__text {
+  flex: 1;
+  min-width: 200px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.competition-banner__text strong {
+  font-weight: 600;
+}
+
+.competition-banner__button {
+  background-color: #ffffff;
+  border: none;
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.competition-banner--judge .competition-banner__button {
+  color: #2d8659;
+}
+
+.competition-banner--admin .competition-banner__button {
+  color: #2d8659;
+}
+
+.competition-banner__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  opacity: 0.95;
+}
+
+.competition-banner__button:active {
+  transform: translateY(0);
+}
+
+/* Mobile responsive */
+@media (max-width: 767px) {
+  .competition-banner__content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .competition-banner__button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .competition-banner__icon {
+    font-size: 20px;
+  }
+
+  .competition-banner__text {
+    font-size: 14px;
+  }
+}

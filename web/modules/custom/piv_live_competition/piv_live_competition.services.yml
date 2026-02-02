@@ -5,3 +5,6 @@ services:
   piv_live_competition.score_service:
     class: Drupal\piv_live_competition\LiveCompetitionScoreService
     autowire: true
+  piv_live_competition.banner_service:
+    class: Drupal\piv_live_competition\CompetitionBannerService
+    autowire: true
