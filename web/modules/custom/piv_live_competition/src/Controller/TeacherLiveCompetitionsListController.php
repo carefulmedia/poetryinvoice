@@ -227,7 +227,7 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
    * Helper method to build entry item markup.
    */
   private function buildEntryItem(NodeInterface $entry, bool $is_editable, int $index): array {
-    $entry_title = $entry->label() . ' #' . $index + 1;
+    $entry_title = $entry->label();
     $links_markup = '';
 
     if ($is_editable) {
