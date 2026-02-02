@@ -1,0 +1,31 @@
+{#
+/**
+ * @file
+ * Theme implementation for competition banner.
+ *
+ * Available variables:
+ * - competition_name: The name of the competition.
+ * - banner_type: Type of banner ('judge' or 'admin').
+ * - url: The URL to link to.
+ */
+#}
+<div class="competition-banner competition-banner--{{ banner_type }}">
+  <div class="container">
+    <div class="competition-banner__content">
+      <span class="competition-banner__text">
+        {% if banner_type == 'judge' %}
+          {{ 'Back to judging interface for'|t }} <strong>{{ competition_name }}</strong>
+        {% else %}
+          {{ 'Back to Monitor Dashboard interface for'|t }} <strong>{{ competition_name }}</strong>
+        {% endif %}
+      </span>
+      <a href="{{ url }}" class="btn btn-light competition-banner__button">
+        {% if banner_type == 'judge' %}
+          {{ 'Go to Judging'|t }} →
+        {% else %}
+          {{ 'Go to Dashboard'|t }} →
+        {% endif %}
+      </a>
+    </div>
+  </div>
+</div>

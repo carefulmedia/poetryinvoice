@@ -28,6 +28,78 @@ const PIV_LIVE_COMPETITION_ERROR_INVALID_COMPETITION = 'The provided competition
 const PIV_LIVE_COMPETITION_ERROR_COMPETITION_NOT_FOUND = 'The provided competition does not exist.';
 
 /**
+ * Implements hook_theme().
+ */
+function piv_live_competition_theme(): array {
+  return [
+    'piv_live_competition_yearly_results' => [
+      'variables' => [
+        'year' => NULL,
+        'competitions' => [],
+      ],
+      'template' => 'piv-live-competition-yearly-results',
+    ],
+    'competition_banner' => [
+      'variables' => [
+        'competition_name' => NULL,
+        'banner_type' => NULL,
+        'url' => NULL,
+      ],
+      'template' => 'competition-banner',
+    ],
+  ];
+}
+
+/**
+ * Implements hook_preprocess_page().
+ *
+ * @see \hook_preprocess_HOOK()
+ */
+function piv_live_competition_preprocess_page(&$variables): void {
+  _piv_live_competition_preprocess_page__handle_competition_banner($variables);
+}
+
+/**
+ * Handle preprocess actions for the competition banner.
+ */
+function _piv_live_competition_preprocess_page__handle_competition_banner(&$variables): void {
+  $route_name = \Drupal::routeMatch()->getRouteName();
+
+  // Don't show banner on scoring or monitor dashboard routes.
+  if (in_array($route_name, [
+    'piv_live_competition.score',
+    'piv_live_competition.monitor_dashboard',
+    'piv_live_competition.live_competition_score_results_table',
+    'piv_live_competition.recitations_list',
+  ])) {
+    return;
+  }
+
+  $current_user = \Drupal::currentUser();
+
+  // Don't show banner for anonymous users.
+  if ($current_user->isAnonymous()) {
+    return;
+  }
+
+  // Get banner data from the service.
+  $banner_service = \Drupal::service('piv_live_competition.banner_service');
+  $banner_data = $banner_service->getBannerData($current_user);
+
+  // If banner data exists, add it to the highlighted region.
+  if ($banner_data) {
+    $banner_data['#attached']['library'][] = 'piv_live_competition/competition_banner';
+    $banner_data['#weight'] = -1000;
+
+    // Add to highlighted region
+    if (!isset($variables['page']['highlighted'])) {
+      $variables['page']['highlighted'] = [];
+    }
+    $variables['page']['highlighted']['competition_banner'] = $banner_data;
+  }
+}
+
+/**
  * Implements hook_ENTITY_TYPE_access().
  *
  * Alter access permissions for editing/deleting live competition entries depending on the status of their
@@ -939,19 +1011,4 @@ function _piv_live_competition_update_team_labels(NodeInterface $node): void {
   catch(\Exception $e) {
     \Drupal::logger('piv_live_competition')->error('Could not update team labels for live competition entry: ' . $e->getMessage());
   }
-}
-
-/**
- * Implements hook_theme().
- */
-function piv_live_competition_theme() {
-  return [
-    'piv_live_competition_yearly_results' => [
-      'variables' => [
-        'year' => NULL,
-        'competitions' => [],
-      ],
-      'template' => 'piv-live-competition-yearly-results',
-    ],
-  ];
 }
