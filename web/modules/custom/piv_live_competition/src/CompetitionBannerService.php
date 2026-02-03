@@ -47,24 +47,29 @@ class CompetitionBannerService {
       return NULL;
     }
 
-    // Get the first competition (in case multiple exist).
-    // We were told that multiple wouldn't exist, but it is still technically possible.
-    $competition = reset($competitions);
+    // Here we loop through competitions until we find one with a role, if any.
+    $role = NULL;
+    $relevant_competition = NULL;
+    foreach ($competitions as $competition) {
+      // Check user's role in this competition.
+      // Not to be confused with Drupal roles! This is the role in the context of this service.
+      $role = $this->getUserRoleInCompetition($competition, $user_id);
+      if ($role) {
+        $relevant_competition = $competition;
+        break;
+      }
+    }
 
-    // Check user's role in this competition.
-    // Not to be confused with Drupal roles! This is the role in the context of this service.
-    $role = $this->getUserRoleInCompetition($competition, $user_id);
-
-    if (!$role) {
+    if (!$role || !$relevant_competition) {
       return NULL;
     }
 
     if ($role === 'admin') {
-      return $this->buildAdminBanner($competition);
+      return $this->buildAdminBanner($relevant_competition);
     }
 
     if ($role === 'judge') {
-      return $this->buildJudgeBanner($competition, $user_id);
+      return $this->buildJudgeBanner($relevant_competition, $user_id);
     }
 
     return NULL;
