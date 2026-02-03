@@ -77,7 +77,7 @@ final class LiveCompetitionsListController extends ControllerBase {
     $build['content'] = [
       '#theme' => 'item_list',
       '#list_type' => 'ul',
-      '#title' => $this->t('Live competitions'),
+      '#title' => $this->t('Team Regionals'),
       '#items' => $links,
     ];
     return $build;

@@ -19,7 +19,7 @@ piv_live_competition.score:
 piv_live_competition.api_round:
   path: '/api/live-competition-round/{node}'
   defaults:
-    _title: 'Live Competition Round'
+    _title: 'Team Regional Round'
     _controller: '\Drupal\piv_live_competition\Controller\ScoreController::activeRound'
   requirements:
     _permission: 'access content'
@@ -33,7 +33,7 @@ piv_live_competition.api_round:
 piv_live_competition.live_competition_list:
   path: '/user/{user}/live-competitions'
   defaults:
-    _title: 'Live Competitions'
+    _title: 'Team Regionals'
     _controller: '\Drupal\piv_live_competition\Controller\LiveCompetitionsListController'
   requirements:
     _custom_access: '\Drupal\piv_live_competition\Controller\LiveCompetitionsListController::access'
