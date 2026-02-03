@@ -107,7 +107,8 @@ final class MonitorDashboardController extends ControllerBase {
       // Get team label from parent team regional entry.
       $team_regional_entry = $recitation->getParentEntity();
       $school = $team_regional_entry?->getOwner()?->field_school->entity?->label() ?? '';
-      $team_label = $team_regional_entry?->field_team_label?->value ?? $school;
+      $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      $team_label = $team_regional_entry ? (_piv_live_competition_get_team_label($team_regional_entry, $current_language) ?? $school) : $school;
 
       // Combine student name and team label.
       $student_and_school = $student_name . ($team_label ? '<br><i>' . $team_label . '</i>' : '');

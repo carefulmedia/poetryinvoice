@@ -78,6 +78,7 @@ final class RecitationsListForm extends FormBase {
 
     foreach ($recitations as $recitation) {
       // We put a guard clause on the entry, since the rest of this loop doesn't need to be executed if it doesn't exist.
+      /** @var \Drupal\node\NodeInterface $team_regional_entry */
       $team_regional_entry = $recitation->getParentEntity();
       if (!$team_regional_entry) {
         continue;
@@ -111,10 +112,12 @@ final class RecitationsListForm extends FormBase {
       }
 
       $stream = $team_regional_entry?->field_language_stream->value;
-      $school_label = $team_regional_entry->field_team_label?->value ?? $team_regional_entry->getOwner()?->field_school->entity?->label();
+      $school_label = _piv_live_competition_get_team_label($team_regional_entry, $current_language)
+        ?? $team_regional_entry->getOwner()?->field_school->entity?->label();
       $school = $school_label;
+      $team_label = _piv_live_competition_get_team_label($team_regional_entry, $current_language, include_competition_title: TRUE);
       $form['table'][] = [
-        'team_regional_entry' => $team_regional_entry->toLink(NULL, 'edit-form')->toRenderable(),
+        'team_regional_entry' => $team_regional_entry->toLink($team_label, 'edit-form')->toRenderable(),
         'stream' => ['#markup' => $streams[$stream] ?? $this->t('- None -')],
         'student' => ['#markup' => $this->helper->getStudentName($recitation)],
         'poem' => ['#markup' => $recitation->field_poem->entity?->label()],

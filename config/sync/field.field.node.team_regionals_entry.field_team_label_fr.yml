@@ -1,0 +1,19 @@
+uuid: d13f51a4-ca6b-4bdc-90f2-0ec147ece2a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_team_label_fr
+    - node.type.team_regionals_entry
+id: node.team_regionals_entry.field_team_label_fr
+field_name: field_team_label_fr
+entity_type: node
+bundle: team_regionals_entry
+label: 'Team Label FR'
+description: 'Team label in french for this entry. This field is populated automatically by checking how many entries exist for the school that owns this entry.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
