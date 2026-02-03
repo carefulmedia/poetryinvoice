@@ -139,7 +139,7 @@ final class LiveCompetitionScoreService {
 
           if (empty($rows[$judge_id][$tr_id])) {
             $school = $team_regional_entry->getOwner()?->field_school->entity?->label();
-            $school_label = $team_regional_entry->field_team_label?->value ?? $school;
+            $school_label = _piv_live_competition_get_team_label($team_regional_entry, $current_language) ?? $school;
             $rows[$judge_id][$tr_id] = [
               'school' => $school_label,
               'score' => 0,

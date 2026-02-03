@@ -227,7 +227,7 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
    * Helper method to build entry item markup.
    */
   private function buildEntryItem(NodeInterface $entry, bool $is_editable, int $index): array {
-    $entry_title = $entry->label();
+    $entry_title = _piv_live_competition_get_team_label($entry, include_competition_title: TRUE);
     $links_markup = '';
 
     if ($is_editable) {

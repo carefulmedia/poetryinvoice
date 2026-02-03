@@ -885,6 +885,50 @@ function _piv_live_competition_count_school_entries(int $competition_id, int $sc
 }
 
 /**
+ * Helper function to get the appropriate team label based on language.
+ *
+ * @param \Drupal\node\NodeInterface $entry
+ *   The team_regionals_entry node.
+ * @param string|null $langcode
+ *   Optional language code. If not provided, uses current language.
+ *
+ * @return string|null
+ *   The team label in the appropriate language, or NULL if not found.
+ */
+function _piv_live_competition_get_team_label(
+  NodeInterface $entry,
+  ?string $langcode = NULL,
+  bool $include_competition_title = FALSE,
+): ?string {
+  if (!$entry->hasField('field_team_label')) {
+    return NULL;
+  }
+
+  // Use current language if not specified.
+  if ($langcode === NULL) {
+    $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  }
+
+  // If French is requested and the FR field exists and has a value, use it.
+  if ($langcode === 'fr' && $entry->hasField('field_team_label_fr') && !$entry->get('field_team_label_fr')->isEmpty()) {
+    $label = $entry->get('field_team_label_fr')->value;
+  }
+  else {
+    $label = $entry->get('field_team_label')->value;
+  }
+
+  if (empty($label)) {
+    return NULL;
+  }
+
+  if ($include_competition_title && $contest_label = $entry->field_contest_association?->entity?->label()) {
+    return $contest_label . ' - ' . $label;
+  }
+
+  return $label;
+}
+
+/**
  * Update team labels for all team_regionals_entry nodes from the same school and contest.
  *
  * @param \Drupal\node\NodeInterface $node
@@ -961,7 +1005,11 @@ function _piv_live_competition_update_team_labels(NodeInterface $node): void {
     $team_number = 1;
 
     foreach ($entry_nodes as $entry_node) {
-      // Prepare the labels for both languages.
+      if (!$entry_node->hasField('field_team_label')) {
+        continue;
+      }
+
+      // Determine the labels for both EN and FR.
       if ($count === 1) {
         // Only one entry, set label as just the school name.
         $label_en = $school_name;
@@ -973,37 +1021,12 @@ function _piv_live_competition_update_team_labels(NodeInterface $node): void {
         $team_number++;
       }
 
-      if ($entry_node->hasField('field_team_label')) {
-        // Update English version.
-        if ($entry_node->hasTranslation('en')) {
-          $translation_en = $entry_node->getTranslation('en');
-          $translation_en->set('field_team_label', $label_en);
-          $translation_en->save();
-        } else {
-          $entry_node->set('field_team_label', $label_en);
-          $entry_node->save();
-        }
-
-        // Update French version.
-        if ($entry_node->hasTranslation('fr')) {
-          $translation_fr = $entry_node->getTranslation('fr');
-          $translation_fr->set('field_team_label', $label_fr);
-          $translation_fr->save();
-        } else {
-          // Create French translation if it doesn't exist.
-          try {
-            $translation_fr = $entry_node->addTranslation('fr', $entry_node->toArray());
-            $translation_fr->set('field_team_label', $label_fr);
-            $translation_fr->save();
-          } catch (\Exception $e) {
-            // If translation creation fails, just log it and continue.
-            \Drupal::logger('piv_live_competition')->warning('Could not create French translation for entry @nid: @message', [
-              '@nid' => $entry_node->id(),
-              '@message' => $e->getMessage(),
-            ]);
-          }
-        }
+      // Set both EN and FR team labels on the entry.
+      $entry_node->set('field_team_label', $label_en);
+      if ($entry_node->hasField('field_team_label_fr')) {
+        $entry_node->set('field_team_label_fr', $label_fr);
       }
+      $entry_node->save();
     }
 
     $updating = FALSE;
