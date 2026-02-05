@@ -69,7 +69,7 @@ final class YearlyResultsController extends ControllerBase {
     foreach ($competitions as $competition) {
       // Get competition metadata.
       $competition_name = $competition->label();
-      $host_school = $competition->getOwner()?->field_school->entity?->label() ?? $this->t('Unknown');
+      $host_school = $competition->field_competition_school->entity?->label() ?? $this->t('Unknown');
 
       $winners_announced = $competition->field_winners_announced->date;
       $contest_date = $winners_announced ? $winners_announced->format('F j, Y') : $this->t('Unknown');
