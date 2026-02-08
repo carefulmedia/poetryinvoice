@@ -67,7 +67,7 @@ final class AccuracyScoreForm extends FormBase {
     $form['navigation'] = [
       '#type' => 'container',
       '#attributes' => [
-        'class' => ['score-controller__navigation'],
+        'class' => ['score-controller__navigation', 'score-controller__navigation__accuracy'],
       ],
     ];
 
