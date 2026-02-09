@@ -1,15 +1,15 @@
-uuid: c9486a8d-51eb-41f3-9e16-4a8eb9071173
+uuid: 3d5ae4d4-f76b-42db-b15e-4e52fd5d89f2
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_accuracy_judge_en
+    - field.storage.node.field_prompters_en
     - node.type.competition
-id: node.competition.field_accuracy_judge_en
-field_name: field_accuracy_judge_en
+id: node.competition.field_prompters_en
+field_name: field_prompters_en
 entity_type: node
 bundle: competition
-label: 'English Accuracy Judges'
+label: 'English Prompters'
 description: ''
 required: false
 translatable: false
@@ -26,7 +26,7 @@ settings:
     filter:
       type: role
       role:
-        accuracy_judge: accuracy_judge
+        prompter: prompter
         teacher: '0'
         non_canadian_educator: '0'
         teacher_en_: '0'
@@ -40,6 +40,7 @@ settings:
         judge: '0'
         account_approval: '0'
         competition_administrator: '0'
+        accuracy_judge: '0'
         php_editor: '0'
         pierre: '0'
         lesson_plan_creator: '0'
@@ -53,6 +54,5 @@ settings:
         journal_editor: '0'
         junior_editor: '0'
         competition_monitor: '0'
-        prompter: '0'
-    include_anonymous: false
+    include_anonymous: true
 field_type: entity_reference

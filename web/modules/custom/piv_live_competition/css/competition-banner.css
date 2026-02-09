@@ -15,6 +15,10 @@
   transition: all 0.3s ease;
 }
 
+.competition-banner--prompter {
+  background: linear-gradient(135deg, #2d8659 0%, #1e6b45 100%);
+}
+
 .competition-banner--judge {
   background: linear-gradient(135deg, #2d8659 0%, #1e6b45 100%);
 }
@@ -53,6 +57,10 @@
   transition: all 0.2s ease;
   white-space: nowrap;
   flex-shrink: 0;
+}
+
+.competition-banner--prompter .competition-banner__button {
+  color: #2d8659;
 }
 
 .competition-banner--judge .competition-banner__button {

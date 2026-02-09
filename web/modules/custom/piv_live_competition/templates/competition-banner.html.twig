@@ -5,7 +5,7 @@
  *
  * Available variables:
  * - competition_name: The name of the competition.
- * - banner_type: Type of banner ('judge' or 'admin').
+ * - banner_type: Type of banner ('judge', 'prompter', or 'admin').
  * - url: The URL to link to.
  */
 #}
@@ -15,6 +15,8 @@
       <span class="competition-banner__text">
         {% if banner_type == 'judge' %}
           {{ 'Back to judging interface for'|t }} <strong>{{ competition_name }}</strong>
+        {% elseif banner_type == 'prompter' %}
+          {{ 'Back to prompter interface for'|t }} <strong>{{ competition_name }}</strong>
         {% else %}
           {{ 'Back to Monitor Dashboard interface for'|t }} <strong>{{ competition_name }}</strong>
         {% endif %}
@@ -22,6 +24,8 @@
       <a href="{{ url }}" class="btn btn-light competition-banner__button">
         {% if banner_type == 'judge' %}
           {{ 'Go to Judging'|t }} →
+        {% elseif banner_type == 'prompter' %}
+          {{ 'Go to Prompting'|t }} →
         {% else %}
           {{ 'Go to Dashboard'|t }} →
         {% endif %}

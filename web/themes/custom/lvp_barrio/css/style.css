@@ -2128,6 +2128,9 @@ h3.name {
   display: flex;
   align-items: start;
 }
+.score-controller__navigation__accuracy {
+  display: initial;
+}
 .score-controller__navigation__next {
   margin-left: auto;
 }
@@ -6205,10 +6208,6 @@ p a {
 .views-field-field-roulette-image:hover img {
   filter: invert(1) contrast(2.5);
   transition-duration: 1s;
-}
-
-.error-text {
-  color: #a51b00;
 }
 
 /*# sourceMappingURL=maps/style.css.map */

@@ -1,5 +1,5 @@
 status: 1
-pattern: '[node:field_contest_association] Entry - [node:field_team_label]'
+pattern: '[node:field_contest_association] - [node:field_team_label]'
 escape: false
 preserve_titles: false
 save: false

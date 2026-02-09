@@ -512,6 +512,20 @@ function piv_live_competition_field_widget_complete_entity_reference_paragraphs_
       _piv_live_competition_access_all_fields_in_form($element['widget'][$index]['subform']);
     }
   }
+
+  // Make full stage name field conditionally visible based on field_stage_name checkbox.
+  foreach (Element::children($element['widget']) as $index) {
+    if (!is_numeric($index)) {
+      continue;
+    }
+    if (isset($element['widget'][$index]['subform']['field_legal_name'])) {
+      $element['widget'][$index]['subform']['field_student_name_1']['#states'] = [
+        'visible' => [
+          ':input[name="field_tr_student[' . $index . '][subform][field_stage_name][value]"]' => ['checked' => TRUE],
+        ],
+      ];
+    }
+  }
 }
 
 /**
