@@ -47,6 +47,25 @@ final class Helper {
   }
 
   /**
+   * Get prompters in order, keyed by id.
+   */
+  public function getPrompters(NodeInterface $node): array {
+    // Return an array of entities keyed by id.
+    $keyed = function ($entities) : array {
+      $map = [];
+      foreach ($entities as $entity) {
+        $map[$entity->id()] = $entity;
+      }
+      return $map;
+    };
+
+    return [
+      $keyed($node->field_prompters_en->referencedEntities()),
+      $keyed($node->field_prompters_fr->referencedEntities()),
+    ];
+  }
+
+  /**
    * Constructs a Helper object.
    */
   public function __construct(

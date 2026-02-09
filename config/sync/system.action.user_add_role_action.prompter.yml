@@ -1,0 +1,14 @@
+uuid: 26fb2383-7674-40e6-811c-6efc8ac53bca
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.prompter
+  module:
+    - user
+id: user_add_role_action.prompter
+label: 'Add the Prompter role to the selected user(s)'
+type: user
+plugin: user_add_role_action
+configuration:
+  rid: prompter

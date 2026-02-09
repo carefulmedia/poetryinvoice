@@ -62,16 +62,18 @@ final class ScoreController extends ControllerBase {
         ->cachePerUser()
         ->addCacheContexts(['url']);
     }
-    // Merge all judge ids in an array.
+    // Merge all judge and prompter ids in an array.
     $judges_fr = array_column($node->field_accuracy_judge_fr->getValue(), 'target_id');
     $judges_en = array_column($node->field_accuracy_judge_en->getValue(), 'target_id');
+    $prompters_fr = array_column($node->field_prompters_fr->getValue(), 'target_id');
+    $prompters_en = array_column($node->field_prompters_en->getValue(), 'target_id');
     $performance_judges = [];
     foreach ($node->field_judges->referencedEntities() as $judge_paragraph) {
       if ($judge_paragraph->hasField('field_judge')) {
         $performance_judges[] = $judge_paragraph->field_judge->target_id;
       }
     }
-    $all_judges = array_merge($performance_judges, $judges_en, $judges_fr);
+    $all_judges = array_merge($performance_judges, $judges_en, $judges_fr, $prompters_en, $prompters_fr);
     $user_is_judge = in_array($user->id(), $all_judges);
 
     // The current logged in user accessing that url is the same from
@@ -85,10 +87,27 @@ final class ScoreController extends ControllerBase {
   }
 
   /**
-   * Get the next recitation this user can score.
+   * Get the next recitation this user can score or view (for prompters).
    */
   private function getNextRecitation(NodeInterface $node, UserInterface $user, string $type, array $languages) : ?ParagraphInterface {
     $recitations = $this->helper->getRecitationsInOrder($node);
+
+    // Prompters don't score, so they just see the active round recitation.
+    if ($type == 'prompter') {
+      $active_round = $node->field_active_round->value ?? 0;
+      foreach ($recitations as $delta => $recitation) {
+        $round = $delta + 1;
+        if ($active_round !== NULL && $active_round == $round) {
+          $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
+          // Only show if it matches their language.
+          if (in_array($recitation_language, $languages)) {
+            return $recitation;
+          }
+        }
+      }
+      return NULL;
+    }
+
     $field = $type == 'performance'
       ? 'field_performance_scores'
       : 'field_accuracy_scores';
@@ -215,16 +234,35 @@ final class ScoreController extends ControllerBase {
    * Return the Judge Type and Languages.
    */
   private function getJudgeTypeAndLanguages(NodeInterface $node, UserInterface $user) {
-    // Check if user is an accuracy judge, otherwise it is a performance
-    // judge.
+    // Check if user is a prompter first, then accuracy judge, otherwise it is a performance judge.
+    $prompters_fr = array_column($node->field_prompters_fr->getValue(), 'target_id');
+    $prompters_en = array_column($node->field_prompters_en->getValue(), 'target_id');
     $judges_fr = array_column($node->field_accuracy_judge_fr->getValue(), 'target_id');
     $judges_en = array_column($node->field_accuracy_judge_en->getValue(), 'target_id');
-    $judge_type = in_array($user->id(), array_merge($judges_fr, $judges_en))
-      ? 'accuracy'
-      : 'performance';
+
+    $is_prompter = in_array($user->id(), array_merge($prompters_fr, $prompters_en));
+    $is_accuracy = in_array($user->id(), array_merge($judges_fr, $judges_en));
+
+    if ($is_prompter) {
+      $judge_type = 'prompter';
+    }
+    elseif ($is_accuracy) {
+      $judge_type = 'accuracy';
+    }
+    else {
+      $judge_type = 'performance';
+    }
 
     $judge_languages = [];
-    if ($judge_type == 'accuracy') {
+    if ($judge_type == 'prompter') {
+      if (in_array($user->id(), $prompters_fr)) {
+        $judge_languages[] = 'fr';
+      }
+      if (in_array($user->id(), $prompters_en)) {
+        $judge_languages[] = 'en';
+      }
+    }
+    elseif ($judge_type == 'accuracy') {
       if (in_array($user->id(), $judges_fr)) {
         $judge_languages[] = 'fr';
       }
@@ -298,10 +336,13 @@ final class ScoreController extends ControllerBase {
     if ($active_round <= 0) {
       $build['#attributes']['data-round'] = $active_round;
       $build['#attributes']['class'][] = 'is-locked';
+      $message_text = $judge_type == 'prompter'
+        ? $this->t('The contest will begin shortly.')
+        : $this->t('You will be able to start judging once the contest has begun.');
       $build['message'] = [
         '#type' => 'html_tag',
         '#tag' => 'div',
-        '#value' => $this->t('You will be able to start judging once the contest has begun.'),
+        '#value' => $message_text,
         '#attributes' => [
           'class' => ['h1', 'text-danger'],
         ],
@@ -312,9 +353,14 @@ final class ScoreController extends ControllerBase {
       return $build;
     }
 
-    // Load or create new score entity.
-    $score_entity = $this->getScoreEntity($node, $user, $recitation, $judge_type);
-    $is_locked = $score_entity->field_locked->value == 1;
+    // Load or create new score entity (not for prompters).
+    $score_entity = NULL;
+    $is_locked = FALSE;
+    if ($judge_type !== 'prompter') {
+      $score_entity = $this->getScoreEntity($node, $user, $recitation, $judge_type);
+      $is_locked = $score_entity->field_locked->value == 1;
+    }
+
     $poet = $recitation->field_poem?->entity->getOwner()?->getDisplayName();
     $poem_name = $recitation->field_poem?->entity->label();
     $build['school'] = [
@@ -335,7 +381,8 @@ final class ScoreController extends ControllerBase {
       '#value' => $poet,
     ];
     $build['epigraph'] = $recitation->field_poem?->entity->field_epigraph?->view(['label' => 'hidden']);
-    if ($judge_type == 'accuracy' && !$is_locked) {
+    // Show poem content for accuracy judges and prompters.
+    if (($judge_type == 'accuracy' || $judge_type == 'prompter') && !$is_locked) {
       $build['poem_content'] = $recitation->field_poem?->entity->body?->view(['label' => 'hidden']);
     }
 
@@ -358,30 +405,49 @@ final class ScoreController extends ControllerBase {
     $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
     $can_judge_language = in_array($recitation_language, $judge_languages);
 
-    // Round is the number of scores already created.
-    $round = count($this->getScores($node, $user)) + ($is_locked ? 0 : 1);
-    $is_last_recitation = $can_judge_language ? $round == $total : $round > $total;
-    if ($can_judge_language) {
-      $build['progress'] = [
-        '#type' => 'inline_template',
-        '#template' => '<div>{{ round }}/{{ total }}</div>',
-        '#context' => [
-          'round' => $round,
-          'total' => $total,
-        ],
-      ];
+    // Round is the number of scores already created (not applicable for prompters).
+    if ($judge_type !== 'prompter') {
+      $round = count($this->getScores($node, $user)) + ($is_locked ? 0 : 1);
+      $is_last_recitation = $can_judge_language ? $round == $total : $round > $total;
+      if ($can_judge_language) {
+        $build['progress'] = [
+          '#type' => 'inline_template',
+          '#template' => '<div>{{ round }}/{{ total }}</div>',
+          '#context' => [
+            'round' => $round,
+            'total' => $total,
+          ],
+        ];
+      }
+      else {
+        $build['progress'] = [
+          '#type' => 'inline_template',
+          '#template' => '<div>{{ "Currently reciting"|t }}</div>',
+        ];
+      }
     }
     else {
+      // For prompters, show the current round.
       $build['progress'] = [
         '#type' => 'inline_template',
         '#template' => '<div>{{ "Currently reciting"|t }}</div>',
       ];
+      $is_last_recitation = FALSE;
     }
+
     $build['messages_wrapper'] = [
       '#markup' => '<div data-drupal-messages></div>',
     ];
 
-    if ($is_locked || !$score_entity->isNew() || !$can_judge_language) {
+    // Prompters always see a waiting page (no scoring).
+    if ($judge_type == 'prompter') {
+      $build['#attributes']['class'][] = 'is-locked';
+      $build['#attached']['library'] = ['piv_live_competition/score-form'];
+      // Keep the poem content visible for prompters.
+      $build['form'] = $this->formBuilder()
+        ->getForm('Drupal\piv_live_competition\Form\WaitingPageForm', FALSE, []);
+    }
+    elseif ($is_locked || !$score_entity->isNew() || !$can_judge_language) {
       $build['#attributes']['class'][] = 'is-locked';
       $build['#attached']['library'] = ['piv_live_competition/score-form'];
       // Do not print the poem.
@@ -410,7 +476,7 @@ final class ScoreController extends ControllerBase {
       }
     }
     // Last recitation and already submitted (complete).
-    if ($is_last_recitation && (!$score_entity->isNew() || !$can_judge_language)) {
+    if ($judge_type !== 'prompter' && $is_last_recitation && (!$score_entity->isNew() || !$can_judge_language)) {
       unset($build['form']['navigation']);
     }
     return $build;

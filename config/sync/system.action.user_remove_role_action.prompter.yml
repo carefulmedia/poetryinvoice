@@ -1,0 +1,14 @@
+uuid: 78e72292-eb66-4fde-b1c4-9a148945d098
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.prompter
+  module:
+    - user
+id: user_remove_role_action.prompter
+label: 'Remove the Prompter role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: prompter
