@@ -18,6 +18,8 @@ dependencies:
     - field.field.node.competition.field_live_competition_admin
     - field.field.node.competition.field_maximum_entries_per_school
     - field.field.node.competition.field_metatags
+    - field.field.node.competition.field_prompters_en
+    - field.field.node.competition.field_prompters_fr
     - field.field.node.competition.field_score_template
     - field.field.node.competition.field_submission_deadline
     - field.field.node.competition.field_winners_announced
@@ -61,6 +63,8 @@ hidden:
   field_live_competition_admin: true
   field_maximum_entries_per_school: true
   field_metatags: true
+  field_prompters_en: true
+  field_prompters_fr: true
   field_score_template: true
   field_submission_deadline: true
   field_winners_announced: true

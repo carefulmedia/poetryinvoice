@@ -14,7 +14,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 /**
  * Service for managing competition banner display logic.
  *
- * This service will handle displaying a call to action banner for Judges/Administrators of a competition.
+ * This service will handle displaying a call to action banner for Judges/Prompters/Administrators of a competition.
  * The 'hook_preprocess_page' hook in this module uses this service to print the banner under the header.
  */
 class CompetitionBannerService {
@@ -72,6 +72,10 @@ class CompetitionBannerService {
       return $this->buildJudgeBanner($relevant_competition, $user_id);
     }
 
+    if ($role === 'prompter') {
+      return $this->buildPrompterBanner($relevant_competition, $user_id);
+    }
+
     return NULL;
   }
 
@@ -119,7 +123,7 @@ class CompetitionBannerService {
    *
    * Not to be confused with Drupal roles!!! We obtain the "role" for the user in the context of the
    * given competition. e.g. Admin if the user is the Live Competition Admin set in the 'field_live_competition_admin'
-   * field, or 'judge' if the user is referenced in any of the judge fields.
+   * field, or 'judge' if the user is referenced in any of the judge or prompter fields.
    *
    * @param \Drupal\node\NodeInterface $competition
    *   The competition node.
@@ -127,7 +131,7 @@ class CompetitionBannerService {
    *   The user ID to check.
    *
    * @return string|NULL
-   *   'admin', 'judge', or NULL if no role.
+   *   'admin', 'judge', 'prompter', or NULL if no role.
    */
   protected function getUserRoleInCompetition(NodeInterface $competition, int|string $user_id): ?string {
     // Check if user is the competition admin.
@@ -186,6 +190,30 @@ class CompetitionBannerService {
       }
     }
 
+    // Check if user is an English prompter.
+    if ($competition->hasField('field_prompters_en')) {
+      $prompter_en_field = $competition->get('field_prompters_en');
+      if (!$prompter_en_field->isEmpty()) {
+        foreach ($prompter_en_field as $item) {
+          if ((int) $item->target_id === (int) $user_id) {
+            return 'prompter';
+          }
+        }
+      }
+    }
+
+    // Check if user is a French prompter.
+    if ($competition->hasField('field_prompters_fr')) {
+      $prompter_fr_field = $competition->get('field_prompters_fr');
+      if (!$prompter_fr_field->isEmpty()) {
+        foreach ($prompter_fr_field as $item) {
+          if ((int) $item->target_id === (int) $user_id) {
+            return 'prompter';
+          }
+        }
+      }
+    }
+
     return NULL;
   }
 
@@ -207,6 +235,26 @@ class CompetitionBannerService {
     ])->toString();
 
     return $this->buildBannerRenderArray($competition, 'judge', $url);
+  }
+
+  /**
+   * Build banner render array for prompters.
+   *
+   * @param \Drupal\node\NodeInterface $competition
+   *   The competition node.
+   * @param int|string $user_id
+   *   The user ID.
+   *
+   * @return array
+   *   Render array for the banner.
+   */
+  protected function buildPrompterBanner(NodeInterface $competition, int|string $user_id): array {
+    $url = Url::fromRoute('piv_live_competition.score', [
+      'node' => $competition->id(),
+      'user' => $user_id,
+    ])->toString();
+
+    return $this->buildBannerRenderArray($competition, 'prompter', $url);
   }
 
   /**

@@ -18,6 +18,8 @@ dependencies:
     - field.field.node.competition.field_live_competition_admin
     - field.field.node.competition.field_maximum_entries_per_school
     - field.field.node.competition.field_metatags
+    - field.field.node.competition.field_prompters_en
+    - field.field.node.competition.field_prompters_fr
     - field.field.node.competition.field_score_template
     - field.field.node.competition.field_submission_deadline
     - field.field.node.competition.field_winners_announced
@@ -326,6 +328,38 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 17
             additional: {  }
+          a263354e-9994-4698-a282-2c23517cfa0f:
+            uuid: a263354e-9994-4698-a282-2c23517cfa0f
+            region: content
+            configuration:
+              id: 'field_block:node:competition:field_prompters_en'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 18
+            additional: {  }
+          e409ea5d-2c04-4f1d-9995-4e3680215745:
+            uuid: e409ea5d-2c04-4f1d-9995-4e3680215745
+            region: content
+            configuration:
+              id: 'field_block:node:competition:field_prompters_fr'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 19
+            additional: {  }
         third_party_settings: {  }
 id: node.competition.default
 targetEntityType: node
@@ -435,6 +469,22 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_prompters_en:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_prompters_fr:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 110
     region: content
   field_score_template:
     type: entity_reference_label
