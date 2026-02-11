@@ -98,11 +98,17 @@ final class ScoreController extends ControllerBase {
       foreach ($recitations as $delta => $recitation) {
         $round = $delta + 1;
         if ($active_round !== NULL && $active_round == $round) {
+<<<<<<< HEAD
           $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
           // Only show if it matches their language.
           if (in_array($recitation_language, $languages)) {
             return $recitation;
           }
+=======
+          // Return the active round recitation regardless of language.
+          // The controller will handle showing a waiting message if it's not their language.
+          return $recitation;
+>>>>>>> bitbucket/feature/PIV-747-contest-administration-page
         }
       }
       return NULL;
@@ -439,6 +445,7 @@ final class ScoreController extends ControllerBase {
       '#markup' => '<div data-drupal-messages></div>',
     ];
 
+<<<<<<< HEAD
     // Prompters always see a waiting page (no scoring).
     if ($judge_type == 'prompter') {
       $build['#attributes']['class'][] = 'is-locked';
@@ -446,6 +453,20 @@ final class ScoreController extends ControllerBase {
       // Keep the poem content visible for prompters.
       $build['form'] = $this->formBuilder()
         ->getForm('Drupal\piv_live_competition\Form\WaitingPageForm', FALSE, []);
+=======
+    // Prompters don't score - show poem content if it's their language, otherwise show waiting page.
+    if ($judge_type == 'prompter') {
+      $build['#attached']['library'] = ['piv_live_competition/score-form'];
+      if (!$can_judge_language) {
+        // Not their language - show waiting page with black background.
+        $build['#attributes']['class'][] = 'is-locked';
+        unset($build['epigraph']);
+        unset($build['poem_content']);
+        $build['form'] = $this->formBuilder()
+          ->getForm('Drupal\piv_live_competition\Form\WaitingPageForm', FALSE, []);
+      }
+      // If it is their language, no form needed - they just read the poem content.
+>>>>>>> bitbucket/feature/PIV-747-contest-administration-page
     }
     elseif ($is_locked || !$score_entity->isNew() || !$can_judge_language) {
       $build['#attributes']['class'][] = 'is-locked';
@@ -453,7 +474,6 @@ final class ScoreController extends ControllerBase {
       // Do not print the poem.
       unset($build['epigraph']);
       unset($build['poem_content']);
-      $message = [];
       $message = $is_last_recitation
         ? [
           '#markup' => $this->t('Thank you for judging the @label! Results will be announced soon.', [
