@@ -11,8 +11,8 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
-  - 'create field_team_label_fr'
-  - 'edit field_team_label_fr'
-  - 'edit own field_team_label_fr'
-  - 'view field_team_label_fr'
-  - 'view own field_team_label_fr'
+  - 'create field_student_name_1'
+  - 'edit field_student_name_1'
+  - 'edit own field_student_name_1'
+  - 'view field_student_name_1'
+  - 'view own field_student_name_1'
