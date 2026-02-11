@@ -437,15 +437,6 @@ final class ScoreController extends ControllerBase {
       '#markup' => '<div data-drupal-messages></div>',
     ];
 
-<<<<<<< HEAD
-    // Prompters always see a waiting page (no scoring).
-    if ($judge_type == 'prompter') {
-      $build['#attributes']['class'][] = 'is-locked';
-      $build['#attached']['library'] = ['piv_live_competition/score-form'];
-      // Keep the poem content visible for prompters.
-      $build['form'] = $this->formBuilder()
-        ->getForm('Drupal\piv_live_competition\Form\WaitingPageForm', FALSE, []);
-=======
     // Prompters don't score - show poem content if it's their language, otherwise show waiting page.
     if ($judge_type == 'prompter') {
       $build['#attached']['library'] = ['piv_live_competition/score-form'];
@@ -458,7 +449,6 @@ final class ScoreController extends ControllerBase {
           ->getForm('Drupal\piv_live_competition\Form\WaitingPageForm', FALSE, []);
       }
       // If it is their language, no form needed - they just read the poem content.
->>>>>>> bitbucket/feature/PIV-747-contest-administration-page
     }
     elseif ($is_locked || !$score_entity->isNew() || !$can_judge_language) {
       $build['#attributes']['class'][] = 'is-locked';
