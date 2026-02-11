@@ -98,17 +98,9 @@ final class ScoreController extends ControllerBase {
       foreach ($recitations as $delta => $recitation) {
         $round = $delta + 1;
         if ($active_round !== NULL && $active_round == $round) {
-<<<<<<< HEAD
-          $recitation_language = $recitation->field_poem?->entity->langcode->value ?? 'en';
-          // Only show if it matches their language.
-          if (in_array($recitation_language, $languages)) {
-            return $recitation;
-          }
-=======
           // Return the active round recitation regardless of language.
           // The controller will handle showing a waiting message if it's not their language.
           return $recitation;
->>>>>>> bitbucket/feature/PIV-747-contest-administration-page
         }
       }
       return NULL;
