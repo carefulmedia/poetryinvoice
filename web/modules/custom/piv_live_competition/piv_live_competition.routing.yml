@@ -105,3 +105,17 @@ piv_live_competition.yearly_results:
     parameters:
       year:
         type: string
+
+piv_live_competition.contest_administration:
+  path: '/node/{node}/contest-administration'
+  defaults:
+    _title_callback: '\Drupal\piv_live_competition\Controller\ContestAdministrationController::title'
+    _controller: '\Drupal\piv_live_competition\Controller\ContestAdministrationController'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Controller\ContestAdministrationController::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
