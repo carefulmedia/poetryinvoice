@@ -9,7 +9,7 @@ id: node.competition.field_accuracy_judge_en
 field_name: field_accuracy_judge_en
 entity_type: node
 bundle: competition
-label: 'English Accuracy Judge'
+label: 'English Accuracy Judges'
 description: ''
 required: false
 translatable: false
@@ -52,5 +52,7 @@ settings:
         education_consultant: '0'
         journal_editor: '0'
         junior_editor: '0'
+        competition_monitor: '0'
+        prompter: '0'
     include_anonymous: false
 field_type: entity_reference

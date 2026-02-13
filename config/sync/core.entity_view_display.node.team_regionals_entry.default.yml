@@ -9,6 +9,8 @@ dependencies:
     - field.field.node.team_regionals_entry.field_language_stream
     - field.field.node.team_regionals_entry.field_metatags
     - field.field.node.team_regionals_entry.field_place_team_regional
+    - field.field.node.team_regionals_entry.field_team_label
+    - field.field.node.team_regionals_entry.field_team_label_fr
     - field.field.node.team_regionals_entry.field_tr_student
     - node.type.team_regionals_entry
   module:
@@ -59,6 +61,22 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_team_label:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_team_label_fr:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
     region: content
   field_tr_student:
     type: entity_reference_revisions_entity_view

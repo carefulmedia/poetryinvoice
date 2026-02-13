@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace Drupal\piv_live_competition\Form;
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\piv_live_competition\Helper;
 use Drupal\node\NodeInterface;
@@ -29,6 +32,18 @@ final class RecitationsListForm extends FormBase {
     return new static(
       $container->get('piv_live_competition.helper')
     );
+  }
+
+  /**
+   * Custom access.
+   */
+  public function access(AccountInterface $account, NodeInterface $node, ?string $stream = NULL): AccessResultInterface {
+    $is_competition_admin = !$node->get('field_live_competition_admin')->isEmpty()
+      && $node->get('field_live_competition_admin')->entity->id() === $account->id();
+    $permission = $account->hasPermission('access competition recitations list');
+    return AccessResult::allowedIf($permission || $is_competition_admin)
+      ->cachePerUser()
+      ->addCacheableDependency($account);
   }
 
   /**
@@ -62,6 +77,19 @@ final class RecitationsListForm extends FormBase {
     ];
 
     foreach ($recitations as $recitation) {
+      // We put a guard clause on the entry, since the rest of this loop doesn't need to be executed if it doesn't exist.
+      /** @var \Drupal\node\NodeInterface $team_regional_entry */
+      $team_regional_entry = $recitation->getParentEntity();
+      if (!$team_regional_entry) {
+        continue;
+      }
+
+      // Ensure our entry is translated to the current language.
+      $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      if ($team_regional_entry->hasTranslation($current_language)) {
+        $team_regional_entry = $team_regional_entry->getTranslation($current_language);
+      }
+
       $performance_scores = [];
       foreach ($recitation->field_performance_scores->referencedEntities() as $score) {
         $label = $score->judge->entity?->getDisplayName() ?? $score->label();
@@ -83,15 +111,13 @@ final class RecitationsListForm extends FormBase {
         $accuracy_scores[] = $link;
       }
 
-      $team_regional_entry = $recitation->getParentEntity();
-      $stream = $team_regional_entry->field_language_stream->value;
-      $school = $team_regional_entry
-        ? $team_regional_entry->getOwner()?->field_school->entity?->label()
-        : '';
+      $stream = $team_regional_entry?->field_language_stream->value;
+      $school_label = _piv_live_competition_get_team_label($team_regional_entry, $current_language)
+        ?? $team_regional_entry->getOwner()?->field_school->entity?->label();
+      $school = $school_label;
+      $team_label = _piv_live_competition_get_team_label($team_regional_entry, $current_language, include_competition_title: TRUE);
       $form['table'][] = [
-        'team_regional_entry' => $team_regional_entry
-          ? $team_regional_entry->toLink(NULL, 'edit-form')->toRenderable()
-          : '',
+        'team_regional_entry' => $team_regional_entry->toLink($team_label, 'edit-form')->toRenderable(),
         'stream' => ['#markup' => $streams[$stream] ?? $this->t('- None -')],
         'student' => ['#markup' => $this->helper->getStudentName($recitation)],
         'poem' => ['#markup' => $recitation->field_poem->entity?->label()],

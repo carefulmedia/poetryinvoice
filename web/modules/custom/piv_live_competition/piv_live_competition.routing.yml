@@ -19,7 +19,7 @@ piv_live_competition.score:
 piv_live_competition.api_round:
   path: '/api/live-competition-round/{node}'
   defaults:
-    _title: 'Live Competition Round'
+    _title: 'Team Regional Round'
     _controller: '\Drupal\piv_live_competition\Controller\ScoreController::activeRound'
   requirements:
     _permission: 'access content'
@@ -33,10 +33,22 @@ piv_live_competition.api_round:
 piv_live_competition.live_competition_list:
   path: '/user/{user}/live-competitions'
   defaults:
-    _title: 'Live Competitions'
+    _title: 'Team Regionals'
     _controller: '\Drupal\piv_live_competition\Controller\LiveCompetitionsListController'
   requirements:
     _custom_access: '\Drupal\piv_live_competition\Controller\LiveCompetitionsListController::access'
+
+piv_live_competition.teacher_live_competition_list:
+  path: '/user/{user}/teacher-live-competitions'
+  defaults:
+    _title: 'Team Regionals'
+    _controller: '\Drupal\piv_live_competition\Controller\TeacherLiveCompetitionsListController'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Controller\TeacherLiveCompetitionsListController::access'
+  options:
+    parameters:
+      user:
+        type: entity:user
 
 piv_live_competition.recitations_list:
   path: '/node/{node}/recitations'
@@ -44,7 +56,7 @@ piv_live_competition.recitations_list:
     _title_callback: 'Drupal\piv_live_competition\Form\RecitationsListForm::title'
     _form: 'Drupal\piv_live_competition\Form\RecitationsListForm'
   requirements:
-    _permission: 'access competition recitations list'
+    _custom_access: '\Drupal\piv_live_competition\Form\RecitationsListForm::access'
   options:
     parameters:
       node:
@@ -58,7 +70,7 @@ piv_live_competition.monitor_dashboard:
     _title_callback: 'Drupal\piv_live_competition\Controller\MonitorDashboardController::title'
     _controller: '\Drupal\piv_live_competition\Controller\MonitorDashboardController'
   requirements:
-    _permission: 'access monitor dashboard'
+    _custom_access: '\Drupal\piv_live_competition\Controller\MonitorDashboardController::access'
   options:
     parameters:
       node:
@@ -74,6 +86,33 @@ piv_live_competition.live_competition_score_results_table:
     stream: null
   requirements:
     _custom_access: '\Drupal\piv_live_competition\Controller\LiveCompetitionScoreResultsTableController::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+
+piv_live_competition.yearly_results:
+  path: '/team-regionals-results/{year}'
+  defaults:
+    _title_callback: '\Drupal\piv_live_competition\Controller\YearlyResultsController::title'
+    _controller: '\Drupal\piv_live_competition\Controller\YearlyResultsController'
+  requirements:
+    _permission: 'access content'
+    year: '\d{4}'
+  options:
+    parameters:
+      year:
+        type: string
+
+piv_live_competition.contest_administration:
+  path: '/node/{node}/contest-administration'
+  defaults:
+    _title_callback: '\Drupal\piv_live_competition\Controller\ContestAdministrationController::title'
+    _controller: '\Drupal\piv_live_competition\Controller\ContestAdministrationController'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Controller\ContestAdministrationController::access'
   options:
     parameters:
       node:

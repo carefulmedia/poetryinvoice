@@ -1,0 +1,9 @@
+uuid: 03e253fc-ebb5-47f4-9c7a-8c1d6a1fc290
+langcode: en
+status: true
+dependencies: {  }
+id: prompter
+label: Prompter
+weight: 29
+is_admin: null
+permissions: {  }

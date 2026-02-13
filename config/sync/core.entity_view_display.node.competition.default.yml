@@ -11,10 +11,15 @@ dependencies:
     - field.field.node.competition.field_active_round
     - field.field.node.competition.field_competition_school
     - field.field.node.competition.field_host_teacher
+    - field.field.node.competition.field_invited_schools
     - field.field.node.competition.field_judges
     - field.field.node.competition.field_language_stream
     - field.field.node.competition.field_level
+    - field.field.node.competition.field_live_competition_admin
+    - field.field.node.competition.field_maximum_entries_per_school
     - field.field.node.competition.field_metatags
+    - field.field.node.competition.field_prompters_en
+    - field.field.node.competition.field_prompters_fr
     - field.field.node.competition.field_score_template
     - field.field.node.competition.field_submission_deadline
     - field.field.node.competition.field_winners_announced
@@ -274,6 +279,87 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 14
             additional: {  }
+          63c2d27b-a101-4a43-a2af-9a75bb0c1fe4:
+            uuid: 63c2d27b-a101-4a43-a2af-9a75bb0c1fe4
+            region: content
+            configuration:
+              id: 'field_block:node:competition:field_invited_schools'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 15
+            additional: {  }
+          a141217b-dd59-4324-9483-9c5a031618a4:
+            uuid: a141217b-dd59-4324-9483-9c5a031618a4
+            region: content
+            configuration:
+              id: 'field_block:node:competition:field_maximum_entries_per_school'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: number_integer
+                label: above
+                settings:
+                  thousand_separator: ''
+                  prefix_suffix: true
+                third_party_settings: {  }
+            weight: 16
+            additional: {  }
+          ed95e894-e2ab-4113-8bbf-def82b9c52a9:
+            uuid: ed95e894-e2ab-4113-8bbf-def82b9c52a9
+            region: content
+            configuration:
+              id: 'field_block:node:competition:field_live_competition_admin'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 17
+            additional: {  }
+          a263354e-9994-4698-a282-2c23517cfa0f:
+            uuid: a263354e-9994-4698-a282-2c23517cfa0f
+            region: content
+            configuration:
+              id: 'field_block:node:competition:field_prompters_en'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 18
+            additional: {  }
+          e409ea5d-2c04-4f1d-9995-4e3680215745:
+            uuid: e409ea5d-2c04-4f1d-9995-4e3680215745
+            region: content
+            configuration:
+              id: 'field_block:node:competition:field_prompters_fr'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 19
+            additional: {  }
         third_party_settings: {  }
 id: node.competition.default
 targetEntityType: node
@@ -329,6 +415,14 @@ content:
     third_party_settings: {  }
     weight: 11
     region: content
+  field_invited_schools:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
   field_judges:
     type: entity_reference_revisions_entity_view
     label: above
@@ -352,12 +446,45 @@ content:
     third_party_settings: {  }
     weight: 7
     region: content
+  field_live_competition_admin:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_maximum_entries_per_school:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 107
+    region: content
   field_metatags:
     type: metatag_empty_formatter
     label: above
     settings: {  }
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_prompters_en:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_prompters_fr:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 110
     region: content
   field_score_template:
     type: entity_reference_label

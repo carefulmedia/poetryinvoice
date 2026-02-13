@@ -12,7 +12,12 @@ weight: 6
 is_admin: true
 permissions:
   - 'create field_legal_name'
+  - 'create field_student_name_1'
   - 'edit field_legal_name'
+  - 'edit field_student_name_1'
   - 'edit own field_legal_name'
+  - 'edit own field_student_name_1'
   - 'view field_legal_name'
+  - 'view field_student_name_1'
   - 'view own field_legal_name'
+  - 'view own field_student_name_1'

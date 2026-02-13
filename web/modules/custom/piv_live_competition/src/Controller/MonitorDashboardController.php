@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace Drupal\piv_live_competition\Controller;
 
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Session\AccountInterface;
 use Drupal\node\NodeInterface;
+use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\piv_live_competition\Helper;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +33,18 @@ final class MonitorDashboardController extends ControllerBase {
     return new static(
       $container->get('piv_live_competition.helper')
     );
+  }
+
+  /**
+   * Custom access.
+   */
+  public function access(AccountInterface $account, NodeInterface $node, ?string $stream = NULL): AccessResultInterface {
+    $is_competition_admin = !$node->get('field_live_competition_admin')->isEmpty()
+      && $node->get('field_live_competition_admin')->entity->id() === $account->id();
+    $permission = $account->hasPermission('access monitor dashboard');
+    return AccessResult::allowedIf($permission || $is_competition_admin)
+      ->cachePerUser()
+      ->addCacheableDependency($account);
   }
 
   /**
@@ -85,9 +101,18 @@ final class MonitorDashboardController extends ControllerBase {
       // Check if active round.
       $is_active_round = (($delta + 1) == $active_round);
 
-      // Student name on the first column.
+      // Student name and school on the first column.
       $student_name = $this->helper->getStudentName($recitation);
-      $row = [$student_name];
+
+      // Get team label from parent team regional entry.
+      $team_regional_entry = $recitation->getParentEntity();
+      $school = $team_regional_entry?->getOwner()?->field_school->entity?->label() ?? '';
+      $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      $team_label = $team_regional_entry ? (_piv_live_competition_get_team_label($team_regional_entry, $current_language) ?? $school) : $school;
+
+      // Combine student name and team label.
+      $student_and_school = $student_name . ($team_label ? '<br><i>' . $team_label . '</i>' : '');
+      $row = [['data' => ['#markup' => $student_and_school]]];
 
       $recitation_langcode = $recitation->field_poem->entity?->langcode->value ?? 'en';
 
@@ -160,7 +185,7 @@ final class MonitorDashboardController extends ControllerBase {
       ->getForm('Drupal\piv_live_competition\Form\LiveCompetitionAdvanceRoundForm', $node, $has_incomplete);
     $build['table'] = [
       '#type' => 'table',
-      '#header' => array_merge([$this->t('Student')], $header),
+      '#header' => array_merge([$this->t('Student & School')], $header),
       '#rows' => $rows,
       '#sticky' => TRUE,
     ];

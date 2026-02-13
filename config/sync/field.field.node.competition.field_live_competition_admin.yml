@@ -1,0 +1,29 @@
+uuid: 6b71927a-0459-46c0-aec9-df9bad42ea13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_live_competition_admin
+    - node.type.competition
+id: node.competition.field_live_competition_admin
+field_name: field_live_competition_admin
+entity_type: node
+bundle: competition
+label: 'Live Competition Administrator'
+description: 'Select a user that is able to administer this competition and all entries.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: _none
+    include_anonymous: true
+field_type: entity_reference

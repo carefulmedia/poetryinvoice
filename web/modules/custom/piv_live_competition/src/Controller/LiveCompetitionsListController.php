@@ -32,7 +32,9 @@ final class LiveCompetitionsListController extends ControllerBase {
     $judge_group = $query->orConditionGroup()
       ->condition('field_accuracy_judge_fr', $user_id, 'IN')
       ->condition('field_accuracy_judge_en', $user_id, 'IN')
-      ->condition('field_judges.entity:paragraph.field_judge', $user_id);
+      ->condition('field_judges.entity:paragraph.field_judge', $user_id)
+      ->condition('field_prompters_en', $user_id, 'IN')
+      ->condition('field_prompters_fr', $user_id, 'IN');
 
     return $query->condition($judge_group)
       ->accessCheck(TRUE)
@@ -77,7 +79,7 @@ final class LiveCompetitionsListController extends ControllerBase {
     $build['content'] = [
       '#theme' => 'item_list',
       '#list_type' => 'ul',
-      '#title' => $this->t('Live competitions'),
+      '#title' => $this->t('Team Regionals'),
       '#items' => $links,
     ];
     return $build;

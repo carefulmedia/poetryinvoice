@@ -1,0 +1,20 @@
+uuid: d0091130-efed-4945-b7b5-0b6934845b87
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - user
+id: node.field_prompters_en
+field_name: field_prompters_en
+entity_type: node
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

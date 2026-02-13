@@ -9,6 +9,8 @@ dependencies:
     - field.field.node.team_regionals_entry.field_language_stream
     - field.field.node.team_regionals_entry.field_metatags
     - field.field.node.team_regionals_entry.field_place_team_regional
+    - field.field.node.team_regionals_entry.field_team_label
+    - field.field.node.team_regionals_entry.field_team_label_fr
     - field.field.node.team_regionals_entry.field_tr_student
     - node.type.team_regionals_entry
   module:
@@ -32,6 +34,8 @@ hidden:
   field_language_stream: true
   field_metatags: true
   field_place_team_regional: true
+  field_team_label: true
+  field_team_label_fr: true
   field_tr_student: true
   langcode: true
   search_api_excerpt: true

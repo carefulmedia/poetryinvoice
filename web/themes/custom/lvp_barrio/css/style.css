@@ -2128,6 +2128,9 @@ h3.name {
   display: flex;
   align-items: start;
 }
+.score-controller__navigation__accuracy {
+  display: initial;
+}
 .score-controller__navigation__next {
   margin-left: auto;
 }

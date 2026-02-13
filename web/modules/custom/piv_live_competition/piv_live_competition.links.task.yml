@@ -1,28 +1,41 @@
 piv_live_competition.live_competitions_list:
   route_name: piv_live_competition.live_competition_list
   base_route: entity.user.canonical
-  title: 'Live Competitions'
+  title: 'Team Regionals'
   weight: 110
+
+# This one is specific to teachers, the one above to judges.
+piv_live_competition.teacher_live_competitions_list:
+  route_name: piv_live_competition.teacher_live_competition_list
+  base_route: entity.user.canonical
+  title: Team Regionals
+  weight: 3
 
 piv_live_competition.recitations_list:
   route_name: piv_live_competition.recitations_list
   base_route: entity.node.canonical
   title: 'Recitations List'
-  weight: 0
+  weight: 1
 
 piv_live_competition.monitor_dashboard:
   route_name: piv_live_competition.monitor_dashboard
   base_route: entity.node.canonical
   title: 'Monitor Dashboard'
-  weight: 0
+  weight: 2
 
 piv_live_competition.live_competition_score_results_table:
   route_name: piv_live_competition.live_competition_score_results_table
   base_route: entity.node.canonical
   title: 'Scores Results'
-  weight: 0
+  weight: 3
 
 piv_live_competition.live_competition_score_results_table_stream:
   deriver: 'Drupal\piv_live_competition\Plugin\Derivative\DynamicScoreResultsTableLocalTasks'
   weight: 100
   parent_id: piv_live_competition.live_competition_score_results_table
+
+piv_live_competition.contest_administration:
+  route_name: piv_live_competition.contest_administration
+  base_route: entity.node.canonical
+  title: 'Contest Administration'
+  weight: 0

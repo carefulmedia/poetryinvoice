@@ -7,6 +7,7 @@ namespace Drupal\piv_live_competition\Controller;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\node\NodeInterface;
 use Drupal\piv_live_competition\Helper;
+use Drupal\piv_live_competition\LiveCompetitionScoreService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
@@ -21,6 +22,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
    */
   public function __construct(
     protected readonly Helper $helper,
+    protected readonly LiveCompetitionScoreService $scoreService,
   ) {}
 
   /**
@@ -28,7 +30,8 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('piv_live_competition.helper')
+      $container->get('piv_live_competition.helper'),
+      $container->get('piv_live_competition.score_service')
     );
   }
 
@@ -41,9 +44,14 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         ->loadByProperties([
           'field_contest_association' => $node->id(),
         ]);
-      $streams = array_unique(array_filter(array_map(function ($n) {
-        return $n->field_language_stream->value ?? NULL;
-      }, $nodes)));
+      $streams = array_unique(
+        array_filter(
+          array_map(static function ($n) {
+            return $n->field_language_stream->value ?? NULL;
+          }, $nodes),
+          static fn ($v) => $v !== NULL,
+        ),
+      );
       $stream = $streams ? min($streams) : '_none';
       return $this->redirect('piv_live_competition.live_competition_score_results_table', [
         'node' => $node->id(),
@@ -112,16 +120,26 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
     $best_poem_overall_score = [];
     // Raw data for the tables rows, keyed by judge.
     $rows = [];
-    // Map students per school.
+    // Map students per team regional entry (NOT per school).
     $students_map = [];
 
     foreach ($team_regional_entries as $team_regional_entry) {
+      // Ensure our entry is translated to the current language.
+      $current_language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      if ($team_regional_entry->hasTranslation($current_language)) {
+        $team_regional_entry = $team_regional_entry->getTranslation($current_language);
+      }
+
       $tr_id = $team_regional_entry->id();
       $accuracy_scores[$tr_id]['en'] = 0;
       $accuracy_scores[$tr_id]['fr'] = 0;
       if (empty($poems[$tr_id])) {
         $poems[$tr_id] = [];
       }
+
+      // Get school ID once per entry.
+      $school_id = $team_regional_entry->getOwner()?->field_school->target_id;
+
       foreach ($team_regional_entry->field_tr_student->referencedEntities() as $student_entry) {
         $student_entry_id = $student_entry->id();
         if (empty($poems[$tr_id][$student_entry_id])) {
@@ -131,11 +149,11 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
           ];
         }
 
-        $school_id = $team_regional_entry->getOwner()?->field_school->target_id;
-        if (empty($students_map[$school_id])) {
-          $students_map[$school_id] = [];
+        // Map students by team regional entry ID, not by school ID.
+        if (empty($students_map[$tr_id])) {
+          $students_map[$tr_id] = [];
         }
-        $students_map[$school_id][] = $this->helper->getStudentName($student_entry);
+        $students_map[$tr_id][] = $this->helper->getStudentName($student_entry);
 
         // Accuracy are added to the regional entries in the judges
         // tables. There are tables for performance judges only.
@@ -152,8 +170,9 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
           // Init the row.
           if (empty($rows[$judge_id][$tr_id])) {
             $school = $team_regional_entry->getOwner()?->field_school->entity?->label();
+            $school_label = _piv_live_competition_get_team_label($team_regional_entry, $current_language) ?? $school;
             $rows[$judge_id][$tr_id] = [
-              'school' => ['#markup' => $school],
+              'school' => ['#markup' => $school_label],
               'score' => 0,
               'recitation' => 0,
               'accuracy' => 0,
@@ -375,8 +394,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         $build['aggregated_table'][$i]['#attributes']['class'] = $classes;
       }
       $last_rank = $row['rank'];
-      $school_id = $row['#school_id'];
-      $students = implode(', ', array_unique($students_map[$school_id])) . '<br>';
+      $students = implode(', ', array_unique($students_map[$tr_id] ?? [])) . '<br>';
       $row['school']['#markup'] = "$students <i>{$row['school']['#markup']}</i>";
       $build['aggregated_table'][] = [
         '#attributes' => ['class' => $classes],
@@ -415,10 +433,12 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       return $n->field_language_stream->value ?? '_none';
     }, $nodes);
     $stream_is_valid = in_array($stream, $streams);
+    $is_competition_admin = !$node->get('field_live_competition_admin')->isEmpty()
+      && $node->get('field_live_competition_admin')->entity->id() === $account->id();
     $permission = $account->hasPermission('access live competition score result table');
     // If stream is null the page will redirect to the first valid
     // stream.
-    return AccessResult::allowedIf($stream === NULL || ($permission && $stream_is_valid))
+    return AccessResult::allowedIf($stream === NULL || (($permission || $is_competition_admin) && $stream_is_valid))
       ->cachePerUser()
       ->addCacheableDependency($account)
       ->addCacheTags(['node_list:team_regionals_entry']);

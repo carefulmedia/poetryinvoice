@@ -134,3 +134,90 @@ msgstr "<p>Pour consulter cette page, <strong>{{ login }}</strong> à votre comp
 
 msgid "Login Required"
 msgstr "Connexion requise"
+
+msgid "Host School"
+msgstr "École hôte"
+
+msgid "Contest Language"
+msgstr "Langue du concours"
+
+msgid "1st Place"
+msgstr "1re place"
+
+msgid "2nd Place"
+msgstr "2e place"
+
+msgid "3rd Place"
+msgstr "3e place"
+
+msgid "4th Place"
+msgstr "4e place"
+
+msgid "Judges"
+msgstr "Jury"
+
+msgid "Bilingual"
+msgstr "Bilingue"
+
+msgid "Individual Contests"
+msgstr "Concours individuels"
+
+msgid "Team Regionals"
+msgstr "Concours en équipe"
+
+msgid "No active competitions"
+msgstr "Aucun concours actif"
+
+msgid "Team Regionals Results - @year"
+msgstr "Résultats des concours régionaux en équipe - @year"
+
+msgid "Student & School"
+msgstr "Étudiant & École"
+
+msgid "Back to judging interface for"
+msgstr "Retour à l'interface d'évaluation pour"
+
+msgid "Go to Judging"
+msgstr "Aller à l'évaluation"
+
+msgid "Back to Monitor Dashboard interface for"
+msgstr "Retour à l’interface du tableau de bord pour"
+
+msgid "Go to Dashboard"
+msgstr "Aller au tableau de bord"
+
+msgid "Contest Administration - @label"
+msgstr "Administration du concours - @label"
+
+msgid "Create New Entry"
+msgstr "Créer une nouvelle inscription"
+
+msgid "Edit Contest"
+msgstr "Modifier le concours"
+
+msgid "English Performance Judges"
+msgstr "Juges de performance anglais"
+
+msgid "French Performance Judges"
+msgstr "Juges de performance français"
+
+msgid "English Accuracy Judges"
+msgstr "Juges de précision anglais"
+
+msgid "French Accuracy Judges"
+msgstr "Juges de précision français"
+
+msgid "No judges assigned to this contest."
+msgstr "Aucun juge assigné à ce concours."
+
+msgid "Prompters"
+msgstr "Prompteurs"
+
+msgid "English Prompters"
+msgstr "Prompteurs anglais"
+
+msgid "French Prompters"
+msgstr "Prompteurs français"
+
+msgid "No prompters assigned to this contest."
+msgstr "Aucun prompteur assigné à ce concours."
