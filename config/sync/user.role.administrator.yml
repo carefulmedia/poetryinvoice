@@ -11,8 +11,8 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
-  - 'create field_iva_finalist'
-  - 'edit field_iva_finalist'
-  - 'edit own field_iva_finalist'
-  - 'view field_iva_finalist'
-  - 'view own field_iva_finalist'
+  - 'create field_legal_name'
+  - 'edit field_legal_name'
+  - 'edit own field_legal_name'
+  - 'view field_legal_name'
+  - 'view own field_legal_name'

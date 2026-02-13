@@ -10,7 +10,7 @@ field_name: field_legal_name
 entity_type: paragraph
 bundle: tr_student
 label: 'Full Legal name'
-description: "Enter the student's full name for the event program, for announcing on stage, and for the issuance of a cheque and certificate should the student win."
+description: "Enter the student's preferred name for the event program and for on-stage announcements."
 required: true
 translatable: false
 default_value: {  }

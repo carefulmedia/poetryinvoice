@@ -1,0 +1,25 @@
+uuid: 0dfc9038-da7e-4d14-968a-68b54d6413c8
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:5e291f83-37cd-4ba1-b66d-866cccea1304'
+  module:
+    - block_content
+  theme:
+    - lvp_barrio
+id: lvp_barrio_buttonensubmitcontestrecitationsformenu
+theme: lvp_barrio
+region: primary_menu
+weight: 0
+provider: null
+plugin: 'block_content:5e291f83-37cd-4ba1-b66d-866cccea1304'
+settings:
+  id: 'block_content:5e291f83-37cd-4ba1-b66d-866cccea1304'
+  label: 'Button EN submit contest recitations for menu'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }
