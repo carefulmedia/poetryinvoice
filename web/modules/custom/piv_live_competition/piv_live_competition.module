@@ -206,6 +206,10 @@ function _piv_live_competition_node__team_regionals_entry_access(
 
 /**
  * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Update team labels for all related entries upon entry deletion.
+ *
+ * @see \hook_ENTITY_TYPE_insert()
  */
 function piv_live_competition_node_insert(NodeInterface $node): void {
   if ($node->bundle() === 'team_regionals_entry') {
@@ -215,6 +219,10 @@ function piv_live_competition_node_insert(NodeInterface $node): void {
 
 /**
  * Implements hook_ENTITY_TYPE_update().
+ *
+ * Update team labels for all related entries upon entry update.
+ *
+ * @see \hook_ENTITY_TYPE_update()
  */
 function piv_live_competition_node_update(NodeInterface $node): void {
   if ($node->bundle() === 'team_regionals_entry') {
@@ -224,6 +232,10 @@ function piv_live_competition_node_update(NodeInterface $node): void {
 
 /**
  * Implements hook_ENTITY_TYPE_delete().
+ *
+ * Update team labels for all related entries upon entry deletion.
+ *
+ * @see \hook_ENTITY_TYPE_delete()
  */
 function piv_live_competition_node_delete(NodeInterface $node): void {
   if ($node->bundle() === 'team_regionals_entry') {
@@ -457,7 +469,9 @@ function piv_live_competition_inline_entity_form_entity_form_alter(
       && $competition_admin
       && $account->id() === $competition_admin->id()
     ) {
-      _piv_live_competition_access_all_fields_in_form($entity_form);
+      // Grant access to all fields except field_judge, which needs to maintain
+      // its role-based validation (poet_network role requirement).
+      _piv_live_competition_access_all_fields_in_form($entity_form, ['field_judge']);
     }
   }
 
@@ -532,6 +546,11 @@ function piv_live_competition_field_widget_complete_entity_reference_paragraphs_
 
 /**
  * Helper function to set #access of all fields in a form to TRUE.
+ *
+ * @param array $form
+ *   The form or form element to modify.
+ * @param array $exclusions
+ *   Array of field names to exclude from access modification.
  */
 function _piv_live_competition_access_all_fields_in_form(array &$form, array $exclusions = []): void {
   foreach ($form as $field_name => $field_element) {
