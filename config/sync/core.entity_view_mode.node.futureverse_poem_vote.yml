@@ -1,0 +1,11 @@
+uuid: 86c049d9-43d8-456a-8e96-6503338a3e38
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.futureverse_poem_vote
+label: 'Futureverse Poem Vote'
+description: 'Display a Journal Poem with the voting system.'
+targetEntityType: node
+cache: true

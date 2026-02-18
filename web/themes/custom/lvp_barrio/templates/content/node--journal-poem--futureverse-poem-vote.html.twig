@@ -1,0 +1,54 @@
+{#
+/**
+ * @file
+ * Theme override for journal_poem nodes in futureverse_poem_vote view mode.
+ *
+ * Available variables:
+ * - node: The node entity with contextual information.
+ * - content: All node items. Use {{ content }} to print them all.
+ * - label: The title of the node.
+ * - url: Direct URL of the current node.
+ *
+ * @see template_preprocess_node()
+ */
+#}
+
+<div{{ attributes.addClass('views-field', 'views-field-field-address-administrative-area-1') }}>
+  <span class="field-content">
+    <a href="{{ path('piv_futureverse_vote.vote', {'node': node.id}) }}"
+       class="futureverse-poem-teaser use-ajax"
+       data-dialog-type="modal"
+       data-dialog-options='{"width":800}'>
+
+      <div class="image">
+        {% if content.field_student_photo %}
+          {{ content.field_student_photo }}
+        {% endif %}
+      </div>
+
+      <div class="content">
+        {# Student Name - Use legal name if field_legal_name_boolean is TRUE and legal name exists, otherwise use first/last name #}
+        <h4>
+          {% if node.field_legal_name_boolean.value and node.field_legal_name.value %}
+            {{ node.field_legal_name.value }}
+          {% elseif node.piv_teacher_first_name.value or node.piv_teacher_last_name.value %}
+            {{ node.piv_teacher_first_name.value }} {{ node.piv_teacher_last_name.value }}
+          {% else %}
+            {{ 'Anonymous'|t }}
+          {% endif %}
+        </h4>
+
+        <h6>
+          <span>
+            {% if node.field_school_journal.entity %}
+              {{ node.field_school_journal.entity.label }}
+              {% if node.field_school_journal.entity.field_address.0 %}
+                <br>{{ node.field_school_journal.entity.field_address.0.locality }}, {{ node.field_school_journal.entity.field_address.0.administrative_area }}
+              {% endif %}
+            {% endif %}
+          </span>
+        </h6>
+      </div>
+    </a>
+  </span>
+</div>
