@@ -1,0 +1,41 @@
+piv_futureverse_vote.vote:
+  path: '/write/futureverse/vote/{node}'
+  defaults:
+    _title: 'Vote'
+    _form: 'Drupal\piv_futureverse_vote\Form\FutureverseVoteForm'
+  requirements:
+    _permission: 'access content'
+  options:
+    parameters:
+      node:
+        type: entity:node
+
+piv_futureverse_vote.admin_votes:
+  path: '/admin/futureverse/votes'
+  defaults:
+    _title: 'Futureverse votes'
+    _controller: 'Drupal\piv_futureverse_vote\Controller\FutureverseVotesAdminController::build'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+
+piv_futureverse_vote.admin_results:
+  path: '/admin/futureverse/votes/results'
+  defaults:
+    _title: 'Futureverse votes results'
+    _controller: 'Drupal\piv_futureverse_vote\Controller\FutureverseVoteResultsController::build'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+
+piv_futureverse_vote.admin_votes_delete_confirm:
+  path: '/admin/futureverse/votes/delete'
+  defaults:
+    _title: 'Delete votes'
+    _form: 'Drupal\piv_futureverse_vote\Form\FutureverseVotesDeleteConfirmForm'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE

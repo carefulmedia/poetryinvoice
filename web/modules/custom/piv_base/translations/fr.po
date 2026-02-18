@@ -221,3 +221,12 @@ msgstr "Prompteurs français"
 
 msgid "No prompters assigned to this contest."
 msgstr "Aucun prompteur assigné à ce concours."
+
+msgid "by"
+msgstr 'par'
+
+msgid "Please provide the following information to vote for this poem"
+msgstr "Veuillez fournir les renseignements suivants pour voter pour ce poème"
+
+msgid "Do you want to cancel your last choice and select this poem?"
+msgstr "Voulez-vous annuler votre dernier choix et choisir ce poème?"

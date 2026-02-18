@@ -1,0 +1,5 @@
+services:
+  piv_futureverse_vote.manager:
+    class: Drupal\piv_futureverse_vote\PivFutureverseVoteManager
+    arguments: ['@database']
+  Drupal\piv_futureverse_vote\PivFutureverseVoteManagerInterface: '@piv_futureverse_vote.manager'
