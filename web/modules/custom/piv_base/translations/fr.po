@@ -186,8 +186,8 @@ msgstr "Retour à l’interface du tableau de bord pour"
 msgid "Go to Dashboard"
 msgstr "Aller au tableau de bord"
 
-msgid "Contest Administration - @label"
-msgstr "Administration du concours - @label"
+msgid "Contest Administration"
+msgstr "Administration du concours"
 
 msgid "Create New Entry"
 msgstr "Créer une nouvelle inscription"
