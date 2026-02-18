@@ -53,5 +53,6 @@ settings:
         journal_editor: '0'
         junior_editor: '0'
         competition_monitor: '0'
+        prompter: '0'
     include_anonymous: true
 field_type: entity_reference
