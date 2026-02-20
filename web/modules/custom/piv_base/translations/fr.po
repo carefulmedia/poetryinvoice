@@ -230,3 +230,6 @@ msgstr "Veuillez fournir les renseignements suivants pour voter pour ce poème"
 
 msgid "Do you want to cancel your last choice and select this poem?"
 msgstr "Voulez-vous annuler votre dernier choix et choisir ce poème?"
+
+msgid "The associated competition strictly requires 1 student per entry. If you have more students than the allowed amount, contact an administrator for removal."
+msgstr "Le concours associé n'accepte qu'un seul élève par inscription. Si vous avez plus d'élèves que le nombre autorisé, veuillez contacter un administrateur pour que votre inscription soit retirée."
