@@ -1,0 +1,10 @@
+display:
+  block_5:
+    display_options:
+      fields:
+        field_address_administrative_area_1:
+          alter:
+            text: " <div class=\"image\">{{ field_student_photo }}</div> \r\n\r\n<div class=\"content\">\r\n<h4>{{ piv_teacher_first_name }}  {{ piv_teacher_last_name }}</h4>\r\n<h6><span>{{ field_school_journal }}\r\n{{ field_address_locality_1 }}, {{ field_address_administrative_area_1 }} </span></h6>\r\n\r\n\r\n</div>\r\n\r\n"
+  block_6:
+    display_options:
+      title: "Candidat·e·s Présélectionné·e·s Vers l'Avenir 2025 "
