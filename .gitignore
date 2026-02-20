@@ -33,6 +33,7 @@
 !config/sync/views.view.moods_by_language.yml
 !config/sync/views.view.tags_by_language.yml
 !config/sync/views.view.commom_poetic_terms_and_forms_by_language.yml
+!config/sync/views.view.futureverse_shortlist_and_longlist.yml
 config/sync/google_analytics.settings.yml
 
 # Environment variables
