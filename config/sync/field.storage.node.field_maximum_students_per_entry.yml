@@ -1,0 +1,20 @@
+uuid: d55e4d56-d18c-435e-848d-b2b5a4b5e7eb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_maximum_students_per_entry
+field_name: field_maximum_students_per_entry
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
