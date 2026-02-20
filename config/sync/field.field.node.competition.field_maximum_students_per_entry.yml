@@ -10,7 +10,7 @@ field_name: field_maximum_students_per_entry
 entity_type: node
 bundle: competition
 label: 'Maximum Students Per Entry'
-description: 'Enter the maximum number of students any given entry can have for this competition. Leaving this empty will allow an unlimited number of students per entry.'
+description: 'Enter the maximum number of students any given entry can have for this competition. Leaving this empty will by default set the limit to 3.'
 required: false
 translatable: false
 default_value:
