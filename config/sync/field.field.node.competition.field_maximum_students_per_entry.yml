@@ -1,0 +1,25 @@
+uuid: 41589b46-1ee4-40bb-8b57-750a480bfa6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_maximum_students_per_entry
+    - node.type.competition
+id: node.competition.field_maximum_students_per_entry
+field_name: field_maximum_students_per_entry
+entity_type: node
+bundle: competition
+label: 'Required Amount of Students Per Entry'
+description: 'Enter the required number of students any given entry can have for this competition. Leaving this empty will by default set it to 3.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 3
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
