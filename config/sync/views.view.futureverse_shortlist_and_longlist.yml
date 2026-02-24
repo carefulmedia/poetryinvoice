@@ -5294,11 +5294,11 @@ display:
         - 'config:field.storage.node.piv_teacher_last_name'
   block_6:
     id: block_6
-    display_title: '2025 FutureVerse Shortlists (w/ Voting System)'
+    display_title: '2026 FutureVerse Shortlists (w/ Voting System)'
     display_plugin: block
     position: 1
     display_options:
-      title: '2025 FutureVerse Shortlisted Candidates'
+      title: '2026 FutureVerse Shortlisted Candidates'
       fields:
         view_node:
           id: view_node
