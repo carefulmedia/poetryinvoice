@@ -186,6 +186,9 @@
     },
     "extra": {
         "patches": {
+            "drupal/core": {
+                "Field layout undefined array key 'region'; https://www.drupal.org/project/field_layout/issues/3053906": "https://www.drupal.org/files/issues/2024-10-29/undefined_index_region_field_layout-3053906-66.patch"
+            },
             "drupal/focal_point": {
                 "Focal point not working with convert": "patches/focal_point-fixing-focal-point-work-with-convert.patch"
             },

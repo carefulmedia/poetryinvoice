@@ -4075,6 +4075,10 @@ body.toolbar-fixed .toolbar-oriented .toolbar-bar {
   padding: 0.25em 1.063em;
   border-radius: 1em;
 }
+/** Fix modal close button */
+.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close .ui-icon.ui-icon-closethick {
+  transform: initial !important;
+}
 /**
  * @file
  * Visual styles for Bartik's ui-widget component.
