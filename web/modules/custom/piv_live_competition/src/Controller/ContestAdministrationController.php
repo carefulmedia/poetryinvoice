@@ -26,15 +26,6 @@ final class ContestAdministrationController extends ControllerBase {
   ) {}
 
   /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('piv_live_competition.helper')
-    );
-  }
-
-  /**
    * Custom access - only admins or the Live Competition Administrator.
    */
   public function access(AccountInterface $account, NodeInterface $node): AccessResultInterface {
@@ -92,22 +83,24 @@ final class ContestAdministrationController extends ControllerBase {
       ];
     }
 
-    $edit_url = Url::fromRoute('entity.node.edit_form', [
-      'node' => $node->id(),
-    ], [
-      'query' => [
-        'destination' => '/node/' . $node->id() . '/contest-administration',
-      ],
-    ]);
+    if ($this->currentUser()->hasRole('administrator')) {
+      $edit_url = Url::fromRoute('entity.node.edit_form', [
+        'node' => $node->id(),
+      ], [
+        'query' => [
+          'destination' => '/node/' . $node->id() . '/contest-administration',
+        ],
+      ]);
 
-    $build['action_links']['edit_contest_link'] = [
-      '#type' => 'link',
-      '#title' => $this->t('Edit Contest'),
-      '#url' => $edit_url,
-      '#attributes' => [
-        'class' => ['button'],
-      ],
-    ];
+      $build['action_links']['edit_contest_link'] = [
+        '#type' => 'link',
+        '#title' => $this->t('Edit Contest'),
+        '#url' => $edit_url,
+        '#attributes' => [
+          'class' => ['button'],
+        ],
+      ];
+    }
 
     $build['divider_1'] = [
       '#markup' => '<hr>',
