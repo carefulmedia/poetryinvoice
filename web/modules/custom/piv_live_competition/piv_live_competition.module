@@ -254,8 +254,22 @@ function piv_live_competition_node_delete(NodeInterface $node): void {
  *
  */
 function piv_live_competition_node_presave(NodeInterface $node): void {
+  // Only act upon live competition entries.
   if ($node->bundle() !== 'team_regionals_entry') {
     return;
+  }
+
+  // Inherit the language stream from the associated Live Competition node when
+  // the competition's stream is English or French (not Bilingual or All).
+  if (!$node->get('field_contest_association')->isEmpty()) {
+    $competition = $node->get('field_contest_association')->entity;
+    if ($competition) {
+      $competition_stream = $competition->get('field_language_stream')->value;
+      // 0 = English, 1 = French, 2 = Bilingual, 3 = All.
+      if (in_array((int) $competition_stream, [0, 1], TRUE)) {
+        $node->set('field_language_stream', $competition_stream);
+      }
+    }
   }
 
   $account = \Drupal::currentUser();
