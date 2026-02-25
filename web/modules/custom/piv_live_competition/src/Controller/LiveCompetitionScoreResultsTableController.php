@@ -215,6 +215,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         'class' => ['final-results'],
       ],
       '#header' => [
+        'place' => $this->t('Place'),
         'school' => $this->t('School'),
         'rank' => $this->t('Rank'),
         'score' => $this->t('Score'),
@@ -386,6 +387,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
     });
 
     $last_rank = 0;
+    $place = 1;
     foreach ($aggregated_rows as $i => $row) {
       $classes = [];
       $tr_id = $row['#tr_id'];
@@ -398,6 +400,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       $row['school']['#markup'] = "$students <i>{$row['school']['#markup']}</i>";
       $build['aggregated_table'][] = [
         '#attributes' => ['class' => $classes],
+        'place' => ['#markup' => $place],
         'school' => $row['school'],
         'rank' => ['#markup' => $row['rank']],
         'score' => ['#markup' => $row['score']],
@@ -407,6 +410,7 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         'best_poem' => ['#markup' => $row['best_poem']],
         'best_poem_overall' => ['#markup' => $row['#best_overall']],
       ];
+      $place++;
     }
 
     return $build;
