@@ -310,6 +310,53 @@ function piv_live_competition_node_presave(NodeInterface $node): void {
 }
 
 /**
+ * Implements hook_menu_local_tasks_alter().
+ *
+ * Hide the core View and Edit tabs for contest administrators when they are
+ * viewing the Contest Administration, Monitor Dashboard, or Score Results
+ * routes. Full site admins retain all tabs.
+ */
+function piv_live_competition_menu_local_tasks_alter(array &$data, $route_name, \Drupal\Core\Cache\RefinableCacheableDependencyInterface $cacheability): void {
+  $contest_admin_routes = [
+    'piv_live_competition.contest_administration',
+    'piv_live_competition.monitor_dashboard',
+    'piv_live_competition.live_competition_score_results_table',
+  ];
+
+  if (!in_array($route_name, $contest_admin_routes, TRUE)) {
+    return;
+  }
+
+  $account = \Drupal::currentUser();
+
+  // Full admins keep all tabs.
+  if ($account->hasPermission('administer nodes')) {
+    return;
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (!$node instanceof NodeInterface) {
+    return;
+  }
+
+  $is_competition_admin = !$node->get('field_live_competition_admin')->isEmpty()
+    && $node->get('field_live_competition_admin')->entity?->id() === $account->id();
+
+  if (!$is_competition_admin) {
+    return;
+  }
+
+  // Remove the core View and Edit local task tabs.
+  unset(
+    $data['tabs'][0]['entity.node.canonical'],
+    $data['tabs'][0]['entity.node.edit_form'],
+  );
+
+  $cacheability->addCacheableDependency($node);
+  $cacheability->addCacheContexts(['user']);
+}
+
+/**
  * Implements hook_form_alter().
  *
  * Filters competition options and adds validation for team_regionals_entry form.
