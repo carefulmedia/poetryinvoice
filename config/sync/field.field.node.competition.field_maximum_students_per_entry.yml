@@ -9,13 +9,13 @@ id: node.competition.field_maximum_students_per_entry
 field_name: field_maximum_students_per_entry
 entity_type: node
 bundle: competition
-label: 'Required Amount of Students Per Entry'
-description: 'Enter the required number of students any given entry can have for this competition. Leaving this empty will by default set it to 3.'
+label: 'Required Number of Students Per Entry'
+description: 'Enter the required number of students any given entry can have for this competition. Leaving this empty will by default set it to 1.'
 required: false
 translatable: false
 default_value:
   -
-    value: 3
+    value: 1
 default_value_callback: ''
 settings:
   min: null
