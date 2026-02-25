@@ -17,6 +17,9 @@ use Drupal\node\NodeInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+// Constants
+const PIV_LIVE_COMPETITION_DEFAULT_REQUIRED_STUDENTS_PER_ENTRY = 1;
+
 // Error message constants.
 const PIV_LIVE_COMPETITION_ERROR_ALREADY_STARTED = 'This competition has already begun. You cannot add new entries to it.';
 const PIV_LIVE_COMPETITION_ERROR_CLOSING_DATE_PASSED = 'This competition\'s closing date has passed. You cannot add new entries to it.';
@@ -501,9 +504,9 @@ function piv_live_competition_entity_prepare_form(EntityInterface $entity, $oper
     return;
   }
 
-  $max_students = (int) ($competition_node->get('field_maximum_students_per_entry')->value ?? 3);
+  $max_students = (int) ($competition_node->get('field_maximum_students_per_entry')->value ?? PIV_LIVE_COMPETITION_DEFAULT_REQUIRED_STUDENTS_PER_ENTRY);
   if ($max_students <= 0) {
-    $max_students = 3;
+    $max_students = PIV_LIVE_COMPETITION_DEFAULT_REQUIRED_STUDENTS_PER_ENTRY;
   }
 
   $current_count = $entity->get('field_tr_student')->count();
@@ -736,7 +739,7 @@ function _piv_live_competition_validate_competition_access(&$form, FormStateInte
  * are submitted for a team_regionals_entry.
  *
  * Teachers cannot add/remove student paragraphs — the count is set by the
- * competition's field_maximum_students_per_entry value (default: 3).
+ * competition's field_maximum_students_per_entry value (default: 1).
  */
 function _piv_live_competition_validate_student_count(array &$form, FormStateInterface $form_state): void {
   $account = \Drupal::currentUser();
@@ -754,9 +757,9 @@ function _piv_live_competition_validate_student_count(array &$form, FormStateInt
     return;
   }
 
-  $max_students = (int) ($competition_node->get('field_maximum_students_per_entry')->value ?? 3);
+  $max_students = (int) ($competition_node->get('field_maximum_students_per_entry')->value ?? PIV_LIVE_COMPETITION_DEFAULT_REQUIRED_STUDENTS_PER_ENTRY);
   if ($max_students <= 0) {
-    $max_students = 3;
+    $max_students = PIV_LIVE_COMPETITION_DEFAULT_REQUIRED_STUDENTS_PER_ENTRY;
   }
 
   // Count the number of student paragraph items submitted.
