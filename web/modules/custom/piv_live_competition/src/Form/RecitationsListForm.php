@@ -38,10 +38,8 @@ final class RecitationsListForm extends FormBase {
    * Custom access.
    */
   public function access(AccountInterface $account, NodeInterface $node, ?string $stream = NULL): AccessResultInterface {
-    $is_competition_admin = !$node->get('field_live_competition_admin')->isEmpty()
-      && $node->get('field_live_competition_admin')->entity->id() === $account->id();
     $permission = $account->hasPermission('access competition recitations list');
-    return AccessResult::allowedIf($permission || $is_competition_admin)
+    return AccessResult::allowedIf($permission)
       ->cachePerUser()
       ->addCacheableDependency($account);
   }
