@@ -80,24 +80,29 @@ class CompetitionBannerService {
   }
 
   /**
-   * Get competitions active for today.
+   * Get competitions whose banner window includes today.
    *
-   * We use the contest date to determine which competitions to obtain.
+   * The banner is shown from 1 week before the contest date through 1 day
+   * after. Equivalently, we query for competitions whose contest date falls
+   * between (today - 1 day) and (today + 7 days).
    *
    * @return \Drupal\node\NodeInterface[]
    *   Array of competition node entities.
    */
   protected function getActiveCompetitionsForToday(): array {
-    $today = new DrupalDateTime('today');
-    $today_start = $today->format('Y-m-d\T00:00:00');
-    $today_end = $today->format('Y-m-d\T23:59:59');
+    // Banner window: contest_date >= (today - 1 day) AND contest_date <= (today + 7 days).
+    $window_start = new DrupalDateTime('-1 day');
+    $window_end = new DrupalDateTime('+7 days');
+
+    $window_start_str = $window_start->format('Y-m-d\T00:00:00');
+    $window_end_str = $window_end->format('Y-m-d\T23:59:59');
 
     try {
       $query = $this->entityTypeManager->getStorage('node')->getQuery()
         ->condition('type', 'competition')
         ->condition('status', 1)
-        ->condition('field_winners_announced', $today_start, '>=')
-        ->condition('field_winners_announced', $today_end, '<=')
+        ->condition('field_winners_announced', $window_start_str, '>=')
+        ->condition('field_winners_announced', $window_end_str, '<=')
         ->accessCheck(FALSE)
         ->sort('created', 'DESC');
     } catch (InvalidPluginDefinitionException|PluginNotFoundException $e) {
