@@ -5416,8 +5416,8 @@ display:
           alter:
             alter_text: false
             text: ''
-            make_link: true
-            path: '{{ view_node }} '
+            make_link: false
+            path: '{{ futureverse_vote_url }} '
             absolute: false
             external: false
             replace_spaces: false
@@ -5455,7 +5455,7 @@ display:
           click_sort_column: target_id
           type: image
           settings:
-            image_link: content
+            image_link: ''
             image_style: focal_point_700_x_
             image_loading:
               attribute: lazy
@@ -5927,7 +5927,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"index-views mixtape content-index\">\r\n\r\n <div class=\"image\">{{ field_student_photo }}</div> \r\n\r\n<div class=\"content\">\r\n<a href = \"{{ futureverse_vote_url }}\" class=\"futureverse-poem-teaser use-ajax\" data-dialog-type=\"modal\" data-dialog-options='{\"width\":800,\"drupalAutoButtons\":false}'><h2>{{ title }}</h2>\r\n<h4>{{ piv_teacher_first_name }}  {{ piv_teacher_last_name }}</h4>\r\n<h6><span>{{ field_school_journal }} <br>Grade: {{ field_grade }}<br>\r\n{{ field_address_locality_1 }}, {{ field_address_administrative_area_1 }} </span></h6></a>\r\n\r\n\r\n</div>\r\n</div>\r\n\r\n"
+            text: "<div class=\"index-views mixtape content-index\">\r\n\r\n <div class=\"image\"><a href=\"{{ futureverse_vote_url }}\" class=\"futureverse-poem-teaser use-ajax\" data-dialog-type=\"modal\" data-dialog-options='{\"width\":800,\"drupalAutoButtons\":false}'>{{ field_student_photo }}</a></div> \r\n\r\n<div class=\"content\">\r\n<a href=\"{{ futureverse_vote_url }}\" class=\"futureverse-poem-teaser use-ajax\" data-dialog-type=\"modal\" data-dialog-options='{\"width\":800,\"drupalAutoButtons\":false}'><h2>{{ title }}</h2>\r\n<h4>{{ piv_teacher_first_name }}  {{ piv_teacher_last_name }}</h4>\r\n<h6><span>{{ field_school_journal }} <br>Grade: {{ field_grade }}<br>\r\n{{ field_address_locality_1 }}, {{ field_address_administrative_area_1 }} </span></h6></a>\r\n\r\n\r\n</div>\r\n</div>\r\n\r\n"
             make_link: false
             path: ''
             absolute: false
