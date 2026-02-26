@@ -265,7 +265,7 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
     $author = $entry->getOwner();
     if ($author) {
       $teacher_name = $this->getTeacherDisplayName($author);
-      $teacher_markup = '<br><em>' . $this->t('Created by: ') . $teacher_name . '</em>';
+      $teacher_markup = '<br><em>' . $this->t('Created by') . ": " . $teacher_name . '</em>';
     }
 
     $entry_markup = $entry_title . $links_markup . $teacher_markup;
