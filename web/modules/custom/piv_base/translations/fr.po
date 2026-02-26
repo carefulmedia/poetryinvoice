@@ -269,3 +269,9 @@ msgstr "Créé par"
 
 msgid "Recitations List"
 msgstr "Liste des récitations"
+
+msgid "Monitor Dashboard"
+msgstr "Tableau de bord"
+
+msgid "Scores Results"
+msgstr "Résultats"

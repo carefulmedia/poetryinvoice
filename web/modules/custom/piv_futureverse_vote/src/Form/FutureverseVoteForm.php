@@ -40,68 +40,12 @@ class FutureverseVoteForm extends FormBase {
     $form['#prefix'] = '<div id="futureverse-vote-form">';
     $form['#suffix'] = '</div>';
     $form['#attached']['library'][] = 'core/drupal.dialog.ajax';
+    $form['#attached']['library'][] = 'piv_futureverse_vote/vote-form';
 
     $langcode = $node->language()->getId();
     $year = 2026;
 
-    $form['langcode'] = [
-      '#type' => 'value',
-      '#value' => $langcode,
-    ];
-    $form['year'] = [
-      '#type' => 'value',
-      '#value' => $year,
-    ];
-    $form['journal_poem_id'] = [
-      '#type' => 'value',
-      '#value' => $node->id(),
-    ];
-    $form['name'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('My name'),
-      '#required' => TRUE,
-    ];
-    $form['email'] = [
-      '#type' => 'email',
-      '#title' => $this->t('Email'),
-      '#required' => TRUE,
-    ];
-    $form['actions'] = [
-      '#type' => 'actions',
-    ];
-    $form['actions']['submit'] = [
-      '#type' => 'submit',
-      '#value' => $this->t('Mark as my choice'),
-      '#ajax' => [
-        'callback' => [$this, 'ajaxSubmit'],
-        'wrapper' => 'futureverse-vote-form',
-        'event' => 'click',
-      ],
-    ];
-    $form['actions']['cancel'] = [
-      '#type' => 'button',
-      '#value' => $this->t('Cancel'),
-      '#ajax' => [
-        'callback' => [$this, 'ajaxCloseDialog'],
-        'event' => 'click',
-      ],
-    ];
-
-    // If user already voted, display a success message instead.
-    $voted = $form_state->get('voted') ?? FALSE;
-    if ($voted) {
-      $form['name']['#access'] = FALSE;
-      $form['email']['#access'] = FALSE;
-      $form['actions']['submit']['#access'] = FALSE;
-      $form['confirmation_text'] = [
-        '#markup' => '<div class="alert alert-success">' . $this->t('Thank you for voting!') . '</div>',
-        '#weight' => -100,
-      ];
-      $form['actions']['cancel']['#value'] = $this->t('Close');
-      return $form;
-    }
-
-    // Display the poem title and author (only if not voted yet).
+    // Build the poem header - always visible at the top of the dialog.
     $student_name = '';
     if ($node->field_legal_name_boolean->value && $node->field_legal_name->value) {
       $student_name = $node->field_legal_name->value;
@@ -122,7 +66,42 @@ class FutureverseVoteForm extends FormBase {
       ],
     ];
 
-    // Display the poem text (only if not voted yet).
+    $form['langcode'] = [
+      '#type' => 'value',
+      '#value' => $langcode,
+    ];
+    $form['year'] = [
+      '#type' => 'value',
+      '#value' => $year,
+    ];
+    $form['journal_poem_id'] = [
+      '#type' => 'value',
+      '#value' => $node->id(),
+    ];
+
+    // If user already voted, display a success message and a close button.
+    $voted = $form_state->get('voted') ?? FALSE;
+    if ($voted) {
+      $form['confirmation_text'] = [
+        '#markup' => '<div class="alert alert-success">' . $this->t('Thank you for voting!') . '</div>',
+        '#weight' => -99,
+      ];
+      $form['actions'] = [
+        '#type' => 'actions',
+      ];
+      $form['actions']['close'] = [
+        '#type' => 'button',
+        '#value' => $this->t('Close'),
+        '#attributes' => ['class' => ['btn', 'btn-outline-secondary']],
+        '#ajax' => [
+          'callback' => [$this, 'ajaxCloseDialog'],
+          'event' => 'click',
+        ],
+      ];
+      return $form;
+    }
+
+    // Display the poem text.
     if ($node->field_journal_poem_body->value) {
       $format = $node->field_journal_poem_body->format;
 
@@ -145,14 +124,26 @@ class FutureverseVoteForm extends FormBase {
       ];
     }
 
-    $form['separator'] = [
-      '#markup' => '<hr>',
-      '#weight' => -98,
+    $form['text'] = [
+      '#markup' => '<p>' . $this->t('Please provide the following information to vote for this poem') . ':</p>',
+      '#weight' => -96,
     ];
 
-    $form['text'] = [
-      '#markup' => $this->t('Please provide the following information to vote for this poem') . ':',
-      '#weight' => -97,
+    // Name and email on the same row at half width each.
+    $form['voter_fields'] = [
+      '#type' => 'container',
+      '#attributes' => ['class' => ['futureverse-vote-fields-row']],
+      '#weight' => -95,
+    ];
+    $form['voter_fields']['name'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('My name'),
+      '#required' => TRUE,
+    ];
+    $form['voter_fields']['email'] = [
+      '#type' => 'email',
+      '#title' => $this->t('Email'),
+      '#required' => TRUE,
     ];
 
     // If user already voted with that email, ask for confirmation.
@@ -160,12 +151,34 @@ class FutureverseVoteForm extends FormBase {
     if ($ask_to_confirm_vote) {
       $form['has_voted_information'] = [
         '#type' => 'fieldset',
+        '#weight' => -94,
         'text' => [
           '#markup' => '<strong>' . $this->t('Do you want to cancel your last choice and select this poem?') . '</strong>',
         ],
       ];
-      $form['actions']['submit']['#value'] = $this->t('Mark as my new choice');
     }
+
+    $form['actions'] = [
+      '#type' => 'actions',
+    ];
+    $form['actions']['submit'] = [
+      '#type' => 'submit',
+      '#value' => $ask_to_confirm_vote ? $this->t('Mark as my new choice') : $this->t('Mark as my choice'),
+      '#ajax' => [
+        'callback' => [$this, 'ajaxSubmit'],
+        'wrapper' => 'futureverse-vote-form',
+        'event' => 'click',
+      ],
+    ];
+    $form['actions']['cancel'] = [
+      '#type' => 'button',
+      '#value' => $this->t('Cancel'),
+      '#attributes' => ['class' => ['btn', 'btn-outline-secondary']],
+      '#ajax' => [
+        'callback' => [$this, 'ajaxCloseDialog'],
+        'event' => 'click',
+      ],
+    ];
 
     // Return normal form.
     return $form;
@@ -201,7 +214,8 @@ class FutureverseVoteForm extends FormBase {
     $form_state->setRebuild(TRUE);
 
     // Email already voted and user did not confirm yet.
-    if (!isset($form['has_voted_information']) && $this->voteManager->hasVoted($email, $year, $langcode)) {
+    $ask_to_confirm_vote = $form_state->get('ask_to_confirm_vote') ?? FALSE;
+    if (!$ask_to_confirm_vote && $this->voteManager->hasVoted($email, $year, $langcode)) {
       $form_state->set('ask_to_confirm_vote', TRUE);
       return;
     }
