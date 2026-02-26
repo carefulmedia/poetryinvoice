@@ -233,3 +233,39 @@ msgstr "Voulez-vous annuler votre dernier choix et choisir ce poème?"
 
 msgid "The associated competition strictly requires 1 student per entry. If you have more students than the allowed amount, contact an administrator for removal."
 msgstr "Le concours associé n'accepte qu'un seul élève par inscription. Si vous avez plus d'élèves que le nombre autorisé, veuillez contacter un administrateur pour que votre inscription soit retirée."
+
+msgid "Back to prompter interface for"
+msgstr "Retour à l'interface du souffleur pour"
+
+msgid "Go to Prompting"
+msgstr "Souffler les mots"
+
+msgid "Go to Judging"
+msgstr "Aller à l'évaluation"
+
+msgid "Go to Dashboard"
+msgstr "Aller au tableau de bord"
+
+msgid "Create another entry"
+msgstr "Créer une autre entrée"
+
+msgid "Create new entry"
+msgstr "Créer une nouvelle entrée"
+
+msgid "No entries yet."
+msgstr "Aucune entrée."
+
+msgid "Open to all schools"
+msgstr "Ouvert à toutes les écoles"
+
+msgid "No active competitions."
+msgstr "Aucun concours actif."
+
+msgid "By Invitation"
+msgstr "Par invitation"
+
+msgid "Created by"
+msgstr "Créé par"
+
+msgid "Recitations List"
+msgstr "Liste des récitations"
