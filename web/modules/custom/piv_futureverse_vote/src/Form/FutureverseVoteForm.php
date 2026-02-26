@@ -93,6 +93,7 @@ class FutureverseVoteForm extends FormBase {
         '#type' => 'button',
         '#value' => $this->t('Close'),
         '#attributes' => ['class' => ['btn', 'btn-outline-secondary']],
+        '#limit_validation_errors' => [],
         '#ajax' => [
           'callback' => [$this, 'ajaxCloseDialog'],
           'event' => 'click',
@@ -174,6 +175,7 @@ class FutureverseVoteForm extends FormBase {
       '#type' => 'button',
       '#value' => $this->t('Cancel'),
       '#attributes' => ['class' => ['btn', 'btn-outline-secondary']],
+      '#limit_validation_errors' => [],
       '#ajax' => [
         'callback' => [$this, 'ajaxCloseDialog'],
         'event' => 'click',

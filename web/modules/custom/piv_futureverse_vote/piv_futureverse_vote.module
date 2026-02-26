@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Module hooks for PIV Futureverse Vote.
+ */
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function piv_futureverse_vote_views_data_alter(array &$data) {
+  $data['node_field_data']['futureverse_vote_link'] = [
+    'title' => t('Poem Vote Link'),
+    'help' => t('Renders a modal link to the Futureverse voting dialog.'),
+    'field' => [
+      'id' => 'futureverse_vote_link',
+    ],
+  ];
+
+  $data['node_field_data']['futureverse_vote_url'] = [
+    'title' => t('Poem Vote URL'),
+    'help' => t('Renders the URL to the Futureverse voting dialog for this poem.'),
+    'field' => [
+      'id' => 'futureverse_vote_url',
+    ],
+  ];
+}

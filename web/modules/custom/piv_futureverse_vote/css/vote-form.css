@@ -7,10 +7,9 @@
   margin-bottom: 0;
 }
 
-/* Normalize cancel/close button sizing to match the submit button */
-.piv-futureverse-vote-form .form-actions input.btn {
-  line-height: 1.5;
-  width: auto;
+/* Remove the theme's default checkmark icon on submit buttons */
+#futureverse-vote-form .form-submit::before {
+  display: none;
 }
 
 /* Poem header */
