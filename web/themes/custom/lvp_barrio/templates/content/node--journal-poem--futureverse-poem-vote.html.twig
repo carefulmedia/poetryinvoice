@@ -28,7 +28,7 @@
 
       <div class="content">
         {# Student Name - Use legal name if field_legal_name_boolean is TRUE and legal name exists, otherwise use first/last name #}
-        <h4>
+        <h3>
           {% if node.field_legal_name_boolean.value and node.field_legal_name.value %}
             {{ node.field_legal_name.value }}
           {% elseif node.piv_teacher_first_name.value or node.piv_teacher_last_name.value %}
@@ -36,7 +36,8 @@
           {% else %}
             {{ 'Anonymous'|t }}
           {% endif %}
-        </h4>
+        </h3>
+        <h4>{{ label }}</h4>
 
         <h6>
           <span>
