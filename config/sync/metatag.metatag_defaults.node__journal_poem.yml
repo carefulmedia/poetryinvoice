@@ -1,0 +1,12 @@
+uuid: e7625a08-0d75-41fd-9985-b64935b7e4d9
+langcode: en
+status: true
+dependencies: {  }
+id: node__journal_poem
+label: 'Content: Jounal Poem'
+tags:
+  description: 'by [node:piv_teacher_first_name] [node:piv_teacher_last_name]'
+  og_image: '[node:field_student_photo:1280x720]'
+  og_image_secure_url: '[node:field_student_photo:1280x720]'
+  og_image_url: '[node:field_student_photo:1280x720]'
+  title: '[node:title]'
