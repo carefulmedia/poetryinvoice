@@ -275,3 +275,6 @@ msgstr "Tableau de bord"
 
 msgid "Scores Results"
 msgstr "Résultats"
+
+msgid "You will be able to prompt once the contest has begun."
+msgstr "Vous pourrez commencer à souffler une fois que le concours aura commencé."

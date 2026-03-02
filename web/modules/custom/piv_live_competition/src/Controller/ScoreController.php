@@ -298,14 +298,21 @@ final class ScoreController extends ControllerBase {
         'user' => $user_id,
       ]);
     }
+
     $score_template = $node->field_score_template->entity;
     if (!$score_template) {
       // This field is required.
       throw new NotFoundHttpException();
     }
 
+    // Load all recitations.
+    $recitations = $this->helper->getRecitationsInOrder($node);
     [$judge_type, $judge_languages] = $this->getJudgeTypeAndLanguages($node, $user);
     $recitation = $this->getNextRecitation($node, $user, $judge_type, $judge_languages);
+    if ($judge_type == 'prompter' && !$recitation) {
+      $recitation = $recitations ? reset($recitations) : NULL;
+    }
+
     if (!$recitation) {
       $this->messenger()->addMessage('There are no more recitations to judge.');
       return $this->redirect('piv_live_competition.live_competition_list', [
@@ -314,7 +321,6 @@ final class ScoreController extends ControllerBase {
     }
 
     // Key starts at 0.
-    $recitations = $this->helper->getRecitationsInOrder($node);
     $key = $this->getKeyById($recitations, $recitation->id());
     // This recitation's round.
     $round = $key + 1;
@@ -335,7 +341,7 @@ final class ScoreController extends ControllerBase {
       $build['#attributes']['data-round'] = $active_round;
       $build['#attributes']['class'][] = 'is-locked';
       $message_text = $judge_type == 'prompter'
-        ? $this->t('The contest will begin shortly.')
+        ? $this->t('You will be able to prompt once the contest has begun.')
         : $this->t('You will be able to start judging once the contest has begun.');
       $build['message'] = [
         '#type' => 'html_tag',
