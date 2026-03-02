@@ -78,6 +78,9 @@ msgstr "En attente de la prochaine récitation en @language..."
 msgid "Monitor Dashboard - @label"
 msgstr "Tableau de bord du moniteur - @label"
 
+msgid "Dashboard - @label"
+msgstr "Tableau de bord du moniteur - @label"
+
 msgid "Final results"
 msgstr "Résultats finaux"
 
@@ -273,7 +276,13 @@ msgstr "Liste des récitations"
 msgid "Monitor Dashboard"
 msgstr "Tableau de bord"
 
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
 msgid "Scores Results"
+msgstr "Résultats"
+
+msgid "Scores"
 msgstr "Résultats"
 
 msgid "You will be able to prompt once the contest has begun."
