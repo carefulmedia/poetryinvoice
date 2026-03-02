@@ -9,7 +9,7 @@ id: node.competition.field_live_competition_admin
 field_name: field_live_competition_admin
 entity_type: node
 bundle: competition
-label: 'Live Competition Administrator'
+label: 'Live Contest Administrator'
 description: 'Select a user that is able to administer this competition and all entries.'
 required: false
 translatable: false
