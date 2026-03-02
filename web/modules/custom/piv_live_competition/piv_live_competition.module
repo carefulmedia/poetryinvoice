@@ -17,10 +17,12 @@ use Drupal\node\NodeInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+// Constants
+const PIV_LIVE_COMPETITION_DEFAULT_REQUIRED_STUDENTS_PER_ENTRY = 1;
+
 // Error message constants.
 const PIV_LIVE_COMPETITION_ERROR_ALREADY_STARTED = 'This competition has already begun. You cannot add new entries to it.';
 const PIV_LIVE_COMPETITION_ERROR_CLOSING_DATE_PASSED = 'This competition\'s closing date has passed. You cannot add new entries to it.';
-
 const PIV_LIVE_COMPETITION_ERROR_MAX_ENTRIES = 'Your school has reached the maximum number of entries (%s) for this competition.';
 const PIV_LIVE_COMPETITION_ERROR_NO_SCHOOL = 'You must be assigned to a school to create entries for this competition.';
 const PIV_LIVE_COMPETITION_ERROR_NOT_INVITED = 'You can only create entries for competitions your school is invited to.';
@@ -65,12 +67,14 @@ function piv_live_competition_preprocess_page(&$variables): void {
 function _piv_live_competition_preprocess_page__handle_competition_banner(&$variables): void {
   $route_name = \Drupal::routeMatch()->getRouteName();
 
-  // Don't show banner on scoring or monitor dashboard routes.
+  // Filter which routes the banner should not appear on.
   if (in_array($route_name, [
     'piv_live_competition.score',
     'piv_live_competition.monitor_dashboard',
     'piv_live_competition.live_competition_score_results_table',
     'piv_live_competition.recitations_list',
+    'entity.node.edit_form',
+    'piv_live_competition.contest_administration',
   ])) {
     return;
   }
@@ -204,6 +208,10 @@ function _piv_live_competition_node__team_regionals_entry_access(
 
 /**
  * Implements hook_ENTITY_TYPE_insert().
+ *
+ * Update team labels for all related entries upon entry deletion.
+ *
+ * @see \hook_ENTITY_TYPE_insert()
  */
 function piv_live_competition_node_insert(NodeInterface $node): void {
   if ($node->bundle() === 'team_regionals_entry') {
@@ -213,6 +221,10 @@ function piv_live_competition_node_insert(NodeInterface $node): void {
 
 /**
  * Implements hook_ENTITY_TYPE_update().
+ *
+ * Update team labels for all related entries upon entry update.
+ *
+ * @see \hook_ENTITY_TYPE_update()
  */
 function piv_live_competition_node_update(NodeInterface $node): void {
   if ($node->bundle() === 'team_regionals_entry') {
@@ -222,6 +234,10 @@ function piv_live_competition_node_update(NodeInterface $node): void {
 
 /**
  * Implements hook_ENTITY_TYPE_delete().
+ *
+ * Update team labels for all related entries upon entry deletion.
+ *
+ * @see \hook_ENTITY_TYPE_delete()
  */
 function piv_live_competition_node_delete(NodeInterface $node): void {
   if ($node->bundle() === 'team_regionals_entry') {
@@ -238,8 +254,22 @@ function piv_live_competition_node_delete(NodeInterface $node): void {
  *
  */
 function piv_live_competition_node_presave(NodeInterface $node): void {
+  // Only act upon live competition entries.
   if ($node->bundle() !== 'team_regionals_entry') {
     return;
+  }
+
+  // Inherit the language stream from the associated Live Competition node when
+  // the competition's stream is English or French (not Bilingual or All).
+  if (!$node->get('field_contest_association')->isEmpty()) {
+    $competition = $node->get('field_contest_association')->entity;
+    if ($competition) {
+      $competition_stream = $competition->get('field_language_stream')->value;
+      // 0 = English, 1 = French, 2 = Bilingual, 3 = All.
+      if (in_array((int) $competition_stream, [0, 1], TRUE)) {
+        $node->set('field_language_stream', $competition_stream);
+      }
+    }
   }
 
   $account = \Drupal::currentUser();
@@ -277,6 +307,53 @@ function piv_live_competition_node_presave(NodeInterface $node): void {
       throw new \RuntimeException(PIV_LIVE_COMPETITION_ERROR_NOT_INVITED);
     }
   }
+}
+
+/**
+ * Implements hook_menu_local_tasks_alter().
+ *
+ * Hide the core View and Edit tabs for contest administrators when they are
+ * viewing the Contest Administration, Monitor Dashboard, or Score Results
+ * routes. Full site admins retain all tabs.
+ */
+function piv_live_competition_menu_local_tasks_alter(array &$data, $route_name, \Drupal\Core\Cache\RefinableCacheableDependencyInterface $cacheability): void {
+  $contest_admin_routes = [
+    'piv_live_competition.contest_administration',
+    'piv_live_competition.monitor_dashboard',
+    'piv_live_competition.live_competition_score_results_table',
+  ];
+
+  if (!in_array($route_name, $contest_admin_routes, TRUE)) {
+    return;
+  }
+
+  $account = \Drupal::currentUser();
+
+  // Full admins keep all tabs.
+  if ($account->hasPermission('administer nodes')) {
+    return;
+  }
+
+  $node = \Drupal::routeMatch()->getParameter('node');
+  if (!$node instanceof NodeInterface) {
+    return;
+  }
+
+  $is_competition_admin = !$node->get('field_live_competition_admin')->isEmpty()
+    && $node->get('field_live_competition_admin')->entity?->id() === $account->id();
+
+  if (!$is_competition_admin) {
+    return;
+  }
+
+  // Remove the core View and Edit local task tabs.
+  unset(
+    $data['tabs'][0]['entity.node.canonical'],
+    $data['tabs'][0]['entity.node.edit_form'],
+  );
+
+  $cacheability->addCacheableDependency($node);
+  $cacheability->addCacheContexts(['user']);
 }
 
 /**
@@ -408,6 +485,20 @@ function _piv_live_competition_alter_entry_form(&$form, $form_state): void {
     ];
   }
 
+  // If the entry is not a new entry, we should still disable the contest association field.
+  // We show a message in its place.
+  if (!$entry_node->isNew()) {
+    $form['field_contest_association']['#attributes']['style'] = 'display: none;';
+
+    // Add a message showing which competition this entry is for to make it clear to the user.
+    $competition_label = $competition_node->label();
+    $form['field_contest_association_message'] = [
+      '#type' => 'markup',
+      '#markup' => '<div class="contest-association-message">Editing entry for: <strong>' . $competition_label . '</strong></div>',
+      '#weight' => -100,
+    ];
+  }
+
   // Filter the competition options for teachers based on invited schools.
   if (isset($form['field_contest_association']['widget']['#options'])) {
     $teacher_school = _piv_live_competition_get_teacher_school($account);
@@ -431,6 +522,72 @@ function _piv_live_competition_alter_entry_form(&$form, $form_state): void {
   }
 
   $form['#validate'][] = '_piv_live_competition_validate_competition_access';
+  $form['#validate'][] = '_piv_live_competition_validate_student_count';
+}
+
+/**
+ * Implements hook_entity_prepare_form().
+ *
+ * Ensures the field_tr_student paragraph count matches the competition's
+ * field_maximum_students_per_entry before the field widgets are rendered:
+ *
+ * - New entries: pre-populates all slots from scratch.
+ * - Existing entries: appends missing empty slots if the competition's max has
+ *   increased since the entry was last saved. Does not remove slots if the max
+ *   decreased (no silent data loss).
+ */
+function piv_live_competition_entity_prepare_form(EntityInterface $entity, $operation, FormStateInterface $form_state): void {
+  if ($entity->bundle() !== 'team_regionals_entry') {
+    return;
+  }
+
+  // Only run once per form build.
+  if ($form_state->get('piv_students_prepopulated')) {
+    return;
+  }
+
+  // Resolve the competition node.
+  if ($entity->isNew()) {
+    // For new entries the competition comes from the prepopulate query param.
+    $request_query = \Drupal::request()->query->all('edit');
+    $competition_id = $request_query['field_contest_association']['widget'] ?? NULL;
+    if (!$competition_id) {
+      return;
+    }
+    $competition_node = _piv_live_competition_load_competition((int) $competition_id);
+  }
+  else {
+    // For existing entries the competition is already stored on the entity.
+    $competition_node = $entity->get('field_contest_association')->entity;
+  }
+
+  if (!$competition_node) {
+    return;
+  }
+
+  $max_students = (int) ($competition_node->get('field_maximum_students_per_entry')->value ?? PIV_LIVE_COMPETITION_DEFAULT_REQUIRED_STUDENTS_PER_ENTRY);
+  if ($max_students <= 0) {
+    $max_students = PIV_LIVE_COMPETITION_DEFAULT_REQUIRED_STUDENTS_PER_ENTRY;
+  }
+
+  $current_count = $entity->get('field_tr_student')->count();
+
+  // Nothing to do if the entry already has enough (or more) paragraphs.
+  if ($current_count >= $max_students) {
+    $form_state->set('piv_students_prepopulated', TRUE);
+    return;
+  }
+
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+
+  for ($delta = $current_count; $delta < $max_students; $delta++) {
+    /** @var \Drupal\paragraphs\ParagraphInterface $paragraph */
+    $paragraph = $paragraph_storage->create(['type' => 'tr_student']);
+    $paragraph->setParentEntity($entity, 'field_tr_student');
+    $entity->get('field_tr_student')->appendItem(['entity' => $paragraph]);
+  }
+
+  $form_state->set('piv_students_prepopulated', TRUE);
 }
 
 /**
@@ -455,7 +612,9 @@ function piv_live_competition_inline_entity_form_entity_form_alter(
       && $competition_admin
       && $account->id() === $competition_admin->id()
     ) {
-      _piv_live_competition_access_all_fields_in_form($entity_form);
+      // Grant access to all fields except field_judge, which needs to maintain
+      // its role-based validation (poet_network role requirement).
+      _piv_live_competition_access_all_fields_in_form($entity_form, ['field_judge']);
     }
   }
 
@@ -492,24 +651,57 @@ function piv_live_competition_field_widget_complete_entity_reference_paragraphs_
     return;
   }
 
-  // Allow competition admins to edit all fields on the entry.
-  // We grant access to fields that are hidden via field permissions.
   $account = \Drupal::currentUser();
   $parent_node = $form_state->getFormObject()->getEntity();
   $competition_node = $parent_node->bundle() === 'competition' ?
     $parent_node
     : $parent_node?->get('field_contest_association')->entity;
   $competition_admin = $competition_node?->get('field_live_competition_admin')?->entity;
-  if (
-    $competition_node
+  $is_competition_admin = $competition_node
     && $competition_admin
-    && $account->id() === $competition_admin->id()
-  ) {
+    && $account->id() === $competition_admin->id();
+
+  // Allow competition admins to edit all fields on the entry.
+  // We grant access to fields that are hidden via field permissions.
+  if ($is_competition_admin) {
     foreach (Element::children($element['widget']) as $index) {
       if (!is_numeric($index)) {
         continue;
       }
       _piv_live_competition_access_all_fields_in_form($element['widget'][$index]['subform']);
+    }
+  }
+
+  // For non-admin users, hide the Add and Remove buttons so teachers cannot
+  // add or delete student paragraphs — the count is fixed by the competition.
+  if (!$account->hasRole('administrator') && !$is_competition_admin) {
+    // Hide the "Add" button area.
+    if (isset($element['widget']['add_more'])) {
+      $element['widget']['add_more']['#access'] = FALSE;
+    }
+    // Hide per-paragraph action buttons (remove, collapse, edit, etc.).
+    foreach (Element::children($element['widget']) as $index) {
+      if (!is_numeric($index)) {
+        continue;
+      }
+      $top = &$element['widget'][$index]['top'];
+      // Hide the actions container (edit mode: open — buttons are in 'actions').
+      if (isset($top['actions'])) {
+        $top['actions']['#access'] = FALSE;
+        foreach (['actions', 'dropdown_actions'] as $group) {
+          if (isset($top['actions'][$group])) {
+            foreach (Element::children($top['actions'][$group]) as $btn) {
+              $top['actions'][$group][$btn]['#access'] = FALSE;
+            }
+          }
+        }
+      }
+      // Hide the links container (edit mode: closed — remove button is in 'links').
+      if (isset($top['links'])) {
+        foreach (Element::children($top['links']) as $btn) {
+          $top['links'][$btn]['#access'] = FALSE;
+        }
+      }
     }
   }
 
@@ -530,6 +722,11 @@ function piv_live_competition_field_widget_complete_entity_reference_paragraphs_
 
 /**
  * Helper function to set #access of all fields in a form to TRUE.
+ *
+ * @param array $form
+ *   The form or form element to modify.
+ * @param array $exclusions
+ *   Array of field names to exclude from access modification.
  */
 function _piv_live_competition_access_all_fields_in_form(array &$form, array $exclusions = []): void {
   foreach ($form as $field_name => $field_element) {
@@ -595,6 +792,58 @@ function _piv_live_competition_validate_competition_access(&$form, FormStateInte
   // Validate invited schools.
   if (!_piv_live_competition_teacher_school_is_invited_to_competition($competition_node, $account)) {
     $form_state->setErrorByName('field_contest_association', PIV_LIVE_COMPETITION_ERROR_NOT_INVITED);
+  }
+}
+
+/**
+ * Custom validation handler ensuring the correct number of student paragraphs
+ * are submitted for a team_regionals_entry.
+ *
+ * Teachers cannot add/remove student paragraphs — the count is set by the
+ * competition's field_maximum_students_per_entry value (default: 1).
+ */
+function _piv_live_competition_validate_student_count(array &$form, FormStateInterface $form_state): void {
+  $account = \Drupal::currentUser();
+  if ($account->hasRole('administrator')) {
+    return;
+  }
+
+  $competition_nid = $form_state->getValue(['field_contest_association', 0, 'target_id']);
+  if (!$competition_nid) {
+    return;
+  }
+
+  $competition_node = _piv_live_competition_load_competition($competition_nid);
+  if (!$competition_node) {
+    return;
+  }
+
+  $max_students = (int) ($competition_node->get('field_maximum_students_per_entry')->value ?? PIV_LIVE_COMPETITION_DEFAULT_REQUIRED_STUDENTS_PER_ENTRY);
+  if ($max_students <= 0) {
+    $max_students = PIV_LIVE_COMPETITION_DEFAULT_REQUIRED_STUDENTS_PER_ENTRY;
+  }
+
+  // Count the number of student paragraph items submitted.
+  $students = $form_state->getValue('field_tr_student') ?? [];
+  $submitted_count = 0;
+  foreach ($students as $delta => $item) {
+    if (is_numeric($delta)) {
+      $submitted_count++;
+    }
+  }
+
+  if ($submitted_count !== $max_students) {
+    $form_state->setErrorByName(
+      'invalid_student_count',
+      \Drupal::translation()->formatPlural(
+        $max_students,
+        'The associated competition strictly requires 1 student per entry. If you have more students than the allowed amount, contact an administrator for removal.',
+        'This associated competition strictly requires @count students per entry. If you have more entries than the allowed amount, contact an administrator to remove a student.',
+        [
+          '@count' => $max_students,
+        ],
+      ),
+    );
   }
 }
 

@@ -1,0 +1,4 @@
+vote-form:
+  css:
+    theme:
+      css/vote-form.css: {}

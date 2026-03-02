@@ -1,0 +1,77 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the PIV Futureverse Vote module.
+ */
+
+use Drupal\piv_futureverse_vote\PivFutureverseVoteManager;
+
+/**
+ * Implements hook_schema().
+ *
+ * Based on the piv_popular_vote module, we create a custom table to store votes on 'journal_poem' nodes.
+ *
+ * @see \hook_schema()
+ */
+function piv_futureverse_vote_schema(): array {
+  $schema[PivFutureverseVoteManager::TABLE_NAME] = [
+    'description' => 'Store futureverse votes.',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'description' => 'Primary Key: Unique record ID.',
+      ],
+      'journal_poem_id' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The {node}.nid for the journal poem being voted for.',
+      ],
+      'voter_email' => [
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Voter e-mail.',
+      ],
+      'voter_name' => [
+        'type' => 'varchar_ascii',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'Voter name.',
+      ],
+      'langcode' => [
+        'type' => 'varchar_ascii',
+        'length' => 12,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'The language of the poem.',
+      ],
+      'year' => [
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The year of the futureverse competition (e.g., 2026).',
+      ],
+      'created' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'Timestamp when the vote was created.',
+      ],
+    ],
+    'primary key' => ['id'],
+    'indexes' => [
+      'journal_poem_id' => ['journal_poem_id'],
+      'year' => ['year'],
+      'langcode' => ['langcode'],
+    ],
+  ];
+
+  return $schema;
+}

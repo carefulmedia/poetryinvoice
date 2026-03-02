@@ -11,7 +11,7 @@ id: node.team_regionals_entry.field_language_stream
 field_name: field_language_stream
 entity_type: node
 bundle: team_regionals_entry
-label: 'Language Stream (for finals))'
+label: 'Language Stream'
 description: ''
 required: true
 translatable: true

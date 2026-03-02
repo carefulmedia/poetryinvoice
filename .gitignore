@@ -22,6 +22,9 @@
 */sync/reroute_email.settings.yml
 */sync/views.view.*
 */sync/language/*
+!config/sync/language/
+!config/sync/language/fr/
+!config/sync/language/fr/views.view.futureverse_shortlist_and_longlist.yml
 !config/sync/views.view.language_restricted_poems.yml
 !config/sync/views.view.search.yml
 !config/sync/views.view.competitions.yml
@@ -33,6 +36,7 @@
 !config/sync/views.view.moods_by_language.yml
 !config/sync/views.view.tags_by_language.yml
 !config/sync/views.view.commom_poetic_terms_and_forms_by_language.yml
+!config/sync/views.view.futureverse_shortlist_and_longlist.yml
 config/sync/google_analytics.settings.yml
 
 # Environment variables

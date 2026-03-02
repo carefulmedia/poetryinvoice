@@ -1,0 +1,11 @@
+piv_futureverse_vote.admin_votes:
+  title: 'Votes'
+  route_name: piv_futureverse_vote.admin_votes
+  base_route: piv_futureverse_vote.admin_votes
+  weight: 10
+
+piv_futureverse_vote.admin_results:
+  title: 'Results'
+  route_name: piv_futureverse_vote.admin_results
+  base_route: piv_futureverse_vote.admin_votes
+  weight: 20

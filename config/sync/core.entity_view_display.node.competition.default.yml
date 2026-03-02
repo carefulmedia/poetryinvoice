@@ -17,6 +17,7 @@ dependencies:
     - field.field.node.competition.field_level
     - field.field.node.competition.field_live_competition_admin
     - field.field.node.competition.field_maximum_entries_per_school
+    - field.field.node.competition.field_maximum_students_per_entry
     - field.field.node.competition.field_metatags
     - field.field.node.competition.field_prompters_en
     - field.field.node.competition.field_prompters_fr
@@ -360,6 +361,23 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 19
             additional: {  }
+          12f4d25e-cc57-4e9d-85a7-00c7c0c41e59:
+            uuid: 12f4d25e-cc57-4e9d-85a7-00c7c0c41e59
+            region: content
+            configuration:
+              id: 'field_block:node:competition:field_maximum_students_per_entry'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: number_integer
+                label: above
+                settings:
+                  thousand_separator: ''
+                  prefix_suffix: true
+                third_party_settings: {  }
+            weight: 20
+            additional: {  }
         third_party_settings: {  }
 id: node.competition.default
 targetEntityType: node
@@ -462,6 +480,15 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 107
+    region: content
+  field_maximum_students_per_entry:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 111
     region: content
   field_metatags:
     type: metatag_empty_formatter

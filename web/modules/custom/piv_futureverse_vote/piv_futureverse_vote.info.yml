@@ -1,0 +1,7 @@
+name: PIV Futureverse Vote
+type: module
+description: Voting system for 'journal_poem' node type nodes.
+package: PIV
+core_version_requirement: ^9 || ^10
+dependencies:
+  - drupal:node

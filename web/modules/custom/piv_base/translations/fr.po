@@ -37,7 +37,7 @@ msgid "The form has become outdated. Please reload the page."
 msgstr "Le formulaire est expiré. Veuillez rafraîchir la page."
 
 msgid "Accuracy score"
-msgstr "Notes de précision"
+msgstr "Note de précision"
 
 msgid "Submit score"
 msgstr "Soumettre"
@@ -76,6 +76,9 @@ msgid "Waiting for the next @language recitation..."
 msgstr "En attente de la prochaine récitation en @language..."
 
 msgid "Monitor Dashboard - @label"
+msgstr "Tableau de bord du moniteur - @label"
+
+msgid "Dashboard - @label"
 msgstr "Tableau de bord du moniteur - @label"
 
 msgid "Final results"
@@ -186,8 +189,8 @@ msgstr "Retour à l’interface du tableau de bord pour"
 msgid "Go to Dashboard"
 msgstr "Aller au tableau de bord"
 
-msgid "Contest Administration - @label"
-msgstr "Administration du concours - @label"
+msgid "Contest Administration"
+msgstr "Administration du concours"
 
 msgid "Create New Entry"
 msgstr "Créer une nouvelle inscription"
@@ -221,3 +224,72 @@ msgstr "Prompteurs français"
 
 msgid "No prompters assigned to this contest."
 msgstr "Aucun prompteur assigné à ce concours."
+
+msgid "by"
+msgstr 'par'
+
+msgid "Please provide the following information to vote for this poem"
+msgstr "Veuillez fournir les renseignements suivants pour voter pour ce poème"
+
+msgid "Do you want to cancel your last choice and select this poem?"
+msgstr "Voulez-vous annuler votre dernier choix et choisir ce poème?"
+
+msgid "The associated competition strictly requires 1 student per entry. If you have more students than the allowed amount, contact an administrator for removal."
+msgstr "Le concours associé n'accepte qu'un seul élève par inscription. Si vous avez plus d'élèves que le nombre autorisé, veuillez contacter un administrateur pour que votre inscription soit retirée."
+
+msgid "Back to prompter interface for"
+msgstr "Retour à l'interface du souffleur pour"
+
+msgid "Go to Prompting"
+msgstr "Souffler les mots"
+
+msgid "Go to Judging"
+msgstr "Aller à l'évaluation"
+
+msgid "Go to Dashboard"
+msgstr "Aller au tableau de bord"
+
+msgid "Create another entry"
+msgstr "Créer une autre entrée"
+
+msgid "Create new entry"
+msgstr "Créer une nouvelle entrée"
+
+msgid "No entries yet."
+msgstr "Aucune entrée."
+
+msgid "Open to all schools"
+msgstr "Ouvert à toutes les écoles"
+
+msgid "No active competitions."
+msgstr "Aucun concours actif."
+
+msgid "By Invitation"
+msgstr "Par invitation"
+
+msgid "Created by"
+msgstr "Créé par"
+
+msgid "Recitations List"
+msgstr "Liste des récitations"
+
+msgid "Monitor Dashboard"
+msgstr "Tableau de bord"
+
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+msgid "Scores Results"
+msgstr "Résultats"
+
+msgid "Scores"
+msgstr "Résultats"
+
+msgid "You will be able to prompt once the contest has begun."
+msgstr "Vous pourrez commencer à souffler une fois que le concours aura commencé."
+
+msgid "Team Regionals Prompting"
+msgstr "Souffler concours en équipe"
+
+msgid "Team Regionals Judging"
+msgstr "Évaluer concours en équipe"

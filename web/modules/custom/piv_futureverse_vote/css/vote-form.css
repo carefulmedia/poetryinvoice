@@ -1,0 +1,48 @@
+/**
+ * Futureverse vote form styles.
+ */
+
+/* Remove default form margin */
+.piv-futureverse-vote-form {
+  margin-bottom: 0;
+}
+
+/* Remove the theme's default checkmark icon on submit buttons */
+#futureverse-vote-form .form-submit::before {
+  display: none;
+}
+
+/* Poem header */
+.futureverse-vote-poem-header {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #dee2e6;
+  margin-bottom: 1rem;
+}
+
+.futureverse-vote-poem-header h3 {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
+.futureverse-vote-poem-header .author {
+  margin: 0;
+  color: #6c757d;
+}
+
+/* Scrollable poem body */
+.futureverse-vote-poem-body {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+/* Name and email fields side by side at half width */
+.futureverse-vote-fields-row {
+  display: flex;
+  gap: 1rem;
+}
+
+.futureverse-vote-fields-row .form-item {
+  flex: 1 1 50%;
+  min-width: 0;
+}

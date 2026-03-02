@@ -1,0 +1,20 @@
+system.admin_futureverse:
+  title: 'Futureverse'
+  description: 'Manage Futureverse voting and related content.'
+  route_name: piv_futureverse_vote.admin_votes
+  parent: system.admin
+  weight: -95
+
+piv_futureverse_vote.admin_votes:
+  title: 'Votes'
+  description: 'View and manage futureverse votes.'
+  route_name: piv_futureverse_vote.admin_votes
+  parent: system.admin_futureverse
+  weight: 10
+
+piv_futureverse_vote.admin_results:
+  title: 'Vote Results'
+  description: 'View futureverse voting results.'
+  route_name: piv_futureverse_vote.admin_results
+  parent: system.admin_futureverse
+  weight: 20
