@@ -11,7 +11,7 @@ global-styling:
     - claro/global-styling
     - core/once
     - gin/gin_base
-    - gin/gin_horizontal_toolbar
+    - gin/dialog
 bootstrap:
   js:
     /libraries/popper.js/dist/umd/popper.min.js: { weight: -49 }
