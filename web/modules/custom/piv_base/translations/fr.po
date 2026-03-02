@@ -37,7 +37,7 @@ msgid "The form has become outdated. Please reload the page."
 msgstr "Le formulaire est expiré. Veuillez rafraîchir la page."
 
 msgid "Accuracy score"
-msgstr "Notes de précision"
+msgstr "Note de précision"
 
 msgid "Submit score"
 msgstr "Soumettre"
