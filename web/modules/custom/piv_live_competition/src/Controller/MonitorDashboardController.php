@@ -216,7 +216,7 @@ final class MonitorDashboardController extends ControllerBase {
    * Return a generated title.
    */
   public function title(NodeInterface $node) {
-    return $this->t('Monitor Dashboard - @label', [
+    return $this->t('Dashboard - @label', [
       '@label' => $node->label(),
     ]);
   }

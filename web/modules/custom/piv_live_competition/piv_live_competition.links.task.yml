@@ -21,13 +21,13 @@ piv_live_competition.recitations_list:
 piv_live_competition.monitor_dashboard:
   route_name: piv_live_competition.monitor_dashboard
   base_route: entity.node.canonical
-  title: 'Monitor Dashboard'
+  title: 'Dashboard'
   weight: 2
 
 piv_live_competition.live_competition_score_results_table:
   route_name: piv_live_competition.live_competition_score_results_table
   base_route: entity.node.canonical
-  title: 'Scores Results'
+  title: 'Scores'
   weight: 3
 
 piv_live_competition.live_competition_score_results_table_stream:
