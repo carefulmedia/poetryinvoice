@@ -73,14 +73,15 @@ final class ContestAdministrationController extends ControllerBase {
         ],
       ]);
 
-      $build['action_links']['create_entry_link'] = [
+      // PIV-777, remove button.
+      /*$build['action_links']['create_entry_link'] = [
         '#type' => 'link',
         '#title' => $this->t('Create New Entry'),
         '#url' => $create_entry_url,
         '#attributes' => [
           'class' => ['button', 'button--primary'],
         ],
-      ];
+      ];*/
     }
 
     if ($this->currentUser()->hasRole('administrator')) {
