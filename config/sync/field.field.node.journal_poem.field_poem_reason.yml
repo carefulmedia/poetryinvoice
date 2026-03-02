@@ -13,9 +13,10 @@ entity_type: node
 bundle: journal_poem
 label: 'Tell us in a few sentences the inspiration for your poem. '
 description: ''
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

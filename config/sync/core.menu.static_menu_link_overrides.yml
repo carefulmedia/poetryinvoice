@@ -61,3 +61,45 @@ definitions:
     weight: 0
     expanded: false
     enabled: false
+  entity__competition__collection:
+    weight: 1
+    menu_name: admin
+    parent: system.admin_contest
+    enabled: true
+    expanded: false
+  config_pages__contest_settings:
+    weight: 2
+    menu_name: admin
+    parent: system.admin_contest
+    expanded: false
+    enabled: true
+  entity__judging_session__collection:
+    weight: 3
+    menu_name: admin
+    parent: system.admin_contest
+    expanded: false
+    enabled: true
+  entity__recitation__collection:
+    weight: 5
+    menu_name: admin
+    parent: system.admin_contest
+    expanded: false
+    enabled: true
+  entity__score_template__collection:
+    weight: 6
+    menu_name: admin
+    parent: system.admin_contest
+    expanded: false
+    enabled: true
+  entity__score__collection:
+    weight: 7
+    menu_name: admin
+    parent: system.admin_contest
+    expanded: false
+    enabled: true
+  system__admin_contest_config:
+    weight: 9
+    menu_name: admin
+    parent: system.admin_contest
+    expanded: false
+    enabled: true
