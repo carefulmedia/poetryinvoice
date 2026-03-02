@@ -3,6 +3,7 @@ piv_live_competition.live_competitions_list:
   base_route: entity.user.canonical
   title: 'Team Regionals'
   weight: 110
+  class: '\Drupal\piv_live_competition\Plugin\Menu\LocalTask\LiveCompetitionTask'
 
 # This one is specific to teachers, the one above to judges.
 piv_live_competition.teacher_live_competitions_list:

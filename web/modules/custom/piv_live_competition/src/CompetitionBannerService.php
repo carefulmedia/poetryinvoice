@@ -138,7 +138,7 @@ class CompetitionBannerService {
    * @return string|NULL
    *   'admin', 'judge', 'prompter', or NULL if no role.
    */
-  protected function getUserRoleInCompetition(NodeInterface $competition, int|string $user_id): ?string {
+  public function getUserRoleInCompetition(NodeInterface $competition, int|string $user_id): ?string {
     // Check if user is the competition admin.
     if ($competition->hasField('field_live_competition_admin')) {
       $admin_field = $competition->get('field_live_competition_admin');
