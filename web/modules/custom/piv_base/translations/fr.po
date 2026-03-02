@@ -278,3 +278,9 @@ msgstr "Résultats"
 
 msgid "You will be able to prompt once the contest has begun."
 msgstr "Vous pourrez commencer à souffler une fois que le concours aura commencé."
+
+msgid "Team Regionals Prompting"
+msgstr "Souffler concours en équipe"
+
+msgid "Team Regionals Judging"
+msgstr "Évaluer concours en équipe"
