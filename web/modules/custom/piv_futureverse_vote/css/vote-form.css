@@ -21,7 +21,7 @@
 
 .futureverse-vote-poem-header h3 {
   margin-top: 0;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0 !important;
 }
 
 .futureverse-vote-poem-header .author {
@@ -34,6 +34,15 @@
   max-height: 300px;
   overflow-y: auto;
   margin-bottom: 1rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Instructions text */
+@media (max-width: 767px) {
+  .instructions {
+    font-size: 0.995rem;
+    line-height: 16px;
+  }
 }
 
 /* Name and email fields side by side at half width */
