@@ -4,6 +4,7 @@ config:
   php: 8.3
   webroot: web
   xdebug: true
+  database: mariadb:11.4
 
 proxy:
   appserver:
@@ -71,3 +72,6 @@ tooling:
     service: appserver
     cmd: /app/vendor/bin/phpcbf --standard=Drupal,DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,yml
     description: Run phpcbf for given folder or file.
+  rector:
+    service: appserver
+    cmd: /app/vendor/bin/rector
