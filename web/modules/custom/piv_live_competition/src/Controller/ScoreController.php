@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Drupal\piv_live_competition\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
-use Drupal\Node\NodeInterface;
-use Drupal\User\UserInterface;
+use Drupal\node\NodeInterface;
+use Drupal\user\UserInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Session\AccountInterface;
@@ -28,7 +28,7 @@ final class ScoreController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(
+  final public function __construct(
     protected readonly CacheBackendInterface $cache,
     protected readonly Helper $helper,
     protected readonly ClassResolverInterface $classResolver,

@@ -9,7 +9,6 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\piv_live_competition\Helper;
 use Drupal\piv_live_competition\LiveCompetitionScoreService;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -48,10 +47,11 @@ final class YearlyResultsController extends ControllerBase {
       ->condition('field_winners_announced', $start_date, '>=')
       ->condition('field_winners_announced', $end_date, '<=')
       ->condition('field_winners_announced', $now, '<=')
-      ->sort('field_winners_announced', 'ASC')
-      ->accessCheck(FALSE);
+      ->sort('field_winners_announced', 'ASC');
 
-    $competition_ids = $query->execute();
+    $competition_ids = $query
+      ->accessCheck(FALSE)
+      ->execute();
 
     if (empty($competition_ids)) {
       return [

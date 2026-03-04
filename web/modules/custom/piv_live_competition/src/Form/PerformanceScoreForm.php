@@ -10,7 +10,7 @@ use Drupal\piv_contest_score\ScoreInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\piv_contest\ScoreFormBuilder;
 use Drupal\piv_contest_score_template\ScoreTemplateInterface;
-use Drupal\Paragraphs\ParagraphInterface;
+use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Url;
 
 /**
@@ -21,7 +21,7 @@ final class PerformanceScoreForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(
+  final public function __construct(
     protected readonly ScoreFormBuilder $scoreFormBuilder,
   ) {}
 

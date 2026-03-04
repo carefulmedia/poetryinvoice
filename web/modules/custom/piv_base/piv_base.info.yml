@@ -2,7 +2,7 @@ name: PIV Base
 type: module
 description: Base functionalities for Poetry in Voice.
 package: PIV
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 dependencies:
   - reroute_email:reroute_email
 

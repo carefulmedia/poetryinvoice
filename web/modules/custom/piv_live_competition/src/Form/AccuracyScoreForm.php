@@ -7,7 +7,7 @@ namespace Drupal\piv_live_competition\Form;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\piv_contest_score\ScoreInterface;
-use Drupal\Paragraphs\ParagraphInterface;
+use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Url;
 
 /**

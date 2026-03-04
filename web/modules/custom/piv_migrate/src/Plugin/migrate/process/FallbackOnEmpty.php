@@ -7,7 +7,7 @@ use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
 
 /**
- * Class ConcatValue
+ * Class ConcatValue.
  *
  * @MigrateProcessPlugin(
  *   id = "fallback_on_empty",
@@ -15,6 +15,10 @@ use Drupal\migrate\Row;
  * )
  */
 class FallbackOnEmpty extends ProcessPluginBase {
+
+  /**
+   *
+   */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if (!$value) {
       if ($row->get($this->configuration['fallback_key'])) {
@@ -24,4 +28,5 @@ class FallbackOnEmpty extends ProcessPluginBase {
 
     return $value;
   }
+
 }

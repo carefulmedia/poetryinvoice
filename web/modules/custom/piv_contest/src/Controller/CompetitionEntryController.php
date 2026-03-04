@@ -11,7 +11,7 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\user\UserInterface;
 use Drupal\Core\Access\AccessResult;
 use Drupal\piv_contest\CompetitionService;
-use Drupal\Paragraphs\ParagraphInterface;
+use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Link;
 use Drupal\Core\Form\FormBuilderInterface;
@@ -61,7 +61,7 @@ class CompetitionEntryController extends ControllerBase {
   /**
    * The controller constructor.
    */
-  public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, CompetitionService $competition_service, FormBuilderInterface $form_builder, AccountInterface $current_user) {
+  final public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, CompetitionService $competition_service, FormBuilderInterface $form_builder, AccountInterface $current_user) {
     $this->entityFormBuilder = $entity_form_builder;
     $this->entityTypeManager = $entity_type_manager;
     $this->competitionService = $competition_service;

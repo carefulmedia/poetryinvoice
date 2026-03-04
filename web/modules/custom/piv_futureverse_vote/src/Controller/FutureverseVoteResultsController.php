@@ -4,11 +4,9 @@ namespace Drupal\piv_futureverse_vote\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Database\Connection;
-use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
 use Drupal\piv_futureverse_vote\PivFutureverseVoteManager;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Return results for futureverse votes.

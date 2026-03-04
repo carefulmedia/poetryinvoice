@@ -5,6 +5,7 @@
  * Primary module hooks for PIV Live Competition module.
  */
 
+use Drupal\Core\Cache\RefinableCacheableDependencyInterface;
 use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
 use Drupal\Component\Plugin\Exception\PluginNotFoundException;
 use Drupal\Core\Access\AccessResult;
@@ -17,7 +18,7 @@ use Drupal\node\NodeInterface;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-// Constants
+// Constants.
 const PIV_LIVE_COMPETITION_DEFAULT_REQUIRED_STUDENTS_PER_ENTRY = 1;
 
 // Error message constants.
@@ -95,7 +96,7 @@ function _piv_live_competition_preprocess_page__handle_competition_banner(&$vari
     $banner_data['#attached']['library'][] = 'piv_live_competition/competition_banner';
     $banner_data['#weight'] = -1000;
 
-    // Add to highlighted region
+    // Add to highlighted region.
     if (!isset($variables['page']['highlighted'])) {
       $variables['page']['highlighted'] = [];
     }
@@ -251,7 +252,6 @@ function piv_live_competition_node_delete(NodeInterface $node): void {
  * We add custom validation logic to make sure 'team_regionals_entry' nodes can be created.
  *
  * @see \hook_ENTITY_TYPE_presave()
- *
  */
 function piv_live_competition_node_presave(NodeInterface $node): void {
   // Only act upon live competition entries.
@@ -316,7 +316,7 @@ function piv_live_competition_node_presave(NodeInterface $node): void {
  * viewing the Contest Administration, Monitor Dashboard, or Score Results
  * routes. Full site admins retain all tabs.
  */
-function piv_live_competition_menu_local_tasks_alter(array &$data, $route_name, \Drupal\Core\Cache\RefinableCacheableDependencyInterface $cacheability): void {
+function piv_live_competition_menu_local_tasks_alter(array &$data, $route_name, RefinableCacheableDependencyInterface $cacheability): void {
   $contest_admin_routes = [
     'piv_live_competition.contest_administration',
     'piv_live_competition.monitor_dashboard',
@@ -897,7 +897,8 @@ function _piv_live_competition_load_competition(int $competition_id): ?NodeInter
       'nid' => $competition_id,
       'type' => 'competition',
     ]);
-  } catch (InvalidPluginDefinitionException|PluginNotFoundException $e) {
+  }
+  catch (InvalidPluginDefinitionException | PluginNotFoundException $e) {
     return NULL;
   }
 
@@ -953,7 +954,7 @@ function _piv_live_competition_get_current_entry_id(FormStateInterface $form_sta
  *
  * An entry's school is the school of the person that created the entry.
  *
- * @return NodeInterface|null
+ * @return \Drupal\node\NodeInterface|null
  *   The school node of the author that created the entry.
  */
 function _piv_live_competition_get_entry_school(NodeInterface $entry): ?NodeInterface {
@@ -967,9 +968,9 @@ function _piv_live_competition_get_entry_school(NodeInterface $entry): ?NodeInte
 /**
  * Checks if a given competition is maxed out for a teacher's school.
  *
- * @param NodeInterface $competition
+ * @param \Drupal\node\NodeInterface $competition
  *   The competition node.
- * @param AccountInterface $teacher
+ * @param \Drupal\Core\Session\AccountInterface $teacher
  *   The user account.
  * @param int|null $exclude_entry_id
  *   Optional entry ID to exclude from count.
@@ -1000,7 +1001,8 @@ function _piv_live_competition_competition_is_maxed_out_for_teacher_school(
       $teacher_school->id(),
       $exclude_entry_id
     );
-  } catch (InvalidPluginDefinitionException|PluginNotFoundException $e) {
+  }
+  catch (InvalidPluginDefinitionException | PluginNotFoundException $e) {
     return TRUE;
   }
 
@@ -1085,7 +1087,7 @@ function _piv_live_competition_get_allowed_competitions(NodeInterface $school): 
 /**
  * Helper function to get a teacher's school.
  *
- * @param AccountInterface $account
+ * @param \Drupal\Core\Session\AccountInterface $account
  *   The user account.
  *
  * @return \Drupal\node\NodeInterface|null
@@ -1094,7 +1096,8 @@ function _piv_live_competition_get_allowed_competitions(NodeInterface $school): 
 function _piv_live_competition_get_teacher_school(AccountInterface $account): ?NodeInterface {
   try {
     $user = \Drupal::entityTypeManager()->getStorage('user')->load($account->id());
-  } catch (InvalidPluginDefinitionException|PluginNotFoundException $e) {
+  }
+  catch (InvalidPluginDefinitionException | PluginNotFoundException $e) {
     return NULL;
   }
 
@@ -1136,15 +1139,17 @@ function _piv_live_competition_count_school_entries(int $competition_id, int $sc
   $entry_query = \Drupal::entityTypeManager()->getStorage('node')->getQuery();
   $entry_query->condition('type', 'team_regionals_entry')
     ->condition('field_contest_association', $competition_id)
-    ->condition('uid', $teacher_uids, 'IN')
-    ->accessCheck(FALSE);
+    ->condition('uid', $teacher_uids, 'IN');
 
   // Exclude the current entry if editing.
   if ($exclude_entry_id !== NULL) {
     $entry_query->condition('nid', $exclude_entry_id, '<>');
   }
 
-  return (int) $entry_query->count()->execute();
+  return (int) $entry_query
+    ->accessCheck(FALSE)
+    ->count()
+    ->execute();
 }
 
 /**
@@ -1277,7 +1282,8 @@ function _piv_live_competition_update_team_labels(NodeInterface $node): void {
         // Only one entry, set label as just the school name.
         $label_en = $school_name;
         $label_fr = $school_name;
-      } else {
+      }
+      else {
         // Multiple entries, set team label with school name and number.
         $label_en = $school_name . ' Team ' . $team_number;
         $label_fr = $school_name . ' Équipe ' . $team_number;
@@ -1294,7 +1300,7 @@ function _piv_live_competition_update_team_labels(NodeInterface $node): void {
 
     $updating = FALSE;
   }
-  catch(\Exception $e) {
+  catch (\Exception $e) {
     \Drupal::logger('piv_live_competition')->error('Could not update team labels for live competition entry: ' . $e->getMessage());
   }
 }

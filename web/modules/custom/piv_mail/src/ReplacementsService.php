@@ -27,7 +27,7 @@ class ReplacementsService {
    *
    * @var array
    */
-  static public $tokens = [
+  public static $tokens = [
     'user' => [
       'first_name',
       'user',
@@ -75,7 +75,7 @@ class ReplacementsService {
    *
    * @var array
    */
-  static public $recipients = [
+  public static $recipients = [
     'poet' => [
       'source' => 'visit_node',
       'title' => 'Poet',
@@ -132,6 +132,13 @@ class ReplacementsService {
    * @var \Drupal\Core\Datetime\DateFormatterInterface
    */
   protected $dateFormatter;
+
+  /**
+   * The original replacements service instance.
+   *
+   * @var \Drupal\piv_mail\ReplacementsService|null
+   */
+  protected $original;
 
   /**
    * Constructs a ReplacementService object.
@@ -460,6 +467,9 @@ class ReplacementsService {
         $mail = $sources['journal_poem']->field_email1->value ?? NULL;
         return $mail ? [$mail] : [];
     }
+
+    // Default case - return empty array if no case matches.
+    return [];
 
   }
 

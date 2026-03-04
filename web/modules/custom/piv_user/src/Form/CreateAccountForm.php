@@ -42,7 +42,7 @@ class CreateAccountForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, ReplacementsService $piv_mail_replacements_service, LanguageManagerInterface $language_manager) {
+  final public function __construct(EntityTypeManagerInterface $entity_type_manager, ReplacementsService $piv_mail_replacements_service, LanguageManagerInterface $language_manager) {
     $this->entityTypeManager = $entity_type_manager;
     $this->pivMailReplacementsService = $piv_mail_replacements_service;
     $this->languageManager = $language_manager;
@@ -103,7 +103,7 @@ class CreateAccountForm extends FormBase {
     $form['account_type'] = [
       '#type' => 'radios',
       '#required' => TRUE,
-      '#description' => t('IMPORTANT: Students should <strong>NOT</strong> create accounts!'),   
+      '#description' => t('IMPORTANT: Students should <strong>NOT</strong> create accounts!'),
       '#title' => $this->t('Account type'),
       '#options' => [
         // @phpcs:ignore
