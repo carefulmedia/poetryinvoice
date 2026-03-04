@@ -2,3 +2,10 @@ vote-form:
   css:
     theme:
       css/vote-form.css: {}
+  js:
+    js/vote-form.js: {}
+  dependencies:
+    - core/drupalSettings
+    - core/once
+    - core/jquery
+    - jquery/once

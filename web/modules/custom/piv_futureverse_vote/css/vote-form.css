@@ -2,6 +2,14 @@
  * Futureverse vote form styles.
  */
 
+.ui-dialog.ui-widget {
+  height: 100dvh !important;
+}
+
+.ui-dialog.ui-widget .ui-widget-content.ui-dialog-content {
+  overflow: unset;
+}
+
 /* Remove default form margin */
 .piv-futureverse-vote-form {
   margin-bottom: 0;
@@ -34,6 +42,15 @@
   max-height: 300px;
   overflow-y: auto;
   margin-bottom: 1rem;
+}
+
+.futureverse-vote-fields-label {
+  font-size: 16px;
+  line-height: 22px;
+  @media (min-width: 768px) {
+    font-size: 20px;
+    line-height: 36px;
+  }
 }
 
 /* Name and email fields side by side at half width */

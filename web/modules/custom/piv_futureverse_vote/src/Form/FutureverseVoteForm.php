@@ -102,6 +102,28 @@ class FutureverseVoteForm extends FormBase {
       return $form;
     }
 
+    $form['text'] = [
+      '#markup' => '<p class="futureverse-vote-fields-label">' . $this->t('Please provide the following information to vote for this poem') . ':</p>',
+      '#weight' => -98,
+    ];
+
+    // Name and email on the same row at half width each.
+    $form['voter_fields'] = [
+      '#type' => 'container',
+      '#attributes' => ['class' => ['futureverse-vote-fields-row']],
+      '#weight' => -97,
+    ];
+    $form['voter_fields']['name'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('My name'),
+      '#required' => TRUE,
+    ];
+    $form['voter_fields']['email'] = [
+      '#type' => 'email',
+      '#title' => $this->t('Email'),
+      '#required' => TRUE,
+    ];
+
     // Display the poem text.
     if ($node->field_journal_poem_body->value) {
       $format = $node->field_journal_poem_body->format;
@@ -118,34 +140,12 @@ class FutureverseVoteForm extends FormBase {
       $form['poem_body'] = [
         '#type' => 'container',
         '#attributes' => ['class' => ['futureverse-vote-poem-body']],
-        '#weight' => -99,
+        '#weight' => -96,
         'text' => [
           '#markup' => '<div class="poem-text">' . $poem_text . '</div>',
         ],
       ];
     }
-
-    $form['text'] = [
-      '#markup' => '<p>' . $this->t('Please provide the following information to vote for this poem') . ':</p>',
-      '#weight' => -96,
-    ];
-
-    // Name and email on the same row at half width each.
-    $form['voter_fields'] = [
-      '#type' => 'container',
-      '#attributes' => ['class' => ['futureverse-vote-fields-row']],
-      '#weight' => -95,
-    ];
-    $form['voter_fields']['name'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('My name'),
-      '#required' => TRUE,
-    ];
-    $form['voter_fields']['email'] = [
-      '#type' => 'email',
-      '#title' => $this->t('Email'),
-      '#required' => TRUE,
-    ];
 
     // If user already voted with that email, ask for confirmation.
     $ask_to_confirm_vote = $form_state->get('ask_to_confirm_vote') ?? FALSE;

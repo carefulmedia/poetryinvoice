@@ -4075,8 +4075,34 @@ body.toolbar-fixed .toolbar-oriented .toolbar-bar {
   border-radius: 1em;
 }
 /** Fix modal close button */
+.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close {
+  -webkit-appearance: none;
+  appearance: none;
+  position: relative;
+}
+/* Hide the SVG icon span — Safari doesn't render SVG data URIs in backgrounds */
 .ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close .ui-icon.ui-icon-closethick {
   transform: initial !important;
+  background: none !important;
+}
+/* Draw the X with pure CSS instead */
+.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close::before,
+.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 1.5px;
+  background-color: #D3D4D9;
+  border-radius: 1px;
+}
+.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.ui-dialog .ui-dialog-titlebar .ui-dialog-titlebar-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 /**
  * @file
