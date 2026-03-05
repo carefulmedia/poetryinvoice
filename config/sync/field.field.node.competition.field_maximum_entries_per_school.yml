@@ -13,7 +13,9 @@ label: 'Maximum Entries Per School'
 description: 'Enter the maximum number of entries any given school can create for this competition. Leaving this empty will allow an unlimited number of entries per school.'
 required: false
 translatable: false
-default_value: {  }
+default_value:
+  -
+    value: 1
 default_value_callback: ''
 settings:
   min: null
