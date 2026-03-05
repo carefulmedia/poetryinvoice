@@ -112,7 +112,10 @@ final class MonitorDashboardController extends ControllerBase {
 
       // Combine student name and team label.
       $student_and_school = $student_name . ($team_label ? '<br><i>' . $team_label . '</i>' : '');
-      $row = [['data' => ['#markup' => $student_and_school]]];
+      $row = [
+        ['data' => ['#markup' => (string) ($delta + 1)]],
+        ['data' => ['#markup' => $student_and_school]],
+      ];
 
       $recitation_langcode = $recitation->field_poem->entity?->langcode->value ?? 'en';
 
@@ -185,7 +188,7 @@ final class MonitorDashboardController extends ControllerBase {
       ->getForm('Drupal\piv_live_competition\Form\LiveCompetitionAdvanceRoundForm', $node, $has_incomplete);
     $build['table'] = [
       '#type' => 'table',
-      '#header' => array_merge([$this->t('Student & School')], $header),
+      '#header' => array_merge([$this->t('#'), $this->t('Student & School')], $header),
       '#rows' => $rows,
       '#sticky' => TRUE,
     ];
