@@ -19,3 +19,8 @@ competition_banner:
   css:
     theme:
       css/competition-banner.css: {}
+
+monitor_dashboard:
+  css:
+    theme:
+      css/monitor-dashboard.css: {}

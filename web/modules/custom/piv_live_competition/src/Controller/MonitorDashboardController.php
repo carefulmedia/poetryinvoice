@@ -248,6 +248,7 @@ final class MonitorDashboardController extends ControllerBase {
       '#attached' => [
         'library' => [
           'piv_live_competition/auto-reload',
+          'piv_live_competition/monitor_dashboard',
           'core/drupal.dialog.ajax',
         ],
       ],
