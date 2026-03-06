@@ -106,6 +106,22 @@ piv_live_competition.yearly_results:
       year:
         type: string
 
+piv_live_competition.remove_judge:
+  path: '/node/{node}/remove-judge/{user}'
+  defaults:
+    _title: 'Remove Judge'
+    _form: '\Drupal\piv_live_competition\Form\RemoveJudgeForm'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Form\RemoveJudgeForm::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+      user:
+        type: entity:user
+
 piv_live_competition.contest_administration:
   path: '/node/{node}/contest-administration'
   defaults:
