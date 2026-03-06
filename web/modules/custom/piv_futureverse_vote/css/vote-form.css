@@ -2,6 +2,32 @@
  * Futureverse vote form styles.
  */
 
+@media (max-width: 767px) {
+  .ui-dialog.ui-widget.futureverse-vote-dialog {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100vh !important;
+    height: 100dvh !important;
+    max-height: 100vh !important;
+    max-height: 100dvh !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-width: none !important;
+    max-width: none !important;
+  }
+
+  .ui-dialog.ui-widget.futureverse-vote-dialog .ui-widget-content.ui-dialog-content {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    overflow-y: auto !important;
+    height: auto !important;
+    max-height: none !important;
+  }
+}
+
 /* Remove default form margin */
 .piv-futureverse-vote-form {
   margin-bottom: 0;
@@ -42,6 +68,15 @@
   .instructions {
     font-size: 0.995rem;
     line-height: 16px;
+  }
+}
+
+.futureverse-vote-fields-label {
+  font-size: 16px;
+  line-height: 22px;
+  @media (min-width: 768px) {
+    font-size: 20px;
+    line-height: 36px;
   }
 }
 
