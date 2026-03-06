@@ -284,7 +284,7 @@
             "drush cim -y"
         ],
         "post-install-cmd": [
-            "@composer drupal-scaffold"
+            "@composer drupal:scaffold"
         ],
         "post-update-cmd": [
             "@composer drupal:scaffold",
