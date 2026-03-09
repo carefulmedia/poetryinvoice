@@ -137,6 +137,7 @@
         "drupal/slick_views": "^3.0",
         "drupal/social_link_field": "^2.1",
         "drupal/stable": "^2.0",
+        "drupal/statistics": "^1.0",
         "drupal/string_field_formatter": "^2.0",
         "drupal/svg_image": "^3",
         "drupal/system_messages_override": "^1.0@beta",

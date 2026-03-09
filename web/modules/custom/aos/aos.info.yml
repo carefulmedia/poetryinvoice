@@ -1,0 +1,3 @@
+name: Stub animate_on_scroll module
+type: module
+core_version_requirement: ^9 || ^10 || ^11
