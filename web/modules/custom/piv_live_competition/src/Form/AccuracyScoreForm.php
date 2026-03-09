@@ -4,16 +4,24 @@ declare(strict_types=1);
 
 namespace Drupal\piv_live_competition\Form;
 
+use Drupal\Core\DependencyInjection\AutowireTrait;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\piv_contest_score\ScoreInterface;
 use Drupal\Paragraphs\ParagraphInterface;
 use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Drupal\piv_live_competition\Helper;
 
 /**
  * Provides a PIV Live Competition form.
  */
 final class AccuracyScoreForm extends FormBase {
+  use AutowireTrait;
+
+  public function __construct(
+    protected readonly Helper $helper,
+  ) {}
 
   /**
    * {@inheritdoc}
@@ -32,6 +40,7 @@ final class AccuracyScoreForm extends FormBase {
     ?ScoreInterface $score_entity = NULL,
     bool $can_score_next_recitation = FALSE,
     bool $is_last_recitation = FALSE,
+    ?NodeInterface $competition = NULL,
   ): array {
 
     $form['#attributes']['class'][] = 'piv-contest-score';
@@ -51,6 +60,11 @@ final class AccuracyScoreForm extends FormBase {
     $form['show_message'] = [
       '#type' => 'value',
       '#value' => !$can_score_next_recitation && !$is_last_recitation,
+    ];
+
+    $form['competition'] = [
+      '#type' => 'value',
+      '#value' => $competition,
     ];
 
     if (!$is_locked) {
@@ -132,6 +146,11 @@ final class AccuracyScoreForm extends FormBase {
     if ($is_new) {
       $recitation->field_accuracy_scores->appendItem($score_entity->id());
       $recitation->save();
+    }
+
+    $competition = $form_state->getValue('competition');
+    if ($competition) {
+      $this->helper->maybeAutoAdvanceRound($competition);
     }
   }
 

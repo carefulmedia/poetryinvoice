@@ -223,9 +223,22 @@ final class ScoreController extends ControllerBase {
    * Return the active round as a json response.
    */
   public function activeRound(NodeInterface $node) {
-    return new JsonResponse([
-      'active_round' => $node->field_active_round->value ?? 0,
-    ]);
+    $active_round = $node->field_active_round->value ?? 0;
+    $data = ['active_round' => $active_round];
+
+    if ($active_round > 0) {
+      $recitations = $this->helper->getRecitationsInOrder($node);
+      $recitation = $recitations[$active_round - 1] ?? NULL;
+      if ($recitation) {
+        $poem = $recitation->field_poem?->entity;
+        $school = $recitation->getParentEntity()?->getOwner()?->field_school->entity?->label();
+        $data['student'] = $this->helper->getStudentName($recitation);
+        $data['school'] = $school;
+        $data['poem'] = $poem?->label();
+      }
+    }
+
+    return new JsonResponse($data);
   }
 
   /**
@@ -476,11 +489,11 @@ final class ScoreController extends ControllerBase {
       if ($judge_type == 'accuracy') {
         // Accuracy judge.
         $build['form'] = $this->formBuilder()
-          ->getForm('Drupal\piv_live_competition\Form\AccuracyScoreForm', $recitation, $score_entity, $can_score_next_recitation, $is_last_recitation);
+          ->getForm('Drupal\piv_live_competition\Form\AccuracyScoreForm', $recitation, $score_entity, $can_score_next_recitation, $is_last_recitation, $node);
       }
       else {
         $build['form'] = $this->formBuilder()
-          ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity, $can_score_next_recitation, $is_last_recitation);
+          ->getForm('Drupal\piv_live_competition\Form\PerformanceScoreForm', $recitation, $score_template, $score_entity, $can_score_next_recitation, $is_last_recitation, $node);
       }
     }
     // Last recitation and already submitted (complete).

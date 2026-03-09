@@ -6,6 +6,7 @@ auto-reload:
     - core/once
     - core/ajax
     - core/jquery
+    - core/drupal.dialog
 
 score-form:
   js:

@@ -2,6 +2,12 @@
  * Monitor Dashboard Styles
  */
 
+.piv-round-advanced-dialog.ui-dialog,
+.piv-round-advanced-dialog.ui-dialog:not(.ui-dialog-off-canvas) {
+  border: 5px solid green !important;
+  border-radius: 14px !important;
+}
+
 .judge-remove-btn {
   display: block !important;
   margin-top: 4px;

@@ -32,7 +32,7 @@ final class MonitorDashboardController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('piv_live_competition.helper')
+      $container->get('piv_live_competition.helper'),
     );
   }
 
@@ -250,6 +250,11 @@ final class MonitorDashboardController extends ControllerBase {
           'piv_live_competition/auto-reload',
           'piv_live_competition/monitor_dashboard',
           'core/drupal.dialog.ajax',
+        ],
+        'drupalSettings' => [
+          'pivLiveCompetition' => [
+            'roundApiUrl' => Url::fromRoute('piv_live_competition.api_round', ['node' => $node->id()])->toString(),
+          ],
         ],
       ],
       0 => $build,

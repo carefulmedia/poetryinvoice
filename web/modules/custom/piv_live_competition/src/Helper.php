@@ -123,6 +123,115 @@ final class Helper {
   }
 
   /**
+   * Check if all judges have scored the active round recitation.
+   *
+   * Returns TRUE if every applicable judge (matched by recitation language)
+   * has submitted a score for the active round. Returns FALSE if the round
+   * is not yet started or already completed.
+   *
+   * @param \Drupal\Node\NodeInterface $competition
+   *   The Live Competition to check.
+   */
+  public function isActiveRoundComplete(NodeInterface $competition) : bool {
+    $active_round = $competition->field_active_round->value;
+    if (!is_numeric($active_round) || $active_round <= 0) {
+      return FALSE;
+    }
+
+    $recitations = $this->getRecitationsInOrder($competition);
+    $total_rounds = count($recitations);
+    if ($active_round > $total_rounds) {
+      return FALSE;
+    }
+
+    // Get the recitation for the active round (delta = round - 1).
+    $recitation_cached = $recitations[$active_round - 1] ?? NULL;
+    if (!$recitation_cached) {
+      return FALSE;
+    }
+
+    // Reload fresh from storage to get up-to-date score references.
+    $recitation = $this->entityTypeManager->getStorage('paragraph')
+      ->loadUnchanged($recitation_cached->id());
+    if (!$recitation) {
+      return FALSE;
+    }
+
+    [$performance_en, $performance_fr, $accuracy_en, $accuracy_fr] = $this->getJudges($competition);
+    $recitation_langcode = $recitation->field_poem->entity?->langcode->value ?? 'en';
+
+    // Determine which judges apply for this recitation's language.
+    if ($recitation_langcode === 'en') {
+      $applicable_judges = array_merge(array_keys($performance_en), array_keys($accuracy_en));
+    }
+    elseif ($recitation_langcode === 'fr') {
+      $applicable_judges = array_merge(array_keys($performance_fr), array_keys($accuracy_fr));
+    }
+    else {
+      $applicable_judges = array_keys($performance_en + $performance_fr + $accuracy_en + $accuracy_fr);
+    }
+
+    if (empty($applicable_judges)) {
+      return FALSE;
+    }
+
+    // Collect all judge IDs that have scored this recitation.
+    $scores = array_merge(
+      $recitation->field_accuracy_scores->referencedEntities(),
+      $recitation->field_performance_scores->referencedEntities(),
+    );
+    $scored_judge_ids = [];
+    foreach ($scores as $score) {
+      $scored_judge_ids[] = $score->judge->target_id;
+    }
+
+    // Every applicable judge must have scored.
+    foreach ($applicable_judges as $judge_id) {
+      if (!in_array($judge_id, $scored_judge_ids)) {
+        return FALSE;
+      }
+    }
+
+    return TRUE;
+  }
+
+  /**
+   * Auto-advance the active round for Team Regional competitions.
+   *
+   * If all judges have submitted scores for the active round, increment
+   * field_active_round so the auto-reload JS can pick up the change.
+   *
+   * @param \Drupal\Node\NodeInterface $competition
+   *   The Live Competition to check.
+   */
+  public function maybeAutoAdvanceRound(NodeInterface $competition) : void {
+    if ($competition->field_level->value !== 'Team Regional') {
+      return;
+    }
+
+    // Reload fresh to avoid stale field_active_round value.
+    $competition = $this->entityTypeManager->getStorage('node')->loadUnchanged($competition->id());
+    if (!$competition) {
+      return;
+    }
+
+    $recitations = $this->getRecitationsInOrder($competition);
+    $total_rounds = count($recitations);
+    $active_round = $competition->field_active_round->value;
+
+    // Don't advance past the last round.
+    if ($active_round >= $total_rounds) {
+      return;
+    }
+
+    if ($this->isActiveRoundComplete($competition)) {
+      $new_round = $active_round + 1;
+      $competition->field_active_round = $new_round;
+      $competition->save();
+    }
+  }
+
+  /**
    * Get student name from recitation.
    */
   public function getStudentName(ParagraphInterface $recitation) : ?string {

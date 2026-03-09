@@ -4,35 +4,27 @@ declare(strict_types=1);
 
 namespace Drupal\piv_live_competition\Form;
 
+use Drupal\Core\DependencyInjection\AutowireTrait;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\piv_contest_score\ScoreInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\piv_contest\ScoreFormBuilder;
 use Drupal\piv_contest_score_template\ScoreTemplateInterface;
 use Drupal\Paragraphs\ParagraphInterface;
 use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Drupal\piv_live_competition\Helper;
 
 /**
  * Provides a PIV Live Competition form.
  */
 final class PerformanceScoreForm extends FormBase {
+  use AutowireTrait;
 
-  /**
-   * {@inheritdoc}
-   */
   public function __construct(
     protected readonly ScoreFormBuilder $scoreFormBuilder,
+    protected readonly Helper $helper,
   ) {}
-
-  /**
-   * {@inheritdoc}
-   */
-  public static function create(ContainerInterface $container) {
-    return new static(
-      $container->get('piv_contest.score_form_builder'),
-    );
-  }
 
   /**
    * {@inheritdoc}
@@ -52,6 +44,7 @@ final class PerformanceScoreForm extends FormBase {
     ?ScoreInterface $score_entity = NULL,
     bool $can_score_next_recitation = FALSE,
     bool $is_last_recitation = FALSE,
+    ?NodeInterface $competition = NULL,
   ): array {
     if (!$score_template) {
       return $form;
@@ -79,6 +72,11 @@ final class PerformanceScoreForm extends FormBase {
     $form['show_message'] = [
       '#type' => 'value',
       '#value' => !$can_score_next_recitation && !$is_last_recitation,
+    ];
+
+    $form['competition'] = [
+      '#type' => 'value',
+      '#value' => $competition,
     ];
 
     if (!$is_locked) {
@@ -168,6 +166,11 @@ final class PerformanceScoreForm extends FormBase {
     if ($is_new) {
       $recitation->field_performance_scores->appendItem($score_entity->id());
       $recitation->save();
+    }
+
+    $competition = $form_state->getValue('competition');
+    if ($competition) {
+      $this->helper->maybeAutoAdvanceRound($competition);
     }
   }
 

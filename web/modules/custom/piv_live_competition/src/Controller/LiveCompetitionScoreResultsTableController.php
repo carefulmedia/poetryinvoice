@@ -283,8 +283,20 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
     }
     unset($judge_rows);
 
+    // Hide individual judge tables for the competition admin on Team Regional
+    // competitions. Regular site admins can still see everything.
+    $is_team_regional = $node->field_level->value === 'Team Regional';
+    $current_user = $this->currentUser();
+    $is_competition_admin = !$node->get('field_live_competition_admin')->isEmpty()
+      && $node->get('field_live_competition_admin')->entity->id() === $current_user->id();
+    $hide_judge_tables = $is_team_regional && $is_competition_admin
+      && !$current_user->hasRole('administrator');
+
     // Build the tables.
     foreach ($rows as $judge_id => $judge_rows) {
+      if ($hide_judge_tables) {
+        continue;
+      }
       $build[$judge_id] = [
         '#type' => 'container',
       ];

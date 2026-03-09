@@ -6,6 +6,7 @@ services:
   piv_contest.score_form_builder:
     class: Drupal\piv_contest\ScoreFormBuilder
     arguments: ['@plugin.manager.score_form', '@entity_type.manager', '@current_user', '@language_manager']
+  Drupal\piv_contest\ScoreFormBuilder: '@piv_contest.score_form_builder'
 
   piv_contest.competition_service:
     class: Drupal\piv_contest\CompetitionService
