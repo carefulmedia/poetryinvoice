@@ -293,3 +293,19 @@ msgstr "Souffler concours en équipe"
 
 msgid "Team Regionals Judging"
 msgstr "Évaluer concours en équipe"
+
+msgid "You are about to remove Judge <strong>@name</strong>."
+msgstr "Vous êtes sur le point de retirer le juge <strong>@name</strong>"
+
+msgid "This action will remove the judge from the competition."
+msgstr "Cette action retirera le juge de la compétition."
+
+msgid "The judge will not be able to rejoin."
+msgstr "Le juge ne pourra pas rejoindre de nouveau la compétition."
+
+msgid "Les scores du juge ne seront pas pris en compte dans les résultats finaux."
+msgstr "The judge's scores will not be included in the final results."
+
+msgid "JUDGES READY"
+msgstr "JUGES PRÊTS"
+

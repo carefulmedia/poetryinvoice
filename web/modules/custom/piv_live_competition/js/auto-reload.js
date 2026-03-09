@@ -38,6 +38,44 @@
         // ajax load.
         setTimeout(reload, 5000);
       });
+
+      // Poll the round API endpoint once on initial page load only,
+      // to track the active round and show a modal if it auto-advances.
+      once('round-poller', 'body', context).forEach(function() {
+        const apiUrl = drupalSettings.pivLiveCompetition?.roundApiUrl;
+        if (!apiUrl) {
+          return;
+        }
+
+        let lastKnownRound = null;
+
+        const pollRound = () => {
+          $.getJSON(apiUrl, function(data) {
+            const round = data.active_round ?? 0;
+            if (lastKnownRound !== null && round > lastKnownRound) {
+              const content = '<p>' + Drupal.t('Cue reciter # @round to enter the stage', {'@round': round}) + '</p>'
+                + '<strong>' + (data.student || '') + '</strong><br>'
+                + (data.school || '') + '<br>'
+                + '<em>' + (data.poem || '') + '</em><br>';
+              Drupal.dialog($('<div>' + content + '</div>')[0], {
+                title: Drupal.t('JUDGES READY'),
+                width: 400,
+                classes: { 'ui-dialog': 'piv-round-advanced-dialog' },
+                buttons: [{
+                  text: Drupal.t('OK'),
+                  click: function() { $(this).dialog('close'); },
+                }],
+              }).showModal();
+            }
+            lastKnownRound = round;
+          }).always(function() {
+            setTimeout(pollRound, 5000);
+          });
+        };
+
+        pollRound();
+      });
+
     }
   };
 

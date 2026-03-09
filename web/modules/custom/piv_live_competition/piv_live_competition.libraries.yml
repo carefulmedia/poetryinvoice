@@ -6,6 +6,7 @@ auto-reload:
     - core/once
     - core/ajax
     - core/jquery
+    - core/drupal.dialog
 
 score-form:
   js:
@@ -19,3 +20,8 @@ competition_banner:
   css:
     theme:
       css/competition-banner.css: {}
+
+monitor_dashboard:
+  css:
+    theme:
+      css/monitor-dashboard.css: {}

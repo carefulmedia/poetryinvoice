@@ -8,6 +8,7 @@ use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Access\AccessResultInterface;
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -31,7 +32,7 @@ final class MonitorDashboardController extends ControllerBase {
    */
   public static function create(ContainerInterface $container) {
     return new static(
-      $container->get('piv_live_competition.helper')
+      $container->get('piv_live_competition.helper'),
     );
   }
 
@@ -69,14 +70,51 @@ final class MonitorDashboardController extends ControllerBase {
 
     $header = [];
     foreach (($performance_en + $performance_fr) as $judge) {
-      $header[$judge->id()] = $judge->getDisplayName();
+      $remove_url = Url::fromRoute('piv_live_competition.remove_judge', [
+        'node' => $node->id(),
+        'user' => $judge->id(),
+      ]);
+      $header[$judge->id()] = [
+        'data' => [
+          '#type' => 'container',
+          'name' => ['#markup' => $judge->getDisplayName()],
+          'remove' => [
+            '#type' => 'link',
+            '#title' => $this->t('Remove'),
+            '#url' => $remove_url,
+            '#attributes' => [
+              'class' => ['button', 'button--danger', 'button--small', 'judge-remove-btn', 'use-ajax'],
+              'data-dialog-type' => 'modal',
+              'data-dialog-options' => '{"width":"500"}',
+            ],
+          ],
+        ],
+      ];
     }
     foreach (($accuracy_en + $accuracy_fr) as $judge) {
-      $markup = [
-        '#markup' => $target_svg . ' ' . $judge->getDisplayName(),
-        '#allowed_tags' => ['svg', 'path'],
+      $remove_url = Url::fromRoute('piv_live_competition.remove_judge', [
+        'node' => $node->id(),
+        'user' => $judge->id(),
+      ]);
+      $header[$judge->id()] = [
+        'data' => [
+          '#type' => 'container',
+          'name' => [
+            '#markup' => $target_svg . ' ' . $judge->getDisplayName(),
+            '#allowed_tags' => ['svg', 'path'],
+          ],
+          'remove' => [
+            '#type' => 'link',
+            '#title' => $this->t('Remove'),
+            '#url' => $remove_url,
+            '#attributes' => [
+              'class' => ['button', 'button--danger', 'button--small', 'judge-remove-btn', 'use-ajax'],
+              'data-dialog-type' => 'modal',
+              'data-dialog-options' => '{"width":"500"}',
+            ],
+          ],
+        ],
       ];
-      $header[$judge->id()] = ['data' => $markup];
     }
 
     // Students.
@@ -208,7 +246,16 @@ final class MonitorDashboardController extends ControllerBase {
         'id' => ['monitor-dashboard-wrapper'],
       ],
       '#attached' => [
-        'library' => ['piv_live_competition/auto-reload'],
+        'library' => [
+          'piv_live_competition/auto-reload',
+          'piv_live_competition/monitor_dashboard',
+          'core/drupal.dialog.ajax',
+        ],
+        'drupalSettings' => [
+          'pivLiveCompetition' => [
+            'roundApiUrl' => Url::fromRoute('piv_live_competition.api_round', ['node' => $node->id()])->toString(),
+          ],
+        ],
       ],
       0 => $build,
     ];

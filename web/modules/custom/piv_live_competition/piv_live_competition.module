@@ -1298,3 +1298,32 @@ function _piv_live_competition_update_team_labels(NodeInterface $node): void {
     \Drupal::logger('piv_live_competition')->error('Could not update team labels for live competition entry: ' . $e->getMessage());
   }
 }
+
+/**
+ * Implements hook_language_switch_links_alter().
+ *
+ * Maps the yearly results EN/FR routes to each other so the language switcher
+ * generates the correct translated URL.
+ */
+function piv_live_competition_language_switch_links_alter(array &$links, $type, \Drupal\Core\Url $url): void {
+  $route_map = [
+    'piv_live_competition.yearly_results' => 'piv_live_competition.yearly_results.fr',
+    'piv_live_competition.yearly_results.fr' => 'piv_live_competition.yearly_results',
+  ];
+
+  $current_route = $url->getRouteName();
+
+  if (!isset($route_map[$current_route])) {
+    return;
+  }
+
+  $route_params = $url->getRouteParameters();
+
+  foreach ($links as $langcode => &$link) {
+    $target_route = $langcode === 'fr'
+      ? 'piv_live_competition.yearly_results.fr'
+      : 'piv_live_competition.yearly_results';
+
+    $link['url'] = \Drupal\Core\Url::fromRoute($target_route, $route_params);
+  }
+}

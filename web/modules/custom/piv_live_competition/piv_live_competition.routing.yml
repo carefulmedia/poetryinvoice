@@ -94,7 +94,7 @@ piv_live_competition.live_competition_score_results_table:
           - competition
 
 piv_live_competition.yearly_results:
-  path: '/team-regionals-results/{year}'
+  path: '/recite/team-regionals/{year}'
   defaults:
     _title_callback: '\Drupal\piv_live_competition\Controller\YearlyResultsController::title'
     _controller: '\Drupal\piv_live_competition\Controller\YearlyResultsController'
@@ -105,6 +105,35 @@ piv_live_competition.yearly_results:
     parameters:
       year:
         type: string
+
+piv_live_competition.yearly_results.fr:
+  path: '/reciter/en-equipe/{year}'
+  defaults:
+    _title_callback: '\Drupal\piv_live_competition\Controller\YearlyResultsController::title'
+    _controller: '\Drupal\piv_live_competition\Controller\YearlyResultsController'
+  requirements:
+    _permission: 'access content'
+    year: '\d{4}'
+  options:
+    parameters:
+      year:
+        type: string
+
+piv_live_competition.remove_judge:
+  path: '/node/{node}/remove-judge/{user}'
+  defaults:
+    _title: 'Remove Judge'
+    _form: '\Drupal\piv_live_competition\Form\RemoveJudgeForm'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Form\RemoveJudgeForm::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+      user:
+        type: entity:user
 
 piv_live_competition.contest_administration:
   path: '/node/{node}/contest-administration'
