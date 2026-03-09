@@ -94,7 +94,20 @@ piv_live_competition.live_competition_score_results_table:
           - competition
 
 piv_live_competition.yearly_results:
-  path: '/team-regionals-results/{year}'
+  path: '/recite/team-regionals/{year}'
+  defaults:
+    _title_callback: '\Drupal\piv_live_competition\Controller\YearlyResultsController::title'
+    _controller: '\Drupal\piv_live_competition\Controller\YearlyResultsController'
+  requirements:
+    _permission: 'access content'
+    year: '\d{4}'
+  options:
+    parameters:
+      year:
+        type: string
+
+piv_live_competition.yearly_results.fr:
+  path: '/reciter/en-equipe/{year}'
   defaults:
     _title_callback: '\Drupal\piv_live_competition\Controller\YearlyResultsController::title'
     _controller: '\Drupal\piv_live_competition\Controller\YearlyResultsController'

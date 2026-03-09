@@ -382,7 +382,12 @@ final class LiveCompetitionScoreService {
 
     // Use plain school names (without team labels) and remove duplicates.
     $school_names = array_map(static fn($s) => $s['school_name_plain'], $participating);
-    return array_values(array_unique($school_names));
+    $unique = array_values(array_unique($school_names));
+    usort($unique, static fn($a, $b) => strcmp(
+      iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $a),
+      iconv('UTF-8', 'ASCII//TRANSLIT//IGNORE', $b)
+    ));
+    return $unique;
   }
 
 }
