@@ -56,7 +56,8 @@ final class LiveCompetitionAdvanceRoundForm extends FormBase {
         $is_last_round = TRUE;
       }
     }
-    if (!$is_last_round) {
+    $is_team_regional = $node->field_level->value === 'Team Regional';
+    if (!$is_last_round && (!$is_team_regional || $current_round == 0)) {
       $form['node'] = [
         '#type' => 'value',
         '#value' => $node,
@@ -75,7 +76,7 @@ final class LiveCompetitionAdvanceRoundForm extends FormBase {
         $form['submit']['#attributes']['class'][] = 'incomplete-round';
       }
     }
-    else {
+    elseif ($is_last_round) {
       $form['message'] = [
         '#type' => 'item',
         '#markup' => $this->t('<b>Last round.</b>'),

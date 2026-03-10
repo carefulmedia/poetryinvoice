@@ -309,3 +309,6 @@ msgstr "The judge's scores will not be included in the final results."
 msgid "JUDGES READY"
 msgstr "JUGES PRÊTS"
 
+msgid "Cue reciter # @round to enter the stage"
+msgstr "Inviter le récitant # @round à monter sur scène"
+
