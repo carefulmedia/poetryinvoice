@@ -33,7 +33,7 @@ class SchoolSelection extends NodeSelection {
       if (strlen($search) > 3) {
         $start = trim(substr($search, 0, 3));
         $end = trim(substr($search, 3));
-        $search = "${start} ${end}";
+        $search = "{$start} {$end}";
       }
       $query->condition('field_address.postal_code', $search, $match_operator);
     }
@@ -71,7 +71,7 @@ class SchoolSelection extends NodeSelection {
       $postal_code = $address['postal_code'] ?? '';
       $administrative_area = $address['administrative_area'] ?? '';
       $locality = $address['locality'] ?? '';
-      $options[$bundle][$entity_id] = Html::escape("${label} - ${locality} ${administrative_area}, ${postal_code}");
+      $options[$bundle][$entity_id] = Html::escape("{$label} - {$locality} {$administrative_area}, {$postal_code}");
     }
 
     return $options;

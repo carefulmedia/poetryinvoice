@@ -91,7 +91,7 @@
         "drupal/geocoder": "^4.23",
         "drupal/geofield": "^1.55",
         "drupal/geolocation": "^3.12",
-        "drupal/gin": "^3.0@beta",
+        "drupal/gin": "^5.0",
         "drupal/google_analytics": "^4.0",
         "drupal/html_titles": "^1.1",
         "drupal/inline_entity_form": "^3.0@RC",
