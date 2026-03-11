@@ -229,6 +229,7 @@ final class MonitorDashboardController extends ControllerBase {
       '#header' => array_merge([$this->t('#'), $this->t('Student & School')], $header),
       '#rows' => $rows,
       '#sticky' => TRUE,
+      '#attributes' => ['style' => 'margin: 0;'],
     ];
     // This is a copy of the buttom to next recitation.
     $build['form_bottom'] = $this->formBuilder()
