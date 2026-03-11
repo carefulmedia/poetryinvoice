@@ -54,10 +54,14 @@ class FutureverseVoteForm extends FormBase {
       $student_name = trim($node->piv_teacher_first_name->value . ' ' . $node->piv_teacher_last_name->value);
     }
 
+    $learn_more = $node->toLink($this->t('Learn More'))->toRenderable();
+    $learn_more['#attributes']['class'][] = 'piv-button';
+    $learn_more['#attributes']['target'] = '_blank';
     $form['poem_header'] = [
       '#type' => 'container',
       '#attributes' => ['class' => ['futureverse-vote-poem-header']],
       '#weight' => -100,
+      'learn_more' => $learn_more,
       'title' => [
         '#markup' => '<h3>' . $node->label() . '</h3>',
       ],

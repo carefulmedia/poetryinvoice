@@ -603,6 +603,10 @@ summary {
 dialog {
   overflow: visible;
 }
+.piv-futureverse-vote-form .piv-button {
+  color: #FFF;
+  float: right;
+}
 /**
  * @file
  * Visual styles for Bartik's dropbutton component.
@@ -1381,12 +1385,17 @@ form {
 .content-index.dive-in {
   height: fit-content;
 }
-.content-index.mixtape,
-.content-index.podcast {
+.view-futureverse-shortlist-and-longlist.view-display-id-block_6 .content-index.mixtape,
+.view-futureverse-shortlist-and-longlist.view-display-id-block_6 .content-index.podcast {
   padding: 0;
-  height: 28rem;
+  min-height: 30rem;
+  height: 100%;
 }
-.content-index.podcast {
+.view-futureverse-shortlist-and-longlist.view-display-id-block_6 .content-index.mixtape .button.futureverse-poem-teaser,
+.view-futureverse-shortlist-and-longlist.view-display-id-block_6 .content-index.podcast .button.futureverse-poem-teaser {
+  margin: 0;
+}
+.content-index.mixtape .content-index.podcast {
   height: 21rem;
 }
 .block-views .author img,
@@ -4802,6 +4811,7 @@ li {
   color: var(--grey);
 }
 .button,
+.piv-button,
 .piv-back-link a,
 .recitation-judging__back a,
 .recitation-judging__judge-later a,
