@@ -127,6 +127,12 @@ class CompetitionEntryController extends ControllerBase {
       ]),
       '#weight' => -1,
     ];
+    if (!empty($form['field_student_grade']['widget']['#options'] ?? [])) {
+      $allowed_grades = array_column($competition->field_allowed_grades->getValue(), 'value');
+      $allowed_grades[] = '_none';
+      $options = array_intersect_key($form['field_student_grade']['widget']['#options'], array_flip($allowed_grades));
+      $form['field_student_grade']['widget']['#options'] = $options;
+    }
     return $form;
   }
 
