@@ -69,22 +69,13 @@ class CompetitionEnrollment {
   private $teacher;
 
   /**
-   * The lock service.
-   *
-   * @var \Drupal\piv_contest_competition_entry\Service\CompetitionLockService
-   */
-  private $lockService;
-
-  /**
    * {@inheritdoc}
    */
   public function __construct(
-    EntityTypeManagerInterface $entity_type_manager,
-    CompetitionLockService $lockService,
-    LanguageManagerInterface $language_manager,
+    protected EntityTypeManagerInterface $entityTypeManager,
+    protected CompetitionLockService $lockService,
+    protected LanguageManagerInterface $language_manager,
   ) {
-    $this->entityTypeManager = $entity_type_manager;
-    $this->lockService = $lockService;
     $this->currentLanguage = $language_manager->getCurrentLanguage()->getId();
   }
 
