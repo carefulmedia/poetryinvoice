@@ -11,6 +11,7 @@ use Drupal\piv_live_competition\LiveCompetitionScoreService;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Render\Element;
 
 /**
  * Score results for live competitions.
@@ -278,6 +279,9 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
         if ($a['accuracy'] != $b['accuracy']) {
           return $b['accuracy'] <=> $a['accuracy'];
         }
+        if ($a['recitation'] != $b['recitation']) {
+          return $b['recitation'] <=> $a['recitation'];
+        }
         return 0;
       });
     }
@@ -308,11 +312,32 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
       $build[$judge_id]['table'] = $judge_table;
       // Generate ranks and format table.
       $i = 1;
-      $last_score = 0;
       $last_rank = 0;
       $tie = [];
+
+      // Aggregate and count scores so we can better adjust rank, the
+      // idea is that if there are ties, the ranks are added together
+      // and divided by the count of ties, so 3 entries in rank 1 will
+      // end up with rank = (1+2+3)/3.
+      $rank_count = [];
       foreach ($judge_rows as $delta => $row) {
-        $rank = $row['score'] == $last_score ? $last_rank : $i;
+        // Compare to last row.
+        $last = $delta > 0 ? $judge_rows[$delta - 1] : NULL;
+        if ($last == NULL) {
+          $rank = $i;
+        }
+        else {
+          if ($last['score'] == $row['score']
+          && $last['recitation'] == $row['recitation']
+          && $last['accuracy'] == $row['accuracy']
+          && $last['overall'] == $row['overall']) {
+            $rank = $last_rank;
+          }
+          else {
+            $rank = $i;
+          }
+        }
+
         $rows[$judge_id][$delta]['rank'] = $rank;
         $classes = [];
         if ($rank == $last_rank) {
@@ -320,7 +345,13 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
           $classes[] = 'rank-tie-' . count($tie);
           $build[$judge_id]['table'][$delta - 1]['#attributes']['class'] = $classes;
         }
-        $last_rank = $row['rank'];
+
+        // Count rank to aggregate in the end.
+        if (empty($rank_count[$rank])) {
+          $rank_count[$rank] = 0;
+        }
+        $rank_count[$rank]++;
+
         $build[$judge_id]['table'][] = [
           '#attributes' => ['class' => $classes],
           'school' => $row['school'],
@@ -330,9 +361,32 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
           'accuracy' => ['#markup' => $row['accuracy']],
           'recitation' => ['#markup' => $row['recitation']],
         ];
-        $last_score = $row['score'];
         $last_rank = $rank;
         $i++;
+      }
+
+      // Redo ranking, use the results above to recalculate ranking.
+      $rank_remap = [];
+      foreach ($rank_count as $rank => $count) {
+        if ($count > 1) {
+          // If rank is 4 and there are 3 items in rank 4:
+          // 4 * 3 + 1 + 2 = 12 + 1 + 2 = 15.
+          // 15 is the same as 4 + 5 + 6.
+          $total_rank = $rank * $count + array_sum(range(1, $count - 1));
+          $new_rank = (float) $total_rank / $count;
+          $rank_remap[$rank] = $new_rank;
+        }
+      }
+      if (count($rank_remap)) {
+        // Update the table and the $rows for aggregated results.
+        $deltas = Element::children($build[$judge_id]['table']);
+        foreach ($deltas as $delta) {
+          $row_rank = $build[$judge_id]['table'][$delta]['rank']['#markup'];
+          $build[$judge_id]['table'][$delta]['rank']['#markup'] = $rank_remap[$row_rank] ?? $row_rank;
+        }
+        foreach ($rows[$judge_id] as $delta => $row) {
+          $rows[$judge_id][$delta]['rank'] = $rank_remap[$row['rank']] ?? $row['rank'];
+        }
       }
     }
 
