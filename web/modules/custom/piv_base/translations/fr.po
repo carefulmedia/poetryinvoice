@@ -312,3 +312,5 @@ msgstr "JUGES PRÊTS"
 msgid "Cue reciter # @round to enter the stage"
 msgstr "Inviter le récitant # @round à monter sur scène"
 
+msgid "Learn More"
+msgstr "En savoir plus"
