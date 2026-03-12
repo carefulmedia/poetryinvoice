@@ -5980,7 +5980,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"index-views mixtape content-index\">\r\n  <div class=\"image\"><a href=\"{{ view_node }}\">{{ field_student_photo }}</a></div> \r\n  <div class=\"content\">\r\n    <a href=\"{{ view_node }}\">\r\n      <h2>{{ title }}</h2>\r\n      <h4>{{ piv_teacher_first_name }} {{ piv_teacher_last_name }}</h4>\r\n      <h6><span>{{ field_school_journal }} <br>Grade: {{ field_grade }}<br>{{ field_address_locality_1 }}, {{ field_address_administrative_area_1 }} </span></h6>\r\n    </a>\r\n    <a href=\"{{ futureverse_vote_url }}\" class=\"button futureverse-poem-teaser use-ajax\" data-dialog-type=\"modal\" data-dialog-options='{\"width\":800,\"drupalAutoButtons\":false}'>Vote</a>\r\n  </div>\r\n</div>\r\n"
+            text: "<div class=\"index-views mixtape content-index\">\r\n  <div class=\"image\"><a href=\"{{ view_node }}\">{{ field_student_photo }}</a></div> \r\n  <div class=\"content\">\r\n    <a href=\"{{ view_node }}\">\r\n      <h2>{{ title }}</h2>\r\n      <h4>{{ piv_teacher_first_name }} {{ piv_teacher_last_name }}</h4>\r\n      <h6><span>{{ field_school_journal }} <br>Grade: {{ field_grade }}<br>{{ field_address_locality_1 }}, {{ field_address_administrative_area_1 }} </span></h6>\r\n    </a>\r\n    <div class=\"text-right\">\r\n      <a href=\"{{ futureverse_vote_url }}\" class=\"button futureverse-poem-teaser use-ajax\" data-dialog-type=\"modal\" data-dialog-options='{\"width\":800,\"drupalAutoButtons\":false}'>Vote</a>\r\n    </div>\r\n  </div>\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false

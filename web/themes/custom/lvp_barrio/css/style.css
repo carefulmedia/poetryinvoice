@@ -6248,5 +6248,8 @@ p a {
   filter: invert(1) contrast(2.5);
   transition-duration: 1s;
 }
+.text-right {
+  text-align: right;
+}
 
 /*# sourceMappingURL=maps/style.css.map */
