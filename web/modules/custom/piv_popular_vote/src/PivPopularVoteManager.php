@@ -45,6 +45,8 @@ class PivPopularVoteManager {
    * Create a vote.
    */
   public function vote($voter_email, $voter_name, $competition_entry_id, $competition_id, $langcode) {
+    // Vote database field was bizarely created to only accept ASCII.
+    $voter_name = iconv('UTF-8', 'ASCII//TRANSLIT', $voter_name);
     return $this->connection->merge(self::TABLE_NAME)
       ->insertFields([
         'created' => time(),
