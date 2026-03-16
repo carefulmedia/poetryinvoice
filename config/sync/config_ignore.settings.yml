@@ -17,6 +17,7 @@ ignored_config_entities:
   - ~views.view.judging_sessions
   - ~views.view.language_restricted_poems
   - ~views.view.moods_by_language
+  - ~views.view.poems_not_retired
   - ~views.view.recitations
   - ~views.view.score_templates
   - ~views.view.scores

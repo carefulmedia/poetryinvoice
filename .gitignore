@@ -33,6 +33,7 @@
 !config/sync/views.view.scores.yml
 !config/sync/views.view.score_templates.yml
 !config/sync/views.view.moods_by_language.yml
+!config/sync/views.view.poems_not_retired.yml
 !config/sync/views.view.tags_by_language.yml
 !config/sync/views.view.commom_poetic_terms_and_forms_by_language.yml
 config/sync/google_analytics.settings.yml
