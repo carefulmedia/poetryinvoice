@@ -368,9 +368,9 @@ function template_preprocess_piv_youtube(&$variables) {
 
   if (!empty($variables['url'])) {
     // Extract the id from a url.
-    $regexp = '/(youtu.*be.*)\/(watch\?v=|embed\/|v|shorts|)(.*?((?=[&#?])|$))/';
+    $regexp = '/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?|shorts)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i';
     preg_match($regexp, $variables['url'], $match);
-    $id = $match[3] ?? NULL;
+    $id = $match[1] ?? NULL;
     if ($id) {
       $variables['id'] = $id;
     }
