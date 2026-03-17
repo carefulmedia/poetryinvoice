@@ -11197,7 +11197,7 @@ display:
         type: grid
         options:
           grouping: {  }
-          columns: 10
+          columns: 1
           automatic_width: true
           alignment: horizontal
           row_class_custom: ''
