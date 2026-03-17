@@ -303,17 +303,20 @@ msgstr "Cette action retirera le juge de la compétition."
 msgid "The judge will not be able to rejoin."
 msgstr "Le juge ne pourra pas rejoindre de nouveau la compétition."
 
-msgid "Les scores du juge ne seront pas pris en compte dans les résultats finaux."
-msgstr "The judge's scores will not be included in the final results."
+msgid "The judge's scores will not be included in the final results."
+msgstr "Les notes de ce juge ne seront pas comptabilisées dans les résultats finaux."
 
 msgid "JUDGES READY"
-msgstr "JUGES PRÊTS"
+msgstr "LE JURY EST PRÊT"
 
 msgid "Cue reciter # @round to enter the stage"
-msgstr "Inviter le récitant # @round à monter sur scène"
+msgstr "Signalez que le ou la concurrent·e no @round peut entrer sur scène."
 
 msgid "Learn More"
 msgstr "En savoir plus"
 
 msgid "You must complete all scores before you can submit."
 msgstr "Vous devez remplir le formulaire de scores au complet."
+
+msgid "Remove judge"
+msgstr "Retirer le juge"
