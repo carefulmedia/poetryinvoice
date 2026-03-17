@@ -314,3 +314,6 @@ msgstr "Inviter le récitant # @round à monter sur scène"
 
 msgid "Learn More"
 msgstr "En savoir plus"
+
+msgid "You must complete all scores before you can submit."
+msgstr "Vous devez remplir le formulaire de scores au complet."

@@ -1,0 +1,14 @@
+.score-controller__submit:disabled {
+  background-color: var(--button--disabled-bg-color) !important;
+  border-color: var(--button--disabled-bg-color) !important;
+}
+
+.score-controller__submit-wrapper {
+  display: inline-block;
+  margin-left: auto;
+  cursor: not-allowed;
+}
+
+.score-controller__submit-wrapper .score-controller__submit:disabled {
+  pointer-events: none;
+}

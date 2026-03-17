@@ -8,13 +8,25 @@ auto-reload:
     - core/jquery
     - core/drupal.dialog
 
+tippy:
+  js:
+    /libraries/tippy.js/popper.min.js: { minified: true }
+    /libraries/tippy.js/tippy.umd.min.js: { minified: true }
+  css:
+    theme:
+      /libraries/tippy.js/tippy.css: {}
+
 score-form:
+  css:
+    theme:
+      css/score-form.css: {}
   js:
     js/score-form.js: {}
   dependencies:
     - core/drupalSettings
     - core/once
     - core/jquery
+    - piv_live_competition/tippy
 
 competition_banner:
   css:

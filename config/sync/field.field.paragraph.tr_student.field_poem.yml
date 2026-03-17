@@ -4,7 +4,6 @@ status: true
 dependencies:
   config:
     - field.storage.paragraph.field_poem
-    - node.type.poem
     - paragraphs.paragraphs_type.tr_student
 id: paragraph.tr_student.field_poem
 field_name: field_poem
@@ -17,11 +16,10 @@ translatable: false
 default_value: {  }
 default_value_callback: ''
 settings:
-  handler: 'default:node'
+  handler: views
   handler_settings:
-    target_bundles:
-      poem: poem
-    sort:
-      field: _none
-      direction: ASC
+    view:
+      view_name: poems_not_retired
+      display_name: entity_reference_1
+      arguments: {  }
 field_type: entity_reference
