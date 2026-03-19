@@ -155,6 +155,10 @@ final class MonitorDashboardController extends ControllerBase {
         'node' => $node->id(),
         'paragraph' => $recitation->id(),
       ]);
+      $edit_recitation_url = Url::fromRoute('piv_live_competition.edit_recitation', [
+        'node' => $node->id(),
+        'paragraph' => $recitation->id(),
+      ]);
 
       $row = [
         ['data' => ['#markup' => (string) ($delta + 1)]],
@@ -162,6 +166,16 @@ final class MonitorDashboardController extends ControllerBase {
           'data' => [
             '#type' => 'container',
             'label' => ['#markup' => $student_and_school],
+            'edit' => [
+              '#type' => 'link',
+              '#title' => $this->t('Edit'),
+              '#url' => $edit_recitation_url,
+              '#attributes' => [
+                'class' => ['button', 'button--small', 'recitation-edit-btn', 'use-ajax'],
+                'data-dialog-type' => 'modal',
+                'data-dialog-options' => '{"width":"500"}',
+              ],
+            ],
             'remove' => [
               '#type' => 'link',
               '#title' => $this->t('Remove'),

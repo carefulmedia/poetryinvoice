@@ -14,6 +14,7 @@
 }
 
 .judge-remove-btn,
+.recitation-edit-btn,
 .recitation-remove-btn {
   display: block !important;
   margin-top: 4px;

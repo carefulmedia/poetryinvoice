@@ -324,6 +324,21 @@ msgstr "Retirer le juge"
 msgid "Remove"
 msgstr "Retirer"
 
+msgid "Edit recitation"
+msgstr "Modifier la récitation"
+
+msgid "Edit"
+msgstr "Modifier"
+
+msgid "Full legal name"
+msgstr "Nom légal complet"
+
+msgid "Poem to be recited"
+msgstr "Poème à réciter"
+
+msgid "The recitation has been updated."
+msgstr "La récitation a été mise à jour."
+
 msgid "Remove recitation"
 msgstr "Retirer la récitation"
 

@@ -119,6 +119,22 @@ piv_live_competition.yearly_results.fr:
       year:
         type: string
 
+piv_live_competition.edit_recitation:
+  path: '/node/{node}/edit-recitation/{paragraph}'
+  defaults:
+    _title: 'Edit Recitation'
+    _form: '\Drupal\piv_live_competition\Form\EditRecitationForm'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Form\EditRecitationForm::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+      paragraph:
+        type: entity:paragraph
+
 piv_live_competition.remove_recitation:
   path: '/node/{node}/remove-recitation/{paragraph}'
   defaults:
