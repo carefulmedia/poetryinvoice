@@ -167,6 +167,20 @@ piv_live_competition.remove_judge:
       user:
         type: entity:user
 
+piv_live_competition.start_contest_confirm:
+  path: '/node/{node}/start-contest-confirm'
+  defaults:
+    _title: 'Start Contest'
+    _form: '\Drupal\piv_live_competition\Form\StartContestConfirmForm'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Form\StartContestConfirmForm::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+
 piv_live_competition.contest_administration:
   path: '/node/{node}/contest-administration'
   defaults:

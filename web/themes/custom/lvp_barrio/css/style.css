@@ -2156,11 +2156,13 @@ h3.name {
   margin-right: auto;
 }
 .monitor-dashboard button.form-submit,
-.monitor-dashboard button#edit-submit {
+.monitor-dashboard button#edit-submit,
+.monitor-dashboard a#edit-submit {
   background: #28a745;
 }
 .monitor-dashboard button.form-submit.incomplete-round,
-.monitor-dashboard button#edit-submit.incomplete-round {
+.monitor-dashboard button#edit-submit.incomplete-round,
+.monitor-dashboard a#edit-submit.incomplete-round {
   background: #ff8800;
 }
 .monitor-dashboard form {
