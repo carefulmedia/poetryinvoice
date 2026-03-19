@@ -150,9 +150,30 @@ final class MonitorDashboardController extends ControllerBase {
 
       // Combine student name and team label.
       $student_and_school = $student_name . ($team_label ? '<br><i>' . $team_label . '</i>' : '');
+
+      $remove_recitation_url = Url::fromRoute('piv_live_competition.remove_recitation', [
+        'node' => $node->id(),
+        'paragraph' => $recitation->id(),
+      ]);
+
       $row = [
         ['data' => ['#markup' => (string) ($delta + 1)]],
-        ['data' => ['#markup' => $student_and_school]],
+        [
+          'data' => [
+            '#type' => 'container',
+            'label' => ['#markup' => $student_and_school],
+            'remove' => [
+              '#type' => 'link',
+              '#title' => $this->t('Remove'),
+              '#url' => $remove_recitation_url,
+              '#attributes' => [
+                'class' => ['button', 'button--danger', 'button--small', 'recitation-remove-btn', 'use-ajax'],
+                'data-dialog-type' => 'modal',
+                'data-dialog-options' => '{"width":"500"}',
+              ],
+            ],
+          ],
+        ],
       ];
 
       $recitation_langcode = $recitation->field_poem->entity?->langcode->value ?? 'en';

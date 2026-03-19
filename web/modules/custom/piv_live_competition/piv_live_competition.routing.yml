@@ -119,6 +119,22 @@ piv_live_competition.yearly_results.fr:
       year:
         type: string
 
+piv_live_competition.remove_recitation:
+  path: '/node/{node}/remove-recitation/{paragraph}'
+  defaults:
+    _title: 'Remove Recitation'
+    _form: '\Drupal\piv_live_competition\Form\RemoveRecitationForm'
+  requirements:
+    _custom_access: '\Drupal\piv_live_competition\Form\RemoveRecitationForm::access'
+  options:
+    parameters:
+      node:
+        type: entity:node
+        bundle:
+          - competition
+      paragraph:
+        type: entity:paragraph
+
 piv_live_competition.remove_judge:
   path: '/node/{node}/remove-judge/{user}'
   defaults:

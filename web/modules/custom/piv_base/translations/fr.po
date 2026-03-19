@@ -320,3 +320,27 @@ msgstr "Vous devez remplir le formulaire de scores au complet."
 
 msgid "Remove judge"
 msgstr "Retirer le juge"
+
+msgid "Remove"
+msgstr "Retirer"
+
+msgid "Remove recitation"
+msgstr "Retirer la récitation"
+
+msgid "You are about to remove the recitation for <strong>@name</strong>."
+msgstr "Vous êtes sur le point de retirer la récitation de <strong>@name</strong>."
+
+msgid "This action will remove the recitation from the competition."
+msgstr "Cette action va retirer la récitation de la compétition."
+
+msgid "The student's scores will not be included in the final results."
+msgstr "Les scores de cet·te étudiant·e ne seront pas comptabilisées dans les résultats finaux."
+
+msgid "The recitation for @name has been removed."
+msgstr "La récitation de @name a été retirée."
+
+msgid "Recitation not found."
+msgstr "Récitation introuvable."
+
+msgid "Confirm removal"
+msgstr "Confirmer le retrait"
