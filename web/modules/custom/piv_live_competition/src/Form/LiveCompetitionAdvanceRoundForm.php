@@ -6,6 +6,7 @@ namespace Drupal\piv_live_competition\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\piv_live_competition\Helper;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -58,22 +59,42 @@ final class LiveCompetitionAdvanceRoundForm extends FormBase {
     }
     $is_team_regional = $node->field_level->value === 'Team Regional';
     if (!$is_last_round && (!$is_team_regional || $current_round == 0)) {
-      $form['node'] = [
-        '#type' => 'value',
-        '#value' => $node,
-      ];
-      $form['next_round'] = [
-        '#type' => 'value',
-        '#value' => $current_round + 1,
-      ];
-      $form['submit'] = [
-        '#type' => 'submit',
-        '#value' => $this->t('Start recitation @round', [
-          '@round' => $current_round + 1,
-        ]),
-      ];
-      if ($incomplete === TRUE) {
-        $form['submit']['#attributes']['class'][] = 'incomplete-round';
+      if ($current_round == 0) {
+        // Before the contest starts, open a confirmation modal instead of
+        // submitting directly.
+        $confirm_url = Url::fromRoute('piv_live_competition.start_contest_confirm', [
+          'node' => $node->id(),
+        ]);
+        $form['start_contest_link'] = [
+          '#type' => 'link',
+          '#title' => $this->t('Start recitation 1'),
+          '#url' => $confirm_url,
+          '#attributes' => [
+            'class' => ['button', 'js-form-submit', 'form-submit', 'btn', 'btn-outline-primary', 'use-ajax'],
+            'id' => 'edit-submit',
+            'data-dialog-type' => 'modal',
+            'data-dialog-options' => '{"width":"500","title":"' . $this->t('Start Contest') . '"}',
+          ],
+        ];
+      }
+      else {
+        $form['node'] = [
+          '#type' => 'value',
+          '#value' => $node,
+        ];
+        $form['next_round'] = [
+          '#type' => 'value',
+          '#value' => $current_round + 1,
+        ];
+        $form['submit'] = [
+          '#type' => 'submit',
+          '#value' => $this->t('Start recitation @round', [
+            '@round' => $current_round + 1,
+          ]),
+        ];
+        if ($incomplete === TRUE) {
+          $form['submit']['#attributes']['class'][] = 'incomplete-round';
+        }
       }
     }
     elseif ($is_last_round) {

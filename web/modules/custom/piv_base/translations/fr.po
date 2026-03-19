@@ -359,3 +359,15 @@ msgstr "Récitation introuvable."
 
 msgid "Confirm removal"
 msgstr "Confirmer le retrait"
+
+msgid "Start Contest"
+msgstr "DÉMARRER LE CONCOURS"
+
+msgid "Are you sure the first reciter and all judges are ready?"
+msgstr "Êtes-vous certain que le premier récitant et tous les juges sont prêts?"
+
+msgid "Start Recitation 1"
+msgstr "Commencer Récitation 1"
+
+msgid "Cancel Start"
+msgstr "Annuler"
