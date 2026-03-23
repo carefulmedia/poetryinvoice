@@ -371,3 +371,15 @@ msgstr "Commencer Récitation 1"
 
 msgid "Cancel Start"
 msgstr "Annuler"
+
+msgid "Edit Recitation"
+msgstr "Modifier la récitation"
+
+msgid "Start Recitation 1"
+msgstr "Commencer la récitation 1"
+
+msgid "Start recitation 1"
+msgstr "Commencer la récitation 1"
+
+msgid "Start recitation @round"
+msgstr "Commencer la récitation @round"
