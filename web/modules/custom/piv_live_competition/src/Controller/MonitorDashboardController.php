@@ -289,6 +289,7 @@ final class MonitorDashboardController extends ControllerBase {
         ],
         'drupalSettings' => [
           'pivLiveCompetition' => [
+            'judgesReadyModalEnabled' => $node->field_level->value === 'Team Regional',
             'roundApiUrl' => Url::fromRoute('piv_live_competition.api_round', ['node' => $node->id()])->toString(),
           ],
         ],
