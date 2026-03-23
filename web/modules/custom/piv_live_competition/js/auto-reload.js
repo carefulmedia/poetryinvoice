@@ -42,11 +42,12 @@
       // Poll the round API endpoint once on initial page load only,
       // to track the active round and show a modal if it auto-advances.
       once('round-poller', 'body', context).forEach(function() {
-        const apiUrl = drupalSettings.pivLiveCompetition?.roundApiUrl;
-        if (!apiUrl) {
+        const settings = drupalSettings.pivLiveCompetition;
+        if (!settings?.judgesReadyModalEnabled || !settings?.roundApiUrl) {
           return;
         }
 
+        const apiUrl = settings.roundApiUrl;
         let lastKnownRound = null;
 
         const pollRound = () => {
