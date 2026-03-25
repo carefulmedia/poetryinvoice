@@ -4,12 +4,11 @@ status: true
 dependencies:
   config:
     - field.field.score.live_competition.field_competition
-    - field.field.score.live_competition.field_live_comp_recitation
     - field.field.score.live_competition.field_locked
+    - field.field.score.live_competition.field_paragraph_recitation_id
     - field.field.score.live_competition.field_scores
     - piv_contest_score.score_type.live_competition
   module:
-    - entity_reference_revisions
     - user
 id: score.live_competition.default
 targetEntityType: score
@@ -43,15 +42,6 @@ content:
     third_party_settings: {  }
     weight: 41
     region: content
-  field_live_comp_recitation:
-    type: entity_reference_revisions_entity_view
-    label: above
-    settings:
-      view_mode: default
-      link: ''
-    third_party_settings: {  }
-    weight: 43
-    region: content
   field_locked:
     type: boolean
     label: above
@@ -61,6 +51,15 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 42
+    region: content
+  field_paragraph_recitation_id:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 44
     region: content
   field_scores:
     type: number_integer
