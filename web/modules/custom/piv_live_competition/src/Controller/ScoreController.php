@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Drupal\Core\Url;
 use Drupal\Core\Datetime\DrupalDateTime;
 use Drupal\Core\DependencyInjection\ClassResolverInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -32,6 +33,7 @@ final class ScoreController extends ControllerBase {
     protected readonly CacheBackendInterface $cache,
     protected readonly Helper $helper,
     protected readonly ClassResolverInterface $classResolver,
+    protected readonly Request $request,
   ) {}
 
   /**
@@ -42,6 +44,7 @@ final class ScoreController extends ControllerBase {
       $container->get('cache.default'),
       $container->get('piv_live_competition.helper'),
       $container->get('class_resolver'),
+      $container->get('request_stack')->getCurrentRequest(),
     );
   }
 
@@ -204,6 +207,7 @@ final class ScoreController extends ControllerBase {
       'score_template' => $node->field_score_template->target_id,
       'field_competition' => $node->id(),
       'title' => "{$competition}: {$judge_name} judging {$student_name}{$suffix}",
+      'field_paragraph_recitation_id' => ['value' => $recitation->id()],
     ]);
   }
 
@@ -324,6 +328,22 @@ final class ScoreController extends ControllerBase {
     $recitation = $this->getNextRecitation($node, $user, $judge_type, $judge_languages);
     if ($judge_type == 'prompter' && !$recitation) {
       $recitation = $recitations ? reset($recitations) : NULL;
+    }
+
+    // When submitting scores for a recitation it might happen that the
+    // recitation was already deleted. Since Drupal rebuilds forms on
+    // submission, the rebuilt form now will build for the next 
+    // recitation, desyncing the rebuilt form with the submitted form,
+    // this results in the scores (the values - 6, 8, 10, etc) being 
+    // populated for the incorrect recitation. This can be reproduced by
+    // getting to the score form for a recitation; deleting that entry
+    // from the live competition; and submitting the form for the now
+    // deleted recitation. 
+    // The if below compares the submitted raw values with what should
+    // be the recitation we are scoring.
+    $recitation_id = $this->request->request->get('recitation_id');
+    if ($recitation_id && $recitation->id() != $recitation_id) {
+      return $this->redirect('<current>');
     }
 
     if (!$recitation) {

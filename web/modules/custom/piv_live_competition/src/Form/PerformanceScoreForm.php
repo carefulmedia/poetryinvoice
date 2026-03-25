@@ -51,6 +51,7 @@ final class PerformanceScoreForm extends FormBase {
     }
 
     $form['#attributes']['class'][] = 'piv-contest-score';
+    $form['#attributes']['autocomplete'] = 'off';
     $form['#attached']['library'][] = 'piv_live_competition/score-form';
     $is_locked = $score_entity->field_locked->value == 1;
     $is_new = $score_entity->isNew();
@@ -63,6 +64,11 @@ final class PerformanceScoreForm extends FormBase {
     $form['recitation'] = [
       '#type' => 'value',
       '#value' => $recitation,
+    ];
+
+    $form['recitation_id'] = [
+      '#type' => 'hidden',
+      '#value' => $recitation->id(),
     ];
 
     $form['score_entity'] = [

@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.score.accuracy_live_competition.field_competition
     - field.field.score.accuracy_live_competition.field_locked
+    - field.field.score.accuracy_live_competition.field_paragraph_recitation_id
     - field.field.score.accuracy_live_competition.field_scores
     - piv_contest_score.score_type.accuracy_live_competition
   module:
@@ -50,6 +51,15 @@ content:
       format_custom_true: ''
     third_party_settings: {  }
     weight: 42
+    region: content
+  field_paragraph_recitation_id:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 44
     region: content
   field_scores:
     type: number_integer
