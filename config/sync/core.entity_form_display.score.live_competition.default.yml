@@ -4,10 +4,12 @@ status: true
 dependencies:
   config:
     - field.field.score.live_competition.field_competition
+    - field.field.score.live_competition.field_live_comp_recitation
     - field.field.score.live_competition.field_locked
     - field.field.score.live_competition.field_scores
     - piv_contest_score.score_type.live_competition
   module:
+    - entity_reference_revisions
     - field_layout
     - layout_discovery
 third_party_settings:
@@ -29,6 +31,16 @@ content:
   field_competition:
     type: entity_reference_autocomplete
     weight: 41
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_live_comp_recitation:
+    type: entity_reference_revisions_autocomplete
+    weight: 43
     region: content
     settings:
       match_operator: CONTAINS
