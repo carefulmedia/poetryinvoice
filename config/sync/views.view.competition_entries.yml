@@ -1452,39 +1452,30 @@ display:
       style:
         type: table
         options:
-          grouping: {  }
+          grouping:
+            -
+              field: field_stream
+              rendered: true
+              rendered_strip: false
           row_class: ''
           default_row_class: true
           columns:
-            field_place: field_place
             field_student_name: field_student_name
             field_student_last_name: field_student_last_name
-            field_student_stage_name: field_student_stage_name
-            field_student_email: field_student_email
             piv_teacher_first_name: piv_teacher_first_name
             piv_teacher_last_name: piv_teacher_last_name
-            mail: mail
-            id: id
-            field_recitations_1: field_recitations_1
-            field_recitations: field_recitations
-            uid: uid
-            field_competition: field_competition
-            field_stream: field_stream
+            preferred_langcode: preferred_langcode
             title: title
+            nid: nid
+            field_address_address_line1: field_address_address_line1
+            field_address_address_line2: field_address_address_line2
             field_address_locality: field_address_locality
             field_address_administrative_area: field_address_administrative_area
-            nothing: nothing
-            edit_competition_entry: edit_competition_entry
-            field_student_grade: field_student_grade
+            field_address_postal_code: field_address_postal_code
+            field_stream: field_stream
+            field_place: field_place
           default: '-1'
           info:
-            field_place:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
             field_student_name:
               sortable: false
               default_sort_order: asc
@@ -1493,20 +1484,6 @@ display:
               empty_column: false
               responsive: ''
             field_student_last_name:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_student_stage_name:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_student_email:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1527,45 +1504,7 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            mail:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            id:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_recitations_1:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_recitations:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            uid:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_competition:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            field_stream:
+            preferred_langcode:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1573,6 +1512,27 @@ display:
               empty_column: false
               responsive: ''
             title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nid:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_address_address_line1:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_address_address_line2:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1593,19 +1553,21 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            nothing:
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            edit_competition_entry:
+            field_address_postal_code:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_student_grade:
+            field_stream:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_place:
               sortable: false
               default_sort_order: asc
               align: ''
