@@ -331,13 +331,16 @@ final class ScoreController extends ControllerBase {
     }
 
     // When submitting scores for a recitation it might happen that the
-    // recitation was already deleted. Since Drupal rebuilds forms
-    // submission, the rebuild form now will be for the next recitation
-    // and the score will be populated there. This can be reproduced by
-    // getting to the score form for a user, deleting that entry from
-    // the competition and submitting the form for the now deleted
-    // recitation. The if below compared the submitted raw value with
-    // what should be the recitation we are scoring.
+    // recitation was already deleted. Since Drupal rebuilds forms on
+    // submission, the rebuilt form now will build for the next 
+    // recitation, desyncing the rebuilt form with the submitted form,
+    // this results in the scores (the values - 6, 8, 10, etc) being 
+    // populated for the incorrect recitation. This can be reproduced by
+    // getting to the score form for a recitation; deleting that entry
+    // from the live competition; and submitting the form for the now
+    // deleted recitation. 
+    // The if below compares the submitted raw values with what should
+    // be the recitation we are scoring.
     $recitation_id = $this->request->request->get('recitation_id');
     if ($recitation_id && $recitation->id() != $recitation_id) {
       return $this->redirect('<current>');
