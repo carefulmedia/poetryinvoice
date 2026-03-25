@@ -1,0 +1,23 @@
+uuid: 815ca0c6-3e2e-46ef-b621-d0becccce0c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.score.field_paragraph_recitation_id
+    - piv_contest_score.score_type.accuracy_live_competition
+id: score.accuracy_live_competition.field_paragraph_recitation_id
+field_name: field_paragraph_recitation_id
+entity_type: score
+bundle: accuracy_live_competition
+label: 'Paragraph Recitation ID'
+description: 'Stores the id of the recitation paragraph referenced by this score.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer
