@@ -1,0 +1,20 @@
+uuid: e7512cab-18eb-456e-99f0-9f15baf9ae77
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_score
+id: score.field_paragraph_recitation_id
+field_name: field_paragraph_recitation_id
+entity_type: score
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

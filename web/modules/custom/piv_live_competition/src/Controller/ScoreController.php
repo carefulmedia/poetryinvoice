@@ -207,7 +207,7 @@ final class ScoreController extends ControllerBase {
       'score_template' => $node->field_score_template->target_id,
       'field_competition' => $node->id(),
       'title' => "{$competition}: {$judge_name} judging {$student_name}{$suffix}",
-      'field_live_comp_recitation' => $recitation,
+      'field_paragraph_recitation_id' => ['value' => $recitation->id()],
     ]);
   }
 
