@@ -273,8 +273,8 @@ function piv_live_competition_node_presave(NodeInterface $node): void {
   }
 
   $account = \Drupal::currentUser();
-
-  if ($account->hasRole('administrator')) {
+  $live_competition_admin_id = $node->field_contest_association?->entity?->field_live_competition_admin?->target_id ?? NULL;
+  if ($account->hasRole('administrator') || $account->id() == $live_competition_admin_id) {
     return;
   }
 
