@@ -9,6 +9,10 @@ use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException;
+use Drupal\Component\Plugin\Exception\PluginNotFoundException;
+use Drupal\Component\Datetime\TimeInterface;
 
 /**
  * Helper class for Live Competitions ('competition' nodes).
@@ -72,6 +76,7 @@ final class Helper {
     private readonly CacheBackendInterface $cacheDefault,
     private readonly EntityTypeManagerInterface $entityTypeManager,
     private readonly EntityFieldManagerInterface $entityFieldManager,
+    private readonly TimeInterface $time,
   ) {}
 
   /**
@@ -238,6 +243,115 @@ final class Helper {
     return $recitation->field_stage_name->value == 1 && !empty($recitation->field_student_name_1)
       ? $recitation->field_student_name_1->value
       : $recitation->field_legal_name->value;
+  }
+
+  /**
+   * Check if competition has started.
+   */
+  public function hasCompetitionStarted(NodeInterface $competition): bool {
+    return ((int) $competition->field_active_round->value > 0);
+  }
+
+  /**
+   * Check if competition closing date has passed.
+   */
+  public function hasCompetitionClosingDatePassed(NodeInterface $competition): bool {
+    $deadline = $competition->field_submission_deadline?->date;
+    if (!$deadline) {
+      return FALSE;
+    }
+
+    return $deadline->getTimestamp() < $this->time->getRequestTime();
+  }
+
+  /**
+   * Get a teacher's school.
+   */
+  public function getTeacherSchool(AccountInterface $account): ?NodeInterface {
+    if ($account->isAnonymous()) {
+      return NULL;
+    }
+
+    $user = $this->entityTypeManager
+      ->getStorage('user')
+      ->load($account->id());
+
+    return $user ? $user->field_school?->entity : NULL;
+  }
+
+  /**
+   * Check if the teacher's school is invited to a competition.
+   */
+  public function isTeacherSchoolInvited(NodeInterface $competition, AccountInterface $teacher): bool {
+    $invited_school_ids = $this->getInvitedSchoolIds($competition);
+
+    if (empty($invited_school_ids)) {
+      // No invitation required.
+      return TRUE;
+    }
+
+    $teacher_school = $this->getTeacherSchool($teacher);
+    if (!$teacher_school) {
+      return FALSE;
+    }
+
+    return in_array($teacher_school->id(), $invited_school_ids);
+  }
+
+  /**
+   * Check if a competition is maxed out for a teacher's school.
+   */
+  public function isCompetitionMaxedOutForTeacherSchool(NodeInterface $competition, AccountInterface $teacher, $exclude_entry_id = NULL): bool {
+    $max_entries_per_school = $competition->field_maximum_entries_per_school->value;
+    if (empty($max_entries_per_school) || $max_entries_per_school <= 0) {
+      // No maximum required.
+      return FALSE;
+    }
+
+    $teacher_school = $this->getTeacherSchool($teacher);
+    if (!$teacher_school) {
+      return FALSE;
+    }
+
+    $existing_entries_count = $this->countSchoolEntries($competition->id(), $teacher_school->id(), $exclude_entry_id);
+    return $existing_entries_count >= $max_entries_per_school;
+  }
+
+  /**
+   * Get invited school IDs from a competition.
+   */
+  private function getInvitedSchoolIds(NodeInterface $competition): array {
+    if (empty($competition->field_invited_schools)) {
+      return [];
+    }
+
+    return array_column($competition->field_invited_schools->getValue(), 'target_id');
+  }
+
+  /**
+   * Count team_regionals_entry nodes for a school and competition.
+   */
+  private function countSchoolEntries(int $competition_id, int $school_id, $exclude_entry_id = NULL): int {
+    $user_query = $this->entityTypeManager->getStorage('user')->getQuery();
+    $teacher_uids = $user_query->condition('field_school', $school_id)
+      ->accessCheck(FALSE)
+      ->execute();
+
+    if (empty($teacher_uids)) {
+      return 0;
+    }
+
+    $entry_query = $this->entityTypeManager->getStorage('node')->getQuery();
+    $entry_query->condition('type', 'team_regionals_entry')
+      ->condition('field_contest_association', $competition_id)
+      ->condition('uid', $teacher_uids, 'IN')
+      ->accessCheck(FALSE);
+
+    if (is_numeric($exclude_entry_id)) {
+      $entry_query->condition('nid', $exclude_entry_id, '<>');
+    }
+
+    return (int) $entry_query->count()->execute();
   }
 
 }

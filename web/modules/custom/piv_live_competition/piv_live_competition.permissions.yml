@@ -8,3 +8,7 @@ access monitor dashboard:
 
 access live competition score result table:
   title: 'access live competition score result table'
+
+bypass live competition entries validation:
+  title: 'Bypass <em>live competition entry</em> validations.'
+  description: 'Bypass date validations when editing a <em>live competition entry</em> node'

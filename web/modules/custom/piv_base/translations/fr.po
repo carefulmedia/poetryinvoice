@@ -383,3 +383,27 @@ msgstr "Commencer la récitation 1"
 
 msgid "Start recitation @round"
 msgstr "Commencer la récitation @round"
+
+msgid "This competition's closing date has passed. You cannot add new entries to it."
+msgstr "La date de clôture de ce concours est passée. Vous ne pouvez plus y ajouter de nouvelles inscriptions."
+
+msgid "This competition has already begun. You cannot add new entries to it."
+msgstr "Ce concours a déjà commencé. Vous ne pouvez plus y ajouter de nouvelles inscriptions."
+
+msgid "Your school has reached the maximum number of entries for this competition."
+msgstr "Votre école a atteint le nombre maximal d'inscriptions pour ce concours."
+
+msgid "You can only create entries for competitions your school is invited to."
+msgstr "Vous ne pouvez créer des inscriptions que pour les concours auxquels votre école est invitée."
+
+msgid "You must be assigned to a school to create entries for this competition."
+msgstr "Vous devez être associé à une école pour créer des inscriptions à ce concours."
+
+msgid "The provided competition is invalid or does not exist."
+msgstr "Le concours proposé n'est pas valide ou n'existe pas."
+
+msgid "The associated competition allows only one student per entry. If you have submitted more students than permitted, contact an administrator to remove the extra entries."
+msgstr "Le concours associé autorise un seul élève par inscription. Si vous avez soumis plus d’élèves que permis, contactez un administrateur pour supprimer les inscriptions en trop."
+
+msgid "This associated competition strictly requires @count students per entry. If you have more entries than the allowed amount, contact an administrator to remove a student."
+msgstr "Ce concours associé exige strictement @count élèves par inscription. Si vous avez plus d’inscriptions que le nombre autorisé, contactez un administrateur pour retirer un élève."

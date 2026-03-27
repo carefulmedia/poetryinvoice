@@ -123,19 +123,16 @@ final class RemoveRecitationForm extends ConfirmFormBase {
       return;
     }
 
-    $student_name = $this->helper->getStudentName($recitation);
-
-    // Remove all scores attached to this recitation.
-    foreach ($recitation->field_accuracy_scores->referencedEntities() as $score) {
-      $score->delete();
-    }
-    foreach ($recitation->field_performance_scores->referencedEntities() as $score) {
-      $score->delete();
-    }
-
-    // Remove the recitation paragraph from its parent entry.
     $parent = $recitation->getParentEntity();
     if ($parent) {
+      // Validate constraints.
+      $violations = $parent->validate();
+      if ($violations->count() > 0) {
+        $this->messenger()->addError($violations[0]->getMessage());
+        $form_state->setRedirect('piv_live_competition.monitor_dashboard', ['node' => $node_id]);
+        return;
+      }
+
       $items = $parent->get('field_tr_student');
       $new_items = [];
       foreach ($items as $item) {
@@ -147,9 +144,17 @@ final class RemoveRecitationForm extends ConfirmFormBase {
       $parent->save();
     }
 
+    // Remove all scores attached to this recitation.
+    foreach ($recitation->field_accuracy_scores->referencedEntities() as $score) {
+      $score->delete();
+    }
+    foreach ($recitation->field_performance_scores->referencedEntities() as $score) {
+      $score->delete();
+    }
+
     // Delete the paragraph itself.
     $recitation->delete();
-
+    $student_name = $this->helper->getStudentName($recitation);
     $this->messenger()->addStatus($this->t('The recitation for @name has been removed.', ['@name' => $student_name]));
     $form_state->setRedirect('piv_live_competition.monitor_dashboard', ['node' => $node_id]);
   }
