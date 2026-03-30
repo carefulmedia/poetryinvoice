@@ -12,8 +12,32 @@ use Drupal\User\UserInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Datetime\DrupalDateTime;
+use Drupal\piv_live_competition\Helper;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\RequestStack;
 
+/**
+ *
+ */
 final class TeacherLiveCompetitionsListController extends ControllerBase {
+
+  /**
+   * Constructs a TeacherLiveCompetitionsListController object.
+   */
+  public function __construct(
+    private readonly Helper $helper,
+    private readonly RequestStack $requestStack,
+  ) {}
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function create(ContainerInterface $container) {
+    return new static(
+      $container->get('piv_live_competition.helper'),
+      $container->get('request_stack'),
+    );
+  }
 
   /**
    * Get live competitions and entries for a teacher's school.
@@ -128,7 +152,7 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
     }
 
     // Check if teacher has a school assigned.
-    $teacher_school = _piv_live_competition_get_teacher_school($account);
+    $teacher_school = $this->helper->getTeacherSchool($account);
     if (!$teacher_school) {
       return AccessResult::forbidden()
         ->cachePerUser()
@@ -174,7 +198,7 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
    * Helper method to build URL for adding a new entry.
    */
   private function buildAddEntryUrl(string $competition_id): Url {
-    $current_path = \Drupal::request()->getRequestUri();
+    $current_path = $this->requestStack->getCurrentRequest()->getRequestUri();
     return Url::fromRoute(
       'node.add',
       [
@@ -231,7 +255,7 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
     $links_markup = '';
 
     if ($is_editable) {
-      $current_path = \Drupal::request()->getRequestUri();
+      $current_path = $this->requestStack->getCurrentRequest()->getRequestUri();
       $edit_url = $entry->toUrl('edit-form', [
         'query' => [
           'destination' => $current_path,
@@ -380,7 +404,7 @@ final class TeacherLiveCompetitionsListController extends ControllerBase {
    * Builds a list of live competition entries grouped by competition.
    */
   public function __invoke(UserInterface $user): array {
-    $teacher_school = _piv_live_competition_get_teacher_school(\Drupal::currentUser());
+    $teacher_school = $this->helper->getTeacherSchool($this->currentUser());
     $teacher_school_id = $teacher_school?->id();
 
     $grouped_data = $teacher_school_id

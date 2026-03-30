@@ -177,7 +177,6 @@ final class MonitorDashboardController extends ControllerBase {
               ],
             ],
             'remove' => [
-              '#access' => FALSE, // @todo enable it again once PIV-812 is fixed.
               '#type' => 'link',
               '#title' => $this->t('Remove'),
               '#url' => $remove_recitation_url,

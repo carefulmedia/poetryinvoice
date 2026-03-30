@@ -359,6 +359,21 @@ function piv_base_preprocess_node(&$variables) {
 }
 
 /**
+ * Implements hook_preprocess_page().
+ */
+function piv_base_preprocess_page($variables) {
+  // Catch exception messages and display as errors. Messages set before
+  // throwing an exception will be ignored.
+  // @see https://www.drupal.org/project/drupal/issues/885896
+  $exception = \Drupal::request()->get('exception');
+  if ($exception) {
+    if ($message = $exception->getMessage()) {
+      \Drupal::messenger()->addError(t($message)); // @phpcs:ignore
+    }
+  }
+}
+
+/**
  * Implements hook_preprocess_piv_youtube().
  */
 function template_preprocess_piv_youtube(&$variables) {
