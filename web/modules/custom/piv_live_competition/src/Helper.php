@@ -331,7 +331,7 @@ final class Helper {
   /**
    * Count team_regionals_entry nodes for a school and competition.
    */
-  private function countSchoolEntries(int $competition_id, int $school_id, $exclude_entry_id = NULL): int {
+  private function countSchoolEntries($competition_id, $school_id, $exclude_entry_id = NULL): int {
     $user_query = $this->entityTypeManager->getStorage('user')->getQuery();
     $teacher_uids = $user_query->condition('field_school', $school_id)
       ->accessCheck(FALSE)
