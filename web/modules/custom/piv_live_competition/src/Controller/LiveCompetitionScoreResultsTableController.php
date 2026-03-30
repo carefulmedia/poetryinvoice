@@ -298,11 +298,9 @@ final class LiveCompetitionScoreResultsTableController extends ControllerBase {
 
     // Build the tables.
     foreach ($rows as $judge_id => $judge_rows) {
-      if ($hide_judge_tables) {
-        continue;
-      }
       $build[$judge_id] = [
         '#type' => 'container',
+        '#access' => !$hide_judge_tables,
       ];
       $build[$judge_id]['title'] = [
         '#type' => 'html_tag',
