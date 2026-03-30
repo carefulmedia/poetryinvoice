@@ -392,14 +392,6 @@ function piv_live_competition_form_node_team_regionals_entry_edit_form_alter(&$f
       throw new NotFoundHttpException('The provided competition is invalid or does not exist.');
     }
 
-    // Validate a entry node can be created using the
-    // TeamRegionalsEntryConstraintValidator.
-    $entry_node->field_contest_association = $competition_node;
-    $violations = $entry_node->validate();
-    if ($violations->count() > 0) {
-      throw new AccessDeniedHttpException($violations[0]->getMessage());
-    }
-
     // If all is good with the prefill, hide the field to prevent changes.
     // We use display:none to keep it functional but hidden from users.
     // #access prevents submission of the form value.
