@@ -9,7 +9,6 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\piv_live_competition\Helper;
 use Drupal\piv_live_competition\LiveCompetitionScoreService;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -34,14 +33,12 @@ final class YearlyResultsController extends ControllerBase {
       ];
     }
 
-    $year_int = (int) $year;
-
     $start_date = "$year-01-01T00:00:00";
     $end_date = "$year-12-31T23:59:59";
     $now = date('Y-m-d\TH:i:s');
 
     // Query competitions for our time period.
-    // We use the contest date here since it's the date where winners are announced.
+    // Use contest date since it's the date winners were announced.
     // If there are no entries and scores, they still won't be displayed.
     $query = $this->entityTypeManager()->getStorage('node')->getQuery();
     $query->condition('type', 'competition')
@@ -107,8 +104,12 @@ final class YearlyResultsController extends ControllerBase {
         // Calculate results.
         $results = $this->scoreService->calculateCompetitionResults($competition, $stream);
 
+        // If there are no scores, use the field_place_team_regional.
         if (empty($results['standings'])) {
-          continue;
+          $results = $this->scoreService->getCompetitionResultsFromPlace($competition, $stream);
+          if (empty($results['standings'])) {
+            continue;
+          }
         }
 
         // Get judges for this stream.
