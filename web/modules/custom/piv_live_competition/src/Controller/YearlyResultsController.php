@@ -9,6 +9,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\piv_live_competition\Helper;
 use Drupal\piv_live_competition\LiveCompetitionScoreService;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -25,7 +26,20 @@ final class YearlyResultsController extends ControllerBase {
   /**
    * Builds the response.
    */
-  public function __invoke(string $year): array {
+  public function __invoke(Request $request, string $year): array {
+    // Redirect if in incorrect language.
+    $route = $request->get('_route');
+    $map = [
+      'fr' => 'piv_live_competition.yearly_results.fr',
+      'en' => 'piv_live_competition.yearly_results',
+    ];
+    $langcode = $this->languageManager()->getCurrentLanguage()->getId();
+    if ($route != $map[$langcode]) {
+      $this->redirect($map[$langcode], [
+        'year' => $year
+      ]);
+    }
+
     // Validate year format.
     if (!preg_match('/^\d{4}$/', $year)) {
       return [
