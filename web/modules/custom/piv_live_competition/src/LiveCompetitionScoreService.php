@@ -380,6 +380,9 @@ final class LiveCompetitionScoreService {
 
     $standings = [];
     foreach ($team_regional_entries as $team_regional_entry) {
+      if (empty($team_regional_entry->field_place_team_regional->value)) {
+        continue;
+      }
       $reciters = [];
       foreach ($team_regional_entry->field_tr_student->referencedEntities() as $student_entry) {
         $reciters[] = $this->helper->getStudentName($student_entry);
