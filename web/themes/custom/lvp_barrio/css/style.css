@@ -1385,6 +1385,21 @@ form {
 .content-index.dive-in {
   height: fit-content;
 }
+/* binge/videos */
+.view-id-content_type_index_pages.view-display-id-block_4 .content-index.mixtape,
+.view-id-content_type_index_pages.view-display-id-block_4 .content-index.podcast {
+  min-height: 21rem;
+}
+/* binge/podcasts */
+.view-id-content_type_index_pages.view-display-id-block_10 .content-index.mixtape,
+.view-id-content_type_index_pages.view-display-id-block_10 .content-index.podcast {
+  min-height: auto;
+}
+/* write/futureverse/shortlist/2026 */
+.block-views-blockfutureverse-shortlist-and-longlist-block-7 .content-index.mixtape,
+.block-views-blockfutureverse-shortlist-and-longlist-block-7 .content-index.podcast {
+  min-height: 27rem;
+}
 .content-index.mixtape,
 .content-index.podcast {
   padding: 0;
