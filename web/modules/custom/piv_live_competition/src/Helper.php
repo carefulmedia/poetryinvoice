@@ -6,7 +6,7 @@ namespace Drupal\piv_live_competition;
 
 use Drupal\Core\Cache\CacheBackendInterface;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
-use Drupal\Node\NodeInterface;
+use Drupal\node\NodeInterface;
 use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Entity\EntityFieldManagerInterface;
 use Drupal\Core\Session\AccountInterface;

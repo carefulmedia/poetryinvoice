@@ -54,7 +54,7 @@ class CompetitionsListController extends ControllerBase {
   /**
    * The controller constructor.
    */
-  public function __construct(Connection $connection, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, LanguageManagerInterface $language_manager) {
+  final public function __construct(Connection $connection, AccountInterface $current_user, EntityTypeManagerInterface $entity_type_manager, LanguageManagerInterface $language_manager) {
     $this->connection = $connection;
     $this->currentUser = $current_user;
     $this->entityTypeManager = $entity_type_manager;

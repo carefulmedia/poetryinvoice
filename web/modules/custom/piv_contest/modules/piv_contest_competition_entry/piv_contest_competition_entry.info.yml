@@ -2,5 +2,5 @@ name: PIV Contest Competition Entry
 type: module
 description: 'Provides a competition entry entity.'
 package: PIV
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 configure: entity.competition_entry_type.collection

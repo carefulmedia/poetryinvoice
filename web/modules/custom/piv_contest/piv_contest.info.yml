@@ -2,7 +2,7 @@ name: PIV Contest
 type: module
 description: Code related to contests.
 package: PIV
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 dependencies:
   - piv_contest_competition:piv_contest_competition
   - piv_contest_competition_entry:piv_contest_competition_entry

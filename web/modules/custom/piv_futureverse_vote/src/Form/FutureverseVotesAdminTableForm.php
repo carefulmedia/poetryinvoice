@@ -5,7 +5,6 @@ namespace Drupal\piv_futureverse_vote\Form;
 use Drupal\Core\Database\Connection;
 use Drupal\Core\Database\Query\PagerSelectExtender;
 use Drupal\Core\Database\Query\TableSortExtender;
-use Drupal\Core\Datetime\DateFormatter;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\DependencyInjection\AutowireTrait;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
@@ -41,7 +40,7 @@ class FutureverseVotesAdminTableForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, FormStateInterface $filter_form_state = NULL): array {
+  public function buildForm(array $form, FormStateInterface $form_state, ?FormStateInterface $filter_form_state = NULL): array {
     if (!$filter_form_state) {
       return $form;
     }

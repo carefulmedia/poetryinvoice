@@ -17,7 +17,7 @@ class ScoreFormBuilder {
   /**
    * The plugin.manager.score_form service.
    *
-   * @var \Drupal\piv_contest\ScoreFormPluginManager
+   * @var ScoreFormPluginManager
    */
   protected $pluginManagerScoreForm;
 

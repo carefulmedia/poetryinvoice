@@ -6,6 +6,6 @@ dependencies:
     - piv_contest_judging_session
 id: judging_session.session_management_ui
 label: 'Session Management UI'
-description: ''
+description: null
 targetEntityType: judging_session
 cache: true

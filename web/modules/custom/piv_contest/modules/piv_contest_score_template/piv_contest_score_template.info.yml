@@ -2,5 +2,5 @@ name: PIV Contest Score Template
 type: module
 description: 'Provides a score template entity.'
 package: PIV
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 configure: entity.score_template_type.collection

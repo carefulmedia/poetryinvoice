@@ -21,28 +21,28 @@ class PivWelcomeModal extends FormBase {
   /**
    * The relevant configurations.
    *
-   * @var Drupal\Core\Config\ImmutableConfig
+   * @var \Drupal\Core\Config\ImmutableConfig
    */
   protected $configs;
 
   /**
    * The entity type manager.
    *
-   * @var Drupal\Core\Entity\EntityTypeManagerInterface
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
 
   /**
    * The current logged in user.
    *
-   * @var Drupal\Core\Session\AccountProxyInterface
+   * @var \Drupal\Core\Session\AccountProxyInterface
    */
   protected $currentUser;
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, ImmutableConfig $configs, AccountProxyInterface $current_user) {
+  final public function __construct(EntityTypeManagerInterface $entity_type_manager, ImmutableConfig $configs, AccountProxyInterface $current_user) {
     $this->configs = $configs;
     $this->entityTypeManager = $entity_type_manager;
     $this->currentUser = $current_user;

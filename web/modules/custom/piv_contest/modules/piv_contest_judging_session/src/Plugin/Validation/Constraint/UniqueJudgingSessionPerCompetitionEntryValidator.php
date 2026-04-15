@@ -23,7 +23,7 @@ class UniqueJudgingSessionPerCompetitionEntryValidator extends ConstraintValidat
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+  final public function __construct(EntityTypeManagerInterface $entity_type_manager) {
     $this->judgingSessionStorage = $entity_type_manager->getStorage('judging_session');
   }
 

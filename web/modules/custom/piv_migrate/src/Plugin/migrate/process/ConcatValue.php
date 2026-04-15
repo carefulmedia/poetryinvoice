@@ -8,7 +8,7 @@ use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
 
 /**
- * Class ConcatValue
+ * Class ConcatValue.
  *
  * @MigrateProcessPlugin(
  *   id = "concat_value",
@@ -16,9 +16,13 @@ use Drupal\migrate\Row;
  * )
  */
 class ConcatValue extends ProcessPluginBase {
+
+  /**
+   *
+   */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     if (is_array($value)) {
-      $delimiter = isset($this->configuration['delimiter']) ? $this->configuration['delimiter'] : '';
+      $delimiter = $this->configuration['delimiter'] ?? '';
 
       $result_values = [];
       foreach ($value as $v) {
@@ -32,4 +36,5 @@ class ConcatValue extends ProcessPluginBase {
 
     throw new MigrateException(sprintf('%s is not an array', var_export($value, TRUE)));
   }
+
 }

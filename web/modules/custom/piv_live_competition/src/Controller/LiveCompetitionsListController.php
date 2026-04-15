@@ -6,7 +6,7 @@ namespace Drupal\piv_live_competition\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Access\AccessResult;
-use Drupal\User\UserInterface;
+use Drupal\user\UserInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Datetime\DrupalDateTime;

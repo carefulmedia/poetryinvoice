@@ -20,7 +20,6 @@ dependencies:
     - field.field.node.mixtape.field_poems
     - field.field.node.mixtape.field_recommended_reading
     - node.type.mixtape
-    - views.view.content_type_index_pages
     - views.view.mixtage_body
     - views.view.user_listing_index_pages
   module:
@@ -237,20 +236,7 @@ third_party_settings:
         layout_id: layout_onecol
         layout_settings:
           label: ''
-        components:
-          82ca9357-3b37-40ed-b9b6-48dec3e4cff6:
-            uuid: 82ca9357-3b37-40ed-b9b6-48dec3e4cff6
-            region: content
-            configuration:
-              id: 'views_block:content_type_index_pages-block_15'
-              label: ''
-              label_display: visible
-              provider: views
-              context_mapping: {  }
-              views_label: ''
-              items_per_page: none
-            weight: 0
-            additional: {  }
+        components: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_2'

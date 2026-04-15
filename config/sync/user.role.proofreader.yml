@@ -68,6 +68,7 @@ permissions:
   - 'edit own student content'
   - 'edit own venue content'
   - 'edit own writing_prompt content'
+  - 'rebuild node access permissions'
   - 'translate interface'
   - 'view field_variations_for_younger_stu'
   - 'view own unpublished content'

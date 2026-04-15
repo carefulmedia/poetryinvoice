@@ -34,7 +34,7 @@ class CompetitionEntryAccessControlHandler extends EntityAccessControlHandler im
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeInterface $entity_type, CompetitionLockService $competitionLockService, EntityTypeManager $entityTypeManager) {
+  final public function __construct(EntityTypeInterface $entity_type, CompetitionLockService $competitionLockService, EntityTypeManager $entityTypeManager) {
     parent::__construct($entity_type);
     $this->competitionLockService = $competitionLockService;
     $this->userStorage = $entityTypeManager->getStorage('user');

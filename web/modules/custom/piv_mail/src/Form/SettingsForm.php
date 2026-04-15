@@ -30,7 +30,7 @@ class SettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(PivMailPluginManager $piv_mail_plugin_manager, LanguageManagerInterface $language_manager) {
+  final public function __construct(PivMailPluginManager $piv_mail_plugin_manager, LanguageManagerInterface $language_manager) {
     $this->pivMailPluginManager = $piv_mail_plugin_manager;
     $this->languageManager = $language_manager;
   }

@@ -6,6 +6,6 @@ dependencies:
     - user
 id: user.poet_network
 label: 'Poet Networker'
-description: ''
+description: null
 targetEntityType: user
 cache: true

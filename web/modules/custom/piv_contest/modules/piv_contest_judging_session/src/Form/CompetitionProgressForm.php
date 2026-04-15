@@ -31,16 +31,23 @@ class CompetitionProgressForm extends FormBase {
   protected $judgingSessionsStorage;
 
   /**
+   * The entity type manager.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
+   */
+  protected $entityTypeManager;
+
+  /**
    * The database service.
    *
-   * @var Drupal\Core\Database\Connection
+   * @var \Drupal\Core\Database\Connection
    */
   protected $database;
 
   /**
    * The request stack.
    *
-   * @var Symfony\Component\HttpFoundation\RequestStack
+   * @var \Symfony\Component\HttpFoundation\RequestStack
    */
   protected $requestStack;
 
@@ -54,7 +61,7 @@ class CompetitionProgressForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, Connection $db, RequestStack $request_stack, JudgeSession $judge_session) {
+  final public function __construct(EntityTypeManagerInterface $entity_type_manager, Connection $db, RequestStack $request_stack, JudgeSession $judge_session) {
     $this->competitionEntryStorage = $entity_type_manager->getStorage('competition_entry');
     $this->judgingSessionsStorage = $entity_type_manager->getStorage('judging_session');
     $this->entityTypeManager = $entity_type_manager;

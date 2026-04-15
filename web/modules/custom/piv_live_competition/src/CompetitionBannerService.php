@@ -22,7 +22,7 @@ class CompetitionBannerService {
   use StringTranslationTrait;
 
   public function __construct(
-    protected EntityTypeManagerInterface $entityTypeManager
+    protected EntityTypeManagerInterface $entityTypeManager,
   ) {}
 
   /**
@@ -31,7 +31,7 @@ class CompetitionBannerService {
    * @param \Drupal\Core\Session\AccountInterface $account
    *   The current user account.
    *
-   * @return array|NULL
+   * @return array|null
    *   Render array for the banner, or NULL if no banner should be shown.
    */
   public function getBannerData(AccountInterface $account): ?array {
@@ -105,7 +105,8 @@ class CompetitionBannerService {
         ->condition('field_winners_announced', $window_end_str, '<=')
         ->accessCheck(FALSE)
         ->sort('created', 'DESC');
-    } catch (InvalidPluginDefinitionException|PluginNotFoundException $e) {
+    }
+    catch (InvalidPluginDefinitionException | PluginNotFoundException $e) {
       return [];
     }
 
@@ -118,7 +119,7 @@ class CompetitionBannerService {
     try {
       return $this->entityTypeManager->getStorage('node')->loadMultiple($nids);
     }
-    catch (InvalidPluginDefinitionException|PluginNotFoundException $e) {
+    catch (InvalidPluginDefinitionException | PluginNotFoundException $e) {
       return [];
     }
   }
@@ -135,7 +136,7 @@ class CompetitionBannerService {
    * @param int|string $user_id
    *   The user ID to check.
    *
-   * @return string|NULL
+   * @return string|null
    *   'admin', 'judge', 'prompter', or NULL if no role.
    */
   public function getUserRoleInCompetition(NodeInterface $competition, int|string $user_id): ?string {

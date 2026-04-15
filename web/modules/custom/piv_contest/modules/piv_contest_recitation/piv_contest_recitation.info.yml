@@ -2,5 +2,5 @@ name: PIV Contest Recitation
 type: module
 description: 'Provides a recitation entity.'
 package: PIV
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 configure: entity.recitation_type.collection

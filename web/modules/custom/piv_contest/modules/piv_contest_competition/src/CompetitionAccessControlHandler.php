@@ -27,14 +27,14 @@ class CompetitionAccessControlHandler extends EntityAccessControlHandler impleme
   /**
    * The route match service.
    *
-   * @var Drupal\Core\Routing\RouteMatchInterface
+   * @var \Drupal\Core\Routing\RouteMatchInterface
    */
   private $routeMatch;
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeInterface $entity_type, EntityTypeManager $entityTypeManager, RouteMatchInterface $routeMatch) {
+  final public function __construct(EntityTypeInterface $entity_type, EntityTypeManager $entityTypeManager, RouteMatchInterface $routeMatch) {
     parent::__construct($entity_type);
     $this->userStorage = $entityTypeManager->getStorage('user');
     $this->routeMatch = $routeMatch;

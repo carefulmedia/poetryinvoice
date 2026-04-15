@@ -36,7 +36,7 @@ class CompetitionController extends ControllerBase {
   /**
    * The controller constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, LanguageManager $language_manager) {
+  final public function __construct(EntityTypeManagerInterface $entity_type_manager, LanguageManager $language_manager) {
     $this->entityTypeManager = $entity_type_manager;
     $this->currentLanguage = $language_manager->getCurrentLanguage();
   }

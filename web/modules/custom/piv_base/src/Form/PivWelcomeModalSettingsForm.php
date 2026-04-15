@@ -15,14 +15,14 @@ class PivWelcomeModalSettingsForm extends ConfigFormBase {
   /**
    * The view storage.
    *
-   * @var Drupal\Core\Entity\Sql\SqlContentEntityStorage
+   * @var \Drupal\Core\Entity\Sql\SqlContentEntityStorage
    */
   protected $blockContentStorage;
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager) {
+  final public function __construct(EntityTypeManagerInterface $entity_type_manager) {
     $this->blockContentStorage = $entity_type_manager->getStorage('block_content');
   }
 

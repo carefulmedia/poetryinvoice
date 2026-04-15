@@ -8,7 +8,7 @@ use Drupal\Core\DependencyInjection\AutowireTrait;
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\piv_contest_score\ScoreInterface;
-use Drupal\Paragraphs\ParagraphInterface;
+use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\piv_live_competition\Helper;

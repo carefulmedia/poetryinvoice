@@ -19,14 +19,14 @@ class RecitationAccessControlHandler extends EntityAccessControlHandler implemen
   /**
    * The current route match service.
    *
-   * @var Drupal\Core\Routing\RouteMatchInterface
+   * @var \Drupal\Core\Routing\RouteMatchInterface
    */
   private $currentRouteMatch;
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeInterface $entity_type, RouteMatchInterface $currentRouteMatch) {
+  final public function __construct(EntityTypeInterface $entity_type, RouteMatchInterface $currentRouteMatch) {
     parent::__construct($entity_type);
     $this->currentRouteMatch = $currentRouteMatch;
   }

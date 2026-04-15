@@ -58,6 +58,7 @@ settings:
       properties:
         reversed: false
         startIndex: true
+        styles: true
       multiBlock: true
     ckeditor5_sourceEditing:
       allowed_tags:
@@ -67,8 +68,6 @@ settings:
         - '<dd>'
         - '<a hreflang name class>'
         - '<blockquote cite>'
-        - '<ul type>'
-        - '<ol type>'
         - '<table class>'
         - '<div id class>'
         - '<iframe allow allowfullscreen frameborder height src title width>'

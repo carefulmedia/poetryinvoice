@@ -32,7 +32,7 @@ class FutureverseVoteForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, NodeInterface $node = NULL): array {
+  public function buildForm(array $form, FormStateInterface $form_state, ?NodeInterface $node = NULL): array {
     if (!$node || $node->bundle() !== 'journal_poem') {
       return $form;
     }
@@ -190,10 +190,16 @@ class FutureverseVoteForm extends FormBase {
     return $form;
   }
 
+  /**
+   *
+   */
   public function ajaxSubmit(array &$form, FormStateInterface $form_state) {
     return $form;
   }
 
+  /**
+   *
+   */
   public function ajaxCloseDialog(array &$form, FormStateInterface $form_state) {
     $response = new AjaxResponse();
     $response->addCommand(new CloseModalDialogCommand());
