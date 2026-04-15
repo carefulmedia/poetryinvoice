@@ -103,9 +103,8 @@ hooks:
         php ./drush/platformsh_generate_drush_yml.php
         cd web
         drush cr
-        drush locale:import fr modules/custom/piv_base/translations/fr.po --override=none
-        drush deploy
-        pkill -f php-fpm
+        drush locale:import fr modules/custom/piv_base/translations/fr.po --override=none || true
+        drush deploy -y || true
 
 # The configuration of app when it is exposed to the web.
 web:
