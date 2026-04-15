@@ -11,19 +11,21 @@ system.admin_contest:
   path: '/admin/contest'
   defaults:
     _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
-    link_id: 'system.admin_contest'
     _title: 'Contest'
   requirements:
     _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
 
 system.admin_contest_config:
   path: '/admin/contest/config'
   defaults:
     _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
-    link_id: 'system.admin_contest_config'
     _title: 'Configure'
   requirements:
     _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
 
 piv_content.competitions_list:
   path: '/user/{user}/competitions'
