@@ -335,13 +335,17 @@ class ReplacementsService {
           foreach ($students as $delta => $student) {
             $stage_name = $student->field_student_name_1->value;
             $html .= '<div class="student"><p>';
-            $html .= $this->t('Reciter:') . " $delta<br>";
+            $html .= $this->t('Reciter:') . " " . ($delta + 1) . "<br>";
             $html .= $this->t('Legal Name:') . " {$student->field_legal_name->value}<br>";
             if ($stage_name) {
               $html .= $this->t('Stage Name:') . " $stage_name<br>";
             }
             $html .= $this->t('Email:') . " {$student->piv_student_mail->value}<br>";
-            $html .= $this->t('Poem to be recited:') . " {$student->field_poem->entity->title->value}<br>";
+            $poem = $student->field_poem?->entity;
+            $poem_title = $poem?->title?->value ?? '';
+            $poet = $poem?->uid?->entity;
+            $poem_author = ($poet?->piv_teacher_first_name?->value ?? '') . ' ' . ($poet?->piv_teacher_last_name?->value ?? '');
+            $html .= $this->t('Poem to be recited:') . " $poem_title, $poem_author<br>";
             $html .= '</p></div>';
           }
           $html .= '</div>';
