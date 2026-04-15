@@ -293,6 +293,16 @@ class CompetitionProgressForm extends FormBase {
         '#submit' => [[$this, 'promote']],
         '#access' => $can_promote,
       ];
+      $form['demote'] = [
+        '#type' => 'submit',
+        '#value' => $this->t('Demote the selected entries'),
+        '#ajax' => [
+          'callback' => [$this, 'ajaxRefresh'],
+          'wrapper' => 'competition-progress',
+          'event' => 'click',
+        ],
+        '#submit' => [[$this, 'demote']],
+      ];
       if (!$can_promote) {
         $form['cant_promote'] = [
           '#markup' => $this->t('Competition entries are already at the last level'),
@@ -371,9 +381,35 @@ class CompetitionProgressForm extends FormBase {
         $total_levels = count($competition->field_competition_levels);
         if ($next_level <= $total_levels) {
           foreach ($this->competitionEntryStorage->loadMultiple($to_promote) as $competition_entry) {
+            // Skip entries that are already promoted.
+            if ($competition_entry->field_competition_current_level->value > $current_level) {
+              continue;
+            }
             $competition_entry->field_competition_current_level = $next_level;
             $competition_entry->save();
           }
+        }
+      }
+    }
+  }
+
+  /**
+   * Demote the selected entries back to the current competition level.
+   */
+  public function demote(array &$form, FormStateInterface $form_state): void {
+    $form_state->setRebuild(TRUE);
+    $to_demote = array_filter($form_state->getValue('totalled_scores'));
+    if ($to_demote) {
+      $competition = $form_state->get('competition');
+      $current_level = $competition->field_competition_current_level->value;
+      if (is_numeric($current_level)) {
+        foreach ($this->competitionEntryStorage->loadMultiple($to_demote) as $competition_entry) {
+          // Only demote entries that have already been promoted.
+          if ($competition_entry->field_competition_current_level->value <= $current_level) {
+            continue;
+          }
+          $competition_entry->field_competition_current_level = $current_level;
+          $competition_entry->save();
         }
       }
     }
