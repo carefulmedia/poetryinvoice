@@ -9,7 +9,7 @@ use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\piv_live_competition\Helper;
 use Drupal\piv_live_competition\LiveCompetitionScoreService;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Returns responses for PIV Live Competition routes.
@@ -26,7 +26,20 @@ final class YearlyResultsController extends ControllerBase {
   /**
    * Builds the response.
    */
-  public function __invoke(string $year): array {
+  public function __invoke(Request $request, string $year): array {
+    // Redirect if in incorrect language.
+    $route = $request->get('_route');
+    $map = [
+      'fr' => 'piv_live_competition.yearly_results.fr',
+      'en' => 'piv_live_competition.yearly_results',
+    ];
+    $langcode = $this->languageManager()->getCurrentLanguage()->getId();
+    if ($route != $map[$langcode]) {
+      $this->redirect($map[$langcode], [
+        'year' => $year
+      ]);
+    }
+
     // Validate year format.
     if (!preg_match('/^\d{4}$/', $year)) {
       return [
@@ -34,14 +47,12 @@ final class YearlyResultsController extends ControllerBase {
       ];
     }
 
-    $year_int = (int) $year;
-
     $start_date = "$year-01-01T00:00:00";
     $end_date = "$year-12-31T23:59:59";
     $now = date('Y-m-d\TH:i:s');
 
     // Query competitions for our time period.
-    // We use the contest date here since it's the date where winners are announced.
+    // Use contest date since it's the date winners were announced.
     // If there are no entries and scores, they still won't be displayed.
     $query = $this->entityTypeManager()->getStorage('node')->getQuery();
     $query->condition('type', 'competition')
@@ -107,8 +118,12 @@ final class YearlyResultsController extends ControllerBase {
         // Calculate results.
         $results = $this->scoreService->calculateCompetitionResults($competition, $stream);
 
+        // If there are no scores, use the field_place_team_regional.
         if (empty($results['standings'])) {
-          continue;
+          $results = $this->scoreService->getCompetitionResultsFromPlace($competition, $stream);
+          if (empty($results['standings'])) {
+            continue;
+          }
         }
 
         // Get judges for this stream.

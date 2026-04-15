@@ -116,7 +116,8 @@ final class LiveCompetitionScoreService {
         foreach ($student_entry->field_accuracy_scores->referencedEntities() as $score) {
           $judge_id = $score->judge->target_id;
 
-          // Determine judge's language based on which accuracy judge list they're in.
+          // Determine judge's language based on which accuracy judge list
+          // they're in.
           if (in_array($judge_id, $judges_fr, TRUE)) {
             $langcode = 'fr';
           }
@@ -124,7 +125,8 @@ final class LiveCompetitionScoreService {
             $langcode = 'en';
           }
           else {
-            // Fallback if judge isn't in either list. Honestly this shouldn't happen, but better safe than sorry.
+            // Fallback if judge isn't in either list. Honestly this shouldn't
+            // happen, but better safe than sorry.
             $langcode = 'en';
           }
 
@@ -336,6 +338,79 @@ final class LiveCompetitionScoreService {
     }
 
     // Count total entries (teams).
+    $total_entries = count($standings);
+
+    return [
+      'standings' => $standings,
+      'total_entries' => $total_entries,
+    ];
+  }
+
+  /**
+   * Return the results based on the field_place_team_regional field.
+   */
+  public function getCompetitionResultsFromPlace(NodeInterface $competition, string|int $stream): array {
+    // Query team regional entries.
+    $query = $this->entityTypeManager
+      ->getStorage('node')
+      ->getQuery()
+      ->condition('type', 'team_regionals_entry')
+      ->condition('field_contest_association', $competition->id())
+      ->accessCheck(FALSE);
+
+    if ($stream !== '_none') {
+      $query->condition('field_language_stream', $stream);
+    }
+    else {
+      $query->notExists('field_language_stream');
+    }
+
+    $team_regional_ids = $query->execute();
+
+    $team_regional_entries = $team_regional_ids
+      ? $this->entityTypeManager->getStorage('node')->loadMultiple($team_regional_ids)
+      : [];
+
+    if (empty($team_regional_entries)) {
+      return [
+        'standings' => [],
+        'total_entries' => 0,
+      ];
+    }
+
+    $standings = [];
+    foreach ($team_regional_entries as $team_regional_entry) {
+      if (empty($team_regional_entry->field_place_team_regional->value)) {
+        continue;
+      }
+      $reciters = [];
+      foreach ($team_regional_entry->field_tr_student->referencedEntities() as $student_entry) {
+        $reciters[] = $this->helper->getStudentName($student_entry);
+      }
+
+      $school = $team_regional_entry->getOwner()?->field_school->entity;
+      $school_name = $school ? $school->label() : '';
+      $standings[] = [
+        'rank' => $team_regional_entry->field_place_team_regional->value,
+        'tr_id' => $team_regional_entry->id(),
+        'school_id' => $school ? $school->id() : '',
+        'school_name' => $school_name,
+        'school_name_plain' => $school_name,
+        'reciters' => $reciters,
+        'score' => 0,
+        'overall' => 0,
+        'accuracy' => 0,
+        'recitation' => 0,
+        'best_poem' => 0,
+        'best_overall' => 0,
+        'is_tie' => FALSE,
+      ];
+    }
+    // Sort by rank.
+    usort($standings, function ($a, $b) {
+      return strcmp($a['rank'], $b['rank']);
+    });
+
     $total_entries = count($standings);
 
     return [
