@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: poet_bio_save_action
+label: 'Save poet bios'
+type: poet_bio
+plugin: entity:save_action:poet_bio
+configuration: {  }

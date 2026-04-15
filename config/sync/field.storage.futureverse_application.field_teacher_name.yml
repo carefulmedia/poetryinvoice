@@ -1,0 +1,21 @@
+uuid: 230ea9b4-e753-4944-9888-8bb68d5de073
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application.field_teacher_name
+field_name: field_teacher_name
+entity_type: futureverse_application
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

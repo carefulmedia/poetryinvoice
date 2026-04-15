@@ -1,0 +1,29 @@
+uuid: 9894ec14-624d-4ff4-93ed-a2b6d4841ed3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_poem_node
+    - node.type.journal_poem
+    - paragraphs.paragraphs_type.poem
+id: paragraph.poem.field_poem_node
+field_name: field_poem_node
+entity_type: paragraph
+bundle: poem
+label: 'Poem node'
+description: 'A reference to the journal poem node generated based on this stub.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      journal_poem: journal_poem
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

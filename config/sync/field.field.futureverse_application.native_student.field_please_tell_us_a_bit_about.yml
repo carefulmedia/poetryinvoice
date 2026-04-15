@@ -1,0 +1,19 @@
+uuid: 2d273f03-cf16-42f7-9327-f23c3a565a74
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_please_tell_us_a_bit_about
+    - piv_futureverse.futureverse_application_type.native_student
+id: futureverse_application.native_student.field_please_tell_us_a_bit_about
+field_name: field_please_tell_us_a_bit_about
+entity_type: futureverse_application
+bundle: native_student
+label: 'Please tell us a bit about your Indigenous identity'
+description: "<p>This could be about your community, family history, or anything else that makes up your Indigenous identity.</p>\r\n<p><b>If you want, you could use one or all of these three statements to share your ideas:</b><br>\r\n1) When I think about my Indigenous identity, I feel...<br>\r\n2) Being Indigenous is who I am. What I mean is....<br>\r\n3) What I love about my family and my Indigenous history is....\r\n</p>"
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

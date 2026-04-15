@@ -1,0 +1,729 @@
+<?php
+
+/**
+ * @file
+ * Futureverse+ hooks and functionalities.
+ */
+
+use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\piv_futureverse\JournalHelper;
+use Drupal\Core\Url;
+use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Field\FieldDefinitionInterface;
+use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInterface $form_state) {
+  $form['#attached']['library'][] = 'piv_futureverse/admin';
+
+  $journal_year = $form_state->getFormObject()?->getEntity() ?? NULL;
+  if (!$journal_year || $journal_year->isNew()) {
+    return;
+  }
+
+  // The notifications confirm form accepts journal months as
+  // parameters, send the first one and get the journal year from that.
+  $first_journal_month_id = $journal_year->field_journal_months->target_id ?? NULL;
+  if (!$first_journal_month_id) {
+    return;
+  }
+
+  // Voices/voix anthology notifications.
+  $key_value = \Drupal::keyValue('journal_notifications');
+  $key = 'accepted_to_voices_' . $journal_year->id();
+  $value = $key_value->get($key, ['emails' => []]);
+  $already_sent = $value['emails'] ?? [];
+  $accepted_poems = JournalHelper::getPoemsByAcceptanceGroupedByEmail($journal_year, 'Accepted');
+  // Index/save per email.
+  $emails = array_keys($accepted_poems);
+  $to_send = array_diff($emails, $already_sent);
+
+  $form['field_journal_months']['notifications'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Notifications'),
+    '#weight' => -100,
+    'accepted' => ['#type' => 'container'],
+    'notaccepted' => ['#type' => 'container'],
+    'futureverse' => ['#type' => 'container'],
+    'futureverse_shortlisted' => ['#type' => 'container'],
+  ];
+  $send_label = count($already_sent)
+    ? t('Resend accepted to voices/voix notifications')
+    : t('Send accepted to voices/voix notifications');
+  $form['field_journal_months']['notifications']['accepted']['send_notifications'] = [
+    '#type' => 'link',
+    '#title' => $send_label,
+    '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+      'op' => 'accepted_to_voices:send',
+      'journal_month' => $first_journal_month_id,
+    ]),
+    '#attributes' => [
+      'class' => ['button'],
+    ],
+  ];
+  if (count($already_sent)) {
+    if (count($to_send)) {
+      // Update only send the ones that are missing if there are any.
+      $form['field_journal_months']['notifications']['accepted']['update_notifications'] = [
+        '#type' => 'link',
+        '#title' => t('Update accepted to voices/voix notifications'),
+        '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+          'op' => 'accepted_to_voices:update',
+          'journal_month' => $first_journal_month_id,
+        ]),
+        '#attributes' => [
+          'class' => ['button'],
+        ],
+      ];
+    }
+    // Reminder sent to anyone without a poet_bio or
+    // futureverse_application.
+    $form['field_journal_months']['notifications']['accepted']['reminder_notifications'] = [
+      '#type' => 'link',
+      '#title' => t('Reminder to create poet bio for "accepted to voices/voix"'),
+      '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+        'op' => 'accepted_to_voices:reminder',
+        'journal_month' => $first_journal_month_id,
+      ]),
+      '#attributes' => [
+        'class' => ['button', 'action-link--icon-trash', 'action-link--danger'],
+      ],
+    ];
+  }
+
+  // Not accepted.
+  $key = 'not_accepted_to_voices_' . $journal_year->id();
+  $value = $key_value->get($key, ['emails' => []]);
+  $already_sent = $value['emails'] ?? [];
+  $not_accepted_poems = JournalHelper::getNotAcceptedPoemsGroupedByEmail($journal_year);
+  // Index/save per email.
+  $emails = array_keys($not_accepted_poems);
+  $to_send = array_diff($emails, $already_sent);
+  $send_label = count($already_sent)
+    ? t('Resend not accepted to voices/voix notifications')
+    : t('Send not accepted to voices/voix notifications');
+
+  $form['field_journal_months']['notifications']['notaccepted']['send_notifications'] = [
+    '#type' => 'link',
+    '#title' => $send_label,
+    '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+      'op' => 'not_accepted_to_voices:send',
+      'journal_month' => $first_journal_month_id,
+    ]),
+    '#attributes' => [
+      'class' => ['button'],
+    ],
+  ];
+  if (count($already_sent) && count($to_send)) {
+    // Update only send the ones that are missing if there are any.
+    $form['field_journal_months']['notifications']['notaccepted']['update_notifications'] = [
+      '#type' => 'link',
+      '#title' => t('Update not accepted to voices/voix notifications'),
+      '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+        'op' => 'not_accepted_to_voices:update',
+        'journal_month' => $first_journal_month_id,
+      ]),
+      '#attributes' => [
+        'class' => ['button'],
+      ],
+    ];
+  }
+
+  // Futureverse, "Yes" or "Monthly prize winner" acceptance level.
+  $key = 'futureverse_invitations_' . $journal_year->id();
+  $value = $key_value->get($key, ['emails' => []]);
+  $already_sent = $value['emails'] ?? [];
+  $to_invite_poems = JournalHelper::getPoemsByAcceptanceGroupedByEmail($journal_year, ['Yes', 'Monthly prize winner']);
+  // Index/save per email.
+  $emails = array_keys($to_invite_poems);
+  $to_send = array_diff($emails, $already_sent);
+  $send_label = count($already_sent)
+    ? t('Resend futureverse invitations')
+    : t('Send futureverse invitations');
+
+  $form['field_journal_months']['notifications']['futureverse']['send_notifications'] = [
+    '#type' => 'link',
+    '#title' => $send_label,
+    '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+      'op' => 'futureverse_invitations:send',
+      'journal_month' => $first_journal_month_id,
+    ]),
+    '#attributes' => [
+      'class' => ['button'],
+    ],
+  ];
+  if (count($already_sent)) {
+    if (count($to_send)) {
+      // Update only send the ones that are missing if there are any.
+      $form['field_journal_months']['notifications']['futureverse']['update_notifications'] = [
+        '#type' => 'link',
+        '#title' => t('Update futureverse invitations'),
+        '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+          'op' => 'futureverse_invitations:update',
+          'journal_month' => $first_journal_month_id,
+        ]),
+        '#attributes' => [
+          'class' => ['button'],
+        ],
+      ];
+    }
+    $form['field_journal_months']['notifications']['futureverse']['reminder_notifications'] = [
+      '#type' => 'link',
+      '#title' => t('Reminder to create futureverse application for futureverse invitations'),
+      '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+        'op' => 'futureverse_invitations:reminder',
+        'journal_month' => $first_journal_month_id,
+      ]),
+      '#attributes' => [
+        'class' => ['button', 'action-link--icon-trash', 'action-link--danger'],
+      ],
+    ];
+  }
+
+  // Shortlisted for futureverse,.
+  $key = 'futureverse_shortlisted_' . $journal_year->id();
+  $value = $key_value->get($key, ['emails' => []]);
+  $already_sent = $value['emails'] ?? [];
+  $shortlisted_poems = JournalHelper::getFutureverseShortlistedPoemsGroupedByEmail($journal_year);
+  // Index/save per email.
+  $emails = array_keys($shortlisted_poems);
+  $to_send = array_diff($emails, $already_sent);
+  $send_label = count($already_sent)
+    ? t('Resend futureverse shortlisted notification')
+    : t('Send futureverse shortlisted notification');
+
+  $form['field_journal_months']['notifications']['futureverse_shortlisted']['send_notifications'] = [
+    '#type' => 'link',
+    '#title' => $send_label,
+    '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+      'op' => 'futureverse_shortlisted:send',
+      'journal_month' => $first_journal_month_id,
+    ]),
+    '#attributes' => [
+      'class' => ['button'],
+    ],
+  ];
+  if (count($already_sent)) {
+    if (count($to_send)) {
+      // Update only send the ones that are missing if there are any.
+      $form['field_journal_months']['notifications']['futureverse_shortlisted']['update_notifications'] = [
+        '#type' => 'link',
+        '#title' => t('Update futureverse shortlisted notification'),
+        '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+          'op' => 'futureverse_shortlisted:update',
+          'journal_month' => $first_journal_month_id,
+        ]),
+        '#attributes' => [
+          'class' => ['button'],
+        ],
+      ];
+    }
+    $form['field_journal_months']['notifications']['futureverse_shortlisted']['reminder_notifications'] = [
+      '#type' => 'link',
+      '#title' => t('Reminder to create futureverse applications for futureverse shortlisted notification'),
+      '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+        'op' => 'futureverse_shortlisted:reminder',
+        'journal_month' => $first_journal_month_id,
+      ]),
+      '#attributes' => [
+        'class' => ['button', 'action-link--icon-trash', 'action-link--danger'],
+      ],
+    ];
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function piv_futureverse_form_futureverse_application_native_student_add_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $form['instructions'] = [
+    '#markup' => t('Provide an email for the native student. After saving you will have the option to send a notification to that e-mail for the student to complete the form.'),
+  ];
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function piv_futureverse_form_futureverse_application_native_student_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  $entity = $form_state->getFormObject()?->getEntity() ?? NULL;
+  if ($entity && array_key_exists('field_once_link_enabled', $form)) {
+    $form['field_once_link_enabled']['#type'] = 'fieldset';
+    $url = \Drupal::service('piv_futureverse.futureverse_once_url_generator')
+      ->generateUrl('native_student', $entity->id());
+    $form['field_once_link_enabled']['instructions'] = [
+      '#markup' => t('With the checkbox above enabled, a user can use this url to edit this content: <pre>@url</pre>', [
+        '@url' => $url->toString(),
+      ]),
+    ];
+  }
+}
+
+/**
+ * Find user by email or create new.
+ *
+ * Also updates the user name if its empty and one is provided.
+ */
+function piv_futureverse_find_or_create_student_poet($email, $first_name, $last_name) {
+  if (!$email) {
+    return NULL;
+  }
+  $user_storage = \Drupal::entityTypeManager()
+    ->getStorage('user');
+  $users = $email
+    ? $user_storage->loadByProperties(['mail' => $email])
+    : [];
+
+  if (count($users)) {
+    $user = reset($users);
+    $need_save = FALSE;
+    if ($user->piv_teacher_first_name->isEmpty() && $first_name) {
+      $user->piv_teacher_first_name = $first_name;
+      $need_save = TRUE;
+    }
+    if ($user->piv_teacher_last_name->isEmpty() && $last_name) {
+      $user->piv_teacher_last_name = $last_name;
+      $need_save = TRUE;
+    }
+    if ($need_save) {
+      $user->save();
+    }
+    return $user;
+  }
+
+  $langcode = \Drupal::languageManager()
+    ->getCurrentLanguage()->getId();
+  $user = $user_storage->create([
+    'name' => $email,
+    'mail' => $email,
+    'preferred_langcode' => $langcode,
+    'langcode' => $langcode,
+    'piv_teacher_first_name' => $first_name,
+    'piv_teacher_last_name' => $last_name,
+    'roles' => ['student_poet'],
+    'status' => 1,
+  ]);
+  $user->save();
+  return $user;
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function piv_futureverse_entity_insert(EntityInterface $entity) : void {
+  // Assign a journal poem to the current futureverse+ journal month if
+  // one exists.
+  if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'journal_poem') {
+    $months = JournalHelper::getJournalMonths();
+    if ($months) {
+      $month = reset($months);
+      $month->field_journal_poems[] = ['target_id' => $entity->id()];
+      $month->save();
+    }
+
+    $current_user = \Drupal::currentUser();
+    if ($current_user->isAnonymous()) {
+      // Create or load the user based on the email and set the user as
+      // the owner of this journal_poem.
+      $user = piv_futureverse_find_or_create_student_poet($entity->field_email1->value, $entity->piv_teacher_first_name->value, $entity->piv_teacher_last_name->value);
+      if ($user) {
+        $entity->setOwner($user)->save();
+      }
+    }
+  }
+  elseif ($entity->getEntityTypeId() == 'poet_bio') {
+    // Send an email to admin when a Poet Bio is created.
+    $replacements_service = \Drupal::service('piv_mail.replacements_service');
+    $replacements_service
+      ->addSource('poet_bio', $entity)
+      ->addSource('user', $entity->getOwner());
+    $langcode = $entity->field_language->target_id;
+    piv_mail_send_mail('journal_poem_bio_created', $langcode, $replacements_service);
+  }
+  elseif ($entity->getEntityTypeId() == 'futureverse_application') {
+    // Create or assign the user based on the email provided.
+    $user = piv_futureverse_find_or_create_student_poet($entity->field_email->value, $entity->field_first_name->value, $entity->field_last_name->value);
+    if ($user) {
+      $entity->setOwner($user)->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_create().
+ */
+function piv_futureverse_futureverse_application_create(EntityInterface $entity) : void {
+  // Assign the current journal year to the futureverse_application.
+  $months = JournalHelper::getJournalMonths();
+  if ($months) {
+    $month = reset($months);
+    $journal_year = JournalHelper::getJournalYearFromJournalMonth($month);
+    if ($journal_year) {
+      $entity->field_journal_year = $journal_year->id();
+    }
+  }
+}
+
+/**
+ * Implements hook_inline_entity_form_table_fields_alter().
+ */
+function piv_futureverse_inline_entity_form_table_fields_alter(array &$fields, array $context) {
+  if ($context['parent_entity_type'] == 'journal_year' && $context['field_name'] == 'field_journal_months') {
+    // Display date on inline table when editing a journal year.
+    $fields['field_start_date'] = [
+      'type' => 'field',
+      'label' => t('Start Date'),
+      'weight' => 10,
+      'display_options' => [
+        'type' => 'datetime_default',
+        'settings' => [
+          'format_type' => 'html_date',
+        ],
+      ],
+    ];
+    $fields['field_end_date'] = [
+      'type' => 'field',
+      'label' => t('End Date'),
+      'weight' => 11,
+      'display_options' => [
+        'type' => 'datetime_default',
+        'settings' => [
+          'format_type' => 'html_date',
+        ],
+      ],
+    ];
+  }
+}
+
+/**
+ * Implements hook_inline_entity_form_entity_form_alter().
+ */
+function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_form, FormStateInterface &$form_state) {
+  if ($entity_form['#entity_type'] == 'journal_month') {
+    $journal_month = $entity_form['#entity'];
+    if (!$journal_month) {
+      return;
+    }
+
+    if ($journal_month->isNew()) {
+      return;
+    }
+
+    $key_value = \Drupal::keyValue('journal_notifications');
+
+    // Add links to send monthly prize winner notification.
+    $key = 'monthly_prize_winner_' . $journal_month->id();
+    $value = $key_value->get($key, ['poems' => []]);
+    $poems_already_sent = $value['poems'] ?? [];
+    // There should be only one.
+    $winner_poems = JournalHelper::getMonthlyPrizeWinner($journal_month);
+    $winner_poem_ids = array_map(fn($jm) => $jm->id(), $winner_poems);
+    $poems_to_send = array_diff($winner_poem_ids, $poems_already_sent);
+
+    // Send/resend.
+    $send_label = count($poems_already_sent)
+      ? t('Resend monthly prize winner notification')
+      : t('Send monthly prize winner notification');
+
+    $entity_form['monthly_prize'] = [
+      '#type' => 'fieldset',
+      'winners' => ['#type' => 'container'],
+      'losers' => ['#type' => 'container'],
+    ];
+
+    $entity_form['monthly_prize']['winners']['winner'] = [
+      '#type' => 'item',
+      '#markup' => t('Winner: @winner', [
+        '@winner' => count($winner_poems) ? '' : t('none'),
+      ]),
+    ];
+    foreach ($winner_poems as $poem) {
+      $entity_form['monthly_prize']['winners']['winner'][] = [
+        'link' => $poem->toLink(NULL, 'edit-form')->toRenderable(),
+        'mail' => [
+          '#markup' => " ({$poem->field_email1->value}) ",
+        ],
+      ];
+    }
+
+    $entity_form['monthly_prize']['winners']['send_notifications'] = [
+      '#type' => 'link',
+      '#title' => $send_label,
+      '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+        'op' => 'monthly_prize_winner:send',
+        'journal_month' => $journal_month->id(),
+      ]),
+      '#attributes' => [
+        'class' => ['button'],
+      ],
+    ];
+    if (count($poems_already_sent)) {
+      if (count($poems_to_send)) {
+        // Update only send the ones that are missing if there are any.
+        $entity_form['monthly_prize']['winners']['update_notifications'] = [
+          '#type' => 'link',
+          '#title' => t('Update monthly prize winner notification'),
+          '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+            'op' => 'monthly_prize_winner:update',
+            'journal_month' => $journal_month->id(),
+          ]),
+          '#attributes' => [
+            'class' => ['button'],
+          ],
+        ];
+      }
+
+      // Reminder sent to anyone without a poet_bio.
+      $entity_form['monthly_prize']['winners']['reminder_notifications'] = [
+        '#type' => 'link',
+        '#title' => t('Reminder to create poet bio for "monthly prize winners"'),
+        '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+          'op' => 'monthly_prize_winner:reminder',
+          'journal_month' => $journal_month->id(),
+        ]),
+        '#attributes' => [
+          'class' => ['button', 'action-link--icon-trash', 'action-link--danger'],
+        ],
+      ];
+    }
+
+    // Monthly prize losers.
+    $key = 'monthly_prize_losers_' . $journal_month->id();
+    $value = $key_value->get($key, ['poems' => []]);
+    $poems_already_sent = $value['poems'] ?? [];
+    $loser_poems = JournalHelper::getMonthlyPrizeLosersUniqueEmail($journal_month);
+    $loser_poem_ids = array_map(fn($jm) => $jm->id(), $loser_poems);
+    $poems_to_send = array_diff($loser_poem_ids, $poems_already_sent);
+
+    // Send/resend.
+    $send_label = count($poems_already_sent)
+      ? t('Resend monthly prize losers notification')
+      : t('Send monthly prize losers notification');
+
+    $entity_form['monthly_prize']['losers']['send_notifications'] = [
+      '#type' => 'link',
+      '#title' => $send_label,
+      '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+        'op' => 'monthly_prize_losers:send',
+        'journal_month' => $journal_month->id(),
+      ]),
+      '#attributes' => [
+        'class' => ['button'],
+      ],
+    ];
+    if (count($poems_already_sent) && count($poems_to_send)) {
+      // Update only send the ones that are missing if there are any.
+      $entity_form['monthly_prize']['losers']['update_notifications'] = [
+        '#type' => 'link',
+        '#title' => t('Update monthly prize losers notification'),
+        '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+          'op' => 'monthly_prize_losers:update',
+          'journal_month' => $journal_month->id(),
+        ]),
+        '#attributes' => [
+          'class' => ['button'],
+        ],
+      ];
+    }
+
+    $link = $journal_month
+      ->toLink('Edit journal poems')
+      ->toRenderable();
+    $entity_form['edit_journal_poems'] = [
+      '#weight' => 0,
+    ] + $link;
+    $entity_form['edit_journal_poems']['#attributes']['class'][] = 'button';
+  }
+}
+
+/**
+ * Implements hook_entity_form_display_alter().
+ */
+function piv_futureverse_entity_form_display_alter(EntityFormDisplayInterface &$form_display, array $context) {
+  if ($context['entity_type'] == 'futureverse_application' && $context['bundle'] == 'native_student' && $context['form_mode'] == 'add') {
+    // Use invitation form mode for new entities.
+    $entity_type_manager = \Drupal::entityTypeManager();
+    $storage = $entity_type_manager->getStorage('entity_form_display');
+    $invitation_display = $storage->load('futureverse_application.native_student.invitation');
+    if ($invitation_display) {
+      $form_display = $invitation_display;
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_type_build().
+ */
+function piv_futureverse_entity_type_build(array &$entity_types) {
+  if (isset($entity_types['poet_bio'])) {
+    $entity_types['poet_bio']->setFormClass('enrichment', 'Drupal\piv_futureverse\Form\PoetBioForm');
+  }
+  if (isset($entity_types['futureverse_application'])) {
+    $entity_types['futureverse_application']->setFormClass('student', 'Drupal\piv_futureverse\Form\FutureverseApplicationForm');
+  }
+}
+
+/**
+ * Implements hook_entity_field_access().
+ */
+function piv_futureverse_entity_field_access($operation, FieldDefinitionInterface $field_definition, AccountInterface $account, ?FieldItemListInterface $items = NULL) {
+  // Override field permissions so anyone can edit the journal poem
+  // fields if we are on the "once link" form.
+  if ($items && $operation === 'edit') {
+    $route_name = \Drupal::routeMatch()->getRouteName();
+    if ($route_name == 'piv_futureverse.futureverse_application') {
+      $entity = $items->getEntity();
+      if ($entity && $entity->bundle() === 'native_student') {
+        return AccessResult::allowed();
+      }
+    }
+  }
+  // We disable the field_permissions implementation and manually call
+  // it here only if our hook doesn't handle it.
+  if (function_exists('field_permissions_entity_field_access')) {
+    return field_permissions_entity_field_access($operation, $field_definition, $account, $items);
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_paragraph_entity_access().
+ */
+function piv_futureverse_paragraph_access(EntityInterface $entity, $operation, AccountInterface $account) {
+  // Allow paragraph update operations when on the futureverse application route.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name == 'piv_futureverse.futureverse_application') {
+    if ($entity->bundle() == 'poem' && $operation == 'update') {
+      return AccessResult::allowed();
+    }
+  }
+  if (function_exists('paragraphs_type_permissions_paragraph_access')) {
+    return paragraphs_type_permissions_paragraph_access($entity, $operation, $account);
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_paragraph_create_access().
+ */
+function piv_futureverse_paragraph_create_access(AccountInterface $account, array $context, $entity_bundle) {
+  // Allow paragraph creation when on the futureverse application route.
+  $route_name = \Drupal::routeMatch()->getRouteName();
+  if ($route_name == 'piv_futureverse.futureverse_application') {
+    if ($entity_bundle == 'poem') {
+      return AccessResult::allowed();
+    }
+  }
+  if (function_exists('paragraphs_type_permissions_paragraph_create_access')) {
+    return paragraphs_type_permissions_paragraph_create_access($account, $context, $entity_bundle);
+  }
+  return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_module_implements_alter().
+ */
+function piv_futureverse_module_implements_alter(&$implementations, $hook) {
+  if ($hook === 'entity_field_access') {
+    // Disable fields permissions here, our custom functions call it
+    // manually as required.
+    unset($implementations['field_permissions']);
+  }
+  if (in_array($hook, ['paragraph_access', 'paragraph_create_access'])) {
+    // Disable paragraphs_type_permissions on futureverse routes, these
+    // are then called manually.
+    unset($implementations['paragraphs_type_permissions']);
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_ID_presave().
+ */
+function piv_futureverse_futureverse_application_presave(EntityInterface $entity) {
+  // Auto set a label to futureverse applications based on student name
+  // or email. When creating a student native invitation no name is
+  // provided, in that case the email will be used. There is no email
+  // field for non native futureverse application.
+  $first_name = $entity->field_first_name->value ?? NULL;
+  $last_name = $entity->field_last_name->value ?? NULL;
+  $email = $entity->hasField('field_email') ? $entity->field_email->value ?? NULL : '';
+  if ($first_name || $last_name) {
+    $entity->label = trim("$first_name $last_name");
+  }
+  elseif ($email) {
+    $entity->label = trim($email);
+  }
+
+  // Iterate on the poem paragraphs to create the journal poems.
+  // Needs to run here since paragraphs are saved before the parent
+  // entity is saved, and the poem needs data from the futureverse
+  // application entity which will be empty on first paragraph save.
+  if ($entity->bundle() == 'native_student' && $entity->hasField('field_poem_stub')) {
+    foreach ($entity->field_poem_stub->referencedEntities() as $paragraph) {
+      if ($paragraph->bundle() != 'poem') {
+        continue;
+      }
+      if ($paragraph->field_poem_node->entity) {
+        continue;
+      }
+      $user = piv_futureverse_find_or_create_student_poet($entity->field_email->value, $entity->field_first_name->value, $entity->field_last_name->value);
+      $journal_poem = \Drupal::entityTypeManager()->getStorage('node')->create([
+        'type' => 'journal_poem',
+        'title' => $paragraph->field_title->value,
+        'field_poem_reason' => $paragraph->field_tell_us_in_a_few_sentences->getValue(),
+        'field_poem_attachment' => $paragraph->field_poem_attachment->target_id,
+        'field_journal_poem_body' => $paragraph->field_poem_text->value,
+        'field_email1' => $entity->field_email->value,
+        'piv_teacher_first_name' => $entity->field_first_name->value,
+        'field_legal_name' => $entity->field_legal_name->value,
+        'piv_teacher_last_name' => $entity->field_last_name->value,
+        'field_phone' => $entity->field_phone->value,
+        'field_teacher' => $entity->field_teacher_name->value,
+        'field_legal_name_boolean' => $entity->field_legal_name_boolean->value,
+        // Field below is required in the entity.
+        'field_no_artificial_intelligence' => 1,
+        'uid' => $user ? $user->id() : 0,
+        'school' => $entity->field_school->target_id,
+      ]);
+      $journal_poem->save();
+      $paragraph->field_poem_node = ['target_id' => $journal_poem->id()];
+      $paragraph->save();
+    }
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function piv_futureverse_views_pre_render(ViewExecutable $view) {
+  if (($view->id() == 'journal_poem_sidebar' && $view->current_display == 'block_1')
+  || ($view->id() == 'monthly_student_poem_winners' && $view->current_display == 'block_1')
+  || ($view->id() == 'futureverse_shortlist_and_longlist' && $view->current_display == 'block_4')
+  || ($view->id() == 'futureverse_shortlist_and_longlist' && $view->current_display == 'block_5')) {
+    foreach ($view->result as $row) {
+      $entity = &$row->_entity ?? NULL;
+      if (is_a($entity, 'Drupal\node\Entity\Node')) {
+        // Replace views values with poet bio values when possible.
+        $poet_bio = JournalHelper::getPoetBioByPoem($entity);
+        if ($poet_bio) {
+          $entity->field_student_photo = $poet_bio->field_profile_picture->getValue();
+          $entity->field_grade = $poet_bio->field_grade->getValue();
+          $entity->field_school_journal = $poet_bio->field_school->getValue();
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_cron().
+ */
+function piv_futureverse_cron() {
+  \Drupal::service('piv_futureverse.notification_reminders')
+    ->process();
+}

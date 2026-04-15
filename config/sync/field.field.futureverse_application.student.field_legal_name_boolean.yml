@@ -1,0 +1,21 @@
+uuid: e9f12181-c6ca-4945-9c76-85dd3fa4f8bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_legal_name_boolean
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_legal_name_boolean
+field_name: field_legal_name_boolean
+entity_type: futureverse_application
+bundle: student
+label: 'The name above is not my legal name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

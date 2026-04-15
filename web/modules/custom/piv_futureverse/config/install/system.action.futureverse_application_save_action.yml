@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application_save_action
+label: 'Save futureverse applications'
+type: futureverse_application
+plugin: entity:save_action:futureverse_application
+configuration: {  }

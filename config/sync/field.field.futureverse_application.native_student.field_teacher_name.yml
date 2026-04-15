@@ -1,0 +1,19 @@
+uuid: 646af05f-6efd-452f-b634-54e64aa3bc5b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_teacher_name
+    - piv_futureverse.futureverse_application_type.native_student
+id: futureverse_application.native_student.field_teacher_name
+field_name: field_teacher_name
+entity_type: futureverse_application
+bundle: native_student
+label: 'Teacher name'
+description: 'Any teacher in your school who has helped you with your writing.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

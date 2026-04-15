@@ -1,0 +1,61 @@
+uuid: f6b08928-8c42-4ecc-b65a-29d94cb62d41
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.poem.field_poem_attachment
+    - field.field.paragraph.poem.field_poem_node
+    - field.field.paragraph.poem.field_poem_text
+    - field.field.paragraph.poem.field_tell_us_in_a_few_sentences
+    - field.field.paragraph.poem.field_title
+    - paragraphs.paragraphs_type.poem
+  module:
+    - file
+id: paragraph.poem.default
+targetEntityType: paragraph
+bundle: poem
+mode: default
+content:
+  field_poem_attachment:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_poem_node:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_poem_text:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_tell_us_in_a_few_sentences:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

@@ -1,0 +1,19 @@
+uuid: db218c43-e7e8-4706-be49-5d5b270958f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_tell_us_about_your_writing
+    - piv_futureverse.futureverse_application_type.native_student
+id: futureverse_application.native_student.field_tell_us_about_your_writing
+field_name: field_tell_us_about_your_writing
+entity_type: futureverse_application
+bundle: native_student
+label: 'Tell us about your writing.'
+description: "<p>What inspires your work? When did you start writing? What would you love to learn or work on at FutureVerse?</p>\r\n<p><b>If you want, you could use one or all of these three statements to share your ideas:</b><br>\r\n1) I first started writing when....<br>\r\n2) I love writing about _________ because.....<br>\r\n3) If I came to the FutureVerse writing workshops, I'd love to learn more about...\r\n</p>"
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,19 @@
+uuid: d4d54465-5187-4c31-8650-e3c580e0546b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_legal_name
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_legal_name
+field_name: field_legal_name
+entity_type: futureverse_application
+bundle: student
+label: 'Full legal name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

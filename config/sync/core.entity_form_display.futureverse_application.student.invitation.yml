@@ -1,0 +1,85 @@
+uuid: b4b86671-a92b-4893-b5e6-abf5f0a31d86
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.futureverse_application.invitation
+    - field.field.futureverse_application.student.field_email
+    - field.field.futureverse_application.student.field_first_name
+    - field.field.futureverse_application.student.field_how_has_your_community_sha
+    - field.field.futureverse_application.student.field_i_am_submitting_in_a_secon
+    - field.field.futureverse_application.student.field_is_there_anything_else_we
+    - field.field.futureverse_application.student.field_journal_year
+    - field.field.futureverse_application.student.field_last_name
+    - field.field.futureverse_application.student.field_legal_name
+    - field.field.futureverse_application.student.field_legal_name_boolean
+    - field.field.futureverse_application.student.field_parent_guardian_email
+    - field.field.futureverse_application.student.field_parent_guardian_phone
+    - field.field.futureverse_application.student.field_tell_us_about_your_writing
+    - field.field.futureverse_application.student.field_what_are_some_issues_you_c
+    - piv_futureverse.futureverse_application_type.student
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: futureverse_application.student.invitation
+targetEntityType: futureverse_application
+bundle: student
+mode: invitation
+content:
+  created:
+    type: datetime_timestamp
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_email:
+    type: email_default
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 0
+    region: content
+    settings:
+      display_label: false
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 15
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_first_name: true
+  field_how_has_your_community_sha: true
+  field_i_am_submitting_in_a_secon: true
+  field_is_there_anything_else_we: true
+  field_journal_year: true
+  field_last_name: true
+  field_legal_name: true
+  field_legal_name_boolean: true
+  field_parent_guardian_email: true
+  field_parent_guardian_phone: true
+  field_tell_us_about_your_writing: true
+  field_what_are_some_issues_you_c: true

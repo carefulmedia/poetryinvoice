@@ -1,0 +1,11 @@
+uuid: 2c4f563a-7a28-40bf-b90f-c384c9ec41be
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: journal_month.no_poems
+label: 'No Poems'
+description: 'A form display without the Poems field.'
+targetEntityType: journal_month
+cache: true

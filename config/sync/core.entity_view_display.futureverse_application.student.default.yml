@@ -1,0 +1,176 @@
+uuid: d2322950-6b8a-4e64-96f8-e7fa9493cd75
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.futureverse_application.student.field_email
+    - field.field.futureverse_application.student.field_first_name
+    - field.field.futureverse_application.student.field_how_has_your_community_sha
+    - field.field.futureverse_application.student.field_i_am_submitting_in_a_secon
+    - field.field.futureverse_application.student.field_is_there_anything_else_we
+    - field.field.futureverse_application.student.field_journal_year
+    - field.field.futureverse_application.student.field_last_name
+    - field.field.futureverse_application.student.field_legal_name
+    - field.field.futureverse_application.student.field_legal_name_boolean
+    - field.field.futureverse_application.student.field_parent_guardian_email
+    - field.field.futureverse_application.student.field_parent_guardian_phone
+    - field.field.futureverse_application.student.field_tell_us_about_your_writing
+    - field.field.futureverse_application.student.field_what_are_some_issues_you_c
+    - piv_futureverse.futureverse_application_type.student
+  module:
+    - user
+id: futureverse_application.student.default
+targetEntityType: futureverse_application
+bundle: student
+mode: default
+content:
+  created:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_first_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  field_how_has_your_community_sha:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 29
+    region: content
+  field_i_am_submitting_in_a_secon:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 27
+    region: content
+  field_is_there_anything_else_we:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 31
+    region: content
+  field_journal_year:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 34
+    region: content
+  field_last_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_legal_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 26
+    region: content
+  field_legal_name_boolean:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 25
+    region: content
+  field_parent_guardian_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_parent_guardian_phone:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_tell_us_about_your_writing:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 28
+    region: content
+  field_what_are_some_issues_you_c:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 30
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+  status:
+    type: boolean
+    label: above
+    settings:
+      format: enabled-disabled
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  uid:
+    type: author
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

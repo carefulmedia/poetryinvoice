@@ -1,0 +1,19 @@
+uuid: c6ea4ac9-70a9-46d4-9fb5-a61ad14dfcb4
+langcode: en
+status: true
+dependencies:
+  module:
+    - address
+    - piv_futureverse
+id: futureverse_application.field_full_mailing_address
+field_name: field_full_mailing_address
+entity_type: futureverse_application
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

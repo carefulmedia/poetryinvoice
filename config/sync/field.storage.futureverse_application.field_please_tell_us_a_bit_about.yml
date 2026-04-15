@@ -1,0 +1,19 @@
+uuid: 833b10cb-5c29-49eb-859c-14249286ea03
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application.field_please_tell_us_a_bit_about
+field_name: field_please_tell_us_a_bit_about
+entity_type: futureverse_application
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

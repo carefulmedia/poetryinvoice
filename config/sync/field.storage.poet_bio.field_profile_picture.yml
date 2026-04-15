@@ -1,0 +1,30 @@
+uuid: 4d290703-1df3-47dd-91da-99e6adb5fda8
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - piv_futureverse
+id: poet_bio.field_profile_picture
+field_name: field_profile_picture
+entity_type: poet_bio
+type: image
+settings:
+  target_type: file
+  display_field: false
+  display_default: true
+  uri_scheme: public
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

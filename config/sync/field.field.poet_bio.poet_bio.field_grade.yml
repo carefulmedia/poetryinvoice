@@ -1,0 +1,21 @@
+uuid: 3f737542-4112-4a75-a291-c78b5415a92d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.poet_bio.field_grade
+  module:
+    - options
+    - piv_futureverse
+id: poet_bio.poet_bio.field_grade
+field_name: field_grade
+entity_type: poet_bio
+bundle: poet_bio
+label: Grade
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

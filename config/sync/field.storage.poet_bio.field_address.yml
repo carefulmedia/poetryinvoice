@@ -1,0 +1,19 @@
+uuid: 506b75af-81b4-43e0-b85a-e2ea0907f1cd
+langcode: en
+status: true
+dependencies:
+  module:
+    - address
+    - piv_futureverse
+id: poet_bio.field_address
+field_name: field_address
+entity_type: poet_bio
+type: address
+settings: {  }
+module: address
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

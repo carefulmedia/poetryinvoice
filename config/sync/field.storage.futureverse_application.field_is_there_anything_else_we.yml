@@ -1,0 +1,19 @@
+uuid: f5910845-4213-4dfa-9bbb-3c4605d638e4
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application.field_is_there_anything_else_we
+field_name: field_is_there_anything_else_we
+entity_type: futureverse_application
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,39 @@
+uuid: afaceeda-67d0-4473-b712-6fb08a05c7f4
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - piv_futureverse
+id: poet_bio.field_grade
+field_name: field_grade
+entity_type: poet_bio
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: '7'
+      label: '7 / Sec. I'
+    -
+      value: '8'
+      label: '8 / Sec. II'
+    -
+      value: '9'
+      label: '9 / Sec. III'
+    -
+      value: '10'
+      label: '10 / Sec. IV'
+    -
+      value: '11'
+      label: '11 / Sec. V'
+    -
+      value: '12'
+      label: '12 / CEGEP I'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

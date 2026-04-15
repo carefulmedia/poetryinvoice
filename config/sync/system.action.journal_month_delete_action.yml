@@ -1,0 +1,13 @@
+uuid: ed0c6731-2d8b-4d20-acc8-a9b25324e2ac
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+_core:
+  default_config_hash: V5XhOzh-sv-sThh0WhjQ7owT04PxkXReTeZWBSHQJcI
+id: journal_month_delete_action
+label: 'Delete journal months'
+type: journal_month
+plugin: 'entity:delete_action:journal_month'
+configuration: {  }

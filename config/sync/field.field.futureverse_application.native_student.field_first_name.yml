@@ -1,0 +1,19 @@
+uuid: 81772d9f-ce93-4ad3-ade7-8b5357ef066b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_first_name
+    - piv_futureverse.futureverse_application_type.native_student
+id: futureverse_application.native_student.field_first_name
+field_name: field_first_name
+entity_type: futureverse_application
+bundle: native_student
+label: 'First name'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
