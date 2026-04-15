@@ -11,13 +11,13 @@ label: administrator
 weight: 6
 is_admin: true
 permissions:
-  - 'create field_judge'
-  - 'edit field_judge'
-  - 'edit own field_judge'
-  - 'view field_judge'
-  - 'view own field_judge'
   - 'create field_journal_poem_body'
+  - 'create field_judge'
   - 'edit field_journal_poem_body'
+  - 'edit field_judge'
   - 'edit own field_journal_poem_body'
+  - 'edit own field_judge'
   - 'view field_journal_poem_body'
+  - 'view field_judge'
   - 'view own field_journal_poem_body'
+  - 'view own field_judge'

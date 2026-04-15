@@ -6,6 +6,6 @@ dependencies:
     - piv_futureverse
 id: futureverse_application.student
 label: Student
-description: ''
+description: null
 targetEntityType: futureverse_application
 cache: true

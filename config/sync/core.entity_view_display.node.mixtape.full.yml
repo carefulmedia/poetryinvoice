@@ -100,7 +100,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
             weight: 0
             additional: {  }
           a67694f2-5efd-4862-ad0b-19417f8e4dec:
@@ -113,7 +113,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
             weight: 1
             additional: {  }
           fc7d908f-cb26-43b3-8975-f420154c99eb:
@@ -126,7 +126,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
             weight: 2
             additional: {  }
           e5ac89c9-1d24-481a-af8a-4f060d500df0:
@@ -320,7 +320,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
             weight: 0
             additional: {  }
         third_party_settings: {  }
