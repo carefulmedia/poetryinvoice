@@ -357,7 +357,6 @@ class CompetitionProgressForm extends FormBase {
         '#attributes' => ['class' => ['tablesorter']],
       ];
     }
-    $form['#attached']['library'][] = 'piv/competition-progress';
     return $form;
   }
 
