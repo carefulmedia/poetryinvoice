@@ -11,7 +11,6 @@ dependencies:
     - node.type.team_regionals_entry
   module:
     - comment
-    - contact
     - field_permissions
     - file
     - filter
@@ -29,7 +28,6 @@ weight: 0
 is_admin: null
 permissions:
   - 'access comments'
-  - 'access user contact forms'
   - 'access user profiles'
   - 'add competition entry for own school'
   - 'create bulletin_board content'
