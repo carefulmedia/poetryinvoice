@@ -246,6 +246,75 @@ final class Helper {
   }
 
   /**
+   * Automatically generate and save recitation order for a competition.
+   *
+   * Assigns field_recitation_order values to all tr_student paragraphs so
+   * that recitations are grouped by round (delta), with schools alternating
+   * within each round. The school that went last in round N cannot go first
+   * in round N+1.
+   */
+  public function generateRecitationOrder(NodeInterface $node): void {
+    $team_regionals = array_values($this->entityTypeManager->getStorage('node')
+      ->loadByProperties([
+        'type' => 'team_regionals_entry',
+        'field_contest_association' => $node->id(),
+      ]));
+
+    if (empty($team_regionals)) {
+      return;
+    }
+
+    // Cache student counts to avoid repeated field item list traversals.
+    $student_counts = [];
+    foreach ($team_regionals as $entry) {
+      $student_counts[$entry->id()] = count($entry->field_tr_student);
+    }
+
+    $max_rounds = max($student_counts) ?: 0;
+    if ($max_rounds === 0) {
+      return;
+    }
+
+    $last_entry_id = NULL;
+    $order = 1;
+
+    for ($round = 0; $round < $max_rounds; $round++) {
+      // Only include entries that have a student at this round delta.
+      $entries_in_round = array_values(array_filter(
+        $team_regionals,
+        fn($entry) => $student_counts[$entry->id()] > $round
+      ));
+
+      shuffle($entries_in_round);
+
+      // Constraint: the school that went last in round N cannot go first in
+      // round N+1. Only applies when there are at least 2 entries.
+      $count = count($entries_in_round);
+      if ($last_entry_id !== NULL && $count > 1) {
+        if ($entries_in_round[0]->id() === $last_entry_id) {
+          $swap_idx = random_int(1, $count - 1);
+          [$entries_in_round[0], $entries_in_round[$swap_idx]] = [$entries_in_round[$swap_idx], $entries_in_round[0]];
+        }
+      }
+
+      foreach ($entries_in_round as $entry) {
+        $recitation = $entry->field_tr_student->get($round)->entity;
+        if ($recitation) {
+          $recitation->field_recitation_order = $order;
+          $recitation->save();
+          $order++;
+        }
+      }
+
+      $last = end($entries_in_round);
+      $last_entry_id = $last ? $last->id() : NULL;
+    }
+
+    // Explicitly invalidate the cache for this competition's recitation order.
+    $this->cacheDefault->delete("piv_live_competition:recitations_in_order:{$node->id()}");
+  }
+
+  /**
    * Check if competition has started.
    */
   public function hasCompetitionStarted(NodeInterface $competition): bool {
