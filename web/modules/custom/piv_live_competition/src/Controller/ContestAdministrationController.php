@@ -154,7 +154,12 @@ final class ContestAdministrationController extends ControllerBase {
             '#type' => 'container',
             '#attributes' => ['class' => ['judge-link-item']],
             'name' => [
-              '#markup' => '<strong>' . $judge->getDisplayName() . ':</strong> ',
+              '#type' => 'link',
+              '#title' => $judge->getDisplayName(),
+              '#url' => Url::fromRoute('entity.user.canonical', ['user' => $judge->id()]),
+              '#attributes' => ['target' => '_blank'],
+              '#prefix' => '<strong>',
+              '#suffix' => ':</strong> ',
             ],
             'link' => [
               '#type' => 'link',
@@ -230,7 +235,12 @@ final class ContestAdministrationController extends ControllerBase {
             '#type' => 'container',
             '#attributes' => ['class' => ['prompter-link-item']],
             'name' => [
-              '#markup' => '<strong>' . $prompter->getDisplayName() . ':</strong> ',
+              '#type' => 'link',
+              '#title' => $prompter->getDisplayName(),
+              '#url' => Url::fromRoute('entity.user.canonical', ['user' => $prompter->id()]),
+              '#attributes' => ['target' => '_blank'],
+              '#prefix' => '<strong>',
+              '#suffix' => ':</strong> ',
             ],
             'link' => [
               '#type' => 'link',
