@@ -7,9 +7,11 @@
 
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Access\AccessResult;
+use Drupal\Core\Breadcrumb\Breadcrumb;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
@@ -195,6 +197,38 @@ function piv_base_entity_create_access(AccountInterface $account, array $context
   }
 
   return AccessResult::neutral();
+}
+
+/**
+ * Implements hook_system_breadcrumb_alter().
+ */
+function piv_base_system_breadcrumb_alter(Breadcrumb &$breadcrumb, RouteMatchInterface $route_match, array $context): void {
+  // Vary the breadcrumb cache by user role so anonymous and authenticated
+  // users never share the same cached breadcrumb.
+  $breadcrumb->addCacheContexts(['user.roles']);
+
+  // Hide the "Add content" breadcrumb link for anonymous users only.
+  if (\Drupal::currentUser()->isAuthenticated()) {
+    return;
+  }
+
+  $links = $breadcrumb->getLinks();
+  $filtered = array_filter($links, static function ($link) {
+    $url = $link->getUrl();
+    return !($url->isRouted() && $url->getRouteName() === 'node.add_page');
+  });
+
+  if (count($filtered) === count($links)) {
+    return;
+  }
+
+  $new_breadcrumb = new Breadcrumb();
+  $new_breadcrumb->addCacheContexts(['user.roles']);
+  foreach ($filtered as $link) {
+    $new_breadcrumb->addLink($link);
+  }
+  $new_breadcrumb->addCacheableDependency($breadcrumb);
+  $breadcrumb = $new_breadcrumb;
 }
 
 /**
