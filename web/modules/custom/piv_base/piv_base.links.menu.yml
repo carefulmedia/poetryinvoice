@@ -3,7 +3,7 @@ piv_base.welcome_modal_settings:
   description: Configure blocks to be displayed on the Welcome Modal.
   parent: system.admin_config_system
   route_name: piv_base.welcome_modal_settings
-  weight: 10
+  weight: 13
 piv_base.school_visits:
   title: 'School Visits Stats By Province'
   description: 'A summary of school visits.'

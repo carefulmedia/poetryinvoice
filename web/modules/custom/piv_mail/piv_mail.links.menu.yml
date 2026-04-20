@@ -4,3 +4,10 @@ piv_mail.settings_form:
   parent: system.admin_config_system
   route_name: piv_mail.settings_form
   weight: 10
+
+piv_mail.settings_form_competitions:
+  title: PIV Mail - Competitions
+  description: Configure PIV Mail for competitions.
+  parent: system.admin_config_system
+  route_name: piv_mail.settings_form_competitions
+  weight: 11

@@ -9,6 +9,7 @@ use Drupal\piv_mail\PivMailPluginBase;
  *
  * @PivMail(
  *   id = "node_created_poet_school_visit_admin",
+ *   type = "default",
  *   label = @Translation("Node created: Poet School Visit (Admin notification)"),
  *   description = @Translation("E-mail the admins when a school visit is created or fields were changed."),
  *   sources = {"node", "user", "school", "teacher", "visit_node"}

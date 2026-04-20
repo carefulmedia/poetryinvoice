@@ -9,6 +9,7 @@ use Drupal\piv_mail\PivMailPluginBase;
  *
  * @PivMail(
  *   id = "poet_applied_admin",
+ *   type = "default",
  *   label = @Translation("A poet applied to the site (Admin notification)"),
  *   description = @Translation("Send email to admin about a poet that created a new user and is waiting for approval."),
  *   sources = {"user"}

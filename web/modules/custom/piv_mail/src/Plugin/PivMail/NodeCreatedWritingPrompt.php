@@ -7,6 +7,7 @@ namespace Drupal\piv_mail\Plugin\PivMail;
  *
  * @PivMail(
  *   id = "node_created_writing_prompt",
+ *   type = "default",
  *   label = @Translation("Node created: Writing Prompt"),
  *   description = @Translation("Send an email to admin email when Writing Prompt node is created."),
  *   sources = {"node", "user"},

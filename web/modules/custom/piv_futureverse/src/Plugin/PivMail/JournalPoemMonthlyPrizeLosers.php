@@ -9,6 +9,7 @@ use Drupal\piv_mail\PivMailPluginBase;
  *
  * @PivMail(
  *   id = "journal_poem_monthly_prize_losers",
+ *   type = "default",
  *   label = @Translation("Journal Poem: Monthly Prize Losers"),
  *   description = @Translation("Send an email to the monthly losers for futureverse+."),
  *   sources = {"user", "journal_poem"}

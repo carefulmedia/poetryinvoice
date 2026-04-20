@@ -7,6 +7,7 @@ namespace Drupal\piv_mail\Plugin\PivMail;
  *
  * @PivMail(
  *   id = "node_created_lesson_plan",
+ *   type = "default",
  *   label = @Translation("Node created: Lesson Plan"),
  *   description = @Translation("Send an email to admin email when Lesson Plan node is created."),
  *   sources = {"node", "user"}

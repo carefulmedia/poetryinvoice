@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @PivMail(
  *   id = "journal_poem_accepted_voices_anthology",
+ *   type = "default",
  *   label = @Translation("Journal Poem: Accepted Voices Anthology"),
  *   description = @Translation("Send an email to users accepted for Voices Anthology."),
  *   sources = {"user", "journal_poem"}

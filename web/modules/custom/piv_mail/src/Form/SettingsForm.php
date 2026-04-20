@@ -62,8 +62,11 @@ class SettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?string $type = NULL) {
     $definitions = $this->pivMailPluginManager->getDefinitions();
+    if ($type) {
+      $definitions = array_filter($definitions, fn($d) => $d['type'] === $type);
+    }
     ksort($definitions);
     $languages = $this->languageManager->getLanguages();
     // Horizontal tabs require the field_group module.
@@ -97,7 +100,8 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state): void {
-    foreach ($this->pivMailPluginManager->getDefinitions() as $plugin_id => $definition) {
+    $plugins_values = $form_state->getValue('plugins');
+    foreach ($plugins_values as $plugin_id => $plugin_configurations) {
       $instance = $this->pivMailPluginManager->createInstance($plugin_id);
       $instance->validateConfigurationForm($form, $form_state);
     }
@@ -109,9 +113,8 @@ class SettingsForm extends ConfigFormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $plugins_values = $form_state->getValue('plugins');
-    foreach ($this->pivMailPluginManager->getDefinitions() as $plugin_id => $definition) {
+    foreach ($plugins_values as $plugin_id => $plugin_configurations) {
       $instance = $this->pivMailPluginManager->createInstance($plugin_id);
-      $plugin_configurations = $plugins_values[$plugin_id] ?? [];
       $instance->setConfiguration($plugin_configurations);
       $instance->submitConfigurationForm($form, $form_state);
     }

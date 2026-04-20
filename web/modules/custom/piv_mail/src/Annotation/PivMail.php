@@ -17,6 +17,13 @@ class PivMail extends Plugin {
    * @var string
    */
   public $id;
+  
+  /**
+   * A type.
+   *
+   * @var string
+   */
+  public $type;
 
   /**
    * The human-readable name of the plugin.

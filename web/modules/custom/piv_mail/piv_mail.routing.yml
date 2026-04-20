@@ -3,5 +3,15 @@ piv_mail.settings_form:
   defaults:
     _title: 'PIV Mail settings'
     _form: 'Drupal\piv_mail\Form\SettingsForm'
+    type: 'default' # filter by.
+  requirements:
+    _permission: 'administer piv_mail configuration'
+
+piv_mail.settings_form_competitions:
+  path: '/admin/config/system/piv-mail/competitions'
+  defaults:
+    _title: 'PIV Mail settings - Competitions'
+    _form: 'Drupal\piv_mail\Form\SettingsForm'
+    type: 'competition' # filter by.
   requirements:
     _permission: 'administer piv_mail configuration'

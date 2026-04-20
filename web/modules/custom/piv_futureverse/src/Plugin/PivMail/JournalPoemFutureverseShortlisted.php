@@ -7,6 +7,7 @@ namespace Drupal\piv_futureverse\Plugin\PivMail;
  *
  * @PivMail(
  *   id = "journal_poem_futureverse_shortlisted",
+ *   type = "default",
  *   label = @Translation("Journal Poem: Futureverse shortlisted notification"),
  *   description = @Translation("Send an email to all poems in a year shortlisted for futureverse."),
  *   sources = {"user", "journal_poem"}

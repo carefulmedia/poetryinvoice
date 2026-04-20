@@ -9,6 +9,7 @@ use Drupal\piv_mail\PivMailPluginBase;
  *
  * @PivMail(
  *   id = "journal_poem_bio_created",
+ *   type = "default",
  *   label = @Translation("Journal Poem: Bio Created"),
  *   description = @Translation("Send an email when a poet bio is created."),
  *   sources = {"user", "poet_bio"}

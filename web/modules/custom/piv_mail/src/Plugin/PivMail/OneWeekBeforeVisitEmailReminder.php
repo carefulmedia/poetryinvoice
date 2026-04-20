@@ -9,6 +9,7 @@ use Drupal\piv_mail\PivMailPluginBase;
  *
  * @PivMail(
  *   id = "one_week_before_visit_email_reminder",
+ *   type = "default",
  *   label = @Translation("One week before visit e-mail reminder"),
  *   description = @Translation("E-mail the teachers and the poet one week before the school visit."),
  *   sources = {"node", "user", "visit_node", "teacher", "school"}

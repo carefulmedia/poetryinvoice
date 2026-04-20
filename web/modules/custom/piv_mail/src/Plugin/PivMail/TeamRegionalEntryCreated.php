@@ -9,6 +9,7 @@ use Drupal\piv_mail\PivMailPluginBase;
  *
  * @PivMail(
  *   id = "team_regional_entry_created",
+ *   type = "default",
  *   label = @Translation("Team Regional Entry Created"),
  *   description = @Translation("Send an email to the user that created the team regional entry."),
  *   sources = {"team_regional_entry"}
