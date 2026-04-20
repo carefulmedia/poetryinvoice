@@ -1,0 +1,23 @@
+uuid: 906cef20-3b44-4d82-87a2-5a70a11b487f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_rank
+    - paragraphs.paragraphs_type.competition_notification_rank
+id: paragraph.competition_notification_rank.field_rank
+field_name: field_rank
+entity_type: paragraph
+bundle: competition_notification_rank
+label: Rank
+description: 'Student position in this competition level.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

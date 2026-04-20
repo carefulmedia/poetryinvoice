@@ -1,0 +1,48 @@
+uuid: 2fe542c1-8b2d-449f-a4eb-9aef2e1b9399
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.competition_notification_rank.field_rank
+    - field.field.paragraph.competition_notification_rank.field_tokens
+    - paragraphs.paragraphs_type.competition_notification_rank
+  module:
+    - field_layout
+    - key_value_field
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: paragraph.competition_notification_rank.default
+targetEntityType: paragraph
+bundle: competition_notification_rank
+mode: default
+content:
+  field_rank:
+    type: number
+    weight: 0
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_tokens:
+    type: key_value_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: '$ 100'
+      key_label: Token
+      value_label: Value
+      description_label: Description
+      description_rows: 5
+      key_size: 60
+      key_placeholder: prize
+      description_enabled: false
+      description_placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

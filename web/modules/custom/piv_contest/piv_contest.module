@@ -386,3 +386,73 @@ function piv_contest_form_score_form_alter(&$form, FormStateInterface $form_stat
   $bundle = $form_state->getFormObject()->getEntity()->bundle();
   _piv_contest_hide_score_fields($form, $bundle);
 }
+
+/**
+ * Implements hook_ENTITY_TYPE_prepare_form().
+ */
+function piv_contest_competition_prepare_form(EntityInterface $entity, $operation, FormStateInterface $form_state) : void {
+  if ($entity->bundle() != 'default') {
+    return;
+  }
+
+  // Synchronize the count of competition notification level paragraphs
+  // on form edit. This creates new empty paragraphs but doesn't delete
+  // if there are more notification paragraphs than competition levels.
+  // Instead it will display a warning.
+  $count_diff = count($entity->field_competition_levels) - count($entity->field_notification_levels);
+  if ($count_diff > 0) {
+    $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+    while ($count_diff-- > 0) {
+      $entity->field_notification_levels[] = $paragraph_storage->create([
+        'type' => 'competition_notification_level',
+      ]);
+    }
+  }
+  elseif ($count_diff < 0) {
+    \Drupal::messenger()->addWarning(t(
+      'Note that there are more notifications levels (Notifications tab) than levels (@levels) in this competition.',
+      ['@levels' => implode(', ', array_column($entity->field_competition_levels->getValue(), 'value'))],
+    ));
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function piv_contest_form_competition_form_alter(&$form, FormStateInterface $form_state) {
+  $form['#attached']['library'][] = 'piv_contest/competition-notifications';
+}
+
+/**
+ * Implements hook_field_widget_complete_form_alter().
+ */
+function piv_contest_field_widget_complete_form_alter(&$element, FormStateInterface $form_state, $context) {
+  if (!empty($element['widget']['#field_name']) && $element['widget']['#field_name'] == 'field_notification_levels') {
+    foreach (Element::children($element['widget']) as $delta) {
+      // Add a class to a container to use it as the wrapper for our
+      // labels, which are controlled by js.
+      if (!empty($element['widget'][$delta]['top']['type'])) {
+        $element['widget'][$delta]['top']['type']['#attributes']['class'][] = 'js-notification-label';
+        $element['widget'][$delta]['top']['type']['#attributes']['class'][] = 'notification-label';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_field_multiple_value_form().
+ *
+ * Remove the tabledrag functionality from some fields.
+ */
+function piv_contest_preprocess_field_multiple_value_form(&$variables) {
+  $field_name = $variables['element']['#field_name'] ?? '';
+  if (in_array($field_name, ['field_competition_levels', 'field_notification_levels'])) {
+    unset($variables['table']['#attributes']['class']);
+    unset($variables['table']['#tabledrag']);
+    unset($variables['table']['#header'][2]);
+    foreach ($variables['table']['#rows'] as $delta => $row) {
+      unset($variables['table']['#rows'][$delta]['class']);
+      unset($variables['table']['#rows'][$delta]['data'][3]);
+    }
+  }
+}

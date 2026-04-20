@@ -1,0 +1,15 @@
+.paragraphs-tabs-wrapper .field--name-field-tokens table.field-multiple-table tbody tr td:nth-child(2) {
+  display: flex;
+  gap: 20px;
+}
+
+.paragraphs-tabs-wrapper .field--name-field-tokens table.field-multiple-table tbody tr {
+  padding: 3px;
+}
+
+.paragraphs-tabs-wrapper .field--name-field-tokens table.field-multiple-table tbody tr .form-item {
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  align-items: center;
+}

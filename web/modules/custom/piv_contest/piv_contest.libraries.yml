@@ -2,3 +2,10 @@ competition-entry-controller:
   css:
     component:
       css/competition-entry-controller.css: {}
+
+competition-notifications:
+  css:
+    component:
+      css/competition-notifications.css: {}
+  js:
+    js/competition-notifications.js: {}

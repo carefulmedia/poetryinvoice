@@ -1,0 +1,37 @@
+uuid: ab1a7249-f50e-4f82-8891-de2c70e98c4f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.competition_notification_rank.field_rank
+    - field.field.paragraph.competition_notification_rank.field_tokens
+    - paragraphs.paragraphs_type.competition_notification_rank
+  module:
+    - key_value_field
+id: paragraph.competition_notification_rank.default
+targetEntityType: paragraph
+bundle: competition_notification_rank
+mode: default
+content:
+  field_rank:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_tokens:
+    type: key_value
+    label: above
+    settings:
+      value_only: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true

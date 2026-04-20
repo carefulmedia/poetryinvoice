@@ -1,0 +1,28 @@
+uuid: c89cfb22-7c5a-40d2-9efa-d7c730f62245
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.competition_notification_level.field_ranks
+    - paragraphs.paragraphs_type.competition_notification_level
+  module:
+    - entity_reference_revisions
+id: paragraph.competition_notification_level.default
+targetEntityType: paragraph
+bundle: competition_notification_level
+mode: default
+content:
+  field_ranks:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  search_api_excerpt: true
