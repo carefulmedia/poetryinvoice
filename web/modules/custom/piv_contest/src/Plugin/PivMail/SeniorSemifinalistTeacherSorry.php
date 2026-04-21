@@ -12,7 +12,7 @@ use Drupal\piv_mail\PivMailPluginBase;
  *   type = "competition",
  *   label = @Translation("Senior Semifinals - Teacher Sorry"),
  *   description = "",
- *   sources = {"node", "user"}
+ *   sources = {"competition_entry", "paragraph_rank"}
  * )
  */
 class SeniorSemifinalistTeacherSorry extends PivMailPluginBase {}

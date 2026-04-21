@@ -561,3 +561,20 @@ function piv_base_preprocess_views_view_fields(&$variables) {
     }
   }
 }
+
+/**
+ * Join words naturally, e.g. "red, blue and green".
+ */
+function piv_base_natural_join(array $items, string $langcode = 'en'): string {
+  if (!$items) {
+    return '';
+  }
+
+  $conjunction = match ($langcode) {
+    'fr' => ' et ',
+    default => ' and ',
+  };
+
+  $last = array_pop($items);
+  return $items ? implode(', ', $items) . $conjunction . $last : $last;
+}

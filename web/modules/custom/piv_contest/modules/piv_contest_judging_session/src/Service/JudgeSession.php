@@ -143,7 +143,7 @@ class JudgeSession {
         // original delta in case of mixed multiple languages.
         if (!$is_accuracy) {
           $recitations = array_values(array_filter($recitations, function ($recitation) use ($languages) {
-            return in_array($recitation->langcode->value, $languages);
+            return in_array($recitation->field_stream_language->target_id, $languages);
           }));
         }
 

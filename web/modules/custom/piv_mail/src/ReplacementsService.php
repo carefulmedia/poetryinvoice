@@ -58,6 +58,7 @@ class ReplacementsService {
       'visit_type',
       'visit_language',
     ],
+    // Live competitions.
     'team_regional_entry' => [
       'contest_name',
       'team_details',
@@ -72,6 +73,20 @@ class ReplacementsService {
     ],
     'poet_bio' => [
       'link_to_poet_bio',
+    ],
+    'competition_entry' => [
+      'competition_entry:student_name',
+      'competition_entry:teacher_name',
+      'competition_entry:school_name',
+      'competition_entry:poem_titles',
+      'competition_entry:stream',
+      'competition_entry:level',
+      // Competition related, get from the entry.
+      'competition:title',
+    ],
+    'paragraph_rank' => [
+      'competition_entry:rank',
+      'rank:*',
     ],
   ];
 
@@ -146,6 +161,15 @@ class ReplacementsService {
   protected $original;
 
   /**
+   * A langcode to be used.
+   *
+   * If one is not set than it tries to get it from other sources.
+   *
+   * @var string
+   */
+  private $langcode;
+
+  /**
    * Constructs a ReplacementService object.
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager, CountryManagerInterface $country_manager, DateFormatterInterface $date_formatter) {
@@ -160,6 +184,24 @@ class ReplacementsService {
   public function addSource($key, $source) {
     $this->sources[$key] = $source;
     return $this;
+  }
+
+  /**
+   * Force a langcode to be used.
+   */
+  public function setLangcode(string $langcode) {
+    $this->langcode = $langcode;
+    return $this;
+  }
+
+  /**
+   * Return the langcode used.
+   */
+  public function getLangcode() {
+    return $this->langcode
+      ?? $this->sources['node']->langcode->value
+      ?? $this->sources['visit_node']->langcode->value
+      ?? 'en';
   }
 
   /**
@@ -200,9 +242,17 @@ class ReplacementsService {
   }
 
   /**
+   * Helper function to get competition from sources.
+   */
+  private function getCompetition() {
+    return $this->sources['competition'] ?? $this->sources['competition_entry']->field_competition->entity ?? NULL;
+  }
+
+  /**
    * Replace a token, assumes the source exists.
    */
   private function replaceToken($token) {
+    $langcode = $this->getLangcode();
     $sources = &$this->sources;
     try {
       switch ($token) {
@@ -370,7 +420,7 @@ class ReplacementsService {
         // Journal poem.
         case 'journal_poem_first_name':
           return $sources['journal_poem']->piv_teacher_first_name->value;
-          
+
         case 'link_to_bio_enrichment':
           $bio_service = \Drupal::service('piv_futureverse.bio_enrichment'); // @phpcs:ignore
           $journal_poem_id = $sources['journal_poem']->id();
@@ -397,7 +447,7 @@ class ReplacementsService {
           $html .= $link;
           $html .= '</p>';
           return $html;
-        
+
         case 'link_to_futureverse_application':
           $bio_service = \Drupal::service('piv_futureverse.futureverse_once_url_generator'); // @phpcs:ignore
           $journal_poem_id = $sources['journal_poem']->id();
@@ -424,14 +474,69 @@ class ReplacementsService {
           $html .= $link;
           $html .= '</p>';
           return $html;
-        
+
         case 'link_to_poet_bio':
           $langcode = $sources['poet_bio']->field_language->target_id;
           return $sources['poet_bio']->toLink('Link to poet bio', 'edit-form', [
             'absolute' => TRUE,
             'language' => $sources['poet_bio']->field_language->entity,
           ])->toString();
+
+        // Competition related.
+        case 'competition_entry:student_name':
+          $entry = $sources['competition_entry'];
+          if (!empty($entry->field_student_stage_name)) {
+            return $entry->field_student_stage_name->value;
+          }
+          return trim("{$entry->field_student_name->value} {$entry->field_student_last_name->value}");
+
+        case 'competition_entry:teacher_name':
+          return $sources['competition_entry']->getOwner()->getDisplayName();
+
+        case 'competition_entry:school_name':
+          return $sources['competition_entry']->field_school->entity->label();
+
+        case 'competition_entry:poem_titles':
+          $entry = $sources['competition_entry'];
+          $recitations = $entry->field_recitations->referencedEntities();
+          $recitations = array_filter($recitations, fn($r) => $r->field_stream_language->target_id == $langcode);
+          $poem_titles = array_filter(array_map(function ($r) {
+            $title = $r->field_poem->entity->title->value ?? NULL;
+            return $title ? "<em>{$title}</em>" : NULL;
+          }, $recitations));
+          return piv_base_natural_join($poem_titles, $langcode);
+
+        case 'competition_entry:stream':
+          return $sources['competition_entry']->getStream()->field_label->value;
+
+        // Return the competition level name for the competition entry,
+        // so if the competition entry is on level 1 for example, it
+        // will return the label in the competition for delta 0, for
+        // example: 'Qualifiers'.
+        case 'competition_entry:level':
+          $entry = $sources['competition_entry'];
+          $entry_level = $entry->field_competition_current_level->value;
+          $competition = $this->getCompetition();
+          return $competition->field_competition_levels[$entry_level - 1]->value;
+
+        case 'competition_entry:rank':
+          return $sources['paragraph_rank']->field_rank->value;
+
+        case 'competition:title':
+          return $this->getCompetition()->label();
       }
+
+      // [rank:*] cases are tokens populated by the user.
+      // This needs the rank paragraph.
+      if (!empty($sources['paragraph_rank']) && str_starts_with($token, 'rank:')) {
+        $to_replace = str_replace('rank:', '', $token);
+        foreach ($sources['paragraph_rank']->field_tokens->getValue() as $value) {
+          if ($to_replace == $value['key']) {
+            return $value['value'];
+          }
+        }
+      }
+
     }
     catch (\Exception $e) {
       return $token;
@@ -455,32 +560,30 @@ class ReplacementsService {
    * be added to the tokens in case they are different.
    */
   public function replace($text) {
-    $langcode = $this->sources['node']->langcode->value
-      ?? $this->sources['visit_node']->langcode->value
-      ?? 'en';
+    $langcode = $this->getLangcode();
     $prefix = $langcode == 'en' ? '***CHANGED***' : '***MODIFIÉ***';
-    // Do not add the prefix to modified links.
     $ignore_modified_tokens = [
       'link_to_poet_page_href',
       'link_to_teacher_survey',
       'link_to_poet_survey',
     ];
-    foreach ($this::$tokens as $source => $tokens) {
-      if (!empty($this->sources[$source])) {
-        foreach ($tokens as $token) {
-          $token_value = $this->replaceToken($token);
-          if (!empty($this->original)) {
-            $original_token_value = $this->original->replaceToken($token);
-            if (!in_array($token, $ignore_modified_tokens)) {
-              if ($token_value != $original_token_value) {
-                $token_value = "$prefix <br><strong>$token_value</strong>";
-              }
-            }
+
+    if (!preg_match_all('/\[([^\[\]]+)\]/', $text, $matches)) {
+      return $text;
+    }
+
+    foreach ($matches[1] as $token) {
+      $token_value = $this->replaceToken($token);
+      if (!empty($this->original)) {
+        $original_token_value = $this->original->replaceToken($token);
+        if (!in_array($token, $ignore_modified_tokens)) {
+          if ($token_value != $original_token_value) {
+            $token_value = "$prefix <br><strong>$token_value</strong>";
           }
-          $token_value = $token_value ?? "";
-          $text = str_replace("[$token]", $token_value, $text);
         }
       }
+      $token_value = $token_value ?? "";
+      $text = str_replace("[$token]", $token_value, $text);
     }
     return $text;
   }
