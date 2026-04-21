@@ -1,0 +1,10 @@
+uuid: 7a2d24b3-18f2-4736-9865-d0ba68a43067
+langcode: en
+status: true
+dependencies: {  }
+id: competition_notification_rank
+label: Rank
+icon_uuid: null
+icon_default: null
+description: "Used in 'Competitions'."
+behavior_plugins: {  }

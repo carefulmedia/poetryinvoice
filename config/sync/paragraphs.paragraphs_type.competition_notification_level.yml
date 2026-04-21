@@ -1,0 +1,10 @@
+uuid: 2e05819a-443d-4fd8-a719-cc14925a1193
+langcode: en
+status: true
+dependencies: {  }
+id: competition_notification_level
+label: Level
+icon_uuid: null
+icon_default: null
+description: "Used in 'Competitions'."
+behavior_plugins: {  }
