@@ -4,16 +4,69 @@ status: true
 dependencies:
   config:
     - field.field.paragraph.competition_notification_level.field_ranks
+    - field.field.paragraph.competition_notification_level.field_student_loser_notification
+    - field.field.paragraph.competition_notification_level.field_student_winner_notificatio
+    - field.field.paragraph.competition_notification_level.field_teacher_loser_notification
+    - field.field.paragraph.competition_notification_level.field_teacher_winner_notificatio
     - paragraphs.paragraphs_type.competition_notification_level
   module:
+    - field_group
     - field_layout
     - layout_discovery
     - paragraphs
+    - piv_mail
 third_party_settings:
   field_layout:
     id: layout_onecol
     settings:
       label: ''
+  field_group:
+    group_flex_container:
+      children:
+        - group_pivmail_referencing
+        - field_ranks
+      label: 'Flex container'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: competition-notifications-flex
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: true
+    group_pivmail_referencing:
+      children:
+        - field_student_winner_notificatio
+        - field_student_loser_notification
+        - field_teacher_winner_notificatio
+        - field_teacher_loser_notification
+      label: 'PivMail Referencing'
+      region: content
+      parent_name: group_flex_container
+      weight: 20
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+        required_fields: false
 id: paragraph.competition_notification_level.default
 targetEntityType: paragraph
 bundle: competition_notification_level
@@ -21,7 +74,7 @@ mode: default
 content:
   field_ranks:
     type: paragraphs
-    weight: 0
+    weight: 21
     region: content
     settings:
       title: Paragraph
@@ -36,6 +89,30 @@ content:
       features:
         collapse_edit_all: collapse_edit_all
         duplicate: duplicate
+    third_party_settings: {  }
+  field_student_loser_notification:
+    type: piv_mail_plugin_select
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_student_winner_notificatio:
+    type: piv_mail_plugin_select
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_teacher_loser_notification:
+    type: piv_mail_plugin_select
+    weight: 24
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_teacher_winner_notificatio:
+    type: piv_mail_plugin_select
+    weight: 23
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden:
   created: true

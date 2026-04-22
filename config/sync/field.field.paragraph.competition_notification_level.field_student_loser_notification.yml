@@ -1,0 +1,19 @@
+uuid: 9b11d7a1-85c9-4bc9-84bc-32db4eaeaeaa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_student_loser_notification
+    - paragraphs.paragraphs_type.competition_notification_level
+id: paragraph.competition_notification_level.field_student_loser_notification
+field_name: field_student_loser_notification
+entity_type: paragraph
+bundle: competition_notification_level
+label: 'Student loser notification'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

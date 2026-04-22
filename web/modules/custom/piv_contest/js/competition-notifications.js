@@ -23,6 +23,24 @@
         });
       };
 
+      const updateRankValues = () => {
+        document.querySelectorAll('.paragraph-type--competition-notification-level').forEach((level) => {
+          level.querySelectorAll('.paragraph-type--competition-notification-rank').forEach((rank, delta) => {
+            const input = rank.querySelector('input[name*="[field_rank]"]');
+            if (input) {
+              input.value = (delta + 1);
+              input.readOnly = true;
+            }
+          });
+        });
+      };
+
+      // Update rank values after tabledrag reorder.
+      once('rank-drag', '.paragraph-type--competition-notification-level .field--name-field-ranks table', context).forEach((table) => {
+        const observer = new MutationObserver(() => updateRankValues());
+        observer.observe(table.querySelector('tbody'), { childList: true, subtree: true });
+      });
+
       // Listen to change events.
       once('copylabels', '[type="text"][name^="field_competition_levels"]', context).forEach((el) => {
         el.addEventListener('change', e => updateTitles());
@@ -30,6 +48,7 @@
       // Run on start or if the form is reloaded by some ajax.
       if (context == document || context.tagName == 'FORM') {
         updateTitles();
+        updateRankValues();
       }
     }
   };

@@ -12,7 +12,7 @@ field_name: field_tokens
 entity_type: paragraph
 bundle: competition_notification_rank
 label: Tokens
-description: "Tokens and their values, these will replace the values in the notifications, it can be anything you want.\r\nE.g.: <b>prize / $ 100</b> can then be used in the notifications as <b>[prize]</b> to be replaced by <b>$ 100</b>"
+description: "Tokens and their values, these will replace the values in the notifications, it can be anything you want.\r\nE.g.: <b>prize / $ 100</b> can then be used in the notifications as <b>&lsqb;rank:prize&rsqb;</b> to be replaced by <b>$ 100</b>"
 required: false
 translatable: false
 default_value: {  }

@@ -10,7 +10,7 @@ use Drupal\piv_mail\PivMailPluginBase;
  * @PivMail(
  *   id = "junior_online_contest_student_congrats",
  *   type = "competition",
- *   label = @Translation("JOC - Student Congrats"),
+ *   label = @Translation("Junior - Student Congrats"),
  *   description = "",
  *   sources = {"competition_entry", "paragraph_rank"}
  * )

@@ -1,15 +1,35 @@
-.paragraphs-tabs-wrapper .field--name-field-tokens table.field-multiple-table tbody tr td:nth-child(2) {
+.competition-notifications-flex {
+  display: flex;
+  gap: 80px;
+  margin-top: 20px;
+}
+.paragraph-type--competition-notification-rank table {
+  margin: 0;
+}
+.field-multiple-table thead th.th__h4-classform-item__label-form-item__label--multiple-value-formtokens-h4 {
+  padding: 0 10px;
+}
+.paragraphs-tabs-wrapper .field--name-field-tokens table tbody tr td:nth-child(2) {
   display: flex;
   gap: 20px;
 }
-
-.paragraphs-tabs-wrapper .field--name-field-tokens table.field-multiple-table tbody tr {
-  padding: 3px;
+.paragraphs-tabs-wrapper .field--name-field-tokens table tbody tr td:nth-child(2) .ajax-new-content {
+  display: flex;
+  gap: 20px;
 }
-
-.paragraphs-tabs-wrapper .field--name-field-tokens table.field-multiple-table tbody tr .form-item {
+.paragraphs-tabs-wrapper .field--name-field-tokens table tbody tr td label {
+  margin: 0;
+}
+.paragraphs-tabs-wrapper .field--name-field-tokens table tbody tr td input {
+  margin: 0;
+}
+.paragraphs-tabs-wrapper .field--name-field-tokens table tbody tr .form-item {
   display: flex;
   gap: 20px;
   margin: 0;
   align-items: center;
+}
+table.drag-removed > tbody > tr > td.field-multiple-drag {
+  padding: 0 !important;
+  min-width: 0 !important;
 }

@@ -327,6 +327,7 @@ function piv_contest_paragraph_presave(EntityInterface $entity) {
       }
     }
   }
+
 }
 
 /**
@@ -421,6 +422,26 @@ function piv_contest_competition_prepare_form(EntityInterface $entity, $operatio
  */
 function piv_contest_form_competition_form_alter(&$form, FormStateInterface $form_state) {
   $form['#attached']['library'][] = 'piv_contest/competition-notifications';
+  array_unshift($form['actions']['submit']['#submit'], '_piv_contest_populate_rank_deltas');
+}
+
+/**
+ * Populate field_rank on competition_notification_rank paragraphs.
+ */
+function _piv_contest_populate_rank_deltas(array &$form, FormStateInterface $form_state): void {
+  $levels = $form_state->getValue('field_notification_levels') ?? [];
+  foreach ($levels as &$level) {
+    if (empty($level['subform']['field_ranks'])) {
+      continue;
+    }
+    foreach ($level['subform']['field_ranks'] as $rank_delta => &$rank) {
+      if (!is_numeric($rank_delta) || empty($rank['subform'])) {
+        continue;
+      }
+      $rank['subform']['field_rank'][0]['value'] = ($rank_delta + 1);
+    }
+  }
+  $form_state->setValue('field_notification_levels', $levels);
 }
 
 /**
@@ -446,8 +467,8 @@ function piv_contest_field_widget_complete_form_alter(&$element, FormStateInterf
  */
 function piv_contest_preprocess_field_multiple_value_form(&$variables) {
   $field_name = $variables['element']['#field_name'] ?? '';
-  if (in_array($field_name, ['field_competition_levels', 'field_notification_levels'])) {
-    unset($variables['table']['#attributes']['class']);
+  if (in_array($field_name, ['field_competition_levels', 'field_notification_levels', 'field_tokens'])) {
+    $variables['table']['#attributes']['class'] = ['drag-removed'];
     unset($variables['table']['#tabledrag']);
     unset($variables['table']['#header'][2]);
     foreach ($variables['table']['#rows'] as $delta => $row) {
