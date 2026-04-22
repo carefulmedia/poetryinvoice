@@ -2286,20 +2286,34 @@ body.score-form-is-locked path {
   padding: 20px 0;
 }
 h3.final-results {
-  color: var(--color-blue-600);
+  color: #0036b1;
 }
 table.final-results {
   margin-bottom: 3rem;
 }
-table.final-results thead tr {
-  background-color: var(--color-blue-600);
+table.final-results thead {
+  --bs-table-bg: #0036b1;
+  --bs-table-color: #fff;
 }
 table.final-results tbody tr,
 table.final-results tbody tr.odd {
-  background-color: var(--color-blue-050);
+  --bs-table-bg: #e8f0fe;
 }
 #monitor-dashboard-wrapper .table-responsive {
   overflow-x: initial;
+}
+.table thead {
+  --bs-table-bg: #000;
+  --bs-table-color: #fff;
+}
+.table tbody tr {
+  --bs-table-bg: #efefef;
+}
+.table tbody tr.odd {
+  --bs-table-bg: #e4e4e4;
+}
+.table > :not(caption) > * > * {
+  background-color: var(--bs-table-bg);
 }
 /**
  * @file
