@@ -396,10 +396,6 @@ function piv_contest_competition_prepare_form(EntityInterface $entity, $operatio
     return;
   }
 
-  // Synchronize the count of competition notification level paragraphs
-  // on form edit. This creates new empty paragraphs but doesn't delete
-  // if there are more notification paragraphs than competition levels.
-  // Instead it will display a warning.
   $count_diff = count($entity->field_competition_levels) - count($entity->field_notification_levels);
   if ($count_diff > 0) {
     $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
@@ -409,12 +405,63 @@ function piv_contest_competition_prepare_form(EntityInterface $entity, $operatio
       ]);
     }
   }
-  elseif ($count_diff < 0) {
-    \Drupal::messenger()->addWarning(t(
-      'Note that there are more notifications levels (Notifications tab) than levels (@levels) in this competition.',
-      ['@levels' => implode(', ', array_column($entity->field_competition_levels->getValue(), 'value'))],
-    ));
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function piv_contest_competition_presave(EntityInterface $entity) : void {
+  if ($entity->bundle() != 'default') {
+    return;
   }
+
+  $new_levels = array_column($entity->field_competition_levels->getValue(), 'value');
+  $original_levels = [];
+  if (!empty($entity->original)) {
+    $original_levels = array_column($entity->original->field_competition_levels->getValue(), 'value');
+  }
+
+  // Find which original deltas were removed.
+  $kept_deltas = [];
+  $remaining_originals = $original_levels;
+  foreach ($new_levels as $level) {
+    $found = array_search($level, $remaining_originals);
+    if ($found !== FALSE) {
+      $kept_deltas[] = $found;
+      unset($remaining_originals[$found]);
+    }
+  }
+
+  $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
+  $original_notifications = $entity->field_notification_levels->referencedEntities();
+
+  // Build new notification levels list: keep paragraphs for kept deltas,
+  // create new ones for new levels.
+  $new_notifications = [];
+  $used_original_deltas = [];
+  foreach ($new_levels as $level) {
+    $original_delta = array_search($level, $original_levels);
+    if ($original_delta !== FALSE && !in_array($original_delta, $used_original_deltas) && isset($original_notifications[$original_delta])) {
+      $new_notifications[] = $original_notifications[$original_delta];
+      $used_original_deltas[] = $original_delta;
+    }
+    else {
+      $paragraph = $paragraph_storage->create([
+        'type' => 'competition_notification_level',
+      ]);
+      $paragraph->save();
+      $new_notifications[] = $paragraph;
+    }
+  }
+
+  // Delete orphaned paragraphs.
+  foreach ($original_notifications as $delta => $paragraph) {
+    if (!in_array($delta, $used_original_deltas) && !$paragraph->isNew()) {
+      $paragraph->delete();
+    }
+  }
+
+  $entity->field_notification_levels = $new_notifications;
 }
 
 /**
@@ -424,6 +471,10 @@ function piv_contest_form_competition_form_alter(&$form, FormStateInterface $for
   $form['#attached']['library'][] = 'piv_contest/competition-notifications';
   array_unshift($form['actions']['submit']['#submit'], '_piv_contest_populate_rank_deltas');
   $form['actions']['submit']['#submit'][] = '_piv_contest_redirect_on_new_levels';
+
+  if (!empty($form['field_notification_levels']['widget']['add_more'])) {
+    $form['field_notification_levels']['widget']['add_more']['#access'] = FALSE;
+  }
 }
 
 /**
@@ -453,8 +504,6 @@ function _piv_contest_redirect_on_new_levels(array &$form, FormStateInterface $f
   $original_count = count($entity->original->field_competition_levels ?? []);
   $new_count = count($entity->field_competition_levels);
   if ($new_count > $original_count) {
-    // Remove destination from url and remove warnings, new ones get
-    // added after redirect.
     \Drupal::request()->query->remove('destination');
     \Drupal::messenger()->deleteByType('warning');
     $form_state->setRedirectUrl($entity->toUrl('edit-form'));

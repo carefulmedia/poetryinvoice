@@ -36,29 +36,29 @@
       };
 
       // Update rank values after tabledrag reorder.
-      once('rank-drag', '.paragraph-type--competition-notification-level .field--name-field-ranks table', context).forEach((table) => {
+      once('rank-drag', '.paragraph-type--competition-notification-level .field--name-field-ranks table tbody', context).forEach((tbody) => {
         const observer = new MutationObserver(() => updateRankValues());
-        observer.observe(table.querySelector('tbody'), { childList: true, subtree: true });
+        observer.observe(tbody, { childList: true, subtree: true });
       });
+
+      const notificationCount = document.querySelectorAll('.paragraph-type--competition-notification-level').length;
 
       const showNewLevelMessage = () => {
         const table = document.querySelector('.field--name-field-competition-levels');
         if (!table) return;
         const id = 'new-level-notification-message';
         const inputs = table.querySelectorAll('input[type="text"][name^="field_competition_levels"]');
-        const hasNewLevel = Array.from(inputs).some((input, i) => {
-          const wasEmpty = input.dataset.originalValue === '';
-          return wasEmpty && input.value.trim() !== '';
-        });
+        const currentCount = Array.from(inputs).filter(el => el.value.trim() !== '').length;
+        const hasChange = currentCount !== notificationCount;
         let message = document.getElementById(id);
-        if (hasNewLevel && !message) {
+        if (hasChange && !message) {
           message = document.createElement('div');
           message.id = id;
           message.className = 'tabledrag-changed-warning messages messages--warning';
-          message.textContent = Drupal.t('* You have unsaved changes. Save this competition to create notifications for the new level.');
+          message.textContent = Drupal.t('* You have unsaved changes. Save this competition to synchronize notifications.');
           table.prepend(message);
         }
-        else if (!hasNewLevel && message) {
+        else if (!hasChange && message) {
           message.remove();
         }
       };
@@ -77,6 +77,7 @@
       if (context == document || context.tagName == 'FORM') {
         updateTitles();
         updateRankValues();
+        showNewLevelMessage();
       }
     }
   };
