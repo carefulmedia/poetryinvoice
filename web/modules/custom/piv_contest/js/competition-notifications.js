@@ -41,9 +41,37 @@
         observer.observe(table.querySelector('tbody'), { childList: true, subtree: true });
       });
 
-      // Listen to change events.
-      once('copylabels', '[type="text"][name^="field_competition_levels"]', context).forEach((el) => {
-        el.addEventListener('change', e => updateTitles());
+      const showNewLevelMessage = () => {
+        const table = document.querySelector('.field--name-field-competition-levels');
+        if (!table) return;
+        const id = 'new-level-notification-message';
+        const inputs = table.querySelectorAll('input[type="text"][name^="field_competition_levels"]');
+        const hasNewLevel = Array.from(inputs).some((input, i) => {
+          const wasEmpty = input.dataset.originalValue === '';
+          return wasEmpty && input.value.trim() !== '';
+        });
+        let message = document.getElementById(id);
+        if (hasNewLevel && !message) {
+          message = document.createElement('div');
+          message.id = id;
+          message.className = 'tabledrag-changed-warning messages messages--warning';
+          message.textContent = Drupal.t('* You have unsaved changes. Save this competition to create notifications for the new level.');
+          table.prepend(message);
+        }
+        else if (!hasNewLevel && message) {
+          message.remove();
+        }
+      };
+
+      // Track original values of level inputs.
+      once('track-levels', '[type="text"][name^="field_competition_levels"]', context).forEach((el) => {
+        if (!('originalValue' in el.dataset)) {
+          el.dataset.originalValue = el.value.trim();
+        }
+        el.addEventListener('change', () => {
+          updateTitles();
+          showNewLevelMessage();
+        });
       });
       // Run on start or if the form is reloaded by some ajax.
       if (context == document || context.tagName == 'FORM') {

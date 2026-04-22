@@ -423,10 +423,11 @@ function piv_contest_competition_prepare_form(EntityInterface $entity, $operatio
 function piv_contest_form_competition_form_alter(&$form, FormStateInterface $form_state) {
   $form['#attached']['library'][] = 'piv_contest/competition-notifications';
   array_unshift($form['actions']['submit']['#submit'], '_piv_contest_populate_rank_deltas');
+  $form['actions']['submit']['#submit'][] = '_piv_contest_redirect_on_new_levels';
 }
 
 /**
- * Populate field_rank on competition_notification_rank paragraphs.
+ * Populate field_rank and redirect back if new levels were added.
  */
 function _piv_contest_populate_rank_deltas(array &$form, FormStateInterface $form_state): void {
   $levels = $form_state->getValue('field_notification_levels') ?? [];
@@ -442,6 +443,22 @@ function _piv_contest_populate_rank_deltas(array &$form, FormStateInterface $for
     }
   }
   $form_state->setValue('field_notification_levels', $levels);
+}
+
+/**
+ * Redirect back to edit form when new competition levels were added.
+ */
+function _piv_contest_redirect_on_new_levels(array &$form, FormStateInterface $form_state): void {
+  $entity = $form_state->getFormObject()->getEntity();
+  $original_count = count($entity->original->field_competition_levels ?? []);
+  $new_count = count($entity->field_competition_levels);
+  if ($new_count > $original_count) {
+    // Remove destination from url and remove warnings, new ones get
+    // added after redirect.
+    \Drupal::request()->query->remove('destination');
+    \Drupal::messenger()->deleteByType('warning');
+    $form_state->setRedirectUrl($entity->toUrl('edit-form'));
+  }
 }
 
 /**
