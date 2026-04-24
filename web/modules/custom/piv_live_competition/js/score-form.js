@@ -71,8 +71,10 @@
             const active_round = data?.active_round || 0;
             if (active_round > round) {
               enable_button(el);
-              location.replace(location.href);
               clearInterval(timer);
+              if ($(el).hasClass('is-locked')) {
+                location.replace(location.href);
+              }
             }
           });
         };
