@@ -12,8 +12,8 @@ id: paragraph.competition_notification_level.field_ranks
 field_name: field_ranks
 entity_type: paragraph
 bundle: competition_notification_level
-label: Ranks
-description: ''
+label: 'Rank tokens'
+description: 'Tokens for each rank, these will have precedence over the competition level tokens when sending notifications to ranked competition entries.'
 required: false
 translatable: false
 default_value: {  }
@@ -48,6 +48,9 @@ settings:
         enabled: false
       micro_interview:
         weight: 28
+        enabled: false
+      poem:
+        weight: 30
         enabled: false
       poet_laureate:
         weight: 29

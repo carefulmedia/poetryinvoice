@@ -6,6 +6,7 @@ dependencies:
     - field.field.competition_entry.default.field_competition
     - field.field.competition_entry.default.field_competition_current_level
     - field.field.competition_entry.default.field_complete
+    - field.field.competition_entry.default.field_notification_logs
     - field.field.competition_entry.default.field_place
     - field.field.competition_entry.default.field_recitations
     - field.field.competition_entry.default.field_release_form
@@ -61,6 +62,14 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  field_notification_logs:
+    type: string_textarea
+    weight: 28
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
     third_party_settings: {  }
   field_place:
     type: options_select

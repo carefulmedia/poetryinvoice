@@ -13,6 +13,11 @@ services:
     arguments:
       - '@entity_type.manager'
 
+  piv_contest.competition_rank_helper:
+    class: Drupal\piv_contest\CompetitionRankHelper
+    arguments:
+      - '@entity_type.manager'
+
   piv_contest.competition_enrollment:
     class: Drupal\piv_contest\CompetitionEnrollment
     arguments:

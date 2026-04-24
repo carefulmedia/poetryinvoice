@@ -1386,12 +1386,10 @@ form {
   height: fit-content;
 }
 /* binge/videos */
-.view-id-content_type_index_pages.view-display-id-block_4 .content-index.mixtape,
-.view-id-content_type_index_pages.view-display-id-block_4 .content-index.podcast {
+.view-id-content_type_index_pages.view-display-id-block_4 .content-index.podcast .area-link {
   min-height: 21rem;
 }
 /* binge/podcasts */
-.view-id-content_type_index_pages.view-display-id-block_10 .content-index.mixtape,
 .view-id-content_type_index_pages.view-display-id-block_10 .content-index.podcast {
   min-height: auto;
 }
@@ -2131,13 +2129,13 @@ h3.name {
 .item-list ul li {
   /* This is needed to reset styles in item-list.theme.css */
   margin: 0;
-  padding: 0.2em 0.5em 0 0;
+  padding: 0.2em 0.5em;
   /* LTR */
 }
 [dir="rtl"] .item-list ul li {
   /* This is needed to reset [dir="rtl"] styles in item-list.theme.css */
   margin: 0;
-  padding: 0.2em 0 0 0.5em;
+  padding: 0.2em 0.5em;
 }
 .item-list .item-list__comma-list,
 .item-list .item-list__comma-list li,
@@ -4877,6 +4875,17 @@ poem-read__later a:active {
   color: white;
   background: var(--red-dark);
   transition: all 0.4s ease;
+}
+.button.button--success {
+  background: var(--mint);
+}
+.button.button--success:hover {
+  background: white !important;
+  color: var(--mint);
+}
+.button.button--success:active {
+  color: white;
+  background: var(--mint);
 }
 .poem-read__next a {
   background: var(--mint) !important;

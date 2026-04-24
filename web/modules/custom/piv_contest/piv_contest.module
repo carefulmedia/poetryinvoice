@@ -516,8 +516,9 @@ function _piv_contest_redirect_on_new_levels(array &$form, FormStateInterface $f
 function piv_contest_field_widget_complete_form_alter(&$element, FormStateInterface $form_state, $context) {
   if (!empty($element['widget']['#field_name']) && $element['widget']['#field_name'] == 'field_notification_levels') {
     foreach (Element::children($element['widget']) as $delta) {
-      // Add a class to a container to use it as the wrapper for our
-      // labels, which are controlled by js.
+      if (!is_numeric($delta)) {
+        continue;
+      }
       if (!empty($element['widget'][$delta]['top']['type'])) {
         $element['widget'][$delta]['top']['type']['#attributes']['class'][] = 'js-notification-label';
         $element['widget'][$delta]['top']['type']['#attributes']['class'][] = 'notification-label';

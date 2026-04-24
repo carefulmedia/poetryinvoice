@@ -1,0 +1,13 @@
+uuid: a9058674-fe4d-4f10-a93c-b95385b26a7a
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_logs
+_core:
+  default_config_hash: DQ5gFBqzwvjdqMfDoLCApW_7oDXsC5Y1p_cQAZVcDxE
+id: piv_log_save_action
+label: 'Save logs'
+type: piv_log
+plugin: 'entity:save_action:piv_log'
+configuration: {  }

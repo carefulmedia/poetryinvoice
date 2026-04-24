@@ -9,3 +9,8 @@ competition-notifications:
       css/competition-notifications.css: {}
   js:
     js/competition-notifications.js: {}
+
+send-notifications-formatter:
+  css:
+    component:
+      css/send-notifications-formatter.css: {}

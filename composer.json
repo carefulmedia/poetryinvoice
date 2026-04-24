@@ -110,7 +110,7 @@
         "drupal/masonry_views": "^4.1",
         "drupal/menu_block": "^1.8",
         "drupal/menus_attribute": "1.x-dev@dev",
-        "drupal/message": "^1.2",
+        "drupal/message": "^1.8",
         "drupal/metatag": "^2.1",
         "drupal/migrate_plus": "^6",
         "drupal/migrate_tools": "^6",

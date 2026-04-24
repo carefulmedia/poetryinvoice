@@ -33,3 +33,9 @@ table.drag-removed > tbody > tr > td.field-multiple-drag {
   padding: 0 !important;
   min-width: 0 !important;
 }
+.paragraph-type--competition-notification-rank .paragraph-top.add-above-off {
+  display: none;
+}
+.paragraph-type--competition-notification-rank table thead {
+  display: none;
+}

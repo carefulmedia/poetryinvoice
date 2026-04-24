@@ -1,0 +1,12 @@
+administer piv_log types:
+  title: 'Administer log types'
+  description: 'Maintain the types of piv log entity.'
+  restrict access: true
+view piv_log:
+  title: 'View log'
+edit piv_log:
+  title: 'Edit log'
+delete piv_log:
+  title: 'Delete log'
+create piv_log:
+  title: 'Create log'

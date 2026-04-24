@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_logs
+id: piv_log_delete_action
+label: 'Delete logs'
+type: piv_log
+plugin: entity:delete_action:piv_log
+configuration: {  }

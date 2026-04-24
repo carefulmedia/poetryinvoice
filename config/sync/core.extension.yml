@@ -135,6 +135,7 @@ module:
   piv_futureverse: 0
   piv_futureverse_vote: 0
   piv_live_competition: 0
+  piv_logs: 0
   piv_mail: 0
   piv_pathauto: 0
   piv_poem_password: 0

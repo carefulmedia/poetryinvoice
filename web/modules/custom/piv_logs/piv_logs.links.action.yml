@@ -1,0 +1,11 @@
+piv_log.type_add:
+  title: 'Add log type'
+  route_name: entity.piv_log_type.add_form
+  appears_on:
+    - entity.piv_log_type.collection
+
+piv_log.add_page:
+  title: 'Add log'
+  route_name: entity.piv_log.add_page
+  appears_on:
+    - entity.piv_log.collection

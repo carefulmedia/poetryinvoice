@@ -1,0 +1,11 @@
+.send-notifications-recipients {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .send-notifications-recipients {
+    grid-template-columns: 1fr;
+  }
+}

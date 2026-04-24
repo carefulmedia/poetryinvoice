@@ -1,0 +1,13 @@
+uuid: 6f7dfdcf-d2cf-42c6-b7e9-471a7436c6da
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_logs
+_core:
+  default_config_hash: wd0fooeMS2o07-h5RGgkhoDRZl9CEU4ELQ3U_t3RTIU
+id: piv_log_delete_action
+label: 'Delete logs'
+type: piv_log
+plugin: 'entity:delete_action:piv_log'
+configuration: {  }

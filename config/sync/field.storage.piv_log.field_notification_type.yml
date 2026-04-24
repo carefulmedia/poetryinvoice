@@ -1,0 +1,33 @@
+uuid: 2a2c53cf-f601-4c76-8bc4-7f7960325b23
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - piv_logs
+id: piv_log.field_notification_type
+field_name: field_notification_type
+entity_type: piv_log
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: student_winner_notification
+      label: 'Student winner notification'
+    -
+      value: student_loser_notification
+      label: 'Student loser notification'
+    -
+      value: teacher_winner_notification
+      label: 'Teacher winner notification'
+    -
+      value: teacher_loser_notification
+      label: 'Teacher loser notification'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

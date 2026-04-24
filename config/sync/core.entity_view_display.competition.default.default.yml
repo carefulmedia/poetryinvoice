@@ -18,6 +18,7 @@ dependencies:
     - field.field.competition.default.field_judging_deadline
     - field.field.competition.default.field_location
     - field.field.competition.default.field_notification_levels
+    - field.field.competition.default.field_notification_log
     - field.field.competition.default.field_online_competition
     - field.field.competition.default.field_open_date
     - field.field.competition.default.field_popular_vote_level
@@ -29,8 +30,8 @@ dependencies:
   module:
     - address
     - datetime
-    - entity_reference_revisions
     - options
+    - piv_contest
     - text
 id: competition.default.default
 targetEntityType: competition
@@ -39,7 +40,7 @@ mode: default
 content:
   body:
     type: text_default
-    label: above
+    label: inline
     settings: {  }
     third_party_settings: {  }
     weight: 0
@@ -53,7 +54,7 @@ content:
     region: content
   field_criteria:
     type: entity_reference_label
-    label: above
+    label: inline
     settings:
       link: true
     third_party_settings: {  }
@@ -61,7 +62,7 @@ content:
     region: content
   field_enable_popular_voting:
     type: boolean
-    label: above
+    label: inline
     settings:
       format: default
       format_custom_false: ''
@@ -69,35 +70,23 @@ content:
     third_party_settings: {  }
     weight: 7
     region: content
-  field_enable_the_voting_ui:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 10
-    region: content
   field_location:
     type: address_default
-    label: above
+    label: inline
     settings: {  }
     third_party_settings: {  }
     weight: 4
     region: content
-  field_notification_levels:
-    type: entity_reference_revisions_entity_view
+  field_notification_log:
+    type: send_notifications
     label: above
-    settings:
-      view_mode: default
-      link: ''
+    settings: {  }
     third_party_settings: {  }
-    weight: 11
+    weight: 10
     region: content
   field_online_competition:
     type: boolean
-    label: above
+    label: inline
     settings:
       format: default
       format_custom_false: ''
@@ -107,7 +96,7 @@ content:
     region: content
   field_popular_vote_level:
     type: number_integer
-    label: above
+    label: inline
     settings:
       thousand_separator: ''
       prefix_suffix: true
@@ -116,7 +105,7 @@ content:
     region: content
   field_submission_deadline:
     type: datetime_default
-    label: above
+    label: inline
     settings:
       timezone_override: ''
       format_type: medium
@@ -125,7 +114,7 @@ content:
     region: content
   field_team_competition:
     type: boolean
-    label: above
+    label: inline
     settings:
       format: default
       format_custom_false: ''
@@ -152,9 +141,11 @@ hidden:
   field_competition_current_level: true
   field_competition_levels: true
   field_competition_streams: true
+  field_enable_the_voting_ui: true
   field_invited_schools: true
   field_judges: true
   field_judging_deadline: true
+  field_notification_levels: true
   field_open_date: true
   field_score_template: true
   langcode: true

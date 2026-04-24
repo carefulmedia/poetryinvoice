@@ -7,6 +7,7 @@ dependencies:
     - field.field.competition_entry.default.field_competition
     - field.field.competition_entry.default.field_competition_current_level
     - field.field.competition_entry.default.field_complete
+    - field.field.competition_entry.default.field_notification_logs
     - field.field.competition_entry.default.field_place
     - field.field.competition_entry.default.field_recitations
     - field.field.competition_entry.default.field_release_form
@@ -83,6 +84,7 @@ hidden:
   field_competition: true
   field_competition_current_level: true
   field_complete: true
+  field_notification_logs: true
   field_place: true
   field_recitations: true
   field_school: true

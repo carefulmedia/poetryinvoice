@@ -1,0 +1,19 @@
+uuid: 50a49eea-05b8-4f89-9d23-014a65bf8d9c
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_contest_competition_entry
+id: competition_entry.field_notification_logs
+field_name: field_notification_logs
+entity_type: competition_entry
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

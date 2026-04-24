@@ -1,0 +1,21 @@
+uuid: eb369069-e297-4258-b8f2-a435dd842f0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.piv_log.field_notification_type
+    - piv_logs.piv_log_type.competition_entry_notifications
+  module:
+    - options
+id: piv_log.competition_entry_notifications.field_notification_type
+field_name: field_notification_type
+entity_type: piv_log
+bundle: competition_entry_notifications
+label: 'Notification type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,72 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * @file
+ * Provides a log entity type.
+ */
+
+use Drupal\Core\Render\Element;
+use Drupal\user\UserInterface;
+
+/**
+ * Implements hook_theme().
+ */
+function piv_logs_theme(): array {
+  return [
+    'piv_log' => ['render element' => 'elements'],
+  ];
+}
+
+/**
+ * Prepares variables for log templates.
+ *
+ * Default template: piv-log.html.twig.
+ *
+ * @param array $variables
+ *   An associative array containing:
+ *   - elements: An associative array containing the log information and any
+ *     fields attached to the entity.
+ *   - attributes: HTML attributes for the containing element.
+ */
+function template_preprocess_piv_log(array &$variables): void {
+  $variables['view_mode'] = $variables['elements']['#view_mode'];
+  foreach (Element::children($variables['elements']) as $key) {
+    $variables['content'][$key] = $variables['elements'][$key];
+  }
+}
+
+/**
+ * Implements hook_user_cancel().
+ */
+function piv_logs_user_cancel($edit, UserInterface $account, $method): void {
+  switch ($method) {
+    case 'user_cancel_reassign':
+      // Anonymize logs.
+      $storage = \Drupal::entityTypeManager()->getStorage('piv_log');
+      $piv_log_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->accessCheck(FALSE)
+        ->execute();
+      foreach ($storage->loadMultiple($piv_log_ids) as $piv_log) {
+        $piv_log->setOwnerId(0)->save();
+      }
+      break;
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_predelete() for user entities.
+ */
+function piv_logs_user_predelete(UserInterface $account): void {
+  // Delete logs that belong to this account.
+  $storage = \Drupal::entityTypeManager()->getStorage('piv_log');
+  $piv_log_ids = $storage->getQuery()
+    ->condition('uid', $account->id())
+    ->accessCheck(FALSE)
+    ->execute();
+  $storage->delete(
+    $storage->loadMultiple($piv_log_ids)
+  );
+}

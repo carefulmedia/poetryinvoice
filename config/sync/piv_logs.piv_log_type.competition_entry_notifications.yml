@@ -1,0 +1,6 @@
+uuid: 5e9ccebc-0f4b-4f55-a9f2-435231f2fa52
+langcode: en
+status: true
+dependencies: {  }
+id: competition_entry_notifications
+label: 'Competition Entry Notifications'

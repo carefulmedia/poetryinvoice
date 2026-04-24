@@ -14,7 +14,7 @@
  * @see template_preprocess_competition()
  */
 #}
-<article{{ attributes }}>
+<article{{ attributes.addClass('competition') }}>
   {% if content %}
     {{- content -}}
   {% endif %}

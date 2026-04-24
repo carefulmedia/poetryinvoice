@@ -1,0 +1,89 @@
+uuid: 00342265-5fc7-4ba0-afb9-51db5a6af72a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.piv_log.competition_entry_notifications.field_competition_entry
+    - field.field.piv_log.competition_entry_notifications.field_competition_level
+    - field.field.piv_log.competition_entry_notifications.field_email_status
+    - field.field.piv_log.competition_entry_notifications.field_notification_type
+    - piv_logs.piv_log_type.competition_entry_notifications
+  module:
+    - options
+    - user
+id: piv_log.competition_entry_notifications.default
+targetEntityType: piv_log
+bundle: competition_entry_notifications
+mode: default
+content:
+  created:
+    type: timestamp
+    label: above
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 20
+    region: content
+  field_competition_entry:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 21
+    region: content
+  field_competition_level:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_email_status:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_notification_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 23
+    region: content
+  label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+  uid:
+    type: author
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 15
+    region: content
+hidden:
+  entity_print_view_epub: true
+  entity_print_view_pdf: true
+  entity_print_view_word_docx: true
+  langcode: true
+  search_api_excerpt: true

@@ -1,0 +1,23 @@
+uuid: 833e2b65-890e-4713-8bdc-8742496a3b96
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.piv_log.field_competition_level
+    - piv_logs.piv_log_type.competition_entry_notifications
+id: piv_log.competition_entry_notifications.field_competition_level
+field_name: field_competition_level
+entity_type: piv_log
+bundle: competition_entry_notifications
+label: 'Competition level'
+description: 'The level of the competition this notification was sent. Levels are for example: Qualifiers, Semifinals, etc...'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,0 +1,33 @@
+uuid: 6b01dd36-429f-4e7e-8bff-416e475509c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - piv_logs
+id: piv_log.field_email_status
+field_name: field_email_status
+entity_type: piv_log
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: sent
+      label: Sent
+    -
+      value: opened
+      label: Opened
+    -
+      value: responded
+      label: Responded
+    -
+      value: bounced
+      label: Bounced
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

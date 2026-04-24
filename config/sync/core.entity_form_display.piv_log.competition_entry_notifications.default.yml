@@ -1,0 +1,64 @@
+uuid: 44d9cc8c-003e-45fb-9f7e-60ba6fdc0a61
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.piv_log.competition_entry_notifications.field_competition_entry
+    - field.field.piv_log.competition_entry_notifications.field_competition_level
+    - field.field.piv_log.competition_entry_notifications.field_email_status
+    - field.field.piv_log.competition_entry_notifications.field_notification_type
+    - piv_logs.piv_log_type.competition_entry_notifications
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: piv_log.competition_entry_notifications.default
+targetEntityType: piv_log
+bundle: competition_entry_notifications
+mode: default
+content:
+  field_competition_entry:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_competition_level:
+    type: number
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_email_status:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_notification_type:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  uid: true

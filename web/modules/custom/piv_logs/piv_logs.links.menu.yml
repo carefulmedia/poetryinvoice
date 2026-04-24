@@ -1,0 +1,11 @@
+entity.piv_log_type.collection:
+  title: 'Log types'
+  description: 'Manage and CRUD actions on Log type.'
+  parent: system.admin_structure
+  route_name: entity.piv_log_type.collection
+
+entity.piv_log.collection:
+  title: 'Logs'
+  description: 'List of logs.'
+  route_name: entity.piv_log.collection
+  parent: system.admin_content

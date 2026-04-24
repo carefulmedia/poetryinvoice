@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_logs
+id: piv_log_save_action
+label: 'Save logs'
+type: piv_log
+plugin: entity:save_action:piv_log
+configuration: {  }

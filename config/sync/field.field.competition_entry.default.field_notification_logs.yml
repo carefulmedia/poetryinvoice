@@ -1,0 +1,19 @@
+uuid: fa6d9da2-206a-4557-beef-b7234b99035b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.competition_entry.field_notification_logs
+    - piv_contest_competition_entry.competition_entry_type.default
+id: competition_entry.default.field_notification_logs
+field_name: field_notification_logs
+entity_type: competition_entry
+bundle: default
+label: 'Notification Logs'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -1,0 +1,10 @@
+entity.piv_log.edit_form:
+  route_name: entity.piv_log.edit_form
+  group: piv_log
+  title: 'Edit'
+
+entity.piv_log.delete_form:
+  route_name: entity.piv_log.delete_form
+  group: piv_log
+  title: 'Delete'
+  weight: 10
