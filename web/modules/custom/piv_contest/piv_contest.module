@@ -87,12 +87,8 @@ function template_preprocess_notification_recipient_item(array &$variables) {
   $status_items = [];
   foreach ($variables['logs'] as $langcode => $log) {
     $status = $log->field_email_status->value;
-    $status_label = match($status) {
-      'sent' => t('sent'),
-      'failed_to_send' => t('failed'),
-      default => t('not sent'),
-    };
-    $success = $status === 'sent';
+    $status_label = $log->field_email_status->view()[0] ?? t('not sent');
+    $success = in_array($status, ['sent', 'opened', 'responded']);
     $language = $language_manager->getLanguage($langcode);
     $language_label = $language ? $language->getName() : $langcode;
 
