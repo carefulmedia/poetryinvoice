@@ -244,6 +244,14 @@ class SendNotificationsForm extends FormBase {
 
     foreach ($stream_languages as $langcode) {
       $replacements_service = clone $this->replacementsService;
+
+      if ($entry->hasTranslation($langcode)) {
+        $entry = $entry->getTranslation($langcode);
+      }
+      if ($rank_paragraph->hasTranslation($langcode)) {
+        $rank_paragraph = $rank_paragraph->getTranslation($langcode);
+      }
+
       $replacements_service->addSource('competition_entry', $entry);
       if ($rank_paragraph) {
         $replacements_service->addSource('paragraph_rank', $rank_paragraph);
@@ -295,13 +303,22 @@ class SendNotificationsForm extends FormBase {
         foreach ($session_ranked as $rank => $rank_entries) {
           $rank_paragraph = $rank_paragraphs_by_rank[$rank] ?? NULL;
           foreach ($rank_entries as $entry) {
-            $replacements_service = clone $this->replacementsService;
-            $replacements_service->addSource('competition_entry', $entry);
-            if ($rank_paragraph) {
-              $replacements_service->addSource('paragraph_rank', $rank_paragraph);
-            }
+
 
             foreach ($stream_languages as $langcode) {
+              if ($entry->hasTranslation($langcode)) {
+                $entry = $entry->getTranslation($langcode);
+              }
+              if ($rank_paragraph->hasTranslation($langcode)) {
+                $rank_paragraph = $rank_paragraph->getTranslation($langcode);
+              }
+
+              $replacements_service = clone $this->replacementsService;
+              $replacements_service->addSource('competition_entry', $entry);
+              if ($rank_paragraph) {
+                $replacements_service->addSource('paragraph_rank', $rank_paragraph);
+              }
+
               $result = piv_mail_send_mail($plugin_id, $langcode, $replacements_service);
               if ($result) {
                 $success = TRUE;

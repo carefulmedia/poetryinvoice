@@ -1,0 +1,18 @@
+uuid: 93cdd7cf-b0d4-4cd5-9206-fe1277bd0179
+langcode: en
+status: true
+dependencies:
+  config:
+    - paragraphs.paragraphs_type.competition_notification_rank
+id: paragraph.competition_notification_rank.created
+field_name: created
+entity_type: paragraph
+bundle: competition_notification_rank
+label: 'Authored on'
+description: 'The time that the Paragraph was created.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: created

@@ -15,7 +15,7 @@ bundle: competition_notification_level
 label: 'Rank tokens'
 description: 'Tokens for each rank, these will have precedence over the competition level tokens when sending notifications to ranked competition entries.'
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
