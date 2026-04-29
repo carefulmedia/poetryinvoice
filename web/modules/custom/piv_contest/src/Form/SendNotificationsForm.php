@@ -173,7 +173,7 @@ class SendNotificationsForm extends FormBase {
             $level_number,
             $type,
             $this->getLogType($type),
-            !empty($plugin_id),
+            !empty($plugin_id) && $winners,
           );
         }
         else {
