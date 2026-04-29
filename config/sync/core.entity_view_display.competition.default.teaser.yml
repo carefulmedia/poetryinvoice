@@ -19,7 +19,6 @@ dependencies:
     - field.field.competition.default.field_judging_deadline
     - field.field.competition.default.field_location
     - field.field.competition.default.field_notification_levels
-    - field.field.competition.default.field_notification_log
     - field.field.competition.default.field_online_competition
     - field.field.competition.default.field_open_date
     - field.field.competition.default.field_popular_vote_level
@@ -96,7 +95,6 @@ hidden:
   field_judges: true
   field_judging_deadline: true
   field_notification_levels: true
-  field_notification_log: true
   field_online_competition: true
   field_popular_vote_level: true
   field_score_template: true

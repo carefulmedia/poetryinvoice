@@ -7,9 +7,11 @@ dependencies:
     - field.field.piv_log.competition_entry_notifications.field_competition_level
     - field.field.piv_log.competition_entry_notifications.field_email_status
     - field.field.piv_log.competition_entry_notifications.field_notification_type
+    - field.field.piv_log.competition_entry_notifications.field_stream_language
     - piv_logs.piv_log_type.competition_entry_notifications
   module:
     - options
+    - text
     - user
 id: piv_log.competition_entry_notifications.default
 targetEntityType: piv_log
@@ -34,6 +36,13 @@ content:
         refresh: 60
     third_party_settings: {  }
     weight: 20
+    region: content
+  description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
     region: content
   field_competition_entry:
     type: entity_reference_label
@@ -66,6 +75,14 @@ content:
     third_party_settings: {  }
     weight: 23
     region: content
+  field_stream_language:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 25
+    region: content
   label:
     type: string
     label: hidden
@@ -73,6 +90,23 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: -5
+    region: content
+  message:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  status:
+    type: boolean
+    label: above
+    settings:
+      format: enabled-disabled
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 0
     region: content
   uid:
     type: author

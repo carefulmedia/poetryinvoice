@@ -24,3 +24,7 @@ services:
       - '@entity_type.manager'
       - '@piv_contest_competition_entry.competition_lock_service'
       - '@language_manager'
+
+  piv_contest.notification_logs:
+    class: Drupal\piv_contest\NotificationLogs
+    arguments: ['@entity_type.manager']

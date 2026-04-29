@@ -9,3 +9,21 @@
     grid-template-columns: 1fr;
   }
 }
+
+.notifications-wrapper {
+  margin: 0 -1.5rem;
+  padding: 1.5rem;
+}
+.notifications-wrapper.odd { background: #f2f2f2; }
+form.send-notifications-form { margin-top: 6rem; }
+form.send-notifications-form button.send-notification-entry {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 5px 10px;
+  background: #555;
+  margin-left: auto;
+}
+form.send-notifications-form button.send-notification-entry.form-submit::before {
+  display: none;
+}

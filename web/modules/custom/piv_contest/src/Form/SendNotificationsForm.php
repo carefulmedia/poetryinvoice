@@ -10,6 +10,7 @@ use Drupal\piv_mail\PivMailPluginManager;
 use Drupal\piv_mail\ReplacementsService;
 use Drupal\piv_contest_competition\CompetitionInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Drupal\piv_contest\NotificationLogs;
 
 /**
  * Form for sending competition notifications.
@@ -17,47 +18,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 class SendNotificationsForm extends FormBase {
 
   /**
-   * The entity type manager.
-   *
-   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
-   */
-  protected EntityTypeManagerInterface $entityTypeManager;
-
-  /**
-   * The competition rank helper.
-   *
-   * @var \Drupal\piv_contest\CompetitionRankHelper
-   */
-  protected CompetitionRankHelper $rankHelper;
-
-  /**
-   * The replacements service.
-   *
-   * @var \Drupal\piv_mail\ReplacementsService
-   */
-  protected ReplacementsService $replacementsService;
-
-  /**
-   * The PivMail plugin manager.
-   *
-   * @var \Drupal\piv_mail\PivMailPluginManager
-   */
-  protected PivMailPluginManager $pivMailManager;
-
-  /**
    * Constructs a SendNotificationsForm.
    */
   public function __construct(
-    EntityTypeManagerInterface $entity_type_manager,
-    CompetitionRankHelper $rank_helper,
-    ReplacementsService $replacements_service,
-    PivMailPluginManager $piv_mail_manager,
-  ) {
-    $this->entityTypeManager = $entity_type_manager;
-    $this->rankHelper = $rank_helper;
-    $this->replacementsService = $replacements_service;
-    $this->pivMailManager = $piv_mail_manager;
-  }
+    protected EntityTypeManagerInterface $entityTypeManager,
+    protected CompetitionRankHelper $rankHelper,
+    protected ReplacementsService $replacementsService,
+    protected PivMailPluginManager $pivMailManager,
+    protected NotificationLogs $notificationLogs,
+  ) {}
 
   /**
    * {@inheritdoc}
@@ -67,7 +36,8 @@ class SendNotificationsForm extends FormBase {
       $container->get('entity_type.manager'),
       $container->get('piv_contest.competition_rank_helper'),
       $container->get('piv_mail.replacements_service'),
-      $container->get('plugin.manager.piv_mail')
+      $container->get('plugin.manager.piv_mail'),
+      $container->get('piv_contest.notification_logs'),
     );
   }
 
@@ -81,22 +51,26 @@ class SendNotificationsForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, ?CompetitionInterface $competition = NULL, ?string $field_name = NULL) {
-    if (!$competition || !$field_name) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?CompetitionInterface $competition = NULL) {
+    if (!$competition) {
       return $form;
     }
 
     $form_state->set('competition_id', $competition->id());
-    $form_state->set('field_name', $field_name);
-
-    $sent_data = json_decode($competition->get($field_name)->value ?? '[]', TRUE) ?: [];
     $levels = $competition->field_competition_levels->getValue();
     $notification_levels = $competition->field_notification_levels->referencedEntities();
     $paragraph_storage = $this->entityTypeManager->getStorage('paragraph');
 
+    $logs = $this->notificationLogs->getLogsForCompetition($competition->id());
+
     $form['#prefix'] = '<div id="send-notifications-wrapper">';
     $form['#suffix'] = '</div>';
     $form['#attached']['library'][] = 'piv_contest/send-notifications-formatter';
+
+    $form['levels'] = [
+      '#type' => 'horizontal_tabs',
+      '#group_name' => 'levels',
+    ];
 
     foreach ($levels as $delta => $level_value) {
       $level_number = $delta + 1;
@@ -105,12 +79,14 @@ class SendNotificationsForm extends FormBase {
 
       $rank_paragraphs_by_rank = $this->buildRankParagraphMap($notification_paragraph);
 
-      $form["level_$level_number"] = [
-        '#type' => 'fieldset',
+      $form['levels']["level_$level_number"] = [
+        '#type' => 'details',
         '#title' => $this->t('Level @num: @name', [
           '@num' => $level_number,
           '@name' => $level_name,
         ]),
+        '#group' => 'levels',
+        '#open' => $delta === 0,
       ];
 
       $winners = $this->rankHelper->getRankedEntriesPerStream($competition, $level_number);
@@ -143,6 +119,7 @@ class SendNotificationsForm extends FormBase {
         ],
       ];
 
+      $delta = 0;
       foreach ($button_configs as $type => $config) {
         $plugin_id = '';
         $plugin_label = '';
@@ -154,11 +131,16 @@ class SendNotificationsForm extends FormBase {
         }
 
         $has_entries = !empty($config['entries']);
-        $was_sent = $this->wasSent($sent_data, $level_number, $type);
 
-        $form["level_$level_number"][$type] = [
-          '#type' => 'container',
-          '#attributes' => ['style' => ['margin-bottom: 1.5rem;']],
+        $form['levels']["level_$level_number"][$type] = [
+          '#type' => 'fieldset',
+          '#title' => $config['label'],
+          '#attributes' => [
+            'class' => [
+              'notifications-wrapper',
+              $delta++ % 2 == 0 ? 'odd' : 'even',
+            ],
+          ],
         ];
 
         $button_text = $config['label'];
@@ -166,7 +148,7 @@ class SendNotificationsForm extends FormBase {
           $button_text .= ' (' . $plugin_label . ')';
         }
 
-        $form["level_$level_number"][$type]['send'] = [
+        $form['levels']["level_$level_number"][$type]['send'] = [
           '#type' => 'submit',
           '#value' => $button_text,
           '#name' => "send_{$level_number}_{$type}",
@@ -174,30 +156,27 @@ class SendNotificationsForm extends FormBase {
             'callback' => [$this, 'ajaxSend'],
             'wrapper' => 'send-notifications-wrapper',
           ],
-          '#disabled' => empty($plugin_id) || !$has_entries || $was_sent,
-          '#attributes' => $was_sent
-            ? ['class' => ['button--was-sent']]
-            : (str_contains($type, 'congrats') ? ['class' => ['button--success']] : []),
+          '#disabled' => empty($plugin_id) || !$has_entries,
+          '#attributes' => str_contains($type, 'congrats')
+            ? ['class' => ['button--success']]
+            : [],
         ];
 
-        if ($was_sent) {
-          $form["level_$level_number"][$type]['sent_info'] = [
-            '#markup' => '<em>' . $this->t('Sent on @date', [
-              '@date' => date('Y-m-d H:i', $was_sent['timestamp']),
-            ]) . '</em>',
-          ];
-        }
-
         if ($has_entries) {
-          $form["level_$level_number"][$type]['recipients'] = $this->buildRecipientsPerStream(
+          $form['levels']["level_$level_number"][$type]['recipients'] = $this->buildRecipientsPerStream(
             $config['entries'],
             $config['recipient_type'],
             $rank_paragraphs_by_rank,
-            $paragraph_storage
+            $paragraph_storage,
+            $logs,
+            $level_number,
+            $type,
+            $this->getLogType($type),
+            !empty($plugin_id),
           );
         }
         else {
-          $form["level_$level_number"][$type]['no_recipients'] = [
+          $form['levels']["level_$level_number"][$type]['no_recipients'] = [
             '#markup' => '<em>' . $this->t('No recipients') . '</em>',
           ];
         }
@@ -220,22 +199,161 @@ class SendNotificationsForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $triggering = $form_state->getTriggeringElement();
     $name = $triggering['#name'] ?? '';
-    if (!preg_match('/^send_(\d+)_(.+)$/', $name, $matches)) {
+
+    if (preg_match('/^send_entry_(\d+)_(\w+)_(\d+)_(\d+)$/', $name, $matches)) {
+      $this->submitSingleEntry($form_state, (int) $matches[1], $matches[2], (int) $matches[3], (int) $matches[4]);
+    }
+    elseif (preg_match('/^send_(\d+)_(.+)$/', $name, $matches)) {
+      $this->submitAllEntries($form_state, (int) $matches[1], $matches[2]);
+    }
+
+    $form_state->setRebuild();
+  }
+
+  /**
+   * Send email to single entry.
+   */
+  protected function submitSingleEntry(FormStateInterface $form_state, int $level, string $type, int $entry_id, int $stream_id) {
+    [$competition, $notification_paragraph, $plugin_id, $log_type] = $this->resolveNotificationConfig($form_state, $level, $type);
+    if (!$plugin_id) {
       return;
     }
 
-    $level = (int) $matches[1];
-    $type = $matches[2];
+    $entry = $this->entityTypeManager->getStorage('competition_entry')->load($entry_id);
+    if (!$entry) {
+      $this->messenger()->addError($this->t('Entry not found.'));
+      return;
+    }
 
+    $rank_paragraphs_by_rank = $this->buildRankParagraphMap($notification_paragraph);
+    $entries_per_stream = str_contains($type, 'congrats')
+      ? $this->rankHelper->getRankedEntriesPerStream($competition, $level)
+      : $this->rankHelper->getLoserEntriesPerStream($competition, $level);
+
+    $rank_paragraph = $this->findRankParagraphForEntry($entry_id, $entries_per_stream, $rank_paragraphs_by_rank);
+
+    $paragraph_storage = $this->entityTypeManager->getStorage('paragraph');
+    $stream = $paragraph_storage->load($stream_id);
+    if (!$stream) {
+      return;
+    }
+
+    $stream_languages = array_column($stream->field_stream_languages->getValue(), 'target_id');
+    $success = FALSE;
+
+    foreach ($stream_languages as $langcode) {
+      $replacements_service = clone $this->replacementsService;
+      $replacements_service->addSource('competition_entry', $entry);
+      if ($rank_paragraph) {
+        $replacements_service->addSource('paragraph_rank', $rank_paragraph);
+      }
+      $result = piv_mail_send_mail($plugin_id, $langcode, $replacements_service);
+      if ($result) {
+        $success = TRUE;
+      }
+      $log = $this->notificationLogs->getLogsForCompetitionEntry($entry_id, $level, $log_type, $langcode);
+      $log->field_email_status = $result ? 'sent' : 'failed_to_send';
+      $log->save();
+    }
+
+    if ($success) {
+      $this->messenger()->addStatus($this->t('Notification sent.'));
+    }
+    else {
+      $this->messenger()->addWarning($this->t('Notification may have failed to send.'));
+    }
+  }
+
+  /**
+   * Send emails to all.
+   */
+  protected function submitAllEntries(FormStateInterface $form_state, int $level, string $type) {
+    [$competition, $notification_paragraph, $plugin_id, $log_type] = $this->resolveNotificationConfig($form_state, $level, $type);
+    if (!$plugin_id) {
+      return;
+    }
+
+    $type_config = $this->getTypeConfig();
+    $config = $type_config[$type];
+    $entries_per_stream = $config['is_winner']
+      ? $this->rankHelper->getRankedEntriesPerStream($competition, $level)
+      : $this->rankHelper->getLoserEntriesPerStream($competition, $level);
+
+    $rank_paragraphs_by_rank = $this->buildRankParagraphMap($notification_paragraph);
+    $paragraph_storage = $this->entityTypeManager->getStorage('paragraph');
+    $success = FALSE;
+
+    foreach ($entries_per_stream as $stream_id => $sessions_ranked) {
+      $stream = $paragraph_storage->load($stream_id);
+      if (!$stream) {
+        continue;
+      }
+
+      $stream_languages = array_column($stream->field_stream_languages->getValue(), 'target_id');
+      foreach ($sessions_ranked as $session_ranked) {
+        foreach ($session_ranked as $rank => $rank_entries) {
+          $rank_paragraph = $rank_paragraphs_by_rank[$rank] ?? NULL;
+          foreach ($rank_entries as $entry) {
+            $replacements_service = clone $this->replacementsService;
+            $replacements_service->addSource('competition_entry', $entry);
+            if ($rank_paragraph) {
+              $replacements_service->addSource('paragraph_rank', $rank_paragraph);
+            }
+
+            foreach ($stream_languages as $langcode) {
+              $result = piv_mail_send_mail($plugin_id, $langcode, $replacements_service);
+              if ($result) {
+                $success = TRUE;
+              }
+              $log = $this->notificationLogs->getLogsForCompetitionEntry($entry->id(), $level, $log_type, $langcode);
+              $log->field_email_status = $result ? 'sent' : 'failed_to_send';
+              $log->save();
+            }
+          }
+        }
+      }
+    }
+
+    if ($success) {
+      $this->messenger()->addStatus($this->t('Notifications sent successfully.'));
+    }
+    else {
+      $this->messenger()->addWarning($this->t('Some notifications may have failed to send.'));
+    }
+  }
+
+  /**
+   * Get configs.
+   */
+  protected function resolveNotificationConfig(FormStateInterface $form_state, int $level, string $type): array {
     $competition_id = $form_state->get('competition_id');
-    $field_name = $form_state->get('field_name');
     $competition = $this->entityTypeManager
       ->getStorage('competition')->load($competition_id);
 
     $notification_levels = $competition->field_notification_levels->referencedEntities();
     $notification_paragraph = $notification_levels[$level - 1] ?? NULL;
 
-    $type_config = [
+    $type_config = $this->getTypeConfig();
+    $config = $type_config[$type] ?? NULL;
+    if (!$config || !$notification_paragraph) {
+      $this->messenger()->addError($this->t('Invalid notification configuration.'));
+      return [$competition, NULL, NULL, NULL];
+    }
+
+    $plugin_id = $notification_paragraph->get($config['plugin_field'])->value ?? '';
+    if (empty($plugin_id)) {
+      $this->messenger()->addError($this->t('No mail plugin configured for this notification.'));
+      return [$competition, $notification_paragraph, NULL, NULL];
+    }
+
+    return [$competition, $notification_paragraph, $plugin_id, $this->getLogType($type)];
+  }
+
+  /**
+   * Get config "type".
+   */
+  protected function getTypeConfig(): array {
+    return [
       'student_congrats' => [
         'plugin_field' => 'field_student_winner_notificatio',
         'recipient_type' => 'student',
@@ -257,76 +375,24 @@ class SendNotificationsForm extends FormBase {
         'is_winner' => FALSE,
       ],
     ];
+  }
 
-    $config = $type_config[$type] ?? NULL;
-    if (!$config || !$notification_paragraph) {
-      $this->messenger()->addError($this->t('Invalid notification configuration.'));
-      return;
-    }
-
-    $plugin_id = $notification_paragraph->get($config['plugin_field'])->value ?? '';
-    if (empty($plugin_id)) {
-      $this->messenger()->addError($this->t('No mail plugin configured for this notification.'));
-      return;
-    }
-
-    $entries_per_stream = $config['is_winner']
-      ? $this->rankHelper->getRankedEntriesPerStream($competition, $level)
-      : $this->rankHelper->getLoserEntriesPerStream($competition, $level);
-
-    $rank_paragraphs_by_rank = $this->buildRankParagraphMap($notification_paragraph);
-
-    $recipients = [];
-    $success = TRUE;
-
+  /**
+   *
+   */
+  protected function findRankParagraphForEntry(int $entry_id, array $entries_per_stream, array $rank_paragraphs_by_rank) {
     foreach ($entries_per_stream as $sessions_ranked) {
       foreach ($sessions_ranked as $session_ranked) {
-        foreach ($session_ranked as $rank => $rank_entries) {
-          $rank_paragraph = $rank_paragraphs_by_rank[$rank] ?? NULL;
-          foreach ($rank_entries as $entry) {
-          $replacements_service = clone $this->replacementsService;
-          $replacements_service->addSource('competition_entry', $entry);
-          if ($rank_paragraph) {
-            $replacements_service->addSource('paragraph_rank', $rank_paragraph);
-          }
-
-          $langcode = $entry->langcode->value ?? 'en';
-          $result = piv_mail_send_mail($plugin_id, $langcode, $replacements_service);
-
-          $email = $this->getRecipientEmail($entry, $config['recipient_type']);
-          if ($email) {
-            $recipients[] = $email;
-          }
-
-          if (!$result) {
-            $success = FALSE;
-          }
+        foreach ($session_ranked as $rank => $entries) {
+          foreach ($entries as $entry) {
+            if ((int) $entry->id() === $entry_id) {
+              return $rank_paragraphs_by_rank[$rank] ?? NULL;
+            }
           }
         }
       }
     }
-
-    $sent_data = json_decode($competition->get($field_name)->value ?? '[]', TRUE) ?: [];
-    $sent_data[] = [
-      'timestamp' => time(),
-      'level' => $level,
-      'type' => $type,
-      'plugin_id' => $plugin_id,
-      'recipients' => $recipients,
-      'success' => $success,
-    ];
-
-    $competition->set($field_name, json_encode($sent_data));
-    $competition->save();
-
-    if ($success) {
-      $this->messenger()->addStatus($this->t('Notifications sent successfully.'));
-    }
-    else {
-      $this->messenger()->addWarning($this->t('Some notifications may have failed to send.'));
-    }
-
-    $form_state->setRebuild();
+    return NULL;
   }
 
   /**
@@ -347,7 +413,7 @@ class SendNotificationsForm extends FormBase {
   /**
    * Builds recipients display grouped by stream with ranks.
    */
-  protected function buildRecipientsPerStream(array $entries_per_stream, string $recipient_type, array $rank_paragraphs_by_rank, $paragraph_storage): array {
+  protected function buildRecipientsPerStream(array $entries_per_stream, string $recipient_type, array $rank_paragraphs_by_rank, $paragraph_storage, array $logs = [], int $level = 0, string $type = '', string $log_type = '', bool $has_plugin = FALSE): array {
     $container = [
       '#type' => 'container',
       '#attributes' => [
@@ -358,11 +424,13 @@ class SendNotificationsForm extends FormBase {
       ],
     ];
 
-    $session_storage = \Drupal::entityTypeManager()->getStorage('judging_session');
+    $session_storage = $this->entityTypeManager->getStorage('judging_session');
 
     foreach ($entries_per_stream as $stream_id => $sessions_ranked) {
       $stream = $paragraph_storage->load($stream_id);
       $stream_label = $stream ? $stream->field_label->value : '';
+
+      $stream_languages = $stream ? array_column($stream->field_stream_languages->getValue(), 'target_id') : [];
 
       $session_containers = [];
       foreach ($sessions_ranked as $session_id => $session_ranked) {
@@ -372,30 +440,63 @@ class SendNotificationsForm extends FormBase {
         foreach ($session_ranked as $rank => $entries) {
           $has_tokens = isset($rank_paragraphs_by_rank[$rank])
             && !$rank_paragraphs_by_rank[$rank]->field_tokens->isEmpty();
-          $tokens_text = $has_tokens ? ' <em>(tokens configured)</em>' : '';
 
           foreach ($entries as $entry) {
-            $name = $entry->getStudentsDisplayName();
-            $email = $this->getRecipientEmail($entry, $recipient_type);
-            $label = $email ? "$name ($email)" : $name;
-            $items[] = [
-              '#markup' => $this->t('Rank @rank: @label', [
-                '@rank' => $rank,
-                '@label' => $label,
-              ]) . $tokens_text,
+            $entry_logs = [];
+            foreach ($stream_languages as $langcode) {
+              $key = implode(':', [$entry->id(), $level, $log_type, $langcode]);
+              if (isset($logs[$key])) {
+                $entry_logs[$langcode] = $logs[$key];
+              }
+            }
+
+            $entry_key = "entry_{$entry->id()}";
+            $items[$entry_key] = [
+              '#type' => 'container',
+              '#attributes' => ['class' => ['notification-recipient-entry']],
+              // No need for a </li>.
+              '#prefix' => '<li class="list-group-item">',
+              'info' => [
+                '#theme' => 'notification_recipient_item',
+                '#entry' => $entry,
+                '#rank' => $rank,
+                '#has_tokens' => $has_tokens,
+                '#recipient_type' => $recipient_type,
+                '#logs' => $entry_logs,
+              ],
+              'send' => [
+                '#type' => 'submit',
+                '#value' => $this->t('Send'),
+                '#name' => "send_entry_{$level}_{$type}_{$entry->id()}_{$stream_id}",
+                '#ajax' => [
+                  'callback' => [$this, 'ajaxSend'],
+                  'wrapper' => 'send-notifications-wrapper',
+                ],
+                '#disabled' => !$has_plugin,
+                '#attributes' => [
+                  'class' => ['button--small', 'send-notification-entry'],
+                ],
+              ],
             ];
           }
         }
         if (!empty($items)) {
           $session_containers["session_$session_id"] = [
             '#type' => 'container',
+            '#attributes' => [
+              'class' => ['item-list'],
+            ],
             'title' => [
               '#markup' => '<h5>' . $session_label . '</h5>',
             ],
+
             'list' => [
-              '#theme' => 'item_list',
-              '#items' => $items,
-            ],
+              '#type' => 'html_tag',
+              '#tag' => 'ul',
+              '#attributes' => [
+                'class' => ['list-group'],
+              ],
+            ] + $items,
           ];
         }
       }
@@ -414,26 +515,15 @@ class SendNotificationsForm extends FormBase {
   }
 
   /**
-   * Gets the recipient email for an entry.
+   * Get log type.
    */
-  protected function getRecipientEmail($entry, string $recipient_type): string {
-    if ($recipient_type === 'student') {
-      return $entry->field_student_email->value ?? '';
-    }
-    $owner = $entry->getOwner();
-    return $owner ? $owner->getEmail() : '';
-  }
-
-  /**
-   * Checks if a notification was already sent.
-   */
-  protected function wasSent(array $sent_data, int $level, string $type): ?array {
-    foreach ($sent_data as $record) {
-      if (($record['level'] ?? 0) === $level && ($record['type'] ?? '') === $type) {
-        return $record;
-      }
-    }
-    return NULL;
+  private function getLogType(string $type): string {
+    return match($type) {
+      'student_congrats' => 'student_winner_notification',
+      'student_sorry' => 'student_loser_notification',
+      'teacher_congrats' => 'teacher_winner_notification',
+      'teacher_sorry' => 'teacher_loser_notification',
+    };
   }
 
 }

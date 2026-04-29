@@ -5,6 +5,7 @@
  * Primary module hooks for PIV Constest module.
  */
 
+use Drupal\piv_contest\Form\SendNotificationsForm;
 use Drupal\Core\Render\Element;
 use Drupal\Core\Entity\EntityInterface;
 use Drupal\Core\Session\AccountInterface;
@@ -43,6 +44,15 @@ function piv_contest_theme() {
     'recitation_score_form_default' => [
       'render element' => 'elements',
     ],
+    'notification_recipient_item' => [
+      'variables' => [
+        'entry' => NULL,
+        'rank' => NULL,
+        'has_tokens' => FALSE,
+        'recipient_type' => NULL,
+        'logs' => [],
+      ],
+    ],
   ];
 }
 
@@ -53,6 +63,54 @@ function template_preprocess_recitation_score_form_default(array &$variables) {
   foreach (Element::children($variables['elements']) as $key) {
     $variables['form'][$key] = $variables['elements'][$key];
   }
+}
+
+/**
+ * Implements template_preprocess_HOOK() for notification_recipient_item.
+ */
+function template_preprocess_notification_recipient_item(array &$variables) {
+  $variables['#attached']['library'][] = 'piv_contest/notification-recipient-item';
+  $entry = $variables['entry'];
+  $recipient_type = $variables['recipient_type'];
+
+  $name = $entry->getStudentsDisplayName();
+  if ($recipient_type === 'student') {
+    $email = $entry->field_student_email->value ?? '';
+  }
+  else {
+    $owner = $entry->getOwner();
+    $email = $owner ? $owner->getEmail() : '';
+  }
+  $variables['label'] = $email ? "$name ($email)" : $name;
+
+  $language_manager = \Drupal::languageManager();
+  $status_items = [];
+  foreach ($variables['logs'] as $langcode => $log) {
+    $status = $log->field_email_status->value;
+    $status_label = match($status) {
+      'sent' => t('sent'),
+      'failed_to_send' => t('failed'),
+      default => t('not sent'),
+    };
+    $success = $status === 'sent';
+    $language = $language_manager->getLanguage($langcode);
+    $language_label = $language ? $language->getName() : $langcode;
+
+    $edit_link = NULL;
+    if ($log->id() && $log->access('update')) {
+      $url = $log->toUrl('edit-form');
+      $url->setOption('query', \Drupal::service('redirect.destination')->getAsArray());
+      $edit_link = $log->toLink(t('Edit'), 'edit-form', $url->getOptions())->toRenderable();
+    }
+
+    $status_items[] = [
+      'language' => $language_label,
+      'status' => $status_label,
+      'success' => $success,
+      'edit_link' => $edit_link,
+    ];
+  }
+  $variables['status_items'] = $status_items;
 }
 
 /**
@@ -96,6 +154,19 @@ function _piv_contest_score_exists_for_score_template_type($bundle) {
     ->accessCheck(FALSE)
     ->condition('score_template.entity:score_template.bundle', $bundle)
     ->execute();
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_view().
+ */
+function piv_contest_competition_view(array &$build, EntityInterface $entity, $display, $view_mode) {
+  if ($view_mode === 'full') {
+    $build['send_notifications_form'] = \Drupal::formBuilder()->getForm(
+      SendNotificationsForm::class,
+      $entity,
+    );
+    $build['send_notifications_form']['#weight'] = 100;
+  }
 }
 
 /**

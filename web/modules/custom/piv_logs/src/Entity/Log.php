@@ -5,13 +5,16 @@ declare(strict_types=1);
 namespace Drupal\piv_logs\Entity;
 
 use Drupal\Core\Entity\Attribute\ContentEntityType;
-use Drupal\Core\Entity\ContentEntityBase;
 use Drupal\Core\Entity\ContentEntityDeleteForm;
+use Drupal\Core\Entity\EditorialContentEntityBase;
 use Drupal\Core\Entity\EntityChangedTrait;
 use Drupal\Core\Entity\EntityStorageInterface;
 use Drupal\Core\Entity\EntityTypeInterface;
 use Drupal\Core\Entity\Form\DeleteMultipleForm;
+use Drupal\Core\Entity\Form\RevisionDeleteForm;
+use Drupal\Core\Entity\Form\RevisionRevertForm;
 use Drupal\Core\Entity\Routing\AdminHtmlRouteProvider;
+use Drupal\Core\Entity\Routing\RevisionHtmlRouteProvider;
 use Drupal\Core\Field\BaseFieldDefinition;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\piv_logs\Form\LogForm;
@@ -32,10 +35,11 @@ use Drupal\views\EntityViewsData;
   label_plural: new TranslatableMarkup('logs'),
   entity_keys: [
     'id' => 'id',
-    'langcode' => 'langcode',
+    'revision' => 'revision_id',
     'bundle' => 'bundle',
     'label' => 'label',
     'owner' => 'uid',
+    'published' => 'status',
     'uuid' => 'uuid',
   ],
   handlers: [
@@ -47,9 +51,12 @@ use Drupal\views\EntityViewsData;
       'edit' => LogForm::class,
       'delete' => ContentEntityDeleteForm::class,
       'delete-multiple-confirm' => DeleteMultipleForm::class,
+      'revision-delete' => RevisionDeleteForm::class,
+      'revision-revert' => RevisionRevertForm::class,
     ],
     'route_provider' => [
       'html' => AdminHtmlRouteProvider::class,
+      'revision' => RevisionHtmlRouteProvider::class,
     ],
   ],
   links: [
@@ -60,20 +67,29 @@ use Drupal\views\EntityViewsData;
     'edit-form' => '/log/{piv_log}/edit',
     'delete-form' => '/log/{piv_log}/delete',
     'delete-multiple-form' => '/admin/content/piv-log/delete-multiple',
+    'revision' => '/log/{piv_log}/revision/{piv_log_revision}/view',
+    'revision-delete-form' => '/log/{piv_log}/revision/{piv_log_revision}/delete',
+    'revision-revert-form' => '/log/{piv_log}/revision/{piv_log_revision}/revert',
+    'version-history' => '/log/{piv_log}/revisions',
   ],
   admin_permission: 'administer piv_log types',
   bundle_entity_type: 'piv_log_type',
   bundle_label: new TranslatableMarkup('Log type'),
   base_table: 'piv_log',
-  data_table: 'piv_log_field_data',
-  translatable: TRUE,
+  revision_table: 'piv_log_revision',
+  show_revision_ui: TRUE,
   label_count: [
     'singular' => '@count logs',
     'plural' => '@count logs',
   ],
   field_ui_base_route: 'entity.piv_log_type.edit_form',
+  revision_metadata_keys: [
+    'revision_user' => 'revision_uid',
+    'revision_created' => 'revision_timestamp',
+    'revision_log_message' => 'revision_log',
+  ],
 )]
-class Log extends ContentEntityBase implements LogInterface {
+class Log extends EditorialContentEntityBase implements LogInterface {
 
   use EntityChangedTrait;
   use EntityOwnerTrait;
@@ -97,7 +113,7 @@ class Log extends ContentEntityBase implements LogInterface {
     $fields = parent::baseFieldDefinitions($entity_type);
 
     $fields['label'] = BaseFieldDefinition::create('string')
-      ->setTranslatable(TRUE)
+      ->setRevisionable(TRUE)
       ->setLabel(t('Label'))
       ->setRequired(TRUE)
       ->setSetting('max_length', 255)
@@ -113,8 +129,46 @@ class Log extends ContentEntityBase implements LogInterface {
       ])
       ->setDisplayConfigurable('view', TRUE);
 
+    $fields['status'] = BaseFieldDefinition::create('boolean')
+      ->setRevisionable(TRUE)
+      ->setLabel(t('Status'))
+      ->setDefaultValue(TRUE)
+      ->setSetting('on_label', 'Enabled')
+      ->setDisplayOptions('form', [
+        'type' => 'boolean_checkbox',
+        'settings' => [
+          'display_label' => FALSE,
+        ],
+        'weight' => 0,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayOptions('view', [
+        'type' => 'boolean',
+        'label' => 'above',
+        'weight' => 0,
+        'settings' => [
+          'format' => 'enabled-disabled',
+        ],
+      ])
+      ->setDisplayConfigurable('view', TRUE);
+
+    $fields['message'] = BaseFieldDefinition::create('text_long')
+      ->setRevisionable(TRUE)
+      ->setLabel(t('Message'))
+      ->setDisplayOptions('form', [
+        'type' => 'text_textarea',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('form', TRUE)
+      ->setDisplayOptions('view', [
+        'type' => 'text_default',
+        'label' => 'above',
+        'weight' => 10,
+      ])
+      ->setDisplayConfigurable('view', TRUE);
+
     $fields['uid'] = BaseFieldDefinition::create('entity_reference')
-      ->setTranslatable(TRUE)
+      ->setRevisionable(TRUE)
       ->setLabel(t('Author'))
       ->setSetting('target_type', 'user')
       ->setDefaultValueCallback(self::class . '::getDefaultEntityOwner')
@@ -137,7 +191,6 @@ class Log extends ContentEntityBase implements LogInterface {
 
     $fields['created'] = BaseFieldDefinition::create('created')
       ->setLabel(t('Authored on'))
-      ->setTranslatable(TRUE)
       ->setDescription(t('The time that the log was created.'))
       ->setDisplayOptions('view', [
         'label' => 'above',
@@ -153,7 +206,6 @@ class Log extends ContentEntityBase implements LogInterface {
 
     $fields['changed'] = BaseFieldDefinition::create('changed')
       ->setLabel(t('Changed'))
-      ->setTranslatable(TRUE)
       ->setDescription(t('The time that the log was last edited.'));
 
     return $fields;

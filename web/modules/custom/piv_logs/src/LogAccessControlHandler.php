@@ -30,6 +30,9 @@ final class LogAccessControlHandler extends EntityAccessControlHandler {
       'view' => AccessResult::allowedIfHasPermission($account, 'view piv_log'),
       'update' => AccessResult::allowedIfHasPermission($account, 'edit piv_log'),
       'delete' => AccessResult::allowedIfHasPermission($account, 'delete piv_log'),
+      'delete revision' => AccessResult::allowedIfHasPermission($account, 'delete piv_log revision'),
+      'view all revisions', 'view revision' => AccessResult::allowedIfHasPermissions($account, ['view piv_log revision', 'view piv_log']),
+      'revert' => AccessResult::allowedIfHasPermissions($account, ['revert piv_log revision', 'edit piv_log']),
       default => AccessResult::neutral(),
     };
   }

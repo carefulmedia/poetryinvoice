@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * @file
+ *
+ * Logs entity module file.
+ */
+
 declare(strict_types=1);
 
 /**
@@ -42,6 +48,19 @@ function template_preprocess_piv_log(array &$variables): void {
  */
 function piv_logs_user_cancel($edit, UserInterface $account, $method): void {
   switch ($method) {
+    case 'user_cancel_block_unpublish':
+      // Unpublish logs.
+      $storage = \Drupal::entityTypeManager()->getStorage('piv_log');
+      $piv_log_ids = $storage->getQuery()
+        ->condition('uid', $account->id())
+        ->condition('status', 1)
+        ->accessCheck(FALSE)
+        ->execute();
+      foreach ($storage->loadMultiple($piv_log_ids) as $piv_log) {
+        $piv_log->set('status', FALSE)->save();
+      }
+      break;
+
     case 'user_cancel_reassign':
       // Anonymize logs.
       $storage = \Drupal::entityTypeManager()->getStorage('piv_log');
@@ -69,4 +88,13 @@ function piv_logs_user_predelete(UserInterface $account): void {
   $storage->delete(
     $storage->loadMultiple($piv_log_ids)
   );
+  // Delete old revisions.
+  $piv_log_ids = $storage->getQuery()
+    ->allRevisions()
+    ->condition('uid', $account->id())
+    ->accessCheck(FALSE)
+    ->execute();
+  foreach (array_keys($piv_log_ids) as $revision_id) {
+    $storage->deleteRevision($revision_id);
+  }
 }

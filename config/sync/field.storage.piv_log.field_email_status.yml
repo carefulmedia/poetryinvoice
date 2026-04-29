@@ -23,6 +23,9 @@ settings:
     -
       value: bounced
       label: Bounced
+    -
+      value: failed_to_send
+      label: 'Failed to send'
   allowed_values_function: ''
 module: options
 locked: false

@@ -1,0 +1,14 @@
+.notification-status-badge {
+  color: #333;
+  border-radius: 5px;
+  padding: 3px 7px;
+  background-color: var(--bs-danger-border-subtle);
+}
+
+.notification-status-badge.success {
+  background-color: var(--bs-success-border-subtle);
+}
+
+.notification-status-badge a {
+  color: #333;
+}

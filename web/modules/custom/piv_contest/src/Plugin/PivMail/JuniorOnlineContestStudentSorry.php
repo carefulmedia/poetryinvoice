@@ -2,8 +2,6 @@
 
 namespace Drupal\piv_contest\Plugin\PivMail;
 
-use Drupal\piv_mail\PivMailPluginBase;
-
 /**
  * Plugin implementation of the piv_mail.
  *
@@ -15,4 +13,4 @@ use Drupal\piv_mail\PivMailPluginBase;
  *   sources = {"competition_entry", "paragraph_rank"}
  * )
  */
-class JuniorOnlineContestStudentSorry extends PivMailPluginBase {}
+class JuniorOnlineContestStudentSorry extends ContestBase {}

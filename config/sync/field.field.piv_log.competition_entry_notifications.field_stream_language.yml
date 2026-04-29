@@ -1,0 +1,23 @@
+uuid: 342ece84-1c70-4831-9835-1b5d17b30e7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.piv_log.field_stream_language
+    - piv_logs.piv_log_type.competition_entry_notifications
+id: piv_log.competition_entry_notifications.field_stream_language
+field_name: field_stream_language
+entity_type: piv_log
+bundle: competition_entry_notifications
+label: 'Stream language'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:configurable_language'
+  handler_settings:
+    target_bundles: null
+    auto_create: false
+field_type: entity_reference

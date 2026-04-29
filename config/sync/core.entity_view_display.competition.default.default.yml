@@ -18,7 +18,6 @@ dependencies:
     - field.field.competition.default.field_judging_deadline
     - field.field.competition.default.field_location
     - field.field.competition.default.field_notification_levels
-    - field.field.competition.default.field_notification_log
     - field.field.competition.default.field_online_competition
     - field.field.competition.default.field_open_date
     - field.field.competition.default.field_popular_vote_level
@@ -31,7 +30,6 @@ dependencies:
     - address
     - datetime
     - options
-    - piv_contest
     - text
 id: competition.default.default
 targetEntityType: competition
@@ -76,13 +74,6 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 4
-    region: content
-  field_notification_log:
-    type: send_notifications
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 10
     region: content
   field_online_competition:
     type: boolean

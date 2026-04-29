@@ -85,7 +85,6 @@ class ReplacementsService {
       'competition:title',
     ],
     'paragraph_rank' => [
-      'competition_entry:rank',
       'rank:*',
     ],
   ];
@@ -129,6 +128,14 @@ class ReplacementsService {
     'journal_poem_email' => [
       'source' => 'journal_poem',
       'title' => 'Email from the journal poem',
+    ],
+    'competition_entry:student' => [
+      'source' => 'competition_entry',
+      'title' => 'Student email on competition entry.',
+    ],
+    'competition_entry:teacher' => [
+      'source' => 'competition_entry',
+      'title' => 'Teacher email on competition entry.',
     ],
   ];
 
@@ -485,8 +492,8 @@ class ReplacementsService {
         // Competition related.
         case 'competition_entry:student_name':
           $entry = $sources['competition_entry'];
-          if (!empty($entry->field_student_stage_name)) {
-            return $entry->field_student_stage_name->value;
+          if (!empty(trim($entry->field_student_stage_name->value))) {
+            return trim($entry->field_student_stage_name->value);
           }
           return trim("{$entry->field_student_name->value} {$entry->field_student_last_name->value}");
 
@@ -518,9 +525,6 @@ class ReplacementsService {
           $entry_level = $entry->field_competition_current_level->value;
           $competition = $this->getCompetition();
           return $competition->field_competition_levels[$entry_level - 1]->value;
-
-        case 'competition_entry:rank':
-          return $sources['paragraph_rank']->field_rank->value;
 
         case 'competition:title':
           return $this->getCompetition()->label();
@@ -637,6 +641,14 @@ class ReplacementsService {
 
       case 'journal_poem_email':
         $mail = $sources['journal_poem']->field_email1->value ?? NULL;
+        return $mail ? [$mail] : [];
+
+      case 'competition_entry:student':
+        $mail = $sources['competition_entry']->field_student_email->value ?? NULL;
+        return $mail ? [$mail] : [];
+
+      case 'competition_entry:teacher':
+        $mail = $sources['competition_entry']->uid->entity->mail->value ?? NULL;
         return $mail ? [$mail] : [];
     }
 

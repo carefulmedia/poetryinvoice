@@ -1,0 +1,10 @@
+status: 2
+pattern: '[piv_log:field_notification_type] ([piv_log:field_competition_level]): [piv_log:field_competition_entry:entity:title]'
+escape: false
+preserve_titles: false
+save: true
+chunk: 50
+dependencies:
+  config:
+    - piv_logs.piv_log_type.competition_entry_notifications
+new_content_behavior: 0

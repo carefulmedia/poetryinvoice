@@ -10,3 +10,9 @@ delete piv_log:
   title: 'Delete log'
 create piv_log:
   title: 'Create log'
+view piv_log revision:
+  title: 'View log revision'
+revert piv_log revision:
+  title: 'Revert log revision'
+delete piv_log revision:
+  title: 'Delete log revision'
