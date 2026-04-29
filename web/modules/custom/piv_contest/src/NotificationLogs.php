@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Drupal\piv_contest;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Drupal\Core\Cache\CacheBackendInterface;
+use Drupal\piv_logs\Entity\Log;
 
 /**
  * Notification logs helper service.
@@ -16,7 +18,39 @@ final class NotificationLogs {
    */
   public function __construct(
     private readonly EntityTypeManagerInterface $entityTypeManager,
+    private readonly CacheBackendInterface $cache,
   ) {}
+
+  /**
+   * Return the timestamp for the latest revision.
+   *
+   * This only consider machine created logs, for that the
+   * field_created_by_piv_mail is used.
+   */
+  public function getLastSendTimestamp(Log $log) : string|NULL {
+    $cid = "piv_log:last_send:{$log->id()}";
+    if ($cache = $this->cache->get($cid)) {
+      return $cache->data;
+    }
+
+    $storage = $this->entityTypeManager->getStorage('piv_log');
+    $vids = $storage->getQuery()
+      ->accessCheck(FALSE)
+      ->allRevisions()
+      ->condition('id', $log->id())
+      ->condition('field_created_by_piv_mail', 1)
+      ->sort('revision_id', 'DESC')
+      ->execute();
+
+    $value = NULL;
+    if ($vids) {
+      $vid = reset($vids);
+      $value = $storage->loadRevision($vid)->changed->value;
+    }
+
+    $this->cache->set($cid, $value, CacheBackendInterface::CACHE_PERMANENT, $log->getCacheTags());
+    return $value;
+  }
 
   /**
    * Return the log for a competition entry.

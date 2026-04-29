@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 use Drupal\Core\Render\Element;
 use Drupal\user\UserInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_theme().
@@ -97,4 +98,13 @@ function piv_logs_user_predelete(UserInterface $account): void {
   foreach (array_keys($piv_log_ids) as $revision_id) {
     $storage->deleteRevision($revision_id);
   }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function piv_logs_form_piv_log_form_alter(&$form, FormStateInterface $form_state) {
+  // @see \Drupal\piv_logs\Entity\Log::preSave()
+  $form['revision']['#default_value'] = TRUE;
+  $form['revision']['#disabled'] = TRUE;
 }

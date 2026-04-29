@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.piv_log.competition_entry_notifications.field_competition_entry
     - field.field.piv_log.competition_entry_notifications.field_competition_level
+    - field.field.piv_log.competition_entry_notifications.field_created_by_piv_mail
     - field.field.piv_log.competition_entry_notifications.field_email_status
     - field.field.piv_log.competition_entry_notifications.field_notification_type
     - field.field.piv_log.competition_entry_notifications.field_stream_language
@@ -60,6 +61,16 @@ content:
       prefix_suffix: true
     third_party_settings: {  }
     weight: 22
+    region: content
+  field_created_by_piv_mail:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 26
     region: content
   field_email_status:
     type: list_default

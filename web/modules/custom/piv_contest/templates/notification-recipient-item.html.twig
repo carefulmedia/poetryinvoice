@@ -5,9 +5,12 @@
 {% if status_items %}
   <br>
   {% for item in status_items %}
-    <small class="notification-status-badge{{ item.success ? ' success' : '' }}">
-      <span>{{ item.language }} {{ item.status }}</span>
-      {%- if item.edit_link %} [{{ item.edit_link }}]{% endif -%}
-    </small>
+    <div>
+      <small class="notification-status-badge{{ item.success ? ' success' : '' }}">
+        <span>{{ item.language }} {{ item.status }}</span>
+        {%- if item.edit_link %} [{{ item.edit_link }}]{% endif -%}
+      </small>
+      {% if item.sent_date %}<small>- {{ item.sent_date }}</small>{% endif%}
+    </div>
   {% endfor %}
 {% endif %}

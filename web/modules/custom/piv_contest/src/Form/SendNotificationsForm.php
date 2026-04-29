@@ -248,12 +248,12 @@ class SendNotificationsForm extends FormBase {
       if ($entry->hasTranslation($langcode)) {
         $entry = $entry->getTranslation($langcode);
       }
-      if ($rank_paragraph->hasTranslation($langcode)) {
-        $rank_paragraph = $rank_paragraph->getTranslation($langcode);
-      }
 
       $replacements_service->addSource('competition_entry', $entry);
       if ($rank_paragraph) {
+        if ($rank_paragraph->hasTranslation($langcode)) {
+          $rank_paragraph = $rank_paragraph->getTranslation($langcode);
+        }
         $replacements_service->addSource('paragraph_rank', $rank_paragraph);
       }
       $result = piv_mail_send_mail($plugin_id, $langcode, $replacements_service);
@@ -262,6 +262,7 @@ class SendNotificationsForm extends FormBase {
       }
       $log = $this->notificationLogs->getLogsForCompetitionEntry($entry_id, $level, $log_type, $langcode);
       $log->field_email_status = $result ? 'sent' : 'failed_to_send';
+      $log->field_created_by_piv_mail = 1;
       $log->save();
     }
 
@@ -309,13 +310,13 @@ class SendNotificationsForm extends FormBase {
               if ($entry->hasTranslation($langcode)) {
                 $entry = $entry->getTranslation($langcode);
               }
-              if ($rank_paragraph->hasTranslation($langcode)) {
-                $rank_paragraph = $rank_paragraph->getTranslation($langcode);
-              }
 
               $replacements_service = clone $this->replacementsService;
               $replacements_service->addSource('competition_entry', $entry);
               if ($rank_paragraph) {
+                if ($rank_paragraph->hasTranslation($langcode)) {
+                  $rank_paragraph = $rank_paragraph->getTranslation($langcode);
+                }
                 $replacements_service->addSource('paragraph_rank', $rank_paragraph);
               }
 
@@ -325,6 +326,7 @@ class SendNotificationsForm extends FormBase {
               }
               $log = $this->notificationLogs->getLogsForCompetitionEntry($entry->id(), $level, $log_type, $langcode);
               $log->field_email_status = $result ? 'sent' : 'failed_to_send';
+              $log->field_created_by_piv_mail = 1;
               $log->save();
             }
           }

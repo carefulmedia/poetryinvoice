@@ -103,6 +103,8 @@ class Log extends EditorialContentEntityBase implements LogInterface {
       // If no owner has been set explicitly, make the anonymous user the owner.
       $this->setOwnerId(0);
     }
+    // Force new revision for logs.
+    $this->setNewRevision();
   }
 
   /**
@@ -152,16 +154,16 @@ class Log extends EditorialContentEntityBase implements LogInterface {
       ])
       ->setDisplayConfigurable('view', TRUE);
 
-    $fields['message'] = BaseFieldDefinition::create('text_long')
+    $fields['message'] = BaseFieldDefinition::create('string_long')
       ->setRevisionable(TRUE)
       ->setLabel(t('Message'))
       ->setDisplayOptions('form', [
-        'type' => 'text_textarea',
+        'type' => 'string_textarea',
         'weight' => 10,
       ])
       ->setDisplayConfigurable('form', TRUE)
       ->setDisplayOptions('view', [
-        'type' => 'text_default',
+        'type' => 'string',
         'label' => 'above',
         'weight' => 10,
       ])

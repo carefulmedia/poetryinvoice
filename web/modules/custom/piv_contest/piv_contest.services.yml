@@ -27,4 +27,4 @@ services:
 
   piv_contest.notification_logs:
     class: Drupal\piv_contest\NotificationLogs
-    arguments: ['@entity_type.manager']
+    arguments: ['@entity_type.manager', '@cache.default']

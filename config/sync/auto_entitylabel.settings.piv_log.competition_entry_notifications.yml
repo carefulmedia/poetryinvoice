@@ -1,5 +1,5 @@
-status: 2
-pattern: '[piv_log:field_notification_type] ([piv_log:field_competition_level]): [piv_log:field_competition_entry:entity:title]'
+status: 1
+pattern: '[piv_log:field_notification_type] - Level: [piv_log:field_competition_level]: [piv_log:field_competition_entry:entity:field_student_name] [piv_log:field_competition_entry:entity:field_student_last_name] - [piv_log:field_competition_entry:entity:field_school]'
 escape: false
 preserve_titles: false
 save: true

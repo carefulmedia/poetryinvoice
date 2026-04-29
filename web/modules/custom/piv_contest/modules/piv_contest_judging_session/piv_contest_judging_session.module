@@ -181,17 +181,19 @@ function piv_contest_judging_session_preprocess_competition(&$variables) {
   if ($current_user->hasPermission('manage judging sessions')) {
     $competition = $variables['elements']['#competition'];
 
-    $variables['content']['manage_session'] = Link::createFromRoute(t('Manage Sessions'), 'piv_contest_judging_session.manage_sessions', [
+    $variables['content']['buttons'] = ['#type' => 'container'];
+    $variables['content']['buttons']['manage_session'] = Link::createFromRoute(t('Manage Sessions'), 'piv_contest_judging_session.manage_sessions', [
       'competition' => $competition->id(),
-    ])->toRenderable() + ['#weight' => -99];
-    $variables['content']['competition_progress'] = Link::createFromRoute(t('Competition Progress'), 'piv_contest_judging_session.competition_progress', [
+    ])->toRenderable() + [
+      '#weight' => -99,
+      '#attributes' => ['class' => ['button', 'button--success']],
+    ];
+    $variables['content']['buttons']['competition_progress'] = Link::createFromRoute(t('Competition Progress'), 'piv_contest_judging_session.competition_progress', [
       'competition' => $competition->id(),
-    ])->toRenderable() + ['#weight' => -98];
-    $variables['content']['manage_session']['#prefix'] = '<div>';
-    $variables['content']['manage_session']['#suffix'] = '</div>';
-    $variables['content']['competition_progress']['#prefix'] = '<div>';
-    $variables['content']['competition_progress']['#suffix'] = '</div>';
-
+    ])->toRenderable() + [
+      '#weight' => -98,
+      '#attributes' => ['class' => ['button', 'button--success']],
+    ];
   }
 
 }

@@ -24,6 +24,6 @@ form.send-notifications-form button.send-notification-entry {
   background: #555;
   margin-left: auto;
 }
-form.send-notifications-form button.send-notification-entry.form-submit::before {
+form.send-notifications-form .form-submit::before {
   display: none;
 }

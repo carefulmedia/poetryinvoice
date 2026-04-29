@@ -41,7 +41,9 @@ final class LogAccessControlHandler extends EntityAccessControlHandler {
    * {@inheritdoc}
    */
   protected function checkCreateAccess(AccountInterface $account, array $context, $entity_bundle = NULL): AccessResult {
-    return AccessResult::allowedIfHasPermissions($account, ['create piv_log', 'administer piv_log types'], 'OR');
+    // Deny access to create logs, these are created programmatically
+    // and can be edited.
+    return AccessResult::forbidden();
   }
 
 }

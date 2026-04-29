@@ -1,0 +1,23 @@
+uuid: baee960b-93a3-44c3-8e93-2b75c5ebfc24
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.piv_log.field_created_by_piv_mail
+    - piv_logs.piv_log_type.competition_entry_notifications
+id: piv_log.competition_entry_notifications.field_created_by_piv_mail
+field_name: field_created_by_piv_mail
+entity_type: piv_log
+bundle: competition_entry_notifications
+label: 'Created by piv_mail'
+description: 'When checked, it means that this revision was created when sending an email. To differentiate revisions created by users.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean
