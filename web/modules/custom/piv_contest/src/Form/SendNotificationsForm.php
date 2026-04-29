@@ -156,7 +156,8 @@ class SendNotificationsForm extends FormBase {
             'callback' => [$this, 'ajaxSend'],
             'wrapper' => 'send-notifications-wrapper',
           ],
-          '#disabled' => empty($plugin_id) || !$has_entries,
+          // Disable sending to losers too if there are no winners.
+          '#disabled' => empty($plugin_id) || !$has_entries || !$winners,
           '#attributes' => str_contains($type, 'congrats')
             ? ['class' => ['button--success']]
             : [],
