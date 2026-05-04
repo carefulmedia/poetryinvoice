@@ -6,7 +6,6 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\piv_school\SyncService;
-use Drupal\Core\Url;
 
 /**
  * Class SchoolSyncForm.
@@ -23,7 +22,7 @@ class SchoolSyncForm extends FormBase {
   /**
    * Construct EventsSyncForm.
    */
-  public function __construct(SyncService $sync) {
+  final public function __construct(SyncService $sync) {
     $this->syncService = $sync;
   }
 
@@ -58,10 +57,10 @@ class SchoolSyncForm extends FormBase {
 
     $form['#prefix'] = \Drupal::service('renderer')->render($prefix);
 
-    $form['start'] = array(
+    $form['start'] = [
       '#type' => 'submit',
       '#value' => $this->t('Start syncronization'),
-    );
+    ];
 
     return $form;
   }

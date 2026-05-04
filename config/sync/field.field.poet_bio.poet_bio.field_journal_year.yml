@@ -1,0 +1,27 @@
+uuid: 82720cb3-e44d-433c-a8d3-bb0fc807584f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.poet_bio.field_journal_year
+  module:
+    - piv_futureverse
+id: poet_bio.poet_bio.field_journal_year
+field_name: field_journal_year
+entity_type: poet_bio
+bundle: poet_bio
+label: 'Journal Year'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:journal_year'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+field_type: entity_reference

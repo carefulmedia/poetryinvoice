@@ -1,0 +1,21 @@
+uuid: f42eb764-c7b9-4ba3-804a-16227da34086
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.journal_month.field_end_date
+  module:
+    - datetime
+    - piv_futureverse
+id: journal_month.journal_month.field_end_date
+field_name: field_end_date
+entity_type: journal_month
+bundle: journal_month
+label: 'End date'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

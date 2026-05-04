@@ -3,16 +3,14 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
-use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRector;
+use Rector\ValueObject\PhpVersion;
 
 return RectorConfig::configure()
     ->withPaths([
-        __DIR__ . '/drush',
-        __DIR__ . '/private',
-        __DIR__ . '/web',
+        __DIR__ . '/web/modules/custom',
     ])
-    // uncomment to reach your current PHP version
-    // ->withPhpSets()
-    ->withRules([
-        AddVoidReturnTypeWhereNoReturnRector::class,
+    ->withImportNames()
+    ->withPhpVersion(PhpVersion::PHP_83)
+    ->withSets([
+        __DIR__ . '/vendor/palantirnet/drupal-rector/config/drupal-10/drupal-10-all-deprecations.php',
     ]);

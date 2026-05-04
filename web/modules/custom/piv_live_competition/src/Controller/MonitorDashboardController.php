@@ -10,7 +10,6 @@ use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
-use Drupal\user\UserInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\piv_live_competition\Helper;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,7 +22,7 @@ final class MonitorDashboardController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(
+  final public function __construct(
     protected readonly Helper $helper,
   ) {}
 

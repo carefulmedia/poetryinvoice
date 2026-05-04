@@ -2,7 +2,7 @@ name: PIV Popular Vote
 type: module
 description: Code and features related to popular voting.
 package: PIV
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 dependencies:
   - piv_contest_competition:piv_contest_competition
   - piv_contest_competition_entry:piv_contest_competition_entry

@@ -1,0 +1,23 @@
+uuid: 1de15207-de10-4de9-8575-e8211881817b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_once_link_enabled
+    - piv_futureverse.futureverse_application_type.native_student
+id: futureverse_application.native_student.field_once_link_enabled
+field_name: field_once_link_enabled
+entity_type: futureverse_application
+bundle: native_student
+label: 'Native student can edit.'
+description: 'Enable it so a native student/teacher can use the link to edit it. Once they save the form this will be disabled again and an admin can reopen it as required.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 1
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

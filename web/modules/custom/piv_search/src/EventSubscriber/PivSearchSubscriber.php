@@ -50,7 +50,7 @@ class PivSearchSubscriber implements EventSubscriberInterface {
   /**
    * {@inheritdoc}
    */
-  public static function getSubscribedEvents() {
+  public static function getSubscribedEvents(): array {
     return [
       SearchApiSolrEvents::POST_CREATE_INDEX_DOCUMENT => ['postCreateIndexDocument'],
     ];

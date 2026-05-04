@@ -39,7 +39,7 @@ class MultipleRecitationsForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, UrlResolverInterface $url_resolver, ResourceFetcher $resource_fetcher) {
+  final public function __construct(EntityTypeManagerInterface $entity_type_manager, UrlResolverInterface $url_resolver, ResourceFetcher $resource_fetcher) {
     $this->entityTypeManager = $entity_type_manager;
     $this->urlResolver = $url_resolver;
     $this->resourceFetcher = $resource_fetcher;

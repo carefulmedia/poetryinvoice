@@ -1,0 +1,18 @@
+uuid: 4ea0983b-b026-4bfb-b41b-29e7e4e42fb6
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application.field_do_you_identify_as_indigen
+field_name: field_do_you_identify_as_indigen
+entity_type: futureverse_application
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

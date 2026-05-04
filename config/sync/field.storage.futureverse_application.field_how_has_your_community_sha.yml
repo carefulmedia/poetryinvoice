@@ -1,0 +1,19 @@
+uuid: 3f5d6682-1e65-4968-9518-85c2c4ca8757
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application.field_how_has_your_community_sha
+field_name: field_how_has_your_community_sha
+entity_type: futureverse_application
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

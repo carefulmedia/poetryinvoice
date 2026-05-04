@@ -243,7 +243,8 @@ content:
     type: address_default
     weight: 13
     region: content
-    settings: {  }
+    settings:
+      wrapper_type: details
     third_party_settings: {  }
   field_online_competition:
     type: boolean_checkbox

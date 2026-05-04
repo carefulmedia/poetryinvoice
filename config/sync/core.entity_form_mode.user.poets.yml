@@ -6,6 +6,6 @@ dependencies:
     - user
 id: user.poets
 label: Poet
-description: ''
+description: null
 targetEntityType: user
 cache: true

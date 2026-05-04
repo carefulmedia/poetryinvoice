@@ -113,6 +113,7 @@ permissions:
   - 'edit own venue content'
   - 'edit own video content'
   - 'edit own writing_prompt content'
+  - 'rebuild node access permissions'
   - 'view field_biligraphical_info'
   - 'view field_broadsides_are_allowed'
   - 'view field_mobile_apps_are_allowed'

@@ -129,6 +129,12 @@ msgstr "Vous pourrez commencer l'évaluation une fois que le concours aura comme
 msgid "Highest Overall"
 msgstr "Meilleur général"
 
+msgid "You will only be able to use this link once to provide your information."
+msgstr "Ce lien ne peut être utilisé qu’une seule fois pour mettre votre information à jour."
+
+msgid "Click here to update your bio"
+msgstr "Cliquez ici pour mettre à jour votre bio"
+
 msgid "log in"
 msgstr "connectez-vous"
 
@@ -407,3 +413,12 @@ msgstr "Le concours associé autorise un seul élève par inscription. Si vous a
 
 msgid "This associated competition strictly requires @count students per entry. If you have more entries than the allowed amount, contact an administrator to remove a student."
 msgstr "Ce concours associé exige strictement @count élèves par inscription. Si vous avez plus d’inscriptions que le nombre autorisé, contactez un administrateur pour retirer un élève."
+
+msgid "Generate recitation order"
+msgstr "Générer l’ordre de récitation"
+
+msgid "The competition has already started (active round: @round). The recitation order cannot be changed."
+msgstr "Le concours a déjà commencé (ronde active : @round). L’ordre de récitation ne peut pas être modifié."
+
+msgid "Recitation order has been generated."
+msgstr "L’ordre de récitation a été généré."

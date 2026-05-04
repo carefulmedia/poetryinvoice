@@ -1,7 +1,7 @@
 name: Poetry In Voice Barrio
 type: theme
 description: 'Basic structure for a Bootstrap Barrio SubTheme.'
-core_version_requirement: ^9 || ^10
+core_version_requirement: ^9 || ^10 || ^11
 base theme: bootstrap_barrio
 
 libraries:

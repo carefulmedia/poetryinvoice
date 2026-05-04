@@ -1,0 +1,19 @@
+uuid: b22bf35e-d26e-4ca0-b807-2103bc722a3c
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_poem_text
+field_name: field_poem_text
+entity_type: paragraph
+type: string_long
+settings:
+  case_sensitive: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -36,4 +36,5 @@ class TransformAliasIfNode extends ProcessPluginBase {
     }
     return $value;
   }
+
 }

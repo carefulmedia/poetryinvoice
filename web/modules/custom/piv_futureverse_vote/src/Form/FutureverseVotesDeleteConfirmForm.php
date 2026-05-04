@@ -71,7 +71,7 @@ class FutureverseVotesDeleteConfirmForm extends ConfirmFormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state): RedirectResponse|array{
+  public function buildForm(array $form, FormStateInterface $form_state): RedirectResponse|array {
     // Retrieve vote IDs from tempstore.
     $tempstore = $this->tempStoreFactory->get('piv_futureverse_vote');
     $this->voteIds = $tempstore->get('delete_vote_ids') ?? [];

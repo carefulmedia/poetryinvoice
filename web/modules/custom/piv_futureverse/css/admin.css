@@ -1,0 +1,42 @@
+.journal-inline-dates .field--type-datetime {
+  display: inline-block;
+  margin-right: 1rem;
+}
+
+.journal-inline-dates .fieldset__wrapper {
+  margin: 0;
+}
+.journal-inline-dates .fieldset__description {
+  margin-block-start: -10px;
+}
+.journal-inline-dates {
+  background: white !important;
+  margin: var(--gin-spacing-m) 0 !important;
+}
+
+/* Journal Poems Filter Form Layout */
+#journal-poems-filter-form .form-item {
+  margin-bottom: 1rem;
+}
+
+#journal-poems-filter-form .filters-row-1,
+#journal-poems-filter-form .filters-row-2 {
+  margin-bottom: 1rem;
+}
+
+#journal-poems-filter-form .filters-row-1 .form-item,
+#journal-poems-filter-form .filters-row-2 .form-item {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0;
+  vertical-align: top;
+}
+
+#journal-poems-filter-form .filters-row-1 select,
+#journal-poems-filter-form .filters-row-2 select {
+  min-width: 200px;
+}
+
+#journal-poems-filter-form .form-actions {
+  margin-top: 1rem;
+}

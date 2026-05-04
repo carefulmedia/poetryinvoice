@@ -46,7 +46,7 @@ class PopularVotesAdminFilterForm extends FormBase {
   /**
    * Constructs a PivPopularVoteManager object.
    */
-  public function __construct(Connection $connection, PivPopularVoteManager $piv_popular_vote_manager, LanguageManager $language_manager) {
+  final public function __construct(Connection $connection, PivPopularVoteManager $piv_popular_vote_manager, LanguageManager $language_manager) {
     $this->connection = $connection;
     $this->pivPopularVoteManager = $piv_popular_vote_manager;
     $this->languageManager = $language_manager;
@@ -66,7 +66,7 @@ class PopularVotesAdminFilterForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, CompetitionInterface $competition = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?CompetitionInterface $competition = NULL) {
     if (!$competition) {
       return $form;
     }

@@ -1,0 +1,14 @@
+uuid: 715d6896-79c5-482f-9e77-d0cf41b5dce4
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.student_poet
+  module:
+    - user
+id: user_remove_role_action.student_poet
+label: 'Remove the Student poet role from the selected user(s)'
+type: user
+plugin: user_remove_role_action
+configuration:
+  rid: student_poet

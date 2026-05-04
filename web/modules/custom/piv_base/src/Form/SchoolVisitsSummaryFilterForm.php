@@ -36,7 +36,7 @@ class SchoolVisitsSummaryFilterForm extends FormBase {
    * @param \Drupal\Core\Database\Connection $database
    *   The database connection.
    */
-  public function __construct(EntityFieldManagerInterface $entity_field_manager, Connection $database) {
+  final public function __construct(EntityFieldManagerInterface $entity_field_manager, Connection $database) {
     $this->entityFieldManager = $entity_field_manager;
     $this->database = $database;
   }

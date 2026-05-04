@@ -59,10 +59,11 @@ final class YearlyResultsController extends ControllerBase {
       ->condition('field_winners_announced', $start_date, '>=')
       ->condition('field_winners_announced', $end_date, '<=')
       ->condition('field_winners_announced', $now, '<=')
-      ->sort('field_winners_announced', 'ASC')
-      ->accessCheck(FALSE);
+      ->sort('field_winners_announced', 'ASC');
 
-    $competition_ids = $query->execute();
+    $competition_ids = $query
+      ->accessCheck(FALSE)
+      ->execute();
 
     if (empty($competition_ids)) {
       return [

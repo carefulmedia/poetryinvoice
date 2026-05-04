@@ -1,0 +1,21 @@
+uuid: 4348fe2e-20ce-4e3d-bddf-8b63b33d8215
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.journal_year.field_futureverse_shortlist_date
+  module:
+    - datetime
+    - piv_futureverse
+id: journal_year.journal_year.field_futureverse_shortlist_date
+field_name: field_futureverse_shortlist_date
+entity_type: journal_year
+bundle: journal_year
+label: 'Futureverse Shortlist cutoff date'
+description: 'After this cutoff date, Futureverse Invitation emails/reminders will not be sent anymore.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: datetime

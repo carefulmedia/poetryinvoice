@@ -6,6 +6,6 @@ dependencies:
     - piv_contest_competition_entry
 id: competition_entry.teacher_competition_entry
 label: 'Teacher Competition Entry'
-description: ''
+description: null
 targetEntityType: competition_entry
 cache: true

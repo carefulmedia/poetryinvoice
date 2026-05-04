@@ -1,0 +1,21 @@
+uuid: 8a19987b-d70a-4286-a163-dd1a8229499d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_parent_guardian_phone
+    - piv_futureverse.futureverse_application_type.student
+  module:
+    - telephone
+id: futureverse_application.student.field_parent_guardian_phone
+field_name: field_parent_guardian_phone
+entity_type: futureverse_application
+bundle: student
+label: 'Parent/Guardian phone number'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

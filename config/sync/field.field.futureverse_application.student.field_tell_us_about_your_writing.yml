@@ -1,0 +1,19 @@
+uuid: 6bd47e90-8469-4ad8-8e88-3c12544b5a90
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_tell_us_about_your_writing
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_tell_us_about_your_writing
+field_name: field_tell_us_about_your_writing
+entity_type: futureverse_application
+bundle: student
+label: 'Tell us about your writing.'
+description: 'What inspires your work? When did you start writing? What would you love to learn or work on at FutureVerse?'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

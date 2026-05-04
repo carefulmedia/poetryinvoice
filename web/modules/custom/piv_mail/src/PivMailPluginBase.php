@@ -23,7 +23,7 @@ abstract class PivMailPluginBase extends PluginBase implements PivMailInterface 
   /**
    * The manager for this plugin type.
    *
-   * @var Drupal\piv_mail\PivMailPluginManager|null
+   * @var PivMailPluginManager|null
    */
   protected $pluginManager;
 

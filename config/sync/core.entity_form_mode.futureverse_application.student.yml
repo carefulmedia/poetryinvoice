@@ -1,0 +1,11 @@
+uuid: 6ba28017-52f9-4c5f-9e71-878bc051d268
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application.student
+label: Student
+description: null
+targetEntityType: futureverse_application
+cache: true

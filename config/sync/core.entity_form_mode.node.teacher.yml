@@ -6,6 +6,6 @@ dependencies:
     - node
 id: node.teacher
 label: Teacher
-description: ''
+description: null
 targetEntityType: node
 cache: true

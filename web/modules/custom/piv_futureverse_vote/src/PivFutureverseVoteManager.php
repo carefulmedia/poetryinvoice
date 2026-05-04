@@ -4,6 +4,9 @@ namespace Drupal\piv_futureverse_vote;
 
 use Drupal\Core\Database\Connection;
 
+/**
+ *
+ */
 class PivFutureverseVoteManager implements PivFutureverseVoteManagerInterface {
 
   /**
@@ -46,7 +49,7 @@ class PivFutureverseVoteManager implements PivFutureverseVoteManagerInterface {
     string|int $journal_poem_id,
     string|int $year,
     string $langcode,
-  ): int|string|null{
+  ): int|string|null {
     return $this->connection->merge(self::TABLE_NAME)
       ->insertFields([
         'created' => time(),

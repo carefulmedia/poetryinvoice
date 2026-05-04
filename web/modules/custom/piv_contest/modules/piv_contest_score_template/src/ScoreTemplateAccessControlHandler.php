@@ -19,7 +19,7 @@ class ScoreTemplateAccessControlHandler extends EntityAccessControlHandler imple
   /**
    * The entity type manager service.
    *
-   * @var Drupal\Core\Entity\EntityTypeManagerInterface
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
    */
   protected $entityTypeManager;
 
@@ -39,7 +39,7 @@ class ScoreTemplateAccessControlHandler extends EntityAccessControlHandler imple
    * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
    *   The entity type manager service.
    */
-  public function __construct(EntityTypeInterface $entity_type, EntityTypeManagerInterface $entity_type_manager) {
+  final public function __construct(EntityTypeInterface $entity_type, EntityTypeManagerInterface $entity_type_manager) {
     parent::__construct($entity_type);
     $this->entityTypeManager = $entity_type_manager;
   }

@@ -1,0 +1,13 @@
+uuid: 1b8a822e-d9ae-4f64-bcdb-73d40a99b0dc
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+_core:
+  default_config_hash: jO5OCdaj2GCY5NSJE-lnK4Y4gXy-wInxUZvwbBeYOR0
+id: journal_month_save_action
+label: 'Save journal months'
+type: journal_month
+plugin: 'entity:save_action:journal_month'
+configuration: {  }

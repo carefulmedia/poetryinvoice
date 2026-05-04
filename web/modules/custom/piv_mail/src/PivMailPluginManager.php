@@ -15,7 +15,7 @@ class PivMailPluginManager extends DefaultPluginManager {
   /**
    * Instances cache.
    *
-   * @var \Drupal\piv_mail\PivMailInterface[]
+   * @var PivMailInterface[]
    */
   private $instances = [];
 

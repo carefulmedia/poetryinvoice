@@ -1,0 +1,19 @@
+uuid: eb4662ba-bb04-4381-add3-abdbb5673f3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_email
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_email
+field_name: field_email
+entity_type: futureverse_application
+bundle: student
+label: Email
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

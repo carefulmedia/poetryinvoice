@@ -1,0 +1,21 @@
+uuid: dca96338-84c1-430a-9db4-96cf9b1faaee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_no_artificial_intelligence
+    - piv_futureverse.futureverse_application_type.native_student
+id: futureverse_application.native_student.field_no_artificial_intelligence
+field_name: field_no_artificial_intelligence
+entity_type: futureverse_application
+bundle: native_student
+label: 'I confirm that the submitted poem(s) were written without the help of artificial intelligence.'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

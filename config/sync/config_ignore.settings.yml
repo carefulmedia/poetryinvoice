@@ -14,10 +14,12 @@ ignored_config_entities:
   - ~views.view.commom_poetic_terms_and_forms_by_language
   - ~views.view.competition_entries
   - ~views.view.competitions
+  - ~views.view.futureverse_applications
   - ~views.view.judging_sessions
   - ~views.view.language_restricted_poems
   - ~views.view.moods_by_language
   - ~views.view.poems_not_retired
+  - ~views.view.poet_bios
   - ~views.view.recitations
   - ~views.view.score_templates
   - ~views.view.scores

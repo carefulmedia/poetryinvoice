@@ -21,7 +21,7 @@ final class LiveCompetitionAdvanceRoundForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(
+  final public function __construct(
     protected readonly Helper $helper,
   ) {}
 

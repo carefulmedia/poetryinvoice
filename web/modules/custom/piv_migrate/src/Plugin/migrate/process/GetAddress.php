@@ -27,7 +27,7 @@ class GetAddress extends ProcessPluginBase implements MigrateProcessInterface {
       return [];
     }
 
-    $query = \Drupal\Core\Database\Database::getConnection('default', 'migrate')
+    $query = Database::getConnection('default', 'migrate')
       ->select('location_instance', 'i');
     $query->join('location', 'l', 'l.lid = i.lid');
     $address = $query->condition('i.vid', $value)
