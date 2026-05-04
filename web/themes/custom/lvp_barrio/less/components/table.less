@@ -77,3 +77,17 @@ tr th {
     display: none;
   }
 }
+
+.table thead {
+  --bs-table-bg: #000;
+  --bs-table-color: #fff;
+}
+.table tbody tr {
+  --bs-table-bg: #efefef;
+}
+.table tbody tr.odd {
+  --bs-table-bg: #e4e4e4;
+}
+.table > :not(caption) > * > * {
+  background-color: var(--bs-table-bg);
+}

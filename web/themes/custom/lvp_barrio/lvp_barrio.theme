@@ -136,3 +136,13 @@ function lvp_barrio_preprocess_html(array &$variables) {
 
   }
 }
+
+/**
+ * Implements hook_css_alter().
+ */
+function lvp_barrio_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface $assets, \Drupal\Core\Language\LanguageInterface $language) {
+  // Remove gin theme css from non admin pages.
+  if (!\Drupal::service('router.admin_context')->isAdminRoute()) {
+    unset($css['themes/contrib/gin/dist/css/theme/dialog.css']);
+  }
+}
