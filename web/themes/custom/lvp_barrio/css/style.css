@@ -2300,6 +2300,10 @@ table.final-results tbody tr.odd {
 #monitor-dashboard-wrapper .table-responsive {
   overflow-x: initial;
 }
+body.toolbar-loading.path-monitor-dashboard,
+body.toolbar-fixed.path-monitor-dashboard {
+  --drupal-displace-offset-top: 53px;
+}
 /**
  * @file
  * Enables Bootstrap 4 multi-level flyout

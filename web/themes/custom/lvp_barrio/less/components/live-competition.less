@@ -122,3 +122,9 @@ table.final-results {
 #monitor-dashboard-wrapper .table-responsive {
   overflow-x: initial;
 }
+
+// Counter Gin secondary toolbar polluting Drupal's displace offset.
+body.toolbar-loading.path-monitor-dashboard,
+body.toolbar-fixed.path-monitor-dashboard {
+  --drupal-displace-offset-top: 53px;
+}
