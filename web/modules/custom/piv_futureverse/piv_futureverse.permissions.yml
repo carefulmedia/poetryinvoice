@@ -1,0 +1,52 @@
+manage journal year:
+  title: 'Manage journal year'
+  description: 'Create and edit journal years and months, send notifications, configure notifications.'
+
+administer journal_year:
+  title: 'Administer journal years'
+  restrict access: true
+view journal_year:
+  title: 'View journal year'
+edit journal_year:
+  title: 'Edit journal year'
+delete journal_year:
+  title: 'Delete journal year'
+create journal_year:
+  title: 'Create journal year'
+
+administer journal_month:
+  title: 'Administer journal months'
+  restrict access: true
+view journal_month:
+  title: 'View journal month'
+edit journal_month:
+  title: 'Edit journal month'
+delete journal_month:
+  title: 'Delete journal month'
+create journal_month:
+  title: 'Create journal month'
+
+administer poet_bio:
+  title: 'Administer poet bios'
+  restrict access: true
+view poet_bio:
+  title: 'View poet bio'
+edit poet_bio:
+  title: 'Edit poet bio'
+delete poet_bio:
+  title: 'Delete poet bio'
+create poet_bio:
+  title: 'Create poet bio'
+
+administer futureverse_application types:
+  title: 'Administer futureverse application types'
+  description: 'Maintain the types of futureverse application entity.'
+  restrict access: true
+view futureverse_application:
+  title: 'View futureverse application'
+edit futureverse_application:
+  title: 'Edit futureverse application'
+delete futureverse_application:
+  title: 'Delete futureverse application'
+create futureverse_application:
+  title: 'Create futureverse application'

@@ -2,16 +2,23 @@ global-styling:
   version: VERSION
   js:
     js/global.js: {}
+    js/disable-link.js: {}
+    js/jquery-shim.js: {}
   css:
     component:
       css/style.css: {}
       css/colors-bu.css: {}
       css/print.css: { media: print }
+      css/recitation-judging.css: {}
+      css/recitation-accuracy-judging.css: {}
+      css/competition-progress.css: {}
   dependencies:
     - claro/global-styling
     - core/once
     - gin/gin_base
     - gin/dialog
+    - core/jquery
+
 bootstrap:
   js:
     /libraries/popper.js/dist/umd/popper.min.js: { weight: -49 }

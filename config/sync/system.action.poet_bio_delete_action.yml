@@ -1,0 +1,13 @@
+uuid: 629cf15a-b22b-48b6-b5e4-c2e7b46e4608
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+_core:
+  default_config_hash: mYSi73o4bT_hJhWzh0jBNwdi_mD35vw2UrYq29n65v4
+id: poet_bio_delete_action
+label: 'Delete poet bios'
+type: poet_bio
+plugin: 'entity:delete_action:poet_bio'
+configuration: {  }

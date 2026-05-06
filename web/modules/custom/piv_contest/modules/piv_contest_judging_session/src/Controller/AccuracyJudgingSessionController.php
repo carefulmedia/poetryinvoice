@@ -47,14 +47,14 @@ class AccuracyJudgingSessionController extends ControllerBase {
   /**
    * The redirect destination service.
    *
-   * @var Drupal\Core\Routing\RedirectDestination
+   * @var \Drupal\Core\Routing\RedirectDestination
    */
   protected $redirectDestination;
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, JudgeSession $judge_session, FormBuilderInterface $form_builder, RedirectDestination $redirect_destination, AccountProxyInterface $current_user) {
+  final public function __construct(EntityTypeManagerInterface $entity_type_manager, JudgeSession $judge_session, FormBuilderInterface $form_builder, RedirectDestination $redirect_destination, AccountProxyInterface $current_user) {
     $this->entityTypeManager = $entity_type_manager;
     $this->judgeSessionService = $judge_session;
     $this->formBuilder = $form_builder;

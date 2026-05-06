@@ -1,0 +1,21 @@
+uuid: 8e26e99a-9303-4763-bc0e-e3ed84b65933
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_do_you_identify_as_indigen
+    - piv_futureverse.futureverse_application_type.native_student
+id: futureverse_application.native_student.field_do_you_identify_as_indigen
+field_name: field_do_you_identify_as_indigen
+entity_type: futureverse_application
+bundle: native_student
+label: 'Do you identify as Indigenous (First Nations, Métis, Inuit)?'
+description: 'This application is only for students who identify as Indigenous. If you do not identify as Indigenous, please do not complete this application.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes, I identify as Indigenous.'
+  off_label: 'Off'
+field_type: boolean

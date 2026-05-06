@@ -1,0 +1,30 @@
+journal_year.add_form:
+  title: 'Add journal year'
+  route_name: entity.journal_year.add_form
+  appears_on:
+    - entity.journal_year.collection
+
+# Months need to be added inline in years.
+#journal_month.add_form:
+#  title: 'Add journal month'
+#  route_name: entity.journal_month.add_form
+#  appears_on:
+#    - entity.journal_month.collection
+
+poet_bio.add_form:
+  title: 'Add poet bio'
+  route_name: entity.poet_bio.add_form
+  appears_on:
+    - entity.poet_bio.collection
+
+futureverse_application.type_add:
+  title: 'Add futureverse application type'
+  route_name: entity.futureverse_application_type.add_form
+  appears_on:
+    - entity.futureverse_application_type.collection
+
+futureverse_application.add_page:
+  title: 'Add futureverse application'
+  route_name: entity.futureverse_application.add_page
+  appears_on:
+    - entity.futureverse_application.collection

@@ -10,7 +10,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\piv_contest_score\ScoreInterface;
 use Drupal\piv_contest\ScoreFormBuilder;
 use Drupal\piv_contest_score_template\ScoreTemplateInterface;
-use Drupal\Paragraphs\ParagraphInterface;
+use Drupal\paragraphs\ParagraphInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\piv_live_competition\Helper;
@@ -21,7 +21,10 @@ use Drupal\piv_live_competition\Helper;
 final class PerformanceScoreForm extends FormBase {
   use AutowireTrait;
 
-  public function __construct(
+  /**
+   * {@inheritdoc}
+   */
+  final public function __construct(
     protected readonly ScoreFormBuilder $scoreFormBuilder,
     protected readonly Helper $helper,
   ) {}

@@ -1,0 +1,75 @@
+uuid: 8c84245c-179c-422c-be1b-d10a9496c54d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.futureverse_application.invitation
+    - field.field.futureverse_application.native_student.field_do_you_identify_as_indigen
+    - field.field.futureverse_application.native_student.field_email
+    - field.field.futureverse_application.native_student.field_first_name
+    - field.field.futureverse_application.native_student.field_full_mailing_address
+    - field.field.futureverse_application.native_student.field_how_has_your_community_sha
+    - field.field.futureverse_application.native_student.field_is_there_anything_else_we
+    - field.field.futureverse_application.native_student.field_journal_year
+    - field.field.futureverse_application.native_student.field_last_name
+    - field.field.futureverse_application.native_student.field_legal_name
+    - field.field.futureverse_application.native_student.field_legal_name_boolean
+    - field.field.futureverse_application.native_student.field_no_artificial_intelligence
+    - field.field.futureverse_application.native_student.field_once_link_enabled
+    - field.field.futureverse_application.native_student.field_phone
+    - field.field.futureverse_application.native_student.field_please_tell_us_a_bit_about
+    - field.field.futureverse_application.native_student.field_poem_stub
+    - field.field.futureverse_application.native_student.field_school
+    - field.field.futureverse_application.native_student.field_teacher_name
+    - field.field.futureverse_application.native_student.field_tell_us_about_your_writing
+    - field.field.futureverse_application.native_student.field_what_are_some_issues_you_c
+    - piv_futureverse.futureverse_application_type.native_student
+  module:
+    - field_layout
+    - layout_discovery
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: futureverse_application.native_student.invitation
+targetEntityType: futureverse_application
+bundle: native_student
+mode: invitation
+content:
+  field_email:
+    type: email_default
+    weight: 1
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_journal_year:
+    type: options_select
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_do_you_identify_as_indigen: true
+  field_first_name: true
+  field_full_mailing_address: true
+  field_how_has_your_community_sha: true
+  field_is_there_anything_else_we: true
+  field_last_name: true
+  field_legal_name: true
+  field_legal_name_boolean: true
+  field_no_artificial_intelligence: true
+  field_once_link_enabled: true
+  field_phone: true
+  field_please_tell_us_a_bit_about: true
+  field_poem_stub: true
+  field_school: true
+  field_teacher_name: true
+  field_tell_us_about_your_writing: true
+  field_what_are_some_issues_you_c: true
+  label: true
+  status: true
+  uid: true

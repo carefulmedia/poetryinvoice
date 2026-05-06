@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: journal_year_save_action
+label: 'Save journal years'
+type: journal_year
+plugin: entity:save_action:journal_year
+configuration: {  }

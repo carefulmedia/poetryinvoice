@@ -27,7 +27,7 @@ class PivPopularVoteController extends ControllerBase implements ContainerInject
   /**
    * PivPopularVoteController constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, LanguageManagerInterface $language_manager) {
+  final public function __construct(EntityTypeManagerInterface $entity_type_manager, LanguageManagerInterface $language_manager) {
     $this->entityTypeManager = $entity_type_manager;
     $this->languageManager = $language_manager;
   }

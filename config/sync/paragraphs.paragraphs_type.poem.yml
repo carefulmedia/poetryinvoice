@@ -1,0 +1,10 @@
+uuid: 10ceb30c-84f6-4bbb-aed7-7d5a305b1744
+langcode: en
+status: true
+dependencies: {  }
+id: poem
+label: Poem
+icon_uuid: null
+icon_default: null
+description: 'A stub of a poem that then generates a Journal Poem node.'
+behavior_plugins: {  }

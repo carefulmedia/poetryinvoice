@@ -36,7 +36,7 @@ class PopularVoteResultsController extends ControllerBase implements ContainerIn
   /**
    * PivPopularVoteController constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, Connection $connection) {
+  final public function __construct(EntityTypeManagerInterface $entity_type_manager, Connection $connection) {
     $this->entityTypeManager = $entity_type_manager;
     $this->connection = $connection;
   }

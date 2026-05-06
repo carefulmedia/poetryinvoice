@@ -48,7 +48,7 @@ class PopularVotesAdminTableForm extends FormBase {
   /**
    * Constructs a PivPopularVoteManager object.
    */
-  public function __construct(Connection $connection, PivPopularVoteManager $piv_popular_vote_manager, DateFormatter $date_formatter) {
+  final public function __construct(Connection $connection, PivPopularVoteManager $piv_popular_vote_manager, DateFormatter $date_formatter) {
     $this->connection = $connection;
     $this->pivPopularVoteManager = $piv_popular_vote_manager;
     $this->dateFormatter = $date_formatter;
@@ -68,7 +68,7 @@ class PopularVotesAdminTableForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, FormStateInterface $filter_form_state = NULL, CompetitionInterface $competition = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?FormStateInterface $filter_form_state = NULL, ?CompetitionInterface $competition = NULL) {
     if (!$competition) {
       return $form;
     }

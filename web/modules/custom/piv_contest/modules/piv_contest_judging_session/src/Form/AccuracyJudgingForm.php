@@ -16,21 +16,21 @@ class AccuracyJudgingForm extends FormBase {
   /**
    * The entity type manager service.
    *
-   * @var Drupal\Core\Entity\EntityTypeManager
+   * @var \Drupal\Core\Entity\EntityTypeManager
    */
   protected $entityTypeManager;
 
   /**
    * The current route.
    *
-   * @var Drupal\Core\Routing\CurrentRouteMatch
+   * @var \Drupal\Core\Routing\CurrentRouteMatch
    */
   protected $routeMatch;
 
   /**
    * Class constructor.
    */
-  public function __construct(EntityTypeManagerInterface $entity_type_manager, CurrentRouteMatch $current_route_match) {
+  final public function __construct(EntityTypeManagerInterface $entity_type_manager, CurrentRouteMatch $current_route_match) {
     $this->entityTypeManager = $entity_type_manager;
     $this->routeMatch = $current_route_match;
   }

@@ -71,7 +71,7 @@ class JudgingSessionController extends ControllerBase {
   /**
    * JudgingSessionController constructor.
    */
-  public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, JudgeSession $judge_session, AccountProxyInterface $current_user, CsrfTokenGenerator $csrf_token_generator, FormBuilderInterface $form_builder) {
+  final public function __construct(EntityFormBuilderInterface $entity_form_builder, EntityTypeManagerInterface $entity_type_manager, JudgeSession $judge_session, AccountProxyInterface $current_user, CsrfTokenGenerator $csrf_token_generator, FormBuilderInterface $form_builder) {
     $this->entityFormBuilder = $entity_form_builder;
     $this->entityTypeManager = $entity_type_manager;
     $this->judgeSessionService = $judge_session;

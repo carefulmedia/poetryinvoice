@@ -1,0 +1,19 @@
+uuid: 48d915f3-673d-4d62-8c4d-0594c363ab05
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_what_are_some_issues_you_c
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_what_are_some_issues_you_c
+field_name: field_what_are_some_issues_you_c
+entity_type: futureverse_application
+bundle: student
+label: 'What are some issues you care about and how have you engaged with these issues so far?'
+description: 'Can you tell us about a time you made change or worked with others to improve things? This could be writing about the issues, advocating for someone else, taking part in community action, or anything else you think applies.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

@@ -8,7 +8,7 @@ use Drupal\migrate\ProcessPluginBase;
 use Drupal\migrate\Row;
 
 /**
- * Class RandomValueOnEmpty
+ * Class RandomValueOnEmpty.
  *
  * @MigrateProcessPlugin(
  *   id = "random_value_on_empty",
@@ -16,8 +16,13 @@ use Drupal\migrate\Row;
  * )
  */
 class RandomValueOnEmpty extends ProcessPluginBase {
+
+  /**
+   *
+   */
   public function transform($value, MigrateExecutableInterface $migrate_executable, Row $row, $destination_property) {
     $random = new Random();
     return $value ?: $random->string();
   }
+
 }

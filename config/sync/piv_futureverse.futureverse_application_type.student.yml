@@ -1,0 +1,6 @@
+uuid: afd752da-7e1d-4a87-8160-cd7c17afe828
+langcode: en
+status: true
+dependencies: {  }
+id: student
+label: Student

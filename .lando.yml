@@ -4,6 +4,7 @@ config:
   php: 8.3
   webroot: web
   xdebug: true
+  database: mariadb:11.4
 
 proxy:
   appserver:
@@ -51,6 +52,18 @@ services:
     portforward: true
     config:
       dir: config/solr-config-set
+  selenium-chrome:
+    type: compose
+    app_mount: false
+    services:
+      # Chrome 74
+      image: selenium/standalone-chrome-debug:3.141.59-neon
+      environment:
+        TZ: Canada/Toronto
+        START_XVBF: 'false'
+      volumes:
+        - /dev/shm:/dev/shm
+      command: /opt/bin/entry_point.sh
 
 tooling:
   drush:
@@ -74,3 +87,9 @@ tooling:
   translation-import:
     service: appserver
     cmd: drush locale:import fr modules/custom/piv_base/translations/fr.po --override=none
+  rector:
+    service: appserver
+    cmd: /app/vendor/bin/rector
+  behat:
+    service: appserver
+    cmd: /app/vendor/bin/behat

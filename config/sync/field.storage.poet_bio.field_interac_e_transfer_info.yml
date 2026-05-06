@@ -1,0 +1,21 @@
+uuid: 140bf14b-933c-4027-ae70-a5f0d53bb9e0
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: poet_bio.field_interac_e_transfer_info
+field_name: field_interac_e_transfer_info
+entity_type: poet_bio
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

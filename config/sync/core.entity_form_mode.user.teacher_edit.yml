@@ -6,6 +6,6 @@ dependencies:
     - user
 id: user.teacher_edit
 label: Teacher
-description: ''
+description: null
 targetEntityType: user
 cache: true

@@ -1,0 +1,73 @@
+uuid: 574955be-17c6-4ac0-9f4b-7747bbacfe08
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.journal_month.no_poems
+    - field.field.journal_year.journal_year.field_futureverse_shortlist_date
+    - field.field.journal_year.journal_year.field_journal_months
+  module:
+    - datetime
+    - field_layout
+    - inline_entity_form
+    - layout_discovery
+    - piv_futureverse
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+id: journal_year.journal_year.default
+targetEntityType: journal_year
+bundle: journal_year
+mode: default
+content:
+  field_futureverse_shortlist_date:
+    type: datetime_default
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_journal_months:
+    type: inline_entity_form_complex
+    weight: 2
+    region: content
+    settings:
+      form_mode: no_poems
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+      removed_reference: delete
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 4
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  uid: true

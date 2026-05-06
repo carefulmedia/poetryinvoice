@@ -39,7 +39,7 @@ class ScoreForm extends FormBase {
    * {@inheritdoc}
    */
   public static function create($container) {
-    $form = new static();
+    $form = new self();
     $user_storage = $container->get('entity_type.manager')->getStorage('user');
     $form->scoreFormBuilder = $container->get('piv_contest.score_form_builder');
     $form->judgeSessionService = $container->get('piv_contest_judging_session.service.judge_session');

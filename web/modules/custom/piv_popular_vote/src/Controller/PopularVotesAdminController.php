@@ -26,7 +26,7 @@ class PopularVotesAdminController extends ControllerBase implements ContainerInj
   /**
    * PivPopularVoteController constructor.
    */
-  public function __construct(FormBuilderInterface $form_builder) {
+  final public function __construct(FormBuilderInterface $form_builder) {
     $this->formBuilder = $form_builder;
   }
 

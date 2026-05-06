@@ -57,7 +57,7 @@ class LimitedRecitationEntryWidget extends InlineEntityFormComplex {
   /**
    * {@inheritdoc}
    */
-  public function __construct(
+  final public function __construct(
     $plugin_id,
     $plugin_definition,
     FieldDefinitionInterface $field_definition,

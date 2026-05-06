@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: journal_month_save_action
+label: 'Save journal months'
+type: journal_month
+plugin: entity:save_action:journal_month
+configuration: {  }

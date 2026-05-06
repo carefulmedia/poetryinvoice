@@ -28,7 +28,7 @@ class PopularVoteForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(PivPopularVoteManager $piv_popular_vote_manager) {
+  final public function __construct(PivPopularVoteManager $piv_popular_vote_manager) {
     $this->pivPopularVoteManager = $piv_popular_vote_manager;
   }
 
@@ -63,7 +63,7 @@ class PopularVoteForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, CompetitionInterface $competition = NULL, CompetitionEntryInterface $competition_entry = NULL) {
+  public function buildForm(array $form, FormStateInterface $form_state, ?CompetitionInterface $competition = NULL, ?CompetitionEntryInterface $competition_entry = NULL) {
     $form['#prefix'] = '<div id="popular-vote-form">';
     $form['#suffix'] = '</div>';
     $form['#attached']['library'][] = 'core/drupal.dialog.ajax';

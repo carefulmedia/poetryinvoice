@@ -1,0 +1,13 @@
+uuid: 0a029f1d-eed4-4d9b-9012-03c6f406342d
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+_core:
+  default_config_hash: hrcWIN-Z1fp2PmxVXWklMSU0_7TxPAgYfcDtKUDlOg8
+id: poet_bio_save_action
+label: 'Save poet bios'
+type: poet_bio
+plugin: 'entity:save_action:poet_bio'
+configuration: {  }

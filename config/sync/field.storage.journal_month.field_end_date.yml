@@ -1,0 +1,20 @@
+uuid: b19dd60e-c1c8-42b0-9f59-78b2bab5896c
+langcode: en
+status: true
+dependencies:
+  module:
+    - datetime
+    - piv_futureverse
+id: journal_month.field_end_date
+field_name: field_end_date
+entity_type: journal_month
+type: datetime
+settings:
+  datetime_type: date
+module: datetime
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

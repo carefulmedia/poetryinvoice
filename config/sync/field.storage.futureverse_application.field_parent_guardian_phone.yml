@@ -1,0 +1,19 @@
+uuid: 80af7f93-4c99-4406-ac72-df23c5e09c8d
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+    - telephone
+id: futureverse_application.field_parent_guardian_phone
+field_name: field_parent_guardian_phone
+entity_type: futureverse_application
+type: telephone
+settings: {  }
+module: telephone
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,27 @@
+uuid: adc5edc2-ece2-41be-b301-0a53084247db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_poem_attachment
+    - paragraphs.paragraphs_type.poem
+  module:
+    - file
+id: paragraph.poem.field_poem_attachment
+field_name: field_poem_attachment
+entity_type: paragraph
+bundle: poem
+label: 'Poem attachment'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'txt doc docx pdf'
+  max_filesize: ''
+  description_field: false
+field_type: file

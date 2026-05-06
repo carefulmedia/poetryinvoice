@@ -1,0 +1,20 @@
+uuid: 8a5c4769-67d9-447a-b07c-8ec5669ed21b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - piv_futureverse
+id: futureverse_application.field_school
+field_name: field_school
+entity_type: futureverse_application
+type: entity_reference
+settings:
+  target_type: node
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

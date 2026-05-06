@@ -36,21 +36,21 @@ class ManageSessionsForm extends FormBase {
   /**
    * The database service.
    *
-   * @var Drupal\Core\Database\Connection
+   * @var \Drupal\Core\Database\Connection
    */
   protected $database;
 
   /**
    * The request stack.
    *
-   * @var Symfony\Component\HttpFoundation\RequestStack
+   * @var \Symfony\Component\HttpFoundation\RequestStack
    */
   protected $requestStack;
 
   /**
    * {@inheritdoc}
    */
-  public function __construct(EntityTypeManagerInterface $entityTypeManager, Connection $db, RequestStack $request_stack) {
+  final public function __construct(EntityTypeManagerInterface $entityTypeManager, Connection $db, RequestStack $request_stack) {
     $this->competitionEntryStorage = $entityTypeManager->getStorage('competition_entry');
     $this->judgingSessionsStorage = $entityTypeManager->getStorage('judging_session');
     $this->database = $db;

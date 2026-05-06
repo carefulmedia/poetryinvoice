@@ -11,7 +11,6 @@ use Drupal\Core\Session\AccountInterface;
 use Drupal\Core\Url;
 use Drupal\node\NodeInterface;
 use Drupal\piv_live_competition\Helper;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
  * Contest Administration controller.
@@ -75,12 +74,12 @@ final class ContestAdministrationController extends ControllerBase {
 
       // PIV-777, remove button.
       /*$build['action_links']['create_entry_link'] = [
-        '#type' => 'link',
-        '#title' => $this->t('Create New Entry'),
-        '#url' => $create_entry_url,
-        '#attributes' => [
-          'class' => ['button', 'button--primary'],
-        ],
+      '#type' => 'link',
+      '#title' => $this->t('Create New Entry'),
+      '#url' => $create_entry_url,
+      '#attributes' => [
+      'class' => ['button', 'button--primary'],
+      ],
       ];*/
     }
 
@@ -154,7 +153,12 @@ final class ContestAdministrationController extends ControllerBase {
             '#type' => 'container',
             '#attributes' => ['class' => ['judge-link-item']],
             'name' => [
-              '#markup' => '<strong>' . $judge->getDisplayName() . ':</strong> ',
+              '#type' => 'link',
+              '#title' => $judge->getDisplayName(),
+              '#url' => Url::fromRoute('entity.user.canonical', ['user' => $judge->id()]),
+              '#attributes' => ['target' => '_blank'],
+              '#prefix' => '<strong>',
+              '#suffix' => ':</strong> ',
             ],
             'link' => [
               '#type' => 'link',
@@ -230,7 +234,12 @@ final class ContestAdministrationController extends ControllerBase {
             '#type' => 'container',
             '#attributes' => ['class' => ['prompter-link-item']],
             'name' => [
-              '#markup' => '<strong>' . $prompter->getDisplayName() . ':</strong> ',
+              '#type' => 'link',
+              '#title' => $prompter->getDisplayName(),
+              '#url' => Url::fromRoute('entity.user.canonical', ['user' => $prompter->id()]),
+              '#attributes' => ['target' => '_blank'],
+              '#prefix' => '<strong>',
+              '#suffix' => ':</strong> ',
             ],
             'link' => [
               '#type' => 'link',

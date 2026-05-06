@@ -50,21 +50,21 @@ class CompetitionEnrollment {
   /**
    * Competition entity.
    *
-   * @var Drupal\piv_contest_competition\CompetitionInterface
+   * @var \Drupal\piv_contest_competition\CompetitionInterface
    */
   private $competition;
 
   /**
    * Competition entry entities.
    *
-   * @var Drupal\piv_contest_competition_entry\Entity\CompetitionEntry[]
+   * @var \Drupal\piv_contest_competition\Entity\CompetitionEntry[]
    */
   private $entries = [];
 
   /**
    * User object.
    *
-   * @var Drupal\user\UserInterface
+   * @var \Drupal\user\UserInterface
    */
   private $teacher;
 

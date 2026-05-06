@@ -1,0 +1,21 @@
+uuid: c5daa9e5-8459-448a-a2b0-ceb0c0fb924e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_i_am_submitting_in_a_secon
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_i_am_submitting_in_a_secon
+field_name: field_i_am_submitting_in_a_secon
+entity_type: futureverse_application
+bundle: student
+label: 'I am submitting in my second official language'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

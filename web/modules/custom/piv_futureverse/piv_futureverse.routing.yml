@@ -1,0 +1,75 @@
+entity.journal_year.settings:
+  path: 'admin/structure/journal-year'
+  defaults:
+    _form: '\Drupal\piv_futureverse\Form\JournalYearSettingsForm'
+    _title: 'Journal Year'
+  requirements:
+    _permission: 'administer journal_year'
+
+entity.journal_month.settings:
+  path: 'admin/structure/journal-month'
+  defaults:
+    _form: '\Drupal\piv_futureverse\Form\JournalMonthSettingsForm'
+    _title: 'Journal Month'
+  requirements:
+    _permission: 'administer journal_month'
+
+piv_futureverse.journal_notifications_confirm:
+  path: 'admin/journal-notifications/{op}/{journal_month}'
+  defaults:
+    _title: 'Journal Notifications Confirm'
+    _form: 'Drupal\piv_futureverse\Form\JournalNotificationsConfirmForm'
+  requirements:
+    _permission: 'manage journal year'
+  options:
+    parameters:
+      journal_month:
+        type: entity:journal_month
+
+entity.poet_bio.settings:
+  path: 'admin/structure/poet-bio'
+  defaults:
+    _form: '\Drupal\piv_futureverse\Form\PoetBioSettingsForm'
+    _title: 'Poet Bio'
+  requirements:
+    _permission: 'administer poet_bio'
+
+piv_futureverse.poet_bio_enrichment:
+  path: '/f/bio/{hash}'
+  defaults:
+    _controller: '\Drupal\piv_futureverse\Controller\PoetBioEnrichmentController'
+    _title: 'Poet Bio Enrichment'
+  requirements:
+    _custom_access: '\Drupal\piv_futureverse\Controller\PoetBioEnrichmentController::access'
+  options:
+    _admin_route: TRUE
+
+piv_futureverse.futureverse_application:
+  path: '/f/futureverse/{hash}'
+  defaults:
+    _controller: '\Drupal\piv_futureverse\Controller\FutureverseApplicationController'
+    _title: 'Futureverse Application'
+  requirements:
+    _custom_access: '\Drupal\piv_futureverse\Controller\FutureverseApplicationController::access'
+  options:
+    _admin_route: TRUE
+    
+piv_futureverse.my_poems:
+  path: '/user/{user}/my-poems'
+  defaults:
+    _controller: '\Drupal\piv_futureverse\Controller\MyPoemsController'
+    _title: 'My Poems'
+  requirements:
+    _custom_access: '\Drupal\piv_futureverse\Controller\MyPoemsController::access'
+  options:
+    parameters:
+      user:
+        type: entity:user
+
+piv_futureverse.journal_poems:
+  path: 'admin/voices-voix/journal-poems'
+  defaults:
+    _controller: '\Drupal\piv_futureverse\Controller\JournalPoemsController'
+    _title: 'Journal Poems'
+  requirements:
+    _permission: 'manage journal year'

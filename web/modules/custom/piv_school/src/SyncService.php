@@ -7,6 +7,9 @@ use Drupal\Core\State\State;
 use Drupal\Core\Entity\EntityStorageException;
 use Psr\Log\LoggerInterface;
 
+/**
+ *
+ */
 class SyncService {
   /**
    * @var \Drupal\Core\Entity\EntityTypeManagerInterface
@@ -141,7 +144,7 @@ class SyncService {
    */
   public function updateNode($node, $fields, $new = TRUE) {
     try {
-      // Until the CSV sources manage accents, we do not update the title
+      // Until the CSV sources manage accents, we do not update the title.
       $node->title = $fields['name'];
       $node->field_cdb_id = $fields['id'];
       $node->field_school_phone = $fields['phone'];
@@ -169,7 +172,7 @@ class SyncService {
       ];
       return $node->save();
     }
-    catch(EntityStorageException $e) {
+    catch (EntityStorageException $e) {
       $this->logger->error("Error updating the node with CDB Id %id. Error: %error", ['%id' => $fields['id'], '%error' => $e->getMessage()]);
       return NULL;
     }

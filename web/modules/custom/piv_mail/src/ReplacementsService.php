@@ -27,7 +27,7 @@ class ReplacementsService {
    *
    * @var array
    */
-  static public $tokens = [
+  public static $tokens = [
     'user' => [
       'first_name',
       'user',
@@ -67,6 +67,11 @@ class ReplacementsService {
     ],
     'journal_poem' => [
       'journal_poem_first_name',
+      'link_to_bio_enrichment',
+      'link_to_futureverse_application',
+    ],
+    'poet_bio' => [
+      'link_to_poet_bio',
     ],
   ];
 
@@ -75,7 +80,7 @@ class ReplacementsService {
    *
    * @var array
    */
-  static public $recipients = [
+  public static $recipients = [
     'poet' => [
       'source' => 'visit_node',
       'title' => 'Poet',
@@ -132,6 +137,13 @@ class ReplacementsService {
    * @var \Drupal\Core\Datetime\DateFormatterInterface
    */
   protected $dateFormatter;
+
+  /**
+   * The original replacements service instance.
+   *
+   * @var \Drupal\piv_mail\ReplacementsService|null
+   */
+  protected $original;
 
   /**
    * Constructs a ReplacementService object.
@@ -358,7 +370,67 @@ class ReplacementsService {
         // Journal poem.
         case 'journal_poem_first_name':
           return $sources['journal_poem']->piv_teacher_first_name->value;
+          
+        case 'link_to_bio_enrichment':
+          $bio_service = \Drupal::service('piv_futureverse.bio_enrichment'); // @phpcs:ignore
+          $journal_poem_id = $sources['journal_poem']->id();
+          if ($bio_service->exists($journal_poem_id)) {
+            return '';
+          }
 
+          $url = $bio_service->generateUrl($journal_poem_id);
+          if (!$url) {
+            return '';
+          }
+          $language = $sources['journal_poem']->language();
+          $text = $this->t('Click here to update your bio', [], [
+            'langcode' => $language->getId(),
+          ]);
+          $link = Link::fromTextAndUrl($text, $url)
+            ->toString()
+            ->getGeneratedLink();
+          $html = '<p>';
+          $html .= $this->t('You will only be able to use this link once to provide your information.', [], [
+            'langcode' => $language->getId(),
+          ]);
+          $html .= '<br>';
+          $html .= $link;
+          $html .= '</p>';
+          return $html;
+        
+        case 'link_to_futureverse_application':
+          $bio_service = \Drupal::service('piv_futureverse.futureverse_once_url_generator'); // @phpcs:ignore
+          $journal_poem_id = $sources['journal_poem']->id();
+          if ($bio_service->exists('student', $journal_poem_id)) {
+            return '';
+          }
+
+          $url = $bio_service->generateUrl('student', $journal_poem_id);
+          if (!$url) {
+            return '';
+          }
+          $language = $sources['journal_poem']->language();
+          $text = $this->t('Click here to complete your Futureverse application', [], [
+            'langcode' => $language->getId(),
+          ]);
+          $link = Link::fromTextAndUrl($text, $url)
+            ->toString()
+            ->getGeneratedLink();
+          $html = '<p>';
+          $html .= $this->t('You will only be able to use this link once to provide your information.', [], [
+            'langcode' => $language->getId(),
+          ]);
+          $html .= '<br>';
+          $html .= $link;
+          $html .= '</p>';
+          return $html;
+        
+        case 'link_to_poet_bio':
+          $langcode = $sources['poet_bio']->field_language->target_id;
+          return $sources['poet_bio']->toLink('Link to poet bio', 'edit-form', [
+            'absolute' => TRUE,
+            'language' => $sources['poet_bio']->field_language->entity,
+          ])->toString();
       }
     }
     catch (\Exception $e) {
@@ -464,6 +536,9 @@ class ReplacementsService {
         $mail = $sources['journal_poem']->field_email1->value ?? NULL;
         return $mail ? [$mail] : [];
     }
+
+    // Default case - return empty array if no case matches.
+    return [];
 
   }
 

@@ -1,0 +1,74 @@
+uuid: a801752a-06b6-4986-8a50-799525c6517d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.journal_month.no_poems
+    - field.field.journal_month.journal_month.field_end_date
+    - field.field.journal_month.journal_month.field_journal_poems
+    - field.field.journal_month.journal_month.field_start_date
+  module:
+    - datetime
+    - field_group
+    - field_layout
+    - layout_discovery
+    - piv_futureverse
+third_party_settings:
+  field_layout:
+    id: layout_onecol
+    settings:
+      label: ''
+  field_group:
+    group_date_range:
+      children:
+        - field_start_date
+        - field_end_date
+      label: ''
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: fieldset
+      format_settings:
+        classes: journal-inline-dates
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: 'Dates are inclusive. An end date set to January 31 will match poems created on January 31 until midnight.'
+        required_fields: true
+id: journal_month.journal_month.no_poems
+targetEntityType: journal_month
+bundle: journal_month
+mode: no_poems
+content:
+  field_end_date:
+    type: datetime_default
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_start_date:
+    type: datetime_default
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  label:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  langcode:
+    type: language_select
+    weight: 1
+    region: content
+    settings:
+      include_locked: true
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_journal_poems: true
+  status: true
+  uid: true

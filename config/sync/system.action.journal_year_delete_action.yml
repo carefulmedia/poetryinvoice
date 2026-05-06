@@ -1,0 +1,13 @@
+uuid: a0136109-56ef-485d-a7d3-36a85e73d643
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+_core:
+  default_config_hash: v85SAnLnJuOqtF_MC9SMpfQO2FCCZh16_W_YLK_ysWQ
+id: journal_year_delete_action
+label: 'Delete journal years'
+type: journal_year
+plugin: 'entity:delete_action:journal_year'
+configuration: {  }

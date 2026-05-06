@@ -9,6 +9,8 @@ dependencies:
     - field_permissions
     - file
     - node
+    - piv_futureverse
+    - system
     - toolbar
 id: journal_editor
 label: 'Journal editor'
@@ -17,8 +19,13 @@ is_admin: null
 permissions:
   - 'access toolbar'
   - 'administer editablefields'
+  - 'administer futureverse_application types'
+  - 'administer journal_month'
+  - 'administer journal_year'
+  - 'administer poet_bio'
   - 'create field_acceptance_level'
-  - 'create field_poem_attachment'
+  - 'create field_journal_year'
+  - 'create field_once_link_enabled'
   - 'create field_submission_info_confirmed'
   - 'create journal_poem content'
   - 'delete any journal_poem content'
@@ -26,12 +33,22 @@ permissions:
   - 'delete own journal_poem content'
   - 'edit any journal_poem content'
   - 'edit field_acceptance_level'
+  - 'edit field_journal_year'
+  - 'edit field_once_link_enabled'
   - 'edit field_submission_info_confirmed'
   - 'edit own field_acceptance_level'
+  - 'edit own field_journal_year'
+  - 'edit own field_once_link_enabled'
   - 'edit own field_submission_info_confirmed'
   - 'edit own journal_poem content'
+  - 'manage journal year'
   - 'use editablefields'
   - 'view field_acceptance_level'
+  - 'view field_journal_year'
+  - 'view field_once_link_enabled'
   - 'view field_submission_info_confirmed'
   - 'view own field_acceptance_level'
+  - 'view own field_journal_year'
+  - 'view own field_once_link_enabled'
   - 'view own field_submission_info_confirmed'
+  - 'view the administration theme'

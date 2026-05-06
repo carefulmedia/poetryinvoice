@@ -1,16 +1,20 @@
 <?php
 
 /**
+ * @file
  * The PIV Field module.
  */
 
 use Drupal\Core\Form\FormStateInterface;
 
+/**
+ *
+ */
 function piv_field_form_alter(&$form, FormStateInterface $form_state, $form_id) {
   $school_forms = [
     'user_teacher_edit_form',
     'node_journal_poem_form',
-    'node_journal_poem_edit_form'
+    'node_journal_poem_edit_form',
   ];
 
   if (in_array($form_id, $school_forms)) {
@@ -20,7 +24,7 @@ function piv_field_form_alter(&$form, FormStateInterface $form_state, $form_id) 
       $field = 'field_school_journal';
       $form['actions']['submit']['#submit'][] = 'piv_field_poem_form_submit';
     }
-    else if ($form_id == 'user_teacher_edit_form') {
+    elseif ($form_id == 'user_teacher_edit_form') {
       $form['actions']['submit']['#submit'][] = 'piv_field_teacher_edit_form_submit';
     }
 
@@ -40,7 +44,7 @@ function piv_field_form_alter(&$form, FormStateInterface $form_state, $form_id) 
       '#type' => 'entity_autocomplete',
       '#target_type' => 'node',
       '#default_value' => $default_value,
-      "#validate_reference" => false,
+      "#validate_reference" => FALSE,
       '#selection_handler' => 'piv_field:piv_school',
       '#selection_settings' => [
         'target_bundles' => [
@@ -77,6 +81,9 @@ function piv_field_form_alter(&$form, FormStateInterface $form_state, $form_id) 
   }
 }
 
+/**
+ *
+ */
 function piv_field_postal_code_callback(array &$form, FormStateInterface $form_state) {
   $form_state->setRebuild();
   return $form['school'];

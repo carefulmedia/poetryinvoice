@@ -1,5 +1,0 @@
-# Schema for the configuration files of the Bootstrap Barrio Subtheme.
-
-barrio_piv.settings:
-  type: bootstrap_barrio.settings
-  label: 'Barrio PIV settings'

@@ -32,9 +32,9 @@ class SchoolSettingsForm extends ConfigFormBase {
     $config = $this->config('piv_school.settings');
     $state = \Drupal::state();
 
-    $validators = array(
-      'file_validate_extensions' => array('csv'),
-    );
+    $validators = [
+      'file_validate_extensions' => ['csv'],
+    ];
 
     $form['contacts_csv_file'] = [
       '#type' => 'managed_file',

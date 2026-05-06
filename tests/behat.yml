@@ -1,0 +1,38 @@
+default:
+  suites:
+    default:
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+  extensions:
+    #Behat\MinkExtension:
+    #  goutte: ~
+    #  base_url: http://piv9.lndo.site
+    #  javascript_session: selenium2
+    #  browser_name: 'chrome'
+    #  selenium2:
+    #    wd_host: http://localhost:4444/wd/hub
+    #    capabilities: { "browser": "chrome", "version": "*", 'chrome': {'switches':['--start-maximized']}}
+        
+    Drupal\MinkExtension:
+      goutte: ~
+      base_url: http://piv9.lndo.site/
+      javascript_session: selenium2
+      browser_name: 'chrome'
+      selenium2:
+        wd_host: "selenium-chrome:4444/wd/hub"
+        capabilities: { "browser": "chrome", "version": "*", 'chrome': {'switches':['--start-maximized', '--window-size=1920,1080']}}
+        
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: drupal
+      drupal:
+        drupal_root: '../web'
+      region_map:
+        header: "#header"
+        content: "#page"
+        footer: ".site-footer"
+        toolbar: "#toolbar-item-administration-tray"
+        admin_header: "header"
+        tabs: ".tabs"

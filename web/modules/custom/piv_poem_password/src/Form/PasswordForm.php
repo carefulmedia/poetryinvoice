@@ -23,7 +23,7 @@ class PasswordForm extends FormBase {
   /**
    * The tempstore.
    *
-   * @var Drupal\Core\TempStore\PrivateTempStoreFactory
+   * @var \Drupal\Core\TempStore\PrivateTempStoreFactory
    */
   protected $tempStore;
 
@@ -37,7 +37,7 @@ class PasswordForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function __construct(ConfigFactory $config_factory, PrivateTempStoreFactory $temp_store) {
+  final public function __construct(ConfigFactory $config_factory, PrivateTempStoreFactory $temp_store) {
     $this->configFactory = $config_factory;
     $this->tempStore = $temp_store;
   }
