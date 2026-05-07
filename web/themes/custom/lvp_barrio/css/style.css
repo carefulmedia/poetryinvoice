@@ -1494,6 +1494,11 @@ h3.name {
 .node--type-poem .content-index.mixtape {
   height: 35rem;
 }
+@media (max-width: 767px) {
+  .layout-builder__layout > .col-lg-3 {
+    order: -1;
+  }
+}
 /* ------------------ Header ------------------ */
 .navbar-dark .nav-link:hover,
 .navbar-dark .nav-link:focus {
