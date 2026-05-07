@@ -83,7 +83,7 @@
         "drupal/exif_orientation": "^1.4",
         "drupal/facebook_pixel": "^2.0@RC",
         "drupal/fakeobjects": "^1.1",
-        "drupal/field_group": "^3.2",
+        "drupal/field_group": "^4",
         "drupal/field_permissions": "^1.3",
         "drupal/focal_point": "^2",
         "drupal/form_mode_manager": "^3",
@@ -192,11 +192,6 @@
             },
             "drupal/focal_point": {
                 "Focal point not working with convert": "patches/focal_point-fixing-focal-point-work-with-convert.patch"
-            },
-            "drupal/owlcarousel": {
-                "Undefined array key 'url'": "https://www.drupal.org/files/issues/2025-02-27/owlcarousel--missing-license-url-3509437-2.patch",
-                "Refactor custom drush command to download library - #3528989": "https://git.drupalcode.org/project/owl-carousel/-/commit/55a546a7599aeeb4aa93dddbb2751d5d235e040c.diff",
-                "D11 compatibility #3433761": "https://www.drupal.org/files/issues/2024-03-24/owlcarousel.3.0.1.rector.patch"
             },
             "drupal/tablesorter": {
                 "Automated Drupal 11 compatibility fixes for tablesorter": "https://www.drupal.org/files/issues/2024-03-25/tablesorter.8.x-1.x-dev.rector.patch"

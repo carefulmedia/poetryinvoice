@@ -1386,12 +1386,10 @@ form {
   height: fit-content;
 }
 /* binge/videos */
-.view-id-content_type_index_pages.view-display-id-block_4 .content-index.mixtape,
-.view-id-content_type_index_pages.view-display-id-block_4 .content-index.podcast {
+.view-id-content_type_index_pages.view-display-id-block_4 .content-index.podcast .area-link {
   min-height: 21rem;
 }
 /* binge/podcasts */
-.view-id-content_type_index_pages.view-display-id-block_10 .content-index.mixtape,
 .view-id-content_type_index_pages.view-display-id-block_10 .content-index.podcast {
   min-height: auto;
 }
@@ -2302,18 +2300,9 @@ table.final-results tbody tr.odd {
 #monitor-dashboard-wrapper .table-responsive {
   overflow-x: initial;
 }
-.table thead {
-  --bs-table-bg: #000;
-  --bs-table-color: #fff;
-}
-.table tbody tr {
-  --bs-table-bg: #efefef;
-}
-.table tbody tr.odd {
-  --bs-table-bg: #e4e4e4;
-}
-.table > :not(caption) > * > * {
-  background-color: var(--bs-table-bg);
+body.toolbar-loading.path-monitor-dashboard,
+body.toolbar-fixed.path-monitor-dashboard {
+  --drupal-displace-offset-top: 53px;
 }
 /**
  * @file
@@ -3989,6 +3978,19 @@ tr th {
   td.priority-low {
     display: none;
   }
+}
+.table thead {
+  --bs-table-bg: #000;
+  --bs-table-color: #fff;
+}
+.table tbody tr {
+  --bs-table-bg: #efefef;
+}
+.table tbody tr.odd {
+  --bs-table-bg: #e4e4e4;
+}
+.table > :not(caption) > * > * {
+  background-color: var(--bs-table-bg);
 }
 /**
  * @file
