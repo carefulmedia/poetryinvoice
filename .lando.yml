@@ -16,8 +16,8 @@ services:
   appserver:
     build_as_root:
       - apt update && apt install zlib1g-dev
-      - 'mkdir -p /usr/src/php/ext && cd /usr/src/php/ext && git clone https://github.com/NoiseByNorthwest/php-spx.git spx && cd spx/ && git checkout release/latest'
-      - 'cd /usr/src/php/ext/spx && phpize && ./configure'
+      - "mkdir -p /usr/src/php/ext && cd /usr/src/php/ext && git clone https://github.com/NoiseByNorthwest/php-spx.git spx && cd spx/ && git checkout release/latest"
+      - "cd /usr/src/php/ext/spx && phpize && ./configure"
       - docker-php-ext-install spx
       - echo 'spx.http_enabled=1' >> /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
       - echo 'spx.http_key="dev"' >> /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
@@ -28,12 +28,14 @@ services:
     type: phpmyadmin
   # The Drupal 7 database to use as migrate source.
   d7db:
-    type: mariadb
+    type: mariadb:11.4
     creds:
       user: drupal7db
       password: drupal7db
       database: drupal7db
     portforward: true
+    overrides:
+      platform: linux/arm64
   node:
     type: node
     build:
@@ -60,7 +62,7 @@ services:
       image: selenium/standalone-chrome-debug:3.141.59-neon
       environment:
         TZ: Canada/Toronto
-        START_XVBF: 'false'
+        START_XVBF: "false"
       volumes:
         - /dev/shm:/dev/shm
       command: /opt/bin/entry_point.sh
