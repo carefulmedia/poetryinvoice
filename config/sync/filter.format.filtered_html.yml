@@ -57,7 +57,7 @@ filters:
     status: true
     weight: 1
     settings:
-      allowed_html: '<a id target rel class hreflang name href data-entity-type data-entity-uuid data-entity-substitution> <br> <p id class="text-align-left text-align-center text-align-right text-align-justify"> <h1 class> <h2 class="text-align-left text-align-center text-align-right text-align-justify"> <h3 class="text-align-left text-align-center text-align-right text-align-justify"> <h4 class="text-align-left text-align-center text-align-right text-align-justify"> <h5 class="text-align-left text-align-center text-align-right text-align-justify"> <h6 class="text-align-left text-align-center text-align-right text-align-justify"> <cite> <dl> <dt> <dd> <blockquote cite> <ul type> <ol type start> <table class> <div id class> <iframe allow allowfullscreen frameborder height src title width> <strong> <em> <u> <code> <s> <sub> <sup> <li> <hr> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption> <img src alt height width data-entity-uuid data-entity-type data-caption data-align> <drupal-media data-entity-type data-entity-uuid alt data-caption data-align>'
+      allowed_html: '<a id target rel class hreflang name href data-entity-type data-entity-uuid data-entity-substitution> <br> <p id class="Indent* text-align-left text-align-center text-align-right text-align-justify"> <h1 class> <h2 class="text-align-left text-align-center text-align-right text-align-justify"> <h3 class="text-align-left text-align-center text-align-right text-align-justify"> <h4 class="text-align-left text-align-center text-align-right text-align-justify"> <h5 class="text-align-left text-align-center text-align-right text-align-justify"> <h6 class="text-align-left text-align-center text-align-right text-align-justify"> <cite> <dl> <dt> <dd> <blockquote cite> <table class> <div id class> <iframe allow allowfullscreen frameborder height src title width> <strong> <em> <u> <code> <s> <sub> <sup> <ul type> <ol type start> <li> <hr> <tr> <td rowspan colspan> <th rowspan colspan> <thead> <tbody> <tfoot> <caption> <img src alt height width data-entity-uuid data-entity-type data-caption data-align> <drupal-media data-entity-type data-entity-uuid alt data-caption data-align>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -86,6 +86,7 @@ filters:
     weight: 0
     settings:
       title: true
+      media_substitution: metadata
   media_embed:
     id: media_embed
     provider: media
@@ -95,6 +96,7 @@ filters:
       default_view_mode: default
       allowed_view_modes: {  }
       allowed_media_types:
+        image: image
         file: file
         remote_video: remote_video
   slick_filter:
@@ -108,7 +110,7 @@ filters:
         title: '0'
       optionset: default
       layout: ''
-      admin_uri: '/admin/config/content/formats/manage/filtered_html?ajax_form=1&_wrapper_format=drupal_ajax'
+      admin_uri: '/admin/config/content/formats/manage/filtered_html?destination=/admin/config/content/formats'
       background: false
       box_caption: ''
       box_caption_custom: ''
