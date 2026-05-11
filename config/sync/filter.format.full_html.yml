@@ -59,7 +59,7 @@ filters:
     status: false
     weight: 1
     settings:
-      allowed_html: '<cite> <dl> <dt> <dd> <a hreflang name class> <blockquote cite> <ul type> <ol type> <table class> <div id class> <iframe allow allowfullscreen frameborder height src title width> <p id> <h1 class>'
+      allowed_html: '<cite> <dl> <dt> <dd> <a hreflang name class> <blockquote cite> <table class> <div id class> <iframe allow allowfullscreen frameborder height src title width> <p id> <h1 class>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -88,6 +88,7 @@ filters:
     weight: 0
     settings:
       title: true
+      media_substitution: metadata
   media_embed:
     id: media_embed
     provider: media
@@ -97,6 +98,7 @@ filters:
       default_view_mode: default
       allowed_view_modes: {  }
       allowed_media_types:
+        image: image
         file: file
         remote_video: remote_video
   slick_filter:
@@ -110,7 +112,7 @@ filters:
         title: '0'
       optionset: default
       layout: ''
-      admin_uri: '/admin/config/content/formats/manage/full_html?ajax_form=1&_wrapper_format=drupal_ajax'
+      admin_uri: '/admin/config/content/formats/manage/full_html?destination=/admin/config/content/formats'
       background: false
       box_caption: ''
       box_caption_custom: ''

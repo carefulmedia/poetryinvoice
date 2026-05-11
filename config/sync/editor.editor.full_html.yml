@@ -73,6 +73,8 @@ settings:
         - '<iframe allow allowfullscreen frameborder height src title width>'
         - '<p id>'
         - '<h1 class>'
+    ckeditor_indentblock_indent:
+      enable: true
     linkit_extension:
       linkit_enabled: true
       linkit_profile: default
