@@ -18,7 +18,6 @@ settings:
       - indent
       - outdent
       - '|'
-      - drupalInsertImage
       - drupalMedia
       - '|'
       - link
@@ -37,6 +36,7 @@ settings:
       - '|'
       - sourceEditing
       - specialCharacters
+      - drupalInsertImage
   plugins:
     ckeditor5_alignment:
       enabled_alignments:

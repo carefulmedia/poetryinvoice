@@ -98,8 +98,8 @@ filters:
       default_view_mode: default
       allowed_view_modes: {  }
       allowed_media_types:
-        image: image
         file: file
+        image: image
         remote_video: remote_video
   slick_filter:
     id: slick_filter
@@ -112,7 +112,7 @@ filters:
         title: '0'
       optionset: default
       layout: ''
-      admin_uri: '/admin/config/content/formats/manage/full_html?destination=/admin/config/content/formats'
+      admin_uri: '/admin/config/content/formats/manage/full_html?destination=/admin/config/content/formats&ajax_form=1&_wrapper_format=drupal_ajax'
       background: false
       box_caption: ''
       box_caption_custom: ''
