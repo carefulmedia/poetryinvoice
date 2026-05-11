@@ -1498,6 +1498,11 @@ h3.name {
 .node--type-poem .content-index.mixtape {
   height: 35rem;
 }
+@media (max-width: 767px) {
+  .layout-builder__layout > .col-lg-3 {
+    order: -1;
+  }
+}
 /* Views + Bootstrap grid: each row matches the tallest cell; inner blocks fill the column. */
 .views-view-grid.row,
 .views-view-grid > .row {

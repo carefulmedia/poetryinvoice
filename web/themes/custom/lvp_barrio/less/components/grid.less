@@ -196,6 +196,13 @@ h3.name {
   height: 35rem;
 }
 
+// On mobile, place sidebar (col-lg-3) above main content.
+@media (max-width: 767px) {
+  .layout-builder__layout > .col-lg-3 {
+    order: -1;
+  }
+}
+
 /* Views + Bootstrap grid: each row matches the tallest cell; inner blocks fill the column. */
 .views-view-grid.row,
 .views-view-grid > .row {
