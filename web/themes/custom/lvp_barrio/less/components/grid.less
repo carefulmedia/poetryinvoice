@@ -174,3 +174,10 @@ font-weight: 900;
     height: 35rem;
 }
 
+// On mobile, place sidebar (col-lg-3) above main content.
+@media (max-width: 767px) {
+  .layout-builder__layout > .col-lg-3 {
+    order: -1;
+  }
+}
+
