@@ -33,7 +33,7 @@ class SchoolSettingsForm extends ConfigFormBase {
     $state = \Drupal::state();
 
     $validators = [
-      'file_validate_extensions' => ['csv'],
+      'FileExtension' => ['extensions' => 'csv'],
     ];
 
     $form['contacts_csv_file'] = [
