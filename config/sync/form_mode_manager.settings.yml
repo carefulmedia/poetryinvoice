@@ -6,9 +6,7 @@ form_modes:
       teacher: '0'
   user:
     to_exclude:
-      poet_network: '0'
-      poets: '0'
-      teacher_edit: '0'
+      register: register
   commerce_order_item:
     to_exclude:
       add_to_cart: add_to_cart
