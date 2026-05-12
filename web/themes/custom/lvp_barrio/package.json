@@ -11,7 +11,9 @@
   "main": "gulpfile.js",
   "devDependencies": {},
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "build": "gulp less",
+    "watch": "gulp watch"
   },
   "author": "Monarq",
   "license": "ISC"
