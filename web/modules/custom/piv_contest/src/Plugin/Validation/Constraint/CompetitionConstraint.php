@@ -35,4 +35,9 @@ class CompetitionConstraint extends Constraint {
    */
   public $cantChangeScoreTemplate = 'There are scores for recitations on this competition using this score template already.';
 
+  /**
+   * @var string
+   */
+  public $levelsCountMismatch = 'Translations must have the same number of competition levels as the original language. Expected @expected, got @actual.';
+
 }

@@ -477,6 +477,17 @@ function piv_contest_competition_prepare_form(EntityInterface $entity, $operatio
       ]);
     }
   }
+  // Make sure there is the same count of "levels" on a
+  // translation based on original.
+  if (!$entity->isDefaultTranslation()) {
+    $untranslated = $entity->getUntranslated();
+    $untranslated_values = array_column($untranslated->field_competition_levels->getValue(), 'value');
+    foreach ($untranslated_values as $delta => $value) {
+      if (!$entity->field_competition_levels->get($delta)) {
+        $entity->field_competition_levels[$delta] = ['value' => $value];
+      }
+    }
+  }
 }
 
 /**
@@ -546,6 +557,13 @@ function piv_contest_form_competition_form_alter(&$form, FormStateInterface $for
 
   if (!empty($form['field_notification_levels']['widget']['add_more'])) {
     $form['field_notification_levels']['widget']['add_more']['#access'] = FALSE;
+  }
+
+  $entity = $form_state->getFormObject()->getEntity();
+  if (!$entity->isDefaultTranslation()) {
+    if (!empty($form['field_competition_levels']['widget']['add_more'])) {
+      $form['field_competition_levels']['widget']['add_more']['#access'] = FALSE;
+    }
   }
 }
 

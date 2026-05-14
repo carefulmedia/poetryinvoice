@@ -514,7 +514,11 @@ class ReplacementsService {
           return piv_base_natural_join($poem_titles, $langcode);
 
         case 'competition_entry:stream':
-          return $sources['competition_entry']->getStream()->field_label->value;
+          $stream = $sources['competition_entry']->getStream();
+          if ($stream && $stream->hasTranslation($langcode)) {
+            $stream = $stream->getTranslation($langcode);
+          }
+          return $stream->field_label->value;
 
         // Return the competition level name for the competition entry,
         // so if the competition entry is on level 1 for example, it
@@ -524,10 +528,17 @@ class ReplacementsService {
           $entry = $sources['competition_entry'];
           $entry_level = $entry->field_competition_current_level->value;
           $competition = $this->getCompetition();
+          if ($competition && $competition->hasTranslation($langcode)) {
+            $competition = $competition->getTranslation($langcode);
+          }
           return $competition->field_competition_levels[$entry_level - 1]->value;
 
         case 'competition:title':
-          return $this->getCompetition()->label();
+          $competition = $this->getCompetition();
+          if ($competition && $competition->hasTranslation($langcode)) {
+            $competition = $competition->getTranslation($langcode);
+          }
+          return $competition->label();
       }
 
       // [rank:*] cases are tokens populated by the user.

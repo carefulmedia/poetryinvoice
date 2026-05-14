@@ -36,6 +36,20 @@ class CompetitionConstraintValidator extends ConstraintValidator {
         ->addViolation();
     }
 
+    if (!$entity->isDefaultTranslation()) {
+      $default = $entity->getUntranslated();
+      $expected = count($default->field_competition_levels);
+      $actual = count($entity->field_competition_levels);
+      if ($actual !== $expected) {
+        $this->context->buildViolation($constraint->levelsCountMismatch, [
+          '@expected' => $expected,
+          '@actual' => $actual,
+        ])
+          ->atPath('field_competition_levels')
+          ->addViolation();
+      }
+    }
+
     if ($original) {
       if ($entity->field_score_template->target_id != $original->field_score_template->target_id) {
         // Prevent editing the score_template if there are scores for this

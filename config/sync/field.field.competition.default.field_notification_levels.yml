@@ -15,7 +15,7 @@ bundle: default
 label: Levels
 description: ''
 required: false
-translatable: false
+translatable: true
 default_value: {  }
 default_value_callback: ''
 settings:
@@ -48,6 +48,9 @@ settings:
         enabled: false
       micro_interview:
         weight: 28
+        enabled: false
+      poem:
+        weight: 30
         enabled: false
       poet_laureate:
         weight: 29
