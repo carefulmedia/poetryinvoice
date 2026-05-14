@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   module:
-    - contact
     - field_permissions
     - file
 id: teacher_fr_
@@ -11,7 +10,6 @@ label: 'Teacher (fr)'
 weight: 3
 is_admin: null
 permissions:
-  - 'access user contact forms'
   - 'create field_stage_name'
   - 'create field_student_name_1'
   - 'delete own files'

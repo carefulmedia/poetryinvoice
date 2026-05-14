@@ -1,0 +1,13 @@
+uuid: 12b04f69-dea5-43ac-a2ae-d26a8df09922
+langcode: en
+status: true
+dependencies: {  }
+name: photo_stories_image_field
+label: 'WebP Conversion only'
+effects:
+  4214ace5-8bff-4e86-a006-cfce8ba7ca1b:
+    uuid: 4214ace5-8bff-4e86-a006-cfce8ba7ca1b
+    id: image_convert
+    weight: 1
+    data:
+      extension: webp

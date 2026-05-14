@@ -117,7 +117,6 @@ permissions:
   - 'view field_terms_and_forms'
   - 'view field_text_link_headline'
   - 'view field_text_link_sub_headline'
-  - 'view field_title'
   - 'view field_tr_student'
   - 'view field_user_bio'
   - 'view field_video_poem'
