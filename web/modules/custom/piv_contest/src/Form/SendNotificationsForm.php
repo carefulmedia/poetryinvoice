@@ -9,6 +9,10 @@ use Drupal\piv_contest\CompetitionRankHelper;
 use Drupal\piv_mail\PivMailPluginManager;
 use Drupal\piv_mail\ReplacementsService;
 use Drupal\piv_contest_competition\CompetitionInterface;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\InvokeCommand;
+use Drupal\Core\Ajax\MessageCommand;
+use Drupal\Core\Ajax\ReplaceCommand;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\piv_contest\NotificationLogs;
 
@@ -66,6 +70,7 @@ class SendNotificationsForm extends FormBase {
     $form['#prefix'] = '<div id="send-notifications-wrapper">';
     $form['#suffix'] = '</div>';
     $form['#attached']['library'][] = 'piv_contest/send-notifications-formatter';
+    $form['#attached']['library'][] = 'piv_contest/send-notifications-ajax';
 
     $form['levels'] = [
       '#type' => 'horizontal_tabs',
@@ -191,7 +196,19 @@ class SendNotificationsForm extends FormBase {
    * AJAX callback for send buttons.
    */
   public function ajaxSend(array &$form, FormStateInterface $form_state) {
-    return $form;
+    $response = new AjaxResponse();
+    $response->addCommand(new ReplaceCommand('#send-notifications-wrapper', $form));
+    $messages = $this->messenger()->all();
+    foreach ($messages as $type => $type_messages) {
+      foreach ($type_messages as $message) {
+        $response->addCommand(new MessageCommand((string) $message, NULL, ['type' => $type]));
+      }
+    }
+    $this->messenger()->deleteAll();
+    $triggering = $form_state->getTriggeringElement();
+    $name = $triggering['#name'] ?? '';
+    $response->addCommand(new InvokeCommand('#send-notifications-wrapper', 'sendNotificationsRestoreState', [$name]));
+    return $response;
   }
 
   /**

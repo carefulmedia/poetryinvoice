@@ -78,7 +78,10 @@ class ReplacementsService {
       'competition_entry:student_name',
       'competition_entry:teacher_name',
       'competition_entry:school_name',
-      'competition_entry:poem_titles',
+      'competition_entry:poem_title_1',
+      'competition_entry:poem_title_2',
+      'competition_entry:poem_author_1',
+      'competition_entry:poem_author_2',
       'competition_entry:stream',
       'competition_entry:level',
       // Competition related, get from the entry.
@@ -503,15 +506,23 @@ class ReplacementsService {
         case 'competition_entry:school_name':
           return $sources['competition_entry']->field_school->entity->label();
 
-        case 'competition_entry:poem_titles':
+        case 'competition_entry:poem_title_1':
+        case 'competition_entry:poem_title_2':
+        case 'competition_entry:poem_author_1':
+        case 'competition_entry:poem_author_2':
           $entry = $sources['competition_entry'];
-          $recitations = $entry->field_recitations->referencedEntities();
-          $recitations = array_filter($recitations, fn($r) => $r->field_stream_language->target_id == $langcode);
-          $poem_titles = array_filter(array_map(function ($r) {
-            $title = $r->field_poem->entity->title->value ?? NULL;
-            return $title ? "<em>{$title}</em>" : NULL;
-          }, $recitations));
-          return piv_base_natural_join($poem_titles, $langcode);
+          $recitations = array_values(array_filter(
+            $entry->field_recitations->referencedEntities(),
+            fn($r) => $r->field_stream_language->target_id == $langcode,
+          ));
+          $index = str_ends_with($token, '_1') ? 0 : 1;
+          $poem = $recitations[$index]->field_poem->entity ?? NULL;
+          if (str_contains($token, 'poem_title_')) {
+            $title = $poem->title->value ?? NULL;
+            return $title ? "<em>{$title}</em>" : '';
+          }
+          $author = $poem->uid->entity ?? NULL;
+          return $author ? $author->getDisplayName() : '';
 
         case 'competition_entry:stream':
           return $sources['competition_entry']->getStream()->field_label->value;
