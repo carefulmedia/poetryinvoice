@@ -15,6 +15,12 @@ send-notifications-formatter:
     component:
       css/send-notifications-formatter.css: {}
 
+send-notifications-ajax:
+  js:
+    js/send-notifications-ajax.js: {}
+  dependencies:
+    - core/jquery
+
 notification-recipient-item:
   css:
     component:
