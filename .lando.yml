@@ -1,18 +1,24 @@
 name: piv9
-recipe: drupal9
+recipe: drupal10
 config:
   php: 8.3
   webroot: web
   xdebug: true
-  database: mariadb:11.4
+  database: mariadb
 
 proxy:
   appserver:
     - piv9.lndo.site
     - lesvoixdelapoesie.lndo.site
-  solr:
-    - solr.piv9.lndo.site:8983
+  # solr:
+    # - solr.piv9.lndo.site:8983
 services:
+  database:
+    type: mariadb:11.4
+    creds:
+      user: drupal
+      password: drupal
+      database: drupal
   appserver:
     build_as_root:
       - apt update && apt install zlib1g-dev
@@ -27,15 +33,15 @@ services:
   pma:
     type: phpmyadmin
   # The Drupal 7 database to use as migrate source.
-  d7db:
-    type: mariadb:11.4
-    creds:
-      user: drupal7db
-      password: drupal7db
-      database: drupal7db
-    portforward: true
-    overrides:
-      platform: linux/arm64
+  # d7db:
+  #   type: mariadb:11.4
+  #   creds:
+  #     user: drupal7db
+  #     password: drupal7db
+  #     database: drupal7db
+  #   portforward: true
+  #   overrides:
+  #     platform: linux/arm64
   node:
     type: node
     build:
@@ -49,11 +55,11 @@ services:
       - appserver
   phpmyadmin:
     type: phpmyadmin
-  solr:
-    type: solr:8.11
-    portforward: true
-    config:
-      dir: config/solr-config-set
+  # solr:
+  #   type: solr:8.11
+  #   portforward: true
+  #   config:
+  #     dir: config/solr-config-set
   selenium-chrome:
     type: compose
     app_mount: false
