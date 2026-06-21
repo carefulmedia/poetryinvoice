@@ -1704,10 +1704,10 @@ h3.name {
 }
 .menu--account a,
 .search-icon {
-  margin-left: 1rem;
+  margin-left: 0.25rem;
 }
 #block-usericonheader {
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
 }
 .navbar-toggler,
 #block-usericonheader,
