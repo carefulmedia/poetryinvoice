@@ -12,7 +12,7 @@ dependencies:
 id: lvp_barrio_k6home
 theme: lvp_barrio
 region: header
-weight: 0
+weight: -20
 provider: null
 plugin: 'block_content:cd9317b1-0fef-4894-b90b-1a160c579c33'
 settings:
