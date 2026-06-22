@@ -1,7 +1,7 @@
 /**
- * @file
- * Subtheme specific CSS.
- */
+* @file
+* Subtheme specific CSS.
+*/
 /**
  * @file
  * Styles for Bootstrap Barrio affix effect.
@@ -5559,8 +5559,17 @@ dialog .field--name-field-media-oembed-video {
   -o-background-size: cover  !important;
   background-size: cover !important;
 }
+.elementary #views-bootstrap-content-type-index-pages-block-6 .col-6 {
+  margin-bottom: 10%;
+}
+.elementary #views-bootstrap-k-6-videos-block-3 .stripe {
+  margin-bottom: 40px;
+}
 .elementary .node--type-video .block-layout-builder {
   margin-bottom: 0 !important;
+}
+.elementary #block-lvp-barrio-buttonensubmitcontestrecitationsformenu {
+  display: none;
 }
 .elementary .header {
   height: fit-content;
@@ -6073,8 +6082,16 @@ dialog .field--name-field-media-oembed-video {
   border-radius: 0 0 10px 10px;
   filter: drop-shadow(0.5rem 0.5rem 0px black);
 }
-.elementary .node--type-video ._none {
+.elementary .node--type-video ._none .field--name-field-type-of-video,
+.elementary .node--type-video ._none .block-field-blocknodevideofield-poets-plural-user,
+.elementary .node--type-video ._none .block-field-blocknodevideofield-years-in-competition {
   display: none;
+}
+.elementary .field--name-field-video-poem a {
+  font-family: 'Chewy';
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 47px;
 }
 .elementary nav.tabs {
   margin-top: 4rem;
