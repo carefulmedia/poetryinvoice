@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.mixtape.field_poems
     - field.field.node.mixtape.field_recommended_reading
     - node.type.mixtape
+    - views.view.content_type_index_pages
     - views.view.mixtage_body
     - views.view.user_listing_index_pages
   module:
@@ -236,7 +237,21 @@ third_party_settings:
         layout_id: layout_onecol
         layout_settings:
           label: ''
-        components: {  }
+        components:
+          3f1fda23-044b-46df-bc65-613b473ac366:
+            uuid: 3f1fda23-044b-46df-bc65-613b473ac366
+            region: content
+            configuration:
+              id: 'views_block:content_type_index_pages-block_15'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: null
+              exposed: {  }
+            weight: 2
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_2'
@@ -308,19 +323,6 @@ third_party_settings:
                 settings:
                   use_description_as_link_text: true
                 third_party_settings: {  }
-            weight: 0
-            additional: {  }
-          9dc978dd-ace9-4ecc-8b9f-6a5585b6d3ef:
-            uuid: 9dc978dd-ace9-4ecc-8b9f-6a5585b6d3ef
-            region: blb_region_col_2
-            configuration:
-              id: 'views_block:mixtage_body-block_3'
-              label: ''
-              label_display: '0'
-              provider: views
-              context_mapping: {  }
-              views_label: ''
-              items_per_page: 0
             weight: 0
             additional: {  }
         third_party_settings: {  }

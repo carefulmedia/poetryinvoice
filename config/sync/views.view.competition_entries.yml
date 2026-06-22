@@ -1355,25 +1355,40 @@ display:
           row_class: ''
           default_row_class: true
           columns:
-            field_student_name: field_student_name
+            counter: counter
+            contest_bulk_form: contest_bulk_form
             field_student_last_name: field_student_last_name
-            piv_teacher_first_name: piv_teacher_first_name
-            piv_teacher_last_name: piv_teacher_last_name
-            preferred_langcode: preferred_langcode
+            id: id
             title: title
-            nid: nid
-            field_address_address_line1: field_address_address_line1
-            field_address_address_line2: field_address_address_line2
-            field_address_locality: field_address_locality
-            field_address_administrative_area: field_address_administrative_area
-            field_address_postal_code: field_address_postal_code
+            status: status
+            uid: uid
+            created: created
+            changed: changed
+            operations: operations
+            field_release_form: field_release_form
+            field_complete: field_complete
+            uid_1: uid_1
+            id_1: id_1
+            nothing: nothing
+            preferred_langcode: preferred_langcode
+            piv_teacher_first_name: piv_teacher_first_name
+            mail: mail
             field_stream: field_stream
-            field_place: field_place
+            field_student_grade: field_student_grade
+            field_location_locality: field_location_locality
+            access: access
+            field_validated: field_validated
+            field_address_administrative_area: field_address_administrative_area
+            body: body
+            title_1: title_1
           default: '-1'
           info:
-            field_student_name:
-              sortable: false
-              default_sort_order: asc
+            counter:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            contest_bulk_form:
               align: ''
               separator: ''
               empty_column: false
@@ -1385,21 +1400,7 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            piv_teacher_first_name:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            piv_teacher_last_name:
-              sortable: false
-              default_sort_order: asc
-              align: ''
-              separator: ''
-              empty_column: false
-              responsive: ''
-            preferred_langcode:
+            id:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1413,42 +1414,87 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            nid:
+            status:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_address_address_line1:
+            uid:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_address_address_line2:
+            created:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_address_locality:
+            changed:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_address_administrative_area:
+            operations:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_release_form:
               sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
               empty_column: false
               responsive: ''
-            field_address_postal_code:
+            field_complete:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            uid_1:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            id_1:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nothing:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            preferred_langcode:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            piv_teacher_first_name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            mail:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -1462,7 +1508,49 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
-            field_place:
+            field_student_grade:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_location_locality:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            access:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_validated:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_address_administrative_area:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            body:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            title_1:
               sortable: false
               default_sort_order: asc
               align: ''
@@ -4646,47 +4734,6 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
-        title_1:
-          id: title_1
-          table: competition_field_data
-          field: title
-          relationship: field_competition
-          group_type: group
-          admin_label: ''
-          entity_type: competition
-          entity_field: title
-          plugin_id: string
-          operator: contains
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: title_1_op
-            label: Competition
-            description: ''
-            use_operator: false
-            operator: title_1_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: competition
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
         field_complete_value:
           id: field_complete_value
           table: competition_entry__field_complete
@@ -4838,6 +4885,94 @@ display:
             operator_limit_selection: false
             operator_list: {  }
             identifier: created
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_competition_target_id:
+          id: field_competition_target_id
+          table: competition_entry__field_competition
+          field: field_competition_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_competition_target_id_op
+            label: Competition
+            description: ''
+            use_operator: false
+            operator: field_competition_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_competition_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_stream_target_id:
+          id: field_stream_target_id
+          table: competition_entry__field_stream
+          field: field_stream_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: numeric
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_stream_target_id_op
+            label: Stream
+            description: ''
+            use_operator: false
+            operator: field_stream_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_stream_target_id
             required: false
             remember: false
             multiple: false
