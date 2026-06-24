@@ -5552,12 +5552,94 @@ dialog .field--name-field-media-oembed-video {
   background-repeat: no-repeat;
   text-indent: -10000px;
 }
+/* Fix vertical spacing for icons + titles on pages under .elementary only */
+.elementary img,
+.elementary .icon,
+.elementary .media {
+  display: block;
+  margin: 0 auto 0.6rem;
+  /* center icon and add space below it */
+  max-width: 100%;
+  height: auto;
+}
+.elementary h1,
+.elementary h2,
+.elementary .title,
+.elementary .card__title,
+.elementary .field--name-title {
+  margin-top: 0.35rem;
+  /* give the title some breathing room */
+  margin-bottom: 0.25rem;
+  text-align: center;
+  transform: none !important;
+  /* cancel any unwanted shifts */
+}
+/* If icons + labels are stacked inside a wrapper, ensure consistent spacing */
+.elementary .stack,
+.elementary .hub-item,
+.elementary .block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+/* Slightly more space on small screens if needed */
+@media (max-width: 600px) {
+  .elementary .stack,
+  .elementary .hub-item,
+  .elementary .block {
+    gap: 0.75rem;
+  }
+}
 .elementary {
+  /* Prevent hover background from expanding past the white poem card */
+  /* Ensure hover doesn't force 100% height (which can grow the card) */
+  /* If the purple background is applied to a child (e.g. .podcast or .content-index), make sure it fills but is clipped */
   background: url(../images/watercolour-bg-MULTI.jpg) no-repeat center center fixed;
   -webkit-background-size: cover  !important;
   -moz-background-size: cover  !important;
   -o-background-size: cover  !important;
   background-size: cover !important;
+}
+.elementary .view-display-id-block_17 .content-index {
+  padding: 0;
+  height: fit-content;
+  overflow: visible;
+  min-height: 0 !important;
+  border-radius: 2rem;
+}
+.elementary .view-display-id-block_17 .author {
+  padding: 1rem;
+}
+.elementary .view-display-id-block_17 h2 {
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+.elementary .view-display-id-block_17 h3 {
+  font-size: 1.5rem;
+}
+.elementary .view-display-id-block_17 .content {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0 0 2rem 2rem;
+}
+.elementary .view-display-id-block_17 .area-link,
+.elementary .view-display-id-block_17 .area-link .content-index {
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  /* clip background / shadows so colored BG doesn't escape white card */
+}
+.elementary .view-display-id-block_17 .area-link:hover .content-index {
+  height: auto !important;
+  min-height: 0 !important;
+  padding-bottom: 1rem;
+  /* keep spacing under title if needed */
+}
+.elementary .view-display-id-block_17 .area-link .content-index,
+.elementary .view-display-id-block_17 .area-link .podcast {
+  max-width: 100%;
+  box-sizing: border-box;
 }
 .elementary #views-bootstrap-content-type-index-pages-block-6 .col-6 {
   margin-bottom: 10%;

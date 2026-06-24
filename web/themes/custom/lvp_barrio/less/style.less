@@ -894,10 +894,100 @@ background: url(/themes/custom/lvp_barrio/images/logo_narrow_ENG.svg);
 background-repeat: no-repeat;
 text-indent: -10000px;
 }
+/* Fix vertical spacing for icons + titles on pages under .elementary only */
+.elementary img,
+.elementary .icon,
+.elementary .media {
+  display: block;
+  margin: 0 auto 0.6rem;    /* center icon and add space below it */
+  max-width: 100%;
+  height: auto;
+}
+
+.elementary h1,
+.elementary h2,
+.elementary .title,
+.elementary .card__title,
+.elementary .field--name-title {
+  margin-top: 0.35rem;     /* give the title some breathing room */
+  margin-bottom: 0.25rem;
+  text-align: center;
+  transform: none !important; /* cancel any unwanted shifts */
+}
+
+/* If icons + labels are stacked inside a wrapper, ensure consistent spacing */
+.elementary .stack,
+.elementary .hub-item,
+.elementary .block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Slightly more space on small screens if needed */
+@media (max-width: 600px) {
+  .elementary .stack,
+  .elementary .hub-item,
+  .elementary .block {
+    gap: 0.75rem;
+  }
+}
 .elementary  {
+
+// ...existing code...
+   .view-display-id-block_17  {
+       .content-index {
+       padding: 0;
+       height: fit-content;
+       overflow: visible;
+       min-height: 0 !important;
+       border-radius: 2rem;
+       }
+       .author {
+           padding: 1rem;
+       }
+       h2 {
+       font-size:  3rem;
+       margin-top: 2rem;
+       }
+       h3 {
+          font-size:  1.5rem;
+       }
+       .content {
+           background-color: white;
+           padding: 1rem;
+           border-radius: 0 0 2rem 2rem;
+       }
+   }
+// ...existing code...
+
+/* Prevent hover background from expanding past the white poem card */
+.view-display-id-block_17 .area-link,
+.view-display-id-block_17 .area-link .content-index {
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden; /* clip background / shadows so colored BG doesn't escape white card */
+}
+
+/* Ensure hover doesn't force 100% height (which can grow the card) */
+.view-display-id-block_17 .area-link:hover .content-index {
+  height: auto !important;
+  min-height: 0 !important;
+  padding-bottom: 1rem; /* keep spacing under title if needed */
+}
+
+/* If the purple background is applied to a child (e.g. .podcast or .content-index), make sure it fills but is clipped */
+.view-display-id-block_17 .area-link .content-index,
+.view-display-id-block_17 .area-link .podcast {
+  max-width: 100%;
+  box-sizing: border-box;
+}
    #views-bootstrap-content-type-index-pages-block-6 .col-6{
        margin-bottom: 10%;
    }
+
+
    #views-bootstrap-k-6-videos-block-3 .stripe {
    margin-bottom: 40px
    }
