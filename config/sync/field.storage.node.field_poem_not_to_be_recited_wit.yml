@@ -1,0 +1,27 @@
+uuid: d1f038b1-060a-4f96-b556-926f2cfa018c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_poem_not_to_be_recited_wit
+field_name: field_poem_not_to_be_recited_wit
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: this_poem_is_not_eligible_for_our_recitation_contests_due_to_its_content
+      label: '<strong>This poem is NOT ELIGIBLE FOR OUR RECITATION CONTESTS</strong> due to its content.'
+    -
+      value: this_poem_is_strong_not_eligible_for_this_year_s_contests_strong_because_it_was_recited_at_last_year_s_national_finals
+      label: "This poem is <strong>NOT ELIGIBLE FOR THIS YEAR'S CONTESTS</strong> because it was recited at last year's National Finals."
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

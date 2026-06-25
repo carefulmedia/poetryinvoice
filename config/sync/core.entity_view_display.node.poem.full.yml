@@ -25,8 +25,8 @@ dependencies:
     - field.field.node.poem.field_password_protected
     - field.field.node.poem.field_pdf_of_original_poem
     - field.field.node.poem.field_plain_title
+    - field.field.node.poem.field_poem_not_to_be_recited_wit
     - field.field.node.poem.field_poem_paid
-    - field.field.node.poem.field_poem_retired
     - field.field.node.poem.field_poem_rights_
     - field.field.node.poem.field_poem_rights_contact
     - field.field.node.poem.field_poem_thems
@@ -76,28 +76,7 @@ third_party_settings:
                 col-sm-12: col-sm-12
               add_region_classes: 1
               attributes: ''
-        components:
-          7d6b34a7-6fb2-4316-badb-1a437767b8db:
-            uuid: 7d6b34a7-6fb2-4316-badb-1a437767b8db
-            region: main
-            configuration:
-              id: 'field_block:node:poem:field_poem_retired'
-              label: 'Poem not to be recited'
-              label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: boolean
-                label: hidden
-                settings:
-                  format: default
-                  format_custom_false: ''
-                  format_custom_true: ''
-                third_party_settings: {  }
-            weight: 0
-            additional: {  }
+        components: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_2'
@@ -574,8 +553,8 @@ hidden:
   field_pdf_of_original_poem: true
   field_plain_title: true
   field_poem_author_user: true
+  field_poem_not_to_be_recited_wit: true
   field_poem_paid: true
-  field_poem_retired: true
   field_poem_rights_: true
   field_poem_rights_contact: true
   field_poem_thems: true

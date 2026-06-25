@@ -24,8 +24,8 @@ dependencies:
     - field.field.node.poem.field_password_protected
     - field.field.node.poem.field_pdf_of_original_poem
     - field.field.node.poem.field_plain_title
+    - field.field.node.poem.field_poem_not_to_be_recited_wit
     - field.field.node.poem.field_poem_paid
-    - field.field.node.poem.field_poem_retired
     - field.field.node.poem.field_poem_rights_
     - field.field.node.poem.field_poem_rights_contact
     - field.field.node.poem.field_poem_thems
@@ -46,6 +46,7 @@ dependencies:
     - layout_builder
     - layout_builder_restrictions
     - metatag
+    - options
     - user
 third_party_settings:
   layout_builder:
@@ -79,6 +80,13 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 101
+    region: content
+  field_poem_not_to_be_recited_wit:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 107
     region: content
   field_poem_paid:
     type: boolean
@@ -144,7 +152,6 @@ hidden:
   field_paid_: true
   field_password_protected: true
   field_pdf_of_original_poem: true
-  field_poem_retired: true
   field_poem_rights_: true
   field_poem_rights_contact: true
   field_poem_thems: true
