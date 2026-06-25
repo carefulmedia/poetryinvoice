@@ -76,7 +76,25 @@ third_party_settings:
                 col-sm-12: col-sm-12
               add_region_classes: 1
               attributes: ''
-        components: {  }
+        components:
+          89e4d291-4f7f-413f-a39d-7e1a7d3a34d1:
+            uuid: 89e4d291-4f7f-413f-a39d-7e1a7d3a34d1
+            region: main
+            configuration:
+              id: 'field_block:node:poem:field_poem_not_to_be_recited_wit'
+              label: 'Poem not to be recited with reason'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: list_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_2'

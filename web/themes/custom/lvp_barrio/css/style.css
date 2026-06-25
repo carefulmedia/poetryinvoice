@@ -5410,6 +5410,13 @@ h1.hero a {
 .no-blur {
   margin-bottom: -4rem;
 }
+.block-field-blocknodepoemfield-poem-not-to-be-recited-wit {
+  background-color: yellow;
+  padding: 20px;
+  outline: black;
+  border: black 2px solid;
+  border-radius: 10px;
+}
 #field-language-display {
   display: none;
 }
