@@ -150,6 +150,7 @@
         "drupal/views_bulk_edit": "^3.0",
         "drupal/views_bulk_operations": "^4.1",
         "drupal/views_conditional": "^1.5",
+        "drupal/views_data_export": "^1.10",
         "drupal/views_field_view": "^1.0@beta",
         "drupal/views_infinite_scroll": "^2.0",
         "drupal/views_random_seed": "^1.2",
