@@ -43,12 +43,14 @@ dependencies:
     - field.field.node.poem.layout_builder__layout
     - node.type.poem
     - views.view.dive_in_write_anchor
+    - views.view.recitation_videos_on_poem_pages
     - views.view.user_listing_index_pages
   module:
     - bootstrap_layout_builder
     - bootstrap_layouts
     - layout_builder
     - layout_builder_restrictions
+    - layout_discovery
     - options
     - text
     - user
@@ -472,6 +474,27 @@ third_party_settings:
               items_per_page: 0
               exposed: {  }
             weight: 1
+            additional: {  }
+        third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+        components:
+          ea69cc99-02ae-4c1b-8dfa-cfec166ea6fd:
+            uuid: ea69cc99-02ae-4c1b-8dfa-cfec166ea6fd
+            region: content
+            configuration:
+              id: 'views_block:recitation_videos_on_poem_pages-block_1'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: null
+              exposed: {  }
+            weight: 0
             additional: {  }
         third_party_settings: {  }
   layout_builder_restrictions:

@@ -1495,9 +1495,6 @@ h3.name {
   display: block;
   font-weight: 900;
 }
-.node--type-poem .content-index.mixtape {
-  height: 35rem;
-}
 @media (max-width: 767px) {
   .layout-builder__layout > .col-lg-3 {
     order: -1;
