@@ -482,8 +482,8 @@ third_party_settings:
           label: ''
           context_mapping: {  }
         components:
-          ea69cc99-02ae-4c1b-8dfa-cfec166ea6fd:
-            uuid: ea69cc99-02ae-4c1b-8dfa-cfec166ea6fd
+          91d5cde7-57ba-40ab-bf06-41fcc8b57d80:
+            uuid: 91d5cde7-57ba-40ab-bf06-41fcc8b57d80
             region: content
             configuration:
               id: 'views_block:recitation_videos_on_poem_pages-block_1'
