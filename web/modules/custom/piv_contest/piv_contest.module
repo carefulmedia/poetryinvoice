@@ -521,9 +521,11 @@ function piv_contest_competition_presave(EntityInterface $entity) : void {
       $new_notifications[] = $existing_notifications[$delta];
     }
     else {
-      $new_notifications[] = $paragraph_storage->create([
+      $paragraph = $paragraph_storage->create([
         'type' => 'competition_notification_level',
       ]);
+      $paragraph->save();
+      $new_notifications[] = $paragraph;
     }
   }
 
