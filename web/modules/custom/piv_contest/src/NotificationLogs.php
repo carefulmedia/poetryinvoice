@@ -44,8 +44,8 @@ final class NotificationLogs {
 
     $value = NULL;
     if ($vids) {
-      $vid = reset($vids);
-      $value = $storage->loadRevision($vid)->changed->value;
+      $vid = array_key_first($vids);
+      $value = (string) $storage->loadRevision($vid)->getRevisionCreationTime();
     }
 
     $this->cache->set($cid, $value, CacheBackendInterface::CACHE_PERMANENT, $log->getCacheTags());

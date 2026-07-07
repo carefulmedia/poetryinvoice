@@ -105,6 +105,7 @@ class Log extends EditorialContentEntityBase implements LogInterface {
     }
     // Force new revision for logs.
     $this->setNewRevision();
+    $this->setRevisionCreationTime(\Drupal::time()->getRequestTime());
   }
 
   /**

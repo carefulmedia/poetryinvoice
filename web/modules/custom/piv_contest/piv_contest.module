@@ -108,7 +108,7 @@ function template_preprocess_notification_recipient_item(array &$variables) {
       'status' => $status_label,
       'success' => $success,
       'edit_link' => $edit_link,
-      'sent_date' => $timestamp ? $date_formatter->format($timestamp) : '',
+      'sent_date' => $timestamp ? $date_formatter->format($timestamp, 'medium') : '',
     ];
   }
   $variables['status_items'] = $status_items;
