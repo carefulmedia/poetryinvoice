@@ -290,6 +290,11 @@ function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL
       $mail_queue->createItem($queue_key, $data, $send_date);
     }
     else {
+      // Force the target language on the replacements so translation-aware
+      // tokens (e.g. [competition:title], [competition_entry:level]) render in
+      // the email language. Without this, flows that do not set a "node" source
+      // (like the competition notifications) fall back to 'en'.
+      $replacements_service->setLangcode($langcode);
       if (!$from) {
         $from = $configurations[$langcode]['from'] ?? NULL;
       }

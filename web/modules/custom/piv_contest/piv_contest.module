@@ -499,51 +499,38 @@ function piv_contest_competition_presave(EntityInterface $entity) : void {
     return;
   }
 
-  $new_levels = array_column($entity->field_competition_levels->getValue(), 'value');
-  $original_levels = [];
-  if (!empty($entity->original)) {
-    $langcode = $entity->language()->getId();
-    if ($entity->original->hasTranslation($langcode)) {
-      $original_levels = array_column($entity->original->getTranslation($langcode)->field_competition_levels->getValue(), 'value');
-    }
+  // The notification levels map 1:1 by position (delta) to the competition
+  // levels. field_notification_levels is not translatable and only the default
+  // translation can add or remove competition levels (see the form alter that
+  // disables "add more" on translations), so the sync only runs there.
+  if (!$entity->isDefaultTranslation()) {
+    return;
   }
 
-  // Find which original deltas were removed.
-  $kept_deltas = [];
-  $remaining_originals = $original_levels;
-  foreach ($new_levels as $level) {
-    $found = array_search($level, $remaining_originals);
-    if ($found !== FALSE) {
-      $kept_deltas[] = $found;
-      unset($remaining_originals[$found]);
-    }
-  }
+  // Sync by delta, not by label value: a level that is merely renamed keeps its
+  // existing notification paragraph (and its rank children). Only added levels
+  // get a new paragraph and only removed levels have theirs deleted. Matching by
+  // value would treat a rename as a delete + add and destroy all the ranks.
+  $new_count = $entity->field_competition_levels->count();
+  $existing_notifications = $entity->field_notification_levels->referencedEntities();
 
   $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
-  $original_notifications = $entity->field_notification_levels->referencedEntities();
-
-  // Build new notification levels list: keep paragraphs for kept deltas,
-  // create new ones for new levels.
   $new_notifications = [];
-  $used_original_deltas = [];
-  foreach ($new_levels as $level) {
-    $original_delta = array_search($level, $original_levels);
-    if ($original_delta !== FALSE && !in_array($original_delta, $used_original_deltas) && isset($original_notifications[$original_delta])) {
-      $new_notifications[] = $original_notifications[$original_delta];
-      $used_original_deltas[] = $original_delta;
+  for ($delta = 0; $delta < $new_count; $delta++) {
+    if (isset($existing_notifications[$delta])) {
+      $new_notifications[] = $existing_notifications[$delta];
     }
     else {
-      $paragraph = $paragraph_storage->create([
+      $new_notifications[] = $paragraph_storage->create([
         'type' => 'competition_notification_level',
       ]);
-      $paragraph->save();
-      $new_notifications[] = $paragraph;
     }
   }
 
-  // Delete orphaned paragraphs.
-  foreach ($original_notifications as $delta => $paragraph) {
-    if (!in_array($delta, $used_original_deltas) && !$paragraph->isNew()) {
+  // Delete the notification paragraphs for removed levels (deltas beyond the
+  // new level count).
+  foreach ($existing_notifications as $delta => $paragraph) {
+    if ($delta >= $new_count && !$paragraph->isNew()) {
       $paragraph->delete();
     }
   }
