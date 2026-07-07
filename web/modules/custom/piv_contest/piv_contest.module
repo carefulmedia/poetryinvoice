@@ -464,6 +464,7 @@ function piv_contest_form_score_form_alter(&$form, FormStateInterface $form_stat
  * Implements hook_ENTITY_TYPE_prepare_form().
  */
 function piv_contest_competition_prepare_form(EntityInterface $entity, $operation, FormStateInterface $form_state) : void {
+  return;
   if ($entity->bundle() != 'default') {
     return;
   }
@@ -501,7 +502,10 @@ function piv_contest_competition_presave(EntityInterface $entity) : void {
   $new_levels = array_column($entity->field_competition_levels->getValue(), 'value');
   $original_levels = [];
   if (!empty($entity->original)) {
-    $original_levels = array_column($entity->original->field_competition_levels->getValue(), 'value');
+    $langcode = $entity->language()->getId();
+    if ($entity->original->hasTranslation($langcode)) {
+      $original_levels = array_column($entity->original->getTranslation($langcode)->field_competition_levels->getValue(), 'value');
+    }
   }
 
   // Find which original deltas were removed.

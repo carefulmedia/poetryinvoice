@@ -511,17 +511,19 @@ class ReplacementsService {
         case 'competition_entry:poem_author_1':
         case 'competition_entry:poem_author_2':
           $entry = $sources['competition_entry'];
-          $recitations = array_values(array_filter(
-            $entry->field_recitations->referencedEntities(),
-            fn($r) => $r->field_stream_language->target_id == $langcode,
-          ));
+          // The poems entered do not change with the email language, so they
+          // must not be filtered by the notification langcode. A notification
+          // is sent once per stream language, so a french email would otherwise
+          // find no matching recitation (they carry their own stream language)
+          // and render blank. Index 0/1 maps to poem *_1 / *_2.
+          $recitations = array_values($entry->field_recitations->referencedEntities());
           $index = str_ends_with($token, '_1') ? 0 : 1;
-          $poem = $recitations[$index]->field_poem->entity ?? NULL;
+          $poem = $recitations[$index]?->field_poem?->entity;
           if (str_contains($token, 'poem_title_')) {
-            $title = $poem->title->value ?? NULL;
+            $title = $poem?->title?->value;
             return $title ? "<em>{$title}</em>" : '';
           }
-          $author = $poem->uid->entity ?? NULL;
+          $author = $poem?->uid?->entity;
           return $author ? $author->getDisplayName() : '';
 
         case 'competition_entry:stream':
