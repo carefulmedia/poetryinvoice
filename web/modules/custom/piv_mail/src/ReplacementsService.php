@@ -180,6 +180,17 @@ class ReplacementsService {
   private $langcode;
 
   /**
+   * An optional prefix prepended to the email body.
+   *
+   * When set, this text is prepended (as its own block) to the rendered email
+   * body. Used, for example, to note that a message in the other language was
+   * sent separately.
+   *
+   * @var string|null
+   */
+  private $prefix;
+
+  /**
    * Constructs a ReplacementService object.
    */
   public function __construct(EntityTypeManagerInterface $entity_type_manager, CountryManagerInterface $country_manager, DateFormatterInterface $date_formatter) {
@@ -202,6 +213,21 @@ class ReplacementsService {
   public function setLangcode(string $langcode) {
     $this->langcode = $langcode;
     return $this;
+  }
+
+  /**
+   * Set a prefix to be prepended to the email body.
+   */
+  public function setPrefix(?string $prefix) {
+    $this->prefix = $prefix;
+    return $this;
+  }
+
+  /**
+   * Return the prefix to be prepended to the email body, if any.
+   */
+  public function getPrefix(): ?string {
+    return $this->prefix;
   }
 
   /**

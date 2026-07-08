@@ -303,6 +303,12 @@ function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL
       }
       $body = $configurations[$langcode]['body']['value'] ?? NULL;
       $body = $replacements_service->replace($body);
+      // Prepend the optional prefix (e.g. a note that a message in the other
+      // language was sent separately) as its own block above the body.
+      $prefix = $replacements_service->getPrefix();
+      if (!empty($prefix)) {
+        $body = $prefix . $body;
+      }
       $subject = $configurations[$langcode]['subject'] ?? NULL;
       $subject = $replacements_service->replace($subject);
       if ($is_reminder) {
