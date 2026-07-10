@@ -514,19 +514,52 @@ function piv_contest_competition_presave(EntityInterface $entity) : void {
   $new_count = $entity->field_competition_levels->count();
   $existing_notifications = $entity->field_notification_levels->referencedEntities();
 
+  // Default prize and place tokens for the first three ranks of a new level.
+  // The token keys are synchronized across translations (see the
+  // content_translation column settings on field_tokens), so only the values
+  // differ per language and the deltas must line up between them.
+  $default_tokens = [
+    1 => ['en' => ['$300', '1st'], 'fr' => ['300$', '1er']],
+    2 => ['en' => ['$200', '2nd'], 'fr' => ['200$', '2e']],
+    3 => ['en' => ['$100', '3rd'], 'fr' => ['100$', '3e']],
+  ];
+
   $paragraph_storage = \Drupal::entityTypeManager()->getStorage('paragraph');
   $new_notifications = [];
   for ($delta = 0; $delta < $new_count; $delta++) {
     if (isset($existing_notifications[$delta])) {
       $new_notifications[] = $existing_notifications[$delta];
+      continue;
     }
-    else {
-      $paragraph = $paragraph_storage->create([
-        'type' => 'competition_notification_level',
+
+    $ranks = [];
+    foreach ($default_tokens as $rank => $values) {
+      $rank_paragraph = $paragraph_storage->create([
+        'type' => 'competition_notification_rank',
+        'langcode' => 'en',
+        'field_rank' => $rank,
+        'field_tokens' => [
+          ['key' => 'prize', 'value' => $values['en'][0]],
+          ['key' => 'place', 'value' => $values['en'][1]],
+        ],
       ]);
-      $paragraph->save();
-      $new_notifications[] = $paragraph;
+      $rank_paragraph->addTranslation('fr', [
+        'field_rank' => $rank,
+        'field_tokens' => [
+          ['key' => 'prize', 'value' => $values['fr'][0]],
+          ['key' => 'place', 'value' => $values['fr'][1]],
+        ],
+      ]);
+      $rank_paragraph->save();
+      $ranks[] = $rank_paragraph;
     }
+
+    $paragraph = $paragraph_storage->create([
+      'type' => 'competition_notification_level',
+      'field_ranks' => $ranks,
+    ]);
+    $paragraph->save();
+    $new_notifications[] = $paragraph;
   }
 
   // Delete the notification paragraphs for removed levels (deltas beyond the
