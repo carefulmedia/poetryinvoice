@@ -804,9 +804,9 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  * gitignored settings.local.php file.
  */
 $databases['default']['default'] = array (
-  'database' => 'drupal9',
-  'username' => 'drupal9',
-  'password' => 'drupal9',
+  'database' => 'drupal',
+  'username' => 'drupal',
+  'password' => 'drupal',
   'prefix' => '',
   'host' => 'database',
   'port' => '3306',

@@ -24,8 +24,8 @@ dependencies:
     - field.field.node.poem.field_password_protected
     - field.field.node.poem.field_pdf_of_original_poem
     - field.field.node.poem.field_plain_title
+    - field.field.node.poem.field_poem_not_to_be_recited_wit
     - field.field.node.poem.field_poem_paid
-    - field.field.node.poem.field_poem_retired
     - field.field.node.poem.field_poem_rights_
     - field.field.node.poem.field_poem_rights_contact
     - field.field.node.poem.field_poem_thems
@@ -235,16 +235,15 @@ content:
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
+  field_poem_not_to_be_recited_wit:
+    type: options_select
+    weight: 52
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_poem_paid:
     type: boolean_checkbox
     weight: 35
-    region: content
-    settings:
-      display_label: true
-    third_party_settings: {  }
-  field_poem_retired:
-    type: boolean_checkbox
-    weight: 14
     region: content
     settings:
       display_label: true

@@ -1,17 +1,16 @@
-uuid: df67dcbc-b4d7-4fd6-929f-cc6fc6621ccc
+uuid: 02633770-b3a7-4247-9ead-139182a405e8
 langcode: en
 status: true
 dependencies:
   module:
+    - media
     - node
-id: node.field_by_line
-field_name: field_by_line
+id: node.field_video_praise
+field_name: field_video_praise
 entity_type: node
-type: string
+type: entity_reference
 settings:
-  max_length: 100
-  case_sensitive: false
-  is_ascii: false
+  target_type: media
 module: core
 locked: false
 cardinality: 1

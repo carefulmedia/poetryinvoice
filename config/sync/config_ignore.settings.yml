@@ -20,6 +20,7 @@ ignored_config_entities:
   - ~views.view.moods_by_language
   - ~views.view.poems_not_retired
   - ~views.view.poet_bios
+  - ~views.view.recitation_videos_on_poem_pages
   - ~views.view.recitations
   - ~views.view.score_templates
   - ~views.view.scores

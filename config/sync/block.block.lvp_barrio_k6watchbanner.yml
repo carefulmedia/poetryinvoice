@@ -12,7 +12,7 @@ dependencies:
 id: lvp_barrio_k6watchbanner
 theme: lvp_barrio
 region: header
-weight: 0
+weight: -17
 provider: null
 plugin: 'block_content:8c30b22e-3097-4a2c-af5b-951cd50a9dd5'
 settings:

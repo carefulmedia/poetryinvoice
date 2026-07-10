@@ -1,0 +1,21 @@
+uuid: c25b5f97-d246-47c7-b9be-ed3f370a6492
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_poem_not_to_be_recited_wit
+    - node.type.poem
+  module:
+    - options
+id: node.poem.field_poem_not_to_be_recited_wit
+field_name: field_poem_not_to_be_recited_wit
+entity_type: node
+bundle: poem
+label: 'Poem not to be recited with reason'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,9 +1,9 @@
-uuid: 477bc67c-d9fc-4932-b083-3009dbc9e178
+uuid: 8bfe39dc-055e-4a56-b38c-3887867e429f
 langcode: en
 status: true
 dependencies:
   config:
-    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.full
     - field.field.node.quote.body
     - field.field.node.quote.comment_node_quote
     - field.field.node.quote.field_by_line
@@ -15,28 +15,19 @@ dependencies:
     - field.field.node.quote.field_years_in_competition
     - node.type.quote
   module:
-    - text
+    - options
     - user
-id: node.quote.teaser
+id: node.quote.full
 targetEntityType: node
 bundle: quote
-mode: teaser
+mode: full
 content:
-  body:
-    type: text_summary_or_trimmed
-    label: hidden
-    settings:
-      trim_length: 600
+  field_years_in_competition:
+    type: list_default
+    label: above
+    settings: {  }
     third_party_settings: {  }
-    weight: 0
-    region: content
-  field_by_line:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 1
+    weight: 101
     region: content
   links:
     settings: {  }
@@ -44,15 +35,16 @@ content:
     weight: 100
     region: content
 hidden:
+  body: true
   comment_node_quote: true
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_by_line: true
   field_metatags: true
   field_program_being_praised: true
   field_quote_photo: true
   field_role: true
   field_video_praise: true
-  field_years_in_competition: true
   langcode: true
   search_api_excerpt: true

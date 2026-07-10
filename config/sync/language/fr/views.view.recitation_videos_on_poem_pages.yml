@@ -1,0 +1,8 @@
+display:
+  default:
+    display_options:
+      header:
+        area:
+          content:
+            value: '<h3>Récitation(s) de ce poème</h3>'
+            format: filtered_html

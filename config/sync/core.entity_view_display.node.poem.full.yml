@@ -25,8 +25,8 @@ dependencies:
     - field.field.node.poem.field_password_protected
     - field.field.node.poem.field_pdf_of_original_poem
     - field.field.node.poem.field_plain_title
+    - field.field.node.poem.field_poem_not_to_be_recited_wit
     - field.field.node.poem.field_poem_paid
-    - field.field.node.poem.field_poem_retired
     - field.field.node.poem.field_poem_rights_
     - field.field.node.poem.field_poem_rights_contact
     - field.field.node.poem.field_poem_thems
@@ -43,12 +43,14 @@ dependencies:
     - field.field.node.poem.layout_builder__layout
     - node.type.poem
     - views.view.dive_in_write_anchor
+    - views.view.recitation_videos_on_poem_pages
     - views.view.user_listing_index_pages
   module:
     - bootstrap_layout_builder
     - bootstrap_layouts
     - layout_builder
     - layout_builder_restrictions
+    - layout_discovery
     - options
     - text
     - user
@@ -77,24 +79,21 @@ third_party_settings:
               add_region_classes: 1
               attributes: ''
         components:
-          7d6b34a7-6fb2-4316-badb-1a437767b8db:
-            uuid: 7d6b34a7-6fb2-4316-badb-1a437767b8db
+          89e4d291-4f7f-413f-a39d-7e1a7d3a34d1:
+            uuid: 89e4d291-4f7f-413f-a39d-7e1a7d3a34d1
             region: main
             configuration:
-              id: 'field_block:node:poem:field_poem_retired'
-              label: 'Poem not to be recited'
+              id: 'field_block:node:poem:field_poem_not_to_be_recited_wit'
+              label: 'Poem not to be recited with reason'
               label_display: '0'
               provider: layout_builder
               context_mapping:
                 entity: layout_builder.entity
                 view_mode: view_mode
               formatter:
-                type: boolean
+                type: list_default
                 label: hidden
-                settings:
-                  format: default
-                  format_custom_false: ''
-                  format_custom_true: ''
+                settings: {  }
                 third_party_settings: {  }
             weight: 0
             additional: {  }
@@ -477,6 +476,27 @@ third_party_settings:
             weight: 1
             additional: {  }
         third_party_settings: {  }
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+          context_mapping: {  }
+        components:
+          91d5cde7-57ba-40ab-bf06-41fcc8b57d80:
+            uuid: 91d5cde7-57ba-40ab-bf06-41fcc8b57d80
+            region: content
+            configuration:
+              id: 'views_block:recitation_videos_on_poem_pages-block_1'
+              label: ''
+              label_display: '0'
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: null
+              exposed: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
   layout_builder_restrictions:
     allowed_block_categories: {  }
     entity_view_mode_restriction:
@@ -574,8 +594,8 @@ hidden:
   field_pdf_of_original_poem: true
   field_plain_title: true
   field_poem_author_user: true
+  field_poem_not_to_be_recited_wit: true
   field_poem_paid: true
-  field_poem_retired: true
   field_poem_rights_: true
   field_poem_rights_contact: true
   field_poem_thems: true

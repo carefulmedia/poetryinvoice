@@ -1,7 +1,7 @@
 /**
- * @file
- * Subtheme specific CSS.
- */
+* @file
+* Subtheme specific CSS.
+*/
 /**
  * @file
  * Styles for Bootstrap Barrio affix effect.
@@ -1495,9 +1495,6 @@ h3.name {
   display: block;
   font-weight: 900;
 }
-.node--type-poem .content-index.mixtape {
-  height: 35rem;
-}
 @media (max-width: 767px) {
   .layout-builder__layout > .col-lg-3 {
     order: -1;
@@ -1704,10 +1701,10 @@ h3.name {
 }
 .menu--account a,
 .search-icon {
-  margin-left: 1rem;
+  margin-left: 0.25rem;
 }
 #block-usericonheader {
-  margin-left: 0.5rem;
+  margin-left: 0.25rem;
 }
 .navbar-toggler,
 #block-usericonheader,
@@ -5421,6 +5418,13 @@ h1.hero a {
 .no-blur {
   margin-bottom: -4rem;
 }
+.block-field-blocknodepoemfield-poem-not-to-be-recited-wit {
+  background-color: yellow;
+  padding: 20px;
+  outline: black;
+  border: black 2px solid;
+  border-radius: 10px;
+}
 #field-language-display {
   display: none;
 }
@@ -5563,15 +5567,77 @@ dialog .field--name-field-media-oembed-video {
   background-repeat: no-repeat;
   text-indent: -10000px;
 }
+/* Fix vertical spacing for icons + titles on pages under .elementary only */
+.elementary img,
+.elementary .icon,
+.elementary .media {
+  display: block;
+  margin: 0 auto 0.6rem;
+  /* center icon and add space below it */
+  max-width: 100%;
+  height: auto;
+}
 .elementary {
+  /* Prevent hover background from expanding past the white poem card */
+  /* Ensure hover doesn't force 100% height (which can grow the card) */
+  /* If the purple background is applied to a child (e.g. .podcast or .content-index), make sure it fills but is clipped */
   background: url(../images/watercolour-bg-MULTI.jpg) no-repeat center center fixed;
   -webkit-background-size: cover  !important;
   -moz-background-size: cover  !important;
   -o-background-size: cover  !important;
   background-size: cover !important;
 }
+.elementary .view-display-id-block_17 .content-index {
+  padding: 0;
+  height: fit-content;
+  overflow: visible;
+  min-height: 0 !important;
+  border-radius: 2rem;
+}
+.elementary .view-display-id-block_17 .author {
+  padding: 1rem;
+}
+.elementary .view-display-id-block_17 h2 {
+  font-size: 3rem;
+  margin-top: 2rem;
+}
+.elementary .view-display-id-block_17 h3 {
+  font-size: 1.5rem;
+}
+.elementary .view-display-id-block_17 .content {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 0 0 2rem 2rem;
+}
+.elementary .view-display-id-block_17 .area-link,
+.elementary .view-display-id-block_17 .area-link .content-index {
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+  /* clip background / shadows so colored BG doesn't escape white card */
+}
+.elementary .view-display-id-block_17 .area-link:hover .content-index {
+  height: auto !important;
+  min-height: 0 !important;
+  padding-bottom: 1rem;
+  /* keep spacing under title if needed */
+}
+.elementary .view-display-id-block_17 .area-link .content-index,
+.elementary .view-display-id-block_17 .area-link .podcast {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.elementary #views-bootstrap-content-type-index-pages-block-6 .col-6 {
+  margin-bottom: 10%;
+}
+.elementary #views-bootstrap-k-6-videos-block-3 .stripe {
+  margin-bottom: 40px;
+}
 .elementary .node--type-video .block-layout-builder {
   margin-bottom: 0 !important;
+}
+.elementary #block-lvp-barrio-buttonensubmitcontestrecitationsformenu {
+  display: none;
 }
 .elementary .header {
   height: fit-content;
@@ -6084,8 +6150,16 @@ dialog .field--name-field-media-oembed-video {
   border-radius: 0 0 10px 10px;
   filter: drop-shadow(0.5rem 0.5rem 0px black);
 }
-.elementary .node--type-video ._none {
+.elementary .node--type-video ._none .field--name-field-type-of-video,
+.elementary .node--type-video ._none .block-field-blocknodevideofield-poets-plural-user,
+.elementary .node--type-video ._none .block-field-blocknodevideofield-years-in-competition {
   display: none;
+}
+.elementary .field--name-field-video-poem a {
+  font-family: 'Chewy';
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 47px;
 }
 .elementary nav.tabs {
   margin-top: 4rem;

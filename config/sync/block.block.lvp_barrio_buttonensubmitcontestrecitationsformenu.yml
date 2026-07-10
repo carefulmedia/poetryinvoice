@@ -10,13 +10,13 @@ dependencies:
     - lvp_barrio
 id: lvp_barrio_buttonensubmitcontestrecitationsformenu
 theme: lvp_barrio
-region: primary_menu
-weight: 0
+region: header
+weight: -23
 provider: null
 plugin: 'block_content:5e291f83-37cd-4ba1-b66d-866cccea1304'
 settings:
   id: 'block_content:5e291f83-37cd-4ba1-b66d-866cccea1304'
-  label: 'Button EN submit contest recitations for menu'
+  label: Donate
   label_display: '0'
   provider: block_content
   view_mode: full

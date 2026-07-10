@@ -38,6 +38,7 @@
 !config/sync/views.view.commom_poetic_terms_and_forms_by_language.yml
 !config/sync/views.view.futureverse_applications.yml
 !config/sync/views.view.poet_bios.yml
+!config/sync/views.view.recitation_videos_on_poem_pages.yml
 config/sync/google_analytics.settings.yml
 
 # Environment variables

@@ -8,12 +8,17 @@ dependencies:
     - field.field.node.quote.comment_node_quote
     - field.field.node.quote.field_by_line
     - field.field.node.quote.field_metatags
+    - field.field.node.quote.field_program_being_praised
     - field.field.node.quote.field_quote_photo
+    - field.field.node.quote.field_role
+    - field.field.node.quote.field_video_praise
+    - field.field.node.quote.field_years_in_competition
     - image.style.home_page_700x250
     - node.type.quote
   module:
     - comment
     - metatag
+    - options
     - svg_image
     - text
     - user
@@ -53,6 +58,13 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
+  field_program_being_praised:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
   field_quote_photo:
     type: image
     label: above
@@ -63,6 +75,29 @@ content:
         attribute: lazy
     third_party_settings: {  }
     weight: 2
+    region: content
+  field_role:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_video_praise:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_years_in_competition:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 106
     region: content
   links:
     settings: {  }
