@@ -153,6 +153,9 @@ class SendNotificationsForm extends FormBase {
           $button_text .= ' (' . $plugin_label . ')';
         }
 
+        // Disable sending to losers too if there are no winners.
+        $send_disabled = empty($plugin_id) || !$has_entries || !$winners;
+
         $form['levels']["level_$level_number"][$type]['send'] = [
           '#type' => 'submit',
           '#value' => $button_text,
@@ -161,11 +164,22 @@ class SendNotificationsForm extends FormBase {
             'callback' => [$this, 'ajaxSend'],
             'wrapper' => 'send-notifications-wrapper',
           ],
-          // Disable sending to losers too if there are no winners.
-          '#disabled' => empty($plugin_id) || !$has_entries || !$winners,
+          '#disabled' => $send_disabled,
           '#attributes' => str_contains($type, 'congrats')
             ? ['class' => ['button--success']]
             : [],
+        ];
+
+        $form['levels']["level_$level_number"][$type]['test'] = [
+          '#type' => 'submit',
+          '#value' => $this->t('Test emails'),
+          '#name' => "test_{$level_number}_{$type}",
+          '#ajax' => [
+            'callback' => [$this, 'ajaxSend'],
+            'wrapper' => 'send-notifications-wrapper',
+          ],
+          '#disabled' => $send_disabled,
+          '#attributes' => ['class' => ['button--test']],
         ];
 
         if ($has_entries) {
@@ -223,6 +237,9 @@ class SendNotificationsForm extends FormBase {
     }
     elseif (preg_match('/^send_(\d+)_(.+)$/', $name, $matches)) {
       $this->submitAllEntries($form_state, (int) $matches[1], $matches[2]);
+    }
+    elseif (preg_match('/^test_(\d+)_(.+)$/', $name, $matches)) {
+      $this->submitAllEntries($form_state, (int) $matches[1], $matches[2], TRUE);
     }
 
     $form_state->setRebuild();
@@ -294,8 +311,13 @@ class SendNotificationsForm extends FormBase {
 
   /**
    * Send emails to all.
+   *
+   * When $test_mode is TRUE every message is delivered to the "from" address
+   * configured on the mail plugin instead of the real recipient. Nothing is
+   * marked as sent and no logs are written, so a test run leaves the
+   * notification state untouched.
    */
-  protected function submitAllEntries(FormStateInterface $form_state, int $level, string $type) {
+  protected function submitAllEntries(FormStateInterface $form_state, int $level, string $type, bool $test_mode = FALSE) {
     [$competition, $notification_paragraph, $plugin_id, $log_type] = $this->resolveNotificationConfig($form_state, $level, $type);
     if (!$plugin_id) {
       return;
@@ -339,9 +361,12 @@ class SendNotificationsForm extends FormBase {
               }
 
               $replacements_service->setPrefix($this->getBilingualPrefix($stream_languages, $langcode));
-              $result = piv_mail_send_mail($plugin_id, $langcode, $replacements_service);
+              $result = piv_mail_send_mail($plugin_id, $langcode, $replacements_service, NULL, FALSE, FALSE, FALSE, $test_mode);
               if ($result) {
                 $success = TRUE;
+              }
+              if ($test_mode) {
+                continue;
               }
               $log = $this->notificationLogs->getLogsForCompetitionEntry($entry->id(), $level, $log_type, $langcode);
               $log->field_email_status = $result ? 'sent' : 'failed_to_send';
@@ -354,10 +379,14 @@ class SendNotificationsForm extends FormBase {
     }
 
     if ($success) {
-      $this->messenger()->addStatus($this->t('Notifications sent successfully.'));
+      $this->messenger()->addStatus($test_mode
+        ? $this->t('Test emails sent to the sender address. Nothing was marked as sent.')
+        : $this->t('Notifications sent successfully.'));
     }
     else {
-      $this->messenger()->addWarning($this->t('Some notifications may have failed to send.'));
+      $this->messenger()->addWarning($test_mode
+        ? $this->t('Some test emails may have failed to send.')
+        : $this->t('Some notifications may have failed to send.'));
     }
   }
 

@@ -266,8 +266,14 @@ function piv_mail_mail($key, &$message, $params) {
  * is a unix timestamp indicating the minimum date this mail should be sent.
  * Return TRUE if a email was sent, FALSE if fail or if the email was put in
  * the queue.
+ *
+ * When $test_mode is TRUE the message is delivered to the plugin "from" address
+ * instead of the real recipients, so it is sent from and to the same mailbox.
+ * The "to_more" addresses and the "include_from" option are ignored, making the
+ * "from" address the only recipient. The message itself is built exactly as it
+ * would be for a real send.
  */
-function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL, $send_date = FALSE, $queue_key = FALSE, $is_reminder = FALSE) {
+function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL, $send_date = FALSE, $queue_key = FALSE, $is_reminder = FALSE, $test_mode = FALSE) {
   $mail_manager = \Drupal::service('plugin.manager.mail');
   $piv_mail_manager = \Drupal::service('plugin.manager.piv_mail');
   if ($piv_mail_manager->hasDefinition($key)) {
@@ -316,21 +322,27 @@ function piv_mail_send_mail($key, $langcode, $replacements_service, $from = NULL
         $subject = "$reminder $subject";
       }
       // Calculate $to.
-      // In some plugins the "to_more" is hardcoded by overriding the settings
-      // in the plugin constructor.
-      $to_more = $configurations[$langcode]['to_more'] ?? '';
-      $to_more = array_filter(explode(' ', $to_more), function ($email) {
-        return filter_var($email, FILTER_VALIDATE_EMAIL);
-      });
-      $to_configs = $configurations[$langcode]['to'] ?? [];
-      $to_configs = array_filter($to_configs);
-      $to = $replacements_service->recipients(array_filter($to_configs));
-      $to = array_merge($to, $to_more);
-      // Add the "include from address.
-      if (in_array('include_from', $to_configs)) {
-        $to[] = $from;
+      if ($test_mode) {
+        // Send to self: the "from" mailbox is the only recipient.
+        $to = $from;
       }
-      $to = implode(',', array_unique($to));
+      else {
+        // In some plugins the "to_more" is hardcoded by overriding the settings
+        // in the plugin constructor.
+        $to_more = $configurations[$langcode]['to_more'] ?? '';
+        $to_more = array_filter(explode(' ', $to_more), function ($email) {
+          return filter_var($email, FILTER_VALIDATE_EMAIL);
+        });
+        $to_configs = $configurations[$langcode]['to'] ?? [];
+        $to_configs = array_filter($to_configs);
+        $to = $replacements_service->recipients(array_filter($to_configs));
+        $to = array_merge($to, $to_more);
+        // Add the "include from address.
+        if (in_array('include_from', $to_configs)) {
+          $to[] = $from;
+        }
+        $to = implode(',', array_unique($to));
+      }
       $params = ['body' => $body, 'subject' => $subject, 'from' => $from];
       $send = TRUE;
       $result = $mail_manager->mail('piv_mail', $key, $to, $langcode, $params, NULL, $send);
