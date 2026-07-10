@@ -9,7 +9,7 @@ id: node.quote.field_by_line
 field_name: field_by_line
 entity_type: node
 bundle: quote
-label: 'By line'
+label: Name
 description: ''
 required: true
 translatable: true

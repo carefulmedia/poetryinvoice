@@ -1,0 +1,39 @@
+uuid: 51eccf5b-2c43-425f-8b2c-6548e1e2d424
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_role
+field_name: field_role
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: teacher
+      label: Teacher
+    -
+      value: student
+      label: Student
+    -
+      value: poet
+      label: Poet
+    -
+      value: parent
+      label: Parent
+    -
+      value: donor
+      label: Donor
+    -
+      value: public
+      label: Public
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
