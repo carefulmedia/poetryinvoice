@@ -273,6 +273,7 @@ class SendNotificationsForm extends FormBase {
         }
         $replacements_service->addSource('paragraph_rank', $rank_paragraph);
       }
+      $replacements_service->setPrefix($this->getBilingualPrefix($stream_languages, $langcode));
       $result = piv_mail_send_mail($plugin_id, $langcode, $replacements_service);
       if ($result) {
         $success = TRUE;
@@ -337,6 +338,7 @@ class SendNotificationsForm extends FormBase {
                 $replacements_service->addSource('paragraph_rank', $rank_paragraph);
               }
 
+              $replacements_service->setPrefix($this->getBilingualPrefix($stream_languages, $langcode));
               $result = piv_mail_send_mail($plugin_id, $langcode, $replacements_service);
               if ($result) {
                 $success = TRUE;
@@ -430,6 +432,24 @@ class SendNotificationsForm extends FormBase {
       }
     }
     return NULL;
+  }
+
+  /**
+   * Returns the body prefix noting the other-language email was sent separately.
+   *
+   * When a stream is configured with more than one language, the same
+   * recipient receives the same notification once per language. In that case
+   * we prepend a note (in the other language) letting them know a separate
+   * message was sent. Returns NULL for single-language streams.
+   */
+  protected function getBilingualPrefix(array $stream_languages, string $langcode): ?string {
+    if (count($stream_languages) < 2) {
+      return NULL;
+    }
+    $text = $langcode === 'en'
+      ? 'Un message en français a été envoyé séparément'
+      : 'An English message was sent separately';
+    return '<p><em>' . $text . '</em></p>';
   }
 
   /**
