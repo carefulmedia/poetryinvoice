@@ -1,0 +1,48 @@
+uuid: 173f3538-9fd4-42db-a92b-2eac62f179a1
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - options
+id: node.field_program_being_praised
+field_name: field_program_being_praised
+entity_type: node
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: general
+      label: General
+    -
+      value: recitation_contests
+      label: 'Recitation contests'
+    -
+      value: futureverse
+      label: FutureVerse
+    -
+      value: poetry_journal
+      label: 'Poetry journal'
+    -
+      value: poets_in_class
+      label: 'Poets in Class'
+    -
+      value: recitation_outreach
+      label: 'Recitation outreach'
+    -
+      value: lesson_plans
+      label: 'Lesson plans'
+    -
+      value: anthology
+      label: Anthology
+    -
+      value: mixtapes
+      label: Mixtapes
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

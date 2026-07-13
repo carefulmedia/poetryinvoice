@@ -1,0 +1,21 @@
+uuid: c671b015-2f9b-4688-a60d-132a53dd3453
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_being_praised
+    - node.type.quote
+  module:
+    - options
+id: node.quote.field_program_being_praised
+field_name: field_program_being_praised
+entity_type: node
+bundle: quote
+label: 'Program being praised'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
