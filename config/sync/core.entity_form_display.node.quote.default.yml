@@ -12,16 +12,16 @@ dependencies:
     - field.field.node.quote.field_role
     - field.field.node.quote.field_video_praise
     - field.field.node.quote.field_years_in_competition
-    - image.style.thumbnail
+    - image.style.focal_point_700_x_
     - node.type.quote
   module:
     - field_layout
+    - focal_point
     - layout_discovery
     - media_library
     - metatag
     - path
     - scheduler
-    - svg_image
     - text
 third_party_settings:
   field_layout:
@@ -72,12 +72,14 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_quote_photo:
-    type: image_image
+    type: image_focal_point
     weight: 4
     region: content
     settings:
       progress_indicator: throbber
-      preview_image_style: thumbnail
+      preview_image_style: focal_point_700_x_
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
   field_role:
     type: options_select
