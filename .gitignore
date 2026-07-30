@@ -60,6 +60,13 @@ development.services.yml
 /web/profiles/contrib/
 /web/themes/contrib/
 
+# Pantheon Integrated Composer
+/.drush-lock-update
+/web/**/.gitignore
+/drush/Commands/contrib/
+/web/libraries/
+/web/private/scripts/quicksilver
+
 # SimpleTest environment
 /web/sites/simpletest
 

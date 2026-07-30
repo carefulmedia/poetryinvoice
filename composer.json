@@ -40,6 +40,10 @@
         "0": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        "upstream-configuration": {
+            "type": "path",
+            "url": "upstream-configuration"
         }
     },
     "require": {
@@ -165,6 +169,8 @@
         "mikehaertl/phpwkhtmltopdf": "~2.1",
         "owlcarousel2/owlcarousel2": "^2.3",
         "palantirnet/drupal-rector": "^0.21.1",
+        "pantheon-systems/drupal-integrations": "^11",
+        "pantheon-upstreams/upstream-configuration": "dev-main",
         "platformsh/config-reader": "^2.4",
         "tecnickcom/tcpdf": "~6",
         "wikimedia/composer-merge-plugin": "^2.1"
@@ -176,6 +182,9 @@
     "prefer-stable": true,
     "config": {
         "sort-packages": true,
+        "platform": {
+            "php": "8.3.14"
+        },
         "allow-plugins": {
             "composer/installers": true,
             "cweagans/composer-patches": true,
@@ -184,7 +193,9 @@
             "drupal/core-project-message": true,
             "mglaman/composer-drupal-lenient": true,
             "php-http/discovery": true,
-            "wikimedia/composer-merge-plugin": true
+            "wikimedia/composer-merge-plugin": true,
+            "phpstan/extension-installer": true,
+            "tbachert/spi": true
         }
     },
     "extra": {
@@ -213,7 +224,11 @@
             "locations": {
                 "web-root": "web/"
             },
+            "allowed-packages": ["pantheon-systems/drupal-integrations"],
             "file-mapping": {
+                "[project-root]/.editorconfig": false,
+                "[project-root]/pantheon.upstream.yml": false,
+                "[project-root]/.gitattributes": false,
                 "[web-root]/sites/development.services.yml": false,
                 "[web-root]/sites/default/default.settings.php": false,
                 "[web-root]/sites/default/default.services.yml": false,
@@ -222,33 +237,15 @@
             }
         },
         "installer-paths": {
-            "web/core": [
-                "type:drupal-core"
-            ],
-            "web/libraries/{$name}": [
-                "type:drupal-library"
-            ],
-            "web/modules/contrib/{$name}": [
-                "type:drupal-module"
-            ],
-            "web/profiles/contrib/{$name}": [
-                "type:drupal-profile"
-            ],
-            "web/themes/contrib/{$name}": [
-                "type:drupal-theme"
-            ],
-            "drush/Commands/contrib/{$name}": [
-                "type:drupal-drush"
-            ],
-            "web/modules/custom/{$name}": [
-                "type:drupal-custom-module"
-            ],
-            "web/profiles/custom/{$name}": [
-                "type:drupal-custom-profile"
-            ],
-            "web/themes/custom/{$name}": [
-                "type:drupal-custom-theme"
-            ]
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
+            "web/profiles/custom/{$name}": ["type:drupal-custom-profile"],
+            "web/themes/custom/{$name}": ["type:drupal-custom-theme"]
         },
         "drupal-core-project-message": {
             "include-keys": [
@@ -257,7 +254,7 @@
             ],
             "post-create-project-cmd-message": [
                 "<bg=blue;fg=white>                                                         </>",
-                "<bg=blue;fg=white>  Congratulations, you’ve installed the Drupal codebase  </>",
+                "<bg=blue;fg=white>  Congratulations, you\u2019ve installed the Drupal codebase  </>",
                 "<bg=blue;fg=white>  from the drupal/recommended-project template!          </>",
                 "<bg=blue;fg=white>                                                         </>",
                 "",
@@ -272,22 +269,29 @@
             ]
         },
         "drupal-lenient": {
-            "allowed-list": ["drupal/tablesorter", "drupal/menus_attribute", "drupal/owlcarousel"]
+            "allowed-list": [
+                "drupal/tablesorter",
+                "drupal/menus_attribute",
+                "drupal/owlcarousel"
+            ]
         }
     },
+    "autoload": {
+        "classmap": ["upstream-configuration/scripts/ComposerScripts.php"]
+    },
     "scripts": {
+        "pre-update-cmd": ["DrupalComposerManaged\\ComposerScripts::preUpdate"],
         "run-migrations": [
             "drush pmu pathauto -y",
             "drush mim --group=migrate_drupal_7",
             "drush cim -y"
         ],
-        "post-install-cmd": [
-            "@composer drupal:scaffold"
-        ],
+        "post-install-cmd": ["@composer drupal:scaffold"],
         "post-update-cmd": [
             "@composer drupal:scaffold",
             "mkdir -p web/libraries/bootstrap",
-            "cp -R vendor/twbs/bootstrap/dist web/libraries/bootstrap"
+            "cp -R vendor/twbs/bootstrap/dist web/libraries/bootstrap",
+            "DrupalComposerManaged\\ComposerScripts::postUpdate"
         ]
     },
     "require-dev": {

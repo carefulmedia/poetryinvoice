@@ -841,10 +841,24 @@ if (getenv('LANDO') == 'ON') {
 // Stream wrapper for custom aggregate. CSS and JS.
 $settings['file_assets_path'] = 'sites/default/assets';
 
-if (file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
+if (file_exists($app_root . '/' . $site_path . '/settings.pantheon.php')) {
+  include $app_root . '/' . $site_path . '/settings.pantheon.php';
+}
+
+if (file_exists($app_root . '/' . $site_path . '/settings.pantheon.environment.php')) {
+  include $app_root . '/' . $site_path . '/settings.pantheon.environment.php';
+}
+
+if (!isset($_ENV['PANTHEON_ENVIRONMENT']) && file_exists($app_root . '/' . $site_path . '/settings.platformsh.php')) {
   include $app_root . '/' . $site_path . '/settings.platformsh.php';
 }
 
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
+}
+
+// Automatically generated include for settings managed by ddev.
+$ddev_settings = __DIR__ . '/settings.ddev.php';
+if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
+  require $ddev_settings;
 }
