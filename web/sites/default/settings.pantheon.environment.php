@@ -52,5 +52,5 @@ if ($s3_access && $s3_secret) {
   $config['s3fs.settings']['bucket'] = 'piv-lvp-images-and-files';
   $config['s3fs.settings']['public_folder'] = 'public';
   $config['s3fs.settings']['private_folder'] = 'private';
-  $config['s3fs.settings']['region'] = 'ca-central-1';
+  $config['s3fs.settings']['region'] = 'us-east-2';
 }
