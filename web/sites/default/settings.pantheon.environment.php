@@ -33,8 +33,17 @@ else {
 }
 
 // S3 file storage when credentials are set on the environment.
-$s3_access = getenv('S3FS_ACCESS_KEY') ?: FALSE;
-$s3_secret = getenv('S3FS_SECRET_KEY') ?: FALSE;
+// Pantheon secrets use type=runtime and pantheon_get_secret(), not getenv().
+$s3_access = FALSE;
+$s3_secret = FALSE;
+if (function_exists('pantheon_get_secret')) {
+  $s3_access = pantheon_get_secret('S3FS_ACCESS_KEY') ?: FALSE;
+  $s3_secret = pantheon_get_secret('S3FS_SECRET_KEY') ?: FALSE;
+}
+if (!$s3_access || !$s3_secret) {
+  $s3_access = getenv('S3FS_ACCESS_KEY') ?: $s3_access;
+  $s3_secret = getenv('S3FS_SECRET_KEY') ?: $s3_secret;
+}
 if ($s3_access && $s3_secret) {
   $settings['s3fs.access_key'] = $s3_access;
   $settings['s3fs.secret_key'] = $s3_secret;
