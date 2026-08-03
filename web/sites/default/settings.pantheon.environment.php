@@ -28,7 +28,7 @@ if ($pantheon_env === 'live') {
     $settings['s3fs.secret_key'] = $s3_secret;
     $settings['s3fs.use_s3_for_public'] = TRUE;
     $settings['s3fs.use_s3_for_private'] = TRUE;
-    $config['s3fs.settings']['bucket'] = 'piv-prod';
+    $config['s3fs.settings']['bucket'] = 'piv-lvp-images-and-files';
     $config['s3fs.settings']['public_folder'] = 'public';
     $config['s3fs.settings']['private_folder'] = 'private';
     $config['s3fs.settings']['region'] = 'ca-central-1';
