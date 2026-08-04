@@ -13,6 +13,8 @@
 !/private/*/
 /private/*/*
 !/private/*/.gitkeep
+!/private/scripts/
+!/private/scripts/**
 
 # Config ignored files.
 */sync/piv_canadian_content.settings.yml
