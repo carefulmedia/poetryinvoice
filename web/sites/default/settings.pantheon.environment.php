@@ -9,6 +9,35 @@ if (!isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   return;
 }
 
+// Legacy file redirects to S3. Platform.sh handled these at the edge; Pantheon
+// ignores .htaccess, so perform redirects before Drupal bootstrap.
+if (PHP_SAPI !== 'cli' && !empty($_SERVER['REQUEST_URI'])) {
+  $s3_base = 'https://piv-lvp-images-and-files.s3.us-east-2.amazonaws.com';
+  $uri_path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+  if (is_string($uri_path)) {
+    if (preg_match('#^/sites/default/files/(?!styles/)(.+)$#', $uri_path, $matches)) {
+      header('HTTP/1.1 301 Moved Permanently');
+      header('Location: ' . $s3_base . '/public/' . $matches[1]);
+      exit;
+    }
+    if (preg_match('#^/downloads/(.+)$#', $uri_path, $matches)) {
+      header('HTTP/1.1 301 Moved Permanently');
+      header('Location: ' . $s3_base . '/downloads/' . $matches[1]);
+      exit;
+    }
+    if (preg_match('#^/images/(.+)$#', $uri_path, $matches)) {
+      header('HTTP/1.1 301 Moved Permanently');
+      header('Location: ' . $s3_base . '/images/' . $matches[1]);
+      exit;
+    }
+    if (preg_match('#^/telechargements/(.+)$#', $uri_path, $matches)) {
+      header('HTTP/1.1 301 Moved Permanently');
+      header('Location: ' . $s3_base . '/telechargements/' . $matches[1]);
+      exit;
+    }
+  }
+}
+
 $pantheon_env = $_ENV['PANTHEON_ENVIRONMENT'];
 
 // Production (live).
