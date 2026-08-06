@@ -40,6 +40,15 @@ if (PHP_SAPI !== 'cli' && !empty($_SERVER['REQUEST_URI'])) {
 
 $pantheon_env = $_ENV['PANTHEON_ENVIRONMENT'];
 
+// Writable paths on Pantheon (Platform.sh set these explicitly; Pantheon upstream
+// usually does too, but define them here so uploads work after env:wipe).
+if (!isset($settings['file_private_path'])) {
+  $settings['file_private_path'] = 'sites/default/files/private';
+}
+if (!isset($settings['file_temp_path'])) {
+  $settings['file_temp_path'] = sys_get_temp_dir();
+}
+
 // Production (live).
 if ($pantheon_env === 'live') {
   $config['system.logging']['error_level'] = 'hide';
