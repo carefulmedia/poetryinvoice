@@ -19,6 +19,22 @@ use Drupal\views\ViewExecutable;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
+ * Implements hook_s3fs_upload_params_alter().
+ *
+ * Bucket piv-lvp-images-and-files uses "Bucket owner enforced" (ACLs disabled).
+ */
+function piv_base_s3fs_upload_params_alter(array &$upload_params): void {
+  unset($upload_params['ACL']);
+}
+
+/**
+ * Implements hook_s3fs_copy_params_alter().
+ */
+function piv_base_s3fs_copy_params_alter(array &$copy_params, array $s3_key_paths): void {
+  unset($copy_params['ACL']);
+}
+
+/**
  * Implements hook_user_format_name_alter().
  */
 function piv_base_user_format_name_alter(&$name, AccountInterface $account) {
