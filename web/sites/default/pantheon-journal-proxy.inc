@@ -12,6 +12,19 @@
  * Proxies /journal/journal-N/* requests to the S3 flipbook bucket.
  */
 function piv_pantheon_proxy_journal(string $uri_path, string $s3_base): void {
+  // Without a trailing slash, relative assets resolve to /journal/css/… not
+  // /journal/journal-N/css/… (browser uses /journal/ as the base path).
+  if (preg_match('#^/journal/(journal-\d+)$#', $uri_path, $matches)) {
+    $query = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_QUERY);
+    $location = '/journal/' . $matches[1] . '/';
+    if ($query) {
+      $location .= '?' . $query;
+    }
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: ' . $location);
+    exit;
+  }
+
   if (!preg_match('#^/journal/(journal-\d+)(?:/(.*))?$#', $uri_path, $matches)) {
     return;
   }
