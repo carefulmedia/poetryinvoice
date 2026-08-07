@@ -37,6 +37,17 @@ if (PHP_SAPI !== 'cli' && !empty($_SERVER['REQUEST_URI'])) {
     }
     // VOICES/VOIX journal flipbooks (static HTML on S3). Proxy on the site
     // domain so FlowPaper license validation passes (not poetryinvoice.ca → S3).
+    if (preg_match('#^/journal/(journal-\d+)$#', $uri_path, $journal_matches)) {
+      $query = parse_url($_SERVER['REQUEST_URI'], PHP_URL_QUERY);
+      $location = '/journal/' . $journal_matches[1] . '/';
+      if ($query) {
+        $location .= '?' . $query;
+      }
+      header('HTTP/1.1 301 Moved Permanently');
+      header('Cache-Control: no-store');
+      header('Location: ' . $location);
+      exit;
+    }
     if (preg_match('#^/journal/journal-\d+(?:/|$)#', $uri_path)) {
       require_once __DIR__ . '/pantheon-journal-proxy.inc';
       piv_pantheon_proxy_journal($uri_path, $s3_base);

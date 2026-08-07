@@ -96,11 +96,34 @@ function piv_pantheon_proxy_journal(string $uri_path, string $s3_base): void {
     exit;
   }
 
+  if ($subpath === '') {
+    $body = piv_pantheon_journal_inject_base_href($body, $issue);
+  }
+
   header('HTTP/1.1 200 OK');
   header('Content-Type: ' . $mime);
-  header('Cache-Control: public, max-age=3600');
+  // Issue index is patched with <base href>; avoid long CDN cache of old HTML.
+  if ($subpath === '') {
+    header('Cache-Control: public, max-age=300');
+  }
+  else {
+    header('Cache-Control: public, max-age=3600');
+  }
   echo $body;
   exit;
+}
+
+/**
+ * Ensures relative css/js/docs paths resolve under /journal/journal-N/.
+ */
+function piv_pantheon_journal_inject_base_href(string $html, string $issue): string {
+  if (stripos($html, '<base ') !== FALSE) {
+    return $html;
+  }
+  $base = '/journal/' . $issue . '/';
+  $tag = "\n    <base href=\"" . htmlspecialchars($base, ENT_QUOTES) . "\">";
+  $patched = preg_replace('#(<head[^>]*>)#i', '$1' . $tag, $html, 1);
+  return is_string($patched) ? $patched : $html;
 }
 
 /**
