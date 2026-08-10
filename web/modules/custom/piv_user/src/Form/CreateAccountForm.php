@@ -115,7 +115,7 @@ class CreateAccountForm extends FormBase {
       '#ajax' => [
         'callback' => '::accountTypeAjaxCallback',
         'wrapper' => 'account-type-wrapper',
-        'method' => 'replace',
+        'method' => 'replaceWith',
         'effect' => 'fade',
       ],
       '#weight' => 1,

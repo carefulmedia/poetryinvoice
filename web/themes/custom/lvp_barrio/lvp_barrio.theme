@@ -146,3 +146,18 @@ function lvp_barrio_css_alter(&$css, \Drupal\Core\Asset\AttachedAssetsInterface 
     unset($css['themes/contrib/gin/dist/css/theme/dialog.css']);
   }
 }
+
+/**
+ * Implements hook_js_alter().
+ */
+function lvp_barrio_js_alter(&$javascript, \Drupal\Core\Asset\AttachedAssetsInterface $assets, \Drupal\Core\Language\LanguageInterface $language) {
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    return;
+  }
+
+  foreach (array_keys($javascript) as $path) {
+    if (str_contains($path, 'themes/contrib/gin/')) {
+      unset($javascript[$path]);
+    }
+  }
+}

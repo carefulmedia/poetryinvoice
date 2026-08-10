@@ -45,6 +45,7 @@ config/sync/google_analytics.settings.yml
 
 # Environment variables
 .env
+.ddev/config.local.yaml
 
 #
 # Drupal
