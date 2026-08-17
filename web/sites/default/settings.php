@@ -862,3 +862,7 @@ $ddev_settings = __DIR__ . '/settings.ddev.php';
 if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   require $ddev_settings;
 }
+
+if (file_exists($app_root . '/' . $site_path . '/settings.sendgrid.php')) {
+  include $app_root . '/' . $site_path . '/settings.sendgrid.php';
+}
