@@ -19,6 +19,46 @@ use Drupal\views\ViewExecutable;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
+ * Implements hook_cron().
+ */
+function piv_base_cron(): void {
+  if (!piv_base_should_regenerate_roulette_cache()) {
+    return;
+  }
+
+  $script = dirname(DRUPAL_ROOT) . '/private/scripts/roulette/generate-cache.php';
+  if (!is_readable($script)) {
+    return;
+  }
+
+  passthru('php ' . escapeshellarg($script), $exit_code);
+  if ($exit_code === 0) {
+    \Drupal::state()->set('piv_base.roulette_cache_last_run', \Drupal::time()->getRequestTime());
+  }
+}
+
+/**
+ * Determines whether Poem Roulette caches should be regenerated.
+ */
+function piv_base_should_regenerate_roulette_cache(): bool {
+  $interval = (int) (getenv('ROULETTE_CACHE_INTERVAL') ?: 86400);
+  $last_run = (int) \Drupal::state()->get('piv_base.roulette_cache_last_run', 0);
+  if (\Drupal::time()->getRequestTime() - $last_run < $interval) {
+    return FALSE;
+  }
+
+  if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+    return $_ENV['PANTHEON_ENVIRONMENT'] === 'live';
+  }
+
+  if (isset($_ENV['PLATFORM_ENVIRONMENT_TYPE'])) {
+    return $_ENV['PLATFORM_ENVIRONMENT_TYPE'] === 'production';
+  }
+
+  return FALSE;
+}
+
+/**
  * Implements hook_s3fs_upload_params_alter().
  *
  * Bucket piv-lvp-images-and-files uses "Bucket owner enforced" (ACLs disabled).
