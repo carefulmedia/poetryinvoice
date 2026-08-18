@@ -1700,11 +1700,71 @@ h3.name {
   display: none;
 }
 .menu--account a,
-.search-icon {
+.search-icon,
+.poem-favourites {
   margin-left: 0.25rem;
 }
 #block-usericonheader {
   margin-left: 0.25rem;
+}
+.poem-favourites {
+  display: inline-block;
+  vertical-align: middle;
+}
+#favouritesButton {
+  color: #fff;
+  background: transparent;
+  border: none;
+  padding: 0.25rem 0.5rem;
+}
+#favouritesButton:hover,
+#favouritesButton:focus {
+  background: transparent;
+}
+#favouritesDropdown {
+  min-width: 280px;
+  padding: 10px !important;
+}
+#favouritesDropdown li {
+  display: flex;
+  list-style-type: none;
+  margin-bottom: 5px !important;
+}
+#favouritesDropdown ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+#favouritesDropdown a {
+  padding-left: 5px;
+}
+.poem-delete {
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0 0.25rem 0 0;
+}
+.heart-container {
+  display: block;
+  margin-top: 1rem;
+}
+.heart {
+  display: inline-block;
+  cursor: pointer;
+  height: 32px;
+  width: auto;
+}
+.heart:hover {
+  opacity: 0.8;
+}
+.fav-number {
+  color: #fff;
+  font-size: 0.875rem;
+  margin-left: 0.25rem;
+}
+.offcanvas-body .fav-number {
+  color: #000;
 }
 .navbar-toggler,
 #block-usericonheader,
@@ -1739,9 +1799,6 @@ h3.name {
 }
 .navbar-collapse .user {
   float: right;
-}
-.heart {
-  display: none;
 }
 /**
  * @file
@@ -5455,9 +5512,6 @@ h1.hero a {
 #block-poetinclasslogin,
 #block-lessonplanlogin {
   width: fit-content;
-}
-.heart {
-  display: none;
 }
 .view-content img {
   max-width: 100%;

@@ -104,6 +104,29 @@ function lvp_barrio_preprocess_page(&$variables) {
     '#weight' => $weight - 0.1,
     '#allowed_tags' => ['svg', 'path', 'a'],
   ];
+
+  $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $favourites_label = $langcode === 'fr' ? 'Favoris' : 'My Favourites';
+  $variables['page']['header']['poem_favourites'] = [
+    '#markup' => '<div class="poem-favourites dropdown"><button id="favouritesButton" class="btn dropdown-toggle" type="button" aria-label="' . $favourites_label . '"></button><div id="favouritesDropdown" class="dropdown-menu" hidden><h4>' . $favourites_label . '</h4><hr><ul id="favouritePoems"></ul></div></div>',
+    '#weight' => -13,
+    '#allowed_tags' => ['div', 'button', 'h4', 'hr', 'ul'],
+  ];
+
+  $variables['#attached']['library'][] = 'lvp_barrio/poem-favourites';
+  $variables['#attached']['drupalSettings']['poemFavourites'] = [
+    'lang' => $langcode,
+    'emptyEn' => [
+      'Find a poem you like.',
+      'Click its heart to add it to My Favourites.',
+      'To view My Favourites, click this heart.',
+    ],
+    'emptyFr' => [
+      'Trouvez un poème que vous aimez.',
+      'Ensuite, cliquez sur le cœur à côté du poème pour l&rsquo;ajouter à vos favoris.',
+      'Pour voir vos favoris, cliquez sur le cœur dans la barre de navigation.',
+    ],
+  ];
 }
 
 /**

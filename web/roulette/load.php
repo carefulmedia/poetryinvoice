@@ -18,31 +18,27 @@
 // echo $tags;
 ?>
 <div class="container-fluid">
- <?php /*
   <div id="topBar" class="row">
     <div class="dropdown">
-     <div class="admin-menu-icon admin-menu-toolbar-category expandable"><a href="../"><span>Home</span></a></div>
-      <button id="favouritesButton" class="btn dropdown-toggle" type="button">
-      </span>
+      <div class="admin-menu-icon admin-menu-toolbar-category expandable"><a href="../"><span>Home</span></a></div>
+      <button id="favouritesButton" class="btn dropdown-toggle" type="button" aria-label="<?php echo $vars['favourites'][$lang]; ?>">
       </button>
       <div id="favouritesDropdown" class="dropdown-menu">
-        <h4><?php echo $vars['favourites'][$lang]; ?> </h4><hr>
+        <h4><?php echo $vars['favourites'][$lang]; ?></h4><hr>
         <ul id="favouritePoems"></ul>
       </div>
       <div class="language-switcher-locale-url">
-    <span><?php echo $vars['language'][$lang]; ?></span>
-
-  </div>
+        <span><?php echo $vars['language'][$lang]; ?></span>
+      </div>
     </div>
+  </div>
 
   <div class="row logo">
     <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
-
-      <div id="logo-title"><a href="../"> <?php echo '<img src="/roulette/images/icons/roulette-logo_' . $lang  . '_' . $c . '.png"'; ?> class="img-responsive" /></a>  </div>
+      <div id="logo-title"><a href="../"><?php echo '<img src="/roulette/images/icons/roulette-logo_' . $lang . '_' . $c . '.png"'; ?> class="img-responsive" /></a></div>
     </div>
   </div>
 </div>
-*/?>
 <div id="main" class="container" >
   <div class="row interactive">
     <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-12">
@@ -693,7 +689,7 @@ highlightFavourite = (poemId) =>  {
     heart="full";
     poemNumber = "<span class='fav-number'>" + favPoems.length + "</span>";
   }
-  $("#favouritesButton").hide().html("<img src='images/icons/heart-" + heart + ".png' style= 'height: 20px; filter: grayscale(100%) brightness(2000%);' /> " + poemNumber).fadeIn('slow');
+  $("#favouritesButton").hide().html("<img src='/roulette/images/icons/heart-" + heart + ".png' style= 'height: 20px; filter: grayscale(100%) brightness(2000%);' /> " + poemNumber).fadeIn('slow');
 }
 
 $( document ).ready(function() {
@@ -742,7 +738,7 @@ appendLikeButton = (poemId) => {
       });
     }
 
-  $(".verse").last().after("<img src='images/icons/heart-" + heart + ".png' class='heart' data-index='" + poemId + "'/></div>");
+  $(".verse").last().after("<img src='/roulette/images/icons/heart-" + heart + ".png' class='heart' data-index='" + poemId + "'/></div>");
   $(".heart").last().wrap("<div class='heart-container'/>");
 
 
@@ -810,7 +806,7 @@ $(document).on('click', '.heart', (event) => {
   const favPoemKey = "favPoems";
   let target = event.currentTarget;
   let poemId = $(target).attr("data-index");
-  if ($(target).attr("src") === 'images/icons/heart-outline.png'){
+  if ($(target).attr("src").indexOf('heart-outline') !== -1){
     $(target).attr("src","/roulette/images/icons/heart-full.png");
     storeFavPoem(poemId);
   } else {
