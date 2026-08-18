@@ -2,18 +2,19 @@ uuid: 517742e9-cab2-482e-b1ce-098db000d82e
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.journal_poem
   module:
     - language
     - node
 id: en_journal_poem
 label: 'EN Journal Poem'
 type: 'canonical_entities:node'
-pattern: 'write/monthly-poem-prize/winning-poems/[node:title]'
+pattern: '/write/monthly-poem-prize/winning-poems/[node:title]'
 selection_criteria:
   3006412b-87e8-4a0d-91d6-8046264a8a1f:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 3006412b-87e8-4a0d-91d6-8046264a8a1f
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   b182f7c9-368e-490a-a9cd-10e4cdd1c3ca:
     id: language
     negate: false
-    uuid: b182f7c9-368e-490a-a9cd-10e4cdd1c3ca
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

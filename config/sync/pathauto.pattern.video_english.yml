@@ -2,6 +2,8 @@ uuid: 544a0e02-daad-4a0a-94bf-4042332d2b0e
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.video
   module:
     - language
     - node
@@ -13,7 +15,6 @@ selection_criteria:
   0248db52-7616-4242-b6b2-5c5370ec15bb:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 0248db52-7616-4242-b6b2-5c5370ec15bb
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   3824c78d-ec9a-44be-a8cc-c8181f3f56db:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 3824c78d-ec9a-44be-a8cc-c8181f3f56db
     context_mapping:
       node: node
     bundles:
@@ -29,7 +29,6 @@ selection_criteria:
   58aee19e-584b-4c75-8e74-e1ddde21665b:
     id: language
     negate: false
-    uuid: 58aee19e-584b-4c75-8e74-e1ddde21665b
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

@@ -194,9 +194,10 @@
             "drupal/core-project-message": true,
             "mglaman/composer-drupal-lenient": true,
             "php-http/discovery": true,
-            "wikimedia/composer-merge-plugin": true,
             "phpstan/extension-installer": true,
-            "tbachert/spi": true
+            "symfony/runtime": true,
+            "tbachert/spi": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "extra": {

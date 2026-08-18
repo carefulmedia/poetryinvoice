@@ -2,18 +2,19 @@ uuid: 39dba66f-ebcc-4fbe-a179-566a60a1e578
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.writing_prompt
   module:
     - language
     - node
 id: writing_prompt_french_
 label: 'Writing prompt (French)'
 type: 'canonical_entities:node'
-pattern: 'ecrire/exercise-creation/[node:title]'
+pattern: '/ecrire/exercise-creation/[node:title]'
 selection_criteria:
   3a561bf9-3581-49f8-8af6-2bd700e35d2f:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 3a561bf9-3581-49f8-8af6-2bd700e35d2f
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   a1f0051c-165f-4391-8411-302a839987b8:
     id: language
     negate: false
-    uuid: a1f0051c-165f-4391-8411-302a839987b8
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

@@ -2,18 +2,19 @@ uuid: 390aabe4-81e4-4d8d-af27-dc1b0312a707
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.lesson_plan
   module:
     - language
     - node
 id: lesson_plan_english_
 label: 'Lesson Plan (English)'
 type: 'canonical_entities:node'
-pattern: 'teach/lesson-plans/[node:title]'
+pattern: '/teach/lesson-plans/[node:title]'
 selection_criteria:
   7a4a1991-5826-4dde-956f-f80a0dfb1b44:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 7a4a1991-5826-4dde-956f-f80a0dfb1b44
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   8d2a9f4d-2a68-49a5-9083-45064c7113e0:
     id: language
     negate: false
-    uuid: 8d2a9f4d-2a68-49a5-9083-45064c7113e0
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

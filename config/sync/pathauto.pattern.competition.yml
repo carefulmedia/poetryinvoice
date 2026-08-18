@@ -2,17 +2,18 @@ uuid: a65b1090-fede-4896-b968-8f72b288adb0
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.competition
   module:
     - node
 id: competition
 label: Competition
 type: 'canonical_entities:node'
-pattern: 'recite/[node:title]'
+pattern: '/recite/[node:title]'
 selection_criteria:
   f2990e5b-8daf-45df-9c9f-0263794ecce8:
     id: 'entity_bundle:node'
     negate: false
-    uuid: f2990e5b-8daf-45df-9c9f-0263794ecce8
     context_mapping:
       node: node
     bundles:

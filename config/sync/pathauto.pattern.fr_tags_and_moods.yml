@@ -2,6 +2,9 @@ uuid: 415c3d74-e9f5-478b-9c02-18f6af112c27
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.moods
+    - taxonomy.vocabulary.poem_tags
   module:
     - language
     - taxonomy
@@ -13,7 +16,6 @@ selection_criteria:
   086a5530-4387-4c48-875e-ad3d5eb04a9c:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: 086a5530-4387-4c48-875e-ad3d5eb04a9c
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:
@@ -22,7 +24,6 @@ selection_criteria:
   ecae69c9-acaa-46ea-a9f4-a29d1bfc0cf3:
     id: language
     negate: false
-    uuid: ecae69c9-acaa-46ea-a9f4-a29d1bfc0cf3
     context_mapping:
       language: 'taxonomy_term:langcode:language'
     langcodes:

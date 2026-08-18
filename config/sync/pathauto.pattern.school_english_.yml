@@ -2,18 +2,19 @@ uuid: 3405b9ae-b215-4d8b-9955-a9ef54afb146
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.school
   module:
     - language
     - node
 id: school_english_
 label: 'School (English)'
 type: 'canonical_entities:node'
-pattern: 'competitions/schools/[node:title]'
+pattern: '/competitions/schools/[node:title]'
 selection_criteria:
   16a86c63-6e7c-4795-a59f-c3defb7b5d3c:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 16a86c63-6e7c-4795-a59f-c3defb7b5d3c
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   75a1fc23-117c-49a0-81ed-e53d1e56146d:
     id: language
     negate: false
-    uuid: 75a1fc23-117c-49a0-81ed-e53d1e56146d
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

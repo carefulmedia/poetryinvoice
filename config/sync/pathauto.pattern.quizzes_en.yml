@@ -2,6 +2,8 @@ uuid: 79c72764-f909-4b76-ad89-70187d12472f
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.quiz
   module:
     - language
     - node
@@ -13,7 +15,6 @@ selection_criteria:
   7e6a36ce-9608-4fed-9af0-144d12d0aaf6:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 7e6a36ce-9608-4fed-9af0-144d12d0aaf6
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   029e6fd4-aa74-411c-98be-5cc787a9b1bd:
     id: language
     negate: false
-    uuid: 029e6fd4-aa74-411c-98be-5cc787a9b1bd
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

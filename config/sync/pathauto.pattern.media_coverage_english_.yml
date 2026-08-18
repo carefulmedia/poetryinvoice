@@ -2,6 +2,8 @@ uuid: be0b4a13-2680-448b-a335-43e8d52e8698
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.media_coverage
   module:
     - language
     - node
@@ -13,7 +15,6 @@ selection_criteria:
   2f5f7592-ef36-4b7c-a295-6a05965be3ca:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 2f5f7592-ef36-4b7c-a295-6a05965be3ca
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   a5a83668-ffe5-4dcb-a1a1-cf41078aefc4:
     id: 'entity_bundle:node'
     negate: false
-    uuid: a5a83668-ffe5-4dcb-a1a1-cf41078aefc4
     context_mapping:
       node: node
     bundles:
@@ -29,7 +29,6 @@ selection_criteria:
   34295b6e-ffad-4a8e-8ec8-234c60156c15:
     id: language
     negate: false
-    uuid: 34295b6e-ffad-4a8e-8ec8-234c60156c15
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

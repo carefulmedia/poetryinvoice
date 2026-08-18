@@ -2,18 +2,19 @@ uuid: e9ad6a68-1c51-48c8-b35e-29f5b635d2b0
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.bulletin_board
   module:
     - language
     - node
 id: bulletin_board_english_
 label: 'Bulletin board (English)'
 type: 'canonical_entities:node'
-pattern: 'teach/lounge/bulletin-board/[node:title]'
+pattern: '/teach/lounge/bulletin-board/[node:title]'
 selection_criteria:
   f2140588-ca33-4671-a536-dedec6211c3f:
     id: 'entity_bundle:node'
     negate: false
-    uuid: f2140588-ca33-4671-a536-dedec6211c3f
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   5db7a6a0-cb5b-47dc-836d-fb83e69dd89a:
     id: language
     negate: false
-    uuid: 5db7a6a0-cb5b-47dc-836d-fb83e69dd89a
     context_mapping:
       language: 'node:langcode:language'
     langcodes:
