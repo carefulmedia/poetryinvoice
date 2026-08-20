@@ -663,6 +663,15 @@ normalizePoemPath = (path) => {
   return String(path).replace(/\/$/, '') || '/';
 }
 
+// JSON views emit production URLs; keep links and storage on the current site.
+poemPageUrl = (path) => {
+  const normalized = normalizePoemPath(path);
+  if (!normalized) {
+    return path || '';
+  }
+  return window.location.origin + normalized;
+}
+
 poemKeyFromEntry = (poem) => normalizePoemPath(poem.poemPath || poem.poemId || '');
 
 getFavPoems = () => {
@@ -783,7 +792,7 @@ appendLikeButton = (legacyPoemId, poemPath) => {
 
 appendPoemButton = (poemId, poemPath) => {
   $("#poem").append("<br><div  class='poemButton horizontal-center' ><a href='' target='_blank' id='visitPoem" + poemId + "' onClick='ga('send', 'pageview',  $(this).attr('href').replace('https://www.poetryinvoice.com','/virtual/roulette-en'));'><?php echo $vars['More'][$lang]; ?></a></div></br></br>");
-  $("#visitPoem" + poemId).attr( "href", ""+poemPath+"" );
+  $("#visitPoem" + poemId).attr("href", poemPageUrl(poemPath));
 
 }
   $.ajax({
@@ -843,7 +852,7 @@ $(document).on('click', '.heart', (event) => {
   let target = event.currentTarget;
   let poemKey = $(target).attr("data-index");
   let legacyPoemId = $(target).attr("data-legacy-id");
-  let poemPath = legacyPoemId ? $("#visitPoem" + legacyPoemId).attr("href") : poemKey;
+  let poemPath = poemKey || (legacyPoemId ? normalizePoemPath($("#visitPoem" + legacyPoemId).attr("href")) : '');
   if ($(target).attr("src").indexOf('heart-outline') !== -1){
     $(target).attr("src","/roulette/images/icons/heart-full.png");
     storeFavPoem(legacyPoemId, poemPath);
@@ -884,7 +893,7 @@ $(document).on('click', '#favouritesButton', () => {
       for (poem of favPoems){
         $("#favouritePoems").append("<li>" +
           "<button type='button' class='poem-delete' data-id= '" + poem.poemId + "'><span>&times;</span></button>" +
-          "<a href='" + poem.poemPath + "' target='_blank'>" + poem.title + " - " + poem.poet + "</a>" +
+          "<a href='" + poemPageUrl(poem.poemPath) + "' target='_blank'>" + poem.title + " - " + poem.poet + "</a>" +
           "</li>");
       }
     }
@@ -901,7 +910,8 @@ $(document).on('click', '.poem-delete', (event) => {
   removeFavPoem(poemId);
   $(target).parent().remove();
   highlightFavourite();
-        $("#favouritesDropdown").show();
+  $(".heart[data-index='" + poemId + "']").attr("src", "/roulette/images/icons/heart-outline.png");
+  $("#favouritesDropdown").show();
 
 });
 

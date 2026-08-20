@@ -27,6 +27,11 @@
     return String(path).replace(/\/$/, '') || '/';
   }
 
+  function poemPageUrl(path) {
+    const normalized = normalizePoemPath(path);
+    return normalized ? `${window.location.origin}${normalized}` : path;
+  }
+
   function poemKey(poem) {
     return normalizePoemPath(poem.poemPath || poem.poemId || '');
   }
@@ -143,7 +148,7 @@
     }
     favPoems.forEach((poem) => {
       const item = document.createElement('li');
-      item.innerHTML = `<button type="button" class="poem-delete" data-id="${poem.poemId}"><span>&times;</span></button><a href="${poem.poemPath}">${poem.title} - ${poem.poet}</a>`;
+      item.innerHTML = `<button type="button" class="poem-delete" data-id="${poem.poemId}"><span>&times;</span></button><a href="${poemPageUrl(poem.poemPath)}">${poem.title} - ${poem.poet}</a>`;
       list.appendChild(item);
     });
   }
@@ -262,6 +267,7 @@
           setHeartState(heart, true);
         }
         highlightFavourite();
+        syncHeartStates(poemPath, isFavourite(poemPath));
       });
 
       const printIcon = article.querySelector('.print-icon');
