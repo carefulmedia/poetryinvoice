@@ -12,13 +12,50 @@
     return drupalSettings.poemFavourites || {};
   }
 
+  function normalizePoemPath(path) {
+    if (!path) {
+      return '';
+    }
+    try {
+      if (/^https?:\/\//i.test(path)) {
+        return new URL(path).pathname.replace(/\/$/, '') || '/';
+      }
+    }
+    catch (e) {
+      // Fall through to pathname normalization.
+    }
+    return String(path).replace(/\/$/, '') || '/';
+  }
+
+  function poemKey(poem) {
+    return normalizePoemPath(poem.poemPath || poem.poemId || '');
+  }
+
   function getFavPoems() {
     if (!(FAV_POEM_KEY in sessionStorage)) {
       return [];
     }
     try {
       const favPoems = JSON.parse(sessionStorage.getItem(FAV_POEM_KEY));
-      return Array.isArray(favPoems) ? favPoems : [];
+      if (!Array.isArray(favPoems)) {
+        return [];
+      }
+      const seen = new Set();
+      const normalized = [];
+      favPoems.forEach((poem) => {
+        const key = poemKey(poem);
+        if (!key || seen.has(key)) {
+          return;
+        }
+        seen.add(key);
+        normalized.push({
+          poemId: key,
+          poemPath: key,
+          title: (poem.title || '').trim(),
+          poet: (poem.poet || '').trim(),
+        });
+      });
+      return normalized;
     }
     catch (e) {
       return [];
@@ -29,16 +66,28 @@
     sessionStorage.setItem(FAV_POEM_KEY, JSON.stringify(favPoems));
   }
 
-  function removeFavPoem(poemId) {
-    setFavPoems(getFavPoems().filter((poem) => String(poem.poemId) !== String(poemId)));
+  function isFavourite(key) {
+    const normalizedKey = normalizePoemPath(key);
+    return getFavPoems().some((poem) => poemKey(poem) === normalizedKey);
+  }
+
+  function removeFavPoem(key) {
+    const normalizedKey = normalizePoemPath(key);
+    setFavPoems(getFavPoems().filter((poem) => poemKey(poem) !== normalizedKey));
   }
 
   function storeFavPoem(poem) {
-    const favPoems = getFavPoems();
-    if (favPoems.some((item) => String(item.poemId) === String(poem.poemId))) {
+    const key = poemKey(poem);
+    if (!key || isFavourite(key)) {
       return;
     }
-    favPoems.push(poem);
+    const favPoems = getFavPoems();
+    favPoems.push({
+      poemId: key,
+      poemPath: key,
+      title: (poem.title || '').trim(),
+      poet: (poem.poet || '').trim(),
+    });
     setFavPoems(favPoems);
   }
 
@@ -125,9 +174,19 @@
     };
   }
 
-  function setHeartState(heart, isFavourite) {
-    heart.src = `${HEART_BASE}-${isFavourite ? 'full' : 'outline'}.png`;
-    heart.setAttribute('aria-pressed', isFavourite ? 'true' : 'false');
+  function setHeartState(heart, isFavourited) {
+    heart.src = `${HEART_BASE}-${isFavourited ? 'full' : 'outline'}.png`;
+    heart.setAttribute('aria-pressed', isFavourited ? 'true' : 'false');
+  }
+
+  function syncHeartStates(key, isFavourited) {
+    const normalizedKey = normalizePoemPath(key);
+    document.querySelectorAll('.heart[data-poem-id], .heart[data-index]').forEach((heart) => {
+      const heartKey = normalizePoemPath(heart.dataset.poemId || heart.dataset.index || '');
+      if (heartKey === normalizedKey) {
+        setHeartState(heart, isFavourited);
+      }
+    });
   }
 
   function initHeader(context) {
@@ -148,15 +207,12 @@
           return;
         }
         event.preventDefault();
-        removeFavPoem(button.getAttribute('data-id'));
+        const key = button.getAttribute('data-id');
+        removeFavPoem(key);
         button.closest('li')?.remove();
         highlightFavourite();
         renderDropdownList();
-        document.querySelectorAll('.heart[data-poem-id]').forEach((heart) => {
-          if (String(heart.dataset.poemId) === String(button.getAttribute('data-id'))) {
-            setHeartState(heart, false);
-          }
-        });
+        syncHeartStates(key, false);
       });
     });
 
@@ -175,34 +231,30 @@
 
   function initPoemHearts(context) {
     once('poem-favourites-heart-init', 'article.node--type-poem', context).forEach((article) => {
-      const poemId = article.getAttribute('data-history-node-id');
-      const body = article.querySelector('.block-field-blocknodepoembody .field__item, .block-field-blocknodepoembody .field--name-body');
-      if (!poemId || !body || body.querySelector('.heart')) {
+      if (article.querySelector('.heart.poem-favourite-heart')) {
         return;
       }
 
       const title = document.querySelector('#block-pagetitle h1, h1.title')?.textContent.trim() || '';
       const poet = article.querySelector('.author .name, .author h3.name')?.textContent.trim() || '';
-      const poemPath = window.location.pathname;
-      const isFavourite = getFavPoems().some((poem) => String(poem.poemId) === String(poemId));
-
-      const container = document.createElement('div');
-      container.className = 'heart-container';
+      const poemPath = normalizePoemPath(window.location.pathname);
+      if (!poemPath) {
+        return;
+      }
 
       const heart = document.createElement('img');
-      heart.className = 'heart';
-      heart.dataset.poemId = poemId;
+      heart.className = 'heart poem-favourite-heart';
+      heart.dataset.poemId = poemPath;
       heart.dataset.title = title;
       heart.dataset.poet = poet;
       heart.dataset.poemPath = poemPath;
       heart.alt = isFrench() ? 'Ajouter aux favoris' : 'Add to favourites';
-      setHeartState(heart, isFavourite);
+      setHeartState(heart, isFavourite(poemPath));
 
       heart.addEventListener('click', (event) => {
         event.preventDefault();
-        const currentlyFavourite = getFavPoems().some((poem) => String(poem.poemId) === String(poemId));
-        if (currentlyFavourite) {
-          removeFavPoem(poemId);
+        if (isFavourite(poemPath)) {
+          removeFavPoem(poemPath);
           setHeartState(heart, false);
         }
         else {
@@ -212,8 +264,13 @@
         highlightFavourite();
       });
 
-      container.appendChild(heart);
-      body.appendChild(container);
+      const printIcon = article.querySelector('.print-icon');
+      if (printIcon) {
+        printIcon.insertAdjacentElement('beforebegin', heart);
+      }
+      else {
+        article.insertBefore(heart, article.firstChild);
+      }
     });
   }
 
