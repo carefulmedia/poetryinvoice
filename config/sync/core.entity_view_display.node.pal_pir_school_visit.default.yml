@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_display.comment.comment_node_pal_pir_school_vi.default
     - field.field.node.pal_pir_school_visit.comment_node_pal_pir_school_vi
+    - field.field.node.pal_pir_school_visit.field_admin_notes
     - field.field.node.pal_pir_school_visit.field_agreed_visit_date
     - field.field.node.pal_pir_school_visit.field_amount_to_be_paid_to_each_
     - field.field.node.pal_pir_school_visit.field_booked_
@@ -57,6 +58,13 @@ content:
       pager_id: 0
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_admin_notes:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
     region: content
   field_agreed_visit_date:
     type: datetime_default

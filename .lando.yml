@@ -1,17 +1,17 @@
-name: piv9
-recipe: drupal10
+name: piv-d11
+recipe: pantheon
 config:
   php: 8.3
   webroot: web
   xdebug: true
   database: mariadb
-
+  framework: drupal8
+  site: piv-d11
+  id: e7bbb72e-a122-48a0-a04f-bcca334a3b20
 proxy:
   appserver:
-    - piv9.lndo.site
-    - lesvoixdelapoesie.lndo.site
-  # solr:
-    # - solr.piv9.lndo.site:8983
+    - piv-d11.lndo.site/
+    - piv-d11.lndo.site/
 services:
   database:
     type: mariadb:11.4
@@ -22,26 +22,24 @@ services:
   appserver:
     build_as_root:
       - apt update && apt install zlib1g-dev
-      - "mkdir -p /usr/src/php/ext && cd /usr/src/php/ext && git clone https://github.com/NoiseByNorthwest/php-spx.git spx && cd spx/ && git checkout release/latest"
-      - "cd /usr/src/php/ext/spx && phpize && ./configure"
+      - >-
+        mkdir -p /usr/src/php/ext && cd /usr/src/php/ext && git clone
+        https://github.com/NoiseByNorthwest/php-spx.git spx && cd spx/ && git
+        checkout release/latest
+      - cd /usr/src/php/ext/spx && phpize && ./configure
       - docker-php-ext-install spx
-      - echo 'spx.http_enabled=1' >> /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
-      - echo 'spx.http_key="dev"' >> /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
-      - echo 'spx.http_ip_whitelist="*"' >> /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
+      - >-
+        echo 'spx.http_enabled=1' >>
+        /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
+      - >-
+        echo 'spx.http_key="dev"' >>
+        /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
+      - >-
+        echo 'spx.http_ip_whitelist="*"' >>
+        /usr/local/etc/php/conf.d/docker-php-ext-spx.ini
       - chmod 666 /tmp/xdebug.log
-
   pma:
     type: phpmyadmin
-  # The Drupal 7 database to use as migrate source.
-  # d7db:
-  #   type: mariadb:11.4
-  #   creds:
-  #     user: drupal7db
-  #     password: drupal7db
-  #     database: drupal7db
-  #   portforward: true
-  #   overrides:
-  #     platform: linux/arm64
   node:
     type: node
     build:
@@ -55,16 +53,10 @@ services:
       - appserver
   phpmyadmin:
     type: phpmyadmin
-  # solr:
-  #   type: solr:8.11
-  #   portforward: true
-  #   config:
-  #     dir: config/solr-config-set
   selenium-chrome:
     type: compose
     app_mount: false
     services:
-      # Chrome 74
       image: selenium/standalone-chrome-debug:3.141.59-neon
       environment:
         TZ: Canada/Toronto
@@ -72,12 +64,11 @@ services:
       volumes:
         - /dev/shm:/dev/shm
       command: /opt/bin/entry_point.sh
-
 tooling:
   drush:
     cmd: /app/vendor/drush/drush/drush --root=/app/web
     env:
-      DRUSH_OPTIONS_URI: "http://piv9.lndo.site"
+      DRUSH_OPTIONS_URI: http://piv11.lndo.site
   npm:
     service: node
   node:
@@ -86,15 +77,21 @@ tooling:
     service: node
   phpcs:
     service: appserver
-    cmd: /app/vendor/bin/phpcs --standard=Drupal,DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,yml
+    cmd: >-
+      /app/vendor/bin/phpcs --standard=Drupal,DrupalPractice
+      --extensions=php,module,inc,install,test,profile,theme,css,info,txt,yml
     description: Run phpcs for given folder or file.
   phpcbf:
     service: appserver
-    cmd: /app/vendor/bin/phpcbf --standard=Drupal,DrupalPractice --extensions=php,module,inc,install,test,profile,theme,css,info,txt,yml
+    cmd: >-
+      /app/vendor/bin/phpcbf --standard=Drupal,DrupalPractice
+      --extensions=php,module,inc,install,test,profile,theme,css,info,txt,yml
     description: Run phpcbf for given folder or file.
   translation-import:
     service: appserver
-    cmd: drush locale:import fr modules/custom/piv_base/translations/fr.po --override=none
+    cmd: >-
+      drush locale:import fr modules/custom/piv_base/translations/fr.po
+      --override=none
   rector:
     service: appserver
     cmd: /app/vendor/bin/rector

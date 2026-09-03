@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_view_mode.node.teaser
     - field.field.node.pal_pir_school_visit.comment_node_pal_pir_school_vi
+    - field.field.node.pal_pir_school_visit.field_admin_notes
     - field.field.node.pal_pir_school_visit.field_agreed_visit_date
     - field.field.node.pal_pir_school_visit.field_amount_to_be_paid_to_each_
     - field.field.node.pal_pir_school_visit.field_booked_
@@ -54,6 +55,7 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_admin_notes: true
   field_agreed_visit_date: true
   field_amount_to_be_paid_to_each_: true
   field_booked_: true

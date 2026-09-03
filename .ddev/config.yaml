@@ -5,7 +5,7 @@ php_version: "8.4"
 webserver_type: nginx-fpm
 xdebug_enabled: false
 additional_hostnames: []
-additional_fqdns:
+additional_fqdns: 
   - piv9.lndo.site
   - lesvoixdelapoesie.lndo.site
 database:
@@ -13,10 +13,11 @@ database:
     version: "11.8"
 use_dns_when_possible: true
 composer_version: "2"
-web_environment: []
+web_environment: 
+  - DDEV_PANTHEON_SITE=piv-d11
+  - DDEV_PANTHEON_ENVIRONMENT=live
 nodejs_version: "24"
-corepack_enable: false
-
+corepack_enable: false 
 # Key features of DDEV's config.yaml:
 
 # name: <projectname> # Name of the project, automatically provides
