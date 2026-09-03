@@ -2,18 +2,19 @@ uuid: fa6ffa23-8ecd-41a8-9265-2cfb6cf626a8
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.article
   module:
     - language
     - node
 id: article_english
 label: 'Article (English)'
 type: 'canonical_entities:node'
-pattern: 'about/news/latest-news/[node:title]'
+pattern: '/about/news/latest-news/[node:title]'
 selection_criteria:
   2e9675ce-9944-43ad-bde0-90c233706101:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 2e9675ce-9944-43ad-bde0-90c233706101
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   d36d3082-4624-4106-952e-6618797b311d:
     id: 'entity_bundle:node'
     negate: false
-    uuid: d36d3082-4624-4106-952e-6618797b311d
     context_mapping:
       node: node
     bundles:
@@ -29,7 +29,6 @@ selection_criteria:
   72763b0f-625a-4f08-b116-5607d8068aa4:
     id: language
     negate: false
-    uuid: 72763b0f-625a-4f08-b116-5607d8068aa4
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

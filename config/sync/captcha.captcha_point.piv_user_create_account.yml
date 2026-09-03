@@ -3,5 +3,5 @@ langcode: en
 status: true
 dependencies: {  }
 formId: piv_user_create_account
-captchaType: default
+captchaType: recaptcha_v3/piv_forms
 label: piv_user_create_account

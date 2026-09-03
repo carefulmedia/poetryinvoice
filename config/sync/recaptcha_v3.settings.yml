@@ -1,0 +1,8 @@
+site_key: 6LeY24UtAAAAAB5gJz4xGwd6IuQCDXRrXb7w5xdR
+secret_key: 6LeY24UtAAAAAEVc5ESdCufn5sCj6U2lTpmNnpWe
+verify_hostname: false
+default_challenge: captcha/Math
+error_message: 'Anti-bot verification failed.'
+cacheable: false
+library_use_recaptcha_net: false
+hide_badge: false

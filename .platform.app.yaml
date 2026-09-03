@@ -204,8 +204,8 @@ crons:
                 if [ "$PLATFORM_ENVIRONMENT_TYPE" = production ]; then
                    platform backup:create --yes
                 fi
-     # Run roulette every hour at minute 0
+    # Refresh Poem Roulette JSON caches daily and upload to S3.
     roulette:
-        spec: '0 0 * * 0'
-        cmd: 'cd web/roulette/cached ; bash generate-cache.sh'
+        spec: '0 3 * * *'
+        cmd: 'php private/scripts/roulette/generate-cache.php'
 

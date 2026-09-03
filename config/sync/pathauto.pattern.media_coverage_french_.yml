@@ -2,18 +2,19 @@ uuid: 82cfa2e0-a23b-4438-9ba3-bc7ddb834f63
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.media_coverage
   module:
     - language
     - node
 id: media_coverage_french_
 label: 'Media Coverage (French)'
 type: 'canonical_entities:node'
-pattern: 'propos/actualites/dans-les-medias/[node:title]'
+pattern: '/propos/actualites/dans-les-medias/[node:title]'
 selection_criteria:
   b0416be1-6268-4fc2-b63b-efbafc558483:
     id: 'entity_bundle:node'
     negate: false
-    uuid: b0416be1-6268-4fc2-b63b-efbafc558483
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   d2af6a87-170a-4180-8225-24a8c94f283f:
     id: 'entity_bundle:node'
     negate: false
-    uuid: d2af6a87-170a-4180-8225-24a8c94f283f
     context_mapping:
       node: node
     bundles:
@@ -29,7 +29,6 @@ selection_criteria:
   4830abcc-4304-48e4-b1e7-4f0cf62b50a8:
     id: language
     negate: false
-    uuid: 4830abcc-4304-48e4-b1e7-4f0cf62b50a8
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

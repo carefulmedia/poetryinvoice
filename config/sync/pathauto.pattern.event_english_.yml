@@ -2,18 +2,19 @@ uuid: ad99ffd7-ffe3-4dec-85df-c19fccb9de12
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.event
   module:
     - language
     - node
 id: event_english_
 label: 'Event (English)'
 type: 'canonical_entities:node'
-pattern: 'news/events/[node:title]'
+pattern: '/news/events/[node:title]'
 selection_criteria:
   3d2feaa6-18e8-4859-b0e7-589e8c4b35ea:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 3d2feaa6-18e8-4859-b0e7-589e8c4b35ea
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   f2e44a0c-3e15-47dd-b4b4-d21f0aae44f5:
     id: language
     negate: false
-    uuid: f2e44a0c-3e15-47dd-b4b4-d21f0aae44f5
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

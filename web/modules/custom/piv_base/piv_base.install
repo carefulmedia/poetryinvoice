@@ -92,3 +92,78 @@ function piv_base_update_9002() {
     }
   }
 }
+
+/**
+ * Use CSS backgrounds for related poet teasers so Google prefers the main photo.
+ */
+function piv_base_update_9003() {
+  _piv_base_configure_poet_listing_teaser_images();
+}
+
+/**
+ * Fix related poet teaser tokens (field order and plain-text name).
+ */
+function piv_base_update_9004() {
+  _piv_base_configure_poet_listing_teaser_images();
+}
+
+/**
+ * Updates the related poets view to avoid competing <img> tags in search results.
+ */
+function _piv_base_configure_poet_listing_teaser_images(): void {
+  $config = \Drupal::configFactory()->getEditable('views.view.user_listing_index_pages');
+  if ($config->isNew()) {
+    return;
+  }
+
+  $fields = $config->get('display.block_7.display_options.fields');
+  if (empty($fields['user_picture']) || empty($fields['view_user'])) {
+    return;
+  }
+
+  unset($fields['picture_url']);
+
+  $fields['user_picture']['type'] = 'image_url';
+  $fields['user_picture']['settings'] = [
+    'image_style' => 'focal_point_700_x_',
+  ];
+  $fields['user_picture']['exclude'] = TRUE;
+
+  $fields['plain_name'] = $fields['name'];
+  $fields['plain_name']['id'] = 'plain_name';
+  $fields['plain_name']['type'] = 'string';
+  $fields['plain_name']['exclude'] = TRUE;
+  $fields['plain_name']['alter']['alter_text'] = FALSE;
+  $fields['plain_name']['alter']['text'] = '';
+
+  $fields['view_user']['alter']['text'] = <<<'TWIG'
+<div class="index-views mixtape content-index" data-nosnippet="true">
+
+    <a href="{{ view_user }}" class="area-link" style="display:block">
+
+            <div class="image poet-related-teaser-image" style="background-image: url('{{ user_picture }}');" role="img" aria-label="{{ plain_name }}"></div>
+            <div class="content">
+              		<h3>{{ plain_name }}</h3>
+              		<p>{{ field_user_bio }}</p>
+            </div>
+
+    </a>
+</div>
+TWIG;
+
+  // Views only exposes tokens from fields listed before the rewriting field.
+  $fields = array_merge(
+    [
+      'user_picture' => $fields['user_picture'],
+      'plain_name' => $fields['plain_name'],
+    ],
+    array_diff_key($fields, [
+      'user_picture' => TRUE,
+      'plain_name' => TRUE,
+    ]),
+  );
+
+  $config->set('display.block_7.display_options.fields', $fields);
+  $config->save(TRUE);
+  \Drupal::service('plugin.manager.views.display')->clearCachedDefinitions();
+}

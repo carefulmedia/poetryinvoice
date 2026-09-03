@@ -2,18 +2,19 @@ uuid: 1c8a0da5-7b9a-4c90-a2b6-f311188056ce
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.press_release
   module:
     - language
     - node
 id: press_release_english_
 label: 'Press Release (English)'
 type: 'canonical_entities:node'
-pattern: 'about/news/press-releases/[node:title]'
+pattern: '/about/news/press-releases/[node:title]'
 selection_criteria:
   aaa464c9-5f3e-4de0-9914-dd61c464e4eb:
     id: 'entity_bundle:node'
     negate: false
-    uuid: aaa464c9-5f3e-4de0-9914-dd61c464e4eb
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   d4414dda-34fe-4d23-8c70-b75aced3d5ab:
     id: 'entity_bundle:node'
     negate: false
-    uuid: d4414dda-34fe-4d23-8c70-b75aced3d5ab
     context_mapping:
       node: node
     bundles:
@@ -29,7 +29,6 @@ selection_criteria:
   1b4ce661-01bb-4643-9b5f-058ea32ead9c:
     id: language
     negate: false
-    uuid: 1b4ce661-01bb-4643-9b5f-058ea32ead9c
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

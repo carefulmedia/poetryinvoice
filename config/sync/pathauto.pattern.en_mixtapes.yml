@@ -2,18 +2,19 @@ uuid: 7884d0e6-01ce-4027-86a5-e2aef4ae1668
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.mixtape
   module:
     - language
     - node
 id: en_mixtapes
 label: 'EN mixtapes'
 type: 'canonical_entities:node'
-pattern: 'read/mixtapes/[node:title]'
+pattern: '/read/mixtapes/[node:title]'
 selection_criteria:
   13f8c17f-9454-484d-91c0-fced2019dae8:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 13f8c17f-9454-484d-91c0-fced2019dae8
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   77fbea94-27dd-41a9-850a-3e29b5ee46e8:
     id: language
     negate: false
-    uuid: 77fbea94-27dd-41a9-850a-3e29b5ee46e8
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

@@ -2,18 +2,19 @@ uuid: 06f9354a-ed8e-47c7-8ac8-5cf6eec0db62
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.bulletin_board
   module:
     - language
     - node
 id: bulletin_board_french_
 label: 'Bulletin board (French)'
 type: 'canonical_entities:node'
-pattern: 'enseigner/salle/babillard/[node:title]'
+pattern: '/enseigner/salle/babillard/[node:title]'
 selection_criteria:
   0e799ffe-bba7-48d2-92af-36ae239b26cf:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 0e799ffe-bba7-48d2-92af-36ae239b26cf
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   12faef8c-5d52-4301-bfe1-254a4896abb6:
     id: language
     negate: false
-    uuid: 12faef8c-5d52-4301-bfe1-254a4896abb6
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

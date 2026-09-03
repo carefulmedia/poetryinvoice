@@ -2,17 +2,18 @@ uuid: 906f9fc2-7483-4764-be99-d637de06ed02
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.faq
   module:
     - node
 id: faq
 label: FAQ
 type: 'canonical_entities:node'
-pattern: 'faq/[node:title]'
+pattern: '/faq/[node:title]'
 selection_criteria:
   8c470c3a-5d96-4f91-90a0-4245228c59f0:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 8c470c3a-5d96-4f91-90a0-4245228c59f0
     context_mapping:
       node: node
     bundles:

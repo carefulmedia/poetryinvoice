@@ -45,3 +45,12 @@ print-styling:
   css:
     theme:
       css/print-style.css: {}
+
+poem-favourites:
+  version: VERSION
+  js:
+    js/poem-favourites.js: {}
+  dependencies:
+    - core/drupal
+    - core/drupalSettings
+    - core/once

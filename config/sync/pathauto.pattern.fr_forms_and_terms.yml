@@ -2,6 +2,8 @@ uuid: b55ff817-06e8-434e-9926-06e263a6117c
 langcode: en
 status: true
 dependencies:
+  config:
+    - taxonomy.vocabulary.poetic_terms
   module:
     - language
     - taxonomy
@@ -13,7 +15,6 @@ selection_criteria:
   c372e221-613e-4c7a-bd59-5897bdb1e954:
     id: 'entity_bundle:taxonomy_term'
     negate: false
-    uuid: c372e221-613e-4c7a-bd59-5897bdb1e954
     context_mapping:
       taxonomy_term: taxonomy_term
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   a68e2569-2f5e-48ec-a00c-065449097960:
     id: language
     negate: false
-    uuid: a68e2569-2f5e-48ec-a00c-065449097960
     context_mapping:
       language: 'taxonomy_term:langcode:language'
     langcodes:

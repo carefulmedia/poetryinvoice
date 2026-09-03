@@ -2,6 +2,8 @@ uuid: e251578c-19d2-4dd9-a641-d23d7b80ff5d
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.poem
   module:
     - language
     - node
@@ -13,7 +15,6 @@ selection_criteria:
   2b47f66b-bb9c-4b02-86a4-e01815f91fba:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 2b47f66b-bb9c-4b02-86a4-e01815f91fba
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   565c40cb-6bdc-497d-a5b8-1d3494b06c6e:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 565c40cb-6bdc-497d-a5b8-1d3494b06c6e
     context_mapping:
       node: node
     bundles:
@@ -29,7 +29,6 @@ selection_criteria:
   efe65ff0-7c38-4287-a49e-24c137512bec:
     id: language
     negate: false
-    uuid: efe65ff0-7c38-4287-a49e-24c137512bec
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

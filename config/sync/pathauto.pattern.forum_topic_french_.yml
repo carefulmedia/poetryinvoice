@@ -2,18 +2,19 @@ uuid: d154b9e5-da55-42c9-a697-ae32fe53b2e1
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.forum
   module:
     - language
     - node
 id: forum_topic_french_
 label: 'Forum topic (French)'
 type: 'canonical_entities:node'
-pattern: 'enseigner/salle/table-rondes/[node:taxonomy_forums:entity:name]/[node:title]'
+pattern: '/enseigner/salle/table-rondes/[node:taxonomy_forums:entity:name]/[node:title]'
 selection_criteria:
   4f6a8bc9-855d-4085-ba91-17d46099e2c3:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 4f6a8bc9-855d-4085-ba91-17d46099e2c3
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   b8d83dc1-df7e-481c-9270-66db3d55fea9:
     id: language
     negate: false
-    uuid: b8d83dc1-df7e-481c-9270-66db3d55fea9
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

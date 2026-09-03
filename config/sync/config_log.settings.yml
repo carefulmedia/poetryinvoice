@@ -62,7 +62,9 @@ log_ignored_config:
   116: 'rdf.*'
   118: realname.settings
   120: recaptcha.settings
-  122: redirect_404.settings
+  121: recaptcha_v3.settings
+  122: 'recaptcha_v3.recaptcha_v3_action.*'
+  123: redirect_404.settings
   124: redirect_domain.domains
   126: redirect.settings
   128: s3fs.settings

@@ -2,6 +2,8 @@ uuid: cc5a1d3d-46a7-434e-b318-6ab27cc598a6
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.mixtape
   module:
     - language
     - node
@@ -13,7 +15,6 @@ selection_criteria:
   6ce9730f-8339-49e0-ace6-fe342eb1e6cb:
     id: 'entity_bundle:node'
     negate: false
-    uuid: 6ce9730f-8339-49e0-ace6-fe342eb1e6cb
     context_mapping:
       node: node
     bundles:
@@ -21,7 +22,6 @@ selection_criteria:
   c467de2c-8246-451f-b6fd-6851509adf72:
     id: language
     negate: false
-    uuid: c467de2c-8246-451f-b6fd-6851509adf72
     context_mapping:
       language: 'node:langcode:language'
     langcodes:

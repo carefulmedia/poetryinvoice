@@ -522,11 +522,14 @@ button {
 
 .heart-container {
     flex: 10%;
-    display: none;
+    display: block;
+    margin-top: 1rem;
 }
 
 .heart {
-  max-height: 30px;
+  display: inline-block;
+  max-height: 32px;
+  cursor: pointer;
 } 
 
 .heart:hover {
@@ -583,9 +586,6 @@ display: inline;
 }
 h4.poet {
     text-align: left
-}
-.heart {
-    display: none;
 }
 #poem p.rteindent1, #poem p.Indent1
 {margin-left: 23px !important;}
