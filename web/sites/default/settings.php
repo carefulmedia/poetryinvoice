@@ -737,7 +737,10 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * will allow the site to run off of all variants of example.com and
  * example.org, with all subdomains included.
  */
-
+$settings['trusted_host_patterns'] = [
+  '^localhost$',
+  '^.*\.lndo\.site$',
+];
 /**
  * The default list of directories that will be ignored by Drupal's file API.
  *
@@ -862,3 +865,25 @@ $ddev_settings = __DIR__ . '/settings.ddev.php';
 if (getenv('IS_DDEV_PROJECT') == 'true' && is_readable($ddev_settings)) {
   require $ddev_settings;
 }
+
+/**
+ * @file
+ * Local development overrides (DDEV). Gitignored — do not commit.
+ */
+
+$s3_access = getenv('S3FS_ACCESS_KEY') ?: FALSE;
+$s3_secret = getenv('S3FS_SECRET_KEY') ?: FALSE;
+
+if ($s3_access && $s3_secret) {
+  $settings['s3fs.access_key'] = $s3_access;
+  $settings['s3fs.secret_key'] = $s3_secret;
+  $settings['s3fs.use_s3_for_public'] = TRUE;
+  $settings['s3fs.use_s3_for_private'] = TRUE;
+  $config['s3fs.settings']['bucket'] = 'piv-lvp-images-and-files';
+  $config['s3fs.settings']['public_folder'] = 'public';
+  $config['s3fs.settings']['private_folder'] = 'private';
+  $config['s3fs.settings']['region'] = 'us-east-2';
+}
+
+$settings['file_private_path'] = '../private';
+$settings['file_temp_path'] = sys_get_temp_dir();

@@ -18,7 +18,6 @@
 // echo $tags;
 ?>
 <div class="container-fluid">
- <?php /*
   <div id="topBar" class="row">
     <div class="dropdown">
      <div class="admin-menu-icon admin-menu-toolbar-category expandable"><a href="../"><span>Home</span></a></div>
