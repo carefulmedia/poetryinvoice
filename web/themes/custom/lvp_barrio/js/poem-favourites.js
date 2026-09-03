@@ -112,7 +112,7 @@
     const favPoems = getFavPoems();
     const heart = favPoems.length ? 'full' : 'outline';
     const count = favPoems.length ? `<span class="fav-number">${favPoems.length}</span>` : '';
-    button.innerHTML = `<img src="${HEART_BASE}-${heart}.png" alt="" style="height:20px;filter:grayscale(100%) brightness(2000%);" /> ${count}`;
+    button.innerHTML = `<img src="${HEART_BASE}-${heart}.png" alt="" style="height:28px;filter:grayscale(100%) brightness(2000%);" /> ${count}`;
   }
 
   function emptyMessage() {

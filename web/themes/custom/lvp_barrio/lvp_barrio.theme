@@ -69,7 +69,7 @@ function lvp_barrio_preprocess_page(&$variables) {
   }
 
   $variables['page']['header']['#sorted'] = FALSE;
-  $weight = $variables['page']['header']['usericonheader']['#weight'] ?? -14;
+  $weight = $variables['page']['header']['usericonheader']['#weight'] ?? +14;
   $route = \Drupal::languageManager()->getCurrentLanguage()->getId() == 'en'
     ? 'piv_base.google_search_en'
     : 'piv_base.google_search_fr';

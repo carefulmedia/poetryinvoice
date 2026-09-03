@@ -11,7 +11,7 @@ dependencies:
 id: lvp_barrio_buttonensubmitcontestrecitationsformenu
 theme: lvp_barrio
 region: header
-weight: -23
+weight: 24
 provider: null
 plugin: 'block_content:5e291f83-37cd-4ba1-b66d-866cccea1304'
 settings:
