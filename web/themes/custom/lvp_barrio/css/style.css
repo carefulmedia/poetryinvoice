@@ -4795,6 +4795,9 @@ h4,
 }
 /* Only for mobile */
 @media (max-width: 867px) {
+  #block-lvp-barrio-buttonensubmitcontestrecitationsformenu {
+    display: none;
+  }
   h1 {
     font-size: 30px;
   }
