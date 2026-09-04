@@ -1365,6 +1365,9 @@ body {
 .lesson-plans-index .content-index {
   height: fit-content;
 }
+.view-id-user_listing_index_pages .col-12 {
+  margin-bottom: 30px;
+}
 .content-index,
 .col-2-sidebar .block-layout-builder,
 .poem-extras .block-layout-builder .content {
