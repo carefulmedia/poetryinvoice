@@ -728,6 +728,9 @@ dialog {
  * @file
  * Visual styles for Bootstrap Barrio's field components.
  */
+.node .field--name-field-prompt-image {
+  float: none !important;
+}
 .field--type-entity-reference {
   margin: 0 0 1.2em;
 }
