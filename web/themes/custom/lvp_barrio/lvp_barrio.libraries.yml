@@ -54,3 +54,4 @@ poem-favourites:
     - core/drupal
     - core/drupalSettings
     - core/once
+    - piv_base/poem_favourites_storage

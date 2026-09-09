@@ -7,6 +7,9 @@
 
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
+use Drupal\piv_base\Controller\PoemFavouritesController;
+use Drupal\piv_base\PoemFavouritesStorage;
+use Drupal\user\Entity\User;
 
 /**
  * Implements hook_form_system_theme_settings_alter() for settings form.
@@ -114,8 +117,11 @@ function lvp_barrio_preprocess_page(&$variables) {
   ];
 
   $variables['#attached']['library'][] = 'lvp_barrio/poem-favourites';
-  $variables['#attached']['drupalSettings']['poemFavourites'] = [
+
+  $account = \Drupal::currentUser();
+  $poem_favourites_settings = [
     'lang' => $langcode,
+    'uid' => (int) $account->id(),
     'emptyEn' => [
       'Find a poem you like.',
       'Click its heart to add it to My Favourites.',
@@ -127,6 +133,17 @@ function lvp_barrio_preprocess_page(&$variables) {
       'Pour voir vos favoris, cliquez sur le cœur dans la barre de navigation.',
     ],
   ];
+
+  if (!$account->isAnonymous()) {
+    $user = User::load($account->id());
+    if ($user) {
+      $poem_favourites_settings['favourites'] = PoemFavouritesStorage::load($user);
+      $poem_favourites_settings['apiUrl'] = '/api/poem-favourites';
+      $poem_favourites_settings['csrfToken'] = \Drupal::csrfToken()->get(PoemFavouritesController::CSRF_CONTEXT);
+    }
+  }
+
+  $variables['#attached']['drupalSettings']['poemFavourites'] = $poem_favourites_settings;
 }
 
 /**

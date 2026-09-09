@@ -63,3 +63,27 @@ piv_base.school_visit_summary:
     _controller: '\Drupal\piv_base\Controller\SchoolVisitsSummaryController::build'
   requirements:
     _permission: 'access administration pages'
+
+piv_base.poem_favourites_bootstrap:
+  path: '/api/poem-favourites/bootstrap'
+  defaults:
+    _controller: '\Drupal\piv_base\Controller\PoemFavouritesController::bootstrap'
+  methods: [GET]
+  requirements:
+    _access: 'TRUE'
+
+piv_base.poem_favourites_get:
+  path: '/api/poem-favourites'
+  defaults:
+    _controller: '\Drupal\piv_base\Controller\PoemFavouritesController::get'
+  methods: [GET]
+  requirements:
+    _user_is_logged_in: 'TRUE'
+
+piv_base.poem_favourites_save:
+  path: '/api/poem-favourites'
+  defaults:
+    _controller: '\Drupal\piv_base\Controller\PoemFavouritesController::save'
+  methods: [PUT]
+  requirements:
+    _user_is_logged_in: 'TRUE'

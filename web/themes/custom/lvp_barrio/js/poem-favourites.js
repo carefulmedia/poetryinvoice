@@ -1,99 +1,78 @@
 /**
  * @file
- * Poem favourites stored in sessionStorage (shared with Poem Roulette).
+ * Poem favourites UI (cookie for anonymous, user account when logged in).
  */
 (function (Drupal, once, drupalSettings) {
   'use strict';
 
-  const FAV_POEM_KEY = 'favPoems';
   const HEART_BASE = '/roulette/images/icons/heart';
+  const storage = window.PivPoemFavouritesStorage || Drupal.PivPoemFavouritesStorage;
+
+  let favouritesCache = [];
+  let settingsCache = null;
+  let initPromise = null;
 
   function getSettings() {
-    return drupalSettings.poemFavourites || {};
-  }
-
-  function normalizePoemPath(path) {
-    if (!path) {
-      return '';
-    }
-    try {
-      if (/^https?:\/\//i.test(path)) {
-        return new URL(path).pathname.replace(/\/$/, '') || '/';
-      }
-    }
-    catch (e) {
-      // Fall through to pathname normalization.
-    }
-    return String(path).replace(/\/$/, '') || '/';
+    return settingsCache || drupalSettings.poemFavourites || {};
   }
 
   function poemPageUrl(path) {
-    const normalized = normalizePoemPath(path);
+    const normalized = storage.normalizePoemPath(path);
     return normalized ? `${window.location.origin}${normalized}` : path;
   }
 
   function poemKey(poem) {
-    return normalizePoemPath(poem.poemPath || poem.poemId || '');
+    return storage.normalizePoemPath(poem.poemPath || poem.poemId || '');
+  }
+
+  function ensureLoaded() {
+    if (!initPromise) {
+      settingsCache = drupalSettings.poemFavourites || {};
+      initPromise = storage.ensureSettings(settingsCache).then((settings) => {
+        settingsCache = settings;
+        return storage.getFavourites(settings).then((list) => {
+          favouritesCache = list;
+          return list;
+        });
+      });
+    }
+    return initPromise;
+  }
+
+  function persistFavourites() {
+    return storage.setFavourites(getSettings(), favouritesCache).then((saved) => {
+      favouritesCache = saved;
+      return saved;
+    });
   }
 
   function getFavPoems() {
-    if (!(FAV_POEM_KEY in sessionStorage)) {
-      return [];
-    }
-    try {
-      const favPoems = JSON.parse(sessionStorage.getItem(FAV_POEM_KEY));
-      if (!Array.isArray(favPoems)) {
-        return [];
-      }
-      const seen = new Set();
-      const normalized = [];
-      favPoems.forEach((poem) => {
-        const key = poemKey(poem);
-        if (!key || seen.has(key)) {
-          return;
-        }
-        seen.add(key);
-        normalized.push({
-          poemId: key,
-          poemPath: key,
-          title: (poem.title || '').trim(),
-          poet: (poem.poet || '').trim(),
-        });
-      });
-      return normalized;
-    }
-    catch (e) {
-      return [];
-    }
-  }
-
-  function setFavPoems(favPoems) {
-    sessionStorage.setItem(FAV_POEM_KEY, JSON.stringify(favPoems));
+    return favouritesCache;
   }
 
   function isFavourite(key) {
-    const normalizedKey = normalizePoemPath(key);
-    return getFavPoems().some((poem) => poemKey(poem) === normalizedKey);
+    const normalizedKey = storage.normalizePoemPath(key);
+    return favouritesCache.some((poem) => poemKey(poem) === normalizedKey);
   }
 
   function removeFavPoem(key) {
-    const normalizedKey = normalizePoemPath(key);
-    setFavPoems(getFavPoems().filter((poem) => poemKey(poem) !== normalizedKey));
+    const normalizedKey = storage.normalizePoemPath(key);
+    favouritesCache = favouritesCache.filter((poem) => poemKey(poem) !== normalizedKey);
+    return persistFavourites();
   }
 
   function storeFavPoem(poem) {
     const key = poemKey(poem);
     if (!key || isFavourite(key)) {
-      return;
+      return Promise.resolve();
     }
-    const favPoems = getFavPoems();
-    favPoems.push({
+    favouritesCache = favouritesCache.concat([{
       poemId: key,
       poemPath: key,
       title: (poem.title || '').trim(),
       poet: (poem.poet || '').trim(),
-    });
-    setFavPoems(favPoems);
+    }]);
+    return persistFavourites();
   }
 
   function isFrench() {
@@ -185,9 +164,9 @@
   }
 
   function syncHeartStates(key, isFavourited) {
-    const normalizedKey = normalizePoemPath(key);
+    const normalizedKey = storage.normalizePoemPath(key);
     document.querySelectorAll('.heart[data-poem-id], .heart[data-index]').forEach((heart) => {
-      const heartKey = normalizePoemPath(heart.dataset.poemId || heart.dataset.index || '');
+      const heartKey = storage.normalizePoemPath(heart.dataset.poemId || heart.dataset.index || '');
       if (heartKey === normalizedKey) {
         setHeartState(heart, isFavourited);
       }
@@ -213,11 +192,12 @@
         }
         event.preventDefault();
         const key = button.getAttribute('data-id');
-        removeFavPoem(key);
-        button.closest('li')?.remove();
-        highlightFavourite();
-        renderDropdownList();
-        syncHeartStates(key, false);
+        removeFavPoem(key).then(() => {
+          button.closest('li')?.remove();
+          highlightFavourite();
+          renderDropdownList();
+          syncHeartStates(key, false);
+        });
       });
     });
 
@@ -242,7 +222,7 @@
 
       const title = document.querySelector('#block-pagetitle h1, h1.title')?.textContent.trim() || '';
       const poet = article.querySelector('.author .name, .author h3.name')?.textContent.trim() || '';
-      const poemPath = normalizePoemPath(window.location.pathname);
+      const poemPath = storage.normalizePoemPath(window.location.pathname);
       if (!poemPath) {
         return;
       }
@@ -258,16 +238,14 @@
 
       heart.addEventListener('click', (event) => {
         event.preventDefault();
-        if (isFavourite(poemPath)) {
-          removeFavPoem(poemPath);
-          setHeartState(heart, false);
-        }
-        else {
-          storeFavPoem(poemFromHeart(heart));
-          setHeartState(heart, true);
-        }
-        highlightFavourite();
-        syncHeartStates(poemPath, isFavourite(poemPath));
+        const toggle = isFavourite(poemPath)
+          ? removeFavPoem(poemPath).then(() => false)
+          : storeFavPoem(poemFromHeart(heart)).then(() => true);
+        toggle.then((isFavourited) => {
+          setHeartState(heart, isFavourited);
+          highlightFavourite();
+          syncHeartStates(poemPath, isFavourited);
+        });
       });
 
       const printIcon = article.querySelector('.print-icon');
@@ -282,8 +260,10 @@
 
   Drupal.behaviors.poemFavourites = {
     attach(context) {
-      initHeader(context);
-      initPoemHearts(context);
+      ensureLoaded().then(() => {
+        initHeader(context);
+        initPoemHearts(context);
+      });
     },
   };
 })(Drupal, once, drupalSettings);

@@ -30,7 +30,8 @@ class TransformAliasIfNode extends ProcessPluginBase {
     }
     // Need to always add a / to beggining if there isn't one.
     if (is_string($value)) {
-      if ($value[0] != '/') {
+      $value = preg_replace('#^/?index\.php/#', '', $value) ?? $value;
+      if ($value !== '' && $value[0] != '/') {
         return "/{$value}";
       }
     }

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+## Description: Watch and compile lvp_barrio LESS → CSS (like lando gulp watch)
+## Usage: gulp-watch
+## Example: ddev gulp-watch
+
+set -eu -o pipefail
+
+THEME_DIR="$DDEV_DOCROOT/themes/custom/lvp_barrio"
+
+cd "$THEME_DIR"
+
+if [ ! -d node_modules ]; then
+  echo "Installing theme npm dependencies..."
+  npm install
+fi
+
+npm run watch

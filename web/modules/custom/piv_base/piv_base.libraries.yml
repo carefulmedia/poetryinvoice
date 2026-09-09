@@ -26,3 +26,9 @@ redirect_after_login:
   dependencies:
     - core/jquery
     - core/once
+
+poem_favourites_storage:
+  js:
+    js/poem-favourites-storage.js: {}
+  dependencies:
+    - core/drupal

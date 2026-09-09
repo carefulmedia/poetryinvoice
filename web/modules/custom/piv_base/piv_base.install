@@ -167,3 +167,79 @@ TWIG;
   $config->save(TRUE);
   \Drupal::service('plugin.manager.views.display')->clearCachedDefinitions();
 }
+
+/**
+ * Remove legacy D7 path aliases that include index.php in the alias.
+ */
+function piv_base_update_9005() {
+  _piv_base_remove_index_php_path_aliases();
+}
+
+/**
+ * Deletes or rewrites path aliases incorrectly prefixed with index.php.
+ */
+function _piv_base_remove_index_php_path_aliases(): void {
+  $storage = \Drupal::entityTypeManager()->getStorage('path_alias');
+  $alias_ids = $storage->getQuery()
+    ->accessCheck(FALSE)
+    ->execute();
+
+  if (!$alias_ids) {
+    return;
+  }
+
+  $redirect_storage = \Drupal::moduleHandler()->moduleExists('redirect')
+    ? \Drupal::entityTypeManager()->getStorage('redirect')
+    : NULL;
+
+  foreach ($storage->loadMultiple($alias_ids) as $alias_entity) {
+    $alias = $alias_entity->getAlias();
+    if (!preg_match('#^/?index\.php(?:/|$)#', $alias)) {
+      continue;
+    }
+
+    $path = $alias_entity->getPath();
+    $langcode = $alias_entity->language()->getId();
+    $clean_alias = preg_replace('#^/?index\.php#', '', $alias) ?? '';
+    $clean_alias = '/' . ltrim($clean_alias, '/');
+
+    $canonical_exists = FALSE;
+    foreach ($storage->loadByProperties(['path' => $path, 'langcode' => $langcode]) as $existing) {
+      if ((int) $existing->id() === (int) $alias_entity->id()) {
+        continue;
+      }
+      if (!preg_match('#^/?index\.php(?:/|$)#', $existing->getAlias())) {
+        $canonical_exists = TRUE;
+        break;
+      }
+    }
+
+    if ($redirect_storage && $clean_alias !== $alias) {
+      $source = ltrim($alias, '/');
+      $existing_redirects = $redirect_storage->loadByProperties([
+        'redirect_source__path' => $source,
+        'language' => $langcode,
+      ]);
+      if (!$existing_redirects) {
+        /** @var \Drupal\redirect\Entity\Redirect $redirect */
+        $redirect = $redirect_storage->create([
+          'redirect_source' => $source,
+          'redirect_redirect' => 'internal:' . $clean_alias,
+          'language' => $langcode,
+          'status_code' => 301,
+        ]);
+        $redirect->save();
+      }
+    }
+
+    if ($canonical_exists || $clean_alias === $alias) {
+      $alias_entity->delete();
+      continue;
+    }
+
+    $alias_entity->setAlias($clean_alias);
+    $alias_entity->save();
+  }
+
+  \Drupal::service('path_alias.manager')->cacheClear();
+}

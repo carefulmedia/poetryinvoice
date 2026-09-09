@@ -30,6 +30,7 @@
     <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script type="text/javascript" src="/roulette/js/jquery.slotmachine-min.js"></script>
+    <script type="text/javascript" src="/modules/custom/piv_base/js/poem-favourites-storage.js"></script>
   </head>
   <body>
     <div id="element_to_pop_up">

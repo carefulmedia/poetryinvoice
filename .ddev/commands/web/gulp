@@ -1,0 +1,18 @@
+#!/bin/bash
+
+## Description: Compile lvp_barrio LESS → CSS once
+## Usage: gulp
+## Example: ddev gulp
+
+set -eu -o pipefail
+
+THEME_DIR="$DDEV_DOCROOT/themes/custom/lvp_barrio"
+
+cd "$THEME_DIR"
+
+if [ ! -d node_modules ]; then
+  echo "Installing theme npm dependencies..."
+  npm install
+fi
+
+npm run build

@@ -645,23 +645,12 @@
 </div>
 
 <script>
-// key for getting favPoems in session storage
-const favPoemKey = "favPoems";
+const favStorage = window.PivPoemFavouritesStorage;
+let favSettings = {};
+let favPoemsCache = [];
+let favInitPromise = null;
 
-normalizePoemPath = (path) => {
-  if (!path) {
-    return '';
-  }
-  if (/^https?:\/\//i.test(path)) {
-    try {
-      return new URL(path).pathname.replace(/\/$/, '') || '/';
-    }
-    catch (e) {
-      return String(path).replace(/\/$/, '') || '/';
-    }
-  }
-  return String(path).replace(/\/$/, '') || '/';
-}
+normalizePoemPath = (path) => favStorage.normalizePoemPath(path);
 
 // JSON views emit production URLs; keep links and storage on the current site.
 poemPageUrl = (path) => {
@@ -674,64 +663,53 @@ poemPageUrl = (path) => {
 
 poemKeyFromEntry = (poem) => normalizePoemPath(poem.poemPath || poem.poemId || '');
 
-getFavPoems = () => {
-  if (!(favPoemKey in sessionStorage)) {
-    return [];
-  }
-  try {
-    const favPoems = JSON.parse(sessionStorage.getItem(favPoemKey));
-    if (!Array.isArray(favPoems)) {
-      return [];
-    }
-    const seen = new Set();
-    const normalized = [];
-    favPoems.forEach((poem) => {
-      const key = poemKeyFromEntry(poem);
-      if (!key || seen.has(key)) {
-        return;
-      }
-      seen.add(key);
-      normalized.push({
-        poemId: key,
-        poemPath: key,
-        title: (poem.title || '').trim(),
-        poet: (poem.poet || '').trim(),
-      });
+ensureFavouritesLoaded = () => {
+  if (!favInitPromise) {
+    favInitPromise = favStorage.ensureSettings({}).then((settings) => {
+      favSettings = settings;
+      return favStorage.getFavourites(settings);
+    }).then((list) => {
+      favPoemsCache = list;
+      return list;
     });
-    return normalized;
   }
-  catch (e) {
-    return [];
-  }
+  return favInitPromise;
 }
+
+getFavPoems = () => favPoemsCache;
 
 isFavouritePoem = (key) => {
   const normalizedKey = normalizePoemPath(key);
   return getFavPoems().some((poem) => poemKeyFromEntry(poem) === normalizedKey);
 }
 
-// Remove poem from favourites in session storage
-removeFavPoem = (poemKey) => {
-  const normalizedKey = normalizePoemPath(poemKey);
-  sessionStorage.setItem(favPoemKey, JSON.stringify(getFavPoems().filter((poem) => poemKeyFromEntry(poem) !== normalizedKey)));
+persistFavourites = () => {
+  return favStorage.setFavourites(favSettings, favPoemsCache).then((saved) => {
+    favPoemsCache = saved;
+    return saved;
+  });
 }
 
-// Add poem to favourites in session storage
+removeFavPoem = (poemKey) => {
+  const normalizedKey = normalizePoemPath(poemKey);
+  favPoemsCache = getFavPoems().filter((poem) => poemKeyFromEntry(poem) !== normalizedKey);
+  return persistFavourites();
+}
+
 storeFavPoem = (legacyPoemId, poemPath) => {
   let title = $("#" + legacyPoemId + " h1:first").text().trim();
   let poet = $("#" + legacyPoemId + " h4:first").text().trim();
   let poemKey = normalizePoemPath(poemPath);
   if (!poemKey || isFavouritePoem(poemKey)) {
-    return;
+    return Promise.resolve();
   }
-  let favPoems = getFavPoems();
-  favPoems.push({
+  favPoemsCache = getFavPoems().concat([{
     title: title,
     poet: poet,
     poemPath: poemKey,
     poemId: poemKey
-  });
-  sessionStorage.setItem(favPoemKey, JSON.stringify(favPoems));
+  }]);
+  return persistFavourites();
 }
 // Highlight My Favourites Heart
 highlightFavourite = (poemId) =>  {
@@ -751,7 +729,9 @@ $( document ).ready(function() {
   hideSlide();
     });
     $( ".slider" ).hide();
-  highlightFavourite();
+  ensureFavouritesLoaded().then(function() {
+    highlightFavourite();
+  });
   });
 
 $( "#tagUp" ).click(function() {
@@ -780,14 +760,14 @@ $( ".slotMachine, .machineResult" ).click(function() {
  // ga('send', 'pageview', gaPage);
 
 appendLikeButton = (legacyPoemId, poemPath) => {
-  $(".verse").last().wrap("<div class='flex-container'/>");
-  var poemKey = normalizePoemPath(poemPath);
-  var heart = isFavouritePoem(poemKey) ? "full" : "outline";
+  ensureFavouritesLoaded().then(function() {
+    $(".verse").last().wrap("<div class='flex-container'/>");
+    var poemKey = normalizePoemPath(poemPath);
+    var heart = isFavouritePoem(poemKey) ? "full" : "outline";
 
-  $(".verse").last().after("<img src='/roulette/images/icons/heart-" + heart + ".png' class='heart' data-index='" + poemKey + "' data-legacy-id='" + legacyPoemId + "'/></div>");
-  $(".heart").last().wrap("<div class='heart-container'/>");
-
-
+    $(".verse").last().after("<img src='/roulette/images/icons/heart-" + heart + ".png' class='heart' data-index='" + poemKey + "' data-legacy-id='" + legacyPoemId + "'/></div>");
+    $(".heart").last().wrap("<div class='heart-container'/>");
+  });
 }
 
 appendPoemButton = (poemId, poemPath) => {
@@ -853,14 +833,17 @@ $(document).on('click', '.heart', (event) => {
   let poemKey = $(target).attr("data-index");
   let legacyPoemId = $(target).attr("data-legacy-id");
   let poemPath = poemKey || (legacyPoemId ? normalizePoemPath($("#visitPoem" + legacyPoemId).attr("href")) : '');
+  let action;
   if ($(target).attr("src").indexOf('heart-outline') !== -1){
     $(target).attr("src","/roulette/images/icons/heart-full.png");
-    storeFavPoem(legacyPoemId, poemPath);
+    action = storeFavPoem(legacyPoemId, poemPath);
   } else {
     $(target).attr("src","/roulette/images/icons/heart-outline.png");
-    removeFavPoem(poemKey);
+    action = removeFavPoem(poemKey);
   }
-  highlightFavourite();
+  Promise.resolve(action).then(function() {
+    highlightFavourite();
+  });
 });
 $(document).click(function(event) {
   var $target = $(event.target);
@@ -870,13 +853,13 @@ $(document).click(function(event) {
   }
 });
 $(document).on('click', '#favouritesButton', () => {
-  const favPoemKey = "favPoems";
             var lang = "en";
 
   if (window.location.href.indexOf("lesvoixdelapoesie") > -1) {
               lang = "fr";
   }
   if ($("#favouritesDropdown").is(":hidden")){
+    ensureFavouritesLoaded().then(function() {
     let favPoems = getFavPoems();
               if (favPoems.length === 0){
                 if (lang == "fr"){
@@ -898,6 +881,7 @@ $(document).on('click', '#favouritesButton', () => {
       }
     }
       $("#favouritesDropdown").slideDown("fast");
+    });
 
   } else {
     $("#favouritesDropdown").slideUp("fast");
@@ -907,12 +891,12 @@ $(document).on('click', '#favouritesButton', () => {
 $(document).on('click', '.poem-delete', (event) => {
   let target = event.currentTarget;
   let poemId = $(target).attr("data-id");
-  removeFavPoem(poemId);
-  $(target).parent().remove();
-  highlightFavourite();
-  $(".heart[data-index='" + poemId + "']").attr("src", "/roulette/images/icons/heart-outline.png");
-  $("#favouritesDropdown").show();
-
+  removeFavPoem(poemId).then(function() {
+    $(target).parent().remove();
+    highlightFavourite();
+    $(".heart[data-index='" + poemId + "']").attr("src", "/roulette/images/icons/heart-outline.png");
+    $("#favouritesDropdown").show();
+  });
 });
 
 
