@@ -5,6 +5,7 @@ dependencies:
   config:
     - core.entity_form_mode.node.teacher
     - field.field.node.pal_pir_school_visit.comment_node_pal_pir_school_vi
+    - field.field.node.pal_pir_school_visit.field_admin_notes
     - field.field.node.pal_pir_school_visit.field_agreed_visit_date
     - field.field.node.pal_pir_school_visit.field_amount_to_be_paid_to_each_
     - field.field.node.pal_pir_school_visit.field_booked_
@@ -156,6 +157,7 @@ content:
 hidden:
   comment_node_pal_pir_school_vi: true
   created: true
+  field_admin_notes: true
   field_agreed_visit_date: true
   field_amount_to_be_paid_to_each_: true
   field_booked_: true

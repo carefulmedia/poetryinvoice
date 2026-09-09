@@ -728,6 +728,9 @@ dialog {
  * @file
  * Visual styles for Bootstrap Barrio's field components.
  */
+.node .field--name-field-prompt-image {
+  float: none !important;
+}
 .field--type-entity-reference {
   margin: 0 0 1.2em;
 }
@@ -1365,6 +1368,9 @@ body {
 .lesson-plans-index .content-index {
   height: fit-content;
 }
+.view-id-user_listing_index_pages .col-12 {
+  margin-bottom: 30px;
+}
 .content-index,
 .col-2-sidebar .block-layout-builder,
 .poem-extras .block-layout-builder .content {
@@ -1700,9 +1706,11 @@ h3.name {
   display: none;
 }
 .menu--account a,
-.search-icon,
-.poem-favourites {
-  margin-left: 0.25rem;
+.search-icon {
+  margin: 0rem 0.5rem;
+}
+#block-lvp-barrio-buttonensubmitcontestrecitationsformenu {
+  margin-right: 0.25rem;
 }
 #block-usericonheader {
   margin-left: 0.25rem;
@@ -1715,15 +1723,18 @@ h3.name {
   color: #fff;
   background: transparent;
   border: none;
-  padding: 0.25rem 0.5rem;
+  padding: 0;
+  margin: 0;
 }
 #favouritesButton:hover,
 #favouritesButton:focus {
   background: transparent;
 }
 #favouritesDropdown {
-  min-width: 280px;
-  padding: 10px !important;
+  min-width: 200px;
+  padding: 5px !important;
+  background-color: white !important;
+  border: 1px solid black;
 }
 #favouritesDropdown li {
   display: flex;
@@ -4787,6 +4798,9 @@ h4,
 }
 /* Only for mobile */
 @media (max-width: 867px) {
+  #block-lvp-barrio-buttonensubmitcontestrecitationsformenu {
+    display: none;
+  }
   h1 {
     font-size: 30px;
   }

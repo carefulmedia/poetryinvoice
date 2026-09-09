@@ -27,6 +27,12 @@
 .dropdown-menu {
 	padding: 10px !important;
 }
+#favouritesDropdown {
+  background-color: white !important;
+  border: 1px solid black;
+  min-width: 200px;
+
+}
 	
 .logo,
 .slider-up {

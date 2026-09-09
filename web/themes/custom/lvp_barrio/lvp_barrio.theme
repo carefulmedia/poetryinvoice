@@ -72,40 +72,24 @@ function lvp_barrio_preprocess_page(&$variables) {
   }
 
   $variables['page']['header']['#sorted'] = FALSE;
-  $weight = $variables['page']['header']['usericonheader']['#weight'] ?? -14;
+  $weight = $variables['page']['header']['usericonheader']['#weight'] ?? +14;
   $route = \Drupal::languageManager()->getCurrentLanguage()->getId() == 'en'
     ? 'piv_base.google_search_en'
     : 'piv_base.google_search_fr';
   $url = Url::fromRoute($route)->toString();
   $variables['page']['header']['search_icon'] = [
-    '#markup' => "<a href='{$url}' class='search-icon'><svg width='28' height='28' viewBox='0 0 28 28' fill='white' xmlns='http://www.w3.org/2000/svg'>
-<g clip-path='url(#clip0_1603_4962)'>svg'
-<path d='M26.8201 25.4103L19.5501 18.1403C23.1701 13.8003 22.9501 7.31027 18.8801 3.23027C14.5701 -1.07973 7.55007 -1.07973 3.24007 3.24027C-1.06993 7.56027 -1.06993 14.5703 3.24007 18.8903C5.40007 21.0503 8.23007 22.1303 11.0601 22.1303C13.5801 22.1303 16.1001 21.2703 18.1401 19.5703L25.4101 26.8403C25.6101 27.0403 25.8601 27.1303 26.1201 27.1303C26.3801 27.1303 26.6301 27.0303 26.8301 26.8403C27.2201 26.4503 27.2201 25.8203 26.8301 25.4303L26.8201 25.4103ZM4.65007 17.4703C1.12007 13.9403 1.12007 8.18027 4.65007 4.65027C6.42007 2.88027 8.74007 2.00027 11.0601 2.00027C13.3801 2.00027 15.7001 2.88027 17.4701 4.65027C21.0001 8.18027 21.0001 13.9403 17.4701 17.4703C13.9301 21.0003 8.18007 21.0003 4.65007 17.4703Z' fill='white'/>
-</g>
-<defs>
-<clipPath id='clip0_1603_4962'>
-<rect width='27.12' height='27.12' fill='white'/>
-</clipPath>
-</defs>
-</svg></a>",
+    '#markup' => "<a href='{$url}' class='search-icon'><svg width='27' height='27' viewBox='0 0 27 27' fill='none' stroke='white' stroke-width='1' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'> <circle cx='9.57' cy='9.57' r='9.07'></circle> <line x1='15.98' y1='15.98' x2='26.5' y2='26.5'></line> </svg>
+</a>",
     '#weight' => $weight - 0.1,
-    '#allowed_tags' => ['svg', 'path', 'a'],
+    '#allowed_tags' => ['svg', 'path', 'a', 'circle', 'line'],
   ];
   $weight = $variables['page']['primary_menu']['useraccountmenu']['#weight'] ?? -10;
   $variables['page']['primary_menu']['#sorted'] = FALSE;
   $variables['page']['primary_menu']['search_icon'] = [
-    '#markup' => "<a href='{$url}' class='search-icon'><svg width='28' height='28' viewBox='0 0 28 28' fill='white' xmlns='http://www.w3.org/2000/svg'>
-<g clip-path='url(#clip0_1603_4962)'>svg'
-<path d='M26.8201 25.4103L19.5501 18.1403C23.1701 13.8003 22.9501 7.31027 18.8801 3.23027C14.5701 -1.07973 7.55007 -1.07973 3.24007 3.24027C-1.06993 7.56027 -1.06993 14.5703 3.24007 18.8903C5.40007 21.0503 8.23007 22.1303 11.0601 22.1303C13.5801 22.1303 16.1001 21.2703 18.1401 19.5703L25.4101 26.8403C25.6101 27.0403 25.8601 27.1303 26.1201 27.1303C26.3801 27.1303 26.6301 27.0303 26.8301 26.8403C27.2201 26.4503 27.2201 25.8203 26.8301 25.4303L26.8201 25.4103ZM4.65007 17.4703C1.12007 13.9403 1.12007 8.18027 4.65007 4.65027C6.42007 2.88027 8.74007 2.00027 11.0601 2.00027C13.3801 2.00027 15.7001 2.88027 17.4701 4.65027C21.0001 8.18027 21.0001 13.9403 17.4701 17.4703C13.9301 21.0003 8.18007 21.0003 4.65007 17.4703Z' fill='#1F1F1F'/>
-</g>
-<defs>
-<clipPath id='clip0_1603_4962'>
-<rect width='27.12' height='27.12' fill='white'/>
-</clipPath>
-</defs>
-</svg></a>",
+    '#markup' => "<a href='{$url}' class='search-icon'><svg width='27' height='27' viewBox='0 0 27 27' fill='none' stroke='white' stroke-width='1' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'> <circle cx='9.57' cy='9.57' r='9.07'></circle> <line x1='15.98' y1='15.98' x2='26.5' y2='26.5'></line> </svg>
+</a>",
     '#weight' => $weight - 0.1,
-    '#allowed_tags' => ['svg', 'path', 'a'],
+    '#allowed_tags' => ['svg', 'path', 'a', 'circle', 'line'],
   ];
 
   $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
