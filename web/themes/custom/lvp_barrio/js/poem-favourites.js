@@ -6,11 +6,36 @@
   'use strict';
 
   const HEART_BASE = '/roulette/images/icons/heart';
-  const storage = window.PivPoemFavouritesStorage || Drupal.PivPoemFavouritesStorage;
+  const STORAGE_PATH = '/modules/custom/piv_base/js/poem-favourites-storage.js';
 
+  let storage = window.PivPoemFavouritesStorage || (Drupal.PivPoemFavouritesStorage || null);
+  let storagePromise = null;
   let favouritesCache = [];
   let settingsCache = null;
   let initPromise = null;
+
+  function getStorage() {
+    if (storage) {
+      return Promise.resolve(storage);
+    }
+    if (!storagePromise) {
+      storagePromise = new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = STORAGE_PATH;
+        script.onload = () => {
+          storage = window.PivPoemFavouritesStorage || Drupal.PivPoemFavouritesStorage || null;
+          if (storage) {
+            resolve(storage);
+            return;
+          }
+          reject(new Error('Poem favourites storage failed to initialize.'));
+        };
+        script.onerror = () => reject(new Error('Poem favourites storage failed to load.'));
+        document.head.appendChild(script);
+      });
+    }
+    return storagePromise;
+  }
 
   function getSettings() {
     return settingsCache || drupalSettings.poemFavourites || {};
@@ -28,11 +53,14 @@
   function ensureLoaded() {
     if (!initPromise) {
       settingsCache = drupalSettings.poemFavourites || {};
-      initPromise = storage.ensureSettings(settingsCache).then((settings) => {
-        settingsCache = settings;
-        return storage.getFavourites(settings).then((list) => {
-          favouritesCache = list;
-          return list;
+      initPromise = getStorage().then((loadedStorage) => {
+        storage = loadedStorage;
+        return storage.ensureSettings(settingsCache).then((settings) => {
+          settingsCache = settings;
+          return storage.getFavourites(settings).then((list) => {
+            favouritesCache = list;
+            return list;
+          });
         });
       });
     }
@@ -260,9 +288,14 @@
 
   Drupal.behaviors.poemFavourites = {
     attach(context) {
+      once('poem-favourites-placeholder', '#favouritesButton', context).forEach(() => {
+        highlightFavourite();
+      });
       ensureLoaded().then(() => {
         initHeader(context);
         initPoemHearts(context);
+      }).catch((error) => {
+        console.error(error);
       });
     },
   };

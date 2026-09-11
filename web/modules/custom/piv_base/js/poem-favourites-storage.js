@@ -217,4 +217,4 @@
 
   window.PivPoemFavouritesStorage = storage;
   Drupal.PivPoemFavouritesStorage = storage;
-})(Drupal, drupalSettings);
+})(Drupal, window.drupalSettings || {});

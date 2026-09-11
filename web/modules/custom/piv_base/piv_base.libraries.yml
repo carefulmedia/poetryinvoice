@@ -29,6 +29,8 @@ redirect_after_login:
 
 poem_favourites_storage:
   js:
-    js/poem-favourites-storage.js: {}
+    js/poem-favourites-storage.js:
+      weight: -10
   dependencies:
     - core/drupal
+    - core/drupalSettings

@@ -6,5 +6,9 @@ core_version_requirement: ^9 || ^10 || ^11
 dependencies:
   - reroute_email:reroute_email
 
+libraries-extend:
+  lvp_barrio/poem-favourites:
+    - piv_base/poem_favourites_storage
+
 'interface translation project': piv_base
 'interface translation server pattern': modules/custom/piv_base/translations/%language.po
