@@ -2,6 +2,7 @@
 
 namespace Drupal\piv_base;
 
+use Drupal\user\UserDataInterface;
 use Drupal\user\UserInterface;
 
 /**
@@ -9,13 +10,15 @@ use Drupal\user\UserInterface;
  */
 final class PoemFavouritesStorage {
 
+  public const MODULE = 'piv_base';
+
   public const DATA_KEY = 'poem_favourites';
 
   /**
    * Loads favourites for a user account.
    */
   public static function load(UserInterface $user): array {
-    $raw = $user->getData(self::DATA_KEY);
+    $raw = self::userData()->get(self::MODULE, (int) $user->id(), self::DATA_KEY);
     if (!$raw) {
       return [];
     }
@@ -28,8 +31,12 @@ final class PoemFavouritesStorage {
    */
   public static function save(UserInterface $user, array $favourites): array {
     $normalized = self::normalize($favourites);
-    $user->setData(self::DATA_KEY, json_encode($normalized));
-    $user->save();
+    self::userData()->set(
+      self::MODULE,
+      (int) $user->id(),
+      self::DATA_KEY,
+      json_encode($normalized),
+    );
     return $normalized;
   }
 
@@ -75,6 +82,13 @@ final class PoemFavouritesStorage {
 
     $path = rtrim($path, '/');
     return $path === '' ? '/' : $path;
+  }
+
+  /**
+   * Returns the user data storage service.
+   */
+  protected static function userData(): UserDataInterface {
+    return \Drupal::service('user.data');
   }
 
 }
