@@ -176,6 +176,13 @@ function piv_base_update_9005() {
 }
 
 /**
+ * Rebuild routes so poem favourites API endpoints are registered.
+ */
+function piv_base_update_9006() {
+  \Drupal::service('router.builder')->rebuild();
+}
+
+/**
  * Deletes or rewrites path aliases incorrectly prefixed with index.php.
  */
 function _piv_base_remove_index_php_path_aliases(): void {

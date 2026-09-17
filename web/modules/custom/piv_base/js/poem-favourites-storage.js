@@ -112,6 +112,10 @@
     return Boolean(settings && settings.uid);
   }
 
+  function hasDrupalSession() {
+    return /(?:^|;\s*)(?:SSESS|SESS)[\w-]*=/.test(document.cookie);
+  }
+
   function applyBootstrap(settings, bootstrap) {
     if (!bootstrap || typeof bootstrap !== 'object') {
       return settings;
@@ -140,10 +144,10 @@
     if (base._bootstrapped) {
       return base;
     }
-    if (base.uid && Array.isArray(base.favourites)) {
+    if (base.uid > 0 && Array.isArray(base.favourites)) {
       return { ...base, _bootstrapped: true };
     }
-    if (base.uid && base.apiUrl) {
+    if (base.uid > 0 && base.apiUrl) {
       const response = await fetch(base.apiUrl, { credentials: 'same-origin' });
       if (response.ok) {
         return {
@@ -153,7 +157,15 @@
         };
       }
     }
-    return { ...await fetchBootstrap(base), _bootstrapped: true };
+    // Drupal pages pass uid: 0 for anonymous users; cookie storage needs no API.
+    if ('uid' in base && base.uid === 0) {
+      return { ...base, _bootstrapped: true };
+    }
+    // Roulette / standalone: bootstrap only when a Drupal login session exists.
+    if (!hasDrupalSession()) {
+      return { ...base, uid: 0, _bootstrapped: true };
+    }
+    return { ...await fetchBootstrap({ ...base, uid: base.uid || 0 }), _bootstrapped: true };
   }
 
   async function loadUserFavourites(settings) {
