@@ -68,10 +68,18 @@
   }
 
   function persistFavourites() {
+    const previous = favouritesCache.slice();
     return storage.setFavourites(getSettings(), favouritesCache).then((saved) => {
       favouritesCache = saved;
       return saved;
+    }).catch((error) => {
+      favouritesCache = previous;
+      throw error;
     });
+  }
+
+  function handleSaveError(error) {
+    console.error(error);
   }
 
   function getFavPoems() {
@@ -225,7 +233,7 @@
           highlightFavourite();
           renderDropdownList();
           syncHeartStates(key, false);
-        });
+        }).catch(handleSaveError);
       });
     });
 
@@ -273,6 +281,10 @@
           setHeartState(heart, isFavourited);
           highlightFavourite();
           syncHeartStates(poemPath, isFavourited);
+        }).catch(() => {
+          handleSaveError(new Error('Unable to save poem favourites.'));
+          setHeartState(heart, isFavourite(poemPath));
+          highlightFavourite();
         });
       });
 

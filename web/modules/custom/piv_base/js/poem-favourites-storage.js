@@ -201,7 +201,7 @@
       body: JSON.stringify(favourites),
     });
     if (!response.ok) {
-      throw new Error('Unable to save poem favourites.');
+      throw new Error(`Unable to save poem favourites (${response.status}).`);
     }
     return normalizeList(await response.json());
   }
