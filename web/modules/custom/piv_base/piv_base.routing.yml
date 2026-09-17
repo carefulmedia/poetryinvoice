@@ -71,6 +71,8 @@ piv_base.poem_favourites_bootstrap:
   methods: [GET]
   requirements:
     _access: 'TRUE'
+  options:
+    no_cache: TRUE
 
 piv_base.poem_favourites_get:
   path: '/api/poem-favourites'
@@ -79,11 +81,15 @@ piv_base.poem_favourites_get:
   methods: [GET]
   requirements:
     _user_is_logged_in: 'TRUE'
+  options:
+    no_cache: TRUE
 
 piv_base.poem_favourites_save:
   path: '/api/poem-favourites'
   defaults:
     _controller: '\Drupal\piv_base\Controller\PoemFavouritesController::save'
-  methods: [PUT]
+  methods: [POST, PUT]
   requirements:
     _user_is_logged_in: 'TRUE'
+  options:
+    no_cache: TRUE

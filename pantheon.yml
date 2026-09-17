@@ -5,10 +5,16 @@ workflows:
   sync_code:
     after:
       - type: webphp
+        description: Rebuild Drupal caches
+        script: private/scripts/drush-cache-rebuild.php
+      - type: webphp
         description: Regenerate Poem Roulette JSON caches
         script: private/scripts/roulette/generate-cache.php
   deploy:
     after:
+      - type: webphp
+        description: Rebuild Drupal caches
+        script: private/scripts/drush-cache-rebuild.php
       - type: webphp
         description: Regenerate Poem Roulette JSON caches
         script: private/scripts/roulette/generate-cache.php

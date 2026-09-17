@@ -180,7 +180,7 @@
       return favourites;
     }
     const response = await fetch(ready.apiUrl, {
-      method: 'PUT',
+      method: 'POST',
       credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json',

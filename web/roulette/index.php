@@ -33,7 +33,7 @@
     <script type="text/javascript" src="/modules/custom/piv_base/js/poem-favourites-storage.js"></script>
   </head>
   <body>
-    <div id="element_to_pop_up">
+    <div id="element_to_pop_up"<?php if (!empty($c)) { echo ' style="display:none"'; } ?>>
       <div class="col-xs-6 col-sm-6 col-md-6 choice1" id="junior" onclick="ga('send', 'pageview', '/virtual/roulette/junior');"> <img src="/sites/default/files/theme-youngpoets.png" class="img-responsive">
         <?php echo $vars['Junior'][$lang]; ?>
       </div>
@@ -41,36 +41,21 @@
         <?php echo $vars['Senior'][$lang]; ?>
       </div>
     </div>
-    <div id='d1'></div>
+    <div id='d1'>
     <?php
       if (!empty($c)) {
-        include 'roulette/load.php';
+        include __DIR__ . '/load.php';
       }
     ?>
+    </div>
     <script>
       $(document).ready(function() {
         $("#junior").click(function() {
-          var c = "j";
-          $('#element_to_pop_up').bPopup().close();
-          $.ajax({
-            url: "/roulette/load.php",
-            data: "c="+c,
-            type: "post",
-            success: function(data) { $('#d1').html(data); },
-            timeout: 5000,
-          });
-        })
+          window.location.href = '/roulette?c=j';
+        });
 
         $("#senior").click(function() {
-          var c = "s";
-          $('#element_to_pop_up').bPopup().close();
-          $.ajax({
-            url: "/roulette/load.php",
-            data: "c="+c,
-            type: "post",
-            success: function(data) { $('#d1').html(data); },
-            timeout: 5000,
-          });
+          window.location.href = '/roulette?c=s';
         });
       });
     </script>

@@ -28,6 +28,7 @@ redirect_after_login:
     - core/once
 
 poem_favourites_storage:
+  version: 1.1.0
   js:
     js/poem-favourites-storage.js:
       weight: -10
