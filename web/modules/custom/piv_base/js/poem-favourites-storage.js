@@ -168,22 +168,53 @@
     return { ...await fetchBootstrap({ ...base, uid: base.uid || 0 }), _bootstrapped: true };
   }
 
+  async function fetchFavourites(settings) {
+    const ready = await ensureSettings(settings);
+    if (isLoggedIn(ready)) {
+      if (!ready.apiUrl) {
+        return [];
+      }
+      const response = await fetch(ready.apiUrl, { credentials: 'same-origin' });
+      if (!response.ok) {
+        return [];
+      }
+      return normalizeList(await response.json());
+    }
+    return getCookieFavourites();
+  }
+
   async function loadUserFavourites(settings) {
     if (Array.isArray(settings.favourites)) {
       return normalizeList(settings.favourites);
     }
-    const ready = await ensureSettings(settings);
-    if (Array.isArray(ready.favourites)) {
-      return normalizeList(ready.favourites);
+    return fetchFavourites(settings);
+  }
+
+  let favouritesChannel = null;
+  function getFavouritesChannel() {
+    if (favouritesChannel === null && typeof BroadcastChannel !== 'undefined') {
+      try {
+        favouritesChannel = new BroadcastChannel('piv-poem-favourites');
+      }
+      catch (e) {
+        favouritesChannel = false;
+      }
     }
-    if (!ready.apiUrl) {
-      return [];
-    }
-    const response = await fetch(ready.apiUrl, { credentials: 'same-origin' });
-    if (!response.ok) {
-      return [];
-    }
-    return normalizeList(await response.json());
+    return favouritesChannel || null;
+  }
+
+  function notifyFavouritesChanged(favourites) {
+    getFavouritesChannel()?.postMessage({
+      favourites: normalizeList(favourites),
+    });
+  }
+
+  let writeLock = Promise.resolve();
+
+  function withWriteLock(task) {
+    const run = writeLock.catch(() => {}).then(task);
+    writeLock = run.catch(() => {});
+    return run;
   }
 
   async function saveUserFavourites(settings, favourites) {
@@ -203,7 +234,37 @@
     if (!response.ok) {
       throw new Error(`Unable to save poem favourites (${response.status}).`);
     }
-    return normalizeList(await response.json());
+    const saved = normalizeList(await response.json());
+    notifyFavouritesChanged(saved);
+    return saved;
+  }
+
+  async function addFavourite(settings, poem) {
+    return withWriteLock(async () => {
+      const ready = await ensureSettings(settings);
+      const current = await fetchFavourites(ready);
+      const key = normalizePoemPath(poem.poemPath || poem.poemId || '');
+      if (!key || current.some((entry) => normalizePoemPath(entry.poemPath || entry.poemId) === key)) {
+        return current;
+      }
+      const next = current.concat([{
+        poemId: key,
+        poemPath: key,
+        title: (poem.title || '').trim(),
+        poet: (poem.poet || '').trim(),
+      }]);
+      return storage.setFavourites(ready, next);
+    });
+  }
+
+  async function removeFavourite(settings, key) {
+    return withWriteLock(async () => {
+      const ready = await ensureSettings(settings);
+      const normalizedKey = normalizePoemPath(key);
+      const current = await fetchFavourites(ready);
+      const next = current.filter((entry) => normalizePoemPath(entry.poemPath || entry.poemId) !== normalizedKey);
+      return storage.setFavourites(ready, next);
+    });
   }
 
   const storage = {
@@ -212,18 +273,38 @@
     isLoggedIn,
     ensureSettings,
     fetchBootstrap,
+    refreshFavourites(settings) {
+      return fetchFavourites(settings);
+    },
+    subscribeFavourites(callback) {
+      const channel = getFavouritesChannel();
+      if (!channel) {
+        return () => {};
+      }
+      const handler = (event) => {
+        if (Array.isArray(event.data?.favourites)) {
+          callback(normalizeList(event.data.favourites));
+        }
+      };
+      channel.addEventListener('message', handler);
+      return () => channel.removeEventListener('message', handler);
+    },
     getFavourites(settings) {
       if (isLoggedIn(settings)) {
         return loadUserFavourites(settings);
       }
       return Promise.resolve(getCookieFavourites());
     },
+    addFavourite,
+    removeFavourite,
     setFavourites(settings, favourites) {
       const normalized = normalizeList(favourites);
       if (isLoggedIn(settings)) {
         return saveUserFavourites(settings, normalized);
       }
-      return Promise.resolve(setCookieFavourites(normalized));
+      const saved = setCookieFavourites(normalized);
+      notifyFavouritesChanged(saved);
+      return Promise.resolve(saved);
     },
   };
 

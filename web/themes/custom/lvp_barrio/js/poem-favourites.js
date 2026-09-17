@@ -67,19 +67,38 @@
     return initPromise;
   }
 
-  function persistFavourites() {
-    const previous = favouritesCache.slice();
-    return storage.setFavourites(getSettings(), favouritesCache).then((saved) => {
-      favouritesCache = saved;
-      return saved;
-    }).catch((error) => {
-      favouritesCache = previous;
-      throw error;
-    });
+  function applyFavourites(list) {
+    favouritesCache = list;
+    highlightFavourite();
+    return list;
+  }
+
+  function refreshCache() {
+    return storage.refreshFavourites(getSettings()).then(applyFavourites);
   }
 
   function handleSaveError(error) {
     console.error(error);
+  }
+
+  function initCrossTabSync() {
+    if (!storage.subscribeFavourites) {
+      return;
+    }
+    storage.subscribeFavourites((list) => {
+      applyFavourites(list);
+      document.querySelectorAll('.heart.poem-favourite-heart').forEach((heart) => {
+        const key = storage.normalizePoemPath(heart.dataset.poemId || heart.dataset.poemPath || '');
+        if (key) {
+          setHeartState(heart, isFavourite(key));
+        }
+      });
+    });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        refreshCache().catch(handleSaveError);
+      }
+    });
   }
 
   function getFavPoems() {
@@ -92,9 +111,7 @@
   }
 
   function removeFavPoem(key) {
-    const normalizedKey = storage.normalizePoemPath(key);
-    favouritesCache = favouritesCache.filter((poem) => poemKey(poem) !== normalizedKey);
-    return persistFavourites();
+    return storage.removeFavourite(getSettings(), key).then(applyFavourites);
   }
 
   function storeFavPoem(poem) {
@@ -102,13 +119,7 @@
     if (!key || isFavourite(key)) {
       return Promise.resolve();
     }
-    favouritesCache = favouritesCache.concat([{
-      poemId: key,
-      poemPath: key,
-      title: (poem.title || '').trim(),
-      poet: (poem.poet || '').trim(),
-    }]);
-    return persistFavourites();
+    return storage.addFavourite(getSettings(), poem).then(applyFavourites);
   }
 
   function isFrench() {
@@ -175,9 +186,16 @@
     }
     const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : dropdown.hidden || dropdown.style.display === 'none';
     if (shouldOpen) {
-      renderDropdownList();
-      dropdown.hidden = false;
-      dropdown.style.display = 'block';
+      refreshCache().then(() => {
+        renderDropdownList();
+        dropdown.hidden = false;
+        dropdown.style.display = 'block';
+      }).catch(() => {
+        renderDropdownList();
+        dropdown.hidden = false;
+        dropdown.style.display = 'block';
+      });
+      return;
     }
     else {
       dropdown.hidden = true;
@@ -304,6 +322,7 @@
         highlightFavourite();
       });
       ensureLoaded().then(() => {
+        initCrossTabSync();
         initHeader(context);
         initPoemHearts(context);
       }).catch((error) => {

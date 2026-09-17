@@ -703,20 +703,25 @@ isFavouritePoem = (key) => {
   return getFavPoems().some((poem) => poemKeyFromEntry(poem) === normalizedKey);
 }
 
-persistFavourites = () => {
-  if (!favStorage) {
+applyFavPoemsCache = (saved) => {
+  favPoemsCache = saved;
+  return saved;
+}
+
+refreshFavPoemsCache = () => {
+  if (!favStorage || !favStorage.refreshFavourites) {
     return Promise.resolve(favPoemsCache);
   }
-  return favStorage.setFavourites(favSettings, favPoemsCache).then((saved) => {
-    favPoemsCache = saved;
-    return saved;
-  });
+  return favStorage.refreshFavourites(favSettings).then(applyFavPoemsCache);
 }
 
 removeFavPoem = (poemKey) => {
+  if (favStorage && favStorage.removeFavourite) {
+    return favStorage.removeFavourite(favSettings, poemKey).then(applyFavPoemsCache);
+  }
   const normalizedKey = normalizePoemPath(poemKey);
   favPoemsCache = getFavPoems().filter((poem) => poemKeyFromEntry(poem) !== normalizedKey);
-  return persistFavourites();
+  return favStorage ? favStorage.setFavourites(favSettings, favPoemsCache).then(applyFavPoemsCache) : Promise.resolve(favPoemsCache);
 }
 
 storeFavPoem = (legacyPoemId, poemPath) => {
@@ -726,13 +731,17 @@ storeFavPoem = (legacyPoemId, poemPath) => {
   if (!poemKey || isFavouritePoem(poemKey)) {
     return Promise.resolve();
   }
-  favPoemsCache = getFavPoems().concat([{
+  const poem = {
     title: title,
     poet: poet,
     poemPath: poemKey,
     poemId: poemKey
-  }]);
-  return persistFavourites();
+  };
+  if (favStorage && favStorage.addFavourite) {
+    return favStorage.addFavourite(favSettings, poem).then(applyFavPoemsCache);
+  }
+  favPoemsCache = getFavPoems().concat([poem]);
+  return favStorage ? favStorage.setFavourites(favSettings, favPoemsCache).then(applyFavPoemsCache) : Promise.resolve(favPoemsCache);
 }
 // Highlight My Favourites Heart
 highlightFavourite = (poemId) =>  {
@@ -755,6 +764,19 @@ $( document ).ready(function() {
   highlightFavourite();
   ensureFavouritesLoaded().then(function() {
     highlightFavourite();
+    if (favStorage && favStorage.subscribeFavourites) {
+      favStorage.subscribeFavourites(function(list) {
+        applyFavPoemsCache(list);
+        highlightFavourite();
+      });
+    }
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'visible') {
+        refreshFavPoemsCache().then(function() {
+          highlightFavourite();
+        });
+      }
+    });
   });
   });
 
@@ -884,6 +906,8 @@ $(document).on('click', '#favouritesButton', () => {
   }
   if ($("#favouritesDropdown").is(":hidden")){
     ensureFavouritesLoaded().then(function() {
+    return refreshFavPoemsCache();
+    }).then(function() {
     let favPoems = getFavPoems();
               if (favPoems.length === 0){
                 if (lang == "fr"){

@@ -47,7 +47,7 @@ print-styling:
       css/print-style.css: {}
 
 poem-favourites:
-  version: 1.1.2
+  version: 1.2.0
   js:
     js/poem-favourites.js: {}
   dependencies:
