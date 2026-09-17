@@ -9,6 +9,26 @@ if (!isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   return;
 }
 
+// Canonical domain redirects on live (legacy .com and www → apex .ca).
+// Pantheon edge may also redirect; this ensures correct targets before bootstrap.
+if (PHP_SAPI !== 'cli' && ($_ENV['PANTHEON_ENVIRONMENT'] ?? '') === 'live') {
+  $host = strtolower(preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'] ?? ''));
+  $canonical_domains = [
+    'poetryinvoice.com' => 'poetryinvoice.ca',
+    'www.poetryinvoice.com' => 'poetryinvoice.ca',
+    'www.poetryinvoice.ca' => 'poetryinvoice.ca',
+    'lesvoixdelapoesie.com' => 'lesvoixdelapoesie.ca',
+    'www.lesvoixdelapoesie.com' => 'lesvoixdelapoesie.ca',
+    'www.lesvoixdelapoesie.ca' => 'lesvoixdelapoesie.ca',
+  ];
+  if (isset($canonical_domains[$host])) {
+    $path = $_SERVER['REQUEST_URI'] ?? '/';
+    header('HTTP/1.1 301 Moved Permanently');
+    header('Location: https://' . $canonical_domains[$host] . $path);
+    exit;
+  }
+}
+
 // Legacy file redirects to S3. Platform.sh handled these at the edge; Pantheon
 // ignores .htaccess, so perform redirects before Drupal bootstrap.
 if (PHP_SAPI !== 'cli' && !empty($_SERVER['REQUEST_URI'])) {
