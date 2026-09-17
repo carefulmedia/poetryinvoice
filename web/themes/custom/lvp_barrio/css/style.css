@@ -1725,6 +1725,16 @@ h3.name {
   border: none;
   padding: 0;
   margin: 0;
+  line-height: 0;
+}
+#favouritesButton img,
+#favouritesButton .poem-favourites-icon {
+  height: 28px;
+  width: auto;
+  max-height: 28px;
+  display: inline-block;
+  vertical-align: middle;
+  filter: grayscale(100%) brightness(2000%);
 }
 #favouritesButton:hover,
 #favouritesButton:focus {

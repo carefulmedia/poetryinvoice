@@ -5,8 +5,21 @@
 #favouritesButton {
   color: white;
   background-color: #001722;
+  line-height: 0;
+  padding: 0;
+  border: none;
 }
-   
+
+#favouritesButton img,
+#favouritesButton .poem-favourites-icon {
+  height: 28px;
+  width: auto;
+  max-height: 28px;
+  display: inline-block;
+  vertical-align: middle;
+  filter: grayscale(100%) brightness(2000%);
+}
+
 #favouritesButton:hover {
   background-color: #000000;
 }

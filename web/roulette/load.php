@@ -22,6 +22,7 @@
     <div class="dropdown">
       <div class="admin-menu-icon admin-menu-toolbar-category expandable"><a href="../"><span>Home</span></a></div>
       <button id="favouritesButton" class="btn dropdown-toggle" type="button" aria-label="<?php echo $vars['favourites'][$lang]; ?>">
+        <img src="/roulette/images/icons/heart-outline.png" alt="" height="28" width="31" class="poem-favourites-icon" />
       </button>
       <div id="favouritesDropdown" class="dropdown-menu">
         <h4><?php echo $vars['favourites'][$lang]; ?></h4><hr>
@@ -645,12 +646,28 @@
 </div>
 
 <script>
-const favStorage = window.PivPoemFavouritesStorage;
+const favStorage = window.PivPoemFavouritesStorage || null;
 let favSettings = {};
 let favPoemsCache = [];
 let favInitPromise = null;
 
-normalizePoemPath = (path) => favStorage.normalizePoemPath(path);
+normalizePoemPath = (path) => {
+  if (favStorage) {
+    return favStorage.normalizePoemPath(path);
+  }
+  if (!path) {
+    return '';
+  }
+  if (/^https?:\/\//i.test(path)) {
+    try {
+      return new URL(path).pathname.replace(/\/$/, '') || '/';
+    }
+    catch (e) {
+      return String(path).replace(/\/$/, '') || '/';
+    }
+  }
+  return String(path).replace(/\/$/, '') || '/';
+};
 
 // JSON views emit production URLs; keep links and storage on the current site.
 poemPageUrl = (path) => {
@@ -664,6 +681,9 @@ poemPageUrl = (path) => {
 poemKeyFromEntry = (poem) => normalizePoemPath(poem.poemPath || poem.poemId || '');
 
 ensureFavouritesLoaded = () => {
+  if (!favStorage) {
+    return Promise.resolve([]);
+  }
   if (!favInitPromise) {
     favInitPromise = favStorage.ensureSettings({}).then((settings) => {
       favSettings = settings;
@@ -684,6 +704,9 @@ isFavouritePoem = (key) => {
 }
 
 persistFavourites = () => {
+  if (!favStorage) {
+    return Promise.resolve(favPoemsCache);
+  }
   return favStorage.setFavourites(favSettings, favPoemsCache).then((saved) => {
     favPoemsCache = saved;
     return saved;
@@ -720,7 +743,7 @@ highlightFavourite = (poemId) =>  {
     heart="full";
     poemNumber = "<span class='fav-number'>" + favPoems.length + "</span>";
   }
-  $("#favouritesButton").hide().html("<img src='/roulette/images/icons/heart-" + heart + ".png' style= 'height: 20px; filter: grayscale(100%) brightness(2000%);' /> " + poemNumber).fadeIn('slow');
+  $("#favouritesButton").html("<img src='/roulette/images/icons/heart-" + heart + ".png' alt='' height='28' width='31' class='poem-favourites-icon' /> " + poemNumber);
 }
 
 $( document ).ready(function() {
@@ -729,6 +752,7 @@ $( document ).ready(function() {
   hideSlide();
     });
     $( ".slider" ).hide();
+  highlightFavourite();
   ensureFavouritesLoaded().then(function() {
     highlightFavourite();
   });
@@ -765,7 +789,7 @@ appendLikeButton = (legacyPoemId, poemPath) => {
     var poemKey = normalizePoemPath(poemPath);
     var heart = isFavouritePoem(poemKey) ? "full" : "outline";
 
-    $(".verse").last().after("<img src='/roulette/images/icons/heart-" + heart + ".png' class='heart' data-index='" + poemKey + "' data-legacy-id='" + legacyPoemId + "'/></div>");
+    $(".verse").last().after("<img src='/roulette/images/icons/heart-" + heart + ".png' class='heart' height='32' width='35' data-index='" + poemKey + "' data-legacy-id='" + legacyPoemId + "'/></div>");
     $(".heart").last().wrap("<div class='heart-container'/>");
   });
 }
