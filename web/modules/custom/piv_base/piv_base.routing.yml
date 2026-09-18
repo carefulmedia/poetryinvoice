@@ -93,3 +93,23 @@ piv_base.poem_favourites_save:
     _user_is_logged_in: 'TRUE'
   options:
     no_cache: TRUE
+
+piv_base.poem_favourites_add:
+  path: '/api/poem-favourites/add'
+  defaults:
+    _controller: '\Drupal\piv_base\Controller\PoemFavouritesController::add'
+  methods: [POST]
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    no_cache: TRUE
+
+piv_base.poem_favourites_remove:
+  path: '/api/poem-favourites/remove'
+  defaults:
+    _controller: '\Drupal\piv_base\Controller\PoemFavouritesController::remove'
+  methods: [POST]
+  requirements:
+    _user_is_logged_in: 'TRUE'
+  options:
+    no_cache: TRUE

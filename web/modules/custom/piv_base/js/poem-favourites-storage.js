@@ -217,43 +217,75 @@
     return run;
   }
 
-  async function saveUserFavourites(settings, favourites) {
-    const ready = await ensureSettings(settings);
-    if (!ready.apiUrl || !ready.csrfToken) {
-      return favourites;
-    }
-    const response = await fetch(ready.apiUrl, {
+  function poemEntry(poem) {
+    const key = normalizePoemPath(poem.poemPath || poem.poemId || '');
+    return {
+      poemId: key,
+      poemPath: key,
+      title: (poem.title || '').trim(),
+      poet: (poem.poet || '').trim(),
+    };
+  }
+
+  async function apiRequest(ready, pathSuffix, body) {
+    const response = await fetch(`${ready.apiUrl}${pathSuffix}`, {
       method: 'POST',
       credentials: 'same-origin',
       headers: {
         'Content-Type': 'application/json',
         'X-CSRF-Token': ready.csrfToken,
       },
-      body: JSON.stringify(favourites),
+      body: JSON.stringify(body),
     });
     if (!response.ok) {
-      throw new Error(`Unable to save poem favourites (${response.status}).`);
+      const error = new Error(`Unable to save poem favourites (${response.status}).`);
+      error.status = response.status;
+      throw error;
     }
     const saved = normalizeList(await response.json());
     notifyFavouritesChanged(saved);
     return saved;
   }
 
+  async function saveUserFavourites(settings, favourites) {
+    const ready = await ensureSettings(settings);
+    if (!ready.apiUrl || !ready.csrfToken) {
+      return favourites;
+    }
+    return apiRequest(ready, '', favourites);
+  }
+
   async function addFavourite(settings, poem) {
     return withWriteLock(async () => {
       const ready = await ensureSettings(settings);
-      const current = await fetchFavourites(ready);
-      const key = normalizePoemPath(poem.poemPath || poem.poemId || '');
-      if (!key || current.some((entry) => normalizePoemPath(entry.poemPath || entry.poemId) === key)) {
+      const entry = poemEntry(poem);
+      if (!entry.poemPath) {
+        return fetchFavourites(ready);
+      }
+      if (isLoggedIn(ready)) {
+        if (!ready.apiUrl || !ready.csrfToken) {
+          return fetchFavourites(ready);
+        }
+        try {
+          return await apiRequest(ready, '/add', entry);
+        }
+        catch (e) {
+          if (e.status && e.status !== 404) {
+            throw e;
+          }
+          // Fall back for environments without the add endpoint yet.
+          const current = await fetchFavourites(ready);
+          if (current.some((item) => normalizePoemPath(item.poemPath || item.poemId) === entry.poemPath)) {
+            return current;
+          }
+          return storage.setFavourites(ready, current.concat([entry]));
+        }
+      }
+      const current = getCookieFavourites();
+      if (current.some((item) => normalizePoemPath(item.poemPath || item.poemId) === entry.poemPath)) {
         return current;
       }
-      const next = current.concat([{
-        poemId: key,
-        poemPath: key,
-        title: (poem.title || '').trim(),
-        poet: (poem.poet || '').trim(),
-      }]);
-      return storage.setFavourites(ready, next);
+      return storage.setFavourites(ready, current.concat([entry]));
     });
   }
 
@@ -261,9 +293,26 @@
     return withWriteLock(async () => {
       const ready = await ensureSettings(settings);
       const normalizedKey = normalizePoemPath(key);
-      const current = await fetchFavourites(ready);
-      const next = current.filter((entry) => normalizePoemPath(entry.poemPath || entry.poemId) !== normalizedKey);
-      return storage.setFavourites(ready, next);
+      if (!normalizedKey) {
+        return fetchFavourites(ready);
+      }
+      if (isLoggedIn(ready)) {
+        if (!ready.apiUrl || !ready.csrfToken) {
+          return fetchFavourites(ready);
+        }
+        try {
+          return await apiRequest(ready, '/remove', { poemPath: normalizedKey });
+        }
+        catch (e) {
+          if (e.status && e.status !== 404) {
+            throw e;
+          }
+          const current = await fetchFavourites(ready);
+          return storage.setFavourites(ready, current.filter((item) => normalizePoemPath(item.poemPath || item.poemId) !== normalizedKey));
+        }
+      }
+      const current = getCookieFavourites();
+      return storage.setFavourites(ready, current.filter((item) => normalizePoemPath(item.poemPath || item.poemId) !== normalizedKey));
     });
   }
 
@@ -273,6 +322,13 @@
     isLoggedIn,
     ensureSettings,
     fetchBootstrap,
+    readFavouritesSync(settings) {
+      const ready = settings || {};
+      if (isLoggedIn(ready)) {
+        return null;
+      }
+      return getCookieFavourites();
+    },
     refreshFavourites(settings) {
       return fetchFavourites(settings);
     },

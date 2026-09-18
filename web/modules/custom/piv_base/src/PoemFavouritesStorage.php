@@ -41,6 +41,30 @@ final class PoemFavouritesStorage {
   }
 
   /**
+   * Adds a single favourite without dropping existing entries.
+   */
+  public static function add(UserInterface $user, array $poem): array {
+    $existing = self::load($user);
+    return self::save($user, array_merge($existing, [$poem]));
+  }
+
+  /**
+   * Removes a single favourite by poem path.
+   */
+  public static function remove(UserInterface $user, string $poem_path): array {
+    $normalized_path = self::normalizePoemPath($poem_path);
+    if ($normalized_path === '') {
+      return self::load($user);
+    }
+    $existing = self::load($user);
+    $filtered = array_values(array_filter(
+      $existing,
+      static fn (array $poem): bool => self::normalizePoemPath($poem['poemPath'] ?? $poem['poemId'] ?? '') !== $normalized_path,
+    ));
+    return self::save($user, $filtered);
+  }
+
+  /**
    * Normalizes favourite entries to a consistent shape.
    */
   public static function normalize(array $favourites): array {

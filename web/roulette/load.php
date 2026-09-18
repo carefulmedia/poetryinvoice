@@ -696,7 +696,12 @@ ensureFavouritesLoaded = () => {
   return favInitPromise;
 }
 
-getFavPoems = () => favPoemsCache;
+getFavPoems = () => {
+  if (favStorage && favStorage.readFavouritesSync && !favStorage.isLoggedIn(favSettings)) {
+    return favStorage.readFavouritesSync(favSettings);
+  }
+  return favPoemsCache;
+};
 
 isFavouritePoem = (key) => {
   const normalizedKey = normalizePoemPath(key);
@@ -770,13 +775,24 @@ $( document ).ready(function() {
         highlightFavourite();
       });
     }
-    document.addEventListener('visibilitychange', function() {
-      if (document.visibilityState === 'visible') {
+    var syncFavPoems = function() {
+      if (favStorage && favStorage.isLoggedIn(favSettings)) {
         refreshFavPoemsCache().then(function() {
           highlightFavourite();
         });
       }
+      else if (favStorage && favStorage.readFavouritesSync) {
+        applyFavPoemsCache(favStorage.readFavouritesSync(favSettings));
+        highlightFavourite();
+      }
+    };
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'visible') {
+        syncFavPoems();
+      }
     });
+    window.addEventListener('focus', syncFavPoems);
+    window.addEventListener('pageshow', syncFavPoems);
   });
   });
 
@@ -906,7 +922,13 @@ $(document).on('click', '#favouritesButton', () => {
   }
   if ($("#favouritesDropdown").is(":hidden")){
     ensureFavouritesLoaded().then(function() {
-    return refreshFavPoemsCache();
+    if (favStorage && favStorage.isLoggedIn(favSettings)) {
+      return refreshFavPoemsCache();
+    }
+    if (favStorage && favStorage.readFavouritesSync) {
+      applyFavPoemsCache(favStorage.readFavouritesSync(favSettings));
+    }
+    return favPoemsCache;
     }).then(function() {
     let favPoems = getFavPoems();
               if (favPoems.length === 0){

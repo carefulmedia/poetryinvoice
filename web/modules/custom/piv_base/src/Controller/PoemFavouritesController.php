@@ -87,4 +87,53 @@ class PoemFavouritesController extends ControllerBase {
     return new JsonResponse(PoemFavouritesStorage::save($user, $payload));
   }
 
+  /**
+   * Adds a single favourite for the current user.
+   */
+  public function add(Request $request): JsonResponse {
+    $token = $request->headers->get('X-CSRF-Token');
+    if (!$token || !$this->csrfToken->validate($token, self::CSRF_CONTEXT)) {
+      throw new AccessDeniedHttpException('Invalid CSRF token.');
+    }
+
+    $payload = json_decode($request->getContent(), TRUE);
+    if (!is_array($payload)) {
+      return new JsonResponse(['message' => 'Expected a JSON object.'], Response::HTTP_BAD_REQUEST);
+    }
+
+    $user = User::load($this->currentUser()->id());
+    if (!$user) {
+      return new JsonResponse([], Response::HTTP_FORBIDDEN);
+    }
+
+    return new JsonResponse(PoemFavouritesStorage::add($user, $payload));
+  }
+
+  /**
+   * Removes a single favourite for the current user.
+   */
+  public function remove(Request $request): JsonResponse {
+    $token = $request->headers->get('X-CSRF-Token');
+    if (!$token || !$this->csrfToken->validate($token, self::CSRF_CONTEXT)) {
+      throw new AccessDeniedHttpException('Invalid CSRF token.');
+    }
+
+    $payload = json_decode($request->getContent(), TRUE);
+    if (!is_array($payload)) {
+      return new JsonResponse(['message' => 'Expected a JSON object.'], Response::HTTP_BAD_REQUEST);
+    }
+
+    $poem_path = (string) ($payload['poemPath'] ?? $payload['poemId'] ?? '');
+    if ($poem_path === '') {
+      return new JsonResponse(['message' => 'Expected poemPath.'], Response::HTTP_BAD_REQUEST);
+    }
+
+    $user = User::load($this->currentUser()->id());
+    if (!$user) {
+      return new JsonResponse([], Response::HTTP_FORBIDDEN);
+    }
+
+    return new JsonResponse(PoemFavouritesStorage::remove($user, $poem_path));
+  }
+
 }

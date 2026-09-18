@@ -94,20 +94,34 @@
         }
       });
     });
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'visible') {
+    const syncWhenActive = () => {
+      if (storage.isLoggedIn(getSettings())) {
         refreshCache().catch(handleSaveError);
       }
+      else {
+        applyFavourites(storage.readFavouritesSync(getSettings()) || []);
+      }
+    };
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') {
+        syncWhenActive();
+      }
     });
+    window.addEventListener('focus', syncWhenActive);
+    window.addEventListener('pageshow', syncWhenActive);
   }
 
   function getFavPoems() {
+    const sync = storage.readFavouritesSync ? storage.readFavouritesSync(getSettings()) : null;
+    if (sync) {
+      return sync;
+    }
     return favouritesCache;
   }
 
   function isFavourite(key) {
     const normalizedKey = storage.normalizePoemPath(key);
-    return favouritesCache.some((poem) => poemKey(poem) === normalizedKey);
+    return getFavPoems().some((poem) => poemKey(poem) === normalizedKey);
   }
 
   function removeFavPoem(key) {
@@ -119,7 +133,10 @@
     if (!key || isFavourite(key)) {
       return Promise.resolve();
     }
-    return storage.addFavourite(getSettings(), poem).then(applyFavourites);
+    return storage.addFavourite(getSettings(), poem).then((saved) => {
+      applyFavourites(saved);
+      return saved;
+    });
   }
 
   function isFrench() {
@@ -186,15 +203,18 @@
     }
     const shouldOpen = typeof forceOpen === 'boolean' ? forceOpen : dropdown.hidden || dropdown.style.display === 'none';
     if (shouldOpen) {
-      refreshCache().then(() => {
+      const open = () => {
         renderDropdownList();
         dropdown.hidden = false;
         dropdown.style.display = 'block';
-      }).catch(() => {
-        renderDropdownList();
-        dropdown.hidden = false;
-        dropdown.style.display = 'block';
-      });
+      };
+      if (storage.isLoggedIn(getSettings())) {
+        refreshCache().then(open).catch(open);
+      }
+      else {
+        applyFavourites(storage.readFavouritesSync(getSettings()) || []);
+        open();
+      }
       return;
     }
     else {
@@ -292,18 +312,26 @@
 
       heart.addEventListener('click', (event) => {
         event.preventDefault();
-        const toggle = isFavourite(poemPath)
-          ? removeFavPoem(poemPath).then(() => false)
-          : storeFavPoem(poemFromHeart(heart)).then(() => true);
-        toggle.then((isFavourited) => {
-          setHeartState(heart, isFavourited);
-          highlightFavourite();
-          syncHeartStates(poemPath, isFavourited);
-        }).catch(() => {
-          handleSaveError(new Error('Unable to save poem favourites.'));
-          setHeartState(heart, isFavourite(poemPath));
-          highlightFavourite();
-        });
+        const runToggle = () => {
+          const toggle = isFavourite(poemPath)
+            ? removeFavPoem(poemPath).then(() => false)
+            : storeFavPoem(poemFromHeart(heart)).then(() => true);
+          toggle.then((isFavourited) => {
+            setHeartState(heart, isFavourited);
+            highlightFavourite();
+            syncHeartStates(poemPath, isFavourited);
+          }).catch(() => {
+            handleSaveError(new Error('Unable to save poem favourites.'));
+            setHeartState(heart, isFavourite(poemPath));
+            highlightFavourite();
+          });
+        };
+        if (storage.isLoggedIn(getSettings())) {
+          refreshCache().then(runToggle).catch(runToggle);
+        }
+        else {
+          runToggle();
+        }
       });
 
       const printIcon = article.querySelector('.print-icon');
