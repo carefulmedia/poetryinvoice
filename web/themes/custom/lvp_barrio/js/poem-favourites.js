@@ -41,13 +41,23 @@
     return settingsCache || drupalSettings.poemFavourites || {};
   }
 
+  function normalizePath(path) {
+    if (storage && storage.normalizePoemPath) {
+      return storage.normalizePoemPath(path);
+    }
+    if (!path) {
+      return '';
+    }
+    return String(path).replace(/\/$/, '') || '/';
+  }
+
   function poemPageUrl(path) {
-    const normalized = storage.normalizePoemPath(path);
+    const normalized = normalizePath(path);
     return normalized ? `${window.location.origin}${normalized}` : path;
   }
 
   function poemKey(poem) {
-    return storage.normalizePoemPath(poem.poemPath || poem.poemId || '');
+    return normalizePath(poem.poemPath || poem.poemId || '');
   }
 
   function ensureLoaded() {
@@ -74,6 +84,9 @@
   }
 
   function refreshCache() {
+    if (!storage || !storage.refreshFavourites) {
+      return Promise.resolve(favouritesCache);
+    }
     return storage.refreshFavourites(getSettings()).then(applyFavourites);
   }
 
@@ -112,15 +125,17 @@
   }
 
   function getFavPoems() {
-    const sync = storage.readFavouritesSync ? storage.readFavouritesSync(getSettings()) : null;
-    if (sync) {
-      return sync;
+    if (storage && storage.readFavouritesSync) {
+      const sync = storage.readFavouritesSync(getSettings());
+      if (sync) {
+        return sync;
+      }
     }
     return favouritesCache;
   }
 
   function isFavourite(key) {
-    const normalizedKey = storage.normalizePoemPath(key);
+    const normalizedKey = normalizePath(key);
     return getFavPoems().some((poem) => poemKey(poem) === normalizedKey);
   }
 
@@ -208,11 +223,14 @@
         dropdown.hidden = false;
         dropdown.style.display = 'block';
       };
-      if (storage.isLoggedIn(getSettings())) {
+      if (storage && storage.isLoggedIn(getSettings())) {
         refreshCache().then(open).catch(open);
       }
-      else {
+      else if (storage && storage.readFavouritesSync) {
         applyFavourites(storage.readFavouritesSync(getSettings()) || []);
+        open();
+      }
+      else {
         open();
       }
       return;
@@ -238,9 +256,9 @@
   }
 
   function syncHeartStates(key, isFavourited) {
-    const normalizedKey = storage.normalizePoemPath(key);
+    const normalizedKey = normalizePath(key);
     document.querySelectorAll('.heart[data-poem-id], .heart[data-index]').forEach((heart) => {
-      const heartKey = storage.normalizePoemPath(heart.dataset.poemId || heart.dataset.index || '');
+      const heartKey = normalizePath(heart.dataset.poemId || heart.dataset.index || '');
       if (heartKey === normalizedKey) {
         setHeartState(heart, isFavourited);
       }
@@ -296,7 +314,7 @@
 
       const title = document.querySelector('#block-pagetitle h1, h1.title')?.textContent.trim() || '';
       const poet = article.querySelector('.author .name, .author h3.name')?.textContent.trim() || '';
-      const poemPath = storage.normalizePoemPath(window.location.pathname);
+      const poemPath = normalizePath(window.location.pathname);
       if (!poemPath) {
         return;
       }
@@ -346,13 +364,11 @@
 
   Drupal.behaviors.poemFavourites = {
     attach(context) {
-      once('poem-favourites-placeholder', '#favouritesButton', context).forEach(() => {
-        highlightFavourite();
-      });
       ensureLoaded().then(() => {
         initCrossTabSync();
         initHeader(context);
         initPoemHearts(context);
+        highlightFavourite();
       }).catch((error) => {
         console.error(error);
       });
