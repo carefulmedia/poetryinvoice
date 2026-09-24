@@ -39,6 +39,8 @@ if (isset($platformsh->branch)) {
     // Enable sitemap submission to search engines.
     $config['simple_sitemap_engines.settings']['index_now_enabled'] = TRUE;
     $config['simple_sitemap_engines.settings']['enabled'] = TRUE;
+    // Cron may run on an internal host; force public sitemap URLs.
+    $config['simple_sitemap.settings']['base_url'] = 'https://poetryinvoice.ca';
   } // Development type environment.
   else {
     $config['system.logging']['error_level'] = 'verbose';

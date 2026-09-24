@@ -95,6 +95,8 @@ if ($pantheon_env === 'live') {
   $config['language.negotiation']['url']['domains']['fr'] = 'lesvoixdelapoesie.ca';
   $config['simple_sitemap_engines.settings']['index_now_enabled'] = TRUE;
   $config['simple_sitemap_engines.settings']['enabled'] = TRUE;
+  // Cron runs on the Pantheon hostname; force public sitemap URLs.
+  $config['simple_sitemap.settings']['base_url'] = 'https://poetryinvoice.ca';
 
   if (PHP_SAPI !== 'cli') {
     ini_set('memory_limit', '512M');

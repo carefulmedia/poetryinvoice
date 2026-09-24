@@ -9,7 +9,9 @@ use Drupal\Component\Utility\Unicode;
 use Drupal\Component\Utility\UrlHelper;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Breadcrumb\Breadcrumb;
+use Drupal\Core\Database\Query\Condition;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Entity\Query\QueryInterface;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Routing\RouteMatchInterface;
@@ -18,7 +20,9 @@ use Drupal\Core\Url;
 use Drupal\image\Entity\ImageStyle;
 use Drupal\user\UserInterface;
 use Drupal\views\Plugin\views\query\QueryPluginBase;
+use Drupal\views\Plugin\views\query\Sql;
 use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
 /**
@@ -330,7 +334,7 @@ function piv_base_theme($existing, $type, $theme, $path) {
 }
 
 /**
- * Implements hook_preprocess_page().
+ * Implements hook_preprocess_html().
  */
 function piv_base_preprocess_html(&$variables) {
   $langcode = \Drupal::languageManager()->getCurrentLanguage()->getId();
@@ -362,6 +366,14 @@ function piv_base_preprocess_html(&$variables) {
       '#menu' => $entity_type_manager->getViewBuilder('block')->view($block),
       '#form' => \Drupal::formBuilder()->getForm('\Drupal\piv_base\Form\PivWelcomeModal'),
     ];
+  }
+
+  // Avoid empty titles like "| Poetry in Voice" when the page title is missing.
+  if (!empty($variables['head_title']) && is_array($variables['head_title'])) {
+    $variables['head_title'] = array_filter(
+      $variables['head_title'],
+      static fn ($part) => trim((string) $part) !== ''
+    );
   }
 }
 
@@ -429,10 +441,13 @@ function piv_base_page_attachments_alter(array &$attachments) {
   $theme = \Drupal::theme()->getActiveTheme();
   $favicon = "{$base_path}{$theme->getPath()}/favicon-{$langcode}.ico";
 
-  // Alter favicon to use translatable favicons.
-  // Mimetype is hardcoded and will work for .ico, needs to be changed if
-  // replaced by png or others.
-  $attachments['#attached']['html_head_link'] = [];
+  // Replace only the favicon; keep canonical, hreflang, and other head links.
+  $head_links = $attachments['#attached']['html_head_link'] ?? [];
+  $attachments['#attached']['html_head_link'] = array_values(array_filter($head_links, static function ($link_item) {
+    $attributes = is_array($link_item) ? ($link_item[0] ?? $link_item) : [];
+    $rel = $attributes['rel'] ?? '';
+    return $rel !== 'icon' && $rel !== 'shortcut icon';
+  }));
   $attachments['#attached']['html_head_link'][][] = [
     'rel' => 'icon',
     'href' => UrlHelper::stripDangerousProtocols($favicon),
@@ -453,7 +468,7 @@ function piv_base_page_attachments_alter(array &$attachments) {
     return;
   }
 
-  $image_style = ImageStyle::load('1280x720');
+  $image_style = ImageStyle::load('og_image') ?: ImageStyle::load('1280x720');
   $image_url = $image_style
     ? $image_style->buildUrl($file->getFileUri())
     : \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
@@ -541,7 +556,31 @@ function piv_base_transliterate_string($string) {
 }
 
 /**
+ * Implements hook_views_pre_view().
+ */
+function piv_base_views_pre_view(ViewExecutable $view, $display_id, array &$args): void {
+  if ($view->id() !== 'user_listing_index_pages') {
+    return;
+  }
+
+  $exposed = $view->getExposedInput();
+  $search = trim((string) ($exposed['combine'] ?? ''));
+  if ($search === '') {
+    return;
+  }
+
+  // Name searches are unusable when the default random sort is still applied.
+  $sort = $exposed['sort_bef_combine'] ?? '';
+  if ($sort === '' || $sort === 'random_ASC') {
+    $view->setExposedInput(['sort_bef_combine' => 'piv_teacher_last_name_value_ASC'] + $exposed);
+  }
+}
+
+/**
  * Implements hook_views_query_alter().
+ *
+ * Kept under this name because Drupal 11 already compiled it as a hook
+ * implementation. Do not rename.
  */
 function piv_contest_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
   if ($view->id() == 'language_restricted_poems') {
@@ -562,6 +601,168 @@ function piv_contest_views_query_alter(ViewExecutable $view, QueryPluginBase $qu
           }
         }
       }
+    }
+  }
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function piv_base_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+  if ($view->id() === 'user_listing_index_pages' && $query instanceof Sql) {
+    piv_base_alter_poet_listing_name_search($view, $query);
+  }
+}
+
+/**
+ * Expand poets listing search so first + last name match "Rob Taylor".
+ */
+function piv_base_alter_poet_listing_name_search(ViewExecutable $view, Sql $query): void {
+  $search = trim((string) ($view->getExposedInput()['combine'] ?? ''));
+  if ($search === '') {
+    return;
+  }
+
+  $first_table = _piv_base_views_ensure_user_field_table($query, 'piv_teacher_first_name');
+  $last_table = _piv_base_views_ensure_user_field_table($query, 'piv_teacher_last_name');
+  if (!$first_table || !$last_table) {
+    return;
+  }
+
+  $connection = \Drupal::database();
+  $like = '%' . $connection->escapeLike($search) . '%';
+  $name_or = new Condition('OR');
+  $name_or->where("CONCAT_WS(' ', {$first_table}.piv_teacher_first_name_value, {$last_table}.piv_teacher_last_name_value) LIKE :poet_full_name", [
+    ':poet_full_name' => $like,
+  ]);
+  $name_or->condition("{$first_table}.piv_teacher_first_name_value", $like, 'LIKE');
+  $name_or->condition("{$last_table}.piv_teacher_last_name_value", $like, 'LIKE');
+
+  $words = preg_split('/\s+/u', $search, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+  if (count($words) > 1) {
+    $all_words = new Condition('AND');
+    foreach ($words as $word) {
+      $word_like = '%' . $connection->escapeLike($word) . '%';
+      $word_or = new Condition('OR');
+      $word_or->condition("{$first_table}.piv_teacher_first_name_value", $word_like, 'LIKE');
+      $word_or->condition("{$last_table}.piv_teacher_last_name_value", $word_like, 'LIKE');
+      $all_words->condition($word_or);
+    }
+    $name_or->condition($all_words);
+  }
+
+  $combine_conditions = [];
+  foreach ($query->where as $group_id => $group) {
+    if (empty($group['conditions']) || !is_array($group['conditions'])) {
+      continue;
+    }
+    foreach ($group['conditions'] as $delta => $condition) {
+      if (piv_base_is_views_combine_condition($condition)) {
+        $combine_conditions[] = $condition;
+        unset($query->where[$group_id]['conditions'][$delta]);
+      }
+    }
+    if (isset($query->where[$group_id]['conditions'])) {
+      $query->where[$group_id]['conditions'] = array_values($query->where[$group_id]['conditions']);
+    }
+  }
+
+  $search_or = new Condition('OR');
+  foreach ($combine_conditions as $condition) {
+    $field = $condition['field'] ?? NULL;
+    if ($field instanceof Condition) {
+      $search_or->condition($field);
+      continue;
+    }
+    if (is_string($field)) {
+      $search_or->where($field, $condition['value'] ?? []);
+    }
+  }
+  $search_or->condition($name_or);
+  $query->addWhere('poet_name_search', $search_or);
+}
+
+/**
+ * Join a user field table onto a user Views query.
+ */
+function _piv_base_views_ensure_user_field_table(Sql $query, string $field_name): ?string {
+  $table = 'user__' . $field_name;
+  $alias = $query->ensureTable($table);
+  if ($alias) {
+    return $alias;
+  }
+
+  $base = $query->ensureTable('users_field_data') ?: 'users_field_data';
+  $join = Views::pluginManager('join')->createInstance('standard', [
+    'type' => 'LEFT',
+    'table' => $table,
+    'field' => 'entity_id',
+    'left_table' => $base,
+    'left_field' => 'uid',
+    'extra' => [
+      [
+        'field' => 'deleted',
+        'value' => 0,
+        'numeric' => TRUE,
+      ],
+    ],
+  ]);
+  return $query->addTable($table, NULL, $join);
+}
+
+/**
+ * Checks whether a Views where condition is the Combine fields filter.
+ */
+function piv_base_is_views_combine_condition(array $condition): bool {
+  $field = $condition['field'] ?? NULL;
+  if ($field instanceof Condition) {
+    foreach ($field->conditions() as $inner) {
+      if (is_array($inner) && piv_base_is_views_combine_condition($inner)) {
+        return TRUE;
+      }
+    }
+    return FALSE;
+  }
+  if (!is_string($field)) {
+    return FALSE;
+  }
+  return stripos($field, 'CONCAT_WS') !== FALSE || stripos($field, 'CONCAT(') !== FALSE;
+}
+
+/**
+ * Implements hook_simple_sitemap_entity_query_alter().
+ */
+function piv_base_simple_sitemap_entity_query_alter($query, $entity_type_id = NULL, $bundle = NULL): void {
+  if (!$query instanceof QueryInterface) {
+    return;
+  }
+
+  $type = $entity_type_id;
+  if (!$type && method_exists($query, 'getEntityTypeId')) {
+    $type = $query->getEntityTypeId();
+  }
+  if ($type !== 'user') {
+    return;
+  }
+
+  $query->condition('status', 1);
+  $query->condition('roles', 'poet');
+}
+
+/**
+ * Implements hook_simple_sitemap_links_alter().
+ */
+function piv_base_simple_sitemap_links_alter(array &$links, $sitemap = NULL): void {
+  foreach ($links as $key => $link) {
+    $entity_type = $link['meta']['entity_info']['entity_type'] ?? '';
+    $url = (string) ($link['url'] ?? $link['path'] ?? '');
+    $is_user_entity = $entity_type === 'user';
+    $is_user_path = (bool) preg_match('#/(index\.php/)?user/\d+(/|$)#', $url);
+    if (!$is_user_entity && !$is_user_path) {
+      continue;
+    }
+    if (!preg_match('#(read/poets|lire/poetes)/#', $url)) {
+      unset($links[$key]);
     }
   }
 }

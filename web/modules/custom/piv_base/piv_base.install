@@ -190,6 +190,145 @@ function piv_base_update_9007() {
 }
 
 /**
+ * Search poets by first and last name on the poets listing.
+ */
+function piv_base_update_9008() {
+  _piv_base_configure_poet_listing_name_search();
+}
+
+/**
+ * Rebuild the sitemap queue so poet profiles can be submitted to search engines.
+ */
+function piv_base_update_9009() {
+  if (!\Drupal::moduleHandler()->moduleExists('simple_sitemap')) {
+    return;
+  }
+  if (\Drupal::hasService('simple_sitemap.queue_worker')) {
+    $worker = \Drupal::service('simple_sitemap.queue_worker');
+    if (method_exists($worker, 'rebuildQueue')) {
+      $worker->rebuildQueue();
+    }
+    return;
+  }
+  if (\Drupal::hasService('simple_sitemap.generator')) {
+    $generator = \Drupal::service('simple_sitemap.generator');
+    if (method_exists($generator, 'rebuildQueue')) {
+      $generator->rebuildQueue();
+    }
+  }
+}
+
+/**
+ * Adds first/last name fields to the poets listing combine filter.
+ */
+function _piv_base_configure_poet_listing_name_search(): void {
+  $config = \Drupal::configFactory()->getEditable('views.view.user_listing_index_pages');
+  if ($config->isNew()) {
+    return;
+  }
+
+  $displays = $config->get('display') ?? [];
+  $field_ids = [
+    'piv_teacher_first_name',
+    'piv_teacher_last_name',
+  ];
+
+  foreach ($displays as $display_id => $display) {
+    $fields = $display['display_options']['fields'] ?? NULL;
+    if (is_array($fields)) {
+      foreach ($field_ids as $field_id) {
+        if (empty($fields[$field_id])) {
+          $config->set("display.$display_id.display_options.fields.$field_id", _piv_base_poet_name_views_field($field_id));
+        }
+      }
+    }
+
+    $combine_fields = $display['display_options']['filters']['combine']['fields'] ?? NULL;
+    if (is_array($combine_fields)) {
+      foreach ($field_ids as $field_id) {
+        $combine_fields[$field_id] = $field_id;
+      }
+      $config->set("display.$display_id.display_options.filters.combine.fields", $combine_fields);
+    }
+  }
+
+  $config->save(TRUE);
+  \Drupal::service('plugin.manager.views.display')->clearCachedDefinitions();
+}
+
+/**
+ * Returns a hidden Views field definition for a poet name field.
+ */
+function _piv_base_poet_name_views_field(string $field_id): array {
+  return [
+    'id' => $field_id,
+    'table' => 'user__' . $field_id,
+    'field' => $field_id,
+    'relationship' => 'none',
+    'group_type' => 'group',
+    'admin_label' => '',
+    'plugin_id' => 'field',
+    'label' => '',
+    'exclude' => TRUE,
+    'alter' => [
+      'alter_text' => FALSE,
+      'text' => '',
+      'make_link' => FALSE,
+      'path' => '',
+      'absolute' => FALSE,
+      'external' => FALSE,
+      'replace_spaces' => FALSE,
+      'path_case' => 'none',
+      'trim_whitespace' => FALSE,
+      'alt' => '',
+      'rel' => '',
+      'link_class' => '',
+      'prefix' => '',
+      'suffix' => '',
+      'target' => '',
+      'nl2br' => FALSE,
+      'max_length' => 0,
+      'word_boundary' => TRUE,
+      'ellipsis' => TRUE,
+      'more_link' => FALSE,
+      'more_link_text' => '',
+      'more_link_path' => '',
+      'strip_tags' => FALSE,
+      'trim' => FALSE,
+      'preserve_tags' => '',
+      'html' => FALSE,
+    ],
+    'element_type' => '',
+    'element_class' => '',
+    'element_label_type' => '',
+    'element_label_class' => '',
+    'element_label_colon' => FALSE,
+    'element_wrapper_type' => '',
+    'element_wrapper_class' => '',
+    'element_default_classes' => TRUE,
+    'empty' => '',
+    'hide_empty' => FALSE,
+    'empty_zero' => FALSE,
+    'hide_alter_empty' => TRUE,
+    'click_sort_column' => 'value',
+    'type' => 'string',
+    'settings' => [
+      'link_to_entity' => FALSE,
+    ],
+    'group_column' => 'value',
+    'group_columns' => [],
+    'group_rows' => TRUE,
+    'delta_limit' => 0,
+    'delta_offset' => 0,
+    'delta_reversed' => FALSE,
+    'delta_first_last' => FALSE,
+    'multi_type' => 'separator',
+    'separator' => ', ',
+    'field_api_classes' => FALSE,
+  ];
+}
+
+/**
  * Deletes or rewrites path aliases incorrectly prefixed with index.php.
  */
 function _piv_base_remove_index_php_path_aliases(): void {

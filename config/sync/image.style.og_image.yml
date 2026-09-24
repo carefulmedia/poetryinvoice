@@ -1,0 +1,21 @@
+uuid: 3e7c1d8a-6b2f-4a91-9c4e-1f8d0a5b7e23
+langcode: en
+status: true
+dependencies: {  }
+name: og_image
+label: 'Open Graph image'
+effects:
+  9a1c4e7b-2d5f-4b83-8e16-0c7a9f3d2b54:
+    uuid: 9a1c4e7b-2d5f-4b83-8e16-0c7a9f3d2b54
+    id: image_scale
+    weight: 1
+    data:
+      width: 1200
+      height: 1200
+      upscale: false
+  5b8d2a1c-4e7f-4c90-9d13-2a6e8b0c4f71:
+    uuid: 5b8d2a1c-4e7f-4c90-9d13-2a6e8b0c4f71
+    id: image_convert
+    weight: 2
+    data:
+      extension: jpeg

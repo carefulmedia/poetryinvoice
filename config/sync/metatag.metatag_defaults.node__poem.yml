@@ -6,4 +6,8 @@ id: node__poem
 label: 'Content: Poem'
 tags:
   description: "[current-page:title] by [node:author]\r\n[node:summary]"
+  og_description: "[current-page:title] by [node:author]\r\n[node:summary]"
+  og_title: '[current-page:title]'
   title: '[current-page:title] | [site:name]'
+  twitter_cards_description: "[current-page:title] by [node:author]\r\n[node:summary]"
+  twitter_cards_title: '[current-page:title]'

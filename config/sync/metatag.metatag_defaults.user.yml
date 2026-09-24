@@ -8,9 +8,18 @@ id: user
 label: User
 tags:
   canonical_url: '[user:url]'
-  description: '[site:name]'
-  og_image: '[user:user_picture:1280x720]'
+  description: '[user:field_user_bio]'
+  og_description: '[user:field_user_bio]'
+  og_image: '[user:user_picture:og_image]'
   og_image_alt: 'Photo of [user:display-name]'
-  og_image_secure_url: '[user:user_picture:1280x720]'
-  og_image_url: '[user:user_picture:1280x720]'
+  og_image_secure_url: '[user:user_picture:og_image]'
+  og_image_url: '[user:user_picture:og_image]'
+  og_title: '[user:display-name]'
+  og_type: profile
+  og_url: '[user:url]'
+  thumbnail: '[user:user_picture:og_image]'
   title: '[user:display-name] | [site:name]'
+  twitter_cards_description: '[user:field_user_bio]'
+  twitter_cards_image: '[user:user_picture:og_image]'
+  twitter_cards_title: '[user:display-name]'
+  twitter_cards_type: summary_large_image
