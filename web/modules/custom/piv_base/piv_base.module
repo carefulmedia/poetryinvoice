@@ -631,15 +631,15 @@ function piv_base_alter_poet_listing_name_search(ViewExecutable $view, Sql $quer
 
   $connection = \Drupal::database();
   $like = '%' . $connection->escapeLike($search) . '%';
-  $name_or = new Condition('OR');
-  $name_or->where("CONCAT_WS(' ', {$first_table}.piv_teacher_first_name_value, {$last_table}.piv_teacher_last_name_value) LIKE :poet_full_name", [
-    ':poet_full_name' => $like,
-  ]);
-  $name_or->condition("{$first_table}.piv_teacher_first_name_value", $like, 'LIKE');
-  $name_or->condition("{$last_table}.piv_teacher_last_name_value", $like, 'LIKE');
-
   $words = preg_split('/\s+/u', $search, -1, PREG_SPLIT_NO_EMPTY) ?: [];
-  if (count($words) > 1) {
+  $is_multi_word = count($words) > 1;
+
+  $name_match = new Condition('OR');
+  $name_match->where("CONCAT_WS(' ', {$first_table}.piv_teacher_first_name_value, {$last_table}.piv_teacher_last_name_value) LIKE :piv_poet_name_like", [
+    ':piv_poet_name_like' => $like,
+  ]);
+
+  if ($is_multi_word) {
     $all_words = new Condition('AND');
     foreach ($words as $word) {
       $word_like = '%' . $connection->escapeLike($word) . '%';
@@ -648,9 +648,42 @@ function piv_base_alter_poet_listing_name_search(ViewExecutable $view, Sql $quer
       $word_or->condition("{$last_table}.piv_teacher_last_name_value", $word_like, 'LIKE');
       $all_words->condition($word_or);
     }
-    $name_or->condition($all_words);
+    $name_match->condition($all_words);
+  }
+  else {
+    $name_match->condition("{$first_table}.piv_teacher_first_name_value", $like, 'LIKE');
+    $name_match->condition("{$last_table}.piv_teacher_last_name_value", $like, 'LIKE');
   }
 
+  $combine_conditions = _piv_base_extract_views_combine_conditions($query);
+
+  if ($is_multi_word) {
+    // Full-name searches should match poet names only, not every bio with
+    // "Robert" or "Taylor".
+    $query->addWhere('poet_name_search', $name_match);
+    piv_base_prepend_poet_name_relevance_sort($query, $first_table, $last_table, $search, $words, $like);
+    return;
+  }
+
+  $search_or = new Condition('OR');
+  foreach ($combine_conditions as $condition) {
+    $field = $condition['field'] ?? NULL;
+    if ($field instanceof Condition) {
+      $search_or->condition($field);
+      continue;
+    }
+    if (is_string($field)) {
+      $search_or->where($field, $condition['value'] ?? []);
+    }
+  }
+  $search_or->condition($name_match);
+  $query->addWhere('poet_name_search', $search_or);
+}
+
+/**
+ * Removes Views combine filter conditions from the query (for replacement).
+ */
+function _piv_base_extract_views_combine_conditions(Sql $query): array {
   $combine_conditions = [];
   foreach ($query->where as $group_id => $group) {
     if (empty($group['conditions']) || !is_array($group['conditions'])) {
@@ -666,20 +699,33 @@ function piv_base_alter_poet_listing_name_search(ViewExecutable $view, Sql $quer
       $query->where[$group_id]['conditions'] = array_values($query->where[$group_id]['conditions']);
     }
   }
+  return $combine_conditions;
+}
 
-  $search_or = new Condition('OR');
-  foreach ($combine_conditions as $condition) {
-    $field = $condition['field'] ?? NULL;
-    if ($field instanceof Condition) {
-      $search_or->condition($field);
-      continue;
-    }
-    if (is_string($field)) {
-      $search_or->where($field, $condition['value'] ?? []);
-    }
+/**
+ * Sorts multi-word poet searches by name relevance before A-Z.
+ */
+function piv_base_prepend_poet_name_relevance_sort(Sql $query, string $first_table, string $last_table, string $search, array $words, string $like): void {
+  $connection = \Drupal::database();
+  $first_word = mb_strtolower($words[0]);
+  $last_word = mb_strtolower($words[array_key_last($words)]);
+  $exact = $connection->quote(mb_strtolower($search));
+  $first_prefix = $connection->quote($first_word . '%');
+  $last_prefix = $connection->quote($last_word . '%');
+  $full_like = $connection->quote($like);
+
+  $query->addOrderBy('', "CASE
+    WHEN LOWER(TRIM(CONCAT_WS(' ', {$first_table}.piv_teacher_first_name_value, {$last_table}.piv_teacher_last_name_value))) = {$exact} THEN 0
+    WHEN LOWER({$first_table}.piv_teacher_first_name_value) LIKE {$first_prefix}
+      AND LOWER({$last_table}.piv_teacher_last_name_value) LIKE {$last_prefix} THEN 1
+    WHEN CONCAT_WS(' ', {$first_table}.piv_teacher_first_name_value, {$last_table}.piv_teacher_last_name_value) LIKE {$full_like} THEN 2
+    ELSE 3
+  END", 'ASC', 'piv_poet_name_rank');
+
+  $rank_sort = array_pop($query->orderby);
+  if ($rank_sort) {
+    array_unshift($query->orderby, $rank_sort);
   }
-  $search_or->condition($name_or);
-  $query->addWhere('poet_name_search', $search_or);
 }
 
 /**
@@ -726,7 +772,12 @@ function piv_base_is_views_combine_condition(array $condition): bool {
   if (!is_string($field)) {
     return FALSE;
   }
-  return stripos($field, 'CONCAT_WS') !== FALSE || stripos($field, 'CONCAT(') !== FALSE;
+  if (stripos($field, 'CONCAT_WS') !== FALSE || stripos($field, 'CONCAT(') !== FALSE) {
+    return TRUE;
+  }
+  return str_contains($field, 'piv_teacher_first_name_value')
+    || str_contains($field, 'piv_teacher_last_name_value')
+    || stripos($field, 'biograph') !== FALSE;
 }
 
 /**
