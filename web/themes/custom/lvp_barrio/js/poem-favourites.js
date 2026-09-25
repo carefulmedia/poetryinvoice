@@ -8,7 +8,7 @@
   const HEART_BASE = '/roulette/images/icons/heart';
   const STORAGE_PATH = '/modules/custom/piv_base/js/poem-favourites-storage.js';
 
-  let storage = window.PivPoemFavouritesStorage || (Drupal.PivPoemFavouritesStorage || null);
+  let storage = window.PivPoemFavouritesStorage || null;
   let storagePromise = null;
   let favouritesCache = [];
   let settingsCache = null;
@@ -23,7 +23,7 @@
         const script = document.createElement('script');
         script.src = STORAGE_PATH;
         script.onload = () => {
-          storage = window.PivPoemFavouritesStorage || Drupal.PivPoemFavouritesStorage || null;
+          storage = window.PivPoemFavouritesStorage || null;
           if (storage) {
             resolve(storage);
             return;
@@ -362,6 +362,7 @@
     });
   }
 
+  Drupal.behaviors = Drupal.behaviors || {};
   Drupal.behaviors.poemFavourites = {
     attach(context) {
       ensureLoaded().then(() => {
@@ -374,4 +375,4 @@
       });
     },
   };
-})(Drupal, once, drupalSettings);
+})(window.Drupal = window.Drupal || {}, window.once, window.drupalSettings || {});

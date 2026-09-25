@@ -366,4 +366,7 @@
 
   window.PivPoemFavouritesStorage = storage;
   Drupal.PivPoemFavouritesStorage = storage;
-})(window.Drupal || {}, window.drupalSettings || {});
+  if (typeof window !== 'undefined') {
+    window.Drupal = Drupal;
+  }
+})(window.Drupal = window.Drupal || {}, window.drupalSettings || {});
