@@ -1,7 +1,7 @@
 # Sync every pushed branch to the same branch on Pantheon Git (Multidev / dev).
 #
 # Setup (GitHub → Settings → Secrets and variables → Actions):
-#   PANTHEON_SSH_PRIVATE_KEY — Pantheon machine-user SSH private key (Dashboard → User → SSH Keys)
+#   PANTHEON_SSH_PRIVATE_KEY — Pantheon machine-user SSH private key (RSA or ECDSA 256 only; Ed25519 is rejected)
 #   PANTHEON_GIT_SSH_URL     — Git SSH URL from Dashboard → Dev → Connection info, e.g.
 #     ssh://codeserver.dev.e7bbb72e-a122-48a0-a04f-bcca334a3b20@codeserver.dev.e7bbb72e-a122-48a0-a04f-bcca334a3b20.drush.in:2222/~/repository.git
 #
