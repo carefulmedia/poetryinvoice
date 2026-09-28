@@ -1,0 +1,85 @@
+# Sync every pushed branch to the same branch on Pantheon Git (Multidev / dev).
+#
+# Setup (GitHub → Settings → Secrets and variables → Actions):
+#   PANTHEON_SSH_PRIVATE_KEY — Pantheon machine-user SSH private key (Dashboard → User → SSH Keys)
+#   PANTHEON_GIT_SSH_URL     — Git SSH URL from Dashboard → Dev → Connection info, e.g.
+#     ssh://codeserver.dev.e7bbb72e-a122-48a0-a04f-bcca334a3b20@codeserver.dev.e7bbb72e-a122-48a0-a04f-bcca334a3b20.drush.in:2222/~/repository.git
+#
+# Pantheon: master/main updates Dev; other branches create/update Multidev envs named from the branch.
+# test/live are promoted in the Pantheon dashboard — do not expect git push to replace Live.
+#
+# Optional repository variable (not secret):
+#   PANTHEON_SKIP_BRANCHES — comma-separated branch names to skip (e.g. dependabot/** is not applicable here)
+
+name: Push to Pantheon
+
+on:
+  push:
+    branches:
+      - '**'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: Branch to push (defaults to selected ref)
+        required: false
+        type: string
+
+concurrency:
+  group: pantheon-push-${{ github.ref_name }}
+  cancel-in-progress: true
+
+jobs:
+  push:
+    name: Pantheon · ${{ github.ref_name }}
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'workflow_dispatch'
+      || (
+        github.event_name == 'push'
+        && !startsWith(github.ref, 'refs/tags/')
+      )
+    steps:
+      - name: Skip excluded branches
+        id: skip
+        env:
+          SKIP: ${{ vars.PANTHEON_SKIP_BRANCHES }}
+          BRANCH: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref_name }}
+        run: |
+          if [ -z "$SKIP" ]; then
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          IFS=',' read -ra LIST <<< "$SKIP"
+          for item in "${LIST[@]}"; do
+            item="$(echo "$item" | xargs)"
+            [ -z "$item" ] && continue
+            if [ "$BRANCH" = "$item" ]; then
+              echo "Skipping branch $BRANCH (listed in PANTHEON_SKIP_BRANCHES)"
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+          done
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout
+        if: steps.skip.outputs.skip != 'true'
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref }}
+
+      - name: Push to Pantheon
+        if: steps.skip.outputs.skip != 'true'
+        env:
+          PANTHEON_SSH_PRIVATE_KEY: ${{ secrets.PANTHEON_SSH_PRIVATE_KEY }}
+          PANTHEON_GIT_SSH_URL: ${{ secrets.PANTHEON_GIT_SSH_URL }}
+          BRANCH: ${{ github.event_name == 'workflow_dispatch' && inputs.branch || github.ref_name }}
+        run: |
+          if [ -z "$PANTHEON_SSH_PRIVATE_KEY" ] || [ -z "$PANTHEON_GIT_SSH_URL" ]; then
+            echo "::error::Add PANTHEON_SSH_PRIVATE_KEY and PANTHEON_GIT_SSH_URL repository secrets."
+            exit 1
+          fi
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          chmod +x .ci/pantheon-push.sh
+          .ci/pantheon-push.sh "$BRANCH"
