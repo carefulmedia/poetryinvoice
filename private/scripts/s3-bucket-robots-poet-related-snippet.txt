@@ -1,0 +1,11 @@
+# Merge into the public robots.txt object on bucket: piv-lvp-images-and-files
+# (S3 Console → bucket → public access / existing robots.txt if any).
+#
+# Related poet teasers use image style "poet_related_noindex", which s3fs serves under:
+#   https://piv-lvp-images-and-files.s3.us-east-2.amazonaws.com/public/styles/poet_related_noindex/
+#
+# After adding the Disallow line, request recrawl of affected poet profile URLs in
+# Google Search Console. Image index updates can take several days.
+
+User-agent: *
+Disallow: /public/styles/poet_related_noindex/

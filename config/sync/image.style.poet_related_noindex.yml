@@ -1,0 +1,23 @@
+uuid: 7f2c8e41-9b3d-4a1e-8c6f-2d5e9a0b1c3d
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: poet_related_noindex
+label: 'Related poet teaser (noindex path for S3 robots.txt)'
+effects:
+  8e1a4f92-6c4d-4b2a-9f7e-3a1b5c6d7e8f:
+    uuid: 8e1a4f92-6c4d-4b2a-9f7e-3a1b5c6d7e8f
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 700
+      height: 400
+      crop_type: focal_point
+  9f2b5a03-7d5e-4c3b-0a8f-4b2c6d7e8f9a:
+    uuid: 9f2b5a03-7d5e-4c3b-0a8f-4b2c6d7e8f9a
+    id: image_convert
+    weight: 2
+    data:
+      extension: webp

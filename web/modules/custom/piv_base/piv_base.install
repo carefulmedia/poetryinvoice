@@ -125,7 +125,7 @@ function _piv_base_configure_poet_listing_teaser_images(): void {
 
   $fields['user_picture']['type'] = 'image_url';
   $fields['user_picture']['settings'] = [
-    'image_style' => 'focal_point_700_x_',
+    'image_style' => 'poet_related_noindex',
   ];
   $fields['user_picture']['exclude'] = TRUE;
 
@@ -216,6 +216,13 @@ function piv_base_update_9009() {
       $generator->rebuildQueue();
     }
   }
+}
+
+/**
+ * Use poet_related_noindex URLs for related poet teasers (S3 robots.txt Disallow).
+ */
+function piv_base_update_9010() {
+  _piv_base_configure_poet_listing_teaser_images();
 }
 
 /**

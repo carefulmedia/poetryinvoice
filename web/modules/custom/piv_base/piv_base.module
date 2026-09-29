@@ -878,7 +878,8 @@ function piv_base_preprocess_views_view_field(&$variables) {
   ];
 
   if (!$user->get('user_picture')->isEmpty() && ($file = $user->get('user_picture')->entity)) {
-    $image_style = ImageStyle::load('focal_point_700_x_');
+    $image_style = ImageStyle::load('poet_related_noindex')
+      ?: ImageStyle::load('focal_point_700_x_');
     $image_url = $image_style
       ? $image_style->buildUrl($file->getFileUri())
       : \Drupal::service('file_url_generator')->generateAbsoluteString($file->getFileUri());
