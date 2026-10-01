@@ -15,6 +15,7 @@
 
 User-agent: *
 # CSS, JS, Images
+Disallow: /public/styles/poet_related_noindex/
 Allow: /core/*.css$
 Allow: /core/*.css?
 Allow: /core/*.js$
