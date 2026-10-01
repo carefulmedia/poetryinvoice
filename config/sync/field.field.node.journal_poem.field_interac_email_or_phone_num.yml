@@ -11,7 +11,7 @@ entity_type: node
 bundle: journal_poem
 label: 'Interac email or phone number'
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''
