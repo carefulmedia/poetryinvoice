@@ -9,7 +9,7 @@ id: node.journal_poem.field_i_am_submitting_in_a_secon
 field_name: field_i_am_submitting_in_a_secon
 entity_type: node
 bundle: journal_poem
-label: 'I am submitting in my second official language'
+label: 'I am submitting in my second official language (French or English)'
 description: ''
 required: false
 translatable: false

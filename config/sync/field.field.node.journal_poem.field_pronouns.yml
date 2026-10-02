@@ -13,7 +13,7 @@ entity_type: node
 bundle: journal_poem
 label: Pronouns
 description: ''
-required: false
+required: true
 translatable: false
 default_value: {  }
 default_value_callback: ''

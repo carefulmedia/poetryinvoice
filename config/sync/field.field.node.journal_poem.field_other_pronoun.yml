@@ -1,15 +1,15 @@
-uuid: 5c2d2c91-b62f-453e-aa0f-5fd4777e54b7
+uuid: 6eb8c86d-0aa8-4c99-b9f1-f765a56e37e3
 langcode: en
 status: true
 dependencies:
   config:
-    - field.storage.node.field_legal_name
+    - field.storage.node.field_other_pronoun
     - node.type.journal_poem
-id: node.journal_poem.field_legal_name
-field_name: field_legal_name
+id: node.journal_poem.field_other_pronoun
+field_name: field_other_pronoun
 entity_type: node
 bundle: journal_poem
-label: 'Full legal name'
+label: 'Other pronoun'
 description: ''
 required: false
 translatable: false

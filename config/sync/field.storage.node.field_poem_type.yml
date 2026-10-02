@@ -8,7 +8,7 @@ dependencies:
     - options
 third_party_settings:
   field_permissions:
-    permission_type: private
+    permission_type: custom
 id: node.field_poem_type
 field_name: field_poem_type
 entity_type: node

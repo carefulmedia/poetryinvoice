@@ -52,5 +52,7 @@ settings:
         education_consultant: '0'
         journal_editor: '0'
         junior_editor: '0'
+        prompter: '0'
+        student_poet: '0'
     include_anonymous: true
 field_type: entity_reference

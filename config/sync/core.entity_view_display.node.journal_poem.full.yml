@@ -18,11 +18,10 @@ dependencies:
     - field.field.node.journal_poem.field_images_insert
     - field.field.node.journal_poem.field_interac_email_or_phone_num
     - field.field.node.journal_poem.field_journal_poem_body
-    - field.field.node.journal_poem.field_legal_name
-    - field.field.node.journal_poem.field_legal_name_boolean
     - field.field.node.journal_poem.field_metatags
     - field.field.node.journal_poem.field_no_artificial_intelligence
     - field.field.node.journal_poem.field_other
+    - field.field.node.journal_poem.field_other_pronoun
     - field.field.node.journal_poem.field_paid_
     - field.field.node.journal_poem.field_phone
     - field.field.node.journal_poem.field_poem_attachment
@@ -151,7 +150,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
             weight: 8
             additional: {  }
           f418bb93-0f82-49e8-89d3-cfa5cd8fe1aa:
@@ -307,11 +306,10 @@ hidden:
   field_i_identify_as_indigenous: true
   field_i_would_like_to_be_conside: true
   field_interac_email_or_phone_num: true
-  field_legal_name: true
-  field_legal_name_boolean: true
   field_metatags: true
   field_no_artificial_intelligence: true
   field_other: true
+  field_other_pronoun: true
   field_paid_: true
   field_phone: true
   field_poem_attachment: true

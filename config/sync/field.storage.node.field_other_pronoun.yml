@@ -1,4 +1,4 @@
-uuid: eae6eaac-808e-4375-94aa-5f6c1b908ce8
+uuid: af09f320-34b4-453c-88c1-40548daa82b3
 langcode: en
 status: true
 dependencies:
@@ -7,9 +7,9 @@ dependencies:
     - node
 third_party_settings:
   field_permissions:
-    permission_type: custom
-id: node.field_legal_name
-field_name: field_legal_name
+    permission_type: private
+id: node.field_other_pronoun
+field_name: field_other_pronoun
 entity_type: node
 type: string
 settings:

@@ -18,11 +18,10 @@ dependencies:
     - field.field.node.journal_poem.field_images_insert
     - field.field.node.journal_poem.field_interac_email_or_phone_num
     - field.field.node.journal_poem.field_journal_poem_body
-    - field.field.node.journal_poem.field_legal_name
-    - field.field.node.journal_poem.field_legal_name_boolean
     - field.field.node.journal_poem.field_metatags
     - field.field.node.journal_poem.field_no_artificial_intelligence
     - field.field.node.journal_poem.field_other
+    - field.field.node.journal_poem.field_other_pronoun
     - field.field.node.journal_poem.field_paid_
     - field.field.node.journal_poem.field_phone
     - field.field.node.journal_poem.field_poem_attachment
@@ -69,24 +68,6 @@ targetEntityType: node
 bundle: journal_poem
 mode: futureverse_poem_vote
 content:
-  field_legal_name:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 4
-    region: content
-  field_legal_name_boolean:
-    type: boolean
-    label: hidden
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 3
-    region: content
   field_pronouns:
     type: list_default
     label: hidden
@@ -154,6 +135,7 @@ hidden:
   field_metatags: true
   field_no_artificial_intelligence: true
   field_other: true
+  field_other_pronoun: true
   field_paid_: true
   field_phone: true
   field_poem_attachment: true
