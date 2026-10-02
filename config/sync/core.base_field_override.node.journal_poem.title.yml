@@ -8,7 +8,7 @@ id: node.journal_poem.title
 field_name: title
 entity_type: node
 bundle: journal_poem
-label: Title
+label: 'Poem title'
 description: ''
 required: true
 translatable: true

@@ -18,11 +18,10 @@ dependencies:
     - field.field.node.journal_poem.field_images_insert
     - field.field.node.journal_poem.field_interac_email_or_phone_num
     - field.field.node.journal_poem.field_journal_poem_body
-    - field.field.node.journal_poem.field_legal_name
-    - field.field.node.journal_poem.field_legal_name_boolean
     - field.field.node.journal_poem.field_metatags
     - field.field.node.journal_poem.field_no_artificial_intelligence
     - field.field.node.journal_poem.field_other
+    - field.field.node.journal_poem.field_other_pronoun
     - field.field.node.journal_poem.field_paid_
     - field.field.node.journal_poem.field_phone
     - field.field.node.journal_poem.field_poem_attachment
@@ -92,9 +91,9 @@ third_party_settings:
               label: 'Entity view (Content)'
               label_display: '0'
               provider: ctools
-              view_mode: test_
               context_mapping:
                 entity: layout_builder.entity
+              view_mode: test_
             weight: 0
             additional: {  }
           2691affc-6e2b-4804-b560-6784646dc8eb:
@@ -107,7 +106,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
             weight: 1
             additional: {  }
           a370d3f4-fc1d-4a14-bed4-d96600bb76f6:
@@ -330,6 +329,23 @@ third_party_settings:
                   format_custom_true: ''
                 third_party_settings: {  }
             weight: 15
+            additional: {  }
+          48ae8dfa-416a-41fa-91d1-9a4c27e0b843:
+            uuid: 48ae8dfa-416a-41fa-91d1-9a4c27e0b843
+            region: main
+            configuration:
+              id: 'field_block:node:journal_poem:field_other_pronoun'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                  link_rel: canonical
+                third_party_settings: {  }
+            weight: 16
             additional: {  }
         third_party_settings: {  }
       -
@@ -597,7 +613,7 @@ third_party_settings:
               provider: views
               context_mapping: {  }
               views_label: ''
-              items_per_page: none
+              items_per_page: 0
             weight: 1
             additional: {  }
         third_party_settings: {  }
@@ -742,24 +758,6 @@ content:
     third_party_settings: {  }
     weight: 15
     region: content
-  field_legal_name:
-    type: string
-    label: above
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 102
-    region: content
-  field_legal_name_boolean:
-    type: boolean
-    label: above
-    settings:
-      format: default
-      format_custom_false: ''
-      format_custom_true: ''
-    third_party_settings: {  }
-    weight: 101
-    region: content
   field_metatags:
     type: metatag_empty_formatter
     label: above
@@ -784,6 +782,15 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 116
+    region: main
+  field_other_pronoun:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+      link_rel: canonical
+    third_party_settings: {  }
+    weight: 122
     region: main
   field_paid_:
     type: boolean

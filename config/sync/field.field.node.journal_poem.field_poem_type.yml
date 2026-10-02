@@ -13,7 +13,7 @@ entity_type: node
 bundle: journal_poem
 label: 'I wrote my poem based on:'
 description: ''
-required: true
+required: false
 translatable: true
 default_value:
   -
