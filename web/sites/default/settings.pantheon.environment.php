@@ -102,10 +102,13 @@ if ($pantheon_env === 'live') {
     ini_set('memory_limit', '512M');
   }
 }
-// Development and staging environments.
+// Development and staging environments (dev, test, multidev).
 else {
   $config['system.logging']['error_level'] = 'verbose';
   $config['reroute_email.settings']['enable'] = TRUE;
+  $config['reroute_email.settings']['address'] = 'dev@poetryinvoice.ca';
+  // Keep original To/Cc in the message body so templates can be verified.
+  $config['reroute_email.settings']['description'] = TRUE;
   $config['language.negotiation']['url']['source'] = 'path_prefix';
 }
 
