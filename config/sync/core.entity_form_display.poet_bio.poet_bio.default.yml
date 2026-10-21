@@ -14,9 +14,9 @@ dependencies:
   module:
     - address
     - field_layout
+    - focal_point
     - layout_discovery
     - piv_futureverse
-    - svg_image
 third_party_settings:
   field_layout:
     id: layout_onecol
@@ -37,7 +37,8 @@ content:
     type: address_default
     weight: 3
     region: content
-    settings: {  }
+    settings:
+      wrapper_type: fieldset
     third_party_settings: {  }
   field_grade:
     type: options_select
@@ -70,12 +71,14 @@ content:
     settings: {  }
     third_party_settings: {  }
   field_profile_picture:
-    type: image_image
+    type: image_focal_point
     weight: 5
     region: content
     settings:
       progress_indicator: throbber
       preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
   field_school:
     type: entity_reference_autocomplete

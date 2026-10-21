@@ -10,8 +10,8 @@ id: poet_bio.poet_bio.field_interac_e_transfer_info
 field_name: field_interac_e_transfer_info
 entity_type: poet_bio
 bundle: poet_bio
-label: 'Interac e-transfer information'
-description: 'E-mail or phone number.'
+label: 'Interac e-mail or phone number.'
+description: ''
 required: true
 translatable: false
 default_value: {  }
