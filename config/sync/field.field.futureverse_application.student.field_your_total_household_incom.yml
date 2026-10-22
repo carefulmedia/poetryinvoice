@@ -1,0 +1,21 @@
+uuid: bb61da3d-bacd-46da-855d-8687e0aecb95
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_your_total_household_incom
+    - piv_futureverse.futureverse_application_type.student
+  module:
+    - options
+id: futureverse_application.student.field_your_total_household_incom
+field_name: field_your_total_household_incom
+entity_type: futureverse_application
+bundle: student
+label: 'Your total household income (before taxes) falls under which category:'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

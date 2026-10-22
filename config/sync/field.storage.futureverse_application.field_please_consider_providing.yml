@@ -14,10 +14,19 @@ settings:
     -
       value: first_nation
       label: 'First Nation'
+    -
+      value: inuit
+      label: Inuit
+    -
+      value: metis
+      label: Métis
+    -
+      value: other
+      label: Other
   allowed_values_function: ''
 module: options
 locked: false
-cardinality: 1
+cardinality: -1
 translatable: true
 indexes: {  }
 persist_with_no_fields: false

@@ -1,0 +1,21 @@
+uuid: cec75f69-cd9d-4157-92f0-bc3d90ea31b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_voluntary_self_disclosure
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_voluntary_self_disclosure
+field_name: field_voluntary_self_disclosure
+entity_type: futureverse_application
+bundle: student
+label: 'Would you like to answer our voluntary self-disclosure questions?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

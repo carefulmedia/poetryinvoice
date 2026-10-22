@@ -1,0 +1,21 @@
+uuid: df194976-ab93-4139-8578-f7bd9e522c60
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application.field_other_race
+field_name: field_other_race
+entity_type: futureverse_application
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
