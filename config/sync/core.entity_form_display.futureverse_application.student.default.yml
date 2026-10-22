@@ -62,6 +62,10 @@ third_party_settings:
         - field_as_defined_by_the_employee
         - field_if_you_are_a_racialized_p
         - field_other_race
+        - field_are_you_a_person_with_a_di
+        - field_disability_type
+        - field_other_disability
+        - field_your_total_household_incom
       label: 'Voluntary Self-Disclosure'
       region: content
       parent_name: ''
@@ -87,7 +91,7 @@ content:
     third_party_settings: {  }
   field_are_you_a_person_with_a_di:
     type: boolean_checkbox
-    weight: 21
+    weight: 30
     region: content
     settings:
       display_label: true
@@ -122,10 +126,32 @@ content:
             selector: ''
   field_disability_type:
     type: options_buttons
-    weight: 22
+    weight: 31
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        6c79c7cd-a706-46c7-aa7c-c5839cf8dabf:
+          entity_type: futureverse_application
+          bundle: student
+          dependee: field_are_you_a_person_with_a_di
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_do_you_identify_as_indigen:
     type: boolean_checkbox
     weight: 17
@@ -169,7 +195,23 @@ content:
     weight: 28
     region: content
     settings: {  }
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        ebcbea0d-f30f-40b7-9044-504291e32def:
+          entity_type: futureverse_application
+          bundle: student
+          dependee: field_as_defined_by_the_employee
+          settings:
+            state: visible
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form: {  }
+            effect: show
+            effect_options: {  }
+            selector: ''
   field_is_there_anything_else_we:
     type: string_textarea
     weight: 16
@@ -243,9 +285,9 @@ content:
             reset: false
             condition: value
             grouping: AND
-            values_set: 1
+            values_set: 3
             value: ''
-            values: {  }
+            values: other
             value_form:
               -
                 value: other
@@ -258,34 +300,27 @@ content:
             selector: ''
   field_other_disability:
     type: string_textfield
-    weight: 23
+    weight: 32
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings:
       conditional_fields:
-        5901b2f4-98af-4029-8444-2f963e19a58d:
+        5f070c6e-4b53-4543-8c2b-9972c007bbb9:
           entity_type: futureverse_application
           bundle: student
           dependee: field_disability_type
           settings:
             state: visible
-            reset: false
             condition: value
             grouping: AND
             values_set: 1
             value: ''
             values: {  }
-            value_form:
-              -
-                value: other
-            effect: slide
-            effect_options:
-              fade:
-                speed: '400'
-              slide:
-                speed: '400'
+            value_form: {  }
+            effect: show
+            effect_options: {  }
             selector: ''
   field_other_race:
     type: string_textfield
@@ -372,7 +407,7 @@ content:
     third_party_settings: {  }
   field_your_total_household_incom:
     type: options_select
-    weight: 24
+    weight: 33
     region: content
     settings: {  }
     third_party_settings: {  }

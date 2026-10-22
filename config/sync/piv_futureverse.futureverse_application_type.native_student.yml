@@ -3,4 +3,4 @@ langcode: en
 status: true
 dependencies: {  }
 id: native_student
-label: 'Native Student'
+label: 'Indigenous Student'
