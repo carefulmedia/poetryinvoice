@@ -11,7 +11,7 @@ id: futureverse_application.student.field_if_you_are_a_racialized_p
 field_name: field_if_you_are_a_racialized_p
 entity_type: futureverse_application
 bundle: student
-label: '* If you are a racialized person please consider providing us with additional information about your race. Please check all that apply. Are you:'
+label: 'Please consider providing us with additional information about your race. Please check all that apply. Are you:'
 description: ''
 required: false
 translatable: false

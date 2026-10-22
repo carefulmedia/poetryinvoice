@@ -9,8 +9,8 @@ id: futureverse_application.student.field_tell_us_about_your_writing
 field_name: field_tell_us_about_your_writing
 entity_type: futureverse_application
 bundle: student
-label: 'Tell us about your writing.'
-description: 'What inspires your work? When did you start writing? What would you love to learn or work on at FutureVerse?'
+label: 'Tell us about your writing. What inspires your work? When did you start writing? What would you love to learn or work on at FutureVerse? '
+description: "If you want, you could use one or all of these three statements to share your ideas:\r\n1) I first started writing when....\r\n2) I love writing about _________ because.....\r\n3) If I came to the FutureVerse writing workshops, I'd love to learn more about..."
 required: true
 translatable: false
 default_value: {  }

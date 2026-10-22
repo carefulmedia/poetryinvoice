@@ -1,0 +1,18 @@
+uuid: 79ac6445-6764-47a7-8d5d-91df54e5817e
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application.field_voluntary_self_disclosure
+field_name: field_voluntary_self_disclosure
+entity_type: futureverse_application
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

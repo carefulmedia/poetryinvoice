@@ -1,0 +1,21 @@
+uuid: 9ef5ad76-0430-4b45-90df-623c44690beb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_disability_type
+    - piv_futureverse.futureverse_application_type.student
+  module:
+    - options
+id: futureverse_application.student.field_disability_type
+field_name: field_disability_type
+entity_type: futureverse_application
+bundle: student
+label: 'Please consider providing us with additional detail about your disability/disabilities (select all that apply):'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

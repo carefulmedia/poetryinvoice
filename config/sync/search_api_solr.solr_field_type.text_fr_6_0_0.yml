@@ -405,7 +405,7 @@ text_files:
     quelles
     sans
     soi
-  protwords: |
+  protwords: |+
 
   accents: |
     # À => A

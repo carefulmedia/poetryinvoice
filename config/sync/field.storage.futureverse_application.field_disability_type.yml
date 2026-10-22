@@ -1,0 +1,57 @@
+uuid: 0988a998-1da3-4b6f-93a5-f3fb697a52ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - piv_futureverse
+id: futureverse_application.field_disability_type
+field_name: field_disability_type
+entity_type: futureverse_application
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: hearing
+      label: Hearing
+    -
+      value: seeing
+      label: Seeing
+    -
+      value: mobility
+      label: Mobility
+    -
+      value: flexibility
+      label: Flexibility
+    -
+      value: dexterity
+      label: Dexterity
+    -
+      value: pain
+      label: Pain
+    -
+      value: learning
+      label: Learning
+    -
+      value: memory
+      label: Memory
+    -
+      value: developmental
+      label: Developmental
+    -
+      value: mental_and_or_psychological
+      label: 'Mental and/or psychological'
+    -
+      value: unknown_disability_type
+      label: 'Unknown disability type'
+    -
+      value: other
+      label: Other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

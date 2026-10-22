@@ -1,0 +1,18 @@
+uuid: b33b6fd7-9d9d-44be-90fd-6767438b2921
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application.field_are_you_a_person_with_a_di
+field_name: field_are_you_a_person_with_a_di
+entity_type: futureverse_application
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

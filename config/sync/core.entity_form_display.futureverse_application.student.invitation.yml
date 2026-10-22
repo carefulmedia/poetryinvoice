@@ -4,7 +4,9 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.futureverse_application.invitation
+    - field.field.futureverse_application.student.field_are_you_a_person_with_a_di
     - field.field.futureverse_application.student.field_as_defined_by_the_employee
+    - field.field.futureverse_application.student.field_disability_type
     - field.field.futureverse_application.student.field_do_you_identify_as_indigen
     - field.field.futureverse_application.student.field_email
     - field.field.futureverse_application.student.field_first_name
@@ -17,12 +19,16 @@ dependencies:
     - field.field.futureverse_application.student.field_legal_name
     - field.field.futureverse_application.student.field_legal_name_boolean
     - field.field.futureverse_application.student.field_other
+    - field.field.futureverse_application.student.field_other_disability
+    - field.field.futureverse_application.student.field_other_race
     - field.field.futureverse_application.student.field_parent_guardian_email
     - field.field.futureverse_application.student.field_parent_guardian_phone
     - field.field.futureverse_application.student.field_please_consider_providing
     - field.field.futureverse_application.student.field_please_tell_us_a_bit_about
     - field.field.futureverse_application.student.field_tell_us_about_your_writing
+    - field.field.futureverse_application.student.field_voluntary_self_disclosure
     - field.field.futureverse_application.student.field_what_are_some_issues_you_c
+    - field.field.futureverse_application.student.field_your_total_household_incom
     - piv_futureverse.futureverse_application_type.student
   module:
     - field_layout
@@ -77,7 +83,9 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  field_are_you_a_person_with_a_di: true
   field_as_defined_by_the_employee: true
+  field_disability_type: true
   field_do_you_identify_as_indigen: true
   field_first_name: true
   field_how_has_your_community_sha: true
@@ -89,9 +97,13 @@ hidden:
   field_legal_name: true
   field_legal_name_boolean: true
   field_other: true
+  field_other_disability: true
+  field_other_race: true
   field_parent_guardian_email: true
   field_parent_guardian_phone: true
   field_please_consider_providing: true
   field_please_tell_us_a_bit_about: true
   field_tell_us_about_your_writing: true
+  field_voluntary_self_disclosure: true
   field_what_are_some_issues_you_c: true
+  field_your_total_household_incom: true
