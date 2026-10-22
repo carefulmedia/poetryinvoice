@@ -40,7 +40,7 @@ settings:
       label: Korean
     -
       value: japanese
-      label: japanese
+      label: Japanese
     -
       value: mixed_race
       label: 'Mixed Race'
