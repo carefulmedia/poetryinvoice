@@ -1,0 +1,21 @@
+uuid: 98b5faf3-79a5-4d25-aff6-f63f65aac0cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_as_defined_by_the_employee
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_as_defined_by_the_employee
+field_name: field_as_defined_by_the_employee
+entity_type: futureverse_application
+bundle: student
+label: 'Are you a racialized person?'
+description: 'As defined by the Employee Equity Act, racialized persons are persons, other than Indigenous Peoples, who are non-Caucasian in race or non-white in colour, regardless of birthplace.  '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

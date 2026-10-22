@@ -1,0 +1,21 @@
+uuid: 5338a2e7-6dc4-4160-a25a-ba5ad813056c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_if_you_are_a_racialized_p
+    - piv_futureverse.futureverse_application_type.student
+  module:
+    - options
+id: futureverse_application.student.field_if_you_are_a_racialized_p
+field_name: field_if_you_are_a_racialized_p
+entity_type: futureverse_application
+bundle: student
+label: '* If you are a racialized person please consider providing us with additional information about your race. Please check all that apply. Are you:'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

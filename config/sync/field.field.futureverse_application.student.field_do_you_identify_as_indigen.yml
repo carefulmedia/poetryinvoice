@@ -1,0 +1,21 @@
+uuid: 1f36da9d-6712-46f5-957c-7a15e600f84a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_do_you_identify_as_indigen
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_do_you_identify_as_indigen
+field_name: field_do_you_identify_as_indigen
+entity_type: futureverse_application
+bundle: student
+label: 'Do you identify as Indigenous (First Nations, Métis, Inuit)?'
+description: 'As defined by the Employee Equity Act, an Indigenous person is a North American Indian or a member of a First Nation, a Métis, or Inuit. North American Indians or members of a First Nation include status, treaty or registered Indians, as well as non-status and non-registered Indians.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes, I identify as Indigenous.'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,57 @@
+uuid: 7dc879fd-1c84-491c-91fa-183af6f89958
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - piv_futureverse
+id: futureverse_application.field_if_you_are_a_racialized_p
+field_name: field_if_you_are_a_racialized_p
+entity_type: futureverse_application
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: south_asian_e_g_east_indian_pakistani_sri_lankan_indo_caribbean_etc
+      label: 'South Asian (e.g., East Indian, Pakistani, Sri Lankan, Indo-Caribbean etc.)'
+    -
+      value: chinese
+      label: Chinese
+    -
+      value: black_e_g_jamaican_haitian_nigerian_ethiopian_etc
+      label: 'Black (e.g., Jamaican, Haitian, Nigerian, Ethiopian, etc.)'
+    -
+      value: filipino
+      label: Filipino
+    -
+      value: latin_american
+      label: 'Latin American'
+    -
+      value: arab
+      label: Arab
+    -
+      value: southeast_asian_e_g_vietnamese_cambodian_laotian_thai_etc
+      label: 'Southeast Asian (e.g. Vietnamese, Cambodian, Laotian, Thai, etc.)'
+    -
+      value: west_asian_e_g_iranian_afghan_etc
+      label: 'West Asian (e.g. Iranian, Afghan, etc.)'
+    -
+      value: korean
+      label: Korean
+    -
+      value: japanese
+      label: japanese
+    -
+      value: mixed_race
+      label: 'Mixed Race'
+    -
+      value: other
+      label: other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -4,17 +4,23 @@ status: true
 dependencies:
   config:
     - core.entity_form_mode.futureverse_application.invitation
+    - field.field.futureverse_application.student.field_as_defined_by_the_employee
+    - field.field.futureverse_application.student.field_do_you_identify_as_indigen
     - field.field.futureverse_application.student.field_email
     - field.field.futureverse_application.student.field_first_name
     - field.field.futureverse_application.student.field_how_has_your_community_sha
     - field.field.futureverse_application.student.field_i_am_submitting_in_a_secon
+    - field.field.futureverse_application.student.field_if_you_are_a_racialized_p
     - field.field.futureverse_application.student.field_is_there_anything_else_we
     - field.field.futureverse_application.student.field_journal_year
     - field.field.futureverse_application.student.field_last_name
     - field.field.futureverse_application.student.field_legal_name
     - field.field.futureverse_application.student.field_legal_name_boolean
+    - field.field.futureverse_application.student.field_other
     - field.field.futureverse_application.student.field_parent_guardian_email
     - field.field.futureverse_application.student.field_parent_guardian_phone
+    - field.field.futureverse_application.student.field_please_consider_providing
+    - field.field.futureverse_application.student.field_please_tell_us_a_bit_about
     - field.field.futureverse_application.student.field_tell_us_about_your_writing
     - field.field.futureverse_application.student.field_what_are_some_issues_you_c
     - piv_futureverse.futureverse_application_type.student
@@ -71,15 +77,21 @@ content:
       placeholder: ''
     third_party_settings: {  }
 hidden:
+  field_as_defined_by_the_employee: true
+  field_do_you_identify_as_indigen: true
   field_first_name: true
   field_how_has_your_community_sha: true
   field_i_am_submitting_in_a_secon: true
+  field_if_you_are_a_racialized_p: true
   field_is_there_anything_else_we: true
   field_journal_year: true
   field_last_name: true
   field_legal_name: true
   field_legal_name_boolean: true
+  field_other: true
   field_parent_guardian_email: true
   field_parent_guardian_phone: true
+  field_please_consider_providing: true
+  field_please_tell_us_a_bit_about: true
   field_tell_us_about_your_writing: true
   field_what_are_some_issues_you_c: true

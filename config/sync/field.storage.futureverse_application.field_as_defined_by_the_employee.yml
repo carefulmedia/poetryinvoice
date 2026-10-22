@@ -1,0 +1,18 @@
+uuid: fcda0a61-ea88-4dac-8227-e7e65109afe7
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application.field_as_defined_by_the_employee
+field_name: field_as_defined_by_the_employee
+entity_type: futureverse_application
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false
