@@ -67,7 +67,6 @@ development.services.yml
 /.drush-lock-update
 /web/**/.gitignore
 /drush/Commands/contrib/
-/web/libraries/
 /web/private/scripts/quicksilver
 
 # SimpleTest environment
