@@ -1,0 +1,21 @@
+uuid: 581700b8-7d9e-4da0-a8b1-65c99b677383
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_please_consider_providing
+    - piv_futureverse.futureverse_application_type.student
+  module:
+    - options
+id: futureverse_application.student.field_please_consider_providing
+field_name: field_please_consider_providing
+entity_type: futureverse_application
+bundle: student
+label: 'Please consider providing us with additional information about being Indigenous. Are you:'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
