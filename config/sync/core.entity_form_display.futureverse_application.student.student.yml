@@ -99,7 +99,7 @@ content:
       display_label: true
     third_party_settings: {  }
   field_disability_type:
-    type: options_select
+    type: options_buttons
     weight: 20
     region: content
     settings: {  }
@@ -135,7 +135,7 @@ content:
       display_label: true
     third_party_settings: {  }
   field_if_you_are_a_racialized_p:
-    type: options_select
+    type: options_buttons
     weight: 23
     region: content
     settings: {  }
@@ -229,7 +229,7 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_please_consider_providing:
-    type: options_select
+    type: options_buttons
     weight: 17
     region: content
     settings: {  }
