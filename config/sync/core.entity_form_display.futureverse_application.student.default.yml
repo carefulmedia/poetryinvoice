@@ -78,6 +78,34 @@ third_party_settings:
         label_as_html: false
         description: ''
         required_fields: true
+    group_indigenous_student1:
+      children: {  }
+      label: 'Indigenous Student'
+      region: hidden
+      parent_name: ''
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+        required_fields: true
+    group_voluntary_self_disclosure1:
+      children: {  }
+      label: 'Voluntary Self-Disclosure'
+      region: hidden
+      parent_name: ''
+      weight: 20
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+        required_fields: true
 id: futureverse_application.student.default
 targetEntityType: futureverse_application
 bundle: student
