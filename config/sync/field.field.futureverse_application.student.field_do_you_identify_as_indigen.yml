@@ -17,5 +17,5 @@ default_value: {  }
 default_value_callback: ''
 settings:
   on_label: 'Yes, I identify as Indigenous.'
-  off_label: 'Off'
+  off_label: 'No'
 field_type: boolean

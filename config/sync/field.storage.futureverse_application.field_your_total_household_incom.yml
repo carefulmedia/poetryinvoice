@@ -13,7 +13,19 @@ settings:
   allowed_values:
     -
       value: under_50_000
-      label: 'Under 50,000'
+      label: 'Under $50,000'
+    -
+      value: '50_000_70_000'
+      label: '$50,000- $70,000'
+    -
+      value: '70_000_100_000'
+      label: '$70,000 - $100,000'
+    -
+      value: '100_000_150_000'
+      label: '$100,000 - $150,000'
+    -
+      value: over_150_000
+      label: 'Over $150,000'
   allowed_values_function: ''
 module: options
 locked: false

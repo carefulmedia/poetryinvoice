@@ -46,7 +46,7 @@ settings:
       label: 'Mixed Race'
     -
       value: other
-      label: other
+      label: Other
   allowed_values_function: ''
 module: options
 locked: false
