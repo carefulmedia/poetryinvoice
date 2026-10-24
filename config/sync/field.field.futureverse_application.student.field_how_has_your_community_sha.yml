@@ -10,7 +10,7 @@ field_name: field_how_has_your_community_sha
 entity_type: futureverse_application
 bundle: student
 label: 'How has your community shaped you? What important lessons have you learned from your community?'
-description: "If you want, you could use one or both of these statements to share your ideas:\r\n1) Because of my community, I understand how to....\r\n2) My community has taught me the importance of...."
+description: "If you want, you could use one or both of these statements to share your ideas:<br>\r\n1) Because of my community, I understand how to....<br>\r\n2) My community has taught me the importance of...."
 required: true
 translatable: false
 default_value: {  }

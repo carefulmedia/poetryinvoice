@@ -10,7 +10,7 @@ field_name: field_voluntary_self_disclosure
 entity_type: futureverse_application
 bundle: student
 label: 'Would you like to answer our voluntary self-disclosure questions?'
-description: ''
+description: 'This information is collected so that we can hold ourselves accountable in offering programs to a diverse group of students. It is completely voluntary. You may choose to fill out some, all, or none of this form. It will not affect your application to FutureVerse. '
 required: false
 translatable: false
 default_value: {  }
