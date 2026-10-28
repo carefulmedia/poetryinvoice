@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.media_coverage.field_metatags
     - field.field.node.media_coverage.field_source
     - field.field.node.media_coverage.field_story_link
+    - field.field.node.media_coverage.layout_builder__layout
     - image.style.thumbnail
     - node.type.media_coverage
   module:
@@ -163,3 +164,4 @@ content:
     third_party_settings: {  }
 hidden:
   comment_node_media_coverage: true
+  layout_builder__layout: true
