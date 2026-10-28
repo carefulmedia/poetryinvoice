@@ -1,5 +1,5 @@
 third_party_settings:
   field_group:
     group_futureverse_application_20:
-      children: { }
+      children: {  }
       label: 'FutureVerse Application 2027 fr'
