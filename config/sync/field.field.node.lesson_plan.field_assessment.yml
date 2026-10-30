@@ -1,0 +1,22 @@
+uuid: 7aace6e2-2269-4779-8302-3e3349255b51
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_assessment
+    - node.type.lesson_plan
+  module:
+    - text
+id: node.lesson_plan.field_assessment
+field_name: field_assessment
+entity_type: node
+bundle: lesson_plan
+label: Assessment
+description: 'If the lesson plan includes an assessment of learning, include a description and assessment tool (e.g. rubric, checklist, etc.) here.  Any attachments should be included in the "Attachments" section below.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

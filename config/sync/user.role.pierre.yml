@@ -5,7 +5,6 @@ dependencies:
   config:
     - node.type.poem
   module:
-    - field_permissions
     - file
     - node
     - system
@@ -17,4 +16,3 @@ permissions:
   - 'access administration pages'
   - 'delete own files'
   - 'edit any poem content'
-  - 'view field_grades'

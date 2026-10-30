@@ -10,9 +10,5 @@ label: 'Non-Canadian educator'
 weight: 1
 is_admin: null
 permissions:
-  - 'create field_grades'
   - 'delete own files'
-  - 'edit own field_grades'
   - 'view body'
-  - 'view field_grades'
-  - 'view own field_grades'

@@ -1,0 +1,39 @@
+uuid: f29416c3-db6d-4c6c-8159-34f1f303b5c8
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - piv_futureverse
+id: futureverse_application.field_pronouns
+field_name: field_pronouns
+entity_type: futureverse_application
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: she_her
+      label: She/Her
+    -
+      value: he_him
+      label: He/Him
+    -
+      value: they_them
+      label: They/Them
+    -
+      value: she_they
+      label: She/They
+    -
+      value: he_they
+      label: He/They
+    -
+      value: other
+      label: Other
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

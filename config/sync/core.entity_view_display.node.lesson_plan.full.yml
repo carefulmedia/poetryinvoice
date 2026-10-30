@@ -9,12 +9,16 @@ dependencies:
     - field.field.node.lesson_plan.comment_node_lesson_plan
     - field.field.node.lesson_plan.field_activity_description_steps
     - field.field.node.lesson_plan.field_additional_poems
+    - field.field.node.lesson_plan.field_assessment
     - field.field.node.lesson_plan.field_attachments
     - field.field.node.lesson_plan.field_commissioned_
     - field.field.node.lesson_plan.field_completed
+    - field.field.node.lesson_plan.field_content_note
     - field.field.node.lesson_plan.field_copyright
+    - field.field.node.lesson_plan.field_early_finishers_extension
     - field.field.node.lesson_plan.field_file_under_
     - field.field.node.lesson_plan.field_grades
+    - field.field.node.lesson_plan.field_guiding_question
     - field.field.node.lesson_plan.field_learning_objectives
     - field.field.node.lesson_plan.field_lesson_objectives
     - field.field.node.lesson_plan.field_materials_resources
@@ -111,7 +115,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 2
+            weight: 5
             additional: {  }
           7f666de6-a8d2-4305-b29d-79a57a8696dc:
             uuid: 7f666de6-a8d2-4305-b29d-79a57a8696dc
@@ -129,7 +133,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 3
+            weight: 6
             additional: {  }
           5be07e39-e641-428c-b313-cf941f03bf8f:
             uuid: 5be07e39-e641-428c-b313-cf941f03bf8f
@@ -147,7 +151,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 4
+            weight: 7
             additional: {  }
           f2e204c3-b2a7-4325-bc33-625a506f6c66:
             uuid: f2e204c3-b2a7-4325-bc33-625a506f6c66
@@ -165,7 +169,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 6
+            weight: 11
             additional: {  }
           1b79daff-9753-4e12-b9c0-ea8b65faf2c1:
             uuid: 1b79daff-9753-4e12-b9c0-ea8b65faf2c1
@@ -183,7 +187,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 7
+            weight: 12
             additional: {  }
           33f4b6f3-38bf-4e45-a1cf-89af0fa1f854:
             uuid: 33f4b6f3-38bf-4e45-a1cf-89af0fa1f854
@@ -317,25 +321,6 @@ third_party_settings:
                 third_party_settings: {  }
             weight: 4
             additional: {  }
-          b334fa69-79a3-4c7b-9388-211461c8c29e:
-            uuid: b334fa69-79a3-4c7b-9388-211461c8c29e
-            region: blb_region_col_1
-            configuration:
-              id: 'field_block:node:lesson_plan:field_attachments'
-              label: Attachments
-              label_display: visible
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: file_default
-                label: hidden
-                settings:
-                  use_description_as_link_text: true
-                third_party_settings: {  }
-            weight: 5
-            additional: {  }
           0106978e-d734-4af5-a6e7-84536f460563:
             uuid: 0106978e-d734-4af5-a6e7-84536f460563
             region: blb_region_col_1
@@ -355,7 +340,7 @@ third_party_settings:
                   format_custom_false: ''
                   format_custom_true: 'Lesson provided by ReadWriteThink.org, a website developed by the International Reading Association and the N.C.T.E.'
                 third_party_settings: {  }
-            weight: 8
+            weight: 13
             additional: {  }
           c485da83-fb9b-4dac-851d-542f8593d87c:
             uuid: c485da83-fb9b-4dac-851d-542f8593d87c
@@ -383,6 +368,97 @@ third_party_settings:
               block_id: null
               block_revision_id: 134
               block_serialized: null
+            weight: 8
+            additional: {  }
+          95a6f4a2-4511-43c6-9ed8-08ae0f4e247b:
+            uuid: 95a6f4a2-4511-43c6-9ed8-08ae0f4e247b
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_content_note'
+              label: ' Content Note'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          c969154c-b0f0-4c94-b4fc-86292fcde4a0:
+            uuid: c969154c-b0f0-4c94-b4fc-86292fcde4a0
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_guiding_question'
+              label: ' Guiding Question'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          b13e3a31-8ceb-47ef-aeb7-123d44faf6a0:
+            uuid: b13e3a31-8ceb-47ef-aeb7-123d44faf6a0
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_assessment'
+              label: Assessment
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 9
+            additional: {  }
+          410a1d85-e708-4cbd-a448-22d323e3dfcc:
+            uuid: 410a1d85-e708-4cbd-a448-22d323e3dfcc
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_early_finishers_extension'
+              label: 'Early Finishers/Extension and Enrichment'
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 10
+            additional: {  }
+          b334fa69-79a3-4c7b-9388-211461c8c29e:
+            uuid: b334fa69-79a3-4c7b-9388-211461c8c29e
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:lesson_plan:field_attachments'
+              label: Attachments
+              label_display: visible
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: file_default
+                label: hidden
+                settings:
+                  use_description_as_link_text: true
+                third_party_settings: {  }
             weight: 8
             additional: {  }
         third_party_settings: {  }
@@ -509,9 +585,13 @@ hidden:
   entity_print_view_epub: true
   entity_print_view_pdf: true
   entity_print_view_word_docx: true
+  field_assessment: true
   field_commissioned_: true
   field_completed: true
+  field_content_note: true
   field_copyright: true
+  field_early_finishers_extension: true
+  field_guiding_question: true
   field_metatags: true
   field_paid_: true
   field_suggest_a_new_folder_to_fi: true

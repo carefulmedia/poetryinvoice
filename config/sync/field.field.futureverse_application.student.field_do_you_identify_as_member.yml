@@ -1,0 +1,21 @@
+uuid: 4796b8b6-b4b4-4206-b500-2e36436cfe99
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_do_you_identify_as_member
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_do_you_identify_as_member
+field_name: field_do_you_identify_as_member
+entity_type: futureverse_application
+bundle: student
+label: 'Do you identify as member of the 2SLGBTQIA+ community?'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  on_label: 'Yes'
+  off_label: 'No'
+field_type: boolean

@@ -1,0 +1,22 @@
+uuid: 96c270d3-e70f-49df-82dd-7ebf20361136
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_note
+    - node.type.lesson_plan
+  module:
+    - text
+id: node.lesson_plan.field_content_note
+field_name: field_content_note
+entity_type: node
+bundle: lesson_plan
+label: ' Content Note'
+description: 'This can be included if there is content that is sensitive for specific groups, if there is a poem included that might need a content warning, etc. This note could include suggestions or a resource for how to approach the lesson with intentionality and thoughtfulness. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

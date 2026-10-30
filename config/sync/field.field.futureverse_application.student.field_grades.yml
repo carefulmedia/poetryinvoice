@@ -1,0 +1,21 @@
+uuid: 7308d6b4-dc2b-4d78-ba59-b97d50e1a154
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_grades
+    - piv_futureverse.futureverse_application_type.student
+  module:
+    - options
+id: futureverse_application.student.field_grades
+field_name: field_grades
+entity_type: futureverse_application
+bundle: student
+label: Grade
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

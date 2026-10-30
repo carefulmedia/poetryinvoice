@@ -12,10 +12,11 @@ field_name: field_activity_description_steps
 entity_type: node
 bundle: lesson_plan
 label: 'Activity Description'
-description: 'Add extra activities or stages by clicking “Add another item” below. Please feel free to add as many steps as you like.'
-required: false
+description: "Add extra activities or stages by clicking “Add another item” below. Please feel free to add as many steps as you like.<br>\r\nPlease feel free to add as many steps as you like and be sure to include all steps that the teacher and students need to follow to complete the lesson, as well as everything a teacher should say or explain. For example, don’t just say “Step 1: Define the sonnet form for students”—please also include the definition of the sonnet that you expect teachers to share. When developing your lesson, be sure to consider students’ likely prior knowledge, flow/order of activities, time management, balance of teacher-led and student-directed activities, and meaningful consolidation of learning to wrap up. "
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long

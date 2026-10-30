@@ -1,0 +1,20 @@
+uuid: 141bc2c8-c23e-40fe-8122-96d1ec652327
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+    - user
+id: journal_year.field_french_journal_editor
+field_name: field_french_journal_editor
+entity_type: journal_year
+type: entity_reference
+settings:
+  target_type: user
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

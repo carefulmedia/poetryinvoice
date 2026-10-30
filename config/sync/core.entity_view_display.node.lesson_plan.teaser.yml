@@ -8,12 +8,16 @@ dependencies:
     - field.field.node.lesson_plan.comment_node_lesson_plan
     - field.field.node.lesson_plan.field_activity_description_steps
     - field.field.node.lesson_plan.field_additional_poems
+    - field.field.node.lesson_plan.field_assessment
     - field.field.node.lesson_plan.field_attachments
     - field.field.node.lesson_plan.field_commissioned_
     - field.field.node.lesson_plan.field_completed
+    - field.field.node.lesson_plan.field_content_note
     - field.field.node.lesson_plan.field_copyright
+    - field.field.node.lesson_plan.field_early_finishers_extension
     - field.field.node.lesson_plan.field_file_under_
     - field.field.node.lesson_plan.field_grades
+    - field.field.node.lesson_plan.field_guiding_question
     - field.field.node.lesson_plan.field_learning_objectives
     - field.field.node.lesson_plan.field_lesson_objectives
     - field.field.node.lesson_plan.field_materials_resources
@@ -55,12 +59,16 @@ hidden:
   entity_print_view_word_docx: true
   field_activity_description_steps: true
   field_additional_poems: true
+  field_assessment: true
   field_attachments: true
   field_commissioned_: true
   field_completed: true
+  field_content_note: true
   field_copyright: true
+  field_early_finishers_extension: true
   field_file_under_: true
   field_grades: true
+  field_guiding_question: true
   field_learning_objectives: true
   field_lesson_objectives: true
   field_materials_resources: true

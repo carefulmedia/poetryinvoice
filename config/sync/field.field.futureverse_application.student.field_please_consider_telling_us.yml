@@ -1,0 +1,21 @@
+uuid: a96746dc-011d-4cf5-9282-5fdb4131cb7a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_please_consider_telling_us
+    - piv_futureverse.futureverse_application_type.student
+  module:
+    - options
+id: futureverse_application.student.field_please_consider_telling_us
+field_name: field_please_consider_telling_us
+entity_type: futureverse_application
+bundle: student
+label: 'Please consider telling us how you identify  (select all that apply):'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

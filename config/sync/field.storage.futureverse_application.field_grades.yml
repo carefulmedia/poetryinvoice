@@ -1,0 +1,33 @@
+uuid: 4cf529a1-b4bd-4c68-a129-f63e0adb5d65
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - piv_futureverse
+id: futureverse_application.field_grades
+field_name: field_grades
+entity_type: futureverse_application
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: grade_10_sec_iv
+      label: 'Grade 10 (Sec IV)'
+    -
+      value: grade_11_sec_v
+      label: 'Grade 11 (Sec V)'
+    -
+      value: grade_12_1st_year_of_cegep
+      label: 'Grade 12 (1st year of CEGEP)'
+    -
+      value: grade_level_not_listed_above
+      label: 'Grade level not listed above'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

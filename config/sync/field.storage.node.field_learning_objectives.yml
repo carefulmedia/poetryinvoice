@@ -3,12 +3,8 @@ langcode: en
 status: true
 dependencies:
   module:
-    - field_permissions
     - node
     - options
-third_party_settings:
-  field_permissions:
-    permission_type: public
 id: node.field_learning_objectives
 field_name: field_learning_objectives
 entity_type: node
@@ -16,62 +12,68 @@ type: list_string
 settings:
   allowed_values:
     -
-      value: Analysis
-      label: Analysis
+      value: Listening
+      label: 'Active Listening'
     -
       value: Collaboration
       label: Collaboration
     -
-      value: Comprehension
-      label: Comprehension
-    -
       value: 'Critical Thinking'
-      label: 'Critical Thinking'
+      label: 'Critical Literacy'
+    -
+      value: 'Multicultural Awareness'
+      label: 'Cultural Competence'
     -
       value: 'Digital Literacy'
       label: 'Digital Literacy'
     -
       value: 'Inquiry / Research'
-      label: 'Inquiry / Research'
+      label: 'Inquiry and Research'
     -
-      value: 'Interpretation of text for performance'
-      label: 'Interpretation of Text for Performance'
+      value: media_literacy
+      label: 'Media Literacy'
     -
-      value: Listening
-      label: Listening
-    -
-      value: 'Multicultural Awareness'
-      label: 'Multicultural Awareness'
+      value: metacognition_thinking_about_thinking
+      label: 'Metacognition (thinking about thinking)'
     -
       value: 'Oral Communication'
       label: 'Oral Communication'
     -
-      value: 'Poetic Forms'
-      label: 'Poetic Forms'
-    -
-      value: 'Poetic Terms'
-      label: 'Poetic Terms'
-    -
       value: 'Public Speaking'
       label: 'Public Speaking'
+    -
+      value: Comprehension
+      label: 'Reading Comprehension'
     -
       value: 'Reading Fluency'
       label: 'Reading Fluency'
     -
       value: 'Strategies for developing a stage character'
-      label: 'Strategies for Developing a Stage Character'
+      label: 'Role Play and Character Development'
+    -
+      value: Analysis
+      label: 'Text Analysis'
+    -
+      value: 'Interpretation of text for performance'
+      label: 'Text Interpretation'
+    -
+      value: 'Poetic Forms'
+      label: 'Understanding Poetic Forms and Styles'
+    -
+      value: 'Poetic Terms'
+      label: 'Understanding Poetic Terms'
     -
       value: Structure
       label: Structure
     -
-      value: 'Use of voice and body as performance instruments'
-      label: 'Use of Voice and Body as Performance Instruments'
-    -
       value: Vocabulary
-      label: Vocabulary
+      label: 'Using Appropriate Vocabulary'
+    -
+      value: 'Use of voice and body as performance instruments'
+      label: 'Voice and Movement Techniques'
     -
       value: 'Writing Poetry'
-      label: 'Writing Poetry'
+      label: ')Writing Poetry'
   allowed_values_function: ''
 module: options
 locked: false
