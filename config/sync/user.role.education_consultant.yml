@@ -3,16 +3,10 @@ langcode: en
 status: true
 dependencies:
   module:
-    - field_permissions
     - file
 id: education_consultant
 label: 'Education consultant'
 weight: 25
 is_admin: null
 permissions:
-  - 'create field_grades'
   - 'delete own files'
-  - 'edit field_grades'
-  - 'edit own field_grades'
-  - 'view field_grades'
-  - 'view own field_grades'

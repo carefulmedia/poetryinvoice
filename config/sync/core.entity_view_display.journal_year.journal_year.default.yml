@@ -3,6 +3,8 @@ langcode: en
 status: true
 dependencies:
   config:
+    - field.field.journal_year.journal_year.field_english_journal_editor
+    - field.field.journal_year.journal_year.field_french_journal_editor
     - field.field.journal_year.journal_year.field_futureverse_shortlist_date
     - field.field.journal_year.journal_year.field_journal_months
   module:
@@ -32,6 +34,22 @@ content:
         refresh: 60
     third_party_settings: {  }
     weight: 20
+    region: content
+  field_english_journal_editor:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 24
+    region: content
+  field_french_journal_editor:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 25
     region: content
   field_futureverse_shortlist_date:
     type: datetime_default

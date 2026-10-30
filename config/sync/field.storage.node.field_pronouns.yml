@@ -17,25 +17,19 @@ settings:
   allowed_values:
     -
       value: she/her
-      label: she/her
+      label: She/her
     -
       value: he/him
-      label: he/him
+      label: He/him
     -
       value: they/them
-      label: they/them
+      label: They/them
     -
       value: she/they
-      label: she/they
+      label: She/they
     -
       value: he/they
-      label: he/they
-    -
-      value: ze/hir
-      label: ze/hir
-    -
-      value: xe/xem
-      label: xe/xem
+      label: He/they
     -
       value: other
       label: other

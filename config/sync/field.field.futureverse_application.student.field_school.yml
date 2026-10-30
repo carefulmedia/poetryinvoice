@@ -1,0 +1,29 @@
+uuid: 892b8eb4-a427-4b48-aee5-aec80c61a34d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_school
+    - node.type.school
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_school
+field_name: field_school
+entity_type: futureverse_application
+bundle: student
+label: School
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      school: school
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

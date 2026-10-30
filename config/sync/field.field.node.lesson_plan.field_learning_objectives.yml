@@ -11,7 +11,7 @@ id: node.lesson_plan.field_learning_objectives
 field_name: field_learning_objectives
 entity_type: node
 bundle: lesson_plan
-label: Skills
+label: 'Curricular Foci'
 description: "Check all of the elements below that students will work on using this lesson plan. <a href=\"mailto:info@poetryinvoice.com\">Contact us</a> if there are terms you think we should add to this list.\r\n"
 required: false
 translatable: true

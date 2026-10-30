@@ -1,0 +1,51 @@
+uuid: 4ea32aff-9c03-4840-8a85-7ee15e9f0609
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - piv_futureverse
+id: futureverse_application.field_please_consider_telling_us
+field_name: field_please_consider_telling_us
+entity_type: futureverse_application
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: two_spirit
+      label: Two-Spirit
+    -
+      value: lesbian
+      label: Lesbian
+    -
+      value: gay
+      label: Gay
+    -
+      value: bisexual
+      label: Bisexual
+    -
+      value: transgender
+      label: Transgender
+    -
+      value: queer
+      label: Queer
+    -
+      value: questioning
+      label: Questioning
+    -
+      value: intersex
+      label: Intersex
+    -
+      value: asexual_aromantic
+      label: Asexual/Aromantic
+    -
+      value: another_identity_not_listed
+      label: 'Another identity not listed'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

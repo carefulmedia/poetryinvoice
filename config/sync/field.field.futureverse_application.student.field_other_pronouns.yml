@@ -1,0 +1,19 @@
+uuid: 8f791a0c-be62-4d16-a89b-6397405b5462
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.futureverse_application.field_other_pronouns
+    - piv_futureverse.futureverse_application_type.student
+id: futureverse_application.student.field_other_pronouns
+field_name: field_other_pronouns
+entity_type: futureverse_application
+bundle: student
+label: Other
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

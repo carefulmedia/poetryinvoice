@@ -9,7 +9,7 @@ id: futureverse_application.student.field_parent_guardian_email
 field_name: field_parent_guardian_email
 entity_type: futureverse_application
 bundle: student
-label: 'Parent/Guardian Email'
+label: 'Parent/Guardian email'
 description: ''
 required: true
 translatable: false

@@ -7,8 +7,10 @@ dependencies:
     - field.field.futureverse_application.student.field_as_defined_by_the_employee
     - field.field.futureverse_application.student.field_disability_type
     - field.field.futureverse_application.student.field_do_you_identify_as_indigen
+    - field.field.futureverse_application.student.field_do_you_identify_as_member
     - field.field.futureverse_application.student.field_email
     - field.field.futureverse_application.student.field_first_name
+    - field.field.futureverse_application.student.field_grades
     - field.field.futureverse_application.student.field_how_has_your_community_sha
     - field.field.futureverse_application.student.field_i_am_submitting_in_a_secon
     - field.field.futureverse_application.student.field_if_you_are_a_racialized_p
@@ -18,18 +20,24 @@ dependencies:
     - field.field.futureverse_application.student.field_legal_name
     - field.field.futureverse_application.student.field_legal_name_boolean
     - field.field.futureverse_application.student.field_other
+    - field.field.futureverse_application.student.field_other_2slgbtqia_identity
     - field.field.futureverse_application.student.field_other_disability
+    - field.field.futureverse_application.student.field_other_pronouns
     - field.field.futureverse_application.student.field_other_race
     - field.field.futureverse_application.student.field_parent_guardian_email
     - field.field.futureverse_application.student.field_parent_guardian_phone
     - field.field.futureverse_application.student.field_please_consider_providing
+    - field.field.futureverse_application.student.field_please_consider_telling_us
     - field.field.futureverse_application.student.field_please_tell_us_a_bit_about
+    - field.field.futureverse_application.student.field_pronouns
+    - field.field.futureverse_application.student.field_school
     - field.field.futureverse_application.student.field_tell_us_about_your_writing
     - field.field.futureverse_application.student.field_voluntary_self_disclosure
     - field.field.futureverse_application.student.field_what_are_some_issues_you_c
     - field.field.futureverse_application.student.field_your_total_household_incom
     - piv_futureverse.futureverse_application_type.student
   module:
+    - conditional_fields
     - field_group
     - field_layout
     - layout_discovery
@@ -48,7 +56,7 @@ third_party_settings:
       label: 'Indigenous Student'
       region: content
       parent_name: ''
-      weight: 18
+      weight: 22
       format_type: fieldset
       format_settings:
         classes: ''
@@ -65,11 +73,14 @@ third_party_settings:
         - field_are_you_a_person_with_a_di
         - field_disability_type
         - field_other_disability
+        - field_do_you_identify_as_member
+        - field_please_consider_telling_us
+        - field_other_2slgbtqia_identity
         - field_your_total_household_incom
       label: 'Voluntary Self-Disclosure'
       region: content
       parent_name: ''
-      weight: 20
+      weight: 24
       format_type: fieldset
       format_settings:
         classes: ''
@@ -79,11 +90,12 @@ third_party_settings:
         description: ''
         required_fields: true
     group_indigenous_student1:
-      children: {  }
+      children:
+        - group_voluntary_self_disclosure1
       label: 'Indigenous Student'
-      region: hidden
+      region: content
       parent_name: ''
-      weight: 20
+      weight: 25
       format_type: fieldset
       format_settings:
         classes: ''
@@ -95,9 +107,9 @@ third_party_settings:
     group_voluntary_self_disclosure1:
       children: {  }
       label: 'Voluntary Self-Disclosure'
-      region: hidden
-      parent_name: ''
-      weight: 20
+      region: content
+      parent_name: group_indigenous_student1
+      weight: 23
       format_type: fieldset
       format_settings:
         classes: ''
@@ -182,7 +194,14 @@ content:
             selector: ''
   field_do_you_identify_as_indigen:
     type: boolean_checkbox
-    weight: 17
+    weight: 21
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_do_you_identify_as_member:
+    type: boolean_checkbox
+    weight: 33
     region: content
     settings:
       display_label: true
@@ -197,15 +216,21 @@ content:
     third_party_settings: {  }
   field_first_name:
     type: string_textfield
-    weight: 8
+    weight: 6
     region: content
     settings:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  field_grades:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   field_how_has_your_community_sha:
     type: string_textarea
-    weight: 14
+    weight: 18
     region: content
     settings:
       rows: 5
@@ -213,7 +238,7 @@ content:
     third_party_settings: {  }
   field_i_am_submitting_in_a_secon:
     type: boolean_checkbox
-    weight: 12
+    weight: 16
     region: content
     settings:
       display_label: true
@@ -242,7 +267,7 @@ content:
             selector: ''
   field_is_there_anything_else_we:
     type: string_textarea
-    weight: 16
+    weight: 20
     region: content
     settings:
       rows: 5
@@ -256,7 +281,7 @@ content:
     third_party_settings: {  }
   field_last_name:
     type: string_textfield
-    weight: 9
+    weight: 7
     region: content
     settings:
       size: 60
@@ -264,7 +289,7 @@ content:
     third_party_settings: {  }
   field_legal_name:
     type: string_textfield
-    weight: 11
+    weight: 9
     region: content
     settings:
       size: 60
@@ -290,7 +315,7 @@ content:
             selector: ''
   field_legal_name_boolean:
     type: boolean_checkbox
-    weight: 10
+    weight: 8
     region: content
     settings:
       display_label: true
@@ -326,6 +351,30 @@ content:
               slide:
                 speed: '400'
             selector: ''
+  field_other_2slgbtqia_identity:
+    type: string_textfield
+    weight: 35
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        6c760572-5346-4e87-ac07-2c09360db6a8:
+          entity_type: futureverse_application
+          bundle: student
+          dependee: field_please_consider_telling_us
+          settings:
+            state: visible
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form: {  }
+            effect: show
+            effect_options: {  }
+            selector: ''
   field_other_disability:
     type: string_textfield
     weight: 32
@@ -335,7 +384,7 @@ content:
       placeholder: ''
     third_party_settings:
       conditional_fields:
-        5f070c6e-4b53-4543-8c2b-9972c007bbb9:
+        70cabef2-4a36-4abd-aba3-60f916196711:
           entity_type: futureverse_application
           bundle: student
           dependee: field_disability_type
@@ -349,6 +398,37 @@ content:
             value_form: {  }
             effect: show
             effect_options: {  }
+            selector: ''
+  field_other_pronouns:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings:
+      conditional_fields:
+        1579b5bd-6451-4498-b2c4-aebb33922b12:
+          entity_type: futureverse_application
+          bundle: student
+          dependee: field_pronouns
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              -
+                value: other
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
             selector: ''
   field_other_race:
     type: string_textfield
@@ -383,7 +463,7 @@ content:
             selector: ''
   field_parent_guardian_email:
     type: email_default
-    weight: 6
+    weight: 12
     region: content
     settings:
       placeholder: ''
@@ -391,7 +471,7 @@ content:
     third_party_settings: {  }
   field_parent_guardian_phone:
     type: telephone_default
-    weight: 7
+    weight: 13
     region: content
     settings:
       placeholder: ''
@@ -402,17 +482,61 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_please_consider_telling_us:
+    type: options_buttons
+    weight: 34
+    region: content
+    settings: {  }
+    third_party_settings:
+      conditional_fields:
+        e13a8b9e-8342-4cee-8c14-75b51793489b:
+          entity_type: futureverse_application
+          bundle: student
+          dependee: field_do_you_identify_as_member
+          settings:
+            state: visible
+            reset: false
+            condition: checked
+            grouping: AND
+            values_set: 1
+            value: ''
+            values: {  }
+            value_form:
+              value: false
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_please_tell_us_a_bit_about:
     type: string_textarea
-    weight: 18
+    weight: 19
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_pronouns:
+    type: options_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_school:
+    type: entity_reference_autocomplete
+    weight: 14
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_tell_us_about_your_writing:
     type: string_textarea
-    weight: 13
+    weight: 17
     region: content
     settings:
       rows: 5
@@ -420,14 +544,14 @@ content:
     third_party_settings: {  }
   field_voluntary_self_disclosure:
     type: boolean_checkbox
-    weight: 19
+    weight: 23
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_what_are_some_issues_you_c:
     type: string_textarea
-    weight: 15
+    weight: 19
     region: content
     settings:
       rows: 5
@@ -435,7 +559,7 @@ content:
     third_party_settings: {  }
   field_your_total_household_incom:
     type: options_select
-    weight: 33
+    weight: 36
     region: content
     settings: {  }
     third_party_settings: {  }

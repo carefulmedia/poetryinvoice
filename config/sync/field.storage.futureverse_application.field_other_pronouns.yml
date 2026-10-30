@@ -1,0 +1,21 @@
+uuid: 17dd1896-8994-402a-9da1-4176eee40cf0
+langcode: en
+status: true
+dependencies:
+  module:
+    - piv_futureverse
+id: futureverse_application.field_other_pronouns
+field_name: field_other_pronouns
+entity_type: futureverse_application
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -31,10 +31,10 @@ settings:
       label: Arab
     -
       value: southeast_asian_e_g_vietnamese_cambodian_laotian_thai_etc
-      label: 'Southeast Asian (e.g. Vietnamese, Cambodian, Laotian, Thai, etc.)'
+      label: 'Southeast Asian (e.g., Vietnamese, Cambodian, Laotian, Thai, etc.)'
     -
       value: west_asian_e_g_iranian_afghan_etc
-      label: 'West Asian (e.g. Iranian, Afghan, etc.)'
+      label: 'West Asian (e.g., Iranian, Afghan, etc.)'
     -
       value: korean
       label: Korean

@@ -9,7 +9,7 @@ id: futureverse_application.student.field_i_am_submitting_in_a_secon
 field_name: field_i_am_submitting_in_a_secon
 entity_type: futureverse_application
 bundle: student
-label: 'I am submitting in my second official language'
+label: 'I am submitting in my second official language (I learned English after French)'
 description: ''
 required: false
 translatable: false

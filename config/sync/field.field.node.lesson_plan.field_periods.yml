@@ -9,8 +9,8 @@ id: node.lesson_plan.field_periods
 field_name: field_periods
 entity_type: node
 bundle: lesson_plan
-label: Periods
-description: "Please enter the number of class periods your lesson plan will require. Generally, it should be 2-5 class periods.\r\n"
+label: Timing
+description: 'Please enter the total time and suggested number of class periods your lesson plan will require. Generally, one lesson might take anywhere from 1-4 hours. An average class period in secondary school settings is 75-80 minutes.'
 required: false
 translatable: true
 default_value: {  }

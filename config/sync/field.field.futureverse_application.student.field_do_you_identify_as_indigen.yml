@@ -10,7 +10,7 @@ field_name: field_do_you_identify_as_indigen
 entity_type: futureverse_application
 bundle: student
 label: 'Do you identify as Indigenous (First Nations, Métis, Inuit)?'
-description: 'As defined by the Employee Equity Act, an Indigenous person is a North American Indian or a member of a First Nation, a Métis, or Inuit. North American Indians or members of a First Nation include status, treaty or registered Indians, as well as non-status and non-registered Indians.'
+description: 'As defined by the Employee Equity Act, an Indigenous person is a North American Indian or a member of a First Nation, Métis, or Inuk. North American Indians or members of a First Nation include status, treaty or registered Indians, as well as non-status and non-registered Indians.'
 required: true
 translatable: false
 default_value: {  }

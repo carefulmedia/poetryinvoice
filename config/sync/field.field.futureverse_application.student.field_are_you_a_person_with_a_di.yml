@@ -10,7 +10,7 @@ field_name: field_are_you_a_person_with_a_di
 entity_type: futureverse_application
 bundle: student
 label: 'Are you a person with a disability?'
-description: 'As defined by the Employment Equity Act, persons with disabilities are those that have a long-term or recurring physical, mental, sensory, psychiatric or learning impairment. '
+description: 'As defined by the Employment Equity Act, persons with disabilities are those that have a long-term or recurring physical, mental, sensory, psychiatric, or learning impairment. '
 required: false
 translatable: false
 default_value: {  }

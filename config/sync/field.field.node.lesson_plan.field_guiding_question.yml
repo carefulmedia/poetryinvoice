@@ -1,0 +1,22 @@
+uuid: 4b37b7d3-e978-4adc-b732-f6e72bbcc095
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_guiding_question
+    - node.type.lesson_plan
+  module:
+    - text
+id: node.lesson_plan.field_guiding_question
+field_name: field_guiding_question
+entity_type: node
+bundle: lesson_plan
+label: 'Guiding Question(s)'
+description: 'Write a question (or 2-3) that broadly frames the primary inquiry or drive of the lesson plan.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

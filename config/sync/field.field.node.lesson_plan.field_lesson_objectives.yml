@@ -12,10 +12,11 @@ field_name: field_lesson_objectives
 entity_type: node
 bundle: lesson_plan
 label: 'Learning Objectives'
-description: "Summarize, in 3-5 bullet points, all of the learning objectives of this lesson plan.\r\n"
+description: "Summarize, in 3-5 bullet points, all of the learning objectives of this lesson plan.<br>\r\nStart each objective with a verb that describes the learning, and consider how the objectives incorporate both lower-order thinking skills (e.g. remembering, understanding) and higher-order thinking skills (e.g. evaluating and creating). Review this <a href=\"https://drive.google.com/file/d/1jfvpcL4nN2G9TMh1FC_UUKQjwry-zYfo/view?usp=sharing\">chart of Bloom’s Taxonomy</a> for verbs associated with each category of learning.<br>\r\nBy the end of this lesson, students will:"
 required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
-settings: {  }
+settings:
+  allowed_formats: {  }
 field_type: text_long
