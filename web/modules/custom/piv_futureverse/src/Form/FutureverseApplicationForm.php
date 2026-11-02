@@ -26,12 +26,12 @@ final class FutureverseApplicationForm extends ContentEntityForm {
 
     switch ($result) {
       case SAVED_NEW:
-        $this->messenger()->addStatus($this->t('New futureverse application %label has been created.', $message_args));
+        $this->addSaveStatus($this->t('New futureverse application %label has been created.', $message_args));
         $this->logger('piv_futureverse')->notice('New futureverse application %label has been created.', $logger_args);
         break;
 
       case SAVED_UPDATED:
-        $this->messenger()->addStatus($this->t('The futureverse application %label has been updated.', $message_args));
+        $this->addSaveStatus($this->t('The futureverse application %label has been updated.', $message_args));
         $this->logger('piv_futureverse')->notice('The futureverse application %label has been updated.', $logger_args);
         break;
 
@@ -53,6 +53,20 @@ final class FutureverseApplicationForm extends ContentEntityForm {
     }
 
     return $result;
+  }
+
+  /**
+   * Adds the status message for this save.
+   *
+   * Public submissions use the editable thank-you. Admin saves keep the
+   * entity message.
+   */
+  private function addSaveStatus(\Stringable|string $admin_message): void {
+    if ($this->getOperation() === 'student') {
+      piv_futureverse_queue_submission_modal(piv_futureverse_submission_message('futureverse_application'));
+      return;
+    }
+    $this->messenger()->addStatus($admin_message);
   }
 
 }

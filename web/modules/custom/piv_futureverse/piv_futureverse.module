@@ -13,6 +13,7 @@ use Drupal\Core\Url;
 use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Field\FieldDefinitionInterface;
 use Drupal\Core\Field\FieldItemListInterface;
+use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\views\ViewExecutable;
 
@@ -718,6 +719,131 @@ function piv_futureverse_views_pre_render(ViewExecutable $view) {
       }
     }
   }
+}
+
+/**
+ * Default thank-you messages for public submissions.
+ *
+ * @return array<string, string>
+ *   Messages keyed by submission type.
+ */
+function piv_futureverse_submission_message_defaults(): array {
+  return [
+    'journal_poem' => 'Thank you for submitting your poem!',
+    'futureverse_application' => 'Thank you for submitting your application!',
+    'poet_bio' => 'Thank you for submitting your bio!',
+  ];
+}
+
+/**
+ * Stores a thank-you to show in a modal on the next page load.
+ */
+function piv_futureverse_queue_submission_modal(string $message): void {
+  if ($message === '') {
+    return;
+  }
+  \Drupal::request()->getSession()->set('piv_futureverse.submission_modal_message', $message);
+}
+
+/**
+ * Returns a queued thank-you and removes it from the session.
+ */
+function piv_futureverse_submission_modal_consume(): ?string {
+  static $consumed = FALSE;
+  static $message = NULL;
+  if ($consumed) {
+    return $message;
+  }
+  $consumed = TRUE;
+  $session = \Drupal::request()->getSession();
+  if (!$session->has('piv_futureverse.submission_modal_message')) {
+    return NULL;
+  }
+  $message = $session->get('piv_futureverse.submission_modal_message');
+  $session->remove('piv_futureverse.submission_modal_message');
+  if (!is_string($message) || $message === '') {
+    $message = NULL;
+  }
+  return $message;
+}
+
+/**
+ * Returns the thank-you for a public submission.
+ *
+ * The active language's config translation is used when one exists.
+ */
+function piv_futureverse_submission_message(string $key): string {
+  $defaults = piv_futureverse_submission_message_defaults();
+  $message = \Drupal::config('piv_futureverse.submission_messages')->get($key);
+  if (!is_string($message) || trim($message) === '') {
+    return $defaults[$key] ?? '';
+  }
+  return trim($message);
+}
+
+/**
+ * Whether the current user is submitting a journal poem as a student.
+ *
+ * Staff who edit journal content keep Drupal's normal save message.
+ */
+function piv_futureverse_journal_submission_is_public(): bool {
+  $account = \Drupal::currentUser();
+  return !$account->hasPermission('edit any journal_poem content')
+    && !$account->hasPermission('administer nodes');
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for node_journal_poem_form().
+ */
+function piv_futureverse_form_node_journal_poem_form_alter(array &$form, FormStateInterface $form_state, $form_id) {
+  $node = $form_state->getFormObject()->getEntity();
+  if (!$node->isNew() || !piv_futureverse_journal_submission_is_public()) {
+    return;
+  }
+  $form['actions']['submit']['#submit'][] = 'piv_futureverse_journal_poem_submission_message';
+}
+
+/**
+ * Replaces the node "has been created" message with the thank-you.
+ */
+function piv_futureverse_journal_poem_submission_message(array &$form, FormStateInterface $form_state) {
+  if (!$form_state->get('nid')) {
+    return;
+  }
+  \Drupal::messenger()->deleteByType(MessengerInterface::TYPE_STATUS);
+  piv_futureverse_queue_submission_modal(piv_futureverse_submission_message('journal_poem'));
+}
+
+/**
+ * Implements hook_theme().
+ */
+function piv_futureverse_theme($existing, $type, $theme, $path) {
+  return [
+    'piv_futureverse_submission_modal' => [
+      'variables' => [
+        'message' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_page_bottom().
+ */
+function piv_futureverse_page_bottom(array &$page_bottom) {
+  $message = piv_futureverse_submission_modal_consume();
+  if (!$message) {
+    return;
+  }
+  $page_bottom['piv_futureverse_submission_modal'] = [
+    '#theme' => 'piv_futureverse_submission_modal',
+    '#message' => $message,
+    '#attached' => [
+      'library' => [
+        'piv_futureverse/submission_modal',
+      ],
+    ],
+  ];
 }
 
 /**

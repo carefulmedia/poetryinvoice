@@ -70,3 +70,10 @@ piv_futureverse.futureverse_application.collection:
   route_name: entity.futureverse_application.collection
   parent: views_view:views.voices_voix.page_1
   weight: 103
+
+piv_futureverse.submission_messages:
+  title: 'Submission messages'
+  description: 'Thank-you messages shown after a journal poem, futureverse application, or poet bio is submitted.'
+  route_name: piv_futureverse.submission_messages
+  parent: views_view:views.voices_voix.page_1
+  weight: 104

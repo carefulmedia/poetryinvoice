@@ -1,0 +1,30 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for PIV Futureverse.
+ */
+
+/**
+ * Install editable thank-you messages for public submissions.
+ */
+function piv_futureverse_update_9001() {
+  $config = \Drupal::configFactory()->getEditable('piv_futureverse.submission_messages');
+  if ($config->isNew()) {
+    $config->setData([
+      'langcode' => 'en',
+    ] + piv_futureverse_submission_message_defaults())->save(TRUE);
+  }
+
+  if (!\Drupal::languageManager()->getLanguage('fr')) {
+    return;
+  }
+  $french = \Drupal::languageManager()->getLanguageConfigOverride('fr', 'piv_futureverse.submission_messages');
+  if ($french->isNew()) {
+    $french->setData([
+      'journal_poem' => "Merci d'avoir soumis votre poème !",
+      'futureverse_application' => "Merci d'avoir soumis votre candidature !",
+      'poet_bio' => "Merci d'avoir soumis votre bio !",
+    ])->save();
+  }
+}

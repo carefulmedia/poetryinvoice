@@ -26,12 +26,12 @@ final class PoetBioForm extends ContentEntityForm {
 
     switch ($result) {
       case SAVED_NEW:
-        $this->messenger()->addStatus($this->t('New poet bio %label has been created.', $message_args));
+        $this->addSaveStatus($this->t('New poet bio %label has been created.', $message_args));
         $this->logger('piv_futureverse')->notice('New poet bio %label has been created.', $logger_args);
         break;
 
       case SAVED_UPDATED:
-        $this->messenger()->addStatus($this->t('The poet bio %label has been updated.', $message_args));
+        $this->addSaveStatus($this->t('The poet bio %label has been updated.', $message_args));
         $this->logger('piv_futureverse')->notice('The poet bio %label has been updated.', $logger_args);
         break;
 
@@ -44,6 +44,20 @@ final class PoetBioForm extends ContentEntityForm {
     }
 
     return $result;
+  }
+
+  /**
+   * Adds the status message for this save.
+   *
+   * Public submissions use the editable thank-you. Admin saves keep the
+   * entity message.
+   */
+  private function addSaveStatus(\Stringable|string $admin_message): void {
+    if ($this->getOperation() === 'enrichment') {
+      piv_futureverse_queue_submission_modal(piv_futureverse_submission_message('poet_bio'));
+      return;
+    }
+    $this->messenger()->addStatus($admin_message);
   }
 
 }

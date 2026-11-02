@@ -1,0 +1,5 @@
+piv_futureverse.submission_messages:
+  title: 'Submission messages'
+  base_route_name: piv_futureverse.submission_messages
+  names:
+    - piv_futureverse.submission_messages

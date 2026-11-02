@@ -47,3 +47,8 @@ user.my_poems:
   title: 'My Poems'
   base_route: entity.user.canonical
   weight: 20
+
+piv_futureverse.submission_messages:
+  title: 'Submission messages'
+  route_name: piv_futureverse.submission_messages
+  base_route: piv_futureverse.submission_messages

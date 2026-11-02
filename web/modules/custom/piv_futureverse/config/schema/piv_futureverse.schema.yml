@@ -1,0 +1,13 @@
+piv_futureverse.submission_messages:
+  type: config_object
+  label: 'Submission thank-you messages'
+  mapping:
+    journal_poem:
+      type: text
+      label: 'Journal poem'
+    futureverse_application:
+      type: text
+      label: 'Futureverse application'
+    poet_bio:
+      type: text
+      label: 'Poet bio'

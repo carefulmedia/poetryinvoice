@@ -9,3 +9,11 @@ journal_filter:
       css/admin.css: {}
   js:
     js/journal-filter.js: {}
+
+submission_modal:
+  js:
+    js/submission-modal.js: {}
+  dependencies:
+    - core/once
+    - core/drupal
+    - bootstrap_barrio/bootstrap

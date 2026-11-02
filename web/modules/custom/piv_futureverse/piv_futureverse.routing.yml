@@ -66,6 +66,14 @@ piv_futureverse.my_poems:
       user:
         type: entity:user
 
+piv_futureverse.submission_messages:
+  path: '/admin/voices-voix/submission-messages'
+  defaults:
+    _form: '\Drupal\piv_futureverse\Form\SubmissionMessagesForm'
+    _title: 'Submission messages'
+  requirements:
+    _permission: 'manage journal year'
+
 piv_futureverse.journal_poems:
   path: 'admin/voices-voix/journal-poems'
   defaults:
