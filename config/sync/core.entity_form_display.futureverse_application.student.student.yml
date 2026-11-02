@@ -38,6 +38,7 @@ dependencies:
     - field.field.futureverse_application.student.field_your_total_household_incom
     - piv_futureverse.futureverse_application_type.student
   module:
+    - conditional_fields
     - field_group
     - field_layout
     - layout_discovery
@@ -234,7 +235,30 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        085ef1a3-9bc2-4066-9b96-18f6493d53aa:
+          entity_type: futureverse_application
+          bundle: student
+          dependee: field_please_consider_providing
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: other
+            value_form:
+              -
+                value: other
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_other_2slgbtqia_identity:
     type: string_textfield
     weight: 32
@@ -242,7 +266,30 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        373751ff-3b18-4fde-a77a-80c12569c85b:
+          entity_type: futureverse_application
+          bundle: student
+          dependee: field_please_consider_telling_us
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: another_identity_not_listed
+            value_form:
+              -
+                value: another_identity_not_listed
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_other_disability:
     type: string_textfield
     weight: 25
@@ -250,7 +297,30 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        960b697b-87d8-4760-94c9-772c8f73592d:
+          entity_type: futureverse_application
+          bundle: student
+          dependee: field_disability_type
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: other
+            value_form:
+              -
+                value: other
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_other_pronouns:
     type: string_textfield
     weight: 6
@@ -266,7 +336,32 @@ content:
     settings:
       size: 60
       placeholder: ''
-    third_party_settings: {  }
+    third_party_settings:
+      conditional_fields:
+        72145c15-acbf-416a-a67c-487e0f4645cc:
+          entity_type: futureverse_application
+          bundle: student
+          dependee: field_if_you_are_a_racialized_p
+          settings:
+            state: visible
+            reset: false
+            condition: value
+            grouping: AND
+            values_set: 3
+            value: ''
+            values: "other\r\nmixed_race"
+            value_form:
+              -
+                value: other
+              -
+                value: mixed_race
+            effect: slide
+            effect_options:
+              fade:
+                speed: '400'
+              slide:
+                speed: '400'
+            selector: ''
   field_parent_guardian_email:
     type: email_default
     weight: 7
