@@ -9,8 +9,8 @@ id: node.pal_pir_school_visit.field_preferred_poet_s_
 field_name: field_preferred_poet_s_
 entity_type: node
 bundle: pal_pir_school_visit
-label: 'Preferred poet'
-description: ''
+label: 'Preferred poet(s)'
+description: 'You may also tell us a 2nd poet you would prefer. Note we can only send one poet for an in-class visit.'
 required: false
 translatable: true
 default_value: {  }
@@ -52,5 +52,7 @@ settings:
         education_consultant: '0'
         journal_editor: '0'
         junior_editor: '0'
+        prompter: '0'
+        student_poet: '0'
     include_anonymous: false
 field_type: entity_reference
