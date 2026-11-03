@@ -957,6 +957,10 @@ function piv_futureverse_page_bottom(array &$page_bottom) {
   $page_bottom['piv_futureverse_submission_modal'] = [
     '#theme' => 'piv_futureverse_submission_modal',
     '#message' => $message,
+    '#cache' => [
+      'max-age' => 0,
+      'contexts' => ['session', 'user'],
+    ],
     '#attached' => [
       'library' => [
         'piv_futureverse/submission_modal',
