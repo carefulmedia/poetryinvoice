@@ -7,6 +7,7 @@ namespace Drupal\piv_futureverse;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\KeyValueStore\KeyValueExpirableFactoryInterface;
 use Drupal\Component\Utility\Crypt;
+use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Url;
 use Drupal\Core\Site\Settings;
 
@@ -62,6 +63,7 @@ final class FutureverseOnceUrlGenerator extends OnceUrlGenerator {
    */
   public function generateUrl(string $bundle, int $entity_id): ?Url {
     $data = '';
+    $language = NULL;
     if ($bundle == 'native_student') {
       // For native students the url is just based on the futureverse
       // since it will be created by a teacher or admin before, there
@@ -74,6 +76,7 @@ final class FutureverseOnceUrlGenerator extends OnceUrlGenerator {
         return NULL;
       }
       $data = $futureverse->uuid();
+      $language = $futureverse->language();
     }
     else {
       // Otherwise this is a normal futureverse invitation based on a
@@ -86,6 +89,8 @@ final class FutureverseOnceUrlGenerator extends OnceUrlGenerator {
       if (!$journal_poem) {
         return NULL;
       }
+
+      $language = $journal_poem->language();
 
       $user = $journal_poem->getOwner();
       if (!$user) {
@@ -108,12 +113,14 @@ final class FutureverseOnceUrlGenerator extends OnceUrlGenerator {
 
     $hash = Crypt::hmacBase64($data, Settings::getHashSalt());
     $this->keyValueStore->setWithExpire($hash, [$bundle, $entity_id], 31536000);
+    $options = ['absolute' => TRUE];
+    if ($language instanceof LanguageInterface) {
+      $options['language'] = $language;
+    }
+
     return Url::fromRoute('piv_futureverse.futureverse_application', [
       'hash' => $hash,
-    ],
-    [
-      'absolute' => TRUE,
-    ]);
+    ], $options);
   }
 
 }

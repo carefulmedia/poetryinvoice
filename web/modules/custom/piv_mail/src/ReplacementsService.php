@@ -7,6 +7,7 @@ use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\Locale\CountryManagerInterface;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Link;
+use Drupal\Core\Url;
 
 /**
  * Do the replacements for piv_mail.
@@ -14,6 +15,34 @@ use Drupal\Core\Link;
 class ReplacementsService {
 
   use StringTranslationTrait;
+
+  /**
+   * Site paths for journal poem emails, keyed by logical name and langcode.
+   *
+   * @var array<string, array<string, string>>
+   */
+  private const JOURNAL_POEM_SITE_PATHS = [
+    'monthly_winning_poems' => [
+      'en' => '/write/monthly-poem-prize/winning-poems',
+      'fr' => '/ecrire/cest-tout-un-poeme/poemes-gagnants',
+    ],
+    'write' => [
+      'en' => '/write',
+      'fr' => '/ecrire/exercices-de-creation',
+    ],
+    'read' => [
+      'en' => '/read',
+      'fr' => '/lire/poemes',
+    ],
+    'poet_class' => [
+      'en' => '/teach/poet-class',
+      'fr' => '/enseigner/poetes-lecole',
+    ],
+    'futureverse' => [
+      'en' => '/write/futureverse',
+      'fr' => '/write/futureverse',
+    ],
+  ];
 
   /**
    * Sources of replacement.
@@ -68,8 +97,20 @@ class ReplacementsService {
     ],
     'journal_poem' => [
       'journal_poem_first_name',
+      'journal_poem_title',
       'link_to_bio_enrichment',
       'link_to_futureverse_application',
+      'link_to_journal_poem',
+      'link_to_monthly_winning_poems',
+      'link_to_write',
+      'link_to_read',
+      'link_to_poet_class',
+      'link_to_futureverse',
+      'monthly_winning_poems_url',
+      'write_url',
+      'read_url',
+      'poet_class_url',
+      'futureverse_url',
     ],
     'poet_bio' => [
       'link_to_poet_bio',
@@ -234,10 +275,73 @@ class ReplacementsService {
    * Return the langcode used.
    */
   public function getLangcode() {
-    return $this->langcode
-      ?? $this->sources['node']->langcode->value
-      ?? $this->sources['visit_node']->langcode->value
-      ?? 'en';
+    if ($this->langcode) {
+      return $this->langcode;
+    }
+    if (!empty($this->sources['journal_poem'])) {
+      return $this->sources['journal_poem']->langcode->value;
+    }
+    if (!empty($this->sources['node'])) {
+      return $this->sources['node']->langcode->value;
+    }
+    if (!empty($this->sources['visit_node'])) {
+      return $this->sources['visit_node']->langcode->value;
+    }
+    if (!empty($this->sources['poet_bio'])) {
+      return $this->sources['poet_bio']->field_language->target_id;
+    }
+    return 'en';
+  }
+
+  /**
+   * Langcode of the journal poem used as the mail context.
+   */
+  private function getJournalPoemLangcode(): string {
+    if (!empty($this->sources['journal_poem'])) {
+      return $this->sources['journal_poem']->langcode->value;
+    }
+    return $this->getLangcode();
+  }
+
+  /**
+   * Build an absolute front-end URL for a journal poem email.
+   */
+  private function journalPoemSiteUrl(string $path_key): ?Url {
+    $langcode = $this->getJournalPoemLangcode();
+    $path = self::JOURNAL_POEM_SITE_PATHS[$path_key][$langcode]
+      ?? self::JOURNAL_POEM_SITE_PATHS[$path_key]['en']
+      ?? NULL;
+    if (!$path) {
+      return NULL;
+    }
+    $language = \Drupal::languageManager()->getLanguage($langcode);
+    return Url::fromUserInput($path, [
+      'language' => $language,
+      'absolute' => TRUE,
+    ]);
+  }
+
+  /**
+   * Render a translatable text link on the poem language site domain.
+   */
+  private function journalPoemSiteLink(string $path_key, string $text, array $options = []): string {
+    $url = $this->journalPoemSiteUrl($path_key);
+    if (!$url) {
+      return '';
+    }
+    $langcode = $this->getJournalPoemLangcode();
+    $link = Link::fromTextAndUrl($this->t($text, $options, ['langcode' => $langcode]), $url)
+      ->toString()
+      ->getGeneratedLink();
+    return $link;
+  }
+
+  /**
+   * Absolute URL string for a journal poem site path key.
+   */
+  private function journalPoemSiteUrlString(string $path_key): string {
+    $url = $this->journalPoemSiteUrl($path_key);
+    return $url ? $url->toString() : '';
   }
 
   /**
@@ -457,6 +561,49 @@ class ReplacementsService {
         case 'journal_poem_first_name':
           return $sources['journal_poem']->piv_teacher_first_name->value;
 
+        case 'journal_poem_title':
+          return $sources['journal_poem']->getTitle();
+
+        case 'link_to_journal_poem':
+          $poem = $sources['journal_poem'];
+          $language = $poem->language();
+          return Link::createFromRoute($poem->getTitle(), 'entity.node.canonical', [
+            'node' => $poem->id(),
+          ], [
+            'language' => $language,
+            'absolute' => TRUE,
+          ])->toString()->getGeneratedLink();
+
+        case 'link_to_monthly_winning_poems':
+          return $this->journalPoemSiteLink('monthly_winning_poems', 'on our website');
+
+        case 'link_to_write':
+          return $this->journalPoemSiteLink('write', 'Write');
+
+        case 'link_to_read':
+          return $this->journalPoemSiteLink('read', 'Read');
+
+        case 'link_to_poet_class':
+          return $this->journalPoemSiteLink('poet_class', 'Request a poet visit');
+
+        case 'link_to_futureverse':
+          return $this->journalPoemSiteLink('futureverse', 'FutureVerse');
+
+        case 'monthly_winning_poems_url':
+          return $this->journalPoemSiteUrlString('monthly_winning_poems');
+
+        case 'write_url':
+          return $this->journalPoemSiteUrlString('write');
+
+        case 'read_url':
+          return $this->journalPoemSiteUrlString('read');
+
+        case 'poet_class_url':
+          return $this->journalPoemSiteUrlString('poet_class');
+
+        case 'futureverse_url':
+          return $this->journalPoemSiteUrlString('futureverse');
+
         case 'link_to_bio_enrichment':
           $bio_service = \Drupal::service('piv_futureverse.bio_enrichment'); // @phpcs:ignore
           $journal_poem_id = $sources['journal_poem']->id();
@@ -469,6 +616,7 @@ class ReplacementsService {
             return '';
           }
           $language = $sources['journal_poem']->language();
+          $url->setOption('language', $language);
           $text = $this->t('Click here to update your bio', [], [
             'langcode' => $language->getId(),
           ]);
@@ -496,6 +644,7 @@ class ReplacementsService {
             return '';
           }
           $language = $sources['journal_poem']->language();
+          $url->setOption('language', $language);
           $text = $this->t('Click here to complete your Futureverse application', [], [
             'langcode' => $language->getId(),
           ]);
