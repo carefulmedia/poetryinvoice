@@ -11,7 +11,7 @@ entity_type: node
 bundle: lesson_plan
 label: Timing
 description: 'Please enter the total time and suggested number of class periods your lesson plan will require. Generally, one lesson might take anywhere from 1-4 hours. An average class period in secondary school settings is 75-80 minutes.'
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
