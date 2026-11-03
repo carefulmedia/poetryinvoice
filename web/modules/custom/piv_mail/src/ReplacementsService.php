@@ -8,6 +8,8 @@ use Drupal\Core\Locale\CountryManagerInterface;
 use Drupal\Core\Datetime\DateFormatterInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
+use Drupal\piv_futureverse\JournalHelper;
 
 /**
  * Do the replacements for piv_mail.
@@ -101,6 +103,11 @@ class ReplacementsService {
       'link_to_bio_enrichment',
       'link_to_futureverse_application',
       'link_to_journal_poem',
+      'monthly_prize_winner_link',
+      'monthly_prize_winner_author',
+      'monthly_prize_winner_title',
+      'monthly_prize_winner_banner_subtitle',
+      'journal_year_editor',
       'link_to_monthly_winning_poems',
       'link_to_write',
       'link_to_read',
@@ -219,6 +226,22 @@ class ReplacementsService {
    * @var string
    */
   private $langcode;
+
+  /**
+   * Journal month and year for a source poem, keyed by poem id.
+   *
+   * @var array<int, array{month: object|null, year: object|null}>
+   */
+  private $journalContext = [];
+
+  /**
+   * Monthly prize winner for a source poem, keyed by poem id.
+   *
+   * A stored NULL means the lookup already ran and there is no winner.
+   *
+   * @var array<int, \Drupal\node\NodeInterface|null>
+   */
+  private $monthlyPrizeWinner = [];
 
   /**
    * An optional prefix prepended to the email body.
@@ -342,6 +365,81 @@ class ReplacementsService {
   private function journalPoemSiteUrlString(string $path_key): string {
     $url = $this->journalPoemSiteUrl($path_key);
     return $url ? $url->toString() : '';
+  }
+
+  /**
+   * Journal month and year that contain the current journal poem.
+   *
+   * @return array{month: object|null, year: object|null}
+   *   Month and year, or NULL for either when the poem is not attached.
+   */
+  private function getJournalContext(): array {
+    $empty = ['month' => NULL, 'year' => NULL];
+    $poem = $this->sources['journal_poem'] ?? NULL;
+    if (!$poem || !class_exists(JournalHelper::class)) {
+      return $empty;
+    }
+    $id = (int) $poem->id();
+    if (isset($this->journalContext[$id])) {
+      return $this->journalContext[$id];
+    }
+    $month = JournalHelper::getJournalMonthFromPoem($poem);
+    $year = $month ? JournalHelper::getJournalYearFromJournalMonth($month) : NULL;
+    $this->journalContext[$id] = ['month' => $month, 'year' => $year];
+    return $this->journalContext[$id];
+  }
+
+  /**
+   * Poem flagged as the monthly prize winner for the source poem's month.
+   *
+   * Loser mailings pass the recipient's poem, so the winner is looked up
+   * from that poem's journal month. When several poems are flagged, the
+   * first one on the month is used.
+   */
+  private function getMonthlyPrizeWinnerPoem(): ?NodeInterface {
+    $poem = $this->sources['journal_poem'] ?? NULL;
+    if (!$poem || !class_exists(JournalHelper::class)) {
+      return NULL;
+    }
+    $id = (int) $poem->id();
+    if (array_key_exists($id, $this->monthlyPrizeWinner)) {
+      return $this->monthlyPrizeWinner[$id];
+    }
+    $month = $this->getJournalContext()['month'];
+    if (!$month) {
+      $this->monthlyPrizeWinner[$id] = NULL;
+      return NULL;
+    }
+    $winners = JournalHelper::getMonthlyPrizeWinner($month);
+    $winner = $winners ? reset($winners) : NULL;
+    $this->monthlyPrizeWinner[$id] = $winner instanceof NodeInterface ? $winner : NULL;
+    return $this->monthlyPrizeWinner[$id];
+  }
+
+  /**
+   * Poem translation matching the email language, when one exists.
+   */
+  private function poemInMailLanguage(NodeInterface $poem): NodeInterface {
+    $langcode = $this->getLangcode();
+    if ($langcode && $poem->hasTranslation($langcode)) {
+      return $poem->getTranslation($langcode);
+    }
+    return $poem;
+  }
+
+  /**
+   * Processed banner subtitle for a poem.
+   */
+  private function bannerSubtitle(NodeInterface $poem): string {
+    if (!$poem->hasField('field_banner_subtitle') || $poem->get('field_banner_subtitle')->isEmpty()) {
+      return '';
+    }
+    $subtitle = $poem->get('field_banner_subtitle');
+    $processed = $subtitle->processed;
+    if ($processed) {
+      return (string) $processed;
+    }
+    return (string) ($subtitle->value ?? '');
   }
 
   /**
@@ -574,6 +672,51 @@ class ReplacementsService {
             'absolute' => TRUE,
           ])->toString()->getGeneratedLink();
 
+        case 'monthly_prize_winner_title':
+          $winner = $this->getMonthlyPrizeWinnerPoem();
+          return $winner ? $this->poemInMailLanguage($winner)->getTitle() : '';
+
+        case 'monthly_prize_winner_author':
+          $winner = $this->getMonthlyPrizeWinnerPoem();
+          if (!$winner) {
+            return '';
+          }
+          $winner = $this->poemInMailLanguage($winner);
+          $first = $winner->piv_teacher_first_name->value ?? '';
+          $last = $winner->piv_teacher_last_name->value ?? '';
+          return trim("$first $last");
+
+        case 'monthly_prize_winner_link':
+          $winner = $this->getMonthlyPrizeWinnerPoem();
+          if (!$winner) {
+            return '';
+          }
+          $winner = $this->poemInMailLanguage($winner);
+          return Link::createFromRoute($winner->getTitle(), 'entity.node.canonical', [
+            'node' => $winner->id(),
+          ], [
+            'language' => $winner->language(),
+            'absolute' => TRUE,
+          ])->toString()->getGeneratedLink();
+
+        case 'monthly_prize_winner_banner_subtitle':
+          $winner = $this->getMonthlyPrizeWinnerPoem();
+          return $winner ? $this->bannerSubtitle($this->poemInMailLanguage($winner)) : '';
+
+        case 'journal_year_editor':
+          $year = $this->getJournalContext()['year'];
+          if (!$year) {
+            return '';
+          }
+          $field_name = str_starts_with((string) $this->getLangcode(), 'fr')
+            ? 'field_french_journal_editor'
+            : 'field_english_journal_editor';
+          if (!$year->hasField($field_name) || $year->get($field_name)->isEmpty()) {
+            return '';
+          }
+          $editor = $year->get($field_name)->entity;
+          return $editor ? $editor->getDisplayName() : '';
+
         case 'link_to_monthly_winning_poems':
           return $this->journalPoemSiteLink('monthly_winning_poems', 'on our website');
 
@@ -753,6 +896,8 @@ class ReplacementsService {
    */
   public function reset() {
     $this->sources = [];
+    $this->journalContext = [];
+    $this->monthlyPrizeWinner = [];
     return $this;
   }
 

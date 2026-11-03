@@ -105,3 +105,117 @@ function piv_mail_update_9001() {
     $piv_mail_manager->saveConfigurations($instance);
   }
 }
+
+/**
+ * Replace hardcoded monthly prize poem/editor copy with PIV mail tokens.
+ */
+function piv_mail_update_9002(): void {
+  $config_factory = \Drupal::configFactory();
+  $plugins = [
+    'journal_poem_monthly_prize_winner',
+    'journal_poem_monthly_prize_losers',
+  ];
+  foreach ($plugins as $plugin_id) {
+    $config = $config_factory->getEditable("piv_mail.piv_mail.{$plugin_id}");
+    $changed = FALSE;
+    foreach (['en', 'fr'] as $langcode) {
+      $lang = $config->get($langcode);
+      if (empty($lang['body']['value'])) {
+        continue;
+      }
+      $body = $lang['body']['value'];
+      $updated = _piv_mail_migrate_monthly_prize_body($body, $langcode, $plugin_id);
+      if ($updated !== $body) {
+        $lang['body']['value'] = $updated;
+        $config->set($langcode, $lang);
+        $changed = TRUE;
+      }
+    }
+    if ($changed) {
+      $config->save();
+    }
+  }
+}
+
+/**
+ * Migrate one monthly prize email body to use replacement tokens.
+ */
+function _piv_mail_migrate_monthly_prize_body(string $body, string $langcode, string $plugin_id): string {
+  if ($plugin_id === 'journal_poem_monthly_prize_winner') {
+    if ($langcode === 'en') {
+      if (!str_contains($body, '[journal_poem_title]')) {
+        $body = preg_replace(
+          '/your poem&nbsp;Furniture has won/',
+          'your poem&nbsp;[journal_poem_title] has won',
+          $body
+        ) ?? $body;
+      }
+      if (!str_contains($body, '[journal_year_editor]')) {
+        $body = preg_replace(
+          '/editor Rob Taylor had to say about your poem:<\/p><p class="Indent1" dir="ltr">.*?<\/p>/s',
+          'editor [journal_year_editor] had to say about your poem:</p><p class="Indent1" dir="ltr">[monthly_prize_winner_banner_subtitle]</p>',
+          $body,
+          1
+        ) ?? $body;
+      }
+    }
+    elseif ($langcode === 'fr') {
+      if (!str_contains($body, '[journal_poem_title]')) {
+        $body = preg_replace(
+          '/ton poème «&nbsp;<\/span>.*?a gagné le Prix mensuel VOICES\/VOIX/s',
+          'ton poème [journal_poem_title] a gagné le Prix mensuel VOICES/VOIX',
+          $body,
+          1
+        ) ?? $body;
+      }
+      if (!str_contains($body, '[journal_year_editor]')) {
+        $body = preg_replace(
+          '/Voici ce que notre éditrice Vanessa Bell avait à dire sur ton poème :<\/span><\/p>.*?Je te demanderais/s',
+          'Voici ce que notre éditrice [journal_year_editor] avait à dire sur ton poème :</span></p><p class="Indent1" style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr">[monthly_prize_winner_banner_subtitle]</p><p style="line-height:1.38;margin-bottom:0pt;margin-top:0pt;" dir="ltr"><span style="background-color:transparent;color:#000000;font-family:Arial,sans-serif;font-size:11pt;font-style:normal;font-variant:normal;font-weight:400;text-decoration:none;vertical-align:baseline;white-space:pre-wrap;">Je te demanderais',
+          $body,
+          1
+        ) ?? $body;
+      }
+    }
+  }
+  elseif ($plugin_id === 'journal_poem_monthly_prize_losers') {
+    if ($langcode === 'en') {
+      if (!str_contains($body, '[monthly_prize_winner_link]')) {
+        $body = preg_replace(
+          '/The winning poem is<\/span>.*?<\/p>/s',
+          'The winning poem is [monthly_prize_winner_link] by [monthly_prize_winner_author].</p><p>[monthly_prize_winner_banner_subtitle]</p>',
+          $body,
+          1
+        ) ?? $body;
+      }
+    }
+    elseif ($langcode === 'fr') {
+      if (!str_contains($body, '[monthly_prize_winner_link]')) {
+        $body = preg_replace(
+          '/Le poème gagnant est «&nbsp;<\/span>.*?&nbsp;<\/span><\/p>/s',
+          'Le poème gagnant est [monthly_prize_winner_link] de [monthly_prize_winner_author].</p><p>[monthly_prize_winner_banner_subtitle]</p>',
+          $body,
+          1
+        ) ?? $body;
+      }
+    }
+  }
+  return $body;
+}
+
+/**
+ * Fix duplicated "notre éditrice" wording in FR monthly winner email.
+ */
+function piv_mail_update_9003(): void {
+  $config = \Drupal::configFactory()->getEditable('piv_mail.piv_mail.journal_poem_monthly_prize_winner');
+  $lang = $config->get('fr');
+  if (empty($lang['body']['value'])) {
+    return;
+  }
+  $body = $lang['body']['value'];
+  $fixed = str_replace('notre éditrice notre éditrice', 'notre éditrice', $body);
+  if ($fixed !== $body) {
+    $lang['body']['value'] = $fixed;
+    $config->set('fr', $lang)->save();
+  }
+}
