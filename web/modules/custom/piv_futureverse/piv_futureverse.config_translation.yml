@@ -3,3 +3,9 @@ piv_futureverse.submission_messages:
   base_route_name: piv_futureverse.submission_messages
   names:
     - piv_futureverse.submission_messages
+
+piv_futureverse.futureverse_application_student_field_groups:
+  title: 'FutureVerse application field groups'
+  base_route_name: piv_futureverse.student_application_field_groups
+  names:
+    - piv_futureverse.futureverse_application_student_field_groups

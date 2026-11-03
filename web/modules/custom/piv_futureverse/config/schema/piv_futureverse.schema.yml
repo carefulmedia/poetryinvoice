@@ -11,3 +11,26 @@ piv_futureverse.submission_messages:
     poet_bio:
       type: text
       label: 'Poet bio'
+
+piv_futureverse.futureverse_application_student_field_groups:
+  type: config_object
+  label: 'Futureverse student application field groups'
+  mapping:
+    group_futureverse_application_20_label:
+      type: label
+      label: 'FutureVerse Application 2027 label'
+    group_futureverse_application_20_description:
+      type: text
+      label: 'FutureVerse Application 2027 description'
+    group_indigenous_student_label:
+      type: label
+      label: 'Indigenous Student label'
+    group_indigenous_student_description:
+      type: text
+      label: 'Indigenous Student description'
+    group_voluntary_self_disclosure_label:
+      type: label
+      label: 'Voluntary Self-Disclosure label'
+    group_voluntary_self_disclosure_description:
+      type: text
+      label: 'Voluntary Self-Disclosure description'

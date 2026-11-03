@@ -77,3 +77,10 @@ piv_futureverse.submission_messages:
   route_name: piv_futureverse.submission_messages
   parent: views_view:views.voices_voix.page_1
   weight: 104
+
+piv_futureverse.student_application_field_groups:
+  title: 'FutureVerse application field groups'
+  description: 'Translate field group labels and descriptions on the student FutureVerse application form.'
+  route_name: piv_futureverse.student_application_field_groups
+  parent: views_view:views.voices_voix.page_1
+  weight: 105

@@ -74,6 +74,14 @@ piv_futureverse.submission_messages:
   requirements:
     _permission: 'manage journal year'
 
+piv_futureverse.student_application_field_groups:
+  path: '/admin/voices-voix/futureverse-application-field-groups'
+  defaults:
+    _form: '\Drupal\piv_futureverse\Form\StudentApplicationFieldGroupsForm'
+    _title: 'FutureVerse application field groups'
+  requirements:
+    _permission: 'manage journal year'
+
 piv_futureverse.journal_poems:
   path: 'admin/voices-voix/journal-poems'
   defaults:

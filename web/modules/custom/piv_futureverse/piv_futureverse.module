@@ -543,6 +543,119 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
 }
 
 /**
+ * Field groups on the student FutureVerse application form (student mode).
+ *
+ * @return array<string, \Drupal\Core\StringTranslation\TranslatableMarkup>
+ *   Admin titles keyed by field group machine name.
+ */
+function piv_futureverse_student_field_group_definitions(): array {
+  return [
+    'group_futureverse_application_20' => t('FutureVerse Application 2027'),
+    'group_indigenous_student' => t('Indigenous Student'),
+    'group_voluntary_self_disclosure' => t('Voluntary Self-Disclosure'),
+  ];
+}
+
+/**
+ * Config keys for one field group's label and description.
+ *
+ * @return array{label: string, description: string}
+ *   Storage keys.
+ */
+function piv_futureverse_student_field_group_storage_keys(string $group_id): array {
+  return [
+    'label' => $group_id . '_label',
+    'description' => $group_id . '_description',
+  ];
+}
+
+/**
+ * Reads field group strings from config (flat keys or legacy nested groups).
+ *
+ * @return array<string, array{label: string, description: string}>
+ *   Values keyed by field group machine name.
+ */
+function piv_futureverse_student_field_groups_from_config(?\Drupal\Core\Config\StorableConfigBase $config = NULL): array {
+  if ($config === NULL) {
+    $config = \Drupal::config('piv_futureverse.futureverse_application_student_field_groups');
+  }
+  $data = $config->getRawData();
+  if (!empty($data['groups']) && is_array($data['groups'])) {
+    return $data['groups'];
+  }
+
+  $groups = [];
+  foreach (array_keys(piv_futureverse_student_field_group_definitions()) as $group_id) {
+    $keys = piv_futureverse_student_field_group_storage_keys($group_id);
+    $groups[$group_id] = [
+      'label' => (string) ($data[$keys['label']] ?? ''),
+      'description' => (string) ($data[$keys['description']] ?? ''),
+    ];
+  }
+  return $groups;
+}
+
+/**
+ * Default English field group labels and descriptions from the form display.
+ *
+ * @return array<string, array{label: string, description: string}>
+ *   Defaults keyed by field group machine name.
+ */
+function piv_futureverse_student_field_group_defaults(): array {
+  static $defaults;
+  if ($defaults !== NULL) {
+    return $defaults;
+  }
+
+  $defaults = [];
+  foreach (array_keys(piv_futureverse_student_field_group_definitions()) as $group_id) {
+    $defaults[$group_id] = [
+      'label' => '',
+      'description' => '',
+    ];
+  }
+
+  $display = \Drupal::config('core.entity_form_display.futureverse_application.student.student');
+  $groups = $display->get('third_party_settings.field_group') ?? [];
+  foreach ($defaults as $group_id => $values) {
+    if (empty($groups[$group_id]) || !is_array($groups[$group_id])) {
+      continue;
+    }
+    $defaults[$group_id]['label'] = (string) ($groups[$group_id]['label'] ?? '');
+    $defaults[$group_id]['description'] = (string) ($groups[$group_id]['format_settings']['description'] ?? '');
+  }
+
+  return $defaults;
+}
+
+/**
+ * Applies translated field group labels and descriptions to a form display.
+ */
+function piv_futureverse_apply_student_field_group_translations(EntityFormDisplayInterface $form_display): void {
+  $groups = piv_futureverse_student_field_groups_from_config();
+  if (!$groups) {
+    return;
+  }
+
+  foreach ($groups as $group_id => $translation) {
+    if (!is_array($translation)) {
+      continue;
+    }
+    $group = $form_display->getThirdPartySetting('field_group', $group_id);
+    if (!is_array($group)) {
+      continue;
+    }
+    if (!empty($translation['label'])) {
+      $group['label'] = $translation['label'];
+    }
+    if (array_key_exists('description', $translation) && isset($group['format_settings']) && is_array($group['format_settings'])) {
+      $group['format_settings']['description'] = $translation['description'];
+    }
+    $form_display->setThirdPartySetting('field_group', $group_id, $group);
+  }
+}
+
+/**
  * Implements hook_entity_form_display_alter().
  */
 function piv_futureverse_entity_form_display_alter(EntityFormDisplayInterface &$form_display, array $context) {
@@ -554,6 +667,12 @@ function piv_futureverse_entity_form_display_alter(EntityFormDisplayInterface &$
     if ($invitation_display) {
       $form_display = $invitation_display;
     }
+  }
+
+  if ($context['entity_type'] === 'futureverse_application'
+    && $context['bundle'] === 'student'
+    && $context['form_mode'] === 'student') {
+    piv_futureverse_apply_student_field_group_translations($form_display);
   }
 }
 

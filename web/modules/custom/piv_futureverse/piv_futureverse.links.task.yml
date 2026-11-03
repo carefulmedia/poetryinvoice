@@ -52,3 +52,8 @@ piv_futureverse.submission_messages:
   title: 'Submission messages'
   route_name: piv_futureverse.submission_messages
   base_route: piv_futureverse.submission_messages
+
+piv_futureverse.student_application_field_groups:
+  title: 'FutureVerse application field groups'
+  route_name: piv_futureverse.student_application_field_groups
+  base_route: piv_futureverse.student_application_field_groups
