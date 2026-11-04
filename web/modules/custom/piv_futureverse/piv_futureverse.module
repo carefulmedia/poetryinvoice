@@ -6,8 +6,10 @@
  */
 
 use Drupal\Core\Entity\Display\EntityFormDisplayInterface;
+use Drupal\Core\Entity\EntityStorageException;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\NodeInterface;
 use Drupal\piv_futureverse\JournalHelper;
 use Drupal\Core\Url;
 use Drupal\Core\Access\AccessResult;
@@ -16,6 +18,15 @@ use Drupal\Core\Field\FieldItemListInterface;
 use Drupal\Core\Messenger\MessengerInterface;
 use Drupal\Core\Session\AccountInterface;
 use Drupal\views\ViewExecutable;
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function piv_futureverse_entity_type_alter(array &$entity_types) {
+  if (isset($entity_types['node'])) {
+    $entity_types['node']->addConstraint('journal_poem_monthly_limit');
+  }
+}
 
 /**
  * Implements hook_form_BASE_FORM_ID_alter().
@@ -784,11 +795,16 @@ function piv_futureverse_futureverse_application_presave(EntityInterface $entity
   // entity is saved, and the poem needs data from the futureverse
   // application entity which will be empty on first paragraph save.
   if ($entity->bundle() == 'native_student' && $entity->hasField('field_poem_stub')) {
+    $limit_reached = FALSE;
     foreach ($entity->field_poem_stub->referencedEntities() as $paragraph) {
       if ($paragraph->bundle() != 'poem') {
         continue;
       }
       if ($paragraph->field_poem_node->entity) {
+        continue;
+      }
+      if (JournalHelper::isAtMonthlyPoemLimit((string) $email)) {
+        $limit_reached = TRUE;
         continue;
       }
       $user = piv_futureverse_find_or_create_student_poet($entity->field_email->value, $entity->field_first_name->value, $entity->field_last_name->value);
@@ -814,6 +830,25 @@ function piv_futureverse_futureverse_application_presave(EntityInterface $entity
       $paragraph->field_poem_node = ['target_id' => $journal_poem->id()];
       $paragraph->save();
     }
+    if ($limit_reached) {
+      \Drupal::messenger()->addError(piv_futureverse_submission_message('journal_poem_limit'));
+    }
+  }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave() for node.
+ */
+function piv_futureverse_node_presave(EntityInterface $entity): void {
+  if (!$entity instanceof NodeInterface || $entity->bundle() !== 'journal_poem' || !$entity->isNew()) {
+    return;
+  }
+  if (!piv_futureverse_journal_submission_is_public()) {
+    return;
+  }
+  $email = (string) ($entity->field_email1->value ?? '');
+  if (JournalHelper::isAtMonthlyPoemLimit($email)) {
+    throw new EntityStorageException(piv_futureverse_submission_message('journal_poem_limit'));
   }
 }
 
@@ -849,6 +884,8 @@ function piv_futureverse_views_pre_render(ViewExecutable $view) {
 function piv_futureverse_submission_message_defaults(): array {
   return [
     'journal_poem' => 'Thank you for submitting your poem!',
+    'journal_poem_fifth' => "You're Amazing! You have submitted 5 poems this month! Come back next month to submit more poems.",
+    'journal_poem_limit' => "Sorry, you've reached your 5 poem limit for this month. Please submit your poems again next month.",
     'futureverse_application' => 'Thank you for submitting your application!',
     'poet_bio' => 'Thank you for submitting your bio!',
   ];
@@ -929,8 +966,13 @@ function piv_futureverse_journal_poem_submission_message(array &$form, FormState
   if (!$form_state->get('nid')) {
     return;
   }
+  $node = $form_state->getFormObject()->getEntity();
+  $email = (string) ($node->field_email1->value ?? '');
+  $key = JournalHelper::countPoemsByEmailForCurrentMonths($email) >= JournalHelper::MONTHLY_POEM_LIMIT
+    ? 'journal_poem_fifth'
+    : 'journal_poem';
   \Drupal::messenger()->deleteByType(MessengerInterface::TYPE_STATUS);
-  piv_futureverse_queue_submission_modal(piv_futureverse_submission_message('journal_poem'));
+  piv_futureverse_queue_submission_modal(piv_futureverse_submission_message($key));
 }
 
 /**

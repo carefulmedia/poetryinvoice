@@ -62,7 +62,7 @@ final class SubmissionMessagesForm extends ConfigFormBase {
     $form['intro'] = [
       '#type' => 'html_tag',
       '#tag' => 'p',
-      '#value' => $this->t('These messages appear in a thank-you modal after a public submission. Staff editing the same records in the admin keep the usual save message.'),
+      '#value' => $this->t('These messages appear after a public submission. The journal poem thank-you and fifth-poem messages use the thank-you modal. The monthly limit message is shown if someone tries to submit a sixth poem. Staff editing the same records in the admin keep the usual save message and can exceed the limit.'),
     ];
 
     $form['english'] = [
@@ -77,6 +77,22 @@ final class SubmissionMessagesForm extends ConfigFormBase {
       '#default_value' => $settings->get('journal_poem') ?: $defaults['journal_poem'],
       '#required' => TRUE,
       '#maxlength' => 255,
+    ];
+    $form['english']['journal_poem_fifth'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Journal poem — fifth this month'),
+      '#description' => $this->t('Shown after the fifth journal poem from the same email in the current journal month.'),
+      '#default_value' => $settings->get('journal_poem_fifth') ?: $defaults['journal_poem_fifth'],
+      '#required' => TRUE,
+      '#rows' => 2,
+    ];
+    $form['english']['journal_poem_limit'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('Journal poem — monthly limit'),
+      '#description' => $this->t('Shown when the same email tries to submit a sixth poem in the current journal month.'),
+      '#default_value' => $settings->get('journal_poem_limit') ?: $defaults['journal_poem_limit'],
+      '#required' => TRUE,
+      '#rows' => 2,
     ];
     $form['english']['futureverse_application'] = [
       '#type' => 'textfield',
@@ -109,6 +125,20 @@ final class SubmissionMessagesForm extends ConfigFormBase {
         '#required' => TRUE,
         '#maxlength' => 255,
       ];
+      $form['french']['journal_poem_fifth_fr'] = [
+        '#type' => 'textarea',
+        '#title' => $this->t('Journal poem — fifth this month'),
+        '#default_value' => $override->get('journal_poem_fifth') ?: $defaults['journal_poem_fifth'],
+        '#required' => TRUE,
+        '#rows' => 2,
+      ];
+      $form['french']['journal_poem_limit_fr'] = [
+        '#type' => 'textarea',
+        '#title' => $this->t('Journal poem — monthly limit'),
+        '#default_value' => $override->get('journal_poem_limit') ?: $defaults['journal_poem_limit'],
+        '#required' => TRUE,
+        '#rows' => 2,
+      ];
       $form['french']['futureverse_application_fr'] = [
         '#type' => 'textfield',
         '#title' => $this->t('Futureverse application'),
@@ -134,6 +164,8 @@ final class SubmissionMessagesForm extends ConfigFormBase {
   public function submitForm(array &$form, FormStateInterface $form_state): void {
     $this->config('piv_futureverse.submission_messages')
       ->set('journal_poem', trim($form_state->getValue('journal_poem')))
+      ->set('journal_poem_fifth', trim($form_state->getValue('journal_poem_fifth')))
+      ->set('journal_poem_limit', trim($form_state->getValue('journal_poem_limit')))
       ->set('futureverse_application', trim($form_state->getValue('futureverse_application')))
       ->set('poet_bio', trim($form_state->getValue('poet_bio')))
       ->save();
@@ -142,6 +174,8 @@ final class SubmissionMessagesForm extends ConfigFormBase {
       $override = $this->languageManager->getLanguageConfigOverride('fr', 'piv_futureverse.submission_messages');
       $override
         ->set('journal_poem', trim($form_state->getValue('journal_poem_fr')))
+        ->set('journal_poem_fifth', trim($form_state->getValue('journal_poem_fifth_fr')))
+        ->set('journal_poem_limit', trim($form_state->getValue('journal_poem_limit_fr')))
         ->set('futureverse_application', trim($form_state->getValue('futureverse_application_fr')))
         ->set('poet_bio', trim($form_state->getValue('poet_bio_fr')))
         ->save();

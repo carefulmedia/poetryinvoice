@@ -13,6 +13,11 @@ use Drupal\node\NodeInterface;
 class JournalHelper {
 
   /**
+   * Maximum journal poems a unique email may submit in one journal month.
+   */
+  public const MONTHLY_POEM_LIMIT = 5;
+
+  /**
    * Get journal months for current date.
    */
   public static function getJournalMonths() : array {
@@ -28,6 +33,62 @@ class JournalHelper {
 
     $ids = $query->execute();
     return $ids ? $storage->loadMultiple($ids) : [];
+  }
+
+  /**
+   * Normalize an email for uniqueness comparisons.
+   */
+  public static function normalizeEmail(?string $email): string {
+    return strtolower(trim((string) $email));
+  }
+
+  /**
+   * Count poems already assigned to the given months for an email.
+   *
+   * @param string $email
+   *   Submitter email from field_email1.
+   * @param \Drupal\piv_futureverse\JournalMonthInterface[] $months
+   *   Journal months to inspect.
+   * @param int|null $exclude_nid
+   *   Optional poem node ID to skip (unused for creates).
+   */
+  public static function countPoemsByEmailForMonths(string $email, array $months, ?int $exclude_nid = NULL): int {
+    $normalized = self::normalizeEmail($email);
+    if ($normalized === '' || !$months) {
+      return 0;
+    }
+
+    $count = 0;
+    foreach ($months as $month) {
+      foreach ($month->field_journal_poems->referencedEntities() as $poem) {
+        if ($exclude_nid && (int) $poem->id() === $exclude_nid) {
+          continue;
+        }
+        if (self::normalizeEmail($poem->field_email1->value ?? NULL) === $normalized) {
+          $count++;
+        }
+      }
+    }
+    return $count;
+  }
+
+  /**
+   * Count poems for an email on the currently open journal month(s).
+   */
+  public static function countPoemsByEmailForCurrentMonths(string $email, ?int $exclude_nid = NULL): int {
+    return self::countPoemsByEmailForMonths($email, self::getJournalMonths(), $exclude_nid);
+  }
+
+  /**
+   * Whether this email has reached the monthly public submission cap.
+   *
+   * No current journal month means the cap does not apply.
+   */
+  public static function isAtMonthlyPoemLimit(string $email, ?int $exclude_nid = NULL): bool {
+    if (!self::getJournalMonths()) {
+      return FALSE;
+    }
+    return self::countPoemsByEmailForCurrentMonths($email, $exclude_nid) >= self::MONTHLY_POEM_LIMIT;
   }
 
   /**

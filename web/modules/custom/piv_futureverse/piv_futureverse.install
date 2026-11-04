@@ -82,3 +82,34 @@ function piv_futureverse_update_9003() {
   }
   $override->clear('groups')->save();
 }
+
+/**
+ * Add fifth-poem and monthly-limit journal submission messages.
+ */
+function piv_futureverse_update_9004() {
+  $defaults = piv_futureverse_submission_message_defaults();
+  $config = \Drupal::configFactory()->getEditable('piv_futureverse.submission_messages');
+  foreach (['journal_poem_fifth', 'journal_poem_limit'] as $key) {
+    $current = $config->get($key);
+    if (!is_string($current) || trim($current) === '') {
+      $config->set($key, $defaults[$key]);
+    }
+  }
+  $config->save();
+
+  if (!\Drupal::languageManager()->getLanguage('fr')) {
+    return;
+  }
+  $french = \Drupal::languageManager()->getLanguageConfigOverride('fr', 'piv_futureverse.submission_messages');
+  $french_defaults = [
+    'journal_poem_fifth' => 'Vous êtes extraordinaire ! Vous avez soumis 5 poèmes ce mois-ci ! Revenez le mois prochain pour en soumettre d’autres.',
+    'journal_poem_limit' => 'Désolé, vous avez atteint votre limite de 5 poèmes pour ce mois. Veuillez soumettre vos poèmes le mois prochain.',
+  ];
+  foreach ($french_defaults as $key => $value) {
+    $current = $french->get($key);
+    if (!is_string($current) || trim($current) === '') {
+      $french->set($key, $value);
+    }
+  }
+  $french->save();
+}

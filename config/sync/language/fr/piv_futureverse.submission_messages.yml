@@ -1,3 +1,5 @@
 journal_poem: 'Merci d''avoir soumis votre poème !'
+journal_poem_fifth: 'Vous êtes extraordinaire ! Vous avez soumis 5 poèmes ce mois-ci ! Revenez le mois prochain pour en soumettre d’autres.'
+journal_poem_limit: 'Désolé, vous avez atteint votre limite de 5 poèmes pour ce mois. Veuillez soumettre vos poèmes le mois prochain.'
 futureverse_application: 'Merci d''avoir soumis votre candidature !'
 poet_bio: 'Merci d''avoir soumis votre bio !'

@@ -1,4 +1,6 @@
 langcode: en
 journal_poem: 'Thank you for submitting your poem!'
+journal_poem_fifth: "You're Amazing! You have submitted 5 poems this month! Come back next month to submit more poems."
+journal_poem_limit: "Sorry, you've reached your 5 poem limit for this month. Please submit your poems again next month."
 futureverse_application: 'Thank you for submitting your application!'
 poet_bio: 'Thank you for submitting your bio!'

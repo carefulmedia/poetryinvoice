@@ -5,6 +5,12 @@ piv_futureverse.submission_messages:
     journal_poem:
       type: text
       label: 'Journal poem'
+    journal_poem_fifth:
+      type: text
+      label: 'Journal poem fifth this month'
+    journal_poem_limit:
+      type: text
+      label: 'Journal poem monthly limit'
     futureverse_application:
       type: text
       label: 'Futureverse application'

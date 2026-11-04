@@ -73,7 +73,7 @@ piv_futureverse.futureverse_application.collection:
 
 piv_futureverse.submission_messages:
   title: 'Submission messages'
-  description: 'Thank-you messages shown after a journal poem, futureverse application, or poet bio is submitted.'
+  description: 'Thank-you and monthly journal poem limit messages shown after a public submission.'
   route_name: piv_futureverse.submission_messages
   parent: views_view:views.voices_voix.page_1
   weight: 104
