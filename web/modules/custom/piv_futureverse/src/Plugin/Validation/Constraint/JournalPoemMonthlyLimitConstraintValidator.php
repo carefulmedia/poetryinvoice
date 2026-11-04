@@ -26,7 +26,7 @@ class JournalPoemMonthlyLimitConstraintValidator extends ConstraintValidator {
     }
 
     $email = (string) ($entity->field_email1->value ?? '');
-    if (!JournalHelper::isAtMonthlyPoemLimit($email)) {
+    if (!JournalHelper::isAtMonthlyPoemLimit($email, $entity->language()->getId())) {
       return;
     }
 

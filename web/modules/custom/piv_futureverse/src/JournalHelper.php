@@ -13,7 +13,7 @@ use Drupal\node\NodeInterface;
 class JournalHelper {
 
   /**
-   * Maximum journal poems a unique email may submit in one journal month.
+   * Maximum journal poems a unique email may submit per language in one journal month.
    */
   public const MONTHLY_POEM_LIMIT = 5;
 
@@ -43,18 +43,28 @@ class JournalHelper {
   }
 
   /**
-   * Count poems already assigned to the given months for an email.
+   * Normalize a poem language for uniqueness comparisons.
+   */
+  public static function normalizeLangcode(?string $langcode): string {
+    return strtolower(trim((string) $langcode));
+  }
+
+  /**
+   * Count poems already assigned to the given months for an email and language.
    *
    * @param string $email
    *   Submitter email from field_email1.
    * @param \Drupal\piv_futureverse\JournalMonthInterface[] $months
    *   Journal months to inspect.
+   * @param string $langcode
+   *   Poem language (node langcode), e.g. en or fr.
    * @param int|null $exclude_nid
    *   Optional poem node ID to skip (unused for creates).
    */
-  public static function countPoemsByEmailForMonths(string $email, array $months, ?int $exclude_nid = NULL): int {
+  public static function countPoemsByEmailForMonths(string $email, array $months, string $langcode, ?int $exclude_nid = NULL): int {
     $normalized = self::normalizeEmail($email);
-    if ($normalized === '' || !$months) {
+    $langcode = self::normalizeLangcode($langcode);
+    if ($normalized === '' || $langcode === '' || !$months) {
       return 0;
     }
 
@@ -64,7 +74,10 @@ class JournalHelper {
         if ($exclude_nid && (int) $poem->id() === $exclude_nid) {
           continue;
         }
-        if (self::normalizeEmail($poem->field_email1->value ?? NULL) === $normalized) {
+        if (self::normalizeEmail($poem->field_email1->value ?? NULL) !== $normalized) {
+          continue;
+        }
+        if (self::normalizeLangcode($poem->language()->getId()) === $langcode) {
           $count++;
         }
       }
@@ -73,22 +86,22 @@ class JournalHelper {
   }
 
   /**
-   * Count poems for an email on the currently open journal month(s).
+   * Count poems for an email and language on the currently open journal month(s).
    */
-  public static function countPoemsByEmailForCurrentMonths(string $email, ?int $exclude_nid = NULL): int {
-    return self::countPoemsByEmailForMonths($email, self::getJournalMonths(), $exclude_nid);
+  public static function countPoemsByEmailForCurrentMonths(string $email, string $langcode, ?int $exclude_nid = NULL): int {
+    return self::countPoemsByEmailForMonths($email, self::getJournalMonths(), $langcode, $exclude_nid);
   }
 
   /**
-   * Whether this email has reached the monthly public submission cap.
+   * Whether this email has reached the monthly public cap for a language.
    *
    * No current journal month means the cap does not apply.
    */
-  public static function isAtMonthlyPoemLimit(string $email, ?int $exclude_nid = NULL): bool {
+  public static function isAtMonthlyPoemLimit(string $email, string $langcode, ?int $exclude_nid = NULL): bool {
     if (!self::getJournalMonths()) {
       return FALSE;
     }
-    return self::countPoemsByEmailForCurrentMonths($email, $exclude_nid) >= self::MONTHLY_POEM_LIMIT;
+    return self::countPoemsByEmailForCurrentMonths($email, $langcode, $exclude_nid) >= self::MONTHLY_POEM_LIMIT;
   }
 
   /**

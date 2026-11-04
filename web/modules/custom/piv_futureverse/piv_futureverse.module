@@ -803,10 +803,6 @@ function piv_futureverse_futureverse_application_presave(EntityInterface $entity
       if ($paragraph->field_poem_node->entity) {
         continue;
       }
-      if (JournalHelper::isAtMonthlyPoemLimit((string) $email)) {
-        $limit_reached = TRUE;
-        continue;
-      }
       $user = piv_futureverse_find_or_create_student_poet($entity->field_email->value, $entity->field_first_name->value, $entity->field_last_name->value);
       $journal_poem = \Drupal::entityTypeManager()->getStorage('node')->create([
         'type' => 'journal_poem',
@@ -826,6 +822,10 @@ function piv_futureverse_futureverse_application_presave(EntityInterface $entity
         'uid' => $user ? $user->id() : 0,
         'school' => $entity->field_school->target_id,
       ]);
+      if (JournalHelper::isAtMonthlyPoemLimit((string) $email, $journal_poem->language()->getId())) {
+        $limit_reached = TRUE;
+        continue;
+      }
       $journal_poem->save();
       $paragraph->field_poem_node = ['target_id' => $journal_poem->id()];
       $paragraph->save();
@@ -847,7 +847,7 @@ function piv_futureverse_node_presave(EntityInterface $entity): void {
     return;
   }
   $email = (string) ($entity->field_email1->value ?? '');
-  if (JournalHelper::isAtMonthlyPoemLimit($email)) {
+  if (JournalHelper::isAtMonthlyPoemLimit($email, $entity->language()->getId())) {
     throw new EntityStorageException(piv_futureverse_submission_message('journal_poem_limit'));
   }
 }
@@ -968,7 +968,7 @@ function piv_futureverse_journal_poem_submission_message(array &$form, FormState
   }
   $node = $form_state->getFormObject()->getEntity();
   $email = (string) ($node->field_email1->value ?? '');
-  $key = JournalHelper::countPoemsByEmailForCurrentMonths($email) >= JournalHelper::MONTHLY_POEM_LIMIT
+  $key = JournalHelper::countPoemsByEmailForCurrentMonths($email, $node->language()->getId()) >= JournalHelper::MONTHLY_POEM_LIMIT
     ? 'journal_poem_fifth'
     : 'journal_poem';
   \Drupal::messenger()->deleteByType(MessengerInterface::TYPE_STATUS);

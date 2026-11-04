@@ -62,7 +62,7 @@ final class SubmissionMessagesForm extends ConfigFormBase {
     $form['intro'] = [
       '#type' => 'html_tag',
       '#tag' => 'p',
-      '#value' => $this->t('These messages appear after a public submission. The journal poem thank-you and fifth-poem messages use the thank-you modal. The monthly limit message is shown if someone tries to submit a sixth poem. Staff editing the same records in the admin keep the usual save message and can exceed the limit.'),
+      '#value' => $this->t('These messages appear after a public submission. The journal poem thank-you and fifth-poem messages use the thank-you modal. The monthly limit is 5 poems per language (English and French counted separately). The monthly limit message is shown if someone tries to submit a sixth poem in that language. Staff editing the same records in the admin keep the usual save message and can exceed the limit.'),
     ];
 
     $form['english'] = [
@@ -81,7 +81,7 @@ final class SubmissionMessagesForm extends ConfigFormBase {
     $form['english']['journal_poem_fifth'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Journal poem — fifth this month'),
-      '#description' => $this->t('Shown after the fifth journal poem from the same email in the current journal month.'),
+      '#description' => $this->t('Shown after the fifth journal poem in the same language from the same email in the current journal month.'),
       '#default_value' => $settings->get('journal_poem_fifth') ?: $defaults['journal_poem_fifth'],
       '#required' => TRUE,
       '#rows' => 2,
@@ -89,7 +89,7 @@ final class SubmissionMessagesForm extends ConfigFormBase {
     $form['english']['journal_poem_limit'] = [
       '#type' => 'textarea',
       '#title' => $this->t('Journal poem — monthly limit'),
-      '#description' => $this->t('Shown when the same email tries to submit a sixth poem in the current journal month.'),
+      '#description' => $this->t('Shown when the same email tries to submit a sixth poem in the same language in the current journal month.'),
       '#default_value' => $settings->get('journal_poem_limit') ?: $defaults['journal_poem_limit'],
       '#required' => TRUE,
       '#rows' => 2,
