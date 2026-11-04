@@ -15,9 +15,6 @@ settings:
       value: Listening
       label: 'Active Listening'
     -
-      value: Collaboration
-      label: Collaboration
-    -
       value: 'Critical Thinking'
       label: 'Critical Literacy'
     -
@@ -63,17 +60,14 @@ settings:
       value: 'Poetic Terms'
       label: 'Understanding Poetic Terms'
     -
-      value: Structure
-      label: Structure
-    -
       value: Vocabulary
       label: 'Using Appropriate Vocabulary'
     -
       value: 'Use of voice and body as performance instruments'
       label: 'Voice and Movement Techniques'
     -
-      value: 'Writing Poetry'
-      label: ')Writing Poetry'
+      value: writing_poetry
+      label: 'Writing Poetry'
   allowed_values_function: ''
 module: options
 locked: false

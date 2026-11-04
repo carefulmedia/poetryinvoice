@@ -12,7 +12,7 @@ entity_type: node
 bundle: lesson_plan
 label: 'File Under'
 description: 'Please check the appropriate terms to assist teachers searching for lesson plans. Check as many boxes as apply.'
-required: false
+required: true
 translatable: true
 default_value: {  }
 default_value_callback: ''
