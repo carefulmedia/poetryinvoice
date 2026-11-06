@@ -337,16 +337,6 @@ function piv_futureverse_entity_insert(EntityInterface $entity) : void {
       $month->field_journal_poems[] = ['target_id' => $entity->id()];
       $month->save();
     }
-
-    $current_user = \Drupal::currentUser();
-    if ($current_user->isAnonymous()) {
-      // Create or load the user based on the email and set the user as
-      // the owner of this journal_poem.
-      $user = piv_futureverse_find_or_create_student_poet($entity->field_email1->value, $entity->piv_teacher_first_name->value, $entity->piv_teacher_last_name->value);
-      if ($user) {
-        $entity->setOwner($user)->save();
-      }
-    }
   }
   elseif ($entity->getEntityTypeId() == 'poet_bio') {
     // Send an email to admin when a Poet Bio is created.
@@ -842,6 +832,14 @@ function piv_futureverse_futureverse_application_presave(EntityInterface $entity
 function piv_futureverse_node_presave(EntityInterface $entity): void {
   if (!$entity instanceof NodeInterface || $entity->bundle() !== 'journal_poem' || !$entity->isNew()) {
     return;
+  }
+  // Assign the student poet before the first save. Saving again from
+  // hook_entity_insert() can throw "changing the ID is not supported".
+  if (\Drupal::currentUser()->isAnonymous()) {
+    $user = piv_futureverse_find_or_create_student_poet($entity->field_email1->value, $entity->piv_teacher_first_name->value, $entity->piv_teacher_last_name->value);
+    if ($user) {
+      $entity->setOwner($user);
+    }
   }
   if (!piv_futureverse_journal_submission_is_public()) {
     return;

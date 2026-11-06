@@ -22,7 +22,9 @@ function piv_field_form_alter(&$form, FormStateInterface $form_state, $form_id) 
 
     if ($form_id == 'node_journal_poem_form' || $form_id == 'node_journal_poem_edit_form') {
       $field = 'field_school_journal';
-      $form['actions']['submit']['#submit'][] = 'piv_field_poem_form_submit';
+      // Set school on the entity before the node is saved. A second save after
+      // create can throw "Update existing node entity while changing the ID".
+      piv_field_insert_submit_before_save($form['actions']['submit']);
     }
     elseif ($form_id == 'user_teacher_edit_form') {
       $form['actions']['submit']['#submit'][] = 'piv_field_teacher_edit_form_submit';
@@ -105,16 +107,38 @@ function piv_field_teacher_edit_form_submit(array &$form, FormStateInterface $fo
 }
 
 /**
- * Custom form submit for Poem form.
+ * Insert the school submit handler immediately before entity save.
+ */
+function piv_field_insert_submit_before_save(array &$element): void {
+  if (empty($element['#submit']) || in_array('piv_field_poem_form_submit', $element['#submit'], TRUE)) {
+    return;
+  }
+  $submit = [];
+  $added = FALSE;
+  foreach ($element['#submit'] as $callback) {
+    if (!$added && $callback === '::save') {
+      $submit[] = 'piv_field_poem_form_submit';
+      $added = TRUE;
+    }
+    $submit[] = $callback;
+  }
+  if (!$added) {
+    $submit[] = 'piv_field_poem_form_submit';
+  }
+  $element['#submit'] = $submit;
+}
+
+/**
+ * Copies the custom School autocomplete onto the hidden school field.
+ *
+ * Runs before NodeForm::save() so the value is stored on the first save.
  */
 function piv_field_poem_form_submit(array &$form, FormStateInterface $form_state) {
   $school_id = $form_state->getValue('school');
   if ($school_id) {
     $node = $form_state->getFormObject()->getEntity();
-    $value = [
+    $node->set('field_school_journal', [
       ['target_id' => $school_id],
-    ];
-    $node->set('field_school_journal', $value);
-    $node->save();
+    ]);
   }
 }
