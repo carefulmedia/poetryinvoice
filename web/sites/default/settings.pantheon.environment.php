@@ -106,7 +106,10 @@ if ($pantheon_env === 'live') {
 else {
   $config['system.logging']['error_level'] = 'verbose';
   $config['reroute_email.settings']['enable'] = TRUE;
-  $config['reroute_email.settings']['address'] = 'dev@poetryinvoice.ca';
+  // Do not set address here: $config overrides the database, so the value from
+  // /admin/config/development/reroute would never apply. Default inbox for new
+  // environments: set once with drush cset reroute_email.settings address
+  // dev@poetryinvoice.ca or in that form.
   // Keep original To/Cc in the message body so templates can be verified.
   $config['reroute_email.settings']['description'] = TRUE;
   $config['language.negotiation']['url']['source'] = 'path_prefix';

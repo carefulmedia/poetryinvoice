@@ -1,0 +1,8 @@
+enable: false
+address: dev@poetryinvoice.ca
+roles: {  }
+allowed: ''
+description: true
+message: false
+mailkeys: ''
+mailkeys_skip: ''

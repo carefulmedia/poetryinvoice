@@ -45,7 +45,7 @@ if (isset($platformsh->branch)) {
   else {
     $config['system.logging']['error_level'] = 'verbose';
     $config['reroute_email.settings']['enable'] = TRUE;
-    $config['reroute_email.settings']['address'] = 'dev@poetryinvoice.ca';
+    // address, description: use active config (config/sync/reroute_email.settings.yml).
     $config['reroute_email.settings']['description'] = TRUE;
     // On platform dev environments, use the path prefix.
     $config['language.negotiation']['url']['source'] = 'path_prefix';

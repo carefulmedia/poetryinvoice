@@ -9,7 +9,6 @@ ignored_config_entities:
   - 'piv_canadian_content.*'
   - 'piv_mail.piv_mail.*'
   - piv_poem_password.settings
-  - reroute_email.settings
   - 'views.view.*'
   - ~views.view.commom_poetic_terms_and_forms_by_language
   - ~views.view.competition_entries
