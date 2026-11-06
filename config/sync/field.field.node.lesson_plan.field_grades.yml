@@ -13,7 +13,7 @@ entity_type: node
 bundle: lesson_plan
 label: Grades
 description: 'Check all the grade levels of this lesson plan.'
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''

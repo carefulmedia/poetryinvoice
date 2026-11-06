@@ -10,9 +10,9 @@ id: node.lesson_plan.field_file_under_
 field_name: field_file_under_
 entity_type: node
 bundle: lesson_plan
-label: 'File Under'
+label: Subjects
 description: 'Please check the appropriate terms to assist teachers searching for lesson plans. Check as many boxes as apply.'
-required: true
+required: false
 translatable: true
 default_value: {  }
 default_value_callback: ''
@@ -23,7 +23,4 @@ settings:
       file_under: file_under
     sort:
       field: _none
-      direction: asc
-    auto_create: false
-    auto_create_bundle: ''
 field_type: entity_reference
