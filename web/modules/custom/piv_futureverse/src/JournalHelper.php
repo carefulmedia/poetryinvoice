@@ -39,10 +39,24 @@ class JournalHelper {
     $query = $storage->getQuery()
       ->accessCheck(FALSE)
       ->condition('field_start_date', $today, '<=')
-      ->condition('field_end_date', $today, '>=');
+      ->condition('field_end_date', $today, '>=')
+      ->sort('field_start_date', 'DESC')
+      ->sort('id', 'DESC');
 
     $ids = $query->execute();
     return $ids ? $storage->loadMultiple($ids) : [];
+  }
+
+  /**
+   * Journal month new public poems are assigned to (latest open month).
+   */
+  public static function getCurrentJournalMonth(): ?JournalMonthInterface {
+    $months = self::getJournalMonths();
+    if (!$months) {
+      return NULL;
+    }
+    $month = reset($months);
+    return $month instanceof JournalMonthInterface ? $month : NULL;
   }
 
   /**
@@ -78,37 +92,60 @@ class JournalHelper {
       return 0;
     }
 
-    $count = 0;
+    $nids = [];
     foreach ($months as $month) {
-      foreach ($month->field_journal_poems->referencedEntities() as $poem) {
-        if ($exclude_nid && (int) $poem->id() === $exclude_nid) {
-          continue;
+      foreach ($month->get('field_journal_poems')->getValue() as $item) {
+        $nid = (int) ($item['target_id'] ?? 0);
+        if ($nid) {
+          $nids[$nid] = $nid;
         }
-        if (self::normalizeEmail($poem->field_email1->value ?? NULL) !== $normalized) {
-          continue;
-        }
-        if (self::normalizeLangcode($poem->language()->getId()) === $langcode) {
-          $count++;
-        }
+      }
+    }
+    if ($exclude_nid) {
+      unset($nids[$exclude_nid]);
+    }
+    if (!$nids) {
+      return 0;
+    }
+
+    $count = 0;
+    foreach (\Drupal::entityTypeManager()->getStorage('node')->loadMultiple($nids) as $poem) {
+      if ($poem->bundle() !== 'journal_poem') {
+        continue;
+      }
+      if (self::normalizeEmail($poem->field_email1->value ?? NULL) !== $normalized) {
+        continue;
+      }
+      if (self::normalizeLangcode($poem->language()->getId()) === $langcode) {
+        $count++;
       }
     }
     return $count;
   }
 
   /**
-   * Count poems for an email and language on the currently open journal month(s).
+   * Count poems for an email and language on the month that receives new poems.
    */
   public static function countPoemsByEmailForCurrentMonths(string $email, string $langcode, ?int $exclude_nid = NULL): int {
-    return self::countPoemsByEmailForMonths($email, self::getJournalMonths(), $langcode, $exclude_nid);
+    $month = self::getCurrentJournalMonth();
+    if (!$month) {
+      return 0;
+    }
+    // Reload so a poem just assigned in this request is included.
+    $storage = \Drupal::entityTypeManager()->getStorage('journal_month');
+    $storage->resetCache([(int) $month->id()]);
+    $month = $storage->load($month->id());
+    return $month ? self::countPoemsByEmailForMonths($email, [$month], $langcode, $exclude_nid) : 0;
   }
 
   /**
    * Whether this email has reached the monthly public cap for a language.
    *
-   * No current journal month means the cap does not apply.
+   * No current journal month means the cap does not apply. Five existing
+   * poems block the sixth; the fifth is still allowed.
    */
   public static function isAtMonthlyPoemLimit(string $email, string $langcode, ?int $exclude_nid = NULL): bool {
-    if (!self::getJournalMonths()) {
+    if (!self::getCurrentJournalMonth()) {
       return FALSE;
     }
     return self::countPoemsByEmailForCurrentMonths($email, $langcode, $exclude_nid) >= self::MONTHLY_POEM_LIMIT;

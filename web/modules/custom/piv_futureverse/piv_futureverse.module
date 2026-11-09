@@ -328,11 +328,14 @@ function piv_futureverse_entity_insert(EntityInterface $entity) : void {
   // Assign a journal poem to the current futureverse+ journal month if
   // one exists.
   if ($entity->getEntityTypeId() == 'node' && $entity->bundle() == 'journal_poem') {
-    $months = JournalHelper::getJournalMonths();
-    if ($months) {
-      $month = reset($months);
-      $month->field_journal_poems[] = ['target_id' => $entity->id()];
-      $month->save();
+    $month = JournalHelper::getCurrentJournalMonth();
+    if ($month) {
+      $nid = (int) $entity->id();
+      $existing = array_map('intval', array_column($month->get('field_journal_poems')->getValue(), 'target_id'));
+      if (!in_array($nid, $existing, TRUE)) {
+        $month->get('field_journal_poems')->appendItem(['target_id' => $nid]);
+        $month->save();
+      }
     }
   }
   elseif ($entity->getEntityTypeId() == 'poet_bio') {
@@ -358,9 +361,8 @@ function piv_futureverse_entity_insert(EntityInterface $entity) : void {
  */
 function piv_futureverse_futureverse_application_create(EntityInterface $entity) : void {
   // Assign the current journal year to the futureverse_application.
-  $months = JournalHelper::getJournalMonths();
-  if ($months) {
-    $month = reset($months);
+  $month = JournalHelper::getCurrentJournalMonth();
+  if ($month) {
     $journal_year = JournalHelper::getJournalYearFromJournalMonth($month);
     if ($journal_year) {
       $entity->field_journal_year = $journal_year->id();
@@ -999,10 +1001,18 @@ function piv_futureverse_form_node_journal_poem_form_alter(array &$form, FormSta
  * Replaces the node "has been created" message with the thank-you.
  */
 function piv_futureverse_journal_poem_submission_message(array &$form, FormStateInterface $form_state) {
-  if (!$form_state->get('nid')) {
+  $nid = (int) $form_state->get('nid');
+  if (!$nid) {
     return;
   }
-  $node = $form_state->getFormObject()->getEntity();
+  // Only thank the submitter if this poem actually persisted. A stale nid in
+  // form state must not show the 5th-poem alert when the node was not created.
+  $storage = \Drupal::entityTypeManager()->getStorage('node');
+  $storage->resetCache([$nid]);
+  $node = $storage->load($nid);
+  if (!$node instanceof NodeInterface || $node->bundle() !== 'journal_poem') {
+    return;
+  }
   $email = (string) ($node->field_email1->value ?? '');
   $key = JournalHelper::countPoemsByEmailForCurrentMonths($email, $node->language()->getId()) >= JournalHelper::MONTHLY_POEM_LIMIT
     ? 'journal_poem_fifth'
