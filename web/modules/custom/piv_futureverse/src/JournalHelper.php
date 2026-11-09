@@ -18,6 +18,16 @@ class JournalHelper {
   public const MONTHLY_POEM_LIMIT = 5;
 
   /**
+   * Grades eligible for FutureVerse invitation emails.
+   */
+  public const FUTUREVERSE_INVITATION_GRADES = ['10', '11', '12'];
+
+  /**
+   * Acceptance levels eligible for FutureVerse invitations.
+   */
+  public const FUTUREVERSE_INVITATION_ACCEPTANCE = ['Yes', 'Monthly prize winner'];
+
+  /**
    * Get journal months for current date.
    */
   public static function getJournalMonths() : array {
@@ -154,18 +164,111 @@ class JournalHelper {
   }
 
   /**
+   * Whether a journal poem grade is eligible for a FutureVerse invitation.
+   */
+  public static function isFutureverseInvitationGrade(NodeInterface $poem): bool {
+    $grade = $poem->field_grade->value ?? '';
+    return in_array($grade, self::FUTUREVERSE_INVITATION_GRADES, TRUE);
+  }
+
+  /**
+   * Whether a FutureVerse application exists for an email in a journal year.
+   */
+  public static function hasFutureverseApplicationByEmail(JournalYearInterface $journal_year, ?string $email): bool {
+    $normalized = self::normalizeEmail($email);
+    if ($normalized === '') {
+      return FALSE;
+    }
+
+    $storage = \Drupal::entityTypeManager()->getStorage('futureverse_application');
+    $ids = $storage->getQuery()
+      ->accessCheck(FALSE)
+      ->condition('field_journal_year', $journal_year->id())
+      ->execute();
+    if (!$ids) {
+      return FALSE;
+    }
+
+    foreach ($storage->loadMultiple($ids) as $application) {
+      if (self::normalizeEmail($application->get('field_email')->value ?? NULL) === $normalized) {
+        return TRUE;
+      }
+    }
+    return FALSE;
+  }
+
+  /**
    * Check if there is a futureverse application for poem for year.
    */
   public static function hasFutureverseApplication($journal_year, $poem) {
-    // Check if there is a futureverse_application.
-    $futureverse_application_storage = \Drupal::entityTypeManager()->getStorage('futureverse_application');
-    $futureverse_applications = $futureverse_application_storage->getQuery()
-      ->accessCheck(FALSE)
-      ->condition('field_journal_year', $journal_year->id())
-      ->condition('uid', $poem->uid->target_id)
-      ->condition('bundle', 'student')
-      ->execute();
-    return count($futureverse_applications) > 0;
+    return self::hasFutureverseApplicationByEmail($journal_year, $poem->field_email1->value ?? '');
+  }
+
+  /**
+   * Eligible FutureVerse invitation poems for one journal month.
+   *
+   * Returns at most one poem per email address.
+   *
+   * @return \Drupal\node\NodeInterface[]
+   */
+  public static function getFutureverseInvitationPoemsForMonth(JournalMonthInterface $journal_month, ?JournalYearInterface $journal_year = NULL): array {
+    $journal_year = $journal_year ?? self::getJournalYearFromJournalMonth($journal_month);
+    if (!$journal_year) {
+      return [];
+    }
+
+    $poems = $journal_month->field_journal_poems->referencedEntities();
+    usort($poems, function (NodeInterface $a, NodeInterface $b) {
+      return $a->id() <=> $b->id();
+    });
+
+    $by_email = [];
+    foreach ($poems as $poem) {
+      if (!in_array($poem->field_acceptance_level->value, self::FUTUREVERSE_INVITATION_ACCEPTANCE, TRUE)) {
+        continue;
+      }
+      if (!self::isFutureverseInvitationGrade($poem)) {
+        continue;
+      }
+      $email = $poem->field_email1->value ?? '';
+      if ($email === '') {
+        continue;
+      }
+      if (self::hasFutureverseApplicationByEmail($journal_year, $email)) {
+        continue;
+      }
+      $key = self::normalizeEmail($email);
+      if (!isset($by_email[$key])) {
+        $by_email[$key] = $poem;
+      }
+    }
+    return array_values($by_email);
+  }
+
+  /**
+   * Eligible FutureVerse invitation poems for a journal year, grouped by email.
+   */
+  public static function getFutureverseInvitationPoemsGroupedByEmail(JournalYearInterface $journal_year): array {
+    $candidates = [];
+    foreach ($journal_year->field_journal_months->referencedEntities() as $journal_month) {
+      foreach (self::getFutureverseInvitationPoemsForMonth($journal_month, $journal_year) as $poem) {
+        $candidates[] = $poem;
+      }
+    }
+
+    usort($candidates, function (NodeInterface $a, NodeInterface $b) {
+      return $a->id() <=> $b->id();
+    });
+
+    $poems = [];
+    foreach ($candidates as $poem) {
+      $email = $poem->field_email1->value ?? '';
+      if ($email === '' || isset($poems[$email])) {
+        continue;
+      }
+      $poems[$email][] = $poem;
+    }
+    return $poems;
   }
 
   /**

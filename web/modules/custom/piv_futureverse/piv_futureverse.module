@@ -147,30 +147,27 @@ function piv_futureverse_form_journal_year_form_alter(array &$form, FormStateInt
     ];
   }
 
-  // Futureverse, "Yes" or "Monthly prize winner" acceptance level.
+  // Futureverse invitations are sent monthly; resend/update/reminder stay here.
   $key = 'futureverse_invitations_' . $journal_year->id();
   $value = $key_value->get($key, ['emails' => []]);
   $already_sent = $value['emails'] ?? [];
-  $to_invite_poems = JournalHelper::getPoemsByAcceptanceGroupedByEmail($journal_year, ['Yes', 'Monthly prize winner']);
+  $to_invite_poems = JournalHelper::getFutureverseInvitationPoemsGroupedByEmail($journal_year);
   // Index/save per email.
   $emails = array_keys($to_invite_poems);
   $to_send = array_diff($emails, $already_sent);
-  $send_label = count($already_sent)
-    ? t('Resend futureverse invitations')
-    : t('Send futureverse invitations');
 
-  $form['field_journal_months']['notifications']['futureverse']['send_notifications'] = [
-    '#type' => 'link',
-    '#title' => $send_label,
-    '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
-      'op' => 'futureverse_invitations:send',
-      'journal_month' => $first_journal_month_id,
-    ]),
-    '#attributes' => [
-      'class' => ['button'],
-    ],
-  ];
   if (count($already_sent)) {
+    $form['field_journal_months']['notifications']['futureverse']['send_notifications'] = [
+      '#type' => 'link',
+      '#title' => t('Resend futureverse invitations'),
+      '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+        'op' => 'futureverse_invitations:send',
+        'journal_month' => $first_journal_month_id,
+      ]),
+      '#attributes' => [
+        'class' => ['button'],
+      ],
+    ];
     if (count($to_send)) {
       // Update only send the ones that are missing if there are any.
       $form['field_journal_months']['notifications']['futureverse']['update_notifications'] = [
@@ -525,6 +522,47 @@ function piv_futureverse_inline_entity_form_entity_form_alter(array &$entity_for
         '#title' => t('Update monthly prize losers notification'),
         '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
           'op' => 'monthly_prize_losers:update',
+          'journal_month' => $journal_month->id(),
+        ]),
+        '#attributes' => [
+          'class' => ['button'],
+        ],
+      ];
+    }
+
+    $journal_year = JournalHelper::getJournalYearFromJournalMonth($journal_month);
+    $futureverse_key = 'futureverse_invitations_month_' . $journal_month->id();
+    $futureverse_value = $key_value->get($futureverse_key, ['poems' => []]);
+    $futureverse_poems_already_sent = $futureverse_value['poems'] ?? [];
+    $futureverse_poems = JournalHelper::getFutureverseInvitationPoemsForMonth($journal_month, $journal_year);
+    $futureverse_poem_ids = array_map(fn($poem) => $poem->id(), $futureverse_poems);
+    $futureverse_poems_to_send = array_diff($futureverse_poem_ids, $futureverse_poems_already_sent);
+
+    $futureverse_send_label = count($futureverse_poems_already_sent)
+      ? t('Resend futureverse invitations')
+      : t('Send futureverse invitations');
+
+    $entity_form['futureverse_invitations'] = [
+      '#type' => 'fieldset',
+      '#title' => t('FutureVerse invitations'),
+      'send_notifications' => [
+        '#type' => 'link',
+        '#title' => $futureverse_send_label,
+        '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+          'op' => 'futureverse_invitations_month:send',
+          'journal_month' => $journal_month->id(),
+        ]),
+        '#attributes' => [
+          'class' => ['button'],
+        ],
+      ],
+    ];
+    if (count($futureverse_poems_already_sent) && count($futureverse_poems_to_send)) {
+      $entity_form['futureverse_invitations']['update_notifications'] = [
+        '#type' => 'link',
+        '#title' => t('Update futureverse invitations'),
+        '#url' => Url::fromRoute('piv_futureverse.journal_notifications_confirm', [
+          'op' => 'futureverse_invitations_month:update',
           'journal_month' => $journal_month->id(),
         ]),
         '#attributes' => [
