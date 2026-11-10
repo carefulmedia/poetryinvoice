@@ -113,3 +113,26 @@ function piv_futureverse_update_9004() {
   }
   $french->save();
 }
+
+/**
+ * Enable FutureVerse invitation emails and route them to the poem address.
+ */
+function piv_futureverse_update_9005() {
+  $config = \Drupal::configFactory()->getEditable('piv_mail.piv_mail.journal_poem_futureverse_invitation');
+  if ($config->isNew()) {
+    return;
+  }
+  $data = $config->getRawData();
+  foreach (['en', 'fr'] as $langcode) {
+    if (empty($data[$langcode]) || !is_array($data[$langcode])) {
+      continue;
+    }
+    if (empty($data[$langcode]['active'])) {
+      $data[$langcode]['active'] = 1;
+    }
+    if (empty($data[$langcode]['to']['journal_poem_email'])) {
+      $data[$langcode]['to']['journal_poem_email'] = 'journal_poem_email';
+    }
+  }
+  $config->setData($data)->save();
+}

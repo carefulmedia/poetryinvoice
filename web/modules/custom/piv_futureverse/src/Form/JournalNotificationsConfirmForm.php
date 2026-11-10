@@ -154,8 +154,6 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
     $key_value = \Drupal::keyValue('journal_notifications');
     $journal_month = $this->journalMonth;
 
-    $this->messenger()->addStatus($this->t('Done!'));
-
     $op = $this->op;
     $operations = [];
 
@@ -346,6 +344,33 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
         ];
       }
     }
+
+    if (!$operations) {
+      $this->messenger()->addWarning($this->t('No emails were queued. Eligible poems must have acceptance level <em>Yes</em> or <em>Monthly prize winner</em>, grade 10–12, no FutureVerse application yet, and belong to the selected journal month.'));
+      return;
+    }
+
+    if (str_starts_with($op, 'futureverse_invitations')) {
+      $mail_plugin = \Drupal::service('plugin.manager.piv_mail')
+        ->createInstance('journal_poem_futureverse_invitation');
+      $mail_config = $mail_plugin->getConfiguration();
+      foreach (['en', 'fr'] as $langcode) {
+        if (empty($mail_config[$langcode]['active'])) {
+          $this->messenger()->addError($this->t('The FutureVerse invitation email template is inactive for @langcode. Enable it under Poetry in Voice → E-mails → Journal Poem: Futureverse invitation.', [
+            '@langcode' => $langcode,
+          ]));
+          return;
+        }
+        if (empty($mail_config[$langcode]['to']['journal_poem_email'])) {
+          $this->messenger()->addError($this->t('The FutureVerse invitation email template has no student recipient configured for @langcode. Check the “Email from the journal poem” TO option.', [
+            '@langcode' => $langcode,
+          ]));
+          return;
+        }
+      }
+    }
+
+    $this->messenger()->addStatus($this->t('Done!'));
 
     $batch = [
       'operations' => $operations,
