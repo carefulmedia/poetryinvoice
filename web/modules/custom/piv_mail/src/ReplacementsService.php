@@ -502,8 +502,11 @@ class ReplacementsService {
           return isset($sources['user']) ? $sources['user']->getDisplayName() : NULL;
 
         case 'link_to_profile':
-          return $sources['user']->toLink('Link to poet profile', 'edit-form', [
+          return $sources['user']->toLink($this->t('Link to poet profile', [], [
+            'langcode' => $langcode,
+          ]), 'edit-form', [
             'absolute' => TRUE,
+            'language' => \Drupal::languageManager()->getLanguage($langcode),
           ])->toString();
 
         // Teacher.

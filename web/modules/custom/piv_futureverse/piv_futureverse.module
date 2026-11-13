@@ -708,6 +708,7 @@ function piv_futureverse_field_group_form_process_alter(array &$element, object 
   // hides it unless empty groups are allowed.
   if ($group_name === 'group_futureverse_application_20') {
     $element['#show_empty_fields'] = TRUE;
+    $element['#open'] = TRUE;
   }
 }
 

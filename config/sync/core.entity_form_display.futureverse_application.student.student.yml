@@ -102,7 +102,7 @@ third_party_settings:
         show_empty_fields: true
         id: ''
         label_as_html: true
-        open: false
+        open: true
         description: "\r\nFutureVerse is our exciting program for talented high school student poets. Successful applicants will get an all-expenses-paid trip to Toronto from April 17-21, 2027, to spend several days meeting and working with famous authors, publishers, and other talented students. \r\n\r\nThis poetry intensive will include workshops with celebrated poets on diverse topics. For a year after FutureVerse, you’ll also be meeting online to continue sharing, developing, and growing as a writer. \r\n\r\nIf you have any questions about the program or this application, please email amanda@poetryinvoice.ca.\r\n\r\n<strong>The deadline for this form is February 28, 2027. No changes can be made after this date.</strong>"
         required_fields: true
 id: futureverse_application.student.student

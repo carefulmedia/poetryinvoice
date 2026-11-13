@@ -443,3 +443,6 @@ msgstr "sur notre site"
 
 msgid "Futureverse Application"
 msgstr "Candidature – Vers l’Avenir"
+
+msgid "Link to poet profile"
+msgstr "Lien vers le profil du poète"
