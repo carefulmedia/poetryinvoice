@@ -8,6 +8,7 @@ use Drupal\Core\Form\ConfirmFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\StringTranslation\TranslatableMarkup;
 use Drupal\Core\Url;
+use Drupal\node\NodeInterface;
 use Drupal\piv_futureverse\JournalMonthInterface;
 use Drupal\piv_futureverse\JournalHelper;
 
@@ -36,7 +37,11 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
   public function buildForm(array $form, FormStateInterface $form_state, ?string $op = NULL, ?JournalMonthInterface $journal_month = NULL) {
     $this->op = $op;
     $this->journalMonth = $journal_month;
-    return parent::buildForm($form, $form_state);
+    $form = parent::buildForm($form, $form_state);
+    if (str_starts_with((string) $this->op, 'futureverse_invitations_month:')) {
+      $form['recipients'] = $this->buildRecipientList($this->futureverseInvitationMonthPoems());
+    }
+    return $form;
   }
 
   /**
@@ -80,6 +85,74 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
     }
 
     return $this->t('Invalid operation.');
+  }
+
+  /**
+   * Poems that this monthly FutureVerse invitation will email.
+   *
+   * Send includes everyone currently eligible. Update skips poems already
+   * recorded as sent for the month.
+   *
+   * @return \Drupal\node\NodeInterface[]
+   *   One poem per recipient email.
+   */
+  protected function futureverseInvitationMonthPoems(): array {
+    $journal_year = JournalHelper::getJournalYearFromJournalMonth($this->journalMonth);
+    if (!$journal_year) {
+      return [];
+    }
+
+    $poems = JournalHelper::getFutureverseInvitationPoemsForMonth($this->journalMonth, $journal_year);
+    if (!str_ends_with($this->op, ':update')) {
+      return $poems;
+    }
+
+    $sent = \Drupal::keyValue('journal_notifications')
+      ->get('futureverse_invitations_month_' . $this->journalMonth->id(), ['poems' => []]);
+    $already_sent = array_map('strval', $sent['poems'] ?? []);
+    return array_values(array_filter(
+      $poems,
+      static fn (NodeInterface $poem): bool => !in_array((string) $poem->id(), $already_sent, TRUE),
+    ));
+  }
+
+  /**
+   * Name and email table for the poems about to be emailed.
+   *
+   * @param \Drupal\node\NodeInterface[] $poems
+   *   Recipient poems.
+   *
+   * @return array<string, mixed>
+   *   Render array.
+   */
+  protected function buildRecipientList(array $poems): array {
+    $rows = [];
+    foreach ($poems as $poem) {
+      $rows[] = [
+        $this->poemRecipientName($poem),
+        (string) ($poem->get('field_email1')->value ?? ''),
+      ];
+    }
+    usort($rows, static fn (array $a, array $b): int => strcasecmp($a[0], $b[0]));
+
+    return [
+      '#type' => 'table',
+      '#caption' => $this->formatPlural(count($rows), '1 recipient', '@count recipients'),
+      '#header' => [$this->t('Name'), $this->t('Email')],
+      '#rows' => $rows,
+      '#empty' => $this->t('No emails will be sent.'),
+      '#weight' => -10,
+    ];
+  }
+
+  /**
+   * Student name stored on a journal poem.
+   */
+  protected function poemRecipientName(NodeInterface $poem): string {
+    $first = $poem->hasField('piv_teacher_first_name') ? (string) $poem->get('piv_teacher_first_name')->value : '';
+    $last = $poem->hasField('piv_teacher_last_name') ? (string) $poem->get('piv_teacher_last_name')->value : '';
+    $name = trim($first . ' ' . $last);
+    return $name !== '' ? $name : (string) $poem->label();
   }
 
   /**
@@ -256,18 +329,9 @@ final class JournalNotificationsConfirmForm extends ConfirmFormBase {
         return;
       }
 
-      $key = 'futureverse_invitations_month_' . $journal_month->id();
-      $value = $key_value->get($key, ['poems' => []]);
-      $poems = JournalHelper::getFutureverseInvitationPoemsForMonth($journal_month, $journal_year);
-      $poems_to_send = array_map(fn($poem) => $poem->id(), $poems);
-      if (str_ends_with($op, ':update')) {
-        $poems_already_sent = $value['poems'] ?? [];
-        $poems_to_send = array_diff($poems_to_send, $poems_already_sent);
-      }
-
-      foreach ($poems_to_send as $poem_to_send) {
+      foreach ($this->futureverseInvitationMonthPoems() as $poem) {
         $data = [
-          'poem_id' => $poem_to_send,
+          'poem_id' => $poem->id(),
           'journal_month_id' => $journal_month->id(),
           'journal_year_id' => $journal_year->id(),
         ];
