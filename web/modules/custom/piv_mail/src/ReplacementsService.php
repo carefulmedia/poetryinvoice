@@ -63,6 +63,7 @@ class ReplacementsService {
       'first_name',
       'user',
       'link_to_profile',
+      'url_to_profile',
     ],
     'teacher' => [
       'booking_teacher',
@@ -76,6 +77,7 @@ class ReplacementsService {
       'nid',
       'title',
       'link_to_visit_node',
+      'url_to_visit_node',
       'node_language',
     ],
     'visit_node' => [
@@ -83,9 +85,12 @@ class ReplacementsService {
       'visit_datetime',
       'visit_admin',
       'link_to_poet_survey',
+      'url_to_poet_survey',
       'link_to_teacher_survey',
+      'url_to_teacher_survey',
       'visit_notes',
       'link_to_poet_page_href',
+      'url_to_poet_page_href',
       'visit_type',
       'visit_language',
     ],
@@ -101,18 +106,26 @@ class ReplacementsService {
       'journal_poem_first_name',
       'journal_poem_title',
       'link_to_bio_enrichment',
+      'url_to_bio_enrichment',
       'link_to_futureverse_application',
+      'url_to_futureverse_application',
       'link_to_journal_poem',
+      'url_to_journal_poem',
       'monthly_prize_winner_link',
       'monthly_prize_winner_author',
       'monthly_prize_winner_title',
       'monthly_prize_winner_banner_subtitle',
       'journal_year_editor',
       'link_to_monthly_winning_poems',
+      'url_to_monthly_winning_poems',
       'link_to_write',
+      'url_to_write',
       'link_to_read',
+      'url_to_read',
       'link_to_poet_class',
+      'url_to_poet_class',
       'link_to_futureverse',
+      'url_to_futureverse',
       'monthly_winning_poems_url',
       'write_url',
       'read_url',
@@ -121,6 +134,7 @@ class ReplacementsService {
     ],
     'poet_bio' => [
       'link_to_poet_bio',
+      'url_to_poet_bio',
     ],
     'competition_entry' => [
       'competition_entry:student_name',
@@ -368,6 +382,62 @@ class ReplacementsService {
   }
 
   /**
+   * One-time journal poem URL with no surrounding text.
+   *
+   * @param string $kind
+   *   Either "bio" or "futureverse".
+   */
+  private function journalPoemOnceUrl(string $kind): ?Url {
+    $poem = $this->sources['journal_poem'] ?? NULL;
+    if (!$poem) {
+      return NULL;
+    }
+
+    if ($kind === 'bio') {
+      $service = \Drupal::service('piv_futureverse.bio_enrichment');
+      if ($service->exists((int) $poem->id())) {
+        return NULL;
+      }
+      $url = $service->generateUrl((int) $poem->id());
+    }
+    else {
+      $service = \Drupal::service('piv_futureverse.futureverse_once_url_generator');
+      if ($service->exists('student', (int) $poem->id())) {
+        return NULL;
+      }
+      $url = $service->generateUrl('student', (int) $poem->id());
+    }
+
+    if (!$url) {
+      return NULL;
+    }
+    $url->setOption('language', $poem->language());
+    return $url;
+  }
+
+  /**
+   * One-time link plus the "use this link once" sentence.
+   */
+  private function onceLinkHtml(?Url $url, string $link_text): string {
+    if (!$url) {
+      return '';
+    }
+    $language = $url->getOption('language');
+    $langcode = $language ? $language->getId() : $this->getLangcode();
+    $link = Link::fromTextAndUrl($this->t($link_text, [], [
+      'langcode' => $langcode,
+    ]), $url)->toString()->getGeneratedLink();
+    $html = '<p>';
+    $html .= $this->t('You will only be able to use this link once to provide your information.', [], [
+      'langcode' => $langcode,
+    ]);
+    $html .= '<br>';
+    $html .= $link;
+    $html .= '</p>';
+    return $html;
+  }
+
+  /**
    * Journal month and year that contain the current journal poem.
    *
    * @return array{month: object|null, year: object|null}
@@ -393,8 +463,8 @@ class ReplacementsService {
    * Poem flagged as the monthly prize winner for the source poem's month.
    *
    * Loser mailings pass the recipient's poem, so the winner is looked up
-   * from that poem's journal month. When several poems are flagged, the
-   * first one on the month is used.
+   * from that poem's journal month. A month has one winner per language.
+   * The email language selects which of those winners is shown.
    */
   private function getMonthlyPrizeWinnerPoem(): ?NodeInterface {
     $poem = $this->sources['journal_poem'] ?? NULL;
@@ -410,7 +480,10 @@ class ReplacementsService {
       $this->monthlyPrizeWinner[$id] = NULL;
       return NULL;
     }
-    $winners = JournalHelper::getMonthlyPrizeWinner($month);
+    $langcode = $this->getLangcode();
+    $winners = array_filter(JournalHelper::getMonthlyPrizeWinner($month), static function ($winner) use ($langcode) {
+      return $winner instanceof NodeInterface && $winner->language()->getId() === $langcode;
+    });
     $winner = $winners ? reset($winners) : NULL;
     $this->monthlyPrizeWinner[$id] = $winner instanceof NodeInterface ? $winner : NULL;
     return $this->monthlyPrizeWinner[$id];
@@ -501,6 +574,12 @@ class ReplacementsService {
         case 'user':
           return isset($sources['user']) ? $sources['user']->getDisplayName() : NULL;
 
+        case 'url_to_profile':
+          return $sources['user']->toUrl('edit-form', [
+            'absolute' => TRUE,
+            'language' => \Drupal::languageManager()->getLanguage($langcode),
+          ])->toString();
+
         case 'link_to_profile':
           return $sources['user']->toLink($this->t('Link to poet profile', [], [
             'langcode' => $langcode,
@@ -537,6 +616,11 @@ class ReplacementsService {
         case 'title':
           return $sources['node']->title->value;
 
+        case 'url_to_visit_node':
+          return $sources['node']->toUrl('canonical', [
+            'absolute' => TRUE,
+          ])->toString();
+
         case 'link_to_visit_node':
           return $sources['node']->toLink('Link to visit node', 'canonical', [
             'absolute' => TRUE,
@@ -567,6 +651,7 @@ class ReplacementsService {
           $notes = $sources['visit_node']->field_notes->value ?? NULL;
           return $notes ? nl2br($notes) : '';
 
+        case 'url_to_poet_page_href':
         case 'link_to_poet_page_href':
           $poet = $sources['visit_node']->field_pal_pir->entity
             ?? $sources['visit_node']->field_preferred_poet_s_->entity;
@@ -599,6 +684,14 @@ class ReplacementsService {
         case 'visit_language':
           return $sources['visit_node']->language()->getName();
 
+        case 'url_to_poet_survey':
+          return Url::fromRoute('piv_base.poet_survey', [
+            'node' => $sources['visit_node']->id(),
+          ], [
+            'language' => $sources['visit_node']->language(),
+            'absolute' => TRUE,
+          ])->toString();
+
         case 'link_to_poet_survey':
           $language = $sources['visit_node']->language();
           $text = $this->t('Link to survey', [], [
@@ -611,6 +704,14 @@ class ReplacementsService {
             'language' => $language,
             'absolute' => TRUE,
           ])->toString()->getGeneratedLink();
+
+        case 'url_to_teacher_survey':
+          return Url::fromRoute('piv_base.teacher_survey', [
+            'node' => $sources['visit_node']->id(),
+          ], [
+            'language' => $sources['visit_node']->language(),
+            'absolute' => TRUE,
+          ])->toString();
 
         case 'link_to_teacher_survey':
           $language = $sources['visit_node']->language();
@@ -664,6 +765,13 @@ class ReplacementsService {
 
         case 'journal_poem_title':
           return $sources['journal_poem']->getTitle();
+
+        case 'url_to_journal_poem':
+          $poem = $sources['journal_poem'];
+          return $poem->toUrl('canonical', [
+            'language' => $poem->language(),
+            'absolute' => TRUE,
+          ])->toString();
 
         case 'link_to_journal_poem':
           $poem = $sources['journal_poem'];
@@ -720,17 +828,32 @@ class ReplacementsService {
           $editor = $year->get($field_name)->entity;
           return $editor ? $editor->getDisplayName() : '';
 
+        case 'url_to_monthly_winning_poems':
+          return $this->journalPoemSiteUrlString('monthly_winning_poems');
+
         case 'link_to_monthly_winning_poems':
           return $this->journalPoemSiteLink('monthly_winning_poems', 'on our website');
+
+        case 'url_to_write':
+          return $this->journalPoemSiteUrlString('write');
 
         case 'link_to_write':
           return $this->journalPoemSiteLink('write', 'Write');
 
+        case 'url_to_read':
+          return $this->journalPoemSiteUrlString('read');
+
         case 'link_to_read':
           return $this->journalPoemSiteLink('read', 'Read');
 
+        case 'url_to_poet_class':
+          return $this->journalPoemSiteUrlString('poet_class');
+
         case 'link_to_poet_class':
           return $this->journalPoemSiteLink('poet_class', 'Request a poet visit');
+
+        case 'url_to_futureverse':
+          return $this->journalPoemSiteUrlString('futureverse');
 
         case 'link_to_futureverse':
           return $this->journalPoemSiteLink('futureverse', 'FutureVerse');
@@ -750,61 +873,25 @@ class ReplacementsService {
         case 'futureverse_url':
           return $this->journalPoemSiteUrlString('futureverse');
 
-        case 'link_to_bio_enrichment':
-          $bio_service = \Drupal::service('piv_futureverse.bio_enrichment'); // @phpcs:ignore
-          $journal_poem_id = $sources['journal_poem']->id();
-          if ($bio_service->exists($journal_poem_id)) {
-            return '';
-          }
+        case 'url_to_bio_enrichment':
+          $url = $this->journalPoemOnceUrl('bio');
+          return $url ? $url->toString() : '';
 
-          $url = $bio_service->generateUrl($journal_poem_id);
-          if (!$url) {
-            return '';
-          }
-          $language = $sources['journal_poem']->language();
-          $url->setOption('language', $language);
-          $text = $this->t('Click here to update your bio', [], [
-            'langcode' => $language->getId(),
-          ]);
-          $link = Link::fromTextAndUrl($text, $url)
-            ->toString()
-            ->getGeneratedLink();
-          $html = '<p>';
-          $html .= $this->t('You will only be able to use this link once to provide your information.', [], [
-            'langcode' => $language->getId(),
-          ]);
-          $html .= '<br>';
-          $html .= $link;
-          $html .= '</p>';
-          return $html;
+        case 'link_to_bio_enrichment':
+          return $this->onceLinkHtml($this->journalPoemOnceUrl('bio'), 'Click here to update your bio');
+
+        case 'url_to_futureverse_application':
+          $url = $this->journalPoemOnceUrl('futureverse');
+          return $url ? $url->toString() : '';
 
         case 'link_to_futureverse_application':
-          $bio_service = \Drupal::service('piv_futureverse.futureverse_once_url_generator'); // @phpcs:ignore
-          $journal_poem_id = $sources['journal_poem']->id();
-          if ($bio_service->exists('student', $journal_poem_id)) {
-            return '';
-          }
+          return $this->onceLinkHtml($this->journalPoemOnceUrl('futureverse'), 'Click here to complete your Futureverse application');
 
-          $url = $bio_service->generateUrl('student', $journal_poem_id);
-          if (!$url) {
-            return '';
-          }
-          $language = $sources['journal_poem']->language();
-          $url->setOption('language', $language);
-          $text = $this->t('Click here to complete your Futureverse application', [], [
-            'langcode' => $language->getId(),
-          ]);
-          $link = Link::fromTextAndUrl($text, $url)
-            ->toString()
-            ->getGeneratedLink();
-          $html = '<p>';
-          $html .= $this->t('You will only be able to use this link once to provide your information.', [], [
-            'langcode' => $language->getId(),
-          ]);
-          $html .= '<br>';
-          $html .= $link;
-          $html .= '</p>';
-          return $html;
+        case 'url_to_poet_bio':
+          return $sources['poet_bio']->toUrl('edit-form', [
+            'absolute' => TRUE,
+            'language' => $sources['poet_bio']->field_language->entity,
+          ])->toString();
 
         case 'link_to_poet_bio':
           $langcode = $sources['poet_bio']->field_language->target_id;
