@@ -422,3 +422,21 @@ msgstr "Le concours a déjà commencé (ronde active : @round). L’ordre de ré
 
 msgid "Recitation order has been generated."
 msgstr "L’ordre de récitation a été généré."
+
+msgid "Click here to complete your Futureverse application"
+msgstr "Clique ici pour remplir ta candidature à Vers l’Avenir"
+
+msgid "Write"
+msgstr "Écrire"
+
+msgid "Read"
+msgstr "Lire"
+
+msgid "Request a poet visit"
+msgstr "Demande une visite de poète"
+
+msgid "FutureVerse"
+msgstr "Vers l’Avenir"
+
+msgid "on our website"
+msgstr "sur notre site"
