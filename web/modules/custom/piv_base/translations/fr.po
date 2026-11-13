@@ -440,3 +440,6 @@ msgstr "Vers l’Avenir"
 
 msgid "on our website"
 msgstr "sur notre site"
+
+msgid "Futureverse Application"
+msgstr "Candidature – Vers l’Avenir"
