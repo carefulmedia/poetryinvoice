@@ -113,21 +113,23 @@ final class StudentApplicationFieldGroupsForm extends ConfigFormBase {
         '#type' => 'details',
         '#title' => $title,
         '#open' => FALSE,
-      ],
-      $field_prefix . '_label' => [
-        '#type' => 'textfield',
-        '#title' => $this->t('Label'),
-        '#default_value' => $label,
-        '#required' => TRUE,
-        '#maxlength' => 255,
-        '#group' => $field_prefix,
-      ],
-      $field_prefix . '_description' => [
-        '#type' => 'textarea',
-        '#title' => $this->t('Description'),
-        '#default_value' => $description,
-        '#rows' => 8,
-        '#group' => $field_prefix,
+        'label' => [
+          '#type' => 'textfield',
+          '#title' => $this->t('Label'),
+          '#default_value' => $label,
+          '#required' => TRUE,
+          '#maxlength' => 255,
+          // Keep submitted values at the key submitForm() reads. Nested
+          // details would otherwise store them under english/french.
+          '#parents' => [$field_prefix . '_label'],
+        ],
+        'description' => [
+          '#type' => 'textarea',
+          '#title' => $this->t('Description'),
+          '#default_value' => $description,
+          '#rows' => 8,
+          '#parents' => [$field_prefix . '_description'],
+        ],
       ],
     ];
   }

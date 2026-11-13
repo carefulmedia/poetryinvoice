@@ -102,8 +102,8 @@ final class FutureverseApplicationController extends ControllerBase {
         'field_address' => $poet_bio ? $poet_bio->field_address->getValue() : [],
         'field_first_name' => $journal_poem->piv_teacher_first_name->value,
         'field_last_name' => $journal_poem->piv_teacher_last_name->value,
-        'field_legal_name' => $journal_poem->field_legal_name->value,
-        'field_legal_name_boolean' => $journal_poem->field_legal_name_boolean->value,
+        'field_legal_name' => $journal_poem->hasField('field_legal_name') ? $journal_poem->get('field_legal_name')->value : NULL,
+        'field_legal_name_boolean' => $journal_poem->hasField('field_legal_name_boolean') ? $journal_poem->get('field_legal_name_boolean')->value : NULL,
         'field_email' => $journal_poem->field_email1->value,
         'uid' => $uid,
       ]);
